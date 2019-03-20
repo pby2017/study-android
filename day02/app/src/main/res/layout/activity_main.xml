@@ -1,189 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="40dp"
+    android:padding="30dp"
     tools:context=".MainActivity">
 
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="textColor 속성"-->
-    <!--android:textColor="#00FF00" />-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="textSize 속성"-->
-    <!--android:textSize="50dp" />-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="typeface 속성"-->
-    <!--android:typeface="serif"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="textStyle 속성"-->
-    <!--android:textStyle="bold|italic"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:inputType="text"-->
-    <!--android:text="singleLine 속성"-->
-    <!--android:textSize="100dp" />-->
-    <!--ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="ID"/>-->
-    <!--<EditText-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:hint="아이디"-->
-    <!--android:id="@+id/edit1"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="PW"/>-->
-    <!--<EditText-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:hint="비밀번호"-->
-    <!--android:inputType="textPassword"-->
-    <!--android:id="@+id/edit2"/>-->
-    <!--<Button-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="로그인"-->
-    <!--android:id="@+id/btn1"/>-->
-    <!--<Button-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="회원가입"-->
-    <!--android:id="@+id/btn2"/>-->
-    <!--ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-->
-    <!--<CheckBox-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="축구"-->
-    <!--android:checked="true"/>-->
-    <!--<CheckBox-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="농구"/>-->
-    <!--<CheckBox-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="야구"/>-->
-    <!--ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-->
-    <!--<RadioGroup-->
-    <!--android:id="@+id/rgroup1"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content">-->
-
-    <!--<RadioButton-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="남성" />-->
-
-    <!--<RadioButton-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="여성" />-->
-    <!--</RadioGroup>-->
-    <!--ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-->
-    <!--<Switch-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:checked="true"/>-->
-    <!--<Switch-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:checked="false"/>-->
-    <!--<ToggleButton-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:checked="true"/>-->
-    <!--<ToggleButton-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:checked="false"/>-->
-    <!--ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-->
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--app:srcCompat="@drawable/a" />-->
-    <TextView
-        android:id="@+id/tv1"
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2196f3"
-        android:text="선택을 시작하시겠습니까?"
-        android:textSize="25dp" />
-
-    <CheckBox
-        android:id="@+id/cb1"
+        android:text="example01"
+        android:id="@+id/btn_example01"/>
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:text="애완동물화면 보이기" />
-
-    <LinearLayout
+        android:text="example02"
+        android:id="@+id/btn_example02"/>
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:orientation="vertical"
-        android:background="#80e27e">
-
-        <TextView
-            android:id="@+id/tv2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffff72"
-            android:text="좋아하는 애완동물은?"
-            android:textSize="25dp" />
-
-        <RadioGroup
-            android:id="@+id/rg1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp">
-
-            <RadioButton
-                android:id="@+id/rb1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="강아지" />
-
-            <RadioButton
-                android:id="@+id/rb2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="고양이" />
-
-            <RadioButton
-                android:id="@+id/rb3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="토끼" />
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/btn1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="200dp"
-            android:text="버튼1" />
-
-        <ImageView
-            android:id="@+id/iv1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
-    </LinearLayout>
+        android:text="example03"
+        android:id="@+id/btn_example03"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="example04"
+        android:id="@+id/btn_example04"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="example05"
+        android:id="@+id/btn_example05"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="example06"
+        android:id="@+id/btn_example06"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="practice01"
+        android:id="@+id/btn_practice01"/>
 
 </LinearLayout>

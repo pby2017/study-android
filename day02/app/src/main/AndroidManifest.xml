@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".practice01.ChoiceImageActivity"></activity>
+        <activity android:name=".example06.ImageActivity" />
+        <activity android:name=".example05.SwitchToggleActivity" />
+        <activity android:name=".example04.RadioButtonActivity" />
+        <activity android:name=".example03.CheckBoxActivity" />
+        <activity android:name=".example02.LoginActivity" />
+        <activity android:name=".example01.ViewAttrActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

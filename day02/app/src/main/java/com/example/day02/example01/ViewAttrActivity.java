@@ -3,6 +3,8 @@ package com.example.day02.example01;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.day02.R;
+
 public class ViewAttrActivity extends AppCompatActivity {
 
     @Override
