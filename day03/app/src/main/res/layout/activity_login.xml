@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="아이디" />
+
+    <EditText
+        android:id="@+id/et1_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비밀번호" />
+
+    <EditText
+        android:id="@+id/et2_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn1_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="버튼" />
+
+    <TextView
+        android:id="@+id/tv1_print_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="입력한 아이디는 " />
+
+    <TextView
+        android:id="@+id/tv2_print_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="입력한 비밀번호는 " />
+
+
+</LinearLayout>
