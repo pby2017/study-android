@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.day03">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".practice01.RelativeLayoutPracticeActivity"></activity>
+        <activity android:name=".practice01.LinearLayoutPracticeActivity" />
+        <activity android:name=".example03.RelativeLayoutActivity03" />
+        <activity android:name=".example03.RelativeLayoutActivity02" />
+        <activity android:name=".example03.RelativeLayoutActivity" />
+        <activity android:name=".example02.LinearLayoutActivity02" />
+        <activity android:name=".example02.LinearLayoutActivity" />
+        <activity android:name=".example01.Login" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
