@@ -20,3 +20,7 @@
    * EditText 뷰의 text 받아와서 출력하기
    * 레이아웃
    * 레이아웃 속성
+4. 2019/ 03/ 21 Thu
+   * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190321Thu.md)
+   * 레이아웃 속성
+   * 이벤트
