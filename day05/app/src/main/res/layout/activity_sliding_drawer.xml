@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".example05.SlidingDrawerActivity">
+
+    <SlidingDrawer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:content="@+id/linear_content_horizontal"
+        android:handle="@+id/button_slide_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_slide_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="슬라이딩" />
+
+        <LinearLayout
+            android:id="@+id/linear_content_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000"
+            android:orientation="horizontal"></LinearLayout>
+    </SlidingDrawer>
+
+    <SlidingDrawer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:content="@+id/linear_content_vertical"
+        android:handle="@+id/button_slide_vertical"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_slide_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="슬라이딩" />
+
+        <LinearLayout
+            android:id="@+id/linear_content_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000"
+            android:orientation="vertical"></LinearLayout>
+    </SlidingDrawer>
+
+</LinearLayout>
