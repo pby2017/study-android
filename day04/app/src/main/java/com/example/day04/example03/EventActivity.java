@@ -10,8 +10,8 @@ import com.example.day04.R;
 
 public class EventActivity extends AppCompatActivity {
 
-    private Button btn1;
-    private Button btn2;
+    private Button button01;
+    private Button button02;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,17 +20,17 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void method1() {
-        btn1 = (Button) findViewById(R.id.btn1);
-        btn2 = (Button) findViewById(R.id.btn2);
+        button01 = (Button) findViewById(R.id.button01);
+        button02 = (Button) findViewById(R.id.button02);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+        button01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "버튼1 클릭", Toast.LENGTH_SHORT).show();
             }
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        button02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "버튼2 클릭", Toast.LENGTH_SHORT).show();
@@ -39,24 +39,24 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void method2() {
-        btn1 = (Button) findViewById(R.id.btn1);
-        btn2 = (Button) findViewById(R.id.btn2);
+        button01 = (Button) findViewById(R.id.button01);
+        button02 = (Button) findViewById(R.id.button02);
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.btn1:
+                    case R.id.button01:
                         Toast.makeText(getApplicationContext(), "버튼1 클릭", Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.btn2:
+                    case R.id.button02:
                         Toast.makeText(getApplicationContext(), "버튼2 클릭", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
         };
 
-        btn1.setOnClickListener(listener);
-        btn2.setOnClickListener(listener);
+        button01.setOnClickListener(listener);
+        button02.setOnClickListener(listener);
     }
 }

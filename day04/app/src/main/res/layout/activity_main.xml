@@ -8,27 +8,31 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_example01"
+        android:id="@+id/button_start_table_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example01" />
+        android:gravity="left"
+        android:text="example01 - Table layout" />
 
     <Button
-        android:id="@+id/btn_example02"
+        android:id="@+id/button_start_Grid_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example02" />
+        android:gravity="left"
+        android:text="example02 - Grid layout" />
 
     <Button
-        android:id="@+id/btn_example03"
+        android:id="@+id/button_start_event_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example03" />
+        android:gravity="left"
+        android:text="example03 - Event process" />
 
     <Button
-        android:id="@+id/btn_practice01"
+        android:id="@+id/button_start_calculator_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="practice01" />
+        android:gravity="left"
+        android:text="example03 - Calculator" />
 
 </LinearLayout>

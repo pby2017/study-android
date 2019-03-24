@@ -8,39 +8,52 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/button_start_view_attr_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example01"
-        android:id="@+id/btn_example01"/>
+        android:gravity="left"
+        android:text="example01 - View attribute" />
+
     <Button
+        android:id="@+id/button_start_login_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example02"
-        android:id="@+id/btn_example02"/>
+        android:gravity="left"
+        android:text="example02 - Login" />
+
     <Button
+        android:id="@+id/button_start_check_box_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example03"
-        android:id="@+id/btn_example03"/>
+        android:gravity="left"
+        android:text="example03 - Checkbox" />
+
     <Button
+        android:id="@+id/button_start_radio_button_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example04"
-        android:id="@+id/btn_example04"/>
+        android:gravity="left"
+        android:text="example04 - Radio button" />
+
     <Button
+        android:id="@+id/button_start_switch_toggle_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example05"
-        android:id="@+id/btn_example05"/>
+        android:gravity="left"
+        android:text="example05 - Switch toggle" />
+
     <Button
+        android:id="@+id/button_start_image_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="example06"
-        android:id="@+id/btn_example06"/>
+        android:gravity="left"
+        android:text="example06 - Image" />
+
     <Button
+        android:id="@+id/button_choice_image_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="practice01"
-        android:id="@+id/btn_practice01"/>
+        android:gravity="left"
+        android:text="practice01 - Choice image" />
 
 </LinearLayout>

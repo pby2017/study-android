@@ -1,15 +1,15 @@
-package com.example.day02.example01;
+package com.example.day03.practice01;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.day02.R;
+import com.example.day03.R;
 
-public class ViewAttrActivity extends AppCompatActivity {
+public class LoginRelativeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_attr);
+        setContentView(R.layout.activity_login_relative);
     }
 }
