@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.day03">
+    package="com.example.day05">
 
     <application
         android:allowBackup="true"
@@ -9,14 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".practice01.LoginRelativeActivity"></activity>
-        <activity android:name=".practice01.LoginLinearActivity" />
-        <activity android:name=".example03.RelativeActivity03" />
-        <activity android:name=".example03.RelativeActivity02" />
-        <activity android:name=".example03.RelativeActivity" />
-        <activity android:name=".example02.LinearActivity02" />
-        <activity android:name=".example02.LinearActivity" />
-        <activity android:name=".example01.Login" />
+        <activity android:name=".example05.SlidingDrawerActivity"></activity>
+        <activity android:name=".example05.ScrollActivity" />
+        <activity android:name=".example04.BarActivity" />
+        <activity android:name=".example03.AutoCompleteActivity" />
+        <activity android:name=".practice01.SelectPickerActivity" />
+        <activity android:name=".example02.PickerActivity" />
+        <activity android:name=".example01.ClockActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
