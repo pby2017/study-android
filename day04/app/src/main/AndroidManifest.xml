@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".example03.EventActivity"></activity>
-        <activity android:name=".practice01.CalculatePracticeActivity" />
-        <activity android:name=".example02.GridLayoutActivity" />
-        <activity android:name=".example01.TableLayoutActivity" />
+        <activity android:name=".practice01.CalculatorActivity" />
+        <activity android:name=".example02.GridActivity" />
+        <activity android:name=".example01.TableActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
