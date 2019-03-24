@@ -11,8 +11,9 @@
 2. 2019/ 03/ 19 Tue
    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190319Tue.md)
    * 액티비티
-   * 레이아웃
-   * 뷰
+   * 뷰(View)
+   * 뷰그룹(ViewGroup)
+   * 레이아웃(layout)
    * XML 속성
    * day02 실습
 3. 2019/ 03/ 20 Wed
