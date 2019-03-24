@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_start_clock_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="example01 - Clock (Analog / Digital)" />
+
+    <Button
+        android:id="@+id/button_start_picker_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="example02 - Picker (Time / Date)" />
+
+    <Button
+        android:id="@+id/button_start_auto_complete_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="example03 - AutoCompleteTextView" />
+
+    <Button
+        android:id="@+id/button_start_bar_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="example04 - Bar (Progress / Seek / Rating)" />
+
+    <Button
+        android:id="@+id/button_start_scroll_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="example05 - ScrollView" />
+
+    <Button
+        android:id="@+id/button_start_sliding_drawer_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="example05_02 - SlidingDrawer" />
+
+    <Button
+        android:id="@+id/button_start_select_picker_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="practice01 - Select picker (Date / Time)" />
+
+</LinearLayout>
