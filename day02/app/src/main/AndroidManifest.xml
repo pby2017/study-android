@@ -15,7 +15,7 @@
         <activity android:name=".example04.RadioButtonActivity" />
         <activity android:name=".example03.CheckBoxActivity" />
         <activity android:name=".example02.LoginActivity" />
-        <activity android:name=".example01.ViewAttrActivity" />
+        <activity android:name=".example01.ViewAttributeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

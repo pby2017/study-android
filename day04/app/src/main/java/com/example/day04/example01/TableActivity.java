@@ -1,15 +1,15 @@
-package com.example.day03.example03;
+package com.example.day04.example01;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.day03.R;
+import com.example.day04.R;
 
-public class RelativeLayoutActivity03 extends AppCompatActivity {
+public class TableActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_relative_layout03);
+        setContentView(R.layout.activity_table);
     }
 }

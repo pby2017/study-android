@@ -1,15 +1,15 @@
-package com.example.day02.example02;
+package com.example.day03.example02;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.day02.R;
+import com.example.day03.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LinearActivity02 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_linear02);
     }
 }

@@ -7,12 +7,12 @@
     tools:context=".example03.EventActivity">
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/button02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

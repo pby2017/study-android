@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.day03.R;
 
-public class LinearLayoutActivity02 extends AppCompatActivity {
+public class LinearActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_linear_layout02);
+        setContentView(R.layout.activity_linear);
     }
 }

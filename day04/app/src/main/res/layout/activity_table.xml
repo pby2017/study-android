@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="3"
-    tools:context=".example01.TableLayoutActivity">
+    tools:context=".example01.TableActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,16 +34,24 @@
 
             <TableRow>
 
-                <Button android:layout_span="1" />
+                <Button
+                    android:layout_span="1"
+                    android:layout_weight="1" />
 
-                <Button android:layout_span="1" />
+                <Button
+                    android:layout_span="1"
+                    android:layout_weight="1" />
             </TableRow>
 
             <TableRow>
 
-                <Button android:layout_span="1" />
+                <Button
+                    android:layout_span="1"
+                    android:layout_weight="1" />
 
-                <Button android:layout_span="1" />
+                <Button
+                    android:layout_span="1"
+                    android:layout_weight="1" />
             </TableRow>
         </TableLayout>
 
@@ -64,25 +71,30 @@
         android:layout_height="wrap_content">
 
         <TableLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TableRow>
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_span="2" />
+                    android:layout_width="match_parent"
+                    android:layout_span="3" />
             </TableRow>
 
             <TableRow>
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_span="1" />
+                <Button android:layout_span="1" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_span="1" />
+                <Button android:layout_span="1" />
+
+                <Button android:layout_span="1" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button android:layout_span="2" />
+
+                <Button android:layout_span="1" />
             </TableRow>
         </TableLayout>
     </LinearLayout>

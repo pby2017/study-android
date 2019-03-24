@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".example03.RelativeLayoutActivity03">
+    tools:context=".example03.RelativeActivity03">
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/button_base01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="기준 버튼1" />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/button_base02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -22,15 +22,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn1"
-        android:layout_alignStart="@+id/btn2"
-        android:layout_alignLeft="@+id/btn2" />
+        android:layout_below="@id/button_base01"
+        android:layout_toStartOf="@+id/button_base02"
+        android:layout_toLeftOf="@+id/button_base02" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/btn2"
-        android:layout_toEndOf="@id/btn1"
-        android:layout_toRightOf="@id/btn1" />
+        android:layout_above="@id/button_base02"
+        android:layout_toEndOf="@id/button_base01"
+        android:layout_toRightOf="@id/button_base01" />
 
 </RelativeLayout>

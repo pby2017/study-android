@@ -8,17 +8,19 @@
     tools:context=".MainActivity">
 
     <CheckBox
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="축구"
-    android:checked="true"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="축구" />
+
     <CheckBox
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="농구"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="농구" />
+
     <CheckBox
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="야구"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="야구" />
 
 </LinearLayout>

@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".practice01.RelativeLayoutPracticeActivity">
+    tools:context=".practice01.LoginRelativeActivity">
 
     <TextView
-        android:id="@+id/tv_phone_number"
+        android:id="@+id/text_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="전화번호"
@@ -15,21 +15,21 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_phone_number" />
+        android:layout_toRightOf="@+id/text_phone_number" />
 
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_phone_number"
-        android:layout_toLeftOf="@+id/btn_cancel"
+        android:layout_below="@+id/text_phone_number"
+        android:layout_toLeftOf="@+id/button_cancel"
         android:text="저장" />
 
     <Button
-        android:id="@+id/btn_cancel"
+        android:id="@+id/button_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_phone_number"
+        android:layout_below="@+id/text_phone_number"
         android:layout_alignParentRight="true"
         android:text="취소" />
 
