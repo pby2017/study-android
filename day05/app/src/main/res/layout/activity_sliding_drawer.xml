@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000000"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal"/>
     </SlidingDrawer>
 
     <SlidingDrawer
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000000"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical"/>
     </SlidingDrawer>
 
 </LinearLayout>
