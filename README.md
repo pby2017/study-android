@@ -32,3 +32,8 @@
 6. 2019/ 03/ 25 Mon
    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190325Mon.md)
    * 위젯(Widget) - ViewFlipper, TabHost, ActionBar, WebView
+7. 2019/ 03/ 26 Tue
+   * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190326Tue.md)
+   * Menu
+   * ContextMenu
+   * AlertDialog
