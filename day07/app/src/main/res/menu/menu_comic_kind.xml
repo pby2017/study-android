@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_comic_kind01"
+        android:title="만화 kind01" />
+    <item
+        android:id="@+id/item_comic_kind02"
+        android:title="만화 kind02" />
+    <item
+        android:id="@+id/item_comic_kind03"
+        android:title="만화 kind03" />
+    <item
+        android:id="@+id/item_comic_kind04"
+        android:title="만화 kind04" />
+    <item
+        android:id="@+id/item_comic_kind05"
+        android:title="만화 kind05" />
+</menu>
