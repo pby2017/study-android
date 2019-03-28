@@ -43,7 +43,7 @@
    * Toast message random location
    * resource - @string, @array, @colors
 9. 2019/ 03/ 28 Thu
-   * [정리 파일 링크]()
+   * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190328Thu.md)
    * 컴포넌트
    * 인텐트
    * 액티비티 라이프 사이클
