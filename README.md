@@ -36,9 +36,8 @@
    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190326Tue.md)
    * Menu
    * ContextMenu
-   * AlertDialog   * AlertDialog
+   * AlertDialog
 8. 2019/ 03/ 27 Wed
-   * [정리 파일 링크]()
+   * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190327Wed.md)
    * AlertDialog - setView(View)
    * Toast message random location
-   * resource - @string, @colors
