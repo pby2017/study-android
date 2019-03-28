@@ -32,16 +32,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_start_table_activity:
-                startActivity(new Intent(getApplicationContext(), TableActivity.class));
+                startActivity(new Intent(MainActivity.this(), TableActivity.class));
                 break;
             case R.id.button_start_Grid_activity:
-                startActivity(new Intent(getApplicationContext(), GridActivity.class));
+                startActivity(new Intent(MainActivity.this(), GridActivity.class));
                 break;
             case R.id.button_start_event_activity:
-                startActivity(new Intent(getApplicationContext(), EventActivity.class));
+                startActivity(new Intent(MainActivity.this(), EventActivity.class));
                 break;
             case R.id.button_start_calculator_activity:
-                startActivity(new Intent(getApplicationContext(), CalculatorActivity.class));
+                startActivity(new Intent(MainActivity.this(), CalculatorActivity.class));
                 break;
         }
     }
