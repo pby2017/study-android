@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">day08</string>
+    <string name="user_name">사용자 이름</string>
+    <string name="user_email">이메일</string>
+    <string name="button_ok">확인</string>
+    <string name="button_show_dialog">입력창</string>
+    <string name="button_show_toast_message">토스트 메시지</string>
+</resources>
