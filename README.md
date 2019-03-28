@@ -41,3 +41,4 @@
    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190327Wed.md)
    * AlertDialog - setView(View)
    * Toast message random location
+   * resource - @string, @colors
