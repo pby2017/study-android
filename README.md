@@ -41,4 +41,20 @@
    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190327Wed.md)
    * AlertDialog - setView(View)
    * Toast message random location
-   * resource - @string, @colors
+   * resource - @string, @array, @colors
+9. 2019/ 03/ 28 Thu
+   * [정리 파일 링크]()
+   * 컴포넌트
+   * 인텐트
+   * 액티비티 라이프 사이클
+   * 다른 액티비티에서 결과 얻어오기
+#
+#
+#
+#
+# ?
+1. ## 컴포넌트
+2. ## 액티비티
+3. ## 서비스
+4. ## 브로드캐스트 리시버
+5. ## 콘텐트 프로바이더
