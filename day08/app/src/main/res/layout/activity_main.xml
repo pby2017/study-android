@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
+        android:maxLines="1"
         android:text="example01 - MyDialog : name, email" />
 
     <Button
@@ -18,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:text="example01 - Toast message" />
+        android:maxLines="1"
+        android:text="example02 - Toast message" />
 
     <Button
         android:id="@+id/button_start_resource_activity"
