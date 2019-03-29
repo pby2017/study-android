@@ -41,7 +41,7 @@
    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190327Wed.md)
    * AlertDialog - setView(View)
    * Toast message random location
-   * resource - @string, @array, @colors
+   * resource - @string, @array, @colors, dpi, 이미지 리소스
 9. 2019/ 03/ 28 Thu
    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/detail/20190328Thu.md)
    * 컴포넌트
