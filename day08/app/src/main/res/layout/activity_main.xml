@@ -19,4 +19,12 @@
         android:gravity="left"
         android:text="example01 - Toast message" />
 
+    <Button
+        android:id="@+id/button_start_resource_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:maxLines="1"
+        android:text="example03 - Resource - @string, @string-array, @colors" />
+
 </LinearLayout>

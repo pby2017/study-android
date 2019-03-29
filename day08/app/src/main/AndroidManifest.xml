@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".example02.ToastMessageActivity"></activity>
+        <activity android:name=".example03.ResourceActivity"></activity>
         <activity android:name=".example01.MyDialogActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
