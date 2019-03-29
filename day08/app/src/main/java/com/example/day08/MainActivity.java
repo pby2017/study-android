@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(getApplicationContext(), MyDialogActivity.class));
                 break;
             case R.id.button_start_toast_message_activity:
-                startActivity(new Intent(getApplicationContext(), ToastMessageActivity.class));
-                break;
+                startActivity(new Intent(getApplicationContext(), MyDialogActivity.class));
             case R.id.button_start_resource_activity:
                 startActivity(new Intent(getApplicationContext(), ResourceActivity.class));
                 break;
