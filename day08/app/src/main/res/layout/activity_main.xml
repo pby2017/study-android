@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:text="example01 - MyDialog : name, email" />
+
     <Button
         android:id="@+id/button_start_toast_message_activity"
         android:layout_width="match_parent"
