@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setViewOnClickListener() {
         buttonStartMyDialogActivity.setOnClickListener(this);
         buttonStartToastMessageActivity.setOnClickListener(this);
+        buttonStartResourceActivity.setOnClickListener(this);
     }
 
     private void initView() {
