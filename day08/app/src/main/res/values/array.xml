@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="string_array_name">
+        <item>text_string01</item>
+        <item>text_string02</item>
+        <item>text_string03</item>
+        <item>text_string04</item>
+        <item>text_string05</item>
+        <item>text_string06</item>
+        <item>text_string07</item>
+        <item>text_string08</item>
+        <item>text_string09</item>
+        <item>text_string10</item>
+        <item>text_string11</item>
+        <item>text_string22</item>
+        <item>text_string33</item>
+        <item>text_string44</item>
+        <item>text_string55</item>
+    </string-array>
+</resources>

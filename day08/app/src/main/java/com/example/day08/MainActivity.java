@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ResourceCursorAdapter;
 
 import com.example.day08.example01.MyDialogActivity;
+import com.example.day08.example03.ResourceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttonStartMyDialogActivity;
     private Button buttonStartToastMessageActivity;
+    private Button buttonStartResourceActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_start_toast_message_activity:
                 startActivity(new Intent(getApplicationContext(), MyDialogActivity.class));
+            case R.id.button_start_resource_activity:
+                startActivity(new Intent(getApplicationContext(), ResourceActivity.class));
                 break;
         }
     }
@@ -44,5 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         buttonStartMyDialogActivity = (Button) findViewById(R.id.button_start_my_dialog_activity);
         buttonStartToastMessageActivity = (Button) findViewById(R.id.button_start_toast_message_activity);
+        buttonStartResourceActivity = (Button) findViewById(R.id.button_start_resource_activity);
     }
 }
