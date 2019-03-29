@@ -1,13 +1,14 @@
 package com.example.day08;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ResourceCursorAdapter;
 
 import com.example.day08.example01.MyDialogActivity;
+import com.example.day08.example02.ToastMessageActivity;
 import com.example.day08.example03.ResourceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
