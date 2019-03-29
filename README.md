@@ -48,6 +48,10 @@
    * 인텐트
    * 액티비티 라이프 사이클
    * 다른 액티비티에서 결과 얻어오기
+10. 2019/ 03/ 29 Fri - day10
+    * [정리 파일 링크 - not yet]()
+    * Implicit Intent
+    * External Library - BottomNavigationView
 #
 #
 #
