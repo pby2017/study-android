@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="left|center_vertical"
         android:maxLines="1"
-        android:text="example01 - Intent action view" />
+        android:text="@string/example01" />
 
     <Button
         android:id="@+id/button_start_external_design_library_activity"
@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:gravity="left|center_vertical"
         android:maxLines="1"
-        android:text="example02 - External design library" />
+        android:text="@string/example02" />
 
 </LinearLayout>
