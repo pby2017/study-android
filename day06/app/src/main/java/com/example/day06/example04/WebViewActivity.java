@@ -13,8 +13,8 @@ import com.example.day06.R;
 
 public class WebViewActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText editTextUrl;
-    private Button buttonGo;
+    private EditText urlEditText;
+    private Button goButton;
     private WebView webView;
 
     @Override
@@ -23,27 +23,26 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_web_view);
 
         initView();
-
-        webView.setWebViewClient(new MyWebViewClient());
-
-        WebSettings webSettings = webView.getSettings();
-        ((WebSettings) webSettings).setBuiltInZoomControls(true);
-    }
-
-    private void initView() {
-        editTextUrl = findViewById(R.id.edit_text_url);
-        buttonGo = findViewById(R.id.button_go);
-        buttonGo.setOnClickListener(this);
-        webView = findViewById(R.id.web_view);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_go:
-                webView.loadUrl(editTextUrl.getText().toString());
+                webView.loadUrl(urlEditText.getText().toString());
                 break;
         }
+    }
+
+    private void initView() {
+        urlEditText = findViewById(R.id.edit_text_url);
+        goButton = findViewById(R.id.button_go);
+        goButton.setOnClickListener(this);
+
+        webView = findViewById(R.id.web_view);
+        webView.setWebViewClient(new MyWebViewClient());
+        WebSettings webSettings = webView.getSettings();
+        ((WebSettings) webSettings).setBuiltInZoomControls(true);
     }
 
     class MyWebViewClient extends WebViewClient {

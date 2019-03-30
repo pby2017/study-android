@@ -14,11 +14,11 @@ import com.example.day02.R;
 
 public class ChoiceImageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private CheckBox checkboxSetAnimalScreenVisible;
-    private LinearLayout linearAnimalScreen;
-    private RadioGroup radioGroupSelectAnimal;
-    private Button buttonShowAnimalImage;
-    private ImageView imageAnimal;
+    private CheckBox setAnimalScreenVisibleCheckBox;
+    private LinearLayout animalScreenLinear;
+    private RadioGroup selectAnimalRadioGroup;
+    private Button showAnimalImageButton;
+    private ImageView animalImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,46 +26,48 @@ public class ChoiceImageActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_choice_image);
 
         initView();
-
-        buttonShowAnimalImage.setOnClickListener(this);
-        checkboxSetAnimalScreenVisible.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_show_animal_image:
-                int selectedId = radioGroupSelectAnimal.getCheckedRadioButtonId();
+                int selectedId = selectAnimalRadioGroup.getCheckedRadioButtonId();
                 switch (selectedId) {
                     case R.id.radio_button_puppy:
-                        imageAnimal.setImageResource(R.drawable.puppy);
+                        animalImage.setImageResource(R.drawable.puppy);
                         Toast.makeText(getApplicationContext(), "puppy 보여주기", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.radio_button_cat:
-                        imageAnimal.setImageResource(R.drawable.cat);
+                        animalImage.setImageResource(R.drawable.cat);
                         Toast.makeText(getApplicationContext(), "cat 보여주기", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.radio_button_rabbit:
-                        imageAnimal.setImageResource(R.drawable.rabbit);
+                        animalImage.setImageResource(R.drawable.rabbit);
                         Toast.makeText(getApplicationContext(), "rabbit 보여주기", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 break;
             case R.id.checkbox_set_animal_screen_visible:
-                if (checkboxSetAnimalScreenVisible.isChecked()) {
-                    linearAnimalScreen.setVisibility(View.VISIBLE);
+                if (setAnimalScreenVisibleCheckBox.isChecked()) {
+                    animalScreenLinear.setVisibility(View.VISIBLE);
                 } else {
-                    linearAnimalScreen.setVisibility(View.INVISIBLE);
+                    animalScreenLinear.setVisibility(View.INVISIBLE);
                 }
                 break;
         }
     }
 
     private void initView() {
-        CheckBox checkboxSetAnimalScreenVisible = findViewById(R.id.checkbox_set_animal_screen_visible);
-        LinearLayout linearAnimalScreen = findViewById(R.id.linear_animal_screen);
-        RadioGroup radioGroupSelectAnimal = findViewById(R.id.radio_group_select_animal);
-        Button buttonShowAnimalImage = findViewById(R.id.button_show_animal_image);
-        ImageView imageAnimal = findViewById(R.id.image_animal);
+        setAnimalScreenVisibleCheckBox = findViewById(R.id.checkbox_set_animal_screen_visible);
+        setAnimalScreenVisibleCheckBox.setOnClickListener(this);
+
+        animalScreenLinear = findViewById(R.id.linear_animal_screen);
+        selectAnimalRadioGroup = findViewById(R.id.radio_group_select_animal);
+
+        showAnimalImageButton = findViewById(R.id.button_show_animal_image);
+        showAnimalImageButton.setOnClickListener(this);
+
+        animalImage = findViewById(R.id.image_animal);
     }
 }

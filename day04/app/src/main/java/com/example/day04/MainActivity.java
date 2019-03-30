@@ -13,10 +13,10 @@ import com.example.day04.practice01.CalculatorActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonStartTableActivity;
-    Button buttonStartGridActivity;
-    Button buttonStartEventActivity;
-    Button buttonStartCalculatorActivity;
+    private Button startTableActivityButton;
+    private Button startGridActivityButton;
+    private Button startEventActivityButton;
+    private Button startCalculatorActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +45,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        buttonStartTableActivity = findViewById(R.id.button_start_table_activity);
-        buttonStartGridActivity = findViewById(R.id.button_start_Grid_activity);
-        buttonStartEventActivity = findViewById(R.id.button_start_event_activity);
-        buttonStartCalculatorActivity = findViewById(R.id.button_start_calculator_activity);
+        startTableActivityButton = findViewById(R.id.button_start_table_activity);
+        startGridActivityButton = findViewById(R.id.button_start_Grid_activity);
+        startEventActivityButton = findViewById(R.id.button_start_event_activity);
+        startCalculatorActivityButton = findViewById(R.id.button_start_calculator_activity);
 
-        buttonStartTableActivity.setOnClickListener(this);
-        buttonStartGridActivity.setOnClickListener(this);
-        buttonStartEventActivity.setOnClickListener(this);
-        buttonStartCalculatorActivity.setOnClickListener(this);
+        startTableActivityButton.setOnClickListener(this);
+        startGridActivityButton.setOnClickListener(this);
+        startEventActivityButton.setOnClickListener(this);
+        startCalculatorActivityButton.setOnClickListener(this);
     }
 
 

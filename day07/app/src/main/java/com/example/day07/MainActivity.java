@@ -1,8 +1,8 @@
 package com.example.day07;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,10 +13,10 @@ import com.example.day07.practice01.SelectedMenuViewActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonStartMenuActivity;
-    private Button buttonStartContextMenuActivity;
-    private Button buttonStartAlertDialogActivity;
-    private Button buttonStartSelectedMenuViewActivity;
+    private Button startMenuActivityButton;
+    private Button startContextMenuActivityButton;
+    private Button startAlertDialogActivityButton;
+    private Button startSelectedMenuViewActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        buttonStartMenuActivity = findViewById(R.id.button_start_menu_activity);
-        buttonStartContextMenuActivity = findViewById(R.id.button_start_context_menu_activity);
-        buttonStartAlertDialogActivity = findViewById(R.id.button_start_alert_dialog_activity);
-        buttonStartSelectedMenuViewActivity = findViewById(R.id.button_start_selected_menu_view_activity);
+        startMenuActivityButton = findViewById(R.id.button_start_menu_activity);
+        startContextMenuActivityButton = findViewById(R.id.button_start_context_menu_activity);
+        startAlertDialogActivityButton = findViewById(R.id.button_start_alert_dialog_activity);
+        startSelectedMenuViewActivityButton = findViewById(R.id.button_start_selected_menu_view_activity);
 
-        buttonStartMenuActivity.setOnClickListener(this);
-        buttonStartContextMenuActivity.setOnClickListener(this);
-        buttonStartAlertDialogActivity.setOnClickListener(this);
-        buttonStartSelectedMenuViewActivity.setOnClickListener(this);
+        startMenuActivityButton.setOnClickListener(this);
+        startContextMenuActivityButton.setOnClickListener(this);
+        startAlertDialogActivityButton.setOnClickListener(this);
+        startSelectedMenuViewActivityButton.setOnClickListener(this);
     }
 }
