@@ -69,8 +69,8 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
 
         buttonDialog = (Button) findViewById(R.id.button_dialog);
 
-        editTextDialogName = (EditText) findViewById(R.id.edit_text_dialog_name);
-        editTextDialogEmail = (EditText) findViewById(R.id.edit_text_dialog_email);
+        editTextDialogName = (EditText) viewDialog.findViewById(R.id.edit_text_dialog_name);
+        editTextDialogEmail = (EditText) viewDialog.findViewById(R.id.edit_text_dialog_email);
 
         editTextName = (EditText) findViewById(R.id.edit_text_name);
         editTextEmail = (EditText) findViewById(R.id.edit_text_email);
