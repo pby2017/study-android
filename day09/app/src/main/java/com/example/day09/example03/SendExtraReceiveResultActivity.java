@@ -34,8 +34,9 @@ public class SendExtraReceiveResultActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
 
-        Intent intent = getIntent();
-        Toast.makeText(this, Integer.toString(intent.getIntExtra(CALCULATE_RESULT_OUTPUT, -1)), Toast.LENGTH_SHORT).show();
+//        계산 후 finish()로 액티비티 닫을 경우
+//        Intent intent = getIntent();
+//        Toast.makeText(this, Integer.toString(intent.getIntExtra(CALCULATE_RESULT_OUTPUT, -1)), Toast.LENGTH_SHORT).show();
     }
 
     @Override

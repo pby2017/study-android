@@ -15,12 +15,12 @@ import com.example.day06.practice01.ChatRoomListActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonStartViewFlipperActivity;
-    private Button buttonStartTabHostActivity;
-    private Button buttonStartActionBarActivity;
-    private Button buttonStartActionBarActivity02;
-    private Button buttonStartWebViewActivity;
-    private Button buttonStartChatRoomListActivity;
+    private Button startViewFlipperActivityButton;
+    private Button startTabHostActivityButton;
+    private Button startActionBarActivityButton;
+    private Button startActionBarActivity02Button;
+    private Button startWebViewActivityButton;
+    private Button startChatRoomListActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,18 +56,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        buttonStartViewFlipperActivity = findViewById(R.id.button_start_view_flipper_activity);
-        buttonStartTabHostActivity = findViewById(R.id.button_start_tab_host_activity);
-        buttonStartActionBarActivity = findViewById(R.id.button_start_action_bar_activity);
-        buttonStartActionBarActivity02 = findViewById(R.id.button_start_action_bar_activity02);
-        buttonStartWebViewActivity = findViewById(R.id.button_start_web_view_activity);
-        buttonStartChatRoomListActivity = findViewById(R.id.button_start_chat_room_list_activity);
+        startViewFlipperActivityButton = findViewById(R.id.button_start_view_flipper_activity);
+        startTabHostActivityButton = findViewById(R.id.button_start_tab_host_activity);
+        startActionBarActivityButton = findViewById(R.id.button_start_action_bar_activity);
+        startActionBarActivity02Button = findViewById(R.id.button_start_action_bar_activity02);
+        startWebViewActivityButton = findViewById(R.id.button_start_web_view_activity);
+        startChatRoomListActivityButton = findViewById(R.id.button_start_chat_room_list_activity);
 
-        buttonStartViewFlipperActivity.setOnClickListener(this);
-        buttonStartTabHostActivity.setOnClickListener(this);
-        buttonStartActionBarActivity.setOnClickListener(this);
-        buttonStartActionBarActivity02.setOnClickListener(this);
-        buttonStartWebViewActivity.setOnClickListener(this);
-        buttonStartChatRoomListActivity.setOnClickListener(this);
+        startViewFlipperActivityButton.setOnClickListener(this);
+        startTabHostActivityButton.setOnClickListener(this);
+        startActionBarActivityButton.setOnClickListener(this);
+        startActionBarActivity02Button.setOnClickListener(this);
+        startWebViewActivityButton.setOnClickListener(this);
+        startChatRoomListActivityButton.setOnClickListener(this);
     }
 }

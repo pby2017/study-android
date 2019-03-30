@@ -10,8 +10,13 @@ import com.example.day05.R;
 
 public class AutoCompleteActivity extends AppCompatActivity {
 
+    private String[] items = {"aaa", "bbb", "ccc"};
+
     private AutoCompleteTextView autoCompleteText;
     private MultiAutoCompleteTextView multiAutoCompleteText;
+
+    private ArrayAdapter<String> autoCompleteAdapter;
+    private MultiAutoCompleteTextView.CommaTokenizer multiAutoCompleteCommaTokenizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +24,17 @@ public class AutoCompleteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auto_complete);
 
         initView();
-
-        String[] items = {"aaa", "bbb", "ccc"};
-
-        ArrayAdapter<String> autoCompleteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, items);
-        autoCompleteText.setAdapter(autoCompleteAdapter);
-
-        MultiAutoCompleteTextView.CommaTokenizer multiAutoCompleteCommaTokenizer = new MultiAutoCompleteTextView.CommaTokenizer();
-        multiAutoCompleteText.setTokenizer(multiAutoCompleteCommaTokenizer);
-        multiAutoCompleteText.setAdapter(autoCompleteAdapter);
     }
 
     private void initView() {
         autoCompleteText = findViewById(R.id.auto_complete_text);
         multiAutoCompleteText = findViewById(R.id.multi_auto_complete_text);
+
+        autoCompleteAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, items);
+        autoCompleteText.setAdapter(autoCompleteAdapter);
+
+        multiAutoCompleteCommaTokenizer = new MultiAutoCompleteTextView.CommaTokenizer();
+        multiAutoCompleteText.setTokenizer(multiAutoCompleteCommaTokenizer);
+        multiAutoCompleteText.setAdapter(autoCompleteAdapter);
     }
 }

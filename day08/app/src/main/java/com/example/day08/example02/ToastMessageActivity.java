@@ -27,6 +27,7 @@ public class ToastMessageActivity extends AppCompatActivity implements View.OnCl
 
     private void initView() {
         showDialogButton = findViewById(R.id.button_show_dialog);
+        showDialogButton.setOnClickListener(this);
     }
 
     @Override
@@ -40,7 +41,7 @@ public class ToastMessageActivity extends AppCompatActivity implements View.OnCl
                 alertDialogBuilder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast toastMsg = Toast.makeText(this, "확인을 누르셨어요.", Toast.LENGTH_SHORT);
+                        Toast toastMsg = Toast.makeText(getApplicationContext(), "확인을 누르셨어요.", Toast.LENGTH_SHORT);
 
                         Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
 

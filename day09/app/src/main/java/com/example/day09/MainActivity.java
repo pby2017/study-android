@@ -32,16 +32,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_start_life_cycle_activity:
                 startActivity(new Intent(this, LifeCycleActivity.class));
+                break;
             case R.id.button_start_send_extra_receive_result_activity:
                 startActivity(new Intent(this, SendExtraReceiveResultActivity.class));
+                break;
         }
     }
 
     private void initView() {
         startSecondActivityButton = findViewById(R.id.button_start_second_activity);
         startSecondActivityButton.setOnClickListener(this);
+
         startLifeCycleActivityButton = findViewById(R.id.button_start_life_cycle_activity);
         startLifeCycleActivityButton.setOnClickListener(this);
+
         startSendExtraReceiveResultActivityButton = findViewById(R.id.button_start_send_extra_receive_result_activity);
         startSendExtraReceiveResultActivityButton.setOnClickListener(this);
     }

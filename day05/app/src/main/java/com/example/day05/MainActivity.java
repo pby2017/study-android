@@ -16,13 +16,13 @@ import com.example.day05.practice01.SelectPickerActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonStartClockActivity;
-    private Button buttonStartPickerActivity;
-    private Button buttonStartSelectPickerActivity;
-    private Button buttonStartAutoCompleteActivity;
-    private Button buttonStartBarActivity;
-    private Button buttonStartScrollActivity;
-    private Button buttonStartSlidingDrawerActivity;
+    private Button startClockActivityButton;
+    private Button startPickerActivityButton;
+    private Button startSelectPickerActivityButton;
+    private Button startAutoCompleteActivityButton;
+    private Button startBarActivityButton;
+    private Button startScrollActivityButton;
+    private Button startSlidingDrawerActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,20 +61,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        buttonStartClockActivity = findViewById(R.id.button_start_clock_activity);
-        buttonStartPickerActivity = findViewById(R.id.button_start_picker_activity);
-        buttonStartSelectPickerActivity = findViewById(R.id.button_start_select_picker_activity);
-        buttonStartAutoCompleteActivity = findViewById(R.id.button_start_auto_complete_activity);
-        buttonStartBarActivity = findViewById(R.id.button_start_bar_activity);
-        buttonStartScrollActivity = findViewById(R.id.button_start_scroll_activity);
-        buttonStartSlidingDrawerActivity = findViewById(R.id.button_start_sliding_drawer_activity);
-        
-        buttonStartClockActivity.setOnClickListener(this);
-        buttonStartPickerActivity.setOnClickListener(this);
-        buttonStartSelectPickerActivity.setOnClickListener(this);
-        buttonStartAutoCompleteActivity.setOnClickListener(this);
-        buttonStartBarActivity.setOnClickListener(this);
-        buttonStartScrollActivity.setOnClickListener(this);
-        buttonStartSlidingDrawerActivity.setOnClickListener(this);
+        startClockActivityButton = findViewById(R.id.button_start_clock_activity);
+        startPickerActivityButton = findViewById(R.id.button_start_picker_activity);
+        startSelectPickerActivityButton = findViewById(R.id.button_start_select_picker_activity);
+        startAutoCompleteActivityButton = findViewById(R.id.button_start_auto_complete_activity);
+        startBarActivityButton = findViewById(R.id.button_start_bar_activity);
+        startScrollActivityButton = findViewById(R.id.button_start_scroll_activity);
+        startSlidingDrawerActivityButton = findViewById(R.id.button_start_sliding_drawer_activity);
+
+        startClockActivityButton.setOnClickListener(this);
+        startPickerActivityButton.setOnClickListener(this);
+        startSelectPickerActivityButton.setOnClickListener(this);
+        startAutoCompleteActivityButton.setOnClickListener(this);
+        startBarActivityButton.setOnClickListener(this);
+        startScrollActivityButton.setOnClickListener(this);
+        startSlidingDrawerActivityButton.setOnClickListener(this);
     }
 }

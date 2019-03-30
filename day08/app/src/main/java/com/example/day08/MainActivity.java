@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ResourceCursorAdapter;
 
 import com.example.day08.example01.MyDialogActivity;
 import com.example.day08.example02.ToastMessageActivity;
@@ -43,8 +42,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         startMyDialogActivityButton = findViewById(R.id.button_start_my_dialog_activity);
         startMyDialogActivityButton.setOnClickListener(this);
+
         startToastMessageActivityButton = findViewById(R.id.button_start_toast_message_activity);
         startToastMessageActivityButton.setOnClickListener(this);
+
         startResourceActivityButton = findViewById(R.id.button_start_resource_activity);
         startResourceActivityButton.setOnClickListener(this);
     }
