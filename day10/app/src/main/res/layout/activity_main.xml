@@ -10,7 +10,7 @@
         android:id="@+id/button_start_intent_action_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="left|center_vertical"
         android:maxLines="1"
         android:text="example01 - Intent action view" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/button_start_external_design_library_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="left|center_vertical"
         android:maxLines="1"
         android:text="example02 - External design library" />
 
