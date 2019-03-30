@@ -37,9 +37,12 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_dialog:
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MyDialogActivity.this);
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MyDialogActivity.this);
                 alertDialogBuilder.setTitle("제목");
                 alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
+                if (viewDialog.getParent() != null) {
+                    ((ViewGroup) viewDialog.getParent()).removeView(viewDialog);
+                }
                 alertDialogBuilder.setView(viewDialog);
 
                 alertDialogBuilder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
