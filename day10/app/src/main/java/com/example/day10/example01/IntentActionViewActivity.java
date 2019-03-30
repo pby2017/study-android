@@ -135,5 +135,9 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
         // TODO: add show picture or save file later
     }
 
+    private void startWebSearchActivityWithIntent(){
+        Intent webSearchIntent = new Intent(Intent.ACTION_WEB_SEARCH);
+        webSearchIntent.putExtra(SearchManager.QUERY, "검색어 순위");
+        startActivity(webSearchIntent);
     }
 }
