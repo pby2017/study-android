@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
@@ -38,11 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
         buttonStartIntentActionActivity = (Button) findViewById(R.id.button_start_intent_action_activity);
+        buttonStartIntentActionActivity.setOnClickListener(MainActivity.this);
         buttonStartExternalDesignLibraryActivity = (Button) findViewById(R.id.button_start_external_design_library_activity);
-    }
-
-    private void setViewOnClickListener() {
-        buttonStartIntentActionViewActivity.setOnClickListener(MainActivity.this);
         buttonStartExternalDesignLibraryActivity.setOnClickListener(MainActivity.this);
     }
 
