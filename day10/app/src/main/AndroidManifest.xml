@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".example02.CallFragment"></activity>
         <activity android:name=".example02.ExternalDesignLibraryActivity" />
-        <activity android:name=".example01.IntentActionViewActivity" />
+        <activity android:name=".example01.IntentActionActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
