@@ -1,13 +1,17 @@
 package com.example.day10.example01;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.SearchManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,12 +22,12 @@ import com.example.day10.R;
 
 public class IntentActionActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonImplicitIntentCall;
-    private Button buttonImplicitIntentWeb;
-    private Button buttonImplicitIntentGeomap;
-    private Button buttonImplicitIntentSms;
-    private Button buttonImplicitIntentWebSearch;
-    private Button buttonImplicitIntentPhoto;
+    private Button startCallButton;
+    private Button startWebButton;
+    private Button startGeomapButton;
+    private Button startSmsButton;
+    private Button startWebSearchButton;
+    private Button startPhotoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,33 +35,34 @@ public class IntentActionActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_intent_action);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_implicit_intent_call:
+            case R.id.button_start_call:
 //                permissionCheck(Manifest.permission.CALL_PHONE);
-                // TODO: implement permission check function
-                startCallActivityWithIntent();
+                // TODO: need to implement permission check function perfectly working
+                startActivityWithUri("tel:010-1234-1234", Intent.ACTION_VIEW);
                 break;
-            case R.id.button_implicit_intent_web:
-                startWebActivityWithIntent();
+            case R.id.button_start_web:
+                startActivityWithUri("http://www.naver.com", Intent.ACTION_VIEW);
                 break;
-            case R.id.button_implicit_intent_geomap:
-                startGeomapActivityWithIntent();
+            case R.id.button_start_geomap:
+                startActivityWithUri("https://www.google.co.jp/maps/@37.5710371,126.9927944,16z", Intent.ACTION_VIEW);
                 break;
-            case R.id.button_implicit_intent_sms:
-                startSmsActivityWithIntent();
-                // TODO: implement sms function
+            case R.id.button_start_sms:
+                startActivityWithUri("smsto:010-1234-1234", Intent.ACTION_SENDTO);
                 break;
-            case R.id.button_implicit_intent_photo:
-                startPhotoActivityWithIntent();
+            case R.id.button_start_photo:
+                Intent photoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(photoIntent, 1);
+                // TODO: add show picture or save file later
                 break;
-            case R.id.button_implicit_intent_web_search:
-                startWebSearchActivityWithIntent();
+            case R.id.button_start_web_search:
+                Intent webSearchIntent = new Intent(Intent.ACTION_WEB_SEARCH);
+                webSearchIntent.putExtra(SearchManager.QUERY, "검색어 순위");
+                startActivity(webSearchIntent);
                 break;
         }
     }
@@ -69,75 +74,53 @@ public class IntentActionActivity extends AppCompatActivity implements View.OnCl
         switch (requestCode) {
             case 1234:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startCallActivityWithIntent();
+                    permissionCheck(Manifest.permission.CALL_PHONE);
                 } else {
-                    Toast.makeText(IntentActionActivity.this, "permission check 필요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "permission check 필요" + grantResults[0], Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
     }
 
     private void initView() {
-        buttonImplicitIntentCall = (Button) findViewById(R.id.button_implicit_intent_call);
-        buttonImplicitIntentWeb = (Button) findViewById(R.id.button_implicit_intent_web);
-        buttonImplicitIntentGeomap = (Button) findViewById(R.id.button_implicit_intent_geomap);
-        buttonImplicitIntentSms = (Button) findViewById(R.id.button_implicit_intent_sms);
-        buttonImplicitIntentPhoto = (Button) findViewById(R.id.button_implicit_intent_photo);
-        buttonImplicitIntentWebSearch = (Button) findViewById(R.id.button_implicit_intent_web_search);
-    }
-
-    private void setViewOnClickListener() {
-        buttonImplicitIntentCall.setOnClickListener(IntentActionActivity.this);
-        buttonImplicitIntentWeb.setOnClickListener(IntentActionActivity.this);
-        buttonImplicitIntentGeomap.setOnClickListener(IntentActionActivity.this);
-        buttonImplicitIntentSms.setOnClickListener(IntentActionActivity.this);
-        buttonImplicitIntentPhoto.setOnClickListener(IntentActionActivity.this);
-        buttonImplicitIntentWebSearch.setOnClickListener(IntentActionActivity.this);
+        startCallButton = findViewById(R.id.button_start_call);
+        startCallButton.setOnClickListener(this);
+        startWebButton = findViewById(R.id.button_start_web);
+        startWebButton.setOnClickListener(this);
+        startGeomapButton = findViewById(R.id.button_start_geomap);
+        startGeomapButton.setOnClickListener(this);
+        startSmsButton = findViewById(R.id.button_start_sms);
+        startSmsButton.setOnClickListener(this);
+        startPhotoButton = findViewById(R.id.button_start_photo);
+        startPhotoButton.setOnClickListener(this);
+        startWebSearchButton = findViewById(R.id.button_start_web_search);
+        startWebSearchButton.setOnClickListener(this);
     }
 
     private void permissionCheck(String permission) {
-        if (ContextCompat.checkSelfPermission(IntentActionActivity.this, permission)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(IntentActionActivity.this, new String[]{permission}, 1234);
+        if (ContextCompat.checkSelfPermission(this, permission)
+                == PackageManager.PERMISSION_GRANTED) {
+            startActivityWithUri("tel:010-1234-1234", Intent.ACTION_VIEW);
+        } else {
+            final String permissionRequested = permission;
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("권한 요청")
+                    .setMessage("권한이 필요합니다. 계속하시겠습니까?")
+                    .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.M)
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO: return result -1, not 1
+                            requestPermissions(new String[]{permissionRequested}, 1234);
+                        }
+                    });
+            alertDialog.show();
         }
     }
 
-    private void startCallActivityWithIntent() {
-        Uri callUri = Uri.parse("tel:010-1234-1234");
-        Intent callIntent = new Intent(Intent.ACTION_VIEW, callUri);
-        startActivity(callIntent);
-    }
-
-    private void startWebActivityWithIntent() {
-        Uri webUri = Uri.parse("http://www.naver.com");
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, webUri);
-        startActivity(webIntent);
-    }
-
-    private void startGeomapActivityWithIntent() {
-        Uri GeomapUri = Uri.parse("https://www.google.co.jp/maps/@37.5710371,126.9927944,16z");
-        Intent geomapIntent = new Intent(Intent.ACTION_VIEW, GeomapUri);
-        startActivity(geomapIntent);
-    }
-
-    private void startSmsActivityWithIntent() {
-        String message = "hello";
-//        Intent smsIntent = new Intent(Intent.ACTION_SEND);
-        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
-        smsIntent.setData(Uri.parse("smsto:010-1234-1234"));
-        smsIntent.putExtra("sms_body", message);
-        startActivity(smsIntent);
-    }
-
-    private void startPhotoActivityWithIntent() {
-        Intent photoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(photoIntent, 1);
-        // TODO: add show picture or save file later
-    }
-
-    private void startWebSearchActivityWithIntent(){
-        Intent webSearchIntent = new Intent(Intent.ACTION_WEB_SEARCH);
-        webSearchIntent.putExtra(SearchManager.QUERY, "검색어 순위");
-        startActivity(webSearchIntent);
+    private void startActivityWithUri(String uriString, String intentAction) {
+        Uri uri = Uri.parse(uriString);
+        Intent intent = new Intent(intentAction, uri);
+        startActivity(intent);
     }
 }

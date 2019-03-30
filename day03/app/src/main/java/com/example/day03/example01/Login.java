@@ -23,8 +23,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
@@ -37,15 +35,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    private void setViewOnClickListener() {
-        buttonLogin.setOnClickListener(this);
-    }
-
     private void initView() {
-        editTextId = (EditText) findViewById(R.id.edit_text_id);
-        editTextPw = (EditText) findViewById(R.id.edit_text_pw);
-        buttonLogin = (Button) findViewById(R.id.button_login);
-        textPrintId = (TextView) findViewById(R.id.text_print_id);
-        textPrintPw = (TextView) findViewById(R.id.text_print_pw);
+        editTextId = findViewById(R.id.edit_text_id);
+        editTextPw = findViewById(R.id.edit_text_pw);
+        buttonLogin = findViewById(R.id.button_login);
+        buttonLogin.setOnClickListener(this);
+        textPrintId = findViewById(R.id.text_print_id);
+        textPrintPw = findViewById(R.id.text_print_pw);
     }
 }

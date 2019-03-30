@@ -3,4 +3,10 @@
     <string name="text_input_value">값 입력</string>
     <string name="button_send_value01">값 전달 01</string>
     <string name="button_send_value02">값 전달 02</string>
+    <string name="example01">example01 - Second Activity</string>
+    <string name="example02">example02 - LifeCycle</string>
+    <string name="example03">example03 - Send 2 values receive sum result</string>
+    <string name="toast">토스트</string>
+    <string name="go_back">뒤로 가기</string>
+    <string name="ok">확인</string>
 </resources>

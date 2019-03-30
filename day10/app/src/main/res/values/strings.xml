@@ -2,4 +2,10 @@
     <string name="app_name">day10</string>
     <string name="example01">example01 - Intent action</string>
     <string name="example02">example02 - External design library</string>
+    <string name="call">CALL</string>
+    <string name="internet">INTERNET</string>
+    <string name="geomap">GEOMAP</string>
+    <string name="sms">SMS</string>
+    <string name="photo">PHOTO</string>
+    <string name="web_search">WEB SEARCH</string>
 </resources>

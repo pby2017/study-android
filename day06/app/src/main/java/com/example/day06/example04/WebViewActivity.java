@@ -28,18 +28,13 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
 
         WebSettings webSettings = webView.getSettings();
         ((WebSettings) webSettings).setBuiltInZoomControls(true);
-
-        setViewOnClickListener();
-    }
-
-    private void setViewOnClickListener() {
-        buttonGo.setOnClickListener(this);
     }
 
     private void initView() {
-        editTextUrl = (EditText) findViewById(R.id.edit_text_url);
-        buttonGo = (Button) findViewById(R.id.button_go);
-        webView = (WebView) findViewById(R.id.web_view);
+        editTextUrl = findViewById(R.id.edit_text_url);
+        buttonGo = findViewById(R.id.button_go);
+        buttonGo.setOnClickListener(this);
+        webView = findViewById(R.id.web_view);
     }
 
     @Override

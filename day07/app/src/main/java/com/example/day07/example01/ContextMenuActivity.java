@@ -51,7 +51,7 @@ public class ContextMenuActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        linearContextMenu = (LinearLayout) findViewById(R.id.linear_context_menu);
-        buttonBlank02 = (Button) findViewById(R.id.button_blank02);
+        linearContextMenu = findViewById(R.id.linear_context_menu);
+        buttonBlank02 = findViewById(R.id.button_blank02);
     }
 }

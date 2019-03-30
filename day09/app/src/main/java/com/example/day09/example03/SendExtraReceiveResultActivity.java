@@ -13,10 +13,14 @@ import com.example.day09.R;
 
 public class SendExtraReceiveResultActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText editTextSendValue01;
-    EditText editTextSendValue02;
-    Button buttonSendValue01;
-    Button buttonSendValue02;
+    public static final int CALCULATE_SUCCESS = 1234;
+    public static final String CALCULATE_FIRST_INPUT = "intent.calculate.first.input";
+    public static final String CALCULATE_SECOND_INPUT = "intent.calculate.second.input";
+    public static final String CALCULATE_RESULT_OUTPUT = "intent.calculate.result";
+    public static final String CALCULATE_METHOD = "intent.calculate.method";
+
+    private EditText firstInputEditText;
+    private EditText secondInputEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +28,6 @@ public class SendExtraReceiveResultActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_send_extra_receive_result);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
@@ -33,23 +35,21 @@ public class SendExtraReceiveResultActivity extends AppCompatActivity implements
         super.onResume();
 
         Intent intent = getIntent();
-        Toast.makeText(SendExtraReceiveResultActivity.this, Integer.toString(intent.getIntExtra("result", -1)), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Integer.toString(intent.getIntExtra(CALCULATE_RESULT_OUTPUT, -1)), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClick(View v) {
-        Intent containValueIntent = new Intent(SendExtraReceiveResultActivity.this, CalculatingActivity.class);
-        int firstNumber = Integer.parseInt(editTextSendValue01.getText().toString());
-        int secondNumber = Integer.parseInt(editTextSendValue02.getText().toString());
+        Intent containValueIntent = new Intent(this, CalculatingActivity.class);
+        int firstInputValue = Integer.parseInt(firstInputEditText.getText().toString());
+        int secondInputValue = Integer.parseInt(secondInputEditText.getText().toString());
 
         switch (v.getId()) {
-            case R.id.button_send_value01:
-                putInputValueInIntent(containValueIntent, firstNumber, secondNumber, 1);
-                startActivityForResult(containValueIntent, 1234);
+            case R.id.button_calculate_check_on_result:
+                startActivityForResult(getContainInputValueIntent(containValueIntent, firstInputValue, secondInputValue, 1), CALCULATE_SUCCESS);
                 break;
-            case R.id.button_send_value02:
-                putInputValueInIntent(containValueIntent, firstNumber, secondNumber, 2);
-                startActivity(containValueIntent);
+            case R.id.button_calculate_check_on_resume:
+                startActivity(getContainInputValueIntent(containValueIntent, firstInputValue, secondInputValue, 2));
                 break;
         }
     }
@@ -58,28 +58,29 @@ public class SendExtraReceiveResultActivity extends AppCompatActivity implements
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == 1234) {
-            Toast.makeText(SendExtraReceiveResultActivity.this, Integer.toString(data.getIntExtra("result", -1)), Toast.LENGTH_SHORT).show();
+        if (resultCode == CALCULATE_SUCCESS) {
+            Toast.makeText(this, Integer.toString(data.getIntExtra(CALCULATE_RESULT_OUTPUT, -1)), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(SendExtraReceiveResultActivity.this, "오류 = " + resultCode, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "오류 = " + resultCode, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void initView() {
-        editTextSendValue01 = (EditText) findViewById(R.id.edit_text_input01);
-        editTextSendValue02 = (EditText) findViewById(R.id.edit_text_input02);
-        buttonSendValue01 = (Button) findViewById(R.id.button_send_value01);
-        buttonSendValue02 = (Button) findViewById(R.id.button_send_value02);
+        firstInputEditText = findViewById(R.id.edit_text_first_input);
+        secondInputEditText = findViewById(R.id.edit_text_second_input);
+
+        Button calculateCheckOnResultButton = findViewById(R.id.button_calculate_check_on_result);
+        calculateCheckOnResultButton.setOnClickListener(this);
+
+        Button calculateCheckOnResumeButton = findViewById(R.id.button_calculate_check_on_resume);
+        calculateCheckOnResumeButton.setOnClickListener(this);
     }
 
-    private void setViewOnClickListener() {
-        buttonSendValue01.setOnClickListener(SendExtraReceiveResultActivity.this);
-        buttonSendValue02.setOnClickListener(SendExtraReceiveResultActivity.this);
-    }
+    private Intent getContainInputValueIntent(Intent intent, int firstInt, int secondInt, int methodNumber) {
+        intent.putExtra(CALCULATE_METHOD, methodNumber);
+        intent.putExtra(CALCULATE_FIRST_INPUT, firstInt);
+        intent.putExtra(CALCULATE_SECOND_INPUT, secondInt);
 
-    private void putInputValueInIntent(Intent intent, int firstInt, int secondInt, int methodNumber) {
-        intent.putExtra("methodNumber", methodNumber);
-        intent.putExtra("first", firstInt);
-        intent.putExtra("second", secondInt);
+        return intent;
     }
 }

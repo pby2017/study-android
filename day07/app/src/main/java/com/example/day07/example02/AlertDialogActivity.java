@@ -23,15 +23,13 @@ public class AlertDialogActivity extends AppCompatActivity
         setContentView(R.layout.activity_alert_dialog);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_show_alert_dialog:
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AlertDialogActivity.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle("제목");
                 alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
 
@@ -101,12 +99,9 @@ public class AlertDialogActivity extends AppCompatActivity
         }
     }
 
-    private void setViewOnClickListener() {
-        buttonShowAlertDialog.setOnClickListener(this);
-    }
-
     private void initView() {
-        buttonShowAlertDialog = (Button) findViewById(R.id.button_show_alert_dialog);
+        buttonShowAlertDialog = findViewById(R.id.button_show_alert_dialog);
+        buttonShowAlertDialog.setOnClickListener(this);
     }
 
     private void setAlertDialogOnClickListener01(AlertDialog.Builder alertDialogBuilder) {

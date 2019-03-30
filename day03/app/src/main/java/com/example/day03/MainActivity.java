@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
@@ -66,17 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
 
-        buttonStartLoginActivity = (Button) findViewById(R.id.button_start_login_activity);
-        buttonStartLinearActivity = (Button) findViewById(R.id.button_start_linear_activity);
-        buttonStartLinearActivity02 = (Button) findViewById(R.id.button_start_linear_activity02);
-        buttonStartRelativeActivity = (Button) findViewById(R.id.button_start_relative_activity);
-        buttonStartRelativeActivity02 = (Button) findViewById(R.id.button_start_relative_activity02);
-        buttonStartRelativeActivity03 = (Button) findViewById(R.id.button_start_relative_activity03);
-        buttonStartLoginLinearActivity = (Button) findViewById(R.id.button_start_login_linear_activity);
-        buttonStartLoginRelativeActivity = (Button) findViewById(R.id.button_start_login_relative_activity);
-    }
-
-    private void setViewOnClickListener() {
+        buttonStartLoginActivity = findViewById(R.id.button_start_login_activity);
+        buttonStartLinearActivity = findViewById(R.id.button_start_linear_activity);
+        buttonStartLinearActivity02 = findViewById(R.id.button_start_linear_activity02);
+        buttonStartRelativeActivity = findViewById(R.id.button_start_relative_activity);
+        buttonStartRelativeActivity02 = findViewById(R.id.button_start_relative_activity02);
+        buttonStartRelativeActivity03 = findViewById(R.id.button_start_relative_activity03);
+        buttonStartLoginLinearActivity = findViewById(R.id.button_start_login_linear_activity);
+        buttonStartLoginRelativeActivity = findViewById(R.id.button_start_login_relative_activity);
 
         buttonStartLoginActivity.setOnClickListener(this);
         buttonStartLinearActivity.setOnClickListener(this);

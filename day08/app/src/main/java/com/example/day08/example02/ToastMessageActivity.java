@@ -15,26 +15,32 @@ import com.example.day08.R;
 
 public class ToastMessageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonShowDialog;
+    private Button showDialogButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toast_message);
+
+        initView();
+    }
+
+    private void initView() {
+        showDialogButton = findViewById(R.id.button_show_dialog);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_show_dialog:
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ToastMessageActivity.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle("제목");
                 alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
 
                 alertDialogBuilder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast toastMsg = Toast.makeText(ToastMessageActivity.this, "확인을 누르셨어요.", Toast.LENGTH_SHORT);
+                        Toast toastMsg = Toast.makeText(this, "확인을 누르셨어요.", Toast.LENGTH_SHORT);
 
                         Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
 

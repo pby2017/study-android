@@ -42,8 +42,8 @@ public class ButtonClickActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initView() {
-        btn1 = (Button) findViewById(R.id.button_1);
-        btn2 = (Button) findViewById(R.id.button_2);
-        btn3 = (Button) findViewById(R.id.button_3);
+        btn1 = findViewById(R.id.button_1);
+        btn2 = findViewById(R.id.button_2);
+        btn3 = findViewById(R.id.button_3);
     }
 }

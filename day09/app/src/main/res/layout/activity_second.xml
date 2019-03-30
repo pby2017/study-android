@@ -7,7 +7,7 @@
     tools:context=".example01.SecondActivity">
 
     <RadioGroup
-        android:id="@+id/radio_group01"
+        android:id="@+id/radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -15,18 +15,18 @@
             android:id="@+id/radio_button_make_toast_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="토스트" />
+            android:text="@string/toast" />
 
         <RadioButton
             android:id="@+id/radio_button_finish_second_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="뒤로 가기" />
+            android:text="@string/go_back" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/button_ok01"
+        android:id="@+id/button_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="확인" />
+        android:text="@string/ok" />
 </LinearLayout>

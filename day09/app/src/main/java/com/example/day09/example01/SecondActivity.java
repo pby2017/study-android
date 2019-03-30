@@ -11,8 +11,8 @@ import com.example.day09.R;
 
 public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
 
-    RadioGroup radioGroup01;
-    Button buttonOk01;
+    RadioGroup radioGroup;
+    Button okButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,18 +20,16 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_second);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.button_ok01:
-                switch (radioGroup01.getCheckedRadioButtonId()) {
+            case R.id.button_ok:
+                switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.radio_button_make_toast_message:
-                        Toast.makeText(SecondActivity.this, "두 번째 액티비티입니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "두 번째 액티비티입니다.", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.radio_button_finish_second_activity:
                         finish();
@@ -43,12 +41,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initView() {
 
-        radioGroup01 = (RadioGroup) findViewById(R.id.radio_group01);
-        buttonOk01 = (Button) findViewById(R.id.button_ok01);
-    }
-
-    private void setViewOnClickListener() {
-        buttonOk01.setOnClickListener(SecondActivity.this);
+        radioGroup = findViewById(R.id.radio_group);
+        okButton = findViewById(R.id.button_ok);
+        okButton.setOnClickListener(this);
     }
 
 

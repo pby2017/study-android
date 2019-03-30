@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
 
-        buttonStartViewAttrActivity = (Button) findViewById(R.id.button_start_view_attr_activity);
-        buttonStartLoginActivity = (Button) findViewById(R.id.button_start_login_activity);
-        buttonStartCheckBoxActivity = (Button) findViewById(R.id.button_start_check_box_activity);
-        buttonStartRadioButtonActivity = (Button) findViewById(R.id.button_start_radio_button_activity);
-        buttonStartSwitchToggleActivity = (Button) findViewById(R.id.button_start_switch_toggle_activity);
-        buttonStartImageActivity = (Button) findViewById(R.id.button_start_image_activity);
-        buttonStartChoiceImageActivity = (Button) findViewById(R.id.button_choice_image_activity);
+        buttonStartViewAttrActivity = findViewById(R.id.button_start_view_attr_activity);
+        buttonStartLoginActivity = findViewById(R.id.button_start_login_activity);
+        buttonStartCheckBoxActivity = findViewById(R.id.button_start_check_box_activity);
+        buttonStartRadioButtonActivity = findViewById(R.id.button_start_radio_button_activity);
+        buttonStartSwitchToggleActivity = findViewById(R.id.button_start_switch_toggle_activity);
+        buttonStartImageActivity = findViewById(R.id.button_start_image_activity);
+        buttonStartChoiceImageActivity = findViewById(R.id.button_choice_image_activity);
     }
 
     @Override

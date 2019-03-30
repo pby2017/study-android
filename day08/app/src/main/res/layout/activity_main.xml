@@ -10,24 +10,24 @@
         android:id="@+id/button_start_my_dialog_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="left|center_vertical"
         android:maxLines="1"
-        android:text="example01 - MyDialog : name, email" />
+        android:text="@string/example01" />
 
     <Button
         android:id="@+id/button_start_toast_message_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="left|center_vertical"
         android:maxLines="1"
-        android:text="example02 - Toast message" />
+        android:text="@string/example02" />
 
     <Button
         android:id="@+id/button_start_resource_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="left|center_vertical"
         android:maxLines="1"
-        android:text="example03 - Resource - @string, @string-array, @colors" />
+        android:text="@string/example03" />
 
 </LinearLayout>

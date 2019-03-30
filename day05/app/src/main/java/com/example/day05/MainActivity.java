@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initView();
 
-        setViewOnClickListener();
-
     }
 
     @Override
@@ -62,7 +60,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setViewOnClickListener() {
+    private void initView() {
+        buttonStartClockActivity = findViewById(R.id.button_start_clock_activity);
+        buttonStartPickerActivity = findViewById(R.id.button_start_picker_activity);
+        buttonStartSelectPickerActivity = findViewById(R.id.button_start_select_picker_activity);
+        buttonStartAutoCompleteActivity = findViewById(R.id.button_start_auto_complete_activity);
+        buttonStartBarActivity = findViewById(R.id.button_start_bar_activity);
+        buttonStartScrollActivity = findViewById(R.id.button_start_scroll_activity);
+        buttonStartSlidingDrawerActivity = findViewById(R.id.button_start_sliding_drawer_activity);
+        
         buttonStartClockActivity.setOnClickListener(this);
         buttonStartPickerActivity.setOnClickListener(this);
         buttonStartSelectPickerActivity.setOnClickListener(this);
@@ -70,15 +76,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonStartBarActivity.setOnClickListener(this);
         buttonStartScrollActivity.setOnClickListener(this);
         buttonStartSlidingDrawerActivity.setOnClickListener(this);
-    }
-
-    private void initView() {
-        buttonStartClockActivity = (Button) findViewById(R.id.button_start_clock_activity);
-        buttonStartPickerActivity = (Button) findViewById(R.id.button_start_picker_activity);
-        buttonStartSelectPickerActivity = (Button) findViewById(R.id.button_start_select_picker_activity);
-        buttonStartAutoCompleteActivity = (Button) findViewById(R.id.button_start_auto_complete_activity);
-        buttonStartBarActivity = (Button) findViewById(R.id.button_start_bar_activity);
-        buttonStartScrollActivity = (Button) findViewById(R.id.button_start_scroll_activity);
-        buttonStartSlidingDrawerActivity = (Button) findViewById(R.id.button_start_sliding_drawer_activity);
     }
 }

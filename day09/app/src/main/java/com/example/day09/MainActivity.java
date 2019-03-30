@@ -12,9 +12,9 @@ import com.example.day09.example03.SendExtraReceiveResultActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonStartSecondActivity;
-    private Button buttonStartLifeCycleActivity;
-    private Button buttonStartSendExtraReceiveResultActivity;
+    private Button startSecondActivityButton;
+    private Button startLifeCycleActivityButton;
+    private Button startSendExtraReceiveResultActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,32 +22,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_start_second_activity:
-                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                startActivity(new Intent(this, SecondActivity.class));
                 break;
             case R.id.button_start_life_cycle_activity:
-                startActivity(new Intent(MainActivity.this, LifeCycleActivity.class));
+                startActivity(new Intent(this, LifeCycleActivity.class));
             case R.id.button_start_send_extra_receive_result_activity:
-                startActivity(new Intent(MainActivity.this, SendExtraReceiveResultActivity.class));
+                startActivity(new Intent(this, SendExtraReceiveResultActivity.class));
         }
     }
 
     private void initView() {
-        buttonStartSecondActivity = (Button) findViewById(R.id.button_start_second_activity);
-        buttonStartLifeCycleActivity = (Button) findViewById(R.id.button_start_life_cycle_activity);
-        buttonStartSendExtraReceiveResultActivity = (Button) findViewById(R.id.button_start_send_extra_receive_result_activity);
-    }
-
-    private void setViewOnClickListener() {
-        buttonStartSecondActivity.setOnClickListener(MainActivity.this);
-        buttonStartLifeCycleActivity.setOnClickListener(MainActivity.this);
-        buttonStartSendExtraReceiveResultActivity.setOnClickListener(MainActivity.this);
+        startSecondActivityButton = findViewById(R.id.button_start_second_activity);
+        startSecondActivityButton.setOnClickListener(this);
+        startLifeCycleActivityButton = findViewById(R.id.button_start_life_cycle_activity);
+        startLifeCycleActivityButton.setOnClickListener(this);
+        startSendExtraReceiveResultActivityButton = findViewById(R.id.button_start_send_extra_receive_result_activity);
+        startSendExtraReceiveResultActivityButton.setOnClickListener(this);
     }
 }
