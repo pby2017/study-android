@@ -1,5 +1,7 @@
 package com.example.day10.example01;
 
+import android.Manifest;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
