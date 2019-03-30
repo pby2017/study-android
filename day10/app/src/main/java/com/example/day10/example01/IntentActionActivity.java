@@ -1,6 +1,5 @@
 package com.example.day10.example01;
 
-import android.Manifest;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.day10.R;
 
-public class IntentActionViewActivity extends AppCompatActivity implements View.OnClickListener {
+public class IntentActionActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttonImplicitIntentCall;
     private Button buttonImplicitIntentWeb;
@@ -29,7 +28,7 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intent_action_view);
+        setContentView(R.layout.activity_intent_action);
 
         initView();
 
@@ -72,7 +71,7 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     startCallActivityWithIntent();
                 } else {
-                    Toast.makeText(IntentActionViewActivity.this, "permission check 필요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IntentActionActivity.this, "permission check 필요", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -88,18 +87,18 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
     }
 
     private void setViewOnClickListener() {
-        buttonImplicitIntentCall.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentWeb.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentGeomap.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentSms.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentPhoto.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentWebSearch.setOnClickListener(IntentActionViewActivity.this);
+        buttonImplicitIntentCall.setOnClickListener(IntentActionActivity.this);
+        buttonImplicitIntentWeb.setOnClickListener(IntentActionActivity.this);
+        buttonImplicitIntentGeomap.setOnClickListener(IntentActionActivity.this);
+        buttonImplicitIntentSms.setOnClickListener(IntentActionActivity.this);
+        buttonImplicitIntentPhoto.setOnClickListener(IntentActionActivity.this);
+        buttonImplicitIntentWebSearch.setOnClickListener(IntentActionActivity.this);
     }
 
     private void permissionCheck(String permission) {
-        if (ContextCompat.checkSelfPermission(IntentActionViewActivity.this, permission)
+        if (ContextCompat.checkSelfPermission(IntentActionActivity.this, permission)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(IntentActionViewActivity.this, new String[]{permission}, 1234);
+            ActivityCompat.requestPermissions(IntentActionActivity.this, new String[]{permission}, 1234);
         }
     }
 

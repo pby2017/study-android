@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.day10.example01.IntentActionViewActivity;
+import com.example.day10.example01.IntentActionActivity;
 import com.example.day10.example02.ExternalDesignLibraryActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonStartIntentActionViewActivity;
+    private Button buttonStartIntentActionActivity;
     private Button buttonStartExternalDesignLibraryActivity;
 
     @Override
@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_start_intent_action_view_activity:
-                startActivity(new Intent(MainActivity.this, IntentActionViewActivity.class));
+            case R.id.button_start_intent_action_activity:
+                startActivity(new Intent(MainActivity.this, IntentActionActivity.class));
                 break;
             case R.id.button_start_external_design_library_activity:
                 startActivity(new Intent(MainActivity.this, ExternalDesignLibraryActivity.class));
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        buttonStartIntentActionViewActivity = (Button) findViewById(R.id.button_start_intent_action_view_activity);
+        buttonStartIntentActionActivity = (Button) findViewById(R.id.button_start_intent_action_activity);
         buttonStartExternalDesignLibraryActivity = (Button) findViewById(R.id.button_start_external_design_library_activity);
     }
 
