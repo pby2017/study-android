@@ -11,8 +11,8 @@ import com.example.day10.example02.ExternalDesignLibraryActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonStartIntentActionActivity;
-    private Button buttonStartExternalDesignLibraryActivity;
+    private Button startIntentActionActivityButton;
+    private Button startExternalDesignLibraryActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        buttonStartIntentActionActivity = (Button) findViewById(R.id.button_start_intent_action_activity);
-        buttonStartIntentActionActivity.setOnClickListener(MainActivity.this);
-        buttonStartExternalDesignLibraryActivity = (Button) findViewById(R.id.button_start_external_design_library_activity);
-        buttonStartExternalDesignLibraryActivity.setOnClickListener(MainActivity.this);
+        startIntentActionActivityButton = (Button) findViewById(R.id.button_start_intent_action_activity);
+        startIntentActionActivityButton.setOnClickListener(MainActivity.this);
+        startExternalDesignLibraryActivityButton = (Button) findViewById(R.id.button_start_external_design_library_activity);
+        startExternalDesignLibraryActivityButton.setOnClickListener(MainActivity.this);
     }
 
 }
