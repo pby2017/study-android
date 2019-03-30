@@ -31,7 +31,7 @@ public class AutoCompleteActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        autoCompleteText = (AutoCompleteTextView) findViewById(R.id.auto_complete_text);
-        multiAutoCompleteText = (MultiAutoCompleteTextView) findViewById(R.id.multi_auto_complete_text);
+        autoCompleteText = findViewById(R.id.auto_complete_text);
+        multiAutoCompleteText = findViewById(R.id.multi_auto_complete_text);
     }
 }

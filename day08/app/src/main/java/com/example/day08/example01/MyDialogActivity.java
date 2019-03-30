@@ -14,14 +14,15 @@ import com.example.day08.R;
 
 public class MyDialogActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonDialog;
-    private View viewDialog;
+    private View myDialogView;
 
-    private EditText editTextDialogName;
-    private EditText editTextDialogEmail;
+    private EditText dialogNameEditText;
+    private EditText dialogEmailEditText;
 
-    private EditText editTextName;
-    private EditText editTextEmail;
+    private EditText nameEditText;
+    private EditText emailEditText;
+
+    private AlertDialog.Builder alertDialogBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,55 +30,18 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_my_dialog);
 
         initView();
-
-        setAlertDialogOnClickListener();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_dialog:
-                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MyDialogActivity.this);
-                alertDialogBuilder.setTitle("제목");
-                alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
-                if (viewDialog.getParent() != null) {
-                    ((ViewGroup) viewDialog.getParent()).removeView(viewDialog);
+                if (alertDialogBuilder == null) {
+                    buildAlertDialog();
                 }
-                alertDialogBuilder.setView(viewDialog);
-
-                alertDialogBuilder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        editTextName.setText(editTextDialogName.getText().toString());
-                        editTextEmail.setText(editTextDialogEmail.getText().toString());
-
-                        Toast.makeText(getApplicationContext(), "확인을 누르셨어요.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                alertDialogBuilder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "취소를 누르셨어요.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                alertDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        Toast.makeText(MyDialogActivity.this, "(onCancel) you clicked back button", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                alertDialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        Toast.makeText(MyDialogActivity.this, "(onDismiss) you selected ok or cancel", Toast.LENGTH_SHORT).show();
-
-                        Toast.makeText(MyDialogActivity.this, viewDialog.getParent().getClass().getName(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                if (myDialogView.getParent() != null) {
+                    ((ViewGroup) myDialogView.getParent()).removeView(myDialogView);
+                }
 
                 alertDialogBuilder.show();
                 break;
@@ -85,18 +49,53 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initView() {
-        viewDialog = (View) View.inflate(MyDialogActivity.this, R.layout.my_dialog, null);
+        myDialogView = View.inflate(this, R.layout.my_dialog, null);
 
-        buttonDialog = (Button) findViewById(R.id.button_dialog);
+        Button dialogButton = findViewById(R.id.button_dialog);
+        dialogButton.setOnClickListener(this);
 
-        editTextDialogName = (EditText) viewDialog.findViewById(R.id.edit_text_dialog_name);
-        editTextDialogEmail = (EditText) viewDialog.findViewById(R.id.edit_text_dialog_email);
+        dialogNameEditText = myDialogView.findViewById(R.id.edit_text_dialog_name);
+        dialogEmailEditText = myDialogView.findViewById(R.id.edit_text_dialog_email);
 
-        editTextName = (EditText) findViewById(R.id.edit_text_name);
-        editTextEmail = (EditText) findViewById(R.id.edit_text_email);
+        nameEditText = findViewById(R.id.edit_text_name);
+        emailEditText = findViewById(R.id.edit_text_email);
     }
 
-    private void setAlertDialogOnClickListener() {
-        buttonDialog.setOnClickListener(MyDialogActivity.this);
+    private void buildAlertDialog() {
+        alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("제목");
+        alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
+        alertDialogBuilder.setView(myDialogView);
+
+        alertDialogBuilder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                nameEditText.setText(dialogNameEditText.getText().toString());
+                emailEditText.setText(dialogEmailEditText.getText().toString());
+
+                Toast.makeText(getApplicationContext(), "확인을 누르셨어요.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "취소를 누르셨어요.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alertDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                Toast.makeText(getApplicationContext(), "(onCancel) you clicked back button", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alertDialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Toast.makeText(getApplicationContext(), "(onDismiss) you selected ok or cancel", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

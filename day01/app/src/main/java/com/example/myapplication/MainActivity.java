@@ -33,6 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
 
-        buttonStartButtonClickActivity = (Button) findViewById(R.id.button_start_button_click_activity);
+        buttonStartButtonClickActivity = findViewById(R.id.button_start_button_click_activity);
     }
 }

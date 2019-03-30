@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initView();
 
-        setViewOnClickListener();
-
     }
 
     @Override
@@ -57,21 +55,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setViewOnClickListener() {
+    private void initView() {
+        buttonStartViewFlipperActivity = findViewById(R.id.button_start_view_flipper_activity);
+        buttonStartTabHostActivity = findViewById(R.id.button_start_tab_host_activity);
+        buttonStartActionBarActivity = findViewById(R.id.button_start_action_bar_activity);
+        buttonStartActionBarActivity02 = findViewById(R.id.button_start_action_bar_activity02);
+        buttonStartWebViewActivity = findViewById(R.id.button_start_web_view_activity);
+        buttonStartChatRoomListActivity = findViewById(R.id.button_start_chat_room_list_activity);
+
         buttonStartViewFlipperActivity.setOnClickListener(this);
         buttonStartTabHostActivity.setOnClickListener(this);
         buttonStartActionBarActivity.setOnClickListener(this);
         buttonStartActionBarActivity02.setOnClickListener(this);
         buttonStartWebViewActivity.setOnClickListener(this);
         buttonStartChatRoomListActivity.setOnClickListener(this);
-    }
-
-    private void initView() {
-        buttonStartViewFlipperActivity = (Button) findViewById(R.id.button_start_view_flipper_activity);
-        buttonStartTabHostActivity = (Button) findViewById(R.id.button_start_tab_host_activity);
-        buttonStartActionBarActivity = (Button) findViewById(R.id.button_start_action_bar_activity);
-        buttonStartActionBarActivity02 = (Button) findViewById(R.id.button_start_action_bar_activity02);
-        buttonStartWebViewActivity = (Button) findViewById(R.id.button_start_web_view_activity);
-        buttonStartChatRoomListActivity = (Button) findViewById(R.id.button_start_chat_room_list_activity);
     }
 }

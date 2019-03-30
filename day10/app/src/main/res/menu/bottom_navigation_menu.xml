@@ -4,19 +4,19 @@
         android:id="@+id/item_tab_call"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="CALL" />
+        android:title="@string/call" />
     <item
         android:id="@+id/item_tab_sms"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="SMS" />
+        android:title="@string/sms" />
     <item
         android:id="@+id/item_tab_photo"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="PHOTO" />
+        android:title="@string/photo" />
     <item
         android:id="@+id/item_tab_search"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="SEARCH" />
+        android:title="@string/web_search" />
 </menu>

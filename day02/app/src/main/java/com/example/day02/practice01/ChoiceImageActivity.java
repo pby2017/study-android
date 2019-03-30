@@ -62,10 +62,10 @@ public class ChoiceImageActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initView() {
-        CheckBox checkboxSetAnimalScreenVisible = (CheckBox) findViewById(R.id.checkbox_set_animal_screen_visible);
-        LinearLayout linearAnimalScreen = (LinearLayout) findViewById(R.id.linear_animal_screen);
-        RadioGroup radioGroupSelectAnimal = (RadioGroup) findViewById(R.id.radio_group_select_animal);
-        Button buttonShowAnimalImage = (Button) findViewById(R.id.button_show_animal_image);
-        ImageView imageAnimal = (ImageView) findViewById(R.id.image_animal);
+        CheckBox checkboxSetAnimalScreenVisible = findViewById(R.id.checkbox_set_animal_screen_visible);
+        LinearLayout linearAnimalScreen = findViewById(R.id.linear_animal_screen);
+        RadioGroup radioGroupSelectAnimal = findViewById(R.id.radio_group_select_animal);
+        Button buttonShowAnimalImage = findViewById(R.id.button_show_animal_image);
+        ImageView imageAnimal = findViewById(R.id.image_animal);
     }
 }

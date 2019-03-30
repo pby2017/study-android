@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/button_show_dialog"
-        android:text="@string/button_show_toast_message"
+        android:text="@string/show_input_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

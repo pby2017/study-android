@@ -13,9 +13,9 @@ import com.example.day08.example03.ResourceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonStartMyDialogActivity;
-    private Button buttonStartToastMessageActivity;
-    private Button buttonStartResourceActivity;
+    private Button startMyDialogActivityButton;
+    private Button startToastMessageActivityButton;
+    private Button startResourceActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
@@ -34,22 +32,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(getApplicationContext(), MyDialogActivity.class));
                 break;
             case R.id.button_start_toast_message_activity:
-                startActivity(new Intent(getApplicationContext(), MyDialogActivity.class));
+                startActivity(new Intent(getApplicationContext(), ToastMessageActivity.class));
+                break;
             case R.id.button_start_resource_activity:
                 startActivity(new Intent(getApplicationContext(), ResourceActivity.class));
                 break;
         }
     }
 
-    private void setViewOnClickListener() {
-        buttonStartMyDialogActivity.setOnClickListener(this);
-        buttonStartToastMessageActivity.setOnClickListener(this);
-        buttonStartResourceActivity.setOnClickListener(this);
-    }
-
     private void initView() {
-        buttonStartMyDialogActivity = (Button) findViewById(R.id.button_start_my_dialog_activity);
-        buttonStartToastMessageActivity = (Button) findViewById(R.id.button_start_toast_message_activity);
-        buttonStartResourceActivity = (Button) findViewById(R.id.button_start_resource_activity);
+        startMyDialogActivityButton = findViewById(R.id.button_start_my_dialog_activity);
+        startMyDialogActivityButton.setOnClickListener(this);
+        startToastMessageActivityButton = findViewById(R.id.button_start_toast_message_activity);
+        startToastMessageActivityButton.setOnClickListener(this);
+        startResourceActivityButton = findViewById(R.id.button_start_resource_activity);
+        startResourceActivityButton.setOnClickListener(this);
     }
 }

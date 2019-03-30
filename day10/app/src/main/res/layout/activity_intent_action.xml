@@ -7,38 +7,38 @@
     tools:context=".example01.IntentActionActivity">
 
     <Button
-        android:id="@+id/button_implicit_intent_call"
+        android:id="@+id/button_start_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CALL"/>
+        android:text="@string/call"/>
 
     <Button
-        android:id="@+id/button_implicit_intent_web"
+        android:id="@+id/button_start_web"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="INTERNET"/>
+        android:text="@string/internet"/>
 
     <Button
-        android:id="@+id/button_implicit_intent_geomap"
+        android:id="@+id/button_start_geomap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GEOMAP"/>
+        android:text="@string/geomap"/>
 
     <Button
-        android:id="@+id/button_implicit_intent_sms"
+        android:id="@+id/button_start_sms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SMS"/>
+        android:text="@string/sms"/>
 
     <Button
-        android:id="@+id/button_implicit_intent_photo"
+        android:id="@+id/button_start_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PHOTO"/>
+        android:text="@string/photo"/>
 
     <Button
-        android:id="@+id/button_implicit_intent_web_search"
+        android:id="@+id/button_start_web_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WEB SEARCH"/>
+        android:text="@string/web_search"/>
 </LinearLayout>

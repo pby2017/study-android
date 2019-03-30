@@ -6,6 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import static com.example.day09.example03.SendExtraReceiveResultActivity.CALCULATE_FIRST_INPUT;
+import static com.example.day09.example03.SendExtraReceiveResultActivity.CALCULATE_METHOD;
+import static com.example.day09.example03.SendExtraReceiveResultActivity.CALCULATE_RESULT_OUTPUT;
+import static com.example.day09.example03.SendExtraReceiveResultActivity.CALCULATE_SECOND_INPUT;
+import static com.example.day09.example03.SendExtraReceiveResultActivity.CALCULATE_SUCCESS;
+
 public class CalculatingActivity extends AppCompatActivity {
 
     private final String CALCULATING_ACTIVITY = "calc_act";
@@ -15,25 +21,7 @@ public class CalculatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(CALCULATING_ACTIVITY, "onCreate()");
 
-        Intent intent = getIntent();
-
-        int methodNumber = intent.getIntExtra("methodNumber", -1);
-
-        Intent containCalculatedValueIntent = new Intent(CalculatingActivity.this, SendExtraReceiveResultActivity.class);
-        int calculatedResult = intent.getIntExtra("first", -1) + intent.getIntExtra("second", -1);
-        containCalculatedValueIntent.putExtra("result", calculatedResult);
-
-        switch (methodNumber) {
-            case 1:
-                setResult(1234, containCalculatedValueIntent);
-                finish();
-                break;
-            case 2:
-                startActivity(containCalculatedValueIntent);
-                break;
-        }
-
-
+        calculate();
     }
 
     @Override
@@ -76,5 +64,25 @@ public class CalculatingActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         Log.d(CALCULATING_ACTIVITY, "onNewIntent()");
+    }
+
+    private void calculate() {
+        Intent intent = getIntent();
+
+        int methodNumber = intent.getIntExtra(CALCULATE_METHOD, -1);
+
+        Intent containCalculatedValueIntent = new Intent(this, SendExtraReceiveResultActivity.class);
+        int calculatedResult = intent.getIntExtra(CALCULATE_FIRST_INPUT, -1) + intent.getIntExtra(CALCULATE_SECOND_INPUT, -1);
+        containCalculatedValueIntent.putExtra(CALCULATE_RESULT_OUTPUT, calculatedResult);
+
+        switch (methodNumber) {
+            case 1:
+                setResult(CALCULATE_SUCCESS, containCalculatedValueIntent);
+                finish();
+                break;
+            case 2:
+                startActivity(containCalculatedValueIntent);
+                break;
+        }
     }
 }

@@ -20,8 +20,8 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void method1() {
-        button01 = (Button) findViewById(R.id.button01);
-        button02 = (Button) findViewById(R.id.button02);
+        button01 = findViewById(R.id.button01);
+        button02 = findViewById(R.id.button02);
 
         button01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,8 +39,8 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void method2() {
-        button01 = (Button) findViewById(R.id.button01);
-        button02 = (Button) findViewById(R.id.button02);
+        button01 = findViewById(R.id.button01);
+        button02 = findViewById(R.id.button02);
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override

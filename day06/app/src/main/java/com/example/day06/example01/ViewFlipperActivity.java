@@ -21,8 +21,6 @@ public class ViewFlipperActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_view_flipper);
 
         initView();
-
-        setViewOnClickListener();
     }
 
     @Override
@@ -45,13 +43,11 @@ public class ViewFlipperActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initView() {
-        buttonPrev = (Button) findViewById(R.id.button_prev);
-        buttonAuto = (Button) findViewById(R.id.button_auto);
-        buttonNext = (Button) findViewById(R.id.button_next);
-        viewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
-    }
+        buttonPrev = findViewById(R.id.button_prev);
+        buttonAuto = findViewById(R.id.button_auto);
+        buttonNext = findViewById(R.id.button_next);
+        viewFlipper = findViewById(R.id.view_flipper);
 
-    private void setViewOnClickListener() {
         buttonPrev.setOnClickListener(this);
         buttonAuto.setOnClickListener(this);
         buttonNext.setOnClickListener(this);

@@ -23,7 +23,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        linearMenu = (LinearLayout) findViewById(R.id.linear_menu);
+        linearMenu = findViewById(R.id.linear_menu);
     }
 
     @Override

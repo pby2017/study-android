@@ -40,8 +40,6 @@ public class SelectPickerActivity extends AppCompatActivity implements View.OnCl
 
         initView();
 
-        setViewOnClickListener();
-
         setViewInvisibility();
     }
 
@@ -86,19 +84,17 @@ public class SelectPickerActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initView() {
-        chronometerCheckTime = (Chronometer) findViewById(R.id.chronometer_check_time);
-        linearSelectPicker = (LinearLayout) findViewById(R.id.linear_select_picker);
-        radioGroupSelectPicker = (RadioGroup) findViewById(R.id.radio_group_select_picker);
-        radiobuttonDatePicker = (RadioButton) findViewById(R.id.radio_button_date_picker);
-        radioButtonTimePicker = (RadioButton) findViewById(R.id.radio_button_time_picker);
-        relativePicker = (RelativeLayout) findViewById(R.id.relative_picker);
-        datePicker = (DatePicker) findViewById(R.id.date_picker);
-        timePicker = (TimePicker) findViewById(R.id.time_picker);
-        buttonShowPickerValueSelected = (Button) findViewById(R.id.button_show_picker_value_selected);
-        textPickerValueSelected = (TextView) findViewById(R.id.text_picker_value_selected);
-    }
+        chronometerCheckTime = findViewById(R.id.chronometer_check_time);
+        linearSelectPicker = findViewById(R.id.linear_select_picker);
+        radioGroupSelectPicker = findViewById(R.id.radio_group_select_picker);
+        radiobuttonDatePicker = findViewById(R.id.radio_button_date_picker);
+        radioButtonTimePicker = findViewById(R.id.radio_button_time_picker);
+        relativePicker = findViewById(R.id.relative_picker);
+        datePicker = findViewById(R.id.date_picker);
+        timePicker = findViewById(R.id.time_picker);
+        buttonShowPickerValueSelected = findViewById(R.id.button_show_picker_value_selected);
+        textPickerValueSelected = findViewById(R.id.text_picker_value_selected);
 
-    private void setViewOnClickListener() {
         chronometerCheckTime.setOnClickListener(this);
         linearSelectPicker.setOnClickListener(this);
         radioGroupSelectPicker.setOnClickListener(this);

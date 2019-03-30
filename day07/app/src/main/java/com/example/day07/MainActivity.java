@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initView();
-
-        setViewOnClickListener();
-
     }
 
     @Override
@@ -47,17 +44,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setViewOnClickListener() {
+    private void initView() {
+        buttonStartMenuActivity = findViewById(R.id.button_start_menu_activity);
+        buttonStartContextMenuActivity = findViewById(R.id.button_start_context_menu_activity);
+        buttonStartAlertDialogActivity = findViewById(R.id.button_start_alert_dialog_activity);
+        buttonStartSelectedMenuViewActivity = findViewById(R.id.button_start_selected_menu_view_activity);
+
         buttonStartMenuActivity.setOnClickListener(this);
         buttonStartContextMenuActivity.setOnClickListener(this);
         buttonStartAlertDialogActivity.setOnClickListener(this);
         buttonStartSelectedMenuViewActivity.setOnClickListener(this);
-    }
-
-    private void initView() {
-        buttonStartMenuActivity = (Button) findViewById(R.id.button_start_menu_activity);
-        buttonStartContextMenuActivity = (Button) findViewById(R.id.button_start_context_menu_activity);
-        buttonStartAlertDialogActivity = (Button) findViewById(R.id.button_start_alert_dialog_activity);
-        buttonStartSelectedMenuViewActivity = (Button) findViewById(R.id.button_start_selected_menu_view_activity);
     }
 }

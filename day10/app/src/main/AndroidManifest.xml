@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".example02.CallFragment"></activity>
         <activity android:name=".example02.ExternalDesignLibraryActivity" />
         <activity android:name=".example01.IntentActionActivity" />
         <activity android:name=".MainActivity">

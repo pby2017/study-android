@@ -42,8 +42,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         initView();
 
-        setViewOnClickListener();
-
         isInputingNumber = true;
         preSign = 0;
         result = 0;
@@ -108,28 +106,26 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initView() {
-        button0 = (Button) findViewById(R.id.button0);
-        button1 = (Button) findViewById(R.id.button1);
-        button2 = (Button) findViewById(R.id.button2);
-        button3 = (Button) findViewById(R.id.button3);
-        button4 = (Button) findViewById(R.id.button4);
-        button5 = (Button) findViewById(R.id.button5);
-        button6 = (Button) findViewById(R.id.button6);
-        button7 = (Button) findViewById(R.id.button7);
-        button8 = (Button) findViewById(R.id.button8);
-        button9 = (Button) findViewById(R.id.button9);
-        buttonPlus = (Button) findViewById(R.id.button_plus);
-        buttonMinus = (Button) findViewById(R.id.button_minus);
-        buttonMultiply = (Button) findViewById(R.id.button_multiply);
-        buttonDivision = (Button) findViewById(R.id.button_division);
-        buttonPoint = (Button) findViewById(R.id.button_point);
-        buttonEqual = (Button) findViewById(R.id.button_equal);
-        buttonClearInput = (Button) findViewById(R.id.button_clear_input);
-        textInput = (TextView) findViewById(R.id.text_input);
-        textOutput = (TextView) findViewById(R.id.text_output);
-    }
+        button0 = findViewById(R.id.button0);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
+        button6 = findViewById(R.id.button6);
+        button7 = findViewById(R.id.button7);
+        button8 = findViewById(R.id.button8);
+        button9 = findViewById(R.id.button9);
+        buttonPlus = findViewById(R.id.button_plus);
+        buttonMinus = findViewById(R.id.button_minus);
+        buttonMultiply = findViewById(R.id.button_multiply);
+        buttonDivision = findViewById(R.id.button_division);
+        buttonPoint = findViewById(R.id.button_point);
+        buttonEqual = findViewById(R.id.button_equal);
+        buttonClearInput = findViewById(R.id.button_clear_input);
+        textInput = findViewById(R.id.text_input);
+        textOutput = findViewById(R.id.text_output);
 
-    private void setViewOnClickListener() {
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);

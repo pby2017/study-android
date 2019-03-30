@@ -110,7 +110,7 @@ public class SelectedMenuViewActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        linearMovie = (LinearLayout) findViewById(R.id.linear_movie);
-        linearComic = (LinearLayout) findViewById(R.id.linear_comic);
+        linearMovie = findViewById(R.id.linear_movie);
+        linearComic = findViewById(R.id.linear_comic);
     }
 }

@@ -12,7 +12,7 @@
         android:text="@string/text_input_value" />
 
     <EditText
-        android:id="@+id/edit_text_input01"
+        android:id="@+id/edit_text_first_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -22,19 +22,19 @@
         android:text="@string/text_input_value" />
 
     <EditText
-        android:id="@+id/edit_text_input02"
+        android:id="@+id/edit_text_second_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/button_send_value01"
+        android:id="@+id/button_calculate_check_on_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:text="@string/button_send_value01" />
 
     <Button
-        android:id="@+id/button_send_value02"
+        android:id="@+id/button_calculate_check_on_resume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
