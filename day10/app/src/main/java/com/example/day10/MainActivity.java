@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        startIntentActionActivityButton = (Button) findViewById(R.id.button_start_intent_action_activity);
+        startIntentActionActivityButton = findViewById(R.id.button_start_intent_action_activity);
         startIntentActionActivityButton.setOnClickListener(MainActivity.this);
-        startExternalDesignLibraryActivityButton = (Button) findViewById(R.id.button_start_external_design_library_activity);
+        startExternalDesignLibraryActivityButton = findViewById(R.id.button_start_external_design_library_activity);
         startExternalDesignLibraryActivityButton.setOnClickListener(MainActivity.this);
     }
 
