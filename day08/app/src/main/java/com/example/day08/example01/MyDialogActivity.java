@@ -60,6 +60,22 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
                     }
                 });
 
+                alertDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        Toast.makeText(MyDialogActivity.this, "(onCancel) you clicked back button", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alertDialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        Toast.makeText(MyDialogActivity.this, "(onDismiss) you selected ok or cancel", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(MyDialogActivity.this, viewDialog.getParent().getClass().getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 alertDialogBuilder.show();
                 break;
         }
