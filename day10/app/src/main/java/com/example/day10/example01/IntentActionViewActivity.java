@@ -18,10 +18,10 @@ import com.example.day10.R;
 public class IntentActionViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttonImplicitIntentCall;
-    private Button buttonImplicitIntentInternet;
+    private Button buttonImplicitIntentWeb;
     private Button buttonImplicitIntentGeomap;
     private Button buttonImplicitIntentSms;
-    private Button buttonImplicitIntentSearch;
+    private Button buttonImplicitIntentWebSearch;
     private Button buttonImplicitIntentPhoto;
 
     @Override
@@ -40,30 +40,25 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
             case R.id.button_implicit_intent_call:
 //                permissionCheck(Manifest.permission.CALL_PHONE);
                 // TODO: implement permission check function
+                startCallActivityWithIntent();
                 break;
-            case R.id.button_implicit_intent_internet:
-                intentInternet();
+            case R.id.button_implicit_intent_web:
+                startWebActivityWithIntent();
                 break;
             case R.id.button_implicit_intent_geomap:
-                intentGeoMap();
+                startGeomapActivityWithIntent();
                 break;
             case R.id.button_implicit_intent_sms:
-//                intentSms();
+                startSmsActivityWithIntent();
                 // TODO: implement sms function
                 break;
             case R.id.button_implicit_intent_photo:
-                intentPhoto();
+                startPhotoActivityWithIntent();
                 break;
-            case R.id.button_implicit_intent_search:
-                // TODO: implement search function
+            case R.id.button_implicit_intent_web_search:
+                startWebSearchActivityWithIntent();
                 break;
         }
-    }
-
-    private void intentPhoto() {
-        Intent intentPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intentPhoto, 1);
-        // TODO: add show picture or save file later
     }
 
     @Override
@@ -73,12 +68,30 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
         switch (requestCode) {
             case 1234:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    intentCall();
+                    startCallActivityWithIntent();
                 } else {
                     Toast.makeText(IntentActionViewActivity.this, "permission check 필요", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
+    }
+
+    private void initView() {
+        buttonImplicitIntentCall = (Button) findViewById(R.id.button_implicit_intent_call);
+        buttonImplicitIntentWeb = (Button) findViewById(R.id.button_implicit_intent_web);
+        buttonImplicitIntentGeomap = (Button) findViewById(R.id.button_implicit_intent_geomap);
+        buttonImplicitIntentSms = (Button) findViewById(R.id.button_implicit_intent_sms);
+        buttonImplicitIntentPhoto = (Button) findViewById(R.id.button_implicit_intent_photo);
+        buttonImplicitIntentWebSearch = (Button) findViewById(R.id.button_implicit_intent_web_search);
+    }
+
+    private void setViewOnClickListener() {
+        buttonImplicitIntentCall.setOnClickListener(IntentActionViewActivity.this);
+        buttonImplicitIntentWeb.setOnClickListener(IntentActionViewActivity.this);
+        buttonImplicitIntentGeomap.setOnClickListener(IntentActionViewActivity.this);
+        buttonImplicitIntentSms.setOnClickListener(IntentActionViewActivity.this);
+        buttonImplicitIntentPhoto.setOnClickListener(IntentActionViewActivity.this);
+        buttonImplicitIntentWebSearch.setOnClickListener(IntentActionViewActivity.this);
     }
 
     private void permissionCheck(String permission) {
@@ -94,41 +107,31 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
         smsIntent.setData(Uri.parse("smsto:010-1234-1234"));
         smsIntent.putExtra("sms_body", message);
         startActivity(smsIntent);
-    }
-
-    private void intentGeoMap() {
-        Uri GeomapUri = Uri.parse("https://www.google.co.jp/maps/@37.5710371,126.9927944,16z");
-        Intent geomapIntent = new Intent(Intent.ACTION_VIEW, GeomapUri);
-        startActivity(geomapIntent);
-    }
-
-    private void intentInternet() {
-        Uri internetUri = Uri.parse("http://www.naver.com");
-        Intent callIntent = new Intent(Intent.ACTION_VIEW, internetUri);
-        startActivity(callIntent);
-    }
-
-    private void intentCall() {
+    private void startCallActivityWithIntent() {
         Uri callUri = Uri.parse("tel:010-1234-1234");
         Intent callIntent = new Intent(Intent.ACTION_VIEW, callUri);
         startActivity(callIntent);
     }
 
-    private void initView() {
-        buttonImplicitIntentCall = (Button) findViewById(R.id.button_implicit_intent_call);
-        buttonImplicitIntentInternet = (Button) findViewById(R.id.button_implicit_intent_internet);
-        buttonImplicitIntentGeomap = (Button) findViewById(R.id.button_implicit_intent_geomap);
-        buttonImplicitIntentSms = (Button) findViewById(R.id.button_implicit_intent_sms);
-        buttonImplicitIntentSearch = (Button) findViewById(R.id.button_implicit_intent_search);
-        buttonImplicitIntentPhoto = (Button) findViewById(R.id.button_implicit_intent_photo);
+    private void startWebActivityWithIntent() {
+        Uri webUri = Uri.parse("http://www.naver.com");
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, webUri);
+        startActivity(webIntent);
     }
 
-    private void setViewOnClickListener() {
-        buttonImplicitIntentCall.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentInternet.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentGeomap.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentSms.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentSearch.setOnClickListener(IntentActionViewActivity.this);
-        buttonImplicitIntentPhoto.setOnClickListener(IntentActionViewActivity.this);
+    private void startGeomapActivityWithIntent() {
+        Uri GeomapUri = Uri.parse("https://www.google.co.jp/maps/@37.5710371,126.9927944,16z");
+        Intent geomapIntent = new Intent(Intent.ACTION_VIEW, GeomapUri);
+        startActivity(geomapIntent);
+    }
+
+    }
+
+    private void startPhotoActivityWithIntent() {
+        Intent photoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(photoIntent, 1);
+        // TODO: add show picture or save file later
+    }
+
     }
 }
