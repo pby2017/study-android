@@ -103,12 +103,6 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
         }
     }
 
-    private void intentSms() {
-        String message = "hello";
-        Intent smsIntent = new Intent(Intent.ACTION_SEND);
-        smsIntent.setData(Uri.parse("smsto:010-1234-1234"));
-        smsIntent.putExtra("sms_body", message);
-        startActivity(smsIntent);
     private void startCallActivityWithIntent() {
         Uri callUri = Uri.parse("tel:010-1234-1234");
         Intent callIntent = new Intent(Intent.ACTION_VIEW, callUri);
@@ -127,6 +121,13 @@ public class IntentActionViewActivity extends AppCompatActivity implements View.
         startActivity(geomapIntent);
     }
 
+    private void startSmsActivityWithIntent() {
+        String message = "hello";
+//        Intent smsIntent = new Intent(Intent.ACTION_SEND);
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+        smsIntent.setData(Uri.parse("smsto:010-1234-1234"));
+        smsIntent.putExtra("sms_body", message);
+        startActivity(smsIntent);
     }
 
     private void startPhotoActivityWithIntent() {
