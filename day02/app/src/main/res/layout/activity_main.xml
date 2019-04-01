@@ -11,49 +11,49 @@
         android:id="@+id/button_start_view_attr_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example01 - View attribute" />
 
     <Button
         android:id="@+id/button_start_login_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example02 - Login" />
 
     <Button
         android:id="@+id/button_start_check_box_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03 - Checkbox" />
 
     <Button
         android:id="@+id/button_start_radio_button_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example04 - Radio button" />
 
     <Button
         android:id="@+id/button_start_switch_toggle_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example05 - Switch toggle" />
 
     <Button
         android:id="@+id/button_start_image_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example06 - Image" />
 
     <Button
         android:id="@+id/button_choice_image_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="practice01 - Choice image" />
 
 </LinearLayout>

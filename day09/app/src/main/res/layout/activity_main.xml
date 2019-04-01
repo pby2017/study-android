@@ -10,21 +10,21 @@
         android:id="@+id/button_start_second_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
+        android:gravity="start|center_vertical"
         android:text="@string/example01" />
 
     <Button
         android:id="@+id/button_start_life_cycle_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
+        android:gravity="start|center_vertical"
         android:text="@string/example02" />
 
     <Button
         android:id="@+id/button_start_send_extra_receive_result_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
+        android:gravity="start|center_vertical"
         android:text="@string/example03" />
 
 </LinearLayout>

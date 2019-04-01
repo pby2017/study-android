@@ -11,27 +11,27 @@
         android:id="@+id/button_start_menu_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example01 - Menu" />
 
     <Button
         android:id="@+id/button_start_context_menu_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example01-02 - ContextMenu" />
 
     <Button
         android:id="@+id/button_start_alert_dialog_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example02 - AlertDialog" />
 
     <Button
         android:id="@+id/button_start_selected_menu_view_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="practice01 - Selected menu view" />
 </LinearLayout>
