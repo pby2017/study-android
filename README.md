@@ -49,9 +49,14 @@
    * 액티비티 라이프 사이클
    * 다른 액티비티에서 결과 얻어오기
 10. 2019/ 03/ 29 Fri - day10
-    * [정리 파일 링크 - not yet]()
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190329Fri.md)
     * Implicit Intent
     * External Library - BottomNavigationView
+11. 2019/ 04/ 01 Mon - day11
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190401Mon.md)
+    * Fragment
+    * Vertical & Horizontal rotate fragment
+    * BottomNavigationView & Fragment
 #
 #
 #
