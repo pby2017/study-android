@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">day11</string>
+    <string name="text">테스트</string>
+    <string name="example01">example01 - Sample fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="example02">example02 - Vertical horizontal each fragment</string>
+    <string name="example03">example03 - Bottom navigation view add fragment</string>
+
+    <string name="call">CALL</string>
+    <string name="sms">SMS</string>
+    <string name="photo">PHOTO</string>
+    <string name="web_search">WEB SEARCH</string>
+    <string name="hint_phone_number">전화번호 입력</string>
+    <string name="send">전송</string>
+</resources>
