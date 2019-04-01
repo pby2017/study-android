@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_tab_call"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/call" />
+    <item
+        android:id="@+id/item_tab_sms"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/sms" />
+    <item
+        android:id="@+id/item_tab_photo"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/photo" />
+    <item
+        android:id="@+id/item_tab_web_search"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/web_search" />
+</menu>
