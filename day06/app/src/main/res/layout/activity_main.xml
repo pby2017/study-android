@@ -11,41 +11,41 @@
         android:id="@+id/button_start_view_flipper_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example01 - ViewFlipper" />
 
     <Button
         android:id="@+id/button_start_tab_host_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example02 - TabHost" />
 
     <Button
         android:id="@+id/button_start_action_bar_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03 - ActionBar" />
 
     <Button
         android:id="@+id/button_start_action_bar_activity02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03-02 - ActionBar (API 28 level)" />
 
     <Button
         android:id="@+id/button_start_web_view_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example04 - WebView" />
 
     <Button
         android:id="@+id/button_start_chat_room_list_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="practice01 - Chat room list" />
 </LinearLayout>

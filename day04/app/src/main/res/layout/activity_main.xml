@@ -11,28 +11,28 @@
         android:id="@+id/button_start_table_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example01 - Table layout" />
 
     <Button
         android:id="@+id/button_start_Grid_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example02 - Grid layout" />
 
     <Button
         android:id="@+id/button_start_event_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03 - Event process" />
 
     <Button
         android:id="@+id/button_start_calculator_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03 - Calculator" />
 
 </LinearLayout>

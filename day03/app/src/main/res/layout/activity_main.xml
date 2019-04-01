@@ -11,56 +11,56 @@
         android:id="@+id/button_start_login_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example01 - Login" />
 
     <Button
         android:id="@+id/button_start_linear_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example02 - Linear layout" />
 
     <Button
         android:id="@+id/button_start_linear_activity02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example02-02 - Linear layout" />
 
     <Button
         android:id="@+id/button_start_relative_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03 - Relative layout" />
 
     <Button
         android:id="@+id/button_start_relative_activity02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03-02 - Relative layout" />
 
     <Button
         android:id="@+id/button_start_relative_activity03"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="example03-03 - Relative layout" />
 
     <Button
         android:id="@+id/button_start_login_linear_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="practice01-01 - Login linear layout" />
 
     <Button
         android:id="@+id/button_start_login_relative_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:gravity="start|center_vertical"
         android:text="practice01-02 - Login relative layout" />
 
 </LinearLayout>
