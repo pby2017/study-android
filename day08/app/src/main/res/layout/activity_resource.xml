@@ -9,13 +9,13 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"/>
+        android:src="@drawable/ic_launcher_foreground" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:entries="@array/string_array_name"/>
+        android:entries="@array/string_array_name" />
 
 </LinearLayout>
