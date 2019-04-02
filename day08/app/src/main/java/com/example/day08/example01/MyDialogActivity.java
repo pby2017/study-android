@@ -14,15 +14,12 @@ import com.example.day08.R;
 
 public class MyDialogActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private View myDialogView;
-
-    private EditText dialogNameEditText;
-    private EditText dialogEmailEditText;
+    private Button dialogButton;
 
     private EditText nameEditText;
     private EditText emailEditText;
 
-    private AlertDialog.Builder alertDialogBuilder;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,38 +33,35 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_dialog:
-                if (alertDialogBuilder == null) {
-                    buildAlertDialog();
-                }
-                if (myDialogView.getParent() != null) {
-                    ((ViewGroup) myDialogView.getParent()).removeView(myDialogView);
+                if (dialog == null) {
+                    dialog = buildAlertDialog();
                 }
 
-                alertDialogBuilder.show();
+                dialog.show();
                 break;
         }
     }
 
     private void initView() {
-        myDialogView = View.inflate(this, R.layout.my_dialog, null);
 
-        Button dialogButton = findViewById(R.id.button_dialog);
+        dialogButton = findViewById(R.id.button_dialog);
         dialogButton.setOnClickListener(this);
-
-        dialogNameEditText = myDialogView.findViewById(R.id.edit_text_dialog_name);
-        dialogEmailEditText = myDialogView.findViewById(R.id.edit_text_dialog_email);
 
         nameEditText = findViewById(R.id.edit_text_name);
         emailEditText = findViewById(R.id.edit_text_email);
     }
 
-    private void buildAlertDialog() {
-        alertDialogBuilder = new AlertDialog.Builder(this);
+    private AlertDialog buildAlertDialog() {
+        View myDialogView = View.inflate(this, R.layout.my_dialog, null);
+        final EditText dialogNameEditText = myDialogView.findViewById(R.id.edit_text_dialog_name);
+        final EditText dialogEmailEditText = myDialogView.findViewById(R.id.edit_text_dialog_email);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("제목");
         alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
         alertDialogBuilder.setView(myDialogView);
 
-        alertDialogBuilder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton(R.string.send, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 nameEditText.setText(dialogNameEditText.getText().toString());
@@ -77,7 +71,7 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        alertDialogBuilder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getApplicationContext(), "취소를 누르셨어요.", Toast.LENGTH_SHORT).show();
@@ -97,5 +91,7 @@ public class MyDialogActivity extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(getApplicationContext(), "(onDismiss) you selected ok or cancel", Toast.LENGTH_SHORT).show();
             }
         });
+
+        return alertDialogBuilder.create();
     }
 }
