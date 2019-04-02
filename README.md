@@ -57,6 +57,12 @@
     * Fragment
     * Vertical & Horizontal rotate fragment
     * BottomNavigationView & Fragment
+12. 2019/ 04/ 02 Tue - day12
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190402Tue.md)
+    * Fragment
+    * 데이터 저장 및 관리
+    * Fragment 질의응답
+    * 번외
 #
 #
 #
