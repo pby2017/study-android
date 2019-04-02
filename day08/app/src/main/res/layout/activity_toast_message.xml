@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/button_show_dialog"
-        android:text="@string/show_input_dialog"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/show_input_dialog" />
 
 </LinearLayout>
