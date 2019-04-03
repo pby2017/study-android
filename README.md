@@ -63,6 +63,12 @@
     * 데이터 저장 및 관리
     * Fragment 질의응답
     * 번외
+13. 2019/ 04/ 03 Wed - day13
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190403Wed.md)
+    * 소프트웨어 설치
+    * 안드로이드와 외부DB
+    * AsyncTask
+    * HttpUrlConnection
 #
 #
 #
