@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <Button
         android:id="@+id/button_start_async_task_activity"
         android:layout_width="wrap_content"
