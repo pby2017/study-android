@@ -69,6 +69,10 @@
     * 안드로이드와 외부DB
     * AsyncTask
     * HttpUrlConnection
+14. 2019/ 04/ 04 Thu - day14
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190404Thu.md)
+    * Eclipse에 MySQL connector 외부 라이브러리 추가
+    * 외부 db 사용해서 회원가입, 로그인 구현
 #
 #
 #
