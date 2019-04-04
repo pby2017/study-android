@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">day14</string>
+    <string name="example01">Example01 - Register and login</string>
+    <string name="text_input_email_colon">이메일 입력 :</string>
+    <string name="text_input_name_colon">이름 입력 :</string>
+    <string name="text_input_password_colon">비밀번호 입력 :</string>
+    <string name="text_register_user">회원가입</string>
+    <string name="text_login">로그인</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+</resources>
