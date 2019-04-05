@@ -14,7 +14,7 @@
         android:maxLines="1"
         android:text="@string/example01" />
     <Button
-        android:id="@+id/button_start_friend_list_activity"
+        android:id="@+id/button_start_create_inner_database_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start|center_vertical"

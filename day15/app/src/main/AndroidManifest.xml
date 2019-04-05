@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".example02.InnerDatabaseActivity"></activity>
+        <activity android:name=".example02.CreateInnerDatabaseActivity"></activity>
         <activity android:name=".example01.MyRecyclerViewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
