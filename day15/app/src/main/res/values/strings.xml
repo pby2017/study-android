@@ -2,5 +2,5 @@
     <string name="app_name">day15</string>
     <string name="example01">Example01 - RecyclerView</string>
     <string name="text_add">추가</string>
-    <string name="example02">Example02 - Friend list</string>
+    <string name="example02">Example02 - Create inner database</string>
 </resources>

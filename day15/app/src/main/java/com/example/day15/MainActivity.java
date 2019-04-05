@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.day15.example01.MyRecyclerViewActivity;
-import com.example.day15.example02.InnerDatabaseActivity;
+import com.example.day15.example02.CreateInnerDatabaseActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button startRecyclerViewActivityButton;
-    private Button startInnerDatabaseActivityButton;
+    private Button startCreateInnerDatabaseActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_start_recycler_view_activity:
                 startActivity(new Intent(this, MyRecyclerViewActivity.class));
                 break;
-            case R.id.button_start_friend_list_activity:
-                startActivity(new Intent(this, InnerDatabaseActivity.class));
+            case R.id.button_start_create_inner_database_activity:
+                startActivity(new Intent(this, CreateInnerDatabaseActivity.class));
                 break;
         }
     }
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         startRecyclerViewActivityButton = findViewById(R.id.button_start_recycler_view_activity);
         startRecyclerViewActivityButton.setOnClickListener(this);
-        startInnerDatabaseActivityButton = findViewById(R.id.button_start_friend_list_activity);
-        startInnerDatabaseActivityButton.setOnClickListener(this);
+        startCreateInnerDatabaseActivityButton = findViewById(R.id.button_start_create_inner_database_activity);
+        startCreateInnerDatabaseActivityButton.setOnClickListener(this);
     }
 }

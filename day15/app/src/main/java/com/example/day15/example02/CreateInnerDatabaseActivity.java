@@ -9,7 +9,7 @@ import com.example.day15.R;
 import com.example.day15.example02.helper.FriendsDatabaseHelper;
 import com.example.day15.example02.table.FriendsTable.FriendEntry;
 
-public class InnerDatabaseActivity extends AppCompatActivity {
+public class CreateInnerDatabaseActivity extends AppCompatActivity {
 
     private SQLiteDatabase sqLiteDatabase;
 
