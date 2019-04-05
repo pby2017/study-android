@@ -73,6 +73,12 @@
     * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190404Thu.md)
     * Eclipse에 MySQL connector 외부 라이브러리 추가
     * 외부 db 사용해서 회원가입, 로그인 구현
+15. 2019/ 04/ 05 Fri - day15
+    * [정리 파일 링크]()
+    * Adapter View
+    * RecyclerView
+    * RecyclerView 사용하기
+    * Inner(Local) database for save data using table
 #
 #
 #
