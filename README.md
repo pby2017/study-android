@@ -79,6 +79,11 @@
     * RecyclerView
     * RecyclerView 사용하기
     * Inner(Local) database for save data using table
+16. 2019/ 04/ 08 Mon - day16
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190408Mon.md)
+    * 서비스
+    * Firebase
+    * FCM
 #
 #
 #
