@@ -42,7 +42,7 @@ public class RegisterAndLoginActivity extends AppCompatActivity implements View.
 
         initView();
 
-        createCustomDialog();
+        createCustomDialog().show();
 
     }
 
@@ -74,6 +74,7 @@ public class RegisterAndLoginActivity extends AppCompatActivity implements View.
         String email = loginEmailEditText.getText().toString();
         String password = loginPasswordEditText.getText().toString();
         try {
+            Log.d(CUSTOM_ASYNC, String.format("%s / %s / %s", url, email, password));
             Log.d(CUSTOM_ASYNC, new CustomHttpAsyncTask().execute(url, email, password).get());
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -124,7 +125,7 @@ public class RegisterAndLoginActivity extends AppCompatActivity implements View.
         @Override
         protected String doInBackground(String... strings) {
             try {
-                if (strings.length != 3 || strings.length != 4) {
+                if (strings.length != 3 && strings.length != 4) {
                     return SAVE_FAIL;
                 }
                 if (strings.length == 3) {
