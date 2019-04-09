@@ -40,8 +40,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Log.d(MY_FIREBASE_MSG_SERV, "From: " + remoteMessage.getFrom());
 
-        if (remoteMessage.getData().size() > 0) {
-            Log.d(MY_FIREBASE_MSG_SERV, "Message data payload: " + remoteMessage.getData());
+//        if (remoteMessage.getData().size() > 0) {
+        if (remoteMessage.getNotification() != null) {
+//            Log.d(MY_FIREBASE_MSG_SERV, "Message data payload: " + remoteMessage.getData());
+            Log.d(MY_FIREBASE_MSG_SERV, "Message notification payload: " + remoteMessage.getNotification().getBody());
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -51,7 +53,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //                handleNow();
             }
 
-            sendNotification("test title", "test message");
+            sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
         }
 
         if (remoteMessage.getNotification() != null) {
