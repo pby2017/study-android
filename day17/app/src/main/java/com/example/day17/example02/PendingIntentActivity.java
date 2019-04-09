@@ -52,10 +52,8 @@ public class PendingIntentActivity extends AppCompatActivity implements View.OnC
                 PendingIntent.FLAG_CANCEL_CURRENT);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Uri bananaPeelSlipSoundUri = Uri.parse(
-                "android.resource://" + getPackageName() + "/" + R.raw.banana_peel_slip
-        );
-        // TODO: do not print sound
+        Uri bananaPeelSlipSoundUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.banana_peel_slip);
+        // TODO: can not print sound yet
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         String name = "NOTIFICATION";
         String channel_id = "fcm_default_channel";
