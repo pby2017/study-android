@@ -84,6 +84,13 @@
     * 서비스
     * Firebase
     * FCM
+17. 2019/ 04/ 09 Tue - day17
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190409Tue.md)
+    * FCM JSON
+    * Send notification
+    * 인텐트 플래그, 펜딩 인텐트
+    * Custom notification UI
+    * Device send notification to other device with web server
 #
 #
 #
