@@ -13,7 +13,7 @@ String json =
 
 "{\"to\":\"f9dB1HcKKIY:APA91bG-Pk1-HRU8i8wuLsCotd4qL3jypw_sFlgijh58ZdAPlQ6HGhJbTPWakDiadsQ2X1tameNxmrYqy2EFlpSVfOgvsvUdkmQbM7nON41wHpnP-acmmpX1Wh5zg728QThpSm3TfUuj\",\"notification\":{\"title\":\"Portugal vs. Denmark\",\"body\":\"great match!\"}}";
 
-String msgMap = sendREST("https://fcm.googleapis.com/fcm/send", json);
+String messageMap = sendREST("https://fcm.googleapis.com/fcm/send", json);
 %>
 
 
@@ -40,8 +40,8 @@ StringBuffer outResult = new StringBuffer();
 	os.flush();
     
 	// 리턴된 결과 읽기
-	BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-	while ((inputLine = in.readLine()) != null) {
+	BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+	while ((inputLine = br.readLine()) != null) {
 		outResult.append(inputLine);
 	}
     
