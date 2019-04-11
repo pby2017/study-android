@@ -53,7 +53,6 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         initView();
 
         initialize();
-//        createCustomDialog().show();
     }
 
     @Override
