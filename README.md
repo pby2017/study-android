@@ -91,12 +91,18 @@
     * 인텐트 플래그, 펜딩 인텐트
     * Custom notification UI
     * Device send notification to other device with web server
-17. 2019/ 04/ 10 Wed - day18
+18. 2019/ 04/ 10 Wed - day18
     * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190410Wed.md)
     * 채팅창 만들기
     * 회원가입시 토큰 저장 추가
     * 문제 해결
     * 번외
+19. 2019/ 04/ 11 Thu - day19
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190411Thu.md)
+    * Singleton
+    * 채팅 메시지 FCM 통신
+    * 내부DB 메시지 저장 테이블
+    * 채팅 통신 구현
 #
 #
 #
