@@ -1,22 +1,29 @@
 package com.example.customchatting;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import com.example.customchatting.friends.FriendListFragment;
-import com.example.customchatting.friends.helper.FriendsDatabaseHelper;
-import com.example.customchatting.friends.model.User;
-import com.example.customchatting.friends.table.FriendsTable.FriendEntry;
+import com.example.customchatting.config.CustomConfig;
+import com.example.customchatting.login.RegisterAndLoginActivity;
+import com.example.customchatting.main.friends.helper.FriendsDatabaseHelper;
+import com.example.customchatting.main.friends.model.User;
+import com.example.customchatting.main.friends.table.FriendsTable.FriendEntry;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import static com.example.customchatting.constant.CustomConstant.LogConstant.CUS_MAIN_ACTIVITY;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -31,18 +38,32 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(CUS_MAIN_ACTIVITY, "onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
+        while (CustomConfig.getInstance().getUrlString() == null && CustomConfig.getInstance().getCountOfInputServerUrl() < 3) {
+            createCustomDialog().show();
+            CustomConfig.getInstance().setCountOfInputServerUrl(CustomConfig.getInstance().getCountOfInputServerUrl() + 1);
+        }
+        if (CustomConfig.getInstance().getUrlString() == null && CustomConfig.getInstance().getCountOfInputServerUrl() >= 3) {
+            finish();
+        }
 
-        initialize();
+        CustomConfig.getInstance().setCountOfInputServerUrl(0);
 
-        FriendListFragment friendListFragment = FriendListFragment.newInstance(userArrayList);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frame_main_container, friendListFragment);
-        fragmentTransaction.commit();
+        startService(new Intent(this, MyFirebaseMessagingService.class));
+        startActivity(new Intent(this, RegisterAndLoginActivity.class));
+
+//        initView();
+//
+//        initialize();
+//
+//        FriendListFragment friendListFragment = FriendListFragment.newInstance(userArrayList);
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.add(R.id.frame_main_container, friendListFragment);
+//        fragmentTransaction.commit();
     }
 
     @Override
@@ -112,5 +133,31 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 
         return true;
+    }
+
+    private AlertDialog createCustomDialog() {
+        final EditText UrlEditText = new EditText(this);
+
+        return new AlertDialog.Builder(this)
+                .setTitle("Server 접속 주소를 입력하세요.")
+                .setMessage("ex) http://192.168.0.1:8080/directory/file")
+                .setView(UrlEditText)
+                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String urlString = UrlEditText.getText().toString();
+                        CustomConfig.getInstance().setUrlString(urlString);
+                        if (CustomConfig.getInstance().getUrlString().equals(urlString)) {
+                            Toast.makeText(getApplicationContext(), String.format("Set url = %s", CustomConfig.getInstance().getUrlString()), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .create();
     }
 }

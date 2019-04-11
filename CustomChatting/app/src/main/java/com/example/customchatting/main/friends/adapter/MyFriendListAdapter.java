@@ -1,4 +1,4 @@
-package com.example.customchatting.friends.adapter;
+package com.example.customchatting.main.friends.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.customchatting.R;
-import com.example.customchatting.friends.model.User;
+import com.example.customchatting.main.friends.model.User;
 
 import java.util.ArrayList;
 
