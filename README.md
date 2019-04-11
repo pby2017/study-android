@@ -99,7 +99,7 @@
     * 번외
 19. 2019/ 04/ 11 Thu - day19
     * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190411Thu.md)
-    * Singleton
+    * Singleton
     * 채팅 메시지 FCM 통신
     * 내부DB 메시지 저장 테이블
     * 채팅 통신 구현
