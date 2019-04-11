@@ -38,10 +38,25 @@ public class FcmService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        Log.d(CUS_FCM_SERV, "From: " + remoteMessage.getFrom());
+        if (remoteMessage.getData() != null) {
+            if (remoteMessage.getData().size() > 0) {
+                Log.d(CUS_FCM_SERV, "From: " + remoteMessage.getFrom());
 
-        if (remoteMessage.getData().size() > 0) {
-            Log.d(CUS_FCM_SERV, "Message data payload: " + remoteMessage.getData());
+                Log.d(CUS_FCM_SERV, "Message data payload: " + remoteMessage.getData());
+
+                if (/* Check if data needs to be processed by long running job */ true) {
+                    // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
+//                scheduleJob();
+                } else {
+                    // Handle message within 10 seconds
+//                handleNow();
+                }
+
+                sendNotification(remoteMessage.getData().get("title"), remoteMessage.getData().get("body"));
+            }
+        } else if (remoteMessage.getNotification() != null) {
+
+            Log.d(CUS_FCM_SERV, "Message notification payload: " + remoteMessage.getNotification().getBody());
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -50,10 +65,41 @@ public class FcmService extends FirebaseMessagingService {
                 // Handle message within 10 seconds
 //                handleNow();
             }
+
+            sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
         }
 
         if (remoteMessage.getNotification() != null) {
             Log.d(CUS_FCM_SERV, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
+    }
+
+    private void sendNotification(String title, String message) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        String name = "NOTIFICATION";
+        String channel_id = "fcm_default_channel";
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(channel_id, name, NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channel_id)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_dialog_info))
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
+
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
 }
