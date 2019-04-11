@@ -1,11 +1,11 @@
-package com.example.customchatting.friends.helper;
+package com.example.customchatting.main.friends.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-import com.example.customchatting.friends.table.FriendsTable.FriendEntry;
+import com.example.customchatting.main.friends.table.FriendsTable.FriendEntry;
 
 public class FriendsDatabaseHelper extends SQLiteOpenHelper {
 

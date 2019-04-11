@@ -1,4 +1,4 @@
-package com.example.customchatting.friends.model;
+package com.example.customchatting.main.friends.model;
 
 public class User {
     private String email;

@@ -1,4 +1,4 @@
-package com.example.customchatting.friends;
+package com.example.customchatting.main.friends;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.customchatting.R;
-import com.example.customchatting.friends.adapter.MyFriendListAdapter;
-import com.example.customchatting.friends.model.User;
+import com.example.customchatting.main.friends.adapter.MyFriendListAdapter;
+import com.example.customchatting.main.friends.model.User;
 
 import java.util.ArrayList;
 import java.util.Date;

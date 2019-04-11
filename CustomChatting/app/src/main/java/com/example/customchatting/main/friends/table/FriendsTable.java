@@ -1,4 +1,4 @@
-package com.example.customchatting.friends.table;
+package com.example.customchatting.main.friends.table;
 
 import android.provider.BaseColumns;
 
