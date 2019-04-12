@@ -103,6 +103,12 @@
     * 채팅 메시지 FCM 통신
     * 내부DB 메시지 저장 테이블
     * 채팅 통신 구현
+20. 2019/ 04/ 12 Fri - day20
+    * [정리 파일 링크](https://github.com/pby2017/study-android-basic-itbank/blob/master/README_detail/20190412Fri.md)
+    * 브로드캐스트 리시버 - 배터리 상태 변경, 충전 상태 변경
+    * 가상머신 텔넷 접속 & 컨트롤
+    * zxing QRCode 라이브러리
+    * 앱 배포
 #
 #
 #
