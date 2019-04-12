@@ -12,8 +12,8 @@ import com.example.day11.R;
 
 public class VerticalHorizontalFragmentActivity extends AppCompatActivity {
 
-    Fragment firstFragment;
-    Fragment secondFragment;
+    private Fragment firstFragment;
+    private Fragment secondFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
