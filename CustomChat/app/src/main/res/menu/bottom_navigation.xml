@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_tab_friends"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/text_friend_list" />
+    <item
+        android:id="@+id/item_tab_chattings"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/text_chatting_list" />
+    <item
+        android:id="@+id/item_tab_not_yet01"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="기타1" />
+    <item
+        android:id="@+id/item_tab_not_yet02"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="기타2" />
+</menu>
