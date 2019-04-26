@@ -1,0 +1,179 @@
+# 설계기법과라이브러리활용
+## 1. 설계 기법을 사용하는 이유
+  * 앱의 한 화면을 대표하는 클래스인 액티비티는 화면을 표현하기 위한 로직, 사용자 액션 이벤트 처리, View에 데이터 반영 등 다양한 역할을 합니다.
+  * 이러한 역할을 모두 액티비티에만 정의하면 변경이 어렵고 관리가 힘들어집니다.
+  * 역할을 나누어 액티비티의 코드를 분리하여 변경에 강한 코드를 작성하기 위해 위해 설계 기법을 사용합니다.
+  * 주요 설계 기법으로 MVP(Model View Presenter), MVVM(Model View ViewModel)을 사용합니다.
+## 2. MVVM 설계
+* 설계 기법에 대해 기본적인 지원이 없었던 MVP 설계와 달리 Android Gradle Plugin을 통해 DataBinding이 지원됩니다.
+* UI 로직을 분리할 수 있습니다.
+* Model
+  * UI에 관한 로직은 정의하지 않습니다.
+  * 데이터 클래스와 같은 역할을 합니다.
+  * Repository 클래스의 인스턴스를 통해 데이터베이스에 접근해서 데이터를 가져올 수 있습니다.
+  * API 접근에 관한 처리를 정의합니다.
+* View
+  * 데이터를 표시합니다.
+  * 애니메이션이나 액티비티 전환 등은 View에서 구현해야 합니다.
+  * ViewModel의 Observable 변수 값이 변경되어 ViewModel이 push 하면 xml은 값을 받아 현재 View에 반영합니다.
+  * ViewModel에서 가져온 데이터를 DataBinging으로 View에 반영해 표시합니다.
+* ViewModel
+  * MVP 설계 기법의 Presenter와 비슷한 역할을 합니다.
+  * View의 상태정보를 가지고 있습니다.
+  * View를 몰라야 합니다. (= View에 대한 참조를 하지 않습니다.)
+  * UI 갱신에 관한 로직을 구현합니다.
+  * 사용자의 액션으로 발생한 이벤트를 받아 처리합니다.
+  * Model과 데이터를 주고 받습니다.
+  * DataBinding을 통해 ViewModel의 상태가 View에 반영됩니다.
+### 2.1 MVVM 설계의 장점
+* 역할을 분리할 수 있으므로 액티비티를 작게 만들 수 있습니다.
+* Model에서 가져온 데이터를 View에 반영하는 로직이 필요 없습니다.
+* View에 의존하는 코드가 없어 테스트하기 쉽습니다.
+### 2.2 MVVM 설계의 단점
+* DataBinding과 관련된 코드는 자동으로 생성되므로 내부를 알기 어려운 블랙박스화되어 있기 때문에 가독성이 낮고 디버그가 어렵습니다.
+## 3. 사용자 액션 이벤트 처리, View에 데이터 반영 역할 분리
+* XML의 id와 Activity의 View를 연결하는 방법은 다음과 같습니다.
+  * findViewById()와 같은 findView 메서드
+    ```java
+    TextView sampleText = findViewById(R.id.text_sample);
+    ```
+  * Butterknife 외부 라이브러리
+    ```java
+    @Bind(R.id.text_sample) 또는 @BindView(R.id.text_sample)
+    TextView sampleText;
+
+    ButterKnife.bind(this);
+    ``` 
+* XML의 View에 대한 Click 이벤트를 처리하는 방법은 다음과 같습니다.
+  * setOnClickListener()와 같은 View 객체의 Listener 설정
+    ```java
+    sampleButton.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View view){
+            onClickMethod(view);
+        }
+    });
+
+    public void onClickMethod(View view){
+        // 클릭 이벤트
+    }
+    ```
+  * Butterknife 외부 라이브러리
+    ```java
+    @OnClick(R.id.button_sample)
+    public void onClickMethod(View view){
+        // 클릭 이벤트
+    }
+    ```
+* Data Binding Gradle 지원 라이브러리
+### 3.1. 데이터 바인딩 (Data Binding)
+* 사용자 인터페이스와 데이터를 연결하는 역할을 합니다.
+* Android Plugin for Gradle 1.5.0-alpha1 이상이 필요합니다.
+* 안드로이드 2.1 버전 이상부터 사용할 수 있습니다.
+* 안드로이드 스튜디오 1.3 버전 이상부터 사용할 수 있습니다.
+* ViewModel에서 View를 직접 변경하는 처리를 View 자체에서 할 수 있기 때문에 ViewModel은 데이터만 갖고 있으면 됩니다. 따라서 View와 ViewModel을 분리할 수 있습니다.
+### 3.2. 데이터 바인딩 사용하기
+* app/build.gradle에서 활성화하기
+  * 바인딩 클래스는 레이아웃의 파일 이름을 기준으로 생성되고 그 뒤에 Binding을 붙입니다.
+  ```gradle
+  android {
+      ...
+      dataBinding{
+          enabled = true
+      }
+  } 
+  ```
+* 레이아웃 xml 내 바인딩할 클래스를 작성하기
+  * 루트에 layout 태그부터 시작해야 합니다.
+  * layout 태그 안에서 data 태그의 variable 태그를 사용해 바인딩할 클래스를 변수로 지정합니다.
+    * data 태그의 ```name``` 속성 값은 binding 클래스의 set{name} / get{name} 메서드의 이름에 반영됩니다.
+  * layout 태그에서 layout_width/height 속성을 제거해야 ```duplicate attribute``` 오류가 발생하지 않습니다.
+  * data 태그 다음으로 View 루트 요소가 시작됩니다.
+  ```xml
+  <layout ...>
+      <data>
+          <import type="java.util.List"/>
+          <variable name="userList" type="List&lt;User&gt;"/>
+          <variable name="note"  type="String"/>
+          <variable
+              name="{클래스 별칭}"
+              type="{패키지명}.{경로/데이터 클래스 명}" />
+      </data>
+      <LinearLayout ...>
+      ...
+  </layout>
+  ```
+* 레이아웃 xml 내 데이터를 보여줄 View와 사용자 액션 인터페이스를 제공할 View를 작성하기
+  * ```데이터```를 보여줄 View를 작성합니다.
+    * 클래스별칭 다음 ```.``` 문자를 사용합니다.
+    ```xml
+    <TextView
+        android:id="@+id/text_sample"
+        ...
+        android:text="@{클래스 별칭.string 변수명}" />
+    ``` 
+  * 클릭 이벤트 등 ```메서드```를 호출할 View를 작성합니다.
+    * 클래스별칭 다음 ```::``` 문자를 사용합니다.
+    ```xml
+    <Button
+        android:onClick="@{클래스 별칭::메서드 명" />
+    ```
+* 바인딩할 클래스 정의하기
+  * 데이터 바인딩을 통해 xml로부터 클래스의 메서드가 호출되면 클래스에서는 해당 메서드가 실행됩니다.
+  * 해당 메서드는 메서드 내부에 정의된 ```ObservableInt.set()``` 과 같은 메서드를 호출해서 멤버 변수 값을 변경합니다.
+  * 그리고 ```ObservableInt.set()``` 메서드가 호출되면 xml 레이아웃에 변경 사항이 반영되도록 예약됩니다.
+  * 멤버변수의 제한자는 public으로 지정해줘야 ```접근 오류```가 발생하지 않습니다.
+  * 멤버변수의 자료형은 아래와 같습니다.
+    * String의 경우 ObservableField<String>
+    * int의 경우 ObservableInt
+  ```java
+  public class User {
+      private static final String TAG = User.class.getSimpleName();
+      public ObservableField<String> name = new ObservableField<>();
+      public ObservableInt likes = new ObservableInt();
+
+      public User(ObservableField<String> name, ObservableInt likes) {
+          this.name = name;
+          this.likes = likes;
+          likes.set(0);
+      }
+
+      public void onClickLike(View view) {
+          Log.d(TAG, String.format("onClickLike - view : %s", view.toString()));
+          likes.set(likes.get() + 1);
+      }
+  }
+  ```
+* 바인딩할 클래스의 인스턴스와 레이아웃을 실제로 연결하기
+  * ```DataBindingUtil.setContentView()``` 메서드를 호출해서 바인딩된 레이아웃의 객체를 생성합니다.
+  * xml layout에서 정의한 view의 id로 view 객체를 불러올 수 있습니다.
+  ```java
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      // 데이터 바인딩의 setContentView() 메서드가 Activity 클래스의 setContentView를 호출하기 때문에 아래 코드는 제거합니다.
+      // setContentView(R.layout.activity_main);
+
+      // xml layout이 바인딩된 클래스 인스턴스의 멤버 변수 값을 가져올 수 있습니다.
+      ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+      // 바인딩할 클래스의 인스턴스를 생성해 바인딩할 대상으로 지정합니다.
+      activityMainBinding.setUser(new User("first user"));
+      String date = (String) DateFormat.format("yyyy/MM/dd kk:mm:ss", Calendar.getInstance());
+      // xml layout에서 정의한 view의 id로 view 객체를 불러올 수 있습니다.
+      activityMainBinding.textTime.setText(date);
+  }
+  ```
+## 5. ViewModel을 공유하려면
+### 5.1. ViewModelProvider를 사용합니다.
+* AAC(Android Architecture Component) ViewModel에서 사용하는 클래스입니다.
+* 화면 전환할 때 액티비티 또는 프래그먼트의 라이프 사이클을 활용하여 데이터를 유지합니다.
+* ViewModel 인스턴스 pool의 역할을 합니다.
+* ViewModel 인스턴스를 반환하여 여러 xml에서 데이터를 읽어올 수 있습니다.
+* ViewModel을 생성하기 위한 팩토리 클래스입니다.
+# 참고
+* 안드로이드 개발 레벨업 교과서
+* [developer.android.com/topic - data binding](https://developer.android.com/topic/libraries/data-binding/?hl=ko)
+* [XML의 id와 Activity의 View를 연결하는 방법](https://heowc.tistory.com/18)
+* [데이터 바인딩](https://gun0912.tistory.com/71)
+* [데이터 바인딩으로 View와 ViewModel을 분리한다](https://www.kdata.or.kr/info/info_04_view.html?field=&keyword=&type=techreport&page=7&dbnum=188011&mode=detail&type=techreport)
+# 
