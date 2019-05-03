@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyDataBindingApp</string>
+    <string name="text_count_up">카운트 증가</string>
+    <string name="text_count_colon">카운트 :</string>
+</resources>
