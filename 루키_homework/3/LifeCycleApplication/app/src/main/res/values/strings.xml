@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LifeCycleApplication</string>
+    <string name="text_start_fragment">프래그먼트 시작</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+    <string name="text_show_dialog">다이얼로그 보기</string>
+    <string name="text_finish">종료하기</string>
+    <string name="text_start_transparent_activity">투명ACT</string>
+    <string name="text_start_activity">액티비티 시작</string>
+    <string name="text_execute_null">null</string>
+    <string name="text_infinite_loop">무한반복</string>
+    <string name="text_infinite_fragment">무한FRAG</string>
+    <string name="text_request_read_contacts">연락처 권한</string>
+</resources>

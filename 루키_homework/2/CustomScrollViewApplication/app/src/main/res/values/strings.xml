@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CustomScrollViewApplication</string>
+    <string name="text_restaurant_name">음식점 이름</string>
+    <string name="text_test">테스트</string>
+</resources>

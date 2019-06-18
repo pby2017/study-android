@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CustomFragNavApplication</string>
+    <string name="text_my_yogiyo">마이요기요</string>
+    <string name="text_order_history">주문내역</string>
+    <string name="text_search">검색</string>
+    <string name="text_home">홈</string>
+    <string name="text_all_restaurant">전체 음식점</string>
+    <string name="text_yogifriend">요기프렌드</string>
+    <string name="text_user_name">박병용</string>
+    <string name="text_mr_hosik">호식이</string>
+    <string name="text_search_example">음식점명이나 메뉴명으로 검색하세요.</string>
+</resources>

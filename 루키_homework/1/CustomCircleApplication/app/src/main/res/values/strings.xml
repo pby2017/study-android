@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CustomCircleApplication</string>
+    <string name="text_first">첫번째</string>
+    <string name="text_second">두번째</string>
+</resources>

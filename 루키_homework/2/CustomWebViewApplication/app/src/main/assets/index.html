@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Js Interface Sample</title>
+</head>
+<body>
+<div>
+    <div>
+        <input id="text_in_app_input" type="text"/>
+        <input type="button" value="set text in app" onclick="setTextInApp()"/>
+    </div>
+    <div>
+        <span>Web text : </span>
+        <span id="text_in_web"></span>
+    </div>
+</div>
+<br>
+<br>
+<div>
+    <input id="text_url_input" type="text" value="https://www.yogiyo.co.kr"/>
+    <input type="button" value="change web view" onclick="changeWebView()"/>
+</div>
+</body>
+<script type="text/javascript">
+    function setTextInApp() {
+        var query = document.getElementById("text_in_app_input").value;
+        Android.setTextInApp(query);
+    }
+    function changeWebView(){
+        var query = document.getElementById("text_url_input").value;
+        Android.changeWebView(query);
+    }
+    function setTextInWeb(text) {
+        var textInWebSpan = document.getElementById("text_in_web");
+        textInWebSpan.textContent=text;
+    }
+</script>
+</html>
