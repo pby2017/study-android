@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CustomDialogApplication</string>
+    <string name="text_change_password01">비밀번호를</string>
+    <string name="text_change_password02">변경해주세요</string>
+    <string name="text_change_password_infomation01">고객님의 소중한 정보 보호를 위해</string>
+    <string name="text_change_password_infomation02">쪼~끔 불편하시더라도</string>
+    <string name="text_change_password_infomation03">3개월 주기로 비밀번호 변경해주세요.</string>
+    <string name="text_close">닫기</string>
+    <string name="text_dont_show_again">30일간 다시 보지 않기</string>
+    <string name="text_old_password_colon">기존 비밀번호 :</string>
+    <string name="test">테스트</string>
+    <string name="text_dont_show_date">30</string>
+    <string name="text_changing_password">패스워드 변경하기</string>
+    <string name="text_origin_password_colon">비밀번호 입력 : </string>
+    <string name="text_new_password_colon">새 비밀번호 입력 : </string>
+    <string name="text_complete_change">변경 완료</string>
+    <string name="text_dont_show_checked">다시 보지 않기를 선택하셨습니다.</string>
+    <string name="text_initialize_showing_dialog">다이얼로그 설정 초기화</string>
+</resources>

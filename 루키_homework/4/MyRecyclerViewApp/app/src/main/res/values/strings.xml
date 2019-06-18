@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyRecyclerViewApp</string>
+    <string name="text_add_item">아이템 추가</string>
+    <string name="text_delete_item">아이템 삭제</string>
+</resources>

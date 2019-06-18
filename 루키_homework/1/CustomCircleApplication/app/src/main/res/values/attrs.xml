@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomStrokedCircleView">
+        <attr name="setStrokeWidth" format="float" />
+        <attr name="setRadius" format="float" />
+    </declare-styleable>
+</resources>

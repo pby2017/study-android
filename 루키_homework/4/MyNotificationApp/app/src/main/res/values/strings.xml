@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyNotificationApp</string>
+    <string name="text_notification_title">알림 제목</string>
+    <string name="text_channel_name">멋진 채널들</string>
+    <string name="text_channel_description">멋진 채널들이 모여있는 곳</string>
+    <string name="text_notification_settings">알림 설정</string>
+    <string name="text_start_timer">타이머 시작</string>
+</resources>
