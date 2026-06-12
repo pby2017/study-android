@@ -1,0 +1,45 @@
+---
+layout: default
+title: study — 1분 지식 카드
+---
+
+<div class="filters">
+  <button class="chip active" data-cat="all">전체 <span>{{ site.data.cards.cards | size }}</span></button>
+  {% for c in site.data.cards.categories %}
+    {% assign n = site.data.cards.cards | where: "category", c.id | size %}
+    <button class="chip" data-cat="{{ c.id }}" style="--chip:{{ c.color }}">{{ c.name }} <span>{{ n }}</span></button>
+  {% endfor %}
+</div>
+
+<div class="grid">
+  {% for card in site.data.cards.cards %}
+    {% assign cat = site.data.cards.categories | where: "id", card.category | first %}
+    <article class="card" data-cat="{{ card.category }}" style="--accent:{{ cat.color }}">
+      <span class="badge">{{ cat.name }}</span>
+      <h2>{{ card.title }}</h2>
+      <p class="summary">{{ card.summary | strip_newlines }}</p>
+      {% if card.points %}
+      <ul class="points">
+        {% for p in card.points %}<li>{{ p }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if card.source %}
+      <a class="src" href="{{ card.source }}" target="_blank" rel="noopener">원본 →</a>
+      {% endif %}
+    </article>
+  {% endfor %}
+</div>
+
+<script>
+  // Pure client-side category filter — no plugin needed.
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.card');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const cat = chip.dataset.cat;
+    cards.forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }));
+</script>

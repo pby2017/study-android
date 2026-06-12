@@ -1,0 +1,248 @@
+# 1분 지식 카드 데이터. index.html이 이 파일을 읽어 카드뷰로 렌더링합니다.
+# 각 카드: category, title, summary(1분 분량), points(핵심 bullet), source(원본 링크, 있으면)
+# 원본 보존: legacy/ 의 .md 를 GitHub blob URL로 연결.
+
+categories:
+  - id: kotlin
+    name: Kotlin
+    color: "#7f52ff"
+  - id: android
+    name: Android
+    color: "#3ddc84"
+  - id: architecture
+    name: 설계·아키텍처
+    color: "#58a6ff"
+  - id: ai
+    name: AI 코딩 도구
+    color: "#e3b341"
+
+cards:
+  # ===================== KOTLIN =====================
+  - category: kotlin
+    title: 코틀린이란 — 정적 타입 + 함수형
+    summary: >
+      코틀린은 JVM에서 도는 언어로, 자바와의 상호운용성을 중시한다. 핵심은 '정적 타입 지정'이라 컴파일
+      시점에 타입이 확정돼 성능·신뢰성·유지보수·도구지원이 좋아진다. 동시에 타입 추론을 제공해 코드는
+      짧게 유지된다. 함수를 변수처럼 다루는 일급 함수, 불변성, 부수효과 없는 순수 함수 같은 함수형
+      개념도 지원한다. 자바엔 없는 nullable 타입과 함수 타입이 컴파일 단계에서 NPE 위험을 잡아준다.
+    points:
+      - "정적 타입 + 타입 추론 = 안전하면서 간결"
+      - "nullable 타입(?)으로 NPE를 컴파일 시점에 차단"
+      - "일급 함수·불변성·순수 함수 = 함수형 지원"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/1장-코틀린이란_무엇이며_왜_필요한가.md"
+
+  - category: kotlin
+    title: 문(statement)과 식(expression)
+    summary: >
+      자바는 if/제어구조가 값을 만들지 않는 '문'이지만, 코틀린은 루프를 뺀 대부분의 제어구조가 값을
+      만드는 '식'이다. 그래서 `return if(cond) A else B`가 가능하다. 함수도 두 종류 — 중괄호로 감싼
+      '블록 본문 함수'와 등호로 잇는 '식 본문 함수'. 식 본문 함수는 타입 추론 덕에 반환형을 생략할 수
+      있다(블록 본문은 불가). 이 차이가 코틀린 특유의 간결함의 출발점이다.
+    points:
+      - "코틀린의 if/when은 값을 반환하는 '식'"
+      - "식 본문 함수 `fun f() = 1` 은 반환형 생략 가능"
+      - "변수도 타입 추론으로 생략 가능"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/2장-코틀린_기초.md"
+
+  - category: kotlin
+    title: 컬렉션 생성 함수 — setOf/hashSetOf/arrayListOf
+    summary: >
+      코틀린은 컬렉션을 만드는 팩토리 함수를 제공한다. setOf·hashSetOf는 내부적으로 LinkedHashSet,
+      arrayListOf는 ArrayList를 돌려준다. 코틀린은 자체 컬렉션을 새로 만들지 않고 자바 표준
+      컬렉션을 그대로 활용하면서, 정렬·필터 같은 유용한 확장 함수를 얹는 방식이다. `.plus()` 같은
+      연산은 원본을 바꾸지 않고 새 컬렉션을 반환한다(불변성 지향).
+    points:
+      - "코틀린 컬렉션 = 자바 컬렉션 + 확장 함수"
+      - ".plus()는 원본 불변, 새 컬렉션 반환"
+      - "제네릭 원소 모임 + 알고리즘 메서드 제공"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/3장-함수_정의와_호출.md"
+
+  - category: kotlin
+    title: 클래스·인터페이스 — 자바와 무엇이 다른가
+    summary: >
+      코틀린 인터페이스는 자바 8의 default 메서드처럼 구현이 있는 메서드를 가질 수 있지만, 상태(필드)는
+      가질 수 없다. 자바의 extends/implements는 모두 콜론(:)으로 대체되고, 확장 클래스 뒤엔 괄호()를
+      붙인다. 인터페이스 구현은 개수 제한이 없지만 클래스 확장은 1번만 가능하다. 자바의 @Override는
+      코틀린에서 `override` 변경자가 된다. 본문 없는 멤버는 추상, default는 키워드 없이 본문만 주면 된다.
+    points:
+      - "인터페이스에 구현은 OK, 상태(필드)는 불가"
+      - "extends/implements → 콜론(:) 하나로 통일"
+      - "@Override → override 변경자"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/4장-클래스,_객체,_인터페이스.md"
+
+  - category: kotlin
+    title: 람다 — 코드 블록을 인자로 넘기기
+    summary: >
+      람다는 다른 함수에 넘길 수 있는 작은 코드 조각이다. 자바 8처럼 코드 블록을 함수 인자로 직접
+      전달할 수 있어, 안드로이드의 setOnClickListener 같은 '메서드 하나뿐인 익명 객체'를 람다로
+      대체해 코드를 확 줄인다. 컬렉션에선 maxBy처럼 기준을 람다로 받는 라이브러리 함수가 있어
+      `list.maxBy { it.age }` 식으로 짧게 쓴다. 멤버 참조(Person::age)로 더 줄일 수도 있다.
+    points:
+      - "익명 객체 → 람다로 보일러플레이트 제거"
+      - "list.maxBy { it.age } 처럼 기준을 람다로"
+      - "멤버 참조(::)로 한 번 더 축약"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/5장-람다로_프로그래밍.md"
+
+  - category: kotlin
+    title: "널 가능성 — ?. 와 ?: 로 NPE 방어"
+    summary: >
+      코틀린 타입 시스템은 널 가능 여부를 타입에 담아 NPE를 컴파일 시점에 잡는다. 타입 뒤에 ?를 붙이면
+      null을 담을 수 있는 타입이 된다. 안전한 호출 `?.`는 null 검사와 호출을 한 번에 — `a?.length`는
+      a가 null이면 그대로 null을 반환한다(결과 타입도 nullable). 엘비스 연산자 `?:`는 null일 때
+      기본값을 지정한다. 이 조합이 코틀린이 자바보다 NPE에 강한 핵심 이유다.
+    points:
+      - "타입 뒤 ? = 널 가능 타입"
+      - "?. = null이면 호출 건너뛰고 null 반환"
+      - "?: = null일 때 기본값 제공(엘비스)"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/6장-코틀린_타입_시스템.md"
+
+  # ===================== ANDROID =====================
+  - category: android
+    title: 액티비티 생명주기
+    summary: >
+      액티비티는 보통 한 화면을 대표하며 AppCompatActivity를 상속한다. 생명주기 콜백은 쌍으로
+      관리한다 — onCreate↔onDestroy, onStart↔onStop. onCreate(초기화·뷰 생성), onStart(아직
+      비표시, 센서·통신 시작), onResume(표시·화면 갱신), onPause(포커스 상실·리소스 해제·저장),
+      onStop(통신 정지), onDestroy(참조 정리). 다른 클래스가 액티비티 인스턴스를 참조하면 폐기 후에도
+      메모리에 남아 누수가 생긴다.
+    points:
+      - "콜백은 쌍으로 — onCreate↔onDestroy, onStart↔onStop"
+      - "onPause에서 저장·리소스 해제"
+      - "외부 참조가 남으면 메모리 누수"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_02(액티비티와프래그먼트).md"
+
+  - category: android
+    title: 화면 회전과 상태 복원 — onSaveInstanceState
+    summary: >
+      화면 가로/세로 전환 같은 디바이스 설정 변경이 일어나면 기존 액티비티는 폐기되고 새로 생성된다.
+      그래서 입력값 등이 사라진다. onSaveInstanceState/onRestoreInstanceState 콜백으로 데이터를
+      저장·복구할 수 있다. 저장 가능한 자료형은 기본형·문자열·리스트, 그리고 Parcelable을 구현한
+      인스턴스다. 시스템 임시 영역에 IPC로 주고받기 때문에 전달 규약이 필요하고, 그게 Parcelable
+      인터페이스다. 단, 뒤로가기로 명시적으로 폐기하면 호출되지 않는다.
+    points:
+      - "설정 변경 = 액티비티 재생성 → 상태 유실"
+      - "onSaveInstanceState로 저장, Parcelable로 전달"
+      - "뒤로가기 폐기 시엔 호출 안 됨"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_02(액티비티와프래그먼트).md"
+
+  - category: android
+    title: 레이아웃 선택 — Linear vs Constraint
+    summary: >
+      LinearLayout은 depth가 얕고 순차적으로 뷰를 나열할 때, 단순한 화면에 적합하다. 복잡한 화면엔
+      RelativeLayout/ConstraintLayout을 쓴다. 사진 주변에 여러 뷰를 배치하는 상황은 예전엔
+      RelativeLayout이었지만 요즘은 ConstraintLayout이 표준 — 깊어지기 쉬운 계층을 1단계로
+      평탄화하는 게 장점이다. 속도도 다르다: LinearLayout은 사이즈를 2번 측정해 상대적으로 느리고,
+      ConstraintLayout은 최적화로 1번만 측정해 더 빠르다.
+    points:
+      - "단순·순차 = Linear, 복잡 = Constraint"
+      - "Constraint는 계층을 평탄화(depth↓)"
+      - "측정 횟수: Linear 2회 vs Constraint 1회"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/QnA/android/layout.md"
+
+  - category: android
+    title: 머티리얼 디자인 — 일관된 시각 언어
+    summary: >
+      스큐어모픽(실물 모사)→플랫(평면)을 거쳐, 구글은 '프로젝트 케네디'로 디자인을 통일했고 그 위에
+      학습 부담을 줄인 머티리얼 디자인을 내놨다. 핵심은 시각 디자인의 공통 언어와 '이디엄'(단순 조작을
+      조합해 의미 있는 조작을 만드는 관용구)으로 사용자가 UI 동작을 예측하게 하는 것. 대표 컴포넌트는
+      리스트/그리드/카드, 그리고 FAB·Raised·Flat 버튼. 카드엔 정보를 의미 단위로 묶는 '청킹'을 적용한다.
+    points:
+      - "케네디 → 머티리얼: 일관성 + 학습부담↓"
+      - "이디엄으로 동작을 예측 가능하게"
+      - "카드·리스트·FAB가 대표 컴포넌트"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_11(머티리얼디자인).md"
+
+  # ===================== ARCHITECTURE =====================
+  - category: architecture
+    title: 왜 설계 기법을 쓰나 — 액티비티 비대화 방지
+    summary: >
+      액티비티는 화면 로직, 사용자 액션 처리, 뷰 데이터 반영 등 너무 많은 역할을 떠안는다. 전부
+      액티비티에 넣으면 변경이 어렵고 관리가 힘들다. 그래서 역할을 분리해 변경에 강한 코드를 만드는
+      게 설계 기법의 목적이다. 대표적으로 MVP(Model-View-Presenter)와 MVVM(Model-View-ViewModel)이
+      있다. 둘 다 '뷰는 표시, 비즈니스/데이터는 분리'라는 원칙을 공유한다.
+    points:
+      - "문제: 액티비티가 모든 역할을 떠안음"
+      - "해결: 역할 분리로 변경에 강하게"
+      - "대표 패턴: MVP, MVVM"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_05(설계기법과라이브러리활용).md"
+
+  - category: architecture
+    title: MVP 패턴 — 장점과 함정
+    summary: >
+      MVP는 Model(DB·API 접근, UI 로직 없음), View(데이터 표시, 액션은 Presenter에 위임),
+      Presenter(Model·View 중개, 이벤트 처리)로 나눈다. Presenter가 인터페이스로만 접근하게 하면
+      테스트가 쉬워진다. 장점은 역할 분리로 액티비티가 작아지고 View-Model 의존이 사라지는 것.
+      단점은 인터페이스 정의로 코드가 길어지고, 데이터를 뷰에 꽂는 로직을 직접 짜야 하며, 표준
+      프레임워크가 없어 분리 방식을 매번 고민해야 한다는 점이다.
+    points:
+      - "Model/View/Presenter로 역할 3분할"
+      - "인터페이스 접근 → 테스트 용이"
+      - "단점: 코드량↑, 표준 프레임워크 부재"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_05(설계기법과라이브러리활용).md"
+
+  - category: architecture
+    title: 그레이들(Gradle)의 이해
+    summary: >
+      Gradle은 안드로이드의 빌드 시스템으로, 어떤 라이브러리를 쓰고 어떻게 컴파일·패키징할지를
+      선언한다. 프로젝트 수준과 모듈(app) 수준 build.gradle로 나뉘며, dependencies 블록에 의존성을
+      적으면 자동으로 받아온다. minSdk/targetSdk로 지원 범위를 정하고, productFlavor로 같은 코드에서
+      여러 빌드 변형(무료/유료 등)을 만든다. 이 학습 레포의 ProductFlavorApp 예제가 그 실습이다.
+    points:
+      - "프로젝트/모듈 build.gradle 2단계"
+      - "dependencies로 라이브러리 선언·자동 수신"
+      - "productFlavor로 빌드 변형 생성"
+    source: "https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_06(그레이들의이해).md"
+
+  # ===================== AI 코딩 도구 (이 세션에서 팩트체크한 week7 조사 기반) =====================
+  - category: ai
+    title: diagnose — 디버깅을 규율로 만드는 스킬
+    summary: >
+      mattpocock/skills의 diagnose는 어려운 버그를 6단계로 푼다 — 재현 가능한 피드백 루프 만들기 →
+      재현 → 가설 3~5개 → 계측 → 수정+회귀 테스트 → 정리·포스트모템. 핵심 통찰은 "피드백 루프 자체가
+      스킬"이라는 것: 빠르고 결정적인 pass/fail 신호만 있으면 이분법·가설검증·계측이 전부 그 신호를
+      소비할 뿐이다. SKILL.md는 "루프를 만들기 전엔 Phase 2로 넘어가지 말라"고 못박는다.
+    points:
+      - "6단계: 루프→재현→가설→계측→수정→정리"
+      - "'피드백 루프가 곧 스킬' — 90%는 루프에서 끝"
+      - "루프 없이 가설 단계로 진행 금지(SKILL.md 명시)"
+    source: "https://github.com/mattpocock/skills"
+
+  - category: ai
+    title: Spec Kit — 명세 주도 개발(SDD)
+    summary: >
+      GitHub의 specify-cli는 코드 전에 명세를 먼저 쓰게 한다: specify→plan→tasks→implement 4단계.
+      `specify init <name> --integration claude`로 설치하면 /speckit-specify 같은 스킬이 생긴다(명령어가
+      아니라 스킬로 설치됨, 하이픈 표기). 각 단계 프롬프트는 $ARGUMENTS로 사용자 입력을 받아 구조화된
+      산출물을 만든다. "AI가 추측해서 짜기 전에 명세로 합의한다"는 게 핵심 가치다.
+    points:
+      - "specify → plan → tasks → implement"
+      - "설치: --integration claude (스킬로 설치, /speckit-specify)"
+      - "$ARGUMENTS로 단계별 입력 구조화"
+    source: "https://github.com/github/spec-kit"
+
+  - category: ai
+    title: Karpathy의 65줄 CLAUDE.md
+    summary: >
+      안드레 카파시가 공유한 짧은 CLAUDE.md가 깃헙 스타 다수를 받으며 화제가 됐다. 핵심은 4규칙 —
+      ① Think Before Coding(추측 말고 먼저 이해), ② Simplicity First(문제를 푸는 최소 코드),
+      ③ Surgical Changes(꼭 필요한 곳만 건드림), ④ Goal-Driven Execution(성공 기준을 정하고 검증될
+      때까지 반복). 규칙 ④는 diagnose의 '피드백 루프' 원리와 같다 — 검증 가능한 목표가 곧 자동화의
+      엔진이다. 도구가 아니라 '지시 방식'이 결과를 바꾼다는 사례.
+    points:
+      - "4규칙: 이해먼저·단순함·수술적변경·목표주도"
+      - "규칙④ = diagnose의 검증 루프와 동일 원리"
+      - "도구가 아니라 '룰 한 장'이 결과를 바꾼다"
+    source: "https://github.com/AndrejKarpathy"
+
+  - category: ai
+    title: Ouroboros — 모호함을 수치로
+    summary: >
+      Ouroboros(Q00 제작, 한국어 README 있음)는 요청의 모호함을 정량화한다. 명확도를 1 − Σ(clarity×weight)
+      로 계산해 임계값(0.2)을 넘으면 "더 물어봐야 한다"고 판단한다. AI가 모호한 요청에 멋대로 추측하는
+      대신, 불명확함을 숫자로 드러내 사용자에게 되묻게 만드는 장치다. diagnose·Spec Kit·Karpathy 규칙과
+      한 줄로 꿰면 — 모두 "AI가 추측하지 않게 만드는" 같은 철학의 다른 구현이다.
+    points:
+      - "모호도 = 1 − Σ(clarity×weight), 임계값 0.2"
+      - "추측 대신 '되묻기'를 트리거"
+      - "diagnose/SpecKit/Karpathy와 같은 철학"
+    source: "https://github.com/Q00/ouroboros/blob/main/README.ko.md"

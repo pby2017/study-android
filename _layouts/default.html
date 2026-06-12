@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko' }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title | default: site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="{{ '/' | relative_url }}">📚 {{ site.title }}</a>
+  <p class="tagline">{{ site.description }}</p>
+</header>
+<main class="wrap">
+  {{ content }}
+</main>
+<footer class="site-foot">
+  <p>원본 학습 기록은 <a href="https://github.com/pby2017/study-android/tree/master/legacy">legacy/</a> 에 보존되어 있습니다.</p>
+</footer>
+</body>
+</html>
