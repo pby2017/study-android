@@ -136,3 +136,10 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+# Jekyll / GitHub Pages
+_site/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+vendor/
+.bundle/

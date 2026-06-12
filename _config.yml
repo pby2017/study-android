@@ -1,0 +1,24 @@
+title: study — 1분 지식 카드
+description: 안드로이드·코틀린·AI 코딩 도구를 1분에 읽는 카드뷰로 정리한 학습 블로그
+lang: ko
+
+# GitHub Pages safe-mode compatible. No custom plugins.
+# Card data lives in _data/cards.yml; rendered by index.html (Liquid + CSS only).
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+
+# Exclude archived original learning material from the built site
+# (kept in the repo under legacy/ for reference, linked via GitHub blob URLs).
+exclude:
+  - legacy/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .gitignore
+  - auto-post-log.md
+
+markdown: kramdown
