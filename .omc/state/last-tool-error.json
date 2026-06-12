@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"TOK=\\\"$(grep -oE 'ghp_[A-Za-z0-9]+|github_pat_[A-Za-z0-9_]+' ~/.ssh/pat_afa_ai_coding.md | sed -n '2p')\\\"\\necho \\\"waiting for first Pages build...\\\"\\nfor i in $(seq 1 20); do\\n  resp=\\\"$(c...",
+  "error": "Exit code 1\nwaiting for first Pages build...\n(eval):5: read-only variable: status",
+  "timestamp": "2026-06-12T13:31:35.772Z",
+  "retry_count": 1
+}
