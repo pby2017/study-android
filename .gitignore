@@ -143,3 +143,8 @@ _site/
 Gemfile.lock
 vendor/
 .bundle/
+
+# Claude Code / OMC runtime state (must never be committed)
+.omc/
+.claude/
+CLAUDE.md
