@@ -246,3 +246,17 @@ cards:
       - "추측 대신 '되묻기'를 트리거"
       - "diagnose/SpecKit/Karpathy와 같은 철학"
     source: "https://github.com/Q00/ouroboros/blob/main/README.ko.md"
+
+  - category: ai
+    title: "서브에이전트 — 컨텍스트를 지키는 분업"
+    summary: >
+      Claude Code의 서브에이전트는 자기만의 컨텍스트 창·시스템 프롬프트·도구 접근·권한을 가진 별도
+      인스턴스다. 검색·로그·파일 읽기처럼 본 대화를 어지럽힐 곁가지 작업을 서브에이전트에 맡기면, 그
+      과정의 잡음은 서브에이전트 안에 갇히고 메인 대화에는 '요약 결과'만 돌아온다. 즉 똑똑하게
+      만드는 게 아니라 '이미 쌓인 컨텍스트의 품질을 보존'하는 장치다. Read·Grep만 주는 식으로 도구를
+      좁히면 의도치 않은 수정도 막는다.
+    points:
+      - "정의: .claude/agents/(프로젝트) 또는 ~/.claude/agents/(전체)에 YAML 프런트매터 .md"
+      - "필드: name·description·tools(생략 시 전부 상속)·model / 본문=시스템 프롬프트"
+      - "호출: 자연어 언급, @멘션(해당 작업 보장), --agent(세션 전체) / 파일 직접 편집 후엔 재시작"
+    source: "https://code.claude.com/docs/en/sub-agents"
