@@ -19,3 +19,4 @@
 - 2026-06-20 09:00 KST | /context — 컨텍스트 창이 어디로 새는지 색깔 격자로 보기 | https://code.claude.com/docs/en/commands
 - 2026-06-20 21:30 KST | 플러그인 마켓플레이스 — marketplace.json 하나로 팀에 플러그인 배포하기 | https://code.claude.com/docs/en/plugin-marketplaces
 - 2026-06-21 09:00 KST | 다이내믹 워크플로 — Claude가 짠 스크립트로 서브에이전트 수십~수백 개 굴리기 | https://code.claude.com/docs/en/workflows
+- 2026-06-21 21:30 KST | MessageDisplay 훅 — 화면에 보이는 답변 텍스트만 바꿔치기 | https://code.claude.com/docs/en/hooks
