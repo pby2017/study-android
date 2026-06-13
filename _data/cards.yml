@@ -493,3 +493,18 @@ cards:
       - "stdin: columns + tasks 배열(id·status·tokenCount 등), stdout: {\"id\",\"content\"} 줄 단위"
       - "id 생략 시 기본 렌더 유지, content 빈 문자열이면 행 숨김 / statusLine과 동일한 trust·disableAllHooks 적용"
     source: "https://code.claude.com/docs/en/statusline"
+  - category: ai
+    title: "플러그인 마켓플레이스 — marketplace.json 하나로 팀에 플러그인 배포하기"
+    summary: >
+      마켓플레이스는 플러그인을 남에게 나눠주는 카탈로그다. 레포 루트의
+      `.claude-plugin/marketplace.json`에 name·owner·plugins 세 필드를 채우면 되고,
+      각 plugin 항목은 최소 name과 source(어디서 가져올지)만 있으면 된다. source는 같은
+      레포의 상대경로(`./plugins/x`)부터 github·url·git-subdir·npm까지 지원하며,
+      github/url 소스는 ref(브랜치·태그)와 sha(정확한 커밋)로 버전을 고정할 수 있다.
+      쓰는 쪽은 `/plugin marketplace add owner/repo`로 등록하고
+      `/plugin install <플러그인>@<마켓플레이스>`로 깔며, `/plugin marketplace update`로 갱신한다.
+    points:
+      - "marketplace.json 필수 필드: name(kebab-case) · owner · plugins[] / 각 plugin은 name+source"
+      - "source 종류: 상대경로(./) · github · url · git-subdir · npm — github/url은 ref·sha로 핀 고정"
+      - "버전 미설정 시 git 커밋 SHA가 버전 — 핀 걸린 plugin.json version은 바꿔야 업데이트 전파"
+    source: "https://code.claude.com/docs/en/plugin-marketplaces"
