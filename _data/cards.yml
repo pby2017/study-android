@@ -466,3 +466,17 @@ cards:
       - "포그라운드는 깊이 무제한(블로킹·자기제한), 백그라운드는 깊이 5에서 차단"
       - "특정 서브에이전트 차단: tools에서 Agent 빼거나 disallowedTools에 추가"
     source: "https://code.claude.com/docs/en/sub-agents"
+  - category: ai
+    title: "subagentStatusLine — 서브에이전트 행마다 표시 내용 직접 그리기"
+    summary: >
+      subagentStatusLine은 프롬프트 아래 에이전트 패널에서 각 서브에이전트 행의 본문을
+      기본 'name · description · token count' 대신 내 포맷으로 바꾸는 설정이다.
+      settings.json에 type "command"로 스크립트를 등록하면, 새로고침 틱마다 한 번 실행되며
+      보이는 모든 서브에이전트 행이 stdin에 단일 JSON으로 들어온다. 입력에는 공통 훅 필드 외에
+      columns(행 너비)와 tasks 배열(각 항목에 id·name·type·status·description·label·startTime·tokenCount·tokenSamples·cwd)이 담긴다.
+      stdout에 행마다 {"id":..., "content":...} 한 줄씩 출력하면 그 행만 덮어쓴다.
+    points:
+      - "서브에이전트 패널 행 본문 커스터마이즈 — 기본은 name·description·token count"
+      - "stdin: columns + tasks 배열(id·status·tokenCount 등), stdout: {\"id\",\"content\"} 줄 단위"
+      - "id 생략 시 기본 렌더 유지, content 빈 문자열이면 행 숨김 / statusLine과 동일한 trust·disableAllHooks 적용"
+    source: "https://code.claude.com/docs/en/statusline"
