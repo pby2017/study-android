@@ -523,3 +523,16 @@ cards:
       - "`/workflows`로 실행·완료 목록 확인 / 저장하면 `/<이름>` 명령이 되고 args로 입력 받음"
       - "에이전트를 많이 띄워 토큰 사용 큼 — 작은 슬라이스(디렉터리 하나)부터 시험 권장"
     source: "https://code.claude.com/docs/en/workflows"
+
+  - category: ai
+    title: "MessageDisplay 훅 — 화면에 보이는 답변 텍스트만 바꿔치기"
+    summary: >
+      MessageDisplay는 어시스턴트 메시지 텍스트가 화면에 출력되는 동안 도는 표시 전용(display-only) 훅이다.
+      hookSpecificOutput.displayContent로 문자열을 돌려주면 화면에 보이는 텍스트가 그것으로 교체된다.
+      단 트랜스크립트와 Claude가 보는 내용은 원본 그대로 유지돼, 모델의 판단에는 영향을 주지 않고 사람 눈에 보이는 것만 손댄다.
+      matcher를 지원하지 않아 매번 발생하고, 기본 타임아웃이 10초로 낮게 잡혀 있으며, 블로킹은 불가(exit 2면 원본이 그대로 표시).
+    points:
+      - "displayContent로 화면 출력 텍스트만 교체 — 트랜스크립트·모델 시야는 원본 유지"
+      - "matcher 미지원, 항상 발생 / 기본 타임아웃 10초로 낮음"
+      - "블로킹 불가 — exit code 2여도 원본 텍스트가 그대로 표시됨"
+    source: "https://code.claude.com/docs/en/hooks"
