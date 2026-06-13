@@ -3,3 +3,4 @@
 - 2026-06-13 21:30 KST | --safe-mode — 커스터마이징 다 끄고 설정 문제 격리 | https://code.claude.com/docs/en/cli-reference
 - 2026-06-13 21:45 KST | /cd — 프롬프트 캐시 깨지 않고 작업 디렉터리 옮기기 | https://code.claude.com/docs/en/commands
 - 2026-06-13 22:30 KST | 출력 스타일(Output Styles) — Claude의 역할·말투를 시스템 프롬프트째 바꾸기 | https://code.claude.com/docs/en/output-styles
+- 2026-06-13 23:30 KST | fallbackModel — 기본 모델이 막힐 때 대체 모델로 자동 전환 | https://code.claude.com/docs/en/settings

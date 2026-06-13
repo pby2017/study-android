@@ -314,3 +314,16 @@ cards:
       - "CLAUDE.md(프로젝트 컨텍스트)와 달리 시스템 프롬프트 자체를 수정 — 매 응답에 적용, /clear 후 반영"
       - "커스텀은 .claude/output-styles 마크다운 / 기본은 코딩 지침 제외, keep-coding-instructions: true로 유지"
     source: "https://code.claude.com/docs/en/output-styles"
+  - category: ai
+    title: "fallbackModel — 기본 모델이 막힐 때 대체 모델로 자동 전환"
+    summary: >
+      fallbackModel은 기본 모델이 과부하(overloaded)거나 사용 불가일 때 쓸 백업 모델을 지정하는 설정이다.
+      settings.json에 모델 이름 배열로 적으면 적힌 순서대로 시도하고, 전환되면 알림(notice)을 보여준다.
+      체인은 최대 3개까지만 적용되고 그 이상은 무시된다. `"default"`는 기본 모델로 확장된다.
+      이 키는 설정 파일 간 병합되지 않아서, 우선순위가 가장 높은 파일이 체인 전체를 결정한다.
+      한 세션만 바꾸려면 `--fallback-model` 플래그로 덮어쓸 수 있다.
+    points:
+      - "기본 모델 과부하·불가 시 배열 순서대로 백업 모델 시도 + 전환 알림 표시"
+      - "체인 최대 3개(초과 무시) / \"default\"는 기본 모델로 확장 / 병합 안 됨(최상위 파일이 전체 결정)"
+      - "단발성 변경은 --fallback-model 플래그로 한 세션만 덮어쓰기"
+    source: "https://code.claude.com/docs/en/settings"
