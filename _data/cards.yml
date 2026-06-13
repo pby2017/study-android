@@ -426,3 +426,16 @@ cards:
       - "이름 생략 시 자동 생성, '#1234'·PR URL 주면 pull/<번호>/head를 .claude/worktrees/pr-<번호>에 체크아웃"
       - ".worktreeinclude로 .gitignore된 로컬 파일(.env 등)만 골라 복사 / 비-git VCS는 WorktreeCreate 훅"
     source: "https://code.claude.com/docs/en/worktrees"
+
+  - category: ai
+    title: "스킬 disallowed-tools — 활성 동안 도구를 아예 풀에서 빼기"
+    summary: >
+      스킬 프런트매터의 `allowed-tools`와 `disallowed-tools`는 정반대 일을 한다.
+      `allowed-tools`는 스킬이 활성인 동안 적힌 도구를 승인 없이 쓰게 해주지만 제한은 아니다 — 모든 도구는 여전히 호출 가능하고 권한 설정이 그대로 적용된다.
+      반면 `disallowed-tools`는 적힌 도구를 활성 동안 모델의 가용 풀에서 통째로 제거한다. 공식 문서가 든 예는 배경 루프에서 `AskUserQuestion`을 못 부르게 막는 것 — 사람이 안 보는 자율 스킬에 유용하다.
+      단, 이 제한은 다음 메시지를 보내면 풀린다. 모든 스킬·프롬프트에 영구 적용하려면 권한 설정의 deny 규칙을 써야 한다.
+    points:
+      - "allowed-tools: 승인 없이 쓰게 허용(제한 아님) / disallowed-tools: 풀에서 제거(진짜 제한)"
+      - "예: 자율 배경 루프에서 AskUserQuestion 차단 — 사람 개입 호출 자체를 막음"
+      - "제한은 다음 메시지에 해제 / 영구 차단은 권한 설정 deny 규칙"
+    source: "https://code.claude.com/docs/en/slash-commands"

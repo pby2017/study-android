@@ -12,3 +12,4 @@
 - 2026-06-16 21:30 KST | PreCompact 훅 — 압축 직전, 컨텍스트를 지킬 마지막 기회 | https://code.claude.com/docs/en/hooks
 - 2026-06-14 22:30 KST | 훅 핸들러 5종 — 셸 말고도 HTTP·MCP 도구·프롬프트·에이전트로 받기 | https://code.claude.com/docs/en/hooks
 - 2026-06-17 09:00 KST | claude --worktree — 작업끼리 안 부딪히는 격리 세션 한 줄로 띄우기 | https://code.claude.com/docs/en/worktrees
+- 2026-06-17 21:30 KST | 스킬 disallowed-tools — 활성 동안 도구를 아예 풀에서 빼기 | https://code.claude.com/docs/en/slash-commands
