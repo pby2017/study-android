@@ -327,3 +327,15 @@ cards:
       - "체인 최대 3개(초과 무시) / \"default\"는 기본 모델로 확장 / 병합 안 됨(최상위 파일이 전체 결정)"
       - "단발성 변경은 --fallback-model 플래그로 한 세션만 덮어쓰기"
     source: "https://code.claude.com/docs/en/settings"
+  - category: ai
+    title: "Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기"
+    summary: >
+      Stop·SubagentStop 훅은 hookSpecificOutput.additionalContext로 문자열을 돌려줄 수 있다.
+      Claude Code는 이 문자열을 시스템 리마인더로 감싸 턴이 끝나는 지점에 끼워 넣고, 대화가 계속되어 Claude가 그 내용을 보고 작업을 이어간다.
+      decision: "block"이 오류 피드백으로 강제 계속시키는 것과 달리, additionalContext는 오류가 아닌 정보성 피드백이다.
+      한 이벤트에 여러 훅이 값을 돌려주면 Claude는 전부 받고, 한 값이 10,000자를 넘으면 전체 텍스트는 세션 디렉터리 파일로 저장되고 미리보기와 파일 경로만 전달된다.
+    points:
+      - "Stop·SubagentStop은 hookSpecificOutput.additionalContext로 턴 끝에 컨텍스트 주입 가능"
+      - "block(오류 피드백) vs additionalContext(정보성 피드백) — 둘 다 대화를 계속시키지만 성격이 다름"
+      - "값 10,000자 초과 시 파일로 저장 후 경로+미리보기만 전달 / 여러 훅 값은 모두 수신"
+    source: "https://code.claude.com/docs/en/hooks"
