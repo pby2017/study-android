@@ -375,3 +375,15 @@ cards:
       - "user-invocable: false → / 메뉴에서 숨김, Claude만 사용(배경 지식용)"
       - "둘 다 기본 false/true → 기본은 양쪽 모두 호출 가능 / 부작용 있는 /deploy·/commit에 disable-model-invocation 권장"
     source: "https://code.claude.com/docs/en/slash-commands"
+  - category: ai
+    title: "스킬 effort 프런트매터 — 명령마다 추론 강도 따로 주기"
+    summary: >
+      스킬(=통합된 커스텀 슬래시 명령)의 프런트매터에 effort 필드를 두면, 그 스킬이 활성화된 동안만 세션의 추론 강도(effort level)를 덮어쓴다.
+      값은 low·medium·high·xhigh·max 중 모델이 지원하는 범위에서 고르며, 지정하지 않으면 세션 설정을 그대로 따른다.
+      가벼운 포맷 정리·로그 한 줄 추가 같은 스킬엔 low를, 아키텍처 설계·보안 점검처럼 깊은 사고가 필요한 스킬엔 high 이상을 박아두면 매번 /model로 바꿀 필요가 없다.
+      비슷하게 model 필드로 그 스킬이 도는 동안의 모델 자체를 바꿀 수도 있고, 본문에서는 ${CLAUDE_EFFORT}로 현재 강도를 읽어 지시를 분기할 수 있다.
+    points:
+      - "effort: low/medium/high/xhigh/max — 스킬 활성 동안만 세션 effort 덮어씀(미지정 시 세션 상속)"
+      - "model 필드와 짝 — 스킬 도는 동안의 모델까지 바꾸고 턴 끝나면 세션 모델 복귀"
+      - "본문에서 ${CLAUDE_EFFORT}로 현재 강도 읽어 지시 분기 가능(ultracode는 xhigh로 표시)"
+    source: "https://code.claude.com/docs/en/slash-commands"
