@@ -7,3 +7,4 @@
 - 2026-06-14 09:00 KST | Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기 | https://code.claude.com/docs/en/hooks
 - 2026-06-14 21:30 KST | 상태줄 rate_limits — 5시간·7일 사용량을 항상 눈에 보이게 | https://code.claude.com/docs/en/statusline
 - 2026-06-15 09:00 KST | disableBundledSkills — 번들 스킬·내장 명령을 모델 눈앞에서 치우기 | https://code.claude.com/docs/en/settings
+- 2026-06-15 21:30 KST | 스킬 호출 권한 — disable-model-invocation / user-invocable | https://code.claude.com/docs/en/slash-commands
