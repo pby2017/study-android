@@ -20,3 +20,4 @@
 - 2026-06-20 21:30 KST | 플러그인 마켓플레이스 — marketplace.json 하나로 팀에 플러그인 배포하기 | https://code.claude.com/docs/en/plugin-marketplaces
 - 2026-06-21 09:00 KST | 다이내믹 워크플로 — Claude가 짠 스크립트로 서브에이전트 수십~수백 개 굴리기 | https://code.claude.com/docs/en/workflows
 - 2026-06-21 21:30 KST | MessageDisplay 훅 — 화면에 보이는 답변 텍스트만 바꿔치기 | https://code.claude.com/docs/en/hooks
+- 2026-06-22 09:00 KST | --exclude-dynamic-system-prompt-sections — 프롬프트 캐시 재사용률 높이기 | https://code.claude.com/docs/en/cli-reference

@@ -536,3 +536,16 @@ cards:
       - "matcher 미지원, 항상 발생 / 기본 타임아웃 10초로 낮음"
       - "블로킹 불가 — exit code 2여도 원본 텍스트가 그대로 표시됨"
     source: "https://code.claude.com/docs/en/hooks"
+
+  - category: ai
+    title: "--exclude-dynamic-system-prompt-sections — 프롬프트 캐시 재사용률 높이기"
+    summary: >
+      이 플래그는 머신마다 달라지는 시스템 프롬프트 조각(작업 디렉터리, 환경 정보, 메모리 경로, git 레포 여부)을
+      시스템 프롬프트에서 빼서 첫 번째 사용자 메시지로 옮긴다.
+      시스템 프롬프트가 사용자·머신에 상관없이 동일해지므로, 같은 작업을 여러 사람·여러 머신이 돌릴 때 프롬프트 캐시가 더 잘 재사용된다.
+      기본 시스템 프롬프트에서만 동작하고 `--system-prompt`/`--system-prompt-file`를 쓰면 무시되며, `-p`(print) 스크립트의 다중 사용자 워크로드에 쓰라고 안내된다.
+    points:
+      - "머신별 조각(cwd·환경·메모리경로·git여부)을 시스템 프롬프트 → 첫 사용자 메시지로 이동"
+      - "시스템 프롬프트가 동일해져 사용자·머신 간 프롬프트 캐시 히트율 상승"
+      - "기본 프롬프트에서만 작동(--system-prompt류 쓰면 무시) / -p 다중사용자 스크립트용"
+    source: "https://code.claude.com/docs/en/cli-reference"
