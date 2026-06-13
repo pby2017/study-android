@@ -412,3 +412,17 @@ cards:
       - "prompt·agent는 $ARGUMENTS로 훅 입력 JSON 주입, model 필드로 평가 모델 지정(기본 빠른 모델)"
       - "/hooks 메뉴는 5종 다 표시하나 추가·편집은 command·mcp_tool만 — 나머지는 settings.json 직접 작성"
     source: "https://code.claude.com/docs/en/hooks"
+
+  - category: ai
+    title: "claude --worktree — 작업끼리 안 부딪히는 격리 세션 한 줄로 띄우기"
+    summary: >
+      `claude --worktree <이름>`(또는 `-w`)은 그 자리에서 git worktree를 새로 만들고 거기서 세션을 연다.
+      한 터미널에서 기능을 짜는 동안 다른 터미널에서 버그를 고쳐도 편집이 충돌하지 않는다 — 각 worktree가 자기 브랜치를 가진 독립 체크아웃이기 때문이다.
+      이름을 생략하면 `bright-running-fox` 같은 걸 자동 생성하고, `--worktree "#1234"`처럼 PR 번호(#붙여)나 GitHub PR URL을 주면 `pull/<번호>/head`를 받아 `.claude/worktrees/pr-<번호>`에 worktree를 만든다.
+      .gitignore에 걸린 로컬 설정(.env 등)은 안 따라오므로, repo 루트의 `.worktreeinclude`에 적은 파일만 worktree로 복사된다.
+      git이 아닌 SVN·Perforce·Mercurial은 `WorktreeCreate`/`WorktreeRemove` 훅으로 생성·정리 로직을 직접 꽂으면 된다.
+    points:
+      - "--worktree(-w): 즉석에서 git worktree 생성 후 그 안에서 세션 시작 — 병렬 작업 충돌 방지"
+      - "이름 생략 시 자동 생성, '#1234'·PR URL 주면 pull/<번호>/head를 .claude/worktrees/pr-<번호>에 체크아웃"
+      - ".worktreeinclude로 .gitignore된 로컬 파일(.env 등)만 골라 복사 / 비-git VCS는 WorktreeCreate 훅"
+    source: "https://code.claude.com/docs/en/worktrees"
