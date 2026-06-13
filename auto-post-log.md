@@ -9,3 +9,4 @@
 - 2026-06-15 09:00 KST | disableBundledSkills — 번들 스킬·내장 명령을 모델 눈앞에서 치우기 | https://code.claude.com/docs/en/settings
 - 2026-06-15 21:30 KST | 스킬 호출 권한 — disable-model-invocation / user-invocable | https://code.claude.com/docs/en/slash-commands
 - 2026-06-16 09:00 KST | 스킬 effort 프런트매터 — 명령마다 추론 강도 따로 주기 | https://code.claude.com/docs/en/slash-commands
+- 2026-06-16 21:30 KST | PreCompact 훅 — 압축 직전, 컨텍스트를 지킬 마지막 기회 | https://code.claude.com/docs/en/hooks
