@@ -13,3 +13,4 @@
 - 2026-06-14 22:30 KST | 훅 핸들러 5종 — 셸 말고도 HTTP·MCP 도구·프롬프트·에이전트로 받기 | https://code.claude.com/docs/en/hooks
 - 2026-06-17 09:00 KST | claude --worktree — 작업끼리 안 부딪히는 격리 세션 한 줄로 띄우기 | https://code.claude.com/docs/en/worktrees
 - 2026-06-17 21:30 KST | 스킬 disallowed-tools — 활성 동안 도구를 아예 풀에서 빼기 | https://code.claude.com/docs/en/slash-commands
+- 2026-06-18 09:00 KST | StopFailure 훅 — API 에러로 턴이 끝날 때만 잡아내기 | https://code.claude.com/docs/en/hooks
