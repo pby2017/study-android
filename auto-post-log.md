@@ -16,3 +16,4 @@
 - 2026-06-18 09:00 KST | StopFailure 훅 — API 에러로 턴이 끝날 때만 잡아내기 | https://code.claude.com/docs/en/hooks
 - 2026-06-18 21:30 KST | 서브에이전트 중첩 — 서브에이전트가 또 서브에이전트를 띄우기 | https://code.claude.com/docs/en/sub-agents
 - 2026-06-19 09:00 KST | subagentStatusLine — 서브에이전트 행마다 표시 내용 직접 그리기 | https://code.claude.com/docs/en/statusline
+- 2026-06-20 09:00 KST | /context — 컨텍스트 창이 어디로 새는지 색깔 격자로 보기 | https://code.claude.com/docs/en/commands
