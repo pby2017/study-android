@@ -351,3 +351,15 @@ cards:
       - "Pro/Max 구독자 한정, 세션 첫 API 응답 후에만 등장 / 각 윈도우 독립적으로 부재 가능 → jq '// empty'"
       - "상태줄은 로컬 실행이라 API 토큰 미소비 / context_window.used_percentage로 컨텍스트 사용량도 함께 표시 가능"
     source: "https://code.claude.com/docs/en/statusline"
+  - category: ai
+    title: "disableBundledSkills — 번들 스킬·내장 명령을 모델 눈앞에서 치우기"
+    summary: >
+      Claude Code에는 기본 제공되는 번들 스킬·워크플로와 /init 같은 내장 슬래시 명령이 딸려 온다.
+      settings.json에서 disableBundledSkills를 true로 두면 번들 스킬·워크플로는 통째로 제거되고, 내장 슬래시 명령은 여전히 타이핑은 되지만 모델 목록에서는 숨겨진다.
+      이때 설치한 Skills 플러그인, .claude/skills/, .claude/commands/의 내 스킬·명령은 영향을 받지 않는다.
+      환경변수 CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1로도 같은 효과를 낼 수 있어, 내 워크플로만 깔끔히 노출하고 싶을 때 쓴다.
+    points:
+      - "true 시 번들 스킬·워크플로는 완전 제거, 내장 슬래시 명령(/init 등)은 타이핑 가능하나 숨김"
+      - "내 것(플러그인·.claude/skills·.claude/commands)은 영향 없음"
+      - "환경변수 CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1로 동일 효과"
+    source: "https://code.claude.com/docs/en/settings"
