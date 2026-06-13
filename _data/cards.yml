@@ -363,3 +363,15 @@ cards:
       - "내 것(플러그인·.claude/skills·.claude/commands)은 영향 없음"
       - "환경변수 CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1로 동일 효과"
     source: "https://code.claude.com/docs/en/settings"
+  - category: ai
+    title: "스킬 호출 권한 — disable-model-invocation / user-invocable"
+    summary: >
+      커스텀 명령이 스킬로 통합되면서, 스킬 프런트매터로 "누가 이 스킬을 부를 수 있는가"를 제어할 수 있다.
+      기본값은 사용자와 Claude 둘 다 호출 가능이지만, disable-model-invocation을 true로 두면 오직 사용자가 /이름으로만 부를 수 있고 Claude가 자동으로 실행하지 못한다.
+      배포·커밋·슬랙 전송처럼 부작용이 있거나 타이밍을 직접 잡아야 하는 작업에 쓰면, 코드가 준비돼 보인다고 Claude가 멋대로 배포하는 일을 막는다.
+      반대로 user-invocable을 false로 두면 / 메뉴에서 숨겨져 Claude만 쓸 수 있어, 명령이 아닌 배경 지식용 스킬(예: 레거시 시스템 설명)에 적합하다.
+    points:
+      - "disable-model-invocation: true → 사용자만 /이름으로 호출, Claude 자동 실행 차단(서브에이전트 프리로드도 막음)"
+      - "user-invocable: false → / 메뉴에서 숨김, Claude만 사용(배경 지식용)"
+      - "둘 다 기본 false/true → 기본은 양쪽 모두 호출 가능 / 부작용 있는 /deploy·/commit에 disable-model-invocation 권장"
+    source: "https://code.claude.com/docs/en/slash-commands"
