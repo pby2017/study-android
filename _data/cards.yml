@@ -452,3 +452,17 @@ cards:
       - "matcher로 에러 종류 구분: rate_limit·overloaded·billing_error·server_error 등"
       - "출력·종료 코드 무시 — 막기 불가, 로깅·알림·정리 같은 사이드 이펙트 전용"
     source: "https://code.claude.com/docs/en/hooks"
+
+  - category: ai
+    title: "서브에이전트 중첩 — 서브에이전트가 또 서브에이전트를 띄우기"
+    summary: >
+      v2.1.172부터 서브에이전트가 자기만의 서브에이전트를 스폰할 수 있다. 위임한 작업이
+      다시 병렬 하위작업으로 갈라질 때(예: 발견 항목마다 검증 에이전트를 붙이는 리뷰어) 쓴다.
+      중간 산출물은 메인 대화에 닿지 않고, 최상위 서브에이전트의 요약만 돌아온다.
+      포그라운드는 부모를 블로킹하며 사슬처럼 이어져 자기제한적이라 깊이 제한이 없지만,
+      백그라운드는 깊이 5에서 Agent 도구를 못 받아 더 못 띄운다(고정·설정 불가).
+    points:
+      - "v2.1.172부터 — 서브에이전트가 중첩 서브에이전트 스폰 가능"
+      - "포그라운드는 깊이 무제한(블로킹·자기제한), 백그라운드는 깊이 5에서 차단"
+      - "특정 서브에이전트 차단: tools에서 Agent 빼거나 disallowedTools에 추가"
+    source: "https://code.claude.com/docs/en/sub-agents"
