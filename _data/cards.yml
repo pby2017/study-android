@@ -439,3 +439,16 @@ cards:
       - "예: 자율 배경 루프에서 AskUserQuestion 차단 — 사람 개입 호출 자체를 막음"
       - "제한은 다음 메시지에 해제 / 영구 차단은 권한 설정 deny 규칙"
     source: "https://code.claude.com/docs/en/slash-commands"
+
+  - category: ai
+    title: "StopFailure 훅 — API 에러로 턴이 끝날 때만 잡아내기"
+    summary: >
+      Stop 훅은 Claude가 정상적으로 턴을 마칠 때 돌지만, API 에러로 턴이 죽으면 안 돈다.
+      그 빈틈을 메우는 게 StopFailure 훅이다 — 턴이 API 에러로 끝날 때 발화한다.
+      matcher로 에러 종류를 구분할 수 있어서, rate_limit·overloaded·billing_error·authentication_failed·server_error 등으로 골라 받을 수 있다.
+      단 이 훅은 출력과 종료 코드가 무시되는 '사이드 이펙트 전용' 이벤트라 턴을 막거나 흐름을 바꾸진 못한다. 로깅·알림·정리 용도다.
+    points:
+      - "Stop은 정상 종료에만 발화 / StopFailure는 API 에러로 끝날 때 발화"
+      - "matcher로 에러 종류 구분: rate_limit·overloaded·billing_error·server_error 등"
+      - "출력·종료 코드 무시 — 막기 불가, 로깅·알림·정리 같은 사이드 이펙트 전용"
+    source: "https://code.claude.com/docs/en/hooks"
