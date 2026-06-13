@@ -260,3 +260,17 @@ cards:
       - "필드: name·description·tools(생략 시 전부 상속)·model / 본문=시스템 프롬프트"
       - "호출: 자연어 언급, @멘션(해당 작업 보장), --agent(세션 전체) / 파일 직접 편집 후엔 재시작"
     source: "https://code.claude.com/docs/en/sub-agents"
+
+  - category: ai
+    title: "reloadSkills — SessionStart 훅으로 같은 세션에서 스킬 즉시 반영"
+    summary: >
+      Claude Code의 스킬 탐색은 보통 SessionStart 훅이 끝나기 전에 한 번만 돌기 때문에,
+      훅이 ~/.claude/skills/ 나 .claude/skills/ 에 새 스킬을 써넣어도 다음 세션에야 나타난다.
+      이를 해결하려고 SessionStart 훅이 JSON으로 `reloadSkills: true`를 반환하면, 훅 완료 후
+      Claude Code가 스킬·커맨드 디렉터리를 다시 스캔해 방금 설치한 스킬을 같은 세션에서 바로 쓸 수 있다.
+      팀 스킬 레포를 git pull로 동기화한 뒤 즉시 적용하는 부트스트랩 패턴에 유용하다.
+    points:
+      - "스킬 탐색은 SessionStart 훅 종료 전에 1회 실행 — 새 스킬은 원래 다음 세션에야 보임"
+      - "SessionStart 훅이 hookSpecificOutput에 reloadSkills:true 반환 시 디렉터리 재스캔"
+      - "git pull로 팀 스킬 받아 같은 세션에 즉시 반영하는 부트스트랩에 적합"
+    source: "https://code.claude.com/docs/en/hooks"
