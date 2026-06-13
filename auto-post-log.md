@@ -2,3 +2,4 @@
 - 2026-06-13 09:00 KST | reloadSkills — SessionStart 훅으로 같은 세션에서 스킬 즉시 반영 | https://code.claude.com/docs/en/hooks
 - 2026-06-13 21:30 KST | --safe-mode — 커스터마이징 다 끄고 설정 문제 격리 | https://code.claude.com/docs/en/cli-reference
 - 2026-06-13 21:45 KST | /cd — 프롬프트 캐시 깨지 않고 작업 디렉터리 옮기기 | https://code.claude.com/docs/en/commands
+- 2026-06-13 22:30 KST | 출력 스타일(Output Styles) — Claude의 역할·말투를 시스템 프롬프트째 바꾸기 | https://code.claude.com/docs/en/output-styles
