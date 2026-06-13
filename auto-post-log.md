@@ -5,3 +5,4 @@
 - 2026-06-13 22:30 KST | 출력 스타일(Output Styles) — Claude의 역할·말투를 시스템 프롬프트째 바꾸기 | https://code.claude.com/docs/en/output-styles
 - 2026-06-13 23:30 KST | fallbackModel — 기본 모델이 막힐 때 대체 모델로 자동 전환 | https://code.claude.com/docs/en/settings
 - 2026-06-14 09:00 KST | Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기 | https://code.claude.com/docs/en/hooks
+- 2026-06-14 21:30 KST | 상태줄 rate_limits — 5시간·7일 사용량을 항상 눈에 보이게 | https://code.claude.com/docs/en/statusline
