@@ -1,3 +1,4 @@
 - 2026-06-12 22:34 KST | 서브에이전트 — 컨텍스트를 지키는 분업 | https://code.claude.com/docs/en/sub-agents
 - 2026-06-13 09:00 KST | reloadSkills — SessionStart 훅으로 같은 세션에서 스킬 즉시 반영 | https://code.claude.com/docs/en/hooks
 - 2026-06-13 21:30 KST | --safe-mode — 커스터마이징 다 끄고 설정 문제 격리 | https://code.claude.com/docs/en/cli-reference
+- 2026-06-13 21:45 KST | /cd — 프롬프트 캐시 깨지 않고 작업 디렉터리 옮기기 | https://code.claude.com/docs/en/commands

@@ -288,3 +288,16 @@ cards:
       - "유지: 인증·모델 선택·내장 도구·권한 (그래서 전부 끄는 --bare와 다름)"
       - "관리 정책 항목은 예외로 적용 / 실행 시 CLAUDE_CODE_SAFE_MODE 설정됨"
     source: "https://code.claude.com/docs/en/cli-reference"
+  - category: ai
+    title: "/cd — 프롬프트 캐시 깨지 않고 작업 디렉터리 옮기기"
+    summary: >
+      Claude Code(v2.1.169+)의 `/cd <path>`는 세션을 통째로 새 작업 디렉터리로 옮긴다.
+      핵심은 대화의 프롬프트 캐시가 유지된다는 점이다. 시스템 프롬프트를 다시 만드는 대신,
+      새 디렉터리의 CLAUDE.md를 메시지로 덧붙이는 방식이라 세션 중간에 캐시가 깨지지 않는다.
+      세션은 새 디렉터리의 프로젝트 저장소로 이동해서 `--resume`/`--continue`도 거기서 찾는다.
+      처음 가는 디렉터리면 신뢰 여부를 물어본다. 세션 이동 없이 디렉터리 접근만 추가하려면 `/add-dir`를 쓴다.
+    points:
+      - "세션을 새 작업 디렉터리로 이동 — 프롬프트 캐시 보존(CLAUDE.md를 메시지로 append)"
+      - "세션이 새 디렉터리 저장소로 옮겨져 --resume/--continue도 거기서 인식"
+      - "접근만 추가는 /add-dir / Cd 권한 규칙으로 대상 제한 가능 / v2.1.169 미만은 Unknown command"
+    source: "https://code.claude.com/docs/en/commands"
