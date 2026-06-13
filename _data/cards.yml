@@ -301,3 +301,16 @@ cards:
       - "세션이 새 디렉터리 저장소로 옮겨져 --resume/--continue도 거기서 인식"
       - "접근만 추가는 /add-dir / Cd 권한 규칙으로 대상 제한 가능 / v2.1.169 미만은 Unknown command"
     source: "https://code.claude.com/docs/en/commands"
+  - category: ai
+    title: "출력 스타일(Output Styles) — Claude의 역할·말투를 시스템 프롬프트째 바꾸기"
+    summary: >
+      출력 스타일은 Claude가 '무엇을 아는지'가 아니라 '어떻게 응답하는지'를 바꾼다. 시스템 프롬프트를 직접 수정해
+      역할·톤·출력 형식을 매 턴 고정한다. 내장 스타일은 Default 외에 Proactive(즉시 실행), Explanatory(코딩 중 'Insights' 설명),
+      Learning(직접 코드 일부를 짜도록 TODO(human) 마커를 남김) 세 가지가 있다. `/config`의 Output style에서 고르며
+      선택은 .claude/settings.local.json의 outputStyle에 저장된다. 세션 시작 시 한 번 읽으므로 변경은 /clear 후 적용된다.
+      커스텀 스타일은 .claude/output-styles의 마크다운 파일로 만들고, keep-coding-instructions: true면 코딩 지침을 유지한다.
+    points:
+      - "내장: Default / Proactive(즉시 실행) / Explanatory(설명) / Learning(TODO(human) 마커로 직접 작성 유도)"
+      - "CLAUDE.md(프로젝트 컨텍스트)와 달리 시스템 프롬프트 자체를 수정 — 매 응답에 적용, /clear 후 반영"
+      - "커스텀은 .claude/output-styles 마크다운 / 기본은 코딩 지침 제외, keep-coding-instructions: true로 유지"
+    source: "https://code.claude.com/docs/en/output-styles"
