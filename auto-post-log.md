@@ -28,3 +28,4 @@
 - 2026-06-24 21:35 KST | MCP 리소스·프롬프트 — 서버를 @멘션과 슬래시 커맨드로 쓰기 | https://code.claude.com/docs/en/mcp
 - 2026-06-25 09:00 KST | /btw — 대화 흐름 안 깨고 곁다리 질문 던지기 | https://code.claude.com/docs/en/interactive-mode
 - 2026-06-25 21:30 KST | claude -p --bare — CI에서 매번 같은 결과 나오게 잠그기 | https://code.claude.com/docs/en/headless
+- 2026-06-26 09:00 KST | /usage — 플랜 한도가 스킬·서브에이전트·플러그인·MCP 중 어디로 새는지 % 분해 | https://code.claude.com/docs/en/costs
