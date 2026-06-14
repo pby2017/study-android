@@ -23,3 +23,4 @@
 - 2026-06-22 09:00 KST | --exclude-dynamic-system-prompt-sections — 프롬프트 캐시 재사용률 높이기 | https://code.claude.com/docs/en/cli-reference
 - 2026-06-22 21:30 KST | Setup 훅 — 세션 시작 전 init·maintenance 준비 작업 자동 실행 | https://code.claude.com/docs/en/hooks
 - 2026-06-23 09:00 KST | skillOverrides — SKILL.md 안 건드리고 settings에서 스킬 노출 조정하기 | https://code.claude.com/docs/en/settings
+- 2026-06-23 21:30 KST | claudeMdExcludes — 특정 CLAUDE.md를 메모리 로딩에서 빼기 | https://code.claude.com/docs/en/settings
