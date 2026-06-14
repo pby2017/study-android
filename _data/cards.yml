@@ -778,3 +778,18 @@ cards:
       - "CLAUDE.md와의 차이: 출력 스타일은 '시스템 프롬프트 수정', CLAUDE.md는 '시스템 프롬프트 뒤 사용자 메시지 추가' / `--append-system-prompt`는 제거 없이 덧붙이기"
       - "커스텀은 프런트매터+지시문 마크다운 파일 / 시스템 프롬프트는 세션 시작 시 1회 로드 → 변경은 `/clear`·새 세션부터 적용, settings 키는 `outputStyle`"
     source: "https://code.claude.com/docs/en/output-styles"
+
+  - category: ai
+    title: "Claude를 정기 실행하는 4가지 — 어디서 도느냐로 고른다"
+    summary: >
+      Claude Code로 PR 리뷰·의존성 점검·CI 실패 확인 같은 일을 주기적으로 돌리는 방법은 네 가지이고,
+      고르는 기준은 '어디서 도느냐'다. Routines는 Anthropic 관리 인프라에서 돌아 내 컴퓨터가 꺼져 있어도 실행되고,
+      일정뿐 아니라 API 호출·GitHub 이벤트로도 트리거된다(claude.ai/code/routines에서 설정).
+      Desktop scheduled tasks는 데스크톱 앱이 내 머신에서 돌려서 로컬 파일·커밋 안 된 변경에 직접 접근해야 할 때 쓴다.
+      GitHub Actions는 CI 파이프라인에서 돌아 열린 PR 같은 레포 이벤트나 워크플로 설정 옆에 둘 cron에 맞는다.
+      `/loop`는 지금 열려 있는 CLI 세션 안에서 가볍게 폴링하는 용도로, 새 대화를 시작하면 멈추지만 만료 전이면 `--resume`/`--continue`로 되살아난다.
+    points:
+      - "Routines = Anthropic 인프라(컴퓨터 꺼져도 실행) / 일정·API 호출·GitHub 이벤트 트리거 — claude.ai/code/routines"
+      - "Desktop scheduled tasks = 데스크톱 앱·내 머신(로컬 파일·미커밋 변경 접근) / GitHub Actions = CI 파이프라인(레포 이벤트·cron)"
+      - "`/loop` = 현재 CLI 세션 폴링 / 새 대화 시작 시 중단, 만료 전이면 --resume·--continue로 복원 / 자동 실행 프롬프트엔 성공 기준·결과 처리를 명시"
+    source: "https://code.claude.com/docs/en/common-workflows"

@@ -40,3 +40,5 @@
 
 - 2026-06-29 21:30 KST | MCP 설치 스코프 — local·project·user 셋 중 어디에 서버를 둘지 | https://code.claude.com/docs/en/mcp
 - 2026-06-30 09:00 KST | 출력 스타일 — Claude의 '아는 것'은 그대로, '말하는 방식'만 바꾸기 | https://code.claude.com/docs/en/output-styles
+
+- 2026-06-30 21:30 KST | Claude를 정기 실행하는 4가지 — 어디서 도느냐로 고른다 | https://code.claude.com/docs/en/common-workflows
