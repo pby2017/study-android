@@ -46,3 +46,5 @@
 
 - 2026-06-14 21:00 KST | 커스텀 서브에이전트 만들기 — 자주 쓰는 일꾼을 파일로 굳히기 | https://code.claude.com/docs/en/sub-agents
 - 2026-06-14 21:30 KST | @로 파일·디렉터리 참조 — Claude가 읽기를 기다리지 않고 내용을 미리 넣기 | https://code.claude.com/docs/en/common-workflows
+
+- 2026-06-14 22:00 KST | 원격 MCP 서버 인증 — /mcp로 OAuth 2.0 로그인하기 | https://code.claude.com/docs/en/mcp
