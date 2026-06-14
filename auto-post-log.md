@@ -35,3 +35,5 @@
 - 2026-06-27 21:30 KST | 동적 컨텍스트 주입 — 슬래시 커맨드에 셸 출력·인자를 미리 끼워 넣기 | https://code.claude.com/docs/en/slash-commands
 - 2026-06-28 09:00 KST | 이미지로 대화하기 — 스크린샷·목업·다이어그램을 컨텍스트로 넣기 | https://code.claude.com/docs/en/common-workflows
 - 2026-06-28 21:30 KST | /branch — 대화를 통째로 복제해 다른 접근을 따로 시도하기 | https://code.claude.com/docs/en/sessions
+
+- 2026-06-29 09:00 KST | 셸 모드 — 프롬프트 앞에 `!`로 명령 실행하고 출력까지 컨텍스트에 넣기 | https://code.claude.com/docs/en/interactive-mode
