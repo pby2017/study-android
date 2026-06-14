@@ -31,3 +31,5 @@
 - 2026-06-26 09:00 KST | /usage — 플랜 한도가 스킬·서브에이전트·플러그인·MCP 중 어디로 새는지 % 분해 | https://code.claude.com/docs/en/costs
 
 - 2026-06-26 21:30 KST | 오토 메모리 — Claude가 스스로 적는 MEMORY.md로 세션 넘어 학습하기 | https://code.claude.com/docs/en/memory- 2026-06-27 09:00 KST | 내장 ide MCP 서버 — 외부 터미널 CLI를 /ide로 VS Code에 붙이기 | https://code.claude.com/docs/en/ide-integrations
+
+- 2026-06-27 21:30 KST | 동적 컨텍스트 주입 — 슬래시 커맨드에 셸 출력·인자를 미리 끼워 넣기 | https://code.claude.com/docs/en/slash-commands
