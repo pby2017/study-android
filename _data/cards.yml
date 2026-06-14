@@ -563,3 +563,17 @@ cards:
       - "--init → matcher 'init', --maintenance → matcher 'maintenance' (둘 다 -p print 모드 전용)"
       - "--init-only는 Setup+SessionStart만 돌리고 대화 없이 종료 — CI 준비 단계용"
     source: "https://code.claude.com/docs/en/hooks"
+
+  - category: ai
+    title: "skillOverrides — SKILL.md 안 건드리고 settings에서 스킬 노출 조정하기"
+    summary: >
+      skillOverrides는 settings.json에서 스킬 이름별로 노출 방식을 덮어쓰는 설정이다.
+      각 스킬에 "on", "name-only", "user-invocable-only", "off" 네 값 중 하나를 줄 수 있어서,
+      SKILL.md의 프런트매터를 고치지 않고도 특정 스킬을 완전히 끄거나(off), 이름만 보이게 하거나(name-only),
+      사용자가 직접 호출할 때만 쓰게(user-invocable-only) 제한할 수 있다.
+      팀이 받은 플러그인 스킬이 너무 많아 모델이 엉뚱한 걸 자동으로 부를 때, 원본을 수정하지 않고 프로젝트 설정만으로 정리하기 좋다.
+    points:
+      - "스킬 이름별 노출 오버라이드 — 값은 on / name-only / user-invocable-only / off 네 가지"
+      - "SKILL.md 프런트매터 수정 없이 settings.json만으로 스킬 가시성 조정"
+      - "off=완전 숨김, name-only=이름만, user-invocable-only=수동 호출만 / 단 매니지드 스킬은 예외"
+    source: "https://code.claude.com/docs/en/settings"
