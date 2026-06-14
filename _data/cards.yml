@@ -577,3 +577,16 @@ cards:
       - "SKILL.md 프런트매터 수정 없이 settings.json만으로 스킬 가시성 조정"
       - "off=완전 숨김, name-only=이름만, user-invocable-only=수동 호출만 / 단 매니지드 스킬은 예외"
     source: "https://code.claude.com/docs/en/settings"
+
+  - category: ai
+    title: "claudeMdExcludes — 특정 CLAUDE.md를 메모리 로딩에서 빼기"
+    summary: >
+      claudeMdExcludes는 settings.json에서 메모리 로딩 시 건너뛸 CLAUDE.md 파일을 글롭 패턴이나 절대경로로 지정하는 설정이다.
+      패턴은 파일의 절대경로에 매칭되며, 예컨대 ["**/vendor/**/CLAUDE.md"]처럼 적으면 의존성 디렉터리에 딸려 온 CLAUDE.md가 컨텍스트에 안 실린다.
+      유저·프로젝트·로컬 메모리에만 적용되고, 매니지드 정책 파일은 제외할 수 없다.
+      서브모듈이나 vendor 트리에 박힌 남의 CLAUDE.md가 컨텍스트 창을 잡아먹을 때, 원본을 지우지 않고 프로젝트 설정만으로 솎아내기 좋다.
+    points:
+      - "메모리 로딩에서 건너뛸 CLAUDE.md를 글롭/절대경로로 지정 — 패턴은 절대경로에 매칭"
+      - "유저·프로젝트·로컬 메모리에만 적용 / 매니지드 정책 파일은 제외 불가"
+      - "예: [\"**/vendor/**/CLAUDE.md\"] — vendor 트리의 CLAUDE.md를 컨텍스트에서 빼기"
+    source: "https://code.claude.com/docs/en/settings"
