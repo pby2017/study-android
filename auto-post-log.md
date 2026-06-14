@@ -25,3 +25,4 @@
 - 2026-06-23 09:00 KST | skillOverrides — SKILL.md 안 건드리고 settings에서 스킬 노출 조정하기 | https://code.claude.com/docs/en/settings
 - 2026-06-23 21:30 KST | claudeMdExcludes — 특정 CLAUDE.md를 메모리 로딩에서 빼기 | https://code.claude.com/docs/en/settings
 - 2026-06-24 09:00 KST | allowManagedHooksOnly — 조직이 승인한 훅만 돌게 잠그기 | https://code.claude.com/docs/en/settings
+- 2026-06-24 21:35 KST | MCP 리소스·프롬프트 — 서버를 @멘션과 슬래시 커맨드로 쓰기 | https://code.claude.com/docs/en/mcp

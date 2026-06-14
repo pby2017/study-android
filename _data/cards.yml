@@ -603,3 +603,17 @@ cards:
       - "훅은 사용자 권한 셸 실행 — 비승인 훅 차단으로 공급망/내부자 위험 축소"
       - "disableAllHooks(전부 끄기)와 달리 승인된 훅은 유지하는 화이트리스트 방식"
     source: "https://code.claude.com/docs/en/settings"
+
+  - category: ai
+    title: "MCP 리소스·프롬프트 — 서버를 @멘션과 슬래시 커맨드로 쓰기"
+    summary: >
+      MCP 서버는 도구만이 아니라 '리소스'와 '프롬프트'도 노출하는데, 둘 다 일상 입력에서 바로 끌어 쓸 수 있다.
+      리소스는 파일처럼 @멘션으로 참조한다 — 프롬프트에 `@`를 치면 연결된 모든 서버의 리소스가 자동완성에 뜨고,
+      `@server:protocol://resource/path` 형식(예: `@github:issue://123`)으로 적으면 해당 내용이 자동으로 가져와져 첨부된다. 한 프롬프트에서 여러 개를 동시에 참조할 수도 있다.
+      프롬프트는 슬래시 커맨드가 된다 — `/`를 치면 `/mcp__서버명__프롬프트명` 형태로 나타나고, 인자는 그 뒤에 공백으로 구분해 넘긴다.
+      둘 다 연결된 서버에서 동적으로 발견되므로 별도 설정이 필요 없다.
+    points:
+      - "리소스 = @멘션: `@server:protocol://resource/path` (예: @github:issue://123), 참조 시 자동 fetch·첨부"
+      - "프롬프트 = 슬래시 커맨드: `/mcp__servername__promptname`, 인자는 뒤에 공백 구분으로 전달"
+      - "둘 다 연결된 서버에서 동적 발견 — 설정 불필요, 한 프롬프트에 리소스 여러 개 참조 가능"
+    source: "https://code.claude.com/docs/en/mcp"
