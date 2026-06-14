@@ -42,3 +42,4 @@
 - 2026-06-30 09:00 KST | 출력 스타일 — Claude의 '아는 것'은 그대로, '말하는 방식'만 바꾸기 | https://code.claude.com/docs/en/output-styles
 
 - 2026-06-30 21:30 KST | Claude를 정기 실행하는 4가지 — 어디서 도느냐로 고른다 | https://code.claude.com/docs/en/common-workflows
+- 2026-06-14 20:43 KST | 커스텀 커맨드 인자 — $ARGUMENTS 한 덩어리 vs 위치 인자로 쪼개 받기 | https://code.claude.com/docs/en/slash-commands
