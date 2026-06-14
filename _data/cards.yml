@@ -807,3 +807,17 @@ cards:
       - "도구 좁히기: `tools`(allowlist) 또는 `disallowedTools`(denylist) / `model: inherit`로 메인 대화 모델 따라가기"
       - "위치·우선순위: managed(1·조직) > --agents 플래그(2·세션) > `.claude/agents/`(3·프로젝트, 팀 공유) > `~/.claude/agents/`(4·내 전체) > 플러그인(5)"
     source: "https://code.claude.com/docs/en/sub-agents"
+
+  - category: ai
+    title: "@로 파일·디렉터리 참조 — Claude가 읽기를 기다리지 않고 내용을 미리 넣기"
+    summary: >
+      프롬프트에 `@`를 쓰면 Claude가 Read 도구로 파일을 찾아 읽기를 기다리지 않고, 그 자리에 내용을 바로 끼워 넣을 수 있다.
+      `@src/utils/auth.js`처럼 파일을 가리키면 그 파일 전체 내용이 대화에 포함되고, `@src/components`처럼 디렉터리를 가리키면 내용이 아니라 그 안의 파일 목록(파일 정보 포함)이 들어온다.
+      중요한 부가 효과 하나 — `@`로 파일을 참조하면 그 파일이 있는 디렉터리와 상위 디렉터리들의 `CLAUDE.md`도 함께 컨텍스트에 딸려 붙는다(그 하위트리 규칙을 자동으로 끌어옴).
+      경로는 상대·절대 둘 다 되고, 한 메시지에서 여러 개를 동시에 참조할 수 있다(예: "@file1.js and @file2.js").
+      같은 `@` 문법으로 연결된 MCP 서버의 리소스(`@server:resource`)도 끌어올 수 있다.
+    points:
+      - "`@파일경로` = 파일 전체 내용을 그 자리에 인라인(Read 기다릴 필요 없음) / `@디렉터리` = 내용 아닌 파일 목록(파일 정보 포함)"
+      - "부가 효과: `@`로 파일 참조 시 그 파일 디렉터리+상위 디렉터리의 CLAUDE.md도 함께 컨텍스트에 추가"
+      - "상대·절대 경로 모두 가능 / 한 메시지에 여러 개(`@file1.js and @file2.js`) / `@server:resource`로 MCP 리소스도 동일 문법으로 참조"
+    source: "https://code.claude.com/docs/en/common-workflows"

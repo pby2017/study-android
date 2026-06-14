@@ -45,3 +45,4 @@
 - 2026-06-14 20:43 KST | 커스텀 커맨드 인자 — $ARGUMENTS 한 덩어리 vs 위치 인자로 쪼개 받기 | https://code.claude.com/docs/en/slash-commands
 
 - 2026-06-14 21:00 KST | 커스텀 서브에이전트 만들기 — 자주 쓰는 일꾼을 파일로 굳히기 | https://code.claude.com/docs/en/sub-agents
+- 2026-06-14 21:30 KST | @로 파일·디렉터리 참조 — Claude가 읽기를 기다리지 않고 내용을 미리 넣기 | https://code.claude.com/docs/en/common-workflows
