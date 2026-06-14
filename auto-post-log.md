@@ -30,4 +30,4 @@
 - 2026-06-25 21:30 KST | claude -p --bare — CI에서 매번 같은 결과 나오게 잠그기 | https://code.claude.com/docs/en/headless
 - 2026-06-26 09:00 KST | /usage — 플랜 한도가 스킬·서브에이전트·플러그인·MCP 중 어디로 새는지 % 분해 | https://code.claude.com/docs/en/costs
 
-- 2026-06-26 21:30 KST | 오토 메모리 — Claude가 스스로 적는 MEMORY.md로 세션 넘어 학습하기 | https://code.claude.com/docs/en/memory
+- 2026-06-26 21:30 KST | 오토 메모리 — Claude가 스스로 적는 MEMORY.md로 세션 넘어 학습하기 | https://code.claude.com/docs/en/memory- 2026-06-27 09:00 KST | 내장 ide MCP 서버 — 외부 터미널 CLI를 /ide로 VS Code에 붙이기 | https://code.claude.com/docs/en/ide-integrations

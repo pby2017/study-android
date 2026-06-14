@@ -678,3 +678,18 @@ cards:
       - "저장: ~/.claude/projects/<project>/memory/ (git 레포 기준이라 워크트리·하위폴더가 한 디렉터리 공유, 머신 로컬)"
       - "세션엔 MEMORY.md 앞 200줄/25KB만 로드 — 주제 파일은 온디맨드 / Claude Code v2.1.59 이상 필요"
     source: "https://code.claude.com/docs/en/memory"
+
+  - category: ai
+    title: "내장 ide MCP 서버 — 외부 터미널 CLI를 /ide로 VS Code에 붙이기"
+    summary: >
+      VS Code 확장이 켜져 있으면 로컬 MCP 서버 하나(이름 `ide`)가 돌고, CLI가 여기에 자동으로 붙는다.
+      이 연결 덕에 CLI가 만든 diff가 VS Code 네이티브 diff 뷰어로 열리고, 지금 에디터에서 선택한 텍스트와
+      열린 파일 경로가 매 프롬프트에 컨텍스트로 따라붙는다(트랜스크립트에 `⧉ Selected N lines from <file>` 표시).
+      통합 터미널에서 `claude`를 돌리면 IDE 연동이 자동이지만, 외부 터미널을 쓸 땐 Claude 안에서 `/ide`를 실행해 VS Code에 연결한다.
+      `ide` 서버는 설정할 게 없어 `/mcp` 목록에선 숨겨지고, `127.0.0.1` 랜덤 포트에 바인딩되며 활성화 때마다 새 토큰을 발급한다.
+      모델에 노출되는 도구는 둘뿐 — 진단을 읽는 `mcp__ide__getDiagnostics`와 주피터 셀을 실행하는 `mcp__ide__executeCode`(실행 전 항상 확인 받음).
+    points:
+      - "확장 활성 시 로컬 MCP 서버 `ide` 가동 — CLI 자동 연결 / diff는 VS Code 네이티브 뷰어로 열림"
+      - "외부 터미널이면 Claude 안에서 `/ide` 실행해 연결 / 선택 텍스트·열린 파일이 프롬프트 컨텍스트로 첨부 (.env 등은 Read deny 규칙으로 제외)"
+      - "모델 노출 도구는 2개뿐: getDiagnostics(읽기), executeCode(주피터, 실행 전 Quick Pick 확인) / 127.0.0.1 랜덤 포트+세션별 토큰"
+    source: "https://code.claude.com/docs/en/ide-integrations"
