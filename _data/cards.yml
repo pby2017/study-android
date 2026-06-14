@@ -632,3 +632,19 @@ cards:
       - "Claude 작업 중에도 실행 가능, 메인 턴 안 끊고 독립 실행 / 도구 접근은 없음(컨텍스트만으로 답)"
       - "`f`로 새 세션 포크해 풀 도구로 이어가기 — 프롬프트 캐시 재사용해 비용 낮음"
     source: "https://code.claude.com/docs/en/interactive-mode"
+
+  - category: ai
+    title: "claude -p --bare — CI에서 매번 같은 결과 나오게 잠그기"
+    summary: >
+      `claude -p`(헤드리스)는 기본적으로 대화형 세션과 똑같은 컨텍스트를 읽는다 — 작업 디렉터리나
+      `~/.claude`의 훅·스킬·플러그인·MCP 서버·자동 메모리·CLAUDE.md를 전부 자동 발견한다.
+      문제는 CI에서다. 동료의 `~/.claude` 훅이나 프로젝트 `.mcp.json`이 끼면 머신마다 결과가 달라진다.
+      `--bare`를 붙이면 이 자동 발견을 통째로 건너뛰어, 명시적으로 넘긴 플래그만 적용된다.
+      bare 모드에서도 Bash·파일 읽기·편집 도구는 쓸 수 있고, 컨텍스트는 `--append-system-prompt`,
+      `--mcp-config`, `--settings`, `--agents` 같은 플래그로 직접 주입한다. 출력은 `--output-format json`으로
+      받으면 `result`·`session_id`와 `total_cost_usd`(모델별 비용 분해 포함)가 들어와 스크립트가 결과·지출을 파싱할 수 있다.
+    points:
+      - "--bare: 훅·스킬·플러그인·MCP·자동 메모리·CLAUDE.md 자동 발견을 모두 건너뜀 — 머신 무관 재현성"
+      - "bare는 Bash·읽기·편집만 기본 제공, 나머지는 --mcp-config/--settings/--agents/--append-system-prompt로 명시 주입"
+      - "--output-format json → result·session_id·total_cost_usd(모델별 분해)로 결과·비용 추적 / 파이프 stdin은 10MB 상한(v2.1.128)"
+    source: "https://code.claude.com/docs/en/headless"
