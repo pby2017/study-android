@@ -663,3 +663,18 @@ cards:
       - "d/w 키로 최근 24시간 ↔ 7일 전환 / 다른 기기·claude.ai 사용량은 미포함"
       - "Pro·Max·Team·Enterprise 플랜, Claude Code v2.1.174 이상 필요"
     source: "https://code.claude.com/docs/en/costs"
+
+  - category: ai
+    title: "오토 메모리 — Claude가 스스로 적는 MEMORY.md로 세션 넘어 학습하기"
+    summary: >
+      Claude Code 메모리는 두 갈래다. CLAUDE.md는 내가 직접 쓰는 규칙이고, 오토 메모리(auto memory)는 Claude가
+      내 교정·선호를 보고 스스로 적어 두는 메모다. 빌드 명령, 디버깅에서 알아낸 점, 코드 스타일 선호 같은 걸
+      "다음 대화에서 쓸모 있겠다" 싶을 때만 저장한다(매 세션 저장하는 게 아님). 저장 위치는
+      `~/.claude/projects/<project>/memory/`이고, 인덱스 격인 `MEMORY.md`와 주제별 파일들로 나뉜다.
+      세션 시작 때는 `MEMORY.md`의 앞 200줄(또는 25KB)만 불러오고 나머지 주제 파일은 필요할 때 그때그때 읽는다.
+      전부 평범한 마크다운이라 `/memory`로 열어 직접 보고 고치거나 지울 수 있다.
+    points:
+      - "CLAUDE.md(내가 씀) vs 오토 메모리(Claude가 씀) — 후자는 기본 on, 끄려면 autoMemoryEnabled:false 또는 CLAUDE_CODE_DISABLE_AUTO_MEMORY=1"
+      - "저장: ~/.claude/projects/<project>/memory/ (git 레포 기준이라 워크트리·하위폴더가 한 디렉터리 공유, 머신 로컬)"
+      - "세션엔 MEMORY.md 앞 200줄/25KB만 로드 — 주제 파일은 온디맨드 / Claude Code v2.1.59 이상 필요"
+    source: "https://code.claude.com/docs/en/memory"

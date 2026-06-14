@@ -29,3 +29,5 @@
 - 2026-06-25 09:00 KST | /btw — 대화 흐름 안 깨고 곁다리 질문 던지기 | https://code.claude.com/docs/en/interactive-mode
 - 2026-06-25 21:30 KST | claude -p --bare — CI에서 매번 같은 결과 나오게 잠그기 | https://code.claude.com/docs/en/headless
 - 2026-06-26 09:00 KST | /usage — 플랜 한도가 스킬·서브에이전트·플러그인·MCP 중 어디로 새는지 % 분해 | https://code.claude.com/docs/en/costs
+
+- 2026-06-26 21:30 KST | 오토 메모리 — Claude가 스스로 적는 MEMORY.md로 세션 넘어 학습하기 | https://code.claude.com/docs/en/memory
