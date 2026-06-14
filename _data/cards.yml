@@ -765,3 +765,16 @@ cards:
       - "지정: `claude mcp add --transport http <이름> --scope project <url>` / local 스코프는 일반 로컬 설정(.claude/settings.local.json)과 다른 ~/.claude.json에 저장"
       - "project 서버는 보안상 쓰기 전 승인 필요 / `claude mcp reset-project-choices`로 승인 선택 초기화"
     source: "https://code.claude.com/docs/en/mcp"
+
+  - category: ai
+    title: "출력 스타일 — Claude의 '아는 것'은 그대로, '말하는 방식'만 바꾸기"
+    summary: >
+      출력 스타일(output style)은 Claude Code의 시스템 프롬프트 자체를 바꿔 역할·말투·출력 형식을 재설정하는 기능이다.
+      기본 제공으로 Default(소프트웨어 엔지니어링용 기본), Explanatory(작업 중간중간 교육적 설명을 끼워 줌), Proactive(계획보다 즉시 실행을 선호) 세 가지가 있고 `/output-style`로 전환한다.
+      핵심은 CLAUDE.md와의 차이다 — 출력 스타일은 시스템 프롬프트를 '수정'하는 반면, CLAUDE.md는 시스템 프롬프트 '뒤에 사용자 메시지를 덧붙이는' 방식이다.
+      커스텀 스타일은 프런트매터 + 지시문으로 된 마크다운 파일로 만들고, 시스템 프롬프트는 세션 시작 때 한 번 읽으므로 변경은 `/clear`나 새 세션부터 적용된다.
+    points:
+      - "내장 3종: Default(엔지니어링 기본) / Explanatory(중간 설명 삽입) / Proactive(계획보다 즉시 실행) — `/output-style`로 전환"
+      - "CLAUDE.md와의 차이: 출력 스타일은 '시스템 프롬프트 수정', CLAUDE.md는 '시스템 프롬프트 뒤 사용자 메시지 추가' / `--append-system-prompt`는 제거 없이 덧붙이기"
+      - "커스텀은 프런트매터+지시문 마크다운 파일 / 시스템 프롬프트는 세션 시작 시 1회 로드 → 변경은 `/clear`·새 세션부터 적용, settings 키는 `outputStyle`"
+    source: "https://code.claude.com/docs/en/output-styles"

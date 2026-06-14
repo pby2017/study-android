@@ -39,3 +39,4 @@
 - 2026-06-29 09:00 KST | 셸 모드 — 프롬프트 앞에 `!`로 명령 실행하고 출력까지 컨텍스트에 넣기 | https://code.claude.com/docs/en/interactive-mode
 
 - 2026-06-29 21:30 KST | MCP 설치 스코프 — local·project·user 셋 중 어디에 서버를 둘지 | https://code.claude.com/docs/en/mcp
+- 2026-06-30 09:00 KST | 출력 스타일 — Claude의 '아는 것'은 그대로, '말하는 방식'만 바꾸기 | https://code.claude.com/docs/en/output-styles
