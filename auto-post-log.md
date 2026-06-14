@@ -27,3 +27,4 @@
 - 2026-06-24 09:00 KST | allowManagedHooksOnly — 조직이 승인한 훅만 돌게 잠그기 | https://code.claude.com/docs/en/settings
 - 2026-06-24 21:35 KST | MCP 리소스·프롬프트 — 서버를 @멘션과 슬래시 커맨드로 쓰기 | https://code.claude.com/docs/en/mcp
 - 2026-06-25 09:00 KST | /btw — 대화 흐름 안 깨고 곁다리 질문 던지기 | https://code.claude.com/docs/en/interactive-mode
+- 2026-06-25 21:30 KST | claude -p --bare — CI에서 매번 같은 결과 나오게 잠그기 | https://code.claude.com/docs/en/headless
