@@ -590,3 +590,16 @@ cards:
       - "유저·프로젝트·로컬 메모리에만 적용 / 매니지드 정책 파일은 제외 불가"
       - "예: [\"**/vendor/**/CLAUDE.md\"] — vendor 트리의 CLAUDE.md를 컨텍스트에서 빼기"
     source: "https://code.claude.com/docs/en/settings"
+
+  - category: ai
+    title: "allowManagedHooksOnly — 조직이 승인한 훅만 돌게 잠그기"
+    summary: >
+      allowManagedHooksOnly는 settings.json에서 켜면 매니지드 훅, SDK 훅, 그리고 매니지드 설정의 enabledPlugins로 강제 활성화된 플러그인 훅만 로드하는 설정이다.
+      유저·프로젝트·로컬에 정의된 일반 훅은 전부 차단된다.
+      훅은 사용자 권한으로 임의 셸 명령을 실행할 수 있어 보안 위험이 큰데, 이 설정으로 개인이 끼워 넣은 훅을 막고 조직이 검수한 훅만 허용하는 화이트리스트를 만든다.
+      훅을 통째로 끄는 disableAllHooks와 달리, 승인된 훅은 살려 두면서 비승인 훅만 거른다.
+    points:
+      - "매니지드 훅·SDK 훅·매니지드 enabledPlugins 훅만 로드 / 유저·프로젝트·로컬 훅은 차단"
+      - "훅은 사용자 권한 셸 실행 — 비승인 훅 차단으로 공급망/내부자 위험 축소"
+      - "disableAllHooks(전부 끄기)와 달리 승인된 훅은 유지하는 화이트리스트 방식"
+    source: "https://code.claude.com/docs/en/settings"
