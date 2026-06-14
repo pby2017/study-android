@@ -835,3 +835,16 @@ cards:
       - "토큰은 안전 저장·자동 갱신 / 접근 해제는 `/mcp` 메뉴의 \"Clear authentication\" / OAuth는 HTTP 서버에서 동작"
       - "사전 등록 리다이렉트 URI가 필요하면 `--callback-port`로 포트 고정(`http://localhost:PORT/callback`) / DCR 미지원 서버는 `--client-id`·`--client-secret`로 자격증명 직접 제공"
     source: "https://code.claude.com/docs/en/mcp"
+
+  - category: ai
+    title: "claude --from-pr — PR에 묶인 그 작업 세션으로 곧장 되돌아가기"
+    summary: >
+      `gh pr create`로 PR을 만들면 그때 돌던 세션이 그 PR에 자동으로 연결된다.
+      나중에 그 PR 작업을 이어가려면 `claude --from-pr <번호>`로 곧장 연결된 세션을 되살리거나, PR URL을 `/resume` 피커 검색창에 붙여 넣어 찾는다.
+      피커는 GitHub·GitHub Enterprise·GitLab·Bitbucket의 pull/merge request URL을 받아 그에 연결된 세션을 짚어 준다.
+      디렉터리 단위로 흩어진 여러 세션 중 "어느 게 이 PR 작업이었지?"를 헤매지 않고, PR 하나를 키로 삼아 대화·컨텍스트를 그대로 복원하는 워크플로다.
+    points:
+      - "`gh pr create`로 PR 생성 시 그 세션이 PR에 자동 연결 — 별도 설정 불필요"
+      - "복원: `claude --from-pr <번호>` 또는 `/resume` 피커 검색창에 PR URL 붙여넣기"
+      - "피커는 GitHub·GitHub Enterprise·GitLab·Bitbucket의 PR/MR URL을 받아 연결 세션을 찾아줌"
+    source: "https://code.claude.com/docs/en/common-workflows"
