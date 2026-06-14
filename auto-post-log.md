@@ -21,3 +21,4 @@
 - 2026-06-21 09:00 KST | 다이내믹 워크플로 — Claude가 짠 스크립트로 서브에이전트 수십~수백 개 굴리기 | https://code.claude.com/docs/en/workflows
 - 2026-06-21 21:30 KST | MessageDisplay 훅 — 화면에 보이는 답변 텍스트만 바꿔치기 | https://code.claude.com/docs/en/hooks
 - 2026-06-22 09:00 KST | --exclude-dynamic-system-prompt-sections — 프롬프트 캐시 재사용률 높이기 | https://code.claude.com/docs/en/cli-reference
+- 2026-06-22 21:30 KST | Setup 훅 — 세션 시작 전 init·maintenance 준비 작업 자동 실행 | https://code.claude.com/docs/en/hooks
