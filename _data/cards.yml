@@ -793,3 +793,16 @@ cards:
       - "Desktop scheduled tasks = 데스크톱 앱·내 머신(로컬 파일·미커밋 변경 접근) / GitHub Actions = CI 파이프라인(레포 이벤트·cron)"
       - "`/loop` = 현재 CLI 세션 폴링 / 새 대화 시작 시 중단, 만료 전이면 --resume·--continue로 복원 / 자동 실행 프롬프트엔 성공 기준·결과 처리를 명시"
     source: "https://code.claude.com/docs/en/common-workflows"
+
+  - category: ai
+    title: "커스텀 커맨드 인자 — $ARGUMENTS 한 덩어리 vs 위치 인자로 쪼개 받기"
+    summary: >
+      커스텀 슬래시 커맨드(이제 스킬과 통합)는 호출할 때 넘긴 인자를 본문에 끼워 넣을 수 있다.
+      `$ARGUMENTS`는 입력 전체를 타이핑한 그대로 한 덩어리로 받는다 — 본문에 `$ARGUMENTS`가 없으면 끝에 `ARGUMENTS: <값>`이 자동으로 붙는다.
+      여러 인자를 따로 받고 싶으면 `$ARGUMENTS[N]` 또는 짧게 `$N`을 쓰는데, 인덱스는 0부터다 — `$0`이 첫 번째, `$1`이 두 번째다(셸의 $1과 헷갈리기 쉬움).
+      인덱스 인자는 셸식 따옴표 규칙을 따라서 여러 단어를 한 인자로 넘기려면 `"hello world"`처럼 감싸야 하고, 산문 속 `\$1.00` 같은 리터럴 $는 백슬래시로 이스케이프한다.
+    points:
+      - "`$ARGUMENTS` = 입력 전체 한 덩어리(타이핑 그대로) / 본문에 없으면 끝에 `ARGUMENTS: <값>` 자동 추가"
+      - "`$ARGUMENTS[N]`·`$N` = 위치별 인자, 인덱스 0부터 — `$0`=첫째, `$1`=둘째(셸 $1과 다름) / 프런트매터 `arguments`로 이름 붙은 위치 인자도 선언 가능"
+      - "여러 단어 한 인자는 `\"...\"`로 감싸기 / 산문의 리터럴 `$`는 `\\$1.00`처럼 백슬래시로 이스케이프"
+    source: "https://code.claude.com/docs/en/slash-commands"
