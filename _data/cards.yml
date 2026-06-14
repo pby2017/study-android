@@ -549,3 +549,17 @@ cards:
       - "시스템 프롬프트가 동일해져 사용자·머신 간 프롬프트 캐시 히트율 상승"
       - "기본 프롬프트에서만 작동(--system-prompt류 쓰면 무시) / -p 다중사용자 스크립트용"
     source: "https://code.claude.com/docs/en/cli-reference"
+
+  - category: ai
+    title: "Setup 훅 — 세션 시작 전 init·maintenance 준비 작업 자동 실행"
+    summary: >
+      Setup은 세션이 시작되기 '전'에 도는 훅 이벤트로, CLI 플래그로 트리거된다.
+      `claude -p --init`은 matcher가 `init`인 Setup 훅을, `claude -p --maintenance`는 matcher가
+      `maintenance`인 Setup 훅을 세션 시작 전에 실행한다(둘 다 print 모드 전용).
+      `claude --init-only`는 Setup과 SessionStart 훅만 돌리고 대화는 시작하지 않은 채 종료하므로,
+      의존성 설치·캐시 워밍 같은 준비 작업을 CI에서 한 번만 돌리기 좋다.
+    points:
+      - "Setup은 세션 시작 전 실행되는 훅 이벤트 / 입력 JSON에 hook_event_name:\"Setup\", trigger 포함"
+      - "--init → matcher 'init', --maintenance → matcher 'maintenance' (둘 다 -p print 모드 전용)"
+      - "--init-only는 Setup+SessionStart만 돌리고 대화 없이 종료 — CI 준비 단계용"
+    source: "https://code.claude.com/docs/en/hooks"
