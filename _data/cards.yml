@@ -793,3 +793,17 @@ cards:
       - "`$ARGUMENTS[N]`·`$N` = 위치별 인자, 인덱스 0부터 — `$0`=첫째, `$1`=둘째(셸 $1과 다름) / 프런트매터 `arguments`로 이름 붙은 위치 인자도 선언 가능"
       - "여러 단어 한 인자는 `\"...\"`로 감싸기 / 산문의 리터럴 `$`는 `\\$1.00`처럼 백슬래시로 이스케이프"
     source: "https://code.claude.com/docs/en/slash-commands"
+
+  - category: ai
+    title: "커스텀 서브에이전트 만들기 — 자주 쓰는 일꾼을 파일로 굳히기"
+    summary: >
+      같은 지시를 가진 일꾼을 매번 새로 띄우게 된다면, 그걸 커스텀 서브에이전트로 파일에 굳힌다.
+      서브에이전트는 YAML 프런트매터 + 본문(시스템 프롬프트)으로 된 마크다운 파일이고, `name`과 `description` 둘만 필수다.
+      `tools`(허용 도구 allowlist)·`disallowedTools`(차단 denylist)·`model`로 권한과 모델을 좁히는데, model에 `inherit`을 주면 메인 대화와 같은 모델을 쓴다.
+      Claude는 작업이 들어오면 각 서브에이전트의 `description`을 보고 위임할지 판단하므로, description은 페르소나가 아니라 '언제 이걸 쓰는지'를 또렷이 적어야 한다.
+      저장 위치는 프로젝트용 `.claude/agents/`(버전 관리로 팀 공유)와 개인용 `~/.claude/agents/`(내 모든 프로젝트)가 있고, `/agents` 명령으로 가이드 따라 만들고 관리한다.
+    points:
+      - "마크다운 + YAML 프런트매터, 필수는 `name`·`description`뿐 / 본문이 시스템 프롬프트 / `/agents`로 생성·편집·삭제"
+      - "도구 좁히기: `tools`(allowlist) 또는 `disallowedTools`(denylist) / `model: inherit`로 메인 대화 모델 따라가기"
+      - "위치·우선순위: managed(1·조직) > --agents 플래그(2·세션) > `.claude/agents/`(3·프로젝트, 팀 공유) > `~/.claude/agents/`(4·내 전체) > 플러그인(5)"
+    source: "https://code.claude.com/docs/en/sub-agents"
