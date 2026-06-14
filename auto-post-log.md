@@ -37,3 +37,5 @@
 - 2026-06-28 21:30 KST | /branch — 대화를 통째로 복제해 다른 접근을 따로 시도하기 | https://code.claude.com/docs/en/sessions
 
 - 2026-06-29 09:00 KST | 셸 모드 — 프롬프트 앞에 `!`로 명령 실행하고 출력까지 컨텍스트에 넣기 | https://code.claude.com/docs/en/interactive-mode
+
+- 2026-06-29 21:30 KST | MCP 설치 스코프 — local·project·user 셋 중 어디에 서버를 둘지 | https://code.claude.com/docs/en/mcp
