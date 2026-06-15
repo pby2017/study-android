@@ -1401,3 +1401,16 @@ cards:
       - "10개 카테고리·154+ 에이전트: 언어별(typescript-pro/swift-expert), 인프라, 품질, 메타-오케스트레이션 등 — 09-meta의 agent-installer로 'PHP 에이전트 찾아 설치해줘'식 자연어 설치도 지원"
       - "서브에이전트 = 별도 컨텍스트 창에서 도는 전문 일꾼. 직접 system prompt를 작성하는 대신 검증된 역할 정의를 가져다 쓰는 게 핵심 이점"
     source: "https://github.com/VoltAgent/awesome-claude-code-subagents"
+  - category: ai
+    title: "Repomix — 레포 전체를 LLM이 먹기 좋은 단일 파일로 패킹하기"
+    summary: >
+      Repomix는 코드베이스 전체를 'AI 친화적인 단일 파일' 하나로 묶어 Claude·ChatGPT·Gemini 같은
+      LLM에 통째로 던질 수 있게 해 주는 CLI 도구다. 별도 설치 없이 npx repomix@latest 한 줄이면
+      기본으로 repomix-output.xml을 생성하고, XML·Markdown·JSON·Plain Text 출력 포맷을 고를 수 있다.
+      토큰 수를 세어 주고, 원격 깃 레포·.gitignore·시크릿 탐지·압축 옵션을 지원하며 MCP 서버(--mcp)로도
+      붙는다. GitHub 26.3k★, MIT 라이선스.
+    points:
+      - "실행: npx repomix@latest (전역 설치는 npm install -g repomix) → 기본 출력은 repomix-output.xml. --style markdown/json/plain 으로 포맷 변경, repomix.config.json으로 무시 패턴·줄번호·주석 제거 설정"
+      - "왜 단일 파일인가: 파일을 일일이 붙여넣지 않고 레포 구조+내용을 한 번에 컨텍스트로 넣을 수 있어, 코드 리뷰·전체 맥락 질문에 유리. 토큰 카운트를 같이 출력해 한도 관리에 도움"
+      - "실무 기능: 원격 레포 직접 패킹, .gitignore 존중, 시크릿 탐지, MCP 서버(--mcp)로 에이전트에 도구로 노출, GitHub Actions·웹 인터페이스(repomix.com) 지원 (26.3k★·MIT, 주장 2026-06 기준)"
+    source: "https://github.com/yamadashy/repomix"
