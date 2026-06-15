@@ -1731,3 +1731,16 @@ cards:
       - "Claude Code·Gemini CLI·Codex·Kiro 등 지원, MCP 커넥터가 에이전트에 워크플로 지침 자동 설정"
       - "사람이 태스크 쪼개 핸드오프 → 에이전트가 To Do→In Progress→Done 갱신 → 세션 바뀌어도 맥락이 레포에 남음"
     source: "https://github.com/MrLesk/Backlog.md"
+  - category: ai
+    title: "Ralph Wiggum 루프 — 코딩 에이전트를 '끝날 때까지' 새 컨텍스트로 다시 돌리는 패턴"
+    summary: >
+      Geoffrey Huntley가 심슨 캐릭터 이름을 따 정리한 'Ralph'는 본질적으로 `while :; do cat PROMPT.md | claude-code; done` 한 줄이다.
+      매 반복마다 새 컨텍스트 윈도로 에이전트를 다시 띄워 한 번에 한 가지 일만 시키고, 작업이 끝날 때까지 같은 프롬프트를 계속 먹인다.
+      핵심은 긴 실행에서 컨텍스트가 오염·압축되며 모델이 길을 잃는 문제를 '상태를 파일에 두고 매번 새 컨텍스트로 리셋'해 우회한다는 점이다.
+      상태(우선순위 TODO·스펙·빌드 지침)는 fix_plan.md·AGENT.md 같은 파일에 두고, 테스트·타입체커·정적분석을 backpressure로 걸어 잘못된 생성을 거른다.
+      Anthropic은 이 기법을 공식 `ralph-wiggum` 플러그인으로 구현했다 — `/ralph-loop`로 시작하면 Stop 훅이 종료를 가로채 완료 조건까지 같은 작업을 세션 안에서 반복시킨다.
+    points:
+      - "Geoffrey Huntley가 명명, 본질은 '프롬프트 파일을 에이전트에 반복 투입하는 루프' — 매 회 새 컨텍스트로 컨텍스트 오염을 우회"
+      - "상태는 파일에(fix_plan.md·specs·AGENT.md), 검증은 test/build·타입·정적분석으로 — 저자는 신규(greenfield) 프로젝트·시니어 감독을 전제, '90%까지'로 평가"
+      - "Anthropic 공식 ralph-wiggum 플러그인: /ralph-loop 시작·/cancel-ralph 중단, Stop 훅이 완료 조건까지 세션 내 반복(작성자 Daisy Hollman)"
+    source: "https://ghuntley.com/ralph/"
