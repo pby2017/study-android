@@ -984,3 +984,16 @@ cards:
       - "규모: 41개 실사용 레포(업무 앱·B2B·개발자 도구)에서 1,865문제 / 공개 11 + held-out 12 + 상용 비공개 18 세 세트"
       - "비공개·상용 레포 포함 → 학습 데이터 오염 완화가 설계 의도 / 점수 인용 시 트래커별 하네스·날짜 다름에 주의(Verified도 동일)"
     source: "https://arxiv.org/abs/2509.16941"
+  - category: ai
+    title: "AGENTS.md — 도구마다 따로 쓰던 에이전트 지침을 하나로 통일하는 표준"
+    summary: >
+      AGENTS.md는 AI 코딩 에이전트에게 빌드·테스트·코딩 컨벤션 등 프로젝트 맥락을 알려주는 단순 마크다운 파일이다.
+      CLAUDE.md·.cursorrules처럼 도구마다 제각각이던 지침 파일을 하나의 열린 포맷으로 모으려는 표준으로,
+      레포 루트에 두면 되고 정해진 필드 없이 일반 마크다운으로 자유롭게 쓴다. 모노레포에서는 하위 디렉터리마다
+      AGENTS.md를 둘 수 있고 에이전트는 작업 중인 파일에 가장 가까운 파일을 우선 따른다(OpenAI 본체 레포는 88개 사용).
+      OpenAI Codex·Cursor·GitHub Copilot·Gemini·Jules·Zed·RooCode 등 다수 도구가 지원하며, 60k+ 프로젝트가 채택.
+    points:
+      - "위치·형식: 레포 루트 단일 파일 + 마크다운 자유 형식(필수 필드 없음). README는 사람용, AGENTS.md는 에이전트용으로 분리"
+      - "모노레포: 하위 폴더별 AGENTS.md 가능 → 작업 파일에 가장 가까운 것이 우선(중첩 우선순위)"
+      - "거버넌스: 2025-12 Linux Foundation 산하 Agentic AI Foundation에 기부돼 중립 표준으로 (MCP·Block goose와 함께)"
+    source: "https://agents.md"

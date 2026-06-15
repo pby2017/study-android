@@ -66,3 +66,5 @@
 - 2026-06-15 14:00 KST | Roo Code 종료와 Zoo Code — 인기 OSS 에이전트가 멈추면 코드는 어디로 가나 | https://github.com/Zoo-Code-Org/Zoo-Code
 
 - 2026-06-15 14:30 KST | SWE-bench Pro — Verified가 포화되자 나온 '오래 걸리는 진짜 일' 벤치마크 | https://arxiv.org/abs/2509.16941
+
+- 2026-06-15 15:00 KST | AGENTS.md — 도구마다 따로 쓰던 에이전트 지침을 하나로 통일하는 표준 | https://agents.md
