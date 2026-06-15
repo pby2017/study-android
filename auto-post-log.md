@@ -114,3 +114,5 @@
 - 2026-06-16 10:30 KST | Claude Code GitHub Action — PR에 @claude 부르면 알아서 고치고 리뷰까지 | https://github.com/anthropics/claude-code-action
 
 - 2026-06-16 11:00 KST | 멀티에이전트 3-티어 — 인세션·로컬 워크트리·클라우드를 일에 맞게 갈아끼우기 | https://addyosmani.com/blog/code-agent-orchestra/
+
+- 2026-06-16 11:30 KST | Conductor — 맥에서 코딩 에이전트 여러 개를 병렬로 굴리는 무료 앱 | https://www.conductor.build/docs/faq
