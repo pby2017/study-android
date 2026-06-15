@@ -889,3 +889,16 @@ cards:
       - "실행 환경: VS Code 확장 / JetBrains 플러그인 / CLI(대화형 + CI용 헤드리스) — IDE 안에서 파일·터미널 접근"
       - "Plan(전략) ↔ Act(실행) 모드 토글 + 편집 단위 승인/자동승인 / 라이선스 Apache-2.0, 63.3k★"
     source: "https://github.com/cline/cline"
+
+  - category: ai
+    title: "OpenHands — Devin을 겨냥한 오픈소스 자율 코딩 에이전트"
+    summary: >
+      OpenHands(OpenHands/OpenHands)는 LLM이 코드를 직접 쓰고·고치고·테스트하는 오픈소스 자율 소프트웨어 엔지니어링 플랫폼이다(GitHub 77.1k★).
+      Cline처럼 모델에 안 묶여 Claude·GPT 등 어떤 LLM이든 붙고, 실행 형태가 다섯 갈래다 — 가장 쉬운 CLI(Claude Code·Codex류), 파이썬 라이브러리 SDK, 로컬 GUI(REST API + React 앱), 호스팅 Cloud(Slack·Jira·Linear 연동), 그리고 고객 VPC에 쿠버네티스로 까는 Enterprise.
+      성능 지표로 README는 SWE-bench Verified 77.6 배지를 내건다 — 실제 GitHub 이슈를 푸는 표준 벤치마크에서 오픈 에이전트 중 상위권이라는 주장이다.
+      라이선스는 MIT지만 `enterprise/` 디렉터리만 예외(소스 공개, 한 달 뒤 유료) — self-hosted로 띄워 모델·인프라를 직접 쥐고 싶을 때의 대표적 대안이다.
+    points:
+      - "모델 무관 오픈소스 자율 에이전트 — Claude·GPT 등 / GitHub 77.1k★, 라이선스 MIT(단 enterprise/ 디렉터리만 예외)"
+      - "실행 5형태: CLI(가장 쉬움) / 파이썬 SDK / 로컬 GUI(REST+React) / Cloud(Slack·Jira·Linear) / Enterprise(VPC 쿠버네티스)"
+      - "README가 내건 성능: SWE-bench Verified 77.6 배지(실제 GitHub 이슈 해결 벤치, '오픈 에이전트 상위권' 주장)"
+    source: "https://github.com/All-Hands-AI/OpenHands"

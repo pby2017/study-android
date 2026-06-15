@@ -55,3 +55,5 @@
 
 - 2026-06-15 21:30 KST | Superpowers — 스킬을 엮어 만든 '개발 방법론' 프레임워크 | https://github.com/obra/superpowers
 - 2026-06-15 10:39 KST | Cline — 모델에 안 묶인 오픈소스 코딩 에이전트 | https://github.com/cline/cline
+
+- 2026-06-15 11:00 KST | OpenHands — Devin을 겨냥한 오픈소스 자율 코딩 에이전트 | https://github.com/All-Hands-AI/OpenHands
