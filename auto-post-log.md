@@ -222,3 +222,5 @@
 - 2026-06-16 05:50 KST | 하네스 엔지니어링 — 모델이 아니라 에이전트가 일하는 발판을 설계하는 분야 | https://github.com/ai-boost/awesome-harness-engineering
 
 - 2026-06-18 17:30 KST | Gartner가 AI 코드 어시스턴트를 AI 코딩 에이전트로 다시 부르다 — 4강 굳히기 | https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/
+
+- 2026-06-16 18:30 KST | ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다 | https://arxiv.org/abs/2602.11988

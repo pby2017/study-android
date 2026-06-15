@@ -2119,3 +2119,17 @@ cards:
       - "Leaders 4곳: GitHub·Anthropic·Cursor·OpenAI / GitHub는 3년 연속 Leader·실행력 최고점(12개 벤더 평가)"
       - "실무 함의: 기업 도구 선정 기준이 '자동완성·채팅'에서 '멀티스텝 자율 실행 능력'으로 재편 중"
     source: "https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/"
+  - category: ai
+    title: "ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다"
+    summary: >
+      ETH Zurich·LogicStar.ai 팀이 실제 코딩 태스크에서 AGENTS.md(레포 컨텍스트 파일)가
+      코딩 에이전트에 도움이 되는지 처음으로 엄밀하게 측정했다(arXiv 2602.11988). 결론은 직관과 반대다:
+      `/init` 류로 LLM이 자동 생성한 컨텍스트 파일은 성공률을 높이기는커녕 오히려 낮추는 경향을 보였고,
+      에이전트가 더 많은 단계를 밟게 만들어 추론 비용을 20% 넘게 끌어올렸다. 사람이 손으로 쓴 파일은
+      소폭의 이득은 있었지만 그 역시 탐색 단계와 비용을 함께 늘렸다. 60,000개 넘는 공개 레포가 이미
+      이런 파일을 두고 있는데, "있으면 좋다"는 가정이 데이터로 흔들린 셈이다.
+    points:
+      - "핵심 발견: LLM이 자동 생성한 AGENTS.md는 컨텍스트 파일 없는 경우보다 성공률을 떨어뜨리는 경향 + 추론 비용 20%↑(논문 abstract 확인)"
+      - "원인 추정: '전체 테스트 돌려라'·'관련 모듈 다 봐라' 같은 지시가 에이전트를 불필요한 탐색으로 몰아 단계·비용을 늘림"
+      - "권고: LLM 자동 생성 파일은 빼고, 사람이 추론 불가능한 정보(특수 빌드·툴 커맨드)만 짧게 적어라 — '자동 생성 디테일'은 독"
+    source: "https://arxiv.org/abs/2602.11988"
