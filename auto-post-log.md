@@ -180,3 +180,5 @@
 - 2026-06-16 12:30 KST | GitHub Copilot 코딩 에이전트 — 이슈를 던지면 알아서 PR을 올리는 비동기 에이전트 | https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent
 
 - 2026-06-16 21:30 KST | npx skills — 에이전트 스킬의 패키지 매니저(vercel-labs·22.5k★) | https://github.com/vercel-labs/skills
+
+- 2026-06-17 13:00 KST | Superpowers — 코딩 에이전트에 방법론을 스킬로 주입하는 프레임워크(obra) | https://github.com/obra/superpowers
