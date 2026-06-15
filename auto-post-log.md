@@ -97,3 +97,5 @@
 - 2026-06-15 22:30 KST | Amp — Sourcegraph에서 분사한 터미널+에디터 에이전트, 무료 티어 | https://ampcode.com/manual
 
 - 2026-06-15 13:30 KST | Context7 MCP — 에이전트가 '최신 버전' 라이브러리 문서를 그때그때 끌어오게 하는 서버 | https://github.com/upstash/context7
+
+- 2026-06-15 23:00 KST | Anthropic 내부 팀 활용법 — 코드 안 짜는 팀까지 Claude Code를 쓰는 실전 패턴 | https://claude.com/blog/how-anthropic-teams-use-claude-code

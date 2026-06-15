@@ -1216,3 +1216,16 @@ cards:
       - "2단계 도구: resolve-library-id(이름→식별자) → get-library-docs(문서 fetch), 프롬프트에 'use context7'"
       - "규모(주장): 깃허브 ~57k★·라이브러리 10만+ 색인 / Upstash 제작·MIT / Cursor·Claude Code·Windsurf 연동"
     source: "https://github.com/upstash/context7"
+
+  - category: ai
+    title: "Anthropic 내부 팀 활용법 — 코드 안 짜는 팀까지 Claude Code를 쓰는 실전 패턴"
+    summary: >
+      Anthropic이 자사 10개 팀(데이터 인프라·보안·제품 엔지니어링·디자인·추론·그로스 마케팅·법무 등)의 Claude Code 실사용 사례를 공개했다.
+      핵심은 '코드 생성기'가 아니라 '사고 파트너'로 쓴다는 것 — 그리고 비개발 직군도 워크플로를 자동화한다.
+      보안팀은 인시던트 때 스택트레이스+문서를 던져 제어 흐름을 추적해 10~15분 걸리던 이슈를 3배 빠르게 해결하고, 추론팀 비ML 인력은 모델 함수 설명을 받아 리서치 시간을 80% 줄였다.
+      그로스 마케팅팀은 서브에이전트 2개로 광고 CSV 수백 건을 분류·재생성하는 에이전틱 워크플로를 짰고, 법무팀은 개발 리소스 없이 담당 변호사 라우팅 '폰 트리'를 프로토타이핑했다.
+    points:
+      - "범용 패턴: CLAUDE.md로 온보딩 컨텍스트 모으기 / 인시던트에 스택트레이스+문서 투입 / GitHub Actions로 PR 코멘트 코드리뷰 자동화 / write→test→iterate 자율 루프"
+      - "검증된 수치(자사 주장): 보안 인시던트 3배 빠른 해결, 추론 리서치 시간 ~80% 단축(1시간→10~20분), 쿠버네티스 장애 진단 20분 절약"
+      - "비개발 직군도 사용 — 디자인팀은 Figma 파일을 자율 루프에 넣어 코드·테스트 반복, 마케팅은 광고 변형 최대 100개 자동 생성"
+    source: "https://claude.com/blog/how-anthropic-teams-use-claude-code"
