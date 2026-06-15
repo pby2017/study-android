@@ -1114,3 +1114,15 @@ cards:
       - "소진 후: '사용 크레딧'을 켰으면 API 요금으로 계속, 안 켰으면 주기 갱신까지 중단 / 크레딧은 1회 신청(opt-in) 후 자동 갱신"
       - "주의: 좌석제 Enterprise의 Standard 좌석은 이 크레딧 신청 불가"
     source: "https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan"
+  - category: ai
+    title: "Firecrawl MCP — 에이전트에 '웹 읽기'를 붙이는 가장 인기 있는 MCP 서버"
+    summary: >
+      Firecrawl은 자바스크립트 렌더링·페이지네이션·레이트리밋을 대신 처리하고 웹페이지를 깨끗한 마크다운으로 변환해 주는 웹 스크래핑·검색 API다.
+      공식 MCP 서버(firecrawl-mcp-server, GitHub 6.6k★)를 붙이면 Claude·Cursor·Windsurf 등 MCP 호환 도구에서 에이전트가 직접 웹을 검색하고 긁어올 수 있다.
+      설치는 별도 빌드 없이 `npx -y firecrawl-mcp` 한 줄에 `FIRECRAWL_API_KEY`만 환경변수로 넣으면 끝 — Claude Desktop은 `claude_desktop_config.json`에 npx 명령으로 등록한다.
+      단, MCP 서버를 여럿 붙일수록 도구 정의가 컨텍스트를 잡아먹어(데이터DB·파일시스템과 같이 쓰면 7.5만 토큰대) 에이전트 성능이 떨어진다는 점은 감안해야 한다.
+    points:
+      - "노출 도구: firecrawl_scrape·search·map·crawl·extract와 자율 수집용 firecrawl_agent, 변경 감시용 firecrawl_monitor_* 등"
+      - "설치: `env FIRECRAWL_API_KEY=fc-... npx -y firecrawl-mcp` 또는 `npm i -g firecrawl-mcp` — Cursor·Claude Desktop은 npx 명령으로 config 등록"
+      - "주의(주장): MCP 도구 정의 자체가 컨텍스트 오버헤드 — 도구가 많을수록 에이전트가 헷갈린다, 필요한 서버만 켜라"
+    source: "https://github.com/firecrawl/firecrawl-mcp-server"
