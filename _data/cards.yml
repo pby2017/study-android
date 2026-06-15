@@ -1253,3 +1253,16 @@ cards:
       - "GitHub 상태 체크로 표시: 통과=초록, 실패=빨강+수정 제안, CI에서 실행(Run Checks in CI) 가능"
       - "린트가 못 잡는 '팀 규칙'(네이밍·아키텍처·보안 관례 등)을 자연어로 적어 PR 게이트로 거는 용도 / 오픈소스 CLI 기반"
     source: "https://docs.continue.dev/"
+
+  - category: ai
+    title: "MCP 도구를 코드로 호출하기 — 토큰 150k→2k로 줄인 'Code execution with MCP'"
+    summary: >
+      Anthropic이 2025년 11월 공개한 패턴. 에이전트가 MCP 도구를 하나씩 직접 호출하는 대신, MCP 서버를 '파일시스템 위의 코드 API'로 노출하고 에이전트가 그 API를 호출하는 코드를 직접 작성하게 한다.
+      도구가 수백~수천 개로 늘면 ① 모든 도구 정의를 미리 로딩하느라 컨텍스트가 터지고 ② 중간 결과가 매번 모델을 거치며 토큰을 잡아먹는데, 이 패턴이 둘 다 해결한다.
+      도구마다 파일 하나(예: `servers/google-drive/getDocument.ts`)로 두고 에이전트가 필요한 파일만 탐색해 읽는 '점진적 공개(progressive disclosure)' 방식이다.
+      회의록 처리 예시에서 토큰을 150,000 → 2,000으로 줄여 98.7% 절감을 주장한다(Anthropic 측 주장). 단, 에이전트가 생성한 코드를 돌리려면 샌드박스 실행 환경이 필요하다.
+    points:
+      - "MCP 서버를 코드 API로 노출 → 에이전트가 도구를 '호출'이 아니라 '코드로 조합'(루프·조건·에러처리 그대로)"
+      - "필요한 도구 파일만 읽는 점진적 공개로 컨텍스트 절약 / 중간 결과를 코드 안에서 필터·집계 후 요약만 반환(1만 행 → 5행)"
+      - "회의록 예시 150k→2k 토큰(98.7% 절감) 주장 / PII를 모델에 안 흘리고 토큰화 가능 / Cloudflare도 'Code Mode'로 동일 결론. 단 샌드박스 실행 환경 필요"
+    source: "https://www.anthropic.com/engineering/code-execution-with-mcp"

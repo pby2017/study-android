@@ -102,3 +102,5 @@
 - 2026-06-15 23:30 KST | ACP — 아무 에디터에 아무 에이전트 붙이는 MCP의 에디터판 | https://github.com/zed-industries/agent-client-protocol
 
 - 2026-06-16 00:00 KST | Continue가 AI 체크로 피벗 — PR마다 도는 AI 검사 | https://docs.continue.dev/
+
+- 2026-06-16 00:30 KST | MCP 도구를 코드로 호출하기 — 토큰 150k→2k로 줄인 Code execution with MCP | https://www.anthropic.com/engineering/code-execution-with-mcp
