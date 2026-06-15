@@ -848,3 +848,16 @@ cards:
       - "복원: `claude --from-pr <번호>` 또는 `/resume` 피커 검색창에 PR URL 붙여넣기"
       - "피커는 GitHub·GitHub Enterprise·GitLab·Bitbucket의 PR/MR URL을 받아 연결 세션을 찾아줌"
     source: "https://code.claude.com/docs/en/common-workflows"
+
+  - category: ai
+    title: "--json-schema — claude -p 출력을 스키마에 맞춰 받아 스크립트로 바로 파싱"
+    summary: >
+      `claude -p`를 스크립트에서 쓸 때 자유 텍스트 답을 정규식으로 긁는 대신, 출력 형태를 JSON 스키마로 못박을 수 있다.
+      `--output-format json`에 `--json-schema '<JSON Schema>'`를 같이 주면, Claude의 구조화된 결과가 응답의 `structured_output` 필드에 그 스키마 형태로 담겨 온다(`result`엔 텍스트, 그 외 session ID·usage 같은 메타데이터도 함께).
+      예컨대 `{"type":"object","properties":{"functions":{"type":"array","items":{"type":"string"}}},"required":["functions"]}` 스키마를 주고 "auth.py의 함수 이름 뽑아줘"라고 하면, 함수명 배열이 구조화돼 돌아온다.
+      받은 다음엔 `jq '.structured_output'`로 그 필드만 꺼내 후속 처리에 넘기면 된다. CI·배치 파이프라인에서 LLM 출력을 안정적으로 소비하기 좋은 방식이다.
+    points:
+      - "`--output-format json` + `--json-schema '<스키마>'` → 결과가 응답의 `structured_output` 필드에 스키마 형태로 담김"
+      - "응답엔 텍스트(`result`)·session ID·usage 등 메타데이터도 함께 / `jq '.structured_output'`로 해당 필드만 추출"
+      - "자유 텍스트 파싱(정규식) 대신 형태를 못박아 CI·배치에서 LLM 출력을 안정적으로 소비"
+    source: "https://code.claude.com/docs/en/headless"

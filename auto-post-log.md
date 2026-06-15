@@ -50,3 +50,5 @@
 - 2026-06-14 22:00 KST | 원격 MCP 서버 인증 — /mcp로 OAuth 2.0 로그인하기 | https://code.claude.com/docs/en/mcp
 
 - 2026-06-14 22:30 KST | claude --from-pr — PR에 묶인 그 작업 세션으로 곧장 되돌아가기 | https://code.claude.com/docs/en/common-workflows
+
+- 2026-06-15 09:00 KST | --json-schema — claude -p 출력을 스키마에 맞춰 받아 스크립트로 바로 파싱 | https://code.claude.com/docs/en/headless
