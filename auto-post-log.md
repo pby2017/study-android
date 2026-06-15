@@ -74,3 +74,5 @@
 - 2026-06-15 16:00 KST | Terminal-Bench — 모델이 아니라 에이전트+모델 쌍을 재는 벤치마크 | https://www.tbench.ai/
 
 - 2026-06-15 16:30 KST | 컨텍스트 엔지니어링 — 프롬프트보다 무엇을 넣고 뺄지가 에이전트 성능을 가른다 | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+
+- 2026-06-15 17:00 KST | 멀티에이전트 오케스트레이션 — 리드 에이전트가 서브에이전트에게 일을 쪼개 맡기는 패턴 | https://www.anthropic.com/engineering/built-multi-agent-research-system
