@@ -81,3 +81,4 @@
 - 2026-06-15 12:59 KST | 작성과 리뷰를 분리하라 — 짠 세션 말고 새 세션이 검토 | https://code.claude.com/docs/en/best-practices
 
 - 2026-06-15 18:00 KST | Cursor Composer + Claude Code 듀얼 스택 — 도구를 고르지 말고 일로 나눠라 | https://cursor.com/blog/composer-2-5
+- 2026-06-15 18:30 KST | Agent SDK 별도 크레딧 — 2026-06-15부터 claude -p·자동화는 구독 한도와 분리 | https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan
