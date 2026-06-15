@@ -108,3 +108,5 @@
 - 2026-06-16 09:00 KST | Spotify Honk — 슬랙으로 시키면 PR을 자동으로 올리는 사내 코딩 에이전트 | https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint
 
 - 2026-06-16 09:30 KST | Aider Polyglot 벤치마크 — Python 점수에 가려진 편집 포맷 실력을 6개 언어로 잰다 | https://aider.chat/docs/leaderboards/
+
+- 2026-06-16 10:00 KST | 하네스 엔지니어링 — 에이전트가 같은 실수를 두 번 못 하게 환경을 고치는 일 | https://mitchellh.com/writing/my-ai-adoption-journey
