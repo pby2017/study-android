@@ -163,3 +163,5 @@
 - 2026-06-17 09:00 KST | Cursor 규칙(.mdc) — 한 덩어리 지침을 언제 켤지로 쪼개 토큰 아끼기 | https://cursor.com/docs/context/rules
 
 - 2026-06-15 11:00 KST | claude-code-router — Claude Code를 DeepSeek·Ollama 등 다른 모델로 갈아끼우기 | https://github.com/musistudio/claude-code-router
+
+- 2026-06-17 09:30 KST | Cline 서브에이전트 — 메인 에이전트의 컨텍스트를 지키는 읽기 전용 탐색대 | https://docs.cline.bot/features/subagents
