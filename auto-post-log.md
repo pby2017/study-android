@@ -218,3 +218,5 @@
 - 2026-06-18 15:30 KST | Serena — 코드를 텍스트 줄이 아니라 심볼로 다루게 해주는 MCP 툴킷 | https://github.com/oraios/serena
 
 - 2026-06-18 16:30 KST | Cursor CLI 헤드리스 모드 — `agent -p`로 CI·스크립트에서 코드 작업 자동화 | https://cursor.com/docs/cli/headless
+
+- 2026-06-16 05:50 KST | 하네스 엔지니어링 — 모델이 아니라 에이전트가 일하는 발판을 설계하는 분야 | https://github.com/ai-boost/awesome-harness-engineering
