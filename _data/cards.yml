@@ -2104,3 +2104,18 @@ cards:
       - "초점은 '더 똑똑한 모델'이 아니라 '같은 모델을 더 잘 일하게 하는 구조' — 컨텍스트 엔지니어링이 그 핵심 축"
       - "CC0 퍼블릭 도메인 큐레이션 목록이라 자유 복제·사내 포크 가능 / 도구 사용자→설계자로 넘어갈 때 보는 지도"
     source: "https://github.com/ai-boost/awesome-harness-engineering"
+
+  - category: ai
+    title: "Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기"
+    summary: >
+      Gartner는 2026-05-20 이 분야 매직 쿼드런트의 이름을 'Enterprise AI Coding Agents'로 바꿨다.
+      예전의 'AI Code Assistants(자동완성·채팅 보조)'에서 '에이전트(스스로 여러 단계를 수행)'로
+      카테고리 정의 자체가 옮겨간 것으로, 자동완성이 아니라 에이전트 능력으로 기업용 도구를 평가하기
+      시작했다는 신호다. 12개 벤더를 '실행력(ability to execute)'과 '비전 완성도' 두 축으로 평가했고,
+      Leaders는 GitHub·Anthropic·Cursor·OpenAI 네 곳이었다(GitHub가 3년 연속 Leader이자 실행력 1위).
+      도구 고를 때 '자동완성 품질'보다 '에이전트로 일을 끝까지 맡길 수 있나'를 먼저 보라는 흐름의 공식 확인이다.
+    points:
+      - "카테고리명 변경: AI Code Assistants → Enterprise AI Coding Agents(2026-05-20) — 평가 기준이 '보조'에서 '에이전트'로 이동"
+      - "Leaders 4곳: GitHub·Anthropic·Cursor·OpenAI / GitHub는 3년 연속 Leader·실행력 최고점(12개 벤더 평가)"
+      - "실무 함의: 기업 도구 선정 기준이 '자동완성·채팅'에서 '멀티스텝 자율 실행 능력'으로 재편 중"
+    source: "https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/"
