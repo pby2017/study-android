@@ -88,3 +88,5 @@
 - 2026-06-15 19:30 KST | Aider 레포 맵 — 코드베이스 전체를 안 넣고도 LLM에 뼈대만 보여주는 법 | https://aider.chat/docs/repomap.html
 
 - 2026-06-15 20:00 KST | llms.txt — 사이트 문서를 에이전트가 토큰 낭비 없이 읽게 하는 표준 | https://llmstxt.org/
+
+- 2026-06-15 20:30 KST | Agent Teams — 서브에이전트와 뭐가 다른가: 서로 대화하고 일을 나눠 갖는 팀 | https://code.claude.com/docs/en/agent-teams

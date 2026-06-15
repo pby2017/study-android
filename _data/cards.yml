@@ -1152,3 +1152,15 @@ cards:
       - "구조: H1(프로젝트명) → 인용블록 요약 → H2 섹션별 링크 목록 / `## Optional`은 건너뛰어도 되는 링크"
       - "전문(全文)을 한 파일에 담는 `llms-full.txt` 동반 포맷도 있음 — Mintlify·Vercel·Supabase 등 문서 플랫폼이 기본 생성(Anthropic·Cursor 문서도 보유)"
     source: "https://llmstxt.org/"
+  - category: ai
+    title: "Agent Teams — 서브에이전트와 뭐가 다른가: 서로 대화하고 일을 나눠 갖는 팀"
+    summary: >
+      Claude Code의 Agent Teams는 여러 Claude 세션을 '팀'으로 묶어 한 세션이 팀 리드가 되어 작업을 배분·종합하는 실험적 기능이다(환경변수 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`로 활성화).
+      서브에이전트와의 핵심 차이는 '협업'이다. 서브에이전트는 각자 독립 컨텍스트에서 일하고 결과만 리드에게 보고하지만, 팀원들은 서로 직접 메시지를 주고받고 공유 작업 목록(shared task list)을 보며 스스로 조율한다.
+      그래서 단순히 결과만 필요한 작업엔 서브에이전트가, 토론·상호 반박·조율이 필요한 복잡한 일엔 팀이 적합하다 — 대신 팀원마다 별도 Claude 인스턴스라 토큰 비용이 더 든다.
+      팀원은 CLAUDE.md·MCP·스킬 같은 프로젝트 컨텍스트는 자동 로드하지만 리드의 대화 기록은 상속하지 않으므로, 스폰 프롬프트에 작업 세부사항을 직접 담아야 한다.
+    points:
+      - "활성화: `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` (실험적). 팀원 실행 방식은 `teammateMode`(in-process 등)로 설정, split-pane은 tmux/iTerm2 필요"
+      - "고급 운영: 리드가 팀원 계획을 승인/반려하는 plan-approval('테스트 커버리지 포함한 계획만 승인' 같은 기준 지정 가능), 파일 충돌은 팀원마다 다른 파일을 맡겨 회피"
+      - "활용 패턴: PR 리뷰를 보안·성능·테스트 렌즈로 나눠 동시 검토, 또는 여러 팀원이 서로 가설을 반박하는 '과학적 토론'식 근본원인 디버깅(앵커링 회피)"
+    source: "https://code.claude.com/docs/en/agent-teams"
