@@ -148,3 +148,5 @@
 - 2026-06-15 13:00 KST | 공식 MCP 레지스트리 — 흩어진 MCP 서버를 한 API로 찾는 소스 오브 트루스 | https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/
 
 - 2026-06-15 13:00 KST | Zed Parallel Agents — 한 창에서 에이전트 여러 개를 동시에 굴리는 첫 에디터 | https://zed.dev/blog/parallel-agents
+
+- 2026-06-15 13:00 KST | OpenHands — SWE-bench 77.6점, MIT 라이선스 오픈소스 자율 코딩 에이전트(77k★) | https://github.com/All-Hands-AI/OpenHands

@@ -1587,3 +1587,15 @@ cards:
       - "스레드별로 에이전트 갈아끼우기·워크트리 격리 선택 가능, 한 스레드가 여러 레포 가로질러 읽기·쓰기"
       - "ACP로 Claude Code·Codex·Gemini CLI 연결, 자기 키 쓰면 AI 무료 — 에디터는 GPL 오픈소스(Zed·Zeta·ACP 공개)"
     source: "https://zed.dev/blog/parallel-agents"
+  - category: ai
+    title: "OpenHands — SWE-bench 77.6점, MIT 라이선스 오픈소스 자율 코딩 에이전트(77k★)"
+    summary: >
+      OpenHands(옛 OpenDevin)는 All-Hands-AI가 만든 오픈소스 코딩 에이전트로, README 기준 약 77.2k★, MIT 라이선스다.
+      "코드로 에이전트를 정의하고 로컬에서 돌리거나 클라우드에서 수천 개로 확장한다"를 표방하며 Claude Code·Codex·Devin과 같은 부류로 자리매김한다.
+      README 배지에 표시된 SWE-bench 점수는 77.6으로, Anthropic·OpenAI의 상용 에이전트들과 견줄 만한 자율 해결 성능을 오픈소스로 공개한 점이 핵심이다.
+      진입점은 CLI(가장 쉬운 시작점), 로컬 GUI(REST API+React 앱), 파이썬 SDK, 호스팅 클라우드 네 가지이며 핵심 도커 이미지도 MIT다.
+    points:
+      - "약 77.2k★·MIT 라이선스 — 핵심 openhands/agent-server 도커 이미지까지 MIT(enterprise/ 디렉터리만 별도 라이선스)"
+      - "README 배지 SWE-bench 77.6 — 상용 에이전트급 자율 해결 성능을 오픈소스로 공개"
+      - "진입점 4종: CLI(가장 쉬움)·로컬 GUI(REST+React)·파이썬 SDK·호스팅 클라우드 / 최신 릴리스 1.8.0"
+    source: "https://github.com/All-Hands-AI/OpenHands"
