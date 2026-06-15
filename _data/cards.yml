@@ -1781,3 +1781,15 @@ cards:
       - "GitHub Actions 위에서 격리 실행(빌드·테스트), 사람은 PR 리뷰만 — '동기식 페어'가 아닌 '비동기 위임' 워크플로"
       - "Agents 패널·GitHub.com·VS Code·이슈 등 여러 진입점에서 @copilot으로 호출 가능"
     source: "https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent"
+
+  - category: ai
+    title: "npx skills — 에이전트 스킬의 '패키지 매니저'(vercel-labs·22.5k★)"
+    summary: >
+      스킬(SKILL.md)이 쏟아지면서 생긴 문제는 '어떤 걸 어떻게 깔지'다. Vercel Labs의 skills CLI는 스스로를 '오픈 에이전트 스킬 생태계를 위한 CLI'라 부르며, npm 패키지처럼 스킬을 검색·설치·갱신하게 해준다(깃허브 22.5k★·MIT).
+      핵심 명령은 `npx skills find`(키워드·대화형 검색), `add`(설치, 예: `npx skills add vercel-labs/agent-skills`), `use`(설치 없이 1회 실행), `list`/`update`/`remove`/`init`이다. 설치 방식은 심링크(권장)와 복사 두 가지를 지원한다.
+      특히 한 도구에 묶이지 않는다 — README는 Claude Code·Codex·Cursor·OpenCode를 비롯해 Gemini CLI·Copilot·Windsurf·Zed 등 71개 이상의 에이전트에 같은 스킬을 깔 수 있다고 밝힌다. 동반 디렉터리 skills.sh에서 공개 스킬을 둘러볼 수 있다.
+    points:
+      - "스킬을 npm처럼 다루는 CLI: find(검색)·add(설치)·use(1회 실행)·update·remove·init (22.5k★·MIT)"
+      - "한 도구 전용이 아님 — Claude Code·Codex·Cursor·OpenCode 등 71개+ 에이전트에 동일 스킬 설치(README 주장)"
+      - "심링크(권장)/복사 설치 지원, 공개 스킬은 skills.sh 디렉터리에서 탐색"
+    source: "https://github.com/vercel-labs/skills"

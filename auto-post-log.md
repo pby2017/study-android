@@ -178,3 +178,5 @@
 - 2026-06-16 12:30 KST | LangGraph — 상태를 가진 에이전트를 저수준에서 직접 짜는 오케스트레이션 프레임워크(34.8k★) | https://github.com/langchain-ai/langgraph
 
 - 2026-06-16 12:30 KST | GitHub Copilot 코딩 에이전트 — 이슈를 던지면 알아서 PR을 올리는 비동기 에이전트 | https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent
+
+- 2026-06-16 21:30 KST | npx skills — 에이전트 스킬의 패키지 매니저(vercel-labs·22.5k★) | https://github.com/vercel-labs/skills
