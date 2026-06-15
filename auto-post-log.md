@@ -206,3 +206,5 @@
 - 2026-06-16 04:50 KST | Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트 | https://docs.continue.dev/guides/cli
 
 - 2026-06-17 14:30 KST | Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 무인 개발 파이프라인 | https://github.com/AnandChowdhary/continuous-claude
+
+- 2026-06-16 15:30 KST | Codebuff — 단일 모델이 아니라 에이전트 4종 팀으로 코드를 고치는 터미널 에이전트 | https://github.com/CodebuffAI/codebuff
