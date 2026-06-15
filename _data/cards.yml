@@ -1929,3 +1929,18 @@ cards:
       - "ruler.toml로 MCP 서버 설정도 함께 분배(merge/overwrite) — `--agents`·`--dry-run`·`--no-mcp` 플래그 제공"
       - "`ruler revert`로 apply가 만든 변경을 .bak 백업으로 되돌리기 가능(서브에이전트 전파는 revert 미지원)"
     source: "https://github.com/intellectronica/ruler"
+
+  - category: ai
+    title: "Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·62.9k★)"
+    summary: >
+      Pi는 earendil-works가 만든 오픈소스 AI 에이전트 툴킷이다(MIT, 62.9k★ — 2026-06 1차 출처 확인).
+      "unified LLM API, agent loop, TUI, coding agent CLI"를 모노레포로 묶었고, 핵심 콘셉트는 'self extensible'
+      — 내부를 포크해 뜯어고치지 않고도 사용자가 자기 워크플로에 맞춰 에이전트를 확장하게 설계됐다.
+      pi-ai(OpenAI·Anthropic·Google 등 멀티프로바이더 통합 API), pi-agent-core(툴 호출·상태 관리 런타임),
+      pi-tui(터미널 UI), pi-coding-agent(대화형 코딩 CLI)로 나뉜다. 단, 권한 시스템을 일부러 내장하지 않아서
+      Docker 등으로 직접 샌드박싱해 경계를 치라고 권한다.
+    points:
+      - "모노레포 4축: pi-ai(멀티프로바이더 LLM API)·pi-agent-core(런타임)·pi-tui(UI)·pi-coding-agent(CLI)"
+      - "설계 철학 = self extensible: 내부 포크 없이 워크플로에 맞춰 확장(도구에 워크플로를 맞추는 방식의 반대)"
+      - "권한 시스템 미내장 — Docker 등으로 직접 샌드박싱 권장, 의존성 변경도 코드처럼 리뷰하는 공급망 강화 강조"
+    source: "https://github.com/earendil-works/pi"
