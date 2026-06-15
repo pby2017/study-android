@@ -188,3 +188,5 @@
 
 - 2026-06-16 14:30 KST | AGENTS.md — 한 파일로 모든 코딩 에이전트에 같은 규칙을 주는 오픈 표준 | https://agents.md/
 - 2026-06-16 17:00 KST | CodeRabbit — 공개 레포는 무료, PR마다 줄 단위로 달라붙는 AI 리뷰어 | https://www.coderabbit.ai/pricing
+
+- 2026-06-16 18:00 KST | Codex CLI — OpenAI가 TypeScript를 버리고 Rust로 다시 짠 91k★ 로컬 코딩 에이전트 | https://github.com/openai/codex
