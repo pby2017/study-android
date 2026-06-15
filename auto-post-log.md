@@ -216,3 +216,5 @@
 - 2026-06-18 14:30 KST | awesome-claude-code — 스킬·훅·슬래시명령·플러그인을 모아둔 사실상의 표준 카탈로그(46k★) | https://github.com/hesreallyhim/awesome-claude-code
 
 - 2026-06-18 15:30 KST | Serena — 코드를 텍스트 줄이 아니라 심볼로 다루게 해주는 MCP 툴킷 | https://github.com/oraios/serena
+
+- 2026-06-18 16:30 KST | Cursor CLI 헤드리스 모드 — `agent -p`로 CI·스크립트에서 코드 작업 자동화 | https://cursor.com/docs/cli/headless
