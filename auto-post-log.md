@@ -183,3 +183,5 @@
 
 - 2026-06-17 13:00 KST | Superpowers — 코딩 에이전트에 방법론을 스킬로 주입하는 프레임워크(obra) | https://github.com/obra/superpowers
 - 2026-06-16 01:45 KST | 코딩 에이전트 프롬프트 인젝션 방어 — Claude Code가 실제로 거는 안전장치 | https://code.claude.com/docs/en/security
+
+- 2026-06-16 14:00 KST | Devin 가격표 다시 읽기 — Free·Pro 20·Max 200달러, 그리고 Windsurf 흡수 흔적 | https://devin.ai/pricing

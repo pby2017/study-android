@@ -1816,3 +1816,15 @@ cards:
       - "웹 fetch는 '격리된 컨텍스트 창'에서 처리 — 악성 페이지 지시가 메인 세션에 주입되는 걸 차단"
       - "fail-closed(미매칭 명령 수동승인)·명령 인젝션 탐지·첫 코드베이스/MCP trust 검증. 단 trust 검증은 -p 헤드리스에선 꺼짐"
     source: "https://code.claude.com/docs/en/security"
+
+  - category: ai
+    title: "Devin 가격표 다시 읽기 — Free·Pro 20·Max 200달러, 그리고 Windsurf 흡수 흔적"
+    summary: >
+      Cognition의 자율 코딩 에이전트 Devin은 한때 월 500달러 단일 요금으로 악명 높았지만, 지금 공식 가격표는 4단계로 바뀌었다. Free(0달러)는 가벼운 쿼터로 에이전트를 맛보고, 인라인 편집과 Tab 자동완성은 무제한이다. Pro(월 20달러)는 OpenAI·Claude·Gemini 프런티어 모델 풀 액세스에 Devin Cloud 클라우드 에이전트·동시 세션이 열린다.
+      그 위로 Max(월 200달러)와 Teams(기본 80달러 + 시트당 40달러)가 있고, 쿼터는 매일·매주 자동 리필되며 초과분은 API 단가로 과금된다. 실무 판단 포인트: 진입 비용이 20달러로 내려와 "일단 붙여본다"가 쉬워졌지만, 사용량 기반이라 복잡한 작업은 청구액이 튈 수 있다.
+      가격표에 'SWE 1.6 모델 무료', 'Tab 자동완성' 같은 항목이 보이는 건 Cognition이 Windsurf 자산을 흡수한 흔적이다. 즉 Devin은 이제 비동기 클라우드 에이전트와 에디터형 자동완성을 한 우산 아래 묶어 판다.
+    points:
+      - "4단계: Free 0달러 / Pro 20달러 / Max 200달러 / Teams 80달러+시트당 40달러 — 옛 단일 500달러에서 전면 개편"
+      - "Pro부터 OpenAI·Claude·Gemini 프런티어 모델 풀 액세스 + Devin Cloud·동시 세션, 쿼터는 매일·매주 자동 리필·초과는 API 단가"
+      - "'SWE 1.6 무료'·'Tab 자동완성'은 Windsurf 흡수 흔적 — 사용량 기반이라 복잡 작업은 비용이 튈 수 있음에 유의"
+    source: "https://devin.ai/pricing"
