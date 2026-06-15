@@ -201,3 +201,4 @@
 - 2026-06-16 23:50 KST | Pi — 고쳐 쓰라고 만든 자기확장형 터미널 코딩 에이전트(earendil-works·62.9k★) | https://github.com/earendil-works/pi
 
 - 2026-06-16 21:50 KST | Droid(Factory AI) — 모델보다 에이전트 설계를 Terminal-Bench로 증명한 CLI | https://factory.ai/news/terminal-bench
+- 2026-06-16 03:50 KST | Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다 | https://cursor.com/docs/context/semantic-search
