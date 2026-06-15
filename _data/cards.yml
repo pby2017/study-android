@@ -1280,3 +1280,17 @@ cards:
       - "Spotify 자체 발표(2026-06 엔지니어링 블로그): 엔지니어 99%+가 주간 AI 코딩 도구 사용, 94%가 생산성 향상 보고, PR 빈도 76% 증가"
       - "Anthropic 고객 사례 주장: Honk가 월 650개+ PR을 프로덕션에 머지, 수작업 마이그레이션 대비 최대 90% 시간 절감 / 단 15년치 Fleet Management 인프라 위에 얹힌 점이 전제"
     source: "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint"
+
+  - category: ai
+    title: "Aider Polyglot 벤치마크 — Python 점수에 가려진 '편집 포맷' 실력을 6개 언어로 잰다"
+    summary: >
+      Aider의 Polyglot 리더보드는 모델이 '코드를 잘 짜느냐'가 아니라 '사람 개입 없이 지시를 따라 파일을 제대로 편집하느냐'를 잰다.
+      Exercism에서 가장 어려운 225문제를 C++·Go·Java·JavaScript·Python·Rust 6개 언어로 풀린다.
+      각 문제는 두 번까지 시도하는데, 1차에서 실패하면 유닛 테스트 결과를 보여주고 스스로 고치게 한다 — 헤드라인 점수(Percent correct)는 이 2차 시도 후 통과율이다.
+      별도로 'Percent cases well formed' 지표가 있어, 모델이 diff/whole 같은 기대 포맷으로 문법에 맞는 편집을 내놓았는지를 정답률과 분리해서 본다(포맷은 맞췄지만 테스트는 틀릴 수 있으므로).
+      대부분의 LLM이 Python에 편향 학습돼 Python 단일 벤치는 실제 실력을 과대평가하기 쉬운데, 6개 언어 구성이 이 착시를 드러낸다.
+    points:
+      - "측정 대상: '코드 생성'이 아니라 '지시 따라 파일을 자동 편집하는 능력' — 에이전트형 코딩에 직결"
+      - "구성: Exercism 최난도 225문제 × 6개 언어 / 2회 시도(1차 실패 시 테스트 결과 보고 자가 수정)"
+      - "두 지표 분리: Percent correct(정답률, 2차 통과 기준) vs Percent cases well formed(편집 포맷 유효성) — 포맷만 맞고 오답일 수 있음"
+    source: "https://aider.chat/docs/leaderboards/"
