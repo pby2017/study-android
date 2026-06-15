@@ -112,3 +112,5 @@
 - 2026-06-16 10:00 KST | 하네스 엔지니어링 — 에이전트가 같은 실수를 두 번 못 하게 환경을 고치는 일 | https://mitchellh.com/writing/my-ai-adoption-journey
 
 - 2026-06-16 10:30 KST | Claude Code GitHub Action — PR에 @claude 부르면 알아서 고치고 리뷰까지 | https://github.com/anthropics/claude-code-action
+
+- 2026-06-16 11:00 KST | 멀티에이전트 3-티어 — 인세션·로컬 워크트리·클라우드를 일에 맞게 갈아끼우기 | https://addyosmani.com/blog/code-agent-orchestra/

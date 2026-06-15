@@ -1322,3 +1322,17 @@ cards:
       - "설치: Claude Code에서 /install-github-app 한 줄 — 깃허브 앱과 시크릿 설정까지 안내(레퍼런스 anthropics/claude-code-action@v1)"
       - "자체 GitHub 러너에서 실행, MIT 라이선스(약 8k★). '월 50 PR 기준 API 비용 $5 미만'은 공식 문서의 주장"
     source: "https://github.com/anthropics/claude-code-action"
+
+  - category: ai
+    title: "멀티에이전트 3-티어 — 인세션·로컬 워크트리·클라우드를 일에 맞게 갈아끼우기"
+    summary: >
+      Addy Osmani가 정리한 2026년 멀티에이전트 코딩 도구 지형은 셋업·격리·동시성을 기준으로 3티어로 나뉜다.
+      티어1은 추가 셋업 없이 한 세션 안에서 도는 Claude Code 서브에이전트·Agent Teams — 상호작용 작업의 출발점.
+      티어2는 내 머신에서 에이전트마다 별도 git 워크트리를 띄워 충돌 없이 3~10개를 병렬로 굴리는 로컬 오케스트레이션(Conductor·Claude Squad·Vibe Kanban 등).
+      티어3은 클라우드 VM에서 비동기로 돌려 PR로 받아 보는 도구(Claude Code Web·Copilot Coding Agent·Jules·Codex Web) — 백로그를 밤새 비울 때.
+      핵심은 '하나만 고르기'가 아니라 일의 성격에 따라 세 티어를 갈아끼우는 것이며, 동시성은 3~5개가 스위트스폿이고 10개를 넘기면 비용만 늘기 쉽다.
+    points:
+      - "티어1(제로 셋업)=서브에이전트·Agent Teams / 티어2(로컬 워크트리, 3~10개)=Conductor·Claude Squad·Vibe Kanban / 티어3(클라우드 비동기)=Claude Code Web·Copilot·Jules·Codex Web"
+      - "격리는 에이전트마다 별도 git 워크트리로 — 머지 충돌 없이 깔끔하게 통합(Conductor 류는 자동 처리)"
+      - "동시성 스위트스폿 3~5개, 10개 초과는 이득 적고 비용↑ / 품질 게이트(테스트 훅·플랜 승인)와 AGENTS.md로 세션마다 학습 누적"
+    source: "https://addyosmani.com/blog/code-agent-orchestra/"
