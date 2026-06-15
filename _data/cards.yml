@@ -1599,3 +1599,15 @@ cards:
       - "README 배지 SWE-bench 77.6 — 상용 에이전트급 자율 해결 성능을 오픈소스로 공개"
       - "진입점 4종: CLI(가장 쉬움)·로컬 GUI(REST+React)·파이썬 SDK·호스팅 클라우드 / 최신 릴리스 1.8.0"
     source: "https://github.com/All-Hands-AI/OpenHands"
+  - category: ai
+    title: "Tabby — 코드를 사내 서버 밖으로 안 내보내는 self-hosted Copilot 대안"
+    summary: >
+      Tabby는 TabbyML이 만든 오픈소스 코딩 어시스턴트로, README가 직접 "GitHub Copilot의 오픈소스·온프레미스 대안"을 표방한다(Apache 2.0).
+      외부 API에 코드를 보내는 Copilot·Cursor·Claude Code와 달리, 모델 추론 서버를 내 인프라에 직접 띄워 코드와 프롬프트가 사내망을 떠나지 않는 것이 핵심 차별점이다.
+      자동완성에 더해 RAG로 레포 컨텍스트를 끌어오는 코드 보조와 'Answer Engine' 채팅을 제공하고, VSCode·Vim·JetBrains 등 주요 에디터 확장을 지원한다.
+      소비자용 GPU나 애플 실리콘(Metal)에서도 구동돼 GPU 한 장 있는 팀이면 자체 호스팅이 현실적이라는 점에서, 데이터 반출이 막힌 규제·보안 환경의 1순위 후보다.
+    points:
+      - "Apache 2.0 오픈소스 — 추론 서버를 직접 호스팅해 코드·프롬프트가 외부로 안 나감(규제·보안 환경용)"
+      - "자동완성 + 레포 RAG 코드 보조 + Answer Engine 채팅 / VSCode·Vim·IntelliJ·JetBrains 확장 지원"
+      - "소비자 GPU·애플 Metal에서도 구동 — Copilot처럼 외부 SaaS에 의존하지 않는 온프레미스 완결형"
+    source: "https://github.com/TabbyML/tabby"

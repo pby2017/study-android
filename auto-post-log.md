@@ -150,3 +150,4 @@
 - 2026-06-15 13:00 KST | Zed Parallel Agents — 한 창에서 에이전트 여러 개를 동시에 굴리는 첫 에디터 | https://zed.dev/blog/parallel-agents
 
 - 2026-06-15 13:00 KST | OpenHands — SWE-bench 77.6점, MIT 라이선스 오픈소스 자율 코딩 에이전트(77k★) | https://github.com/All-Hands-AI/OpenHands
+- 2026-06-15 16:00 KST | Tabby — 코드를 사내 서버 밖으로 안 내보내는 self-hosted Copilot 대안 | https://github.com/TabbyML/tabby
