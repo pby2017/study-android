@@ -146,3 +146,5 @@
 - 2026-06-16 23:00 KST | wshobson/agents — 에이전트·스킬·커맨드를 여러 도구에 한 번에 까는 멀티하네스 마켓플레이스 | https://github.com/wshobson/agents
 
 - 2026-06-15 13:00 KST | 공식 MCP 레지스트리 — 흩어진 MCP 서버를 한 API로 찾는 소스 오브 트루스 | https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/
+
+- 2026-06-15 13:00 KST | Zed Parallel Agents — 한 창에서 에이전트 여러 개를 동시에 굴리는 첫 에디터 | https://zed.dev/blog/parallel-agents
