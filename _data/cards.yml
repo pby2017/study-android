@@ -1139,3 +1139,16 @@ cards:
       - "tree-sitter 파싱 → 파일=노드·참조=엣지 그래프에 랭킹 → 토큰 예산 안에서 중요 심볼만 선별"
       - "맵 크기는 `--map-tokens`로 조절(기본 1k 토큰), 채팅에 파일 없으면 자동으로 키움 / 부족하면 `/add`로 파일 직접 추가"
     source: "https://aider.chat/docs/repomap.html"
+
+  - category: ai
+    title: "llms.txt — 사이트 문서를 에이전트가 토큰 낭비 없이 읽게 하는 표준"
+    summary: >
+      llms.txt는 fast.ai·Answer.AI의 Jeremy Howard가 2024년 9월 3일 제안한 표준으로, 사이트 루트(`/llms.txt`)에 두는 마크다운 파일이다.
+      사람용 HTML은 내비게이션·CSS·광고가 대부분이라 LLM 컨텍스트 창을 낭비하는데, llms.txt는 핵심 문서로 가는 '큐레이션된 안내문'만 깔끔히 담아 코딩 에이전트(Cursor·Copilot·Claude 등)가 실시간으로 올바른 페이지를 적은 토큰으로 찾게 한다.
+      형식이 엄격하다: H1 프로젝트명 1개, 인용블록(`>`)으로 한 줄 요약, 그다음 H2 섹션마다 `[제목](URL): 설명` 형태의 링크 목록.
+      `## Optional` 섹션은 컨텍스트가 빠듯할 때 건너뛰어도 되는 링크를 모으는 자리다.
+    points:
+      - "위치·이름 고정: 도메인 루트의 `/llms.txt`, 소문자, 유효한 마크다운(파일명 없는 URL은 `index.html.md`로 마크다운 버전 제공)"
+      - "구조: H1(프로젝트명) → 인용블록 요약 → H2 섹션별 링크 목록 / `## Optional`은 건너뛰어도 되는 링크"
+      - "전문(全文)을 한 파일에 담는 `llms-full.txt` 동반 포맷도 있음 — Mintlify·Vercel·Supabase 등 문서 플랫폼이 기본 생성(Anthropic·Cursor 문서도 보유)"
+    source: "https://llmstxt.org/"

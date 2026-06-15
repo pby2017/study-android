@@ -86,3 +86,5 @@
 - 2026-06-15 19:00 KST | Firecrawl MCP — 에이전트에 웹 읽기를 붙이는 가장 인기 있는 MCP 서버 | https://github.com/firecrawl/firecrawl-mcp-server
 
 - 2026-06-15 19:30 KST | Aider 레포 맵 — 코드베이스 전체를 안 넣고도 LLM에 뼈대만 보여주는 법 | https://aider.chat/docs/repomap.html
+
+- 2026-06-15 20:00 KST | llms.txt — 사이트 문서를 에이전트가 토큰 낭비 없이 읽게 하는 표준 | https://llmstxt.org/
