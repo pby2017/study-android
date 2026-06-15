@@ -1649,3 +1649,16 @@ cards:
       - "RooCode 코어 5종: activeContext / decisionLog / productContext / progress / systemPatterns + 루트 projectBrief"
       - "Cline·RooCode·KiloCode·Cursor 공통 패턴 — 프롬프트(휘발) 아닌 대화 밖 영속 메모리 / Claude Code MEMORY.md와 동류"
     source: "https://github.com/GreatScottyMac/roo-code-memory-bank"
+
+  - category: ai
+    title: "Windsurf Cascade Workflows — 반복 작업을 .md 레시피로 만들어 /슬래시로 부르기"
+    summary: >
+      Windsurf(VS Code 포크, Codeium이 만들고 2025년 12월 Devin 제작사 Cognition이 인수)의 에이전트 모드 Cascade에는 'Workflows'가 있다.
+      배포·PR 코멘트 대응처럼 반복되는 멀티스텝 작업을 마크다운(.md) 파일 하나에 제목·설명·단계 시퀀스로 정의해 두고, `/[워크플로명]` 슬래시 커맨드로 호출하는 기능이다.
+      에이전트가 알아서 부르지 않는 '수동 전용(manual-only)'이라 의도치 않은 실행이 없고, 파일당 12,000자 제한이며 워크플로 안에서 다른 워크플로를 호출할 수도 있다.
+      저장 위치는 워크스페이스(`.windsurf/workflows/*.md`)와 글로벌(`~/.codeium/windsurf/global_workflows/*.md`)로 나뉘어, 레포에 커밋해 팀과 버전관리하며 공유할 수 있다. Claude Code의 슬래시 커맨드, Windsurf 자체 Workflow와 같은 계열의 '반복 작업 재사용' 패턴이다.
+    points:
+      - "반복 멀티스텝(배포·PR 대응)을 .md 한 파일에 제목·설명·단계로 정의 → `/워크플로명`으로 호출"
+      - "수동 전용(에이전트가 자동 호출 안 함) / 파일당 12,000자 / 워크플로가 다른 워크플로 호출 가능"
+      - "워크스페이스 `.windsurf/workflows/*.md`는 레포 커밋으로 팀 공유·버전관리, 글로벌은 `~/.codeium/...`"
+    source: "https://docs.devin.ai/desktop/cascade/workflows"
