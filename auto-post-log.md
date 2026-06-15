@@ -68,3 +68,5 @@
 - 2026-06-15 14:30 KST | SWE-bench Pro — Verified가 포화되자 나온 '오래 걸리는 진짜 일' 벤치마크 | https://arxiv.org/abs/2509.16941
 
 - 2026-06-15 15:00 KST | AGENTS.md — 도구마다 따로 쓰던 에이전트 지침을 하나로 통일하는 표준 | https://agents.md
+
+- 2026-06-15 15:30 KST | Agent Skills — SKILL.md 폴더 하나로 에이전트를 도메인 전문가로 만들기 | https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
