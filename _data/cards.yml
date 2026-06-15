@@ -1828,3 +1828,15 @@ cards:
       - "Pro부터 OpenAI·Claude·Gemini 프런티어 모델 풀 액세스 + Devin Cloud·동시 세션, 쿼터는 매일·매주 자동 리필·초과는 API 단가"
       - "'SWE 1.6 무료'·'Tab 자동완성'은 Windsurf 흡수 흔적 — 사용량 기반이라 복잡 작업은 비용이 튈 수 있음에 유의"
     source: "https://devin.ai/pricing"
+
+  - category: ai
+    title: "AGENTS.md — 한 파일로 모든 코딩 에이전트에 같은 규칙을 주는 오픈 표준"
+    summary: >
+      AGENTS.md는 '에이전트용 README'다. 빌드·테스트 명령, 코드 컨벤션, 보안 주의사항 같은 에이전트 전용 맥락을 사람용 README와 분리해 레포 루트의 한 파일에 모아두면, 도구마다 다른 규칙 파일(CLAUDE.md·.cursorrules 등)을 따로 관리할 필요가 줄어든다. 형식은 그냥 마크다운이라 필수 필드가 없고, 에이전트가 헤딩과 본문을 알아서 읽는다.
+      핵심은 '한 번 쓰면 여러 도구가 읽는다'는 점이다. 공식 사이트 기준 Codex(OpenAI)·Cursor·Gemini CLI·Jules(Google)·Devin·Junie(JetBrains)·Aider·goose·opencode·Zed·GitHub Copilot 코딩 에이전트·Windsurf·Kilo Code 등이 지원 목록에 올라 있고, 60k개 넘는 오픈소스 프로젝트가 쓴다고 명시한다.
+      모노레포에서는 하위 디렉터리마다 AGENTS.md를 더 둘 수 있고, 편집 중인 파일에 '가장 가까운' 파일이 우선한다. 단 사용자가 채팅으로 직접 내린 지시는 어떤 AGENTS.md보다 우선한다. 표준 운영은 현재 Linux Foundation 산하 Agentic AI Foundation이 맡는다.
+    points:
+      - "에이전트 전용 규칙(빌드·테스트·컨벤션)을 레포 루트 마크다운 한 파일에 모으는 오픈 표준 — 도구별 규칙 파일 난립을 정리"
+      - "Codex·Cursor·Gemini CLI·Devin·Copilot 코딩 에이전트·Aider·Zed 등 다수 지원, 60k+ 오픈소스 프로젝트가 채택(공식 주장)"
+      - "모노레포는 가장 가까운 AGENTS.md가 우선, 단 사용자의 채팅 지시가 모든 파일을 덮어씀 — 표준은 Linux Foundation 산하에서 관리"
+    source: "https://agents.md/"

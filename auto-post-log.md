@@ -185,3 +185,5 @@
 - 2026-06-16 01:45 KST | 코딩 에이전트 프롬프트 인젝션 방어 — Claude Code가 실제로 거는 안전장치 | https://code.claude.com/docs/en/security
 
 - 2026-06-16 14:00 KST | Devin 가격표 다시 읽기 — Free·Pro 20·Max 200달러, 그리고 Windsurf 흡수 흔적 | https://devin.ai/pricing
+
+- 2026-06-16 14:30 KST | AGENTS.md — 한 파일로 모든 코딩 에이전트에 같은 규칙을 주는 오픈 표준 | https://agents.md/
