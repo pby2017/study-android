@@ -1126,3 +1126,16 @@ cards:
       - "설치: `env FIRECRAWL_API_KEY=fc-... npx -y firecrawl-mcp` 또는 `npm i -g firecrawl-mcp` — Cursor·Claude Desktop은 npx 명령으로 config 등록"
       - "주의(주장): MCP 도구 정의 자체가 컨텍스트 오버헤드 — 도구가 많을수록 에이전트가 헷갈린다, 필요한 서버만 켜라"
     source: "https://github.com/firecrawl/firecrawl-mcp-server"
+
+  - category: ai
+    title: "Aider 레포 맵 — 코드베이스 전체를 안 넣고도 LLM에 '뼈대'만 보여주는 법"
+    summary: >
+      Aider가 다른 터미널 에이전트와 갈리는 핵심 기술이 '레포 맵(repo map)'이다.
+      매 요청마다 전체 코드베이스를 다 넣는 대신, 저장소의 파일 목록과 각 파일의 핵심 심볼(클래스·함수의 시그니처와 정의 한 줄)만 추려 컨텍스트로 보낸다.
+      tree-sitter로 심볼을 파싱하고, 파일을 노드·참조를 엣지로 한 의존성 그래프에 그래프 랭킹(PageRank류)을 돌려 '가장 많이 참조되는 중요한 심볼'만 골라낸다.
+      덕분에 LLM은 코드 전체를 안 봐도 API 형태를 파악하고, 더 봐야 할 파일만 콕 집어 요청한다 — 전부 넣어 비용 폭증/혼란을 막는 컨텍스트 엔지니어링의 실전 예다.
+    points:
+      - "매 요청에 레포 맵 전송 = 파일 목록 + 핵심 심볼 시그니처(정의 한 줄)만, 전체 소스 아님"
+      - "tree-sitter 파싱 → 파일=노드·참조=엣지 그래프에 랭킹 → 토큰 예산 안에서 중요 심볼만 선별"
+      - "맵 크기는 `--map-tokens`로 조절(기본 1k 토큰), 채팅에 파일 없으면 자동으로 키움 / 부족하면 `/add`로 파일 직접 추가"
+    source: "https://aider.chat/docs/repomap.html"
