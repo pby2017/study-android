@@ -2133,3 +2133,18 @@ cards:
       - "원인 추정: '전체 테스트 돌려라'·'관련 모듈 다 봐라' 같은 지시가 에이전트를 불필요한 탐색으로 몰아 단계·비용을 늘림"
       - "권고: LLM 자동 생성 파일은 빼고, 사람이 추론 불가능한 정보(특수 빌드·툴 커맨드)만 짧게 적어라 — '자동 생성 디테일'은 독"
     source: "https://arxiv.org/abs/2602.11988"
+  - category: ai
+    title: "Ruflo(옛 Claude-Flow) — Claude Code 위에 '여왕-일꾼' 스웜을 얹는 59.6k★ 메타하네스"
+    summary: >
+      Ruflo는 Claude Code·Codex 위에 다중 에이전트 오케스트레이션 계층을 얹는 오픈소스
+      '메타하네스'다(github.com/ruvnet/ruflo, MIT, 59.6k★). `npx ruflo init` 한 줄이면
+      여왕(Queen) 에이전트가 작업을 쪼개 일꾼 에이전트들에게 병렬로 맡기고, 벡터 메모리로 세션을
+      넘어 컨텍스트를 유지한다. 원래 이름은 'Claude-Flow'였으나 Claude 전용이라는 오해를 피하려
+      2026년 Ruflo로 리브랜딩했고, npm 패키지·CLI는 하위 호환을 위해 claude-flow 이름을 그대로 둔다.
+      다만 84.8% SWE-bench·75% 비용 절감 같은 헤드라인 수치는 독립 감사에서 반박된 적이 있어,
+      도입 전 '내 워크로드에서 직접' 재보는 게 안전하다.
+    points:
+      - "구조: 여왕 에이전트가 계획·분배, 일꾼들이 병렬 실행, 합의 프로토콜(Raft·Byzantine·Gossip)로 조율 — 한 버그 고치는 일엔 과한 헤비급(레포 README 확인)"
+      - "리브랜딩: Claude-Flow→Ruflo, 모델도 Claude 전용이 아니라 다중 제공사 라우팅 / npm·CLI는 claude-flow 이름 유지"
+      - "주의(주장): 84.8% SWE-bench·75% 비용절감은 마케팅 수치이고 독립 감사가 반박 — 실측 전엔 곧이곧대로 믿지 말 것"
+    source: "https://github.com/ruvnet/ruflo"

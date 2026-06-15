@@ -224,3 +224,5 @@
 - 2026-06-18 17:30 KST | Gartner가 AI 코드 어시스턴트를 AI 코딩 에이전트로 다시 부르다 — 4강 굳히기 | https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/
 
 - 2026-06-16 18:30 KST | ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다 | https://arxiv.org/abs/2602.11988
+
+- 2026-06-18 18:30 KST | Ruflo(옛 Claude-Flow) — Claude Code 위에 여왕-일꾼 스웜을 얹는 59.6k★ 메타하네스 | https://github.com/ruvnet/ruflo
