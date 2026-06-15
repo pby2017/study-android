@@ -124,3 +124,5 @@
 
 - 2026-06-16 13:00 KST | awesome-claude-code-subagents — 154개 전문 서브에이전트를 플러그인으로 한 번에 까는 컬렉션 | https://github.com/VoltAgent/awesome-claude-code-subagents
 - 2026-06-16 13:30 KST | Repomix — 레포 전체를 LLM이 먹기 좋은 단일 파일로 패킹하기 | https://github.com/yamadashy/repomix
+
+- 2026-06-16 13:30 KST | Cursor 공식 에이전트 활용법 — 한 프롬프트를 여러 모델에 동시에 던지고 제일 나은 답을 고르기 | https://cursor.com/blog/agent-best-practices
