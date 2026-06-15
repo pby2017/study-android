@@ -1891,3 +1891,14 @@ cards:
       - "model-graded 메트릭으로 '정답이 하나가 아닌' 생성 출력도 점수화 (단순 문자열 일치 너머)"
       - "자동 레드티밍으로 취약점 스캔 · 100% 로컬 실행(데이터 외부 유출 없음) · CI 회귀 게이트로 활용"
     source: "https://www.promptfoo.dev/docs/intro/"
+  - category: ai
+    title: "awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)"
+    summary: >
+      스킬(SKILL.md)이 Claude Code·Codex·Cursor·Gemini CLI 등에서 공통 표준이 되면서, "어떤 스킬을 깔지"가 새 고민거리가 됐다. VoltAgent의 awesome-agent-skills는 그 큐레이션 레포로, README에 1424개+ 스킬과 25.4k★(포크 2.7k)이라 적혀 있다.
+      기존에 다룬 도구별 awesome 목록과 달리 이 레포는 멀티하네스 지향 — 한 SKILL.md를 Claude Code, Codex, Cursor, Gemini CLI 등 여러 에이전트에서 그대로 쓰는 것을 전제로 한다.
+      특징은 AI가 양산한 스킬이 아니라 실제 엔지니어링 팀이 쓰는 스킬을 모았다는 점. Anthropic, Google Labs, Vercel, Stripe, Cloudflare, Netlify, Sentry, Figma 등 공식 팀이 낸 스킬이 포함돼 있어, 검증 안 된 프롬프트 더미가 아니라 출처가 분명한 레시피를 골라 쓸 수 있다.
+    points:
+      - "README 기준 1424개+ 스킬 · 25.4k★ — 단일 도구가 아니라 여러 에이전트에서 공유하는 SKILL.md 표준 전제"
+      - "Anthropic·Google Labs·Vercel·Stripe·Cloudflare·Sentry·Figma 등 공식 팀 발행 스킬 수록"
+      - "AI 양산물이 아닌 '실제 팀이 쓰는' 스킬 큐레이션 — 출처 검증된 레시피를 골라 설치"
+    source: "https://github.com/VoltAgent/awesome-agent-skills"

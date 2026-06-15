@@ -192,3 +192,4 @@
 - 2026-06-16 18:00 KST | Codex CLI — OpenAI가 TypeScript를 버리고 Rust로 다시 짠 91k★ 로컬 코딩 에이전트 | https://github.com/openai/codex
 - 2026-06-16 19:00 KST | Crush — Charm이 만든 TUI 맛집 모델-비종속 터미널 코딩 에이전트 | https://github.com/charmbracelet/crush
 - 2026-06-16 02:48 KST | promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴 | https://www.promptfoo.dev/docs/intro/
+- 2026-06-16 22:30 KST | awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★) | https://github.com/VoltAgent/awesome-agent-skills
