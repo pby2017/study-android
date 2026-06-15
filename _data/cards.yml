@@ -1530,3 +1530,15 @@ cards:
       - "provider-agnostic: API 키만 있으면 어떤 LLM 제공사든 연결(Anthropic 전용인 Claude Code와 대비)"
       - "Tab으로 전환하는 build(전체 접근)/plan(읽기 전용) 내장 에이전트 + LSP·서버/SDK 구조"
     source: "https://github.com/sst/opencode"
+
+  - category: ai
+    title: "/context — 200k 컨텍스트가 어디로 새는지 한눈에 보고 막는 진단 명령"
+    summary: >
+      에이전트 성능이 떨어지는 흔한 원인은 모델이 아니라 컨텍스트 창이 잡동사니로 꽉 찬 것이다. Claude Code의 `/context`는 시스템 프롬프트·기본 도구·MCP 도구·메모리(CLAUDE.md)·스킬·대화 기록·남은 공간이 각각 토큰을 얼마나 먹는지 분해해서 보여준다. 공식 비용 문서도 "무엇이 공간을 잡아먹는지 보려면 `/context`를 실행하라"고 안내한다.
+      과거엔 MCP 서버가 컨텍스트의 절반을 먹는다는 사례가 많았는데, 지금은 MCP 도구 정의가 기본적으로 '지연 로딩'이라 실제로 쓰기 전까진 도구 이름만 들어간다. 그래도 안 쓰는 서버는 `/mcp`로 끄는 게 좋고, 공식 문서는 MCP보다 `gh`·`aws`·`gcloud` 같은 CLI를 쓰면 도구 목록이 컨텍스트에 안 쌓인다고 권한다.
+      실무 처방은 단순하다. `/context`로 범인을 찾고 → 안 쓰는 MCP를 끄고 → CLAUDE.md는 핵심만 200줄 이내로 → 남은 공간이 줄면 `/compact`나 새 세션으로 정리. 토큰을 아끼는 게 아니라 모델이 집중할 '깨끗한 작업 공간'을 지키는 일이다.
+    points:
+      - "`/context`: 시스템·도구·MCP·메모리·대화별 토큰 점유율을 분해 — 공식 비용 문서가 진단 도구로 안내"
+      - "MCP 도구 정의는 기본 지연 로딩(쓰기 전엔 이름만) — 그래도 안 쓰는 서버는 `/mcp`로 끄고, CLI(gh·aws)는 목록을 안 쌓아 더 가벼움"
+      - "처방: 범인 찾기→불필요 MCP off→CLAUDE.md 200줄 이내→공간 줄면 /compact·새 세션"
+    source: "https://code.claude.com/docs/en/costs"

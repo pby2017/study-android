@@ -141,3 +141,4 @@
 - 2026-06-16 16:00 KST | Kilo Code — Roo Code 종료 후 갈아탈 곳으로 꼽히는 오픈소스 에이전트(20k★) | https://github.com/Kilo-Org/kilocode
 
 - 2026-06-16 16:30 KST | OpenCode — 모델 제공사에 안 묶이는 터미널 오픈소스 에이전트(SST 팀) | https://github.com/sst/opencode
+- 2026-06-16 22:30 KST | /context — 200k 컨텍스트가 어디로 새는지 한눈에 보고 막는 진단 명령 | https://code.claude.com/docs/en/costs
