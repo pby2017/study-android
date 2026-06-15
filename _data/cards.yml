@@ -1086,3 +1086,16 @@ cards:
       - "리뷰어는 추론 말고 '결과 diff + 합격 기준'만 본다 — 그래서 작성자가 놓친 결함을 독립적으로 잡음"
       - "실전: `/code-review` 스킬(새 서브에이전트가 현재 diff 검토) 또는 'PLAN.md 대비 리뷰' 프롬프트 직접 작성 / 무인 실행일수록 필수"
     source: "https://code.claude.com/docs/en/best-practices"
+
+  - category: ai
+    title: "Cursor Composer + Claude Code 듀얼 스택 — 도구를 고르지 말고 일로 나눠라"
+    summary: >
+      2026년 실무에서 굳어진 패턴은 'Cursor냐 Claude Code냐'가 아니라 둘을 작업 유형으로 라우팅하는 것이다.
+      두 도구가 스택의 다른 층에 있기 때문이다 — Cursor는 IDE 중심(에디터 안에서 자체 모델 Composer로 빠른 초안·스캐폴딩·리팩터), Claude Code는 터미널/CLI 중심(멀티레포 오케스트레이션, 서브에이전트, CI 자동화, git에 남는 워크플로 산출물).
+      Cursor는 GPT·Claude·Composer를 작업마다 갈아끼우는 '모델 유연성'을, Claude Code는 단일 최상위 모델에 에이전트 루프를 최적화한 '깊이'를 준다.
+      이미 CLAUDE.md·스킬·훅으로 레포에 워크플로를 박아뒀다면 전면 이전 비용이 가장 크다 — 그래서 한쪽으로 갈아타기보다 둘을 함께 쓰는 쪽이 자주 이긴다.
+    points:
+      - "라우팅: 에디터 안 빠른 초안·스캐폴딩·리팩터 → Cursor / 멀티레포·서브에이전트·CI·git 산출물 → Claude Code"
+      - "성격 차이: Cursor는 모델 갈아끼우는 유연성(GPT·Claude·Composer), Claude Code는 단일 모델 깊이(긴 호흡 에이전트 작업)"
+      - "Composer 2.5 = 2026-05-18 출시, Kimi K2.5 베이스 / CLAUDE.md·스킬·훅 투자분이 있으면 전면 이전 비용이 커 듀얼 스택이 유리"
+    source: "https://cursor.com/blog/composer-2-5"

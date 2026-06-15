@@ -79,3 +79,5 @@
 
 - 2026-06-15 17:30 KST | Codex CLI — OpenAI가 만든 터미널 코딩 에이전트(Rust·Apache-2.0) | https://github.com/openai/codex
 - 2026-06-15 12:59 KST | 작성과 리뷰를 분리하라 — 짠 세션 말고 새 세션이 검토 | https://code.claude.com/docs/en/best-practices
+
+- 2026-06-15 18:00 KST | Cursor Composer + Claude Code 듀얼 스택 — 도구를 고르지 말고 일로 나눠라 | https://cursor.com/blog/composer-2-5
