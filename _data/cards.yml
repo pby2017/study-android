@@ -1059,3 +1059,17 @@ cards:
       - "위임의 핵심: 각 서브에이전트에 목표·출력형식·도구안내·작업경계를 줘야 중복 안 함 / 난이도별 에이전트 수 규칙(단순=1, 비교=2~4, 복잡=10+)"
       - "안 맞는 경우: 공유 컨텍스트·에이전트 간 의존이 많은 일 — 코딩 대부분은 병렬화 가능한 부분이 적어 부적합"
     source: "https://www.anthropic.com/engineering/built-multi-agent-research-system"
+
+  - category: ai
+    title: "Codex CLI — OpenAI가 만든 터미널 코딩 에이전트(Rust·Apache-2.0)"
+    summary: >
+      OpenAI가 직접 만들어 오픈소스로 공개한 터미널 코딩 에이전트로, Claude Code의 직접 대항마다.
+      코드의 96% 이상이 Rust로 작성됐고 라이선스는 Apache-2.0, 깃허브 스타는 9만 개를 넘겼다(2026-06 기준).
+      설치는 `npm install -g @openai/codex` 또는 `brew install --cask codex` 한 줄이면 되고,
+      인증은 ChatGPT 계정 로그인(Plus·Pro·Business·Edu·Enterprise 플랜)이 권장 방식이라 별도 API 키 없이도 바로 쓸 수 있다.
+      편집·명령 실행 전에 '승인 모드(approval mode)'로 어디까지 자동 허용할지 고를 수 있고, VS Code·Cursor·Windsurf용 IDE 연동과 웹·데스크톱 앱도 제공한다.
+    points:
+      - "정체: OpenAI 공식 오픈소스 터미널 에이전트 / Rust 96%+·Apache-2.0·깃허브 9만★+(2026-06)"
+      - "설치: `npm install -g @openai/codex` 또는 `brew install --cask codex` / 인증은 ChatGPT 로그인 권장(API 키도 가능)"
+      - "안전장치: 편집·명령 실행 전 '승인 모드'로 자동 허용 범위 선택 / VS Code·Cursor·Windsurf IDE 연동, 웹·데스크톱 앱 제공"
+    source: "https://github.com/openai/codex"
