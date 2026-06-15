@@ -2148,3 +2148,17 @@ cards:
       - "리브랜딩: Claude-Flow→Ruflo, 모델도 Claude 전용이 아니라 다중 제공사 라우팅 / npm·CLI는 claude-flow 이름 유지"
       - "주의(주장): 84.8% SWE-bench·75% 비용절감은 마케팅 수치이고 독립 감사가 반박 — 실측 전엔 곧이곧대로 믿지 말 것"
     source: "https://github.com/ruvnet/ruflo"
+
+  - category: ai
+    title: "Amp(Sourcegraph) — '0% 마진' 종량제로 미는 멀티모델 코딩 에이전트"
+    summary: >
+      Amp는 Sourcegraph 계열에서 만든 터미널·에디터용 코딩 에이전트로, 작업마다 다른 모델을 골라 쓴다.
+      구독제가 아니라 실제 LLM 사용량 기반 종량제이고, 개인·비엔터프라이즈는 '제공사 API 가격 위에 마진 0%',
+      최소 충전 $5다(엔터프라이즈는 50% 비싸고 1회 $1,000 결제 필요). 특이점은 역할이 나뉜 서브에이전트로,
+      복잡한 추론은 Oracle(현재 GPT-5.5), 외부·사설 GitHub 레포 검색은 Librarian이 맡아 메인 컨텍스트를 보존한다.
+      규칙 파일은 AGENTS.md를 기본으로 쓰되, 없으면 AGENT.md·CLAUDE.md도 인식한다.
+    points:
+      - "종량제 + 마진 0%: 구독 없이 제공사 API 단가 그대로, 최소 $5 충전 / 엔터프라이즈는 +50%·1회 $1,000(공식 매뉴얼 확인)"
+      - "역할 분담 서브에이전트: Oracle(난해한 추론, GPT-5.5)·Librarian(원격·사설 레포 검색)·Painter(이미지)로 잡일 격리"
+      - "실행 범위 넓음: CLI·VS Code(+Cursor·Windsurf)·JetBrains·Neovim·Zed·웹UI / 규칙은 AGENTS.md 우선, AGENT.md·CLAUDE.md도 인식"
+    source: "https://ampcode.com/manual"

@@ -226,3 +226,4 @@
 - 2026-06-16 18:30 KST | ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다 | https://arxiv.org/abs/2602.11988
 
 - 2026-06-18 18:30 KST | Ruflo(옛 Claude-Flow) — Claude Code 위에 여왕-일꾼 스웜을 얹는 59.6k★ 메타하네스 | https://github.com/ruvnet/ruflo
+- 2026-06-18 19:30 KST | Amp(Sourcegraph) — 0% 마진 종량제로 미는 멀티모델 코딩 에이전트 | https://ampcode.com/manual
