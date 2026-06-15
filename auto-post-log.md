@@ -117,3 +117,5 @@
 
 - 2026-06-16 11:30 KST | Conductor — 맥에서 코딩 에이전트 여러 개를 병렬로 굴리는 무료 앱 | https://www.conductor.build/docs/faq
 - 2026-06-15 13:30 KST | 프롬프트 캐시 — tools→system→messages 순서가 비용을 가른다 | https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+
+- 2026-06-16 12:00 KST | 12-Factor Agents — 믿을 만한 에이전트는 대부분 그냥 소프트웨어다 | https://github.com/humanlayer/12-factor-agents

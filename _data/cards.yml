@@ -1360,3 +1360,16 @@ cards:
       - "계층 무효화: tools → system → messages 순서 — 앞 단계를 바꾸면 그 뒤가 전부 캐시 미스"
       - "조용히 캐시 깨는 것들: 도구 정의 변경, tool_choice 변경, 프롬프트 내 이미지 추가/삭제"
     source: "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+
+  - category: ai
+    title: "12-Factor Agents — 믿을 만한 에이전트는 '대부분 그냥 소프트웨어'다"
+    summary: >
+      HumanLayer의 Dex(Dexter Horthy)가 정리한, 프로덕션급 LLM 에이전트를 만드는 12가지 원칙(GitHub 23.3k★).
+      핵심 주장은 "여기 프롬프트, 여기 도구 한 보따리, 목표 칠 때까지 루프"라는 순진한 에이전트 루프는 70~80% 품질에서 막히고,
+      고객 대면 제품엔 그 80%로는 부족하다는 것 — 잘 도는 에이전트는 사실 '대부분 결정론적 소프트웨어'에 LLM 단계를 전략적으로 끼워 넣은 형태라고 본다.
+      그래서 프레임워크에 맡기지 말고 프롬프트·컨텍스트 창·제어 흐름을 직접 소유하고, 실행 상태를 비즈니스 상태와 합쳐 launch/pause/resume 가능한 단순 API로 만들라고 말한다.
+    points:
+      - "원칙 일부: 프롬프트를 소유하라 / 컨텍스트 창을 소유하라 / 제어 흐름을 소유하라 / 도구는 그냥 '구조화된 출력'일 뿐"
+      - "작고 집중된 에이전트로 쪼개고, 에러는 컨텍스트 창에 압축해 넣고, 사람 호출도 도구 콜로 처리하라"
+      - "에이전트를 '무상태 리듀서(stateless reducer)'로 만들어 어디서든 트리거·재개 가능하게"
+    source: "https://github.com/humanlayer/12-factor-agents"
