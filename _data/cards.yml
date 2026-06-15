@@ -929,3 +929,16 @@ cards:
       - "무료 한도: 개인 구글 계정 로그인만으로 Gemini 3 분당 60회·하루 1,000회, 1M 토큰 컨텍스트(API 키 관리 불필요)"
       - "빌트인 Google Search 그라운딩(실시간 웹 근거) / MCP·익스텐션 지원 / `--output-format json` 비대화형 모드로 자동화"
     source: "https://github.com/google-gemini/gemini-cli"
+
+  - category: ai
+    title: "OpenCode — 터미널 중심 오픈소스 에이전트(스타 최다급)"
+    summary: >
+      OpenCode(anomalyco/opencode)는 터미널 UI를 중심으로 도는 오픈소스 코딩 에이전트로, AI 코딩 에이전트 레포 중 GitHub 스타가 가장 많은 축(17만★대)에 든다(MIT).
+      TypeScript로 작성됐고, 코드를 직접 만드는 build 에이전트와 먼저 전략을 세우는 plan 에이전트를 나눠 쓰며, 곁가지 작업을 맡기는 @general 같은 서브에이전트도 둔다.
+      Claude Code가 특정 벤더(Anthropic) 중심인 것과 달리 OpenCode는 '터미널 우선·오픈소스'라는 점이 특징이고, 데스크톱 앱도 베타로 함께 제공된다.
+      "검증된 남이 만든 도구를 이해하고 골라 쓰는" 관점에서 Cline(IDE 확장형)·Aider(깃 자동커밋형)·OpenHands(자율 플랫폼형)와 함께 터미널형 대안의 대표 선택지다.
+    points:
+      - "터미널 UI 우선 오픈소스 에이전트 / TypeScript / 라이선스 MIT — AI 코딩 에이전트 중 스타 최다급(17만★대)"
+      - "build(구현) ↔ plan(전략) 에이전트 분리 + @general 서브에이전트로 곁가지 위임"
+      - "포지셔닝: 벤더 종속형 Claude Code 대비 '터미널 우선·오픈소스' / 데스크톱 앱 베타 동반 — Cline·Aider·OpenHands와 묶어 대안 지도 완성"
+    source: "https://github.com/anomalyco/opencode"
