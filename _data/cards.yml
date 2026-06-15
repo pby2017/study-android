@@ -1902,3 +1902,16 @@ cards:
       - "Anthropic·Google Labs·Vercel·Stripe·Cloudflare·Sentry·Figma 등 공식 팀 발행 스킬 수록"
       - "AI 양산물이 아닌 '실제 팀이 쓰는' 스킬 큐레이션 — 출처 검증된 레시피를 골라 설치"
     source: "https://github.com/VoltAgent/awesome-agent-skills"
+  - category: ai
+    title: "Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 'IDE는 코딩의 미래가 아니다'며 접은 사건"
+    summary: >
+      VS Code용 멀티모드(Architect·Code·Debug) 에이전트로 24.2k★·VS Code 마켓 300만 설치를 찍은 Roo Code가
+      2026년 5월 15일 확장 프로그램·Cloud·Router를 전부 닫았다. GitHub 레포는 같은 날 아카이브(읽기 전용)됐고,
+      공식 도메인 roocode.com은 새 제품 roomote.dev로 리다이렉트된다. 창업팀은 에디터 안 에이전트를 접고,
+      Slack에서 도는 운영 엔지니어링 에이전트(Roomote)로 피벗했다.
+      레포 Disclaimer는 마이그레이션 대안으로 커뮤니티 포크 ZooCode와 모태인 Cline을 명시한다.
+    points:
+      - "2026-05-15 확장·Cloud·Router 전면 종료 · 레포 아카이브(읽기 전용, 24.2k★) — 1차 출처로 확인"
+      - "roocode.com → roomote.dev 리다이렉트: 에디터 에이전트에서 'Slack 운영 에이전트'로 피벗"
+      - "공식 권장 이전 경로 = ZooCode(커뮤니티 포크)·Cline(모태). OSS 에이전트는 벤더 생존 리스크를 항상 깔고 가야 한다는 신호"
+    source: "https://github.com/RooCodeInc/Roo-Code"
