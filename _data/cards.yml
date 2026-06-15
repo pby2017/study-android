@@ -915,3 +915,17 @@ cards:
       - "레포 전체 맵 + LiteLLM 기반 모델 무관 — README 추천: Claude 3.7 Sonnet, DeepSeek R1·V3, OpenAI o1·o3-mini·GPT-4o"
       - "도구는 무료(LLM API 비용만) / 마지막 릴리스 새 코드의 88%를 Aider가 스스로 작성했다는 배지"
     source: "https://github.com/Aider-AI/aider"
+
+  - category: ai
+    title: "Gemini CLI — 모델 제조사가 직접 만든 터미널 에이전트(넉넉한 무료 한도)"
+    summary: >
+      Gemini CLI(google-gemini/gemini-cli)는 구글이 직접 만든 오픈소스 터미널 코딩 에이전트다(Apache-2.0, GitHub 현재 약 105k★).
+      Cline·Aider 같은 '모델 무관' 도구와 달리 모델 제조사가 만든 1차 도구라는 점이 핵심이고, 가장 큰 차별점은 넉넉한 무료 한도다 —
+      개인 구글 계정으로 로그인만 하면(API 키 관리 불필요) Gemini 3 모델을 분당 60회·하루 1,000회까지, 1M 토큰 컨텍스트로 쓸 수 있다.
+      또 하나의 차별점은 빌트인 Google Search 그라운딩 — 답변을 실시간 웹 검색에 근거시켜 최신 정보를 끌어올 수 있다.
+      MCP 서버 연동(`~/.gemini/settings.json`)과 커스텀 익스텐션을 지원하고, `--output-format json`으로 스크립트에 비대화형으로 박아 워크플로 자동화에 쓸 수 있다.
+    points:
+      - "구글의 1차 도구(모델 제조사 직접 제작) — Apache-2.0, 현재 약 105k★ / 인증 3종: 구글 계정(OAuth)·Gemini API 키·Vertex AI"
+      - "무료 한도: 개인 구글 계정 로그인만으로 Gemini 3 분당 60회·하루 1,000회, 1M 토큰 컨텍스트(API 키 관리 불필요)"
+      - "빌트인 Google Search 그라운딩(실시간 웹 근거) / MCP·익스텐션 지원 / `--output-format json` 비대화형 모드로 자동화"
+    source: "https://github.com/google-gemini/gemini-cli"

@@ -57,3 +57,5 @@
 - 2026-06-15 10:39 KST | Cline — 모델에 안 묶인 오픈소스 코딩 에이전트 | https://github.com/cline/cline
 
 - 2026-06-15 11:00 KST | OpenHands — Devin을 겨냥한 오픈소스 자율 코딩 에이전트 | https://github.com/All-Hands-AI/OpenHands- 2026-06-15 11:30 KST | Aider — 깃에 자동 커밋하는 터미널 페어 프로그래머 | https://github.com/Aider-AI/aider
+
+- 2026-06-15 12:00 KST | Gemini CLI — 모델 제조사가 직접 만든 터미널 에이전트(넉넉한 무료 한도) | https://github.com/google-gemini/gemini-cli
