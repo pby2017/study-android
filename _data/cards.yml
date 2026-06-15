@@ -1542,3 +1542,15 @@ cards:
       - "MCP 도구 정의는 기본 지연 로딩(쓰기 전엔 이름만) — 그래도 안 쓰는 서버는 `/mcp`로 끄고, CLI(gh·aws)는 목록을 안 쌓아 더 가벼움"
       - "처방: 범인 찾기→불필요 MCP off→CLAUDE.md 200줄 이내→공간 줄면 /compact·새 세션"
     source: "https://code.claude.com/docs/en/costs"
+
+  - category: ai
+    title: "UI UX Pro Max — '디자인 안목'을 스킬로 주입해 매번 비슷한 AI 화면을 벗어나기"
+    summary: >
+      AI에 UI를 맡기면 어디서 본 듯한 보라색 그라데이션·똑같은 카드 레이아웃이 반복되는 게 흔한 불만이다. UI UX Pro Max는 이 '디자인 안목 부재'를 메우는 오픈소스(MIT) Claude Code 스킬로, 프로젝트 요구사항을 분석해 제품 유형에 맞는 디자인 시스템(스타일·색·타이포·간격·접근성)을 자동으로 골라준다.
+      README 기준 67가지 UI 스타일(글래스모피즘·브루탈리즘·벤토 그리드 등), 161개 산업별 컬러 팔레트, 57개 폰트 페어링, 25종 차트, 15개 기술 스택(React·Next·Vue·SwiftUI·Flutter 등), 99개 UX 가이드라인, 161개 추론 규칙을 내장한다. 요청이 오면 제품 유형·스타일·팔레트·패턴·타이포를 병렬 검색하고, 업종에 안 맞는 '안티패턴'을 걸러낸 뒤 코드로 뽑는 식이다.
+      설치는 Claude Code에서 `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` 후 `/plugin install`. 단, 떠도는 스타/설치 수치는 출처마다 8만~19만으로 들쭉날쭉하니 '인기 지표'는 걸러 보고, 핵심은 검증된 기능 범위로 판단하라.
+    points:
+      - "제품 유형→스타일·팔레트·폰트·패턴을 병렬 매칭하고 업종 부적합 안티패턴을 걸러 코드 생성 (MIT 오픈소스)"
+      - "README 명시: 67 스타일·161 팔레트·57 폰트쌍·25 차트·15 스택·99 UX 규칙·161 추론 규칙"
+      - "설치: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` → `/plugin install` · 떠도는 별·설치수는 편차 커서 신뢰 말 것"
+    source: "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"

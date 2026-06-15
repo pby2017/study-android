@@ -142,3 +142,4 @@
 
 - 2026-06-16 16:30 KST | OpenCode — 모델 제공사에 안 묶이는 터미널 오픈소스 에이전트(SST 팀) | https://github.com/sst/opencode
 - 2026-06-16 22:30 KST | /context — 200k 컨텍스트가 어디로 새는지 한눈에 보고 막는 진단 명령 | https://code.claude.com/docs/en/costs
+- 2026-06-15 22:00 KST | UI UX Pro Max — 디자인 안목을 스킬로 주입해 매번 비슷한 AI 화면을 벗어나기 | https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
