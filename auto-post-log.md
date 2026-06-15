@@ -237,3 +237,5 @@
 - 2026-06-16 12:30 KST | Dreams(Anthropic) — 에이전트가 세션 사이에 잠자며 메모리를 정리하는 리서치 프리뷰 | https://platform.claude.com/docs/en/managed-agents/dreams
 
 - 2026-06-16 13:30 KST | OpenHands(옛 OpenDevin) — MIT 라이선스의 풀스택 코딩 에이전트 플랫폼(77k★) | https://github.com/All-Hands-AI/OpenHands
+
+- 2026-06-16 13:50 KST | OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT) | https://github.com/openclaw/openclaw

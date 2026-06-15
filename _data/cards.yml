@@ -2248,3 +2248,19 @@ cards:
       - "SDK·CLI·데스크톱 GUI·클라우드 4가지 사용 형태 / 옛 이름은 OpenDevin"
       - "코드 작성·명령 실행·웹 검색까지 하는 풀스택 에이전트, README 기준 SWE-bench 77.6점 배지"
     source: "https://github.com/All-Hands-AI/OpenHands"
+
+  - category: ai
+    title: "OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)"
+    summary: >
+      OpenClaw는 Peter Steinberger와 커뮤니티가 만든 오픈소스 개인 AI 어시스턴트로,
+      "자기 기기에서 돌리는 개인 AI 어시스턴트"를 표방한다. WhatsApp·Telegram·Slack·Discord·
+      Signal·iMessage 등 이미 쓰는 메신저 채널을 격리된 에이전트로 라우팅한다. 핵심은
+      Gateway라는 로컬-퍼스트 컨트롤 플레인(launchd/systemd 데몬)이 세션·채널·도구·이벤트를
+      한 곳에서 관리한다는 점이다. 모델 비종속이고, 메인 세션에선 도구가 호스트에서 직접 돌아
+      에이전트가 bash·read·write·edit 같은 권한을 갖는다(샌드박스 설정 가능). MIT 라이선스이며
+      GitHub 별은 37만 개 이상(README 기준 주장)으로 2026년 초 폭발적으로 늘었다.
+    points:
+      - "메신저(WhatsApp·Telegram·Slack·Signal·iMessage 등) → 격리된 에이전트로 라우팅"
+      - "Gateway = 로컬-퍼스트 컨트롤 플레인(데몬) / 모델 비종속 / MIT 라이선스"
+      - "메인 세션은 호스트에서 bash·read·write·edit 직접 실행(샌드박스 설정 가능)·별 37만+ 주장"
+    source: "https://github.com/openclaw/openclaw"
