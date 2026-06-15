@@ -2234,3 +2234,17 @@ cards:
       - "비동기 잡: pending→running→completed/failed/canceled, 수 분~수십 분 / instructions로 정리 방향 조정"
       - "리서치 프리뷰(별도 베타 헤더 dreaming-2026-04-21), 모델 재학습 아님 · 표준 토큰 요율 과금"
     source: "https://platform.claude.com/docs/en/managed-agents/dreams"
+
+  - category: ai
+    title: "OpenHands(옛 OpenDevin) — MIT 라이선스의 풀스택 코딩 에이전트 플랫폼(77k★)"
+    summary: >
+      OpenHands는 All-Hands-AI가 만든 오픈소스 AI 코딩 에이전트로, GitHub 별 77.2k개·MIT
+      라이선스(enterprise/ 디렉터리 제외)다. 코드를 쓰고 명령을 실행하고 웹을 검색하는 '소프트웨어
+      개발 전 과정' 에이전트를 표방하며, Claude·OpenAI·Gemini 등 모델을 갈아 끼울 수 있다.
+      SDK·CLI·GUI(앱)·클라우드 네 가지 형태로 쓸 수 있고, README에는 SWE-bench 77.6점 배지가 붙어 있다.
+      특정 IDE에 묶이지 않은 모델-비종속 오픈 플랫폼이라는 점이 셀링 포인트다.
+    points:
+      - "MIT 라이선스(enterprise/ 제외)·77.2k★, 모델 비종속(Claude/OpenAI/Gemini 등 교체 가능)"
+      - "SDK·CLI·데스크톱 GUI·클라우드 4가지 사용 형태 / 옛 이름은 OpenDevin"
+      - "코드 작성·명령 실행·웹 검색까지 하는 풀스택 에이전트, README 기준 SWE-bench 77.6점 배지"
+    source: "https://github.com/All-Hands-AI/OpenHands"

@@ -235,3 +235,5 @@
 - 2026-06-16 08:30 KST | SWE-bench Pro — 장기 과제로 다시 깔아본 에이전트, 1등도 23%대 | https://labs.scale.com/papers/swe_bench_pro
 
 - 2026-06-16 12:30 KST | Dreams(Anthropic) — 에이전트가 세션 사이에 잠자며 메모리를 정리하는 리서치 프리뷰 | https://platform.claude.com/docs/en/managed-agents/dreams
+
+- 2026-06-16 13:30 KST | OpenHands(옛 OpenDevin) — MIT 라이선스의 풀스택 코딩 에이전트 플랫폼(77k★) | https://github.com/All-Hands-AI/OpenHands
