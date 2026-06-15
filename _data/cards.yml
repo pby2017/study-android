@@ -2218,3 +2218,19 @@ cards:
       - "1등 GPT-5도 공개셋 Pass@1 23.3%, 상위 모델 대부분 25% 미만 (Verified의 70%대와 대조)"
       - "여러 파일 걸친 장기·고난도 과제 중심 — '벤치 점수'와 '실무 체감'의 간극을 드러냄"
     source: "https://labs.scale.com/papers/swe_bench_pro"
+
+  - category: ai
+    title: "Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰"
+    summary: >
+      Dreams는 Anthropic Managed Agents의 리서치 프리뷰 기능으로, 에이전트가 일하며 쌓은 메모리
+      스토어를 세션 밖에서 한 번에 정리한다. 에이전트는 평소 메모리에 점진적·국소적으로 기록하기 때문에
+      세션이 쌓일수록 중복·모순·낡은 항목이 누적되는데, 한 번의 'dream'이 기존 메모리 스토어와 과거 세션
+      기록(1~100개)을 함께 읽어 중복은 병합하고 낡거나 어긋난 값은 최신으로 바꾸고 새 인사이트는 끌어올린
+      '새 메모리 스토어'를 만들어 낸다. 핵심은 입력 스토어를 절대 건드리지 않는다는 점 — 결과를 검토하고
+      마음에 안 들면 버리면 된다. 모델을 재학습하는 게 아니라 비동기 잡으로 수 분~수십 분 돌아가며, API
+      토큰 표준 요율로 과금된다.
+    points:
+      - "입력=기존 메모리 스토어 + 세션 1~100개 → 출력=재정리된 '새' 스토어(입력은 불변, 버려도 됨)"
+      - "비동기 잡: pending→running→completed/failed/canceled, 수 분~수십 분 / instructions로 정리 방향 조정"
+      - "리서치 프리뷰(별도 베타 헤더 dreaming-2026-04-21), 모델 재학습 아님 · 표준 토큰 요율 과금"
+    source: "https://platform.claude.com/docs/en/managed-agents/dreams"

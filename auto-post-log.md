@@ -233,3 +233,5 @@
 - 2026-06-16 22:30 KST | ACP(Agent Client Protocol) — 에디터와 코딩 에이전트를 느슨하게 잇는 LSP 격 표준 | https://agentclientprotocol.com/overview/introduction
 
 - 2026-06-16 08:30 KST | SWE-bench Pro — 장기 과제로 다시 깔아본 에이전트, 1등도 23%대 | https://labs.scale.com/papers/swe_bench_pro
+
+- 2026-06-16 12:30 KST | Dreams(Anthropic) — 에이전트가 세션 사이에 잠자며 메모리를 정리하는 리서치 프리뷰 | https://platform.claude.com/docs/en/managed-agents/dreams
