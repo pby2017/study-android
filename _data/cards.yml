@@ -2281,3 +2281,17 @@ cards:
       - "`blocks`로 Claude Code 5시간 과금 창 추적 / `--breakdown`은 모델별 분해"
       - "Claude Code·Codex·OpenCode·Amp·Goose·Gemini/Copilot CLI 등 통합 / MIT·16.2k★(주장)"
     source: "https://github.com/ryoppippi/ccusage"
+
+  - category: ai
+    title: "Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기"
+    summary: >
+      Claude Code를 터미널 없이 claude.ai/code에서 돌리는 리서치 프리뷰다. GitHub 레포를
+      연결하고 할 일을 적으면, Anthropic이 관리하는 클라우드 VM에 레포가 클론된 채 작업이 돌고
+      끝나면 PR 초안까지 자동으로 만들어 준다. 여러 작업을 여러 레포에 걸쳐 병렬로 띄울 수 있어
+      버그 백로그·반복 수정 같은 일을 한 화면에서 한꺼번에 굴리기 좋다. 세션은 브라우저를 닫아도
+      유지되고 Claude 모바일 앱에서 모니터링된다. Pro·Max·Team과 일부 Enterprise 좌석이 대상이다.
+    points:
+      - "각 세션은 격리된 Anthropic 관리 VM에서 실행 / GitHub은 보안 프록시로 인증돼 토큰이 컨테이너에 안 들어감"
+      - "터미널의 `--remote`로 클라우드 작업을 띄우고 `--teleport`로 웹↔터미널 세션을 옮긴다"
+      - "네트워크는 기본 Trusted 허용목록(npm·PyPI·crates.io 등)으로 제한, 환경별로 조정 / 리서치 프리뷰"
+    source: "https://code.claude.com/docs/en/claude-code-on-the-web"

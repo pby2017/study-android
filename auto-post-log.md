@@ -241,3 +241,5 @@
 - 2026-06-16 13:50 KST | OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT) | https://github.com/openclaw/openclaw
 
 - 2026-06-16 13:55 KST | ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★) | https://github.com/ryoppippi/ccusage
+
+- 2026-06-16 14:00 KST | Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기 | https://code.claude.com/docs/en/claude-code-on-the-web
