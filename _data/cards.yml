@@ -1203,3 +1203,16 @@ cards:
       - "지침 파일은 AGENTS.md 우선·CLAUDE.md 폴백 / 서브에이전트 + 리뷰 전용 Oracle 내장"
       - "2025-12-02 'Amp Frontier Corporation'으로 분사 발표 — 별도 회사로 독립"
     source: "https://ampcode.com/manual"
+
+  - category: ai
+    title: "Context7 MCP — 에이전트가 '최신 버전' 라이브러리 문서를 그때그때 끌어오게 하는 서버"
+    summary: >
+      Context7은 Upstash가 만든 오픈소스 MCP 서버로, AI 코딩 에이전트가 라이브러리 API를 환각하거나 옛 버전으로 짜는 문제를 겨냥한다.
+      에이전트가 코드를 쓸 때 해당 라이브러리의 최신·버전별 공식 문서와 예제를 실시간으로 가져와 컨텍스트 창에 직접 주입하므로, 탭 전환이나 복붙 없이 최신 사용법으로 코드가 나온다.
+      도구는 두 단계로 동작한다: 라이브러리 이름을 식별자로 바꾸는 resolve-library-id, 그 식별자로 문서를 끌어오는 get-library-docs. 프롬프트에 "use context7"를 붙이는 식으로 쓴다.
+      Cursor·Claude Code·Windsurf 등 주요 도구에 붙고, 깃허브 약 57k★(주장)에 10만 개 이상 라이브러리를 색인했으며 라이선스는 MIT다.
+    points:
+      - "최신 버전 공식 문서를 쿼리 시점에 컨텍스트로 주입 — 오래된/환각 API로 코드 짜는 문제 해소"
+      - "2단계 도구: resolve-library-id(이름→식별자) → get-library-docs(문서 fetch), 프롬프트에 'use context7'"
+      - "규모(주장): 깃허브 ~57k★·라이브러리 10만+ 색인 / Upstash 제작·MIT / Cursor·Claude Code·Windsurf 연동"
+    source: "https://github.com/upstash/context7"

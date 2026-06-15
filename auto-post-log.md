@@ -95,3 +95,5 @@
 - 2026-06-15 22:00 KST | Goose — Block이 만든 온머신 오픈소스 에이전트 | https://github.com/block/goose
 
 - 2026-06-15 22:30 KST | Amp — Sourcegraph에서 분사한 터미널+에디터 에이전트, 무료 티어 | https://ampcode.com/manual
+
+- 2026-06-15 13:30 KST | Context7 MCP — 에이전트가 '최신 버전' 라이브러리 문서를 그때그때 끌어오게 하는 서버 | https://github.com/upstash/context7
