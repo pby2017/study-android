@@ -165,3 +165,5 @@
 - 2026-06-15 11:00 KST | claude-code-router — Claude Code를 DeepSeek·Ollama 등 다른 모델로 갈아끼우기 | https://github.com/musistudio/claude-code-router
 
 - 2026-06-17 09:30 KST | Cline 서브에이전트 — 메인 에이전트의 컨텍스트를 지키는 읽기 전용 탐색대 | https://docs.cline.bot/features/subagents
+
+- 2026-06-15 14:00 KST | Pydantic AI — 'FastAPI 느낌'으로 타입 안전하게 짜는 모델-비종속 에이전트 프레임워크 | https://github.com/pydantic/pydantic-ai
