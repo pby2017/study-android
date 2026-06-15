@@ -231,3 +231,5 @@
 - 2026-06-16 07:30 KST | OpenCode — Claude Code의 오픈소스 사촌, 모델 안 가리는 터미널 코딩 에이전트(175k★) | https://opencode.ai/docs/
 
 - 2026-06-16 22:30 KST | ACP(Agent Client Protocol) — 에디터와 코딩 에이전트를 느슨하게 잇는 LSP 격 표준 | https://agentclientprotocol.com/overview/introduction
+
+- 2026-06-16 08:30 KST | SWE-bench Pro — 장기 과제로 다시 깔아본 에이전트, 1등도 23%대 | https://labs.scale.com/papers/swe_bench_pro

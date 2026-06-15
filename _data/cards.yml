@@ -2202,3 +2202,19 @@ cards:
       - "해결 문제: 에디터마다 에이전트별 커스텀 통합 → 통합 비용·호환성 한계·도구 락인"
       - "Zed가 ACP 호환 에디터로 Claude Agent·Codex·Gemini 등 외부 에이전트를 끼워 씀(zed.dev/ai)"
     source: "https://agentclientprotocol.com/overview/introduction"
+
+  - category: ai
+    title: "SWE-bench Pro — '며칠짜리' 장기 과제로 다시 깔아본 에이전트, 1등도 23%대"
+    summary: >
+      SWE-bench Pro는 Scale AI가 만든 새 코딩 벤치마크로, 기존 SWE-bench Verified가 너무
+      쉬워지고(상위 모델이 70%대) 학습 데이터 오염 의심도 커지자 이를 보완하려고 나왔다. 41개
+      실제 저장소에서 뽑은 1,865개 문제로 구성되며, 11개는 공개·12개는 비공개(held-out)·18개는
+      상업용 사유 코드라 학습 코퍼스에 섞이기 어렵게(오염 저항) 설계했다. 문제도 여러 파일을
+      건드리는 장기·고난도 과제 중심이다. 결과는 냉정하다 — 1등 GPT-5가 공개셋 Pass@1 23.3%,
+      상위 프런티어 모델도 대부분 25% 미만에 머문다. "Verified는 거의 풀렸다"는 인상과 달리,
+      실무에 가까운 장기 과제에서는 아직 갈 길이 멀다는 걸 보여준다.
+    points:
+      - "1,865문제·41저장소(공개 11·held-out 12·상업용 18) — 비공개+사유 코드로 오염 저항 설계"
+      - "1등 GPT-5도 공개셋 Pass@1 23.3%, 상위 모델 대부분 25% 미만 (Verified의 70%대와 대조)"
+      - "여러 파일 걸친 장기·고난도 과제 중심 — '벤치 점수'와 '실무 체감'의 간극을 드러냄"
+    source: "https://labs.scale.com/papers/swe_bench_pro"
