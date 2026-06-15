@@ -72,3 +72,5 @@
 - 2026-06-15 15:30 KST | Agent Skills — SKILL.md 폴더 하나로 에이전트를 도메인 전문가로 만들기 | https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
 
 - 2026-06-15 16:00 KST | Terminal-Bench — 모델이 아니라 에이전트+모델 쌍을 재는 벤치마크 | https://www.tbench.ai/
+
+- 2026-06-15 16:30 KST | 컨텍스트 엔지니어링 — 프롬프트보다 무엇을 넣고 뺄지가 에이전트 성능을 가른다 | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
