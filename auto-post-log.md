@@ -174,3 +174,5 @@
 - 2026-06-17 11:00 KST | Ralph Wiggum 루프 — 코딩 에이전트를 끝날 때까지 새 컨텍스트로 다시 돌리는 패턴 | https://ghuntley.com/ralph/
 
 - 2026-06-16 12:00 KST | Claude Code 비용 줄이기 — 공식 문서가 권하는 실전 체크리스트 | https://code.claude.com/docs/en/costs
+
+- 2026-06-16 12:30 KST | LangGraph — 상태를 가진 에이전트를 저수준에서 직접 짜는 오케스트레이션 프레임워크(34.8k★) | https://github.com/langchain-ai/langgraph

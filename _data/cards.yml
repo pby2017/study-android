@@ -1757,3 +1757,15 @@ cards:
       - "1순위는 모델 라우팅 — 기본 Sonnet, Opus는 아키텍처·다단계 추론만, 서브에이전트엔 model: haiku"
       - "컨텍스트 절약: /context로 점유 확인 · CLAUDE.md 200줄 이하 · 안 쓰는 MCP는 /mcp로 끄기 · 도구는 MCP보다 gh/aws/gcloud 같은 CLI 선호(목록이 컨텍스트에 안 올라감)"
     source: "https://code.claude.com/docs/en/costs"
+
+  - category: ai
+    title: "LangGraph — 상태를 가진 에이전트를 '저수준'에서 직접 짜는 오케스트레이션 프레임워크(34.8k★)"
+    summary: >
+      LangGraph는 LangChain Inc이 만든 '상태를 가진(stateful) 에이전트를 위한 저수준 오케스트레이션 프레임워크'로, 깃허브 스타 34.8k(MIT 라이선스)다. CrewAI·AutoGen처럼 '에이전트 역할'을 추상화해 떠먹여 주기보다, 에이전트의 흐름을 그래프(노드·엣지)로 직접 설계하게 해 제어권을 개발자에게 준다.
+      핵심은 'durable execution' — 실행 상태를 영속화(checkpoint)해 중간에 실패하거나 며칠씩 걸려도 멈춘 지점부터 정확히 재개한다. 여기에 human-in-the-loop(에이전트 상태를 사람이 들여다보고 수정), 단기·장기 메모리, 토큰 단위 스트리밍이 붙는다.
+      LangChain 위에서 돌지만 LangChain 없이도 단독으로 쓸 수 있고, Klarna·Replit·Elastic 등이 프로덕션에 채택했다고 README가 밝힌다. 멀티주차 장기 워크플로, 조건부 분기, 사람 승인 게이트가 필요한 에이전트에 특히 많이 쓰인다.
+    points:
+      - "'상태를 가진 에이전트를 위한 저수준 오케스트레이션 프레임워크' — 흐름을 그래프로 직접 설계(34.8k★·MIT)"
+      - "durable execution: 실행 상태를 checkpoint로 영속화해 실패·장기 실행 후 멈춘 지점부터 재개 + human-in-the-loop·메모리·스트리밍"
+      - "LangChain 위에서 돌지만 단독 사용 가능 / Klarna·Replit·Elastic 등 프로덕션 채택(README 주장)"
+    source: "https://github.com/langchain-ai/langgraph"
