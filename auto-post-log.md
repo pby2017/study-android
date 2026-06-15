@@ -167,3 +167,4 @@
 - 2026-06-17 09:30 KST | Cline 서브에이전트 — 메인 에이전트의 컨텍스트를 지키는 읽기 전용 탐색대 | https://docs.cline.bot/features/subagents
 
 - 2026-06-15 14:00 KST | Pydantic AI — 'FastAPI 느낌'으로 타입 안전하게 짜는 모델-비종속 에이전트 프레임워크 | https://github.com/pydantic/pydantic-ai
+- 2026-06-17 10:00 KST | Aider 아키텍트 모드 — 비싼 모델로 계획, 싼 모델로 편집 둘로 쪼개기 | https://aider.chat/docs/usage/modes.html
