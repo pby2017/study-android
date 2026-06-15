@@ -182,3 +182,4 @@
 - 2026-06-16 21:30 KST | npx skills — 에이전트 스킬의 패키지 매니저(vercel-labs·22.5k★) | https://github.com/vercel-labs/skills
 
 - 2026-06-17 13:00 KST | Superpowers — 코딩 에이전트에 방법론을 스킬로 주입하는 프레임워크(obra) | https://github.com/obra/superpowers
+- 2026-06-16 01:45 KST | 코딩 에이전트 프롬프트 인젝션 방어 — Claude Code가 실제로 거는 안전장치 | https://code.claude.com/docs/en/security

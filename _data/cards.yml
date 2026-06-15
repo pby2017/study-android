@@ -1805,3 +1805,14 @@ cards:
       - "대표 스킬: using-superpowers(스킬 먼저 찾기)·brainstorming·subagent-driven-development·TDD·systematic-debugging, 키워드로 자동 트리거"
       - "Claude Code 전용이 아님 — Codex·Gemini CLI·OpenCode·Cursor·Copilot CLI·Factory Droid 등 다중 하네스 지원(README 주장, 22만★+)"
     source: "https://github.com/obra/superpowers"
+  - category: ai
+    title: "코딩 에이전트 프롬프트 인젝션 방어 — Claude Code가 실제로 거는 안전장치"
+    summary: >
+      프롬프트 인젝션은 공격자가 코드·웹페이지·파일에 악성 지시를 숨겨 에이전트의 원래 명령을 가로채는 기법이다. 코딩 에이전트를 실무에 들일 때 "이거 안전한가"가 첫 관문인데, Claude Code 공식 보안 문서는 마법이 아니라 '읽을 수 있는 구체적 안전장치'들로 답한다.
+      핵심은 권한 시스템(민감 작업은 명시적 승인)·컨텍스트 인식 분석(전체 요청을 보고 위험 지시 탐지)·입력 새니타이즈다. 특히 curl·wget 같은 네트워크 명령은 기본 자동승인이 안 되고, 웹 fetch는 별도 컨텍스트 창에서 처리해 악성 프롬프트가 본 세션에 섞이지 않게 격리한다.
+      그 위에 fail-closed 매칭(매칭 안 된 명령은 기본 수동승인)·명령 인젝션 탐지(이미 허용한 명령도 수상하면 다시 승인)·첫 코드베이스/새 MCP 서버 trust 검증이 더해진다. 단 trust 검증은 -p(헤드리스) 실행 시 비활성화되니 자동화 파이프라인은 그만큼 더 조심해야 한다. 어떤 방어도 100%는 아니므로 신뢰 불가 콘텐츠를 Claude에 직접 파이프하지 말 것을 공식 베스트 프랙티스로 권한다.
+    points:
+      - "권한 시스템·컨텍스트 인식 분석·입력 새니타이즈가 1차 방어, curl/wget 네트워크 명령은 기본 자동승인 제외"
+      - "웹 fetch는 '격리된 컨텍스트 창'에서 처리 — 악성 페이지 지시가 메인 세션에 주입되는 걸 차단"
+      - "fail-closed(미매칭 명령 수동승인)·명령 인젝션 탐지·첫 코드베이스/MCP trust 검증. 단 trust 검증은 -p 헤드리스에선 꺼짐"
+    source: "https://code.claude.com/docs/en/security"
