@@ -176,3 +176,5 @@
 - 2026-06-16 12:00 KST | Claude Code 비용 줄이기 — 공식 문서가 권하는 실전 체크리스트 | https://code.claude.com/docs/en/costs
 
 - 2026-06-16 12:30 KST | LangGraph — 상태를 가진 에이전트를 저수준에서 직접 짜는 오케스트레이션 프레임워크(34.8k★) | https://github.com/langchain-ai/langgraph
+
+- 2026-06-16 12:30 KST | GitHub Copilot 코딩 에이전트 — 이슈를 던지면 알아서 PR을 올리는 비동기 에이전트 | https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent

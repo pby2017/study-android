@@ -1769,3 +1769,15 @@ cards:
       - "durable execution: 실행 상태를 checkpoint로 영속화해 실패·장기 실행 후 멈춘 지점부터 재개 + human-in-the-loop·메모리·스트리밍"
       - "LangChain 위에서 돌지만 단독 사용 가능 / Klarna·Replit·Elastic 등 프로덕션 채택(README 주장)"
     source: "https://github.com/langchain-ai/langgraph"
+
+  - category: ai
+    title: "GitHub Copilot 코딩 에이전트 — 이슈를 던지면 알아서 PR을 올리는 비동기 에이전트"
+    summary: >
+      터미널 CLI 에이전트와 달리, GitHub Copilot 코딩 에이전트는 깃허브 안에서 '비동기'로 도는 자율 에이전트다. 이슈를 `@copilot`에게 할당하거나 Agents 패널에서 작업을 주면, 에이전트가 백그라운드에서 레포를 조사하고 구현 계획을 세운 뒤 브랜치에 코드를 고쳐 초안 PR(draft pull request)을 연다.
+      실행은 GitHub Actions 위에서 돌아 격리된 환경에서 빌드·테스트를 거치고, 사람은 결과 PR을 리뷰만 하면 된다. 즉 '내가 옆에서 지켜보며 짜는' 동기식 페어 프로그래밍이 아니라, '일을 맡겨두고 다른 일을 하다 PR로 받는' 워크플로다.
+      VS Code·GitHub.com·이슈 어디서든 `@copilot` 멘션으로 호출할 수 있어, 자잘한 버그·반복 작업을 사람 손에서 떼어내 백로그를 비우는 용도에 맞는다.
+    points:
+      - "이슈 할당 또는 @copilot 멘션 → 에이전트가 레포 조사·계획·브랜치 수정 후 초안 PR을 자동 생성"
+      - "GitHub Actions 위에서 격리 실행(빌드·테스트), 사람은 PR 리뷰만 — '동기식 페어'가 아닌 '비동기 위임' 워크플로"
+      - "Agents 패널·GitHub.com·VS Code·이슈 등 여러 진입점에서 @copilot으로 호출 가능"
+    source: "https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent"
