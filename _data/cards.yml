@@ -2013,3 +2013,17 @@ cards:
       - "모델 비종속: OpenRouter의 어떤 모델이든 사용 / TypeScript 제너레이터로 커스텀 워크플로, @codebuff/sdk로 임베드"
       - "벤치마크는 '주장': 자체 평가에서 Claude Code 대비 61% vs 53% — 제3자 검증 아님"
     source: "https://github.com/CodebuffAI/codebuff"
+  - category: ai
+    title: "Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼"
+    summary: >
+      구글이 2026 I/O(2026-05-19)에서 발표한 Antigravity는 단순 CLI가 아니라 '에이전트 우선' 개발 플랫폼이다.
+      한 화면이 아니라 세 개의 표면(surface)으로 일한다 — 에이전트에게 일을 맡기고 병렬로 굴리는 Agent Manager,
+      직접 코드를 손보는 에디터, 그리고 에이전트가 만든 웹앱을 직접 띄워 테스트하고 스크린샷까지 찍는 브라우저.
+      한 작업을 서브에이전트로 쪼개 동시에 돌릴 수 있고, 기존 데스크톱 에디터에 더해 새 CLI와 SDK도 함께 나왔다.
+      구글은 Gemini CLI 사용자에게 Antigravity로 이전(migrate)할 것을 요청하고 있어, Gemini CLI를 쓰던 팀이라면 갈아탈 대상으로 봐야 한다.
+      워크호스 모델은 Gemini 3.5 Flash로, 구글은 작년 Gemini 3.1 Pro를 대부분 벤치마크에서 앞서면서 약 4배 빠르다고 주장한다(구글 자체 주장).
+    points:
+      - "세 표면: Agent Manager(위임·병렬)·에디터(직접 편집, Plan/Fast 모드)·브라우저(에이전트가 앱 띄워 테스트·스크린샷)"
+      - "데스크톱 에디터 + 새 CLI + SDK 동시 출시 / 한 작업을 서브에이전트로 쪼개 병렬 실행"
+      - "구글이 Gemini CLI 사용자에게 Antigravity 이전 요청 — Gemini CLI 후속으로 봐야 / 모델은 Gemini 3.5 Flash"
+    source: "https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/"
