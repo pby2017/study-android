@@ -190,3 +190,4 @@
 - 2026-06-16 17:00 KST | CodeRabbit — 공개 레포는 무료, PR마다 줄 단위로 달라붙는 AI 리뷰어 | https://www.coderabbit.ai/pricing
 
 - 2026-06-16 18:00 KST | Codex CLI — OpenAI가 TypeScript를 버리고 Rust로 다시 짠 91k★ 로컬 코딩 에이전트 | https://github.com/openai/codex
+- 2026-06-16 19:00 KST | Crush — Charm이 만든 TUI 맛집 모델-비종속 터미널 코딩 에이전트 | https://github.com/charmbracelet/crush

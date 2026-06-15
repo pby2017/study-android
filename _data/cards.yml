@@ -1866,3 +1866,17 @@ cards:
       - "구현 96%가 Rust(초기 TS 버전에서 재작성); 설치는 npm·Homebrew·셸, 실행은 네이티브 바이너리"
       - "인증: ChatGPT 요금제 로그인 또는 API 키 / VS Code·Cursor·Windsurf 통합 + 클라우드 Codex Web"
     source: "https://github.com/openai/codex"
+
+  - category: ai
+    title: "Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트"
+    summary: >
+      Crush는 Bubble Tea로 유명한 Charm 팀이 만든 터미널 코딩 에이전트로, Go로 짜여 있고(코드의 98% 이상) GitHub 25k★대를 받았다.
+      OpenCode(sst)와 이름이 헷갈리지만 별개 프로젝트다 — 원래 'Open Code'였다가 혼동을 피해 Crush로 개명했다.
+      핵심은 모델-비종속: Anthropic·OpenAI·Gemini·Groq·OpenRouter·Bedrock·Azure는 물론 Ollama·LM Studio 같은 로컬 모델까지 붙고, OpenAI/Anthropic 호환 API면 직접 추가할 수 있다.
+      세션 도중 모델을 갈아끼워도 컨텍스트가 유지되며, LSP로 코드 맥락을 보강하고 MCP(http·stdio·sse)로 기능을 확장한다.
+      라이선스는 MIT가 아니라 FSL-1.1-MIT(2년 뒤 MIT로 전환)인 점은 도입 전 확인할 부분이다.
+    points:
+      - "Charm(Bubble Tea 제작사)의 Go 기반 TUI 에이전트 — 25k★대, sst의 OpenCode와는 별개(개명 이력)"
+      - "모델-비종속: Anthropic·OpenAI·Gemini·OpenRouter·Bedrock + Ollama·LM Studio 로컬, 세션 중 모델 교체 시 컨텍스트 유지"
+      - "LSP로 코드 맥락 보강 + MCP(http·stdio·sse) 확장 / 라이선스는 FSL-1.1-MIT(2년 후 MIT)"
+    source: "https://github.com/charmbracelet/crush"
