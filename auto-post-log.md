@@ -62,3 +62,5 @@
 - 2026-06-15 11:11 KST | OpenCode — 터미널 중심 오픈소스 에이전트 | https://github.com/anomalyco/opencode
 
 - 2026-06-15 13:00 KST | Kilo Code — VS Code·JetBrains에 붙는 GUI 에이전트(API 키 선택) | https://github.com/Kilo-Org/kilocode
+
+- 2026-06-15 14:00 KST | Roo Code 종료와 Zoo Code — 인기 OSS 에이전트가 멈추면 코드는 어디로 가나 | https://github.com/Zoo-Code-Org/Zoo-Code
