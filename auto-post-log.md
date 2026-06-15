@@ -100,3 +100,5 @@
 
 - 2026-06-15 23:00 KST | Anthropic 내부 팀 활용법 — 코드 안 짜는 팀까지 Claude Code를 쓰는 실전 패턴 | https://claude.com/blog/how-anthropic-teams-use-claude-code
 - 2026-06-15 23:30 KST | ACP — 아무 에디터에 아무 에이전트 붙이는 MCP의 에디터판 | https://github.com/zed-industries/agent-client-protocol
+
+- 2026-06-16 00:00 KST | Continue가 AI 체크로 피벗 — PR마다 도는 AI 검사 | https://docs.continue.dev/

@@ -1241,3 +1241,15 @@ cards:
       - "공식 SDK: Rust·TypeScript·Python·Java·Kotlin (레포는 99.5% Rust)"
       - "라이선스 Apache-2.0, CLA 없음 / 에이전트와 에디터를 분리해 N×M 통합 비용을 N+M으로 줄이는 게 핵심"
     source: "https://github.com/zed-industries/agent-client-protocol"
+  - category: ai
+    title: "Continue가 'AI 체크'로 피벗 — 채팅·자동완성 말고 PR마다 도는 AI 검사"
+    summary: >
+      한때 VS Code·JetBrains용 오픈소스 AI 코딩 어시스턴트 중 스타가 가장 많던 Continue(약 33k★, Apache-2.0)가 제품 방향을 크게 틀었다.
+      이제 핵심은 IDE 안 채팅·자동완성이 아니라 '모든 PR에서 AI 검사를 돌리는' 것이다.
+      각 검사는 레포 안 `.continue/checks/` 폴더의 마크다운 파일 하나로 정의되고, GitHub 상태 체크로 나타난다 — 통과하면 초록, 실패하면 빨강과 함께 수정 제안을 단다.
+      검사 규칙을 코드와 같은 레포에 버전 관리한다는 점에서 "소스로 관리되는, CI에서 강제 가능한 AI 검사"라는 슬로건을 단다.
+    points:
+      - "검사 = 마크다운 1개(`.continue/checks/`)로 정의 → 깃에 커밋되어 코드와 함께 버전 관리·리뷰됨"
+      - "GitHub 상태 체크로 표시: 통과=초록, 실패=빨강+수정 제안, CI에서 실행(Run Checks in CI) 가능"
+      - "린트가 못 잡는 '팀 규칙'(네이밍·아키텍처·보안 관례 등)을 자연어로 적어 PR 게이트로 거는 용도 / 오픈소스 CLI 기반"
+    source: "https://docs.continue.dev/"
