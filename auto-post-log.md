@@ -139,3 +139,5 @@
 - 2026-06-16 15:30 KST | Dynamic Workflows(ultracode) — Claude가 직접 스크립트를 짜서 서브에이전트 수십~수백 개를 굴리는 법 | https://code.claude.com/docs/en/workflows
 
 - 2026-06-16 16:00 KST | Kilo Code — Roo Code 종료 후 갈아탈 곳으로 꼽히는 오픈소스 에이전트(20k★) | https://github.com/Kilo-Org/kilocode
+
+- 2026-06-16 16:30 KST | OpenCode — 모델 제공사에 안 묶이는 터미널 오픈소스 에이전트(SST 팀) | https://github.com/sst/opencode

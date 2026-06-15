@@ -1518,3 +1518,15 @@ cards:
       - "zero-markup: 모델 제공사 청구가 그대로 — Claude Code 같은 구독제와 다른 BYOK 종량제"
       - "Architect/Coder/Debugger 멀티모드 + MCP 마켓플레이스 — Roo Code 아카이브(2026-05) 후 대체재로 거론"
     source: "https://github.com/Kilo-Org/kilocode"
+
+  - category: ai
+    title: "OpenCode — 모델 제공사에 안 묶이는 터미널 오픈소스 에이전트(SST 팀)"
+    summary: >
+      OpenCode는 SST(Anomaly) 팀이 만든 터미널용 오픈소스 코딩 에이전트로, 라이선스는 MIT다. Claude Code와 쓰임새는 비슷하지만 결정적 차이는 '특정 제공사에 묶이지 않는다'는 점 — API 키만 꽂으면 Claude·OpenAI·Google은 물론 로컬 모델까지 어떤 LLM 제공사든 붙일 수 있다.
+      Tab 키로 오가는 두 가지 내장 에이전트가 핵심이다. build는 전체 접근 권한을 가진 기본 개발 에이전트, plan은 코드를 읽고 분석만 하는 읽기 전용 에이전트라 '계획 먼저, 실행은 따로' 워크플로를 도구 차원에서 강제한다.
+      문서상 LSP(언어 서버) 설정과 별도 서버/SDK 페이지가 있어, TUI는 여러 클라이언트 중 하나일 뿐인 클라이언트/서버 구조를 지향한다. 단일 벤더 종속이 부담스럽거나 로컬·사내 모델을 섞어 쓰려는 팀에게 현실적인 오픈소스 대안이다.
+    points:
+      - "오픈소스 MIT · SST(Anomaly) 팀 — 터미널 TUI 기반, Claude Code와 쓰임새 유사"
+      - "provider-agnostic: API 키만 있으면 어떤 LLM 제공사든 연결(Anthropic 전용인 Claude Code와 대비)"
+      - "Tab으로 전환하는 build(전체 접근)/plan(읽기 전용) 내장 에이전트 + LSP·서버/SDK 구조"
+    source: "https://github.com/sst/opencode"
