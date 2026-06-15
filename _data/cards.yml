@@ -902,3 +902,16 @@ cards:
       - "실행 5형태: CLI(가장 쉬움) / 파이썬 SDK / 로컬 GUI(REST+React) / Cloud(Slack·Jira·Linear) / Enterprise(VPC 쿠버네티스)"
       - "README가 내건 성능: SWE-bench Verified 77.6 배지(실제 GitHub 이슈 해결 벤치, '오픈 에이전트 상위권' 주장)"
     source: "https://github.com/All-Hands-AI/OpenHands"
+
+  - category: ai
+    title: "Aider — 깃에 자동 커밋하는 터미널 페어 프로그래머"
+    summary: >
+      Aider(Aider-AI/aider)는 터미널에서 도는 오픈소스 AI 페어 프로그래밍 도구다(GitHub 46.2k★, 라이선스 Apache-2.0).
+      가장 큰 특징은 깃 네이티브 — 코드를 직접 고친 뒤 "센스 있는 커밋 메시지"를 달아 변경마다 자동 커밋해서, 표준 git diff·undo로 AI가 만든 변경을 그대로 되돌릴 수 있다(안전망).
+      레포 전체의 맵(map)을 떠서 큰 프로젝트에서도 맥락을 잡고, LiteLLM 기반이라 Claude·GPT·DeepSeek 등 거의 모든 LLM(로컬 모델 포함)에 붙는다 — README는 "Claude 3.7 Sonnet, DeepSeek R1·V3, OpenAI o1·o3-mini·GPT-4o에서 가장 잘 동작한다"고 명시한다.
+      도구 자체는 무료이고 LLM API 비용만 내며, 자기 신뢰도를 증명하듯 마지막 릴리스의 새 코드 중 88%를 Aider가 직접 썼다는 'Singularity' 배지를 README에 박아 둔다.
+    points:
+      - "깃 네이티브: 변경마다 메시지 달아 자동 커밋 → git diff/undo로 AI 변경 롤백(안전망) / 라이선스 Apache-2.0, 46.2k★"
+      - "레포 전체 맵 + LiteLLM 기반 모델 무관 — README 추천: Claude 3.7 Sonnet, DeepSeek R1·V3, OpenAI o1·o3-mini·GPT-4o"
+      - "도구는 무료(LLM API 비용만) / 마지막 릴리스 새 코드의 88%를 Aider가 스스로 작성했다는 배지"
+    source: "https://github.com/Aider-AI/aider"
