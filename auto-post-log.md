@@ -119,3 +119,5 @@
 - 2026-06-15 13:30 KST | 프롬프트 캐시 — tools→system→messages 순서가 비용을 가른다 | https://platform.claude.com/docs/en/build-with-claude/prompt-caching
 
 - 2026-06-16 12:00 KST | 12-Factor Agents — 믿을 만한 에이전트는 대부분 그냥 소프트웨어다 | https://github.com/humanlayer/12-factor-agents
+
+- 2026-06-16 12:30 KST | 컨텍스트 엔지니어링 — 프롬프트 다듬기 다음 단계, '토큰 환경'을 설계하는 일 | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents

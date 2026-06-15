@@ -1373,3 +1373,17 @@ cards:
       - "작고 집중된 에이전트로 쪼개고, 에러는 컨텍스트 창에 압축해 넣고, 사람 호출도 도구 콜로 처리하라"
       - "에이전트를 '무상태 리듀서(stateless reducer)'로 만들어 어디서든 트리거·재개 가능하게"
     source: "https://github.com/humanlayer/12-factor-agents"
+
+  - category: ai
+    title: "컨텍스트 엔지니어링 — 프롬프트 다듬기 다음 단계, '토큰 환경'을 설계하는 일"
+    summary: >
+      Anthropic이 정리한 개념. 프롬프트 엔지니어링이 '뭐라고 시킬지(instructions)'를 쓰는 일이라면,
+      컨텍스트 엔지니어링은 추론 매 턴마다 '컨텍스트 창에 어떤 토큰을 넣을지 큐레이션·관리하는 일'이다 —
+      목표는 "원하는 결과를 낼 확률을 최대화하는, 가능한 한 작은 고신호 토큰 집합".
+      이게 중요한 이유는 컨텍스트가 길수록 모델이 정보를 정확히 회상하는 능력이 떨어지는 '컨텍스트 로트(context rot)' 때문 —
+      트랜스포머는 토큰 n개에 대해 n² 쌍 관계를 만들어 매 토큰이 '주의 예산(attention budget)'을 깎는다.
+    points:
+      - "컨텍스트 로트: 토큰이 늘수록 회상 정확도 하락 — 창 크기와 무관하게 성능 벽에 부딪힘"
+      - "컴팩션(compaction): 대화 내용을 요약해 새 컨텍스트 창으로 재시작 / 서브에이전트는 수만 토큰 탐색 후 1,000~2,000 토큰 요약만 반환"
+      - "JIT 검색: 전부 미리 넣지 말고, 파일 경로·식별자만 들고 있다가 필요할 때 끌어오기"
+    source: "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
