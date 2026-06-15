@@ -64,3 +64,5 @@
 - 2026-06-15 13:00 KST | Kilo Code — VS Code·JetBrains에 붙는 GUI 에이전트(API 키 선택) | https://github.com/Kilo-Org/kilocode
 
 - 2026-06-15 14:00 KST | Roo Code 종료와 Zoo Code — 인기 OSS 에이전트가 멈추면 코드는 어디로 가나 | https://github.com/Zoo-Code-Org/Zoo-Code
+
+- 2026-06-15 14:30 KST | SWE-bench Pro — Verified가 포화되자 나온 '오래 걸리는 진짜 일' 벤치마크 | https://arxiv.org/abs/2509.16941
