@@ -211,3 +211,4 @@
 - 2026-06-16 04:30 KST | Google Antigravity — Gemini CLI를 접고 갈아타라는 에디터·터미널·브라우저 통합 에이전트 플랫폼 | https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/
 
 - 2026-06-18 09:00 KST | Mastra — Gatsby 팀이 만든 TypeScript용 AI 에이전트 프레임워크 | https://github.com/mastra-ai/mastra
+- 2026-06-18 09:50 KST | Cline — 파일 바꾸기 전에 무조건 멈추는 Plan→Act 2단계 오픈소스 에이전트 | https://github.com/cline/cline

@@ -2042,3 +2042,16 @@ cards:
       - "구성: 모델 라우팅(40+ 공급사)·Agent·그래프형 Workflow·human-in-the-loop·RAG/메모리·MCP 서버·evals/옵저버빌리티"
       - "라이선스: 코어 Apache-2.0, 'ee/' 코드만 엔터프라이즈(개발·테스트 무료·프로덕션 유료)"
     source: "https://github.com/mastra-ai/mastra"
+  - category: ai
+    title: "Cline — 파일 바꾸기 전에 무조건 멈추는 'Plan→Act' 2단계 오픈소스 에이전트"
+    summary: >
+      Cline(클라인)은 VS Code·JetBrains에서 사이드바로 도는 오픈소스 코딩 에이전트로, 핵심은 'Plan / Act' 2단계 분리다.
+      Plan 모드에선 에이전트가 코드베이스를 읽고 질문을 던지며 전략만 세우고, 사람이 승인해야 Act 모드로 넘어가 실제로 실행한다.
+      더 중요한 건 기본값이 '모든 파일 수정·터미널 명령마다 사람 승인을 받는다'는 것 — auto-approve를 켜야 자동 진행된다.
+      파일 변경은 리뷰 가능한 diff로 보여주고 체크포인트로 전부 추적되며, MCP 서버로 DB·API·클라우드 같은 외부 시스템에 붙는다.
+      Anthropic·OpenAI·Gemini·OpenRouter·AWS Bedrock 등 자기 API 키를 끼워 쓰는 BYOK 방식이라 모델·비용을 직접 통제한다.
+    points:
+      - "Plan(읽고 계획) → 승인 → Act(실행) 2단계 분리로 'AI가 프로젝트 절반을 갈아엎는' 실패를 막음"
+      - "기본값은 파일 수정·명령마다 사람 승인 + diff 리뷰 + 체크포인트 추적, auto-approve는 선택"
+      - "BYOK(Anthropic·OpenAI·Gemini·Bedrock 등)·MCP 외부연동·Apache-2.0 오픈소스 (약 61k★ 주장)"
+    source: "https://github.com/cline/cline"
