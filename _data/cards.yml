@@ -1164,3 +1164,15 @@ cards:
       - "고급 운영: 리드가 팀원 계획을 승인/반려하는 plan-approval('테스트 커버리지 포함한 계획만 승인' 같은 기준 지정 가능), 파일 충돌은 팀원마다 다른 파일을 맡겨 회피"
       - "활용 패턴: PR 리뷰를 보안·성능·테스트 렌즈로 나눠 동시 검토, 또는 여러 팀원이 서로 가설을 반박하는 '과학적 토론'식 근본원인 디버깅(앵커링 회피)"
     source: "https://code.claude.com/docs/en/agent-teams"
+  - category: ai
+    title: "awesome-claude-code — 스킬·훅·슬래시 커맨드 46.5k★ 큐레이션 목록"
+    summary: >
+      awesome-claude-code(hesreallyhim)는 Claude Code용 서드파티 리소스를 한곳에 모아둔 깃허브 큐레이션 목록으로, 46.5k★를 받은 사실상의 생태계 디렉터리다.
+      스킬(skills), 훅(hooks), 슬래시 커맨드, 에이전트 오케스트레이터, 상태줄(status line), 개발 도구, 플러그인, CLAUDE.md 예시 등을 카테고리별로 분류해 링크한다.
+      직접 도구를 만들기 전에 "이미 누가 만들어 놨나"를 먼저 훑어보는 출발점으로 쓰면, 바닥부터 짜는 대신 검증된 패턴을 가져다 쓸 수 있다.
+      현재 리소스 표(THE_RESOURCES_TABLE.csv)를 기반으로 목차 체계를 재편 중이라 README 일부는 정비 중이지만, 큐레이션 자산 자체는 레포에 그대로 남아 있다.
+    points:
+      - "분류 대상: 스킬·훅·슬래시 커맨드·에이전트 오케스트레이터·상태줄·개발 도구·플러그인·앱(README 명시 카테고리)"
+      - "규모(주장): 깃허브 46.5k★·4.1k 포크 — Claude Code 서드파티 생태계의 대표적 인덱스"
+      - "활용법: 새 워크플로 자동화·MCP·커스텀 커맨드를 만들기 전 이 목록부터 검색해 기존 구현 재사용 여부 확인"
+    source: "https://github.com/hesreallyhim/awesome-claude-code"

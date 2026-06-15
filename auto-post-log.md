@@ -90,3 +90,4 @@
 - 2026-06-15 20:00 KST | llms.txt — 사이트 문서를 에이전트가 토큰 낭비 없이 읽게 하는 표준 | https://llmstxt.org/
 
 - 2026-06-15 20:30 KST | Agent Teams — 서브에이전트와 뭐가 다른가: 서로 대화하고 일을 나눠 갖는 팀 | https://code.claude.com/docs/en/agent-teams
+- 2026-06-15 21:00 KST | awesome-claude-code — 스킬·훅·슬래시 커맨드 46.5k★ 큐레이션 목록 | https://github.com/hesreallyhim/awesome-claude-code
