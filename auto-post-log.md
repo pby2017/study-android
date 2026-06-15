@@ -104,3 +104,5 @@
 - 2026-06-16 00:00 KST | Continue가 AI 체크로 피벗 — PR마다 도는 AI 검사 | https://docs.continue.dev/
 
 - 2026-06-16 00:30 KST | MCP 도구를 코드로 호출하기 — 토큰 150k→2k로 줄인 Code execution with MCP | https://www.anthropic.com/engineering/code-execution-with-mcp
+
+- 2026-06-16 09:00 KST | Spotify Honk — 슬랙으로 시키면 PR을 자동으로 올리는 사내 코딩 에이전트 | https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint

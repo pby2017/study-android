@@ -1266,3 +1266,17 @@ cards:
       - "필요한 도구 파일만 읽는 점진적 공개로 컨텍스트 절약 / 중간 결과를 코드 안에서 필터·집계 후 요약만 반환(1만 행 → 5행)"
       - "회의록 예시 150k→2k 토큰(98.7% 절감) 주장 / PII를 모델에 안 흘리고 토큰화 가능 / Cloudflare도 'Code Mode'로 동일 결론. 단 샌드박스 실행 환경 필요"
     source: "https://www.anthropic.com/engineering/code-execution-with-mcp"
+
+  - category: ai
+    title: "Spotify Honk — 슬랙으로 시키면 PR을 자동으로 올리는 사내 코딩 에이전트"
+    summary: >
+      Spotify가 Claude Agent SDK를 사내 Fleet Management 인프라에 붙여 만든 자동 코딩 에이전트 'Honk'다.
+      엔지니어가 슬랙(또는 깃에 버전 관리되는 프롬프트 파일)으로 "이 마이그레이션 해줘"라고 자연어로 시키면,
+      Honk가 샌드박스된 쿠버네티스 Job에서 Claude Code를 돌려 코드를 고치고 포매터·린트·빌드·테스트까지 통과시킨 뒤 PR을 연다.
+      핵심 설계는 '에이전트 런타임'과 '검증 런타임'을 분리한 것 — 에이전트가 브랜치를 푸시하면 별도 검증 서비스가 CI를 돌리고, 통과한 것만 PR이 된다(에이전트가 테스트를 주석 처리해 통과시키는 부정을 막는 안전장치).
+      대화형 코딩이 아니라 대규모 자동 백그라운드 변환에 초점을 둔 사례로, 도구가 인프라 위에 얹히는 '얇은 래퍼'라는 점이 특징이다.
+    points:
+      - "구조: 슬랙/깃 프롬프트 → 샌드박스 K8s Job에서 Claude Code 실행(도구는 verify·Git·Bash 허용목록) → 검증 통과분만 PR / 에이전트≠검증 런타임 분리"
+      - "Spotify 자체 발표(2026-06 엔지니어링 블로그): 엔지니어 99%+가 주간 AI 코딩 도구 사용, 94%가 생산성 향상 보고, PR 빈도 76% 증가"
+      - "Anthropic 고객 사례 주장: Honk가 월 650개+ PR을 프로덕션에 머지, 수작업 마이그레이션 대비 최대 90% 시간 절감 / 단 15년치 Fleet Management 인프라 위에 얹힌 점이 전제"
+    source: "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint"
