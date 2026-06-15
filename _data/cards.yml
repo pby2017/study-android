@@ -1470,3 +1470,15 @@ cards:
       - "구성(저장소 명시): 명령 ~30개, 전문 에이전트 ~20개, 행동 모드 7개, MCP 서버 6~8종(Context7·Sequential 등) / MIT·Anthropic 비공식"
       - "설치: pipx 또는 PyPI(`SuperClaude install`), npm 경로도 제공 / Superpowers와 차이는 명령·에이전트·모드를 /sc: 네임스페이스로 일괄 패키징한 점 (별 수는 현재 기준·변동)"
     source: "https://github.com/SuperClaude-Org/SuperClaude_Framework"
+  - category: ai
+    title: "Claude Code 공식 플러그인 마켓플레이스 — 개발자가 실제로 가장 많이 까는 8개"
+    summary: >
+      Claude Code에는 `claude-plugins-official` 마켓플레이스가 내장돼 있고, `/plugin`으로 둘러보거나 claude.com/plugins 공개 디렉터리에서 설치 수를 확인할 수 있다.
+      플러그인은 '배포 단위'이고 스킬·MCP 서버·서브에이전트·훅을 묶을 수 있는 그릇 — 설치하는 건 플러그인, 쓰는 건 그 안의 스킬이다.
+      공개 디렉터리 기준 설치 수 상위는 Frontend Design(약 90만), Superpowers(약 82만), Code Review(약 37만), Context7(약 37만), Skill Creator(약 31만), Code Simplifier(약 30만), GitHub(약 28만), Playwright(약 27만) 순이다(수치는 변동·증가 중인 주장).
+      Frontend Design는 프로덕션급 프런트엔드 제작, Superpowers는 브레인스토밍·디버깅·TDD·스킬 작성 워크플로를 얹는 묶음이다.
+    points:
+      - "내장 마켓플레이스 `claude-plugins-official` — `/plugin`으로 탐색·설치, 공개 디렉터리는 claude.com/plugins (설치 수 공개)"
+      - "설치 수 상위(공개 디렉터리 기준·증가 중 주장): Frontend Design ~90만, Superpowers ~82만, Code Review ~37만, Context7 ~37만, Skill Creator ~31만, Code Simplifier ~30만, GitHub ~28만, Playwright ~27만"
+      - "플러그인=배포 단위(스킬·MCP·서브에이전트·훅을 묶음), 스킬=실제 쓰는 내용 — 과적재(훅+MCP+스킬 중첩)는 체감 속도를 떨어뜨리니 주의"
+    source: "https://claude.com/plugins"
