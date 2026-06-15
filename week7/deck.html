@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7주차 — AI가 추측하지 않게: diagnose & Spec Kit 구현 해부</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --border:#30363d;
+    --fg:#e6edf3; --muted:#9da7b3; --accent:#58a6ff; --accent2:#3fb950;
+    --warn:#d29922; --danger:#f85149; --code:#1f2630; --gold:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);
+    font-family:-apple-system,"Apple SD Gothic Neo","Pretendard",system-ui,sans-serif;line-height:1.6;}
+  .deck{max-width:960px;margin:0 auto;padding:24px 20px 120px}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(13,17,23,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    padding:10px 20px;display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--accent)}
+  .nav .grp{color:var(--accent);font-weight:600}
+  section.slide{background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:32px 36px;margin:20px 0;scroll-margin-top:60px;position:relative}
+  .tag{display:inline-block;font-size:12px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;padding:2px 12px;margin-bottom:13px;letter-spacing:.3px}
+  .tag.t-diag{color:var(--accent2);border-color:var(--accent2)}
+  .tag.t-spec{color:var(--gold);border-color:var(--gold)}
+  .tag.t-ouro{color:var(--warn);border-color:var(--warn)}
+  .tag.t-ctx{color:#c39bff;border-color:#c39bff}
+  h1{font-size:30px;line-height:1.25;margin-bottom:10px}
+  h2{font-size:23px;margin-bottom:8px}
+  h3{font-size:16px;color:var(--accent);margin:15px 0 6px}
+  p{margin:7px 0}
+  .sub{color:var(--muted);font-size:15px}
+  ul,ol{margin:9px 0 9px 22px}
+  li{margin:5px 0}
+  .muted{color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:13px}
+  .card{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+  .card h4{font-size:14px;margin-bottom:5px}
+  code,pre{font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;overflow-x:auto;font-size:12.5px;color:#cdd9e5;margin:10px 0}
+  code.inline{background:var(--code);padding:2px 7px;border-radius:5px;font-size:.9em;color:var(--accent2)}
+  .flow{display:flex;align-items:stretch;gap:0;margin:16px 0;flex-wrap:wrap}
+  .step{flex:1;min-width:96px;background:var(--code);border:1px solid var(--border);
+    border-radius:9px;padding:9px;text-align:center}
+  .step .t{font-size:12px;color:var(--accent2);font-weight:600}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:15px;padding:0 3px}
+  .callout{border-left:3px solid var(--accent);background:rgba(88,166,255,.07);
+    padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0}
+  .callout.warn{border-color:var(--warn);background:rgba(210,153,34,.08)}
+  .callout.good{border-color:var(--accent2);background:rgba(63,185,80,.08)}
+  .callout.bad{border-color:var(--danger);background:rgba(248,81,73,.08)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--code);color:var(--accent)}
+  .shot{border:1px dashed var(--border);border-radius:10px;padding:22px;
+    text-align:center;color:var(--muted);background:repeating-linear-gradient(45deg,#13181f,#13181f 10px,#11161d 10px,#11161d 20px);margin:12px 0;font-size:13.5px}
+  .pgnum{position:absolute;top:13px;right:18px;color:var(--muted);font-size:12px}
+  a.src{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px dotted var(--accent)}
+  .center{text-align:center}
+  .big{font-size:19px}
+  hr{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .kbd{font-size:12px;color:var(--muted)}
+  .divider{text-align:center;color:var(--muted);font-size:13px;margin:28px 0 4px;letter-spacing:1px}
+  /* polish: 코드 핵심 라인 강조 + 한 줄 요약 + 비유 */
+  pre .hl{background:rgba(227,179,65,.16);color:#ffe79e;border-radius:3px;padding:0 2px;font-weight:600}
+  .gloss{font-size:14px;margin:8px 0 2px}
+  .gloss b{color:var(--gold)}
+  .analogy{background:rgba(195,155,255,.08);border-left:3px solid #c39bff;border-radius:0 8px 8px 0;
+    padding:9px 14px;margin:11px 0;font-size:13.5px}
+  .analogy b{color:#c39bff}
+  .guess{display:inline-block;background:rgba(248,81,73,.12);color:#ff9c95;border:1px solid rgba(248,81,73,.4);
+    border-radius:6px;padding:1px 9px;font-size:12.5px;margin:4px 0}
+  .hook{font-size:21px;line-height:1.5;margin:10px 0}
+  .hook b{color:var(--accent2)}
+  .big-take{font-size:24px;line-height:1.4;text-align:center;margin:16px 0;color:var(--fg)}
+  .big-take b{color:var(--accent2)}
+  /* 슬라이드별 출처 줄 */
+  .srcline{font-size:11.5px;color:var(--muted);margin-top:16px;border-top:1px dotted var(--border);padding-top:8px}
+  .srcline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+  /* 발표자 노트 — 청중 화면엔 절대 안 보임. n키로만 토글 */
+  aside.note{display:none;margin-top:14px;border-left:3px solid var(--gold);background:rgba(227,179,65,.07);
+    padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:var(--muted)}
+  aside.note b{color:var(--gold)}
+  body.shownotes aside.note{display:block}
+  /* before/after 비교표 */
+  .cmp{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px}
+  .cmp th,.cmp td{border:1px solid var(--border);padding:7px 9px;vertical-align:top}
+  .cmp th{background:var(--code)}
+  .cmp .bad{color:#ff9c95}.cmp .good{color:var(--accent2)}
+  .nums{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .numbox{flex:1;min-width:90px;background:var(--code);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center}
+  .numbox .v{font-size:22px;font-weight:700;color:var(--accent)}
+  .numbox.bad .v{color:var(--danger)}.numbox.good .v{color:var(--accent2)}
+  .numbox .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+  /* ===== 발표(슬라이드) 모드: body.present 일 때 한 장씩 ===== */
+  body.present .nav{display:none}
+  body.present .divider{display:none}
+  body.present .deck{padding-top:14px}
+  body.present section.slide{display:none}
+  body.present section.slide.active{display:block;min-height:78vh}
+  /* 좌하단 진행 표시 */
+  #hud{position:fixed;left:14px;bottom:12px;z-index:50;font-size:12px;color:var(--muted);
+    background:rgba(13,17,23,.85);border:1px solid var(--border);border-radius:999px;padding:5px 13px;
+    backdrop-filter:blur(6px);display:none}
+  body.present #hud{display:block}
+  #hud b{color:var(--accent)}
+  #hud .hint{color:var(--muted);opacity:.75;margin-left:8px}
+  @media print{
+    .nav,#hud{display:none}
+    body.present section.slide{display:block;min-height:auto;page-break-after:always}
+    section.slide{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#cover">표지</a>
+  <a href="#hook">시작</a>
+  <a href="#theme">지도</a>
+  <span class="grp">·</span>
+  <a href="#diag1">diagnose</a>
+  <a href="#diag-lab">🧪실습</a>
+  <a href="#spec1">Spec Kit</a>
+  <span class="grp">·</span>
+  <a href="#wrap">종합</a>
+</nav>
+
+<div class="deck">
+
+<!-- COVER -->
+<section class="slide" id="cover">
+  <span class="tag">AI 스터디 · 7주차</span>
+  <h1>AI가 추측하지 않게<br><span class="sub" style="font-size:19px">— diagnose · Spec Kit, 두 도구의 <b>구현</b>을 깊게 뜯어본다</span></h1>
+  <p class="sub" style="margin-top:14px">diagnose · Spec Kit — "쓰면 이렇게 됩니다"가 아니라 "이런 <b>프롬프트·룰·코드</b>라서 그 결과가 나옵니다"를 실제 소스로 확인</p>
+  <div class="callout" style="margin-top:18px">
+    <strong>왜 이 묶음? (1~6주차와의 연결)</strong> 1주차 OT · 2주차 하네스 · 3주차 LLM Wiki · 4주차 OMC/Octopus · 5주차 superpowers · 6주차 Vectorless RAG.
+    이번 주는 도구를 얕게 나열하는 게 아니라, <b>"AI의 추측을 줄이는 한 가지 원리"</b>가 두 도구에 어떻게 구현됐는지 깊게 봅니다.
+    전부 <b>Claude Code 구독 안에서(추가 과금 없이)</b> 쓸 수 있는 것들.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 2개 심화(diagnose·Spec Kit) + diagnose 실습 1개로 구성. 나머지 주제 후보는 개별 자료로 빼고 오늘은 2개에 집중. 첫 장은 "왜 이 묶음인가"만 말하고 바로 hook으로.</aside>
+</section>
+
+<!-- HOOK -->
+<section class="slide" id="hook">
+  <span class="tag">시작하며</span>
+  <p class="hook">"이 버그 고쳐줘" → AI가 <b>재현도 안 해보고</b> 코드 세 군데를 바꾼다.<br>
+  됐는지 물으면 <b>"고친 것 같아요."</b> …정말?</p>
+  <p class="sub">우리가 매일 겪는 장면. AI는 똑똑한데, 빈칸을 만나면 <b>그럴듯하게 추측</b>하고 밀어붙인다.</p>
+  <div class="analogy"><b>비유:</b> 지도를 안 보고 "이쪽 같은데?" 하며 운전하는 내비게이션. 빠를 때도 있지만, 틀리면 끝까지 틀린 길로 간다.</div>
+  <div class="callout good">오늘 볼 것: <b>잘 만든 AI 도구가 "추측이 들어갈 자리"를 어떻게 막는지</b> — 쓰는 법이 아니라 <b>그 안의 구현</b>을 뜯어본다. 끝나면 그 방법론을 본인 일에 옮길 수 있다.</div>
+</section>
+
+<!-- THEME -->
+<section class="slide" id="theme">
+  <span class="pgnum">지도</span>
+  <h2>관통하는 한 가지: "추측 대신 구조·근거"</h2>
+  <p class="sub">기본 상태의 AI는 빈칸을 만나면 <b>그럴듯하게 추측</b>한다. 두 도구는 추측이 들어갈 자리에 각기 다른 장치를 끼운다 — 같은 원리, 다른 구현.</p>
+  <table>
+    <tr><th>도구</th><th>어디의 추측을 막나</th><th>무엇으로 대체</th></tr>
+    <tr><td><b>diagnose</b></td><td>버그 원인 추측</td><td>재현 <b>피드백 루프</b> + 반증 가능한 가설</td></tr>
+    <tr><td><b>Spec Kit</b></td><td>"무엇을 만들지" 추측</td><td>코딩 전 <b>명세 문서</b></td></tr>
+  </table>
+  <div class="callout good">
+    오늘의 메타 교훈(마지막에 다시): <b>"좋은 AI 도구 = 사람이 쓰던 방법론을 AI가 매번 따르도록 구조로 굳힌 것."</b>
+    그래서 우리는 "도구를 쓴다"를 넘어 <b>그 안의 방법론을 읽고 내 일에 옮길</b> 수 있다.
+  </div>
+  <p class="kbd">각 도구를 같은 틀로 봅니다: <b>막는 추측 → 실제 구현 한 조각 → 왜 통하나 → 내 직군 적용.</b></p>
+</section>
+
+<div class="divider">━━━━━ ① diagnose — 체계적 디버깅 (실습 대상) ━━━━━</div>
+
+<!-- DIAG 1 -->
+<section class="slide" id="diag1">
+  <span class="pgnum">diagnose 1/3</span>
+  <span class="tag t-diag">diagnose · 구현 해부</span>
+  <h2>구현 해부: SKILL.md가 "신호부터"를 강제하는 문구</h2>
+  <p class="guess">🚫 막는 추측: "에러 보니 여기겠지" → 재현 없이 바로 수정</p>
+  <p>diagnose엔 코드가 거의 없다 — 구현체는 <b>SKILL.md(프롬프트/룰)</b>. 그 텍스트가 어떻게 행동을 바꾸나. 실제 원문(<code class="inline">skills/engineering/diagnose/SKILL.md</code>):</p>
+  <pre># Phase 1 — Build a feedback loop  (원문 인용)
+"**This is the skill.** Everything else is mechanical.
+ ... no amount of staring at code will save you."
+"Spend disproportionate effort here. Be aggressive.
+ Be creative. Refuse to give up."
+<span class="hl">"Do not proceed to Phase 2 until you have a loop you believe in."</span></pre>
+  <p class="gloss">👉 이 코드 한 마디로: <b>"믿을 만한 재현 루프가 없으면 다음 단계 금지."</b></p>
+  <div class="analogy"><b>비유:</b> 의사가 진단 전에 처방하지 않는 것. 먼저 "열을 재는 체온계"(=재현 루프)부터 만들고, 그게 있어야 원인을 좁힌다.</div>
+  <div class="callout good">왜 그 행동이 나오나: 단순 안내가 아니라 <b>차단 규칙(gate)</b>이라서다. 기본 AI의 추측-수정(①첫 가설 고착 ②다변수 변경 ③검증 없는 완료)을, "루프 먼저"라는 룰 한 줄로 막는다. skill = <b>잘 쓴 프롬프트 + 진행 게이트</b>, 마법이 아니라 읽을 수 있는 룰.</div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — skills/engineering/diagnose/SKILL.md</a> (Phase 1 원문)</p>
+</section>
+
+<!-- DIAG 2 -->
+<section class="slide" id="diag2">
+  <span class="pgnum">diagnose 2/3</span>
+  <span class="tag t-diag">diagnose · 구현 해부 (SKILL.md 원문)</span>
+  <h2>6단계 규율 + "피드백 루프 만드는 10가지 수"</h2>
+  <div class="flow">
+    <div class="step"><span class="t">1 루프</span></div><div class="arrow">→</div>
+    <div class="step"><span class="t">2 재현</span></div><div class="arrow">→</div>
+    <div class="step"><span class="t">3 가설3~5</span></div><div class="arrow">→</div>
+    <div class="step"><span class="t">4 계측</span></div><div class="arrow">→</div>
+    <div class="step"><span class="t">5 수정+회귀</span></div><div class="arrow">→</div>
+    <div class="step"><span class="t">6 정리+사후</span></div>
+  </div>
+  <p class="muted">각 단계엔 <b>관문</b>이 있다(추측-수정엔 없는 "넘어가도 되나?" 체크). "재현 안 됨"은 끝이 아니라 시작 — diagnose는 10가지를 순서대로 시도하라 한다:</p>
+  <div class="grid2">
+    <div class="card" style="font-size:12.5px"><ol><li>실패 테스트</li><li>curl/HTTP 스크립트</li><li>CLI + 스냅샷 diff</li><li>헤드리스 브라우저</li><li>트레이스 재생</li></ol></div>
+    <div class="card" style="font-size:12.5px"><ol start="6"><li>버리는 하네스</li><li>퍼즈 루프</li><li>이분(<code class="inline">git bisect run</code>)</li><li>차분(구/신 출력 diff)</li><li>HITL bash(최후)</li></ol></div>
+  </div>
+  <p class="kbd">직군 매핑: SRE=트레이스 재생·차분 · FE=헤드리스 브라우저 · BE=실패 테스트·bisect · Mobile=차분·HITL.</p>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">diagnose SKILL.md</a> — "6 Phases" + "10 ways to construct a feedback loop"</p>
+</section>
+
+<!-- DIAG 3 -->
+<section class="slide" id="diag3">
+  <span class="pgnum">diagnose 3/3</span>
+  <span class="tag t-diag">diagnose · 구현 해부 (번들 스크립트)</span>
+  <h2>구현 해부: 10번째 수단이 실제 <code class="inline">.sh</code> 파일이다</h2>
+  <p>"사람이 클릭해야만 재현되는 버그"조차 구조화하려고, diagnose는 <b>bash 템플릿을 번들로</b> 넣어둔다(<code class="inline">scripts/hitl-loop.template.sh</code>). 실제 코드:</p>
+  <pre>step() {    # 지시를 띄우고 Enter를 기다림
+  printf '\n&gt;&gt;&gt; %s\n' "$1"; read -r -p "[Enter when done] " _
+}
+capture() { # 질문을 띄우고 사람 답을 변수에 담음
+  local var="$1" q="$2" a; printf '\n&gt;&gt;&gt; %s\n' "$q"
+  <span class="hl">read -r -p "&gt; " a; printf -v "$var" '%s' "$a"</span>
+}
+step "http://localhost:3000 열고 로그인하세요."
+capture ERRORED "'Export' 클릭 → 에러 났나요? (y/n)"
+# 끝에 ERRORED=... 를 출력 → 에이전트가 파싱해 루프에 피드백</pre>
+  <p class="gloss">👉 이 코드 한 마디로: <b>사람의 클릭·확인을 <code class="inline">read</code>로 받아 변수에 담고, KEY=VALUE로 뱉어 에이전트가 읽게 한다.</b></p>
+  <div class="analogy"><b>비유:</b> 자동화 못 하는 마지막 한 칸을 "사람에게 묻는 설문지"로 끼워 넣어, 그 답까지 루프 안으로 끌어들인다.</div>
+  <div class="callout good">왜 그게 동작하나: 비결정적 <b>인간 단계</b>조차 구조화된 입력으로 바꿔 Phase 1 명제("신호를 만들어라")를 끝까지 관철 — "재현 불가능한 버그"의 핑계를 없앤다.</div>
+  <p class="muted">나머지 단계도 같은 결: 가설 3~5개(반증 예측) · 한 변수씩 계측 + <code class="inline">[DEBUG-a4f2]</code> 태그 · 회귀는 올바른 seam에만("seam 없음=발견"). 전부 SKILL.md에 글로 박힌 룰.</p>
+</section>
+
+<!-- DIAG LAB (실습) -->
+<section class="slide" id="diag-lab">
+  <span class="pgnum">🧪 실습</span>
+  <span class="tag t-diag">diagnose · 실습 (이 발표의 유일한 시연 · 실제 사례)</span>
+  <h2>🧪 실제로 난 버그를 /diagnose로 잡은 과정</h2>
+  <p class="sub">이 발표 자료 만들다 진짜 난 버그. 디버깅은 <b>전 직군 매일 작업</b>이라 실습 대상으로 골랐다. 가짜 데모가 아니라 <b>이 세션에서 실제로 일어난 일</b>.</p>
+
+  <h3 style="margin-top:6px">상황 — 카드 삭제 스크립트가 HTML을 깨뜨림</h3>
+  <p style="font-size:13.5px"><code class="inline">week7-topic-candidates.html</code>에서 카드를 지우는 파이썬 스크립트를 돌렸다. 로직: <b>"<code class="inline">&lt;div class="card"&gt;</code>부터 첫 단독 <code class="inline">&lt;/div&gt;</code>까지를 한 카드로 보고 삭제."</b> 돌린 뒤 페이지 레이아웃이 깨졌다.</p>
+  <div class="nums">
+    <div class="numbox"><div class="v">77</div><div class="l">&lt;div&gt; 여는 태그</div></div>
+    <div class="numbox bad"><div class="v">95</div><div class="l">&lt;/div&gt; 닫는 태그</div></div>
+    <div class="numbox bad"><div class="v">+18</div><div class="l">닫는 태그 초과</div></div>
+  </div>
+
+  <table class="cmp">
+    <tr><th>단계</th><th class="bad">❌ 추측-수정이었다면</th><th class="good">✅ 실제로 한 것 (/diagnose)</th></tr>
+    <tr>
+      <td><b>P1·2<br>신호·재현</b></td>
+      <td class="bad">"닫는 태그 18개 지우면 되겠지" → 원인 모른 채 균형만 맞춰 더 꼬임</td>
+      <td class="good">원인 추측 전에 <b>1초 pass/fail 신호</b>부터:<br><code class="inline">grep -c '&lt;div' / grep -c '&lt;/div&gt;'</code>. 첫 fixture가 증상과 안 맞자 즉시 "이건 그 버그가 아니다"라고 루프를 교정.</td>
+    </tr>
+    <tr>
+      <td><b>P3<br>가설</b></td>
+      <td class="bad">가설 1개에 앵커링</td>
+      <td class="good">반증 가능한 가설: <b>"detector가 카드 안에 <u>중첩된</u> <code class="inline">&lt;div class="row"&gt;…&lt;/div&gt;</code>의 첫 <code class="inline">&lt;/div&gt;</code>에서 멈춰</b> 카드를 일부만 지운다. → 트레일링 <code class="inline">&lt;/div&gt;</code> + <code class="inline">.note</code>가 남는다."</td>
+    </tr>
+    <tr>
+      <td><b>확정</b></td>
+      <td class="bad">"고친 듯" (검증 X)</td>
+      <td class="good"><b>예측 검산</b>: 지운 카드 수 × (카드당 잔여 <code class="inline">&lt;/div&gt;</code> 1개) = <b>+18</b>. 관측된 초과와 정확히 일치 → 재현·확정.</td>
+    </tr>
+  </table>
+
+  <div class="callout good">
+    <b>왜 detector가 틀렸나(근본 원인):</b> "첫 단독 <code class="inline">&lt;/div&gt;</code>까지"라는 규칙이 <b>중첩 구조를 모른다</b>. 카드 안 <code class="inline">.row</code>가 먼저 닫히면 거기서 멈춰, 카드의 진짜 끝(<code class="inline">.note</code> 포함)을 못 지운다. 카드당 <code class="inline">&lt;/div&gt;</code> 1개씩 살아남아 18개 카드 → +18.
+  </div>
+  <div class="analogy"><b>한 줄 교훈:</b> "닫는 태그 18개 지우기"(증상 땜질)로 시작했으면 영영 못 잡았다. <b>재현 신호부터 만든</b> 덕에 진짜 원인(중첩 미인식)에 도달.</div>
+  <aside class="note"><b>발표자 노트:</b> 라이브로 보여줄 거면 터미널에서 <code>grep -c '&lt;div' 파일 ; grep -c '&lt;/div&gt;' 파일</code> 두 줄만 치면 77/95가 바로 나온다. 시간 없으면 이 표만 읽어도 충분. "Before 칸을 먼저 읽고 → After로 대비"가 전달 잘 됨.</aside>
+  <p class="srcline">출처: 실제 진단 대상 <code class="inline">~/Desktop/study/week7-topic-candidates.html</code> · 방법론 <a class="src" href="https://github.com/mattpocock/skills">diagnose SKILL.md — Phase 1</a></p>
+</section>
+
+<div class="divider">━━━━━ ② Spec Kit — 명세 우선 ━━━━━</div>
+
+<!-- SPEC 1 -->
+<section class="slide" id="spec1">
+  <span class="pgnum">Spec Kit 1/2</span>
+  <span class="tag t-spec">Spec Kit · 원리</span>
+  <h2>구현 해부: <code class="inline">/speckit-specify</code>는 사실 "마크다운 프롬프트"</h2>
+  <p class="guess">🚫 막는 추측: "대충 말하면 알아서 만들겠지" → AI가 요구사항을 멋대로 채움</p>
+  <p>"명세→코드"가 마법 같지만, 커맨드 정의(<code class="inline">templates/commands/specify.md</code>)를 열면 <b>그냥 구조화된 프롬프트 파일</b>이다:</p>
+  <pre># 설치본: .claude/skills/speckit-specify/SKILL.md (실측)
+---
+name: "speckit-specify"
+description: "Create or update the feature specification..."
+metadata:
+  source: "templates/commands/specify.md"   # ← 빌드 원본
+user-invocable: true
+---
+## User Input
+```text
+<span class="hl">$ARGUMENTS</span>              # ← 사용자가 친 기능 설명이 여기로
+```
+## Pre-Execution Checks  # extensions.yml 훅 검사 → Outline → ...</pre>
+  <p class="gloss">👉 핵심: <b><code class="inline">$ARGUMENTS</code></b>로 내 말을 받아 정해진 지시문에 끼우고, <code class="inline">Pre-Execution Checks</code>로 훅을 검사한 뒤 단계를 진행한다.</p>
+  <div class="analogy"><b>비유:</b> 빈칸 있는 <b>관공서 서식</b>. 내가 자유롭게 말해도 정해진 칸(요구사항·수용기준)에 옮겨 적게 만들어, 빠뜨림을 막는다.</div>
+  <div class="callout good">청강자가 못 뜯어볼 것: 슬래시 커맨드 = <b>frontmatter + <code class="inline">$ARGUMENTS</code> 치환 + 단계별 지시문</b>. "방법론"이 아니라 <b>프롬프트 엔지니어링을 파일로 굳힌 것</b> — 그래서 누구 환경에서나 같은 절차가 재현된다.</div>
+  <aside class="note"><b>발표자 노트 (실측):</b> 2026-06, specify-cli 0.10.2를 직접 설치·init함. 이 버전은 <code>/speckit-specify</code>(하이픈)를 <b>스킬</b>로 설치(<code>--integration claude</code>). frontmatter의 <code>source: templates/commands/specify.md</code>가 빌드 원본을 가리켜 위 분석과 일치. <code>$ARGUMENTS</code>·Pre-Execution Checks 실재 확인.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — templates/commands/specify.md · 설치본 .claude/skills/speckit-specify/SKILL.md (직접 설치 실측)</p>
+</section>
+
+<!-- SPEC 2 -->
+<section class="slide" id="spec2">
+  <span class="pgnum">Spec Kit 2/2</span>
+  <span class="tag t-spec">Spec Kit · 깊이 + 한계</span>
+  <h2>무엇(spec)과 어떻게(plan)를 분리하는 이유</h2>
+  <p>specify는 <b>요구사항·유저스토리·엣지케이스</b>(무엇)만, plan은 <b>스택·데이터모델·API 계약</b>(어떻게)만. 섞으면 AI가 "어떻게"를 추측하며 "무엇"을 흐린다.</p>
+  <div class="grid2">
+    <div class="card"><h4 style="color:var(--accent2)">잘 쓴 스펙</h4><ul style="font-size:13px"><li>유저스토리 + 수용 기준</li><li>경계 조건 명시(비로그인·중복 등)</li><li>한 기능 = 한 spec(작게)</li></ul></div>
+    <div class="card"><h4 style="color:var(--danger)">못 쓴 스펙</h4><ul style="font-size:13px"><li>"X 만들어줘"(한 줄)</li><li>수용 기준 없음 → 추측</li><li>기술 결정을 spec에 섞음</li></ul></div>
+  </div>
+  <div class="callout warn">
+    한계: 스펙 품질 = 결과 품질. <b>"방법론 한 겹"</b>이 있어 추상적으로 느껴질 수 있음 → 검토를 없애는 게 아니라 <b>검토 지점을 명확히</b> 하는 것.
+    설치(검증): <code class="inline">uv tool install specify-cli ...</code> · 한국어 자료 풍부.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> · <a class="src" href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">GitHub Blog — Spec-driven development with AI</a></p>
+</section>
+
+<div class="divider">━━━━━ 종합 ━━━━━</div>
+
+<!-- WRAP -->
+<section class="slide" id="wrap">
+  <span class="pgnum">종합</span>
+  <span class="tag">메타 교훈</span>
+  <h2>두 도구가 가르치는 한 가지</h2>
+  <table>
+    <tr><th>도구</th><th>인코딩한 사람의 방법론</th><th>무료 경로</th></tr>
+    <tr><td>diagnose</td><td>체계적 디버깅(재현 루프 우선)</td><td>skill (구독 내)</td></tr>
+    <tr><td>Spec Kit</td><td>명세 우선 개발</td><td>CLI(자체)·에이전트 연동</td></tr>
+  </table>
+  <p class="big-take">좋은 AI 도구는 마법이 아니다.<br><b>사람의 방법론을, AI가 매번 따르도록 구조로 굳힌 것</b>이다.</p>
+  <div class="callout good">
+    그래서 우리는 도구를 <b>쓰는 데</b> 그치지 않고, 그 안의 방법론을 <b>읽어서 내 일·사이드 프로젝트에 옮길</b> 수 있다 — 오늘 두 도구를 뜯어본 이유.
+  </div>
+  <div class="callout">
+    <b>📌 이번 주에 해볼 것 (딱 하나):</b> 다음에 버그를 만나면 프롬프트 앞에 <code class="inline">/diagnose</code> 한 번 붙여보기.
+    "왜 안 고치고 재현부터 하지?" 하는 순간이 오면 — 오늘 발표가 몸으로 이해된 것. 다음 모임에서 그 경험 공유.
+  </div>
+</section>
+
+<!-- END -->
+<section class="slide" id="end" class="center">
+  <h1 class="center">감사합니다 🙏</h1>
+  <p class="center sub">질문 / 각자의 "추측이 만든 사고" 공유</p>
+  <hr>
+  <h3>참고 자료</h3>
+  <ul>
+    <li><a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — diagnose (skills/engineering/diagnose/SKILL.md)</a></li>
+    <li><a class="src" href="https://github.com/github/spec-kit">github/spec-kit (공식 레포)</a></li>
+    <li><a class="src" href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">GitHub Blog — Spec-driven development with AI</a></li>
+  </ul>
+  <aside class="note"><b>발표자 노트:</b> 단계·수치·인용문은 각 공식 레포 문서(2026-06 기준)를 직접 해부·실측한 것. diagnose 실습(div 77/95→+18)이 이 발표의 메인 시연. 발표 직전 원문 1회 재확인 권장.</aside>
+</section>
+
+</div>
+
+<div id="hud"><b id="hud-n">1</b> / <span id="hud-t">11</span><span class="hint">← / → 넘기기 · a: 스크롤 · n: 노트</span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
+  var body = document.body, hud = document.getElementById('hud');
+  var hudN = document.getElementById('hud-n'), hudT = document.getElementById('hud-t');
+  hudT.textContent = slides.length;
+  var i = 0, present = true;          // 기본: 발표(슬라이드) 모드로 시작
+
+  function idFromHash(){
+    var h = location.hash.replace('#','');
+    for (var k=0;k<slides.length;k++){ if(slides[k].id===h) return k; }
+    return -1;
+  }
+  function render(){
+    body.classList.toggle('present', present);
+    if(present){
+      for (var k=0;k<slides.length;k++) slides[k].classList.toggle('active', k===i);
+      hudN.textContent = i+1;
+      if(slides[i].id) history.replaceState(null,'','#'+slides[i].id);
+      window.scrollTo(0,0);
+    }
+  }
+  function go(n){ i = Math.max(0, Math.min(slides.length-1, n)); render(); }
+
+  // 진입 시 해시가 있으면 그 슬라이드로
+  var h0 = idFromHash(); if(h0>=0) i = h0;
+  render();
+
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;            // 단축키 충돌 회피
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); go(i+1); break;
+      case 'ArrowLeft':  case 'PageUp':           e.preventDefault(); go(i-1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End':  e.preventDefault(); go(slides.length-1); break;
+      case 'a': case 'A':                                  // 발표 ↔ 스크롤(읽기) 토글
+        present = !present; render();
+        if(!present){ body.classList.remove('present'); }  // 스크롤 모드: 전체 보임
+        break;
+      case 'n': case 'N': body.classList.toggle('shownotes'); break;  // 발표자 노트 토글
+    }
+  });
+  // nav 링크 클릭 시 해당 슬라이드로 (발표 모드에서도 동작)
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').replace('#','');
+      for (var k=0;k<slides.length;k++){ if(slides[k].id===id){ go(k); break; } }
+    });
+  });
+})();
+</script>
+</body>
+</html>

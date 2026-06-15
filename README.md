@@ -4,6 +4,7 @@
 GitHub Pages(Jekyll)로 운영됩니다.
 
 🔗 **라이브 페이지: https://pby2017.github.io/study-android/**
+📊 **7주차 발표 자료: https://pby2017.github.io/study-android/week7/** (diagnose · Spec Kit)
 
 ## 구조
 
