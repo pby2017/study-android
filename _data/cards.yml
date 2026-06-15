@@ -1880,3 +1880,14 @@ cards:
       - "모델-비종속: Anthropic·OpenAI·Gemini·OpenRouter·Bedrock + Ollama·LM Studio 로컬, 세션 중 모델 교체 시 컨텍스트 유지"
       - "LSP로 코드 맥락 보강 + MCP(http·stdio·sse) 확장 / 라이선스는 FSL-1.1-MIT(2년 후 MIT)"
     source: "https://github.com/charmbracelet/crush"
+  - category: ai
+    title: "promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴"
+    summary: >
+      코딩 에이전트/LLM 기능을 실무에 넣으면 곧 "프롬프트나 모델을 바꿨는데 결과가 더 나빠지진 않았나"라는 회귀 문제에 부딪힌다. 그동안 카드가 도구 나열·벤치마크에 쏠려 있었는데, '내 앱의 출력을 내가 직접 평가'하는 eval 층위는 비어 있었다. promptfoo는 그 빈칸을 채우는 오픈소스 CLI/라이브러리로, 스스로를 "LLM 앱을 평가하고 레드티밍하는 오픈소스 CLI·라이브러리"라고 소개한다.
+      핵심은 코드 없이 선언적 테스트 케이스를 정의해 여러 프롬프트·입력을 한 번에 돌리고, 결과를 side-by-side로 비교하는 것이다. 단순 문자열 일치뿐 아니라 출력을 모델로 채점하는(model-graded) 메트릭을 지원해 "정답이 하나로 안 떨어지는" 생성 결과도 점수화할 수 있고, 내장 웹 뷰어로 결과를 공유한다.
+      자동 레드티밍·펜테스팅으로 보안 취약점도 스캔한다. 무엇보다 100% 로컬 실행 — eval이 내 머신에서 돌고 LLM과 직접 통신하므로 평가 데이터가 외부 서버로 안 나간다. CI/CD에 그대로 붙여 프롬프트 변경마다 회귀 게이트로 쓸 수 있다.
+    points:
+      - "코드 없이 선언적 테스트로 여러 프롬프트·입력을 돌려 side-by-side 비교 + 내장 웹 뷰어"
+      - "model-graded 메트릭으로 '정답이 하나가 아닌' 생성 출력도 점수화 (단순 문자열 일치 너머)"
+      - "자동 레드티밍으로 취약점 스캔 · 100% 로컬 실행(데이터 외부 유출 없음) · CI 회귀 게이트로 활용"
+    source: "https://www.promptfoo.dev/docs/intro/"
