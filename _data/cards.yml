@@ -1969,3 +1969,17 @@ cards:
       - "벡터DB엔 난독화된 경로·임베딩만 저장(원문 비저장), 실제 코드는 로컬에서 좌표로 조회 — 프라이버시 설계"
       - "시맨틱+grep 결합이 최선(시맨틱 단독 정확도 12.5%p↑ 주장), .gitignore·.cursorignore로 인덱싱 제외"
     source: "https://cursor.com/docs/context/semantic-search"
+  - category: ai
+    title: "Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트"
+    summary: >
+      Continue는 원래 VS Code·JetBrains 확장으로 유명했지만, 지금 활발히 미는 건 터미널 에이전트 'Continue CLI(cn)'다.
+      공식 문서는 cn을 "오픈소스이며 모듈형인 커맨드라인 코딩 에이전트"로, 검증된 '에이전트 루프(agent loop)'에
+      당신의 모델·규칙·도구를 끼워 넣는 구조라고 설명한다. 즉 특정 모델사에 묶이지 않는 bring-your-own-model 설계다.
+      쓰는 방식이 둘로 나뉜다 — 사람이 대화하며 쓰는 대화형 TUI 모드와, 출력만 받아 자동화에 쓰는 헤드리스(print) 모드.
+      헤드리스 모드는 CI 파이프라인·스크립트·배치 작업처럼 사람이 안 보는 자리에서 에이전트를 돌릴 때 쓴다.
+      Claude Code의 'claude -p'와 같은 자리를 노리는 도구로, 모델을 갈아끼울 수 있다는 게 차별점이다.
+    points:
+      - "cn = 오픈소스 모듈형 터미널 코딩 에이전트, 검증된 agent loop에 모델·규칙·도구를 플러그인"
+      - "대화형 TUI 모드 + 헤드리스(print) 모드 — 후자는 CI·스크립트·배치 자동화용"
+      - "bring-your-own-model: 특정 모델사 비종속, Claude Code의 claude -p와 같은 자리를 노림"
+    source: "https://docs.continue.dev/guides/cli"
