@@ -159,3 +159,5 @@
 - 2026-06-15 18:00 KST | Memory Bank — 세션이 바뀌어도 프로젝트 맥락을 잃지 않게 하는 마크다운 메모리 패턴 | https://github.com/GreatScottyMac/roo-code-memory-bank
 
 - 2026-06-15 23:30 KST | Windsurf Cascade Workflows — 반복 작업을 .md 레시피로 만들어 /슬래시로 부르기 | https://docs.devin.ai/desktop/cascade/workflows
+
+- 2026-06-17 09:00 KST | Cursor 규칙(.mdc) — 한 덩어리 지침을 언제 켤지로 쪼개 토큰 아끼기 | https://cursor.com/docs/context/rules

@@ -1662,3 +1662,15 @@ cards:
       - "수동 전용(에이전트가 자동 호출 안 함) / 파일당 12,000자 / 워크플로가 다른 워크플로 호출 가능"
       - "워크스페이스 `.windsurf/workflows/*.md`는 레포 커밋으로 팀 공유·버전관리, 글로벌은 `~/.codeium/...`"
     source: "https://docs.devin.ai/desktop/cascade/workflows"
+
+  - category: ai
+    title: "Cursor 규칙(.mdc) — 한 덩어리 지침을 '언제 켤지'로 쪼개 토큰 아끼기"
+    summary: >
+      Cursor의 프로젝트 규칙은 `.cursor/rules/*.mdc` 파일로 둔다(확장자가 `.mdc`여야 함 — 프런트매터가 없는 `.md`는 무시됨). 핵심은 AGENTS.md·CLAUDE.md처럼 모든 세션에 통째로 들어가는 게 아니라, 프런트매터 3필드(`description`·`globs`·`alwaysApply`) 조합으로 '언제 끌어올지'를 규칙마다 따로 정한다는 점이다.
+      활성 방식은 네 가지: ① Always(`alwaysApply:true`) 매 세션 포함 ② Auto Attached(`globs` 매칭 파일이 컨텍스트에 들어올 때만) ③ Agent Requested(`description` 보고 에이전트가 필요하다 판단하면) ④ Manual(`@규칙명`으로 직접 부를 때만).
+      덕분에 "테스트 파일 만질 때만 보는 규칙"을 평소 컨텍스트에서 빼둘 수 있어, 거대한 단일 규칙 파일이 매번 토큰을 먹는 문제를 피한다. 우선순위는 Team → Project → User 순으로 병합되며 앞쪽이 충돌 시 이긴다.
+    points:
+      - "`.cursor/rules/*.mdc`(버전관리), 프런트매터 `description`·`globs`·`alwaysApply` 조합으로 적용 시점 결정 — `.md`는 무시"
+      - "4가지: Always / Auto Attached(globs 매칭) / Agent Requested(description 판단) / Manual(@멘션)"
+      - "globs로 '특정 파일 만질 때만' 켜서 평소 컨텍스트 절약 / 우선순위 Team→Project→User"
+    source: "https://cursor.com/docs/context/rules"
