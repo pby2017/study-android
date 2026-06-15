@@ -60,3 +60,5 @@
 
 - 2026-06-15 12:00 KST | Gemini CLI — 모델 제조사가 직접 만든 터미널 에이전트(넉넉한 무료 한도) | https://github.com/google-gemini/gemini-cli
 - 2026-06-15 11:11 KST | OpenCode — 터미널 중심 오픈소스 에이전트 | https://github.com/anomalyco/opencode
+
+- 2026-06-15 13:00 KST | Kilo Code — VS Code·JetBrains에 붙는 GUI 에이전트(API 키 선택) | https://github.com/Kilo-Org/kilocode

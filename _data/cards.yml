@@ -942,3 +942,16 @@ cards:
       - "build(구현) ↔ plan(전략) 에이전트 분리 + @general 서브에이전트로 곁가지 위임"
       - "포지셔닝: 벤더 종속형 Claude Code 대비 '터미널 우선·오픈소스' / 데스크톱 앱 베타 동반 — Cline·Aider·OpenHands와 묶어 대안 지도 완성"
     source: "https://github.com/anomalyco/opencode"
+  - category: ai
+    title: "Kilo Code — VS Code·JetBrains에 붙는 GUI 에이전트(API 키 선택)"
+    summary: >
+      Kilo Code는 터미널이 아니라 IDE(VS Code·JetBrains)에 확장으로 붙는 오픈소스 코딩 에이전트로,
+      CLI·Slack·Cloud까지 묶은 '올인원 에이전틱 엔지니어링 플랫폼'을 표방한다. GitHub 스타 20.1k(주장),
+      MIT 라이선스라 상업적 사용도 자유롭다. 자체 게이트웨이로 GPT·Claude·Gemini 등 500+ 모델에
+      'API 키 없이도(선택)' 붙을 수 있고, 가격은 모델 제공사 요율과 동일하다고 밝힌다.
+      Aider·OpenCode 같은 터미널 도구와 달리 기존 IDE 워크플로 안에서 바로 쓰고 싶을 때 후보다.
+    points:
+      - "VS Code·JetBrains 확장 + CLI(OpenCode 포크)·Slack·Cloud / MIT / TypeScript — v7.3.45 활발히 릴리스 중(주장)"
+      - "Multi Mode: Architect(설계)·Coder(구현)·Debugger(디버그) 분리 + 커스텀 모드 / MCP 서버 마켓플레이스로 기능 확장"
+      - "500+ 모델 게이트웨이, API 키 선택사항 / 인라인 자동완성·터미널 실행·브라우저 자동화·--auto CI 플래그까지 포함(주장)"
+    source: "https://github.com/Kilo-Org/kilocode"
