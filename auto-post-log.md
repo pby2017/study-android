@@ -199,3 +199,5 @@
 - 2026-06-16 23:30 KST | Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기 | https://github.com/intellectronica/ruler
 
 - 2026-06-16 23:50 KST | Pi — 고쳐 쓰라고 만든 자기확장형 터미널 코딩 에이전트(earendil-works·62.9k★) | https://github.com/earendil-works/pi
+
+- 2026-06-16 21:50 KST | Droid(Factory AI) — 모델보다 에이전트 설계를 Terminal-Bench로 증명한 CLI | https://factory.ai/news/terminal-bench
