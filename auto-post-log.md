@@ -214,3 +214,5 @@
 - 2026-06-18 09:50 KST | Cline — 파일 바꾸기 전에 무조건 멈추는 Plan→Act 2단계 오픈소스 에이전트 | https://github.com/cline/cline
 
 - 2026-06-18 14:30 KST | awesome-claude-code — 스킬·훅·슬래시명령·플러그인을 모아둔 사실상의 표준 카탈로그(46k★) | https://github.com/hesreallyhim/awesome-claude-code
+
+- 2026-06-18 15:30 KST | Serena — 코드를 텍스트 줄이 아니라 심볼로 다루게 해주는 MCP 툴킷 | https://github.com/oraios/serena

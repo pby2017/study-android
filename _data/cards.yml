@@ -2068,3 +2068,16 @@ cards:
       - "아무거나 싣지 않고 코드 품질·보안·독창성 기준으로 거른다고 README가 명시"
       - "리소스는 THE_RESOURCES_TABLE.csv 단일 파일로 관리, 현재 분류 체계 재편 진행 중"
     source: "https://github.com/hesreallyhim/awesome-claude-code"
+  - category: ai
+    title: "Serena — 코드를 '텍스트 줄'이 아니라 '심볼'로 다루게 해주는 MCP 툴킷"
+    summary: >
+      Serena(oraios)는 코딩 에이전트에 IDE급 능력을 붙여주는 오픈소스 MCP 서버로, 별 약 25k개를 받았고 MIT 라이선스다.
+      README의 한 줄 정의는 "semantic retrieval, editing, refactoring, debugging 도구를 제공하는 코딩 에이전트 툴킷" — Language Server Protocol(LSP)을 써서 코드를 함수·클래스·변수 같은 심볼 단위로 이해시킨다.
+      핵심은 에이전트가 코드를 줄 번호로 자르는 평문이 아니라 심볼로 다루게 되는 점: 정의 위치 찾기, 프로젝트 전역 참조 추적, 한 번에 이름 바꾸기, 함수 본문만 교체 같은 작업을 줄 세지 않고 한다.
+      Claude Code·Codex 등 MCP를 지원하는 에이전트에 그대로 붙고, 큰 레포일수록 토큰을 아끼고 정확도를 올리는 효과가 크다.
+      "Cursor를 안 써도 되게 만든다"는 평가가 나올 만큼, 무료로 의미 기반 코드 탐색·편집을 더하는 출발점으로 둘 만하다.
+    points:
+      - "LSP 기반으로 코드를 심볼(함수·클래스·변수) 단위로 이해 — 정의/참조 추적·전역 리네임·본문 교체를 줄 세기 없이"
+      - "MCP 서버라 Claude Code·Codex 등 MCP 지원 에이전트에 그대로 연결, MIT 라이선스·약 25k★"
+      - "평문 편집 대비 큰 레포에서 토큰 절감·정확도 향상이 강점 (작은 프로젝트보다 대형에서 효과 큼)"
+    source: "https://github.com/oraios/serena"
