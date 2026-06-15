@@ -1554,3 +1554,13 @@ cards:
       - "README 명시: 67 스타일·161 팔레트·57 폰트쌍·25 차트·15 스택·99 UX 규칙·161 추론 규칙"
       - "설치: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` → `/plugin install` · 떠도는 별·설치수는 편차 커서 신뢰 말 것"
     source: "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+  - category: ai
+    title: "wshobson/agents — 에이전트·스킬·커맨드를 여러 도구에 한 번에 까는 멀티하네스 마켓플레이스"
+    summary: >
+      Claude Code뿐 아니라 Codex CLI·Cursor·OpenCode·GitHub Copilot·Gemini CLI까지 같은 에이전트 구성을 공유하려는 시도가 wshobson/agents다. 도메인 전문가 서브에이전트, 스킬, 슬래시 커맨드를 '플러그인' 단위로 묶어, 한 소스에서 여러 하네스로 배포한다. 특정 도구에 종속되지 않고 팀이 쓰는 에이전트 자산을 한곳에서 버전 관리하려는 사람에게 맞는다.
+      README 기준 플러그인 84개, 에이전트 192개, 스킬 156개를 제공하며 라이선스는 MIT다. 작업 난이도에 따라 모델 티어를 갈아끼우는 라우팅도 포함한다.
+    points:
+      - "1개 소스 → Claude Code·Codex CLI·Cursor·OpenCode·GitHub Copilot·Gemini CLI 6개 하네스로 같은 구성 배포 (MIT)"
+      - "README 명시: 플러그인 84개·에이전트 192개·스킬 156개 — 도메인 전문가 단위로 묶어 제공"
+      - "작업 난이도별 모델 티어 라우팅 내장 — 도구 락인 없이 팀 에이전트 자산을 한곳에서 버전 관리"
+    source: "https://github.com/wshobson/agents"
