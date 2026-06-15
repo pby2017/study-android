@@ -1624,3 +1624,15 @@ cards:
       - "설치: npm i -g openskills → npx openskills install anthropics/skills / npx openskills sync (Apache 2.0, 10.4k★)"
       - "점진적 공개 유지 — 평소 이름·설명만, 필요 시 본문만 로드 / Anthropic 비공식"
     source: "https://github.com/numman-ali/openskills"
+
+  - category: ai
+    title: "mini-swe-agent — 단 100줄 파이썬으로 SWE-bench Verified 74% 넘긴 에이전트"
+    summary: >
+      mini-swe-agent는 SWE-bench·SWE-agent를 만든 프린스턴·스탠퍼드 팀이 내놓은 극단적으로 단순한 코딩 에이전트로, 에이전트 핵심 로직이 약 100줄 파이썬에 불과한데도 SWE-bench Verified 74%를 넘긴다(MIT 라이선스).
+      차별점은 "bash 외에 도구가 없다"는 것 — LM의 tool-calling 인터페이스를 안 써서 litellm·openrouter로 거의 모든 모델에 그대로 붙고, 각 동작을 subprocess.run으로 독립 실행해 샌드박싱이 쉽다.
+      대화 이력이 완전히 선형(매 스텝이 메시지에 append만)이라 디버깅·파인튜닝에도 유리하다. 복잡한 스캐폴딩 없이도 최신 모델이면 높은 점수가 나온다는 것을 보여주는 레퍼런스라, 자체 에이전트를 처음 짜보려는 팀의 출발점으로 좋다.
+    points:
+      - "에이전트 핵심 ~100줄 파이썬으로 SWE-bench Verified 74%↑ — 'bash 외 도구 없음'이 핵심 설계(MIT)"
+      - "tool-calling 미사용 → litellm·openrouter로 모든 모델 호환 / subprocess.run 독립 실행로 샌드박싱 용이"
+      - "완전 선형 이력(스텝마다 append)으로 디버깅·파인튜닝 유리 / SWE-bench·SWE-agent 만든 프린스턴·스탠퍼드 팀"
+    source: "https://github.com/SWE-agent/mini-swe-agent"
