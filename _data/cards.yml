@@ -1455,3 +1455,18 @@ cards:
       - "점수 급락: 같은 기반 모델이라도 SWE-bench Verified 72.8%(GPT-5.2) → SWE-EVO 22.92%로 추락. 최고 성적도 GPT-5.4+OpenHands의 25% 수준 — 장기·복잡 과제에서 현 에이전트의 한계가 그대로 드러남"
       - "시사점: Verified 고득점을 '실무 준비 완료'로 읽으면 안 된다. 벤치마크 포화는 곧 '다음 난도'를 만들고, 실제 병목은 단발 버그픽스가 아니라 여러 반복에 걸친 코드베이스 진화 (출처: arXiv 2512.18470, 48 tasks/7 projects)"
     source: "https://arxiv.org/abs/2512.18470"
+
+  - category: ai
+    title: "SuperClaude — /sc: 명령·에이전트·모드를 주입해 Claude Code를 '개발 플랫폼'으로 바꾸는 프레임워크"
+    summary: >
+      SuperClaude는 Claude Code의 코드를 고치지 않고 행동 지침(behavioral instruction)을 주입해 구조화된 개발 워크플로를 얹는
+      오픈소스 프레임워크다(현재 기준 GitHub 약 2.3만 ★, MIT, Anthropic 비공식). 핵심은 `/sc:` 접두사로 붙는 슬래시 명령 모음 —
+      구현·분석·문서화 같은 작업을 명령 하나로 트리거하고, 그에 맞는 전문 에이전트와 '행동 모드'가 함께 활성화된다.
+      구성은 30여 개 명령, 20여 개 전문 에이전트, 7개 행동 모드(브레인스토밍·태스크 관리 등), 그리고 Context7·Sequential 등 6~8종 MCP 서버 연동.
+      설치는 파이썬 쪽 pipx/PyPI(`SuperClaude install`) 또는 npm으로 한다. 같은 '스킬 묶음' 계열인 Superpowers와 달리,
+      명령·에이전트·모드를 하나의 네임스페이스(/sc:)로 패키징한 점이 차별점이다.
+    points:
+      - "동작 방식: Claude Code 본체 수정 없이 행동 지침을 주입 — `/sc:` 접두 명령으로 작업을 트리거하면 해당 전문 에이전트+행동 모드가 함께 켜짐"
+      - "구성(저장소 명시): 명령 ~30개, 전문 에이전트 ~20개, 행동 모드 7개, MCP 서버 6~8종(Context7·Sequential 등) / MIT·Anthropic 비공식"
+      - "설치: pipx 또는 PyPI(`SuperClaude install`), npm 경로도 제공 / Superpowers와 차이는 명령·에이전트·모드를 /sc: 네임스페이스로 일괄 패키징한 점 (별 수는 현재 기준·변동)"
+    source: "https://github.com/SuperClaude-Org/SuperClaude_Framework"

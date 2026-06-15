@@ -130,3 +130,5 @@
 - 2026-06-16 14:00 KST | 대형 코드베이스에서 Claude Code — CLAUDE.md를 루트가 아니라 하위 디렉터리에 두라 | https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start
 
 - 2026-06-16 14:30 KST | SWE-EVO — 단일 이슈를 넘어 코드베이스를 여러 번 진화시키는 장기 과제 벤치마크 | https://arxiv.org/abs/2512.18470
+
+- 2026-06-15 21:50 KST | SuperClaude — /sc: 명령·에이전트·모드를 주입해 Claude Code를 '개발 플랫폼'으로 바꾸는 프레임워크 | https://github.com/SuperClaude-Org/SuperClaude_Framework
