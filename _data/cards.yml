@@ -875,3 +875,17 @@ cards:
       - "원칙: TDD 먼저·항상 / 추측보다 체계 / 복잡도 축소 / 주장보다 증거(검증 후 완료 선언)"
       - "Claude Code 설치: `/plugin install superpowers@claude-plugins-official` — Codex·Gemini·Droid 등 하네스별 설치법 별도 제공"
     source: "https://github.com/obra/superpowers"
+
+  - category: ai
+    title: "Cline — 모델에 안 묶인 오픈소스 코딩 에이전트"
+    summary: >
+      Cline(cline/cline)은 IDE·터미널에서 도는 오픈소스 자율 코딩 에이전트다(Apache-2.0, GitHub 63.3k★).
+      Claude Code가 Anthropic 모델 중심인 것과 달리 '모델에 안 묶인' 게 핵심 — Anthropic(Opus·Sonnet·Haiku)뿐 아니라
+      OpenAI·Gemini·OpenRouter·Bedrock·Vertex, 그리고 Ollama·LM Studio 같은 로컬 모델까지 어떤 OpenAI 호환 API든 붙는다.
+      VS Code 확장, JetBrains 플러그인(IntelliJ·PyCharm·WebStorm 등), 그리고 CI/CD용 헤드리스 모드까지 갖춘 CLI로 실행된다.
+      Plan 모드(탐색·전략 수립)와 Act 모드(실행)를 토글하고, 편집마다 승인을 받거나 자동 승인으로 풀 수 있다 — 모델을 갈아끼우거나 플랫폼 마진을 피하고 싶을 때의 대표적 대안이다.
+    points:
+      - "모델 무관: Claude·OpenAI·Gemini·로컬(Ollama/LM Studio) 등 OpenAI 호환 API면 다 붙음 (Claude Code와 대비되는 지점)"
+      - "실행 환경: VS Code 확장 / JetBrains 플러그인 / CLI(대화형 + CI용 헤드리스) — IDE 안에서 파일·터미널 접근"
+      - "Plan(전략) ↔ Act(실행) 모드 토글 + 편집 단위 승인/자동승인 / 라이선스 Apache-2.0, 63.3k★"
+    source: "https://github.com/cline/cline"

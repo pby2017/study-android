@@ -54,3 +54,4 @@
 - 2026-06-15 09:00 KST | --json-schema — claude -p 출력을 스키마에 맞춰 받아 스크립트로 바로 파싱 | https://code.claude.com/docs/en/headless
 
 - 2026-06-15 21:30 KST | Superpowers — 스킬을 엮어 만든 '개발 방법론' 프레임워크 | https://github.com/obra/superpowers
+- 2026-06-15 10:39 KST | Cline — 모델에 안 묶인 오픈소스 코딩 에이전트 | https://github.com/cline/cline
