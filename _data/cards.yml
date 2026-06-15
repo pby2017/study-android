@@ -2175,3 +2175,16 @@ cards:
       - "모델 비종속 + MCP: 15+ LLM 제공사 교체 가능, MCP 익스텐션 70+로 도구 연결(공식 README 확인)"
       - "Apache-2.0 오픈소스, 데스크톱 앱 + CLI 둘 다 제공 / 거버넌스는 Linux Foundation AAIF로 이관"
     source: "https://github.com/block/goose"
+  - category: ai
+    title: "OpenCode — Claude Code의 오픈소스 사촌, 모델 안 가리는 터미널 코딩 에이전트(175k★)"
+    summary: >
+      OpenCode는 anomalyco(옛 SST 팀)가 만든 MIT 라이선스 오픈소스 AI 코딩 에이전트로,
+      GitHub 175k★를 모았다. Claude Code와 기능은 비슷하되 특정 제공사에 묶이지 않는 게 핵심:
+      API 키만 넣으면 Anthropic·OpenAI·Google·로컬 모델 등 어떤 LLM도 골라 쓸 수 있다.
+      터미널(TUI)이 메인이지만 데스크톱 앱과 IDE 익스텐션도 제공하며, 파일을 못 바꾸는 read-only
+      'plan' 모드와 전체 권한 'build' 모드를 Tab으로 토글하는 2단계 워크플로를 기본 내장한다.
+    points:
+      - "MIT 라이선스 오픈소스, GitHub 175k★ (anomalyco/sst·opencode.ai 확인)"
+      - "모델 비종속: API 키 설정으로 Anthropic·OpenAI·Google·로컬 등 어떤 LLM도 교체 가능"
+      - "build(전체 권한)·plan(읽기 전용) 두 에이전트를 Tab으로 전환, TUI·데스크톱·IDE 클라이언트 지원"
+    source: "https://opencode.ai/docs/"
