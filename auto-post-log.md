@@ -161,3 +161,5 @@
 - 2026-06-15 23:30 KST | Windsurf Cascade Workflows — 반복 작업을 .md 레시피로 만들어 /슬래시로 부르기 | https://docs.devin.ai/desktop/cascade/workflows
 
 - 2026-06-17 09:00 KST | Cursor 규칙(.mdc) — 한 덩어리 지침을 언제 켤지로 쪼개 토큰 아끼기 | https://cursor.com/docs/context/rules
+
+- 2026-06-15 11:00 KST | claude-code-router — Claude Code를 DeepSeek·Ollama 등 다른 모델로 갈아끼우기 | https://github.com/musistudio/claude-code-router

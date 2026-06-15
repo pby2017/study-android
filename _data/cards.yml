@@ -1674,3 +1674,15 @@ cards:
       - "4가지: Always / Auto Attached(globs 매칭) / Agent Requested(description 판단) / Manual(@멘션)"
       - "globs로 '특정 파일 만질 때만' 켜서 평소 컨텍스트 절약 / 우선순위 Team→Project→User"
     source: "https://cursor.com/docs/context/rules"
+
+  - category: ai
+    title: "claude-code-router — Claude Code를 DeepSeek·Ollama 등 다른 모델로 갈아끼우기"
+    summary: >
+      claude-code-router(musistudio, MIT, 35k★)는 Claude Code의 요청을 가로채 Anthropic이 아닌 다른 모델로 보내주는 프록시다. `npm install -g @musistudio/claude-code-router`로 깔고 `~/.claude-code-router/config.json`에 공급자를 적으면, Claude Code의 UX는 그대로 두고 뒤에서 도는 모델만 바꾼다.
+      핵심은 작업 종류별로 모델을 따로 지정하는 라우팅이다. `default`(일반 작업), `background`(가벼운/로컬 모델로 비용 절감), `think`(Plan Mode 같은 추론 작업), `longContext`(60K 토큰 초과 긴 컨텍스트) 네 카테고리에 서로 다른 모델을 매핑할 수 있고, 세션 중에도 `/model` 명령으로 즉시 전환된다.
+      지원 공급자는 OpenRouter·DeepSeek·Ollama·Gemini·Volcengine·SiliconFlow 등이며, 커스텀 트랜스포머 플러그인으로 요청을 변형할 수도 있다. 가벼운 잡일은 로컬 모델, 무거운 추론만 비싼 모델로 돌려 비용을 깎는 식의 운용이 가능하다.
+    points:
+      - "Claude Code 요청을 프록시해 다른 모델로 라우팅 — UX는 그대로, 뒷단 모델만 교체(MIT, 35k★)"
+      - "작업별 모델 분리: default / background(저비용·로컬) / think(추론) / longContext(60K+) + `/model`로 즉시 전환"
+      - "OpenRouter·DeepSeek·Ollama·Gemini 등 지원 / 가벼운 일은 로컬 모델로 비용 절감"
+    source: "https://github.com/musistudio/claude-code-router"
