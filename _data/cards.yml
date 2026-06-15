@@ -1229,3 +1229,15 @@ cards:
       - "검증된 수치(자사 주장): 보안 인시던트 3배 빠른 해결, 추론 리서치 시간 ~80% 단축(1시간→10~20분), 쿠버네티스 장애 진단 20분 절약"
       - "비개발 직군도 사용 — 디자인팀은 Figma 파일을 자율 루프에 넣어 코드·테스트 반복, 마케팅은 광고 변형 최대 100개 자동 생성"
     source: "https://claude.com/blog/how-anthropic-teams-use-claude-code"
+  - category: ai
+    title: "ACP — '아무 에디터에 아무 에이전트' 붙이는 MCP의 에디터판"
+    summary: >
+      MCP가 에이전트에 '도구'를 붙이는 표준이라면, Agent Client Protocol(ACP)은 에디터(IDE)와 코딩 에이전트 사이를 잇는 표준이다.
+      지금까지는 에이전트마다 에디터마다 따로 통합을 짜야 했고(N×M 문제), 그래서 에이전트가 특정 에디터에서만 돌아갔다.
+      ACP는 JSON-RPC 기반 공통 프로토콜로 이걸 풀어, 규격을 따르는 에이전트는 규격을 따르는 어떤 에디터에서도 그대로 동작한다.
+      Zed Industries(agentclientprotocol 조직)가 만들었고 Apache-2.0, 프로토콜 버전 1, 깃허브 약 3.4k★다.
+    points:
+      - "MCP의 JSON 표현을 재사용하고, diff 표시 같은 코딩 UX용 커스텀 타입을 더한 보완재 — 경쟁이 아니라 짝"
+      - "공식 SDK: Rust·TypeScript·Python·Java·Kotlin (레포는 99.5% Rust)"
+      - "라이선스 Apache-2.0, CLA 없음 / 에이전트와 에디터를 분리해 N×M 통합 비용을 N+M으로 줄이는 게 핵심"
+    source: "https://github.com/zed-industries/agent-client-protocol"
