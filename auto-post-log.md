@@ -135,3 +135,5 @@
 - 2026-06-16 14:30 KST | Claude Code 공식 플러그인 마켓플레이스 — 개발자가 실제로 가장 많이 까는 8개 | https://claude.com/plugins
 
 - 2026-06-16 15:00 KST | SWE-Perf — 버그 수정 말고 성능 최적화를 재는 첫 저장소급 벤치마크 | https://swe-perf.github.io/
+
+- 2026-06-16 15:30 KST | Dynamic Workflows(ultracode) — Claude가 직접 스크립트를 짜서 서브에이전트 수십~수백 개를 굴리는 법 | https://code.claude.com/docs/en/workflows
