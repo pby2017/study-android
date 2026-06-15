@@ -245,3 +245,4 @@
 - 2026-06-16 14:00 KST | Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기 | https://code.claude.com/docs/en/claude-code-on-the-web
 
 - 2026-06-16 14:30 KST | AI-research-SKILLs(Orchestra Research) — 에이전트를 AI 리서치 전문가로 만드는 98개 스킬 묶음(9.7k★) | https://github.com/Orchestra-Research/AI-research-SKILLs
+- 2026-06-16 14:35 KST | Conductor — 한 Mac에서 Claude Code·Codex·Cursor를 여러 워크스페이스로 동시에 돌리는 앱 | https://www.conductor.build/docs/core/parallel-agents
