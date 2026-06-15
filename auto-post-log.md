@@ -133,3 +133,5 @@
 
 - 2026-06-15 21:50 KST | SuperClaude — /sc: 명령·에이전트·모드를 주입해 Claude Code를 '개발 플랫폼'으로 바꾸는 프레임워크 | https://github.com/SuperClaude-Org/SuperClaude_Framework
 - 2026-06-16 14:30 KST | Claude Code 공식 플러그인 마켓플레이스 — 개발자가 실제로 가장 많이 까는 8개 | https://claude.com/plugins
+
+- 2026-06-16 15:00 KST | SWE-Perf — 버그 수정 말고 성능 최적화를 재는 첫 저장소급 벤치마크 | https://swe-perf.github.io/
