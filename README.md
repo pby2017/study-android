@@ -3,6 +3,8 @@
 안드로이드·코틀린·AI 코딩 도구 학습 기록을 **1분에 읽는 카드뷰**로 정리한 블로그입니다.
 GitHub Pages(Jekyll)로 운영됩니다.
 
+🔗 **라이브 페이지: https://pby2017.github.io/study-android/**
+
 ## 구조
 
 | 경로 | 설명 |
