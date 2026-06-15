@@ -209,3 +209,5 @@
 
 - 2026-06-16 15:30 KST | Codebuff — 단일 모델이 아니라 에이전트 4종 팀으로 코드를 고치는 터미널 에이전트 | https://github.com/CodebuffAI/codebuff
 - 2026-06-16 04:30 KST | Google Antigravity — Gemini CLI를 접고 갈아타라는 에디터·터미널·브라우저 통합 에이전트 플랫폼 | https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/
+
+- 2026-06-18 09:00 KST | Mastra — Gatsby 팀이 만든 TypeScript용 AI 에이전트 프레임워크 | https://github.com/mastra-ai/mastra

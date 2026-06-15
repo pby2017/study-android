@@ -2027,3 +2027,18 @@ cards:
       - "데스크톱 에디터 + 새 CLI + SDK 동시 출시 / 한 작업을 서브에이전트로 쪼개 병렬 실행"
       - "구글이 Gemini CLI 사용자에게 Antigravity 이전 요청 — Gemini CLI 후속으로 봐야 / 모델은 Gemini 3.5 Flash"
     source: "https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/"
+
+  - category: ai
+    title: "Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크"
+    summary: >
+      Mastra(mastra-ai)는 코딩 에이전트(터미널 툴)가 아니라, 당신이 직접 AI 에이전트·앱을 짤 때 쓰는 TypeScript 프레임워크다.
+      거의 100% TypeScript로 쓰였고 Node.js·React·Next.js와 붙으며, 만든 곳은 정적 사이트 도구 Gatsby를 만든 팀(YC W25)이다.
+      핵심 구성요소가 또렷하다 — ① 40개 넘는 모델사를 한 인터페이스로 갈아끼우는 모델 라우팅 ② 도구를 쓰는 자율 Agent
+      ③ '.then()/.branch()/.parallel()'로 다단계를 엮는 그래프형 Workflow ④ 실행을 멈췄다 사람 승인 후 재개하는 human-in-the-loop
+      ⑤ 대화 기록·RAG·메모리 같은 컨텍스트 관리 ⑥ MCP 서버 작성 ⑦ 운영에 필요한 evals·옵저버빌리티 내장.
+      라이선스는 코어가 Apache-2.0이고 'ee/' 디렉터리 코드만 별도 엔터프라이즈 라이선스(개발·테스트는 무료, 프로덕션은 유료)다.
+    points:
+      - "코딩 CLI가 아니라 'AI 에이전트/앱을 짜는' TS 프레임워크 — Node·React·Next 연동, Gatsby 팀·YC W25 (약 25k★ 주장)"
+      - "구성: 모델 라우팅(40+ 공급사)·Agent·그래프형 Workflow·human-in-the-loop·RAG/메모리·MCP 서버·evals/옵저버빌리티"
+      - "라이선스: 코어 Apache-2.0, 'ee/' 코드만 엔터프라이즈(개발·테스트 무료·프로덕션 유료)"
+    source: "https://github.com/mastra-ai/mastra"
