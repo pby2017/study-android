@@ -1308,3 +1308,17 @@ cards:
       - "수단: 테스트·린터처럼 빠르고 품질 좋은 도구로 에이전트가 자기 오류를 자동으로 잡게 한다"
       - "훈련법: 손으로 한 커밋을 에이전트에게 (내 답 안 보여주고) 똑같이 재현시켜 보며 하네스를 다듬는다"
     source: "https://mitchellh.com/writing/my-ai-adoption-journey"
+
+  - category: ai
+    title: "Claude Code GitHub Action — PR에 @claude 부르면 알아서 고치고 리뷰까지"
+    summary: >
+      anthropics/claude-code-action는 Claude Code를 깃허브 액션 안에서 자율 에이전트로 돌리는 공식 액션이다.
+      이슈나 PR 코멘트에서 `@claude`로 부르면(또는 이슈를 Claude에 배정하면) 코드를 읽고, 변경을 만들고, PR을 올리거나 코멘트로 답한다.
+      별도 prompt 입력을 주면 멘션 없이도 PR마다 자동 코드리뷰·CI 수정·이슈 분류 같은 워크플로를 돌릴 수 있다.
+      설치는 Claude Code에서 `/install-github-app`를 실행하면 깃허브 앱과 시크릿까지 안내해 깔아 준다.
+      에이전트는 사내(자체) 러너에서 실행되고, Anthropic API·Bedrock·Vertex 등 여러 인증 방식을 지원하며 라이선스는 MIT다.
+    points:
+      - "트리거: PR·이슈에서 @claude 멘션 / 이슈를 Claude에 배정 / prompt 입력으로 자동 실행 — 코드 수정·PR 생성·리뷰 코멘트"
+      - "설치: Claude Code에서 /install-github-app 한 줄 — 깃허브 앱과 시크릿 설정까지 안내(레퍼런스 anthropics/claude-code-action@v1)"
+      - "자체 GitHub 러너에서 실행, MIT 라이선스(약 8k★). '월 50 PR 기준 API 비용 $5 미만'은 공식 문서의 주장"
+    source: "https://github.com/anthropics/claude-code-action"

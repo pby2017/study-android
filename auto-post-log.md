@@ -110,3 +110,5 @@
 - 2026-06-16 09:30 KST | Aider Polyglot 벤치마크 — Python 점수에 가려진 편집 포맷 실력을 6개 언어로 잰다 | https://aider.chat/docs/leaderboards/
 
 - 2026-06-16 10:00 KST | 하네스 엔지니어링 — 에이전트가 같은 실수를 두 번 못 하게 환경을 고치는 일 | https://mitchellh.com/writing/my-ai-adoption-journey
+
+- 2026-06-16 10:30 KST | Claude Code GitHub Action — PR에 @claude 부르면 알아서 고치고 리뷰까지 | https://github.com/anthropics/claude-code-action
