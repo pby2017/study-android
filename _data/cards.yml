@@ -2188,3 +2188,17 @@ cards:
       - "모델 비종속: API 키 설정으로 Anthropic·OpenAI·Google·로컬 등 어떤 LLM도 교체 가능"
       - "build(전체 권한)·plan(읽기 전용) 두 에이전트를 Tab으로 전환, TUI·데스크톱·IDE 클라이언트 지원"
     source: "https://opencode.ai/docs/"
+
+  - category: ai
+    title: "ACP(Agent Client Protocol) — 에디터와 코딩 에이전트를 '느슨하게' 잇는 LSP 격 표준"
+    summary: >
+      ACP는 코드 에디터/IDE와 코딩 에이전트 사이의 통신을 표준화하는 프로토콜로, Zed 팀이 주도해
+      만들었다. 에디터마다 에이전트별 통합을 따로 짜야 하는 문제(통합 비용·호환성 한계·도구 락인)를,
+      LSP가 언어 서버를 표준화했듯 끊어내는 게 목표다. 로컬에서는 에이전트를 에디터의 서브프로세스로
+      띄워 stdio 위 JSON-RPC로 주고받고, 양쪽이 서로 독립적으로 발전할 수 있게 한다. 덕분에 Zed
+      같은 ACP 호환 에디터 안에서 Claude Agent·Codex·Gemini 같은 외부 에이전트를 바꿔 끼울 수 있다.
+    points:
+      - "에디터↔에이전트 통신 표준 — stdio 위 JSON-RPC(로컬), 원격은 HTTP/WebSocket(진행 중)"
+      - "해결 문제: 에디터마다 에이전트별 커스텀 통합 → 통합 비용·호환성 한계·도구 락인"
+      - "Zed가 ACP 호환 에디터로 Claude Agent·Codex·Gemini 등 외부 에이전트를 끼워 씀(zed.dev/ai)"
+    source: "https://agentclientprotocol.com/overview/introduction"

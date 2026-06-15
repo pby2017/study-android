@@ -229,3 +229,5 @@
 - 2026-06-18 19:30 KST | Amp(Sourcegraph) — 0% 마진 종량제로 미는 멀티모델 코딩 에이전트 | https://ampcode.com/manual
 - 2026-06-16 06:42 KST | Goose(Block) — Apache-2.0 온머신 코딩 에이전트, 리눅스재단 AAIF로 이관 | https://github.com/block/goose
 - 2026-06-16 07:30 KST | OpenCode — Claude Code의 오픈소스 사촌, 모델 안 가리는 터미널 코딩 에이전트(175k★) | https://opencode.ai/docs/
+
+- 2026-06-16 22:30 KST | ACP(Agent Client Protocol) — 에디터와 코딩 에이전트를 느슨하게 잇는 LSP 격 표준 | https://agentclientprotocol.com/overview/introduction
