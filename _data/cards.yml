@@ -861,3 +861,17 @@ cards:
       - "응답엔 텍스트(`result`)·session ID·usage 등 메타데이터도 함께 / `jq '.structured_output'`로 해당 필드만 추출"
       - "자유 텍스트 파싱(정규식) 대신 형태를 못박아 CI·배치에서 LLM 출력을 안정적으로 소비"
     source: "https://code.claude.com/docs/en/headless"
+
+  - category: ai
+    title: "Superpowers — 스킬을 엮어 만든 '개발 방법론' 프레임워크"
+    summary: >
+      Superpowers(obra/superpowers)는 단일 스킬이 아니라, 개발 생명주기를 강제 워크플로로 엮은 오픈소스 프레임워크다(MIT).
+      바로 코딩에 뛰어들지 않고 "정말 뭘 하려는 건지" 되묻는 브레인스토밍으로 시작해 스펙을 함께 다듬고,
+      그다음 워크트리 격리 → 잘게 쪼갠 구현 계획 → 서브에이전트가 작업당 하나씩 도는 2단계 리뷰(스펙 준수 → 코드 품질) → TDD → 코드리뷰 → 브랜치 마무리로 이어진다.
+      README는 이걸 "제안이 아니라 강제 워크플로(Mandatory workflows, not suggestions)"라고 못박고, 스킬은 별도 조작 없이 자동 트리거된다고 설명한다.
+      Claude Code뿐 아니라 Codex·Gemini CLI·Factory Droid·OpenCode·Cursor·Copilot CLI 등 여러 하네스에 각각 설치할 수 있다.
+    points:
+      - "단일 스킬이 아닌 개발 생명주기 강제 워크플로 묶음 — 브레인스토밍→워크트리→계획→서브에이전트 실행→TDD→리뷰→마무리"
+      - "원칙: TDD 먼저·항상 / 추측보다 체계 / 복잡도 축소 / 주장보다 증거(검증 후 완료 선언)"
+      - "Claude Code 설치: `/plugin install superpowers@claude-plugins-official` — Codex·Gemini·Droid 등 하네스별 설치법 별도 제공"
+    source: "https://github.com/obra/superpowers"
