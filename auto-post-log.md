@@ -144,3 +144,5 @@
 - 2026-06-16 22:30 KST | /context — 200k 컨텍스트가 어디로 새는지 한눈에 보고 막는 진단 명령 | https://code.claude.com/docs/en/costs
 - 2026-06-15 22:00 KST | UI UX Pro Max — 디자인 안목을 스킬로 주입해 매번 비슷한 AI 화면을 벗어나기 | https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
 - 2026-06-16 23:00 KST | wshobson/agents — 에이전트·스킬·커맨드를 여러 도구에 한 번에 까는 멀티하네스 마켓플레이스 | https://github.com/wshobson/agents
+
+- 2026-06-15 13:00 KST | 공식 MCP 레지스트리 — 흩어진 MCP 서버를 한 API로 찾는 소스 오브 트루스 | https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/
