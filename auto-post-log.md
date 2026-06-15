@@ -168,3 +168,5 @@
 
 - 2026-06-15 14:00 KST | Pydantic AI — 'FastAPI 느낌'으로 타입 안전하게 짜는 모델-비종속 에이전트 프레임워크 | https://github.com/pydantic/pydantic-ai
 - 2026-06-17 10:00 KST | Aider 아키텍트 모드 — 비싼 모델로 계획, 싼 모델로 편집 둘로 쪼개기 | https://aider.chat/docs/usage/modes.html
+
+- 2026-06-17 10:30 KST | Backlog.md — 깃 레포를 사람·AI 공용 칸반 보드로 바꾸는 마크다운 태스크 매니저 | https://github.com/MrLesk/Backlog.md

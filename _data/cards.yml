@@ -1719,3 +1719,15 @@ cards:
       - "추론과 정확한 편집을 한 번에 못하는 LLM에 효과 — 같은 모델을 양쪽에 써도 '두 번 보기'로 개선되는 경우 있음(공식 문서, 수치 없는 정성적 주장)"
       - "`--architect` = `--chat-mode architect` 단축키 / `--editor-model`로 편집 모델 지정 → 비싼 계획 + 싼 편집으로 비용 절감"
     source: "https://aider.chat/docs/usage/modes.html"
+
+  - category: ai
+    title: "Backlog.md — 깃 레포를 사람·AI 공용 칸반 보드로 바꾸는 마크다운 태스크 매니저"
+    summary: >
+      Backlog.md는 별도 서버나 SaaS 없이, 깃 저장소 안에서 작업(task)을 평범한 마크다운 `.md` 파일로 관리하는 오픈소스 도구다(MIT 라이선스). README에 따르면 모든 이슈가 깃에 커밋되는 .md 파일이라 PR·브랜치·히스토리와 자연스럽게 묶이고, 제로 설정 CLI로 터미널 칸반 보드와 웹 UI를 띄울 수 있다.
+      핵심은 'AI 에이전트와 사람이 같은 작업 목록을 공유'한다는 점이다. Claude Code·Gemini CLI·Codex·Kiro 등 MCP/CLI 호환 어시스턴트를 지원하며, MCP 커넥터를 쓰면 이 도구들에 워크플로 지침까지 자동 주입된다. 에이전트가 작업을 To Do→In Progress→Done으로 옮기고 진행 상황을 파일에 남기므로, 세션이 바뀌어도 '무엇을 하던 중이었나'가 레포에 그대로 남는다.
+      실무 포인트는 핸드오프다. 사람이 잘게 쪼갠 태스크를 에이전트에 넘기고, 에이전트가 작업하며 상태를 갱신하면, 별도 트래커 없이 깃 하나로 사람-AI 협업의 단일 진실 공급원(source of truth)을 만들 수 있다.
+    points:
+      - "작업 = 깃에 커밋되는 마크다운 .md 파일 — 서버·SaaS 없이 레포 안에서 칸반·진행 추적(MIT 라이선스)"
+      - "Claude Code·Gemini CLI·Codex·Kiro 등 지원, MCP 커넥터가 에이전트에 워크플로 지침 자동 설정"
+      - "사람이 태스크 쪼개 핸드오프 → 에이전트가 To Do→In Progress→Done 갱신 → 세션 바뀌어도 맥락이 레포에 남음"
+    source: "https://github.com/MrLesk/Backlog.md"
