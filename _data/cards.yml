@@ -1915,3 +1915,17 @@ cards:
       - "roocode.com → roomote.dev 리다이렉트: 에디터 에이전트에서 'Slack 운영 에이전트'로 피벗"
       - "공식 권장 이전 경로 = ZooCode(커뮤니티 포크)·Cline(모태). OSS 에이전트는 벤더 생존 리스크를 항상 깔고 가야 한다는 신호"
     source: "https://github.com/RooCodeInc/Roo-Code"
+
+  - category: ai
+    title: "Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기"
+    summary: >
+      여러 코딩 에이전트를 같이 쓰면 지침 파일이 도구마다 흩어진다(Claude는 CLAUDE.md, Cursor는 .cursor/rules,
+      Copilot·Codex·Aider·Cline·Gemini CLI·Windsurf·Zed 등 제각각). Ruler는 프로젝트 루트의 `.ruler/` 폴더에
+      마크다운 규칙을 한 번만 써두고 `npx @intellectronica/ruler apply`로 각 에이전트의 설정 파일에 자동 배포한다.
+      `.ruler/`의 .md들을 정해진 순서로 합쳐 출처 주석을 달아 내보내고, ruler.toml로 어떤 에이전트에 보낼지·MCP 서버
+      설정까지 함께 뿌릴 수 있다(merge/overwrite). MIT·2.7k★(2026-06 1차 출처 확인).
+    points:
+      - "`.ruler/`에 규칙 1벌 → `ruler apply`가 Copilot·Claude Code·Codex·Cursor·Cline·Aider·Gemini CLI·Windsurf·Zed 등 15+ 도구 파일로 배포"
+      - "ruler.toml로 MCP 서버 설정도 함께 분배(merge/overwrite) — `--agents`·`--dry-run`·`--no-mcp` 플래그 제공"
+      - "`ruler revert`로 apply가 만든 변경을 .bak 백업으로 되돌리기 가능(서브에이전트 전파는 revert 미지원)"
+    source: "https://github.com/intellectronica/ruler"

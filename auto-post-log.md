@@ -195,3 +195,5 @@
 - 2026-06-16 22:30 KST | awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★) | https://github.com/VoltAgent/awesome-agent-skills
 
 - 2026-06-16 21:30 KST | Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 IDE는 코딩의 미래가 아니다며 접은 사건 | https://github.com/RooCodeInc/Roo-Code
+
+- 2026-06-16 23:30 KST | Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기 | https://github.com/intellectronica/ruler
