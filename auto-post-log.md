@@ -239,3 +239,5 @@
 - 2026-06-16 13:30 KST | OpenHands(옛 OpenDevin) — MIT 라이선스의 풀스택 코딩 에이전트 플랫폼(77k★) | https://github.com/All-Hands-AI/OpenHands
 
 - 2026-06-16 13:50 KST | OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT) | https://github.com/openclaw/openclaw
+
+- 2026-06-16 13:55 KST | ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★) | https://github.com/ryoppippi/ccusage

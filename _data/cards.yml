@@ -2264,3 +2264,20 @@ cards:
       - "Gateway = 로컬-퍼스트 컨트롤 플레인(데몬) / 모델 비종속 / MIT 라이선스"
       - "메인 세션은 호스트에서 bash·read·write·edit 직접 실행(샌드박스 설정 가능)·별 37만+ 주장"
     source: "https://github.com/openclaw/openclaw"
+
+  - category: ai
+    title: "ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)"
+    summary: >
+      ccusage(ryoppippi)는 "코딩 에이전트 CLI의 토큰 사용량·비용을 로컬 데이터에서 분석"하는
+      CLI다. API 호출 없이 ~/.claude 같은 로컬 사용 기록(JSONL)을 읽어 일·주·월·세션 단위
+      리포트와 USD 비용을 보여준다. `bunx ccusage`로 바로 실행되고, `blocks`는 Claude Code의
+      5시간 과금 창을 추적하며 활성 블록을 모니터링한다. `--offline`으로 네트워크 없이
+      번들된 LiteLLM 가격표를 쓰고, `--json`·`--breakdown`(모델별)·`--since/--until` 필터,
+      그리고 상태줄(statusline, 베타) 표시도 지원한다. MIT 라이선스, README 기준 별 16.2k개.
+      Claude Code뿐 아니라 Codex·OpenCode·Amp·Goose·Gemini CLI·Copilot CLI 등 다수 에이전트를
+      통합 리포트로 묶는다.
+    points:
+      - "로컬 JSONL만 읽어 일·주·월·세션 비용 집계 — API 호출 없이 동작, `--offline` 지원"
+      - "`blocks`로 Claude Code 5시간 과금 창 추적 / `--breakdown`은 모델별 분해"
+      - "Claude Code·Codex·OpenCode·Amp·Goose·Gemini/Copilot CLI 등 통합 / MIT·16.2k★(주장)"
+    source: "https://github.com/ryoppippi/ccusage"
