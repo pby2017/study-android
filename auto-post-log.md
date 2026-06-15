@@ -187,3 +187,4 @@
 - 2026-06-16 14:00 KST | Devin 가격표 다시 읽기 — Free·Pro 20·Max 200달러, 그리고 Windsurf 흡수 흔적 | https://devin.ai/pricing
 
 - 2026-06-16 14:30 KST | AGENTS.md — 한 파일로 모든 코딩 에이전트에 같은 규칙을 주는 오픈 표준 | https://agents.md/
+- 2026-06-16 17:00 KST | CodeRabbit — 공개 레포는 무료, PR마다 줄 단위로 달라붙는 AI 리뷰어 | https://www.coderabbit.ai/pricing

@@ -1840,3 +1840,16 @@ cards:
       - "Codex·Cursor·Gemini CLI·Devin·Copilot 코딩 에이전트·Aider·Zed 등 다수 지원, 60k+ 오픈소스 프로젝트가 채택(공식 주장)"
       - "모노레포는 가장 가까운 AGENTS.md가 우선, 단 사용자의 채팅 지시가 모든 파일을 덮어씀 — 표준은 Linux Foundation 산하에서 관리"
     source: "https://agents.md/"
+
+  - category: ai
+    title: "CodeRabbit — 공개 레포는 무료, PR마다 줄 단위로 달라붙는 AI 리뷰어"
+    summary: >
+      CodeRabbit은 GitHub·GitLab에 붙어 PR이 열릴 때마다 자동으로 코드 변경을 분석하고, 변경 라인 옆에 인라인 코멘트와 PR 요약을 달아주는 AI 코드 리뷰 도구다.
+      가장 큰 미끼는 가격이다. 공식 가격표 기준 '공개 저장소는 영원히 무료(free reviews forever for public repositories)'라서 오픈소스·사이드 프로젝트에 비용 없이 붙일 수 있다.
+      유료는 Pro가 연간 결제 시 사용자당 월 24달러, Pro Plus가 48달러이며, 무료 티어도 공개·비공개 저장소 수 제한 없이 PR 요약과 IDE·CLI 리뷰를 제공한다.
+      즉 '에이전트가 코드를 짠다'가 아니라 '에이전트가 사람·AI가 짠 코드를 사람 대신 1차로 리뷰한다'는 쪽이라, 작성과 검토를 다른 주체로 분리하고 싶을 때 들어맞는다.
+    points:
+      - "PR 열릴 때마다 변경 라인 옆에 인라인 코멘트 + PR 요약 자동 생성 (GitHub·GitLab)"
+      - "공개 저장소는 영원히 무료 — OSS·개인 프로젝트에 비용 0으로 리뷰 봇 추가(공식 가격표 명시)"
+      - "유료 Pro 연 결제 시 월 $24/인, Pro Plus $48/인; 무료 티어도 공개·비공개 무제한 + IDE·CLI 리뷰 포함"
+    source: "https://www.coderabbit.ai/pricing"
