@@ -212,3 +212,5 @@
 
 - 2026-06-18 09:00 KST | Mastra — Gatsby 팀이 만든 TypeScript용 AI 에이전트 프레임워크 | https://github.com/mastra-ai/mastra
 - 2026-06-18 09:50 KST | Cline — 파일 바꾸기 전에 무조건 멈추는 Plan→Act 2단계 오픈소스 에이전트 | https://github.com/cline/cline
+
+- 2026-06-18 14:30 KST | awesome-claude-code — 스킬·훅·슬래시명령·플러그인을 모아둔 사실상의 표준 카탈로그(46k★) | https://github.com/hesreallyhim/awesome-claude-code

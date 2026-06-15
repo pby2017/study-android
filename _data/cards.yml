@@ -2055,3 +2055,16 @@ cards:
       - "기본값은 파일 수정·명령마다 사람 승인 + diff 리뷰 + 체크포인트 추적, auto-approve는 선택"
       - "BYOK(Anthropic·OpenAI·Gemini·Bedrock 등)·MCP 외부연동·Apache-2.0 오픈소스 (약 61k★ 주장)"
     source: "https://github.com/cline/cline"
+  - category: ai
+    title: "awesome-claude-code — 스킬·훅·슬래시명령·플러그인을 모아둔 사실상의 '표준 카탈로그'(46k★)"
+    summary: >
+      awesome-claude-code(hesreallyhim)는 Claude Code용 리소스를 한곳에 모은 큐레이션 목록으로, 별 약 46.5k개를 받은 사실상의 표준 인덱스다.
+      README의 한 줄 정의는 "skills, hooks, slash-commands, agent orchestrators, applications, and plugins를 모은 awesome 리스트" — 즉 Claude Code 생태계에서 뭘 깔지 막막할 때 가장 먼저 뒤지는 출발점이다.
+      단순 링크 나열이 아니라 코드 품질·보안·독창성 같은 기준으로 등재 리소스를 거른다고 README가 명시한다.
+      현재 분류 체계를 새로 짜는 재편 작업 중이며, 모든 항목은 THE_RESOURCES_TABLE.csv 한 파일에서 관리된다(코드의 98%가 이 CSV를 다루는 파이썬).
+      특정 도구가 아니라 '지금 뭐가 쓸 만한지'를 빠르게 훑는 용도라, 새 워크플로·스킬을 찾을 때 검색 시작점으로 두면 좋다.
+    points:
+      - "Claude Code용 스킬·훅·슬래시명령·오케스트레이터·플러그인을 한 목록에 모은 약 46.5k★ 큐레이션"
+      - "아무거나 싣지 않고 코드 품질·보안·독창성 기준으로 거른다고 README가 명시"
+      - "리소스는 THE_RESOURCES_TABLE.csv 단일 파일로 관리, 현재 분류 체계 재편 진행 중"
+    source: "https://github.com/hesreallyhim/awesome-claude-code"
