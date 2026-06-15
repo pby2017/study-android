@@ -227,3 +227,4 @@
 
 - 2026-06-18 18:30 KST | Ruflo(옛 Claude-Flow) — Claude Code 위에 여왕-일꾼 스웜을 얹는 59.6k★ 메타하네스 | https://github.com/ruvnet/ruflo
 - 2026-06-18 19:30 KST | Amp(Sourcegraph) — 0% 마진 종량제로 미는 멀티모델 코딩 에이전트 | https://ampcode.com/manual
+- 2026-06-16 06:42 KST | Goose(Block) — Apache-2.0 온머신 코딩 에이전트, 리눅스재단 AAIF로 이관 | https://github.com/block/goose

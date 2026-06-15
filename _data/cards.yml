@@ -2162,3 +2162,16 @@ cards:
       - "역할 분담 서브에이전트: Oracle(난해한 추론, GPT-5.5)·Librarian(원격·사설 레포 검색)·Painter(이미지)로 잡일 격리"
       - "실행 범위 넓음: CLI·VS Code(+Cursor·Windsurf)·JetBrains·Neovim·Zed·웹UI / 규칙은 AGENTS.md 우선, AGENT.md·CLAUDE.md도 인식"
     source: "https://ampcode.com/manual"
+  - category: ai
+    title: "Goose(Block) — Apache-2.0로 풀린 '온머신' 코딩 에이전트, 이젠 리눅스재단 품으로"
+    summary: >
+      Goose는 결제기업 Block(옛 Square)이 만들어 오픈소스로 공개한 데스크톱·CLI 코딩 에이전트로,
+      내 PC에서 직접 코드를 짜고 빌드·테스트·실행까지 돌린다. 특정 LLM에 묶이지 않고
+      Anthropic·OpenAI·Google·로컬 모델 등 15곳 넘는 제공사를 골라 끼울 수 있고, MCP를 1급으로 지원해
+      70개 이상 '익스텐션'으로 기능을 확장한다. 라이선스는 Apache-2.0이며 2026년 들어
+      리눅스재단 산하 Agentic AI 재단으로 거버넌스가 옮겨가 벤더 종속 우려를 더 줄였다.
+    points:
+      - "온머신 실행: 채팅 답변이 아니라 로컬에서 파일 수정·셸 명령·테스트까지 직접 수행하는 에이전트"
+      - "모델 비종속 + MCP: 15+ LLM 제공사 교체 가능, MCP 익스텐션 70+로 도구 연결(공식 README 확인)"
+      - "Apache-2.0 오픈소스, 데스크톱 앱 + CLI 둘 다 제공 / 거버넌스는 Linux Foundation AAIF로 이관"
+    source: "https://github.com/block/goose"
