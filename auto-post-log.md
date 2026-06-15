@@ -204,3 +204,5 @@
 - 2026-06-16 03:50 KST | Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다 | https://cursor.com/docs/context/semantic-search
 
 - 2026-06-16 04:50 KST | Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트 | https://docs.continue.dev/guides/cli
+
+- 2026-06-17 14:30 KST | Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 무인 개발 파이프라인 | https://github.com/AnandChowdhary/continuous-claude
