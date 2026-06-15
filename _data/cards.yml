@@ -1506,3 +1506,15 @@ cards:
       - "스폰된 서브에이전트는 세션 권한 모드와 무관하게 항상 acceptEdits로 돌아 파일 편집 자동 승인 — 단, allowlist 밖 셸·웹·MCP는 런 중에도 물어볼 수 있음"
       - "런마다 스크립트를 ~/.claude/projects/ 아래 파일로 저장 → /workflows에서 진행 보기·일시정지·재개, `s`로 /<이름> 커맨드로 저장해 재사용"
     source: "https://code.claude.com/docs/en/workflows"
+
+  - category: ai
+    title: "Kilo Code — Roo Code 종료 후 갈아탈 곳으로 꼽히는 오픈소스 에이전트(20k★)"
+    summary: >
+      Kilo Code는 자신을 'all-in-one agentic engineering platform'으로 소개하는 오픈소스(MIT) 코딩 에이전트로, GitHub 20.1k★를 받았다. VS Code·JetBrains 익스텐션과 별도 CLI로 동작하며, 별도 마크업 없이 모델 제공사가 청구하는 토큰 가격 그대로 받는 'zero-markup' 과금이 특징이다.
+      Cline·Roo Code 계열에서 갈라져 나온 도구로, 2026년 5월 원조 Roo Code 레포가 아카이브(read-only)되면서 기존 사용자가 갈아탈 마이그레이션 대상으로 자주 꼽힌다.
+      Architect(설계)·Coder(구현)·Debugger 같은 모드를 오가는 멀티모드, MCP 마켓플레이스, BYOK(여러 LLM 제공사 연결)를 지원한다. 단일 IDE 익스텐션을 넘어 '엔지니어링 플랫폼'을 표방한다.
+    points:
+      - "오픈소스 MIT · GitHub 20.1k★ — VS Code·JetBrains 익스텐션 + 독립 CLI"
+      - "zero-markup: 모델 제공사 청구가 그대로 — Claude Code 같은 구독제와 다른 BYOK 종량제"
+      - "Architect/Coder/Debugger 멀티모드 + MCP 마켓플레이스 — Roo Code 아카이브(2026-05) 후 대체재로 거론"
+    source: "https://github.com/Kilo-Org/kilocode"
