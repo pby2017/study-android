@@ -155,3 +155,5 @@
 - 2026-06-15 13:00 KST | openskills — Claude Code 스킬을 Cursor·Codex·Aider까지 그대로 쓰게 해주는 범용 로더 | https://github.com/numman-ali/openskills
 
 - 2026-06-15 13:30 KST | mini-swe-agent — 단 100줄 파이썬으로 SWE-bench Verified 74% 넘긴 에이전트 | https://github.com/SWE-agent/mini-swe-agent
+
+- 2026-06-15 18:00 KST | Memory Bank — 세션이 바뀌어도 프로젝트 맥락을 잃지 않게 하는 마크다운 메모리 패턴 | https://github.com/GreatScottyMac/roo-code-memory-bank
