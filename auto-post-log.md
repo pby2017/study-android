@@ -78,3 +78,4 @@
 - 2026-06-15 17:00 KST | 멀티에이전트 오케스트레이션 — 리드 에이전트가 서브에이전트에게 일을 쪼개 맡기는 패턴 | https://www.anthropic.com/engineering/built-multi-agent-research-system
 
 - 2026-06-15 17:30 KST | Codex CLI — OpenAI가 만든 터미널 코딩 에이전트(Rust·Apache-2.0) | https://github.com/openai/codex
+- 2026-06-15 12:59 KST | 작성과 리뷰를 분리하라 — 짠 세션 말고 새 세션이 검토 | https://code.claude.com/docs/en/best-practices
