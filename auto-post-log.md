@@ -246,3 +246,5 @@
 
 - 2026-06-16 14:30 KST | AI-research-SKILLs(Orchestra Research) — 에이전트를 AI 리서치 전문가로 만드는 98개 스킬 묶음(9.7k★) | https://github.com/Orchestra-Research/AI-research-SKILLs
 - 2026-06-16 14:35 KST | Conductor — 한 Mac에서 Claude Code·Codex·Cursor를 여러 워크스페이스로 동시에 돌리는 앱 | https://www.conductor.build/docs/core/parallel-agents
+
+- 2026-06-16 15:00 KST | 컨텍스트 엔지니어링 — 프롬프트가 아니라 추론 내내 보이는 토큰 전체를 큐레이팅하기 | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
