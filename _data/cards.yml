@@ -1387,3 +1387,17 @@ cards:
       - "컴팩션(compaction): 대화 내용을 요약해 새 컨텍스트 창으로 재시작 / 서브에이전트는 수만 토큰 탐색 후 1,000~2,000 토큰 요약만 반환"
       - "JIT 검색: 전부 미리 넣지 말고, 파일 경로·식별자만 들고 있다가 필요할 때 끌어오기"
     source: "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+  - category: ai
+    title: "awesome-claude-code-subagents — 154개 전문 서브에이전트를 플러그인으로 한 번에 까는 컬렉션"
+    summary: >
+      VoltAgent가 큐레이션하는 Claude Code 서브에이전트 모음으로, 154개 이상의 특화 에이전트를
+      10개 카테고리(Core Development, Language Specialists, Infrastructure, Quality 등)로 분류해 둔다.
+      api-designer·backend-developer·typescript-pro·swift-expert처럼 역할별로 시스템 프롬프트가
+      미리 짜여 있어, 직접 에이전트를 정의하지 않고도 도메인 전문가를 골라 쓸 수 있다.
+      Claude Code 플러그인 마켓플레이스로 카테고리 단위 설치가 되고, 수동으로 .claude/agents/에
+      파일을 복사해도 된다. GitHub 21.8k★(주장, 2026-06 기준).
+    points:
+      - "설치: claude plugin marketplace add VoltAgent/awesome-claude-code-subagents 후 voltagent-lang 같은 카테고리 플러그인 install — 또는 에이전트 .md를 ~/.claude/agents/(전역)·.claude/agents/(프로젝트)에 복사"
+      - "10개 카테고리·154+ 에이전트: 언어별(typescript-pro/swift-expert), 인프라, 품질, 메타-오케스트레이션 등 — 09-meta의 agent-installer로 'PHP 에이전트 찾아 설치해줘'식 자연어 설치도 지원"
+      - "서브에이전트 = 별도 컨텍스트 창에서 도는 전문 일꾼. 직접 system prompt를 작성하는 대신 검증된 역할 정의를 가져다 쓰는 게 핵심 이점"
+    source: "https://github.com/VoltAgent/awesome-claude-code-subagents"
