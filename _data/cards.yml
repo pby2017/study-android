@@ -1011,3 +1011,18 @@ cards:
       - "Claude Code는 ~/.claude/skills(개인)·.claude/skills(프로젝트) 파일 기반 / API·claude.ai는 surface마다 따로 업로드(동기 안 됨)"
       - "보안: 스킬은 코드 실행 권한을 주므로 신뢰된 출처만 — 외부 URL을 가져오는 스킬은 프롬프트 인젝션 위험"
     source: "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"
+
+  - category: ai
+    title: "Terminal-Bench — '모델'이 아니라 '에이전트+모델 쌍'을 재는 벤치마크"
+    summary: >
+      Terminal-Bench는 스탠퍼드와 Laude Institute가 만든, 에이전트가 실제 터미널을 몰아가며 작업을
+      끝내는지(파일 편집·명령 실행·실패 수정)를 재는 벤치마크다. 핵심 발상은 '에이전트와 모델을 함께 묶어
+      한 단위로 평가'한다는 점 — 같은 모델이라도 어떤 에이전트(스캐폴드) 안에 넣느냐에 따라 점수가 달라지기
+      때문이다. 도구를 고를 때 'GPT-5는 몇 점' 같은 모델 단독 점수보다 '이 에이전트 + 이 모델' 조합 점수를
+      봐야 실전에 맞는다는 게 이 벤치마크가 던지는 실무 메시지다. 채점은 각 과제를 도커 환경에서 검증
+      스크립트로 프로그래밍적으로 판정한다.
+    points:
+      - "1.0=80과제 → 2.0=89과제(SW엔지니어링·ML·보안·데이터사이언스 등), 이후 2.1·3.0·Science 진행 중"
+      - "평가 단위는 '에이전트+모델 쌍' — 같은 모델도 스캐폴드가 다르면 점수가 갈린다"
+      - "SWE-bench Pro(깃 이슈 고치기)와 보상하는 게 다름 — 이쪽은 '터미널을 끝까지 몰아가는 능력'을 잰다"
+    source: "https://www.tbench.ai/"

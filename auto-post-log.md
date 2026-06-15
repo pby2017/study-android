@@ -70,3 +70,5 @@
 - 2026-06-15 15:00 KST | AGENTS.md — 도구마다 따로 쓰던 에이전트 지침을 하나로 통일하는 표준 | https://agents.md
 
 - 2026-06-15 15:30 KST | Agent Skills — SKILL.md 폴더 하나로 에이전트를 도메인 전문가로 만들기 | https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+
+- 2026-06-15 16:00 KST | Terminal-Bench — 모델이 아니라 에이전트+모델 쌍을 재는 벤치마크 | https://www.tbench.ai/
