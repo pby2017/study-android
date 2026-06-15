@@ -172,3 +172,5 @@
 - 2026-06-17 10:30 KST | Backlog.md — 깃 레포를 사람·AI 공용 칸반 보드로 바꾸는 마크다운 태스크 매니저 | https://github.com/MrLesk/Backlog.md
 
 - 2026-06-17 11:00 KST | Ralph Wiggum 루프 — 코딩 에이전트를 끝날 때까지 새 컨텍스트로 다시 돌리는 패턴 | https://ghuntley.com/ralph/
+
+- 2026-06-16 12:00 KST | Claude Code 비용 줄이기 — 공식 문서가 권하는 실전 체크리스트 | https://code.claude.com/docs/en/costs

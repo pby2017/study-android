@@ -1744,3 +1744,16 @@ cards:
       - "상태는 파일에(fix_plan.md·specs·AGENT.md), 검증은 test/build·타입·정적분석으로 — 저자는 신규(greenfield) 프로젝트·시니어 감독을 전제, '90%까지'로 평가"
       - "Anthropic 공식 ralph-wiggum 플러그인: /ralph-loop 시작·/cancel-ralph 중단, Stop 훅이 완료 조건까지 세션 내 반복(작성자 Daisy Hollman)"
     source: "https://ghuntley.com/ralph/"
+
+  - category: ai
+    title: "Claude Code 비용 줄이기 — 공식 문서가 권하는 실전 체크리스트"
+    summary: >
+      Claude Code는 API 토큰 소비량으로 과금되는데, Anthropic 공식 'Manage costs' 문서는 개발자 1인 평균 비용을 활동일당 약 $13, 월 $150~250로 제시하고 사용자 90%는 활동일당 $30 미만이라고 밝힌다.
+      비용을 줄이는 1순위는 모델 라우팅이다 — 대부분의 코딩은 Sonnet으로 처리하고 Opus는 복잡한 아키텍처 결정·다단계 추론에만 아껴 쓰며, `/model`로 세션 중 전환하거나 서브에이전트엔 `model: haiku`를 지정한다.
+      컨텍스트 관리도 핵심이다 — `/context`로 무엇이 공간을 잡아먹는지 보고, CLAUDE.md는 핵심만 담아 200줄 이하로 유지하며, 안 쓰는 MCP 서버는 `/mcp`로 끈다.
+      도구는 MCP보다 `gh`·`aws`·`gcloud` 같은 CLI를 선호하면 도구 목록이 컨텍스트에 안 올라가 토큰을 아낀다. 어디서 새는지는 `/usage`(스킬·서브에이전트·플러그인·MCP별 % 분해)로 추적한다.
+    points:
+      - "공식 기준치: 개발자 1인 활동일당 약 $13, 월 $150~250 / 사용자 90%는 활동일당 $30 미만 (Anthropic 'Manage costs' 문서)"
+      - "1순위는 모델 라우팅 — 기본 Sonnet, Opus는 아키텍처·다단계 추론만, 서브에이전트엔 model: haiku"
+      - "컨텍스트 절약: /context로 점유 확인 · CLAUDE.md 200줄 이하 · 안 쓰는 MCP는 /mcp로 끄기 · 도구는 MCP보다 gh/aws/gcloud 같은 CLI 선호(목록이 컨텍스트에 안 올라감)"
+    source: "https://code.claude.com/docs/en/costs"
