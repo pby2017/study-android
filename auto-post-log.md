@@ -93,3 +93,5 @@
 - 2026-06-15 21:00 KST | awesome-claude-code — 스킬·훅·슬래시 커맨드 46.5k★ 큐레이션 목록 | https://github.com/hesreallyhim/awesome-claude-code
 
 - 2026-06-15 22:00 KST | Goose — Block이 만든 온머신 오픈소스 에이전트 | https://github.com/block/goose
+
+- 2026-06-15 22:30 KST | Amp — Sourcegraph에서 분사한 터미널+에디터 에이전트, 무료 티어 | https://ampcode.com/manual

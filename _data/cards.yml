@@ -1189,3 +1189,17 @@ cards:
       - "모델 비종속: Rust·Apache-2.0, 15개+ 제공자(Anthropic·OpenAI·Google·Ollama·Bedrock 등)와 MCP 지원"
       - "규모/도입(주장): 깃허브 49.4k★, 리눅스 재단 AAIF로 이관 — Block 사내 도입 사례도 공개"
     source: "https://github.com/block/goose"
+
+  - category: ai
+    title: "Amp — Sourcegraph에서 분사한 '터미널+에디터' 에이전트, 무료 티어로 진입장벽 제거"
+    summary: >
+      Amp는 코드 인텔리전스 기업 Sourcegraph가 만든 에이전트형 코딩 도구(전신 Cody)로, 터미널과 에디터 양쪽에서 멀티스텝 편집·테스트·리팩터링을 자율 수행한다.
+      모델 토큰 비용을 마크업 없이(zero markup) 크레딧으로 정산하는 게 기본이고, 별도로 'Amp Free' 무료 티어를 두어 하루 일정량을 어떤 모드에서든 무료로 쓰게 한다.
+      프로젝트 지침은 업계 표준 AGENTS.md를 1차로 읽고 없으면 CLAUDE.md로 폴백하며, 전문 작업을 떼어내는 서브에이전트와 코드 리뷰·분석 전용 'Oracle'(현재 GPT-5.4 기반)을 갖췄다.
+      2025년 12월 'Amp Frontier Corporation'으로 별도 회사 분사가 발표돼, 개인 개발자용 에이전트로 독립 노선을 걷고 있다.
+    points:
+      - "터미널+에디터 동시 지원, 멀티스텝 자율 편집 — Sourcegraph 코드 그래프 컨텍스트 활용"
+      - "과금: 모델 비용 마크업 0 크레딧 정산 + Amp Free 무료 티어(하루 한도, 모든 모드)"
+      - "지침 파일은 AGENTS.md 우선·CLAUDE.md 폴백 / 서브에이전트 + 리뷰 전용 Oracle 내장"
+      - "2025-12-02 'Amp Frontier Corporation'으로 분사 발표 — 별도 회사로 독립"
+    source: "https://ampcode.com/manual"
