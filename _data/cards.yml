@@ -2295,3 +2295,17 @@ cards:
       - "터미널의 `--remote`로 클라우드 작업을 띄우고 `--teleport`로 웹↔터미널 세션을 옮긴다"
       - "네트워크는 기본 Trusted 허용목록(npm·PyPI·crates.io 등)으로 제한, 환경별로 조정 / 리서치 프리뷰"
     source: "https://code.claude.com/docs/en/claude-code-on-the-web"
+
+  - category: ai
+    title: "AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(9.7k★)"
+    summary: >
+      코딩 에이전트에 파인튜닝·분산학습·RAG·평가 같은 AI 리서치/엔지니어링 지식을 SKILL.md
+      형태로 주입하는 오픈소스 라이브러리다. README 기준 98개 스킬을 23개 카테고리(파인튜닝,
+      포스트트레이닝, 추론 서빙, 토크나이저, 평가, 안전·정렬, RAG, 멀티모달, MLOps, 메카닉 인터프
+      등)로 나눠 담았고, 깃허브 별 9.7k(주장)를 받았다. 스킬은 표준 SKILL.md 포맷이라 Claude Code뿐
+      아니라 OpenCode·Cursor·Codex·Gemini CLI·Qwen Code 등 여러 에이전트에서 그대로 쓸 수 있다.
+    points:
+      - "Claude Code 설치: `/plugin marketplace add orchestra-research/AI-research-SKILLs` 후 카테고리별로 `/plugin install fine-tuning@ai-research-skills`"
+      - "범용 SKILL.md 표준이라 OpenCode·Cursor·Codex·Gemini CLI·Qwen Code 등에서 동일하게 사용(README 명시)"
+      - "'어떤 스킬을 쓸지' 에이전트가 알 필요 없게 리서치 생애주기(서베이→아이디어→실험→합성→논문)를 자동 라우팅"
+    source: "https://github.com/Orchestra-Research/AI-research-SKILLs"

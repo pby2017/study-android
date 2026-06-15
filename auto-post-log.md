@@ -243,3 +243,5 @@
 - 2026-06-16 13:55 KST | ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★) | https://github.com/ryoppippi/ccusage
 
 - 2026-06-16 14:00 KST | Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기 | https://code.claude.com/docs/en/claude-code-on-the-web
+
+- 2026-06-16 14:30 KST | AI-research-SKILLs(Orchestra Research) — 에이전트를 AI 리서치 전문가로 만드는 98개 스킬 묶음(9.7k★) | https://github.com/Orchestra-Research/AI-research-SKILLs
