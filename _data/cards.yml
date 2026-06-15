@@ -1611,3 +1611,16 @@ cards:
       - "자동완성 + 레포 RAG 코드 보조 + Answer Engine 채팅 / VSCode·Vim·IntelliJ·JetBrains 확장 지원"
       - "소비자 GPU·애플 Metal에서도 구동 — Copilot처럼 외부 SaaS에 의존하지 않는 온프레미스 완결형"
     source: "https://github.com/TabbyML/tabby"
+
+  - category: ai
+    title: "openskills — Claude Code 스킬을 Cursor·Codex·Aider까지 그대로 쓰게 해주는 범용 로더"
+    summary: >
+      openskills는 Anthropic의 SKILL.md 스킬 시스템을 Claude Code 밖의 다른 에이전트에서도 쓰게 해주는 CLI 도구다(Apache 2.0, GitHub 10.4k★, TypeScript).
+      핵심은 "범용 SKILL.md 설치기" — 스킬을 받아 `AGENTS.md`에 Claude Code와 똑같은 `<available_skills>` XML 포맷으로 박아 넣어, AGENTS.md를 읽는 모든 호환 에이전트가 같은 스킬을 쓰게 만든다.
+      지원 대상은 Claude Code·Cursor·Windsurf·Aider·Codex 등이고, `npm i -g openskills` 후 `npx openskills install anthropics/skills`로 공식 스킬 모음을 한 번에 깔 수 있다.
+      Claude Code의 점진적 공개(progressive disclosure) 방식을 그대로 따라 평소엔 이름·설명만 로드하고 필요할 때만 본문을 읽으므로, 여러 도구를 오가며 작업하는 팀이 스킬 자산을 한 벌로 공유하기 좋다. Anthropic 비공식 프로젝트다.
+    points:
+      - "SKILL.md를 AGENTS.md의 <available_skills> XML로 변환 — Cursor·Windsurf·Aider·Codex 등 AGENTS.md 읽는 에이전트가 공유"
+      - "설치: npm i -g openskills → npx openskills install anthropics/skills / npx openskills sync (Apache 2.0, 10.4k★)"
+      - "점진적 공개 유지 — 평소 이름·설명만, 필요 시 본문만 로드 / Anthropic 비공식"
+    source: "https://github.com/numman-ali/openskills"

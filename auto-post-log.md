@@ -151,3 +151,5 @@
 
 - 2026-06-15 13:00 KST | OpenHands — SWE-bench 77.6점, MIT 라이선스 오픈소스 자율 코딩 에이전트(77k★) | https://github.com/All-Hands-AI/OpenHands
 - 2026-06-15 16:00 KST | Tabby — 코드를 사내 서버 밖으로 안 내보내는 self-hosted Copilot 대안 | https://github.com/TabbyML/tabby
+
+- 2026-06-15 13:00 KST | openskills — Claude Code 스킬을 Cursor·Codex·Aider까지 그대로 쓰게 해주는 범용 로더 | https://github.com/numman-ali/openskills
