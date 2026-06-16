@@ -262,3 +262,5 @@
 - 2026-06-16 23:30 KST | Sim — 채팅·비주얼·코드로 AI 에이전트를 짜는 오픈소스 워크스페이스(simstudioai·28.8k★) | https://github.com/simstudioai/sim
 
 - 2026-06-16 23:55 KST | Repomix — 레포 전체를 AI가 먹기 좋은 단일 파일로 패킹하는 CLI(26.3k★) | https://github.com/yamadashy/repomix
+
+- 2026-06-16 14:05 KST | Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트 | https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent

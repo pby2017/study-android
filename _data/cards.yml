@@ -2463,3 +2463,17 @@ cards:
       - "`--compress`(Tree-sitter)로 토큰 절감 / Secretlint로 비밀정보 차단 / .gitignore 존중"
       - "`--remote`로 클론 없이 원격 레포 패킹, 출력 XML·MD·JSON, `--mcp`로 MCP 서버 제공"
     source: "https://github.com/yamadashy/repomix"
+
+  - category: ai
+    title: "Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트"
+    summary: >
+      Seer(옛 Autofix)는 Sentry가 만든 AI 디버깅 에이전트로, 스택트레이스를 챗봇에 붙여넣는 대신
+      Sentry가 이미 수집한 에러·트레이스·로그·커밋 같은 프로덕션 컨텍스트 위에서 직접 추론해 근본원인을 짚는다.
+      2026-01-27 발표로 활동 범위가 프로덕션을 넘어 로컬 개발과 코드리뷰까지 확장됐고, 로컬에서는 Sentry MCP
+      서버를 통해 코딩 에이전트에 붙는다. 핵심은 정적 코드 분석만으로는 안 잡히는 런타임·분산 시스템 버그까지
+      실제 운영 데이터로 좁힌다는 점이다. 요금은 기여자(active contributor) 1명당 월 $40 무제한 정액제다.
+    points:
+      - "스택트레이스 붙여넣기 대신 Sentry의 프로덕션 텔레메트리(에러·트레이스·로그·커밋) 위에서 근본원인 추론"
+      - "근본원인 분석을 Claude·Cursor·GitHub Copilot 에이전트에 넘겨 자동으로 수정·PR 생성(공식 통합)"
+      - "프로덕션·로컬(Sentry MCP)·코드리뷰 3면 커버, 요금은 활동 기여자당 월 $40 무제한 정액"
+    source: "https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent"
