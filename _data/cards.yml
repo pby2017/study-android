@@ -2928,3 +2928,17 @@ cards:
       - "막지는 않음(공식 명시): 어느 단계도 쓰기·커밋을 차단하지 않는다. 발견은 '지시'로 Claude에 전달돼 대화 안에서 고쳐지고, 리뷰 모델은 놓칠 수 있음 → 방어선의 한 겹일 뿐, 완전한 보안책 아님. 한도: 턴당 변경 30파일·연속 3회, 커밋 리뷰 시간당 20회"
       - "본인 셸 커밋은 제외: Bash 도구로 Claude가 한 commit·push만 리뷰됨(`!` 셸 이스케이프·직접 셸 커밋은 안 봄). 전부 훅(SessionStart·UserPromptSubmit·Stop·PostToolUse)으로 구현 — 소스가 '훅에서 별도 모델 호출' 예제. PR엔 Code Review, CI엔 기존 스캐너로 단계 분담"
     source: "https://code.claude.com/docs/en/security-guidance"
+  - category: ai
+    title: "Tabby(TabbyML) — 코드를 남의 클라우드에 안 보내는 self-hosted 코딩 어시스턴트(~33.6k★)"
+    summary: >
+      Tabby는 GitHub Copilot의 오픈소스·자체호스팅 대안을 표방하는 코딩 어시스턴트다.
+      Rust로 짠 단일 바이너리(또는 Docker)로 돌고, 외부 DBMS나 클라우드 서비스 없이
+      내 하드웨어·사내 인프라에서 완결되게 동작하는 게 핵심 — 규제·IP·에어갭 환경에서
+      코드를 외부로 내보내지 않고 인라인 자동완성과 채팅을 쓰려는 5~50인 팀이 주 타깃이다.
+      VS Code·JetBrains·Vim/Neovim·Eclipse 확장을 제공하고, 라이선스는 코어가 Apache-2.0(오픈코어:
+      enterprise용 ee/ 디렉터리는 별도 라이선스)이다. (별 수는 GitHub 기준 대략치)
+    points:
+      - "왜 쓰나: '내 코드를 남의 클라우드에 안 보낸다'가 전부. 단일 바이너리/Docker로 띄우고, 외부 DBMS·클라우드 불필요(공식 README 'no need for external DBMS or cloud services'). NVIDIA(CUDA)·Apple M칩(Metal) 등 컨슈머 GPU로도 구동"
+      - "기능 3종: ① 코드 자동완성(컨텍스트 인지 실시간 제안) ② Answer Engine(IDE 안에서 질문에 답) ③ 인라인 채팅. 빌트인 admin 패널로 사용자·토큰 관리, /admin에서 API 토큰 발급해 확장이 엔드포인트로 인증"
+      - "위치: 셀프호스트 진영의 '턴키 팀 솔루션'으로 분류(vs Continue+Ollama 조립형, Void Editor IDE형). Claude Code 같은 자율 에이전트가 아니라 Copilot류 보조 도구 — '코드 유출 못 하는 환경'에서 에이전트 도구의 빈자리를 메운다"
+    source: "https://github.com/TabbyML/tabby"
