@@ -3472,3 +3472,16 @@ cards:
       - "도구 비종속 — 한 보드에서 Claude Code·Codex·Gemini CLI·GitHub Copilot·Amp·Cursor·OpenCode·Droid·CCR·Qwen Code 등 '10+ 코딩 에이전트'를 섞어 쓴다. Rust(~50%)+TypeScript(~46%)로 작성"
       - "지속성 주의 — README가 'Vibe Kanban is sunsetting'이라 명시하고 외부 PR도 사전 논의 없이는 받지 않는다. 별 수(~27k★)는 시점에 따라 변하는 GitHub 수치이니 '주장'으로 볼 것"
     source: "https://github.com/BloopAI/vibe-kanban"
+  - category: ai
+    title: "Pi(earendil-works) — '서브에이전트·플랜모드·MCP 다 빼버린' 미니멀 터미널 코딩 하네스(MIT·~63k★)"
+    summary: >
+      Pi는 모델에게 read·write·edit·bash 네 가지 도구만 쥐여주는 'minimal terminal coding harness'다.
+      철학이 정반대다 — "Adapt pi to your workflows, not the other way around". 기능을 미리 박아 넣는 대신
+      '공격적으로 확장 가능(aggressively extensible)'하게 만들어 워크플로를 도구가 강요하지 않게 한다.
+      그래서 서브에이전트·플랜모드·MCP·권한 팝업·내장 투두·백그라운드 bash가 기본적으로 '없다'.
+      필요하면 TypeScript 확장·Skills·프롬프트 템플릿·테마로 직접 붙이고, 이를 Pi 패키지로 묶어 npm·git으로 공유한다.
+    points:
+      - "안티-피처가 핵심 — README가 'No sub-agents(필요하면 tmux로 띄워라)', 'No plan mode(계획은 파일에 써라)', 'No MCP', 'No built-in to-dos(They confuse models)', 'No background bash(Use tmux)'를 대놓고 명시. 비대한 하네스의 반대 방향"
+      - "확장 = 패키지 — TypeScript 확장·Skills·프롬프트 템플릿·테마를 'Pi 패키지'로 만들어 npm/git으로 공유. 실행은 interactive·print/JSON·RPC·SDK 네 모드라 헤드리스·앱 임베딩까지 커버"
+      - "공급자 무관 — pi-ai가 Anthropic·OpenAI·Gemini·Bedrock·Mistral·Groq·xAI·OpenRouter·Ollama 등 한 인터페이스로 묶고 구독(Claude Pro/Max·ChatGPT·Copilot)도 지원. 단 '내장 권한 시스템이 없어' 사용자·프로세스 권한 그대로 돈다는 점은 주의. ~63k★는 시점별 GitHub 수치"
+    source: "https://github.com/earendil-works/pi"

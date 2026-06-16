@@ -388,3 +388,5 @@
 - 2026-06-18 14:00 KST | Cursor Bugbot — AI가 짠 코드를 PR 단계에서 잡는 전용 코드리뷰 봇(GitHub·GitLab, .cursor/BUGBOT.md 규칙·bugbot run·머지 전 플래그 70%+ 해결 주장) | https://cursor.com/docs/bugbot- 2026-06-17 14:00 KST | android/skills(Google 공식) — Android 베스트프랙티스를 SKILL.md로 에이전트에 주입하는 공식 스킬 묶음(Apache-2.0·~5.8k★) | https://github.com/android/skills
 
 - 2026-06-17 18:30 KST | Vibe Kanban(BloopAI) — 여러 코딩 에이전트를 칸반 보드로 병렬 실행하는 오케스트레이션 레이어, workspace=브랜치+터미널+dev서버를 git worktree로 격리, 10+ 에이전트 지원, README상 sunsetting(Apache-2.0·~27k★) | https://github.com/BloopAI/vibe-kanban
+
+- 2026-06-17 22:00 KST | Pi(earendil-works) — read·write·edit·bash 4도구만 주는 미니멀 터미널 하네스, No sub-agents/plan mode/MCP/to-dos, TS확장·Skills·패키지로만 확장(MIT·~63k★) | https://github.com/earendil-works/pi
