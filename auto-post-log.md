@@ -372,3 +372,5 @@
 - 2026-06-17 21:00 KST | Cursor 2.0 — git 워크트리로 에이전트 여러 개를 동시에·충돌 없이 돌리고 best-of-N으로 최선 채택, 에이전트 중심 UI+네이티브 브라우저 테스트(2025-10-29) | https://cursor.com/blog/2-0
 
 - 2026-06-17 13:00 KST | Amp(Sourcegraph) — 제약 없는 토큰 사용 철학, 스레드(영속 메모리)·서브에이전트 병렬·Oracle 추론 위임·AGENT.md, amp -x 유료 크레딧 | https://ampcode.com/manual
+
+- 2026-06-18 12:30 KST | opencode(sst→Anomaly) — opencode serve 헤드리스 HTTP 서버로 TUI·데스크톱·IDE가 붙는 클라이언트/서버형 오픈소스 코딩 에이전트(MIT·~175k★) | https://github.com/sst/opencode
