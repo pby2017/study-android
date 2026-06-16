@@ -3735,3 +3735,16 @@ cards:
       - "절약 패턴(문서 권장) — 관련 질문은 한 메시지로 묶고, 프로젝트에 올린 내용은 캐싱돼 재사용 시 한도에 안 잡힌다. 모델·effort를 낮추고 첨부 크기를 줄이는 것도 직접적 효과"
       - "정량 쿼터는 비공개 — Anthropic은 토큰 수가 아니라 배수(Pro 1x / Max 5x / Max 20x)만 발표. '몇 토큰'이 아니라 '내 진행바가 어디까지 찼나'로 관리하는 게 현실적"
     source: "https://support.claude.com/en/articles/9797557-usage-limit-best-practices"
+
+  - category: ai
+    title: "Gemini CLI(google-gemini) — '개인 구글 계정 로그인'만으로 Gemini 2.5 Pro·1M 컨텍스트를 무료로 터미널에 꽂는 오픈소스 에이전트(Apache-2.0·~105k★)"
+    summary: >
+      Gemini CLI는 구글이 2025년 6월 공개한 터미널 네이티브 코딩 에이전트로, GitHub에서 Apache-2.0 라이선스·약 10.5만 스타에 v0.46.0까지 활발히 릴리스되고 있다(주장이 아니라 레포에서 직접 확인되는 사실).
+      가장 실무적인 포인트는 진입 장벽이 거의 없다는 것 — 개인 구글 계정으로 로그인하면 Gemini Code Assist 무료 라이선스가 딸려와 분당 60요청·하루 1,000요청까지 비용 없이 쓸 수 있다고 구글 공식 블로그가 명시한다.
+      모델은 100만 토큰 컨텍스트의 Gemini 2.5 Pro에 무료로 접근하며, MCP(Model Context Protocol)를 기본 지원해 Claude Code·Codex와 같은 도구·서버 생태계를 그대로 붙일 수 있다.
+      더 많은 한도가 필요하면 Google AI Studio/Vertex AI 키로 사용량 과금 모드로 전환한다. Claude Code의 무료 대안이나 멀티 에이전트 스택의 한 축으로 평가해 볼 만하다.
+    points:
+      - "무료 진입 — 개인 구글 계정 로그인만으로 분당 60·하루 1,000 요청을 무과금 사용(공식 블로그 수치). API 키나 결제 등록 없이 바로 시작"
+      - "스펙 — Gemini 2.5 Pro + 1M 토큰 컨텍스트, MCP 기본 지원으로 기존 MCP 서버/도구를 그대로 연결. VS Code(Gemini Code Assist)와 기술 공유"
+      - "오픈소스 사실 — Apache-2.0, github.com/google-gemini/gemini-cli에서 ~105k★·523개 릴리스(v0.46.0, 2026-06). 일부 블로그의 '서비스 종료설'은 레포에 deprecation 표기가 없어 1차 출처로는 미확인 — 카드에서 제외"
+    source: "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-cli-open-source-ai-agent/"
