@@ -3684,3 +3684,16 @@ cards:
       - "모델 비종속 BYOK — Anthropic·OpenAI·Google Gemini·OpenRouter(200+ 모델)·Bedrock·Azure/Vertex·Groq·Cerebras, 그리고 Ollama/LM Studio로 완전 로컬까지. 'AI 프로바이더 하나에 잠기지 않는다'를 명시"
       - "도구 — 터미널 명령을 돌리고 출력을 실시간 관찰(설치·테스트·배포), 웹 브라우징, MCP 서버 연결(DB·API·클라우드, CLI에선 cline mcp로 관리). SDK·CLI·Kanban·VS Code·JetBrains 등 형태로 제공"
     source: "https://github.com/cline/cline"
+  - category: ai
+    title: "Claude Squad — tmux+git worktree로 여러 코딩 에이전트를 한 터미널에서 병렬로 돌리는 TUI(AGPL·~7.8k★)"
+    summary: >
+      Claude Squad는 Claude Code·Codex·Gemini·OpenCode/Amp·Aider 같은 여러 AI 코딩 에이전트를
+      각자 격리된 작업공간에서 동시에 띄워 한 TUI로 관리하는 터미널 앱이다. 내부적으로 tmux로 각 에이전트
+      세션을 분리하고 git worktree로 작업물을 격리해, 한 레포 안에서 여러 태스크를 충돌 없이 병렬 진행한다.
+      Conductor·Vibe Kanban 같은 GUI 오케스트레이터와 달리 터미널만으로 돌아가는 게 특징이며, 실행에는
+      tmux와 gh(GitHub CLI)가 필요하다.
+    points:
+      - "여러 에이전트를 한 화면에서 — Claude Code 한 칸, Codex 한 칸, OpenCode 한 칸 식으로 각 태스크를 독립 세션으로 띄워 동시에 돌리고 TUI에서 전환"
+      - "tmux + git worktree 격리 — 세션 분리는 tmux가, 작업물 충돌 방지는 worktree가 담당. -p(profile) 플래그로 에이전트별 설정 지정"
+      - "주의점 — tmux 의존이라 네이티브 Windows 미지원, 프롬프트 자동수락(--autoyes)은 실험적, 라이선스가 AGPL이라 이를 네트워크 서비스로 확장할 땐 검토 필요"
+    source: "https://github.com/smtg-ai/claude-squad"
