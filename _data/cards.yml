@@ -2649,3 +2649,16 @@ cards:
       - "12+ 역할 에이전트(PM·Architect·Developer·UX·QA…)와 여러 페르소나를 한 세션에 모으는 'Party Mode' 제공"
       - "IDE 비종속(Claude Code·Cursor·Cline·Roo·Aider 등) — `npx bmad-method install`로 설치, 라이선스 MIT(공식 레포 bmad-code-org, 약 49.2k★)"
     source: "https://github.com/bmad-code-org/BMAD-METHOD"
+  - category: ai
+    title: "OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(55k★)"
+    summary: >
+      OpenSpec은 AI 코딩 에이전트용 명세 주도 개발(SDD) 프레임워크다(MIT, 약 55k★). 이미 다룬 GitHub Spec Kit이
+      파이썬 설치·엄격한 단계 게이트의 '무거운' 쪽이라면, OpenSpec은 'fluid not rigid, brownfield not just greenfield'를
+      내세워 더 가볍게 자유롭게 반복하도록 설계됐다. 핵심은 변경(change) 단위 워크플로: `/opsx:propose`로 제안·스펙·설계·태스크가
+      담긴 변경 폴더를 만들고, `/opsx:apply`로 태스크를 구현하고, `/opsx:archive`로 완료된 변경을 정리하면서 진짜 스펙을 갱신한다.
+      Claude Code·Cursor 등 25개 이상 도구와 npm/pnpm/bun/nix로 붙는다(Node 20.19+).
+    points:
+      - "변경 단위 워크플로 3종: /opsx:propose(제안·스펙·설계·태스크 생성) → /opsx:apply(구현) → /opsx:archive(완료분 정리·스펙 갱신)"
+      - "Spec Kit과의 차이: Spec Kit은 파이썬·엄격한 단계 게이트의 '무거운' SDD, OpenSpec은 단계 게이트 없이 산출물을 자유롭게 수정하는 '가벼운' SDD"
+      - "25+ 도구 지원(Claude Code·Cursor 등), MIT 라이선스, Node 20.19+ 필요(공식 레포 Fission-AI/OpenSpec, 약 55k★)"
+    source: "https://github.com/Fission-AI/OpenSpec"
