@@ -3153,3 +3153,14 @@ cards:
       - "주도: Zed가 설계, JetBrains와 협업으로 확장 중. Zed의 Agent Panel이 ACP로 외부 에이전트(예: Claude Code·Gemini CLI 등)를 네이티브로 띄움"
       - "실무 효과: 작업별로 최적 에이전트를 갈아끼우는 '중립 호스트' 전략 — VS Code 포크+단일 모델 결합형 락인의 반대 방향"
     source: "https://zed.dev/acp"
+  - category: ai
+    title: "Roo Code 종료 → Zoo Code로 부활 — '오픈소스 코딩 에이전트는 누가 망하면 어떻게 되나'의 실제 사례"
+    summary: >
+      Cline에서 갈라져 나온 VS Code 코딩 에이전트 Roo Code(24.2k★, Apache-2.0)가 2026-05-15 마지막 릴리스 v3.54.0을 끝으로 저장소를 읽기 전용으로 보관(archive)했다. 메인테이너들은 다른 프로젝트(Roomote)에 집중하려 개발을 접었고, 공식 README는 이제 사용자를 두 대안으로 안내한다 — 커뮤니티가 띄운 포크 Zoo Code, 그리고 Roo Code의 출발점이었던 Cline.
+      Zoo Code는 기존 Roo 기여자들이 2026-04-23 새 저장소를 만들어 공식 인계받은 포크로, 같은 기능·같은 설정 구조·같은 Apache-2.0 라이선스를 유지한다. 버전 번호도 Roo Code 3.53.0에서 이어받아(첫 마켓플레이스 배포 v3.54.0, 2026-05-16) 사용자가 단절감 없이 넘어가게 했다.
+      실무 교훈은 '도구 이름'이 아니라 '거버넌스'를 보라는 것 — BYOK·오픈 라이선스·설정 이식성이 있으면 메인테이너가 손을 떼도 커뮤니티 포크로 갈아탈 길이 남는다.
+    points:
+      - "타임라인(1차 출처 확인): Roo Code 저장소는 2026-05-15 v3.54.0을 마지막으로 archive(read-only)됨. 공식 README가 후속으로 Zoo Code·Cline을 명시"
+      - "Zoo Code = 기존 Roo 기여자들의 공식 인계 포크(2026-04-23 개설). 같은 기능·설정·Apache-2.0, Roo의 5개 모드(Code/Architect/Ask/Debug/Custom) 그대로. 설정 export→import로 이주"
+      - "교훈: 단일 모델·단일 벤더 락인을 피하려면 BYOK+오픈 라이선스+설정 이식성을 확인하라 — Roo의 계보(Cline→Roo→Zoo) 자체가 포크로 살아남는 길을 보여준다"
+    source: "https://github.com/RooCodeInc/Roo-Code"

@@ -343,3 +343,5 @@
 - 2026-06-16 22:30 KST | claude-code-templates(aitmpl) — 에이전트·커맨드·MCP를 골라 깔고 사용량 대시보드까지 보는 CLI(~28k★) | https://github.com/davila7/claude-code-templates
 
 - 2026-06-16 21:37 KST | Agent Client Protocol(ACP) — 에디터와 코딩 에이전트를 분리하는 개방형 표준(Zed·JetBrains) | https://zed.dev/acp
+
+- 2026-06-16 12:00 KST | Roo Code 종료 → Zoo Code로 부활 — 오픈소스 코딩 에이전트의 메인테이너 이탈·커뮤니티 포크 인계 사례(24.2k★) | https://github.com/RooCodeInc/Roo-Code
