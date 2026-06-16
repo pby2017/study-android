@@ -320,3 +320,5 @@
 - 2026-06-17 16:30 KST | AGENTS.md 실전 — README for agents를 모노레포에 어떻게 까는가(중첩·우선순위 규칙) | https://agents.md
 
 - 2026-06-17 17:00 KST | SWE-bench Multimodal — 스크린샷 보고 JS UI 버그를 고치는 능력을 따로 재는 벤치마크(617과제·17 JS라이브러리) | https://arxiv.org/abs/2410.03859
+
+- 2026-06-17 17:30 KST | 컨텍스트 엔지니어링(Anthropic) — 프롬프트가 아니라 에이전트가 보는 토큰 전체를 설계하기(JIT 로딩·compaction·서브에이전트) | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
