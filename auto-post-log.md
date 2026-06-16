@@ -374,3 +374,5 @@
 - 2026-06-17 13:00 KST | Amp(Sourcegraph) — 제약 없는 토큰 사용 철학, 스레드(영속 메모리)·서브에이전트 병렬·Oracle 추론 위임·AGENT.md, amp -x 유료 크레딧 | https://ampcode.com/manual
 
 - 2026-06-18 12:30 KST | opencode(sst→Anomaly) — opencode serve 헤드리스 HTTP 서버로 TUI·데스크톱·IDE가 붙는 클라이언트/서버형 오픈소스 코딩 에이전트(MIT·~175k★) | https://github.com/sst/opencode
+
+- 2026-06-17 13:30 KST | Repomix — 레포 전체를 AI 친화 단일 파일로 패킹해 LLM에 통째로 먹이는 패커(MIT·~26.3k★, npx repomix·토큰카운팅·시크릿탐지·원격레포) | https://github.com/yamadashy/repomix
