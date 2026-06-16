@@ -354,3 +354,4 @@
 - 2026-06-16 22:50 KST | DeepSWE(Datacurve) — 채점기 오류 줄인 장기 코딩 에이전트 벤치마크 | https://deepswe.datacurve.ai/blog
 
 - 2026-06-18 09:30 KST | Dynamic Workflows + ultracode — Bun Zig→Rust 75만 줄을 Claude 에이전트 수백 개로 옮긴 실제 사례(테스트 99.8%·11일) | https://claude.com/blog/introducing-dynamic-workflows-in-claude-code
+- 2026-06-18 10:00 KST | Aider repo map — tree-sitter로 레포 전체를 토큰 1k 지도로 압축해 LLM에 매번 먹이기(Apache-2.0·46.3k★) | https://aider.chat/docs/repomap.html
