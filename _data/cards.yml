@@ -3597,3 +3597,18 @@ cards:
       - "서브에이전트 주도 개발 — 작업마다 '새 서브에이전트'를 띄워 '스펙 준수 검토 → 코드 품질 검토' 2단계로 리뷰. 작성 패스와 리뷰 패스를 같은 컨텍스트에서 섞지 않는 게 설계 핵심"
       - "도구 비종속 — Claude Code(/plugin install superpowers@claude-plugins-official)·Codex·Gemini(gemini extensions install)·Antigravity·Factory Droid·OpenCode·Pi 등 하네스별로 따로 설치. 사용자 지시가 항상 스킬보다 우선(CLAUDE.md가 'TDD 쓰지마'면 그게 이긴다)"
     source: "https://github.com/obra/superpowers"
+  - category: ai
+    title: "claude-code-router(musistudio) — Claude Code 요청을 가로채 '작업 종류별로' 다른·싼 모델로 흘려보내는 라우팅 프록시(MIT)"
+    summary: >
+      Claude Code를 Anthropic 모델에만 묶지 않고, 로컬 프록시를 끼워 요청을 다른 공급자/모델로
+      라우팅하는 오픈소스 도구다. Anthropic ↔ OpenAI 포맷을 변환해주기 때문에 OpenRouter·DeepSeek·
+      Ollama·Gemini 등 OpenAI 호환 API면 Claude Code 인터페이스 그대로 붙는다. 핵심은 '한 모델로 다 처리'가
+      아니라 작업 성격에 따라 모델을 갈아끼우는 라우팅 규칙이다 — 기본 모델 외에 background(가벼운 백그라운드 작업),
+      think(추론), longContext(긴 컨텍스트)처럼 라우터를 나눠, 백그라운드성 작업은 더 싸거나 로컬인 모델로
+      흘려보내 비용 천장을 거는 식이다. 세션 중 /model로 즉시 전환할 수도 있다. MIT 라이선스이며 Anthropic
+      공식 도구가 아닌 서드파티 프록시다.
+    points:
+      - "동작 방식 — Claude Code와 모델 사이에 로컬 프록시를 두고 Anthropic↔OpenAI 포맷을 번역. OpenRouter·DeepSeek·Ollama·Gemini 등 OpenAI 호환 API면 무엇이든 백엔드로 붙는다"
+      - "작업별 라우팅(비용 최적화 핵심) — default 외에 background·think·longContext 등 라우터를 나눠, 가벼운 백그라운드 작업은 싸거나 로컬인 모델로 보내고 무거운 추론만 비싼 모델에 맡기는 식으로 천장을 건다. /model로 세션 중 즉시 전환도 가능"
+      - "주의 — 비공식 서드파티 프록시(MIT). 라우팅 대상에 비(非)Anthropic·로컬 모델을 섞을 수 있다는 게 장점이자, 모델별 출력 품질·포맷 호환은 사용자가 검증해야 한다는 뜻"
+    source: "https://github.com/musistudio/claude-code-router"

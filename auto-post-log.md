@@ -406,3 +406,4 @@
 - 2026-06-17 15:30 KST | 'Coding Beyond Your Training'(arXiv 2026·Alexander Quispe) — Claude Code staggered rollout으로 개발자 5,838명·28개월 패널, 도입 후 월 커밋 +41·레포 +1.5·언어 +0.83·신규언어 +0.31, 단독 워킹페이퍼·관측 인과추정 한계 | https://arxiv.org/abs/2605.25438
 
 - 2026-06-17 16:30 KST | superpowers(obra) — TDD·브레인스토밍·서브에이전트 2단계 리뷰를 스킬로 강제하는 에이전트 방법론 프레임워크, 도구 비종속(Claude Code/Codex/Gemini/Factory/OpenCode/Pi), GitHub API ~229.8k★·MIT·v6.0.0(2026-06-16) | https://github.com/obra/superpowers
+- 2026-06-18 21:00 KST | claude-code-router(musistudio) — Claude Code 요청을 작업 종류별로 다른·싼 모델로 라우팅하는 프록시, Anthropic↔OpenAI 포맷 변환·OpenRouter/DeepSeek/Ollama/Gemini 백엔드·background/think/longContext 라우터·/model 즉시 전환(MIT·비공식) | https://github.com/musistudio/claude-code-router
