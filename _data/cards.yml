@@ -3626,3 +3626,17 @@ cards:
       - "왜 나누나 — Aider는 'LLM이 제안과 정밀 편집을 동시에 잘 못한다'는 관찰을 근거로, 역할 분리가 단일 code 모드보다 나을 수 있다고 본다. 추론은 비싼 모델, 받아쓰기는 싼·빠른 모델로 돌려 비용 천장을 거는 데도 쓰인다"
       - "주장(검증된 수치, 단 구버전) — Aider 자체 code editing 벤치마크에서 o1-preview(architect)+o1-mini/deepseek(editor)가 85.0%로 당시 SOTA, o1-preview 단독(79.7%)보다 높았다. 다만 2024년·구모델 기준이고 그 SOTA 조합은 'whole' 포맷이라 느려 인터랙티브엔 비실용적이라고 Aider가 직접 단서를 단다"
     source: "https://aider.chat/docs/usage/modes.html"
+  - category: ai
+    title: "ast-grep — 에이전트의 '찾아 바꾸기'를 텍스트가 아니라 '문법 트리(AST)'로 시키는 구조적 검색·치환 도구(Rust·MIT·~14.5k★)"
+    summary: >
+      ast-grep(명령어 sg)는 코드를 문자열이 아니라 tree-sitter로 파싱한 AST로 보고, '패턴 매칭'으로
+      검색·린트·치환을 하는 Rust CLI다. 패턴은 평범한 코드처럼 쓰되 $MATCH 같은 '$+대문자' 와일드카드로
+      임의의 AST 노드 하나를 잡는다. 텍스트 정규식과 달리 언어 문법을 알기 때문에, 함수 호출·인자 구조 같은
+      '의미 단위'를 정확히 잡아 대규모로 바꿀 수 있다. 그래서 LLM 에이전트가 'sed로 막 치환하다 줄 어긋나는'
+      실수 없이 코드를 안전하게 일괄 수정하게 하는 도구로 쓰인다(공식 agent-skill 저장소도 운영). 멀티코어를
+      쓰고 CLI로도 라이브러리로도 동작한다. (MIT, GitHub 기준)
+    points:
+      - "무엇 — tree-sitter 기반 AST 패턴 매칭 CLI. 패턴을 코드처럼 쓰고 $MATCH/$$$ 같은 와일드카드로 노드를 잡아 search·lint·rewrite. YAML로 린트 규칙도 정의. 멀티코어 활용·jQuery식 AST 순회 API 제공"
+      - "왜 에이전트에 좋나 — 정규식/sed는 '텍스트'만 보니 들여쓰기·괄호·동일 이름 변수에서 오작동하기 쉽지만, ast-grep은 언어 문법을 알아 '구조 단위'로 정확히 치환한다. LLM이 대규모 리팩터를 줄 어긋남 없이 시키는 데 적합(ast-grep 공식 agent-skill 저장소 존재)"
+      - "한계(공식 명시) — 타입·제어흐름·데이터흐름·테인트 분석 같은 깊은 의미 정보는 없다(그쪽은 Semgrep 영역). 즉 '구문은 정확하지만 의미 추론은 못 한다'. 보안 룰셋이 필요하면 ast-grep만으론 부족"
+    source: "https://github.com/ast-grep/ast-grep"

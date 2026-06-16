@@ -409,3 +409,5 @@
 - 2026-06-18 21:00 KST | claude-code-router(musistudio) — Claude Code 요청을 작업 종류별로 다른·싼 모델로 라우팅하는 프록시, Anthropic↔OpenAI 포맷 변환·OpenRouter/DeepSeek/Ollama/Gemini 백엔드·background/think/longContext 라우터·/model 즉시 전환(MIT·비공식) | https://github.com/musistudio/claude-code-router
 
 - 2026-06-17 22:30 KST | Aider architect/editor 모드 — 추론 모델(architect)이 해결책 제안→편집 모델(editor)이 파일 편집 지시로 변환, /architect로 켬, 비싼 추론+싼 편집 분리로 비용 최적화, 구버전 벤치 o1-preview+o1-mini/deepseek 85.0%(단독 79.7%)·whole포맷이라 느림 단서 | https://aider.chat/docs/usage/modes.html
+
+- 2026-06-18 21:30 KST | ast-grep — 에이전트의 찾아바꾸기를 텍스트가 아니라 문법트리(AST)로 시키는 구조적 검색·치환 도구(Rust·MIT·~14.5k★), tree-sitter 패턴매칭·$MATCH 와일드카드·search/lint/rewrite·멀티코어, 공식 agent-skill 저장소, 타입·데이터흐름 분석은 없음(그쪽은 Semgrep) | https://github.com/ast-grep/ast-grep
