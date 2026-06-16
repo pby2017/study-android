@@ -364,3 +364,5 @@
 
 - 2026-06-17 22:00 KST | Spotify Honk — Claude Code 기반 백그라운드 코딩 에이전트로 PR 1,500+개 자동 머지(Fleet Management 토대·마이그레이션 60~90% 절감) | https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1
 - 2026-06-17 12:00 KST | mini-SWE-agent — 100줄 bash-only로 SWE-bench 74%+, SWE-agent 후속(MIT·~5.2k★) | https://github.com/SWE-agent/mini-swe-agent- 2026-06-17 12:30 KST | Agent Teams(Claude Code 공식·실험) — 동료끼리 직접 메시징+공유 태스크 리스트로 self-coordination, 서브에이전트와 대비, CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 | https://code.claude.com/docs/en/agent-teams
+
+- 2026-06-17 22:30 KST | Kiro(AWS) — 코드가 아니라 스펙이 산출물, 요구사항→설계→태스크 세 파일로 강제하는 스펙 주도 에이전트 | https://kiro.dev/docs/specs/
