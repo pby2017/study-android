@@ -2572,3 +2572,18 @@ cards:
       - "MCP 서버 마켓플레이스로 에이전트 도구를 끼워 확장 — VS Code·JetBrains 지원"
       - "라이선스 MIT, 레포 표기 약 20k★, '프로바이더 요금 그대로' 투명 과금 표방"
     source: "https://github.com/Kilo-Org/kilocode"
+  - category: ai
+    title: "Zed — Atom·Tree-sitter 제작진의 에디터, Claude Code·Codex·Gemini를 '패널'에 품다(GPL-3.0·85k★)"
+    summary: >
+      Zed(zed-industries/zed)는 Atom·Tree-sitter를 만든 팀의 고성능 오픈소스 코드
+      에디터(GPL-3.0, 레포 표기 약 85k★)다. 핵심은 자체 AI만 미는 게 아니라
+      Agent Client Protocol(ACP)로 외부 코딩 에이전트를 에디터 안 Agent Panel에
+      그대로 띄운다는 점 — Claude Code·Codex·OpenCode·Copilot·Cursor·Gemini CLI를
+      ACP Registry에서 설치해 쓴다. 외부 에이전트는 별도 프로세스로 돌고
+      인증·과금·모델선택·도구를 각자 소유하며, Zed는 스레드만 호스팅한다.
+      Zed는 외부 에이전트 사용에 과금하지 않는다고 문서가 명시한다(과금은 에이전트 제공자와 사용자 사이).
+    points:
+      - "ACP로 Claude Code·Codex·Gemini CLI·Cursor·OpenCode를 에디터 Agent Panel에 통합"
+      - "외부 에이전트는 별도 프로세스 — 인증(예: Claude는 /login)·과금·모델을 에이전트가 직접 소유"
+      - "Zed가 설정한 MCP 서버를 ACP로 외부 에이전트에 전달 가능, dev: open acp logs로 통신 디버깅"
+    source: "https://zed.dev/docs/ai/external-agents"

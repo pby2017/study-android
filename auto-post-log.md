@@ -273,3 +273,5 @@
 - 2026-06-17 02:30 KST | Task Master — PRD를 의존성 달린 태스크 목록으로 쪼개주는 에이전트(MIT+CC) | https://github.com/eyaltoledano/claude-task-master
 
 - 2026-06-17 03:00 KST | Kilo Code — Cline·Roo Code 계보의 오픈소스 VS Code 코딩 에이전트(MIT·20k★) | https://github.com/Kilo-Org/kilocode
+
+- 2026-06-17 03:30 KST | Zed — Atom·Tree-sitter 제작진의 에디터, Claude Code·Codex·Gemini를 패널에 품다(GPL-3.0·85k★) | https://zed.dev/docs/ai/external-agents
