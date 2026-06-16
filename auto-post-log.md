@@ -248,3 +248,4 @@
 - 2026-06-16 14:35 KST | Conductor — 한 Mac에서 Claude Code·Codex·Cursor를 여러 워크스페이스로 동시에 돌리는 앱 | https://www.conductor.build/docs/core/parallel-agents
 
 - 2026-06-16 15:00 KST | 컨텍스트 엔지니어링 — 프롬프트가 아니라 추론 내내 보이는 토큰 전체를 큐레이팅하기 | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+- 2026-06-16 16:00 KST | 서브레시피 파이프라인 — 복잡한 작업을 YAML 레시피로 쪼개 단계·병렬로 돌리기 | https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/recipes/subrecipes.md

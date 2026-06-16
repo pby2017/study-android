@@ -2341,3 +2341,19 @@ cards:
       - "context rot: 윈도가 찰수록 성능 저하 → 절대 토큰 수가 아니라 '채움 비율'을 예산으로 관리"
       - "수단: just-in-time 검색 / compaction / 서브에이전트 격리 / 윈도 밖 노트 적기"
     source: "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+
+  - category: ai
+    title: "서브레시피 파이프라인 — 복잡한 작업을 'YAML 레시피'로 쪼개 단계·병렬로 돌리기"
+    summary: >
+      코딩 에이전트 워크플로를 한 프롬프트에 욱여넣는 대신, 단계를 파일로 굳혀 조립하는 패턴이다.
+      Goose(현 Linux Foundation AAIF) 레시피가 대표 구현으로, 메인 레시피의 `sub_recipes` 필드에
+      `name`/`path`/`values`를 적으면 각 서브레시피가 '도구'로 등록된다. 호출되면 서브레시피는 메인과
+      대화 이력·메모리·상태를 공유하지 않는 '별도 세션'에서 격리 실행되고 결과만 메인으로 돌려준다 —
+      즉 컨텍스트 오염 없이 "보안 스캔 → 품질 검사" 같은 전문 단계를 파이프라인으로 엮을 수 있다.
+      서로 다른 서브레시피는 기본적으로 순차 실행이고, 같은 서브레시피를 여러 입력으로 돌리면 최대 10개
+      워커로 자동 병렬화된다(공식 문서: 실험적 기능, 동작이 바뀔 수 있음).
+    points:
+      - "메인 레시피의 sub_recipes: {name, path, values}로 등록 → 각 서브레시피가 도구로 노출됨"
+      - "서브레시피는 별도 세션에서 격리 실행(이력·메모리 비공유), 결과만 반환 / 중첩(서브의 서브) 금지"
+      - "서로 다른 레시피=기본 순차, 같은 레시피 반복=기본 병렬(최대 10워커) — 모두 실험적 기능(공식 문서)"
+    source: "https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/recipes/subrecipes.md"
