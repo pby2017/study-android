@@ -3071,3 +3071,16 @@ cards:
       - "남는 경로: 조직이 Gemini Code Assist Standard/Enterprise 라이선스나 Google Cloud, 또는 유료 Gemini/Enterprise API 키로 쓰던 접근은 그대로 유지된다고 공식 명시"
       - "실무 함의: 무료 경로에 의존하던 팀은 마이그레이션이 필요. 오픈소스 경험을 잇는 포크로는 Qwen Code(Gemini-CLI 계보)가 거론된다. 별 수 '약 10만'은 레포 표기·보도 기준 주장으로 시점에 따라 변동"
     source: "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
+  - category: ai
+    title: "서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법"
+    summary: >
+      Claude Code 서브에이전트는 정의 파일 프런트매터의 model 필드로 각자 다른 모델을 쓸 수 있고,
+      값은 sonnet·opus·haiku·fable·전체 모델 ID(예: claude-opus-4-8)·inherit이며 생략 시 기본은 inherit(메인 대화와 동일 모델)이다.
+      공식 문서는 서브에이전트의 핵심 이점 중 하나로 "Haiku 같은 더 빠르고 저렴한 모델로 작업을 라우팅해 비용을 통제"하는 것을 명시한다.
+      즉 매번 같은 종류의 일(탐색·린트·요약)은 값싼 모델 서브에이전트에 정의 파일로 박아두면, 개발자가 일일이 모델을 고르지 않아도 설정만으로 비용 천장이 걸린다.
+      서브에이전트가 자체 격리 컨텍스트 창에서 돌아 메인 대화 히스토리를 안 보는 구조라 탐색 같은 토큰 폭증 작업을 메인에서 떼어내는 효과까지 겹친다.
+    points:
+      - "모델 결정 우선순위(공식 문서): 1) CLAUDE_CODE_SUBAGENT_MODEL 환경변수 → 2) 호출 시 per-invocation model 파라미터 → 3) 서브에이전트 정의의 model 프런트매터 순. 환경변수로 세션 전체 모델을 한 값으로 강제해 조직 비용 천장·컴플라이언스에 쓸 수 있다"
+      - "정의 파일에 model을 커밋해 두면 '모두가 제일 비싼 모델로 기본 세팅하는' 사고를 의지가 아니라 설정으로 막는다 — 코드리뷰는 Sonnet, 빠른 작업은 Haiku 식으로 역할별 분리"
+      - "컨텍스트 격리: 서브에이전트는 fresh·isolated 컨텍스트 창에서 시작해 부모 대화·이미 읽은 파일을 보지 않고 요약 결과만 돌려준다(예외: fork는 전체 대화를 상속). 탐색 같은 대량 토큰 작업을 메인 창 밖으로 빼는 게 비용 절감의 본질"
+    source: "https://code.claude.com/docs/en/sub-agents"

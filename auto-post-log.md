@@ -333,3 +333,4 @@
 - 2026-06-17 19:30 KST | Pi(Mario Zechner) — 도구 4개·역대 최단 시스템 프롬프트로 미는 미니멀 코딩 에이전트(self-extending, MCP 미지원) | https://github.com/badlogic/pi-mono
 
 - 2026-06-16 20:00 KST | Gemini CLI 은퇴 — 10만★ 오픈소스 터미널 에이전트, 2026-06-18부터 무료·Pro·Ultra 차단 | https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/
+- 2026-06-16 20:20 KST | 서브에이전트 모델 라우팅 — 탐색 Haiku·리뷰 Sonnet 비용 천장 | https://code.claude.com/docs/en/sub-agents
