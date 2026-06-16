@@ -3196,3 +3196,14 @@ cards:
       - "ENABLE_TOOL_SEARCH로 조절: unset/true=전부 지연, auto=정의가 컨텍스트 10% 안에 들면 미리 로드(auto:N으로 % 지정), false=전부 미리 로드. Vertex AI·비1차 ANTHROPIC_BASE_URL 프록시에선 기본 비활성"
       - "제약(공식): tool_reference 블록을 지원하는 모델만 가능 — Haiku는 미지원, Vertex는 Sonnet 4.5·Opus 4.5 이상. 서버 작성자는 instructions를 스킬처럼 '언제 이 도구를 찾아야 하는지' 설명하게 쓰는 게 핵심"
     source: "https://code.claude.com/docs/en/mcp"
+  - category: ai
+    title: "DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크"
+    summary: >
+      포화된 SWE-bench류 리더보드는 프런티어 모델들이 좁은 구간에 몰려 '어느 에이전트가 우리 코드베이스에서 더 나은지'를 가리기 어렵다는 비판을 받아 왔다. 스타트업 Datacurve가 공개한 DeepSWE는 이를 두 축으로 다시 짠다 — ① 과제를 과거 이슈·PR에서 캐오지 않고 새로 작성해 학습데이터 오염을 줄이고, ② 채점기(verifier) 정확도를 올렸다.
+      Datacurve의 자체 감사에 따르면 SWE-Bench Pro의 자동 채점기는 정답을 24% 오탈락(false negative), 오답을 8.5% 오인정(false positive)했는데 DeepSWE는 둘 다 0에 가깝게 낮췄다고 주장한다. 대표 사례로, 정답 PR이 비공개 헬퍼를 리팩터한 과제에서, 같은 로직을 인라인해 '유효하게' 푼 에이전트가 원저자 구현에만 있던 심볼 import에 막혀 오탈락한 경우를 든다.
+      리더보드(공개 기준)에서는 GPT-5.5가 70%±4%로 선두, GPT-5.4 56%±5%, Claude Opus 4.7 54%±5%로 뒤를 잇는다. 단, 이는 Datacurve의 '주장'이며 독립 재현 전이고, 모든 모델을 단일 하네스(bash 편집)로 묶어 모델별 네이티브 도구(Codex CLI·Claude Code 등) 성능을 반영하지 못한다는 한계가 있다.
+    points:
+      - "구성(공식): 113개 과제·91개 저장소, TypeScript/Go/Python/JavaScript/Rust 5개 언어. 별 500개 이상 활동 저장소에서만 추림(C++·Java 미포함)"
+      - "핵심 주장: SWE-Bench Pro 채점기는 정답 24% 오탈락·오답 8.5% 오인정 → DeepSWE는 둘 다 ≈0. '비공개 헬퍼 인라인' 같은 유효한 해법이 import 심볼 불일치로 떨어지던 문제를 노린다"
+      - "리더보드(주장·미재현): GPT-5.5 70%±4%(중앙값 47k 출력토큰으로 가장 토큰효율적) > GPT-5.4 56% > Claude Opus 4.7 54%. 단일 bash 하네스라 네이티브 도구 성능은 반영 안 됨 — 사설 eval·사람 리뷰와 병행이 권장"
+    source: "https://deepswe.datacurve.ai/blog"
