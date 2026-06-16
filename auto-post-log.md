@@ -252,3 +252,5 @@
 
 - 2026-06-16 17:30 KST | Ralph 기법 — 멍청하지만 절대 안 멈추는 에이전트 bash 루프 | https://ghuntley.com/ralph/
 - 2026-06-16 18:00 KST | GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜 | https://github.com/farol-team/gnap
+
+- 2026-06-16 14:35 KST | Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트 | https://www.langchain.com/blog/introducing-open-swe-an-open-source-asynchronous-coding-agent
