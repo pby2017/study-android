@@ -3262,3 +3262,14 @@ cards:
       - "오염 차단: 공개분은 GPL 카피레프트 레포, 비공개분은 18개 스타트업 사유 코드(학습 데이터로 못 씀) — Verified의 '정답 암기' 의심을 구조로 제거"
       - "표준 스캐폴드(SWE-Agent 동일 적용)라 점수가 낮게 나온다. 같은 모델이 벤더 튜닝 하네스에선 +10~30점 — 그 차이는 능력이 아니라 컨텍스트 검색·도구 사용 품질"
     source: "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+  - category: ai
+    title: "Spotify 'Honk' — Claude Code를 샌드박스에 넣고 PR 1,500+개를 자동 머지한 백그라운드 코딩 에이전트"
+    summary: >
+      Spotify가 사내 '백그라운드 코딩 에이전트'(코드네임 Honk)를 공개했다(엔지니어링 블로그 2025-11-06). 사람이 IDE에서 직접 짜는 게 아니라, 엔지니어가 Slack 메시지나 Git에 커밋한 프롬프트 파일로 작업을 던지면 에이전트가 알아서 돌고 결과를 PR로 올리는 구조다. 공개 시점까지 1,500개 이상의 에이전트 생성 PR이 머지됐다.
+      핵심은 'AI가 잘나서'가 아니라 '받칠 인프라가 있어서'다 — Honk는 2022년부터 운영한 Fleet Management(대규모 자동 코드 변환) 위에 얹혀 있고, 그 전엔 AST 조작·정규식으로 변환을 정의했지만 복잡한 다단계 수정에선 한계가 있었다. 그래서 '지나치게 경직된 지시가 필요하고 멀티스텝 편집에 약했던' 자체 방식을 버리고 Claude Code 기반으로 갈아탔다고 밝혔다.
+      효과는 마이그레이션 같은 반복 변환에서 손코딩 대비 60~90% 시간 절감이라고 보고했다. 별도로 Anthropic 고객 사례 페이지는 이 시스템이 'Claude Agent SDK로 매달 650개 이상의 PR을 머지한다'고 적었다(이 월 650건·SDK 수치는 Spotify 블로그가 아니라 Anthropic 측 출처다). 교훈: 에이전트 자동화는 표준 빌드·탄탄한 테스트·플릿 관리 같은 토대가 먼저 깔려야 굴러간다.
+    points:
+      - "트리거→실행→PR: Slack/Git 프롬프트로 작업 투입 → 샌드박스에서 에이전트 자율 실행 → PR 생성. 공개 시점 누적 1,500+ PR 머지"
+      - "토대가 먼저: 2022년부터의 Fleet Management 위에 얹음. AST·정규식 기반 자체 변환의 한계(복잡한 다단계 편집)를 Claude Code 기반으로 대체"
+      - "효과·주의: 마이그레이션류에서 60~90% 시간 절감(Spotify 블로그). '월 650 PR·Claude Agent SDK'는 Anthropic 고객 사례 출처 — 구분해서 인용"
+    source: "https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1"

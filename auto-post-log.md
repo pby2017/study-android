@@ -361,3 +361,5 @@
 - 2026-06-18 11:00 KST | 공식 /code-review 플러그인 — 리뷰 4개 병렬(룰 sonnet 2·버그 Opus 2)→이슈별 재검증으로 오탐 폐기, --comment시 인라인 코멘트 | https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md
 
 - 2026-06-18 11:30 KST | SWE-bench Pro(Scale) — 비공개·카피레프트 레포로 오염 차단한 차세대 코딩 벤치마크(1,865태스크·41레포·표준 스캐폴드, 벤더 하네스와 10~30점 격차) | https://labs.scale.com/leaderboard/swe_bench_pro_public
+
+- 2026-06-17 22:00 KST | Spotify Honk — Claude Code 기반 백그라운드 코딩 에이전트로 PR 1,500+개 자동 머지(Fleet Management 토대·마이그레이션 60~90% 절감) | https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1
