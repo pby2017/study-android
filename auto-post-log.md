@@ -338,3 +338,4 @@
 - 2026-06-16 20:40 KST | 에이전트 스킬의 점진적 로딩 — 메타 100토큰만 항상 보이고 본문은 필요할 때만 로드(progressive disclosure) | https://github.com/travisvn/awesome-claude-skills
 
 - 2026-06-16 21:50 KST | Frequent Intentional Compaction — 컨텍스트 40~60% 유지, 리뷰는 리서치·플랜에 집중 | https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md- 2026-06-16 21:55 KST | claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터·확신도 8점 미만 폐기) | https://github.com/anthropics/claude-code-security-review
+- 2026-06-17 20:00 KST | Serena(oraios) — 에이전트에게 IDE급 심볼 단위 코드 탐색·편집을 주는 MCP 툴킷(~24k★) | https://github.com/oraios/serena
