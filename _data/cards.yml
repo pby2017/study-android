@@ -2477,3 +2477,16 @@ cards:
       - "근본원인 분석을 Claude·Cursor·GitHub Copilot 에이전트에 넘겨 자동으로 수정·PR 생성(공식 통합)"
       - "프로덕션·로컬(Sentry MCP)·코드리뷰 3면 커버, 요금은 활동 기여자당 월 $40 무제한 정액"
     source: "https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent"
+  - category: ai
+    title: "Aider — '아키텍트 모델이 짜고 에디터 모델이 고치는' 2모델 분업 터미널 페어프로그래머(46.3k★)"
+    summary: >
+      Aider는 터미널에서 로컬 git 저장소를 직접 고치는 Apache-2.0 오픈소스 AI 페어프로그래밍 도구로,
+      현재 GitHub 46.3k★다. 특정 모델에 묶이지 않고 Claude 3.7 Sonnet·DeepSeek·OpenAI o1/o3-mini/GPT-4o 등
+      거의 모든 LLM(로컬 모델 포함)에 붙는다. 가장 특징적인 건 architect 모드 — 한 모델이 '어떻게 풀지' 계획을 세우고,
+      별도 editor 모델이 그 계획을 실제 파일 편집(diff)으로 옮긴다. 추론과 편집을 분리해 품질·비용을 동시에 잡는
+      패턴으로, 비싼 추론 모델은 계획만 세우고 값싼 모델이 편집을 처리하게 설계할 수 있다.
+    points:
+      - "code·ask·architect·help 4가지 챗 모드 — architect 모드는 main(아키텍트) 모델과 --editor-model을 따로 둬 한 요청을 둘로 쪼갠다"
+      - "추론은 강하지만 파일 편집이 약한 모델(예: OpenAI o1)에 특히 유용하다고 공식 문서가 명시(다만 2회 요청이라 더 느리고 비쌀 수 있음)"
+      - "모든 변경을 LLM이 쓴 커밋 메시지로 원자적 커밋 → git diff/undo로 AI 작업을 그대로 관리, VS Code·JetBrains·Vim 등 쓰던 에디터와 병행"
+    source: "https://aider.chat/docs/usage/modes.html"

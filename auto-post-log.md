@@ -264,3 +264,4 @@
 - 2026-06-16 23:55 KST | Repomix — 레포 전체를 AI가 먹기 좋은 단일 파일로 패킹하는 CLI(26.3k★) | https://github.com/yamadashy/repomix
 
 - 2026-06-16 14:05 KST | Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트 | https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent
+- 2026-06-16 14:10 KST | Aider — 아키텍트 모델이 짜고 에디터 모델이 고치는 2모델 분업 터미널 페어프로그래머(46.3k★) | https://aider.chat/docs/usage/modes.html
