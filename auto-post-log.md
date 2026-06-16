@@ -249,3 +249,5 @@
 
 - 2026-06-16 15:00 KST | 컨텍스트 엔지니어링 — 프롬프트가 아니라 추론 내내 보이는 토큰 전체를 큐레이팅하기 | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 - 2026-06-16 16:00 KST | 서브레시피 파이프라인 — 복잡한 작업을 YAML 레시피로 쪼개 단계·병렬로 돌리기 | https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/recipes/subrecipes.md
+
+- 2026-06-16 17:30 KST | Ralph 기법 — 멍청하지만 절대 안 멈추는 에이전트 bash 루프 | https://ghuntley.com/ralph/
