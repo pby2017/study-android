@@ -2814,3 +2814,15 @@ cards:
       - "MCP 연동, LLM 20개사(Anthropic·OpenAI·Google 등)·내장 도구 24종 지원, 22+ 코딩 에이전트(Cursor·Claude Code·Windsurf·Cline 등)와 호환"
       - "메모리 벤치마크 자체 주장: LoCoMo 96.1%·LongMemEval-S 92.8%(레포 표기) — 별 수 약 4.9k★, TypeScript, 설치는 `npm i -g byterover-cli`(Node 20+)"
     source: "https://github.com/campfirein/cipher"
+  - category: ai
+    title: "awesome-agent-skills(VoltAgent) — 1400여 개 '에이전트 스킬'을 도구 안 가리고 받아 쓰는 카탈로그(25.5k★)"
+    summary: >
+      VoltAgent의 awesome-agent-skills는 실제 엔지니어링 팀이 만들어 쓰는 '에이전트 스킬'을 모아 둔 큐레이션 레포다(MIT, 25.5k★).
+      배지엔 1424+개, 소개문엔 1000여 개의 손수 고른 스킬이라 적혀 있고, "대량 AI 생성물이 아니라 실전에서 쓰는 것만 모았다"고 명시한다.
+      핵심은 Claude Code 전용이 아니라는 점 — Codex·Gemini CLI·Cursor·GitHub Copilot·OpenCode·Windsurf·Antigravity 등과 호환된다고 표방한다.
+      Anthropic·Google Gemini·Stripe·Supabase·Vercel·Cloudflare·HashiCorp·Sentry·Trail of Bits·Figma 등 공식 팀이 올린 스킬이 섞여 있어, 서드파티 베스트 프랙티스를 통째로 끌어다 쓰기 좋다.
+    points:
+      - "이미 다룬 VoltAgent '서브에이전트 카탈로그'와는 다른 레포 — 이건 '스킬'(도구 비종속, 25.5k★·1424+개)"
+      - "Claude Code·Codex·Gemini CLI·Cursor·Copilot·OpenCode·Windsurf 호환 표방 — 한 곳에서 받아 여러 에이전트에 재사용"
+      - "Anthropic·Stripe·Supabase·Vercel·Cloudflare·Sentry·Trail of Bits·Figma 등 공식 조직 발행 스킬 포함, 라이선스 MIT"
+    source: "https://github.com/VoltAgent/awesome-agent-skills"

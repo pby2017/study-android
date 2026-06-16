@@ -303,3 +303,5 @@
 - 2026-06-17 11:00 KST | chrome-devtools-mcp(Google) — 에이전트가 생성한 코드가 브라우저에서 실제로 뭘 하는지 직접 들여다보게 하는 MCP(43.7k★) | https://github.com/ChromeDevTools/chrome-devtools-mcp
 
 - 2026-06-17 11:30 KST | Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 코딩 에이전트용 휴대 메모리 레이어 | https://github.com/campfirein/cipher
+
+- 2026-06-17 12:00 KST | awesome-agent-skills(VoltAgent) — 1400여 개 에이전트 스킬을 도구 안 가리고 받아 쓰는 카탈로그(25.5k★) | https://github.com/VoltAgent/awesome-agent-skills
