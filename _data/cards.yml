@@ -2558,3 +2558,17 @@ cards:
       - "MCP로 에디터에 직접 붙고(CLI도 지원), 모델 역할을 main/research/fallback로 분리"
       - "라이선스는 MIT + Commons Clause(호스팅 서비스·경쟁 제품화는 제한), 레포 표기 27.5k★ 주장"
     source: "https://github.com/eyaltoledano/claude-task-master"
+  - category: ai
+    title: "Kilo Code — Cline·Roo Code 계보의 오픈소스 VS Code 코딩 에이전트(MIT·20k★)"
+    summary: >
+      Kilo Code(Kilo-Org/kilocode)는 VS Code·JetBrains에서 도는 MIT 라이선스
+      오픈소스 AI 코딩 에이전트로, 코드 제안만이 아니라 계획·실행·디버깅을 스스로
+      도는 '에이전트형'이다. 모드를 Architect(계획)·Coder(구현)·Debugger(디버깅)로
+      나눠 쓰고 커스텀 모드도 만들 수 있으며, 타이핑 중 인라인 자동완성과
+      MCP 서버 마켓플레이스로 도구를 확장한다. 가격은 "프로바이더 요금과 똑같이
+      맞춘 투명 과금"을 내세워 마진을 얹지 않는다고 README가 밝힌다.
+    points:
+      - "Architect/Coder/Debugger 멀티 모드 + 커스텀 모드, 인라인 자동완성까지 한 확장에"
+      - "MCP 서버 마켓플레이스로 에이전트 도구를 끼워 확장 — VS Code·JetBrains 지원"
+      - "라이선스 MIT, 레포 표기 약 20k★, '프로바이더 요금 그대로' 투명 과금 표방"
+    source: "https://github.com/Kilo-Org/kilocode"

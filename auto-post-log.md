@@ -271,3 +271,5 @@
 - 2026-06-17 01:30 KST | Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트 | https://jules.google/docs/usage-limits/
 - 2026-06-17 02:00 KST | /fork — 서브에이전트와 달리 대화 전체를 물려받는 분신(프롬프트 캐시 공유) | https://code.claude.com/docs/en/sub-agents
 - 2026-06-17 02:30 KST | Task Master — PRD를 의존성 달린 태스크 목록으로 쪼개주는 에이전트(MIT+CC) | https://github.com/eyaltoledano/claude-task-master
+
+- 2026-06-17 03:00 KST | Kilo Code — Cline·Roo Code 계보의 오픈소스 VS Code 코딩 에이전트(MIT·20k★) | https://github.com/Kilo-Org/kilocode
