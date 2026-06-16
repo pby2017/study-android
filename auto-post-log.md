@@ -380,3 +380,4 @@
 - 2026-06-17 22:00 KST | Factory droid — 터미널 에이전트+Custom Droid+Mission으로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼(droid CLI·droid exec 헤드리스·Missions) | https://docs.factory.ai/cli/getting-started/overview
 
 - 2026-06-17 21:00 KST | 하네스 엔지니어링(Harness Engineering) — 모델 말고 모델 둘러싼 모든 것을 설계해 에이전트 실패를 구조로 막기(builder/user harness·ambient affordances·LangChain 52.8→66.5 주장) | https://martinfowler.com/articles/harness-engineering.html
+- 2026-06-17 02:32 KST | Agent Skills(SKILL.md) — Anthropic 발원 오픈 표준, Cursor·Codex·Gemini CLI 등 크로스 도구 채택 | https://agentskills.io

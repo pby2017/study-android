@@ -3396,3 +3396,14 @@ cards:
       - "핵심 원칙: 에이전트가 실수하면 즉석 수정이 아니라 '다시는 그 실수를 못 하게 하는 해법'을 하네스로 만들어 영구화 — 같은 모델로도 점수가 출렁(LangChain Terminal-Bench 52.8%→66.5%는 하네스만 교체한 결과라는 주장)"
       - "Fowler/Böckeler 프레임: 'builder harness'(자기교정 유도)와 'user harness'(사람 개입을 필요한 지점에만)로 분리, 'ambient affordances'(환경을 에이전트가 읽기 쉽게)·토폴로지 고정으로 가변성 축소 — 좋은 하네스는 사람 입력을 없애는 게 아니라 '중요한 곳으로' 돌린다"
     source: "https://martinfowler.com/articles/harness-engineering.html"
+  - category: ai
+    title: "Agent Skills(SKILL.md) — Anthropic가 연 'Skill 한 번 만들면 어떤 에이전트서나' 오픈 표준, Cursor·Codex·Gemini CLI까지 채택"
+    summary: >
+      Agent Skills는 Anthropic이 만들어 오픈 표준으로 공개한, AI 에이전트에 전문 지식·워크플로를 주입하는 경량 포맷이다.
+      핵심은 SKILL.md 한 파일을 담은 폴더 — 메타데이터(name·description)와 지침을 적고, 스크립트·참고문서·템플릿을 함께 묶을 수 있다.
+      Claude Code 전용이 아니라 Cursor·OpenAI Codex·Gemini CLI·GitHub Copilot·VS Code·OpenHands·Goose·Roo Code 등 수십 개 도구가 같은 포맷을 채택해, "한 번 만들면 어디서나 쓰는" 크로스 제품 재사용이 핵심 가치다.
+    points:
+      - "구조: 폴더 + 필수 SKILL.md(메타 name·description + 지침), 선택적으로 scripts/·references/·assets/ 번들. 별도 SDK·플러그인 형식이 아니라 마크다운 파일 하나가 진입점"
+      - "동작은 '점진적 공개(progressive disclosure)' 3단계 — ①Discovery: 시작 시 name·description만 로드 ②Activation: 작업이 description과 매칭되면 본문 전체를 컨텍스트로 ③Execution: 필요할 때만 번들 코드·참고파일 로드. 그래서 스킬 수십 개를 달아도 컨텍스트 footprint가 작다"
+      - "표준 채택 현황(agentskills.io 클라이언트 쇼케이스 기준): Claude Code/Claude·Cursor·OpenAI Codex·Gemini CLI·GitHub Copilot·VS Code·OpenHands·Goose·Roo Code·Amp·Factory·Kiro·Letta 등. openai/skills(Codex용 Skills Catalog)는 22.3k★. Anthropic이 발원해 오픈 표준으로 풀고 생태계가 확장 중"
+    source: "https://agentskills.io"
