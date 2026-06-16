@@ -3432,3 +3432,16 @@ cards:
       - "한 코어, 여러 표면 — 동일 엔진을 CLI(헤드리스 포함)·웹 GUI·OpenHands Cloud·파이썬 Software Agent SDK로 노출. 모델 비종속이라 Claude·GPT 등 원하는 LLM 공급자를 끼운다"
       - "SWE-bench Verified 상위권을 '주장' — 공식은 77.6% 해결(검증된 리더보드 수치라기보다 프로젝트 측 주장으로 받아들일 것). 라이선스 MIT·~77k★, '87% 버그 티켓 당일 해결' 류 마케팅 수치는 검증 안 됨"
     source: "https://github.com/All-Hands-AI/OpenHands"
+  - category: ai
+    title: "Cursor Bugbot — 'AI가 짠 코드'를 PR 단계에서 잡으려고 만든 전용 코드리뷰 봇(GitHub·GitLab)"
+    summary: >
+      Bugbot은 Cursor 팀이 만든 PR 전용 AI 코드리뷰 도구다. 새 PR이 열리면 백그라운드에서 자동으로 돌면서
+      논리 버그·보안 문제를 잡아 코멘트로 달고, 변경된 줄뿐 아니라 그 변경이 기존 코드와 어떻게 충돌하는지까지 본다.
+      공식 페이지는 'Bugbot이 단 플래그의 70% 이상이 머지 전에 해결된다'고 밝힌다. GitHub과 GitLab에 붙으며,
+      PR 코멘트나 `bugbot run`으로 수동 트리거할 수 있고, 프런티어 모델과 자체 모델을 섞어 쓴다.
+      Anthropic 공식 보안 리뷰 액션이나 Claude Code `/code-review`와 같은 '에이전트 코드리뷰 자동화' 흐름의 상용 버전 격이다.
+    points:
+      - "PR 자동 리뷰가 핵심 — 새 PR에 자동 작동해 버그·보안 이슈를 코멘트로 남기고, diff뿐 아니라 변경이 코드베이스의 다른 가정과 어떻게 상호작용하는지까지 검사(공식 표현: '가장 어려운 논리 버그를 낮은 오탐률로')"
+      - "팀 규칙을 코드로 — `.cursor/BUGBOT.md`에 프로젝트별 코딩 표준을 적어 리뷰 기준을 맞추고, `@cursor remember`로 리뷰 중 배운 규칙을 누적시킨다. GitHub·GitLab 둘 다 지원(공식 docs 기준)"
+      - "검증 가능한 수치만 — '머지 전 플래그 70%+ 해결', '발견한 버그의 절반 이상이 수정됨'은 공식 페이지 주장. '월 200만 PR 처리·8개 병렬 패스·90초 리뷰' 류는 2차 보도 수치로, 1차 출처 미확인이니 그대로 인용하지 말 것"
+    source: "https://cursor.com/docs/bugbot"

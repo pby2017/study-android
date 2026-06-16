@@ -384,3 +384,5 @@
 - 2026-06-17 23:30 KST | skills.sh(Vercel) — npx skills add로 SKILL.md를 70여 개 에이전트에 한 번에 까는 npm식 스킬 패키지 매니저(MIT·22.6k★) | https://github.com/vercel-labs/skills
 
 - 2026-06-17 14:00 KST | OpenHands(All-Hands-AI) — 에이전트 모든 행동을 Docker 샌드박스에서 돌리는 오픈소스 코딩 에이전트(MIT·~77k★, CLI/GUI/Cloud/SDK, SWE-bench 77.6% 주장) | https://github.com/All-Hands-AI/OpenHands
+
+- 2026-06-18 14:00 KST | Cursor Bugbot — AI가 짠 코드를 PR 단계에서 잡는 전용 코드리뷰 봇(GitHub·GitLab, .cursor/BUGBOT.md 규칙·bugbot run·머지 전 플래그 70
