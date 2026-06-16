@@ -2790,3 +2790,15 @@ cards:
       - "LangChain 비의존: 자체 구현이라 '가볍고 빠르다(lean, lightning-fast)'를 표방 — 다른 프레임워크 위에 얹힌 래퍼가 아님"
       - "에이전트/태스크를 코드가 아닌 YAML(agents.yaml·tasks.yaml)로 선언 — 별 수는 약 53.7k★, 포크 7.5k 주장(레포 표기 기준)"
     source: "https://github.com/crewAIInc/crewAI"
+  - category: ai
+    title: "chrome-devtools-mcp(Google) — 에이전트가 '생성한 코드가 브라우저에서 실제로 뭘 하는지' 직접 들여다보게 하는 MCP(43.7k★)"
+    summary: >
+      chrome-devtools-mcp는 Chrome DevTools 공식 조직이 내놓은 MCP 서버로,
+      코딩 에이전트(Claude·Cursor·Copilot·Antigravity 등)가 '살아 있는 Chrome'을 직접 제어·검사하게 해준다.
+      에이전트가 코드를 짜고도 그게 브라우저에서 실제로 어떻게 동작하는지 못 봐서 생기는 'AI 생성→사람이 테스트→에러 보고→다시 시도'의 왕복을 없애는 것이 목적이다.
+      puppeteer로 동작을 자동화하고 결과를 자동 대기하며, 네트워크 요청 분석·콘솔 메시지 확인·성능 트레이스 기록까지 한다. 라이선스는 Apache-2.0.
+    points:
+      - "약 48개 도구를 카테고리로 제공 — 입력 자동화(click·fill·type 등 10개)·내비게이션(6)·성능 트레이스(3)·네트워크(2)·디버깅(evaluate_script·take_screenshot·list_console_messages·lighthouse_audit 등 8)·메모리 힙스냅샷(8) 등"
+      - "Playwright MCP가 '크로스브라우저 사용자 플로 실행'에 강하다면, 이쪽은 'Chrome 한 페이지를 DevTools 깊이로 디버깅·성능 프로파일링'에 특화 — 둘은 겹치되 용도가 다름"
+      - "Claude Code·Cursor·Gemini CLI·Copilot 등 다수 클라이언트 지원 — 별 수 약 43.7k★, 포크 2.8k(레포 표기 기준)"
+    source: "https://github.com/ChromeDevTools/chrome-devtools-mcp"

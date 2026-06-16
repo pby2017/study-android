@@ -299,3 +299,5 @@
 - 2026-06-17 10:00 KST | 에이전트 코딩의 80% 문제 — 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다 | https://sourcegraph.com/blog/agentic-coding
 
 - 2026-06-17 10:30 KST | CrewAI — 역할 가진 에이전트 팀(Crew)과 결정적 워크플로(Flow)를 한 프레임워크에 담은 멀티에이전트 도구(MIT·53.7k★) | https://github.com/crewAIInc/crewAI
+
+- 2026-06-17 11:00 KST | chrome-devtools-mcp(Google) — 에이전트가 생성한 코드가 브라우저에서 실제로 뭘 하는지 직접 들여다보게 하는 MCP(43.7k★) | https://github.com/ChromeDevTools/chrome-devtools-mcp
