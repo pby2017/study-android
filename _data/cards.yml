@@ -3142,3 +3142,14 @@ cards:
       - "운영 플래그 2종: `--analytics`=로컬 로그 기반 실시간 사용량·대화 모니터링 대시보드 / `--health-check`=설치·설정 상태 진단"
       - "MIT 라이선스·약 28.1k★(레포 기준 주장값) · 웹 카탈로그 aitmpl.com에서 컴포넌트를 미리 탐색 가능"
     source: "https://github.com/davila7/claude-code-templates"
+  - category: ai
+    title: "Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)"
+    summary: >
+      ACP(Agent Client Protocol)는 Zed가 만들고 JetBrains와 함께 미는 개방형 표준으로, 코딩 에이전트와 그것을 띄우는 에디터(클라이언트) 사이를 표준 JSON-RPC 인터페이스로 갈라놓는다.
+      목표는 'LSP가 언어 서버를 에디터에서 떼어낸 것'을 에이전트에도 하는 것 — 에이전트는 한 번만 ACP를 구현하면 ACP를 지원하는 모든 에디터에서 돌고, 에디터는 한 번만 구현하면 어떤 ACP 에이전트든 꽂아 쓴다.
+      그래서 한 에디터 안에서 어려운 리팩터링은 Claude Code로, 테스트 스윕은 다른 에이전트로 갈아끼우는 식의 '에이전트 자유 교체'가 가능해진다. 특정 모델·도구에 묶이는 락인을 줄이는 게 핵심이다.
+    points:
+      - "무엇을 표준화하나: 에이전트↔에디터 간 통신을 JSON-RPC 기반 개방 프로토콜로 고정 → 에이전트는 1회 구현으로 모든 ACP 에디터에서 동작(LSP의 에이전트판)"
+      - "주도: Zed가 설계, JetBrains와 협업으로 확장 중. Zed의 Agent Panel이 ACP로 외부 에이전트(예: Claude Code·Gemini CLI 등)를 네이티브로 띄움"
+      - "실무 효과: 작업별로 최적 에이전트를 갈아끼우는 '중립 호스트' 전략 — VS Code 포크+단일 모델 결합형 락인의 반대 방향"
+    source: "https://zed.dev/acp"

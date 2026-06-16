@@ -341,3 +341,5 @@
 - 2026-06-17 20:00 KST | Serena(oraios) — 에이전트에게 IDE급 심볼 단위 코드 탐색·편집을 주는 MCP 툴킷(~24k★) | https://github.com/oraios/serena
 
 - 2026-06-16 22:30 KST | claude-code-templates(aitmpl) — 에이전트·커맨드·MCP를 골라 깔고 사용량 대시보드까지 보는 CLI(~28k★) | https://github.com/davila7/claude-code-templates
+
+- 2026-06-16 21:37 KST | Agent Client Protocol(ACP) — 에디터와 코딩 에이전트를 분리하는 개방형 표준(Zed·JetBrains) | https://zed.dev/acp
