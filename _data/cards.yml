@@ -2995,3 +2995,15 @@ cards:
       - "긴 작업 3종 도구: ①Compaction(한도 임박 시 대화를 요약해 새 창으로 재시작, 단 과압축은 나중에야 중요해질 맥락을 잃음) ②구조화된 노트테이킹(외부 메모리에 진행상황 기록) ③서브에이전트(각자 깊이 탐색 후 1,000~2,000 토큰 요약만 반환)"
       - "흔한 실패: 도구셋 비대화('사람도 어떤 도구 쓸지 못 정하면 에이전트도 못 정한다'), 시스템 프롬프트 고도(altitude) 오류 — 너무 브리틀한 로직 하드코딩 또는 너무 모호한 지시. 첫 버전의 적정 도구 수는 대개 생각보다 적다"
     source: "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+  - category: ai
+    title: "claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기"
+    summary: >
+      한 터미널에서 기능을 만들면서 다른 터미널에선 Claude가 버그를 고치게 하되, 편집이 서로 충돌하지 않게 하는 워크플로.
+      `claude --worktree <이름>`을 실행하면 각 워크트리가 자기 브랜치를 가진 별도 체크아웃으로 생성되어 한 작업 트리에서 파일이 엉키지 않는다.
+      다른 이름으로 같은 명령을 두 번째 터미널에서 돌리면 격리된 병렬 세션이 하나 더 뜬다.
+      서브에이전트·백그라운드 세션도 같은 방식으로 격리할 수 있어, 오래 걸리는 작업이 메인 브랜치를 막지 않는다.
+    points:
+      - "기본 동작: `claude --worktree feature-auth`는 `.claude/worktrees/`에 새 브랜치로 워크트리를 만든다. 이름을 비우면 `bright-running-fox` 같은 이름을 자동 생성. baseRef 설정으로 HEAD에서 분기할지 지정 가능"
+      - "PR에서 바로: `claude --worktree \"#1234\"`는 origin에서 `pull/1234/head`를 받아 `.claude/worktrees/pr-1234`에 워크트리를 만든다. 세션 안에서 '워크트리에서 작업해'라고 말하면 EnterWorktree로도 생성됨"
+      - ".worktreeinclude로 .env·secrets 같은 gitignore 파일을 워크트리에 복사(수동 `git worktree add` 경로일 때). git이 아니면 WorktreeCreate/WorktreeRemove 훅으로 SVN·Perforce·Mercurial 지원. 수동 정리는 `git worktree remove <경로>`"
+    source: "https://code.claude.com/docs/en/worktrees"
