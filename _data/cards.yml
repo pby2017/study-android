@@ -3458,3 +3458,17 @@ cards:
       - "실제 수록 스킬 예시 — jetpack-compose, navigation/navigation-3, performance/r8-analyzer, testing/testing-setup, system/edge-to-edge, build/agp/agp-9-upgrade, camera/camera1-to-camerax, wear/jetpack-compose-m3 등 마이그레이션·도구 워크플로 중심"
       - "설계 철학 — 'LLM이 못하는 곳을 메운다'. 이미 잘하는 영역이 아니라 평가에서 underperform하는 use case를 겨냥하고, 외부 공개 기여는 현재 받지 않는다(공식 README 기준)"
     source: "https://github.com/android/skills"
+  - category: ai
+    title: "Vibe Kanban(BloopAI) — Claude Code·Codex·Gemini CLI 여러 에이전트를 '칸반 보드'로 병렬 돌리는 오케스트레이션 레이어(Apache-2.0·~27k★)"
+    summary: >
+      여러 코딩 에이전트를 한 칸반 보드 위에서 동시에 굴리는 오픈소스 오케스트레이션 도구다.
+      각 작업을 'workspace'로 띄우는데, workspace마다 별도 git 브랜치·터미널·dev 서버가 붙고
+      내부적으로 git worktree로 격리돼 에이전트들이 서로의 작업을 침범하지 못한다. 그 위에서 diff 리뷰,
+      앱 프리뷰, PR 생성까지 한 화면에서 한다. `npx vibe-kanban` 한 줄로 실행되고 Claude Code·Codex·Gemini CLI·Copilot·
+      Amp·Cursor·OpenCode·Droid 등 10여 개 에이전트를 지원한다(공식 README 기준). 다만 README는 현재
+      "Vibe Kanban is sunsetting"이라 밝혀, 오픈소스 도구의 운영 지속성을 함께 따져야 하는 사례이기도 하다.
+    points:
+      - "격리 모델 — workspace = 브랜치+터미널+dev서버 한 묶음, 그 토대가 git worktree. 에이전트가 main을 건드리지 않고 병렬로 돌게 만드는 게 핵심(Cursor 2.0·Conductor와 같은 worktree 계열 패턴)"
+      - "도구 비종속 — 한 보드에서 Claude Code·Codex·Gemini CLI·GitHub Copilot·Amp·Cursor·OpenCode·Droid·CCR·Qwen Code 등 '10+ 코딩 에이전트'를 섞어 쓴다. Rust(~50%)+TypeScript(~46%)로 작성"
+      - "지속성 주의 — README가 'Vibe Kanban is sunsetting'이라 명시하고 외부 PR도 사전 논의 없이는 받지 않는다. 별 수(~27k★)는 시점에 따라 변하는 GitHub 수치이니 '주장'으로 볼 것"
+    source: "https://github.com/BloopAI/vibe-kanban"
