@@ -2853,3 +2853,18 @@ cards:
       - "멀티 모드: Architect(계획)/Coder(구현)/Debugger(디버그) + 커스텀 모드 — 작업 단계별로 발판을 갈아끼우는 하네스 패턴"
       - "500+ 모델·BYO 키(키 옵션)·MCP 서버 마켓플레이스 — 별 수 약 20.1k★ 주장, MIT 라이선스"
     source: "https://github.com/Kilo-Org/kilocode"
+
+  - category: ai
+    title: "Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너"
+    summary: >
+      코딩 에이전트를 쓰다 보면 MCP 서버, VS Code·Cursor·Windsurf 확장, npm·PyPI 패키지를
+      검증 없이 잔뜩 깔게 되는데, 정작 '내 머신에 뭐가 깔려 있는지' 알기 어렵다.
+      Bumblebee는 Perplexity가 공개한 Apache-2.0 스캐너로, 이 표면들을 한 번에 인벤토리한다.
+      핵심은 '읽기 전용' 설계 — `npm ls`·`pip show` 같은 패키지 매니저를 실행하지 않고,
+      락파일·설치 메타데이터·확장 매니페스트·MCP JSON 설정만 읽어 (생태계, 이름, 버전) 목록을 NDJSON으로 뽑는다.
+      자체 CVE DB는 없고, 사용자가 준 '노출 카탈로그(JSON)'와 정확히 일치하는 것만 플래그한다.
+    points:
+      - "스캔 표면: npm·PyPI·Go·RubyGems·Composer·Bun·pnpm·Yarn·Homebrew + MCP 설정·에디터 확장(VS Code/Cursor/Windsurf)·브라우저 확장·에이전트 스킬"
+      - "읽기 전용: 패키지 매니저 실행 없음·소스 파일 안 읽음 — 락파일과 매니페스트만 파싱, MCP env 블록의 자격증명은 출력 안 함"
+      - "Go 1.25+·비표준 의존성 0개, 일회성 스캐너(반복은 cron/launchd 책임), 탐지는 PR로 갱신되는 노출 카탈로그에 의존"
+    source: "https://github.com/perplexityai/bumblebee"
