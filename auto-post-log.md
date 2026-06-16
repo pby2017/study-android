@@ -419,3 +419,5 @@
 - 2026-06-18 22:30 KST | Claude Squad — tmux+git worktree로 여러 코딩 에이전트(Claude Code/Codex/Gemini/OpenCode·Amp/Aider)를 한 터미널 TUI에서 병렬 실행, 세션은 tmux·작업물은 worktree 격리, tmux/gh 필요·Windows 미지원·--autoyes 실험적·AGPL ~7.8k★ | https://github.com/smtg-ai/claude-squad
 
 - 2026-06-19 09:00 KST | claude-plugins-official — 회사들이 직접 올린 177+ 플러그인이 모이는 Anthropic 공식 마켓플레이스(~30k★) | https://github.com/anthropics/claude-plugins-official
+
+- 2026-06-19 09:30 KST | Rakuten 도입 사례 — Claude Code가 1,250만 줄 vLLM에서 '7시간 무인 코딩'으로 기능 하나를 끝낸 기업 레퍼런스 | https://claude.com/customers/rakuten

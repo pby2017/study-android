@@ -3710,3 +3710,16 @@ cards:
       - "무엇이 들었나 — 벤더 통합(aws-core·azure·mongodb·cloudflare·figma·github·playwright·context7·firecrawl…)부터 Anthropic 자체 워크플로(code-review·pr-review-toolkit·feature-dev·hookify·ralph-loop)와 사전제작 LSP(pyright·rust-analyzer·gopls·jdtls 등)까지 177개 이상"
       - "주의 — 공식 마켓플레이스라도 Anthropic이 각 플러그인의 MCP 서버·코드를 통제하지 않는다고 명시. 설치·사용 전 신뢰할 수 있는 플러그인인지 직접 확인하라는 경고가 붙는다"
     source: "https://github.com/anthropics/claude-plugins-official"
+  - category: ai
+    title: "Rakuten 도입 사례 — Claude Code가 1,250만 줄 vLLM에서 '7시간 무인 코딩'으로 기능 하나를 끝낸 기업 레퍼런스"
+    summary: >
+      Anthropic이 공개한 Rakuten 고객 사례다. ML 엔지니어 Kenta Naruse가 1,250만 줄 규모의 오픈소스 라이브러리 vLLM에
+      활성화 벡터 추출 기능을 구현하라고 시키자, Claude Code가 사람이 코드를 직접 안 쓰고 가끔 가이드만 주는 상태로
+      7시간을 연속 자율 작업해 한 번에 완성했다고 한다. 결과물은 레퍼런스 대비 99.9% 수치 정확도였고, 회사 전체로는
+      신규 기능의 출시 소요가 24일→5일(79% 단축)로 줄었다는 게 사례가 내세우는 지표다. 단 이는 Opus 4 출시 시점(2025)에
+      함께 발표된 벤더 측 마케팅 사례이며, 수치는 Rakuten·Anthropic의 자체 주장임에 유의.
+    points:
+      - "핵심 수치(벤더 주장) — 7시간 연속 무인 코딩 / 출시 24일→5일(79%↓) / 복잡한 코드 수정 99.9% 정확도"
+      - "운영 패턴 — AI 담당 GM Yusuke Kaji의 표현: 'Claude Code에 4개를 위임하고 나는 1개에 집중해, 5개 작업을 병렬로 굴린다'"
+      - "맥락·한계 — Opus 4 발표(2025)와 묶여 나온 고객 레퍼런스다. 1,250만 줄 코드베이스에서의 단일 작업 일화이며 통제된 벤치마크가 아니므로, 일반 성능 보장이 아니라 '엔터프라이즈 자율 코딩이 가능했다'는 사례로 읽어야 한다"
+    source: "https://claude.com/customers/rakuten"
