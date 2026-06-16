@@ -394,3 +394,5 @@
 - 2026-06-17 21:00 KST | 토스의 Claude Code를 레이어드 아키텍처처럼 — 팀 지식을 Global/Domain/Local 3계층 플러그인으로 굳히기(Living Knowledge Base·사내 마켓플레이스 구상) | https://toss.tech/article/harness-for-team-productivity
 
 - 2026-06-18 14:30 KST | Terminal-Bench 2.0 — 코드 파일이 아니라 리눅스 셸 전체를 문제로 주는 차세대 에이전트 벤치마크(Stanford×Laude·89태스크·Harbor 하네스·Docker+테스트 판정) | https://www.tbench.ai/
+
+- 2026-06-17 16:00 KST | Ruflo(전 claude-flow) — Claude Code 위 queen-led 멀티에이전트 스웜 하네스, mesh/ring/star 토폴로지+합의, 모델 비종속(Claude/GPT/Gemini/Cohere/Ollama), npm ruflo, MIT ~59.8k★, 수치는 프로젝트 주장이며 외부 감사가 MCP도구·비용절감 주장 반박 | https://github.com/ruvnet/claude-flow
