@@ -3612,3 +3612,17 @@ cards:
       - "작업별 라우팅(비용 최적화 핵심) — default 외에 background·think·longContext 등 라우터를 나눠, 가벼운 백그라운드 작업은 싸거나 로컬인 모델로 보내고 무거운 추론만 비싼 모델에 맡기는 식으로 천장을 건다. /model로 세션 중 즉시 전환도 가능"
       - "주의 — 비공식 서드파티 프록시(MIT). 라우팅 대상에 비(非)Anthropic·로컬 모델을 섞을 수 있다는 게 장점이자, 모델별 출력 품질·포맷 호환은 사용자가 검증해야 한다는 뜻"
     source: "https://github.com/musistudio/claude-code-router"
+  - category: ai
+    title: "Aider 'architect/editor 모드' — '추론 잘하는 비싼 모델'이 짜고 '편집 잘하는 싼 모델'이 받아쓰게 둘로 나누기"
+    summary: >
+      Aider의 architect 모드는 한 모델에게 '해결책 제안'과 '정확한 파일 편집 지시'를 둘 다 시키지 않고,
+      이 둘을 두 모델로 분리하는 워크플로다. 먼저 메인 모델(architect)에게 "이 코딩 요청을 어떻게 풀지 제안"하게 하고,
+      그 제안을 editor 모델에게 넘겨 "구체적인 파일 편집 지시로 바꾸"게 한다. Aider 공식 설명은 LLM이 해결책 제안과
+      세밀한 편집 명세를 동시에 잘하지는 못하므로, editor 모델과 짝지으면 단일 code 모드보다 더 나은 결과를 낼 수
+      있다고 본다. /architect로 켜며, 비싼 추론 모델은 설계에만 쓰고 편집은 싸거나 빠른 모델에 맡길 수 있어 비용
+      최적화 패턴으로도 통한다. (Apache-2.0, Aider 공식 문서)
+    points:
+      - "동작 — 요청을 architect 모델에 보내 해결책을 제안받고, 그 제안을 editor 모델에 넘겨 실제 파일 편집 지시로 변환. /architect 명령으로 모드를 켜고, architect·editor 모델을 따로 지정"
+      - "왜 나누나 — Aider는 'LLM이 제안과 정밀 편집을 동시에 잘 못한다'는 관찰을 근거로, 역할 분리가 단일 code 모드보다 나을 수 있다고 본다. 추론은 비싼 모델, 받아쓰기는 싼·빠른 모델로 돌려 비용 천장을 거는 데도 쓰인다"
+      - "주장(검증된 수치, 단 구버전) — Aider 자체 code editing 벤치마크에서 o1-preview(architect)+o1-mini/deepseek(editor)가 85.0%로 당시 SOTA, o1-preview 단독(79.7%)보다 높았다. 다만 2024년·구모델 기준이고 그 SOTA 조합은 'whole' 포맷이라 느려 인터랙티브엔 비실용적이라고 Aider가 직접 단서를 단다"
+    source: "https://aider.chat/docs/usage/modes.html"

@@ -407,3 +407,5 @@
 
 - 2026-06-17 16:30 KST | superpowers(obra) — TDD·브레인스토밍·서브에이전트 2단계 리뷰를 스킬로 강제하는 에이전트 방법론 프레임워크, 도구 비종속(Claude Code/Codex/Gemini/Factory/OpenCode/Pi), GitHub API ~229.8k★·MIT·v6.0.0(2026-06-16) | https://github.com/obra/superpowers
 - 2026-06-18 21:00 KST | claude-code-router(musistudio) — Claude Code 요청을 작업 종류별로 다른·싼 모델로 라우팅하는 프록시, Anthropic↔OpenAI 포맷 변환·OpenRouter/DeepSeek/Ollama/Gemini 백엔드·background/think/longContext 라우터·/model 즉시 전환(MIT·비공식) | https://github.com/musistudio/claude-code-router
+
+- 2026-06-17 22:30 KST | Aider architect/editor 모드 — 추론 모델(architect)이 해결책 제안→편집 모델(editor)이 파일 편집 지시로 변환, /architect로 켬, 비싼 추론+싼 편집 분리로 비용 최적화, 구버전 벤치 o1-preview+o1-mini/deepseek 85.0%(단독 79.7%)·whole포맷이라 느림 단서 | https://aider.chat/docs/usage/modes.html
