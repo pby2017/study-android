@@ -316,3 +316,4 @@
 
 - 2026-06-17 15:30 KST | security-guidance 플러그인 — Claude가 짠 코드 취약점을 같은 세션에서 잡아 고치게 하는 3단계 독립 보안 리뷰 | https://code.claude.com/docs/en/security-guidance
 - 2026-06-16 18:02 KST | Tabby(TabbyML) — 코드를 남의 클라우드에 안 보내는 self-hosted 코딩 어시스턴트(~33.6k★) | https://github.com/TabbyML/tabby
+- 2026-06-17 16:00 KST | Continue(continuedev) — IDE 확장에서 cn CLI로 무게중심을 옮긴 오픈소스 코딩 에이전트(TUI+헤드리스, ~33.7k★) | https://github.com/continuedev/continue
