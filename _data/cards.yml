@@ -3784,3 +3784,15 @@ cards:
       - "확장 — CLI와 SDK 둘 다 제공(SDK로 앱에 코딩 에이전트 임베드). `/init`로 .agents/ TS 정의를 만들어 에이전트 행동을 직접 커스터마이즈, 광고 기반 무료판 Freebuff도 별도 존재"
       - "사실 — github.com/CodebuffAI/codebuff, Apache-2.0, ~6.5k★. '단일 모델보다 낫다'는 정확도 우위는 벤치 수치가 아니라 프로젝트 주장이니 도입 전 자체 검증 권장"
     source: "https://github.com/CodebuffAI/codebuff"
+  - category: ai
+    title: "CodeRabbit '인간 vs AI 코드' 리포트 — AI가 짠 PR이 결함 1.7배(PR당 10.83 vs 6.45건), '리뷰를 줄이지 말고 늘려라'"
+    summary: >
+      AI 코드리뷰 도구를 만드는 CodeRabbit가 2025년 12월 17일 발표한 'State of AI vs Human Code Generation' 리포트는, 오픈소스 PR을 자사 리뷰 엔진으로 분석해 AI가 관여한 코드가 사람만 짠 코드보다 결함이 더 많다고 보고했다.
+      핵심 수치는 AI-coauthored PR이 PR당 평균 10.83건의 문제를, 사람만 짠 PR은 6.45건을 내 약 1.7배 차이가 났다는 것.
+      유형별로는 가독성 문제가 약 3.15배로 가장 크게 벌어졌고, 로직·정확성 결함이 늘었으며 보안 취약점도 1.5~2배대로 증가했다.
+      함의는 분명하다 — AI로 '쓰는 시간'은 줄지만 '찾아 고치는 시간'이 늘어나므로, AI 도입 효과는 리뷰·검증 자동화를 함께 깔았는지에 달려 있다(리포트는 당연히 자사 도구에 유리한 프레이밍이니 숫자는 한 벤더의 주장으로 받아들일 것).
+    points:
+      - "수치(CodeRabbit 주장) — AI 관여 PR 10.83건/PR vs 사람 6.45건/PR ≈ 1.7배. 가독성 ~3.15배, 로직 결함 증가, 보안 1.5~2배대. 자사 리뷰 엔진으로 오픈소스 PR을 분석한 결과"
+      - "실무 교훈 — 'AI가 짰으니 리뷰 덜 해도 된다'는 정반대. AI 코드일수록 자동 코드리뷰(claude-code-security-review·Bugbot·/code-review 등)와 테스트 게이트를 PR 단계에 강제하라"
+      - "측정 — ROI를 보려면 'AI 작성 코드 비율 / PR당 결함 수 / 보안 발견 수'를 같이 추적. 도입률만 보면 품질 꼬리(review tail)가 숨는다. 단일 벤더 수치이니 사내 데이터로 교차검증"
+    source: "https://www.businesswire.com/news/home/20251217666881/en/CodeRabbits-State-of-AI-vs-Human-Code-Generation-Report-Finds-That-AI-Written-Code-Produces-1.7x-More-Issues-Than-Human-Code"

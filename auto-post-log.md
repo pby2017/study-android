@@ -428,3 +428,5 @@
 - 2026-06-19 10:00 KST | OpenAI가 SWE-bench Verified를 버렸다(2026-02-23) — 실패 테스트 중 ~59.4%가 결함(27.6% 표본·64회 실행·138문항), 주요 프런티어 모델이 태스크ID만으로 정답 패치 재현(오염), Verified ~80%대→Pro ~23% 급락, SWE-bench Pro·GDPVal 권고(OpenAI 주장) | https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/
 
 - 2026-06-19 10:30 KST | Codebuff(CodebuffAI) — File Picker→Planner→Editor→Reviewer 4개 에이전트가 분업하는 오픈소스 코딩 에이전트, CLI+SDK(@codebuff/sdk), /init로 .agents/ TS 커스텀 에이전트 정의, 무료판 Freebuff 별도, 단일모델 우위는 README 주장(Apache-2.0·~6.5k★) | https://github.com/CodebuffAI/codebuff
+
+- 2026-06-19 11:00 KST | CodeRabbit 인간 vs AI 코드 리포트(2025-12-17) — AI 관여 PR 10.83건/PR vs 사람 6.45건 ≈1.7배 결함, 가독성 ~3.15배·로직/보안 증가, AI 코드일수록 리뷰 강화 필요, 단일 벤더 자사 엔진 분석 주장 | https://www.businesswire.com/news/home/20251217666881/en/CodeRabbits-State-of-AI-vs-Human-Code-Generation-Report-Finds-That-AI-Written-Code-Produces-1.7x-More-Issues-Than-Human-Code
