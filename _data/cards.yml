@@ -3485,3 +3485,16 @@ cards:
       - "확장 = 패키지 — TypeScript 확장·Skills·프롬프트 템플릿·테마를 'Pi 패키지'로 만들어 npm/git으로 공유. 실행은 interactive·print/JSON·RPC·SDK 네 모드라 헤드리스·앱 임베딩까지 커버"
       - "공급자 무관 — pi-ai가 Anthropic·OpenAI·Gemini·Bedrock·Mistral·Groq·xAI·OpenRouter·Ollama 등 한 인터페이스로 묶고 구독(Claude Pro/Max·ChatGPT·Copilot)도 지원. 단 '내장 권한 시스템이 없어' 사용자·프로세스 권한 그대로 돈다는 점은 주의. ~63k★는 시점별 GitHub 수치"
     source: "https://github.com/earendil-works/pi"
+  - category: ai
+    title: "토스의 'Claude Code를 레이어드 아키텍처처럼' — 팀 지식을 Global/Domain/Local 3계층 플러그인으로 굳히기"
+    summary: >
+      토스 기술블로그(toss.tech)는 코딩 에이전트를 '개인 생산성 도구'에서 '팀의 일하는 방식'으로 끌어올리는 패턴을 제안한다.
+      핵심은 흩어진 규칙·노하우를 Claude Code 플러그인에 담되, 그 지식을 세 계층으로 나누는 것이다 —
+      전사 공통(보안·코딩 스타일)은 Global, 결제·정산·회원 같은 도메인 로직은 Domain, 특정 레포의 구현 디테일은 Local.
+      이렇게 계층화된 플러그인이 모이면 그 자체로 '살아있는 지식 베이스(Living Knowledge Base)'가 되고,
+      나아가 조직의 워크플로(예: /new-feature)를 배포하는 사내 마켓플레이스로 확장한다는 구상이다.
+    points:
+      - "지식 3계층 — Global(전사 보안·코딩 스타일) / Domain(팀·비즈니스 도메인 로직) / Local(레포별 구현 디테일·프로젝트 규칙). 한 CLAUDE.md에 다 밀어넣지 말고 책임에 따라 쪼개라는 게 요지"
+      - "비유의 출처 — '이전 글에서 Claude Code 구조를 레이어드 아키텍처에 비유했듯, 플러그인이 담는 지식도 계층화할 수 있다'. 코드 아키텍처 사고를 '지식 관리'에 그대로 적용"
+      - "팀 스케일 — 계층화된 플러그인 묶음 = Living Knowledge Base → 워크플로를 배포하는 '마켓플레이스 1.0'으로 확장. 개인 팁이 아니라 조직 차원 표준화가 목표 (toss.tech 자체 글, 수치 주장 없음)"
+    source: "https://toss.tech/article/harness-for-team-productivity"

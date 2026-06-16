@@ -390,3 +390,5 @@
 - 2026-06-17 18:30 KST | Vibe Kanban(BloopAI) — 여러 코딩 에이전트를 칸반 보드로 병렬 실행하는 오케스트레이션 레이어, workspace=브랜치+터미널+dev서버를 git worktree로 격리, 10+ 에이전트 지원, README상 sunsetting(Apache-2.0·~27k★) | https://github.com/BloopAI/vibe-kanban
 
 - 2026-06-17 22:00 KST | Pi(earendil-works) — read·write·edit·bash 4도구만 주는 미니멀 터미널 하네스, No sub-agents/plan mode/MCP/to-dos, TS확장·Skills·패키지로만 확장(MIT·~63k★) | https://github.com/earendil-works/pi
+
+- 2026-06-17 21:00 KST | 토스의 Claude Code를 레이어드 아키텍처처럼 — 팀 지식을 Global/Domain/Local 3계층 플러그인으로 굳히기(Living Knowledge Base·사내 마켓플레이스 구상) | https://toss.tech/article/harness-for-team-productivity
