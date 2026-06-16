@@ -3569,3 +3569,17 @@ cards:
       - "구성요소 — 자율 Agents, .then()/.branch()/.parallel() 기반 Workflows, RAG 데이터 검색, Tools 호출, human-in-the-loop, 내장 observability"
       - "모델 비종속 — 40+ 공급자(OpenAI·Anthropic·Gemini 등) 모델 라우팅. Gatsby 제작팀이 만들고 YC W25 출신이라는 점은 프로젝트 측 소개"
     source: "https://github.com/mastra-ai/mastra"
+  - category: ai
+    title: "'Coding Beyond Your Training'(arXiv 2026) — Claude Code 도입이 개발자의 '쓰는 언어·레포 폭'을 넓힌다는 5,838명 패널 연구"
+    summary: >
+      이코노미스트 Alexander Quispe가 2026년 5월 arXiv에 올린 워킹페이퍼로, AI 코딩 어시스턴트 도입이
+      개발자 개인의 '기술적 프런티어'(다루는 언어·레포·커밋량)를 넓히는지를 GitHub 데이터로 추정한다.
+      2025-05~2026-01 사이 Claude Code가 GitHub에 퍼진 staggered rollout을 활용해, 개발자 5,838명을 28개월간
+      월 단위로 추적했다. '첫 Claude 공동저자(Co-authored) 커밋' 시점을 도입 기준으로 잡고, 아직 도입 안 한
+      개발자를 대조군으로 쓰는 staggered DiD 방식이다. 도입 후 월 커밋 +41개, 기여 레포 +1.5개, 사용 언어 수 +0.83,
+      신규 언어 +0.31 등 '양'과 '다양성'이 모두 늘었다고 보고한다.
+    points:
+      - "데이터 — 개발자 5,838명을 28개월 월 단위 패널로 추적, 처치는 '첫 Claude-co-authored 커밋' 시점으로 정의, not-yet-treated를 대조군으로 쓰는 staggered DiD"
+      - "효과(추정치) — 월 커밋 +41, 기여 레포 +1.5, 사용 언어 +0.83, 신규 언어 +0.31. '많이 짠다'를 넘어 '안 쓰던 언어·레포로 폭이 넓어진다'가 핵심"
+      - "한계 — 단독 저자 워킹페이퍼(미동료심사)이고 관측 데이터 기반 인과 추정이라 '도입이 원인'이라 단정 말 것. 실무 함의는 '에이전트가 개발자의 기술 반경을 넓힌다'는 가설 정도로"
+    source: "https://arxiv.org/abs/2605.25438"

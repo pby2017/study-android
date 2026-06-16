@@ -402,3 +402,5 @@
 - 2026-06-17 17:00 KST | Zed 1.0 — Rust로 5년·100만줄·GPUI 자작한 GPU가속 에디터가 ACP로 Claude Code·Codex·Gemini CLI 등 외부 에이전트를 네이티브 호스팅+병렬 실행하는 에이전트 호스트로 1.0(2026-04-29·Atom/Tree-sitter 제작진·~85.4k★·GPL-3.0) | https://zed.dev/blog/zed-1-0
 
 - 2026-06-18 15:00 KST | Mastra(전 Gatsby 팀) — 에이전트·워크플로·RAG를 한 묶음으로 주는 TypeScript-네이티브 AI 프레임워크(Apache-2.0·~25k★, 40+ 공급자 모델 라우팅·.then/.branch/.parallel 워크플로·내장 observability·YC W25) | https://github.com/mastra-ai/mastra
+
+- 2026-06-17 15:30 KST | 'Coding Beyond Your Training'(arXiv 2026·Alexander Quispe) — Claude Code staggered rollout으로 개발자 5,838명·28개월 패널, 도입 후 월 커밋 +41·레포 +1.5·언어 +0.83·신규언어 +0.31, 단독 워킹페이퍼·관측 인과추정 한계 | https://arxiv.org/abs/2605.25438
