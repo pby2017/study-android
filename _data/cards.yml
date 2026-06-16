@@ -3540,3 +3540,18 @@ cards:
       - "모델 비종속·세션 중 전환 — Anthropic/OpenAI/Groq/OpenRouter/Vercel AI Gateway 등 여러 공급자 지원, OpenAI·Anthropic 호환이면 연결, '세션 도중 LLM 교체' 가능. 프로젝트별 컨텍스트가 나뉘는 세션 기반"
       - "설치·확장 — brew/npm(@charmland/crush)/winget/Arch/Nix/FreeBSD 등 패키지 다양, 'no configuration'으로도 동작하고 crush.json으로 설정. MCP를 http·stdio·sse로 붙여 도구 확장"
     source: "https://github.com/charmbracelet/crush"
+  - category: ai
+    title: "Zed 1.0 — Rust로 5년 짠 고성능 에디터가 '에이전트 호스트'로 1.0을 찍다(Atom·Tree-sitter 제작진·~85k★)"
+    summary: >
+      Atom·Tree-sitter를 만든 Zed Industries가 2026-04-29 에디터 Zed의 1.0을 발표했다.
+      Atom 시절의 'Electron 위 JS'를 버리고 GPUI라는 렌더링 프레임워크를 Rust로 바닥부터 새로 짜,
+      5년·100만 줄 넘는 코드로 GPU 가속 에디터를 만든 게 핵심이다(GitHub ~85.4k★·주로 GPL-3.0).
+      코딩 에이전트 관점의 차별점은 Zed가 '에이전트를 직접 만든 게 아니라 호스트'라는 점이다 —
+      자체 표준 ACP(Agent Client Protocol)로 Claude Code·Codex·Gemini CLI·goose 같은 외부 에이전트를
+      에디터 안에서 네이티브로 돌리고, Agent Panel에서 여러 에이전트를 병렬로 띄운다.
+      즉 '터미널 에이전트 vs IDE'가 아니라, 빠른 에디터를 에이전트들의 공용 작업대로 쓰는 방향이다.
+    points:
+      - "정체성 — Nathan Sobo(전 Atom 공동제작) 팀의 Zed Industries 작품. 2026-04-29 1.0, Rust 97%대·GPUI를 Rust로 자작, mac·Windows·Linux, GitHub ~85.4k★·라이선스 주로 GPL-3.0"
+      - "에이전트 호스트 모델 — 자체 에이전트를 강제하지 않고 ACP로 Claude Code·Codex·Gemini CLI·OpenCode·goose·Cline 등 외부 에이전트를 에디터에 붙여 씀. JetBrains도 ACP 채택, 양사 공동 에이전트 레지스트리"
+      - "병렬 에이전트 — Agent Panel에서 여러 에이전트를 한 창에서 동시에 실행(Parallel Agents). 코드 검색·파일 편집·터미널 실행 같은 내장 툴을 에이전트가 호출하는 agentic editing 지원"
+    source: "https://zed.dev/blog/zed-1-0"

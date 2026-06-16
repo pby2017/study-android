@@ -398,3 +398,5 @@
 - 2026-06-17 16:00 KST | Ruflo(전 claude-flow) — Claude Code 위 queen-led 멀티에이전트 스웜 하네스, mesh/ring/star 토폴로지+합의, 모델 비종속(Claude/GPT/Gemini/Cohere/Ollama), npm ruflo, MIT ~59.8k★, 수치는 프로젝트 주장이며 외부 감사가 MCP도구·비용절감 주장 반박 | https://github.com/ruvnet/claude-flow
 
 - 2026-06-17 23:00 KST | Crush(Charm/charmbracelet) — Go로 짠 예쁜 TUI 코딩 에이전트, 세션 중 LLM 전환 가능한 모델 비종속(Anthropic/OpenAI/Groq/OpenRouter 등)·MCP(http/stdio/sse)·세션 기반·FSL-1.1-MIT·~25.4k★ | https://github.com/charmbracelet/crush
+
+- 2026-06-17 17:00 KST | Zed 1.0 — Rust로 5년·100만줄·GPUI 자작한 GPU가속 에디터가 ACP로 Claude Code·Codex·Gemini CLI 등 외부 에이전트를 네이티브 호스팅+병렬 실행하는 에이전트 호스트로 1.0(2026-04-29·Atom/Tree-sitter 제작진·~85.4k★·GPL-3.0) | https://zed.dev/blog/zed-1-0
