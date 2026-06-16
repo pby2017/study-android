@@ -2448,3 +2448,18 @@ cards:
       - "구성 3방식: 대화형 Chat·블록 비주얼 캔버스·코드 / RAG 지식베이스·Tables·1,000+ 통합"
       - "로컬: Docker 위 `npx simstudio`로 :3000 / Ollama·vLLM로 로컬 모델 self-host 가능"
     source: "https://github.com/simstudioai/sim"
+  - category: ai
+    title: "Repomix — 레포 전체를 'AI가 먹기 좋은 단일 파일'로 패킹하는 CLI(26.3k★)"
+    summary: >
+      Repomix(yamadashy/repomix)는 코드 레포 전체를 Claude·ChatGPT·Gemini 같은 LLM에 통째로
+      물려주기 좋게 단일 파일 하나로 묶어주는 MIT 오픈소스 도구로, README 기준 GitHub 스타 26.3k다.
+      설치 없이 `npx repomix@latest` 한 줄이면 현재 디렉터리를 패킹해 기본 `repomix-output.xml`을 만들고,
+      `--remote yamadashy/repomix`처럼 클론 없이 원격 레포(브랜치·태그·커밋 해시 지정 가능)도 바로 패킹한다.
+      `--compress` 옵션은 Tree-sitter로 핵심 코드 요소만 추출해 토큰을 줄여주고, Secretlint로 비밀키 등
+      민감정보가 섞여 들어가는 걸 막으며 `.gitignore`/`.repomixignore`도 존중한다. 출력은 XML(기본)·Markdown·
+      JSON·plain text를 지원하고 `--mcp`로 MCP 서버로도 띄울 수 있다. (스타 수는 README가 밝힌 수치다.)
+    points:
+      - "MIT 오픈소스, 26.3k★(README) — `npx repomix@latest` 한 줄로 레포를 단일 파일로 패킹"
+      - "`--compress`(Tree-sitter)로 토큰 절감 / Secretlint로 비밀정보 차단 / .gitignore 존중"
+      - "`--remote`로 클론 없이 원격 레포 패킹, 출력 XML·MD·JSON, `--mcp`로 MCP 서버 제공"
+    source: "https://github.com/yamadashy/repomix"
