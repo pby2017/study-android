@@ -2711,3 +2711,16 @@ cards:
       - "직접 tool call 대신 코드로 도구를 엮어 호출 → 여러 단계를 한 번에 처리해 왕복·토큰 절감(글은 정량 %는 제시 안 함, 정성적 주장)"
       - "샌드박스는 컨테이너가 아닌 V8 isolate — 수 ms·수 MB로 기동(Worker Loader API). 저자 Kenton Varda·Sunil Pai, 2025-09-26 공개"
     source: "https://blog.cloudflare.com/code-mode/"
+  - category: ai
+    title: "에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 '하네스'를 설계하는 실전 교훈"
+    summary: >
+      Anthropic 연구원 Nicholas Carlini가 Claude 에이전트 16개를 동시에 돌려, Linux 6.9를 x86·ARM·RISC-V에서 빌드하는
+      10만 줄짜리 Rust C 컴파일러를 만든 실험 기록이다(약 2,000세션·약 $20,000 소요). 핵심 교훈은 도구 이름이 아니라
+      '하네스(작업 환경)'를 어떻게 설계하느냐에 있다. 검증기(verifier)가 거의 완벽해야 하며 그렇지 않으면
+      "Claude가 엉뚱한 문제를 푼다". 또 Claude는 시간 감각이 없어("can't tell time") 방치하면 진척 대신 테스트만
+      몇 시간씩 돌리므로, 1%·10% 무작위 샘플을 도는 --fast 옵션으로 회귀를 빨리 잡게 했다.
+    points:
+      - "검증기가 곧 목표 — \"task verifier가 거의 완벽하지 않으면 Claude는 엉뚱한 문제를 푼다\". 기능 추가가 기존 동작을 자주 깨뜨려 결국 CI를 붙임"
+      - "병렬화: 테스트가 많이 깨질 땐 각 에이전트가 하나씩 집어 쉽지만, 단일 Linux 빌드는 서로 덮어써 충돌 → GCC를 'known-good 오라클'로 실패 파일 격리"
+      - "하네스 위생: 출력 범람 막으려 파일로 로깅·에러는 grep으로 찾게 표시, 작업 점유는 current_tasks/에 파일을 써서 잠금(git이 충돌 시 다른 작업 고르게 강제)"
+    source: "https://www.anthropic.com/engineering/building-c-compiler"
