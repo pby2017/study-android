@@ -370,3 +370,5 @@
 - 2026-06-18 12:00 KST | Cline Plan/Act 모드 — 생각(읽기·추론)과 실행을 토글로 분리해 폭주 편집 차단, BYOK 30+ 공급자·MCP·~63k★ Apache-2.0 | https://github.com/cline/cline
 
 - 2026-06-17 21:00 KST | Cursor 2.0 — git 워크트리로 에이전트 여러 개를 동시에·충돌 없이 돌리고 best-of-N으로 최선 채택, 에이전트 중심 UI+네이티브 브라우저 테스트(2025-10-29) | https://cursor.com/blog/2-0
+
+- 2026-06-17 13:00 KST | Amp(Sourcegraph) — 제약 없는 토큰 사용 철학, 스레드(영속 메모리)·서브에이전트 병렬·Oracle 추론 위임·AGENT.md, amp -x 유료 크레딧 | https://ampcode.com/manual
