@@ -366,3 +366,5 @@
 - 2026-06-17 12:00 KST | mini-SWE-agent — 100줄 bash-only로 SWE-bench 74%+, SWE-agent 후속(MIT·~5.2k★) | https://github.com/SWE-agent/mini-swe-agent- 2026-06-17 12:30 KST | Agent Teams(Claude Code 공식·실험) — 동료끼리 직접 메시징+공유 태스크 리스트로 self-coordination, 서브에이전트와 대비, CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 | https://code.claude.com/docs/en/agent-teams
 
 - 2026-06-17 22:30 KST | Kiro(AWS) — 코드가 아니라 스펙이 산출물, 요구사항→설계→태스크 세 파일로 강제하는 스펙 주도 에이전트 | https://kiro.dev/docs/specs/
+
+- 2026-06-18 12:00 KST | Cline Plan/Act 모드 — 생각(읽기·추론)과 실행을 토글로 분리해 폭주 편집 차단, BYOK 30+ 공급자·MCP·~63k★ Apache-2.0 | https://github.com/cline/cline
