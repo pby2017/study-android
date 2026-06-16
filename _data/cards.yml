@@ -2662,3 +2662,15 @@ cards:
       - "Spec Kit과의 차이: Spec Kit은 파이썬·엄격한 단계 게이트의 '무거운' SDD, OpenSpec은 단계 게이트 없이 산출물을 자유롭게 수정하는 '가벼운' SDD"
       - "25+ 도구 지원(Claude Code·Cursor 등), MIT 라이선스, Node 20.19+ 필요(공식 레포 Fission-AI/OpenSpec, 약 55k★)"
     source: "https://github.com/Fission-AI/OpenSpec"
+  - category: ai
+    title: "OpenHands(All Hands AI) — 'BYOK로 어떤 LLM이든 꽂는' MIT 오픈소스 자율 코딩 에이전트(77k★)"
+    summary: >
+      OpenHands(옛 OpenDevin)는 코드 작성·터미널 실행·웹 탐색까지 사람 개발자처럼 수행하는 오픈소스 자율 코딩 플랫폼이다.
+      특정 모델에 묶이지 않는 model-agnostic·BYOK 설계로 Claude·GPT 등 원하는 LLM을 자기 키로 붙여 self-host할 수 있어 벤더 락인이 없다.
+      CLI·GUI·클라우드 등 여러 형태로 돌고, README에는 SWE-bench Verified 77.6 배지가 걸려 있다(모델·하네스에 따라 달라지는 수치이니 '주장'으로 볼 것).
+      잘 정의된 작업(필드 추가, 테스트 작성, 실패 테스트 추적)에 강하고, 모호한 요구·대형 리팩터링에선 다른 에이전트들처럼 약하다는 평이 일반적이다.
+    points:
+      - "MIT 라이선스 오픈소스, model-agnostic·BYOK: Claude·GPT 등 원하는 LLM을 자기 키로 붙여 self-host(벤더 락인 없음)"
+      - "CLI·GUI·클라우드 형태로 실행, 풀 자율 루프(이슈 읽기→코드→테스트→디버그→PR)와 멀티에이전트 위임 지원"
+      - "공식 레포 All-Hands-AI/OpenHands(약 77k★), README에 SWE-bench Verified 77.6 배지 — 모델/하네스 의존 수치라 '주장'으로 해석"
+    source: "https://github.com/All-Hands-AI/OpenHands"

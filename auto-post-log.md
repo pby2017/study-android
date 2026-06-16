@@ -282,3 +282,5 @@
 - 2026-06-17 05:00 KST | ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI | https://github.com/jeremylongshore/claude-code-plugins-plus-skills
 - 2026-06-17 05:30 KST | BMAD-METHOD — 애자일 팀 전체를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49k★) | https://github.com/bmad-code-org/BMAD-METHOD
 - 2026-06-17 06:00 KST | OpenSpec — Spec Kit보다 가볍게 코드 전에 무엇을 만들지부터 합의하는 SDD(55k★) | https://github.com/Fission-AI/OpenSpec
+
+- 2026-06-17 06:30 KST | OpenHands(All Hands AI) — BYOK로 어떤 LLM이든 꽂는 MIT 오픈소스 자율 코딩 에이전트(77k★) | https://github.com/All-Hands-AI/OpenHands
