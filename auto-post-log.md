@@ -363,4 +363,4 @@
 - 2026-06-18 11:30 KST | SWE-bench Pro(Scale) — 비공개·카피레프트 레포로 오염 차단한 차세대 코딩 벤치마크(1,865태스크·41레포·표준 스캐폴드, 벤더 하네스와 10~30점 격차) | https://labs.scale.com/leaderboard/swe_bench_pro_public
 
 - 2026-06-17 22:00 KST | Spotify Honk — Claude Code 기반 백그라운드 코딩 에이전트로 PR 1,500+개 자동 머지(Fleet Management 토대·마이그레이션 60~90% 절감) | https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1
-- 2026-06-17 12:00 KST | mini-SWE-agent — 100줄 bash-only로 SWE-bench 74%+, SWE-agent 후속(MIT·~5.2k★) | https://github.com/SWE-agent/mini-swe-agent
+- 2026-06-17 12:00 KST | mini-SWE-agent — 100줄 bash-only로 SWE-bench 74%+, SWE-agent 후속(MIT·~5.2k★) | https://github.com/SWE-agent/mini-swe-agent- 2026-06-17 12:30 KST | Agent Teams(Claude Code 공식·실험) — 동료끼리 직접 메시징+공유 태스크 리스트로 self-coordination, 서브에이전트와 대비, CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 | https://code.claude.com/docs/en/agent-teams

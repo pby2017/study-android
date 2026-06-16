@@ -3285,3 +3285,15 @@ cards:
       - "주장 수치: SWE-bench 74%+ 점수를 README에서 주장(모델·구성에 따라 달라짐). 전작 SWE-agent(~19.5k★)와 별개 레포로, mini 쪽은 ~5.2k★"
       - "도입처: Meta·NVIDIA·IBM·Anyscale·프린스턴·스탠퍼드 등이 SWE-bench 평가용으로 쓴다고 명시. '스캐폴드보다 모델'이라는 벤치마킹 철학의 레퍼런스 구현"
     source: "https://github.com/SWE-agent/mini-swe-agent"
+  - category: ai
+    title: "Agent Teams(Claude Code 공식·실험) — 서브에이전트와 달리 '동료끼리 직접 대화·반박'하게 만드는 팀 모드"
+    summary: >
+      서브에이전트는 일을 나눠 병렬로 돌리지만 결과를 리드에게 따로 보고할 뿐, 서로 발견을 공유하거나 가정을 반박하지 못한다.
+      Claude Code의 Agent Teams(실험 기능)는 이 한계를 푼다 — 한 세션이 '팀 리드'가 되어 여러 독립 Claude 인스턴스(각자 자기 컨텍스트 창)를 띄우고,
+      이들이 공유 태스크 리스트로 스스로 조율하며 서로에게 직접 메시지를 보낸다. 켜는 법은 환경변수 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
+      "버그 원인 가설 5개를 동료들이 서로 반증하게 하라" 같은 과학적 토론 구조로, 한 에이전트가 첫 가설에 닻 내리고 멈추는 앵커링을 깨는 게 핵심 용도다.
+    points:
+      - "서브에이전트 vs 팀: 서브에이전트는 리드에게만 결과 보고(토큰 저렴·결과만 중요할 때), 팀은 동료끼리 직접 메시징+공유 태스크 리스트로 self-coordination(토큰 비쌈·각 동료가 별도 Claude 인스턴스)"
+      - "실무 패턴: PR 리뷰를 보안/성능/테스트커버리지 3개 렌즈로 동시에 / 경합 가설 5개를 adversarial하게 서로 반증 / 모듈을 동료별로 나눠 병렬 리팩터(파일 충돌 피하려 각자 다른 파일 소유)"
+      - "운영: 동료는 CLAUDE.md·MCP·스킬은 자동 로드하나 리드의 '대화 이력'은 안 물려받음(스폰 프롬프트에 맥락 명시 필요). 플랜 승인 게이트('테스트 포함 plan만 승인') 가능. tmux/iTerm2 split-pane 또는 in-process 모드"
+    source: "https://code.claude.com/docs/en/agent-teams"
