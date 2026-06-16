@@ -310,3 +310,4 @@
 - 2026-06-17 13:30 KST | Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 코드 실행 없이 훑어 공급망 노출을 잡는 스캐너 | https://github.com/perplexityai/bumblebee
 
 - 2026-06-17 14:00 KST | Deep Agents(LangChain) — Claude Code에서 영감받아 만든 범용 에이전트 하네스(MIT) | https://github.com/langchain-ai/deepagents
+- 2026-06-17 14:30 KST | Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다 | https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation

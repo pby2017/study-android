@@ -2883,3 +2883,19 @@ cards:
       - "LangGraph 런타임 위 LangChain `create_agent`를 더 의견 있게 감싼 층, 'Claude Code에서 영감받음'을 명시 — 무엇이 그런 도구를 범용으로 만드는지를 일반화한 시도"
       - "MIT 라이선스, `uv add deepagents`로 설치, 파일시스템은 로컬·샌드박스·원격 백엔드로 교체 가능(pluggable)"
     source: "https://github.com/langchain-ai/deepagents"
+
+  - category: ai
+    title: "Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다"
+    summary: >
+      2025년 12월 9일, 리눅스재단이 'Agentic AI Foundation(AAIF)'을 출범하며
+      에이전트 시대의 '기초 배관' 격인 오픈 프로젝트 셋을 한데 모았다.
+      Anthropic이 MCP(도구·데이터 연결 표준), Block이 goose(로컬 우선 에이전트 프레임워크),
+      OpenAI가 AGENTS.md(레포별 에이전트 지침 표준)를 각각 기증했다 — 서로 경쟁사인 세 곳이
+      핵심 자산을 중립 거버넌스에 내놓은 점이 핵심이다.
+      실무자 입장에선, 지금 쓰는 코딩 에이전트가 의존하는 표준들이 한 벤더에 묶이지 않고
+      개방·중립으로 유지된다는 신호이자, AGENTS.md를 레포에 두는 관행이 '사실상 표준'으로 굳어졌다는 뜻이다.
+    points:
+      - "세 기증 프로젝트와 기증자: MCP(Anthropic)·goose(Block)·AGENTS.md(OpenAI). TechCrunch 표현으로 '에이전트 시대의 기본 배관'"
+      - "AGENTS.md는 2025년 8월 이후 '6만 개 넘는 오픈소스 프로젝트'가 채택했다고 재단이 명시(주장) — 레포마다 일관된 에이전트 지침 파일을 두는 관행"
+      - "플래티넘 멤버: AWS·Anthropic·Block·Bloomberg·Cloudflare·Google·Microsoft·OpenAI. 리눅스재단 산하 directed fund로 운영(MCP는 2024년 11월 오픈소스화)"
+    source: "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation"
