@@ -2603,3 +2603,20 @@ cards:
       - "Hooks(PreToolUse·PostToolUse·Stop·SessionStart 등)로 도구 호출을 검증·로깅·차단·변형"
       - "Subagents·MCP·Permissions(allowed_tools)·Sessions(resume/fork)와 .claude/ 설정(스킬·명령·CLAUDE.md) 로드 지원"
     source: "https://code.claude.com/docs/en/agent-sdk/overview"
+  - category: ai
+    title: "AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff)"
+    summary: >
+      2025년 12월 Anthropic이 첫 인수로 JavaScript 런타임 Bun(MIT)을, 비슷한 시기
+      OpenAI가 Python 툴링 회사 Astral(uv·ruff·ty 제작)을 인수한다고 발표했다.
+      이유는 같다 — 코딩 에이전트가 곧 회사 매출의 핵심이 됐고(Claude Code는 발표
+      당시 연 환산 10억 달러), 에이전트가 코드를 생성·설치·린트·타입체크하는 토대를
+      직접 소유해야 빠르고 안정적이기 때문이다. Anthropic은 "Claude Code가 Bun
+      실행 파일로 배포된다 — Bun이 깨지면 Claude Code가 깨진다"고 명시했다. 실무
+      포인트: 당신이 매일 쓰는 uv·ruff·Bun이 특정 AI 랩의 전략 자산이 됐다는 뜻 —
+      양쪽 모두 오픈소스·기존 라이선스 유지를 약속했지만, 로드맵 우선순위가 그 랩의
+      에이전트에 맞춰질 수 있음을 감안해 도구 선택을 하라.
+    points:
+      - "Anthropic→Bun(2025-12, MIT 유지·기존 팀 잔류), OpenAI→Astral(uv·ruff·ty, 오픈소스 지속 지원 약속) — 둘 다 '첫 인수'급 전략 거래"
+      - "동기는 수직 통합: 에이전트의 코드 생성→의존성→린트→타입체크 루프를 자사 툴로 닫아 속도·안정성 확보"
+      - "오픈소스·permissive 라이선스라 커뮤니티 포크는 언제든 가능 — 단 로드맵이 인수사 에이전트 우선순위로 기울 리스크는 남는다"
+    source: "https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone"
