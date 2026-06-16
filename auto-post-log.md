@@ -287,3 +287,4 @@
 - 2026-06-17 07:00 KST | Cline — Plan/Act 모드로 먼저 계획하고 승인받아 실행하는 BYOK 코딩 에이전트(63k★) | https://github.com/cline/cline
 
 - 2026-06-17 07:30 KST | Terminal-Bench 2.1 리더보드 — 모델이 아니라 에이전트+모델 쌍으로 줄 세운 2026 현황 | https://www.tbench.ai/leaderboard/terminal-bench/2.1
+- 2026-06-17 08:00 KST | Code Mode(Cloudflare) — MCP 도구를 TypeScript API로 바꿔 LLM에게 코드로 호출하게 하기 | https://blog.cloudflare.com/code-mode/

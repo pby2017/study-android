@@ -2699,3 +2699,15 @@ cards:
       - "측정 단위가 '에이전트+모델 쌍' — 동일 GPT-5.5도 에이전트(Codex CLI vs Terminus 2)에 따라 5%p 넘게 갈린다"
       - "버전 주의: 2.1은 tbench.ai 공식/검증 점수, 벤더 자체발표(2.0 등)와 직접 비교 불가 — 트래커마다 절대 수치도 다름"
     source: "https://www.tbench.ai/leaderboard/terminal-bench/2.1"
+  - category: ai
+    title: "Code Mode(Cloudflare) — MCP 도구를 'TypeScript API'로 바꿔 LLM에게 코드로 호출하게 하기"
+    summary: >
+      Cloudflare가 제안한 패턴으로, MCP 도구를 LLM에게 직접 노출해 'tool call'을 시키는 대신
+      도구 스키마를 doc 주석 달린 TypeScript API로 변환한 뒤 LLM이 그 API를 호출하는 코드를 짜게 한다.
+      근거는 "LLM은 tool call보다 코드를 훨씬 많이 학습했다"는 것 — tool 호출보다 코드 작성을 더 잘한다는 가정이다.
+      여러 도구를 한 번에 엮어 호출해 왕복 횟수·토큰 낭비를 줄이며, 생성된 코드는 컨테이너가 아니라 V8 isolate 샌드박스(Worker Loader API)에서 수 ms 만에 띄워 실행한다.
+    points:
+      - "Agents SDK가 MCP 서버 스키마를 가져와 TypeScript API(doc 주석 포함)로 변환 → 에이전트엔 '그 코드를 샌드박스에서 실행하는 도구' 하나만 준다"
+      - "직접 tool call 대신 코드로 도구를 엮어 호출 → 여러 단계를 한 번에 처리해 왕복·토큰 절감(글은 정량 %는 제시 안 함, 정성적 주장)"
+      - "샌드박스는 컨테이너가 아닌 V8 isolate — 수 ms·수 MB로 기동(Worker Loader API). 저자 Kenton Varda·Sunil Pai, 2025-09-26 공개"
+    source: "https://blog.cloudflare.com/code-mode/"
