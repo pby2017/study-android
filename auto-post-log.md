@@ -355,3 +355,5 @@
 
 - 2026-06-18 09:30 KST | Dynamic Workflows + ultracode — Bun Zig→Rust 75만 줄을 Claude 에이전트 수백 개로 옮긴 실제 사례(테스트 99.8%·11일) | https://claude.com/blog/introducing-dynamic-workflows-in-claude-code
 - 2026-06-18 10:00 KST | Aider repo map — tree-sitter로 레포 전체를 토큰 1k 지도로 압축해 LLM에 매번 먹이기(Apache-2.0·46.3k★) | https://aider.chat/docs/repomap.html
+
+- 2026-06-18 10:30 KST | Context7(Upstash) — 낡은·환각 API 막으려 버전별 최신 문서를 매 요청에 주입하는 MCP 서버(MIT, resolve-library-id+문서조회 두 도구) | https://github.com/upstash/context7
