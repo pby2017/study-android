@@ -308,3 +308,5 @@
 - 2026-06-17 12:30 KST | OpenCode(sst) — 모델 안 가리고 터미널에서 도는 오픈소스 코딩 에이전트, 폰에서 원격 조종까지 | https://github.com/sst/opencode
 - 2026-06-17 13:00 KST | Kilo Code — VS Code·JetBrains에서 모드를 갈아끼우며 도는 올인원 오픈소스 코딩 에이전트(MIT·20k★) | https://github.com/Kilo-Org/kilocode
 - 2026-06-17 13:30 KST | Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 코드 실행 없이 훑어 공급망 노출을 잡는 스캐너 | https://github.com/perplexityai/bumblebee
+
+- 2026-06-17 14:00 KST | Deep Agents(LangChain) — Claude Code에서 영감받아 만든 범용 에이전트 하네스(MIT) | https://github.com/langchain-ai/deepagents
