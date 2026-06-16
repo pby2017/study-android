@@ -2587,3 +2587,19 @@ cards:
       - "외부 에이전트는 별도 프로세스 — 인증(예: Claude는 /login)·과금·모델을 에이전트가 직접 소유"
       - "Zed가 설정한 MCP 서버를 ACP로 외부 에이전트에 전달 가능, dev: open acp logs로 통신 디버깅"
     source: "https://zed.dev/docs/ai/external-agents"
+  - category: ai
+    title: "Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK"
+    summary: >
+      Claude Agent SDK는 Claude Code를 구동하는 도구·에이전트 루프·컨텍스트 관리를
+      Python·TypeScript 라이브러리로 그대로 노출한 Anthropic 공식 SDK다. CLI는 사람이
+      타이핑하는 셸이고, 이 SDK는 같은 엔진을 코드에서 query()로 호출하는 형태 —
+      `query(prompt=..., options=ClaudeAgentOptions(allowed_tools=["Read","Edit","Bash"]))`
+      한 줄로 파일을 읽고 버그를 찾아 고치는 에이전트가 돈다. 핵심은 모델을 직접
+      부르는 게 아니라 '에이전트 루프'를 SDK가 대신 돌려준다는 점이다. Anthropic이
+      직접 운영하는 Managed Agents(호스티드 REST API)와 달리, Agent SDK는 에이전트
+      루프를 내 프로세스 안에서 돌린다고 공식 문서가 구분한다.
+    points:
+      - "Read·Write·Edit·Bash·Glob·Grep 등 Claude Code 내장 도구와 에이전트 루프를 그대로 제공"
+      - "Hooks(PreToolUse·PostToolUse·Stop·SessionStart 등)로 도구 호출을 검증·로깅·차단·변형"
+      - "Subagents·MCP·Permissions(allowed_tools)·Sessions(resume/fork)와 .claude/ 설정(스킬·명령·CLAUDE.md) 로드 지원"
+    source: "https://code.claude.com/docs/en/agent-sdk/overview"

@@ -275,3 +275,5 @@
 - 2026-06-17 03:00 KST | Kilo Code — Cline·Roo Code 계보의 오픈소스 VS Code 코딩 에이전트(MIT·20k★) | https://github.com/Kilo-Org/kilocode
 
 - 2026-06-17 03:30 KST | Zed — Atom·Tree-sitter 제작진의 에디터, Claude Code·Codex·Gemini를 패널에 품다(GPL-3.0·85k★) | https://zed.dev/docs/ai/external-agents
+
+- 2026-06-17 04:00 KST | Claude Agent SDK — Claude Code를 라이브러리로 받아 자체 에이전트를 짜는 공식 SDK | https://code.claude.com/docs/en/agent-sdk/overview
