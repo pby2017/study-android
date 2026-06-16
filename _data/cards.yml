@@ -3175,3 +3175,15 @@ cards:
       - "격리 방식(1차 출처): '각 태스크가 자기 workspace·브랜치·파일·터미널·diff·리뷰 경로를 가진다' → 병렬 에이전트의 동시 편집 충돌을 작업별 격리로 차단"
       - "운영 흐름: 여러 에이전트를 띄워두고 → 끝난 작업의 diff를 리뷰 → PR 생성·머지. '사람의 리뷰·통합'을 병목으로 보고 그 단계를 줄이는 설계. 현재 맥 중심·v0.65.0대"
     source: "https://www.conductor.build/"
+  - category: ai
+    title: "GitHub Octoverse 2025 — 'AI가 기본값'이 된 해, 그리고 그 부작용(타입스크립트 1위·AI slop·Broken Access Control 172%↑)"
+    summary: >
+      GitHub의 연례 개발자 동향 리포트 Octoverse 2025가 공개됐다. 1년간 신규 개발자 3,600만 명 이상이 합류해(평균 1초에 1명 이상) 전체 1억 8,000만 명을 넘겼고, 저장소는 6억 3,000만 개를 돌파했다.
+      핵심은 'AI가 더 이상 옵션이 아니라 기본값'이라는 것 — 신규 개발자의 약 80%가 가입 첫 주에 Copilot을 썼고, LLM SDK를 import하는 공개 저장소는 1년 새 178% 늘어 110만 개를 넘었다. 2026년 실무자에게 직접적인 신호는 두 가지다.
+      ① 타입스크립트가 10여 년 만에 파이썬·자바스크립트를 제치고 사용량 1위 — LLM이 만든 코드의 컴파일 오류 상당수가 타입 체크 실패라서 엄격한 타입 시스템이 'AI 코드를 일찍 거르는 안전망'으로 가치가 커졌다는 분석이다.
+      ② 부작용도 공식 집계됐다. CodeQL 경보 1위가 Injection에서 Broken Access Control로 바뀌어 15만+ 저장소에서 잡혔고(전년比 172%↑) — GitHub은 그 상당수를 'AI가 생성한 스캐폴드가 인증 체크를 건너뛴' 데서 비롯한다고 짚는다. 동시에 'AI slop'(저품질 자동생성 PR)이 메인테이너 시간을 갉아먹는 문제도 처음 리포트에 명시됐다.
+    points:
+      - "규모(공식): 신규 개발자 3,600만+(1초당 1명 이상)→누적 1.8억+, 저장소 6.3억+. 신규 개발자 ~80%가 첫 주에 Copilot 사용, LLM SDK import 공개 저장소 110만+(전년比 +178%)"
+      - "타입스크립트 1위(10여 년 만의 언어 지각변동): GitHub은 'LLM이 만든 컴파일 오류의 다수가 타입 체크 실패'라는 2025 학술 결과를 근거로, 엄격 타입 시스템이 AI 코드 오류를 파이프라인 초반에 거르는 장치로 부상했다고 분석"
+      - "부작용도 공식 집계: CodeQL 경보 1위가 Injection→Broken Access Control(15만+ 저장소, +172% YoY)로 바뀜 — '인증 체크를 건너뛴 AI 스캐폴드'가 원인 다수. 'AI slop' 저품질 PR이 메인테이너 부담으로 처음 명시"
+    source: "https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/"
