@@ -3058,3 +3058,16 @@ cards:
       - "확장 방식: 마켓플레이스에서 받는 대신 에이전트가 자기 기능을 TypeScript로 직접 작성(/answer·/todos·/review 같은 .ts 익스텐션). '코드가 코드를 쓰고 실행한다'는 발상"
       - "주의: 파일·프로세스·네트워크·크리덴셜을 막는 내장 권한 시스템이 없어 README가 컨테이너 격리(Docker 등)를 권한다. 레포는 badlogic/pi-mono(MIT·TypeScript)이며 별 수 약 63k는 레포 표기 기준 주장으로 변동한다"
     source: "https://github.com/badlogic/pi-mono"
+  - category: ai
+    title: "Gemini CLI 은퇴 — 10만★ 오픈소스 터미널 에이전트, 2026-06-18부터 무료·Pro·Ultra 차단"
+    summary: >
+      구글은 오픈소스 터미널 코딩 에이전트 Gemini CLI(Apache-2.0, 약 10만★)를 2026년 6월 18일부로
+      무료·Google AI Pro·Ultra 사용자에게 더 이상 서비스하지 않고, 비(非)오픈소스인 Antigravity CLI로 대체한다고
+      공식 개발자 블로그에서 밝혔다. 구글은 1년간 6,000여 건의 머지된 PR과 10만 개 이상의 별을 쌓은 커뮤니티 기여를
+      '성공의 증거'로 인용했지만, 그 성과를 폐쇄형 후속작으로 통합하는 근거로 썼다는 점에서 오픈소스 진영의 비판을 샀다.
+      모든 접근이 끊기는 건 아니다 — Gemini Code Assist Standard/Enterprise, Google Cloud, 유료 Gemini API 경로는 유지된다.
+    points:
+      - "타임라인·범위: 무료·AI Pro·AI Ultra 사용자 대상 Gemini CLI 요청 처리가 2026-06-18 중단. 대체재 Antigravity CLI는 오픈소스가 아니다(이 카드는 '도구 소개'가 아니라 은퇴 이벤트 정리)"
+      - "남는 경로: 조직이 Gemini Code Assist Standard/Enterprise 라이선스나 Google Cloud, 또는 유료 Gemini/Enterprise API 키로 쓰던 접근은 그대로 유지된다고 공식 명시"
+      - "실무 함의: 무료 경로에 의존하던 팀은 마이그레이션이 필요. 오픈소스 경험을 잇는 포크로는 Qwen Code(Gemini-CLI 계보)가 거론된다. 별 수 '약 10만'은 레포 표기·보도 기준 주장으로 시점에 따라 변동"
+    source: "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/"
