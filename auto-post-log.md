@@ -368,3 +368,5 @@
 - 2026-06-17 22:30 KST | Kiro(AWS) — 코드가 아니라 스펙이 산출물, 요구사항→설계→태스크 세 파일로 강제하는 스펙 주도 에이전트 | https://kiro.dev/docs/specs/
 
 - 2026-06-18 12:00 KST | Cline Plan/Act 모드 — 생각(읽기·추론)과 실행을 토글로 분리해 폭주 편집 차단, BYOK 30+ 공급자·MCP·~63k★ Apache-2.0 | https://github.com/cline/cline
+
+- 2026-06-17 21:00 KST | Cursor 2.0 — git 워크트리로 에이전트 여러 개를 동시에·충돌 없이 돌리고 best-of-N으로 최선 채택, 에이전트 중심 UI+네이티브 브라우저 테스트(2025-10-29) | https://cursor.com/blog/2-0
