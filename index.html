@@ -11,10 +11,16 @@ title: study — 1분 지식 카드
   {% endfor %}
 </div>
 
+<div class="sortbar">
+  <span>정렬</span>
+  <button class="sort active" data-sort="newest">최신순</button>
+  <button class="sort" data-sort="oldest">오래된순</button>
+</div>
+
 <div class="grid">
   {% for card in site.data.cards.cards %}
     {% assign cat = site.data.cards.categories | where: "id", card.category | first %}
-    <article class="card" data-cat="{{ card.category }}" style="--accent:{{ cat.color }}">
+    <article class="card" data-cat="{{ card.category }}" data-idx="{{ forloop.index }}" style="--accent:{{ cat.color }}">
       <span class="badge">{{ cat.name }}</span>
       <h2>{{ card.title }}</h2>
       <p class="summary">{{ card.summary | strip_newlines }}</p>
@@ -31,9 +37,27 @@ title: study — 1분 지식 카드
 </div>
 
 <script>
-  // Pure client-side category filter — no plugin needed.
+  // Pure client-side category filter + sort — no plugin needed.
+  const grid  = document.querySelector('.grid');
   const chips = document.querySelectorAll('.chip');
-  const cards = document.querySelectorAll('.card');
+  const sorts = document.querySelectorAll('.sort');
+  const cards = [...document.querySelectorAll('.card')];
+
+  // Sort owns DOM order via data-idx (append order = oldest→newest). Default: newest first.
+  function applySort(mode) {
+    const dir = mode === 'oldest' ? 1 : -1;
+    [...cards]
+      .sort((a, b) => dir * (+a.dataset.idx - +b.dataset.idx))
+      .forEach(card => grid.appendChild(card)); // reorders existing nodes; display state preserved
+  }
+  applySort('newest');
+
+  sorts.forEach(btn => btn.addEventListener('click', () => {
+    sorts.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applySort(btn.dataset.sort);
+  }));
+
   chips.forEach(chip => chip.addEventListener('click', () => {
     chips.forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
