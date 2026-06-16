@@ -297,3 +297,5 @@
 - 2026-06-17 09:30 KST | Superpowers — 브레인스토밍→플랜→TDD→서브에이전트까지 개발 방법론 전체를 스킬로 묶은 프레임워크(MIT) | https://github.com/obra/superpowers
 
 - 2026-06-17 10:00 KST | 에이전트 코딩의 80% 문제 — 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다 | https://sourcegraph.com/blog/agentic-coding
+
+- 2026-06-17 10:30 KST | CrewAI — 역할 가진 에이전트 팀(Crew)과 결정적 워크플로(Flow)를 한 프레임워크에 담은 멀티에이전트 도구(MIT·53.7k★) | https://github.com/crewAIInc/crewAI

@@ -2777,3 +2777,16 @@ cards:
       - "권장 운영법: ①과제 블래스트 반경을 레포 전역 검색으로 미리 스코프 ②에이전트 커밋도 사람 커밋과 '같은 CI'로 게이트 ③에이전트를 외주 계약자처럼 다뤄 diff 리뷰·활동 감사 ④프롬프트가 아니라 '컨텍스트 레이어'에 투자"
       - "대규모/멀티레포에선 임베딩 근사 검색보다 '결정적·전수(deterministic, exhaustive) 검색'을 권장 — 단 Sourcegraph 자사(코드검색 제품) 글이라 제품 포지셔닝은 감안할 것"
     source: "https://sourcegraph.com/blog/agentic-coding"
+  - category: ai
+    title: "CrewAI — '역할 가진 에이전트 팀(Crew)'과 '결정적 워크플로(Flow)'를 한 프레임워크에 담은 멀티에이전트 도구(MIT·53.7k★)"
+    summary: >
+      CrewAI는 여러 AI 에이전트가 협업하도록 오케스트레이션하는 파이썬 프레임워크로,
+      LangChain 등 다른 에이전트 프레임워크에 의존하지 않고 '처음부터(from scratch)' 새로 짠 것이 특징이다.
+      두 축으로 동작한다 — (1) Crew: 역할(role)·목표(goal)·배경(backstory)을 가진 에이전트들이 자율적으로 의사결정하며 협업하는 팀,
+      (2) Flow: 이벤트 기반으로 실행 경로와 상태를 정밀 제어하는 프로덕션용 워크플로. 이 둘을 조합해 '자율성'과 '통제'를 함께 잡는 게 핵심 설계다.
+      에이전트는 agents.yaml에, 태스크는 tasks.yaml에 선언형으로 정의한다. 라이선스는 MIT.
+    points:
+      - "Crew(자율 협업) vs Flow(결정적 제어) 2축 — 한쪽만 고르지 말고 섞어 쓰라는 게 권장 패턴(역할 분담은 Crew, 분기·상태가 중요한 파이프라인은 Flow)"
+      - "LangChain 비의존: 자체 구현이라 '가볍고 빠르다(lean, lightning-fast)'를 표방 — 다른 프레임워크 위에 얹힌 래퍼가 아님"
+      - "에이전트/태스크를 코드가 아닌 YAML(agents.yaml·tasks.yaml)로 선언 — 별 수는 약 53.7k★, 포크 7.5k 주장(레포 표기 기준)"
+    source: "https://github.com/crewAIInc/crewAI"
