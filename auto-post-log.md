@@ -265,3 +265,4 @@
 
 - 2026-06-16 14:05 KST | Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트 | https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent
 - 2026-06-16 14:10 KST | Aider — 아키텍트 모델이 짜고 에디터 모델이 고치는 2모델 분업 터미널 페어프로그래머(46.3k★) | https://aider.chat/docs/usage/modes.html
+- 2026-06-17 00:30 KST | Context7 — 환각 API를 막으려 최신 버전별 공식 문서를 에이전트 컨텍스트에 꽂아주는 MCP(57k★) | https://github.com/upstash/context7
