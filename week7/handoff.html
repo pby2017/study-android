@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7주차 — handoff: 컨텍스트를 이식하는 기술</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --border:#30363d;
+    --fg:#e6edf3; --muted:#9da7b3; --accent:#58a6ff; --accent2:#3fb950;
+    --warn:#d29922; --danger:#f85149; --code:#1f2630; --gold:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);
+    font-family:-apple-system,"Apple SD Gothic Neo","Pretendard",system-ui,sans-serif;line-height:1.6;}
+  .deck{max-width:960px;margin:0 auto;padding:24px 20px 120px}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(13,17,23,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    padding:10px 20px;display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--accent)}
+  .nav .grp{color:var(--accent);font-weight:600}
+  section.slide{background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:32px 36px;margin:20px 0;scroll-margin-top:60px;position:relative}
+  .tag{display:inline-block;font-size:12px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;padding:2px 12px;margin-bottom:13px;letter-spacing:.3px}
+  .tag.t-diag{color:var(--accent2);border-color:var(--accent2)}
+  .tag.t-spec{color:var(--gold);border-color:var(--gold)}
+  .tag.t-ouro{color:var(--warn);border-color:var(--warn)}
+  .tag.t-ctx{color:#c39bff;border-color:#c39bff}
+  h1{font-size:30px;line-height:1.25;margin-bottom:10px}
+  h2{font-size:23px;margin-bottom:8px}
+  h3{font-size:16px;color:var(--accent);margin:15px 0 6px}
+  p{margin:7px 0}
+  .sub{color:var(--muted);font-size:15px}
+  ul,ol{margin:9px 0 9px 22px}
+  li{margin:5px 0}
+  .muted{color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:13px}
+  .card{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+  .card h4{font-size:14px;margin-bottom:5px}
+  code,pre{font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;overflow-x:auto;font-size:12.5px;color:#cdd9e5;margin:10px 0}
+  code.inline{background:var(--code);padding:2px 7px;border-radius:5px;font-size:.9em;color:var(--accent2)}
+  .flow{display:flex;align-items:stretch;gap:0;margin:16px 0;flex-wrap:wrap}
+  .step{flex:1;min-width:96px;background:var(--code);border:1px solid var(--border);
+    border-radius:9px;padding:9px;text-align:center}
+  .step .t{font-size:12px;color:var(--accent2);font-weight:600}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:15px;padding:0 3px}
+  .callout{border-left:3px solid var(--accent);background:rgba(88,166,255,.07);
+    padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0}
+  .callout.warn{border-color:var(--warn);background:rgba(210,153,34,.08)}
+  .callout.good{border-color:var(--accent2);background:rgba(63,185,80,.08)}
+  .callout.bad{border-color:var(--danger);background:rgba(248,81,73,.08)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--code);color:var(--accent)}
+  .shot{border:1px dashed var(--border);border-radius:10px;padding:22px;
+    text-align:center;color:var(--muted);background:repeating-linear-gradient(45deg,#13181f,#13181f 10px,#11161d 10px,#11161d 20px);margin:12px 0;font-size:13.5px}
+  .pgnum{position:absolute;top:13px;right:18px;color:var(--muted);font-size:12px}
+  a.src{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px dotted var(--accent)}
+  .center{text-align:center}
+  .big{font-size:19px}
+  hr{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .kbd{font-size:12px;color:var(--muted)}
+  .divider{text-align:center;color:var(--muted);font-size:13px;margin:28px 0 4px;letter-spacing:1px}
+  /* polish: 코드 핵심 라인 강조 + 한 줄 요약 + 비유 */
+  pre .hl{background:rgba(227,179,65,.16);color:#ffe79e;border-radius:3px;padding:0 2px;font-weight:600}
+  .gloss{font-size:14px;margin:8px 0 2px}
+  .gloss b{color:var(--gold)}
+  .analogy{background:rgba(195,155,255,.08);border-left:3px solid #c39bff;border-radius:0 8px 8px 0;
+    padding:9px 14px;margin:11px 0;font-size:13.5px}
+  .analogy b{color:#c39bff}
+  .guess{display:inline-block;background:rgba(248,81,73,.12);color:#ff9c95;border:1px solid rgba(248,81,73,.4);
+    border-radius:6px;padding:1px 9px;font-size:12.5px;margin:4px 0}
+  .hook{font-size:21px;line-height:1.5;margin:10px 0}
+  .hook b{color:var(--accent2)}
+  .big-take{font-size:24px;line-height:1.4;text-align:center;margin:16px 0;color:var(--fg)}
+  .big-take b{color:var(--accent2)}
+  /* 슬라이드별 출처 줄 */
+  .srcline{font-size:11.5px;color:var(--muted);margin-top:16px;border-top:1px dotted var(--border);padding-top:8px}
+  .srcline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+  /* 발표자 노트 — 청중 화면엔 절대 안 보임. n키로만 토글 */
+  aside.note{display:none;margin-top:14px;border-left:3px solid var(--gold);background:rgba(227,179,65,.07);
+    padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:var(--muted)}
+  aside.note b{color:var(--gold)}
+  body.shownotes aside.note{display:block}
+  /* before/after 비교표 */
+  .cmp{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px}
+  .cmp th,.cmp td{border:1px solid var(--border);padding:7px 9px;vertical-align:top}
+  .cmp th{background:var(--code)}
+  .cmp .bad{color:#ff9c95}.cmp .good{color:var(--accent2)}
+  .nums{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .numbox{flex:1;min-width:90px;background:var(--code);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center}
+  .numbox .v{font-size:22px;font-weight:700;color:var(--accent)}
+  .numbox.bad .v{color:var(--danger)}.numbox.good .v{color:var(--accent2)}
+  .numbox .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+  /* ===== 발표(슬라이드) 모드: body.present 일 때 한 장씩 ===== */
+  body.present .nav{display:none}
+  body.present .divider{display:none}
+  body.present .deck{padding-top:14px}
+  body.present section.slide{display:none}
+  body.present section.slide.active{display:block;min-height:78vh}
+  /* 좌하단 진행 표시 */
+  #hud{position:fixed;left:14px;bottom:12px;z-index:50;font-size:12px;color:var(--muted);
+    background:rgba(13,17,23,.85);border:1px solid var(--border);border-radius:999px;padding:5px 13px;
+    backdrop-filter:blur(6px);display:none}
+  body.present #hud{display:block}
+  #hud b{color:var(--accent)}
+  #hud .hint{color:var(--muted);opacity:.75;margin-left:8px}
+  @media print{
+    .nav,#hud{display:none}
+    body.present section.slide{display:block;min-height:auto;page-break-after:always}
+    section.slide{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#cover">표지</a>
+  <a href="#hook">문제</a>
+  <a href="#naive">순진한 접근</a>
+  <span class="grp">·</span>
+  <a href="#why-bad">왜 부족한가</a>
+  <a href="#mechanism">동작 원리</a>
+  <a href="#vs-compact">/compact 비교</a>
+  <span class="grp">·</span>
+  <a href="#usage">사용 흐름</a>
+  <a href="#tradeoffs">트레이드오프</a>
+  <a href="#wrap">정리</a>
+  <a href="#refs">참고자료</a>
+</nav>
+
+<div class="deck">
+
+<!-- COVER -->
+<section class="slide" id="cover">
+  <span class="tag">AI 스터디 · 7주차</span>
+  <h1>handoff<br><span class="sub" style="font-size:19px">— 컨텍스트를 이식하는 기술: 세션이 끝나도 맥락은 살아남는다</span></h1>
+  <p class="sub" style="margin-top:14px">mattpocock/skills의 <b>handoff</b> 스킬 해부 — "쓰면 이렇게 됩니다"가 아니라 "이런 <b>프롬프트·지시문·저장 위치</b>라서 그 결과가 나옵니다"를 실제 소스로 확인</p>
+  <div class="callout" style="margin-top:18px">
+    <strong>왜 handoff인가? (1~6주차와의 연결)</strong> 1주차 OT · 2주차 하네스 · 3주차 LLM Wiki · 4주차 OMC/Octopus · 5주차 superpowers · 6주차 Vectorless RAG.
+    이번 주는 <b>에이전트 세션 사이의 연결고리</b>를 다룬다 — 컨텍스트 한계를 맞닥뜨렸을 때 맥락을 어떻게 다음 에이전트에게 이식하는가.
+    <br>리포: <b>mattpocock/skills</b> (130k★, MIT, <code class="inline">npx skills@latest add mattpocock/skills</code>로 설치)
+  </div>
+  <aside class="note"><b>발표자 노트:</b> handoff는 Productivity 카테고리 스킬. 프론트맨 frontmatter description(원문): "Compact the current conversation into a handoff document for another agent to pick up." 설치 직후 슬래시 커맨드처럼 수동으로 호출한다.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">github.com/mattpocock/skills</a> — skills/productivity/handoff/SKILL.md</p>
+</section>
+
+<!-- HOOK -->
+<section class="slide" id="hook">
+  <span class="tag">문제</span>
+  <h2>컨텍스트 한계 — 누구나 겪은 그 순간</h2>
+  <p class="hook">긴 세션 끝에 새 창을 열면<br><b>"아까 하던 거 다시 설명해줄 수 있어요?"</b></p>
+  <p class="sub">에이전트는 이전 세션을 기억하지 못한다. 우리는 매번 배경을 다시 설명하고, 결정 맥락을 복붙하고, "아 그거 지난번에…"를 반복한다.</p>
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <h4 style="color:var(--danger)">흔한 패턴</h4>
+      <ul style="font-size:13px">
+        <li>새 세션에 이전 대화 전체를 붙여넣기</li>
+        <li>같은 배경 설명을 세 번째 반복</li>
+        <li>민감한 정보(API 키·PII)가 그대로 노출</li>
+        <li>이미 만든 PRD·ADR을 또 첨부</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--accent2)">원하는 그림</h4>
+      <ul style="font-size:13px">
+        <li>새 에이전트가 "어디까지 왔는지" 즉시 파악</li>
+        <li>다음 세션의 목적에 맞게 정제된 문서</li>
+        <li>민감 정보는 자동 제거</li>
+        <li>기존 아티팩트는 경로 참조로 대체</li>
+      </ul>
+    </div>
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — skills/productivity/handoff/SKILL.md</a></p>
+</section>
+
+<!-- NAIVE -->
+<section class="slide" id="naive">
+  <span class="tag t-ctx">순진한 접근</span>
+  <h2>"그냥 대화 전체를 복붙하면 되잖아요?"</h2>
+  <p class="guess">🚫 막는 추측: 이전 세션의 원문 그대로가 곧 최선의 컨텍스트다</p>
+  <div class="analogy"><b>비유:</b> 인수인계를 하는데 3개월치 업무 메신저 전체를 출력해서 건네는 것. 내용은 다 있지만 — 읽는 사람은 어디가 핵심인지 모른다.</div>
+  <p>원문 붙여넣기는 세 가지를 무시한다:</p>
+  <ol style="margin-top:8px">
+    <li><b>토큰 폭발:</b> 긴 대화는 컨텍스트 창을 즉시 소비, 새 작업 공간이 없어진다</li>
+    <li><b>중복:</b> 이미 PRD·커밋·ADR에 기록된 내용을 또 실어나른다</li>
+    <li><b>민감 정보 노출:</b> 대화 중 언급한 API 키, 비밀번호, PII가 그대로 전달된다</li>
+  </ol>
+  <div class="callout bad" style="margin-top:14px">
+    결과: 새 에이전트가 토큰의 절반을 이전 컨텍스트 소화에 쓰고, 실제 작업 여유가 줄어든다. 그리고 복붙은 "다음 세션에서 무엇을 해야 하는가"를 명확히 하지 않는다.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — handoff SKILL.md</a> (중복 배제·민감정보 제거 지시 근거)</p>
+</section>
+
+<!-- WHY BAD -->
+<section class="slide" id="why-bad">
+  <span class="tag t-ctx">왜 부족한가</span>
+  <h2>세 가지 문제를 하나씩 들여다보면</h2>
+  <table>
+    <tr><th>문제</th><th>원인</th><th>결과</th></tr>
+    <tr>
+      <td><b>토큰 폭발</b></td>
+      <td>대화 원문은 탐색·실수·반복을 포함한 <em>미가공</em> 데이터</td>
+      <td>새 에이전트 컨텍스트 창의 상당 부분 소비, 새 작업 여유 감소</td>
+    </tr>
+    <tr>
+      <td><b>중복 아티팩트</b></td>
+      <td>PRD·ADR·이슈·커밋 diff에 이미 기록된 결정을 대화에서 또 설명</td>
+      <td>같은 정보가 두 곳에 — 나중에 어느 쪽이 최신인지 혼란</td>
+    </tr>
+    <tr>
+      <td><b>민감 정보</b></td>
+      <td>개발 대화엔 API 키·DB 자격·PII가 섞이기 쉬움</td>
+      <td>핸드오프 문서가 민감 데이터 유출 경로가 됨</td>
+    </tr>
+  </table>
+  <div class="callout warn">
+    단순 요약(Claude Code 내장 <code class="inline">/compact</code>)도 도움이 되지만 — <b>같은 세션 내부</b>에서만 작동한다. 다른 에이전트·도구·팀원에게 넘길 수 없고, 민감 정보를 능동적으로 걷어내지 않는다.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — handoff SKILL.md</a></p>
+</section>
+
+<!-- MECHANISM -->
+<section class="slide" id="mechanism">
+  <span class="pgnum">핵심</span>
+  <span class="tag t-diag">내부 동작 원리</span>
+  <h2>handoff는 어떻게 작동하는가 — SKILL.md 해부</h2>
+  <p>handoff에는 바이너리도 API도 없다. 구현체는 <b>SKILL.md 한 파일</b> — YAML frontmatter + 마크다운 지시문이다. "압축(compaction)"의 실체는 <b>LLM이 대화를 다시 읽고 구조화된 요약 파일을 쓰는 것</b>이다.</p>
+  <pre>---
+<span class="hl">description: "Compact the current conversation into a handoff document</span>
+<span class="hl">             for another agent to pick up."</span>
+args:
+  - name: focus
+    description: "What will the next session be used for?"
+    required: false
+---
+# handoff
+
+Write a handoff document summarising the current conversation so a
+fresh agent can continue.
+
+<span class="hl">Save it to the temporary directory of the user's OS — NOT the current workspace.</span>
+
+Do NOT duplicate content already in other artifacts (PRDs, plans, ADRs,
+issues, commits, diffs) — reference them by path or URL instead.
+
+<span class="hl">Redact sensitive info (API keys, passwords, PII).</span>
+
+The document MUST include a "suggested skills" section recommending
+skills the next agent should invoke.</pre>
+  <p class="gloss">각 지시문이 하는 일: <b>LLM에게 무엇을, 어디에, 어떻게 쓸지</b>를 명령한다 — 이것이 "스킬"의 전부다.</p>
+  <div class="callout good">
+    <b>포인트:</b> handoff는 LLM의 "읽기-쓰기" 능력을 활용해 컨텍스트를 재구성한다. 마법이 아니라 <b>잘 쓴 프롬프트 파일</b> — 그래서 누구나 읽고 수정할 수 있다.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 인자(args) focus가 전달되면 "다음 세션에서 무엇을 할 것인가"에 맞게 문서를 조정한다. 예: /handoff "다음 세션은 PR 리뷰에 집중" → 리뷰 관련 컨텍스트를 앞에 배치.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — skills/productivity/handoff/SKILL.md</a> (frontmatter 및 지시문 원문)</p>
+</section>
+
+<!-- VS COMPACT -->
+<section class="slide" id="vs-compact">
+  <span class="tag t-ouro">/compact 와의 차이</span>
+  <h2>내장 /compact vs handoff — 언제 무엇을?</h2>
+  <table class="cmp">
+    <tr><th></th><th>Claude Code 내장 <code>/compact</code></th><th>mattpocock/skills <b>handoff</b></th></tr>
+    <tr>
+      <td><b>범위</b></td>
+      <td>현재 세션 내부 — in-context 요약</td>
+      <td class="good">외부 파일 생성 — 세션 밖으로 이동 가능</td>
+    </tr>
+    <tr>
+      <td><b>저장 위치</b></td>
+      <td>메모리(세션 종료 시 소멸)</td>
+      <td class="good">OS 임시 디렉토리(<code>/tmp</code> 등) — 영속</td>
+    </tr>
+    <tr>
+      <td><b>대상</b></td>
+      <td>같은 에이전트·같은 세션</td>
+      <td class="good">다른 에이전트·다른 세션·다른 도구</td>
+    </tr>
+    <tr>
+      <td><b>민감 정보</b></td>
+      <td>별도 처리 없음</td>
+      <td class="good">능동적 redact 지시</td>
+    </tr>
+    <tr>
+      <td><b>중복 배제</b></td>
+      <td>별도 처리 없음</td>
+      <td class="good">기존 아티팩트는 경로 참조로 대체</td>
+    </tr>
+    <tr>
+      <td><b>suggested skills</b></td>
+      <td>없음</td>
+      <td class="good">필수 포함 — 다음 에이전트가 할 일 제안</td>
+    </tr>
+  </table>
+  <div class="analogy"><b>비유:</b> <code>/compact</code>는 <b>포스트잇 메모</b>(책상 위에서만 유효), handoff는 <b>인수인계 보고서</b>(누가 읽어도 이해 가능, 어디에나 전달 가능).</div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — handoff SKILL.md</a></p>
+</section>
+
+<!-- USAGE -->
+<section class="slide" id="usage">
+  <span class="pgnum">실제 흐름</span>
+  <span class="tag">사용 흐름</span>
+  <h2>실제로 어떻게 쓰는가</h2>
+  <div class="flow">
+    <div class="step"><span class="t">1. 설치</span><br><span style="font-size:11px;color:var(--muted)">npx skills@latest add mattpocock/skills</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">2. 세션 진행</span><br><span style="font-size:11px;color:var(--muted)">평소처럼 작업</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">3. 호출</span><br><span style="font-size:11px;color:var(--muted)">/handoff [focus]</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">4. 문서 생성</span><br><span style="font-size:11px;color:var(--muted)">/tmp/handoff-*.md</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">5. 새 세션</span><br><span style="font-size:11px;color:var(--muted)">문서 전달 → 즉시 재개</span></div>
+  </div>
+  <h3>focus 인자를 활용하면</h3>
+  <p>handoff는 선택적 인자 <b>"What will the next session be used for?"</b>를 받는다. 이 값이 있으면 LLM이 다음 세션 목적에 맞게 문서 구조를 조정한다:</p>
+  <pre><span class="hl">/handoff "다음 세션은 PR 리뷰에 집중"</span>
+→ 생성 문서: 리뷰 관련 컨텍스트 강조, 무관한 탐색 과정 생략
+
+/handoff "다음 에이전트가 배포를 이어받음"
+→ 생성 문서: 배포 상태·환경 변수·미완 단계 앞에 배치</pre>
+  <div class="callout good">
+    <b>생성 문서에 반드시 포함되는 것:</b> 현재까지의 요약 · 결정 사항과 근거 · 미완 작업 · <b>suggested skills</b>(다음 에이전트가 호출할 스킬 목록) · redact된 민감 정보 표시
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 수동 호출 스킬이라 자동 트리거가 없다. 저장 위치가 현재 워크스페이스가 아닌 OS 임시 디렉토리인 이유 — 작업 레포를 오염시키지 않기 위함. 우리 팀 auto-post 루틴이 /tmp 핸드오프 문서를 이미 활용하고 있다.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — handoff SKILL.md</a> (args·저장 위치·suggested skills 지시 원문)</p>
+</section>
+
+<!-- TRADEOFFS -->
+<section class="slide" id="tradeoffs">
+  <span class="tag t-spec">트레이드오프</span>
+  <h2>handoff가 해결하는 것과 해결하지 않는 것</h2>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--accent2)">해결하는 것</h4>
+      <ul style="font-size:13px">
+        <li>세션 간 컨텍스트 단절</li>
+        <li>새 에이전트에게 배경 재설명 비용</li>
+        <li>중복 아티팩트(PRD·ADR 재첨부)</li>
+        <li>민감 정보의 무심한 전달</li>
+        <li>다음 에이전트가 "무엇부터 할지" 모름</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--danger)">해결하지 않는 것</h4>
+      <ul style="font-size:13px">
+        <li>코드·파일 자체의 이동 (경로 참조만)</li>
+        <li>LLM 품질에 의존 — 요약 정확도는 보장 없음</li>
+        <li>문서를 새 세션에 자동 주입하지 않음 (수동 첨부 필요)</li>
+        <li>팀 협업 버전 관리(개인용 /tmp 저장)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn" style="margin-top:14px">
+    <b>중요한 한계:</b> handoff 문서는 LLM이 생성하므로 요약의 정확도·완전성은 보장되지 않는다. 중요한 결정은 PRD·ADR·커밋 메시지에 먼저 기록하고, handoff는 <b>경로 참조</b>로 연결하는 것이 권장 패턴이다.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — handoff SKILL.md</a></p>
+</section>
+
+<!-- WRAP -->
+<section class="slide" id="wrap">
+  <span class="tag">정리</span>
+  <h2>handoff가 가르치는 한 가지</h2>
+  <table>
+    <tr><th>요소</th><th>내용</th></tr>
+    <tr><td><b>스킬 정체</b></td><td>SKILL.md 한 파일 — YAML frontmatter + 마크다운 지시문. 바이너리 없음</td></tr>
+    <tr><td><b>동작 방식</b></td><td>LLM이 대화를 읽고 구조화된 요약을 OS 임시 디렉토리에 저장</td></tr>
+    <tr><td><b>핵심 규칙</b></td><td>중복 배제(경로 참조) · 민감 정보 redact · suggested skills 포함</td></tr>
+    <tr><td><b>/compact 차이</b></td><td>in-context(소멸) vs 외부 파일(이동 가능·영속)</td></tr>
+  </table>
+  <p class="big-take">컨텍스트는 대화 안에 갇혀 있을 필요가 없다.<br><b>잘 만든 핸드오프 문서 하나가 맥락을 어디든 이식한다</b></p>
+  <div class="callout good">
+    그래서 handoff는 단순 "요약 도구"가 아니다 — <b>에이전트 간 프로토콜</b>이다.
+    다음 에이전트가 어디서부터 시작할지, 무슨 스킬을 쓸지, 무엇을 건너뛸지를 구조화한 문서로 정의한다.
+  </div>
+  <div class="callout" style="margin-top:10px">
+    <b>이번 주에 해볼 것 (딱 하나):</b> 긴 세션 끝에 <code class="inline">/handoff</code> 한 번 호출해보기.
+    생성된 /tmp 문서를 열어 — "이게 내가 오늘 한 일의 요약인가?" 확인. 부족한 부분이 보이면 그게 다음 세션의 시작점.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — handoff SKILL.md</a></p>
+</section>
+
+<!-- REFS -->
+<section class="slide" id="refs">
+  <h1 class="center">감사합니다</h1>
+  <p class="center sub">질문 / "세션 컨텍스트 단절" 경험 공유</p>
+  <hr>
+  <h3>참고 자료</h3>
+  <ul>
+    <li><a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — 공식 레포 (130k★, MIT)</a></li>
+    <li><a class="src" href="https://github.com/mattpocock/skills/blob/main/skills/productivity/handoff/SKILL.md">handoff SKILL.md 원문 (skills/productivity/handoff/SKILL.md)</a></li>
+  </ul>
+  <aside class="note"><b>발표자 노트:</b> 모든 사실(frontmatter description·args·저장 위치·중복 배제·redact·suggested skills)은 SKILL.md 원문 지시문 기반. 설치 명령: npx skills@latest add mattpocock/skills (MIT 라이선스, 130k★ 확인된 수치).</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">github.com/mattpocock/skills</a></p>
+</section>
+
+</div>
+
+<div id="hud"><b id="hud-n">1</b> / <span id="hud-t">10</span><span class="hint">← / → 넘기기 · a: 스크롤 · n: 노트</span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
+  var body = document.body, hud = document.getElementById('hud');
+  var hudN = document.getElementById('hud-n'), hudT = document.getElementById('hud-t');
+  hudT.textContent = slides.length;
+  var i = 0, present = true;          // 기본: 발표(슬라이드) 모드로 시작
+
+  function idFromHash(){
+    var h = location.hash.replace('#','');
+    for (var k=0;k<slides.length;k++){ if(slides[k].id===h) return k; }
+    return -1;
+  }
+  function render(){
+    body.classList.toggle('present', present);
+    if(present){
+      for (var k=0;k<slides.length;k++) slides[k].classList.toggle('active', k===i);
+      hudN.textContent = i+1;
+      if(slides[i].id) history.replaceState(null,'','#'+slides[i].id);
+      window.scrollTo(0,0);
+    }
+  }
+  function go(n){ i = Math.max(0, Math.min(slides.length-1, n)); render(); }
+
+  // 진입 시 해시가 있으면 그 슬라이드로
+  var h0 = idFromHash(); if(h0>=0) i = h0;
+  render();
+
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;            // 단축키 충돌 회피
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); go(i+1); break;
+      case 'ArrowLeft':  case 'PageUp':           e.preventDefault(); go(i-1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End':  e.preventDefault(); go(slides.length-1); break;
+      case 'a': case 'A':                                  // 발표 ↔ 스크롤(읽기) 토글
+        present = !present; render();
+        if(!present){ body.classList.remove('present'); }  // 스크롤 모드: 전체 보임
+        break;
+      case 'n': case 'N': body.classList.toggle('shownotes'); break;  // 발표자 노트 토글
+    }
+  });
+  // nav 링크 클릭 시 해당 슬라이드로 (발표 모드에서도 동작)
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').replace('#','');
+      for (var k=0;k<slides.length;k++){ if(slides[k].id===id){ go(k); break; } }
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7주차 — agentmemory: AI 코딩 에이전트의 영속 기억</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --border:#30363d;
+    --fg:#e6edf3; --muted:#9da7b3; --accent:#58a6ff; --accent2:#3fb950;
+    --warn:#d29922; --danger:#f85149; --code:#1f2630; --gold:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);
+    font-family:-apple-system,"Apple SD Gothic Neo","Pretendard",system-ui,sans-serif;line-height:1.6;}
+  .deck{max-width:960px;margin:0 auto;padding:24px 20px 120px}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(13,17,23,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    padding:10px 20px;display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--accent)}
+  .nav .grp{color:var(--accent);font-weight:600}
+  section.slide{background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:32px 36px;margin:20px 0;scroll-margin-top:60px;position:relative}
+  .tag{display:inline-block;font-size:12px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;padding:2px 12px;margin-bottom:13px;letter-spacing:.3px}
+  .tag.t-diag{color:var(--accent2);border-color:var(--accent2)}
+  .tag.t-spec{color:var(--gold);border-color:var(--gold)}
+  .tag.t-ouro{color:var(--warn);border-color:var(--warn)}
+  .tag.t-ctx{color:#c39bff;border-color:#c39bff}
+  h1{font-size:30px;line-height:1.25;margin-bottom:10px}
+  h2{font-size:23px;margin-bottom:8px}
+  h3{font-size:16px;color:var(--accent);margin:15px 0 6px}
+  p{margin:7px 0}
+  .sub{color:var(--muted);font-size:15px}
+  ul,ol{margin:9px 0 9px 22px}
+  li{margin:5px 0}
+  .muted{color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:13px}
+  .card{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+  .card h4{font-size:14px;margin-bottom:5px}
+  code,pre{font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;overflow-x:auto;font-size:12.5px;color:#cdd9e5;margin:10px 0}
+  code.inline{background:var(--code);padding:2px 7px;border-radius:5px;font-size:.9em;color:var(--accent2)}
+  .flow{display:flex;align-items:stretch;gap:0;margin:16px 0;flex-wrap:wrap}
+  .step{flex:1;min-width:96px;background:var(--code);border:1px solid var(--border);
+    border-radius:9px;padding:9px;text-align:center}
+  .step .t{font-size:12px;color:var(--accent2);font-weight:600}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:15px;padding:0 3px}
+  .callout{border-left:3px solid var(--accent);background:rgba(88,166,255,.07);
+    padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0}
+  .callout.warn{border-color:var(--warn);background:rgba(210,153,34,.08)}
+  .callout.good{border-color:var(--accent2);background:rgba(63,185,80,.08)}
+  .callout.bad{border-color:var(--danger);background:rgba(248,81,73,.08)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--code);color:var(--accent)}
+  .shot{border:1px dashed var(--border);border-radius:10px;padding:22px;
+    text-align:center;color:var(--muted);background:repeating-linear-gradient(45deg,#13181f,#13181f 10px,#11161d 10px,#11161d 20px);margin:12px 0;font-size:13.5px}
+  .pgnum{position:absolute;top:13px;right:18px;color:var(--muted);font-size:12px}
+  a.src{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px dotted var(--accent)}
+  .center{text-align:center}
+  .big{font-size:19px}
+  hr{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .kbd{font-size:12px;color:var(--muted)}
+  .divider{text-align:center;color:var(--muted);font-size:13px;margin:28px 0 4px;letter-spacing:1px}
+  /* polish: 코드 핵심 라인 강조 + 한 줄 요약 + 비유 */
+  pre .hl{background:rgba(227,179,65,.16);color:#ffe79e;border-radius:3px;padding:0 2px;font-weight:600}
+  .gloss{font-size:14px;margin:8px 0 2px}
+  .gloss b{color:var(--gold)}
+  .analogy{background:rgba(195,155,255,.08);border-left:3px solid #c39bff;border-radius:0 8px 8px 0;
+    padding:9px 14px;margin:11px 0;font-size:13.5px}
+  .analogy b{color:#c39bff}
+  .guess{display:inline-block;background:rgba(248,81,73,.12);color:#ff9c95;border:1px solid rgba(248,81,73,.4);
+    border-radius:6px;padding:1px 9px;font-size:12.5px;margin:4px 0}
+  .hook{font-size:21px;line-height:1.5;margin:10px 0}
+  .hook b{color:var(--accent2)}
+  .big-take{font-size:24px;line-height:1.4;text-align:center;margin:16px 0;color:var(--fg)}
+  .big-take b{color:var(--accent2)}
+  /* 슬라이드별 출처 줄 */
+  .srcline{font-size:11.5px;color:var(--muted);margin-top:16px;border-top:1px dotted var(--border);padding-top:8px}
+  .srcline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+  /* 발표자 노트 — 청중 화면엔 절대 안 보임. n키로만 토글 */
+  aside.note{display:none;margin-top:14px;border-left:3px solid var(--gold);background:rgba(227,179,65,.07);
+    padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:var(--muted)}
+  aside.note b{color:var(--gold)}
+  body.shownotes aside.note{display:block}
+  /* before/after 비교표 */
+  .cmp{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px}
+  .cmp th,.cmp td{border:1px solid var(--border);padding:7px 9px;vertical-align:top}
+  .cmp th{background:var(--code)}
+  .cmp .bad{color:#ff9c95}.cmp .good{color:var(--accent2)}
+  .nums{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .numbox{flex:1;min-width:90px;background:var(--code);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center}
+  .numbox .v{font-size:22px;font-weight:700;color:var(--accent)}
+  .numbox.bad .v{color:var(--danger)}.numbox.good .v{color:var(--accent2)}
+  .numbox .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+  /* ===== 발표(슬라이드) 모드: body.present 일 때 한 장씩 ===== */
+  body.present .nav{display:none}
+  body.present .divider{display:none}
+  body.present .deck{padding-top:14px}
+  body.present section.slide{display:none}
+  body.present section.slide.active{display:block;min-height:78vh}
+  /* 좌하단 진행 표시 */
+  #hud{position:fixed;left:14px;bottom:12px;z-index:50;font-size:12px;color:var(--muted);
+    background:rgba(13,17,23,.85);border:1px solid var(--border);border-radius:999px;padding:5px 13px;
+    backdrop-filter:blur(6px);display:none}
+  body.present #hud{display:block}
+  #hud b{color:var(--accent)}
+  #hud .hint{color:var(--muted);opacity:.75;margin-left:8px}
+  @media print{
+    .nav,#hud{display:none}
+    body.present section.slide{display:block;min-height:auto;page-break-after:always}
+    section.slide{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#cover">표지</a>
+  <a href="#problem">문제</a>
+  <a href="#naive">순진한 접근</a>
+  <span class="grp">·</span>
+  <a href="#answer">agentmemory 답</a>
+  <a href="#storage">저장구조</a>
+  <a href="#search">하이브리드 검색</a>
+  <span class="grp">·</span>
+  <a href="#free">무과금</a>
+  <a href="#hooks">Claude Code 연동</a>
+  <a href="#tradeoff">트레이드오프</a>
+  <a href="#wrap">정리</a>
+  <a href="#refs">참고자료</a>
+</nav>
+
+<div class="deck">
+
+<!-- COVER -->
+<section class="slide" id="cover">
+  <span class="tag">AI 스터디 · 7주차</span>
+  <h1>agentmemory<br><span class="sub" style="font-size:19px">— AI 코딩 에이전트의 영속 기억, 내부 구현까지 뜯어보기</span></h1>
+  <p class="sub" style="margin-top:14px">rohitg00/agentmemory — "쓰면 이렇게 됩니다"가 아니라 <b>hooks.json · hybrid-search.ts · local.ts</b>를 직접 읽고 "이런 코드라서 그 결과가 나옵니다"를 확인</p>
+  <div class="callout" style="margin-top:18px">
+    <strong>왜 이 주제? (1~6주차와의 연결)</strong> 1주차 OT · 2주차 하네스 · 3주차 LLM Wiki · 4주차 OMC/Octopus · 5주차 superpowers · 6주차 Vectorless RAG.
+    이번 주는 <b>"세션마다 기억을 잃는" AI 에이전트의 근본 문제</b>와, 그걸 hooks + 하이브리드 검색으로 해결한 오픈소스를 깊게 봅니다.
+    전부 <b>Claude Code 구독 안에서(추가 과금 없이)</b> 쓸 수 있는 것들.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 키워드는 "영속 기억(persistent memory)". 에이전트가 이전 세션을 모른다는 문제를 구조적으로 풀었다는 점이 핵심. 표지에선 "왜 이 주제인가"만 말하고 바로 문제 슬라이드로.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory">github.com/rohitg00/agentmemory</a> — README, Apache-2.0</p>
+</section>
+
+<!-- PROBLEM -->
+<section class="slide" id="problem">
+  <span class="pgnum">1/10</span>
+  <span class="tag t-ctx">문제</span>
+  <h2>AI 에이전트는 세션마다 기억을 잃는다</h2>
+  <p class="hook">"저번에 말했잖아요, 이 프로젝트는 TypeScript strict 쓰고<br>테스트는 vitest야." → <b>에이전트: "안녕하세요, 뭘 도와드릴까요?"</b></p>
+  <p class="sub">Claude Code, Cursor, Cline 등 모든 코딩 에이전트의 공통 고통 — <b>컨텍스트는 세션과 함께 증발</b>한다.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--danger)">매 세션마다 반복되는 일</h4>
+      <ul style="font-size:13px">
+        <li>프로젝트 스택·규칙 재설명</li>
+        <li>이전에 해결한 버그 원인 재설명</li>
+        <li>아키텍처 결정 배경 재설명</li>
+        <li>"저번에 왜 그렇게 했는지"를 모름</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--accent)">이상적인 에이전트라면</h4>
+      <ul style="font-size:13px">
+        <li>지난 세션에서 뭘 했는지 알고</li>
+        <li>프로젝트 관례를 이미 파악하고</li>
+        <li>관련 과거 작업을 스스로 불러오고</li>
+        <li>사람이 반복 설명할 필요가 없어야</li>
+      </ul>
+    </div>
+  </div>
+  <div class="analogy"><b>비유:</b> 매일 출근할 때마다 자기소개서를 제출해야 하는 직장. 10번 일해도 첫날처럼 처음부터 설명해야 한다.</div>
+  <aside class="note"><b>발표자 노트:</b> 청중 모두 이 문제를 직접 경험했을 것. "저도 이거 너무 불편했어요" 공감을 끌어낸 뒤 "그래서 이걸 구조적으로 푼 도구가 있다"로 전환.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory">github.com/rohitg00/agentmemory</a> — README "The Problem" 섹션</p>
+</section>
+
+<!-- NAIVE -->
+<section class="slide" id="naive">
+  <span class="pgnum">2/10</span>
+  <span class="tag t-ouro">순진한 접근</span>
+  <h2>CLAUDE.md에 수동으로 메모? — 한계가 있다</h2>
+  <p class="sub">가장 흔한 해결책: <code class="inline">CLAUDE.md</code>에 프로젝트 규칙을 적어두기. 실제로 많이 쓰이고, 없는 것보다 훨씬 낫다. 하지만:</p>
+  <table class="cmp">
+    <tr><th>항목</th><th class="bad">수동 CLAUDE.md</th><th class="good">agentmemory</th></tr>
+    <tr>
+      <td>캡처 주체</td>
+      <td class="bad">사람이 직접 써야 함</td>
+      <td class="good">에이전트 활동을 hooks가 자동 캡처</td>
+    </tr>
+    <tr>
+      <td>기억 범위</td>
+      <td class="bad">사람이 기억해야 쓸 수 있음</td>
+      <td class="good">모든 툴 사용·결과·오류가 저장됨</td>
+    </tr>
+    <tr>
+      <td>검색</td>
+      <td class="bad">파일 전체를 컨텍스트로 주입</td>
+      <td class="good">관련 부분만 하이브리드 검색으로 주입</td>
+    </tr>
+    <tr>
+      <td>압축</td>
+      <td class="bad">없음 — 계속 커짐</td>
+      <td class="good">자동 압축 (BM25 + 요약)</td>
+    </tr>
+    <tr>
+      <td>외부 서비스</td>
+      <td class="bad">불필요 (장점)</td>
+      <td class="good">불필요 — 로컬 SQLite</td>
+    </tr>
+  </table>
+  <div class="callout warn">수동 메모의 진짜 문제: <b>사람이 기억해야 기록할 수 있다</b>. 정작 가장 가치 있는 정보 — "왜 이 결정을 했나", "이 버그의 원인은 X였다" — 는 해결하고 나면 잊어버리고 안 적는다.</div>
+  <aside class="note"><b>발표자 노트:</b> CLAUDE.md를 부정하는 게 아님 — agentmemory도 내부적으로 CLAUDE.md와 함께 쓸 수 있음. 포인트는 "캡처 자동화"와 "검색 기반 선택적 주입"이 핵심 차별점이라는 것.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory">github.com/rohitg00/agentmemory</a> — README 비교 섹션; 직접 분석</p>
+</section>
+
+<!-- ANSWER -->
+<section class="slide" id="answer">
+  <span class="pgnum">3/10</span>
+  <span class="tag">agentmemory 답</span>
+  <h2>자동 캡처 → 압축 → 세션 시작 주입</h2>
+  <p class="sub">agentmemory의 핵심 루프 세 단계. 사람이 아무것도 하지 않아도 돌아간다.</p>
+  <div class="flow">
+    <div class="step"><span class="t">에이전트 활동</span><div style="font-size:11px;color:var(--muted);margin-top:4px">Edit·Write·Read·Glob·Grep...</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">hooks 캡처</span><div style="font-size:11px;color:var(--muted);margin-top:4px">PostToolUse 등 자동 실행</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">SQLite 저장</span><div style="font-size:11px;color:var(--muted);margin-top:4px">로컬 iii-engine</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">압축·인덱싱</span><div style="font-size:11px;color:var(--muted);margin-top:4px">BM25 + 벡터</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">세션 시작 주입</span><div style="font-size:11px;color:var(--muted);margin-top:4px">SessionStart 훅으로</div></div>
+  </div>
+  <div class="callout good">
+    <b>설치 한 줄:</b> <code class="inline">npm install -g @agentmemory/agentmemory</code> 또는 <code class="inline">npx @agentmemory/agentmemory</code><br>
+    라이선스: Apache-2.0 / 별점: ~23k★ (주장) / 태그라인: "#1 Persistent memory for AI coding agents based on real-world benchmarks" (주장)
+  </div>
+  <p>지원 환경: Claude Code (플러그인), Cursor · Gemini CLI · Cline · Goose (MCP 서버 설정), 그 외 모든 에이전트 (REST API, 주장: 128 endpoints on port 3111).</p>
+  <div class="analogy"><b>비유:</b> 에이전트의 "해마(hippocampus)". 경험을 실시간으로 기록해두고, 다음 세션 시작 때 관련 기억만 꺼내 전두엽(컨텍스트 창)에 올려준다.</div>
+  <aside class="note"><b>발표자 노트:</b> REST API endpoint 수(128)와 별점(~23k)은 README 주장값. 설치 명령어와 라이선스는 직접 확인된 사실. 세 단계 루프가 이 발표의 핵심 — 나머지 슬라이드는 각 단계의 구현을 뜯는 것.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory">github.com/rohitg00/agentmemory</a> — README, package.json</p>
+</section>
+
+<!-- STORAGE -->
+<section class="slide" id="storage">
+  <span class="pgnum">4/10</span>
+  <span class="tag t-ctx">저장 구조</span>
+  <h2>로컬 SQLite + iii-engine — 외부 DB 불필요</h2>
+  <p class="sub">agentmemory는 클라우드나 외부 벡터 DB를 쓰지 않는다. 모든 데이터는 <b>로컬 SQLite</b>와 자체 인덱스 엔진(iii-engine)에 저장된다.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--accent)">저장되는 것</h4>
+      <ul style="font-size:13px">
+        <li>Observations (압축된 관찰 단위)</li>
+        <li>Memories (명시적으로 저장된 기억)</li>
+        <li>BM25 역인덱스</li>
+        <li>벡터 임베딩 (선택적)</li>
+        <li>지식 그래프 엣지 (엔티티 관계)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--accent2)">MCP 도구로 접근</h4>
+      <ul style="font-size:13px">
+        <li><code class="inline">memory_recall</code> — 관련 기억 검색</li>
+        <li><code class="inline">memory_compress_file</code> — 파일 압축</li>
+        <li>총 ~56개 tool 정의 (검증됨)</li>
+        <li>에이전트가 직접 호출 가능</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <b>KV 구조 (src/state/schema.ts 패턴):</b> <code class="inline">KV.observations(sessionId)</code> → 세션별 관찰 버킷,
+    <code class="inline">KV.memories</code> → 전역 기억 버킷. HybridSearch는 두 버킷에서 결과를 조합해 반환한다 (src/state/hybrid-search.ts:293-305 확인).
+  </div>
+  <div class="analogy"><b>비유:</b> 개인 일기장(SQLite)에 색인(BM25)과 의미 지도(벡터)와 인물 관계도(그래프)를 동시에 붙여둔 것. 전부 내 컴퓨터 안.</div>
+  <aside class="note"><b>발표자 노트:</b> iii-engine은 agentmemory 내부의 인덱스 엔진 명칭. SQLite 위에서 동작. "외부 DB 불필요"가 이 주제를 스터디 기준에 통과시킨 핵심 이유 — 추가 인프라 비용 없음.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/src/state/hybrid-search.ts">src/state/hybrid-search.ts</a> · <a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/src/mcp/tools-registry.ts">src/mcp/tools-registry.ts</a></p>
+</section>
+
+<!-- HYBRID SEARCH -->
+<section class="slide" id="search">
+  <span class="pgnum">5/10</span>
+  <span class="tag t-diag">하이브리드 검색 · 구현 해부</span>
+  <h2>BM25 + Vector + Graph, RRF로 융합 — 실제 코드</h2>
+  <p class="sub">단순 키워드 검색도, 단순 벡터 검색도 아니다. <b>세 신호를 동시에 내고 RRF(Reciprocal Rank Fusion)로 합친다.</b></p>
+  <pre>// src/state/hybrid-search.ts (검증된 실제 코드)
+<span class="hl">const RRF_K = 60;</span>
+
+export class HybridSearch {
+  constructor(
+    private bm25: SearchIndex,
+    private vector: VectorIndex | null,
+    private embeddingProvider: EmbeddingProvider | null,
+    private kv: StateKV,
+<span class="hl">    private bm25Weight = 0.4,</span>
+<span class="hl">    private vectorWeight = 0.6,</span>
+<span class="hl">    private graphWeight = 0.3,</span>
+    private rerankEnabled = process.env.RERANK_ENABLED === "true",
+  ) { ... }
+
+  // RRF 점수 계산 (combinedScore)
+  combinedScore:
+    effectiveBm25W  * (1 / (RRF_K + bm25Rank)) +
+    effectiveVectorW * (1 / (RRF_K + vectorRank)) +
+<span class="hl">    effectiveGraphW  * (1 / (RRF_K + graphRank)),</span>
+}</pre>
+  <p class="gloss">핵심: <b>각 검색 결과의 순위(rank)를 RRF_K+rank로 나눠 역수를 취한 뒤 가중합.</b> 순위가 높을수록(=1에 가까울수록) 기여도 높음. RRF_K=60은 상위 순위 간 점수 차이를 완만하게 만드는 상수.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4>세 검색 채널</h4>
+      <ul style="font-size:12.5px">
+        <li><b>BM25</b> (w=0.4): 키워드 빈도·역문서빈도 — 정확한 용어 매칭에 강함</li>
+        <li><b>Vector</b> (w=0.6): 의미 유사도 — "같은 뜻 다른 단어" 잡음</li>
+        <li><b>Graph</b> (w=0.3): 엔티티 관계 — "이 함수 관련 기억" 같은 구조적 연결</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>쿼리 확장 (searchWithExpansion)</h4>
+      <ul style="font-size:12.5px">
+        <li>reformulations: 질문 재표현 목록</li>
+        <li>temporalConcretizations: "어제", "지난주" 등 시간 구체화</li>
+        <li>entityExtractions: 쿼리에서 엔티티 자동 추출</li>
+        <li>각 확장 쿼리로 tripleStream 검색 후 best-score 병합</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout good">가중치 정규화: vector나 graph 결과가 없으면 가중치를 0으로 설정하고 나머지를 <b>자동 재정규화</b>. BM25만 있어도 검색 동작 — 임베딩 없이도 쓸 수 있는 이유.</div>
+  <aside class="note"><b>발표자 노트:</b> RRF_K=60은 TREC 논문에서 유래한 표준값. "왜 60?"을 물으면 — 상위 1위와 2위의 점수 차를 1/61 vs 1/62로 작게 만들어 순위 노이즈에 덜 민감하게 하는 완충재. rerankEnabled는 환경변수로 켜는 옵션 — 기본 off.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/src/state/hybrid-search.ts">src/state/hybrid-search.ts</a> — 직접 읽어 검증한 실제 코드</p>
+</section>
+
+<!-- FREE -->
+<section class="slide" id="free">
+  <span class="pgnum">6/10</span>
+  <span class="tag t-spec">무과금 동작</span>
+  <h2>기본값: LLM 호출 없음 — 임베딩도 로컬 384차원</h2>
+  <p class="sub">이 주제가 스터디 기준(추가 과금 없음)을 통과한 이유. 기본 설정에서 <b>외부 API 호출이 전혀 없다.</b></p>
+  <pre>// src/providers/embedding/local.ts (검증된 실제 코드)
+export class LocalEmbeddingProvider implements EmbeddingProvider {
+  readonly name = "local";
+<span class="hl">  readonly dimensions = 384;</span>
+  private extractor: Awaited&lt;ReturnType&lt;Pipeline&gt;&gt; | null = null;
+
+  async embedBatch(texts: string[]): Promise&lt;Float32Array[]&gt; {
+    const extractor = await this.getExtractor();
+<span class="hl">    const output = await extractor(texts, { pooling: "mean", normalize: true });</span>
+    return vectors.map((v: number[]) =&gt; new Float32Array(v));
+  }
+
+  private async getExtractor() {
+    // @ts-ignore - optional peer dependency
+    transformers = await import("@xenova/transformers");
+<span class="hl">    return transformers.pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");</span>
+  }
+}</pre>
+  <p class="gloss">모델: <b>all-MiniLM-L6-v2</b> (Xenova/Transformers.js 포팅) — 384차원, 평균 풀링 + 정규화. Node.js에서 로컬 실행, 인터넷 연결 불필요.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--accent2)">완전 무료 경로</h4>
+      <ul style="font-size:13px">
+        <li>기본 provider: no-op (LLM 호출 없음)</li>
+        <li>BM25 압축만으로 핵심 기능 동작</li>
+        <li>임베딩: LocalEmbeddingProvider (로컬)</li>
+        <li>외부 DB: 없음 (SQLite)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--warn)">선택적 유료 경로</h4>
+      <ul style="font-size:13px">
+        <li>Anthropic / OpenAI / Gemini 임베딩</li>
+        <li>Ollama / LM Studio (로컬 LLM)</li>
+        <li>비용 추정: ~170K tokens/yr ≈ $10 (주장)</li>
+        <li>로컬 임베딩 선택 시 $0</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="note"><b>발표자 노트:</b> all-MiniLM-L6-v2는 sentence-transformers 계열의 경량 모델. 384차원은 충분히 작아 SQLite에 float32 배열로 저장 가능. $10/yr 비용 수치는 README 주장값 — 실제는 사용량에 따라 다름. 핵심 메시지: "기본값이 무료".</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/src/providers/embedding/local.ts">src/providers/embedding/local.ts</a> — 직접 읽어 검증</p>
+</section>
+
+<!-- HOOKS -->
+<section class="slide" id="hooks">
+  <span class="pgnum">7/10</span>
+  <span class="tag t-diag">Claude Code 연동 · 구현 해부</span>
+  <h2>hooks.json — 에이전트 활동이 자동으로 기록되는 이유</h2>
+  <p class="sub">"사용자가 아무것도 안 해도" 캡처되는 핵심: Claude Code의 hooks 시스템에 node 스크립트를 등록해 <b>에이전트의 모든 도구 사용에 끼어들어</b> 기록한다.</p>
+  <pre>// plugin/hooks/hooks.json (검증된 실제 파일 전체 구조)
+{
+  "hooks": {
+    <span class="hl">"SessionStart":    [{ "command": "node .../session-start.mjs" }],</span>
+    "UserPromptSubmit":[{ "command": "node .../prompt-submit.mjs" }],
+    <span class="hl">"PreToolUse":      [{ "matcher": "Edit|Write|Read|Glob|Grep",</span>
+                          "command": "node .../pre-tool-use.mjs" }],
+    <span class="hl">"PostToolUse":     [{ "command": "node .../post-tool-use.mjs" }],</span>
+    "PostToolUseFailure":[{ "command": "node .../post-tool-failure.mjs" }],
+    <span class="hl">"PreCompact":      [{ "command": "node .../pre-compact.mjs" }],</span>
+    "SubagentStart":   [{ "command": "node .../subagent-start.mjs" }],
+    "SubagentStop":    [{ "command": "node .../subagent-stop.mjs" }],
+    "Stop":            [{ "command": "node .../stop.mjs" }],
+    "SessionEnd":      [{ "command": "node .../session-end.mjs" }]
+  }
+}</pre>
+  <p class="gloss">핵심 훅 세 가지: <b>SessionStart</b> = 관련 기억 주입, <b>PostToolUse</b> = 툴 결과 캡처, <b>PreCompact</b> = 압축 전 중요 내용 저장.</p>
+  <div class="callout good">
+    <b>왜 이게 중요한가:</b> PreToolUse의 matcher <code class="inline">Edit|Write|Read|Glob|Grep</code>는 Claude Code가 파일을 읽거나 쓸 때마다 발동된다. 에이전트가 코드를 탐색하고 수정하는 <b>모든 행위</b>가 기억 후보가 되는 것.
+    사람이 "이거 기억해"라고 말하지 않아도.
+  </div>
+  <div class="analogy"><b>비유:</b> 모든 서랍을 열고 닫을 때마다 자동으로 사진이 찍히는 연구실. 나중에 "그 서랍 뭐 있었더라"를 검색으로 찾을 수 있다.</div>
+  <aside class="note"><b>발표자 노트:</b> hooks.json 파일을 직접 열어 검증함. matcher 문자열 "Edit|Write|Read|Glob|Grep"은 파이프(|)로 구분된 OR 패턴. SubagentStart/Stop도 있어 서브에이전트(팀 모드) 활동도 추적 가능 — OMC 팀 모드 사용자에게 특히 흥미로운 포인트.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/plugin/hooks/hooks.json">plugin/hooks/hooks.json</a> — 직접 읽어 검증</p>
+</section>
+
+<!-- TRADEOFF -->
+<section class="slide" id="tradeoff">
+  <span class="pgnum">8/10</span>
+  <span class="tag t-ouro">트레이드오프</span>
+  <h2>좋은 점과 한계 — 솔직하게</h2>
+  <table>
+    <tr><th>관점</th><th style="color:var(--accent2)">강점</th><th style="color:var(--danger)">한계 / 주의점</th></tr>
+    <tr>
+      <td><b>비용</b></td>
+      <td>기본값 $0 (로컬 임베딩, no-op LLM)</td>
+      <td>@xenova/transformers 설치 필요 (optional)</td>
+    </tr>
+    <tr>
+      <td><b>프라이버시</b></td>
+      <td>모든 데이터 로컬 SQLite — 클라우드 전송 없음</td>
+      <td>로컬 디스크에 모든 에이전트 활동이 저장됨</td>
+    </tr>
+    <tr>
+      <td><b>검색 품질</b></td>
+      <td>BM25+Vector+Graph RRF 융합 — 단일 방식보다 강함</td>
+      <td>임베딩 없으면 의미 검색 불가, BM25만 동작</td>
+    </tr>
+    <tr>
+      <td><b>노이즈</b></td>
+      <td>PreCompact + 압축으로 중요도 필터링</td>
+      <td>저품질 관찰이 많으면 검색 정밀도 저하 가능</td>
+    </tr>
+    <tr>
+      <td><b>성숙도</b></td>
+      <td>Apache-2.0, MCP/REST/플러그인 3가지 연동</td>
+      <td>초기 프로젝트 — API 변경 가능성</td>
+    </tr>
+  </table>
+  <div class="callout warn">
+    <b>주의:</b> hooks.json을 Claude Code 설정에 등록하면 <b>모든 도구 사용마다 node 스크립트가 실행</b>된다. 디스크 I/O + SQLite 쓰기가 추가되므로, 고빈도 툴 사용 세션에서 체감 지연이 생길 수 있다.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 트레이드오프를 솔직하게 말하는 게 신뢰를 높임. "~23k★이니까 좋다"가 아니라 "이런 경우엔 안 쓰는 게 나을 수도 있다"를 말할 수 있어야 함. 특히 노이즈 문제 — 에이전트가 대규모 파일 탐색을 많이 하면 저품질 관찰이 쌓임.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory">github.com/rohitg00/agentmemory</a> — 소스 직접 분석 기반 평가</p>
+</section>
+
+<!-- WRAP -->
+<section class="slide" id="wrap">
+  <span class="pgnum">9/10</span>
+  <span class="tag">정리</span>
+  <h2>agentmemory가 푼 것과 그 방법</h2>
+  <div class="flow">
+    <div class="step"><span class="t">문제</span><div style="font-size:11px;color:var(--muted);margin-top:4px">세션마다 기억 소실</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">기존 접근</span><div style="font-size:11px;color:var(--muted);margin-top:4px">수동 CLAUDE.md</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">agentmemory</span><div style="font-size:11px;color:var(--muted);margin-top:4px">hooks 자동 캡처</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">검색</span><div style="font-size:11px;color:var(--muted);margin-top:4px">BM25+Vector+Graph RRF</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">무과금</span><div style="font-size:11px;color:var(--muted);margin-top:4px">로컬 모델 $0</div></div>
+  </div>
+  <p class="big-take">AI 에이전트의 기억은<br><b>코드 한 줄 없이 hooks 설정만으로 자동화</b>할 수 있다.</p>
+  <table>
+    <tr><th>핵심 파일</th><th>검증된 사실</th></tr>
+    <tr><td><code class="inline">plugin/hooks/hooks.json</code></td><td>SessionStart · PostToolUse · PreCompact 등 12개 훅 등록, matcher: Edit|Write|Read|Glob|Grep</td></tr>
+    <tr><td><code class="inline">src/state/hybrid-search.ts</code></td><td>RRF_K=60, bm25Weight=0.4, vectorWeight=0.6, graphWeight=0.3, 자동 정규화</td></tr>
+    <tr><td><code class="inline">src/providers/embedding/local.ts</code></td><td>LocalEmbeddingProvider, dimensions=384, all-MiniLM-L6-v2, mean pooling+normalize</td></tr>
+    <tr><td><code class="inline">src/mcp/tools-registry.ts</code></td><td>~56개 MCP tool 정의 (memory_recall, memory_compress_file 포함)</td></tr>
+  </table>
+  <div class="callout good">
+    <b>이번 주에 해볼 것 (딱 하나):</b> Claude Code에 agentmemory 플러그인을 설치하고, 한 세션 작업 후 다음 세션에서 <code class="inline">memory_recall</code>로 이전 작업이 나오는지 확인해보기.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 정리 슬라이드에서 "이번 주에 해볼 것"을 딱 하나만 주는 게 중요. 여러 개 주면 아무것도 안 함. 표의 검증된 사실들은 모두 /tmp/am-inspect 레포에서 직접 읽은 것 — 발표 중 "이거 직접 읽었습니다" 강조 권장.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/rohitg00/agentmemory">github.com/rohitg00/agentmemory</a> — 소스 직접 검증 (2026-06)</p>
+</section>
+
+<!-- REFS -->
+<section class="slide" id="refs">
+  <span class="pgnum">10/10</span>
+  <h1 class="center">감사합니다</h1>
+  <p class="center sub" style="margin-bottom:18px">질문 / 각자의 "에이전트에게 또 설명한 경험" 공유</p>
+  <hr>
+  <h3>참고 자료</h3>
+  <ul>
+    <li><a class="src" href="https://github.com/rohitg00/agentmemory">rohitg00/agentmemory — 공식 레포 (Apache-2.0)</a></li>
+    <li><a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/src/state/hybrid-search.ts">src/state/hybrid-search.ts — RRF_K=60, 가중치, tripleStreamSearch 구현</a></li>
+    <li><a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/src/providers/embedding/local.ts">src/providers/embedding/local.ts — LocalEmbeddingProvider, 384차원, all-MiniLM-L6-v2</a></li>
+    <li><a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/plugin/hooks/hooks.json">plugin/hooks/hooks.json — Claude Code hooks 설정 전체</a></li>
+    <li><a class="src" href="https://github.com/rohitg00/agentmemory/blob/main/src/mcp/tools-registry.ts">src/mcp/tools-registry.ts — MCP tool 정의 (~56개)</a></li>
+  </ul>
+  <aside class="note"><b>발표자 노트:</b> 모든 수치·코드 인용은 /tmp/am-inspect 레포에서 2026-06 기준으로 직접 읽어 검증한 것. ~23k★ · REST 128 endpoints · $10/yr 비용은 README 주장값(주장)으로 표기. 발표 전 레포 한 번 더 확인 권장.</aside>
+  <p class="srcline">출처: 위 모든 링크 — 직접 소스 분석 (2026-06-16 기준)</p>
+</section>
+
+</div>
+
+<div id="hud"><b id="hud-n">1</b> / <span id="hud-t">10</span><span class="hint">← / → 넘기기 · a: 스크롤 · n: 노트</span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
+  var body = document.body, hud = document.getElementById('hud');
+  var hudN = document.getElementById('hud-n'), hudT = document.getElementById('hud-t');
+  hudT.textContent = slides.length;
+  var i = 0, present = true;          // 기본: 발표(슬라이드) 모드로 시작
+
+  function idFromHash(){
+    var h = location.hash.replace('#','');
+    for (var k=0;k<slides.length;k++){ if(slides[k].id===h) return k; }
+    return -1;
+  }
+  function render(){
+    body.classList.toggle('present', present);
+    if(present){
+      for (var k=0;k<slides.length;k++) slides[k].classList.toggle('active', k===i);
+      hudN.textContent = i+1;
+      if(slides[i].id) history.replaceState(null,'','#'+slides[i].id);
+      window.scrollTo(0,0);
+    }
+  }
+  function go(n){ i = Math.max(0, Math.min(slides.length-1, n)); render(); }
+
+  // 진입 시 해시가 있으면 그 슬라이드로
+  var h0 = idFromHash(); if(h0>=0) i = h0;
+  render();
+
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;            // 단축키 충돌 회피
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); go(i+1); break;
+      case 'ArrowLeft':  case 'PageUp':           e.preventDefault(); go(i-1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End':  e.preventDefault(); go(slides.length-1); break;
+      case 'a': case 'A':                                  // 발표 ↔ 스크롤(읽기) 토글
+        present = !present; render();
+        if(!present){ body.classList.remove('present'); }  // 스크롤 모드: 전체 보임
+        break;
+      case 'n': case 'N': body.classList.toggle('shownotes'); break;  // 발표자 노트 토글
+    }
+  });
+  // nav 링크 클릭 시 해당 슬라이드로 (발표 모드에서도 동작)
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').replace('#','');
+      for (var k=0;k<slides.length;k++){ if(slides[k].id===id){ go(k); break; } }
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7주차 — Understand-Anything: 코드를 지식그래프로</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --border:#30363d;
+    --fg:#e6edf3; --muted:#9da7b3; --accent:#58a6ff; --accent2:#3fb950;
+    --warn:#d29922; --danger:#f85149; --code:#1f2630; --gold:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);
+    font-family:-apple-system,"Apple SD Gothic Neo","Pretendard",system-ui,sans-serif;line-height:1.6;}
+  .deck{max-width:960px;margin:0 auto;padding:24px 20px 120px}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(13,17,23,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    padding:10px 20px;display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--accent)}
+  .nav .grp{color:var(--accent);font-weight:600}
+  section.slide{background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:32px 36px;margin:20px 0;scroll-margin-top:60px;position:relative}
+  .tag{display:inline-block;font-size:12px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;padding:2px 12px;margin-bottom:13px;letter-spacing:.3px}
+  .tag.t-diag{color:var(--accent2);border-color:var(--accent2)}
+  .tag.t-spec{color:var(--gold);border-color:var(--gold)}
+  .tag.t-ouro{color:var(--warn);border-color:var(--warn)}
+  .tag.t-ctx{color:#c39bff;border-color:#c39bff}
+  h1{font-size:30px;line-height:1.25;margin-bottom:10px}
+  h2{font-size:23px;margin-bottom:8px}
+  h3{font-size:16px;color:var(--accent);margin:15px 0 6px}
+  p{margin:7px 0}
+  .sub{color:var(--muted);font-size:15px}
+  ul,ol{margin:9px 0 9px 22px}
+  li{margin:5px 0}
+  .muted{color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:13px}
+  .card{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+  .card h4{font-size:14px;margin-bottom:5px}
+  code,pre{font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;overflow-x:auto;font-size:12.5px;color:#cdd9e5;margin:10px 0}
+  code.inline{background:var(--code);padding:2px 7px;border-radius:5px;font-size:.9em;color:var(--accent2)}
+  .flow{display:flex;align-items:stretch;gap:0;margin:16px 0;flex-wrap:wrap}
+  .step{flex:1;min-width:96px;background:var(--code);border:1px solid var(--border);
+    border-radius:9px;padding:9px;text-align:center}
+  .step .t{font-size:12px;color:var(--accent2);font-weight:600}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:15px;padding:0 3px}
+  .callout{border-left:3px solid var(--accent);background:rgba(88,166,255,.07);
+    padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0}
+  .callout.warn{border-color:var(--warn);background:rgba(210,153,34,.08)}
+  .callout.good{border-color:var(--accent2);background:rgba(63,185,80,.08)}
+  .callout.bad{border-color:var(--danger);background:rgba(248,81,73,.08)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--code);color:var(--accent)}
+  .shot{border:1px dashed var(--border);border-radius:10px;padding:22px;
+    text-align:center;color:var(--muted);background:repeating-linear-gradient(45deg,#13181f,#13181f 10px,#11161d 10px,#11161d 20px);margin:12px 0;font-size:13.5px}
+  .pgnum{position:absolute;top:13px;right:18px;color:var(--muted);font-size:12px}
+  a.src{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px dotted var(--accent)}
+  .center{text-align:center}
+  .big{font-size:19px}
+  hr{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .kbd{font-size:12px;color:var(--muted)}
+  .divider{text-align:center;color:var(--muted);font-size:13px;margin:28px 0 4px;letter-spacing:1px}
+  /* polish: 코드 핵심 라인 강조 + 한 줄 요약 + 비유 */
+  pre .hl{background:rgba(227,179,65,.16);color:#ffe79e;border-radius:3px;padding:0 2px;font-weight:600}
+  .gloss{font-size:14px;margin:8px 0 2px}
+  .gloss b{color:var(--gold)}
+  .analogy{background:rgba(195,155,255,.08);border-left:3px solid #c39bff;border-radius:0 8px 8px 0;
+    padding:9px 14px;margin:11px 0;font-size:13.5px}
+  .analogy b{color:#c39bff}
+  .guess{display:inline-block;background:rgba(248,81,73,.12);color:#ff9c95;border:1px solid rgba(248,81,73,.4);
+    border-radius:6px;padding:1px 9px;font-size:12.5px;margin:4px 0}
+  .hook{font-size:21px;line-height:1.5;margin:10px 0}
+  .hook b{color:var(--accent2)}
+  .big-take{font-size:24px;line-height:1.4;text-align:center;margin:16px 0;color:var(--fg)}
+  .big-take b{color:var(--accent2)}
+  /* 슬라이드별 출처 줄 */
+  .srcline{font-size:11.5px;color:var(--muted);margin-top:16px;border-top:1px dotted var(--border);padding-top:8px}
+  .srcline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+  /* 발표자 노트 — 청중 화면엔 절대 안 보임. n키로만 토글 */
+  aside.note{display:none;margin-top:14px;border-left:3px solid var(--gold);background:rgba(227,179,65,.07);
+    padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:var(--muted)}
+  aside.note b{color:var(--gold)}
+  body.shownotes aside.note{display:block}
+  /* before/after 비교표 */
+  .cmp{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px}
+  .cmp th,.cmp td{border:1px solid var(--border);padding:7px 9px;vertical-align:top}
+  .cmp th{background:var(--code)}
+  .cmp .bad{color:#ff9c95}.cmp .good{color:var(--accent2)}
+  .nums{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .numbox{flex:1;min-width:90px;background:var(--code);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center}
+  .numbox .v{font-size:22px;font-weight:700;color:var(--accent)}
+  .numbox.bad .v{color:var(--danger)}.numbox.good .v{color:var(--accent2)}
+  .numbox .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+  /* ===== 발표(슬라이드) 모드: body.present 일 때 한 장씩 ===== */
+  body.present .nav{display:none}
+  body.present .divider{display:none}
+  body.present .deck{padding-top:14px}
+  body.present section.slide{display:none}
+  body.present section.slide.active{display:block;min-height:78vh}
+  /* 좌하단 진행 표시 */
+  #hud{position:fixed;left:14px;bottom:12px;z-index:50;font-size:12px;color:var(--muted);
+    background:rgba(13,17,23,.85);border:1px solid var(--border);border-radius:999px;padding:5px 13px;
+    backdrop-filter:blur(6px);display:none}
+  body.present #hud{display:block}
+  #hud b{color:var(--accent)}
+  #hud .hint{color:var(--muted);opacity:.75;margin-left:8px}
+  @media print{
+    .nav,#hud{display:none}
+    body.present section.slide{display:block;min-height:auto;page-break-after:always}
+    section.slide{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#cover">표지</a>
+  <a href="#problem">문제</a>
+  <a href="#naive">순진한 접근</a>
+  <span class="grp">·</span>
+  <a href="#what">UA란</a>
+  <a href="#mechanism">메커니즘</a>
+  <a href="#pipeline">파이프라인</a>
+  <span class="grp">·</span>
+  <a href="#output">산출물</a>
+  <a href="#incremental">증분 업데이트</a>
+  <a href="#commands">명령어</a>
+  <a href="#tradeoff">트레이드오프</a>
+  <a href="#refs">참고자료</a>
+</nav>
+
+<div class="deck">
+
+<!-- COVER -->
+<section class="slide" id="cover">
+  <span class="tag">AI 스터디 · 7주차</span>
+  <h1>Understand-Anything<br><span class="sub" style="font-size:19px">— 코드를 <b>지식그래프</b>로 바꾸는 Claude Code 플러그인 해부</span></h1>
+  <p class="sub" style="margin-top:14px">"Turn any code into an interactive knowledge graph you can explore, search, and ask questions about."</p>
+  <div class="callout" style="margin-top:18px">
+    <strong>왜 이 도구? (1~6주차와의 연결)</strong> 1주차 OT · 2주차 하네스 · 3주차 LLM Wiki · 4주차 OMC/Octopus · 5주차 superpowers · 6주차 Vectorless RAG.
+    이번 주는 <b>"대형 레포를 AI가 어떻게 구조적으로 이해하게 만드는가"</b>를 메커니즘 수준에서 뜯어봅니다.
+    전부 <b>Claude Code 구독 안에서(추가 과금 없이)</b> 쓸 수 있습니다.
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card"><h4 style="color:var(--accent2)">라이선스</h4><p style="font-size:13px">MIT License — Yuxiang Lin and Infinite Universe, Inc.</p></div>
+    <div class="card"><h4 style="color:var(--gold)">Star 수</h4><p style="font-size:13px"><span class="guess">주장</span> ~60,500★ (GitHub 공개 수치, 변동 있음)</p></div>
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 표지는 30초. "지식그래프"가 낯설 수 있으니 "파일·함수·클래스를 노드로, 의존 관계를 엣지로 표현한 그래프"라고 한 마디만 추가해도 됨. Star 수는 주장(claim) 표기 — 오늘 기준 달라질 수 있음.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README, MIT License</p>
+</section>
+
+<!-- PROBLEM -->
+<section class="slide" id="problem">
+  <span class="pgnum">1 / 10</span>
+  <span class="tag t-ouro">문제</span>
+  <h2>대형 레포, 신규 입사자 — AI도 길을 잃는다</h2>
+  <p class="hook">레포를 처음 열면: <b>파일 수백 개, 디렉터리 수십 개.</b><br>"이 함수가 어디서 호출돼?" — grep만으로는 한계.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--danger)">신규 입사자 온보딩</h4>
+      <ul style="font-size:13px">
+        <li>코드 읽는 데만 며칠</li>
+        <li>어떤 파일이 핵심인지 모름</li>
+        <li>의존 관계를 머릿속에 쌓아야 함</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--danger)">AI 어시스턴트의 한계</h4>
+      <ul style="font-size:13px">
+        <li>컨텍스트 창 한계 — 레포 전체를 못 넣음</li>
+        <li>파일 선택을 사람이 해줘야 함</li>
+        <li>구조를 모르면 엉뚱한 파일을 읽음</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn" style="margin-top:14px">
+    핵심 긴장: <b>레포는 크고, 컨텍스트 창은 작다.</b> "전부 넣으면 되지 않나?" — 넣을 수가 없고, 넣어도 LLM이 구조를 파악하기 어렵다.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 청중 중 신규 입사 경험이 있는 분들에게 "레포 처음 봤을 때 얼마나 걸렸나요?" 질문 던지면 공감대 형성 쉬움.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README "Why Understand-Anything?"</p>
+</section>
+
+<!-- NAIVE -->
+<section class="slide" id="naive">
+  <span class="pgnum">2 / 10</span>
+  <span class="tag t-ctx">순진한 접근</span>
+  <h2>두 가지 순진한 접근이 왜 부족한가</h2>
+  <table class="cmp">
+    <tr><th>접근</th><th class="bad">한계</th></tr>
+    <tr>
+      <td><b>grep / 텍스트 검색</b><br><code class="inline">grep -r "fetchUser" .</code></td>
+      <td class="bad">호출 관계의 <u>의미</u>를 모름. 결과 목록만 줄뿐, "이게 핵심 경로인가 테스트 픽스처인가"를 알 수 없음.</td>
+    </tr>
+    <tr>
+      <td><b>전체를 LLM에 통째로</b><br>파일 100개를 붙여넣기</td>
+      <td class="bad">컨텍스트 한계 초과 + 비용 폭증 + LLM이 구조 없이 텍스트를 읽어야 함 → 부정확한 요약.</td>
+    </tr>
+  </table>
+  <div class="callout good" style="margin-top:14px">
+    <b>Understand-Anything의 답:</b> 먼저 <b>결정론적(deterministic)</b> 도구로 구조를 추출하고, 그 구조 위에서만 LLM을 쓴다. 토큰을 쓸 곳과 안 쓸 곳을 명확히 분리.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> "통째로" 접근은 실제로 많이들 해본다. "토큰 비용도 문제지만 LLM이 1만 줄 텍스트를 읽어도 구조를 제대로 파악 못 한다"는 포인트가 핵심.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README; agents/file-analyzer.md (두 단계 구조)</p>
+</section>
+
+<!-- WHAT -->
+<section class="slide" id="what">
+  <span class="pgnum">3 / 10</span>
+  <span class="tag">UA란</span>
+  <h2>Understand-Anything — Claude Code 네이티브 플러그인</h2>
+  <p class="sub">설치 방법 두 가지 (실제 명령어):</p>
+  <pre><span class="hl"># Claude Code 네이티브 (권장)</span>
+/plugin marketplace add Egonex-AI/Understand-Anything
+/plugin install understand-anything
+
+<span class="hl"># 기타 플랫폼 원라인 (Cursor, Codex, Gemini CLI 등)</span>
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash</pre>
+  <p class="gloss">👉 installer가 <code class="inline">~/.understand-anything/repo</code>에 클론하고 심링크를 연결한다.</p>
+  <div class="grid2" style="margin-top:10px">
+    <div class="card">
+      <h4 style="color:var(--accent2)">지원 플랫폼</h4>
+      <ul style="font-size:13px">
+        <li>Claude Code (네이티브)</li>
+        <li>Cursor / VS Code + Copilot (자동 감지)</li>
+        <li>Codex, OpenCode, Gemini CLI, Cline</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--gold)">무과금 포인트</h4>
+      <p style="font-size:13px">오픈소스 무료 플러그인. LLM 호출은 <b>기존 Claude Code 구독</b>의 에이전트를 사용 — 추가 요금 없음.</p>
+    </div>
+  </div>
+  <aside class="note"><b>발표자 노트:</b> "무과금"은 이 스터디의 중요한 필터. Claude Code 구독이 있으면 바로 쓸 수 있다는 점 강조. Cursor 사용자도 install.sh로 동일하게 사용 가능.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README "Installation"</p>
+</section>
+
+<!-- MECHANISM -->
+<section class="slide" id="mechanism">
+  <span class="pgnum">4 / 10</span>
+  <span class="tag t-diag">메커니즘</span>
+  <h2>2단계 하이브리드 파이프라인: tree-sitter + LLM</h2>
+  <p class="sub">UA의 핵심 설계 결정 — <b>무엇을 결정론적으로, 무엇을 LLM으로</b> 처리할지를 명확히 나눈다.</p>
+  <div class="flow">
+    <div class="step" style="border-color:var(--accent2)"><span class="t" style="color:var(--accent2)">Phase 1</span><p style="font-size:11.5px;margin-top:4px">tree-sitter<br>결정론적</p></div>
+    <div class="arrow">→</div>
+    <div class="step" style="border-color:#c39bff"><span class="t" style="color:#c39bff">Phase 2</span><p style="font-size:11.5px;margin-top:4px">LLM<br>시맨틱</p></div>
+    <div class="arrow">→</div>
+    <div class="step" style="border-color:var(--gold)"><span class="t" style="color:var(--gold)">출력</span><p style="font-size:11.5px;margin-top:4px">knowledge-<br>graph.json</p></div>
+  </div>
+  <table style="margin-top:10px">
+    <tr><th>엔진</th><th>담당</th><th>특성</th></tr>
+    <tr>
+      <td><b style="color:var(--accent2)">tree-sitter</b><br>(결정론적)</td>
+      <td>소스코드 → 구문트리 파싱<br>imports, exports, 함수 정의, 클래스, 호출 위치 추출</td>
+      <td>같은 입력 → 항상 같은 출력.<br>재현 가능 + 증분 변경 감지 기반.</td>
+    </tr>
+    <tr>
+      <td><b style="color:#c39bff">LLM</b><br>(시맨틱)</td>
+      <td>요약 생성, 태그, 아키텍처 레이어 분류,<br>비즈니스 도메인 매핑</td>
+      <td>구조적 사실 위에서만 동작.<br>의미 해석이 필요한 부분만.</td>
+    </tr>
+  </table>
+  <div class="callout good">
+    <b>핵심 원리:</b> tree-sitter가 만들어 준 <b>구조적 사실(structural facts)</b>을 기반으로 LLM이 <b>의미 해석(semantic)</b>만 담당한다. LLM이 파일 트리를 직접 걸어 다니거나 임포트를 추적하는 일을 하지 않는다.
+  </div>
+  <p class="gloss">검증: <code class="inline">agents/file-analyzer.md</code> — "This script uses tree-sitter for code files and specialized parsers for non-code files, providing deterministic, high-quality structural extraction."</p>
+  <aside class="note"><b>발표자 노트:</b> tree-sitter는 GitHub이 만든 파서 생성기로, 코드를 AST(추상 구문 트리)로 변환. "같은 입력 → 같은 출력"이라는 결정론적 특성 덕에 이전 결과와 diff 비교가 가능하다. 이것이 증분 업데이트의 기반.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — agents/file-analyzer.md "Phase 1 — Structural Extraction (Bundled Script)"</p>
+</section>
+
+<!-- PIPELINE -->
+<section class="slide" id="pipeline">
+  <span class="pgnum">5 / 10</span>
+  <span class="tag t-diag">멀티에이전트 파이프라인</span>
+  <h2>에이전트 파이프라인: scanner → file-analyzers → architecture → tour</h2>
+  <p class="sub">agents/ 디렉터리에 실제로 존재하는 에이전트 파일들 (직접 확인):</p>
+  <div class="flow" style="flex-wrap:wrap;gap:6px">
+    <div class="step"><span class="t">project-scanner</span><p style="font-size:10.5px;margin-top:3px">파일 목록<br>언어 감지<br>복잡도</p></div>
+    <div class="arrow">→</div>
+    <div class="step" style="border-color:var(--accent2)"><span class="t" style="color:var(--accent2)">file-analyzer ×N</span><p style="font-size:10.5px;margin-top:3px">병렬 실행<br>최대 5개 동시<br>20~30파일/배치</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">architecture-analyzer</span><p style="font-size:10.5px;margin-top:3px">레이어 분류<br>도메인 매핑</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">tour-builder</span><p style="font-size:10.5px;margin-top:3px">온보딩 투어<br>순서 생성</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">graph-reviewer</span><p style="font-size:10.5px;margin-top:3px">품질 검토<br>dangling edge</p></div>
+  </div>
+  <h3 style="margin-top:16px">project-scanner 분업 (agents/project-scanner.md 검증)</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--accent2)">결정론적 (스크립트)</h4>
+      <ul style="font-size:12.5px">
+        <li>파일 열거 (git ls-files 우선)</li>
+        <li>언어 감지 · 카테고리 분류</li>
+        <li>라인 수 계산 · 복잡도 추정</li>
+        <li>.understandignore 필터링</li>
+        <li>임포트 맵 추출</li>
+      </ul>
+      <p style="font-size:11px;color:var(--muted);margin-top:6px">→ scan-project.mjs, extract-import-map.mjs<br>"Do NOT re-implement any of this logic."</p>
+    </div>
+    <div class="card">
+      <h4 style="color:#c39bff">LLM 담당</h4>
+      <ul style="font-size:12.5px">
+        <li>README + manifests 읽기</li>
+        <li>프로젝트 이름·설명 서술</li>
+        <li>프레임워크 내러티브 합성</li>
+      </ul>
+      <p style="font-size:11px;color:var(--muted);margin-top:6px">→ 구조 사실은 스크립트가 주고<br>LLM은 서술(narrative)만 작성</p>
+    </div>
+  </div>
+  <aside class="note"><b>발표자 노트:</b> file-analyzer가 병렬로 최대 5개 동시 실행, 배치당 20~30파일. 배치 인덱스를 temp 파일 경로에 넣어 충돌 방지 — "batch index used in temp paths to avoid collision"이 실제 코드에 명시됨. 이 정도 설계 디테일이 프로덕션 도구와 toy의 차이.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — agents/project-scanner.md, agents/file-analyzer.md (직접 검증)</p>
+</section>
+
+<!-- OUTPUT -->
+<section class="slide" id="output">
+  <span class="pgnum">6 / 10</span>
+  <span class="tag t-spec">산출물</span>
+  <h2>산출물: .understand-anything/knowledge-graph.json</h2>
+  <p class="sub">분석이 끝나면 프로젝트 루트에 생성되는 파일:</p>
+  <pre><span class="hl"># .understand-anything/knowledge-graph.json (구조 요약)</span>
+{
+  "nodes": [
+    { "id": "file:src/api/user.ts",      "type": "file", ... },
+    { "id": "function:src/api/user.ts:fetchUser", "type": "function", ... },
+    { "id": "class:src/models/User.ts:User",      "type": "class", ... }
+  ],
+  "edges": [
+    { "from": "function:...:fetchUser", "to": "file:src/db/conn.ts", "type": "imports" },
+    { "from": "function:...:fetchUser", "to": "function:...:queryDB", "type": "calls" }
+  ]
+}
+
+<span class="hl"># .understand-anything/meta.json — 증분 업데이트의 기준점</span>
+{ "gitCommitHash": "a3f9..." }</pre>
+  <div class="grid2" style="margin-top:10px">
+    <div class="card">
+      <h4 style="color:var(--accent2)">노드 유형</h4>
+      <ul style="font-size:12.5px">
+        <li>file — 소스 파일</li>
+        <li>function — 함수·메서드</li>
+        <li>class — 클래스</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--accent2)">엣지 유형</h4>
+      <ul style="font-size:12.5px">
+        <li>imports — 임포트 관계</li>
+        <li>calls — 호출 관계</li>
+        <li>inherits / implements</li>
+        <li>related — 시맨틱 연관</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <b>meta.json의 gitCommitHash</b>가 다음 슬라이드에서 설명할 증분 업데이트의 <b>기준점(baseline)</b>. 커밋 해시가 바뀌면 diff를 계산해 변경된 파일만 재분석한다.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> knowledge-graph.json은 일반 JSON이라 다른 도구에서도 읽을 수 있음. /understand-dashboard 명령어가 이 파일을 읽어 인터랙티브 뷰를 보여줌.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README "Output", agents/file-analyzer.md</p>
+</section>
+
+<!-- INCREMENTAL -->
+<section class="slide" id="incremental">
+  <span class="pgnum">7 / 10</span>
+  <span class="tag t-ouro">증분 업데이트</span>
+  <h2>증분 업데이트 — "토큰 0 원칙"</h2>
+  <p class="sub">post-commit hook이 트리거. <b>핵심 원칙:</b></p>
+  <div class="callout good" style="font-size:15px;margin-bottom:14px">
+    "Spend zero LLM tokens when changes are cosmetic (formatting, internal logic).<br>
+    Only invoke LLM agents when <b>structural changes</b> (new/removed functions, classes, imports, exports) are detected."
+    <p style="font-size:11px;color:var(--muted);margin-top:6px">— hooks/auto-update-prompt.md (직접 인용)</p>
+  </div>
+  <div class="flow">
+    <div class="step"><span class="t">gitCommitHash 비교</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="t">변경 파일 목록</span></div>
+    <div class="arrow">→</div>
+    <div class="step" style="border-color:var(--accent2)"><span class="t" style="color:var(--accent2)">구조 fingerprint 비교</span></div>
+    <div class="arrow">→</div>
+    <div class="step" style="border-color:var(--gold)"><span class="t" style="color:var(--gold)">LLM 호출 (구조 변화만)</span></div>
+  </div>
+  <table style="margin-top:10px">
+    <tr><th>변경 유형</th><th>LLM 호출</th><th>이유</th></tr>
+    <tr><td>공백·포매팅·주석 수정</td><td style="color:var(--accent2)">없음 (토큰 0)</td><td>구조적 fingerprint 동일</td></tr>
+    <tr><td>내부 로직 변경 (함수 시그니처 불변)</td><td style="color:var(--accent2)">없음 (토큰 0)</td><td>exports/imports 변화 없음</td></tr>
+    <tr><td>함수 추가·제거, 임포트 변경</td><td style="color:var(--warn)">필요 (해당 파일만)</td><td>구조 변화 감지됨</td></tr>
+    <tr><td>새 파일 추가</td><td style="color:var(--warn)">필요 (신규 파일만)</td><td>지식그래프에 없는 노드</td></tr>
+  </table>
+  <div class="analogy"><b>비유:</b> 영어사전에서 기존 단어 설명만 고쳤으면 색인은 안 바꿔도 된다. 새 단어가 추가됐을 때만 색인을 갱신한다.</div>
+  <aside class="note"><b>발표자 노트:</b> Phase 0는 "Zero Token Cost" — git hash 비교만으로 대부분의 trivial 업데이트를 걸러낸다. .understandignore 처리도 Phase 0에서 수행해 마이그레이션 파일·vendor 코드가 spurious escalation을 일으키지 않도록 함 (issue #153 수정 내역).</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — hooks/auto-update-prompt.md "Key principle" (직접 인용)</p>
+</section>
+
+<!-- COMMANDS -->
+<section class="slide" id="commands">
+  <span class="pgnum">8 / 10</span>
+  <span class="tag">명령어 · 실제 사용</span>
+  <h2>명령어 한눈에 — 한국어(--language ko) 지원 포함</h2>
+  <table>
+    <tr><th>명령어</th><th>역할</th></tr>
+    <tr><td><code class="inline">/understand</code></td><td>전체 코드베이스 분석 · 지식그래프 생성 (최초 1회)</td></tr>
+    <tr><td><code class="inline">/understand-dashboard</code></td><td>인터랙티브 대시보드 열기</td></tr>
+    <tr><td><code class="inline">/understand-chat</code></td><td>지식그래프 기반 대화 Q&amp;A</td></tr>
+    <tr><td><code class="inline">/understand-diff</code></td><td>두 커밋 간 구조 변화 시각화</td></tr>
+    <tr><td><code class="inline">/understand-explain</code></td><td>특정 파일·함수 설명</td></tr>
+    <tr><td><code class="inline">/understand-onboard</code></td><td>신규 입사자용 투어 생성</td></tr>
+    <tr><td><code class="inline">/understand-domain</code></td><td>비즈니스 도메인 매핑</td></tr>
+    <tr><td><code class="inline">/understand-knowledge</code></td><td>지식베이스 검색</td></tr>
+  </table>
+  <h3 style="margin-top:14px">주요 플래그</h3>
+  <pre><span class="hl"># 한국어로 출력 (ko 지원 확인됨)</span>
+/understand --language ko
+
+<span class="hl"># post-commit hook 자동 업데이트 활성화</span>
+/understand --auto-update
+
+<span class="hl"># 지원 언어: en, zh, zh-TW, ja, ko, ru</span></pre>
+  <div class="callout good">
+    <b>--language ko</b>: 요약·태그를 한국어로 생성. 국내 팀에서 쓸 때 유용. 기술 용어(middleware, hook 등)는 영어 유지.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> /understand는 최초 실행 시간이 레포 크기에 따라 수 분 걸릴 수 있음. 이후 --auto-update를 켜두면 커밋마다 자동으로 증분 업데이트. 한국어 지원은 README 플래그 목록에서 확인.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README "Commands" 및 "--language" 플래그 목록</p>
+</section>
+
+<!-- TRADEOFF -->
+<section class="slide" id="tradeoff">
+  <span class="pgnum">9 / 10</span>
+  <span class="tag t-ctx">트레이드오프</span>
+  <h2>트레이드오프 — 솔직하게</h2>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--accent2)">강점</h4>
+      <ul style="font-size:13px">
+        <li>결정론적 + LLM의 분업 — 재현 가능하고 비용 효율적</li>
+        <li>증분 업데이트로 반복 비용 최소화</li>
+        <li>한국어 포함 다국어 출력 지원</li>
+        <li>Claude Code 구독만으로 추가 과금 없음</li>
+        <li>멀티 플랫폼 (Cursor·Copilot·Codex 등)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--danger)">주의 / 한계</h4>
+      <ul style="font-size:13px">
+        <li>최초 분석은 레포 크기에 따라 시간+토큰 필요</li>
+        <li>지식그래프 품질은 LLM 요약 품질에 의존</li>
+        <li>tree-sitter 미지원 언어는 구조 추출 제한</li>
+        <li>동적 패턴(런타임 의존성)은 정적 분석 한계</li>
+        <li>신규 프로젝트: 레포가 작으면 overhead가 큼</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn" style="margin-top:14px">
+    <b>언제 쓰면 좋은가:</b> 파일이 수십 개 이상인 기존 레포, 신규 팀원 온보딩이 잦은 팀, "이 함수가 어디에 영향 미치나"를 자주 묻는 상황.
+    반대로 작은 사이드 프로젝트라면 overhead 대비 효용이 낮을 수 있음.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 트레이드오프 슬라이드는 "이게 만능이냐"에 대한 솔직한 답. 청중이 "그럼 언제 써요?"를 묻기 전에 먼저 제시하면 신뢰감이 올라감.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README, agents/*.md 종합 분석</p>
+</section>
+
+<!-- WRAP -->
+<section class="slide" id="wrap">
+  <span class="pgnum">10 / 10</span>
+  <span class="tag">정리</span>
+  <h2>정리 — 오늘의 핵심 세 가지</h2>
+  <ol style="font-size:15px;line-height:1.9">
+    <li><b>2단계 분업:</b> tree-sitter(결정론적)가 구조적 사실을 추출하고, LLM(시맨틱)은 의미 해석만 담당한다.</li>
+    <li><b>토큰 0 원칙:</b> 포매팅·내부 로직 변경에는 LLM을 쓰지 않는다. 구조가 바뀔 때만 LLM을 호출한다.</li>
+    <li><b>멀티에이전트 병렬화:</b> file-analyzer가 최대 5개 동시, 배치당 20~30파일 처리 — 큰 레포도 현실적인 시간에 완료.</li>
+  </ol>
+  <p class="big-take" style="margin-top:20px">좋은 AI 도구는 <b>"LLM을 어디에 쓰지 않을지"</b>를 설계한다.</p>
+  <div class="callout good">
+    <b>이번 주에 해볼 것 (딱 하나):</b> 팀에서 가장 파악하기 어려운 레포 하나를 골라 <code class="inline">/understand --language ko</code> 한 번 돌려보기.
+    knowledge-graph.json이 생기면 <code class="inline">/understand-onboard</code>로 온보딩 투어를 만들어 팀원에게 공유.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 마지막 슬라이드에서 "각자 가장 복잡한 레포가 어디 있나요?" 질문 던지면 실천 동기 생김. 다음 모임에서 결과 공유 약속하면 팔로우업 완성.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — 전체 분석 종합</p>
+</section>
+
+<!-- REFS -->
+<section class="slide" id="refs">
+  <h1 class="center">감사합니다</h1>
+  <p class="center sub">질문 / 각자의 "레포 파악 고생담" 공유</p>
+  <hr>
+  <h3>참고자료</h3>
+  <ul>
+    <li><a class="src" href="https://github.com/Egonex-AI/Understand-Anything">Egonex-AI/Understand-Anything — 공식 레포 (MIT License)</a></li>
+    <li><a class="src" href="https://github.com/Egonex-AI/Understand-Anything/blob/main/agents/project-scanner.md">agents/project-scanner.md — 결정론적/LLM 분업 명세</a></li>
+    <li><a class="src" href="https://github.com/Egonex-AI/Understand-Anything/blob/main/agents/file-analyzer.md">agents/file-analyzer.md — tree-sitter 2-phase 추출 상세</a></li>
+    <li><a class="src" href="https://github.com/Egonex-AI/Understand-Anything/blob/main/hooks/auto-update-prompt.md">hooks/auto-update-prompt.md — 증분 업데이트·토큰 0 원칙</a></li>
+    <li><a class="src" href="https://github.com/tree-sitter/tree-sitter">tree-sitter/tree-sitter — 결정론적 파서 생성기</a></li>
+  </ul>
+  <aside class="note"><b>발표자 노트:</b> 모든 수치·인용·메커니즘은 /tmp/ua-inspect/understand-anything-plugin 의 실제 파일(project-scanner.md, file-analyzer.md, auto-update-prompt.md)을 직접 읽어 검증함. Star 수만 "주장(claim)"으로 표기.</aside>
+</section>
+
+</div>
+
+<div id="hud"><b id="hud-n">1</b> / <span id="hud-t">11</span><span class="hint">← / → 넘기기 · a: 스크롤 · n: 노트</span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
+  var body = document.body, hud = document.getElementById('hud');
+  var hudN = document.getElementById('hud-n'), hudT = document.getElementById('hud-t');
+  hudT.textContent = slides.length;
+  var i = 0, present = true;          // 기본: 발표(슬라이드) 모드로 시작
+
+  function idFromHash(){
+    var h = location.hash.replace('#','');
+    for (var k=0;k<slides.length;k++){ if(slides[k].id===h) return k; }
+    return -1;
+  }
+  function render(){
+    body.classList.toggle('present', present);
+    if(present){
+      for (var k=0;k<slides.length;k++) slides[k].classList.toggle('active', k===i);
+      hudN.textContent = i+1;
+      if(slides[i].id) history.replaceState(null,'','#'+slides[i].id);
+      window.scrollTo(0,0);
+    }
+  }
+  function go(n){ i = Math.max(0, Math.min(slides.length-1, n)); render(); }
+
+  // 진입 시 해시가 있으면 그 슬라이드로
+  var h0 = idFromHash(); if(h0>=0) i = h0;
+  render();
+
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;            // 단축키 충돌 회피
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); go(i+1); break;
+      case 'ArrowLeft':  case 'PageUp':           e.preventDefault(); go(i-1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End':  e.preventDefault(); go(slides.length-1); break;
+      case 'a': case 'A':                                  // 발표 ↔ 스크롤(읽기) 토글
+        present = !present; render();
+        if(!present){ body.classList.remove('present'); }  // 스크롤 모드: 전체 보임
+        break;
+      case 'n': case 'N': body.classList.toggle('shownotes'); break;  // 발표자 노트 토글
+    }
+  });
+  // nav 링크 클릭 시 해당 슬라이드로 (발표 모드에서도 동작)
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').replace('#','');
+      for (var k=0;k<slides.length;k++){ if(slides[k].id===id){ go(k); break; } }
+    });
+  });
+})();
+</script>
+</body>
+</html>

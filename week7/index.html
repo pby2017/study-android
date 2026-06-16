@@ -3,27 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7주차 발표 자료 — diagnose &amp; Spec Kit</title>
+<title>7주차 발표 자료 — AI 코딩 에이전트 도구</title>
 <style>
   body{background:#0d1117;color:#e6edf3;font-family:-apple-system,"Apple SD Gothic Neo",system-ui,sans-serif;
-    line-height:1.6;max-width:720px;margin:0 auto;padding:48px 24px}
+    line-height:1.6;max-width:760px;margin:0 auto;padding:48px 24px}
   h1{font-size:28px;margin-bottom:8px}
   .sub{color:#9da7b3;margin-bottom:28px}
+  .grp{color:#58a6ff;font-size:13px;font-weight:600;letter-spacing:.5px;margin:24px 0 6px;text-transform:uppercase}
   a.card{display:block;background:#161b22;border:1px solid #30363d;border-radius:12px;
-    padding:18px 20px;margin:12px 0;text-decoration:none;color:#e6edf3}
+    padding:16px 20px;margin:10px 0;text-decoration:none;color:#e6edf3}
   a.card:hover{border-color:#58a6ff}
-  a.card h2{font-size:18px;color:#58a6ff;margin-bottom:4px}
-  a.card p{color:#9da7b3;font-size:14px;margin:0}
-  .tip{color:#9da7b3;font-size:13px;margin-top:24px;border-top:1px dotted #30363d;padding-top:14px}
+  a.card h2{font-size:17px;color:#58a6ff;margin-bottom:4px}
+  a.card p{color:#9da7b3;font-size:13.5px;margin:0}
+  .tip{color:#9da7b3;font-size:13px;margin-top:28px;border-top:1px dotted #30363d;padding-top:14px}
 </style>
 </head>
 <body>
   <h1>7주차 발표 자료</h1>
-  <p class="sub">AI가 추측하지 않게 — diagnose · Spec Kit 두 도구의 구현 해부</p>
+  <p class="sub">AI 코딩 에이전트 도구 — 발표 후보 덱 모음. 각 덱은 동작 원리(코드/구조)까지 설명합니다.</p>
 
+  <div class="grp">발표 확정 후보</div>
   <a class="card" href="./deck.html">
-    <h2>📊 발표 덱 (deck.html)</h2>
-    <p>슬라이드 11장. diagnose · Spec Kit + diagnose 실습(실제 div 77/95 버그 케이스).</p>
+    <h2>📊 diagnose &amp; Spec Kit (통합 덱)</h2>
+    <p>"AI가 추측하지 않게" — 체계적 디버깅 + 스펙 주도 개발. 실제 버그 케이스 실습 + 설치·사용 흐름.</p>
+  </a>
+
+  <div class="grp">추가 후보 (읽고 2개 대체 검토용)</div>
+  <a class="card" href="./handoff.html">
+    <h2>🔄 handoff</h2>
+    <p>대화를 인수인계 문서로 압축 → 다른 에이전트가 이어받기. mattpocock/skills, 무과금.</p>
+  </a>
+  <a class="card" href="./skill-creator.html">
+    <h2>🛠️ skill-creator</h2>
+    <p>스킬을 "측정 가능한 아티팩트"로 — eval·train/test 분할·벤치마크. anthropics/skills.</p>
+  </a>
+  <a class="card" href="./agentmemory.html">
+    <h2>🧠 agentmemory</h2>
+    <p>세션 넘어 기억하는 에이전트 메모리 — hooks 자동 캡처 + BM25·벡터·그래프 하이브리드 검색(RRF). 로컬 임베딩 무과금.</p>
+  </a>
+  <a class="card" href="./understand-anything.html">
+    <h2>🗺️ Understand-Anything</h2>
+    <p>코드를 탐색 가능한 지식 그래프로 — tree-sitter(결정적)+LLM(시맨틱) 멀티에이전트 파이프라인. Claude Code 플러그인.</p>
   </a>
 
   <p class="tip">
