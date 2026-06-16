@@ -3084,3 +3084,15 @@ cards:
       - "정의 파일에 model을 커밋해 두면 '모두가 제일 비싼 모델로 기본 세팅하는' 사고를 의지가 아니라 설정으로 막는다 — 코드리뷰는 Sonnet, 빠른 작업은 Haiku 식으로 역할별 분리"
       - "컨텍스트 격리: 서브에이전트는 fresh·isolated 컨텍스트 창에서 시작해 부모 대화·이미 읽은 파일을 보지 않고 요약 결과만 돌려준다(예외: fork는 전체 대화를 상속). 탐색 같은 대량 토큰 작업을 메인 창 밖으로 빼는 게 비용 절감의 본질"
     source: "https://code.claude.com/docs/en/sub-agents"
+  - category: ai
+    title: "에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기"
+    summary: >
+      Agent Skills는 SKILL.md 한 장(name·description YAML 프런트매터 + 마크다운 본문)에 스크립트·레퍼런스를 묶은 폴더로, 2025-10 Anthropic이 도입해 2025-12 오픈 표준으로 공개했고 지금은 Claude Code·Claude.ai·API·Codex·Cursor 등에서 동작한다.
+      핵심은 점진적 공개(progressive disclosure)다 — 세션 시작 시 에이전트는 각 스킬의 name·description(스킬당 대략 100토큰)만 본다. 본문(보통 5천 토큰 미만)은 에이전트가 그 스킬이 지금 작업에 필요하다고 판단할 때만 로드된다.
+      덕분에 스킬을 수십~수백 개 깔아둬도 컨텍스트 창은 거의 비어 있고, 정작 쓸 때만 토큰을 먹는다 — MCP 도구 정의가 항상 컨텍스트를 차지하는 것과 대비된다.
+      이 메커니즘 때문에 description 한 줄을 어떻게 쓰느냐가 스킬이 제때 발동하느냐를 가른다.
+    points:
+      - "토큰 회계: 항상 보이는 건 스킬당 약 100토큰(name+description)뿐, 본문(<5k토큰)은 '관련 있다'고 판단될 때만 로드 → 스킬 수백 개도 컨텍스트 부담이 거의 없다"
+      - "발동 트리거는 본문이 아니라 description이 쥔다. 에이전트는 메타데이터만 보고 로드 여부를 정하므로, 언제 써야 하는지를 description에 구체적으로 써야 제때 켜진다"
+      - "보안 주의: 스킬은 에이전트 환경에서 임의 코드를 실행할 수 있다 — '믿을 수 있는 출처'에서만 설치하라. 큐레이션 목록 travisvn/awesome-claude-skills(약 13.5k★) 등이 모음집 역할"
+    source: "https://github.com/travisvn/awesome-claude-skills"

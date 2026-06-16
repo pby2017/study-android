@@ -334,3 +334,5 @@
 
 - 2026-06-16 20:00 KST | Gemini CLI 은퇴 — 10만★ 오픈소스 터미널 에이전트, 2026-06-18부터 무료·Pro·Ultra 차단 | https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/
 - 2026-06-16 20:20 KST | 서브에이전트 모델 라우팅 — 탐색 Haiku·리뷰 Sonnet 비용 천장 | https://code.claude.com/docs/en/sub-agents
+
+- 2026-06-16 20:40 KST | 에이전트 스킬의 점진적 로딩 — 메타 100토큰만 항상 보이고 본문은 필요할 때만 로드(progressive disclosure) | https://github.com/travisvn/awesome-claude-skills
