@@ -3108,3 +3108,15 @@ cards:
       - "compaction 트리거: 파일 검색·코드 흐름 파악·테스트/빌드 로그·대형 JSON 도구 출력처럼 토큰을 먹는 활동을 progress.md(목표·접근·완료 단계·현재 실패) 같은 구조화 산출물로 증류. 구현만 git worktree로 격리하고 리서치·플랜은 main에서 한다"
       - "서브에이전트는 '역할 흉내'가 아니라 '컨텍스트 제어' 수단 — Glob/Grep/Read 잡동사니를 fresh 컨텍스트에서 돌려 부모 에이전트 창을 깨끗이 유지하는 게 가장 흔한 용도. 팀 비용은 3인 기준 월 약 $12k(Opus), 전환에 약 8주 걸렸다고 밝힘"
     source: "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md"
+  - category: ai
+    title: "claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)"
+    summary: >
+      Anthropic이 공개한 claude-code-security-review(약 5.3k★, MIT, 주로 파이썬)는 PR이 올라올 때마다 변경 diff를 Claude로 의미 분석해 취약점을 찾고 해당 라인에 코멘트를 다는 GitHub Action이다.
+      단순 패턴 매칭이 아니라 코드 맥락을 읽어 인젝션(SQL·command·XXE 등), 인증·인가 결함, 비밀정보·PII 노출, 암호화 오용, RCE·역직렬화, XSS, TOCTOU 같은 로직 결함까지 본다.
+      핵심은 오탐 억제다 — 발견된 항목은 별도 검증 서브태스크가 실제 코드 동작에 비춰 다시 분석하고, 확신도 점수가 낮으면(8점 미만) 버린다. DoS·레이트리밋·입증 안 된 입력검증·대부분의 open-redirect는 기본 제외 카테고리다.
+      같은 엔진을 Claude Code의 내장 `/security-review` 슬래시 명령으로 개발 중에도 돌릴 수 있고, security-review.md를 `.claude/commands/`에 복사해 분석 기준을 커스텀할 수 있다.
+    points:
+      - "도입은 워크플로 YAML 한 조각 — `anthropics/claude-code-security-review@main`에 `comment-pr: true`와 API 키를 넘기면 PR head를 체크아웃해 변경분만 검토하고 라인 코멘트를 남긴다"
+      - "★보안 경고(공식): 이 액션은 '프롬프트 인젝션에 하드닝되지 않았다' — 신뢰할 수 있는 PR에만 쓰고, 외부 기여자 PR은 깃허브 'Require approval for all external contributors'로 메인테이너 승인 후에만 돌게 막으라고 권고한다"
+      - "GitHub Action(PR 게이트)과 `/security-review` 슬래시 명령(개발 중 로컬)은 같은 분석을 두 지점에 배치한 것 — '짠 세션 말고 별도 패스가 검토한다'는 원칙을 보안에 적용한 사례다"
+    source: "https://github.com/anthropics/claude-code-security-review"
