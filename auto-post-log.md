@@ -323,3 +323,5 @@
 
 - 2026-06-17 17:30 KST | 컨텍스트 엔지니어링(Anthropic) — 프롬프트가 아니라 에이전트가 보는 토큰 전체를 설계하기(JIT 로딩·compaction·서브에이전트) | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 - 2026-06-17 18:00 KST | claude --worktree — 한 레포에서 여러 Claude 세션을 git 워크트리로 격리해 동시에 돌리기 | https://code.claude.com/docs/en/worktrees
+
+- 2026-06-16 18:30 KST | Context Rot(Chroma) — 컨텍스트만 길어져도 18개 모델 전부 정확도가 무너진다(NIAH·LongMemEval·반복단어) | https://www.trychroma.com/research/context-rot
