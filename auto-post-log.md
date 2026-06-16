@@ -284,3 +284,4 @@
 - 2026-06-17 06:00 KST | OpenSpec — Spec Kit보다 가볍게 코드 전에 무엇을 만들지부터 합의하는 SDD(55k★) | https://github.com/Fission-AI/OpenSpec
 
 - 2026-06-17 06:30 KST | OpenHands(All Hands AI) — BYOK로 어떤 LLM이든 꽂는 MIT 오픈소스 자율 코딩 에이전트(77k★) | https://github.com/All-Hands-AI/OpenHands
+- 2026-06-17 07:00 KST | Cline — Plan/Act 모드로 먼저 계획하고 승인받아 실행하는 BYOK 코딩 에이전트(63k★) | https://github.com/cline/cline
