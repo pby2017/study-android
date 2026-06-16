@@ -3555,3 +3555,17 @@ cards:
       - "에이전트 호스트 모델 — 자체 에이전트를 강제하지 않고 ACP로 Claude Code·Codex·Gemini CLI·OpenCode·goose·Cline 등 외부 에이전트를 에디터에 붙여 씀. JetBrains도 ACP 채택, 양사 공동 에이전트 레지스트리"
       - "병렬 에이전트 — Agent Panel에서 여러 에이전트를 한 창에서 동시에 실행(Parallel Agents). 코드 검색·파일 편집·터미널 실행 같은 내장 툴을 에이전트가 호출하는 agentic editing 지원"
     source: "https://zed.dev/blog/zed-1-0"
+
+  - category: ai
+    title: "Mastra(전 Gatsby 팀) — '에이전트·워크플로·RAG'를 한 묶음으로 주는 TypeScript-네이티브 AI 프레임워크(Apache-2.0·~25k★)"
+    summary: >
+      Mastra는 Gatsby를 만든 팀(YC W25)이 내놓은 TypeScript 전용 AI 애플리케이션·에이전트 프레임워크다.
+      코딩 에이전트 자체가 아니라 '에이전트를 만드는 토대'로, 자율 에이전트·다단계 워크플로·RAG·툴 호출을
+      한 패키지에서 다룬다. 40여 개 모델 공급자(OpenAI·Anthropic·Gemini 등)에 붙는 모델 라우팅,
+      `.then()`·`.branch()`·`.parallel()`로 짜는 워크플로, human-in-the-loop, 내장 관측성(observability)을 제공한다.
+      Python 중심의 LangChain·Deep Agents 계열과 달리 JS/TS 생태계에서 프로토타입→프로덕션을 노린 점이 차별점이다.
+    points:
+      - "TypeScript-네이티브 — Python이 아닌 JS/TS 풀스택에서 에이전트·RAG·워크플로를 짤 수 있게 한 프레임워크. Apache-2.0 오픈소스, GitHub ~25k★(시점에 따라 변동)"
+      - "구성요소 — 자율 Agents, .then()/.branch()/.parallel() 기반 Workflows, RAG 데이터 검색, Tools 호출, human-in-the-loop, 내장 observability"
+      - "모델 비종속 — 40+ 공급자(OpenAI·Anthropic·Gemini 등) 모델 라우팅. Gatsby 제작팀이 만들고 YC W25 출신이라는 점은 프로젝트 측 소개"
+    source: "https://github.com/mastra-ai/mastra"
