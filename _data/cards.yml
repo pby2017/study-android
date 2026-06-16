@@ -3772,3 +3772,15 @@ cards:
       - "수치 격차(보도된 OpenAI 감사값) — Verified ~80%대 모델이 오염에 강한 SWE-bench Pro 공개셋에선 ~23%로 급락. 감사 표본은 64회 독립 실행·138문항"
       - "실무 — 사내 도구 평가는 공개 벤치 대신 '우리 비공개 레포로 만든 자체 태스크'를 쓰는 게 오염·과적합을 피하는 길. OpenAI도 전문가가 원본 태스크를 짜는 GDPVal 류로 투자 이동"
     source: "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"
+  - category: ai
+    title: "Codebuff(CodebuffAI) — '한 모델'이 아니라 파일선택·계획·편집·검토 4개 에이전트가 분업하는 오픈소스 코딩 에이전트(Apache-2.0·~6.5k★)"
+    summary: >
+      Codebuff는 자연어 지시로 코드베이스를 고치는 오픈소스 AI 코딩 에이전트로, 단일 모델에 다 맡기는 대신 역할이 다른 에이전트 여러 개가 협업하는 구조를 핵심으로 내세운다(README 주장).
+      예컨대 '인증 추가' 같은 작업이 들어오면 ① File Picker가 레포를 훑어 아키텍처를 파악하고 관련 파일을 찾고 ② Planner가 어떤 파일을 어떤 순서로 고칠지 계획하고 ③ Editor가 정밀 편집을 하고 ④ Reviewer가 변경을 검증한다.
+      이렇게 나누면 단일 모델 도구보다 컨텍스트 이해가 낫고 편집이 정확하며 오류가 적다는 게 프로젝트의 설명이다.
+      CLI(`npm i -g codebuff`)뿐 아니라 SDK(`@codebuff/sdk`)로 에이전트를 프로덕션에 임베드할 수 있고, `/init`를 돌리면 knowledge.md와 `.agents/` 디렉터리(TypeScript 타입 정의)가 생겨 자기만의 커스텀 에이전트를 정의할 수 있다.
+    points:
+      - "핵심 구조 — File Picker(탐색)→Planner(계획)→Editor(편집)→Reviewer(검증) 분업. '서브에이전트로 컨텍스트를 나눠 오염을 막는' 멀티에이전트 패턴을 도구 자체가 기본값으로 박아둠"
+      - "확장 — CLI와 SDK 둘 다 제공(SDK로 앱에 코딩 에이전트 임베드). `/init`로 .agents/ TS 정의를 만들어 에이전트 행동을 직접 커스터마이즈, 광고 기반 무료판 Freebuff도 별도 존재"
+      - "사실 — github.com/CodebuffAI/codebuff, Apache-2.0, ~6.5k★. '단일 모델보다 낫다'는 정확도 우위는 벤치 수치가 아니라 프로젝트 주장이니 도입 전 자체 검증 권장"
+    source: "https://github.com/CodebuffAI/codebuff"

@@ -426,3 +426,5 @@
 - 2026-06-17 18:00 KST | awesome-claude-code(hesreallyhim) — 스킬·훅·슬래시커맨드·오케스트레이터 정전 큐레이션 목록, 분류당 하나 고르기·동작 안 하면 컷·용도 태깅, CC BY-NC-ND 4.0·~46.6k★·4.1k fork·1,157 커밋 | https://github.com/hesreallyhim/awesome-claude-code
 
 - 2026-06-19 10:00 KST | OpenAI가 SWE-bench Verified를 버렸다(2026-02-23) — 실패 테스트 중 ~59.4%가 결함(27.6% 표본·64회 실행·138문항), 주요 프런티어 모델이 태스크ID만으로 정답 패치 재현(오염), Verified ~80%대→Pro ~23% 급락, SWE-bench Pro·GDPVal 권고(OpenAI 주장) | https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/
+
+- 2026-06-19 10:30 KST | Codebuff(CodebuffAI) — File Picker→Planner→Editor→Reviewer 4개 에이전트가 분업하는 오픈소스 코딩 에이전트, CLI+SDK(@codebuff/sdk), /init로 .agents/ TS 커스텀 에이전트 정의, 무료판 Freebuff 별도, 단일모델 우위는 README 주장(Apache-2.0·~6.5k★) | https://github.com/CodebuffAI/codebuff
