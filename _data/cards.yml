@@ -2802,3 +2802,15 @@ cards:
       - "Playwright MCP가 '크로스브라우저 사용자 플로 실행'에 강하다면, 이쪽은 'Chrome 한 페이지를 DevTools 깊이로 디버깅·성능 프로파일링'에 특화 — 둘은 겹치되 용도가 다름"
       - "Claude Code·Cursor·Gemini CLI·Copilot 등 다수 클라이언트 지원 — 별 수 약 43.7k★, 포크 2.8k(레포 표기 기준)"
     source: "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+  - category: ai
+    title: "Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'"
+    summary: >
+      Cipher는 코딩 에이전트에 영속적·구조적 메모리를 붙여주는 오픈소스 프로젝트로, 지금은 ByteRover CLI(brv)로 리브랜딩됐다(ByteRover 팀).
+      핵심 발상은 프로젝트 지식을 '컨텍스트 트리'에 담고 git처럼 branch·commit·merge·push/pull로 버전 관리하며, 이를 클라우드에 동기화해 도구·팀 간에 공유하는 것이다.
+      덕분에 Cursor에서 쌓은 맥락을 Claude Code·Windsurf·Cline에서도 그대로 이어 쓸 수 있다 — 에이전트마다 컨텍스트를 처음부터 다시 쌓을 필요가 없다.
+      MCP로 연동하고 20개 LLM 제공사·24개 내장 도구를 지원하며, 22개 이상의 AI 코딩 에이전트와 붙는다. 라이선스는 Elastic License 2.0.
+    points:
+      - "컨텍스트 트리 + git식 버전 관리(branch·commit·merge·push/pull) + 클라우드 동기화 — 도구를 갈아타도 메모리가 따라다니는 게 핵심"
+      - "MCP 연동, LLM 20개사(Anthropic·OpenAI·Google 등)·내장 도구 24종 지원, 22+ 코딩 에이전트(Cursor·Claude Code·Windsurf·Cline 등)와 호환"
+      - "메모리 벤치마크 자체 주장: LoCoMo 96.1%·LongMemEval-S 92.8%(레포 표기) — 별 수 약 4.9k★, TypeScript, 설치는 `npm i -g byterover-cli`(Node 20+)"
+    source: "https://github.com/campfirein/cipher"
