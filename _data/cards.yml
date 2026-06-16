@@ -3697,3 +3697,16 @@ cards:
       - "tmux + git worktree 격리 — 세션 분리는 tmux가, 작업물 충돌 방지는 worktree가 담당. -p(profile) 플래그로 에이전트별 설정 지정"
       - "주의점 — tmux 의존이라 네이티브 Windows 미지원, 프롬프트 자동수락(--autoyes)은 실험적, 라이선스가 AGPL이라 이를 네트워크 서비스로 확장할 땐 검토 필요"
     source: "https://github.com/smtg-ai/claude-squad"
+  - category: ai
+    title: "claude-plugins-official — 회사들이 직접 올린 177+ 플러그인이 모이는 Anthropic 공식 마켓플레이스(~30k★)"
+    summary: >
+      anthropics/claude-plugins-official은 Anthropic이 직접 큐레이션하는 Claude Code 플러그인 공식 마켓플레이스다.
+      AWS·Microsoft·MongoDB·Cloudflare·Figma·Atlassian·Notion·Playwright 등 회사들이 자사 도구를
+      스킬·서브에이전트·MCP 서버·LSP 묶음으로 올려두고, 한 줄 명령으로 골라 깐다. 거기에 Anthropic이 직접 번들한
+      code-review·frontend-design·ralph-loop·claude-md-management, 그리고 Python·Rust·Go·Java 등 언어별
+      LSP 플러그인까지 들어 있다. 이름이 비슷한 claude-plugins-community(3rd party 검수본)와는 별개다.
+    points:
+      - "설치 흐름 — 인터랙티브 첫 실행 시 자동 등록되며, 헤드리스/CI에선 `claude plugin marketplace add anthropics/claude-plugins-official`로 추가한 뒤 `/plugin install <이름>@claude-plugins-official`로 깐다(또는 `/plugin > Discover`로 탐색)"
+      - "무엇이 들었나 — 벤더 통합(aws-core·azure·mongodb·cloudflare·figma·github·playwright·context7·firecrawl…)부터 Anthropic 자체 워크플로(code-review·pr-review-toolkit·feature-dev·hookify·ralph-loop)와 사전제작 LSP(pyright·rust-analyzer·gopls·jdtls 등)까지 177개 이상"
+      - "주의 — 공식 마켓플레이스라도 Anthropic이 각 플러그인의 MCP 서버·코드를 통제하지 않는다고 명시. 설치·사용 전 신뢰할 수 있는 플러그인인지 직접 확인하라는 경고가 붙는다"
+    source: "https://github.com/anthropics/claude-plugins-official"

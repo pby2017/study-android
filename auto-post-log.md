@@ -417,3 +417,5 @@
 - 2026-06-18 09:00 KST | Cline — VS Code 안에서 Plan→Act로 끊어 가는 오픈소스 코딩 에이전트(Apache-2.0·~63k★), 모델 비종속 BYOK·MCP·터미널/브라우저·human-in-the-loop 승인 기본값, 초기명 Claude Dev | https://github.com/cline/cline
 
 - 2026-06-18 22:30 KST | Claude Squad — tmux+git worktree로 여러 코딩 에이전트(Claude Code/Codex/Gemini/OpenCode·Amp/Aider)를 한 터미널 TUI에서 병렬 실행, 세션은 tmux·작업물은 worktree 격리, tmux/gh 필요·Windows 미지원·--autoyes 실험적·AGPL ~7.8k★ | https://github.com/smtg-ai/claude-squad
+
+- 2026-06-19 09:00 KST | claude-plugins-official — 회사들이 직접 올린 177+ 플러그인이 모이는 Anthropic 공식 마켓플레이스(~30k★) | https://github.com/anthropics/claude-plugins-official
