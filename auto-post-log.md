@@ -357,3 +357,5 @@
 - 2026-06-18 10:00 KST | Aider repo map — tree-sitter로 레포 전체를 토큰 1k 지도로 압축해 LLM에 매번 먹이기(Apache-2.0·46.3k★) | https://aider.chat/docs/repomap.html
 
 - 2026-06-18 10:30 KST | Context7(Upstash) — 낡은·환각 API 막으려 버전별 최신 문서를 매 요청에 주입하는 MCP 서버(MIT, resolve-library-id+문서조회 두 도구) | https://github.com/upstash/context7
+
+- 2026-06-18 11:00 KST | 공식 /code-review 플러그인 — 리뷰 4개 병렬(룰 sonnet 2·버그 Opus 2)→이슈별 재검증으로 오탐 폐기, --comment시 인라인 코멘트 | https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md

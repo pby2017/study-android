@@ -3240,3 +3240,14 @@ cards:
       - "쓰는 법: ①이름→라이브러리 ID 해석(resolve-library-id) ②그 ID로 토픽 지정해 문서 조회, 두 도구뿐. 설치는 `npx ctx7 setup` 또는 MCP URL https://mcp.context7.com/mcp, CLI 모드도 제공"
       - "주목도(주장·미검증): 2026년 GitHub 5.4만~5.6만★대로 'MCP 1위' 노출 잦고 ThoughtWorks Tech Radar 등재. 단 코어만 OSS고 크롤·파싱·백엔드는 비공개"
     source: "https://github.com/upstash/context7"
+  - category: ai
+    title: "공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조"
+    summary: >
+      anthropics/claude-code 레포에 들어있는 공식 code-review 플러그인은 'AI 코드리뷰가 nitpick·오탐을 쏟아낸다'는 문제를 구조로 푼다. 핵심은 작업과 검증을 단계로 분리한 파이프라인이다 — 먼저 haiku가 'PR이 닫힘·드래프트·이미 리뷰됨'인지 스킵 판단을 하고(불필요하면 종료), 변경 파일과 같은 경로의 CLAUDE.md만 찾아낸 뒤, sonnet이 변경 요약을 만든다.
+      그다음이 본체다 — 리뷰 에이전트 4개를 병렬로 띄운다. 2개는 sonnet으로 CLAUDE.md 준수 여부를, 2개는 Opus로 버그를 본다. 이때 버그 에이전트는 'diff 바깥 컨텍스트를 읽지 말고 변경된 코드 안에서만, 컴파일 불가·무조건 틀린 결과 같은 HIGH SIGNAL만 보고하라(확신 없으면 보고 금지)'는 제약을 받는다. 스타일·취향 지적과 기존 코드 문제는 명시적으로 제외된다.
+      마지막으로 발견된 이슈마다 별도 검증 서브에이전트를 다시 병렬로 돌려(버그는 Opus, CLAUDE.md는 sonnet) 확신 가능한 것만 통과시키고 나머지는 버린다. 결과는 터미널 출력이 기본이고, `--comment`를 줘야 PR에 인라인 코멘트를 단다(이슈당 코멘트 1개, 작은 수정은 적용 가능한 suggestion 블록으로).
+    points:
+      - "파이프라인(공식): ①haiku 스킵판단 ②haiku로 관련 CLAUDE.md 경로만 수집 ③sonnet 변경요약 ④리뷰 4병렬 ⑤이슈별 재검증 ⑥미검증분 폐기 ⑦터미널 출력(--comment시 인라인)"
+      - "4 병렬 리뷰: CLAUDE.md 준수 2개(sonnet) + 버그 2개(Opus). 버그 에이전트는 'diff 밖 안 읽기·변경 코드 안에서만·컴파일 불가/무조건 오답 같은 HIGH SIGNAL만, 확신 없으면 보고 금지'"
+      - "오탐 제거가 핵심: 발견 이슈마다 검증 서브에이전트를 다시 병렬로 띄워(버그 Opus·룰 sonnet) 통과 못 한 건 드롭. 스타일·nitpick·기존 코드 문제는 처음부터 제외"
+    source: "https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md"
