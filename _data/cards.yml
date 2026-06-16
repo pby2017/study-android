@@ -2432,3 +2432,19 @@ cards:
       - "구성(README 기준 대략): 서브에이전트 ~67개, 스킬 260여 개, 슬래시 커맨드 심 80여 개 + 훅·MCP 설정"
       - "AgentShield: 설정·훅·MCP를 정적 분석(102개 룰·비밀키 14패턴), A~F 등급 리포트·critical 시 exit 2"
     source: "https://github.com/affaan-m/everything-claude-code"
+
+  - category: ai
+    title: "Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(simstudioai·28.8k★)"
+    summary: >
+      Sim(simstudioai/sim)은 팀이 AI 에이전트를 만들고 배포·운영하는 Apache-2.0 오픈소스 워크스페이스로,
+      README 기준 GitHub 스타 28.8k·포크 3.7k를 보인다. "Build, deploy, and orchestrate AI agents"를
+      내걸고 대화(Chat)·블록 단위 비주얼 캔버스(Workflow builder)·코드 세 방식으로 에이전트를 구성하게 한다.
+      RAG용 지식베이스, 내장 DB격 Tables, 프롬프트로 파일·문서 생성 같은 기능을 갖췄고 1,000개 이상의
+      통합을 연결한다고 명시한다. 로컬 실행은 Docker가 깔린 상태에서 `npx simstudio`(http://localhost:3000)
+      한 줄이면 되고, Ollama·vLLM로 로컬 모델도 붙일 수 있어(docker-compose.ollama.yml) 데이터를 밖으로
+      안 내보내고 self-host 할 수 있다. (스타·통합 수는 README가 주장하는 수치다.)
+    points:
+      - "Apache-2.0 오픈소스, 28.8k★(README 기준) — 에이전트 빌드·배포·오케스트레이션 워크스페이스"
+      - "구성 3방식: 대화형 Chat·블록 비주얼 캔버스·코드 / RAG 지식베이스·Tables·1,000+ 통합"
+      - "로컬: Docker 위 `npx simstudio`로 :3000 / Ollama·vLLM로 로컬 모델 self-host 가능"
+    source: "https://github.com/simstudioai/sim"
