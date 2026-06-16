@@ -3045,3 +3045,16 @@ cards:
       - "확장: MCP 표준으로 70여 개 익스텐션을 붙여 깃허브·브라우저·셸 등 외부 도구를 도구로 노출. Rust 코어라 단일 바이너리로 가볍게 돈다"
       - "거버넌스: 원래 Block 사내 도구였다가 오픈소스화, 이제 MCP·AGENTS.md와 함께 리눅스재단 중립 거버넌스(AAIF)로 옮겨졌다. 별 수·공급자 수는 레포 표기 기준 주장이며 변동한다"
     source: "https://github.com/aaif-goose/goose"
+  - category: ai
+    title: "Pi(Mario Zechner) — 도구 4개·'역대 최단 시스템 프롬프트'로 미는 미니멀 코딩 에이전트(badlogic/pi-mono)"
+    summary: >
+      Pi는 Mario Zechner가 만든 TypeScript 기반 미니멀 코딩 에이전트로, Flask·Jinja2 제작자 Armin Ronacher가
+      블로그로 알리며 주목받았다. 핵심 철학은 '도구를 잔뜩 박지 말고 에이전트가 스스로 코드를 짜 확장하게 하라'다.
+      그래서 내장 도구가 Read·Write·Edit·Bash 단 4개뿐이고, Ronacher는 "내가 아는 어떤 에이전트보다 시스템 프롬프트가 짧다"고 주장한다.
+      추가 기능이 필요하면 플러그인을 받는 게 아니라 에이전트에게 "너 자신을 확장해줘"라고 시켜 .ts 익스텐션·슬래시 커맨드를 직접 작성하게 한다.
+      MCP는 설계상 빼버렸고, 세션이 '트리'라 분기·탐색이 되며 핫 리로딩으로 짜고-테스트하고-다시 로드하는 루프가 빠르다.
+    points:
+      - "정체성: '도구 최소·프롬프트 최소'로 모델 능력을 신뢰하는 BYO-LLM 터미널 에이전트. 내장 도구는 Read/Write/Edit/Bash 4개가 전부 — 나머지는 모델이 Bash로 코드를 짜 해결한다고 본다(MCP는 의도적으로 미지원)"
+      - "확장 방식: 마켓플레이스에서 받는 대신 에이전트가 자기 기능을 TypeScript로 직접 작성(/answer·/todos·/review 같은 .ts 익스텐션). '코드가 코드를 쓰고 실행한다'는 발상"
+      - "주의: 파일·프로세스·네트워크·크리덴셜을 막는 내장 권한 시스템이 없어 README가 컨테이너 격리(Docker 등)를 권한다. 레포는 badlogic/pi-mono(MIT·TypeScript)이며 별 수 약 63k는 레포 표기 기준 주장으로 변동한다"
+    source: "https://github.com/badlogic/pi-mono"

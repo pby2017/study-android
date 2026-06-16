@@ -329,3 +329,5 @@
 - 2026-06-17 18:30 KST | claude-code-workflows(OneRedOak) — 디자인을 눈으로 자동 리뷰시키는 Playwright 기반 워크플로(3.8k★) | https://github.com/OneRedOak/claude-code-workflows
 
 - 2026-06-17 19:00 KST | goose(Block→AAIF) — Rust로 짠 모델 비종속 오픈소스 에이전트, 데스크톱·CLI·API로 다 쓴다(49.5k★) | https://github.com/aaif-goose/goose
+
+- 2026-06-17 19:30 KST | Pi(Mario Zechner) — 도구 4개·역대 최단 시스템 프롬프트로 미는 미니멀 코딩 에이전트(self-extending, MCP 미지원) | https://github.com/badlogic/pi-mono
