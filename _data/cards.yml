@@ -2826,3 +2826,16 @@ cards:
       - "Claude Code·Codex·Gemini CLI·Cursor·Copilot·OpenCode·Windsurf 호환 표방 — 한 곳에서 받아 여러 에이전트에 재사용"
       - "Anthropic·Stripe·Supabase·Vercel·Cloudflare·Sentry·Trail of Bits·Figma 등 공식 조직 발행 스킬 포함, 라이선스 MIT"
     source: "https://github.com/VoltAgent/awesome-agent-skills"
+  - category: ai
+    title: "OpenCode(sst) — 모델 안 가리고 터미널에서 도는 오픈소스 코딩 에이전트, 폰에서 원격 조종까지"
+    summary: >
+      OpenCode는 SST(현 Anomaly) 팀이 만든 터미널(TUI) 중심 오픈소스 코딩 에이전트로, 라이선스는 MIT다.
+      가장 큰 특징은 특정 제공사에 묶이지 않는다는 점 — Anthropic·OpenAI·Google·AWS Bedrock·Azure·OpenRouter·Ollama(로컬) 등 75개 이상의 LLM 제공사를 지원해, 자기 API 키만 있으면 도구 비용은 0이다.
+      클라이언트/서버 구조라 에이전트는 내 컴퓨터에서 돌리면서 모바일 앱 등 다른 클라이언트로 원격 조종할 수 있고, TUI는 그 클라이언트 중 하나일 뿐이다.
+      기본 Build 모드(읽기·쓰기·실행 전권)와 Tab으로 토글하는 Plan 모드(읽기 전용 분석, 손대기 전 계획만 설명)를 오가며, GitHub·Postgres·Slack 등을 MCP로 붙인다.
+      이름이 비슷한 Charm의 Crush는 별개 포크이며, 공식 레포는 sst/opencode다.
+    points:
+      - "제공사 비종속: 75+ LLM(Anthropic·OpenAI·Google·Bedrock·Ollama 로컬 등) — BYO 키면 에이전트 자체는 무료, MIT"
+      - "클라이언트/서버 구조 — PC에서 에이전트 돌리고 모바일 등 원격 클라이언트로 조종, TUI는 한 클라이언트일 뿐"
+      - "Build(전권)↔Plan(읽기전용, Tab 토글) 2모드 + MCP(GitHub·Postgres·Slack 등) — 별 수 약 160k~175k★ 주장, 설치 `npm i -g opencode-ai`"
+    source: "https://github.com/sst/opencode"
