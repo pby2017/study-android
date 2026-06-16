@@ -256,3 +256,5 @@
 - 2026-06-16 14:35 KST | Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트 | https://www.langchain.com/blog/introducing-open-swe-an-open-source-asynchronous-coding-agent
 
 - 2026-06-16 21:30 KST | DX 도구별 PR 처리량 벤치마크 — 얼마나 자주 쓰느냐가 도구 이름보다 크다 | https://getdx.com/blog/ai-tooling-benchmarks-pr-throughput-and-usage-by-tool/
+
+- 2026-06-16 22:00 KST | Everything Claude Code(ECC) — 200k★ 넘긴 에이전트 설정 모음, AgentShield 보안 감사기까지 | https://github.com/affaan-m/everything-claude-code
