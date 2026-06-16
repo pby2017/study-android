@@ -2543,3 +2543,18 @@ cards:
       - "`/fork <지시>`로 백그라운드 분신 실행 — 끝나면 결과가 메인 대화에 메시지로 도착"
       - "v2.1.117+ 필요(2.1.161부터 기본 활성), CLAUDE_CODE_FORK_SUBAGENT=1로 강제 on/off"
     source: "https://code.claude.com/docs/en/sub-agents"
+  - category: ai
+    title: "Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)"
+    summary: >
+      Task Master(eyaltoledano/claude-task-master)는 PRD 문서 하나를 넣으면
+      `task-master parse-prd`로 작업을 잘게 나누고, 태스크 사이 의존성·우선순위까지
+      정리해 에이전트가 예측 가능하게 일하도록 구조를 잡아주는 태스크 매니저다.
+      Cursor·Claude Code·Windsurf·VS Code 등에 MCP로 붙거나 `npm i -g task-master-ai`로
+      CLI로 쓸 수 있고, `task-master next`로 다음 할 일을, `list`로 전체를 본다.
+      모델은 main·research·fallback 세 역할로 나눠 쓰며, Claude Code나 Codex의
+      OAuth를 쓰면 별도 API 키 없이도 돌릴 수 있다.
+    points:
+      - "PRD→태스크 분해 + 의존성/복잡도 분석이 핵심 — `parse-prd`, `next`, `expand`, `move`"
+      - "MCP로 에디터에 직접 붙고(CLI도 지원), 모델 역할을 main/research/fallback로 분리"
+      - "라이선스는 MIT + Commons Clause(호스팅 서비스·경쟁 제품화는 제한), 레포 표기 27.5k★ 주장"
+    source: "https://github.com/eyaltoledano/claude-task-master"
