@@ -306,3 +306,4 @@
 
 - 2026-06-17 12:00 KST | awesome-agent-skills(VoltAgent) — 1400여 개 에이전트 스킬을 도구 안 가리고 받아 쓰는 카탈로그(25.5k★) | https://github.com/VoltAgent/awesome-agent-skills
 - 2026-06-17 12:30 KST | OpenCode(sst) — 모델 안 가리고 터미널에서 도는 오픈소스 코딩 에이전트, 폰에서 원격 조종까지 | https://github.com/sst/opencode
+- 2026-06-17 13:00 KST | Kilo Code — VS Code·JetBrains에서 모드를 갈아끼우며 도는 올인원 오픈소스 코딩 에이전트(MIT·20k★) | https://github.com/Kilo-Org/kilocode

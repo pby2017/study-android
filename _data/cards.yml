@@ -2839,3 +2839,17 @@ cards:
       - "클라이언트/서버 구조 — PC에서 에이전트 돌리고 모바일 등 원격 클라이언트로 조종, TUI는 한 클라이언트일 뿐"
       - "Build(전권)↔Plan(읽기전용, Tab 토글) 2모드 + MCP(GitHub·Postgres·Slack 등) — 별 수 약 160k~175k★ 주장, 설치 `npm i -g opencode-ai`"
     source: "https://github.com/sst/opencode"
+
+  - category: ai
+    title: "Kilo Code — VS Code·JetBrains에서 모드를 갈아끼우며 도는 올인원 오픈소스 코딩 에이전트(MIT·20k★)"
+    summary: >
+      Kilo Code는 자연어로 코드를 생성하고, 터미널 명령을 실행하고, 브라우저를 자동화하고,
+      인라인 자동완성까지 제공하는 MIT 오픈소스 '올인원 에이전트 엔지니어링 플랫폼'이다.
+      Cline·Roo Code 계열처럼 하나의 만능 챗봇이 아니라 작업 성격에 따라 모드를 바꿔 쓴다 —
+      설계는 Architect로 계획하고, 구현은 Coder로 짜고, 버그는 Debugger로 잡으며, 직접 커스텀 모드도 만들 수 있다.
+      모델·도구 비종속이라 500개 이상 LLM을 BYO 키로 꽂거나 키 없이도 시작할 수 있고, MCP 마켓플레이스로 기능을 확장한다.
+    points:
+      - "VS Code·JetBrains 확장에 더해 CLI·Slack·Cloud까지 — Kilo CLI는 OpenCode를 포크해 만들었다(공식 README)"
+      - "멀티 모드: Architect(계획)/Coder(구현)/Debugger(디버그) + 커스텀 모드 — 작업 단계별로 발판을 갈아끼우는 하네스 패턴"
+      - "500+ 모델·BYO 키(키 옵션)·MCP 서버 마켓플레이스 — 별 수 약 20.1k★ 주장, MIT 라이선스"
+    source: "https://github.com/Kilo-Org/kilocode"
