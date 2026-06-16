@@ -3273,3 +3273,15 @@ cards:
       - "토대가 먼저: 2022년부터의 Fleet Management 위에 얹음. AST·정규식 기반 자체 변환의 한계(복잡한 다단계 편집)를 Claude Code 기반으로 대체"
       - "효과·주의: 마이그레이션류에서 60~90% 시간 절감(Spotify 블로그). '월 650 PR·Claude Agent SDK'는 Anthropic 고객 사례 출처 — 구분해서 인용"
     source: "https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1"
+  - category: ai
+    title: "mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)"
+    summary: >
+      SWE-agent(프린스턴·~19.5k★)를 만든 팀이 내놓은 후속작으로, 에이전트 핵심 로직을 파이썬 약 100줄로 줄인 미니멀 코딩 에이전트다.
+      가장 큰 설계 선택은 '도구(tool-calling) 인터페이스를 안 쓴다'는 것 — 커스텀 툴이나 함수 호출 API 없이 오직 bash 명령만으로 동작하고,
+      액션은 subprocess.run으로 실행하며 대화 이력도 선형(linear)으로 단순하게 유지한다. 스캐폴드를 깎아내고 LM 자체의 능력에 집중하자는 철학으로,
+      그럼에도 SWE-bench에서 74%를 넘는 점수를 주장한다. 라이선스는 MIT, GitHub 스타는 약 5.2k(2026-06 기준).
+    points:
+      - "100줄·bash-only: 커스텀 도구도, 함수 호출 API도 없음. 모델이 bash 명령을 내면 subprocess.run으로 돌리고 결과를 다시 먹이는 단순 루프 — 어떤 LM에든 꽂기 쉬움"
+      - "주장 수치: SWE-bench 74%+ 점수를 README에서 주장(모델·구성에 따라 달라짐). 전작 SWE-agent(~19.5k★)와 별개 레포로, mini 쪽은 ~5.2k★"
+      - "도입처: Meta·NVIDIA·IBM·Anyscale·프린스턴·스탠퍼드 등이 SWE-bench 평가용으로 쓴다고 명시. '스캐폴드보다 모델'이라는 벤치마킹 철학의 레퍼런스 구현"
+    source: "https://github.com/SWE-agent/mini-swe-agent"
