@@ -269,3 +269,4 @@
 
 - 2026-06-17 01:00 KST | awesome-claude-code-subagents(VoltAgent) — 100여 개 전문 서브에이전트를 통째로 받아 쓰는 카탈로그 | https://github.com/VoltAgent/awesome-claude-code-subagents
 - 2026-06-17 01:30 KST | Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트 | https://jules.google/docs/usage-limits/
+- 2026-06-17 02:00 KST | /fork — 서브에이전트와 달리 대화 전체를 물려받는 분신(프롬프트 캐시 공유) | https://code.claude.com/docs/en/sub-agents
