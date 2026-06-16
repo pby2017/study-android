@@ -381,3 +381,4 @@
 
 - 2026-06-17 21:00 KST | 하네스 엔지니어링(Harness Engineering) — 모델 말고 모델 둘러싼 모든 것을 설계해 에이전트 실패를 구조로 막기(builder/user harness·ambient affordances·LangChain 52.8→66.5 주장) | https://martinfowler.com/articles/harness-engineering.html
 - 2026-06-17 02:32 KST | Agent Skills(SKILL.md) — Anthropic 발원 오픈 표준, Cursor·Codex·Gemini CLI 등 크로스 도구 채택 | https://agentskills.io
+- 2026-06-17 23:30 KST | skills.sh(Vercel) — npx skills add로 SKILL.md를 70여 개 에이전트에 한 번에 까는 npm식 스킬 패키지 매니저(MIT·22.6k★) | https://github.com/vercel-labs/skills

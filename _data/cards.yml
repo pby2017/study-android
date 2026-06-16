@@ -3407,3 +3407,16 @@ cards:
       - "동작은 '점진적 공개(progressive disclosure)' 3단계 — ①Discovery: 시작 시 name·description만 로드 ②Activation: 작업이 description과 매칭되면 본문 전체를 컨텍스트로 ③Execution: 필요할 때만 번들 코드·참고파일 로드. 그래서 스킬 수십 개를 달아도 컨텍스트 footprint가 작다"
       - "표준 채택 현황(agentskills.io 클라이언트 쇼케이스 기준): Claude Code/Claude·Cursor·OpenAI Codex·Gemini CLI·GitHub Copilot·VS Code·OpenHands·Goose·Roo Code·Amp·Factory·Kiro·Letta 등. openai/skills(Codex용 Skills Catalog)는 22.3k★. Anthropic이 발원해 오픈 표준으로 풀고 생태계가 확장 중"
     source: "https://agentskills.io"
+  - category: ai
+    title: "skills.sh(Vercel) — 'npx skills add'로 SKILL.md를 70여 개 에이전트에 한 번에 까는 npm식 스킬 패키지 매니저(MIT·22.6k★)"
+    summary: >
+      Vercel-labs가 만든 skills.sh는 AI 코딩 에이전트용 스킬(SKILL.md)을 npm 패키지처럼 설치·관리하는 오픈소스 CLI다.
+      GitHub shorthand·URL·GitLab·로컬 경로에서 스킬을 받아 add·use·list·find·update·remove·init 서브커맨드로 다루며,
+      OpenCode·Claude Code·Codex·Cursor를 포함해 70여 개 에이전트에 동시에 설치한다.
+      핵심은 스킬을 한 곳에 두고 각 에이전트 디렉터리로 심볼릭 링크를 거는 방식이라, 도구를 바꿔도 같은 스킬을 그대로 쓴다.
+      라이선스는 MIT, README 기준 약 22.6k★다.
+    points:
+      - "설치 한 줄: 'npx skills add <owner/repo>'. 안 깔고 한 번만 돌리는 'use', 키워드 검색 'find', 새 스킬 뼈대 만드는 'init'까지 — 패키지 매니저처럼 add/list/update/remove 풀세트"
+      - "스코프 플래그: '-g'는 ~/<agent>/skills/(전역), 기본은 ./<agent>/skills/(프로젝트). '-a'로 대상 에이전트, '-s'로 스킬, '-y'로 비대화형 지정"
+      - "도구 비종속이 핵심 — 스킬 원본을 한 벌 두고 OpenCode·Claude Code·Codex·Cursor 등 67개+ 에이전트 폴더에 심볼릭 링크. SKILL.md 표준을 '설치·배포 레이어'로 묶은 셈(MIT·~22.6k★)"
+    source: "https://github.com/vercel-labs/skills"
