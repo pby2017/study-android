@@ -313,3 +313,5 @@
 - 2026-06-17 14:30 KST | Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다 | https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation
 
 - 2026-06-17 15:00 KST | CodeRabbit AI vs 사람 코드 리포트 — AI 작성 PR은 이슈가 1.7배 많다 | https://www.coderabbit.ai/blog
+
+- 2026-06-17 15:30 KST | security-guidance 플러그인 — Claude가 짠 코드 취약점을 같은 세션에서 잡아 고치게 하는 3단계 독립 보안 리뷰 | https://code.claude.com/docs/en/security-guidance

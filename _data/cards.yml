@@ -2913,3 +2913,18 @@ cards:
       - "핵심 수치: AI 작성 PR이 사람 대비 이슈 약 1.7배. '결함이 몰린 PR'이 AI 쪽에서 더 흔해 리뷰 워크로드가 한쪽으로 쏠림(주장)"
       - "권고: ①모든 PR에 AI 코드리뷰를 품질 게이트로 상시 적용 ②에이전트에 아키텍처 제약·코딩 표준·설정 패턴 컨텍스트를 주입해 빈발 실수 줄이기. 단, CodeRabbit이 코드리뷰 벤더라는 이해관계는 감안할 것"
     source: "https://www.coderabbit.ai/blog"
+  - category: ai
+    title: "security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기"
+    summary: >
+      Anthropic 공식 마켓플레이스 플러그인으로, Claude Code가 코드를 짜는 동안 자기 변경을 스스로 보안 검토해
+      인젝션·안전하지 않은 역직렬화·DOM 주입 같은 취약점을 PR에 도달하기 전에 같은 세션에서 고치게 한다.
+      검토는 깊이가 다른 3단계로 돈다 — ①파일 편집마다 모델 호출 없는 정규식 패턴 매치(비용 0),
+      ②턴이 끝날 때 그 턴의 git diff를 백그라운드에서 별도 Claude가 보안 관점으로 리뷰,
+      ③Claude가 git commit·push를 할 때 주변 코드(호출부·새니타이저)까지 읽는 더 깊은 에이전틱 리뷰.
+      핵심은 코드를 짠 같은 인스턴스가 자기를 채점하지 않는다는 점 — 리뷰는 새 컨텍스트의 독립 Claude 호출이다.
+      `/plugin install security-guidance@claude-plugins-official`로 깐다.
+    points:
+      - "독립 리뷰어: 짠 Claude가 자기 채점 안 함. 턴 끝·커밋 리뷰는 diff에서 출발하는 별도 Claude 호출(신선한 컨텍스트, '문제만 찾으라'는 보안 프롬프트). 모델 기본값은 Claude Opus 4.7(SECURITY_REVIEW_MODEL·SG_AGENTIC_MODEL로 교체)"
+      - "막지는 않음(공식 명시): 어느 단계도 쓰기·커밋을 차단하지 않는다. 발견은 '지시'로 Claude에 전달돼 대화 안에서 고쳐지고, 리뷰 모델은 놓칠 수 있음 → 방어선의 한 겹일 뿐, 완전한 보안책 아님. 한도: 턴당 변경 30파일·연속 3회, 커밋 리뷰 시간당 20회"
+      - "본인 셸 커밋은 제외: Bash 도구로 Claude가 한 commit·push만 리뷰됨(`!` 셸 이스케이프·직접 셸 커밋은 안 봄). 전부 훅(SessionStart·UserPromptSubmit·Stop·PostToolUse)으로 구현 — 소스가 '훅에서 별도 모델 호출' 예제. PR엔 Code Review, CI엔 기존 스캐너로 단계 분담"
+    source: "https://code.claude.com/docs/en/security-guidance"
