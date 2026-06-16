@@ -3420,3 +3420,15 @@ cards:
       - "스코프 플래그: '-g'는 ~/<agent>/skills/(전역), 기본은 ./<agent>/skills/(프로젝트). '-a'로 대상 에이전트, '-s'로 스킬, '-y'로 비대화형 지정"
       - "도구 비종속이 핵심 — 스킬 원본을 한 벌 두고 OpenCode·Claude Code·Codex·Cursor 등 67개+ 에이전트 폴더에 심볼릭 링크. SKILL.md 표준을 '설치·배포 레이어'로 묶은 셈(MIT·~22.6k★)"
     source: "https://github.com/vercel-labs/skills"
+  - category: ai
+    title: "OpenHands(All-Hands-AI) — 에이전트의 모든 행동을 'Docker 샌드박스'에서 돌리는 오픈소스 코딩 에이전트(MIT·~77k★)"
+    summary: >
+      OpenHands(옛 OpenDevin)는 코드를 짜고 수정할 뿐 아니라 명령 실행·웹 브라우징·API 호출까지 사람 개발자처럼 하는
+      오픈소스 자율 코딩 에이전트다. 핵심 차별점은 에이전트의 모든 행동을 격리된 Docker 런타임(샌드박스)에서 실행한다는 점 —
+      로컬 환경을 직접 건드리지 않고 컨테이너 안에서 셸·파일 편집·브라우저를 돌린다. CLI·웹 GUI·Cloud·Agent SDK 등 여러 형태로 쓰며
+      특정 모델에 묶이지 않고 다양한 LLM 공급자를 붙일 수 있다. 라이선스는 MIT(단, enterprise/ 디렉터리는 별도)이며 README 기준 약 77k★다.
+    points:
+      - "샌드박스 우선 설계 — 에이전트의 bash 실행·파일 편집·브라우징이 격리된 Docker 컨테이너 런타임 안에서 일어나, 자율 에이전트가 호스트를 망칠 위험을 구조로 줄인다(표준 설치도 Docker 기반)"
+      - "한 코어, 여러 표면 — 동일 엔진을 CLI(헤드리스 포함)·웹 GUI·OpenHands Cloud·파이썬 Software Agent SDK로 노출. 모델 비종속이라 Claude·GPT 등 원하는 LLM 공급자를 끼운다"
+      - "SWE-bench Verified 상위권을 '주장' — 공식은 77.6% 해결(검증된 리더보드 수치라기보다 프로젝트 측 주장으로 받아들일 것). 라이선스 MIT·~77k★, '87% 버그 티켓 당일 해결' 류 마케팅 수치는 검증 안 됨"
+    source: "https://github.com/All-Hands-AI/OpenHands"
