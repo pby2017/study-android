@@ -3207,3 +3207,14 @@ cards:
       - "핵심 주장: SWE-Bench Pro 채점기는 정답 24% 오탈락·오답 8.5% 오인정 → DeepSWE는 둘 다 ≈0. '비공개 헬퍼 인라인' 같은 유효한 해법이 import 심볼 불일치로 떨어지던 문제를 노린다"
       - "리더보드(주장·미재현): GPT-5.5 70%±4%(중앙값 47k 출력토큰으로 가장 토큰효율적) > GPT-5.4 56% > Claude Opus 4.7 54%. 단일 bash 하네스라 네이티브 도구 성능은 반영 안 됨 — 사설 eval·사람 리뷰와 병행이 권장"
     source: "https://deepswe.datacurve.ai/blog"
+  - category: ai
+    title: "Dynamic Workflows + ultracode — Bun을 'Claude 에이전트 수백 개'로 Zig→Rust 75만 줄 옮긴 실제 사례"
+    summary: >
+      Anthropic이 2026-05-28 공개한 Claude Code의 Dynamic Workflows는 한 작업을 결정적(deterministic) 스크립트로 쪼개 서브에이전트 수백~최대 1,000개를 병렬로 돌리는 기능이고, 이를 켜는 설정 이름이 'ultracode'다.
+      대표 사례로 Bun 제작자 Jarred Sumner는 이걸로 Bun 런타임을 Zig→Rust로 옮겼다 — Rust 약 75만 줄, 기존 테스트 스위트 99.8% 통과, 첫 커밋부터 머지까지 11일. 그는 "코드를 직접 타이핑하지 않았다(수백 개 에이전트가 병렬로 썼고, 파일마다 리뷰어 2명이 검수)"고 했다.
+      워크플로는 ① Zig 구조체 필드마다 맞는 Rust lifetime을 매핑 → ② 각 .zig를 동작 동일한 .rs로 포팅(파일당 리뷰어 2명) → ③ rustc 진단을 먹여 빌드·테스트가 깨끗해질 때까지 도는 수정 루프, 3단계로 진행됐다. 단, 이는 'Anthropic이 인수한 Bun 사내 사례'라는 점과, 외부 보도 기준 unsafe 블록 1.3만여 개·600k 줄 삭제 PR이 GitHub에 'AI slop'으로 자동 차단된 점은 함께 봐야 한다.
+    points:
+      - "기능(공식): Dynamic Workflows는 작업을 결정적 스크립트로 분해해 병렬 서브에이전트(상한 1,000개)를 오케스트레이션. 켜는 설정 이름이 ultracode (2026-05-28 공개)"
+      - "사례(공식): Bun Zig→Rust 포팅 — Rust ~75만 줄, 기존 테스트 99.8% 통과, 첫 커밋→머지 11일. 제작자 본인은 '직접 타이핑 안 함', 파일당 리뷰어 2명"
+      - "3단계: ①struct 필드별 Rust lifetime 매핑 → ②.zig→.rs 동작동일 포팅(병렬) → ③rustc stderr 진단 먹여 빌드·테스트 클린까지 도는 fix 루프. 주의: 사내 사례·unsafe 1.3만여 개(외부보도)는 별개로 검증 필요"
+    source: "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code"

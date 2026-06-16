@@ -352,3 +352,5 @@
 
 - 2026-06-18 09:00 KST | MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 on-demand 로딩(Claude Code 기본값) | https://code.claude.com/docs/en/mcp
 - 2026-06-16 22:50 KST | DeepSWE(Datacurve) — 채점기 오류 줄인 장기 코딩 에이전트 벤치마크 | https://deepswe.datacurve.ai/blog
+
+- 2026-06-18 09:30 KST | Dynamic Workflows + ultracode — Bun Zig→Rust 75만 줄을 Claude 에이전트 수백 개로 옮긴 실제 사례(테스트 99.8
