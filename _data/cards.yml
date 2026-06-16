@@ -3760,3 +3760,15 @@ cards:
       - "범위 — 스킬·훅·슬래시커맨드·오케스트레이터·플러그인·상태줄·앱·개발툴을 한곳에. 비슷한 aggregator(everything-claude-code 등)는 '전부 쏟아내기'라 성격이 다름"
       - "사실 — github.com/hesreallyhim/awesome-claude-code, ~46.6k★·4.1k fork·480 open issues, 라이선스 CC BY-NC-ND 4.0(비영리·변경금지라 재배포 제약 있음)"
     source: "https://github.com/hesreallyhim/awesome-claude-code"
+  - category: ai
+    title: "OpenAI가 SWE-bench Verified를 버렸다 — '실패한 테스트 중 59%가 결함, 모델이 정답을 외운다'며 공식 점수 보고 중단(2026-02)"
+    summary: >
+      2026년 2월, OpenAI의 Frontier Evals 팀은 코딩 에이전트 사실상 표준 지표였던 SWE-bench Verified의 점수 보고를 중단한다고 공식 발표했다(OpenAI 주장).
+      이유는 두 가지다. ① 결함 있는 테스트 — 자주 실패하던 어려운 문제 일부(전체의 약 27.6%)를 감사했더니, 기능적으로 맞는 답을 거부하는 결함 테스트가 그중 약 59.4%였다(문제 설명에 없는 정확한 함수명을 요구하거나, 무관한 동작을 검사).
+      ② 학습 데이터 오염 — Django·Astropy 등 유명 오픈소스 파이썬 레포에서 문제를 뽑은 탓에, 주요 프런티어 모델들이 '태스크 ID'만 주면 정답 패치를 그대로 재현했다(OpenAI 주장).
+      결론은 "Verified 점수 개선은 더 이상 실제 개발 능력 향상이 아니라 '벤치를 얼마나 학습 때 봤는가'를 반영한다"이며, OpenAI는 비공개·카피레프트로 오염이 덜한 SWE-bench Pro로의 전환을 권한다.
+    points:
+      - "교훈 — 굿하트의 법칙: 지표가 목표가 되면 지표이길 멈춘다. AI 코딩 도구를 'Verified 80%' 같은 단일 숫자로 고르지 말 것"
+      - "수치 격차(보도된 OpenAI 감사값) — Verified ~80%대 모델이 오염에 강한 SWE-bench Pro 공개셋에선 ~23%로 급락. 감사 표본은 64회 독립 실행·138문항"
+      - "실무 — 사내 도구 평가는 공개 벤치 대신 '우리 비공개 레포로 만든 자체 태스크'를 쓰는 게 오염·과적합을 피하는 길. OpenAI도 전문가가 원본 태스크를 짜는 GDPVal 류로 투자 이동"
+    source: "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"
