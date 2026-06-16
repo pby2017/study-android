@@ -2764,3 +2764,16 @@ cards:
       - "서브에이전트는 태스크당 1개씩 새로 띄워 격리 실행하고 통합은 오케스트레이터(메인)가 담당 — 서브에이전트에게 통합을 맡기지 않는 게 원칙"
       - "설치는 Claude Code 기준 `/plugin install superpowers@claude-plugins-official` (또는 obra/superpowers-marketplace 추가 후 설치) — 레포 표기 별 수는 약 229k★ 주장"
     source: "https://github.com/obra/superpowers"
+  - category: ai
+    title: "에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다"
+    summary: >
+      Sourcegraph의 Matt Tanner가 2026-05-21에 올린 'Agentic Coding in 2026' 글의 핵심은,
+      에이전트 생산성을 좌우하는 건 모델 성능이 아니라 '컨텍스트'라는 것이다.
+      에이전트는 작업의 눈에 보이는 80%는 안정적으로 끝내지만, 인증 미들웨어·API DTO·감사 로그·형제 레포의 통합 테스트 같은
+      안 보이는 20%를 빼먹는데 — 글은 이를 '80% 문제'라 부른다. 사이드 프로젝트에선 안 드러나지만 레포 수가 1을 넘는 순간부터
+      급격히 비용이 커진다. 해법으로 임베딩 기반 근사 검색이 아닌 '심볼 정확 검색(모든 callsite·구현체)'을 권한다.
+    points:
+      - "'완료'를 의심하라: 에이전트가 끝났다 하면, 손댄 심볼들을 코드베이스 전체에서 검색해 에이전트가 안 연 파일이 나오면 작업은 미완 — 글이 꼽은 가장 실천적 습관"
+      - "권장 운영법: ①과제 블래스트 반경을 레포 전역 검색으로 미리 스코프 ②에이전트 커밋도 사람 커밋과 '같은 CI'로 게이트 ③에이전트를 외주 계약자처럼 다뤄 diff 리뷰·활동 감사 ④프롬프트가 아니라 '컨텍스트 레이어'에 투자"
+      - "대규모/멀티레포에선 임베딩 근사 검색보다 '결정적·전수(deterministic, exhaustive) 검색'을 권장 — 단 Sourcegraph 자사(코드검색 제품) 글이라 제품 포지셔닝은 감안할 것"
+    source: "https://sourcegraph.com/blog/agentic-coding"
