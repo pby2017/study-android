@@ -336,3 +336,5 @@
 - 2026-06-16 20:20 KST | 서브에이전트 모델 라우팅 — 탐색 Haiku·리뷰 Sonnet 비용 천장 | https://code.claude.com/docs/en/sub-agents
 
 - 2026-06-16 20:40 KST | 에이전트 스킬의 점진적 로딩 — 메타 100토큰만 항상 보이고 본문은 필요할 때만 로드(progressive disclosure) | https://github.com/travisvn/awesome-claude-skills
+
+- 2026-06-16 21:50 KST | Frequent Intentional Compaction — 컨텍스트 40~60
