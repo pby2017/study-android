@@ -3583,3 +3583,17 @@ cards:
       - "효과(추정치) — 월 커밋 +41, 기여 레포 +1.5, 사용 언어 +0.83, 신규 언어 +0.31. '많이 짠다'를 넘어 '안 쓰던 언어·레포로 폭이 넓어진다'가 핵심"
       - "한계 — 단독 저자 워킹페이퍼(미동료심사)이고 관측 데이터 기반 인과 추정이라 '도입이 원인'이라 단정 말 것. 실무 함의는 '에이전트가 개발자의 기술 반경을 넓힌다'는 가설 정도로"
     source: "https://arxiv.org/abs/2605.25438"
+  - category: ai
+    title: "superpowers(obra) — 'TDD·브레인스토밍·서브에이전트 리뷰'를 스킬로 강제하는 에이전트 방법론 프레임워크(MIT·~22.9만★)"
+    summary: >
+      Jesse Vincent(obra)이 만든 '에이전트 스킬 프레임워크이자 소프트웨어 개발 방법론'으로, 깔아두면
+      코딩 에이전트가 작업을 시작할 때 자동으로 트리거되는 스킬 묶음을 준다. 핵심은 도구가 아니라 '강제되는 워크플로'다.
+      에이전트는 먼저 목표를 캐묻고(brainstorming), 스펙·구현 계획을 만든 뒤, 작업마다 새 서브에이전트를 띄워
+      '스펙 준수 → 코드 품질' 2단계 리뷰를 거치며 자율적으로 진행한다. TDD 스킬은 RED-GREEN-REFACTOR를 강제하고
+      '테스트 전에 짠 코드는 삭제'한다고까지 명시한다. 특정 도구에 묶이지 않고 Claude Code·Codex·Gemini CLI·
+      Factory Droid·OpenCode·Pi 등에 각각 설치해 쓴다. GitHub API 기준 ~229.8k★·MIT, 최신 v6.0.0(2026-06-16).
+    points:
+      - "강제되는 워크플로 — brainstorming(목표 캐묻고 대안 탐색→스펙), writing-plans, test-driven-development(RED-GREEN-REFACTOR 강제·테스트 전 코드는 삭제), systematic-debugging, requesting/receiving-code-review가 자동 트리거"
+      - "서브에이전트 주도 개발 — 작업마다 '새 서브에이전트'를 띄워 '스펙 준수 검토 → 코드 품질 검토' 2단계로 리뷰. 작성 패스와 리뷰 패스를 같은 컨텍스트에서 섞지 않는 게 설계 핵심"
+      - "도구 비종속 — Claude Code(/plugin install superpowers@claude-plugins-official)·Codex·Gemini(gemini extensions install)·Antigravity·Factory Droid·OpenCode·Pi 등 하네스별로 따로 설치. 사용자 지시가 항상 스킬보다 우선(CLAUDE.md가 'TDD 쓰지마'면 그게 이긴다)"
+    source: "https://github.com/obra/superpowers"

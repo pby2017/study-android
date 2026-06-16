@@ -404,3 +404,5 @@
 - 2026-06-18 15:00 KST | Mastra(전 Gatsby 팀) — 에이전트·워크플로·RAG를 한 묶음으로 주는 TypeScript-네이티브 AI 프레임워크(Apache-2.0·~25k★, 40+ 공급자 모델 라우팅·.then/.branch/.parallel 워크플로·내장 observability·YC W25) | https://github.com/mastra-ai/mastra
 
 - 2026-06-17 15:30 KST | 'Coding Beyond Your Training'(arXiv 2026·Alexander Quispe) — Claude Code staggered rollout으로 개발자 5,838명·28개월 패널, 도입 후 월 커밋 +41·레포 +1.5·언어 +0.83·신규언어 +0.31, 단독 워킹페이퍼·관측 인과추정 한계 | https://arxiv.org/abs/2605.25438
+
+- 2026-06-17 16:30 KST | superpowers(obra) — TDD·브레인스토밍·서브에이전트 2단계 리뷰를 스킬로 강제하는 에이전트 방법론 프레임워크, 도구 비종속(Claude Code/Codex/Gemini/Factory/OpenCode/Pi), GitHub API ~229.8k★·MIT·v6.0.0(2026-06-16) | https://github.com/obra/superpowers
