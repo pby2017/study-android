@@ -254,3 +254,5 @@
 - 2026-06-16 18:00 KST | GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜 | https://github.com/farol-team/gnap
 
 - 2026-06-16 14:35 KST | Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트 | https://www.langchain.com/blog/introducing-open-swe-an-open-source-asynchronous-coding-agent
+
+- 2026-06-16 21:30 KST | DX 도구별 PR 처리량 벤치마크 — 얼마나 자주 쓰느냐가 도구 이름보다 크다 | https://getdx.com/blog/ai-tooling-benchmarks-pr-throughput-and-usage-by-tool/

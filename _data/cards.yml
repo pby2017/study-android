@@ -2401,3 +2401,18 @@ cards:
       - "역할 분업: Manager(라우팅)→Planner(계획)→Programmer(실행)→Reviewer(품질 검토)"
       - "격리 샌드박스(Daytona 등) + 계획 단계에서 멈춰 사람이 accept/edit/reject"
     source: "https://www.langchain.com/blog/introducing-open-swe-an-open-source-asynchronous-coding-agent"
+
+  - category: ai
+    title: "DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다"
+    summary: >
+      개발자 생산성 분석 회사 DX가 219개 기업·6만4,680명 개발자의 '실제 머지된 PR' 데이터를 도구별로 집계해
+      공개했다(2026 Q1, 2026-01-21 갱신). 핵심은 도구를 매일 쓰는 '빈번 사용자'의 주당 머지 PR 중앙값이
+      모든 주요 도구에서 함께 올랐다는 것 — Cursor는 2.8→4.1(46% 증가), Claude는 2.6→4.0 이상,
+      GitHub Copilot은 2.5→3.61로 뛰었다. 즉 어떤 도구를 고르느냐보다 '매일 손에 붙이느냐'가 처리량 차이를
+      더 크게 가른다는 게 데이터의 메시지다. 단, DX 스스로도 PR 수는 '움직임'이지 제품 가치·품질의 증거는
+      아니라고 단서를 단다.
+    points:
+      - "표본: 219개 기업·64,680명 개발자의 실제 머지된 PR(자기보고 아님), 2026 Q1"
+      - "빈번 사용자 주당 PR 중앙값: Cursor 4.1(+46%)·Claude 4.0+·Copilot 3.61 — 전 도구 동반 상승"
+      - "DX 단서: PR 수는 '코드 변경량'일 뿐 품질·고객가치의 척도가 아님"
+    source: "https://getdx.com/blog/ai-tooling-benchmarks-pr-throughput-and-usage-by-tool/"
