@@ -2635,3 +2635,17 @@ cards:
       - "마켓플레이스 추가는 Claude Code 내장 명령으로도 가능: `/plugin marketplace add jeremylongshore/claude-code-plugins`"
       - "레포 README 주장 규모(검증 시점 기준): 플러그인 425개·스킬 약 2,800개·에이전트 200개, 별 2.4k★ — 숫자는 갱신될 수 있어 참고치"
     source: "https://github.com/jeremylongshore/claude-code-plugins-plus-skills"
+  - category: ai
+    title: "BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49k★)"
+    summary: >
+      BMAD-METHOD(Breakthrough Method for Agile AI-Driven Development)는 단일 코딩 툴이 아니라
+      PM·아키텍트·개발자·UX·QA 등 12종 이상 역할 에이전트를 오케스트레이션하는 방법론 프레임워크다(MIT, 약 49.2k★).
+      핵심은 2단계 분업: 먼저 웹 LLM(Gemini Gems·ChatGPT Custom GPT 등)에서 브레인스토밍→제품 브리프→PRD→아키텍처
+      문서를 만들고, 그 '폴리시된 산출물'을 IDE로 가져와 구현한다. Scrum Master 에이전트가 이 문서를 잘게 쪼갠
+      '개발 스토리'로 바꿔 dev 에이전트에 통째로 넘기는 게 특징이라, 컨텍스트 누락이 줄어든다.
+      Claude Code·Cursor·Cline·Roo·Aider 등 에이전트를 가리지 않고 `npx bmad-method install`로 붙는다.
+    points:
+      - "2단계 워크플로: (1)웹 LLM에서 기획·아키텍처 문서 작성 → (2)IDE에서 구현. Scrum Master가 문서를 '개발 스토리'로 분해해 dev에 전달"
+      - "12+ 역할 에이전트(PM·Architect·Developer·UX·QA…)와 여러 페르소나를 한 세션에 모으는 'Party Mode' 제공"
+      - "IDE 비종속(Claude Code·Cursor·Cline·Roo·Aider 등) — `npx bmad-method install`로 설치, 라이선스 MIT(공식 레포 bmad-code-org, 약 49.2k★)"
+    source: "https://github.com/bmad-code-org/BMAD-METHOD"

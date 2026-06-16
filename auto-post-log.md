@@ -280,3 +280,4 @@
 - 2026-06-17 04:30 KST | AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff) | https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone
 
 - 2026-06-17 05:00 KST | ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI | https://github.com/jeremylongshore/claude-code-plugins-plus-skills
+- 2026-06-17 05:30 KST | BMAD-METHOD — 애자일 팀 전체를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49k★) | https://github.com/bmad-code-org/BMAD-METHOD
