@@ -293,3 +293,5 @@
 - 2026-06-16 21:30 KST | 서브에이전트 4가지 패턴(Philipp Schmid) — 메인이 쥔 통제권 순 | https://www.philschmid.de/subagent-patterns-2026
 
 - 2026-06-17 09:00 KST | Crush(Charm) — LSP·MCP까지 물린 TUI 끝판왕 코딩 에이전트, 모델은 안 가린다(25k★) | https://github.com/charmbracelet/crush
+
+- 2026-06-17 09:30 KST | Superpowers — 브레인스토밍→플랜→TDD→서브에이전트까지 개발 방법론 전체를 스킬로 묶은 프레임워크(MIT) | https://github.com/obra/superpowers

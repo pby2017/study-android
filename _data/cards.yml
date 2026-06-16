@@ -2750,3 +2750,17 @@ cards:
       - "LSP로 코드 문맥 보강 + MCP(http/stdio/sse)로 확장 + Agent Skills·훅·로컬 모델(Ollama·LM Studio) 지원"
       - "라이선스는 MIT가 아닌 FSL-1.1-MIT(2년 후 MIT 전환), Go 기반이라 BSD 계열까지 멀티플랫폼 — 'sst/opencode'와는 별개 프로젝트"
     source: "https://github.com/charmbracelet/crush"
+  - category: ai
+    title: "Superpowers — 브레인스토밍→플랜→TDD→서브에이전트까지 '개발 방법론 전체'를 스킬로 묶은 프레임워크(MIT)"
+    summary: >
+      Superpowers는 Jesse Vincent(Prime Radiant)가 만든 오픈소스 에이전트 스킬 프레임워크로, 단일 스킬이 아니라
+      '코드를 짜기 전부터'를 강제하는 소프트웨어 개발 방법론 전체를 합성 가능한 스킬들로 엮은 것이다.
+      흐름은 brainstorming(질문으로 아이디어를 다듬어 설계문서 저장) → git worktree로 격리 작업공간 확보 →
+      writing-plans(2~5분짜리 태스크로 쪼개고 경로·검증 단계까지 명시) → 태스크마다 새 서브에이전트를 띄워 '스펙 준수→코드 품질' 2단계 리뷰 →
+      TDD(RED-GREEN-REFACTOR 강제) → 코드리뷰 → 브랜치 마무리 순이다. 라이선스는 MIT.
+      Claude Code뿐 아니라 Codex·Gemini CLI·Cursor·Copilot CLI·Factory Droid·OpenCode 등에 플러그인으로 설치된다.
+    points:
+      - "핵심 철학: 'TDD·임시변통 대신 체계·복잡도 감소·주장 대신 증거(Evidence over claims)' — 계획 단계에서 모호한 결정을 미리 확정해 둠"
+      - "서브에이전트는 태스크당 1개씩 새로 띄워 격리 실행하고 통합은 오케스트레이터(메인)가 담당 — 서브에이전트에게 통합을 맡기지 않는 게 원칙"
+      - "설치는 Claude Code 기준 `/plugin install superpowers@claude-plugins-official` (또는 obra/superpowers-marketplace 추가 후 설치) — 레포 표기 별 수는 약 229k★ 주장"
+    source: "https://github.com/obra/superpowers"
