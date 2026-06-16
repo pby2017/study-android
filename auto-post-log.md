@@ -421,3 +421,5 @@
 - 2026-06-19 09:00 KST | claude-plugins-official — 회사들이 직접 올린 177+ 플러그인이 모이는 Anthropic 공식 마켓플레이스(~30k★) | https://github.com/anthropics/claude-plugins-official
 
 - 2026-06-19 09:30 KST | Rakuten 도입 사례 — Claude Code가 1,250만 줄 vLLM에서 '7시간 무인 코딩'으로 기능 하나를 끝낸 기업 레퍼런스 | https://claude.com/customers/rakuten
+
+- 2026-06-17 23:45 KST | Claude Code 사용량 한도 읽는 법 — 5시간 세션 + 주간 한도 두 버킷에 Opus 별도 카운트 | https://support.claude.com/en/articles/9797557-usage-limit-best-practices
