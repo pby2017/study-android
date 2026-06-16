@@ -359,3 +359,5 @@
 - 2026-06-18 10:30 KST | Context7(Upstash) — 낡은·환각 API 막으려 버전별 최신 문서를 매 요청에 주입하는 MCP 서버(MIT, resolve-library-id+문서조회 두 도구) | https://github.com/upstash/context7
 
 - 2026-06-18 11:00 KST | 공식 /code-review 플러그인 — 리뷰 4개 병렬(룰 sonnet 2·버그 Opus 2)→이슈별 재검증으로 오탐 폐기, --comment시 인라인 코멘트 | https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md
+
+- 2026-06-18 11:30 KST | SWE-bench Pro(Scale) — 비공개·카피레프트 레포로 오염 차단한 차세대 코딩 벤치마크(1,865태스크·41레포·표준 스캐폴드, 벤더 하네스와 10~30점 격차) | https://labs.scale.com/leaderboard/swe_bench_pro_public
