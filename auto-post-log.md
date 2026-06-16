@@ -318,3 +318,5 @@
 - 2026-06-16 18:02 KST | Tabby(TabbyML) — 코드를 남의 클라우드에 안 보내는 self-hosted 코딩 어시스턴트(~33.6k★) | https://github.com/TabbyML/tabby
 - 2026-06-17 16:00 KST | Continue(continuedev) — IDE 확장에서 cn CLI로 무게중심을 옮긴 오픈소스 코딩 에이전트(TUI+헤드리스, ~33.7k★) | https://github.com/continuedev/continue
 - 2026-06-17 16:30 KST | AGENTS.md 실전 — README for agents를 모노레포에 어떻게 까는가(중첩·우선순위 규칙) | https://agents.md
+
+- 2026-06-17 17:00 KST | SWE-bench Multimodal — 스크린샷 보고 JS UI 버그를 고치는 능력을 따로 재는 벤치마크(617과제·17 JS라이브러리) | https://arxiv.org/abs/2410.03859
