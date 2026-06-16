@@ -349,3 +349,5 @@
 - 2026-06-16 22:50 KST | Conductor — 한 화면에서 Claude Code·Codex·Cursor를 병렬로 돌리는 맥용 오케스트레이터(작업별 workspace·브랜치 격리) | https://www.conductor.build/
 
 - 2026-06-16 23:10 KST | GitHub Octoverse 2025 — AI가 기본값이 된 해와 그 부작용(TS 1위·AI slop·Broken Access Control 172% 증가) | https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/
+
+- 2026-06-18 09:00 KST | MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 on-demand 로딩(Claude Code 기본값) | https://code.claude.com/docs/en/mcp

@@ -3187,3 +3187,12 @@ cards:
       - "타입스크립트 1위(10여 년 만의 언어 지각변동): GitHub은 'LLM이 만든 컴파일 오류의 다수가 타입 체크 실패'라는 2025 학술 결과를 근거로, 엄격 타입 시스템이 AI 코드 오류를 파이프라인 초반에 거르는 장치로 부상했다고 분석"
       - "부작용도 공식 집계: CodeQL 경보 1위가 Injection→Broken Access Control(15만+ 저장소, +172% YoY)로 바뀜 — '인증 체크를 건너뛴 AI 스캐폴드'가 원인 다수. 'AI slop' 저품질 PR이 메인테이너 부담으로 처음 명시"
     source: "https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/"
+  - category: ai
+    title: "MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)"
+    summary: >
+      MCP 서버를 여러 개 붙이면 세션 시작 전에 도구 정의가 컨텍스트를 다 잡아먹는 'context pollution'이 오래 문제였다(한 개발자는 첫 프롬프트도 치기 전에 6.6만 토큰이 사라졌다고 기록). Claude Code의 MCP Tool Search는 세션 시작 시 도구 이름과 서버 instructions만 올리고, 실제 도구 정의는 Claude가 필요할 때 검색해서 불러온다. Anthropic은 2026-01-14에 이 기능을 공개했고, 공식 문서 기준 현재 기본값으로 켜져 있다. 실무 효과는 'MCP 서버를 더 붙여도 컨텍스트 영향이 거의 없다'는 것 — 그래서 서버 개수보다 서버 instructions를 잘 써두는 게 중요해진다.
+    points:
+      - "기본 동작(공식): 세션 시작 땐 도구 이름+서버 instructions만 로드, 정의는 ToolSearch로 필요할 때만 expand. Claude Code는 서버별 도구 수 상한을 두지 않고 '컨텍스트 예산'이 실질 한계"
+      - "ENABLE_TOOL_SEARCH로 조절: unset/true=전부 지연, auto=정의가 컨텍스트 10% 안에 들면 미리 로드(auto:N으로 % 지정), false=전부 미리 로드. Vertex AI·비1차 ANTHROPIC_BASE_URL 프록시에선 기본 비활성"
+      - "제약(공식): tool_reference 블록을 지원하는 모델만 가능 — Haiku는 미지원, Vertex는 Sonnet 4.5·Opus 4.5 이상. 서버 작성자는 instructions를 스킬처럼 '언제 이 도구를 찾아야 하는지' 설명하게 쓰는 게 핵심"
+    source: "https://code.claude.com/docs/en/mcp"
