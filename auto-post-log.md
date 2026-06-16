@@ -345,3 +345,5 @@
 - 2026-06-16 21:37 KST | Agent Client Protocol(ACP) — 에디터와 코딩 에이전트를 분리하는 개방형 표준(Zed·JetBrains) | https://zed.dev/acp
 
 - 2026-06-16 12:00 KST | Roo Code 종료 → Zoo Code로 부활 — 오픈소스 코딩 에이전트의 메인테이너 이탈·커뮤니티 포크 인계 사례(24.2k★) | https://github.com/RooCodeInc/Roo-Code
+
+- 2026-06-16 22:50 KST | Conductor — 한 화면에서 Claude Code·Codex·Cursor를 병렬로 돌리는 맥용 오케스트레이터(작업별 workspace·브랜치 격리) | https://www.conductor.build/

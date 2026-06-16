@@ -3164,3 +3164,14 @@ cards:
       - "Zoo Code = 기존 Roo 기여자들의 공식 인계 포크(2026-04-23 개설). 같은 기능·설정·Apache-2.0, Roo의 5개 모드(Code/Architect/Ask/Debug/Custom) 그대로. 설정 export→import로 이주"
       - "교훈: 단일 모델·단일 벤더 락인을 피하려면 BYOK+오픈 라이선스+설정 이식성을 확인하라 — Roo의 계보(Cline→Roo→Zoo) 자체가 포크로 살아남는 길을 보여준다"
     source: "https://github.com/RooCodeInc/Roo-Code"
+  - category: ai
+    title: "Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터"
+    summary: >
+      Conductor(conductor.build)는 여러 코딩 에이전트를 동시에 돌리기 위한 맥용 데스크톱 앱으로, Claude Code·Codex·Cursor를 한 인터페이스에서 병렬 실행한다.
+      핵심은 작업 격리다 — "각 태스크가 자기만의 workspace·브랜치·파일·터미널·diff·리뷰 경로를 받는다"고 공식 문서가 밝힌다. 그래서 에이전트들이 서로의 파일을 덮어쓰지 않고 독립적으로 굴러가고, 사람은 작업이 끝난 순서대로 diff를 리뷰하고 PR로 만들어 머지하면 된다.
+      이는 '에이전트는 싸지만 사람의 리뷰·통합 시간이 병목'이라는 2026년 병렬 에이전트 워크플로의 전제를 그대로 제품화한 것 — 단일 작업 디렉터리를 공유하는 데서 오는 동시 편집 충돌을 작업별 격리 workspace로 푼다.
+    points:
+      - "무엇을: Claude Code·Codex·Cursor를 한 맥 앱에서 병렬 실행(공식 표현 'run ... in parallel'). 모델·에이전트를 직접 가져와(BYO) 꽂는 호스트 레이어"
+      - "격리 방식(1차 출처): '각 태스크가 자기 workspace·브랜치·파일·터미널·diff·리뷰 경로를 가진다' → 병렬 에이전트의 동시 편집 충돌을 작업별 격리로 차단"
+      - "운영 흐름: 여러 에이전트를 띄워두고 → 끝난 작업의 diff를 리뷰 → PR 생성·머지. '사람의 리뷰·통합'을 병목으로 보고 그 단계를 줄이는 설계. 현재 맥 중심·v0.65.0대"
+    source: "https://www.conductor.build/"
