@@ -325,3 +325,5 @@
 - 2026-06-17 18:00 KST | claude --worktree — 한 레포에서 여러 Claude 세션을 git 워크트리로 격리해 동시에 돌리기 | https://code.claude.com/docs/en/worktrees
 
 - 2026-06-16 18:30 KST | Context Rot(Chroma) — 컨텍스트만 길어져도 18개 모델 전부 정확도가 무너진다(NIAH·LongMemEval·반복단어) | https://www.trychroma.com/research/context-rot
+
+- 2026-06-17 18:30 KST | claude-code-workflows(OneRedOak) — 디자인을 눈으로 자동 리뷰시키는 Playwright 기반 워크플로(3.8k★) | https://github.com/OneRedOak/claude-code-workflows

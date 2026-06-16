@@ -3019,3 +3019,15 @@ cards:
       - "반직관적 결과: 논리적으로 잘 구성된 haystack보다 '섞어서 뒤죽박죽인' haystack에서 18개 모델 전부 더 정확했다. LongMemEval에선 11.3만 토큰 전체를 넣을 때보다 핵심 300토큰만 넣을 때 모든 모델이 훨씬 높은 점수"
       - "주장(연구 수치): 총 194,480회 호출 중 거부는 0.035%로 드물었다. 실제 과제는 이 최소 실험보다 복잡하므로 현업에서의 열화는 더 심할 것이라고 저자는 명시. 코드 전체 오픈소스로 재현 가능"
     source: "https://www.trychroma.com/research/context-rot"
+  - category: ai
+    title: "claude-code-workflows(OneRedOak) — 디자인을 '눈으로' 자동 리뷰시키는 Playwright 기반 워크플로(3.8k★)"
+    summary: >
+      OneRedOak/claude-code-workflows는 Claude Code용 워크플로 모음을 공유하는 MIT 라이선스 레포다(별 약 3.8k·포크 약 567).
+      핵심은 'design-review' 워크플로 — Claude Code가 Playwright MCP로 실제 브라우저를 띄워 변경된 UI를
+      직접 클릭·스크린샷하며 디자인 일관성·접근성·반응형을 검토하게 만든다.
+      텍스트 diff만 읽고 "괜찮아 보인다"고 말하는 코드 리뷰의 사각지대(렌더링 결과)를 사람 대신 에이전트가 눈으로 메우는 패턴이다.
+    points:
+      - "구성: 슬래시 커맨드 + 서브에이전트 + 룰 파일을 묶은 워크플로 3종(대표가 design-review). Playwright MCP를 통해 페이지를 띄우고 상호작용·스크린샷을 찍어 시각적으로 검증한다"
+      - "쓰임새: PR이나 작업 브랜치의 UI 변경을 머지 전에 에이전트가 라이브 브라우저로 점검 — 정적 diff로는 못 잡는 레이아웃 깨짐·대비·반응형 문제를 잡는 게 목적"
+      - "별 수·포크 수는 현재 기준 주장이며 변동한다. 본인 프로젝트의 디자인 가이드에 맞춰 룰을 고쳐 쓰는 출발점으로 의도된 레퍼런스 모음"
+    source: "https://github.com/OneRedOak/claude-code-workflows"
