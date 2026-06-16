@@ -268,3 +268,4 @@
 - 2026-06-17 00:30 KST | Context7 — 환각 API를 막으려 최신 버전별 공식 문서를 에이전트 컨텍스트에 꽂아주는 MCP(57k★) | https://github.com/upstash/context7
 
 - 2026-06-17 01:00 KST | awesome-claude-code-subagents(VoltAgent) — 100여 개 전문 서브에이전트를 통째로 받아 쓰는 카탈로그 | https://github.com/VoltAgent/awesome-claude-code-subagents
+- 2026-06-17 01:30 KST | Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트 | https://jules.google/docs/usage-limits/

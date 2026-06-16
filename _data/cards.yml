@@ -2516,3 +2516,16 @@ cards:
       - "각 에이전트는 frontmatter(이름·설명·tools 권한)+시스템 프롬프트로 된 마크다운 — 도구 접근을 역할별로 제한 가능"
       - "MIT 라이선스, 21.8k★(주장) — 플러그인/`.claude/agents` 디렉터리에 복사하는 방식으로 즉시 사용"
     source: "https://github.com/VoltAgent/awesome-claude-code-subagents"
+  - category: ai
+    title: "Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트"
+    summary: >
+      Jules는 구글이 만든 자율 코딩 에이전트로, GitHub에 연동해 클라우드 VM에서 레포를
+      클론하고 의존성을 설치한 뒤 파일을 고친다. 작업을 던지면 코드를 건드리기 전에
+      '계획(plan)'을 먼저 생성해 사람이 검토·승인하게 하고, 레포 루트의 AGENTS.md를
+      자동으로 읽어 코드베이스 규칙을 파악한다. 모델은 무료 등급이 Gemini 2.5 Pro,
+      유료 등급은 Gemini 3 Pro 계열을 쓴다.
+    points:
+      - "등급별 한도(공식): 무료 하루 15작업·동시 3개 / Pro 100작업·동시 15개 / Ultra 300작업·동시 60개"
+      - "유료 등급은 별도 구독이 아니라 Google AI Pro/Ultra 플랜에 포함 — 현재 개인 @gmail 계정만"
+      - "코드를 바꾸기 전 계획 승인 단계가 있고, private 코드로 학습하지 않으며 VM 안에 격리"
+    source: "https://jules.google/docs/usage-limits/"
