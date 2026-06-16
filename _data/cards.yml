@@ -3498,3 +3498,16 @@ cards:
       - "비유의 출처 — '이전 글에서 Claude Code 구조를 레이어드 아키텍처에 비유했듯, 플러그인이 담는 지식도 계층화할 수 있다'. 코드 아키텍처 사고를 '지식 관리'에 그대로 적용"
       - "팀 스케일 — 계층화된 플러그인 묶음 = Living Knowledge Base → 워크플로를 배포하는 '마켓플레이스 1.0'으로 확장. 개인 팁이 아니라 조직 차원 표준화가 목표 (toss.tech 자체 글, 수치 주장 없음)"
     source: "https://toss.tech/article/harness-for-team-productivity"
+  - category: ai
+    title: "Terminal-Bench 2.0 — '코드 파일'이 아니라 '리눅스 셸 전체'를 문제로 주는 차세대 에이전트 벤치마크(Stanford×Laude·89태스크)"
+    summary: >
+      Terminal-Bench는 스탠퍼드와 Laude Institute가 만든, 코딩 에이전트를 '실제 터미널 환경'에서 평가하는 벤치마크다.
+      SWE-bench가 레포/폴더라는 명확한 경계 안에서 코드를 고치게 한다면, Terminal-Bench는 환경 전체가 문제 공간이다 —
+      소스에서 리눅스 커널을 컴파일하거나, 서버를 맨바닥부터 배포하거나, 모델을 학습시키는 식의 end-to-end 시스템 작업을 시킨다.
+      각 태스크는 자연어 지시 + Docker 컨테이너 + 검증 테스트 + 정답 예시 + 제한시간으로 구성되고, 성공 여부는 출력 유사도가 아니라 자동 테스트로만 판정한다.
+      2.0은 사람이 직접 만들고 검증한 89개 하드 태스크로 추려, 'GUI·단축경로 없이 Bash만으로' 풀게 한다.
+    points:
+      - "환경 전체가 문제 — SWE-bench는 레포 경계 안 코드 수정이지만, Terminal-Bench는 시스템 탐색·의존성 관리·셸 명령으로 '돌아가는 시스템'을 만들어내야 통과. 예: linux-6.9 커널 소스 빌드, OpenSSL 자체서명 인증서 생성"
+      - "Harbor 하네스로 표준 실행 — 태스크는 Harbor 포맷으로 기술되고 tb CLI로 돌린다. Claude Code·Codex CLI·OpenHands·mini-SWE-agent 같은 인기 에이전트를 그대로 붙일 수 있고, 모델 비교용 중립 스캐폴드 Terminus 2도 제공(Apache-2.0)"
+      - "큐레이션이 핵심 — 2.0은 커뮤니티가 낸 229개 중 리뷰어 3명이 검수해 89개만 채택, 태스크당 약 3 reviewer-hour 투입. 'Hello World 디버깅' 같은 학술적이지만 경제적 가치 낮은 문제는 제거해 '엔지니어가 실제로 돈 받고 하는 일'에 맞춤"
+    source: "https://www.tbench.ai/"
