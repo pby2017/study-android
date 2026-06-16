@@ -3384,3 +3384,15 @@ cards:
       - "모델 비종속: 단일 AI 공급자에 'Not locked into'를 명시 — 작업별 최적 모델 라우팅을 내세운 'Model flexibility'가 셀링포인트(구체 모델명은 공식 overview 문서엔 미기재)"
       - "헤드리스·자동화: `droid exec`로 스크립트·CI/CD에서 비대화형 실행, 다단계 워크플로 'Missions'는 `droid exec --mission`으로 헤드리스 구동 — 백그라운드/배치 에이전트 운영에 직접 대응"
     source: "https://docs.factory.ai/cli/getting-started/overview"
+  - category: ai
+    title: "하네스 엔지니어링(Harness Engineering) — '모델 말고 모델 둘러싼 모든 것'을 설계해 에이전트 실패를 구조로 막기"
+    summary: >
+      Martin Fowler 사이트(Birgitta Böckeler, 2026-04-02)는 '하네스(harness)'를 "AI 에이전트에서 모델을 뺀 모든 것"으로 정의한다 — 즉 도구·피드백 루프·안전 경계·검증 시스템 전체.
+      핵심 발상은 "에이전트가 실수하면 그때그때 고치지 말고, 그 실수를 두 번 다시 못 하게 하는 해법(주로 더 나은 하네스)을 만든다"는 것으로, 같은 모델을 그대로 두고 하네스만 바꿔도 성능이 크게 움직인다.
+      실제로 LangChain은 모델이 아니라 하네스를 바꿔 Terminal-Bench 2.0 점수를 52.8%→66.5%로 끌어올렸다(주장).
+      Fowler 글은 자기교정 확률을 높이는 'builder harness'와 사람의 개입을 꼭 필요한 곳에만 두는 'user harness'를 구분하고, 환경을 에이전트가 읽고 다루기 쉽게 만드는 'ambient affordances'와 토폴로지를 좁혀 가변성을 줄이는 접근을 제시한다.
+    points:
+      - "정의: 하네스 = 에이전트에서 '모델을 제외한 전부'(도구 오케스트레이션·검증 루프·컨텍스트/메모리·가드레일·관측성). 'AI 에이전트 성능은 모델이 아니라 하네스가 결정한다'가 2026년의 합의"
+      - "핵심 원칙: 에이전트가 실수하면 즉석 수정이 아니라 '다시는 그 실수를 못 하게 하는 해법'을 하네스로 만들어 영구화 — 같은 모델로도 점수가 출렁(LangChain Terminal-Bench 52.8%→66.5%는 하네스만 교체한 결과라는 주장)"
+      - "Fowler/Böckeler 프레임: 'builder harness'(자기교정 유도)와 'user harness'(사람 개입을 필요한 지점에만)로 분리, 'ambient affordances'(환경을 에이전트가 읽기 쉽게)·토폴로지 고정으로 가변성 축소 — 좋은 하네스는 사람 입력을 없애는 게 아니라 '중요한 곳으로' 돌린다"
+    source: "https://martinfowler.com/articles/harness-engineering.html"

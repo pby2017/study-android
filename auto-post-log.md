@@ -378,3 +378,5 @@
 - 2026-06-17 13:30 KST | Repomix — 레포 전체를 AI 친화 단일 파일로 패킹해 LLM에 통째로 먹이는 패커(MIT·~26.3k★, npx repomix·토큰카운팅·시크릿탐지·원격레포) | https://github.com/yamadashy/repomix
 
 - 2026-06-17 22:00 KST | Factory droid — 터미널 에이전트+Custom Droid+Mission으로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼(droid CLI·droid exec 헤드리스·Missions) | https://docs.factory.ai/cli/getting-started/overview
+
+- 2026-06-17 21:00 KST | 하네스 엔지니어링(Harness Engineering) — 모델 말고 모델 둘러싼 모든 것을 설계해 에이전트 실패를 구조로 막기(builder/user harness·ambient affordances·LangChain 52.8→66.5 주장) | https://martinfowler.com/articles/harness-engineering.html
