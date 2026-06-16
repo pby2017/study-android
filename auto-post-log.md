@@ -251,3 +251,4 @@
 - 2026-06-16 16:00 KST | 서브레시피 파이프라인 — 복잡한 작업을 YAML 레시피로 쪼개 단계·병렬로 돌리기 | https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/recipes/subrecipes.md
 
 - 2026-06-16 17:30 KST | Ralph 기법 — 멍청하지만 절대 안 멈추는 에이전트 bash 루프 | https://ghuntley.com/ralph/
+- 2026-06-16 18:00 KST | GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜 | https://github.com/farol-team/gnap
