@@ -59,6 +59,13 @@
   th{background:var(--code);color:var(--accent)}
   .shot{border:1px dashed var(--border);border-radius:10px;padding:22px;
     text-align:center;color:var(--muted);background:repeating-linear-gradient(45deg,#13181f,#13181f 10px,#11161d 10px,#11161d 20px);margin:12px 0;font-size:13.5px}
+  /* 실제 실행 스크린샷 */
+  figure.cap{margin:12px 0}
+  figure.cap img{width:100%;border:1px solid var(--border);border-radius:10px;display:block;background:#0b0e13}
+  figure.cap figcaption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+  .shotgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .shotgrid figure.cap{margin:0}
+  @media(max-width:720px){.shotgrid{grid-template-columns:1fr}}
   .pgnum{position:absolute;top:13px;right:18px;color:var(--muted);font-size:12px}
   a.src{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px dotted var(--accent)}
   .center{text-align:center}
@@ -128,7 +135,12 @@
   <a href="#mechanism">메커니즘</a>
   <a href="#pipeline">파이프라인</a>
   <span class="grp">·</span>
+  <a href="#run-install">실행:설치</a>
+  <a href="#run-scan">실행:스캔</a>
   <a href="#output">산출물</a>
+  <a href="#run-result">실행:결과</a>
+  <a href="#run-cost">실행:비용</a>
+  <span class="grp">·</span>
   <a href="#incremental">증분 업데이트</a>
   <a href="#commands">명령어</a>
   <a href="#tradeoff">트레이드오프</a>
@@ -318,6 +330,39 @@ curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/
   <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — agents/project-scanner.md, agents/file-analyzer.md (직접 검증)</p>
 </section>
 
+<!-- 실제 실행 ① 설치 -->
+<section class="slide" id="run-install">
+  <span class="pgnum">실제 실행 ①</span>
+  <span class="tag t-diag">직접 돌려봄 · 설치</span>
+  <h2>실제 설치: pnpm 없음 → npm 설치 → tree-sitter 빌드 승인</h2>
+  <p class="sub">Cursor 플러그인으로 설치하면 Phase 0 pre-flight가 환경을 점검하고 부족한 걸 스스로 채운다. 실제로 막힌 지점들:</p>
+  <div class="shotgrid">
+    <figure class="cap"><img src="img/ua/4_0_phase0_pre-flight.png" alt="pre-flight">
+      <figcaption>Phase 0 — 플러그인 루트 탐지 후 <code>core가 빌드되지 않음</code> 감지 → pnpm 없음 → npm으로 pnpm 설치 → tree-sitter 7개 파서 빌드 승인 요청</figcaption></figure>
+    <figure class="cap"><img src="img/ua/5_0_phase0_approve_build.png" alt="approve build">
+      <figcaption><code>pnpm approve-builds</code>로 tree-sitter 네이티브 빌드 허용. 글로벌 config.yaml 거부 → <code>pnpm-workspace.yaml</code>에 설정하라는 에러까지 그대로 해결</figcaption></figure>
+  </div>
+  <div class="callout">실패 메시지(<code>command not found: pnpm</code>, <code>ERR_PNPM_CONFIG_SET_UNSUPPORTED_YAML_CONFIG_KEY</code>)를 에이전트가 읽고 다음 단계를 스스로 결정한다. node v24.15.0 / npm 11.17.0 환경에서 검증.</div>
+  <aside class="note"><b>발표자 노트:</b> "설치가 한 방에 안 됐다"가 오히려 포인트 — 에이전트가 에러를 보고 스스로 복구하는 과정을 보여준다. tree-sitter는 네이티브 빌드라서 승인 단계가 필요했고, 그게 Phase 0에 들어가 있다.</aside>
+  <p class="srcline">출처: 실제 실행 스크린샷(understand-anything-screenshots/4·5번) — *** 분석 세션 2026-06-16</p>
+</section>
+
+<!-- 실제 실행 ② 스캔 + 배치 -->
+<section class="slide" id="run-scan">
+  <span class="pgnum">실제 실행 ②</span>
+  <span class="tag t-diag">직접 돌려봄 · 스캔/배치</span>
+  <h2>실제 스캔: 3,018 파일 → 150 시맨틱 배치 (Louvain)</h2>
+  <div class="grid2">
+    <figure class="cap"><img src="img/ua/7_1_phase1_result_scan.png" alt="scan result">
+      <figcaption>Phase 1 스캔 결과 — code 1,295 / config 1,707 / xml 1,685 / kotlin 1,058 / java 229, 내부 import 엣지 3,237개. <code>scan-result.json</code> 저장</figcaption></figure>
+    <figure class="cap"><img src="img/ua/12_phase2_execute_parallel.png" alt="batch dispatch code">
+      <figcaption>Phase 1.5/2 — 배치를 <code>5개씩 묶어</code> file-analyzer 서브에이전트에 병렬 디스패치하는 실제 JS. <code>batches.json</code>을 읽어 5개 단위로 그룹핑</figcaption></figure>
+  </div>
+  <div class="callout"><b>왜 배치인가:</b> 3,018 파일을 통째로 LLM에 못 넣는다. project-scanner가 import 그래프 기준 <b>Louvain 커뮤니티 알고리즘</b>으로 150개 시맨틱 배치(~3초)를 만들고, 배치마다 이웃 맵을 붙여 file-analyzer가 맥락을 갖고 분석한다.</div>
+  <aside class="note"><b>발표자 노트:</b> 화면의 코드는 plugin의 실제 dispatch 노드. "5개씩 그룹 → 각 그룹을 서브에이전트 1개가 담당"이 핵심. Louvain은 그래프 커뮤니티 검출 알고리즘으로, 서로 많이 import하는 파일끼리 한 배치에 묶는다.</aside>
+  <p class="srcline">출처: 실제 실행 스크린샷(7·12번) + Phase 요약(24번) — ***</p>
+</section>
+
 <!-- OUTPUT -->
 <section class="slide" id="output">
   <span class="pgnum">6 / 10</span>
@@ -363,6 +408,45 @@ curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/
   </div>
   <aside class="note"><b>발표자 노트:</b> knowledge-graph.json은 일반 JSON이라 다른 도구에서도 읽을 수 있음. /understand-dashboard 명령어가 이 파일을 읽어 인터랙티브 뷰를 보여줌.</aside>
   <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README "Output", agents/file-analyzer.md</p>
+</section>
+
+<!-- 실제 실행 ③ 결과 -->
+<section class="slide" id="run-result">
+  <span class="pgnum">실제 실행 ③</span>
+  <span class="tag t-diag">직접 돌려봄 · 결과</span>
+  <h2>실제 결과: 8단계 ~25분 → 노드 11,244 · 엣지 20,722</h2>
+  <p class="sub">*** Android(***) 코드베이스를 끝까지 돌린 결과. 모든 수치는 도구가 출력한 실제 값.</p>
+  <div class="grid2">
+    <figure class="cap"><img src="img/ua/24_phase8_analyse_4.png" alt="phase summary">
+      <figcaption>도구가 출력한 Phase 0~7 요약. <b>Analyze가 ~20분(30 서브에이전트 × 6라운드)</b>으로 대부분을 차지, 나머지 단계는 초~분 단위</figcaption></figure>
+    <figure class="cap"><img src="img/ua/18_phase6_verify.png" alt="verify">
+      <figcaption>Phase 6 검증 — 인라인 그래프 검증에서 <code>10개 노드 메타데이터 누락</code> 발견 → 자동 수정, dangling 엣지 0개. 최종 nodes=11,244 / edges=20,722</figcaption></figure>
+  </div>
+  <div class="nums">
+    <div class="numbox"><div class="v">3,018</div><div class="l">분석 파일</div></div>
+    <div class="numbox"><div class="v">11,244</div><div class="l">노드(file·function·class·config·doc)</div></div>
+    <div class="numbox"><div class="v">20,722</div><div class="l">엣지(contains·exports·imports·calls…)</div></div>
+    <div class="numbox"><div class="v">10</div><div class="l">아키텍처 레이어</div></div>
+    <div class="numbox"><div class="v">13</div><div class="l">가이드 투어 단계</div></div>
+  </div>
+  <div class="callout"><b>레이어 자동 할당 예:</b> 프레젠테이션 625 · 리소스 1,695 · 도메인 312 · 데이터 122 · 테스트 116 — 3,018 파일이 빠짐없이 10개 레이어로 분류됐다. 투어는 "프로젝트 개요 → Gradle 멀티모듈 → … → 차량 검색(*** 엔진) → 채팅(***) → 인증/AB테스트"까지 13단계.</div>
+  <aside class="note"><b>발표자 노트:</b> 검증(Phase 6)이 핵심 신뢰 포인트 — "10개 노드 누락 자동수정, dangling 엣지 0"은 그래프가 정합성 검사를 거친다는 증거. 레이어/투어 이름이 실제 도메인 용어(***, ***)로 나오는 게 LLM 시맨틱 단계의 결과.</aside>
+  <p class="srcline">출처: 실제 실행 스크린샷(16·18·24번) — *** 분석 2026-06-16</p>
+</section>
+
+<!-- 실제 실행 ④ 비용 -->
+<section class="slide" id="run-cost">
+  <span class="pgnum">실제 실행 ④</span>
+  <span class="tag t-diag">직접 돌려봄 · 비용</span>
+  <h2>비용의 현실: 대형 레포 최초 분석은 토큰을 크게 쓴다</h2>
+  <p class="sub">"로컬·무과금"은 임베딩/파서 얘기다. <b>분석 자체는 Claude 구독 토큰을 소비</b>한다. 3,018파일 최초 실행의 실제 사용량:</p>
+  <figure class="cap"><img src="img/ua/1_0_token_used_history.png" alt="token usage">
+    <figcaption>실제 토큰 사용 기록 — 최초 <code>/understand</code> 전체 실행(09:44) 한 건이 <b>약 4,142만 토큰</b>(claude-4.6-opus-max, 구독 Included). 이후 대시보드·증분 작업은 15~58만 수준</figcaption></figure>
+  <div class="callout">
+    <b>그래서 언제 쓰나:</b> 최초 1회는 비싸지만 — ① 결과(knowledge-graph.json)는 디스크에 남아 재사용 ② 이후엔 <b>증분 업데이트</b>가 변경 파일만 재분석(다음 슬라이드) ③ 신규 입사자 온보딩·대형 레거시 파악처럼 "사람이 며칠 걸릴 일"을 대체할 때 본전을 뽑는다. 작은 레포·자주 바뀌는 코드엔 과하다.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 비용을 숨기지 않는 게 신뢰를 만든다. 4,142만 토큰은 구독(Included)이라 추가 과금은 아니지만 "공짜는 아니다"가 솔직한 메시지. 핵심 반론 대비: "그 돈으로 사람이 읽는 게 낫지 않냐?" → 1회성이고 재사용+증분으로 상각된다는 점.</aside>
+  <p class="srcline">출처: 실제 토큰 사용 기록 스크린샷(1번) — byungyong@***.com, 2026-06-16</p>
 </section>
 
 <!-- INCREMENTAL -->
