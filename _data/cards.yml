@@ -3372,3 +3372,15 @@ cards:
       - "AI 친화 출력: XML·Markdown·플레인 등 포맷 선택, 토큰 카운팅으로 컨텍스트 예산 가늠, 코드 압축(주석 제거 등)으로 토큰 절감 — '에이전트가 못 도는' 모델에 레포를 통째로 넣을 때의 비용/한도 문제를 직접 다룸"
       - "안전장치·용도: 시크릿 탐지로 민감 정보 유출 방지, 클론 없이 원격 레포 패킹 지원. 권장 용도는 버그 조사·보안 감사·구현 계획·서드파티 라이브러리 문서화 등 레포 스냅샷이 필요한 작업(JSNation Open Source Awards 2025 'Powered by AI' 후보)"
     source: "https://github.com/yamadashy/repomix"
+  - category: ai
+    title: "Factory droid — '터미널 에이전트 + Custom Droid + Mission'으로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼"
+    summary: >
+      Factory는 코딩 에이전트 `droid`를 터미널에 올린 플랫폼으로, 공식 문서는 이를 "Meet `droid` — the power of Factory in your terminal"로 소개한다.
+      설치는 `curl -fsSL https://app.factory.ai/cli | sh`(또는 `npm install -g droid`) 한 줄, 프로젝트에서 `droid`만 치면 대화형 세션이 뜬다.
+      특정 LLM에 묶이지 않는 'Model flexibility'를 내세워, 작업마다 적합한 모델로 라우팅("route tasks to the best model for each job")한다는 점이 단일 벤더 에이전트와의 핵심 차별점이다.
+      CI/CD·자동화용으로 `droid exec` 헤드리스 모드를 제공하고, 다단계 워크플로를 묶은 'Missions'는 `droid exec --mission`으로 사람 없이 돌릴 수 있다.
+    points:
+      - "설치·실행: `curl -fsSL https://app.factory.ai/cli | sh` / `irm https://app.factory.ai/cli/windows | iex` / `npm install -g droid` 중 택1 → 프로젝트에서 `droid` 입력 시 대화형 세션 시작(공식 docs.factory.ai 기준)"
+      - "모델 비종속: 단일 AI 공급자에 'Not locked into'를 명시 — 작업별 최적 모델 라우팅을 내세운 'Model flexibility'가 셀링포인트(구체 모델명은 공식 overview 문서엔 미기재)"
+      - "헤드리스·자동화: `droid exec`로 스크립트·CI/CD에서 비대화형 실행, 다단계 워크플로 'Missions'는 `droid exec --mission`으로 헤드리스 구동 — 백그라운드/배치 에이전트 운영에 직접 대응"
+    source: "https://docs.factory.ai/cli/getting-started/overview"
