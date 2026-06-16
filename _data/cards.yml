@@ -2899,3 +2899,17 @@ cards:
       - "AGENTS.md는 2025년 8월 이후 '6만 개 넘는 오픈소스 프로젝트'가 채택했다고 재단이 명시(주장) — 레포마다 일관된 에이전트 지침 파일을 두는 관행"
       - "플래티넘 멤버: AWS·Anthropic·Block·Bloomberg·Cloudflare·Google·Microsoft·OpenAI. 리눅스재단 산하 directed fund로 운영(MCP는 2024년 11월 오픈소스화)"
     source: "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation"
+  - category: ai
+    title: "CodeRabbit 'AI vs 사람 코드' 리포트 — AI가 쓴 코드는 PR당 이슈가 1.7배 더 많다"
+    summary: >
+      코드리뷰 플랫폼 CodeRabbit이 2025년 12월, 실제 PR 470개를 AI 작성과 사람 작성으로 갈라
+      어떤 결함이 얼마나 더 나오는지 정량 비교한 리포트를 냈다. 결론은 'AI가 더 빠르지만 더 많은 이슈를 남긴다' —
+      AI 작성 PR은 사람 작성 대비 PR당 이슈가 약 1.7배 많았고, 특히 한 PR에 결함이 몰린 '고이슈 아웃라이어'가
+      AI 쪽에서 더 흔해 리뷰 부담이 한쪽으로 쏠렸다(주장). 실무 시사점은 명확하다:
+      AI 코드를 막연히 믿지 말고 '모든 PR에 자동 코드리뷰를 품질 게이트로' 걸고,
+      에이전트에게 아키텍처 제약·코딩 표준·설정 패턴 같은 컨텍스트를 더 주면 AI가 자주 내는 실수 유형이 줄어든다는 것.
+    points:
+      - "표본: 실제 PR 470개를 AI 작성 vs 사람 작성으로 분류해 비교 — 추측이 아니라 머지된 변경에서 잡힌 이슈 기반(CodeRabbit 자체 데이터·주장)"
+      - "핵심 수치: AI 작성 PR이 사람 대비 이슈 약 1.7배. '결함이 몰린 PR'이 AI 쪽에서 더 흔해 리뷰 워크로드가 한쪽으로 쏠림(주장)"
+      - "권고: ①모든 PR에 AI 코드리뷰를 품질 게이트로 상시 적용 ②에이전트에 아키텍처 제약·코딩 표준·설정 패턴 컨텍스트를 주입해 빈발 실수 줄이기. 단, CodeRabbit이 코드리뷰 벤더라는 이해관계는 감안할 것"
+    source: "https://www.coderabbit.ai/blog"

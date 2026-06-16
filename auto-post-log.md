@@ -311,3 +311,5 @@
 
 - 2026-06-17 14:00 KST | Deep Agents(LangChain) — Claude Code에서 영감받아 만든 범용 에이전트 하네스(MIT) | https://github.com/langchain-ai/deepagents
 - 2026-06-17 14:30 KST | Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다 | https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation
+
+- 2026-06-17 15:00 KST | CodeRabbit AI vs 사람 코드 리포트 — AI 작성 PR은 이슈가 1.7배 많다 | https://www.coderabbit.ai/blog
