@@ -3526,3 +3526,17 @@ cards:
       - "모델 비종속 — 이름이 'Claude만'을 함의해 Ruflo로 개명. Claude·GPT·Gemini·Cohere·Ollama를 smart routing으로 갈아끼우며, npx ruflo / npx claude-flow 둘 다 같은 도구를 호출(하위호환)"
       - "수치는 '주장'으로 — 속도·비용 절감·SWE 점수 등은 프로젝트 자체 벤치 주장이고, 2026년 한 독립 감사는 '광고된 MCP 도구·비용절감 수치가 실측과 어긋난다'고 반박. 도입 전 자기 환경에서 직접 측정 권장"
     source: "https://github.com/ruvnet/claude-flow"
+  - category: ai
+    title: "Crush(Charm/charmbracelet) — Go로 짠 '예쁜 터미널' 코딩 에이전트, 세션 중에 LLM을 갈아끼우는 모델 비종속 TUI(~25.4k★)"
+    summary: >
+      TUI 라이브러리로 유명한 Charm(charmbracelet)이 만든 터미널 기반 코딩 에이전트로,
+      Go로 작성됐고 README 기준 ~25.4k★·라이선스는 FSL-1.1-MIT다. 다른 터미널 에이전트들과 묶이는
+      범주(OpenCode·goose·Aider 부류)지만 차별점은 'Charm다운' 글래머러스한 TUI와 모델 비종속성이다.
+      Anthropic·OpenAI·Groq·OpenRouter 등 다수 공급자를 지원하고 OpenAI/Anthropic 호환 엔드포인트면
+      뭐든 붙으며, 한 세션 안에서 LLM을 바꿔 끼울 수 있다. 프로젝트별로 컨텍스트가 분리되는 세션 기반이고,
+      MCP를 http·stdio·sse 세 전송으로 확장한다.
+    points:
+      - "정체성 — Charm 생태계(Bubble Tea 등 TUI 도구로 유명)가 내놓은 코딩 에이전트. Go 98%대, 라이선스 FSL-1.1-MIT, README상 ~25.4k★, macOS·Linux·Windows·BSD 계열까지 지원"
+      - "모델 비종속·세션 중 전환 — Anthropic/OpenAI/Groq/OpenRouter/Vercel AI Gateway 등 여러 공급자 지원, OpenAI·Anthropic 호환이면 연결, '세션 도중 LLM 교체' 가능. 프로젝트별 컨텍스트가 나뉘는 세션 기반"
+      - "설치·확장 — brew/npm(@charmland/crush)/winget/Arch/Nix/FreeBSD 등 패키지 다양, 'no configuration'으로도 동작하고 crush.json으로 설정. MCP를 http·stdio·sse로 붙여 도구 확장"
+    source: "https://github.com/charmbracelet/crush"
