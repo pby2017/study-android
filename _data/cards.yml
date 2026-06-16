@@ -2737,3 +2737,16 @@ cards:
       - "패턴2 팬아웃: 여러 서브에이전트를 동시에 띄우고 나중에 결과를 모음 — 서로 의존 없는 독립 작업의 병렬화"
       - "패턴3 에이전트 풀: 장수명 서브에이전트들과 메시지를 주고받으며 다단계 협업 / 패턴4 팀: 서브들끼리 직접 대화하고 메인은 역할만 세팅 후 빠짐 — 조정 로직이 한 에이전트 한계를 넘을 때만"
     source: "https://www.philschmid.de/subagent-patterns-2026"
+
+  - category: ai
+    title: "Crush(Charm) — LSP·MCP까지 물린 'TUI 끝판왕' 코딩 에이전트, 모델은 안 가린다(25k★)"
+    summary: >
+      Crush는 터미널 UI 명가 Charmbracelet이 Go로 만든 TUI 기반 에이전트 코딩 도구로, GitHub 스타 약 25.4k다.
+      Anthropic/OpenAI 호환 API라면 무엇이든 꽂아 쓰는 모델 비종속 설계가 핵심이며, 세션 도중 컨텍스트를 보존한 채 LLM을 바꿔 끼울 수 있다.
+      LSP로 코드 문맥을 보강하고 MCP(http·stdio·sse)로 기능을 확장하며, 열린 Agent Skills 표준·훅·로컬 모델(Ollama·LM Studio)도 지원한다.
+      라이선스는 FSL-1.1-MIT(2년 뒤 MIT로 전환)이고 macOS·Linux·Windows는 물론 BSD 계열까지 폭넓게 돈다.
+    points:
+      - "모델 비종속: OpenAI·Anthropic 호환 API면 무엇이든, 세션 중 모델 교체 시 컨텍스트 유지 — 프로바이더 목록은 오픈소스 DB Catwalk로 관리"
+      - "LSP로 코드 문맥 보강 + MCP(http/stdio/sse)로 확장 + Agent Skills·훅·로컬 모델(Ollama·LM Studio) 지원"
+      - "라이선스는 MIT가 아닌 FSL-1.1-MIT(2년 후 MIT 전환), Go 기반이라 BSD 계열까지 멀티플랫폼 — 'sst/opencode'와는 별개 프로젝트"
+    source: "https://github.com/charmbracelet/crush"

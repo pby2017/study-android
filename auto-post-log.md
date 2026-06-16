@@ -291,3 +291,5 @@
 - 2026-06-17 08:30 KST | 에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 하네스 설계 교훈 | https://www.anthropic.com/engineering/building-c-compiler
 
 - 2026-06-16 21:30 KST | 서브에이전트 4가지 패턴(Philipp Schmid) — 메인이 쥔 통제권 순 | https://www.philschmid.de/subagent-patterns-2026
+
+- 2026-06-17 09:00 KST | Crush(Charm) — LSP·MCP까지 물린 TUI 끝판왕 코딩 에이전트, 모델은 안 가린다(25k★) | https://github.com/charmbracelet/crush
