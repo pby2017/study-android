@@ -423,3 +423,4 @@
 - 2026-06-19 09:30 KST | Rakuten 도입 사례 — Claude Code가 1,250만 줄 vLLM에서 '7시간 무인 코딩'으로 기능 하나를 끝낸 기업 레퍼런스 | https://claude.com/customers/rakuten
 
 - 2026-06-17 23:45 KST | Claude Code 사용량 한도 읽는 법 — 5시간 세션 + 주간 한도 두 버킷에 Opus 별도 카운트 | https://support.claude.com/en/articles/9797557-usage-limit-best-practices- 2026-06-17 08:02 KST | Gemini CLI(google-gemini) — 개인 구글 계정 로그인만으로 Gemini 2.5 Pro·1M 컨텍스트 무료 터미널 에이전트(Apache-2.0·~105k★) | https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-cli-open-source-ai-agent/
+- 2026-06-17 18:00 KST | awesome-claude-code(hesreallyhim) — 스킬·훅·슬래시커맨드·오케스트레이터 정전 큐레이션 목록, 분류당 하나 고르기·동작 안 하면 컷·용도 태깅, CC BY-NC-ND 4.0·~46.6k★·4.1k fork·1,157 커밋 | https://github.com/hesreallyhim/awesome-claude-code

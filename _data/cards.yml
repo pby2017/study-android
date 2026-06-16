@@ -3748,3 +3748,15 @@ cards:
       - "스펙 — Gemini 2.5 Pro + 1M 토큰 컨텍스트, MCP 기본 지원으로 기존 MCP 서버/도구를 그대로 연결. VS Code(Gemini Code Assist)와 기술 공유"
       - "오픈소스 사실 — Apache-2.0, github.com/google-gemini/gemini-cli에서 ~105k★·523개 릴리스(v0.46.0, 2026-06). 일부 블로그의 '서비스 종료설'은 레포에 deprecation 표기가 없어 1차 출처로는 미확인 — 카드에서 제외"
     source: "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-cli-open-source-ai-agent/"
+  - category: ai
+    title: "awesome-claude-code(hesreallyhim) — 스킬·훅·슬래시커맨드·오케스트레이터를 '한 분류에 검증된 하나'로 골라주는 정전(正典) 큐레이션 목록(CC BY-NC-ND·~46.6k★)"
+    summary: >
+      awesome-claude-code는 hesreallyhim이 관리하는 Claude Code 생태계의 '정전' 큐레이션 목록으로, GitHub에서 약 46.6k 스타·4.1k 포크·1,157 커밋까지 활발히 갱신되고 있다(레포에서 직접 확인되는 사실).
+      단순 링크 덤프가 아니라 스킬·훅·슬래시커맨드·에이전트 오케스트레이터·애플리케이션·플러그인·상태줄·개발 도구를 분류별로 모으고, 동작하지 않는 도구는 잘라내고 동작하는 것만 '무슨 용도인지' 태깅하는 방식이라 '분류당 하나만 고르기'에 적합하다는 평가를 받는다.
+      이슈가 1,000건을 넘길 만큼 제출·검증이 활발하며, 레포 자체는 Python 98%로 구성된 자동 검증 파이프라인으로 목록을 관리한다.
+      라이선스는 CC BY-NC-ND 4.0(저작자표시·비영리·변경금지)이라 그대로 재배포·상업적 가공에는 제약이 있으니 '읽고 도구를 고르는' 용도로 쓰는 게 맞다.
+    points:
+      - "쓰는 법 — 새 도구를 막 깔기 전에 '이 분류에서 이미 검증된 것'을 먼저 확인하는 색인으로 사용. 동작 안 하는 건 컷, 동작하는 건 용도 태깅(주장이 아닌 큐레이션 정책)"
+      - "범위 — 스킬·훅·슬래시커맨드·오케스트레이터·플러그인·상태줄·앱·개발툴을 한곳에. 비슷한 aggregator(everything-claude-code 등)는 '전부 쏟아내기'라 성격이 다름"
+      - "사실 — github.com/hesreallyhim/awesome-claude-code, ~46.6k★·4.1k fork·480 open issues, 라이선스 CC BY-NC-ND 4.0(비영리·변경금지라 재배포 제약 있음)"
+    source: "https://github.com/hesreallyhim/awesome-claude-code"
