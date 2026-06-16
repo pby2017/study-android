@@ -414,3 +414,4 @@
 - 2026-06-18 22:00 KST | 컨텍스트 엔지니어링(Anthropic 공식) — 프롬프트 다음 단계로 매 턴 컨텍스트 창 전체를 큐레이션하기, 가장 작은 고신호 토큰 집합·attention budget/context rot·compaction/note-taking/멀티에이전트 요약반환·just-in-time 검색(2025-09-29 응용AI팀) | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 
 - 2026-06-17 16:00 KST | Roo Code 코드베이스 인덱싱 — grep회귀 시대에 tree-sitter→임베딩→Qdrant 벡터DB로 의미검색(codebase_search), 임베딩 8종(OpenAI/Gemini무료/Ollama/Mistral/Bedrock/OpenRouter 등), Cline포크 VS Code 에이전트(Apache-2.0·~24.2k★) | https://roocodeinc.github.io/Roo-Code/features/codebase-indexing
+- 2026-06-18 09:00 KST | Cline — VS Code 안에서 Plan→Act로 끊어 가는 오픈소스 코딩 에이전트(Apache-2.0·~63k★), 모델 비종속 BYOK·MCP·터미널/브라우저·human-in-the-loop 승인 기본값, 초기명 Claude Dev | https://github.com/cline/cline
