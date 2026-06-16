@@ -3656,3 +3656,18 @@ cards:
       - "핵심 원칙 — '주의 예산'은 유한하고 토큰이 늘면 'context rot'으로 성능이 떨어진다. 그래서 목표는 '원하는 결과 확률을 최대화하는 가장 작은 고신호 토큰 집합'. 데이터는 미리 다 채우지 말고 lightweight identifier(파일경로 등)만 들고 런타임에 끌어오는 just-in-time 방식"
       - "긴 작업용 3패턴 — ① compaction: 왕복 대화는 요약해 다시 채운다 ② note-taking: 마일스톤형 작업은 외부 메모로 기억 ③ 멀티에이전트: 서브에이전트가 수만 토큰을 쓰되 메인엔 1,000~2,000토큰 요약만 반환하고 리드가 종합. 작업 성격에 맞춰 골라 써라"
     source: "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+
+  - category: ai
+    title: "Roo Code의 '코드베이스 인덱싱' — 'grep만 쓰는' 에이전트 시대에 굳이 벡터DB(Qdrant)로 의미 검색을 거는 선택(Apache-2.0·~24.2k★)"
+    summary: >
+      요즘 Claude Code·Cursor류 에이전트가 벡터DB를 안 띄우고 grep·파일트리·find으로 코드를 찾는
+      쪽으로 기울었지만, VS Code용 오픈소스 에이전트 Roo Code(Cline 포크)는 여전히 '코드베이스 인덱싱'으로
+      의미 기반(semantic) 검색을 건다. 동작은 ① tree-sitter로 코드를 함수·클래스 같은 의미 블록(100~1000자)으로
+      쪼개고 ② 임베딩을 떠서 ③ Qdrant 벡터DB에 저장한 뒤, 에이전트에게 codebase_search 도구를 쥐여 준다.
+      그러면 "사용자 인증은 어디서 처리하나" 같은 자연어 질의로 정확한 텍스트 일치가 아니라 '의미'로 코드를 찾는다.
+      대형·비공개·낯선 레포에서 grep으로 키워드를 모를 때 유리하다는 게 이 방식의 포지션이다. (GitHub·공식 문서 기준)
+    points:
+      - "동작 3단계 — tree-sitter로 의미 블록(100~1000자, 미지원 언어는 줄 단위 폴백) 분할 → 임베딩 → Qdrant 벡터DB 저장. 에이전트엔 codebase_search 도구로 노출돼, 텍스트 일치 아닌 '의미'로 관련 코드를 찾게 한다"
+      - "임베딩은 8종 선택 — OpenAI·Google Gemini·Ollama·OpenAI Compatible·Mistral·Vercel AI Gateway·Bedrock·OpenRouter. 공식 문서는 '현재 무료'인 Gemini를 권하고, Ollama로는 완전 로컬 임베딩도 가능. Qdrant는 클라우드나 Docker 로컬로 띄운다"
+      - "왜 지금 논쟁거리냐 — 다수 프런티어 에이전트(Claude Code·Cursor류)는 벡터RAG 대신 grep/파일트리로 회귀했다는 평가가 많다. Roo Code는 반대로 '키워드를 모르는 대형·비공개 레포'에선 의미 검색이 낫다는 쪽. tree-sitter 기반이라 코드를 '문법 단위'로 잘라 인덱싱한다"
+    source: "https://roocodeinc.github.io/Roo-Code/features/codebase-indexing"
