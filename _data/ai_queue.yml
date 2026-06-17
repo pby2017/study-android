@@ -2,18 +2,6 @@
 # The automation script appends the next unseen entry into _data/cards.yml.
 
 - category: ai
-  title: "Prompt caching — 컨텍스트 비용을 줄이는 첫 번째 레버"
-  summary: >
-    프롬프트 캐시는 반복되는 시스템/도구/메시지 블록을 재사용해 토큰 비용을 줄이는 방법이다.
-    긴 에이전트 세션에서는 새로 넣는 정보보다 매번 반복되는 정보가 더 비싸질 수 있어,
-    캐시 전략이 곧 운영비 절감 전략이 된다.
-  points:
-    - "반복 블록 재사용"
-    - "긴 세션 비용 절감"
-    - "운영비 최적화 레버"
-  source: "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
-
-- category: ai
   title: "Agent Teams — 서브에이전트보다 큰 병렬 협업 단위"
   summary: >
     Agent Teams는 각자 일을 맡는 서브에이전트보다 한 단계 큰 협업 구조다. 여러 에이전트가

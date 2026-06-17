@@ -197,6 +197,7 @@
 - 2026-06-16 21:30 KST | Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 IDE는 코딩의 미래가 아니다며 접은 사건 | https://github.com/RooCodeInc/Roo-Code
 
 - 2026-06-16 23:30 KST | Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기 | https://github.com/intellectronica/ruler
+- 2026-06-18 06:30 KST | Prompt caching — 에이전트 비용을 줄이는 첫 번째 레버 | https://platform.claude.com/docs/en/build-with-claude/prompt-caching
 
 - 2026-06-16 23:50 KST | Pi — 고쳐 쓰라고 만든 자기확장형 터미널 코딩 에이전트(earendil-works·62.9k★) | https://github.com/earendil-works/pi
 

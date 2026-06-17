@@ -4096,3 +4096,16 @@ cards:
       - "repo map으로 큰 코드베이스의 관련 파일 자동 선별·100+ 언어"
       - "클라우드·로컬 LLM 양쪽 지원 + 자동 린트/테스트 후 수정"
     source: "https://github.com/Aider-AI/aider"
+  - category: ai
+    title: "Prompt caching — 에이전트 비용을 줄이는 첫 번째 레버"
+    summary: >
+      프롬프트 캐싱은 긴 시스템 프롬프트·도구 정의·고정 컨텍스트처럼 반복되는 앞부분을 다시 계산하지 않게
+      해 비용과 지연을 낮추는 방법이다. OpenAI 문서는 1,024토큰 이상 공통 prefix에서 자동으로 캐시가
+      걸리고, Anthropic 문서는 cache_control로 재사용 구간을 표시하되 tools→system→messages 순서의
+      계층을 따른다고 설명한다. 에이전트 실전 포인트는 "동적인 것은 뒤로, 안정적인 것은 앞으로"다.
+      도구 목록·시스템 지침을 매 턴 흔들면 캐시가 깨져 긴 세션일수록 같은 토큰을 계속 다시 산다.
+    points:
+      - "공통 prefix 재사용: 긴 시스템 프롬프트·도구 정의 비용/지연 감소"
+      - "Anthropic 계층: tools → system → messages, 변화 지점 뒤 캐시 무효화"
+      - "실전 규칙: 고정 컨텍스트는 앞, 사용자별·도구결과 같은 동적 내용은 뒤"
+    source: "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
