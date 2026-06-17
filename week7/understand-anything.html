@@ -160,10 +160,10 @@
     전부 <b>Claude Code 구독 안에서(추가 과금 없이)</b> 쓸 수 있습니다.
   </div>
   <div class="grid2" style="margin-top:14px">
-    <div class="card"><h4 style="color:var(--accent2)">라이선스</h4><p style="font-size:13px">MIT License — Yuxiang Lin and Infinite Universe, Inc.</p></div>
-    <div class="card"><h4 style="color:var(--gold)">Star 수</h4><p style="font-size:13px"><span class="guess">주장</span> ~60,500★ (GitHub 공개 수치, 변동 있음)</p></div>
+    <div class="card"><h4 style="color:var(--accent2)">라이선스 · 제작</h4><p style="font-size:13px">MIT License · author <b>Egonex</b> · plugin <code class="inline">understand-anything</code> v2.7.7</p></div>
+    <div class="card"><h4 style="color:var(--gold)">비용</h4><p style="font-size:13px">오픈소스 무료 플러그인 — LLM 호출은 기존 Claude Code 구독 사용(추가 과금 없음)</p></div>
   </div>
-  <aside class="note"><b>발표자 노트:</b> 표지는 30초. "지식그래프"가 낯설 수 있으니 "파일·함수·클래스를 노드로, 의존 관계를 엣지로 표현한 그래프"라고 한 마디만 추가해도 됨. Star 수는 주장(claim) 표기 — 오늘 기준 달라질 수 있음.</aside>
+  <aside class="note"><b>발표자 노트:</b> 표지는 30초. "지식그래프"가 낯설 수 있으니 "파일·함수·클래스를 노드로, 의존 관계를 엣지로 표현한 그래프"라고 한 마디만 추가해도 됨. 라이선스·author·버전은 plugin.json에서 직접 확인한 값.</aside>
   <p class="srcline">출처: <a class="src" href="https://github.com/Egonex-AI/Understand-Anything">github.com/Egonex-AI/Understand-Anything</a> — README, MIT License</p>
 </section>
 
@@ -579,7 +579,7 @@ curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/
     <li><a class="src" href="https://github.com/Egonex-AI/Understand-Anything/blob/main/hooks/auto-update-prompt.md">hooks/auto-update-prompt.md — 증분 업데이트·토큰 0 원칙</a></li>
     <li><a class="src" href="https://github.com/tree-sitter/tree-sitter">tree-sitter/tree-sitter — 결정론적 파서 생성기</a></li>
   </ul>
-  <aside class="note"><b>발표자 노트:</b> 모든 수치·인용·메커니즘은 /tmp/ua-inspect/understand-anything-plugin 의 실제 파일(project-scanner.md, file-analyzer.md, auto-update-prompt.md)을 직접 읽어 검증함. Star 수만 "주장(claim)"으로 표기.</aside>
+  <aside class="note"><b>발표자 노트:</b> 모든 수치·인용·메커니즘은 설치된 플러그인 캐시(<code class="inline">~/.cursor/plugins/cache/understand-anything/…</code>)의 실제 파일(.claude-plugin/plugin.json, agents/project-scanner.md, agents/file-analyzer.md, hooks/auto-update-prompt.md, skills/understand/compute-batches.mjs)을 직접 읽어 검증함. 실행 수치는 *** 실제 분석 스크린샷.</aside>
 </section>
 
 </div>

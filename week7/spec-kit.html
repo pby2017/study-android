@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7주차 — Spec Kit: 스펙 주도 개발</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --border:#30363d;
+    --fg:#e6edf3; --muted:#9da7b3; --accent:#58a6ff; --accent2:#3fb950;
+    --warn:#d29922; --danger:#f85149; --code:#1f2630; --gold:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);
+    font-family:-apple-system,"Apple SD Gothic Neo","Pretendard",system-ui,sans-serif;
+    line-height:1.6;}
+  .deck{max-width:960px;margin:0 auto;padding:24px 20px 120px}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(13,17,23,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    padding:10px 20px;display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--accent)}
+  section.slide{background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:34px 38px;margin:22px 0;scroll-margin-top:60px;position:relative}
+  .tag{display:inline-block;font-size:12px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;padding:2px 12px;margin-bottom:14px;letter-spacing:.5px}
+  h1{font-size:34px;line-height:1.25;margin-bottom:10px}
+  h2{font-size:26px;margin-bottom:8px}
+  h3{font-size:18px;color:var(--accent);margin:18px 0 8px}
+  p{color:var(--fg);margin:8px 0}
+  .sub{color:var(--muted);font-size:16px}
+  ul,ol{margin:10px 0 10px 22px}
+  li{margin:7px 0}
+  .muted{color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+  .card{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+  .card h4{font-size:15px;margin-bottom:6px}
+  code,pre{font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
+    padding:16px 18px;overflow-x:auto;font-size:14px;color:#cdd9e5;margin:12px 0}
+  code.inline{background:var(--code);padding:2px 7px;border-radius:5px;font-size:.9em;color:var(--accent2)}
+  .flow{display:flex;align-items:stretch;gap:0;margin:22px 0;flex-wrap:wrap}
+  .step{flex:1;min-width:150px;background:var(--code);border:1px solid var(--border);
+    border-radius:10px;padding:14px;text-align:center;position:relative}
+  .step .n{font-size:12px;color:var(--muted)}
+  .step .cmd{font-family:"SF Mono",monospace;color:var(--accent2);font-size:13px;margin-top:4px;display:block}
+  .step .d{font-size:13px;color:var(--muted);margin-top:6px}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:22px;padding:0 6px}
+  .callout{border-left:3px solid var(--accent);background:rgba(88,166,255,.07);
+    padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+  .callout.warn{border-color:var(--warn);background:rgba(210,153,34,.08)}
+  .callout.good{border-color:var(--accent2);background:rgba(63,185,80,.08)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--border);padding:9px 12px;text-align:left}
+  th{background:var(--code);color:var(--accent)}
+  .pgnum{position:absolute;top:14px;right:20px;color:var(--muted);font-size:12px}
+  a.src{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px dotted var(--accent)}
+  .center{text-align:center}
+  .big{font-size:21px}
+  hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+  /* 스크린샷 자리 (사용자가 직접 캡처해 넣음) — 가짜 출력 없음 */
+  figure.cap{margin:12px 0}
+  figure.cap img{width:100%;border:1px solid var(--border);border-radius:10px;display:block;background:#0b0e13}
+  figure.cap figcaption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+  .shotgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .shotgrid figure.cap{margin:0}
+  @media(max-width:720px){.shotgrid{grid-template-columns:1fr}}
+  .slot{border:1px dashed var(--border);border-radius:10px;padding:22px;text-align:center;color:var(--muted);
+    background:repeating-linear-gradient(45deg,#13181f,#13181f 10px,#11161d 10px,#11161d 20px);font-size:13px;margin:0}
+  .slot b{color:var(--gold)}
+  /* 슬라이드별 출처 줄 */
+  .srcline{font-size:11.5px;color:var(--muted);margin-top:16px;border-top:1px dotted var(--border);padding-top:8px}
+  .srcline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+  /* 발표자 노트 — 청중 화면엔 안 보임. n키로만 토글 */
+  aside.note{display:none;margin-top:14px;border-left:3px solid var(--gold);background:rgba(227,179,65,.07);
+    padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:var(--muted)}
+  aside.note b{color:var(--gold)}
+  body.shownotes aside.note{display:block}
+  /* ===== 발표(슬라이드) 모드 ===== */
+  body.present .nav{display:none}
+  body.present .deck{padding-top:14px}
+  body.present section.slide{display:none}
+  body.present section.slide.active{display:block;min-height:78vh}
+  #hud{position:fixed;left:14px;bottom:12px;z-index:50;font-size:12px;color:var(--muted);
+    background:rgba(13,17,23,.85);border:1px solid var(--border);border-radius:999px;padding:5px 13px;
+    backdrop-filter:blur(6px);display:none}
+  body.present #hud{display:block}
+  #hud b{color:var(--accent)}
+  #hud .hint{color:var(--muted);opacity:.75;margin-left:8px}
+  @media print{
+    .nav,#hud{display:none}
+    body.present section.slide{display:block;min-height:auto;page-break-after:always}
+    section.slide{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#cover">표지</a>
+  <a href="#s1">1. 문제</a>
+  <a href="#s2">2. SDD란</a>
+  <a href="#s3">3. Spec Kit</a>
+  <a href="#s4">4. 워크플로우</a>
+  <a href="#s5">5. 설치</a>
+  <a href="#s6">6. constitution</a>
+  <a href="#s7">7. specify→plan</a>
+  <a href="#s8">8. tasks→implement</a>
+  <a href="#s9">9. 잘 vs 못</a>
+  <a href="#s10">10. 정리</a>
+  <a href="#end">끝</a>
+</nav>
+
+<div class="deck">
+
+<!-- COVER -->
+<section class="slide" id="cover">
+  <span class="tag">AI 스터디 · 7주차</span>
+  <h1>Spec Kit<br><span class="sub" style="font-size:22px">명세가 코드를 만든다 — 스펙 주도 개발(SDD)</span></h1>
+  <p class="sub" style="margin-top:18px">"떠오르는 대로 프롬프트"의 답답함을 구조로 푸는 방법 · GitHub Spec Kit으로 Claude Code 활용하기</p>
+  <div class="callout" style="margin-top:24px">
+    <strong>왜 이 주제?</strong> 오늘 바로 <em>설치해서 써볼 수 있는 구체적 도구</em>. 에이전트를 "어떻게 굴릴까"가 아니라
+    "<b>무엇을 만들지를 어떻게 고정할까</b>"에 답하는 보완재.
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card"><h4 style="color:var(--accent2)">무엇</h4><p style="font-size:13px"><code class="inline">specify</code> CLI + <code class="inline">/speckit.*</code> 슬래시 커맨드 (GitHub 오픈소스)</p></div>
+    <div class="card"><h4 style="color:var(--gold)">어디서</h4><p style="font-size:13px">Claude Code · Copilot · Gemini CLI · Cursor · Codex 등 여러 에이전트</p></div>
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 표지 30초. 시작 훅 — "AI 시켰다가 산으로 간 경험?" 질문으로 청중 끌어들이기. 핵심 메시지: "빨리 짜는 것"이 아니라 "의도를 명확히 하는 것"이 진짜 병목.</aside>
+</section>
+
+<!-- S1 문제 -->
+<section class="slide" id="s1">
+  <span class="pgnum">1 / 10</span>
+  <span class="tag">문제 제기</span>
+  <h2>"AI한테 시켰는데 왜 자꾸 딴 걸 만들지?"</h2>
+  <p class="sub">즉흥 프롬프트 → AI가 추측 → 다시 고치기 무한 반복</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--danger)">😵 즉흥 프롬프트</h4>
+      <ul>
+        <li>의도가 머릿속에만 있음 → AI가 추측</li>
+        <li>맥락이 대화에 흩어짐, 재현 불가</li>
+        <li>코드부터 나오고 설계는 사후에</li>
+        <li>"대충 이런 느낌으로…" → 매번 다른 결과</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--accent2)">🧭 스펙 주도</h4>
+      <ul>
+        <li>의도를 <b>문서(스펙)</b>로 먼저 고정</li>
+        <li>스펙 → 계획 → 작업 → 구현, 단계마다 검증</li>
+        <li>재현성·품질 ↑</li>
+        <li>"코드가 명세를 섬긴다"</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn">
+    <span class="muted">근거:</span> METR 무작위대조연구(2025) — 숙련 개발자가 초기-2025 AI 도구를 쓸 때 작업 시간이 오히려 <b>19% 더 길었다</b>.
+    "빨리 짜는 것"이 아니라 "<b>의도를 명확히 하는 것</b>"이 진짜 병목이라는 방증.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 여기서 "AI 시켰다가 산으로 간 경험?" 질문 던지기. METR 수치는 "초기-2025 조건"이라는 단서를 붙여야 정확 — 도구·숙련도가 나아지면 달라질 수 있다고 METR 본인이 후속 노트에서 밝힘.</aside>
+  <p class="srcline">출처: <a class="src" href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR — Early-2025 AI & experienced OSS dev productivity</a> (arXiv:2507.09089)</p>
+</section>
+
+<!-- S2 SDD -->
+<section class="slide" id="s2">
+  <span class="pgnum">2 / 10</span>
+  <span class="tag">개념</span>
+  <h2>SDD = Spec-Driven Development</h2>
+  <p class="big">"명세서가 단순한 문서가 아니라, <b>코드를 생성하는 실행 가능한 계약</b>이 된다."</p>
+  <h3>전통/즉흥 vs SDD</h3>
+  <table>
+    <tr><th></th><th>전통 / 즉흥 프롬프트</th><th>SDD</th></tr>
+    <tr><td>출발점</td><td>코드 / 즉흥 프롬프트</td><td>명세(spec) 문서</td></tr>
+    <tr><td>문서의 역할</td><td>코드를 설명 (사후)</td><td>코드를 <b>생성</b> (사전)</td></tr>
+    <tr><td>진행</td><td>한 번에 쭉</td><td>단계별 체크포인트, 검증 후 다음</td></tr>
+    <tr><td>AI의 역할</td><td>추측해서 채움</td><td>명확한 입력으로 실행</td></tr>
+  </table>
+  <div class="callout good">
+    핵심 한 줄: <b>"현재 단계가 완전히 검증되기 전엔 다음 단계로 넘어가지 않는다."</b>
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">GitHub Blog — Spec-driven development with AI</a></p>
+</section>
+
+<!-- S3 Spec Kit -->
+<section class="slide" id="s3">
+  <span class="pgnum">3 / 10</span>
+  <span class="tag">도구 소개</span>
+  <h2>GitHub Spec Kit</h2>
+  <p class="sub">SDD를 실제로 굴리는 오픈소스 툴킷. GitHub가 공개.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4>무엇인가</h4>
+      <ul>
+        <li><code class="inline">specify</code> CLI + 슬래시 커맨드 세트</li>
+        <li>프로젝트에 스펙/플랜/태스크 <b>골격을 부트스트랩</b></li>
+        <li>에이전트 위에 얹는 <b>워크플로우 프레임워크</b></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>어디서 도나</h4>
+      <ul>
+        <li>여러 AI 코딩 에이전트 지원</li>
+        <li><b>Claude Code</b> · Copilot · Gemini CLI · Cursor · Codex …</li>
+        <li>에이전트 대화창에서 <code class="inline">/speckit.*</code> 슬래시 커맨드로 실행</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    연결: "에이전트를 어떻게 굴릴까"가 하네스/워크플로우 도구였다면,
+    Spec Kit은 "<b>무엇을 만들지를 어떻게 고정할까</b>"에 답한다.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 정확한 지원 에이전트 목록·버전은 발표 직전 github/spec-kit README로 확인. 별 개수 같은 변동 수치는 슬라이드에 박지 않는다(금방 바뀜).</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — 공식 레포 README</p>
+</section>
+
+<!-- S4 워크플로우 -->
+<section class="slide" id="s4">
+  <span class="pgnum">4 / 10</span>
+  <span class="tag">핵심 다이어그램</span>
+  <h2>4(+1)단계 워크플로우</h2>
+  <p class="sub">이 한 장이 발표의 척추. 각 단계는 산출물(문서)을 만들고, 검증 후 다음으로.</p>
+  <div class="flow">
+    <div class="step"><span class="n">0 · 원칙</span><span class="cmd">/speckit.constitution</span><span class="d">프로젝트 헌법·규칙</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">① 무엇을</span><span class="cmd">/speckit.specify</span><span class="d">요구사항·유저스토리<br>→ spec.md</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">② 어떻게</span><span class="cmd">/speckit.plan</span><span class="d">기술스택·설계<br>→ plan.md</span></div>
+  </div>
+  <div class="flow">
+    <div class="step"><span class="n">③ 쪼개기</span><span class="cmd">/speckit.tasks</span><span class="d">실행 가능한 작업목록<br>→ tasks.md</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">④ 만들기</span><span class="cmd">/speckit.implement</span><span class="d">작업을 실제 코드로<br>→ 구현</span></div>
+    <div class="arrow"></div>
+    <div class="step" style="border-color:var(--accent2)"><span class="n">결과</span><span class="cmd" style="color:var(--accent)">동작하는 기능</span><span class="d">+ 추적가능한 문서</span></div>
+  </div>
+  <div class="callout">
+    외울 것: <b>의도(Spec) → 설계(Plan) → 검증가능 과업(Tasks) → 구현(Implement)</b>.
+    구조화된 입력 → 추측 ↓, 재현성·품질 ↑.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — README "The workflow"</p>
+</section>
+
+<!-- S5 설치 -->
+<section class="slide" id="s5">
+  <span class="pgnum">5 / 10</span>
+  <span class="tag">실습 · 설치</span>
+  <h2>설치 &amp; 초기화</h2>
+  <h3>1) CLI 설치 (uv 필요, Python 3.11+)</h3>
+<pre>uv tool install specify-cli --from git+https://github.com/github/spec-kit.git</pre>
+  <h3>2) 프로젝트 초기화 (Claude Code 연동)</h3>
+<pre>specify init my-project --ai claude
+cd my-project</pre>
+  <h3>3) 생성되는 골격</h3>
+<pre>.specify/
+  ├── memory/constitution.md   # 프로젝트 원칙
+  ├── scripts/                 # 단계 실행 스크립트
+  └── templates/               # 스펙/플랜/태스크 템플릿
+specs/
+  └── 001-feature/
+      ├── spec.md   ├── plan.md   └── tasks.md</pre>
+  <figure class="cap"><div class="slot"><b>📷 스크린샷 자리</b><br>터미널에서 <code>specify init</code> 실행 → 생성된 디렉터리 트리<br><span style="font-size:11px">(직접 캡처해 <code>img/sk/</code>에 넣고 이 자리를 &lt;img&gt;로 교체)</span></div></figure>
+  <aside class="note"><b>발표자 노트:</b> 정확한 플래그/명령은 발표 직전 github/spec-kit README로 최종 확인(버전마다 조금씩 다름). uv가 없으면 먼저 uv 설치 필요.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — README "Installation / Quickstart"</p>
+</section>
+
+<!-- S6 constitution -->
+<section class="slide" id="s6">
+  <span class="pgnum">6 / 10</span>
+  <span class="tag">실습 · 단계 0</span>
+  <h2>① <code class="inline">/speckit.constitution</code> — 프로젝트 헌법</h2>
+  <p class="sub">AI가 모든 단계에서 지켜야 할 원칙을 먼저 못박는다. (CLAUDE.md 정신의 SDD 버전)</p>
+  <div class="grid2">
+    <div class="card">
+      <h4>여기서 정하는 것</h4>
+      <ul>
+        <li>코딩 규칙·아키텍처 원칙</li>
+        <li>테스트/품질 기준</li>
+        <li>쓰면 안 되는 것, 지켜야 할 것</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>왜 먼저 하나</h4>
+      <ul>
+        <li>이후 spec/plan/tasks가 <b>이 헌법을 상속</b></li>
+        <li>"매번 같은 잔소리" 반복을 제거</li>
+      </ul>
+    </div>
+  </div>
+  <figure class="cap"><div class="slot"><b>📷 스크린샷 자리</b><br>Claude Code 대화창에 <code>/speckit.constitution</code> 입력 → 생성된 constitution.md 일부</div></figure>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — <code class="inline">/speckit.constitution</code> 커맨드</p>
+</section>
+
+<!-- S7 specify→plan -->
+<section class="slide" id="s7">
+  <span class="pgnum">7 / 10</span>
+  <span class="tag">실습 · 단계 ①②</span>
+  <h2><code class="inline">/speckit.specify</code> → <code class="inline">/speckit.plan</code></h2>
+  <h3>② specify — "무엇을" (한국어로 설명해도 OK)</h3>
+  <p>예: <em>"중고차 상세 페이지에 찜하기 기능을 추가한다. 로그인 사용자만, 찜 목록에서 해제 가능…"</em></p>
+  <p class="muted">→ AI가 요구사항·유저스토리·엣지케이스를 <code class="inline">spec.md</code>로 구조화</p>
+  <h3>③ plan — "어떻게" (기술 결정)</h3>
+  <p>스택·데이터모델·API 계약을 <code class="inline">plan.md</code>, <code class="inline">data-model.md</code>, <code class="inline">contracts/</code>로</p>
+  <div class="shotgrid">
+    <figure class="cap"><div class="slot"><b>📷 spec.md</b><br>유저스토리 + 수용기준 부분</div></figure>
+    <figure class="cap"><div class="slot"><b>📷 plan.md</b><br>기술스택 + 데이터모델 부분</div></figure>
+  </div>
+  <div class="callout good">데모 포인트: <b>"한국어 한 문단 → 구조화된 스펙 문서"</b> 변환을 보여주면 비개발자도 즉시 이해.</div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — <code class="inline">/speckit.specify</code>, <code class="inline">/speckit.plan</code></p>
+</section>
+
+<!-- S8 tasks→implement -->
+<section class="slide" id="s8">
+  <span class="pgnum">8 / 10</span>
+  <span class="tag">실습 · 단계 ③④</span>
+  <h2><code class="inline">/speckit.tasks</code> → <code class="inline">/speckit.implement</code></h2>
+  <h3>④ tasks — 검증 가능한 작업으로 쪼개기</h3>
+  <p>plan을 <b>체크 가능한 할일 목록</b> <code class="inline">tasks.md</code>로. 각 작업은 독립적으로 완료/검증 가능.</p>
+  <h3>⑤ implement — 작업을 실제 코드로</h3>
+  <p>AI가 tasks를 순서대로 구현. 사람은 <b>단계별 검토 포인트</b>에서 확인.</p>
+  <figure class="cap"><div class="slot"><b>📷 녹화/스크린샷 자리</b><br><code>/speckit.tasks</code> → tasks.md 생성 → <code>/speckit.implement</code> 실행 → 코드 변경 diff</div></figure>
+  <div class="callout warn">
+    솔직한 한계: 스펙이 부실하면 결과도 부실. AI 공동작성 코드는 <b>리뷰를 없애는 게 아니라</b> 리뷰 지점을 명확히 하는 것 —
+    SDD의 단계별 검증이 바로 그 리뷰 지점을 만든다.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 라이브가 불안하면 30~60초 화면 녹화로 대체. tasks.md의 "독립적으로 검증 가능한 단위"가 핵심 — 이게 있어야 implement 결과를 단계별로 확인할 수 있다.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — <code class="inline">/speckit.tasks</code>, <code class="inline">/speckit.implement</code></p>
+</section>
+
+<!-- S9 잘 vs 못 -->
+<section class="slide" id="s9">
+  <span class="pgnum">9 / 10</span>
+  <span class="tag">실전 팁</span>
+  <h2>잘 쓴 스펙 vs 못 쓴 스펙</h2>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--danger)">❌ 못 쓴 스펙</h4>
+      <ul>
+        <li>"찜 기능 만들어줘" (한 줄, 모호)</li>
+        <li>수용 기준 없음 → AI가 추측</li>
+        <li>엣지케이스·실패 케이스 누락</li>
+        <li>기술 결정을 spec 단계에 섞음</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--accent2)">✅ 잘 쓴 스펙</h4>
+      <ul>
+        <li>유저스토리 + 명확한 수용 기준</li>
+        <li>"무엇(spec)"과 "어떻게(plan)" 분리</li>
+        <li>비로그인·중복찜 등 경계 조건 명시</li>
+        <li>한 기능 = 한 spec 폴더 (작게 쪼갬)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">팁: 위 두 입력으로 실제 생성된 spec.md를 나란히 스크린샷 → 차이를 눈으로 보여주기.</div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> · <a class="src" href="https://developer.microsoft.com/blog/spec-driven-development-spec-kit">Microsoft Dev — Diving into Spec Kit</a></p>
+</section>
+
+<!-- S10 정리 -->
+<section class="slide" id="s10">
+  <span class="pgnum">10 / 10</span>
+  <span class="tag">정리</span>
+  <h2>정리 · 우리 스터디에 적용</h2>
+  <ul>
+    <li><b>SDD = 명세가 코드를 만든다.</b> "추측"을 "구조화된 입력"으로 교체.</li>
+    <li><b>Spec Kit</b> = <code class="inline">specify</code> CLI + <code class="inline">/speckit.*</code> 5단계. 에이전트 위에 바로 얹어 오늘 실습 가능.</li>
+    <li>흐름: <b>constitution → specify → plan → tasks → implement</b>, 단계마다 검증.</li>
+    <li>한계 인정: 스펙 품질 = 결과 품질. 검토를 없애지 말고 <b>검토 지점을 명확히</b>.</li>
+  </ul>
+  <p class="big" style="text-align:center;margin:18px 0;color:var(--accent2)"><b>코드부터 쓰지 말고, 의도부터 고정하라.</b></p>
+  <div class="callout good">
+    <b>스터디 액션:</b> 각자 본인 프로젝트의 작은 기능 1개를 Spec Kit으로 spec→implement까지 돌려보고
+    다음 모임에서 spec.md 공유하기.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/github/spec-kit">github/spec-kit</a> — 종합</p>
+</section>
+
+<!-- END -->
+<section class="slide center" id="end">
+  <h1 class="center">감사합니다 🙏</h1>
+  <p class="center sub">질문 / 같이 해볼 사람?</p>
+  <hr>
+  <h3>참고 자료</h3>
+  <ul>
+    <li><a class="src" href="https://github.com/github/spec-kit">github/spec-kit (공식 레포)</a></li>
+    <li><a class="src" href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">GitHub Blog — Spec-driven development with AI</a></li>
+    <li><a class="src" href="https://developer.microsoft.com/blog/spec-driven-development-spec-kit">Microsoft Dev — Diving into Spec Kit</a></li>
+    <li><a class="src" href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR — Early-2025 AI & experienced OSS dev productivity (19% 슬로다운)</a></li>
+    <li><a class="src" href="https://www.infoworld.com/article/4166817/vibe-coding-or-spec-driven-development-how-to-choose.html">InfoWorld — Vibe coding vs SDD</a></li>
+  </ul>
+  <aside class="note"><b>발표자 노트:</b> 슬라이드의 📷 자리는 발표 전 실제 캡처로 교체. 명령어·지원 에이전트는 발표 직전 README로 버전 확인. METR 수치는 "초기-2025" 단서 유지.</aside>
+</section>
+
+</div>
+
+<div id="hud"><b id="hud-n">1</b> / <span id="hud-t">11</span><span class="hint">← / → 넘기기 · a: 스크롤 · n: 노트</span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
+  var body = document.body;
+  var hudN = document.getElementById('hud-n'), hudT = document.getElementById('hud-t');
+  hudT.textContent = slides.length;
+  var i = 0, present = true;
+
+  function idFromHash(){
+    var h = location.hash.replace('#','');
+    for (var k=0;k<slides.length;k++){ if(slides[k].id===h) return k; }
+    return -1;
+  }
+  function render(){
+    body.classList.toggle('present', present);
+    if(present){
+      for (var k=0;k<slides.length;k++) slides[k].classList.toggle('active', k===i);
+      hudN.textContent = i+1;
+      if(slides[i].id) history.replaceState(null,'','#'+slides[i].id);
+      window.scrollTo(0,0);
+    }
+  }
+  function go(n){ i = Math.max(0, Math.min(slides.length-1, n)); render(); }
+
+  var h0 = idFromHash(); if(h0>=0) i = h0;
+  render();
+
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); go(i+1); break;
+      case 'ArrowLeft':  case 'PageUp':           e.preventDefault(); go(i-1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End':  e.preventDefault(); go(slides.length-1); break;
+      case 'a': case 'A':
+        present = !present; render();
+        if(!present){ body.classList.remove('present'); }
+        break;
+      case 'n': case 'N': body.classList.toggle('shownotes'); break;
+    }
+  });
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').replace('#','');
+      for (var k=0;k<slides.length;k++){ if(slides[k].id===id){ go(k); break; } }
+    });
+  });
+})();
+</script>
+</body>
+</html>

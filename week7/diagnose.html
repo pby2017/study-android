@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7주차 — diagnose: AI에게 "체계적 디버깅"을 시키는 법</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --border:#30363d;
+    --fg:#e6edf3; --muted:#9da7b3; --accent:#58a6ff; --accent2:#3fb950;
+    --warn:#d29922; --danger:#f85149; --code:#1f2630; --gold:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);
+    font-family:-apple-system,"Apple SD Gothic Neo","Pretendard",system-ui,sans-serif;line-height:1.6;}
+  .deck{max-width:960px;margin:0 auto;padding:24px 20px 120px}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(13,17,23,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    padding:10px 20px;display:flex;gap:13px;flex-wrap:wrap;font-size:12.5px}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--accent)}
+  section.slide{background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:34px 38px;margin:22px 0;scroll-margin-top:60px;position:relative}
+  .tag{display:inline-block;font-size:12px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;padding:2px 12px;margin-bottom:14px;letter-spacing:.5px}
+  h1{font-size:31px;line-height:1.25;margin-bottom:10px}
+  h2{font-size:24px;margin-bottom:8px}
+  h3{font-size:17px;color:var(--accent);margin:16px 0 7px}
+  p{margin:8px 0}
+  .sub{color:var(--muted);font-size:16px}
+  ul,ol{margin:10px 0 10px 22px}
+  li{margin:6px 0}
+  .muted{color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+  .card{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:15px 17px}
+  .card h4{font-size:14px;margin-bottom:6px}
+  code,pre{font-family:"SF Mono",ui-monospace,Menlo,monospace}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
+    padding:15px 17px;overflow-x:auto;font-size:12.5px;color:#cdd9e5;margin:11px 0}
+  code.inline{background:var(--code);padding:2px 7px;border-radius:5px;font-size:.9em;color:var(--accent2)}
+  .flow{display:flex;align-items:stretch;gap:0;margin:18px 0;flex-wrap:wrap}
+  .step{flex:1;min-width:104px;background:var(--code);border:1px solid var(--border);
+    border-radius:10px;padding:10px;text-align:center}
+  .step .n{font-size:11px;color:var(--muted)}
+  .step .t{font-size:12.5px;color:var(--accent2);margin-top:3px;display:block;font-weight:600}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:16px;padding:0 3px}
+  .callout{border-left:3px solid var(--accent);background:rgba(88,166,255,.07);
+    padding:12px 16px;border-radius:0 8px 8px 0;margin:13px 0}
+  .callout.warn{border-color:var(--warn);background:rgba(210,153,34,.08)}
+  .callout.good{border-color:var(--accent2);background:rgba(63,185,80,.08)}
+  .callout.bad{border-color:var(--danger);background:rgba(248,81,73,.08)}
+  table{width:100%;border-collapse:collapse;margin:13px 0;font-size:13px}
+  th,td{border:1px solid var(--border);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--code);color:var(--accent)}
+  .pgnum{position:absolute;top:14px;right:20px;color:var(--muted);font-size:12px}
+  a.src{color:var(--accent);font-size:13px;text-decoration:none;border-bottom:1px dotted var(--accent)}
+  .center{text-align:center}
+  .big{font-size:20px}
+  hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+  .num{color:var(--accent);font-weight:700}
+  /* 숫자 박스 (실측) */
+  .nums{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .numbox{flex:1;min-width:90px;background:var(--code);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center}
+  .numbox .v{font-size:22px;font-weight:700;color:var(--accent)}
+  .numbox.bad .v{color:var(--danger)}.numbox.good .v{color:var(--accent2)}
+  .numbox .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+  /* before/after 비교표 */
+  .cmp{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px}
+  .cmp th,.cmp td{border:1px solid var(--border);padding:7px 9px;vertical-align:top}
+  .cmp th{background:var(--code)}
+  .cmp .bad{color:#ff9c95}.cmp .good{color:var(--accent2)}
+  /* 슬라이드별 출처 줄 */
+  .srcline{font-size:11.5px;color:var(--muted);margin-top:16px;border-top:1px dotted var(--border);padding-top:8px}
+  .srcline a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+  /* 발표자 노트 — 청중 화면엔 절대 안 보임. n키로만 토글 */
+  aside.note{display:none;margin-top:14px;border-left:3px solid var(--gold);background:rgba(227,179,65,.07);
+    padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:var(--muted)}
+  aside.note b{color:var(--gold)}
+  body.shownotes aside.note{display:block}
+  /* ===== 발표(슬라이드) 모드: body.present 일 때 한 장씩 ===== */
+  body.present .nav{display:none}
+  body.present .deck{padding-top:14px}
+  body.present section.slide{display:none}
+  body.present section.slide.active{display:block;min-height:78vh}
+  /* 좌하단 진행 표시 */
+  #hud{position:fixed;left:14px;bottom:12px;z-index:50;font-size:12px;color:var(--muted);
+    background:rgba(13,17,23,.85);border:1px solid var(--border);border-radius:999px;padding:5px 13px;
+    backdrop-filter:blur(6px);display:none}
+  body.present #hud{display:block}
+  #hud b{color:var(--accent)}
+  #hud .hint{color:var(--muted);opacity:.75;margin-left:8px}
+  @media print{
+    .nav,#hud{display:none}
+    body.present section.slide{display:block;min-height:auto;page-break-after:always}
+    section.slide{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#cover">표지</a>
+  <a href="#s1">1. 문제</a>
+  <a href="#s2">2. 왜 실패</a>
+  <a href="#s3">3. 핵심 명제</a>
+  <a href="#s4">4. 6단계</a>
+  <a href="#s5">5. 피드백 루프</a>
+  <a href="#s6">6. 가설</a>
+  <a href="#s7">7. 계측</a>
+  <a href="#s8">8. 수정·정리</a>
+  <a href="#lab">9. 실제 진단</a>
+  <a href="#s10">10. 적용</a>
+  <a href="#end">끝</a>
+</nav>
+
+<div class="deck">
+
+<!-- COVER -->
+<section class="slide" id="cover">
+  <span class="tag">AI 스터디 · 7주차</span>
+  <h1>diagnose<br><span class="sub" style="font-size:20px">AI에게 "체계적 디버깅"을 시키는 법 — 검증된 skill 하나를 해부한다</span></h1>
+  <p class="sub" style="margin-top:16px">"그냥 고쳐줘"가 왜 실패하는가, 그리고 사람이 쓰는 디버깅 방법론을 어떻게 skill로 인코딩했는가</p>
+  <div class="callout" style="margin-top:18px">
+    <strong>왜 이 주제?</strong> 디버깅은 BE·FE·Mobile·SRE 전 직군 공통 작업.
+    이번 발표는 <b>"skill 소개"가 아니라 "skill 안에 담긴 방법론을 해부"</b>합니다 — 발표 후 각자 자기 코드에 바로 적용 가능.
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card"><h4 style="color:var(--accent2)">소재</h4><p style="font-size:13px"><code class="inline">diagnose</code> SKILL.md (체계적 디버깅 6단계 규율)</p></div>
+    <div class="card"><h4 style="color:var(--gold)">오늘의 실측</h4><p style="font-size:13px">이번 세션에서 <code class="inline">/diagnose</code>로 잡은 실제 버그 — div 균형 <b>77/95 (+18)</b></p></div>
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 표지 30초. 시작 훅 — "AI한테 버그 맡겼다가 더 꼬인 경험 있나요?"로 청중 끌어들이기. 이 발표의 핵심 메시지는 "AI가 덜 똑똑한 게 아니라 디버깅 '규율'이 없는 것"이다.</aside>
+</section>
+
+<!-- S1 문제 -->
+<section class="slide" id="s1">
+  <span class="pgnum">1 / 10</span>
+  <span class="tag">문제</span>
+  <h2>AI에게 "이 버그 고쳐줘" 했을 때</h2>
+  <p class="sub">코드 생성은 잘하는 AI가, 어려운 버그 앞에선 자주 헛발질한다. 익숙한 장면:</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--danger)">흔한 AI 디버깅</h4>
+      <ul>
+        <li>에러 메시지만 보고 "아마 여기겠죠" → 수정</li>
+        <li>안 고쳐짐 → 다른 곳 또 수정</li>
+        <li>여러 군데 동시에 바꿔서 뭐가 효과였는지 모름</li>
+        <li>"고친 것 같아요" (재현 확인 없이)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>숙련 개발자의 디버깅</h4>
+      <ul>
+        <li>먼저 <b>재현</b>부터 — 안정적으로 띄운다</li>
+        <li>가설을 세우고 <b>하나씩</b> 검증</li>
+        <li>고친 뒤 <b>원래 증상이 사라졌는지</b> 확인</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    질문: 이 차이는 "AI가 덜 똑똑해서"가 아니다. <b>방법(규율)이 없어서</b>다.
+    그럼 사람의 디버깅 규율을 AI에게 <b>어떻게 주입</b>할까? — diagnose가 그 한 가지 답.
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 여기서 청중에게 "AI한테 버그 맡겼다 더 꼬인 경험?" 질문을 던지면 공감대가 빠르게 형성된다.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md 도입부</p>
+</section>
+
+<!-- S2 왜 실패 -->
+<section class="slide" id="s2">
+  <span class="pgnum">2 / 10</span>
+  <span class="tag">왜 실패하나</span>
+  <h2>추측-수정 루프(guess-and-patch)의 함정</h2>
+  <p>기본 상태의 AI는 "증상 → 그럴듯한 원인 → 즉시 수정"으로 달린다. 세 가지가 동시에 무너진다.</p>
+  <table>
+    <tr><th>함정</th><th>무슨 일</th><th>근본 원인</th></tr>
+    <tr><td><b>① 첫 가설 고착</b></td><td>처음 떠오른 원인에 앵커링, 그것만 판다</td><td>가설을 <b>하나만</b> 생성</td></tr>
+    <tr><td><b>② 다변수 동시 변경</b></td><td>3곳 고치고 됐는데, 뭐가 효과였는지 모름</td><td>한 번에 <b>한 변수</b> 원칙 없음</td></tr>
+    <tr><td><b>③ 검증 없는 완료</b></td><td>"고친 듯" — 재현도 안 해봄</td><td>pass/fail <b>신호가 없음</b></td></tr>
+  </table>
+  <div class="callout bad">
+    공통 뿌리: <b>"측정 가능한 신호 없이 코드만 노려본다."</b>
+    diagnose의 표현 — <em>"no amount of staring at code will save you."</em> 코드를 아무리 노려봐도 신호가 없으면 못 고친다.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md Phase 1</p>
+</section>
+
+<!-- S3 핵심 명제 -->
+<section class="slide" id="s3">
+  <span class="pgnum">3 / 10</span>
+  <span class="tag">핵심 명제</span>
+  <h2>"피드백 루프가 곧 디버깅이다"</h2>
+  <p class="big">diagnose의 1번 원칙: <b>빠르고·결정적이고·에이전트가 직접 돌릴 수 있는 pass/fail 신호</b>를 먼저 만들어라.
+  나머지(이분법·가설검증·계측)는 전부 그 신호를 <b>소비</b>할 뿐이다.</p>
+  <div class="callout good">
+    원문: <em>"This is the skill. Everything else is mechanical. … Build the right feedback loop, and the bug is 90% fixed."</em>
+    — 즉 디버깅의 핵심은 "어떻게 고치지"가 아니라 "<b>어떻게 이 버그를 1초 만에 재현·확인하지</b>"의 문제.
+  </div>
+  <h3>왜 이게 비직관적이고 깊은가</h3>
+  <ul>
+    <li>초보(그리고 기본 AI)는 "원인 찾기"에 시간을 쏟는다 → diagnose는 "<b>신호 만들기</b>"에 불균형하게 투자하라고 한다.</li>
+    <li>한 번 신호가 생기면 bisection·가설검증·계측이 <b>전부 기계적</b>으로 풀린다. 이 관점 전환이 발표의 핵심.</li>
+  </ul>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md "Phase 1 — Build a feedback loop"</p>
+</section>
+
+<!-- S4 6단계 -->
+<section class="slide" id="s4">
+  <span class="pgnum">4 / 10</span>
+  <span class="tag">전체 그림</span>
+  <h2>6단계 규율 — "정당한 이유 없이는 건너뛰지 마라"</h2>
+  <div class="flow">
+    <div class="step"><span class="n">1</span><span class="t">피드백 루프</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">2</span><span class="t">재현</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">3</span><span class="t">가설 3~5</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">4</span><span class="t">계측</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">5</span><span class="t">수정+회귀</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><span class="n">6</span><span class="t">정리+사후</span></div>
+  </div>
+  <table>
+    <tr><th>단계</th><th>관문(통과 조건)</th></tr>
+    <tr><td>1 피드백 루프</td><td>믿을 만한 루프가 생기기 전엔 2단계 금지</td></tr>
+    <tr><td>2 재현</td><td><b>사용자가 말한 그 증상</b>을 띄울 것 (근처 다른 버그 X)</td></tr>
+    <tr><td>3 가설</td><td>테스트 전에 <b>3~5개 순위</b> + 각자 반증 예측</td></tr>
+    <tr><td>4 계측</td><td>예측 하나당 프로브 하나, <b>한 변수씩</b></td></tr>
+    <tr><td>5 수정</td><td>(올바른 seam 있으면) 회귀 테스트 먼저 → 실패 확인 → 수정 → 통과</td></tr>
+    <tr><td>6 정리</td><td>태그 로그 제거·회귀 통과·"무엇이 막았을까" 사후</td></tr>
+  </table>
+  <p class="muted">핵심은 <b>관문(gate)</b>이 있다는 것 — 추측-수정 루프엔 없는 "다음으로 넘어가도 되나?" 체크.</p>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md Phase 1~6</p>
+</section>
+
+<!-- S5 피드백 루프 10수 -->
+<section class="slide" id="s5">
+  <span class="pgnum">5 / 10</span>
+  <span class="tag">심층 ① — 발표의 백미</span>
+  <h2>피드백 루프 만드는 10가지 수 (난이도 순)</h2>
+  <p class="sub">"재현이 안 돼요"는 끝이 아니라 시작. diagnose는 10가지를 <b>순서대로</b> 시도하라고 한다.</p>
+  <div class="grid2">
+    <div class="card" style="font-size:13px">
+      <ol>
+        <li><b>실패하는 테스트</b> (unit/integration/e2e)</li>
+        <li><b>curl/HTTP 스크립트</b> (dev 서버 대상)</li>
+        <li><b>CLI 실행</b> + 스냅샷 diff</li>
+        <li><b>헤드리스 브라우저</b> (Playwright)</li>
+        <li><b>트레이스 재생</b> (실제 요청 저장→재생)</li>
+      </ol>
+    </div>
+    <div class="card" style="font-size:13px">
+      <ol start="6">
+        <li><b>버리는 하네스</b> (최소 부분만 띄워 함수 1콜)</li>
+        <li><b>속성/퍼즈 루프</b> (랜덤 1000개)</li>
+        <li><b>이분 하네스</b> (<code class="inline">git bisect run</code>)</li>
+        <li><b>차분 루프</b> (구버전 vs 신버전 출력 diff)</li>
+        <li><b>HITL bash</b> (최후 수단 — 사람을 구조화)</li>
+      </ol>
+    </div>
+  </div>
+  <div class="callout">
+    <b>루프 자체를 제품처럼 개선:</b> 더 빠르게(불필요 init 스킵)·더 날카롭게("안 죽음" 말고 그 증상)·더 결정적으로(시간 고정·RNG 시드).
+    <em>"30초짜리 깜빡이는 루프는 루프 없는 것과 비슷, 2초짜리 결정적 루프는 디버깅 초능력."</em>
+  </div>
+  <aside class="note"><b>발표자 노트:</b> 이 10가지를 각 직군에 매핑해 설명 — SRE는 트레이스 재생·차분, FE는 헤드리스 브라우저, BE는 실패 테스트·bisect. 청중이 자기 일에 대입하게 하는 게 포인트.</aside>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md "Ways to construct one"</p>
+</section>
+
+<!-- S6 가설 -->
+<section class="slide" id="s6">
+  <span class="pgnum">6 / 10</span>
+  <span class="tag">심층 ②</span>
+  <h2>가설 — "느낌"을 "반증 가능한 예측"으로</h2>
+  <h3>왜 3~5개를 한꺼번에?</h3>
+  <p>가설을 하나만 만들면 첫 그럴듯한 생각에 <b>앵커링</b>된다. diagnose는 테스트 전에 <b>순위 매긴 3~5개</b>를 강제한다.</p>
+  <h3>각 가설은 반증 가능해야</h3>
+  <pre>형식: "만약 &lt;X&gt;가 원인이면, &lt;Y&gt;를 바꾸면 버그가 사라진다 /
+                        &lt;Z&gt;를 바꾸면 더 심해진다."</pre>
+  <p class="muted">예측을 못 쓰면 그건 "느낌(vibe)" → 버리거나 날카롭게. — 이게 과학적 방법(falsifiability)을 프롬프트에 인코딩한 것.</p>
+  <div class="callout good">
+    <b>값싼 체크포인트:</b> 순위 목록을 <b>사람에게 먼저 보여줘라</b>. "우리 #3 영역을 막 배포했는데" 한마디면 순위가 즉시 재정렬.
+    단 사람이 자리에 없으면 막지 말고 진행 — <b>인간 지식을 루프에 끼우되 병목은 안 만드는</b> 설계.
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md Phase 3</p>
+</section>
+
+<!-- S7 계측 -->
+<section class="slide" id="s7">
+  <span class="pgnum">7 / 10</span>
+  <span class="tag">심층 ③</span>
+  <h2>계측 — 한 번에 한 변수, 그리고 태그 로그</h2>
+  <div class="grid2">
+    <div class="card">
+      <h4>프로브 규율</h4>
+      <ul>
+        <li>프로브 하나 = Phase 3 예측 하나</li>
+        <li><b>한 변수씩</b> 변경</li>
+        <li>디버거/REPL &gt; 타겟 로그 &gt; "다 찍고 grep"(금지)</li>
+        <li>"breakpoint 하나가 로그 열 개보다 낫다"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>태그 로그 트릭</h4>
+      <p>모든 디버그 로그에 고유 접두사:</p>
+      <pre style="font-size:12px">[DEBUG-a4f2] payload=...</pre>
+      <p class="muted">정리할 때 <code class="inline">grep [DEBUG-a4f2]</code> 한 방.<br>안 태그한 로그는 살아남아 쓰레기가 됨.</p>
+    </div>
+  </div>
+  <div class="callout warn">
+    <b>성능 회귀는 다르다:</b> 로그는 대개 틀린 도구. 먼저 <b>기준선 측정</b>(timing harness, <code class="inline">performance.now()</code>, 프로파일러, 쿼리 플랜) → 그다음 bisect.
+    <b>측정 먼저, 수정 나중.</b>
+  </div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md Phase 4</p>
+</section>
+
+<!-- S8 수정·정리 -->
+<section class="slide" id="s8">
+  <span class="pgnum">8 / 10</span>
+  <span class="tag">심층 ④</span>
+  <h2>수정 → 회귀 테스트 → 사후 분석</h2>
+  <h3>회귀 테스트를 "수정보다 먼저" — 단, 올바른 seam이 있을 때만</h3>
+  <p><b>올바른 seam</b> = 테스트가 <b>실제 버그 패턴</b>을 호출 지점 그대로 재현하는 자리. 너무 얕은 seam(단일 호출 테스트로 다중 호출 버그)은 <b>거짓 안심</b>을 준다.</p>
+  <div class="callout">
+    깊은 통찰: <b>"올바른 seam이 없다는 것 자체가 발견이다."</b> 코드 구조가 버그를 잠그지 못하게 막고 있다는 신호 →
+    그대로 기록하고 다음 단계로. (없는 테스트를 억지로 만들지 않음)
+  </div>
+  <h3>완료 전 체크리스트 (Phase 6)</h3>
+  <ul style="font-size:14px">
+    <li>☑ 원래 재현이 더 이상 재현 안 됨 (Phase 1 루프 재실행)</li>
+    <li>☑ 회귀 테스트 통과 (또는 seam 부재를 문서화)</li>
+    <li>☑ 모든 <code class="inline">[DEBUG-...]</code> 계측 제거 (grep)</li>
+    <li>☑ 맞았던 가설을 커밋/PR 메시지에 — <b>다음 디버거가 배우도록</b></li>
+  </ul>
+  <p class="muted">마지막 질문: <b>"무엇이 이 버그를 막았을까?"</b> 구조 문제면 아키텍처 개선으로 핸드오프 — 단 <b>수정 후에</b>(정보가 더 많아진 시점).</p>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md Phase 5~6</p>
+</section>
+
+<!-- LAB 실제 진단 -->
+<section class="slide" id="lab">
+  <span class="pgnum">9 / 10</span>
+  <span class="tag" style="color:var(--accent2);border-color:var(--accent2)">실제 진단 · 이번 세션</span>
+  <h2>실제 케이스: div 균형이 77 / 95로 깨졌다 (+18)</h2>
+  <p class="sub">이 스터디 카드 페이지에서 카드를 삭제하는 파이썬 스크립트를 돌린 뒤 HTML이 깨졌다. diagnose 6단계를 그대로 적용한 기록.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="color:var(--danger)">❌ 추측-수정이었다면</h4>
+      <ul style="font-size:13px">
+        <li>"닫는 태그가 많네" → 끝에서 <code class="inline">&lt;/div&gt;</code> 18개 삭제</li>
+        <li>어느 카드가 깨졌는지 모른 채 균형만 맞춤</li>
+        <li>구조는 그대로 망가져 있음 (증상만 가림)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--accent2)">✅ /diagnose</h4>
+      <ul style="font-size:13px">
+        <li><b>① 신호</b>: <code class="inline">grep -c</code>로 1초 pass/fail</li>
+        <li><b>② 재현</b>: 77 open / 95 close 확인</li>
+        <li><b>③ 가설</b>: 검출기가 중첩 <code class="inline">&lt;/div&gt;</code>에서 조기 종료</li>
+        <li><b>④ 확정</b>: 삭제 카드 수 × 잔여 1개 = +18 일치</li>
+      </ul>
+    </div>
+  </div>
+  <h3>① 1초짜리 pass/fail 신호 (Phase 1)</h3>
+<pre>$ grep -c '&lt;div'  week7-topic-candidates.html   <span class="num">77</span>   # 여는 태그
+$ grep -c '&lt;/div&gt;' week7-topic-candidates.html   <span class="num">95</span>   # 닫는 태그
+# 95 - 77 = +18  → 닫는 태그가 18개 많다 (구조 깨짐)</pre>
+  <h3>③④ 가설과 확정</h3>
+  <p style="font-size:14px">카드 삭제기가 <code class="inline">&lt;div class="card"&gt;</code>부터 <b>"첫 단독 <code class="inline">&lt;/div&gt;</code>"</b>까지를 한 카드로 봤다. 그런데 카드 안에는 중첩된 <code class="inline">&lt;div class="row"&gt;…&lt;/div&gt;</code>가 있어, 검출기가 <b>그 첫 <code class="inline">&lt;/div&gt;</code>에서 멈춰</b> 카드를 일부만 지웠다 → 카드마다 트레일링 <code class="inline">&lt;/div&gt;</code> 1개가 남는다.</p>
+  <div class="nums">
+    <div class="numbox bad"><div class="v">77</div><div class="l">&lt;div&gt; (여는 태그)</div></div>
+    <div class="numbox bad"><div class="v">95</div><div class="l">&lt;/div&gt; (닫는 태그)</div></div>
+    <div class="numbox bad"><div class="v">+18</div><div class="l">초과 닫는 태그</div></div>
+    <div class="numbox good"><div class="v">18</div><div class="l">삭제된 카드 수 × 잔여 1개</div></div>
+  </div>
+  <div class="callout good"><b>반증 가능한 예측이 그대로 맞았다:</b> "카드당 정확히 <code class="inline">&lt;/div&gt;</code> 1개씩 초과" → 삭제 카드 수와 초과분(+18)이 일치. 재현·확정 끝. 추측으로 끝에서 18개를 지웠다면 구조는 여전히 깨진 채 숫자만 맞았을 것.</div>
+  <aside class="note"><b>발표자 노트:</b> 이 슬라이드가 "방법론이 실제로 어떻게 돌아가는가"의 증거. 강조점 — diagnose의 가치는 "원인을 빨리 안 것"이 아니라 "1초 신호(grep -c)를 먼저 만든 것". 신호가 있으니 가설 검증이 산수로 끝났다.</aside>
+  <p class="srcline">출처: 이번 세션 실제 진단 (대상: <code class="inline">week7-topic-candidates.html</code>) · diagnose SKILL.md Phase 1~4</p>
+</section>
+
+<!-- S10 적용 -->
+<section class="slide" id="s10">
+  <span class="pgnum">10 / 10</span>
+  <span class="tag">적용</span>
+  <h2>정리 · 우리 팀에 적용</h2>
+  <h3>한 장 요약 (방법론)</h3>
+  <ul>
+    <li><b>피드백 루프가 곧 디버깅.</b> "원인 찾기"보다 "1초 재현 신호 만들기"에 불균형 투자.</li>
+    <li>가설 3~5개 + 반증 예측 → 한 변수씩 계측 → 태그 로그.</li>
+    <li>회귀는 올바른 seam에만. seam 부재 = 그 자체가 발견.</li>
+    <li>이 모든 규율을 <b>SKILL.md 한 장 + bash 템플릿</b>에 인코딩 = "방법론을 재사용 가능한 구조로".</li>
+  </ul>
+  <p class="big-take" style="font-size:22px;text-align:center;margin:18px 0;color:var(--accent2)"><b>코드를 노려보지 말고, 신호를 먼저 만들어라.</b></p>
+  <div class="callout good"><b>스터디 액션:</b> 각자 최근 "AI한테 맡겼다 꼬인 버그" 하나를, diagnose 6단계로 다시 굴려보고 다음 모임에서 "어느 단계에서 막혔나" 공유.</div>
+  <p class="srcline">출처: <a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills</a> — diagnose SKILL.md 종합</p>
+</section>
+
+<!-- END -->
+<section class="slide center" id="end">
+  <h1 class="center">감사합니다 🙏</h1>
+  <p class="center sub">질문 / 각자의 "꼬인 버그" 같이 굴려보기</p>
+  <hr>
+  <h3>참고 자료</h3>
+  <ul>
+    <li><a class="src" href="https://github.com/mattpocock/skills">mattpocock/skills — diagnose SKILL.md</a></li>
+  </ul>
+  <aside class="note"><b>발표자 노트:</b> 본 덱의 단계·문구는 diagnose SKILL.md 실제 내용을 해부한 것. 실측 케이스(77/95/+18)는 이번 세션의 실제 진단 기록.</aside>
+</section>
+
+</div>
+
+<div id="hud"><b id="hud-n">1</b> / <span id="hud-t">11</span><span class="hint">← / → 넘기기 · a: 스크롤 · n: 노트</span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
+  var body = document.body, hud = document.getElementById('hud');
+  var hudN = document.getElementById('hud-n'), hudT = document.getElementById('hud-t');
+  hudT.textContent = slides.length;
+  var i = 0, present = true;          // 기본: 발표(슬라이드) 모드로 시작
+
+  function idFromHash(){
+    var h = location.hash.replace('#','');
+    for (var k=0;k<slides.length;k++){ if(slides[k].id===h) return k; }
+    return -1;
+  }
+  function render(){
+    body.classList.toggle('present', present);
+    if(present){
+      for (var k=0;k<slides.length;k++) slides[k].classList.toggle('active', k===i);
+      hudN.textContent = i+1;
+      if(slides[i].id) history.replaceState(null,'','#'+slides[i].id);
+      window.scrollTo(0,0);
+    }
+  }
+  function go(n){ i = Math.max(0, Math.min(slides.length-1, n)); render(); }
+
+  var h0 = idFromHash(); if(h0>=0) i = h0;
+  render();
+
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); go(i+1); break;
+      case 'ArrowLeft':  case 'PageUp':           e.preventDefault(); go(i-1); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End':  e.preventDefault(); go(slides.length-1); break;
+      case 'a': case 'A':
+        present = !present; render();
+        if(!present){ body.classList.remove('present'); }
+        break;
+      case 'n': case 'N': body.classList.toggle('shownotes'); break;
+    }
+  });
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').replace('#','');
+      for (var k=0;k<slides.length;k++){ if(slides[k].id===id){ go(k); break; } }
+    });
+  });
+})();
+</script>
+</body>
+</html>
