@@ -22,10 +22,25 @@ fi
 trap 'rm -rf "$LOCK_DIR"' EXIT
 
 if ! git diff --quiet || ! git diff --cached --quiet; then
-  echo "Working tree has local changes. Continuing; wrapper will commit all final generated changes together."
+  mkdir -p research/ai-routine
+  cat > research/ai-routine/resume.md <<RESUME_EOF
+# Local AI routine paused before sync
+
+Paused at: $(date '+%Y-%m-%d %H:%M:%S %Z')
+
+Reason: working tree already had local changes before the routine could run \`git pull --ff-only\`.
+
+Next actions:
+1. Inspect \`git status --short\`.
+2. Commit/stash/resolve local changes.
+3. Run \`git pull --ff-only origin $(git branch --show-current)\`.
+4. Re-run \`./scripts/local_ai_research_pipeline.sh\`.
+RESUME_EOF
+  echo "Working tree has local changes before sync. Wrote resume checkpoint and stopped."
+  exit 1
 elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  git fetch origin || true
-  git pull --ff-only origin "$(git branch --show-current)" || true
+  git fetch origin
+  git pull --ff-only origin "$(git branch --show-current)"
 fi
 
 AGENT_CMD=()

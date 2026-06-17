@@ -11,6 +11,12 @@ Use for the recurring local 4-hour pipeline in this repo.
 
 Research current AI developer tooling topics and publish only evidence-backed Korean 1-minute cards.
 
+## Sync rule
+
+Before any local edit, the wrapper must sync with GitHub using `git pull --ff-only`.
+If the working tree is dirty before sync, stop and write `research/ai-routine/resume.md` instead of editing.
+Other sessions may push to the same repo.
+
 ## Time box
 
 - Total cadence target: 4 hours.
