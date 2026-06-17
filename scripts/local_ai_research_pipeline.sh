@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOG_DIR="$ROOT/logs"
 LOCK_DIR="$ROOT/.local-ai-research.lock"
+DISABLED_FILE="$ROOT/.local-ai-research.disabled"
 mkdir -p "$LOG_DIR"
 
 STAMP="$(date '+%Y%m%d-%H%M%S')"
@@ -12,6 +13,12 @@ RUN_LOG="$LOG_DIR/local-ai-research-$STAMP.log"
 exec > >(tee -a "$RUN_LOG") 2>&1
 
 cd "$ROOT"
+
+if [[ -f "$DISABLED_FILE" ]]; then
+  echo "Local AI research pipeline is disabled because the previous Codex run failed: $DISABLED_FILE"
+  echo "Fix Codex, remove the disabled marker, then kickstart launchd manually."
+  exit 0
+fi
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S %Z')] local AI research pipeline start"
 
@@ -60,56 +67,34 @@ run_codex() {
   timeout "${PIPELINE_TIMEOUT:-13800}" "$codex_bin" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
 }
 
-run_omx() {
-  command -v omx >/dev/null 2>&1 || return 127
-  echo "Trying headless provider: omx"
-  timeout "${PIPELINE_TIMEOUT:-13800}" omx exec --madmax -C "$ROOT" "$PROMPT"
-}
-
-run_claude() {
-  command -v claude >/dev/null 2>&1 || return 127
-  echo "Trying headless provider: claude"
-  timeout "${PIPELINE_TIMEOUT:-13800}" claude -p --permission-mode bypassPermissions "$PROMPT"
-}
-
-run_gemini() {
-  command -v gemini >/dev/null 2>&1 || return 127
-  echo "Trying headless provider: gemini"
-  timeout "${PIPELINE_TIMEOUT:-13800}" gemini --skip-trust -p "$PROMPT" -y --include-directories "$ROOT"
-}
-
 AGENT_OK=0
-if [[ -n "${LOCAL_AI_PROVIDER:-}" ]]; then
-  "run_${LOCAL_AI_PROVIDER}" && AGENT_OK=1 || AGENT_OK=0
+if run_codex; then
+  AGENT_OK=1
 else
-  for provider in codex gemini claude omx; do
-    if "run_${provider}"; then
-      AGENT_OK=1
-      break
-    fi
-    echo "Provider failed or unavailable: $provider"
-  done
+  echo "Codex headless provider failed or unavailable."
 fi
 
 if [[ "$AGENT_OK" != "1" ]]; then
   mkdir -p research/ai-routine
   cat > research/ai-routine/resume.md <<RESUME_EOF
-# Local AI routine paused after provider failure
+# Local AI routine disabled after Codex failure
 
 Paused at: $(date '+%Y-%m-%d %H:%M:%S %Z')
 
-Reason: all configured headless providers failed or were unavailable.
+Reason: Codex headless provider failed or was unavailable. The 4-hour routine is disabled to avoid wasting local/API resources on repeated failures.
 
 Next actions:
 1. Check latest log: $RUN_LOG
-2. Confirm at least one provider works headless: codex, omx, claude, or gemini.
-3. Re-run \`./scripts/local_ai_research_pipeline.sh\`.
-
-The next scheduled launchd run will retry automatically.
+2. Confirm Codex works headless: \`codex --search exec -C "$PWD" --dangerously-bypass-approvals-and-sandbox "Say OK only."\`.
+3. Remove disabled marker: \`rm -f .local-ai-research.disabled\`.
+4. Re-run \`./scripts/local_ai_research_pipeline.sh\` or \`launchctl kickstart -k gui/$(id -u)/com.pby2017.study-android.ai-research\`.
 RESUME_EOF
-  echo "All headless providers failed. Wrote resume checkpoint and stopped cleanly."
-  exit 0
+  touch "$DISABLED_FILE"
+  echo "Codex headless failed. Wrote resume checkpoint, disabled future scheduled runs, and stopped cleanly."
+  exit 1
 fi
+
+rm -f "$DISABLED_FILE"
 
 echo "Running wrapper verification"
 ruby -c scripts/auto_post.rb
