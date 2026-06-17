@@ -435,3 +435,5 @@
 
 - 2026-06-19 12:00 KST | Continue(continuedev) 2.0 — VS Code/JetBrains/CLI 오픈소스 코딩 에이전트(Apache-2.0·~33.7k★)가 최종 2.0.0 릴리스 후 메인 레포 read-only/unmaintained 보관, 텔레메트리·인증 제거, JetBrains는 Continue CLI 권장, 명시적 후속 레포 링크 없음 | https://github.com/continuedev/continue
 - 2026-06-17 10:40 KST | [일괄] 15개 카드 추가 | 대표 주제: Google Antigravity 2.0, GitHub Copilot, 정액제를 버리다, Anthropic, '코드의 80%를 Claude가 쓴다'
+
+- 2026-06-18 02:00 KST | OpenCode(anomalyco) — 모델 비종속 터미널 코딩 에이전트(MIT·~176k★·TS), build/plan 권한분리·데스크톱앱BETA·Server/SDK, "any LLM provider by configuring their API keys"(공식문서) | https://github.com/anomalyco/opencode
