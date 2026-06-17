@@ -434,3 +434,4 @@
 - 2026-06-19 11:30 KST | Cursor 3 'Glass'(2026-04-02) — 사이드 Composer를 접고 로컬·worktree·클라우드·SSH 에이전트를 한 Agents Window(Cmd+Shift+P)에서 병렬 실행, /worktree 변경격리·/best-of-n 다모델 비교·Design Mode(⌘+Shift+D)·Await 도구, Composer 2 모델은 잔존, 기존 구독자 무료·Pro/Ultra/Teams 제공 | https://cursor.com/changelog/3-0
 
 - 2026-06-19 12:00 KST | Continue(continuedev) 2.0 — VS Code/JetBrains/CLI 오픈소스 코딩 에이전트(Apache-2.0·~33.7k★)가 최종 2.0.0 릴리스 후 메인 레포 read-only/unmaintained 보관, 텔레메트리·인증 제거, JetBrains는 Continue CLI 권장, 명시적 후속 레포 링크 없음 | https://github.com/continuedev/continue
+- 2026-06-17 10:40 KST | [일괄] 15개 카드 추가 | 대표 주제: Google Antigravity 2.0, GitHub Copilot, 정액제를 버리다, Anthropic, '코드의 80%를 Claude가 쓴다'

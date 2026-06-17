@@ -3820,3 +3820,138 @@ cards:
       - "권고 — JetBrains 플러그인 대신 Continue CLI(@continuedev/cli) 사용 권장. 본문엔 활성 개발을 이어갈 명시적 후속 레포 링크 없음('foundation for others'로 남기길 희망)"
       - "교훈 — OSS 에이전트 도입 시 스타 수·라이선스만 보지 말고 '유지보수 상태(archived/read-only 여부)'를 PoC 단계에서 확인. 종료돼도 포크·CLI 전환 경로가 있는지가 락인 리스크를 가른다"
     source: "https://github.com/continuedev/continue"
+  - category: ai
+    title: "Google Antigravity 2.0 — IDE 하나가 '데스크톱·CLI·SDK' 3종 플랫폼으로 벌어지다(I/O 2026)"
+    summary: >
+      구글이 2026-05-19 I/O에서 에이전트 우선 IDE Antigravity의 2.0을 공개했다. 단일 에디터였던 1.0(2025-11)을 '리뉴얼된 데스크톱 앱 + Go로 새로 짠 CLI + 커스텀 에이전트용 SDK' 3개 표면으로 확장한 것이 핵심이다. 모델은 Gemini 3.1 Pro보다 거의 전 벤치마크에서 앞서고 4배 빠르다고 주장하는 Gemini 3.5 Flash로 갈아탔다. 커스텀 서브에이전트 워크플로 설계, 백그라운드 예약 작업, 네이티브 음성 명령이 새로 들어왔다. 같은 날, Gemini CLI·Code Assist의 소비자(AI Pro/Ultra/무료) 접근은 2026-06-18부터 끊고 Antigravity로 몰아간다고 못박았다.
+    points:
+      - "1.0 '에디터' → 2.0 '데스크톱·CLI(Go)·SDK' 3표면 플랫폼으로 확장"
+      - "모델은 Gemini 3.5 Flash — '3.1 Pro보다 빠르고 강하다'는 건 구글 주장"
+      - "Gemini CLI 소비자 접근은 2026-06-18 차단, Antigravity로 이주 강제"
+    source: "https://thenextweb.com/news/google-antigravity-2-desktop-cli-sdk-io-2026"
+  - category: ai
+    title: "GitHub Copilot, 정액제를 버리다 — 2026-06-01부터 'AI 크레딧' 사용량 과금으로 전환"
+    summary: >
+      GitHub가 2026-06-01부터 Copilot 전 요금제를 '프리미엄 리퀘스트 수'가 아니라 '소비한 토큰(=AI 크레딧)' 기반 사용량 과금으로 바꿨다. 모델과 입력·출력·캐시 토큰 양에 따라 비용이 매겨지고, 각 요금제에는 월 크레딧 할당량이 포함되며 초과분은 예산을 걸어 추가 구매한다. 고정 구독료는 그대로지만 '측정 단위'가 바뀐 셈이라, 에이전트 워크플로를 많이 돌리는 헤비 유저의 청구서가 출렁일 수 있다는 우려가 컸다(공식 디스커션에 400+ 댓글). 헤비 워크플로용 상위 'Copilot Max' 티어도 신설됐고, 코드 리뷰는 크레딧에 더해 Actions 분까지 소비하게 됐다.
+    points:
+      - "프리미엄 리퀘스트 → 토큰 기반 'AI 크레딧' 사용량 과금(2026-06-01)"
+      - "구독료는 유지·측정 단위만 변경 → 에이전트 헤비 유저 비용 변동성↑"
+      - "신규 'Copilot Max' 티어 추가, 코드 리뷰는 Actions 분도 소모"
+    source: "https://github.blog/changelog/2026-06-01-updates-to-github-copilot-billing-and-plans/"
+  - category: ai
+    title: "Anthropic, '코드의 80%를 Claude가 쓴다' — 그리고 API 에러 800건을 자율로 고친 사례"
+    summary: >
+      Anthropic은 2026년 5월에 자사가 머지한 코드의 80% 이상을 Claude가 작성했다고 밝혔다. 대표 사례로, 한 엔지니어가 Claude를 붙여 끈질긴 API 에러군에 대해 800건 넘는 수정을 자율로 내보내 에러율을 1,000분의 1로 줄였다(엔지니어는 일감 선택·리뷰·머지 결정으로 루프 안에 남았다). 사양이 처음부터 명확하지 않은 가장 열린 사내 엔지니어링 과제에서의 성공률도 5월 76%로 6개월 만에 50%p 올랐다고 한다. 다만 보도는 '80% 작성·76% 성공'이 곧 '안전·유지보수·머지 가능'을 뜻하진 않는다고 분명히 선을 긋는다.
+    points:
+      - "2026-05 머지 코드의 80%+를 Claude가 작성(Anthropic 주장)"
+      - "엔지니어 1명이 Claude로 API 에러 800+건 자율 수정, 에러율 1/1000"
+      - "'작성 비중·성공률'이 코드 품질·머지 적합성을 보장하진 않음(보도 명시)"
+    source: "https://winbuzzer.com/2026/06/05/claude-writes-80-of-anthropic-code-raising-review-stakes-xcxwbn/"
+  - category: ai
+    title: "AGENTS.md는 정말 도움이 되나 — 실제 PR 124건으로 잰 '시간·토큰' 실증 연구(arXiv 2026)"
+    summary: >
+      에이전트 지침 파일 AGENTS.md를 두면 정말 빨라지는지를 실제 머지된 GitHub PR로 처음 정량 측정한 arXiv 연구다. 10개 레포·124개 PR을 골라 코드를 머지 직전 상태로 되돌린 뒤, AGENTS.md 유무만 다르게 해 OpenAI Codex(gpt-5.2-codex)를 도커에서 동일 조건으로 돌려 비교했다. 결과 AGENTS.md가 있을 때 실행 시간 중앙값이 약 28.6%(98.6s→70.3s) 줄고 출력 토큰 중앙값도 약 16.6% 감소했으며, 둘 다 통계적으로 유의했다. 다만 입력 토큰 중앙값은 거의 그대로였고, 토큰 절감은 '소수의 고비용 실행'에서 주로 나왔다. 정답 여부(정확성)는 50건 샘플로 '비어있지 않은 코드 변경'만 확인했을 뿐 본격 평가는 후속 과제로 남겼다.
+    points:
+      - "10레포·124 PR을 페어 설계로 비교(AGENTS.md 유무만 차이)"
+      - "실행 시간 중앙값 ≈ -28.6%, 출력 토큰 중앙값 ≈ -16.6%(유의)"
+      - "절감은 '소수 고비용 실행'에 집중, 정확성 평가는 후속 과제"
+    source: "https://arxiv.org/html/2601.20404v2"
+  - category: ai
+    title: "코딩 에이전트 7종 MCP 클라이언트 보안 비교 — '버그'가 아니라 '구조'가 뚫린다(arXiv 2026)"
+    summary: >
+      'AI 개발 도구는 프롬프트 인젝션에 면역인가'를 묻는 arXiv 연구가 MCP 클라이언트 7종(Claude Desktop, Claude Code, Cursor, Cline, Continue, Gemini CLI, Langflow)을 적대적으로 비교 테스트했다. Cursor(1.6.45)는 네 가지 공격이 모두 통해 가장 취약했고, Claude Code(2.0.25)는 '낮음~중간' 위험으로 결과가 갈렸다. 핵심 결론은 대부분의 취약점이 구현 버그가 아니라 '신뢰 모델·검증 계층 부재·샌드박싱 부재' 같은 근본 아키텍처 결정에서 나온다는 것 — LLM이 명령과 데이터를 같은 경로로 읽어 둘을 완벽히 구분하지 못하기 때문이다. 따라서 보안은 사후 추가가 아니라 설계 단계부터 넣어야 한다고 못박는다.
+    points:
+      - "MCP 클라이언트 7종 적대 테스트: Cursor가 4개 공격 모두 통과(최취약)"
+      - "취약점 대부분은 구현 버그 아닌 '신뢰모델·검증·샌드박스 부재' 구조 문제"
+      - "LLM이 명령·데이터를 한 경로로 읽음 → 보안은 설계 단계부터 넣어야"
+    source: "https://arxiv.org/html/2603.21642v1"
+  - category: ai
+    title: "PewDiePie의 'Odysseus' — 유튜버가 던진 MIT 라이선스 self-hosted AI 워크스페이스(2026-05-31)"
+    summary: >
+      구독자 최다 유튜버 Felix Kjellberg(PewDiePie)이 2026-05-31 자기 기기에서 통째로 돌리는 오픈소스 AI 워크스페이스 Odysseus를 공개했다. 채팅·자율 에이전트·딥리서치·문서·이메일·캘린더·노트에 더해, 에이전트가 파일 찾기·포맷 변환·코드 실행·웹 브라우징을 알아서 하고 영속 메모리로 학습한다. Python·FastAPI·SQLite·ChromaDB·Docker 스택에 Ollama·llama.cpp·vLLM 로컬 구동과 OpenAI·OpenRouter API를 함께 물린다(MIT). '데이터를 회사 서버에 안 넘긴다'는 프라이버시·소유권이 철학이지만, 클라우드 API를 붙이면 데이터가 외부로 나간다는 단서가 붙는다. 출시 48시간에 별 3만, 6/4 기준 4.4만+로 폭발적 관심을 모았다(주장).
+    points:
+      - "유튜버 PewDiePie가 만든 self-hosted AI 워크스페이스(MIT, 2026-05-31)"
+      - "Python/FastAPI/SQLite/ChromaDB/Docker + Ollama·llama.cpp·vLLM 로컬 구동"
+      - "'로컬이면' 프라이버시지만 클라우드 API 연결 시 데이터는 외부로"
+    source: "https://github.com/pewdiepie-archdaemon/odysseus"
+  - category: ai
+    title: "OpenAI GPT-5.5 'Spud' — GPT-4.5 이후 첫 완전 재학습 에이전트 모델(2026-04-23)"
+    summary: >
+      OpenAI가 2026-04-23 코드네임 'Spud'로 GPT-5.5를 공개했다. GPT-4.5 이후 첫 '처음부터 다시 학습한' 베이스 모델이라는 점이 핵심으로, 최소한의 사람 개입으로 다단계 컴퓨터 작업을 끝내도록 설계된 에이전트형 모델이다. 공식 발표 기준 Terminal-Bench 2.0에서 82.7%, GDPval 84.9%를 찍었다고 한다(OpenAI 주장). ChatGPT의 Plus·Pro·Business·Enterprise와 Codex에 함께 풀렸다. 벤치마크는 '모델 단독'이 아니라 '에이전트+모델 쌍'으로 읽어야 하며, 같은 시점 Terminal-Bench 2.1 공개 리더보드에서는 Codex CLI+GPT-5.5가 1위(83.4%)로 보고됐다.
+    points:
+      - "GPT-4.5 이후 첫 완전 재학습 베이스 모델, 코드네임 'Spud'(2026-04-23)"
+      - "Terminal-Bench 2.0 82.7%·GDPval 84.9%(OpenAI 공식 발표 주장)"
+      - "ChatGPT 유료 티어·Codex에 동시 배포, 에이전트형 다단계 작업 지향"
+    source: "https://openai.com/index/introducing-gpt-5-5/"
+  - category: ai
+    title: "Cursor Composer 2.5 — 'Composer 2 두 달 만'에 나온 자체 모델, Bugbot까지 갈아끼우다"
+    summary: >
+      Cursor가 자체 에이전트 모델 Composer 2를 낸 지 약 두 달 만에 Composer 2.5를 내놨다. CursorBench 과제를 평균 1달러 미만으로 끝낸다고 주장하는데, 같은 과제에서 Opus 4.7·GPT-5.5는 3~11달러가 든다는 비교를 함께 내세운다. 가격은 Standard 티어가 입력 100만 토큰당 $0.50·출력 $2.50, Fast 티어가 입력 $3.00·출력 $15.00다. Composer 2.5는 Cursor의 PR 리뷰 봇 Bugbot도 구동하게 됐는데, 평균 리뷰 시간이 약 5분에서 ~90초로 줄고 리뷰당 버그 검출이 평균 0.56→0.62로 10% 늘면서 실행 비용은 ~22% 낮아졌다고 한다(모두 Cursor 주장).
+    points:
+      - "Composer 2 출시 ~2개월 만의 자체 모델, CursorBench 과제 평균 <$1 주장"
+      - "가격: Standard 입력 $0.50/출력 $2.50, Fast 입력 $3.00/출력 $15.00(100만 토큰)"
+      - "Bugbot도 2.5로 전환 → 리뷰 ~90초·검출 +10%·비용 -22%(주장)"
+    source: "https://cursor.com/changelog"
+  - category: ai
+    title: "SlopCodeBench — 코딩 에이전트가 '오래 고칠수록' 코드가 망가지는 걸 재는 벤치마크(arXiv 2026)"
+    summary: >
+      장기·반복 작업에서 코딩 에이전트가 시간이 갈수록 코드를 어떻게 퇴화시키는지를 따로 재겠다는 언어 비종속 벤치마크 SlopCodeBench(SCBench)다. 20개 문제를 93개 체크포인트로 쪼개, '정확성 테스트는 통과하지만 구조는 침식되는' 구간을 추적한다. 핵심 관찰은 (1)코드가 특정 '구조적 끌개(attractor)'로 수렴하고, (2)품질이 실행 궤적마다 갈라지며, (3)리팩터링·개선이 정확성 테스트로는 안 잡히는 결함을 새로 들여온다는 것. 기존 연구가 시간에 따른 장황함·구조 침식을 추적하지 않았다는 공백을 메운다고 주장한다.
+    points:
+      - "장기 반복 작업의 '코드 퇴화'를 20문제·93체크포인트로 추적"
+      - "정확성 테스트는 통과해도 구조가 침식 → 새 결함이 숨어듦"
+      - "기존 벤치마크가 안 보던 '시간에 따른 구조 침식'을 겨냥"
+    source: "https://arxiv.org/html/2603.24755v1"
+  - category: ai
+    title: "Builder Methods 'Agent OS v3' — 스펙 작성은 'Plan Mode'에 넘기고 표준만 주입하는 SDD 키트(2026)"
+    summary: >
+      스펙 주도 개발(SDD) 도구 Agent OS가 '2026용으로 더 가볍고 정렬된' v3를 냈다. 가장 큰 변화는 스펙 작성을 Agent OS 명령이 직접 하지 않고 Claude Code(또는 Cursor 등)의 Plan Mode에 위임한다는 점 — 대신 /shape-spec이 표준·제품 미션을 고려한 질문을 던져 더 정렬된 스펙을 만들고 그 계획을 Agent OS 스펙 폴더에 자동 저장한다. /discover-standards로 코드베이스에서 표준을 발굴·제안·생성하고, /inject-standards로 대화·플랜·스킬 어디에든 index.yml 기반으로 관련 표준만 골라 주입한다. 산출물이 전부 마크다운이라 도구를 안 가린다.
+    points:
+      - "v3 핵심: 스펙 작성을 에이전트의 'Plan Mode'에 위임"
+      - "/shape-spec(정렬된 스펙)·/discover-standards·/inject-standards(index.yml)"
+      - "산출물이 마크다운 → Claude Code·Cursor 등 도구 비종속"
+    source: "https://github.com/buildermethods/agent-os/discussions/310"
+  - category: ai
+    title: "SWE-bench Pro 공개셋 현황(2026-06) — 1위 GPT-5.4도 60% 못 넘고, 비공개셋은 더 떨어진다"
+    summary: >
+      오염(학습 시 정답 노출)에 강한 차세대 벤치마크 SWE-bench Pro의 공개셋(731 태스크, Pass@1) 2026-06-09 기준 현황이다. GPT-5.4(xHigh)가 59.1%로 1위로, 신규 Muse Spark보다 4.1%p, 최고 Claude 런(Opus 4.6 thinking, 51.9%)보다 7.2%p 앞선다. 핵심은 오염 통제용 '비공개 상용셋'으로, 인터넷에 없는 스타트업 18곳의 비공개 코드베이스 276 태스크에서 점수가 크게 떨어진다는 점 — 가장 강한 오염 통제 장치라는 주장이다. 오픈웨이트는 Pro에서 크게 밀려, 표준 스캐폴딩 리더보드 1위가 qwen3-coder-480b로 38.7%에 그친다.
+    points:
+      - "공개셋(731태스크) 1위 GPT-5.4 59.1% — 최고 Claude 51.9%(Opus 4.6)"
+      - "비공개 상용셋 276태스크(스타트업 18곳)에서 점수 급락 = 오염 통제"
+      - "오픈웨이트는 Pro에서 부진(표준 스캐폴딩 1위 qwen3-coder 38.7%)"
+    source: "https://www.morphllm.com/swe-bench-pro"
+  - category: ai
+    title: "Claude Code Review — Anthropic이 직접 굴리는 'PR 열면 자동 리뷰' 매니지드 서비스(2026-03)"
+    summary: >
+      Anthropic이 2026-03 PR이 열리면 자동으로 코드 리뷰를 도는 매니지드(서버형) 멀티에이전트 서비스 Claude Code Review를 내놨다. 직접 설정·운영하는 오픈소스 리뷰 워크플로와 달리, 관리자가 Claude Code 설정에서 켜고 GitHub 앱을 깐 뒤 레포만 고르면 새 PR마다 리뷰가 자동으로 돈다. Team·Enterprise 고객 대상 리서치 프리뷰로, 출시 시점엔 GitHub 전용(GitLab·Azure DevOps·Bitbucket 미지원)이며 Zero Data Retention과는 호환되지 않는다. 과금은 토큰 기반으로 리뷰당 평균 $15~25이며, 월 지출 상한·레포 단위 우선순위를 걸 수 있다(주장). '리뷰를 사람이 직접 거는 부담'을 서비스로 떠넘기되, 리뷰마다 실제 비용이 든다는 게 핵심 트레이드오프다.
+    points:
+      - "PR 열면 자동으로 도는 '매니지드' 멀티에이전트 리뷰(직접 운영 아님)"
+      - "Team·Enterprise 리서치 프리뷰, 출시 시 GitHub 전용·ZDR 비호환"
+      - "토큰 과금 리뷰당 평균 $15~25 + 월 상한·레포 우선순위(주장)"
+    source: "https://www.anthropic.com/news/claude-code-review"
+  - category: ai
+    title: "백그라운드 코딩 에이전트 — '맡기고 잊는' 비동기 에이전트가 2026 주류가 되다"
+    summary: >
+      백그라운드 코딩 에이전트란 격리된 클라우드 샌드박스에서 비동기로 도는 'AI 소프트웨어 엔지니어'다. GitHub 이슈·Linear 티켓·Slack 메시지 같은 일감을 맡기면 수 분~수 시간 혼자 일한 뒤 PR을 돌려준다 — 타이핑을 보조하는 인라인 도구와 정반대로 '티켓→클라우드 샌드박스→자율 편집→PR→사람 리뷰' 한 사이클을 돈다. Devin(2024 말)으로 장기 에이전트 역량이 무르익은 뒤 2025년 Codex Cloud·Cursor Background Agents·Jules가 쌓였고, Anthropic의 Claude Code Remote Tasks가 2026-03-20 합류하며 카테고리가 주류가 됐다. 다만 모든 백그라운드 에이전트는 레포·CI 시크릿을 만지려 '범위가 좁고 회수 가능한 비인간 ID'가 필요해, 기업이 보안 통제로 다루기 시작했다.
+    points:
+      - "'티켓→클라우드 샌드박스→자율 편집→PR→리뷰' 비동기 사이클"
+      - "Devin→Codex Cloud·Cursor BG·Jules→Claude Code Remote Tasks(2026-03-20)"
+      - "에이전트마다 '범위 좁고 회수 가능한 비인간 ID'가 새 보안 통제 지점"
+    source: "https://securityboulevard.com/2026/06/6-background-ai-agents-for-async-development/"
+  - category: ai
+    title: "Greptile — 디프가 아니라 '레포 전체'를 인덱싱해 파일·서비스 사이 버그를 잡는 코드리뷰 봇"
+    summary: >
+      Greptile은 PR의 디프만 보는 게 아니라 코드베이스 전체를 인덱싱해, 파일·서비스·의존성 '사이'에 숨은 버그를 찾는 AI 코드리뷰 도구다. 변경이 아키텍처를 타고 어떻게 번지는지를 추적하고, 발견을 심각도로 분류해 신호 대 잡음비를 높이려 한다. 가격은 사용자당 월 $30(오픈소스·시리즈A 이전 스타트업은 무료/할인). 독립 평가에서 '버그 검출률이 가장 높지만 오탐률도 가장 높다'는 트레이드오프가 거론된다 — 진짜 버그도, 잡음도 더 많이 나온다는 뜻(평가 출처별 편차 큼). 2026년 코드리뷰 시장은 PR 리뷰 댓글의 상당수를 자동 리뷰어가 다는 단계로 성숙했다.
+    points:
+      - "디프가 아니라 '레포 전체 인덱싱'으로 파일·서비스 간 결함 추적"
+      - "가격 사용자당 월 $30(OSS·초기 스타트업 무료/할인)"
+      - "'최고 검출률 ↔ 최고 오탐률' 트레이드오프(평가 출처별 편차)"
+    source: "https://www.greptile.com/content-library/best-ai-code-review-tools"
+  - category: ai
+    title: "한국 IT 기업 코딩 에이전트 도입 사례 — 토스페이먼츠·당근·채널톡의 공통 원칙"
+    summary: >
+      2026년 한국 IT 기업들의 코딩 에이전트 도입 사례에서 공통 패턴이 보인다. 토스페이먼츠는 MCP 기반 AI 연동 서버를 만들어 PG 연동을 자동화하되, 아키텍처 설계와 결제 안정성 판단은 엔지니어가 쥐었다. 당근은 전사 AI 전환을 선언하고 해커톤·피처톤으로 지표 요약·에러 분석·매물 요약 같은 반복 업무를 자동화해 실험·배포 주기를 높이되 제품 방향과 핵심 의사결정은 사람 중심으로 뒀다. 채널톡은 Cursor를 전사 도구로 도입해 IDE까지 바꾸고 온보딩·리팩터링·PR 리뷰·UI 구현을 AI 중심으로 재설계했지만 구조 설계·품질 최종 책임은 사람이 진다. 세 사례의 공통 원칙: '정형·반복 작업은 위임하되, 설계·품질·핵심 판단은 사람이 책임진다.'
+    points:
+      - "토스페이먼츠: MCP 연동 서버로 PG 연동 자동화(안정성 판단은 사람)"
+      - "당근: 전사 전환·해커톤으로 반복 업무 자동화(의사결정은 사람 중심)"
+      - "채널톡: Cursor 전사 도입으로 IDE까지 교체(품질 책임은 사람)"
+    source: "https://www.codetree.ai/blog/2026-%EB%B0%94%EC%9D%B4%EB%B8%8C-%EC%BD%94%EB%94%A9-%ED%88%B4-5%EA%B0%80%EC%A7%80-%EC%B6%94%EC%B2%9C-ai-%EC%BD%94%EB%94%A9-%ED%88%B4%EB%A1%9C-%EB%8B%AC%EB%9D%BC%EC%A7%84-%EA%B0%9C%EB%B0%9C%EC%9E%90/"
