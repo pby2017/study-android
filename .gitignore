@@ -143,6 +143,7 @@ _site/
 Gemfile.lock
 vendor/
 .bundle/
+.local-ai-research.lock/
 
 # Claude Code / OMC runtime state (must never be committed)
 .omc/

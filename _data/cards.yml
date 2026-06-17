@@ -262,6 +262,115 @@ cards:
     source: "https://code.claude.com/docs/en/sub-agents"
 
   - category: ai
+    title: "Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰"
+    summary: >
+      Claude Code GitHub Action은 PR이나 이슈에 @claude 같은 방식으로 반응해 수정과 리뷰를 자동화한다.
+      사람이 매번 에디터를 열지 않아도, 저장소 안에서 일어난 변경 요청을 바탕으로 코드 수정을 제안하고
+      리뷰 코멘트를 달 수 있어 반복적 작업을 줄인다. 팀 입장에선 '대화형 에이전트'를 GitHub 이벤트에
+      직접 연결하는 대표 패턴이다.
+    points:
+      - "GitHub 이벤트(PR/issue) -> 에이전트 작업 자동화"
+      - "수정 제안 + 리뷰 코멘트로 반복 작업 절감"
+      - "저장소 안에서 바로 쓰는 대표적 에이전트 통합"
+    source: "https://github.com/anthropics/claude-code-action"
+
+  - category: ai
+    title: "Gemini CLI — 빠른 무료 한도 + 터미널 에이전트"
+    summary: >
+      Gemini CLI는 구글이 직접 제공하는 터미널형 AI 에이전트다. CLI 중심이라 스크립트·셸·리포
+      작업에 바로 붙이기 쉽고, 무료 한도가 넉넉한 편이라 실험 비용 부담이 낮다. '모델 공급자
+      종속 없이 터미널에서 바로 쓰는 에이전트'라는 점에서 팀 일상 작업용으로 자주 비교 대상이 된다.
+    points:
+      - "터미널 중심이라 자동화/스크립트와 궁합이 좋음"
+      - "직접 제공 서비스라 초기 도입 장벽이 낮음"
+      - "무료 한도 체감이 좋아 실험용으로 많이 씀"
+    source: "https://github.com/google-gemini/gemini-cli"
+
+  - category: ai
+    title: "Codex CLI — Rust 기반 터미널 코딩 에이전트"
+    summary: >
+      Codex CLI는 OpenAI가 공개한 터미널 코딩 에이전트로, Rust와 Apache-2.0 라이선스를 쓰는 것이
+      특징이다. 코드 수정, 리팩터링, 테스트, 자동화 작업을 셸 흐름에 붙이기 좋고, headless 실행
+      패턴과도 잘 맞는다. 터미널 안에서 바로 돌리는 개발 에이전트의 대표주자로 자주 언급된다.
+    points:
+      - "Rust + Apache-2.0"
+      - "셸 기반 작업/자동화에 적합"
+      - "headless 실행과 궁합 좋음"
+    source: "https://github.com/openai/codex"
+
+  - category: ai
+    title: "OpenHands — 오픈소스 자율 코딩 에이전트"
+    summary: >
+      OpenHands는 GitHub 이슈나 버그 수정 같은 개발 작업을 자율적으로 수행하는 오픈소스 에이전트다.
+      모델 자체보다도 에이전트 실행 흐름, 도구 호출, 작업 분해를 직접 다루는 쪽에 관심이 많은 팀에서
+      많이 본다. 상용 서비스 대안이 필요할 때 검토하는 대표 OSS 중 하나다.
+    points:
+      - "자율 작업 흐름 중심의 오픈소스 에이전트"
+      - "이슈 처리·버그 수정 같은 실전 작업에 초점"
+      - "상용 대안 비교군으로 자주 거론"
+    source: "https://github.com/All-Hands-AI/OpenHands"
+
+  - category: ai
+    title: "Aider — git 중심 페어 프로그래머"
+    summary: >
+      Aider는 git을 기반으로 코드를 수정하고 커밋까지 자연스럽게 이어가는 터미널형 페어 프로그래머다.
+      레포 구조를 통째로 넣지 않아도 맵과 diff 중심으로 작업해 토큰을 아끼는 방향이 강하다. 개발자
+      입장에선 '작은 변경을 빠르게 쌓는 자동 편집기'로 체감하기 쉽다.
+    points:
+      - "git/diff 중심 작업"
+      - "레포 전체 투입 없이도 편집 가능"
+      - "작은 변경을 빠르게 누적"
+    source: "https://github.com/Aider-AI/aider"
+
+  - category: ai
+    title: "Context7 MCP — 최신 문서 끌어오는 실전 패턴"
+    summary: >
+      Context7 MCP는 에이전트가 라이브러리의 최신 문서를 그때그때 가져오게 하는 서버다. 프롬프트에
+      오래된 지식을 담아두는 대신, 실행 시점에 최신 사용법을 읽게 해서 환각과 버전 불일치를 줄인다.
+      라이브러리 변경이 잦은 팀에서 특히 유용한 '문서 주입' 패턴이다.
+    points:
+      - "최신 버전 문서 on-demand 조회"
+      - "버전 불일치/환각 감소"
+      - "라이브러리 빠른 팀에 유용"
+    source: "https://github.com/upstash/context7"
+
+  - category: ai
+    title: "Repomix — 레포 전체를 LLM용 단일 파일로 압축"
+    summary: >
+      Repomix는 코드베이스를 LLM이 읽기 쉬운 단일 파일 형태로 묶어준다. 에이전트에게 리포 구조와
+      핵심 파일만 효율적으로 전달할 수 있어, 긴 맥락을 한 번에 보내야 하는 분석·리뷰 작업에 유리하다.
+      컨텍스트 비용이 큰 프로젝트에서 자주 쓰는 전처리 도구다.
+    points:
+      - "코드베이스 -> 단일 LLM 친화 파일"
+      - "긴 맥락 전달 비용 절감"
+      - "분석/리뷰 전처리 도구로 유용"
+    source: "https://github.com/yamadashy/repomix"
+
+  - category: ai
+    title: "공식 MCP 레지스트리 — 서버 찾기 소스 오브 트루스"
+    summary: >
+      공식 MCP 레지스트리는 흩어진 MCP 서버를 한곳에서 찾게 해 주는 인덱스 성격의 자료다. MCP가
+      늘어날수록 '어떤 서버를 어디서 찾아야 하는가'가 문제인데, 레지스트리는 이 탐색 비용을 줄인다.
+      툴 체인 표준화가 필요한 팀에 특히 중요하다.
+    points:
+      - "흩어진 MCP 서버 탐색 비용 감소"
+      - "표준화된 검색 نقطة"
+      - "툴 체인 확장할수록 가치↑"
+    source: "https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/"
+
+  - category: ai
+    title: "Claude Code 비용 줄이기 — 컨텍스트 예산 관리"
+    summary: >
+      에이전트를 오래 돌릴수록 비용은 모델 호출보다도 컨텍스트 낭비에서 커진다. 공식 가이드는 무엇을
+      넣고 뺄지, 스킬·훅·출력 스타일을 어떻게 조절할지에 초점을 맞춘다. 즉, '더 큰 모델'보다
+      '덜 새는 세션'이 더 싸게 먹힌다는 실전 체크리스트다.
+    points:
+      - "비용의 핵심 = 컨텍스트 낭비 관리"
+      - "스킬·훅·프롬프트 캐시 조절"
+      - "큰 모델보다 덜 새는 세션이 중요"
+    source: "https://code.claude.com/docs/en/costs"
+
+  - category: ai
     title: "reloadSkills — SessionStart 훅으로 같은 세션에서 스킬 즉시 반영"
     summary: >
       Claude Code의 스킬 탐색은 보통 SessionStart 훅이 끝나기 전에 한 번만 돌기 때문에,
