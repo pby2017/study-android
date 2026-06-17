@@ -4073,3 +4073,17 @@ cards:
       - "권한 분리: build(풀 액세스 기본) vs plan(읽기 전용·계획만)"
       - "TUI + 데스크톱 앱(BETA, mac/Win/Linux) + 별도 Server·SDK"
     source: "https://github.com/anomalyco/opencode"
+  - category: ai
+    title: "Claude Code hooks — 에이전트 행동을 '기억' 말고 이벤트로 고정하기"
+    summary: >
+      Claude Code hooks는 모델이 규칙을 기억하길 기대하는 대신, 특정 생명주기 이벤트에서 사용자가 정한
+      명령을 실행하게 하는 자동화 장치다. 공식 문서는 PreToolUse, PostToolUse, UserPromptSubmit,
+      Stop, SessionStart, PreCompact 같은 이벤트를 설정 파일에 등록하고, 이벤트→매처→핸들러 순서로
+      실행한다고 설명한다. 그래서 파일 수정 뒤 포맷, 위험 명령 차단, 세션 시작 컨텍스트 주입, 압축 전
+      메모 백업처럼 "매번 해야 하는 일"을 모델 판단 밖으로 빼낼 수 있다. 실전 포인트는 훅을 프롬프트가
+      아니라 작고 결정적인 제어면으로 보는 것이다.
+    points:
+      - "생명주기 이벤트에 명령을 걸어 반복 작업을 자동 실행"
+      - "PreToolUse·PostToolUse·Stop·SessionStart·PreCompact 등 지원"
+      - "규칙 기억에 의존하지 않고 포맷·차단·컨텍스트 주입을 고정"
+    source: "https://code.claude.com/docs/en/hooks"

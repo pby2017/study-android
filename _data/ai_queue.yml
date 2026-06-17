@@ -2,18 +2,6 @@
 # The automation script appends the next unseen entry into _data/cards.yml.
 
 - category: ai
-  title: "Claude Code hooks — 세션 시작·중단을 자동화 포인트로 쓰기"
-  summary: >
-    훅은 세션 시작, 종료, 오류 시점에 자동 작업을 끼워 넣는 가장 강력한 자동화 포인트다.
-    설정/정리/검증/메모 저장 같은 반복 작업을 사람이 직접 하지 않아도 되게 해 주며,
-    에이전트가 상태를 잃기 쉬운 지점을 보완한다.
-  points:
-    - "세션 lifecycle 자동화 포인트"
-    - "정리·검증·메모 저장에 유용"
-    - "상태 유실 보완"
-  source: "https://code.claude.com/docs/en/hooks"
-
-- category: ai
   title: "Prompt caching — 컨텍스트 비용을 줄이는 첫 번째 레버"
   summary: >
     프롬프트 캐시는 반복되는 시스템/도구/메시지 블록을 재사용해 토큰 비용을 줄이는 방법이다.

@@ -437,3 +437,4 @@
 - 2026-06-17 10:40 KST | [일괄] 15개 카드 추가 | 대표 주제: Google Antigravity 2.0, GitHub Copilot, 정액제를 버리다, Anthropic, '코드의 80%를 Claude가 쓴다'
 
 - 2026-06-18 02:00 KST | OpenCode(anomalyco) — 모델 비종속 터미널 코딩 에이전트(MIT·~176k★·TS), build/plan 권한분리·데스크톱앱BETA·Server/SDK, "any LLM provider by configuring their API keys"(공식문서) | https://github.com/anomalyco/opencode
+- 2026-06-18 02:28 KST | Claude Code hooks — 에이전트 행동을 '기억' 말고 이벤트로 고정하기 | https://code.claude.com/docs/en/hooks
