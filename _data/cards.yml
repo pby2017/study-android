@@ -3808,3 +3808,15 @@ cards:
       - "병렬 격리 — /worktree로 변경 격리, /best-of-n으로 한 작업을 여러 모델·각자 worktree에 돌려 'best one' 고르기. 클라우드 에이전트는 이제 Agents Window 전용"
       - "도입 — 기존 구독자 무료 업데이트, Agents Window·Composer 2·worktree는 Pro/Pro+/Ultra/Teams에서 제공(가격·플랜 범위는 Cursor 공지 기준)"
     source: "https://cursor.com/changelog/3-0"
+  - category: ai
+    title: "Continue(continuedev) 2.0 — 33.7k★ 오픈소스 IDE 에이전트가 '최종 릴리스 후 read-only'로 보관됨, 또 하나의 OSS 코딩 에이전트 종료 사례"
+    summary: >
+      Continue는 VS Code·JetBrains·CLI로 제공되던 대표적 오픈소스 코딩 에이전트(Apache-2.0·~33.7k★)다. 2023년 'Claude Dev'류 초기 OSS 에이전트 물결의 일원으로 자동완성·채팅·에이전트 모드·rules/MCP 허브를 무기로 성장했다.
+      그러나 메인 레포(github.com/continuedev/continue)는 README가 명시하듯 "더 이상 능동적으로 유지보수되지 않으며 모든 사용자에게 read-only"가 됐다. 팀은 "VS Code 확장·CLI·JetBrains 플러그인의 최종 2.0.0 릴리스"를 내며 익명 텔레메트리 제거·인증 제거·버그 정리로 마무리했다.
+      JetBrains 사용자에게는 "플러그인 대신 Continue CLI 사용"을 권한다. README 본문에는 활성 개발을 이어갈 명시적 후속 레포 링크가 없고, 코드베이스가 "다른 이들의 토대로 계속 쓰이길" 바란다고만 적었다.
+      실무 시사점: Roo Code(Zoo Code로 부활)·Gemini CLI 차단 사례와 같은 결의 '오픈소스 에이전트는 메인테이너가 손을 떼면 어떻게 되나' 리스크다. 도구를 팀 워크플로에 박아 넣기 전, 라이선스만이 아니라 '유지보수 상태'를 봐야 한다.
+    points:
+      - "사실(README 인용) — 'continuedev/continue 레포는 더 이상 능동적으로 유지보수되지 않으며 모든 사용자에게 read-only'. VS Code/CLI/JetBrains 최종 2.0.0 릴리스로 텔레메트리·인증 제거 후 보관(Apache-2.0·~33.7k★)"
+      - "권고 — JetBrains 플러그인 대신 Continue CLI(@continuedev/cli) 사용 권장. 본문엔 활성 개발을 이어갈 명시적 후속 레포 링크 없음('foundation for others'로 남기길 희망)"
+      - "교훈 — OSS 에이전트 도입 시 스타 수·라이선스만 보지 말고 '유지보수 상태(archived/read-only 여부)'를 PoC 단계에서 확인. 종료돼도 포크·CLI 전환 경로가 있는지가 락인 리스크를 가른다"
+    source: "https://github.com/continuedev/continue"

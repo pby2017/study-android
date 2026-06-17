@@ -432,3 +432,5 @@
 - 2026-06-19 11:00 KST | CodeRabbit 인간 vs AI 코드 리포트(2025-12-17) — AI 관여 PR 10.83건/PR vs 사람 6.45건 ≈1.7배 결함, 가독성 ~3.15배·로직/보안 증가, AI 코드일수록 리뷰 강화 필요, 단일 벤더 자사 엔진 분석 주장 | https://www.businesswire.com/news/home/20251217666881/en/CodeRabbits-State-of-AI-vs-Human-Code-Generation-Report-Finds-That-AI-Written-Code-Produces-1.7x-More-Issues-Than-Human-Code
 
 - 2026-06-19 11:30 KST | Cursor 3 'Glass'(2026-04-02) — 사이드 Composer를 접고 로컬·worktree·클라우드·SSH 에이전트를 한 Agents Window(Cmd+Shift+P)에서 병렬 실행, /worktree 변경격리·/best-of-n 다모델 비교·Design Mode(⌘+Shift+D)·Await 도구, Composer 2 모델은 잔존, 기존 구독자 무료·Pro/Ultra/Teams 제공 | https://cursor.com/changelog/3-0
+
+- 2026-06-19 12:00 KST | Continue(continuedev) 2.0 — VS Code/JetBrains/CLI 오픈소스 코딩 에이전트(Apache-2.0·~33.7k★)가 최종 2.0.0 릴리스 후 메인 레포 read-only/unmaintained 보관, 텔레메트리·인증 제거, JetBrains는 Continue CLI 권장, 명시적 후속 레포 링크 없음 | https://github.com/continuedev/continue
