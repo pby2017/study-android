@@ -43,20 +43,6 @@ elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   git pull --ff-only origin "$(git branch --show-current)"
 fi
 
-AGENT_CMD=()
-if [[ -n "${LOCAL_AI_AGENT_BIN:-}" ]]; then
-  # shellcheck disable=SC2206
-  AGENT_CMD=($LOCAL_AI_AGENT_BIN)
-elif command -v codex >/dev/null 2>&1; then
-  CODEX_BIN="$(realpath "$(command -v codex)")"
-  AGENT_CMD=("$CODEX_BIN" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox)
-elif command -v omx >/dev/null 2>&1; then
-  AGENT_CMD=(omx exec --search --madmax -C "$ROOT")
-else
-  echo "No headless agent found: need omx or codex in PATH"
-  exit 127
-fi
-
 PROMPT=$(cat <<'PROMPT_EOF'
 Use repo skill `.codex/skills/local-ai-card-routine/SKILL.md`.
 Run local AI card routine now.
@@ -66,8 +52,64 @@ If usage/quota is near exhaustion or tool access degrades, write a resume checkp
 PROMPT_EOF
 )
 
-echo "Running headless agent: ${AGENT_CMD[*]}"
-timeout "${PIPELINE_TIMEOUT:-13800}" "${AGENT_CMD[@]}" "$PROMPT"
+run_codex() {
+  command -v codex >/dev/null 2>&1 || return 127
+  local codex_bin
+  codex_bin="$(realpath "$(command -v codex)")"
+  echo "Trying headless provider: codex"
+  timeout "${PIPELINE_TIMEOUT:-13800}" "$codex_bin" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
+}
+
+run_omx() {
+  command -v omx >/dev/null 2>&1 || return 127
+  echo "Trying headless provider: omx"
+  timeout "${PIPELINE_TIMEOUT:-13800}" omx exec --search --madmax -C "$ROOT" "$PROMPT"
+}
+
+run_claude() {
+  command -v claude >/dev/null 2>&1 || return 127
+  echo "Trying headless provider: claude"
+  timeout "${PIPELINE_TIMEOUT:-13800}" claude -p --permission-mode bypassPermissions --add-dir "$ROOT" "$PROMPT"
+}
+
+run_gemini() {
+  command -v gemini >/dev/null 2>&1 || return 127
+  echo "Trying headless provider: gemini"
+  timeout "${PIPELINE_TIMEOUT:-13800}" gemini -p "$PROMPT" -y --include-directories "$ROOT"
+}
+
+AGENT_OK=0
+if [[ -n "${LOCAL_AI_PROVIDER:-}" ]]; then
+  "run_${LOCAL_AI_PROVIDER}" && AGENT_OK=1 || AGENT_OK=0
+else
+  for provider in codex omx claude gemini; do
+    if "run_${provider}"; then
+      AGENT_OK=1
+      break
+    fi
+    echo "Provider failed or unavailable: $provider"
+  done
+fi
+
+if [[ "$AGENT_OK" != "1" ]]; then
+  mkdir -p research/ai-routine
+  cat > research/ai-routine/resume.md <<RESUME_EOF
+# Local AI routine paused after provider failure
+
+Paused at: $(date '+%Y-%m-%d %H:%M:%S %Z')
+
+Reason: all configured headless providers failed or were unavailable.
+
+Next actions:
+1. Check latest log: $RUN_LOG
+2. Confirm at least one provider works headless: codex, omx, claude, or gemini.
+3. Re-run \`./scripts/local_ai_research_pipeline.sh\`.
+
+The next scheduled launchd run will retry automatically.
+RESUME_EOF
+  echo "All headless providers failed. Wrote resume checkpoint and stopped cleanly."
+  exit 0
+fi
 
 echo "Running wrapper verification"
 ruby -c scripts/auto_post.rb
