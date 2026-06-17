@@ -3796,3 +3796,15 @@ cards:
       - "실무 교훈 — 'AI가 짰으니 리뷰 덜 해도 된다'는 정반대. AI 코드일수록 자동 코드리뷰(claude-code-security-review·Bugbot·/code-review 등)와 테스트 게이트를 PR 단계에 강제하라"
       - "측정 — ROI를 보려면 'AI 작성 코드 비율 / PR당 결함 수 / 보안 발견 수'를 같이 추적. 도입률만 보면 품질 꼬리(review tail)가 숨는다. 단일 벤더 수치이니 사내 데이터로 교차검증"
     source: "https://www.businesswire.com/news/home/20251217666881/en/CodeRabbits-State-of-AI-vs-Human-Code-Generation-Report-Finds-That-AI-Written-Code-Produces-1.7x-More-Issues-Than-Human-Code"
+  - category: ai
+    title: "Cursor 3 'Glass'(2026-04-02) — 사이드 'Composer'를 접고, 로컬·worktree·클라우드·SSH 에이전트를 한 'Agents Window'에서 병렬로 돌리는 IDE"
+    summary: >
+      Cursor가 2026년 4월 2일 내놓은 3.0('Glass')은 모델이 아니라 'IDE의 모양'을 바꾼 릴리스다. 2024년부터 Cursor를 정의하던 사이드 패널 Composer 대신, 에이전트를 1급 시민으로 두는 별도 표면 'Agents Window'가 중심이 됐다.
+      공식 체인지로그에 따르면 Agents Window(Cmd+Shift+P → Agents Window)는 에이전트 여러 개를 "로컬·git worktree·클라우드·원격 SSH"에서 동시에 돌릴 수 있고, 기존 에디터로 되돌아가거나 둘을 같이 켤 수도 있다.
+      실무 핵심은 두 슬래시 커맨드다. /worktree는 변경을 격리하는 별도 worktree를 만들고, /best-of-n은 같은 작업을 여러 모델에 각자 worktree로 병렬 시켜 결과를 비교한다.
+      에디터 안의 기존 worktree/best-of-n 선택 UI는 폐기됐고, 클라우드 에이전트는 에디터에서 빠져 Agents Window로 옮겨졌다. 브라우저 UI 요소를 집어 에이전트에 피드백하는 Design Mode(⌘+Shift+D), 백그라운드 작업 완료를 기다리는 Await 도구도 함께 들어왔다.
+    points:
+      - "구조 변화 — 사이드 패널 Composer(UI) → Agents Window(병렬 에이전트 표면). 단 in-house 코딩 모델 'Composer 2'는 그대로 남음(UI 이름과 모델 이름을 구분할 것)"
+      - "병렬 격리 — /worktree로 변경 격리, /best-of-n으로 한 작업을 여러 모델·각자 worktree에 돌려 'best one' 고르기. 클라우드 에이전트는 이제 Agents Window 전용"
+      - "도입 — 기존 구독자 무료 업데이트, Agents Window·Composer 2·worktree는 Pro/Pro+/Ultra/Teams에서 제공(가격·플랜 범위는 Cursor 공지 기준)"
+    source: "https://cursor.com/changelog/3-0"
