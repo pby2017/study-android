@@ -63,26 +63,26 @@ run_codex() {
 run_omx() {
   command -v omx >/dev/null 2>&1 || return 127
   echo "Trying headless provider: omx"
-  timeout "${PIPELINE_TIMEOUT:-13800}" omx exec --search --madmax -C "$ROOT" "$PROMPT"
+  timeout "${PIPELINE_TIMEOUT:-13800}" omx exec --madmax -C "$ROOT" "$PROMPT"
 }
 
 run_claude() {
   command -v claude >/dev/null 2>&1 || return 127
   echo "Trying headless provider: claude"
-  timeout "${PIPELINE_TIMEOUT:-13800}" claude -p --permission-mode bypassPermissions --add-dir "$ROOT" "$PROMPT"
+  timeout "${PIPELINE_TIMEOUT:-13800}" claude -p --permission-mode bypassPermissions "$PROMPT"
 }
 
 run_gemini() {
   command -v gemini >/dev/null 2>&1 || return 127
   echo "Trying headless provider: gemini"
-  timeout "${PIPELINE_TIMEOUT:-13800}" gemini -p "$PROMPT" -y --include-directories "$ROOT"
+  timeout "${PIPELINE_TIMEOUT:-13800}" gemini --skip-trust -p "$PROMPT" -y --include-directories "$ROOT"
 }
 
 AGENT_OK=0
 if [[ -n "${LOCAL_AI_PROVIDER:-}" ]]; then
   "run_${LOCAL_AI_PROVIDER}" && AGENT_OK=1 || AGENT_OK=0
 else
-  for provider in codex omx claude gemini; do
+  for provider in codex gemini claude omx; do
     if "run_${provider}"; then
       AGENT_OK=1
       break
