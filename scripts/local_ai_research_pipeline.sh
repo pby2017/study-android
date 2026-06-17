@@ -48,7 +48,7 @@ if [[ -n "${LOCAL_AI_AGENT_BIN:-}" ]]; then
   # shellcheck disable=SC2206
   AGENT_CMD=($LOCAL_AI_AGENT_BIN)
 elif command -v codex >/dev/null 2>&1; then
-  AGENT_CMD=(codex exec --search -C "$ROOT" -s danger-full-access --ask-for-approval never)
+  AGENT_CMD=(codex --search exec -C "$ROOT" -s danger-full-access --ask-for-approval never)
 elif command -v omx >/dev/null 2>&1; then
   AGENT_CMD=(omx exec --search --madmax -C "$ROOT")
 else
