@@ -4109,3 +4109,16 @@ cards:
       - "Anthropic 계층: tools → system → messages, 변화 지점 뒤 캐시 무효화"
       - "실전 규칙: 고정 컨텍스트는 앞, 사용자별·도구결과 같은 동적 내용은 뒤"
     source: "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+  - category: ai
+    title: "SWE-Skills-Bench — 에이전트 스킬은 만능 부스터가 아니라 '맞춤 지식'이다"
+    summary: >
+      SWE-Skills-Bench는 SKILL.md 같은 절차 지식이 실제 소프트웨어 작업에 얼마나 도움 되는지 재는 벤치마크다.
+      공개 레포의 고정 커밋, 명확한 요구사항, 검증 테스트, 스킬 문서를 짝지어 '스킬 있음/없음'을 비교한다.
+      논문 초록의 핵심 결과는 차갑다: 49개 스킬 중 39개는 pass-rate 향상이 0이고 평균 이득은 +1.2%에 그쳤다.
+      토큰 오버헤드는 경우에 따라 451%까지 늘었고, 버전이 안 맞는 지침은 오히려 성능을 깎았다. 교훈은
+      스킬을 많이 까는 게 아니라, 현재 레포·버전·작업에 정확히 맞는 좁은 스킬만 쓰는 것이다.
+    points:
+      - "49개 public SWE skills + 고정 커밋 레포 + 요구사항 + 실행 테스트로 paired 평가"
+      - "39/49 스킬은 pass-rate 향상 0, 평균 이득 +1.2%; 일부는 버전 불일치로 성능 하락"
+      - "스킬은 범용 마법이 아니라 도메인·버전·작업 적합성이 맞을 때만 값이 난다"
+    source: "https://github.com/GeniusHTX/SWE-Skills-Bench"
