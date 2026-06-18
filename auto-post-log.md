@@ -442,3 +442,4 @@
 
 - 2026-06-18 06:00 KST | Aider(Aider-AI) — 변경마다 자동 git 커밋으로 diff/undo 보장하는 터미널 페어 프로그래머(Apache-2.0·~46.4k★·Python), repo map·100+언어·클라우드/로컬 LLM | https://github.com/Aider-AI/aider
 - 2026-06-18 10:32 KST | SWE-Skills-Bench — 49개 SWE 스킬 paired 평가에서 39개는 pass-rate 향상 0, 평균 +1.2%; 스킬은 범용 부스터가 아니라 레포·버전·작업 적합성이 핵심 | https://github.com/GeniusHTX/SWE-Skills-Bench
+- 2026-06-18 14:35 KST | Codex /usage — 토큰 활동을 CLI 안에서 바로 보는 새 계기판 | https://github.com/openai/codex/releases
