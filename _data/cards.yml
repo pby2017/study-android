@@ -701,6 +701,21 @@ cards:
     source: "https://code.claude.com/docs/en/settings"
 
   - category: ai
+    title: "Playwright MCP — 스크린샷 대신 접근성 트리로 브라우저 조작"
+    summary: >
+      Playwright MCP는 LLM에게 브라우저 자동화 도구를 MCP로 열어 주는 공식 서버다. 핵심은 화면 픽셀을
+      추측하는 대신 페이지의 접근성 트리 스냅샷을 읽고, 그 안의 역할·텍스트·참조값으로 클릭·입력·탭
+      전환·네트워크 확인을 수행한다는 점이다. 그래서 비전 모델 없이도 Todo 입력칸 같은 요소를 안정적으로
+      찾아 조작할 수 있다. 공식 문서는 VS Code·Cursor·Windsurf·Claude Code·Codex 같은 MCP 클라이언트에서
+      `npx @playwright/mcp@latest`로 붙이는 구성을 제시한다. 단, 임의 Playwright 코드를 실행하는
+      browser_run_code_unsafe는 RCE와 같으므로 신뢰한 클라이언트에서만 켜야 한다.
+    points:
+      - "접근성 트리 스냅샷 기반 — 픽셀/스크린샷 추측 의존↓"
+      - "클릭·입력·탭·스크린샷·네트워크/콘솔 확인까지 MCP 도구로 제공"
+      - "공식 GitHub: Apache-2.0, 2026-06-18 확인 34,069★ / unsafe 코드 실행은 신뢰 클라이언트 전용"
+    source: "https://playwright.dev/docs/getting-started-mcp"
+
+  - category: ai
     title: "allowManagedHooksOnly — 조직이 승인한 훅만 돌게 잠그기"
     summary: >
       allowManagedHooksOnly는 settings.json에서 켜면 매니지드 훅, SDK 훅, 그리고 매니지드 설정의 enabledPlugins로 강제 활성화된 플러그인 훅만 로드하는 설정이다.
