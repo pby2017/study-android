@@ -4151,3 +4151,17 @@ cards:
       - "긴 자동화 루프에서 비용·한도 신호를 터미널 안에 고정"
       - "GitHub 91.8k★·848 릴리스, 최신 0.140.0(2026-06-15) 기준"
     source: "https://github.com/openai/codex/releases"
+  - category: ai
+    title: "GitHub Agent Apps — 마켓플레이스 앱처럼 설치하는 코딩 에이전트"
+    summary: >
+      GitHub Agent Apps는 AI 에이전트를 GitHub App처럼 설치해 이슈·PR·Agents UI에서 바로 호출하게 하는 기능이다.
+      GitHub의 2026-06-02 changelog는 첫 파트너 앱을 Marketplace에서 설치하고, 관리자가 활성화하면 세 가지 진입점
+      — 이슈 assignee로 지정, PR 댓글에서 @멘션, Agents UI에서 프롬프트 입력 — 으로 쓸 수 있다고 설명한다. 중요한
+      변화는 에이전트가 IDE 밖으로 나와 GitHub 워크플로 자체의 '할당 가능한 작업자'가 된다는 점이다. Amplitude,
+      Bright Security, Endor Labs, LaunchDarkly, Miro, Sonar, PagerDuty, Packfiles, Octopus Deploy가 첫 wave로
+      공개됐고, GitHub Docs는 사용량이 Copilot cloud agent와 같은 방식으로 AI credits를 소비한다고 못박는다.
+    points:
+      - "설치 모델: GitHub Marketplace의 GitHub App처럼 설치·관리자 활성화"
+      - "진입점: 이슈 assignee, PR @멘션, Agents UI 프롬프트"
+      - "첫 wave 9개 파트너, 사용량은 Copilot cloud agent처럼 AI credits 과금"
+    source: "https://github.blog/changelog/2026-06-02-extend-github-with-agent-apps/"
