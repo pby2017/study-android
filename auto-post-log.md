@@ -157,6 +157,7 @@
 - 2026-06-15 13:30 KST | mini-swe-agent — 단 100줄 파이썬으로 SWE-bench Verified 74% 넘긴 에이전트 | https://github.com/SWE-agent/mini-swe-agent
 
 - 2026-06-15 18:00 KST | Memory Bank — 세션이 바뀌어도 프로젝트 맥락을 잃지 않게 하는 마크다운 메모리 패턴 | https://github.com/GreatScottyMac/roo-code-memory-bank
+- 2026-06-19 06:44 KST | Supabase Agent Plugin — MCP 서버와 스킬을 한 번에 까는 백엔드 작업 키트 | https://supabase.com/docs/guides/ai-tools/plugins
 
 - 2026-06-15 23:30 KST | Windsurf Cascade Workflows — 반복 작업을 .md 레시피로 만들어 /슬래시로 부르기 | https://docs.devin.ai/desktop/cascade/workflows
 

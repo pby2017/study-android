@@ -4180,3 +4180,17 @@ cards:
       - "기본 read-only, sandbox, firewall, safe outputs, threat detection으로 안전장치 내장"
       - "PAT 없이 GITHUB_TOKEN 사용 가능, 조직 AI credits 과금·사용량 cap 관리"
     source: "https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview/"
+  - category: ai
+    title: "Supabase Agent Plugin — MCP 서버와 스킬을 한 번에 까는 백엔드 작업 키트"
+    summary: >
+      Supabase Agent Plugin은 AI 코딩 에이전트가 Supabase 프로젝트를 다룰 때 필요한 MCP 서버와 agent skills를
+      한 번에 설치하게 해주는 공식 플러그인이다. MCP 서버는 테이블 조회, SQL 실행, 마이그레이션 적용,
+      로그·보안/성능 advisor 조회 같은 도구를 에이전트에 붙이고, 스킬은 Supabase·Postgres 작업 절차와
+      베스트프랙티스를 컨텍스트로 준다. 핵심은 "DB를 아는 척하는 에이전트"가 아니라 실제 프로젝트에
+      연결된 도구와 좁은 절차 지식을 함께 주는 것. 공식 배포 repo는 Claude Code, Cursor, Codex,
+      GitHub Copilot, Gemini용 매니페스트와 MCP 어댑터를 나눠 둔다.
+    points:
+      - "한 번 설치로 Supabase MCP 서버 + agent skills를 함께 제공"
+      - "도구: 테이블/확장/마이그레이션/SQL/로그/advisor 등 프로젝트 직접 조작"
+      - "지원 표면: Claude Code·Cursor·Codex·GitHub Copilot·Gemini 배포 repo"
+    source: "https://supabase.com/docs/guides/ai-tools/plugins"
