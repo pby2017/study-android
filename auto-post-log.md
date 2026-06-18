@@ -445,3 +445,4 @@
 - 2026-06-18 14:35 KST | Codex /usage — 토큰 활동을 CLI 안에서 바로 보는 새 계기판 | https://github.com/openai/codex/releases
 - 2026-06-18 18:37 KST | Playwright MCP — 스크린샷 대신 접근성 트리로 브라우저를 조작하는 공식 MCP 서버(Apache-2.0·34,069★ live checked, VS Code/Cursor/Windsurf/Claude Code/Codex 클라이언트 구성) | https://playwright.dev/docs/getting-started-mcp
 - 2026-06-18 22:39 KST | GitHub Agent Apps — 마켓플레이스 앱처럼 설치하는 코딩 에이전트 | https://github.blog/changelog/2026-06-02-extend-github-with-agent-apps/
+- 2026-06-19 02:42 KST | GitHub Agentic Workflows — 자연어 마크다운을 Actions YAML로 컴파일하는 에이전트 자동화 | https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview/

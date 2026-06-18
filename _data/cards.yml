@@ -4165,3 +4165,18 @@ cards:
       - "진입점: 이슈 assignee, PR @멘션, Agents UI 프롬프트"
       - "첫 wave 9개 파트너, 사용량은 Copilot cloud agent처럼 AI credits 과금"
     source: "https://github.blog/changelog/2026-06-02-extend-github-with-agent-apps/"
+  - category: ai
+    title: "GitHub Agentic Workflows — 자연어 마크다운을 Actions YAML로 컴파일하는 에이전트 자동화"
+    summary: >
+      GitHub Agentic Workflows는 이슈 분류, CI 실패 분석, 문서 업데이트처럼 추론이 필요한 반복 작업을
+      GitHub Actions 안의 코딩 에이전트로 자동화하는 public preview다. 핵심은 자동화를 자연어 Markdown
+      파일로 정의하면 표준 Actions YAML로 컴파일된다는 점이다. 그래서 새 에이전트 플랫폼을 따로 운영하는
+      대신 기존 runner group, 정책, Actions 승인 흐름을 재사용한다. 보안 장치도 제품의 중심에 있다:
+      기본 읽기 전용 권한, sandboxed container, Agent Workflow Firewall, safe outputs, threat detection
+      작업을 거친다. 같은 날 업데이트로 장기 PAT 없이 Actions 기본 GITHUB_TOKEN을 쓸 수 있게 됐고,
+      조직 과금은 copilot-requests: write 권한과 비용 관리 도구로 통제한다.
+    points:
+      - "자연어 Markdown 자동화 정의 → 표준 GitHub Actions YAML로 컴파일"
+      - "기본 read-only, sandbox, firewall, safe outputs, threat detection으로 안전장치 내장"
+      - "PAT 없이 GITHUB_TOKEN 사용 가능, 조직 AI credits 과금·사용량 cap 관리"
+    source: "https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview/"
