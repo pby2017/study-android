@@ -588,3 +588,21 @@
 
 누적: 412카드 (402→412)
 주제: AI 테스트(접근성·비전), 크래시 AI 분석, 연합학습, 크로스플랫폼 LLM, 음성 AI, 추천 엔진
+
+## 2026-06-19 20:50 KST — Batch 11 (모바일 AI 특화 5차, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Project KARL — Kotlin 온디바이스 적응형 AI | github.com/theaniketraj |
+| 2 | Apple Trust Insights — iOS 27 사기 탐지 | developer.apple.com |
+| 3 | flutter_doclayout_kit — 문서 레이아웃 AI | github.com/robert008 |
+| 4 | Locanara — LangChain for Mobile | github.com/hyodotdev |
+| 5 | PowerLens — LLM 전력 관리 38.8% 절감 | arxiv.org |
+| 6 | MNN-AECS — LLM 디코딩 에너지 23% 절감 | arxiv.org |
+| 7 | AgentStop(Brave) — AI 추론 조기 종료 | brave.com |
+| 8 | vision_ai — Flutter 제스처+감정 인식 | github.com/OttomanDeveloper |
+| 9 | Gemini Agent Mode — Android Studio AI | developer.android.com |
+| 10 | Mobile Agency — 모바일 AI 에이전트 스킬 | github.com/salmanashraf |
+
+누적: 422카드 (412→422)
+주제: 프라이버시 적응형 AI, 사기 탐지, 문서 AI, 전력 최적화, 제스처 인식, IDE AI 에이전트

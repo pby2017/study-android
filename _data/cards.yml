@@ -5309,3 +5309,124 @@ cards:
       - "3가지 기법 통합: 토큰 정규화 + SVD 분해 + 점진적 정렬"
       - "프라이버시+실시간: 데이터가 디바이스를 안 떠남, 오프라인 동작"
     source: "https://arxiv.org/pdf/2601.09306"
+  - category: ai
+    title: "Project KARL — Kotlin 온디바이스 적응형 AI 라이브러리, 데이터가 디바이스를 절대 안 떠나는 프라이버시 우선(Apache-2.0)"
+    summary: >
+      Project KARL은 프라이버시 우선 온디바이스 적응형 AI를 위한 Kotlin 라이브러리다. 모든 학습과 추론이
+      사용자 디바이스에서만 실행되어 데이터가 절대 외부로 전송되지 않는다(Zero Data Egress). 조합 가능한
+      컨테이너(Composable Container) 아키텍처로 AI 상태와 로직을 정의된 경계 내에서 관리. 사용자 행동에서
+      직접 학습해 키보드·생산성·건강·습관 앱 등의 개인화를 구현. Apache-2.0 라이선스.
+    points:
+      - "Zero Data Egress: 모든 학습·추론이 디바이스에서만 실행"
+      - "Composable Container: AI 상태·로직을 정의된 경계 내 관리"
+      - "온디바이스 적응: 사용자 행동에서 직접 학습, 서버 불필요"
+    source: "https://github.com/theaniketraj/project-karl"
+  - category: ai
+    title: "Apple Trust Insights(iOS 27) — 소셜 엔지니어링·코칭 사기를 온디바이스 ML로 탐지하는 프레임워크"
+    summary: >
+      Trust Insights는 iOS 27에서 도입된 프레임워크로, 사용자가 사기범에게 코칭 받으면서 위험한 행동을 하는
+      상황을 온디바이스 ML로 탐지한다. 결제·계정 변경·원격 접근 같은 민감한 순간에 행동 컨텍스트를 분석해
+      IsLikelyBeingCoachedInsight(unknown/medium/high)를 반환. 개인 콘텐츠(사진·메시지)에 접근하지 않고
+      인터랙션 패턴·타이밍·센서 데이터만 분석. reportConsumption 필수, Apple Business Register로 오프라인 피드백.
+    points:
+      - "온디바이스 ML: 행동 패턴·타이밍·센서로 코칭 사기 탐지"
+      - "프라이버시: 개인 콘텐츠 접근 없이 위험 신호만 반환"
+      - "피드백 루프: reportConsumption(필수) + 오프라인 사기 라벨"
+    source: "https://developer.apple.com/videos/play/wwdc2026/379/"
+  - category: ai
+    title: "flutter_doclayout_kit — PP-DocLayout ONNX로 문서 구조를 온디바이스 분석, 23종 요소 감지(Flutter)"
+    summary: >
+      flutter_doclayout_kit는 PaddlePaddle의 PP-DocLayout 모델을 ONNX Runtime으로 모바일에서 실행해 문서
+      레이아웃을 분석하는 Flutter 플러그인이다. 텍스트·제목·표·수식·그림 등 23종 문서 요소를 감지. Medium
+      모델(22MB)과 Large 모델(123MB) 선택 가능. 오프라인 완전 지원, iOS는 Core ML Execution Provider로
+      가속(메모리 ~1.5GB). 카메라 실시간 스캔·정적 이미지 분석·폼 재구성까지 엔드투엔드 워크플로우.
+    points:
+      - "23종 요소 감지: 텍스트·제목·표·수식·그림·헤더·참조·방정식"
+      - "PP-DocLayout: Medium(22MB, 빠름) / Large(123MB, 정확)"
+      - "iOS Core ML 가속 + Android ONNX Runtime, 완전 오프라인"
+    source: "https://github.com/robert008/flutter_doclayout_kit"
+  - category: ai
+    title: "Locanara — LangChain에서 영감받은 모바일 온디바이스 AI 프레임워크, 체인·RAG·가드레일 DSL(AGPL-3.0)"
+    summary: >
+      Locanara는 LangChain에서 영감받아 모바일 전용으로 설계된 온디바이스 AI 프레임워크다. llama.cpp·CoreML·
+      MLX·Apple Foundation Models 백엔드를 지원하고, InferenceRouter가 디바이스 하드웨어(NPU·메모리·칩셋)를
+      자동 감지해 최적 엔진을 선택. 체이닝 DSL·WindowMemory·SummaryMemory·온디바이스 RAG(벡터스토어+임베딩+
+      쿼리)·가드레일을 제공. iOS 18.1+ / Android 15+, Swift API.
+    points:
+      - "LangChain for Mobile: 체인 DSL, 메모리, RAG, 가드레일"
+      - "InferenceRouter: NPU·메모리·칩셋 자동 감지 → 최적 엔진"
+      - "4개 백엔드: llama.cpp·CoreML·MLX·Apple Foundation Models"
+    source: "https://github.com/hyodotdev/locanara"
+  - category: ai
+    title: "PowerLens — LLM 에이전트로 Android 전력 관리를 자동화, 38.8% 에너지 절감·0.5% 배터리 소모(학술)"
+    summary: >
+      PowerLens는 LLM 에이전트가 UI 시맨틱과 사용자 활동을 인식해 18개 디바이스 파라미터에 걸쳐 개인화된
+      전력 정책을 생성하는 Android 시스템이다. PDL 기반 제약 프레임워크가 모든 액션을 실행 전 검증하고,
+      2계층 메모리(STM+LPM)가 3~5일 내에 사용자 선호도를 학습. 주식 Android 대비 38.8% 에너지 절감, 81.7%
+      액션 정확도, 시스템 자체는 일일 배터리의 0.5%만 소모. 루팅 Android 디바이스에서 검증.
+    points:
+      - "38.8% 에너지 절감: 18개 파라미터 개인화 전력 정책"
+      - "PDL 안전 검증: 모든 액션을 실행 전 제약 조건 체크"
+      - "2계층 메모리: 3~5일 내 사용자 선호도 자동 학습"
+    source: "https://arxiv.org/pdf/2603.19584"
+  - category: ai
+    title: "MNN-AECS — 모바일 LLM 디코딩 에너지를 23% 절감, 루트 없이 엔진 레벨 코어 선택 최적화"
+    summary: >
+      MNN-AECS는 모바일 디바이스에서 LLM 디코딩 시 에너지를 절감하는 최초의 엔진 레벨 솔루션이다.
+      메모리 바운드인 디코드 페이즈에서 저전력 CPU 코어를 동적으로 선택해, 속도 저하 없이 평균 23%
+      에너지 절감(7대 Android·iOS 디바이스, 5개 LLM). llama.cpp·ExecuTorch·MediaPipe 대비 39~78% 에너지
+      절감 + 12~363% 속도 향상. 루트 접근·OS 수정 불필요. MNN 엔진에 통합.
+    points:
+      - "23% 에너지 절감: 디코드 페이즈 저전력 코어 동적 선택"
+      - "루트 불필요: 앱 레벨에서 엔진 내 AECS 적용"
+      - "경쟁 엔진 대비: llama.cpp 대비 39~78% 에너지 절감"
+    source: "https://arxiv.org/html/2506.19884"
+  - category: ai
+    title: "AgentStop(Brave) — 온디바이스 AI 에이전트의 낭비적 추론을 조기 종료해 15~20% 에너지 회수"
+    summary: >
+      AgentStop는 Brave가 만든 경량 효율성 감독자(supervisor)로, 로컬 AI 에이전트의 LLM 추론을 실시간
+      모니터링하다가 성공 가능성이 낮은 체인을 조기 종료해 배터리를 절약한다. 실패한 코딩 시도 하나가
+      ~3,000mWh(100Wh 노트북의 ~3%)를 소모하는 문제를 해결. 태스크 완료율 5% 미만 하락으로 15~20% 낭비
+      에너지 회수. SWE-Bench Verified(Qwen3-Coder-30B-A3B)에서 검증.
+    points:
+      - "15~20% 에너지 회수: 태스크 완료율 <5% 하락"
+      - "실시간 감독: 성공 가능성 예측 → 낭비적 추론 조기 종료"
+      - "Brave 검증: SWE-Bench, 코딩 에이전트 실전 테스트"
+    source: "https://brave.com/blog/agentstop/"
+  - category: ai
+    title: "vision_ai — Flutter 온디바이스 손 제스처 13종 + 얼굴 감정 7종, 25~30fps 실시간 인식(MIT)"
+    summary: >
+      vision_ai는 Flutter용 온디바이스 손 제스처 인식 + 얼굴 감정 감지 패키지다. MediaPipe Gesture
+      Recognizer(~8MB)로 13종 제스처(주먹·평손·피스·엄지·포인팅·ILY·OK·1~5)를 인식하고, TFLite CNN(~2MB)으로
+      7종 감정(행복·슬픔·놀람·분노·혐오·공포·중립)을 감지. 커스텀 제스처 패턴 정의, 21개 손 랜드마크 좌표,
+      모션 추적(속도·방향), 양손 인터랙션(핀치·박수). 25~30fps, 클라우드 $0.
+    points:
+      - "13종 제스처 + 7종 감정: MediaPipe + TFLite, 총 ~10MB"
+      - "25~30fps: GPU 가속 + 자동 CPU 폴백"
+      - "커스텀 제스처: 와일드카드 패턴으로 새 제스처 정의"
+    source: "https://github.com/OttomanDeveloper/vision_ai"
+  - category: ai
+    title: "Gemini Agent Mode(Android Studio) — IDE 내장 AI 에이전트, 멀티파일 편집·Compose UI 생성·빌드 에러 수정"
+    summary: >
+      Gemini Agent Mode는 Android Studio Quail(2026.1.1)에 내장된 AI 코딩 에이전트다. 복잡한 멀티스테이지
+      개발 태스크(유닛 테스트 생성·UI 변경·에러 수정)를 설명하면 실행 계획을 수립하고 여러 파일에 걸쳐
+      편집을 제안. 와이어프레임·목업 이미지를 첨부하면 Compose UI 코드로 변환. Gradle 빌드 에러·크래시
+      분석에 특화. SKILL.md/AGENTS.md 형식이 Claude Code와 호환되어 에이전트 간 스킬 공유 가능.
+    points:
+      - "IDE 네이티브: Android Studio 내장, 컨텍스트 전환 없음"
+      - "이미지→코드: 와이어프레임·목업 첨부 → Compose UI 생성"
+      - "스킬 호환: SKILL.md/AGENTS.md가 Claude Code와 공유 가능"
+    source: "https://developer.android.com/gemini-in-android"
+  - category: ai
+    title: "Mobile Agency — Android·iOS·Flutter·RN·Unity·Unreal용 AI 에이전트 스킬 패키지, 16명 전문가 에이전트"
+    summary: >
+      Mobile Agency는 모바일·게임 개발 전용 AI 에이전트 스킬·프롬프트·워크플로우 컬렉션이다.
+      Claude Code·Cursor·Windsurf·GitHub Copilot·Codex·Gemini에 npx 한 줄로 설치. 16명 전문가 에이전트
+      (@CRASHER: 크래시 디버깅, @AXIOM: Kotlin 코드 리뷰, @MOBILE-HARNESS: 기능 빌드·테스트·검증)와
+      13개 엔드투엔드 워크플로우(/flutter-review, /perf-audit, /mobile-mcp-qa). Android·iOS·Flutter·
+      React Native·Unity·Unreal Engine 6개 플랫폼 지원.
+    points:
+      - "16명 전문가 에이전트: @CRASHER·@AXIOM·@MOBILE-HARNESS 등"
+      - "6개 도구 지원: Claude·Cursor·Windsurf·Copilot·Codex·Gemini"
+      - "6개 플랫폼: Android·iOS·Flutter·RN·Unity·Unreal"
+    source: "https://github.com/salmanashraf/mobile-agency"
