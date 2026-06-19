@@ -470,3 +470,17 @@
   - LangGraph vs CrewAI vs AutoGen — 에이전트 프레임워크 3파전
   - cc-sdd — Kiro 스펙 워크플로우 범용화 CLI
   - Axolotl — YAML 기반 멀티GPU 파인튜닝 오케스트레이터
+
+- 2026-06-19 16:05 KST | Cursor 루틴 batch (12카드) — 29분 탐색 + 1분 업로드
+  - Qdrant — Rust 벡터 검색 엔진 32k★, Series B $50M
+  - Qwen3-Coder-Next — 80B MoE/3B 활성 코딩 에이전트 모델
+  - DSPy — Stanford NLP 프롬프트→프로그래밍 프레임워크 35k★
+  - LiteLLM — 100+ 프로바이더 통합 LLM 게이트웨이 40k★
+  - OpenCode — 172k★ 터미널 코딩 에이전트
+  - E2B — Firecracker microVM AI 코드 실행 샌드박스
+  - Dify — LLMOps 비주얼 앱 빌더 100k★
+  - Keploy — 트래픽 녹화 AI 테스트 자동 생성
+  - Instructor — Pydantic LLM 구조화 출력 12k★
+  - Outlines — FSM 기반 100% 스키마 준수 생성 13k★
+  - GraphRAG(Microsoft) — 지식 그래프 RAG
+  - Argilla — LLM 파인튜닝 데이터 큐레이션 (HuggingFace)
