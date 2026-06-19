@@ -486,3 +486,5 @@
   - Argilla — LLM 파인튜닝 데이터 큐레이션 (HuggingFace)
 
 - 2026-06-19 16:00 KST | Plandex — AI 변경을 리뷰 샌드박스에 격리하는 터미널 코딩 에이전트(MIT·15.5k★) | https://github.com/plandex-ai/plandex
+
+- 2026-06-19 17:00 KST | SWE-agent — GitHub 이슈를 LM이 도구로 자동 수정하는 ACI 기반 에이전트(MIT·19.6k★·NeurIPS 2024) | https://github.com/SWE-agent/SWE-agent

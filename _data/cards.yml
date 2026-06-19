@@ -4583,3 +4583,14 @@ cards:
       - "빌드·린터·테스트 명령 자동 디버깅, 플랜 단위 버전관리·브랜치"
       - "모델 비종속(Anthropic·OpenAI·Google·오픈소스)"
     source: https://github.com/plandex-ai/plandex
+  - category: ai
+    title: "SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트"
+    summary: >
+      SWE-agent는 GitHub 이슈를 입력으로 받아, 선택한 LM이 도구를 자율적으로 사용해 코드를 고치도록 하는 오픈소스(MIT) 에이전트다. 핵심 기여는 에이전트가 쓰기 좋게 설계한 Agent-Computer Interface(ACI)로, NeurIPS 2024 논문으로 발표됐다.
+    points:
+      - "태그라인 'SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice' · MIT · 약 19.6k★"
+      - "핵심: Agent-Computer Interface(ACI) — 에이전트가 다루기 쉬운 도구·환경 인터페이스 설계 (논문 NeurIPS 2024)"
+      - "SWE-bench에서 오픈소스 SOTA급 성능, 단일 yaml로 전체 동작 구성·문서화"
+      - "GPT-4o·Claude 등 모델 선택 가능, 버그수정 외 CTF 보안(EnIGMA 모드)·커스텀 코딩도 지원"
+      - "프린스턴+스탠퍼드 연구진 작품 · 현재 개발 무게중심은 후속작 mini-swe-agent로 이동했다고 repo가 명시"
+    source: https://github.com/SWE-agent/SWE-agent
