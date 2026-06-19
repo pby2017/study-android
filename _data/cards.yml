@@ -4594,3 +4594,75 @@ cards:
       - "GPT-4o·Claude 등 모델 선택 가능, 버그수정 외 CTF 보안(EnIGMA 모드)·커스텀 코딩도 지원"
       - "프린스턴+스탠퍼드 연구진 작품 · 현재 개발 무게중심은 후속작 mini-swe-agent로 이동했다고 repo가 명시"
     source: https://github.com/SWE-agent/SWE-agent
+  - category: ai
+    title: "Garak — LLM의 취약점을 nmap처럼 자동으로 스캔하는 NVIDIA의 AI 레드팀 도구(Apache-2.0·~8k★)"
+    summary: >
+      Garak(Generative AI Red-teaming & Assessment Kit)는 NVIDIA가 주도하는 오픈소스 LLM 취약점 스캐너다.
+      프롬프트 인젝션·데이터 유출·탈옥·환각·독성 생성 등을 자동으로 탐지하며, nmap/Metasploit의 LLM 버전이라
+      보면 된다. HuggingFace·OpenAI·Bedrock·LiteLLM·llama.cpp 등 다양한 모델에 연결 가능. NeMo Guardrails와
+      통합해 가드레일 적용 전후 보호율을 측정할 수 있다. OWASP Top 10 for LLM과 연동한 보안 파이프라인 구축에 핵심.
+    points:
+      - "자동 레드팀: 프롬프트 인젝션·탈옥·데이터 유출·환각 탐지"
+      - "NeMo Guardrails 통합: 가드레일 보호율 측정"
+      - "NVIDIA 주도, Apache-2.0, OWASP LLM Top 10 대응"
+    source: "https://github.com/nvidia/garak"
+  - category: ai
+    title: "llama.cpp + GGUF — CPU·맥·엣지에서 LLM을 돌리는 사실상 표준, Q4_K_M이 2026년 최적 균형점"
+    summary: >
+      llama.cpp는 C/C++로 작성된 LLM 추론 엔진으로, GGUF 포맷을 통해 CPU·Apple Silicon·NVIDIA·AMD·Intel 등
+      거의 모든 하드웨어에서 LLM을 실행한다. 2026년 기준 양자화 최적점은 Q4_K_M(4bit)으로, FP16 대비 퍼플렉시티
+      1~3% 손실에 VRAM 3.5~4배 절감. Ollama·LM Studio·KoboldCpp의 백엔드 엔진이기도 하다. 프로덕션 GPU
+      서빙은 AWQ+vLLM이 표준이지만, 로컬/엣지/맥에서는 llama.cpp+GGUF가 유일한 선택.
+    points:
+      - "범용 하드웨어: CPU·Mac·NVIDIA·AMD·Intel 모두 지원"
+      - "Q4_K_M: 품질 대비 최적 양자화, FP16 대비 1~3% 손실"
+      - "Ollama·LM Studio 백엔드: 소비자 LLM 생태계의 기반"
+    source: "https://github.com/ggml-org/llama.cpp"
+  - category: ai
+    title: "Qwen3-VL — 오픈소스 비전-언어 모델 1위, OCR 32개 언어·문서·차트·GUI 에이전트까지(Apache-2.0)"
+    summary: >
+      Qwen3-VL은 Alibaba가 만든 오픈소스 비전-언어 모델로, 2026년 기준 DocVQA 96.5%·MathVista 85.8%로
+      오픈소스 VLM 중 최강이다. 72B·32B·7B 사이즈 제공, 256K 네이티브 컨텍스트(1M 확장), OCR 32개 언어 지원.
+      GUI 에이전트·차트 이해·디자인→코드 변환까지 커버한다. InternVL3(OpenGVLab)가 범용 시각 추론에 강하다면,
+      Qwen3-VL은 문서·OCR·수학·에이전트 특화. HuggingFace transformers·vLLM 통합.
+    points:
+      - "DocVQA 96.5%: 오픈소스 VLM 최고, 프론티어 모델과 경쟁"
+      - "OCR 32개 언어 + GUI 에이전트 + 디자인→코드"
+      - "72B/32B/7B, Apache-2.0, vLLM·transformers 통합"
+    source: "https://github.com/QwenLM/Qwen2-VL"
+  - category: ai
+    title: "Kokoro-82M — 82M 파라미터로 14배 큰 모델을 이기는 경량 오픈소스 TTS(Apache-2.0·~7.5k★)"
+    summary: >
+      Kokoro-82M은 82M 파라미터의 초경량 TTS 모델로, 14배 큰 모델과 동등한 음성 품질을 달성한다. StyleTTS2+
+      ISTFTNet 아키텍처로 인코더·디퓨전 없이 빠른 합성이 가능하고, 소비자 하드웨어와 엣지 디바이스에서도 실행된다.
+      44개 음성·다국어(영·중·일·이탈리아어 등)·음성 블렌딩 지원. pip install kokoro 한 줄로 시작. Fish Audio
+      S2 Pro(4B, 1000만시간 학습)가 최고 품질이라면, Kokoro는 속도·비용·접근성의 최적점.
+    points:
+      - "82M 파라미터: 14배 큰 모델과 동등 품질, 엣지 실행 가능"
+      - "44개 음성·다국어·음성 블렌딩 지원"
+      - "Apache-2.0, pip install kokoro 한 줄 시작"
+    source: "https://github.com/hexgrad/kokoro"
+  - category: ai
+    title: "Dia2(Nari Labs) — 웃음·기침·한숨까지 재현하는 대화 전용 TTS 모델(Apache-2.0·1.6B)"
+    summary: >
+      Dia2는 Nari Labs가 만든 1.6B+ 파라미터 대화 전용 TTS 모델로, 멀티스피커 대화에서 웃음·기침·한숨 등
+      비언어적 요소까지 자연스럽게 생성한다. 팟캐스트·오디오 드라마·게임 대사·대화형 인터페이스에 최적화.
+      Kokoro(82M)가 범용 경량 TTS, Fish Audio S2 Pro(4B)가 감정·프로소디 최강이라면, Dia2는 '멀티턴 대화
+      리얼리즘'에 특화. Apache-2.0 라이선스로 상업 사용 가능.
+    points:
+      - "대화 특화: 멀티스피커 + 비언어적 요소(웃음·기침·한숨) 생성"
+      - "1.6B 파라미터: 팟캐스트·게임 대사·대화형 UI에 최적"
+      - "Apache-2.0, 상업·비상업 모두 무료"
+    source: "https://github.com/nari-labs/dia"
+  - category: ai
+    title: "NeMo Guardrails — LLM 앱에 프로그래밍 가능한 안전 레이어를 추가하는 NVIDIA 오픈소스 툴킷"
+    summary: >
+      NeMo Guardrails는 NVIDIA가 만든 오픈소스 툴킷으로, LLM 기반 대화 앱에 입력·출력·대화 레일(rail)을
+      프로그래밍 방식으로 추가한다. 탈옥·프롬프트 인젝션·독성 응답을 대화 흐름 수준에서 차단하고, Garak으로
+      보호율을 측정할 수 있다. 실험 결과 전체 레일(대화+입출력 모더레이션) 적용 시 거의 완벽한 보호 달성.
+      가드레일 없는 GPT-3.5도 다수 공격에 취약 → 레일 추가 후 바이패스율 27%→4%로 감소.
+    points:
+      - "입력·출력·대화 레일: 3단계 프로그래밍 가능한 안전 레이어"
+      - "Garak 통합: 가드레일 보호율 자동 측정"
+      - "실측: 가드레일 적용 후 바이패스율 27%→4%"
+    source: "https://github.com/NVIDIA/NeMo-Guardrails"
