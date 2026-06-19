@@ -4800,3 +4800,17 @@ cards:
       - "local-first·self-host(웹 UI 포함) — 노트북·SSH·tmux·헤드리스·CI 어디서나 실행"
       - "모델 비종속: Anthropic·OpenAI·Google·xAI·OpenRouter 100+ 또는 llama.cpp 완전 로컬"
     source: https://github.com/gptme/gptme
+  - category: ai
+    title: "Copilot Code Review + AGENTS.md — 리뷰 기준을 레포 루트 파일로 고정하기"
+    summary: >
+      GitHub Copilot code review가 2026년 6월 18일부터 레포 루트의 AGENTS.md를 읽어 리뷰 피드백에
+      반영한다. 이전처럼 매 PR마다 "우리 팀 규칙을 봐 달라"고 설명하는 대신, 코드 스타일·테스트 기준·보안
+      체크리스트를 저장소 파일에 두고 리뷰 자동화가 같은 기준을 쓰게 만드는 변화다. 공식 문서는 별도의
+      .github/copilot-instructions.md, 경로별 instructions, agent skills, MCP 서버도 리뷰 컨텍스트로 연결할
+      수 있다고 설명한다. 실전 포인트는 간단하다: PR 리뷰 기준은 대화 프롬프트가 아니라 버전 관리되는
+      파일이어야 재현성과 팀 합의가 생긴다.
+    points:
+      - "2026-06-18 GA: Copilot code review가 루트 AGENTS.md를 자동 활용"
+      - ".github/copilot-instructions.md·경로별 instructions·skills·MCP도 리뷰 컨텍스트로 확장"
+      - "리뷰 기준을 프롬프트가 아니라 레포 파일로 관리해 재현성 확보"
+    source: "https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/"

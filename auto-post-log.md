@@ -512,3 +512,5 @@
 - Distilabel (합성 데이터 생성)
 
 - 2026-06-19 18:30 KST | gptme — 터미널 안에서 셸·파이썬·브라우저·파일 도구를 직접 쓰는 로컬-우선 코딩 에이전트(MIT·4.3k★) | https://github.com/gptme/gptme
+
+- 2026-06-19 18:51 KST | Copilot Code Review + AGENTS.md — 리뷰 기준을 레포 루트 파일로 고정하기 | https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/
