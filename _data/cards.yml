@@ -4788,3 +4788,15 @@ cards:
       - "Argilla 연동: 합성 → 인간 검수 파이프라인"
       - "Apache-2.0, 모든 교사 모델 사용 가능"
     source: "https://github.com/argilla-io/distilabel"
+  - category: ai
+    title: "gptme: 터미널 안에서 셸·파이썬·브라우저·파일 도구를 직접 쓰는 로컬-우선 코딩 에이전트"
+    summary: >
+      gptme는 "Your agent in your terminal" — 셸·파이썬(ipython)·파일 패치·브라우저(Playwright)·
+      비전/스크린샷·rag·tmux·subagent 등 로컬 도구를 직접 다루는 local-first 개인 코딩 에이전트다.
+      노트북·SSH·헤드리스·CI 어디서나 돌고, 모델 비종속이라 클라우드 LLM부터 llama.cpp 완전 로컬까지 붙는다.
+    points:
+      - "MIT 라이선스·약 4.3k★, 릴리스 100회로 활발히 유지보수(v0.31.0, 2025-12)"
+      - "내장 도구: shell·python·파일 read/save/append/patch·browser·vision·rag·gh·tmux·subagent"
+      - "local-first·self-host(웹 UI 포함) — 노트북·SSH·tmux·헤드리스·CI 어디서나 실행"
+      - "모델 비종속: Anthropic·OpenAI·Google·xAI·OpenRouter 100+ 또는 llama.cpp 완전 로컬"
+    source: https://github.com/gptme/gptme
