@@ -484,3 +484,5 @@
   - Outlines — FSM 기반 100% 스키마 준수 생성 13k★
   - GraphRAG(Microsoft) — 지식 그래프 RAG
   - Argilla — LLM 파인튜닝 데이터 큐레이션 (HuggingFace)
+
+- 2026-06-19 16:00 KST | Plandex — AI 변경을 리뷰 샌드박스에 격리하는 터미널 코딩 에이전트(MIT·15.5k★) | https://github.com/plandex-ai/plandex

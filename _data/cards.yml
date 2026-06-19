@@ -4572,3 +4572,14 @@ cards:
       - "distilabel 연동: 합성 데이터 생성 → 사람 검수 파이프라인"
       - "HuggingFace 산하: Spaces 즉시 배포, Apache-2.0"
     source: "https://github.com/argilla-io/argilla"
+  - category: ai
+    title: "Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트"
+    summary: >
+      Plandex는 터미널에서 동작하는 오픈소스(MIT) AI 코딩 에이전트로, 대규모 프로젝트와 실제 업무를 겨냥하도록 설계됐다. 핵심은 AI가 만든 수정을 바로 파일에 쓰지 않고 '리뷰 샌드박스'에 누적해 사용자 승인 전까지 실제 코드와 격리하는 점이다.
+    points:
+      - "태그라인 'Open source AI coding agent. Designed for large projects and real world tasks' · 라이선스 MIT · 약 15.5k★"
+      - "누적 diff 리뷰 샌드박스: 승인 전까지 변경을 실제 파일과 분리해 검토"
+      - "직접 컨텍스트 최대 2M 토큰(파일당 ~100k), tree-sitter 프로젝트 맵으로 20M+ 인덱싱"
+      - "빌드·린터·테스트 명령 자동 디버깅, 플랜 단위 버전관리·브랜치"
+      - "모델 비종속(Anthropic·OpenAI·Google·오픈소스)"
+    source: https://github.com/plandex-ai/plandex
