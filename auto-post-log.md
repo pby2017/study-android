@@ -606,3 +606,21 @@
 
 누적: 422카드 (412→422)
 주제: 프라이버시 적응형 AI, 사기 탐지, 문서 AI, 전력 최적화, 제스처 인식, IDE AI 에이전트
+
+## 2026-06-19 21:05 KST — Batch 12 (모바일 AI 특화 6차, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | ML Kit GenAI Summarization — 온디바이스 요약 | developers.google.com |
+| 2 | NeuralPulse — Wear OS 임상급 헬스 | github.com/Ashutosh0x |
+| 3 | nsfw_detect — Flutter NSFW 감지 | pub.dev |
+| 4 | SideEye — 4B VLM 갤러리 스캔 | github.com/baseweight |
+| 5 | ORB-SLAM2s — Android 6DoF SLAM | github.com/Olsc |
+| 6 | YOLO26 — NMS-Free 엣지 객체 감지 | ultralytics.com |
+| 7 | MobileLLM-Flash — Meta 모바일 LLM NAS | arxiv.org |
+| 8 | NexaSDK — NPU 퍼스트 멀티모달 | github.com/NexaAI |
+| 9 | ACE-Step 1.5 — 오픈소스 음악 생성 | github.com/ACE-Step |
+| 10 | Cadence — 생체 기반 AI 음악 | github.com/wtgme |
+
+누적: 432카드 (422→432)
+주제: 텍스트 요약, 헬스 AI, 콘텐츠 모더레이션, SLAM, 객체 감지, 모바일 LLM 설계, 음악 생성
