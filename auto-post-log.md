@@ -624,3 +624,10 @@
 
 누적: 432카드 (422→432)
 주제: 텍스트 요약, 헬스 AI, 콘텐츠 모더레이션, SLAM, 객체 감지, 모바일 LLM 설계, 음악 생성
+
+## 2026-06-19 22:54 KST — GitHub Issues MCP fields
+
+- GitHub Issues MCP 필드 — 에이전트가 이슈 우선순위·영역·날짜를 구조화해 자동 triage | https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues/
+
+누적: 433카드 (432→433)
+주제: GitHub MCP, 이슈 triage 자동화, 구조화 메타데이터, 중복 이슈 감지

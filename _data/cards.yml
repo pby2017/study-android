@@ -5550,3 +5550,16 @@ cards:
       - "2단계 파이프라인: LLM(생체→스타일) + 텍스트-투-뮤직"
       - "로컬 배포: Ollama + SongGeneration 자체 서버 연결 가능"
     source: "https://github.com/wtgme/cadence-ios"
+  - category: ai
+    title: "GitHub Issues MCP 필드 — 에이전트가 이슈 우선순위·영역·날짜를 구조화해 자동 triage"
+    summary: >
+      GitHub는 2026년 6월 18일 Changelog에서 GitHub MCP 서버가 issue fields를 읽고 쓸 수 있게 됐다고
+      발표했다. AI 도구가 연결되면 이슈를 만들 때 Priority·Area·Date 같은 필드를 자동으로 채우고, 필드값으로
+      기존 이슈를 필터링할 수 있다. 같은 업데이트에는 이슈 생성 중 중복 후보를 최대 3개까지 inline으로 보여주는
+      public preview도 포함됐다. GitHub MCP 서버는 공식 저장소 기준 30.8k★이며, issue fields는 1,000개 이상
+      조직이 preview에서 채택한 구조화 메타데이터 기능이다.
+    points:
+      - "MCP 서버가 issue fields 읽기/쓰기 지원: Priority·Area·Date 자동 설정"
+      - "중복 이슈 후보 최대 3개 inline 표시로 maintainer triage 시간 절감"
+      - "공식 GitHub MCP 서버 30.8k★ + issue fields 1,000+ 조직 preview 채택"
+    source: "https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues/"
