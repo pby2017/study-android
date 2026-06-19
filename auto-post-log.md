@@ -458,3 +458,5 @@
   - Roborev — 에이전트 코드를 백그라운드 상시 리뷰 | https://github.com/kenn-io/roborev
   - Playwright CLI + MCP — 에이전트용 브라우저 제어 인터페이스 2종 | https://github.com/microsoft/playwright
   - nit — 스택 자동 감지 + 테스트 생성 로컬 AI 품질 에이전트 | https://github.com/getnit-dev/nit
+
+- 2026-06-19 14:48 KST | GitHub Agent Finder — 에이전트 도구를 미리 다 꽂지 말고 런타임에 찾기 | https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/
