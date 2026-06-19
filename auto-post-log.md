@@ -643,3 +643,15 @@
 
 누적: 437카드 (433→437)
 주제: LiteRT-LM, AppFunctions, Android MCP, AI 샘플, ML Kit GenAI, Gemini Nano
+
+## 2026-06-20 07:02 KST — Batch 14 (공식 Android AI/에이전트 플랫폼 2차, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Android CLI + Skills — 에이전트용 Android 개발 접지 | android-developers.googleblog.com |
+| 2 | Google AI Studio Android 프로토타이핑 — 프롬프트에서 Compose 앱까지 | android-developers.googleblog.com |
+| 3 | Android Studio Agent Mode 병렬 대화 — 테스트·기획·문서화 분리 | android-developers.googleblog.com |
+| 4 | Android XR + Gemini — Geospatial 좌표를 구조화 JSON 투어로 변환 | android-developers.googleblog.com |
+
+누적: 441카드 (437→441)
+주제: Android CLI, Android skills, Google AI Studio, Agent Mode, Android XR, Geospatial API, Firebase AI Logic
