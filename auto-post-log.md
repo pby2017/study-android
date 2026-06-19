@@ -504,3 +504,9 @@
 - Qwen3-Embedding (MTEB 1위 임베딩)
 - BentoML (ML 모델 서빙)
 - FLUX.2 (차세대 이미지 생성)
+
+## 2025-06-19 17:45 KST — Cursor 루틴 Batch 6 (4 cards)
+- Dagster (에셋 중심 오케스트레이터)
+- MLflow (ML 실험 추적 표준)
+- Feast (오픈소스 피처 스토어)
+- Distilabel (합성 데이터 생성)
