@@ -4666,3 +4666,76 @@ cards:
       - "Garak 통합: 가드레일 보호율 자동 측정"
       - "실측: 가드레일 적용 후 바이패스율 27%→4%"
     source: "https://github.com/NVIDIA/NeMo-Guardrails"
+  - category: ai
+    title: "Tabby — Rust로 만든 셀프호스팅 코드 자동완성 서버, 팀 전체에 Copilot을 내부망에서 제공(Apache-2.0·~28k★)"
+    summary: >
+      Tabby는 Rust로 작성된 셀프호스팅 코드 자동완성 서버다. Docker 한 줄로 배포하면 VS Code·JetBrains·Vim
+      확장을 통해 팀 전체에 AI 자동완성을 제공한다. 리포지토리 인덱싱으로 코드베이스 패턴을 학습하고,
+      관리자 대시보드·사용량 분석·LDAP/SSO를 기본 지원해 엔터프라이즈에 적합하다. Continue.dev(25k★)가
+      개인 개발자 대상 IDE 확장(Ollama 연결)이라면, Tabby는 팀 중앙 서버 아키텍처. 추천 모델은
+      Qwen2.5-Coder 7B·Codestral 7B.
+    points:
+      - "Rust 서버: Docker 한 줄 배포, 리포지토리 전체 인덱싱"
+      - "팀 관리: 관리자 대시보드·사용량 분석·LDAP/SSO"
+      - "VS Code·JetBrains·Vim·Eclipse 확장 지원"
+    source: "https://github.com/TabbyML/tabby"
+  - category: ai
+    title: "ComfyUI — 116k★, Stable Diffusion·FLUX를 노드 그래프로 조합하는 오픈소스 이미지 생성 엔진(GPL-3.0)"
+    summary: >
+      ComfyUI는 노드 기반 UI로 Stable Diffusion·FLUX·HunyuanVideo·AnimateDiff 등 오픈소스 이미지/비디오
+      생성 모델을 실행하는 엔진이다. 116k+ GitHub 스타로 AI 이미지 생성 도구 중 가장 인기 있고, 워크플로우를
+      JSON으로 저장해 재현 가능. FLUX.1 Dev(리얼리즘 최강)·FLUX.2 Klein(4B, 소비자 GPU)을 네이티브 지원.
+      Midjourney 대비 월 $0·무제한·프라이버시 보장. API 모드로 n8n 등 자동화 연동도 가능.
+    points:
+      - "116k★: 가장 인기 있는 AI 이미지 생성 UI, GPL-3.0"
+      - "노드 그래프: 워크플로우 JSON 재현, LoRA·ControlNet 확장"
+      - "FLUX 네이티브: 소비자 GPU(12GB+)에서 프로급 이미지"
+    source: "https://github.com/Comfy-Org/ComfyUI"
+  - category: ai
+    title: "BGE-M3 — 100+ 언어·밀집+희소+멀티벡터를 하나의 모델로, RAG 임베딩의 사실상 표준(MIT·BAAI)"
+    summary: >
+      BGE-M3(BAAI)는 단일 모델로 밀집(dense)·희소(sparse)·멀티벡터(ColBERT) 3가지 검색 방식을 모두 지원하는
+      임베딩 모델이다. 100+ 언어, 8192 토큰 컨텍스트. 2026년 기준 '범용 RAG 임베딩을 하나만 고르라면 BGE-M3'가
+      업계 컨센서스. 568M 파라미터로 GPU 없이도 실행 가능. Qwen3-Embedding-8B(MTEB 70.6)가 정확도 최강이라면,
+      BGE-M3는 다용도·다국어·하이브리드 검색의 최적점.
+    points:
+      - "3-in-1: 밀집+희소+멀티벡터(ColBERT) 단일 모델"
+      - "100+ 언어, 8192 토큰 컨텍스트, MIT 라이선스"
+      - "568M: GPU 없이 실행 가능, Ollama 지원"
+    source: "https://github.com/FlagOpen/FlagEmbedding"
+  - category: ai
+    title: "Qwen3-Embedding — MTEB 70.6으로 OpenAI·Google을 넘은 오픈소스 임베딩 모델 1위(Apache-2.0·Alibaba)"
+    summary: >
+      Qwen3-Embedding-8B는 2026년 6월 기준 MTEB 벤치마크 70.6점으로 오픈소스 임베딩 모델 중 1위다. OpenAI
+      text-embedding-3-large(64.6)과 Google Gemini Embedding(68.3)을 모두 추월. 차원 수를 32~4096으로 자유롭게
+      설정 가능하고, 40K 토큰 컨텍스트·다국어 지원. Ollama에서 qwen3-embedding:8b(4.7GB)·4b(2.5GB)·0.6b(639MB)
+      3가지 사이즈로 로컬 실행 가능. 정확도가 최우선이면 Qwen3, 범용 하이브리드라면 BGE-M3.
+    points:
+      - "MTEB 70.6: 오픈소스 1위, OpenAI(64.6)·Google(68.3) 추월"
+      - "MRL: 차원 32~4096 자유 설정, 40K 토큰 컨텍스트"
+      - "Ollama 3종: 8B(4.7GB)·4B(2.5GB)·0.6B(639MB)"
+    source: "https://huggingface.co/Alibaba-NLP/gte-Qwen3-embedding-8B"
+  - category: ai
+    title: "BentoML — Python 코드 그대로 AI 모델을 API·Docker·배포까지, ML엔지니어 친화 서빙 프레임워크(Apache-2.0)"
+    summary: >
+      BentoML은 Python 코드에서 모델 서빙 API를 자동 생성하고 Docker 이미지까지 원클릭으로 만드는 오픈소스
+      ML 서빙 프레임워크다. 동적 배칭·모델 병렬화·멀티스테이지 파이프라인을 내장하고, PyTorch·TensorFlow·
+      Scikit-learn·LLM 모두 지원. NVIDIA Triton이 GPU 최적화 최강, Ray Serve가 분산 DAG 파이프라인 최강이라면,
+      BentoML은 '데이터 사이언티스트가 가장 빨리 프로덕션에 올리는 도구'. BentoCloud로 관리형 배포도 가능.
+    points:
+      - "Python 네이티브: 코드 → API → Docker 자동 생성"
+      - "동적 배칭·모델 병렬화·멀티모델 파이프라인 내장"
+      - "Apache-2.0, BentoCloud 관리형 배포 옵션"
+    source: "https://github.com/bentoml/BentoML"
+  - category: ai
+    title: "FLUX.2 — Stable Diffusion을 만든 팀이 내놓은 차세대 이미지 생성 모델, 소비자 GPU에서 프로급 리얼리즘"
+    summary: >
+      FLUX.2는 Stable Diffusion의 원 저자들이 세운 Black Forest Labs에서 2025년 11월 출시한 차세대 이미지 생성
+      모델이다. FLUX.1 Dev(리얼리즘·프롬프트 정확도 최강)와 FLUX.2 Klein(4B 증류, ~13GB VRAM으로 실시간 생성)을
+      제공한다. text-to-image·image-to-image·멀티 레퍼런스 편집을 단일 아키텍처로 통합. ComfyUI 네이티브 지원,
+      4스텝 euler 샘플링으로 빠른 생성. Midjourney 수준 품질을 로컬에서 무료로.
+    points:
+      - "Klein 4B: 소비자 GPU(13GB VRAM)에서 실시간 이미지 생성"
+      - "t2i·i2i·멀티 레퍼런스 편집 단일 아키텍처 통합"
+      - "ComfyUI 네이티브, 4스텝 생성, Midjourney급 품질 로컬 무료"
+    source: "https://blackforestlabs.ai/"

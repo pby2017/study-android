@@ -496,3 +496,11 @@
 - Kokoro-82M (경량 TTS)
 - Dia2 (대화 전용 TTS)
 - NeMo Guardrails (LLM 가드레일)
+
+## 2025-06-19 17:40 KST — Cursor 루틴 Batch 5 (6 cards)
+- Tabby (셀프호스팅 코드 자동완성)
+- ComfyUI (노드 기반 이미지 생성)
+- BGE-M3 (범용 RAG 임베딩)
+- Qwen3-Embedding (MTEB 1위 임베딩)
+- BentoML (ML 모델 서빙)
+- FLUX.2 (차세대 이미지 생성)
