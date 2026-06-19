@@ -631,3 +631,15 @@
 
 누적: 433카드 (432→433)
 주제: GitHub MCP, 이슈 triage 자동화, 구조화 메타데이터, 중복 이슈 감지
+
+## 2026-06-20 02:59 KST — Batch 13 (공식 Android AI 플랫폼 1차, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | LiteRT-LM — Android 온디바이스 LLM 오케스트레이션 | developers.google.com |
+| 2 | AppFunctions(Android MCP) — 앱 기능을 에이전트 도구로 노출 | developer.android.com |
+| 3 | Android AI Sample Catalog — Firebase AI Logic + ML Kit GenAI 샘플 | developer.android.com |
+| 4 | ML Kit Prompt API — 맞춤 온디바이스 Gemini Nano 프롬프트 | developer.android.com |
+
+누적: 437카드 (433→437)
+주제: LiteRT-LM, AppFunctions, Android MCP, AI 샘플, ML Kit GenAI, Gemini Nano

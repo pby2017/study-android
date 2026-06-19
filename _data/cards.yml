@@ -5563,3 +5563,61 @@ cards:
       - "중복 이슈 후보 최대 3개 inline 표시로 maintainer triage 시간 절감"
       - "공식 GitHub MCP 서버 30.8k★ + issue fields 1,000+ 조직 preview 채택"
     source: "https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues/"
+
+  - category: ai
+    title: "LiteRT-LM — Android에서 LLM을 직접 돌리는 Google AI Edge 오케스트레이션 레이어"
+    summary: >
+      LiteRT-LM은 LiteRT 위에서 LLM을 실행하는 Google AI Edge의 프로덕션 지향 오케스트레이션 레이어다.
+      Android·iOS·Web·Desktop·IoT를 지원하고, Android 네이티브 앱용 Kotlin API는 Stable 상태로 문서화돼
+      있다. 핵심은 GPU·NPU 가속, 비전·오디오 멀티모달, 함수 호출 기반 도구 사용, Gemma·Llama·Phi·Qwen
+      계열 모델 지원. Google 문서의 Gemma4-E2B 예시는 Samsung S26 Ultra에서 GPU 기준 TTFT 0.3초,
+      decode 52 tokens/s를 제시한다. 서버 비용·개인정보 전송을 줄이고 싶은 모바일 AI 기능의 기반 후보.
+    points:
+      - "Kotlin API Stable: Android 네이티브 앱에서 LiteRT-LM 직접 통합"
+      - "GPU·NPU 가속 + 함수 호출: 온디바이스 에이전트 워크플로우 지원"
+      - "공식 벤치: S26 Ultra GPU TTFT 0.3초, decode 52 tokens/s"
+    source: "https://developers.google.com/edge/litert-lm/overview"
+
+  - category: ai
+    title: "AppFunctions(Android MCP) — 앱 기능을 온디바이스 에이전트 도구로 노출하는 실험적 Jetpack API"
+    summary: >
+      AppFunctions는 Android 앱이 자기 기능을 온디바이스 MCP 도구처럼 노출하게 하는 Android 플랫폼 API +
+      Jetpack 라이브러리다. 개발자는 Kotlin 함수에 @AppFunction을 붙여 '노트 생성', '쇼핑리스트 추가' 같은
+      작업을 선언하고, OS 레지스트리가 이를 인덱싱한다. 호출자는 EXECUTE_APP_FUNCTIONS 권한으로 기능을
+      발견·실행한다. 2026년 5월 기준 Gemini 통합은 trusted tester private preview이고, 기능 자체는
+      Android 16 이상에서 실험적 preview다. 지금의 학습 포인트는 UI 버튼이 아니라 에이전트가 호출할
+      안정적인 앱 작업 경계를 설계하는 것이다.
+    points:
+      - "@AppFunction으로 앱 작업을 선언하고 OS가 스키마를 인덱싱"
+      - "Android 16+ 실험적 preview, Gemini 통합은 private preview"
+      - "서버 MCP가 아니라 앱 상태를 직접 쓰는 온디바이스 도구 모델"
+    source: "https://developer.android.com/ai/appfunctions"
+
+  - category: ai
+    title: "Android AI Sample Catalog — Firebase AI Logic과 ML Kit GenAI 샘플을 한 앱에서 복사해 배우기"
+    summary: >
+      Android AI Sample Catalog는 Google이 공개한 AI 샘플 모음 앱이다. Imagen 이미지 생성, Gemini Nano
+      온디바이스 요약, Gemini Nano 이미지 설명, 음성으로 제어하는 할 일 앱, 온디바이스 rewrite assistance
+      같은 예제를 한 프로젝트에서 실행해 볼 수 있다. 클라우드 추론 샘플은 Firebase AI Logic SDK를, 온디바이스
+      추론 샘플은 ML Kit GenAI API를 사용한다. 각 샘플은 관련 README와 코드 조각을 포함하고, AI 기능 코드가
+      독립적으로 복사하기 쉽게 구성돼 있다. 새 API를 문서만 읽지 말고 최소 동작 샘플로 비교할 때 유용하다.
+    points:
+      - "클라우드 샘플은 Firebase AI Logic, 온디바이스 샘플은 ML Kit GenAI"
+      - "Gemini Nano 요약·이미지 설명·rewrite assistance를 직접 실행"
+      - "GitHub 소스와 README 중심: 학습용으로 복사 가능한 self-contained 샘플"
+    source: "https://developer.android.com/blog/posts/explore-ai-on-android-with-our-sample-catalog-app"
+
+  - category: ai
+    title: "ML Kit Prompt API — Gemini Nano를 고정 기능 API 밖의 맞춤 온디바이스 GenAI로 쓰기"
+    summary: >
+      ML Kit Prompt API는 Android 앱이 자연어·멀티모달 요청을 Gemini Nano에 직접 보내도록 하는 Alpha API다.
+      기존 ML Kit GenAI가 요약·이미지 설명처럼 정해진 기능을 제공했다면, Prompt API는 영수증 OCR 결과를
+      카테고리화하거나 긴 글을 알림 제목으로 바꾸고, 리뷰 감정 분류나 이메일 일정 정보 추출처럼 앱별 변환
+      로직을 로컬에서 처리한다. 처리가 디바이스에서 실행되므로 오프라인 동작과 개인정보 보호에 유리하다.
+      단, Alpha 단계이고 지원 기기 확인이 필요하므로 프로덕션에서는 device support와 fallback 설계를 함께
+      봐야 한다.
+    points:
+      - "Alpha API: Gemini Nano에 앱별 자연어·멀티모달 프롬프트 전달"
+      - "영수증 분류·알림 제목 생성·리뷰 감정 분석·이메일 정보 추출"
+      - "온디바이스 처리: 오프라인·프라이버시 장점, 지원 기기 확인 필수"
+    source: "https://developer.android.com/blog/posts/ml-kit-s-prompt-api-unlock-custom-on-device-gemini-nano-experiences"
