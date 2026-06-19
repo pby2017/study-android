@@ -460,3 +460,13 @@
   - nit — 스택 자동 감지 + 테스트 생성 로컬 AI 품질 에이전트 | https://github.com/getnit-dev/nit
 
 - 2026-06-19 14:48 KST | GitHub Agent Finder — 에이전트 도구를 미리 다 꽂지 말고 런타임에 찾기 | https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/
+
+- 2026-06-19 15:37 KST | Cursor 루틴 batch (8카드)
+  - AWS Kiro — Spec-Driven 에이전트 IDE
+  - Augment Code — 40만+ 파일 모노레포 이해 엔터프라이즈 에이전트
+  - Unsloth — 소비자 GPU LLM 파인튜닝 2~5배 가속
+  - Langfuse — LLM 관측성 MIT 오픈소스
+  - RAGFlow — 딥 문서 이해 RAG 엔진 82k★
+  - LangGraph vs CrewAI vs AutoGen — 에이전트 프레임워크 3파전
+  - cc-sdd — Kiro 스펙 워크플로우 범용화 CLI
+  - Axolotl — YAML 기반 멀티GPU 파인튜닝 오케스트레이터
