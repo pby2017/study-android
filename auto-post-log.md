@@ -514,3 +514,5 @@
 - 2026-06-19 18:30 KST | gptme — 터미널 안에서 셸·파이썬·브라우저·파일 도구를 직접 쓰는 로컬-우선 코딩 에이전트(MIT·4.3k★) | https://github.com/gptme/gptme
 
 - 2026-06-19 18:51 KST | Copilot Code Review + AGENTS.md — 리뷰 기준을 레포 루트 파일로 고정하기 | https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/
+
+- 2026-06-19 19:00 KST | smol developer — 제품 스펙(마크다운)만 주면 코드베이스 전체를 스캐폴딩하는 주니어 개발자 에이전트(MIT·12.2k★) | https://github.com/smol-ai/developer

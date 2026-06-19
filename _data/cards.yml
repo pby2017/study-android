@@ -4814,3 +4814,15 @@ cards:
       - ".github/copilot-instructions.md·경로별 instructions·skills·MCP도 리뷰 컨텍스트로 확장"
       - "리뷰 기준을 프롬프트가 아니라 레포 파일로 관리해 재현성 확보"
     source: "https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/"
+  - category: ai
+    title: "smol developer: 제품 스펙(마크다운)만 주면 코드베이스 전체를 스캐폴딩하는 '주니어 개발자' 에이전트"
+    summary: >
+      smol developer는 프롬프트(마크다운 스펙)를 소스로 보고 프로그램 전체를 한 번에 합성하는 초기 코딩 에이전트다.
+      "prompt engineering이 아니라 engineering with prompts" 철학으로, 스펙을 코드베이스의 진짜 소스코드처럼 다룬다.
+      앱에 임베드하는 라이브러리 형태를 처음 제시해 이후 수많은 코드 생성 에이전트에 영향을 줬다.
+    points:
+      - "MIT 라이선스·약 12.2k★ — 태그라인 '앱에 developer agent를 임베드하는 최초의 라이브러리'"
+      - "shared_dependencies.md 중간 단계로 생성 파일 간 이름·의존성 일관성 확보"
+      - "사용 모드 3종: Git Repo 스캐폴딩 / 라이브러리 임베드 / API(Agent Protocol)"
+      - "'전체 코드베이스를 cat해서 디버깅' — 작은 프로젝트를 통째로 컨텍스트에 올리는 접근"
+    source: https://github.com/smol-ai/developer
