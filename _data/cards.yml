@@ -4789,6 +4789,127 @@ cards:
       - "Apache-2.0, 모든 교사 모델 사용 가능"
     source: "https://github.com/argilla-io/distilabel"
   - category: ai
+    title: "Core AI(WWDC26) — Apple이 Apple Intelligence를 구동하는 온디바이스 AI 프레임워크를 개발자에게 공개"
+    summary: >
+      Core AI는 WWDC26에서 발표된 Apple의 차세대 온디바이스 AI 프레임워크다. Apple Intelligence를 구동하는
+      동일 엔진을 개발자가 Swift API로 사용할 수 있게 됐다. AOT(Ahead-of-Time) 컴파일로 첫 실행 시간을
+      대폭 단축하고, Xcode 내장 Core AI Instruments로 텐서 값을 Python 소스까지 추적 디버깅 가능. Qwen·
+      Mistral·SAM3 등 인기 오픈소스 모델을 Apple Silicon에 최적화한 Core AI Models 리포를 제공한다.
+      서버 비용 $0, 토큰당 비용 $0, 클라우드 레이턴시 0.
+    points:
+      - "Apple Intelligence 동일 엔진: Swift API, AOT 컴파일, Neural Engine 최적화"
+      - "Core AI Instruments: Xcode에서 텐서 값 → Python 소스 추적 디버깅"
+      - "Core AI Models 리포: Qwen·Mistral·SAM3 변환 스크립트 + Swift 런타임 라이브러리"
+    source: "https://developer.apple.com/videos/play/wwdc2026/324/"
+  - category: ai
+    title: "LiteRT-LM — Google이 Gemma 4·Llama·Phi를 모바일에서 돌리기 위해 만든 크로스플랫폼 GenAI 런타임"
+    summary: >
+      LiteRT-LM은 Google AI Edge 팀이 만든 온디바이스 GenAI 전용 런타임으로, TFLite 위에 LLM 특화 레이어를
+      얹었다. Gemma 4·Llama·Phi-4·Qwen을 Android(Kotlin)·iOS(Swift)·Web(JS)에서 GPU/NPU 가속으로 실행.
+      Function calling·constrained decoding·멀티모달(비전·오디오)을 지원해 온디바이스 에이전트 워크플로우 구현
+      가능. Chrome·Pixel Watch·AI Edge Gallery 등 Google 제품에서 이미 프로덕션 검증.
+    points:
+      - "크로스플랫폼: Android(Kotlin)·iOS(Swift)·Web(JS)·Desktop·IoT"
+      - "Function calling + constrained decoding: 온디바이스 에이전트 워크플로우"
+      - "Google 프로덕션 검증: Chrome·Pixel Watch·AI Edge Gallery"
+    source: "https://github.com/google-ai-edge/litert-lm"
+  - category: ai
+    title: "Gemma 4 — Apache-2.0로 풀린 Google의 에이전트급 온디바이스 모델, 140+ 언어·멀티모달·Function Calling"
+    summary: >
+      Gemma 4는 Google DeepMind가 Apache-2.0으로 공개한 온디바이스 AI 모델 패밀리다. 챗봇을 넘어 멀티스텝
+      계획·자율 행동·오프라인 코드 생성·오디오/비전 처리까지 디바이스에서 실행 가능. 140+ 언어 지원.
+      Android AICore에 내장되어 시스템 전체에서 접근 가능하고, LiteRT-LM으로 iOS·Web·Desktop에도 배포.
+      Gemma4-E2B(2.6B)는 Samsung S26 Ultra에서 557 tok/s(prefill) 달성.
+    points:
+      - "Apache-2.0: 에이전트급 온디바이스 모델, 140+ 언어"
+      - "Android AICore 내장: 시스템 전체에서 Gemma 4 접근"
+      - "Gemma4-E2B: S26 Ultra에서 557 tok/s prefill"
+    source: "https://developers.googleblog.com/en/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/"
+  - category: ai
+    title: "ExecuTorch — Meta가 Instagram·WhatsApp을 구동하는 PyTorch 온디바이스 AI 엔진을 오픈소스로 공개"
+    summary: >
+      ExecuTorch는 PyTorch 모델을 스마트폰~마이크로컨트롤러까지 배포하는 Meta의 통합 온디바이스 AI 엔진이다.
+      Instagram·WhatsApp·Quest 3·Ray-Ban Meta Smart Glasses에서 프로덕션 검증. AOT 컴파일로 모델을 내보내고,
+      XNNPACK(CPU)·CoreML(iOS)·Vulkan·Qualcomm·MediaTek·Samsung Exynos 백엔드를 지원한다. React Native
+      ExecuTorch(Software Mansion)로 React Native 앱에서도 LLM·RAG를 네이티브로 실행 가능.
+    points:
+      - "Meta 프로덕션: Instagram·WhatsApp·Quest 3·Ray-Ban 검증"
+      - "다중 백엔드: XNNPACK·CoreML·Vulkan·Qualcomm·MediaTek"
+      - "React Native ExecuTorch: RN 앱에서 온디바이스 LLM+RAG"
+    source: "https://github.com/pytorch/executorch"
+  - category: ai
+    title: "Maestro — YAML 한 줄로 모바일 E2E 테스트, AI 어시스턴트로 테스트 자동 생성(Apache-2.0)"
+    summary: >
+      Maestro는 선언적 YAML로 Android·iOS·React Native·Flutter·Web E2E 테스트를 작성하는 프레임워크다.
+      자동 대기·재시도로 flakiness를 흡수하고, Maestro Studio로 시각적 녹화·인스펙션이 가능. MaestroGPT로
+      자연어에서 YAML 플로우를 자동 생성한다. Appium(WebDriver 기반, 크로스플랫폼 표준)이 규모·유연성에
+      강하다면, Maestro는 설정 속도·유지보수 비용·로우코드에 특화. Detox는 React Native 전용 그레이박스.
+    points:
+      - "선언적 YAML: 컴파일 없이 해석 실행, 자동 대기·재시도"
+      - "MaestroGPT: 자연어 → YAML 테스트 플로우 자동 생성"
+      - "크로스플랫폼: Android·iOS·RN·Flutter·Web 단일 수트"
+    source: "https://github.com/mobile-dev-inc/maestro"
+  - category: ai
+    title: "Koog(JetBrains) — Kotlin으로 AI 에이전트를 만드는 멀티플랫폼 프레임워크, MCP 네이티브(Apache-2.0·~4.3k★)"
+    summary: >
+      Koog는 JetBrains가 만든 Kotlin 기반 AI 에이전트 프레임워크다. JVM·Android·iOS·JS·WasmJS 타겟을 지원하는
+      Kotlin Multiplatform 프로젝트로, MCP(Model Context Protocol) 네이티브 통합·Spring Boot·Ktor 연동을
+      제공한다. OpenAI·Anthropic·Google·DeepSeek·Ollama 등 다양한 LLM 프로바이더를 지원. 1.0.0 GA(2026-05).
+      LangChain(Python)이나 LangGraph의 Kotlin 네이티브 대안.
+    points:
+      - "Kotlin Multiplatform: JVM·Android·iOS·JS·WasmJS 에이전트"
+      - "MCP 네이티브 + Spring Boot·Ktor 통합"
+      - "1.0.0 GA(2026-05), Apache-2.0, JetBrains 주도"
+    source: "https://github.com/JetBrains/koog"
+  - category: ai
+    title: "kmp-ai — KMP로 Android·iOS·Desktop에서 오프라인 LLM을 실행하는 llama.cpp 바인딩(Maven Central)"
+    summary: >
+      kmp-ai는 Kotlin Multiplatform에서 llama.cpp를 래핑해 Android·iOS·JVM Desktop에서 오프라인 LLM을
+      실행하는 라이브러리다. Coroutine Flow 스트리밍·HuggingFace 자동 다운로드·SHA-256 검증·이어받기·KV-cache
+      재사용을 지원하고, Qwen 2.5·Gemma 2/3·DeepSeek-R1 카탈로그를 내장. Maven Central 배포로 Android AAR에
+      프리빌트 .so 포함 → 소비자 NDK 불필요. Compose Multiplatform 샘플 앱 제공.
+    points:
+      - "KMP: Android·iOS·Desktop llama.cpp 통합, Maven Central 배포"
+      - "KV-cache 재사용: 후속 턴은 새 메시지만 디코딩 → 속도↑"
+      - "Qwen·Gemma·DeepSeek 카탈로그 내장, GBNF 제약 생성"
+    source: "https://github.com/fadizg/kmp-ai"
+  - category: ai
+    title: "Google Stitch(구 Galileo AI) — 텍스트·음성으로 멀티스크린 모바일 UI를 생성하는 Google의 AI 디자인 도구(무료)"
+    summary: >
+      Google Stitch는 Galileo AI를 인수·리브랜딩한 AI UI 디자인 도구다. Stitch 2.0(2026-03)에서 무한 캔버스·
+      프롬프트당 5개 연결 스크린·음성 입력(Voice Canvas)·DESIGN.md 디자인 시스템 호환을 추가. Figma(편집 가능
+      레이어)·HTML/CSS/Tailwind·React·Firebase Studio로 내보내기 가능. Google Labs에서 무료(월 350회 생성).
+      Figma Make가 디자이너용, v0(Vercel)가 개발자용이라면, Stitch는 빠른 모바일 UI 탐색용.
+    points:
+      - "무료: Google Labs, 월 350회 표준 + 200회 실험 생성"
+      - "멀티스크린: 프롬프트 1회로 5개 연결 스크린 동시 생성"
+      - "내보내기: Figma·React·HTML/CSS·Firebase Studio"
+    source: "https://stitch.withgoogle.com/"
+  - category: ai
+    title: "v0(Vercel) — 프롬프트·스크린샷·Figma에서 프로덕션급 React UI 코드를 생성하는 AI UI 빌더"
+    summary: >
+      v0는 Vercel이 만든 AI UI 생성 도구로, 텍스트·스크린샷·Figma 파일에서 shadcn/ui 기반 프로덕션 React
+      컴포넌트를 생성한다. Design Mode로 비개발자도 시각적으로 타이포·색상·레이아웃을 편집 가능하고,
+      Cmd+K로 인라인 AI 편집. Figma 디자인 토큰을 추출해 브랜드 일관성 유지. Claude Design이 동작 구현에
+      강하다면, v0는 React/Next.js 컴포넌트 코드 품질에 특화.
+    points:
+      - "Figma → React: 디자인 토큰 추출, shadcn/ui 기반 프로덕션 코드"
+      - "Design Mode: 비개발자 시각적 편집, Cmd+K 인라인 AI"
+      - "무료 티어 + Premium $20/mo"
+    source: "https://v0.app/"
+  - category: ai
+    title: "React Native ExecuTorch + RAG — RN 앱에서 온디바이스 LLM과 벡터 검색을 결합해 프라이버시 우선 AI 구현"
+    summary: >
+      react-native-executorch(Software Mansion)는 React Native에서 ExecuTorch를 래핑해 온디바이스 AI 추론을
+      제공한다. react-native-rag를 결합하면 로컬 문서 임베딩 + 벡터 검색 + LLM 생성까지 완전 오프라인 RAG가
+      가능. Llama 3.2 1B 모델 + ALL_MPNET_BASE_V2 임베딩을 사용하고, XNNPACK(CPU)·CoreML(iOS Neural Engine)
+      백엔드 선택 가능. Private Mind 데모 앱으로 검증. 데이터가 디바이스를 떠나지 않는 프라이버시 우선 아키텍처.
+    points:
+      - "완전 오프라인 RAG: 임베딩 + 벡터 검색 + LLM 생성, 클라우드 $0"
+      - "ExecuTorch 백엔드: XNNPACK(CPU)·CoreML(iOS Neural Engine)"
+      - "react-native-rag: useRAG 훅으로 선언적 RAG 구현"
+    source: "https://expo.dev/blog/how-to-run-ai-models-with-react-native-executorch"
+  - category: ai
     title: "gptme: 터미널 안에서 셸·파이썬·브라우저·파일 도구를 직접 쓰는 로컬-우선 코딩 에이전트"
     summary: >
       gptme는 "Your agent in your terminal" — 셸·파이썬(ipython)·파일 패치·브라우저(Playwright)·

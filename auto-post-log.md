@@ -516,3 +516,21 @@
 - 2026-06-19 18:51 KST | Copilot Code Review + AGENTS.md — 리뷰 기준을 레포 루트 파일로 고정하기 | https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/
 
 - 2026-06-19 19:00 KST | smol developer — 제품 스펙(마크다운)만 주면 코드베이스 전체를 스캐폴딩하는 주니어 개발자 에이전트(MIT·12.2k★) | https://github.com/smol-ai/developer
+
+## 2026-06-19 19:55 KST — Batch 7 (모바일 AI 특화, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Core AI(WWDC26) — Apple 온디바이스 AI 프레임워크 | developer.apple.com |
+| 2 | LiteRT-LM — Google 크로스플랫폼 GenAI 런타임 | github.com/google-ai-edge |
+| 3 | Gemma 4 — Apache-2.0 에이전트급 온디바이스 모델 | developers.googleblog.com |
+| 4 | ExecuTorch — Meta PyTorch 온디바이스 엔진 | github.com/pytorch/executorch |
+| 5 | Maestro — YAML E2E 테스트 + AI 자동 생성 | github.com/mobile-dev-inc/maestro |
+| 6 | Koog(JetBrains) — Kotlin AI 에이전트 프레임워크 | github.com/JetBrains/koog |
+| 7 | kmp-ai — KMP 오프라인 LLM(llama.cpp) | github.com/fadizg/kmp-ai |
+| 8 | Google Stitch — AI UI 디자인 도구(무료) | stitch.withgoogle.com |
+| 9 | v0(Vercel) — Figma→React AI UI 빌더 | v0.app |
+| 10 | RN ExecuTorch+RAG — 온디바이스 프라이버시 우선 | expo.dev |
+
+누적: 382카드 (372→382)
+주제: 온디바이스 ML 프레임워크, 테스트 자동화, AI 에이전트, UI 디자인 도구, 크로스플랫폼 LLM
