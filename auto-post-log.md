@@ -552,3 +552,21 @@
 
 누적: 392카드 (382→392)
 주제: AI 테스트 자동화, 음성 인식, 컴퓨터 비전, Flutter AI, 모니터링, 알림, A/B 테스트, 로컬라이제이션
+
+## 2026-06-19 20:25 KST — Batch 9 (모바일 AI 특화 3차, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | LinkForty — 오픈소스 딥링크 엔진(FDL 대체) | github.com/LinkForty |
+| 2 | RevenueCat SOSA 2026 — AI 앱 수익화 데이터 | revenuecat.com |
+| 3 | ADK for Android — Google 온디바이스 에이전트 | developer.android.com |
+| 4 | OWASP MASVS-RESILIENCE + R8 보안 가이드 | mas.owasp.org |
+| 5 | ML Kit + Apple Vision — 온디바이스 OCR | developers.google.com |
+| 6 | ObjectBox — 온디바이스 벡터 DB | github.com/objectbox |
+| 7 | sqlite-vector — SQLite 벡터 검색 확장 | github.com/sqliteai |
+| 8 | Aide — Gemma 4 온디바이스 AI 키보드 | github.com/swaptr |
+| 9 | AppFollow — 앱 리뷰 AI 분석·응답 | appfollow.io |
+| 10 | koog-compose — Koog+Compose AI 에이전트 UI | github.com/BrianMwas |
+
+누적: 402카드 (392→402)
+주제: 딥링크, 수익화, 온디바이스 에이전트, 앱 보안, OCR, 벡터 DB, AI 키보드, 리뷰 분석
