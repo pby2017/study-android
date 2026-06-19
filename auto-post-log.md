@@ -448,3 +448,13 @@
 - 2026-06-18 22:39 KST | GitHub Agent Apps — 마켓플레이스 앱처럼 설치하는 코딩 에이전트 | https://github.blog/changelog/2026-06-02-extend-github-with-agent-apps/
 - 2026-06-19 02:42 KST | GitHub Agentic Workflows — 자연어 마크다운을 Actions YAML로 컴파일하는 에이전트 자동화 | https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview/
 - 2026-06-19 10:46 KST | GitHub Code Quality GA — AI 리뷰도 품질 예산으로 관리한다 | https://github.blog/changelog/2026-06-16-github-code-quality-generally-available-july-20-2026/
+
+- 2026-06-19 13:37 KST | [일괄 8개] Cursor 루틴 — ARD(Agentic Resource Discovery), MCP 2026-07-28 RC Stateless 전환, Open Code Review(Alibaba), SGLang v0.5.13, ProjDevBench, Roborev, Playwright CLI+MCP, nit AI 품질 에이전트
+  - ARD(Agentic Resource Discovery) — AI 에이전트가 도구를 런타임에 직접 찾는 개방형 표준 | https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/
+  - MCP 2026-07-28 RC — 세션 제거, Stateless 코어 전환 | https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
+  - Open Code Review(Alibaba) — 수백만 건 실전 검증 AI 코드리뷰 CLI 오픈소스 | https://github.com/alibaba/open-code-review
+  - SGLang v0.5.13 — DeepSeek-V4 context-parallel + RadixAttention | https://github.com/sgl-project/sglang
+  - ProjDevBench — 프로젝트 처음부터 통째로 만들기 벤치마크 | https://github.com/zsworld6/projdevbench
+  - Roborev — 에이전트 코드를 백그라운드 상시 리뷰 | https://github.com/kenn-io/roborev
+  - Playwright CLI + MCP — 에이전트용 브라우저 제어 인터페이스 2종 | https://github.com/microsoft/playwright
+  - nit — 스택 자동 감지 + 테스트 생성 로컬 AI 품질 에이전트 | https://github.com/getnit-dev/nit
