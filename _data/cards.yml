@@ -5189,3 +5189,123 @@ cards:
       - "온디바이스: Gemma 4(LiteRT-LM) + Apple Foundation Models"
       - "디바이스 도구: GPS·알람·WorkManager·파일시스템 접근"
     source: "https://github.com/BrianMwas/koog-compose"
+  - category: ai
+    title: "Driftx — AI 코딩 에이전트에게 모바일 앱의 눈과 손을 주는 KMP 테스트 프레임워크(MIT)"
+    summary: >
+      Driftx는 Cursor·Claude Code 같은 AI 코딩 에이전트가 iOS 시뮬레이터·Android 에뮬레이터에서 실행 중인
+      앱을 직접 보고 조작할 수 있게 하는 MCP 서버다. 컴포넌트 트리 인스펙션·접근성 감사(대비·라벨·터치 타겟)·
+      시각적 회귀 테스트·Figma 디자인 비교를 지원. 4단계 탭 해석(CDP fiber → XCUITest → 접근성 쿼리 → 
+      measureInWindow)으로 정확한 요소 인터랙션. iOS용 XCUITest 컴패니언이 npm에 번들되어 Xcode 빌드 불필요.
+    points:
+      - "MCP 서버: AI 에이전트가 앱을 직접 보고 조작, npx로 실행"
+      - "접근성 감사: 대비·라벨·터치 타겟 자동 검사"
+      - "시각적 회귀: 빌드 간 스크린샷 픽셀 비교, Figma 디자인 대조"
+    source: "https://github.com/nomanr/driftx"
+  - category: ai
+    title: "Autonoma — 자연어로 웹·iOS·Android E2E 테스트, AI가 요소를 비전으로 찾아 셀프힐링(오픈소스)"
+    summary: >
+      Autonoma는 자연어로 테스트 케이스를 작성하면 AI가 실제 브라우저(Playwright)·실제 디바이스(Appium)에서
+      실행하는 에이전트형 E2E 테스트 플랫폼이다. CSS 셀렉터·XPath 대신 비전 모델(Gemini·Moondream)로 UI
+      요소를 찾아 셀프힐링. 스크린샷 → LLM 판단 → 액션 실행 → 기록 루프로 동작. React 19·Hono·tRPC·Prisma·
+      Redis 스택. PR마다 자동 회귀 테스트 실행으로 리그레션을 조기 발견.
+    points:
+      - "비전 기반: CSS/XPath 불필요, Gemini·Moondream이 요소 탐지"
+      - "크로스플랫폼: Playwright(웹) + Appium(iOS·Android) 통합"
+      - "셀프힐링: UI 변경 시 비전 모델이 자동으로 요소 재탐지"
+    source: "https://github.com/Autonoma-AI/autonoma"
+  - category: ai
+    title: "Luciq Resolve Agent — 모바일 크래시를 AI가 자동 분석·코드 수정·PR 생성하는 에이전틱 디버깅 플랫폼"
+    summary: >
+      Luciq는 모바일 앱 크래시를 AI 에이전트가 자동으로 루트 코즈 분석하고 코드 수정 PR을 생성하는 에이전틱
+      옵저버빌리티 플랫폼이다. 스택 트레이스 + 디바이스 상태 + 피처 플래그 상관관계를 분석해 '90% 발생이
+      Login V2 플래그 활성화 + iOS 26일 때'와 같은 패턴을 자동 식별. 대시보드에서 diff 형태로 수정 제안을
+      보여주고, 피드백 5회까지 반복 개선. 코딩 에이전트(Cursor·Claude) 연동 예정.
+    points:
+      - "에이전틱 디버깅: 크래시 → 루트 코즈 → 코드 수정 PR 자동 생성"
+      - "패턴 인사이트: 피처 플래그·디바이스·SDK 버전 상관관계 자동 식별"
+      - "반복 개선: 피드백 5회까지 수정 반복, 대시보드 내 diff 표시"
+    source: "https://www.luciq.ai/blog/luciq-ai-debugging"
+  - category: ai
+    title: "Baidu Stability Analysis Agent — 크래시·ANR·OOM 로그를 AI가 파싱→심볼화→수정 제안하는 오픈소스 에이전트"
+    summary: >
+      Baidu Maps의 Stability Analysis Agent는 크래시·ANR·OOM·프리즈 로그를 자동으로 파싱하고, addr2line/atos로
+      심볼화하고, 소스 코드 컨텍스트를 추출한 뒤, LangGraph 멀티턴 추론으로 루트 코즈를 분석하고 수정을
+      제안하는 오픈소스 프레임워크다. ChromaDB 기반 RAG 지식 베이스로 이전 분석 결과를 학습. iOS·Android·
+      macOS·Linux·Windows 지원. CLI·HTTP(SSE)·Python API 인터페이스. 자동 수정 적용 + 백업도 가능.
+    points:
+      - "LangGraph 멀티턴: 파싱→심볼화→코드 추출→LLM 추론→수정 제안"
+      - "RAG 지식 베이스: ChromaDB, 이전 분석 결과 누적 학습"
+      - "5개 OS 지원: iOS·Android·macOS·Linux·Windows"
+    source: "https://github.com/baidu-maps/stability-analysis-agent"
+  - category: ai
+    title: "KotlinSyft — OpenMined의 Android 연합학습 라이브러리, 온디바이스 학습으로 데이터가 디바이스를 안 떠남"
+    summary: >
+      KotlinSyft는 OpenMined이 만든 Android 연합학습(Federated Learning) 라이브러리다. PySyft 모델을
+      디바이스에서 직접 학습·추론하며, 사용자 데이터를 중앙 서버로 보내지 않는다. 충전 감지·WiFi 감지로
+      백그라운드 학습 시 디바이스 리소스를 보호. Secure Aggregation·Secure Multi-Party Computation 프로토콜
+      지원. iOS용 SwiftSyft, 웹용 syft.js와 함께 모바일+웹 연합학습 생태계를 구성.
+    points:
+      - "온디바이스 학습: 데이터가 디바이스를 떠나지 않음, PyTorch·TF 모델"
+      - "Secure Aggregation: 모델 업데이트만 암호화된 채로 전송"
+      - "리소스 보호: 충전 감지·WiFi 감지·배터리 수준 체크"
+    source: "https://github.com/OpenMined/KotlinSyft"
+  - category: ai
+    title: "MLC LLM — 크로스플랫폼 온디바이스 LLM 런타임, 같은 체크포인트로 iOS Metal·Android GPU·WebGPU 실행"
+    summary: >
+      MLC LLM은 같은 양자화 체크포인트를 iOS Metal·Android Adreno/Mali·WebGPU에서 실행하는 유일한 성숙한
+      크로스플랫폼 온디바이스 LLM 런타임이다. TVM Unity 컴파일러로 모델을 타겟 하드웨어에 최적화하고,
+      pre-quantized 모델 zoo를 제공. Llama·Qwen·Gemma·Mistral·Phi 등 인기 모델 아키텍처를 지원.
+      ExecuTorch(PyTorch 네이티브)·llama.cpp(GGUF 포터블)와 함께 2026년 온디바이스 LLM 3대 런타임.
+    points:
+      - "크로스플랫폼: 같은 체크포인트 → iOS Metal + Android GPU + WebGPU"
+      - "TVM Unity 컴파일러: 타겟 하드웨어 자동 최적화"
+      - "모델 zoo: Llama·Qwen·Gemma·Mistral·Phi pre-quantized"
+    source: "https://github.com/mlc-ai/mlc-llm"
+  - category: ai
+    title: "RunAnywhere SDK — Android 온디바이스 AI SDK, VAD→STT→LLM→TTS 보이스 파이프라인 올인원(Kotlin)"
+    summary: >
+      RunAnywhere는 Android용 프로덕션급 온디바이스 AI SDK로, VAD(음성 활동 감지)→STT(Whisper)→LLM(LlamaCPP)
+      →TTS(Sherpa-ONNX) 전체 보이스 파이프라인을 오프라인에서 실행한다. Kotlin Coroutines+Flow 기반 비동기
+      아키텍처. LoRA 어댑터 런타임 핫스왑·온디바이스 RAG(벡터 검색+생성)까지 지원. iOS Swift SDK와 미러 API
+      제공으로 크로스플랫폼 개발 가능. 모델 라이프사이클 관리·분석·로깅 내장.
+    points:
+      - "보이스 파이프라인: VAD→STT→LLM→TTS, 완전 오프라인"
+      - "LoRA 핫스왑: 런타임에 어댑터 교체, 모델 리로드 불필요"
+      - "온디바이스 RAG: 임베딩+벡터 검색+LLM 생성, 클라우드 $0"
+    source: "https://docs.runanywhere.ai/kotlin/introduction"
+  - category: ai
+    title: "V8V — KMP 크로스플랫폼 음성 오케스트레이션 프레임워크, 음성→로컬 액션·MCP·웹훅(MIT)"
+    summary: >
+      V8V는 Kotlin Multiplatform으로 만든 크로스플랫폼 음성 오케스트레이션 프레임워크다. 온디바이스 STT로
+      음성을 인식하고, 3가지 콜백(Local·MCP·Remote/웹훅)으로 로컬 앱 액션·크로스앱 MCP 명령·원격 워크플로우를
+      실행한다. Android·iOS·macOS·Web·Flutter·React Native 6개 플랫폼 지원. 오프라인 우선·다국어·프라이버시
+      보장. Maven Central(Android)·SPM(iOS)·npm(Web) 배포.
+    points:
+      - "3가지 콜백: Local(앱 내)·MCP(크로스앱)·Remote(웹훅)"
+      - "6개 플랫폼: Android·iOS·macOS·Web·Flutter·React Native"
+      - "KMP 기반: 오프라인 우선, 다국어, 프라이버시 보장"
+    source: "https://github.com/alimomin1998/v8v"
+  - category: ai
+    title: "RecGPT-Mobile — Taobao가 실전 검증한 온디바이스 LLM 추천 에이전트, 사용자 의도를 실시간 해석"
+    summary: >
+      RecGPT-Mobile은 Taobao(알리바바)가 수백만 실사용자로 검증한 온디바이스 LLM 기반 추천 프레임워크다.
+      경량 LLM을 디바이스에 배포해 사용자의 암묵적 행동(클릭·스크롤·체류시간)을 명시적 의도 쿼리로 변환하고,
+      추천 결과를 실시간으로 조정한다. 빈도 제어 메커니즘으로 불필요한 추론을 줄여 디바이스 리소스를 최적화.
+      클라우드 LLM 추론 대비 레이턴시와 비용을 대폭 절감하면서도 추천 정확도와 해석 가능성 모두 향상.
+    points:
+      - "온디바이스 의도 에이전트: 암묵적 행동 → 명시적 의도 쿼리 변환"
+      - "Taobao 프로덕션: 수백만 실사용자, 추천 정확도+해석 가능성 향상"
+      - "빈도 제어: 중복 추론 방지로 디바이스 리소스 최적화"
+    source: "https://arxiv.org/html/2605.04726v1"
+  - category: ai
+    title: "OD-LLM — 온디바이스 LLM 순차 추천을 위한 태스크 적응형 압축 프레임워크(학술 논문)"
+    summary: >
+      OD-LLM은 LLM을 모바일 디바이스에서 순차 추천(Sequential Recommendation)에 사용하기 위해 설계된
+      최초의 태스크 적응형 압축 프레임워크다. 토큰 레벨 정규화·저랭크 구조 분해(SVD)·점진적 정렬을 통합해
+      사용자-아이템 상호작용의 시간적 패턴을 보존하면서 모델을 대폭 압축. 기존 범용 양자화(GPTQ·AWQ)와 달리
+      추천 시스템의 행동 민감성에 맞춤 설계. 프라이버시 보장·실시간 개인화·오프라인 추천을 동시에 달성.
+    points:
+      - "태스크 적응형: 추천 시스템의 행동 민감성에 맞춘 LLM 압축"
+      - "3가지 기법 통합: 토큰 정규화 + SVD 분해 + 점진적 정렬"
+      - "프라이버시+실시간: 데이터가 디바이스를 안 떠남, 오프라인 동작"
+    source: "https://arxiv.org/pdf/2601.09306"

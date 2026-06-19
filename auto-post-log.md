@@ -570,3 +570,21 @@
 
 누적: 402카드 (392→402)
 주제: 딥링크, 수익화, 온디바이스 에이전트, 앱 보안, OCR, 벡터 DB, AI 키보드, 리뷰 분석
+
+## 2026-06-19 20:35 KST — Batch 10 (모바일 AI 특화 4차, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Driftx — AI 에이전트 모바일 테스트 MCP | github.com/nomanr |
+| 2 | Autonoma — 자연어 E2E 테스트 + 비전 셀프힐링 | github.com/Autonoma-AI |
+| 3 | Luciq Resolve Agent — 크래시→PR 자동 생성 | luciq.ai |
+| 4 | Baidu Stability Agent — 크래시·ANR·OOM AI 분석 | github.com/baidu-maps |
+| 5 | KotlinSyft — Android 연합학습(OpenMined) | github.com/OpenMined |
+| 6 | MLC LLM — 크로스플랫폼 온디바이스 LLM 런타임 | github.com/mlc-ai |
+| 7 | RunAnywhere SDK — 보이스 파이프라인 올인원 | docs.runanywhere.ai |
+| 8 | V8V — KMP 음성 오케스트레이션 | github.com/alimomin1998 |
+| 9 | RecGPT-Mobile — Taobao 온디바이스 추천 에이전트 | arxiv.org |
+| 10 | OD-LLM — 온디바이스 순차 추천 압축 프레임워크 | arxiv.org |
+
+누적: 412카드 (402→412)
+주제: AI 테스트(접근성·비전), 크래시 AI 분석, 연합학습, 크로스플랫폼 LLM, 음성 AI, 추천 엔진
