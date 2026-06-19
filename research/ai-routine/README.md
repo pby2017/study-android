@@ -12,6 +12,69 @@ Each note should record:
 
 Rule: weak evidence means no card. The routine should not fill quota by force.
 
+## Scope
+
+This directory documents the `study-android` AI/Android knowledge-card routine. The routine discovers, explores, researches, verifies, summarizes, and publishes public-facing Korean cards to the study-android repository. It is not an app-factory-android product automation loop.
+
+Non-goals:
+- Do not create or update app-factory-android GitHub issues.
+- Do not create app-factory-android feature branches or pull requests.
+- Do not comment on, close, triage, or otherwise mutate app-factory-android issue/PR state.
+- Do not treat Android topic research as an app implementation request.
+
+
+## Evidence gate
+
+A card may be published only when all are true:
+
+1. Practical developer value is clear.
+2. Topic is current, recently active, or newly relevant.
+3. At least one popularity, adoption, benchmark, official, or reputable-coverage signal exists.
+4. At least one primary or highly reputable source supports the central claim.
+5. Exact metrics such as star counts are verified during the same run if included.
+6. Existing cards were checked for duplicate titles or duplicate angles.
+7. The final card is safe for public GitHub Pages visibility.
+
+Weak evidence means no card. A no-card run is valid when the research note explains what was checked and why candidates were rejected.
+
+## Research note fields
+
+Each completed run note should include:
+- run timestamp
+- selected candidates
+- rejected or deferred candidates that received meaningful review
+- source URLs checked
+- popularity/star/adoption signals
+- exact metrics verified during the run, if used
+- fact-check signals
+- selected/rejected reason
+- confidence
+- published card title and source, when applicable
+
+## Resume checkpoint fields
+
+`research/ai-routine/resume.md` should include:
+- paused timestamp
+- blocking reason
+- current phase
+- candidates already checked
+- source URLs already opened
+- selected candidates not yet written as cards
+- rejected candidates and reasons
+- exact next actions
+- whether `.local-ai-research.disabled` was created
+
+## App-factory non-mutation check
+
+Manual observation commands, when needed:
+
+```bash
+gh issue list -R pby2017/app-factory-android --state all --limit 5
+gh pr list -R pby2017/app-factory-android --state all --limit 5
+```
+
+These commands are read-only checks. The study-android routine must not mutate app-factory-android issue or PR state.
+
 ## Local headless routine setup record
 
 ### Goal
@@ -132,6 +195,7 @@ Observed good state after debugging:
 - Do not add GitHub Actions for this pipeline unless explicitly requested; the owner wants local scheduling to avoid paid workflow use.
 - Do not force low-quality cards to fill a quota. Weak evidence means no card.
 - If Codex/quota/tooling fails mid-run, write `research/ai-routine/resume.md` with exact next actions and source URLs gathered so far, then create `.local-ai-research.disabled` so the 4-hour loop does not waste resources.
+- Known-broken Codex or environment failures must pause repeated unattended runs until recovery is confirmed by a smoke test.
 - If `resume.md` is stale and Codex health is confirmed, remove it and `.local-ai-research.disabled` before restarting the routine.
 
 ## Current owner decision: success gate before schedule
