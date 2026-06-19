@@ -534,3 +534,21 @@
 
 누적: 382카드 (372→382)
 주제: 온디바이스 ML 프레임워크, 테스트 자동화, AI 에이전트, UI 디자인 도구, 크로스플랫폼 LLM
+
+## 2026-06-19 20:10 KST — Batch 8 (모바일 AI 특화 2차, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | AgenTest — AI 에이전트 MCP 모바일 테스트 | github.com/arjun-vegeta |
+| 2 | Sherpa-ONNX — 오프라인 STT·TTS 통합 | github.com/k2-fsa |
+| 3 | MobileSAM — 5M 경량 세그멘테이션 | github.com/ChaoningZhang |
+| 4 | MediaPipe — Google 실시간 모바일 ML | developers.google.com |
+| 5 | Genkit Dart — Flutter AI 프레임워크 | dart.dev |
+| 6 | Sentry — 모바일 크래시·AI 원인 분석 | sentry.io |
+| 7 | Novu — 오픈소스 멀티채널 알림 인프라 | github.com/novuhq |
+| 8 | GrowthBook — 오픈소스 Feature Flag+A/B | github.com/growthbook |
+| 9 | Firebase Remote Config+A/B Testing | firebase.google.com |
+| 10 | AI 로컬라이제이션 CLI 도구 모음 | github.com |
+
+누적: 392카드 (382→392)
+주제: AI 테스트 자동화, 음성 인식, 컴퓨터 비전, Flutter AI, 모니터링, 알림, A/B 테스트, 로컬라이제이션

@@ -4947,3 +4947,125 @@ cards:
       - "사용 모드 3종: Git Repo 스캐폴딩 / 라이브러리 임베드 / API(Agent Protocol)"
       - "'전체 코드베이스를 cat해서 디버깅' — 작은 프로젝트를 통째로 컨텍스트에 올리는 접근"
     source: https://github.com/smol-ai/developer
+  - category: ai
+    title: "AgenTest — AI 코딩 에이전트가 실제 에뮬레이터에서 앱을 테스트하는 MCP 서버, testID·프레임워크 불필요"
+    summary: >
+      AgenTest는 AI 코딩 에이전트(Cursor·Claude)가 실제 Android 에뮬레이터에서 앱을 직접 테스트할 수 있게
+      하는 MCP 서버다. 접근성 트리를 ~80ms에 읽고, gRPC로 60fps 입력을 주입하며, React Native·Flutter 프레임워크
+      감지까지 자동. testID·보일러플레이트·테스트 프레임워크 없이 AI가 코드를 읽고 테스트 케이스를 생성·실행.
+      SharedPreferences·SQLite 인스펙션, 네트워크 시뮬레이션(offline·2g·3g·lte)까지 지원.
+    points:
+      - "MCP 서버: AI 에이전트가 에뮬레이터를 직접 제어, testID 불필요"
+      - "~80ms UI 트리 읽기 + gRPC 60fps 입력 주입"
+      - "네트워크 시뮬레이션·SharedPreferences·SQLite 인스펙션"
+    source: "https://github.com/arjun-vegeta/agenTest"
+  - category: ai
+    title: "Sherpa-ONNX — 인터넷 없이 12개 언어로 모바일 음성 인식, Whisper·Zipformer·Paraformer 통합(~8k★)"
+    summary: >
+      Sherpa-ONNX는 ONNX Runtime 위에서 완전 오프라인 음성 인식(STT)·음성 합성(TTS)·화자 분리·VAD를
+      실행하는 라이브러리다. Android·iOS·HarmonyOS·Raspberry Pi·RISC-V까지 12개 프로그래밍 언어 지원.
+      Whisper·Zipformer·Paraformer·NeMo CTC·SenseVoice 등 다양한 모델 아키텍처를 지원하고, INT8 양자화로
+      경량화. React Native(react-native-sherpa-onnx)·Flutter 래퍼도 존재.
+    points:
+      - "완전 오프라인: 인터넷 없이 STT·TTS·화자 분리·VAD"
+      - "다중 모델: Whisper·Zipformer·Paraformer·NeMo CTC"
+      - "12개 언어 바인딩, Android·iOS·HarmonyOS·RPi·RISC-V"
+    source: "https://github.com/k2-fsa/sherpa-onnx"
+  - category: ai
+    title: "MobileSAM — 5M 파라미터로 SAM과 동등한 세그멘테이션, 모바일에서 12ms 추론(MIT)"
+    summary: >
+      MobileSAM은 Meta SAM의 ViT-H 인코더(632M)를 Tiny-ViT(5M)로 교체해 모바일에서 ~12ms에 이미지
+      세그멘테이션을 실행하는 경량 모델이다. 원본 SAM 파이프라인(전처리·후처리·인터페이스)을 100% 유지하면서
+      5배 작고 7배 빠르다. YOLO와 결합해 '검출→세그멘테이션' 파이프라인을 구성하면 모바일 AR·분석·실시간
+      객체 분리에 적합. ONNX 내보내기 지원, Ultralytics 통합.
+    points:
+      - "5M 파라미터: SAM 대비 5배 작고 7배 빠름, 12ms 추론"
+      - "SAM 파이프라인 100% 호환: 전처리·후처리·인터페이스 동일"
+      - "YOLO 결합: 검출→세그멘테이션 파이프라인으로 모바일 AR"
+    source: "https://github.com/ChaoningZhang/MobileSAM"
+  - category: ai
+    title: "MediaPipe — Google이 만든 모바일 실시간 AI, 30~60fps로 손·포즈·얼굴 추적(Apache-2.0)"
+    summary: >
+      MediaPipe는 Google이 만든 모바일 실시간 ML 프레임워크로, CPU/GPU/NPU 자동 디스패치+XNNPACK 최적화로
+      30~60fps를 보장한다. Hand Landmarker(21점)·Pose Landmarker(33점)·Face Landmarker(478점)·Image Segmenter·
+      Object Detector·Gesture Recognizer 등 사전학습 솔루션을 제공. 동일 작업을 PyTorch로 실행하면 5fps 수준인
+      반면 MediaPipe는 60fps. Android·iOS·Web·Python 지원.
+    points:
+      - "30~60fps 보장: CPU/GPU/NPU 자동 디스패치 + XNNPACK"
+      - "사전학습 솔루션: 손·포즈·얼굴·제스처·세그멘테이션·객체 검출"
+      - "Android·iOS·Web·Python 크로스플랫폼"
+    source: "https://developers.google.com/mediapipe"
+  - category: ai
+    title: "Genkit Dart — Flutter·Dart에서 AI 앱을 만드는 Google의 오픈소스 프레임워크, 온디바이스+클라우드 하이브리드"
+    summary: >
+      Genkit Dart는 Google이 만든 오픈소스 AI 프레임워크로, Flutter·Dart 개발자가 단일 API로 Google·
+      Anthropic·OpenAI·Ollama 모델에 접근한다. genkit_flutter_gemma 플러그인으로 Gemma 4를 온디바이스
+      실행하고, genkit_foundation_models로 Apple Intelligence(iOS 26+)를 연동. 프론트엔드와 백엔드가 모두
+      Dart이므로 AI 로직을 클라이언트↔서버 간 자유롭게 이동 가능. Dev UI로 프롬프트 디버깅.
+    points:
+      - "모델 무관: Google·Anthropic·OpenAI·Ollama 단일 API"
+      - "온디바이스: genkit_flutter_gemma(Gemma 4) + genkit_foundation_models(Apple Intelligence)"
+      - "Dart 풀스택: AI 로직을 클라이언트↔서버 자유 이동"
+    source: "https://dart.dev/blog/announcing-genkit-dart-build-full-stack-ai-apps-with-dart-and-flutter"
+  - category: ai
+    title: "Sentry — 모바일 크래시·ANR·성능을 코드 레벨까지 추적, AI가 94.5% 정확도로 원인 분석(BSD)"
+    summary: >
+      Sentry는 모바일 앱의 크래시·ANR·성능 이슈를 스택 트레이스·디바이스 상태·사용자 행동 컨텍스트와 함께
+      추적하는 오픈소스 모니터링 플랫폼이다. iOS·Android·React Native·Flutter·Unity SDK 제공. Seer AI
+      에이전트가 94.5% 정확도로 루트 코즈를 분석하고, GitHub PR로 수정을 제안. Suspect Commits로 문제를
+      도입한 커밋·작성자를 자동 식별. Crashlytics 대비 더 깊은 비크래시 에러·Compose 지원.
+    points:
+      - "Seer AI: 94.5% 정확도 루트 코즈 분석 + GitHub PR 자동 생성"
+      - "Suspect Commits: 문제 도입 커밋·작성자 자동 식별"
+      - "크로스플랫폼: iOS·Android·RN·Flutter·Unity, 오프라인 캐싱"
+    source: "https://sentry.io/solutions/mobile-developers/"
+  - category: ai
+    title: "Novu — 오픈소스 멀티채널 알림 인프라, Push·Email·SMS·In-App을 단일 API로 통합(MIT·~36k★)"
+    summary: >
+      Novu는 MIT 라이선스 오픈소스 알림 인프라로, Push·Email·SMS·In-App·채팅을 단일 API로 통합한다.
+      콘텐츠 관리·구독자 선호도·채널 라우팅·지연/다이제스트 워크플로우를 코드 또는 UI에서 정의 가능.
+      FCM·APNs·SendGrid·Twilio 등 다양한 프로바이더를 지원하고, 셀프호스팅 무료. 36k+ GitHub 스타로
+      오픈소스 알림 인프라 중 가장 인기. OneSignal이 관리형 SaaS라면, Novu는 셀프호스팅 대안.
+    points:
+      - "단일 API: Push·Email·SMS·In-App·채팅 통합"
+      - "셀프호스팅 무료: MIT, 36k+ GitHub 스타"
+      - "프로바이더 교체 가능: FCM·APNs·SendGrid·Twilio"
+    source: "https://github.com/novuhq/novu"
+  - category: ai
+    title: "GrowthBook — 오픈소스 Feature Flag + A/B 테스트 플랫폼, 데이터웨어하우스 네이티브(MIT·~7k★)"
+    summary: >
+      GrowthBook는 MIT 라이선스 오픈소스 Feature Flag + A/B 테스트 플랫폼이다. BigQuery·Snowflake·
+      Redshift 등 데이터웨어하우스에 직접 연결해 실험 결과를 분석하므로 데이터를 외부로 보내지 않는다.
+      Bayesian 통계 엔진으로 CUPED·Sequential Testing을 지원하고, Android·iOS·React Native·Flutter SDK
+      제공. Firebase A/B Testing이 무료지만 Google 생태계 종속이라면, GrowthBook는 벤더 비종속 대안.
+      Statsig(상용)이 자동 통계+파워 분석에 강하다면, GrowthBook는 셀프호스팅+데이터 주권이 차별점.
+    points:
+      - "데이터웨어하우스 네이티브: BigQuery·Snowflake 직접 연결"
+      - "MIT 셀프호스팅: 데이터가 외부로 나가지 않음"
+      - "Android·iOS·RN·Flutter SDK, Bayesian+CUPED"
+    source: "https://github.com/growthbook/growthbook"
+  - category: ai
+    title: "Firebase Remote Config + A/B Testing — 앱 업데이트 없이 AI 모델·프롬프트·UI를 원격 제어(무료)"
+    summary: >
+      Firebase Remote Config는 앱 업데이트 없이 파라미터(AI 모델명·프롬프트·UI 설정)를 원격으로 변경하는
+      Google 무료 서비스다. Firebase A/B Testing과 연동해 모델 버전·시스템 프롬프트·UI 변형을 사용자
+      세그먼트별로 실험하고, 우승 변형을 점진적으로 롤아웃 가능. Remote Config Personalization은 ML로
+      개별 사용자에게 최적 설정을 자동 적용. GenAI 앱에서 모델 폐기·비용 최적화에 필수.
+    points:
+      - "앱 업데이트 불필요: AI 모델명·프롬프트·UI를 원격 변경"
+      - "A/B Testing 통합: 모델 버전·프롬프트를 세그먼트별 실험"
+      - "Personalization: ML이 개별 사용자 최적 설정 자동 적용"
+    source: "https://firebase.google.com/docs/remote-config"
+  - category: ai
+    title: "AI 로컬라이제이션 CLI — strings.xml·.arb·.xcstrings를 AI로 자동 번역, 모바일 다국어 자동화"
+    summary: >
+      2026년 기준 모바일 앱 로컬라이제이션을 AI로 자동화하는 오픈소스 CLI 도구들이 등장했다.
+      android-llm-localization(Python)은 Android strings.xml을 Gemini·OpenAI·Ollama로 번역하고 포맷
+      스페시파이어(%1$s)를 보존한다. LocalizeKit(Dart)는 Flutter .arb 파일에 특화, 변경된 문자열만
+      재번역하는 스마트 캐싱. Localization-CLI(Swift)는 iOS .xcstrings 전용. 앱 컨텍스트를 제공하면
+      도메인에 맞는 용어를 선택한다. Tolgee(오픈소스)는 웹 UI+번역 메모리+인간 검수 워크플로우.
+    points:
+      - "플랫폼별 전용: Android(strings.xml)·Flutter(.arb)·iOS(.xcstrings)"
+      - "포맷 보존: %1$s·플레이스홀더·복수형 자동 처리"
+      - "스마트 캐싱: 변경된 문자열만 재번역 → API 비용 절감"
+    source: "https://github.com/BharathKmalviya/android-llm-localization"
