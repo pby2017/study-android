@@ -39,7 +39,7 @@ Other sessions may push to the same repo.
 ## Time box
 
 - Total cadence target: 3 hours.
-- Research target: ~3h30m.
+- Research target: ~2h40m.
 - Implementation/publish target: final ~20m.
 - Do not fill quota by force. Weak evidence means no card.
 - If model usage/quota becomes risky, stop with a durable checkpoint instead of losing work.

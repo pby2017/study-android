@@ -66,7 +66,7 @@ run_codex() {
   local codex_bin
   codex_bin="$(realpath "$(command -v codex)")"
   echo "Trying headless provider: codex"
-  timeout "${PIPELINE_TIMEOUT:-13800}" "$codex_bin" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
+  timeout "${PIPELINE_TIMEOUT:-10200}" "$codex_bin" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
 }
 
 AGENT_OK=0
