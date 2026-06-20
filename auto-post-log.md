@@ -655,3 +655,15 @@
 
 누적: 441카드 (437→441)
 주제: Android CLI, Android skills, Google AI Studio, Agent Mode, Android XR, Geospatial API, Firebase AI Logic
+
+## 2026-06-20 11:05 KST — Batch 15 (Android 17 AI/Agent platform follow-up, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Android 17 AppFunctions Agent Skill — 앱 기능을 에이전트 도구 코드로 생성·검증 | android-developers.googleblog.com |
+| 2 | Android 17 NPU 접근 선언 — 온디바이스 AI 앱은 하드웨어 기능을 명시해야 한다 | android-developers.googleblog.com |
+| 3 | ML Kit GenAI Structured Output — Gemini Nano 결과를 파싱 대신 스키마로 받기 | developer.android.com |
+| 4 | A2A 1년 — MCP가 도구 연결이라면 A2A는 에이전트끼리 업무를 넘기는 규약 | developers.googleblog.com |
+
+누적: 445카드 (441→445)
+주제: Android 17 AppFunctions, 온디바이스 NPU 선언, ML Kit GenAI Structured Output, Prefix Caching, A2A

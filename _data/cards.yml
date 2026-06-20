@@ -5681,3 +5681,63 @@ cards:
       - "Firebase AI Logic + Gemini + Google Maps grounding으로 주변 투어 생성"
       - "responseSchema + application/json으로 XR UI가 바로 쓰는 구조화 결과 수신"
     source: "https://android-developers.googleblog.com/2026/06/android-xr-geospatial-api-gemini.html"
+
+  - category: ai
+    title: "Android 17 AppFunctions Agent Skill — 앱 기능을 에이전트 도구 코드로 생성·검증"
+    summary: >
+      Android 17은 AppFunctions를 '인텔리전스 시스템'의 핵심 앱 통합 지점으로 확장한다. 앱은
+      @AppFunction을 붙인 Kotlin 함수와 KDoc으로 노트 생성, 장바구니 추가 같은 기능을 선언하고,
+      Android MCP의 온디바이스 도구처럼 에이전트에 노출한다. 새 AppFunctions agent skill은 앱의 핵심
+      워크플로우를 분석해 필요한 Kotlin 코드를 만들고, LLM tool-calling에 맞게 KDoc을 다듬으며,
+      ADB 테스트·디버깅 명령까지 제안한다. Gemini 통합은 private preview라 바로 배포 기능으로 보면
+      안 되고, 지금은 함수 경계와 설명 문서를 에이전트가 호출하기 좋게 설계하는 준비 단계로 보는 것이 맞다.
+    points:
+      - "@AppFunction + KDoc: 앱 기능을 OS/에이전트가 발견할 수 있는 도구로 선언"
+      - "agent skill: Kotlin 코드 생성, KDoc 최적화, ADB 테스트 명령 제안"
+      - "Gemini 통합은 private preview: 프로덕션 전 함수 경계 설계가 핵심"
+    source: "https://android-developers.googleblog.com/2026/06/Android-17.html"
+
+  - category: ai
+    title: "Android 17 NPU 접근 선언 — 온디바이스 AI 앱은 하드웨어 기능을 명시해야 한다"
+    summary: >
+      Android 17에서 앱이 NPU에 직접 접근해야 한다면 manifest에 FEATURE_NEURAL_PROCESSING_UNIT을
+      선언해야 한다. 대상은 LiteRT NPU delegate, 벤더별 NPU SDK, deprecated NNAPI를 쓰는 앱까지 포함된다.
+      선언이 없으면 target SDK 37 이상 앱은 NPU 접근이 차단될 수 있다. 온디바이스 LLM, 비전 모델, 음성
+      모델처럼 가속기 의존도가 큰 기능은 단순히 라이브러리만 붙이는 문제가 아니라, 기기 기능 선언·fallback
+      경로·성능 테스트를 함께 관리해야 한다. AI 기능을 출시할 때 CPU/GPU/NPU 경로를 명확히 나누는 체크리스트가
+      필요해진다.
+    points:
+      - "target SDK 37+: NPU 직접 접근 시 FEATURE_NEURAL_PROCESSING_UNIT 선언 필요"
+      - "LiteRT NPU delegate·벤더 SDK·NNAPI 사용 앱까지 영향"
+      - "온디바이스 AI는 manifest, fallback, 성능 테스트를 함께 설계"
+    source: "https://android-developers.googleblog.com/2026/06/Android-17.html"
+
+  - category: ai
+    title: "ML Kit GenAI Structured Output — Gemini Nano 결과를 파싱 대신 스키마로 받기"
+    summary: >
+      Google I/O 2026 AI on Android 업데이트는 ML Kit GenAI Prompt API의 프로덕션화 방향을 제시했다.
+      Gemini Nano 4는 AICore Developer Preview에서 미리 써보고, production-ready 앱에서는 ML Kit GenAI
+      Prompt API로 전환하는 흐름이다. 새 Structured Output API는 Prompt API 결과를 개발자가 정의한 객체
+      클래스로 받게 해, 문자열을 직접 파싱하는 불안정한 코드를 줄인다. Prefix Caching은 반복되는 프롬프트
+      앞부분의 중간 LLM 상태를 재사용해 온디바이스 추론 시간을 줄인다. 핵심은 '맞춤 프롬프트'를 데모로 끝내지
+      않고, 스키마·캐시·fallback으로 앱 기능처럼 운영하는 것이다.
+    points:
+      - "Structured Output: Prompt API 결과를 정의한 객체 클래스로 수신"
+      - "Prefix Caching: 반복 프롬프트의 중간 LLM 상태 재사용"
+      - "Gemini Nano 4: preview 실험 후 ML Kit GenAI Prompt API로 production 경로 전환"
+    source: "https://developer.android.com/blog/posts/top-ai-on-android-updates-for-building-intelligent-experiences-from-google-i-o-26"
+
+  - category: ai
+    title: "A2A 1년 — MCP가 도구 연결이라면 A2A는 에이전트끼리 업무를 넘기는 규약"
+    summary: >
+      Google Developers Blog는 2026년 6월 18일 A2A(Agent-to-Agent) 1주년 업데이트에서 협업형 에이전트
+      패턴을 정리했다. MCP가 한 에이전트가 도구와 데이터에 접근하는 통로라면, A2A는 서로 다른 에이전트가
+      능력을 발견하고 업무를 위임하며 결과를 주고받는 통신 계층이다. 실무 포인트는 거대한 단일 에이전트에
+      모든 컨텍스트를 밀어 넣는 대신, 결제·데이터 분석·DevOps·고객지원처럼 권한과 지식 경계가 다른 작업을
+      전문 에이전트로 분리하는 것이다. Android 앱도 AppFunctions나 MCP로 앱 내부 도구를 열고, 외부 업무는
+      A2A 에이전트에 위임하는 구조를 상상할 수 있다.
+    points:
+      - "MCP: agent-to-tool, A2A: agent-to-agent 협업 계층"
+      - "전문 에이전트에 업무 위임: 컨텍스트 오염과 권한 범위 확대를 줄임"
+      - "모바일 앱은 내부 기능은 AppFunctions, 외부 업무는 A2A로 분리 가능"
+    source: "https://developers.googleblog.com/how-a2a-is-building-a-world-of-collaborative-agents/"
