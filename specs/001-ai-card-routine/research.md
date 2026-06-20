@@ -2,7 +2,7 @@
 
 ## Decision: Keep the routine scoped to study-android card publication only
 
-**Rationale**: The project owner's clarified intent is knowledge-card production for AI and Android development topics. app-factory-android is a separate product-development repository with its own issue and PR workflows. Mixing those responsibilities caused confusion and would make validation ambiguous.
+**Rationale**: The project owner's clarified intent is knowledge-card production for AI topics and AI+Android development topics. app-factory-android is a separate product-development repository with its own issue and PR workflows. Mixing those responsibilities caused confusion and would make validation ambiguous.
 
 **Alternatives considered**:
 - Combine card publication with app-factory issue creation — rejected because it violates the clarified session boundary and creates unrelated side effects.

@@ -33,7 +33,7 @@
 4. Check any exact star count or metric was verified in the same run.
 5. Check rejected candidates have decision reasons when researched.
 
-**Expected outcome**: The card is source-backed, current, non-duplicative, and practically relevant to AI or Android developers.
+**Expected outcome**: The card is source-backed, current, non-duplicative, and practically relevant to AI developers or AI+Android developers.
 
 ## Scenario 4: Validate no app-factory side effects
 

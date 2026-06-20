@@ -54,7 +54,7 @@ PROMPT=$(cat <<'PROMPT_EOF'
 Use repo skill `.codex/skills/local-ai-card-routine/SKILL.md`.
 Run the study-android AI/Android developer-topic card routine now.
 Important: edit this repository only; do not add GitHub Actions; do not commit or push.
-Android topics are educational card content, not app feature requests.
+Pure Android topics are out of scope. Android topics qualify only when the core angle is AI+Android, and they are educational card content, not app feature requests. If a candidate has no AI angle, reject it as below threshold.
 Do not create, update, close, comment on, or triage app-factory-android issues, branches, or pull requests.
 Wrapper script owns final verification, commit, and push.
 If usage/quota is near exhaustion or tool access degrades, write a resume checkpoint to `research/ai-routine/resume.md` with next actions, then stop cleanly.

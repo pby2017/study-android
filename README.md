@@ -34,11 +34,11 @@ bundle exec jekyll serve
 근거를 남깁니다. AI 카테고리는 `auto-post/` 루틴이 4시간 주기로 자동 반영됩니다.
 
 ## 자동 포스팅
-- **루틴 범위: study-android 카드만** 생성·검증·커밋·푸시합니다. app-factory-android 이슈/브랜치/PR은 만들거나 수정하지 않습니다.
+- **루틴 범위: study-android의 AI 또는 AI+Android 카드만** 생성·검증·커밋·푸시합니다. 순수 Android 주제는 제외하고, app-factory-android 이슈/브랜치/PR은 만들거나 수정하지 않습니다.
 - GitHub Actions는 쓰지 않습니다. 유료 workflow 사용을 피하기 위해 로컬 macOS `launchd`가 실행합니다.
 - `scripts/install_local_ai_cron.sh`를 실행하면 4시간마다 local AI research pipeline이 돕니다.
 - 각 실행은 대략 3시간 30분 동안 web 조사, 마지막 20분 동안 카드 구현·검증·commit·push를 목표로 합니다.
-- 카드는 억지로 채우지 않습니다. 실용성·최근성·주목도(star/채택/벤치마크/공식 언급)·팩트체크 근거를 통과한 주제만 반영합니다.
+- 카드는 억지로 채우지 않습니다. AI 또는 AI+Android 범위 안에서 실용성·최근성·주목도(star/채택/벤치마크/공식 언급)·팩트체크 근거를 통과한 주제만 반영합니다.
 - 조사 근거와 운영 규칙은 `research/ai-routine/`에 실행별 노트와 README로 남깁니다.
 - 사용량/쿼터가 위험해지거나 도구 접근이 불안정하면 `research/ai-routine/resume.md`에 이어 할 일을 남기고, 다음 4시간 루틴에서 이어받습니다.
 - 즉시 1회 실행은 설치 스크립트의 `RunAtLoad`/`kickstart`로 시작됩니다.

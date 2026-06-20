@@ -14,14 +14,23 @@ Rule: weak evidence means no card. The routine should not fill quota by force.
 
 ## Scope
 
-This directory documents the `study-android` AI/Android knowledge-card routine. The routine discovers, explores, researches, verifies, summarizes, and publishes public-facing Korean cards to the study-android repository. It is not an app-factory-android product automation loop.
+This directory documents the `study-android` AI and AI+Android knowledge-card routine. The routine discovers, explores, researches, verifies, summarizes, and publishes public-facing Korean cards to the study-android repository. It is not an app-factory-android product automation loop.
 
 Non-goals:
 - Do not create or update app-factory-android GitHub issues.
 - Do not create app-factory-android feature branches or pull requests.
 - Do not comment on, close, triage, or otherwise mutate app-factory-android issue/PR state.
-- Do not treat Android topic research as an app implementation request.
+- Do not publish pure Android topics. Do not treat AI+Android topic research as an app implementation request.
 
+
+## Topic eligibility
+
+Only two topic classes qualify:
+
+1. **AI topics** — Claude CLI, Codex, LLMs, agents, MCP, AI coding tools, model releases, benchmarks, AI infra, prompt/context engineering, AI security, and similar AI-native developer subjects.
+2. **AI+Android topics** — Android development where AI is the central angle, such as on-device LLMs, AI-assisted Android testing, mobile AI inference, Android agent workflows, AI UX for mobile, or AI tooling that materially changes Android development.
+
+Pure Android topics are out of scope. If a candidate has no meaningful AI angle, reject it as below the routine threshold even if it is useful Android content.
 
 ## Evidence gate
 

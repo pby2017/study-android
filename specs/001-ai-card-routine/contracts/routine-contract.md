@@ -8,7 +8,7 @@ Define externally observable behavior for the unattended study-android card rout
 
 - Existing study-android card data and publication log
 - Existing research audit notes and optional resume checkpoint
-- Current public/reputable web sources for AI and Android development topics
+- Current public/reputable web sources for AI topics and AI+Android development topics
 - Current repository state and remote state
 - Owner constraints: local routine, Codex-only execution, no GitHub Actions, no app-factory-android automation
 

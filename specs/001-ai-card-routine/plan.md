@@ -8,7 +8,7 @@
 
 ## Summary
 
-Create a bounded, auditable local routine for study-android that discovers current AI and Android development topics, validates them with reputable evidence, writes concise Korean cards, records a research trail, and publishes only repository-card changes. The plan keeps app-factory-android issue/PR automation explicitly out of scope and treats all published content as public-facing.
+Create a bounded, auditable local routine for study-android that discovers current AI topics and AI+Android development topics, validates them with reputable evidence, writes concise Korean cards, records a research trail, and publishes only repository-card changes. The plan keeps app-factory-android issue/PR automation explicitly out of scope and treats all published content as public-facing.
 
 ## Technical Context
 
@@ -28,7 +28,7 @@ Create a bounded, auditable local routine for study-android that discovers curre
 
 **Constraints**: Public-facing content only; no GitHub Actions for this routine; no app-factory-android issue/PR management; avoid repeated resource-wasting retries after known provider/environment failure; sync before edits when safe.
 
-**Scale/Scope**: Recurring study-android AI/Android topic curation; one or more card candidates per cycle; durable audit trail for each completed or interrupted cycle.
+**Scale/Scope**: Recurring study-android AI and AI+Android topic curation; one or more card candidates per cycle; durable audit trail for each completed or interrupted cycle.
 
 ## Constitution Check
 

@@ -45,7 +45,7 @@
 
 ## Phase 3: User Story 1 - Publish verified topic cards (Priority: P1) 🎯 MVP
 
-**Goal**: The routine regularly finds worthwhile AI and Android development topics, validates them with evidence, and publishes concise Korean cards to study-android.
+**Goal**: The routine regularly finds worthwhile AI topics and AI+Android development topics, validates them with evidence, and publishes concise Korean cards to study-android.
 
 **Independent Test**: Run one routine cycle or dry-run equivalent and confirm that a selected topic creates a card, source reference, and research note without unrelated project changes.
 
@@ -54,7 +54,7 @@
 - [X] T012 [P] [US1] Define the candidate topic checklist in `.codex/skills/local-ai-card-routine/SKILL.md`
 - [X] T013 [P] [US1] Define the evidence source requirements in `.codex/skills/local-ai-card-routine/SKILL.md`
 - [X] T014 [US1] Update the card-writing instructions in `.codex/skills/local-ai-card-routine/SKILL.md` to require concise Korean developer value
-- [X] T015 [US1] Update the routine prompt in `scripts/local_ai_research_pipeline.sh` to require AI and Android development topic coverage
+- [X] T015 [US1] Update the routine prompt in `scripts/local_ai_research_pipeline.sh` to require AI-only or AI+Android topic coverage
 - [X] T016 [US1] Ensure the routine writes selected cards to `_data/cards.yml`
 - [X] T017 [US1] Ensure the routine writes publication entries to `auto-post-log.md`
 - [X] T018 [US1] Ensure the routine writes per-run research notes under `research/ai-routine/`
@@ -95,7 +95,7 @@
 
 - [X] T028 [P] [US3] Add app-factory-android non-goals to `research/ai-routine/README.md`
 - [X] T029 [P] [US3] Add app-factory-android forbidden side effects to `.codex/skills/local-ai-card-routine/SKILL.md`
-- [X] T030 [US3] Update `scripts/local_ai_research_pipeline.sh` prompt text to say Android topics are educational card content, not app feature requests
+- [X] T030 [US3] Update `scripts/local_ai_research_pipeline.sh` prompt text to say pure Android topics are out of scope and AI+Android topics are educational card content, not app feature requests
 - [X] T031 [US3] Add a manual verification command snippet for app-factory issue/PR non-mutation to `research/ai-routine/README.md`
 - [X] T032 [US3] Validate User Story 3 with quickstart Scenario 4 in `specs/001-ai-card-routine/quickstart.md`
 

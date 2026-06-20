@@ -1,6 +1,6 @@
 ---
 name: local-ai-card-routine
-description: Research, validate, and publish Korean AI/Android developer-topic cards for the study-android GitHub Pages repo.
+description: Research, validate, and publish Korean AI and AI+Android developer-topic cards for the study-android GitHub Pages repo.
 ---
 
 # Local AI Card Routine
@@ -9,11 +9,11 @@ Use for the recurring local 4-hour pipeline in this repo.
 
 ## Mission
 
-Research current AI and Android development topics and publish only evidence-backed Korean 1-minute cards to study-android.
+Research current AI topics and AI+Android development topics and publish only evidence-backed Korean 1-minute cards to study-android.
 
 ## Scope boundary
 
-This skill is for the `study-android` knowledge-card repository only. Android topics are educational card content, not app feature requests.
+This skill is for the `study-android` knowledge-card repository only. Pure Android topics are out of scope. Android topics qualify only when the core angle is AI+Android, and they are educational card content, not app feature requests.
 
 Allowed outputs:
 - `_data/cards.yml` — Korean public-facing knowledge cards
@@ -25,7 +25,7 @@ Allowed outputs:
 Forbidden outputs:
 - Do not create, update, close, comment on, or triage GitHub issues in `app-factory-android`.
 - Do not create app-factory branches or pull requests.
-- Do not interpret Android topic research as an app implementation request.
+- Do not publish pure Android topics. Do not interpret AI+Android topic research as an app implementation request.
 - Do not add GitHub Actions for this routine.
 - Do not publish private, sensitive, credential-like, or app-factory operational details in cards.
 
@@ -43,6 +43,15 @@ Other sessions may push to the same repo.
 - Implementation/publish target: final ~20m.
 - Do not fill quota by force. Weak evidence means no card.
 - If model usage/quota becomes risky, stop with a durable checkpoint instead of losing work.
+
+## Topic eligibility
+
+Only two topic classes qualify:
+
+1. **AI topics**: Claude CLI, Codex, LLMs, agents, MCP, AI coding tools, model releases, benchmarks, AI infra, prompt/context engineering, AI security, and similar AI-native developer subjects.
+2. **AI+Android topics**: Android development where AI is the central angle, such as on-device LLMs, AI-assisted Android testing, mobile AI inference, Android agent workflows, AI UX for mobile, or AI tooling that materially changes Android development.
+
+Pure Android topics are out of scope. Exclude topics whose core value is only Activity, layout, Gradle, Firebase, Kotlin, Jetpack, emulator, manifest, UI, or ordinary Android app implementation without a meaningful AI angle.
 
 ## Candidate selection gate
 

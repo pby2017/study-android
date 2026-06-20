@@ -6,13 +6,13 @@
 
 **Status**: Draft
 
-**Input**: User description: "Design the study-android routine, not app-factory-android. This session discovers, explores, researches, verifies, organizes, summarizes, and uploads AI and Android development topics as cards to the study-android repository."
+**Input**: User description: "Design the study-android routine, not app-factory-android. This session discovers, explores, researches, verifies, organizes, summarizes, and uploads AI topics and AI+Android development topics as cards to the study-android repository."
 
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Publish verified topic cards (Priority: P1)
 
-As the project owner, I want the routine to regularly find worthwhile AI and Android development topics, validate them with evidence, and publish concise Korean cards to the study-android page so the site stays current without manual daily curation.
+As the project owner, I want the routine to regularly find worthwhile AI topics and AI+Android development topics, validate them with evidence, and publish concise Korean cards to the study-android page so the site stays current without manual daily curation.
 
 **Why this priority**: This is the core value of the project: turning current, useful developer knowledge into public-facing cards.
 
@@ -20,7 +20,7 @@ As the project owner, I want the routine to regularly find worthwhile AI and And
 
 **Acceptance Scenarios**:
 
-1. **Given** the routine starts with no pending checkpoint, **When** it evaluates current AI or Android development topics, **Then** it publishes only topics that pass evidence, usefulness, recency, and non-duplication checks.
+1. **Given** the routine starts with no pending checkpoint, **When** it evaluates current AI or AI+Android development topics, **Then** it publishes only topics that pass evidence, usefulness, recency, and non-duplication checks.
 2. **Given** a selected topic has multiple claims, **When** the card is written, **Then** each material claim is traceable to a reputable source recorded in the research note.
 3. **Given** no topic meets the quality bar, **When** the routine finishes, **Then** it publishes no forced filler card and records that no qualified topic was selected.
 
@@ -71,13 +71,13 @@ As the project owner, I want the routine to stay focused on study-android card p
 
 ### Functional Requirements
 
-- **FR-001**: The routine MUST focus exclusively on discovering, researching, validating, summarizing, and publishing study-android knowledge cards about AI and Android development topics.
+- **FR-001**: The routine MUST focus exclusively on discovering, researching, validating, summarizing, and publishing study-android knowledge cards about AI topics and AI+Android development topics.
 - **FR-002**: The routine MUST NOT create, update, close, comment on, or otherwise manage app-factory-android issues, branches, or pull requests.
 - **FR-003**: The routine MUST evaluate candidate topics for practical developer value, current relevance, popularity or adoption signal, source quality, and duplication risk before publication.
 - **FR-004**: The routine MUST record source URLs and evidence signals for each selected topic and for meaningful rejected candidates.
 - **FR-005**: The routine MUST prefer primary or highly reputable sources for material claims, including official documentation, official release notes, benchmark pages, project repositories, or reputable engineering sources.
 - **FR-006**: The routine MUST verify exact popularity metrics, such as star counts, during the same run before including those numbers in a card.
-- **FR-007**: The routine MUST produce concise Korean card content that explains why the topic matters to AI or Android developers.
+- **FR-007**: The routine MUST produce concise Korean card content that explains why the topic matters to AI developers or AI+Android developers.
 - **FR-008**: The routine MUST publish no card when no candidate satisfies the quality gate.
 - **FR-009**: The routine MUST maintain a research audit trail for every completed publication cycle.
 - **FR-010**: The routine MUST leave a durable resume checkpoint when it cannot finish safely or when continuing would waste resources.
@@ -89,7 +89,7 @@ As the project owner, I want the routine to stay focused on study-android card p
 
 ### Key Entities *(include if feature involves data)*
 
-- **Candidate Topic**: A potential AI or Android development subject; includes title, category, source candidates, usefulness rationale, recency signal, popularity or adoption signal, and duplication status.
+- **Candidate Topic**: A potential AI or AI+Android development subject; includes title, category, source candidates, usefulness rationale, recency signal, popularity or adoption signal, and duplication status.
 - **Evidence Source**: A source used to verify a claim; includes URL, source type, claim supported, retrieval timing, and trust level.
 - **Knowledge Card**: A public-facing Korean summary card; includes category, title, summary, key points, and source reference.
 - **Research Run**: One scheduled or manual cycle; includes start time, candidates considered, selected topics, rejected topics, verification result, checkpoint status, and publication result.
@@ -111,7 +111,7 @@ As the project owner, I want the routine to stay focused on study-android card p
 
 ## Assumptions
 
-- The target audience is developers interested in practical AI tooling, Android development, and adjacent software-engineering trends.
+- The target audience is developers interested in practical AI tooling, LLMs, AI agents, AI infrastructure, and AI+Android development trends.
 - The routine is for study-android only; app-factory-android product issue/PR automation is out of scope.
 - The routine may run unattended on the project owner's local environment, but the specification defines expected behavior rather than a required scheduling technology.
 - Published cards are intended for eventual GitHub Pages visibility and must be safe for public reading.

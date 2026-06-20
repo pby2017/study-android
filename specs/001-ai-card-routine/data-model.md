@@ -2,11 +2,11 @@
 
 ## Candidate Topic
 
-Represents one possible AI or Android development subject evaluated during a routine cycle.
+Represents one possible AI or AI+Android development subject evaluated during a routine cycle.
 
 **Fields**:
 - `title`: concise candidate name
-- `category`: AI, Android development, tooling, benchmark, workflow, or adjacent developer topic
+- `category`: AI tooling, LLM, agent workflow, benchmark, AI infrastructure, or AI+Android developer topic
 - `developer_value`: why the topic matters to developers
 - `recency_signal`: release date, update date, changelog date, or current industry attention
 - `popularity_signal`: stars, forks, adoption, benchmark mention, official coverage, or reputable external coverage
