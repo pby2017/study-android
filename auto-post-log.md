@@ -679,3 +679,15 @@
 
 누적: 449카드 (445→449)
 주제: Android Computer Control, ML Kit GenAI Speech Recognition, Imagen deprecation, Gemini Image, Kakao Mobility Gemini Nano
+
+## 2026-06-20 19:12 KST — Batch 17 (Android hybrid AI + agent safety, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Firebase AI Logic Hybrid API — Android AI 추론을 온디바이스·클라우드로 라우팅 | developer.android.com |
+| 2 | ADK for Android 0.1.0 — 앱 안에서 온디바이스·클라우드 에이전트를 조율 | developers.googleblog.com |
+| 3 | ML Kit Prefix Caching — 반복 프롬프트를 캐시해 Gemini Nano 지연 줄이기 | developers.google.com |
+| 4 | GitHub third-party agent security validation — Codex·Claude PR도 CodeQL·의존성·secret 검사 | github.blog |
+
+누적: 453카드 (449→453)
+주제: Firebase AI Logic Hybrid API, ADK for Android, ML Kit Prompt API Prefix Caching, third-party coding agent security validation

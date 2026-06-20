@@ -5798,3 +5798,63 @@ cards:
       - "평가 예시 약 200개 + few-shot prompting으로 hallucination 최소화"
       - "주문 완료 시간 24% 감소, 신규 전환율 45% 증가, 피크 AI 주문 200%+ 증가"
     source: "https://developer.android.com/blog/posts/kakao-mobility-uses-gemini-nano-on-device-to-reduce-costs-and-boost-call-conversion-by-45"
+
+  - category: ai
+    title: "Firebase AI Logic Hybrid API — Android AI 추론을 온디바이스·클라우드로 라우팅"
+    summary: >
+      Firebase AI Logic Hybrid API는 Android 앱에서 Gemini API 호출을 온디바이스와 클라우드 사이에 나누는
+      단일 인터페이스다. onDeviceConfig의 inference mode로 PREFER_ON_DEVICE, PREFER_IN_CLOUD,
+      ONLY_ON_DEVICE, ONLY_IN_CLOUD를 고를 수 있고, Gemini Nano 같은 온디바이스 모델이 없거나 요청을
+      지원하지 않을 때 클라우드 fallback을 설계할 수 있다. 공식 문서는 이 기능을 experimental로 표시하므로
+      SLA나 호환성 보장을 전제하면 안 된다. 실무 포인트는 '항상 로컬'이 아니라 개인정보·오프라인·비용이 중요한
+      요청은 로컬 우선, 고성능·범용성이 필요한 요청은 클라우드 우선으로 정책을 명시하는 것이다.
+    points:
+      - "onDeviceConfig로 PREFER/ONLY 온디바이스·클라우드 모드 선택"
+      - "온디바이스 모델 미지원 시 클라우드 fallback으로 도달 범위 확대"
+      - "Experimental 기능: SLA·호환성 변경 가능성을 운영 리스크로 반영"
+    source: "https://developer.android.com/ai/hybrid"
+
+  - category: ai
+    title: "ADK for Android 0.1.0 — 앱 안에서 온디바이스·클라우드 에이전트를 조율"
+    summary: >
+      Google은 2026년 5월 ADK for Kotlin과 함께 ADK for Android 0.1.0을 공개했다. Android용 ADK는
+      앱 내부에서 AI 에이전트를 만들고, Gemini Nano 같은 온디바이스 모델과 클라우드 모델을 함께 쓰는
+      하이브리드 오케스트레이션을 목표로 한다. 예시 흐름은 클라우드 orchestrator가 사용자 문제를 이해하고,
+      예약 확인처럼 민감한 로컬 문서 접근이 필요한 작업은 온디바이스 subagent에 위임하는 방식이다.
+      개발자는 `com.google.adk:google-adk-kotlin-core-android:0.1.0` 의존성으로 시작하며, 핵심은
+      에이전트가 모든 데이터를 클라우드로 보내지 않도록 역할과 데이터 경계를 먼저 나누는 것이다.
+    points:
+      - "ADK for Android: 앱 내부 에이전트 + 온디바이스 최적화"
+      - "클라우드 orchestrator가 민감 작업을 로컬 subagent에 위임"
+      - "시작 의존성: google-adk-kotlin-core-android:0.1.0"
+    source: "https://developers.googleblog.com/adk-kotlin-android-building-ai-agents/"
+
+  - category: ai
+    title: "ML Kit Prefix Caching — 반복 프롬프트를 캐시해 Gemini Nano 지연 줄이기"
+    summary: >
+      ML Kit Prompt API의 Prefix Caching은 반복되는 프롬프트 앞부분을 static prefix로 분리하고, 매번 바뀌는
+      내용만 dynamic suffix로 보내 온디바이스 LLM의 중간 상태를 재사용한다. 문서 기준 Pixel 9 예시에서
+      300토큰 prefix+50토큰 suffix는 0.82초에서 cache hit 0.45초, 1000토큰 prefix+100토큰 suffix는
+      2.11초에서 0.5초로 줄었다. 단, 현재 experimental이고 일부 기기에서만 가능하며 text-only 입력만
+      지원한다. 앱 설계 관점에서는 긴 시스템 지침, 고정 분류 기준, 반복 템플릿을 prefix로 빼고 이미지 입력이나
+      민감 prefix 저장 정책은 별도로 검토해야 한다.
+    points:
+      - "반복 promptPrefix + 매번 바뀌는 dynamicSuffix로 중간 LLM 상태 재사용"
+      - "Pixel 9 예시: 2.11초 → cache hit 0.5초(1000+100토큰)"
+      - "Experimental·일부 기기·text-only 제한, 캐시 저장 정책 검토 필요"
+    source: "https://developers.google.com/ml-kit/genai/prompt/android/prefix-caching"
+
+  - category: ai
+    title: "GitHub third-party agent security validation — Codex·Claude PR도 CodeQL·의존성·secret 검사"
+    summary: >
+      GitHub는 2026년 6월 9일 third-party coding agents 보안 검증을 일반 제공한다고 발표했다. Claude나
+      OpenAI Codex처럼 저장소에서 직접 기능 구현, 버그 수정, 테스트 보강을 수행하는 에이전트가 만든 코드도
+      Copilot cloud agent와 같은 자동 보안 검증을 받는다. 검증은 CodeQL 취약점 분석, GitHub Advisory
+      Database 기반 신규 의존성 확인, secret scanning으로 API 키·토큰 노출 탐지를 포함한다. 설정은 기존
+      Copilot validation 설정을 따르고 Advanced Security 라이선스가 필요 없다고 설명된다. 실무 포인트는
+      에이전트 산출물을 신뢰하는 대신, PR 완료 전 자동 검증을 기본 안전망으로 두는 것이다.
+    points:
+      - "third-party coding agents 코드도 Copilot cloud agent와 같은 보안 검증 적용"
+      - "CodeQL, GitHub Advisory Database, secret scanning으로 신규 위험 확인"
+      - "Copilot 설정을 따르며 Advanced Security 라이선스 없이 사용 가능"
+    source: "https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents/"
