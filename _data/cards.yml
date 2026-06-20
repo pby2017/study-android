@@ -5982,3 +5982,63 @@ cards:
       - "enterprise admin·organization owner가 REST API로 조회"
       - "청구서가 아니라 metrics signal이며 feature/model/surface breakdown은 아직 없음"
     source: "https://github.blog/changelog/2026-06-19-ai-credits-consumed-per-user-now-in-the-copilot-usage-metrics-api/"
+
+  - category: ai
+    title: "GitHub Agent Apps — 이슈·PR·Agents UI에 서드파티 AI 에이전트 붙이기"
+    summary: >
+      GitHub는 2026년 6월 2일 Agent Apps를 공개했다. 핵심은 Amplitude, Bright Security, Endor Labs,
+      LaunchDarkly, Miro, Sonar, PagerDuty 같은 파트너 AI 에이전트를 GitHub Marketplace 앱처럼 설치하고,
+      GitHub 워크플로 안에서 바로 호출하는 구조다. 사용자는 이슈를 에이전트에 assign하거나, PR 댓글에서
+      @mention하거나, Agents UI에서 에이전트를 선택해 프롬프트를 줄 수 있다. 실무 포인트는 "모든 일을
+      하나의 범용 코딩 에이전트에 맡기기"보다 보안, 관측, 배포, 제품 분석처럼 도메인 지식이 강한 일을
+      전문 에이전트 앱에 라우팅하는 운영 모델이 생기고 있다는 점이다.
+    points:
+      - "GitHub Marketplace 앱처럼 설치되는 서드파티 AI 에이전트"
+      - "호출 경로: 이슈 assign, PR @mention, Agents UI prompt"
+      - "보안·분석·배포 등 도메인별 전문 에이전트 라우팅 모델"
+    source: "https://github.blog/changelog/2026-06-02-extend-github-with-agent-apps/"
+
+  - category: ai
+    title: "MAI-Code-1-Flash — 작은 코딩 모델을 Copilot 표면 전반에 배치하기"
+    summary: >
+      GitHub는 2026년 6월 18일 MAI-Code-1-Flash를 Copilot CLI, GitHub Copilot app, GitHub의 Copilot Chat,
+      Visual Studio, GitHub Mobile, JetBrains, Eclipse, Xcode까지 확장한다고 발표했다. 이 모델은 Microsoft가
+      GitHub Copilot용으로 설계·튜닝한 작은 코딩 모델이며, Copilot Free·Student·Pro·Pro+·Max에서 먼저
+      제한적으로 제공되고 이후 확대된다. 실무 포인트는 모델 라우팅이다. 모든 요청을 큰 모델로 보내는 대신,
+      빠른 편집, 설명, 반복 질의처럼 지연과 비용이 중요한 작업에는 작은 전용 모델을 우선 배치하고, 아키텍처
+      변경·복잡한 디버깅 같은 작업만 큰 추론 모델로 올리는 정책이 필요하다.
+    points:
+      - "Copilot CLI·IDE·Mobile·GitHub 표면으로 작은 코딩 모델 확장"
+      - "Copilot용으로 설계·튜닝된 Microsoft small-tier coding model"
+      - "큰 모델 기본값보다 작업 난이도별 모델 라우팅 정책이 중요"
+    source: "https://github.blog/changelog/2026-06-18-mai-code-1-flash-available-on-more-copilot-surfaces/"
+
+  - category: ai
+    title: "Copilot 모델 폐기 일정 — 자동화 프롬프트의 모델명을 운영 자산으로 관리하기"
+    summary: >
+      GitHub는 2026년 6월 18일 Opus 4.6 (fast)를 2026년 6월 29일 Copilot 전 표면에서 폐기하고
+      Opus 4.8 (fast)를 대안으로 쓰라고 공지했다. 앞서 2026년 6월 2일에는 GPT-4.1도 Copilot Chat,
+      inline edits, ask, agent mode, code completions에서 폐기하고 GPT-5.5를 대안으로 제시했다. 이 변경은
+      단순 릴리스 노트가 아니라 에이전트 운영 리스크다. 스크립트, 사내 문서, AGENTS.md, CI 프롬프트,
+      팀별 워크플로에 모델명을 하드코딩하면 어느 날 같은 자동화가 실패하거나 다른 품질·비용 특성으로
+      바뀔 수 있다. 모델명은 설정으로 빼고, 폐기일 전 검증 루틴을 두는 것이 안전하다.
+    points:
+      - "Opus 4.6 (fast): 2026-06-29 폐기 예정, 대안은 Opus 4.8 (fast)"
+      - "GPT-4.1: 2026-06-01 Copilot 전 표면에서 폐기, 대안은 GPT-5.5"
+      - "모델명 하드코딩 대신 설정화·폐기일 전 검증 루틴 필요"
+    source: "https://github.blog/changelog/2026-06-18-upcoming-deprecation-of-opus-4-6-fast/"
+
+  - category: ai
+    title: "ML Kit APO — 온디바이스 Gemini Nano 프롬프트를 서버에서 자동 탐색하기"
+    summary: >
+      Android Developers Blog는 ML Kit GenAI Prompt API용 Automated Prompt Optimization(APO)을 소개했다.
+      Android AICore는 공유 시스템 모델을 우선하므로 앱마다 LoRA adapter를 배포하는 방식은 운영 부담이
+      생길 수 있다. APO는 Vertex AI에서 서버 측 모델을 사용해 오류 패턴을 분석하고, 의미 지시문을 추출하고,
+      여러 후보 프롬프트를 병렬 테스트해 Gemini Nano v3용 시스템 지시문을 찾는다. 중요한 점은 최종 실행은
+      Android의 ML Kit GenAI API와 Gemini Nano 쪽에 남기면서, 품질 개선 탐색은 서버에서 자동화한다는 것이다.
+      온디바이스 AI 앱은 "프롬프트도 빌드 산출물"처럼 평가 데이터와 함께 관리해야 한다.
+    points:
+      - "APO: Vertex AI에서 Gemini Nano v3용 프롬프트 후보를 자동 탐색"
+      - "오류 분석·semantic instruction distillation·병렬 후보 테스트"
+      - "온디바이스 실행을 유지하면서 프롬프트 품질 개선 루프를 운영"
+    source: "https://developer.android.com/blog/posts/how-automated-prompt-optimization-unlocks-quality-gains-for-ml-kit-s-gen-ai-prompt-api"

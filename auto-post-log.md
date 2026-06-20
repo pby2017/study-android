@@ -715,3 +715,15 @@
 
 누적: 461카드 (457→461)
 주제: Colab CLI, Copilot context window, configurable reasoning, local/cloud sandboxes, usage metrics API, AI credits
+
+## 2026-06-21 03:43 KST — Batch 20 (agent app marketplace + model operations + Android prompt optimization, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | GitHub Agent Apps — 이슈·PR·Agents UI에 서드파티 AI 에이전트 붙이기 | github.blog |
+| 2 | MAI-Code-1-Flash — 작은 코딩 모델을 Copilot 표면 전반에 배치하기 | github.blog |
+| 3 | Copilot 모델 폐기 일정 — 자동화 프롬프트의 모델명을 운영 자산으로 관리하기 | github.blog |
+| 4 | ML Kit APO — 온디바이스 Gemini Nano 프롬프트를 서버에서 자동 탐색하기 | developer.android.com |
+
+누적: 465카드 (461→465)
+주제: GitHub Agent Apps, MAI-Code-1-Flash, Copilot model deprecations, ML Kit Automated Prompt Optimization, Gemini Nano v3
