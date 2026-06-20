@@ -5918,3 +5918,67 @@ cards:
       - "초기 6개 plugin에 62개 앱, 110개 스킬 포함"
       - "Sites는 URL 공유 결과물, annotations는 결과물 위 직접 피드백"
     source: "https://openai.com/index/codex-for-every-role-tool-workflow/"
+
+  - category: ai
+    title: "Google Colab CLI — 코딩 에이전트에게 GPU 런타임을 빌려주는 터미널 브리지"
+    summary: >
+      Google Colab CLI는 로컬 터미널과 원격 Colab 런타임을 잇는 명령줄 도구다. 핵심은 개발자뿐 아니라
+      터미널 접근이 있는 AI 에이전트가 `colab --gpu T4`, `colab exec`, `colab download`, `colab log`
+      같은 명령으로 GPU/TPU 런타임을 요청하고, 로컬 파이썬 스크립트를 원격에서 실행하고, 모델·로그·노트북
+      산출물을 다시 가져올 수 있다는 점이다. Google은 Colab CLI에 에이전트용 skill file도 함께 제공해
+      Claude Code, Codex, Gemini류 터미널 에이전트가 사용법을 매번 추측하지 않게 한다. 실무 포인트는
+      파인튜닝·평가처럼 로컬 노트북에는 무겁고 클라우드 IaC에는 과한 작업을 에이전트 루프 안에서 짧게
+      원격 실행할 수 있다는 것이다.
+    points:
+      - "로컬 터미널 -> Colab GPU/TPU 런타임을 CLI로 연결"
+      - "`colab exec`로 로컬 ML 스크립트를 원격 실행, `colab download/log`로 산출물 회수"
+      - "에이전트용 skill file 제공: 터미널 AI가 Colab 사용법을 컨텍스트로 받음"
+    source: "https://developers.googleblog.com/introducing-the-google-colab-cli/"
+
+  - category: ai
+    title: "Copilot 1M 컨텍스트·추론 레벨 — 큰 창은 기본값이 아니라 고비용 모드"
+    summary: >
+      GitHub Copilot은 2026년 6월 4일 더 큰 컨텍스트 창과 configurable reasoning levels를 공개했다.
+      100만 토큰 컨텍스트는 큰 코드베이스, 긴 문서, 복잡한 다중 파일 작업을 한 세션에 담기 위한 장치이고,
+      추론 레벨은 속도와 깊이를 작업 난이도에 맞춰 조절하는 손잡이다. 중요한 반대편은 비용이다. GitHub는
+      큰 컨텍스트 창이나 높은 추론 레벨을 선택하면 상호작용당 AI credits가 더 많이 든다고 설명하며, 일상
+      작업에는 기본 컨텍스트와 기본 추론을 권한다. 실무 포인트는 "항상 최대"가 아니라, 아키텍처 변경,
+      장기 디버깅, 다중 파일 리팩터링처럼 정보 손실 비용이 큰 작업에만 큰 창과 깊은 추론을 켜는 운영 규칙을
+      정하는 것이다.
+    points:
+      - "1M 컨텍스트: 큰 코드베이스·긴 문서·복잡한 다중 파일 작업용"
+      - "reasoning level: 속도와 깊이를 작업 난이도에 맞춰 조절"
+      - "큰 컨텍스트·높은 추론은 AI credits를 더 쓰므로 기본값으로 쓰지 않기"
+    source: "https://github.blog/changelog/2026-06-04-larger-context-windows-and-configurable-reasoning-levels-for-github-copilot/"
+
+  - category: ai
+    title: "Copilot Sandboxes — 에이전트 명령 실행을 로컬·클라우드 격리층에 넣기"
+    summary: >
+      GitHub Copilot의 cloud/local sandboxes public preview는 에이전트가 실행하는 셸 명령을 격리된 환경에
+      넣는 기능이다. 로컬 sandbox는 Copilot CLI 세션 안에서 `/sandbox enable`로 켜고, 파일시스템·네트워크·
+      시스템 기능 접근을 제한한다. cloud sandbox는 `copilot --cloud`로 GitHub가 호스팅하는 일회성 Linux
+      환경에서 세션을 시작해 로컬 머신과 다른 세션에서 분리한다. GitHub 문서는 로컬 sandbox 정책을 Intune
+      같은 MDM으로 중앙 관리할 수 있고, cloud sandbox는 Azure Container Apps Sandboxes 위에 identity,
+      policy, billing layer를 얹는다고 설명한다. 실무 포인트는 에이전트에게 명령 실행 권한을 줄 때 "믿기"
+      대신 쓰기 경로, 네트워크, 클라우드 실행 위치를 정책으로 좁히는 것이다.
+    points:
+      - "로컬: `/sandbox enable`로 Copilot CLI 명령 실행을 제한"
+      - "클라우드: `copilot --cloud`로 GitHub 호스팅 일회성 Linux sandbox 사용"
+      - "파일시스템·네트워크·MDM 정책으로 에이전트 실행 범위를 명시"
+    source: "https://github.blog/changelog/2026-06-02-cloud-and-local-sandboxes-for-github-copilot-now-in-public-preview/"
+
+  - category: ai
+    title: "Copilot 사용량 API ai_credits_used — 에이전트 비용을 사람 단위로 관측하기"
+    summary: >
+      GitHub는 2026년 6월 19일 Copilot usage metrics API의 사용자 단위 리포트에 `ai_credits_used`
+      필드를 추가했다. 이 값은 하루 또는 28일 리포트에서 각 사용자가 Copilot 활동 전체로 소비한 AI credits
+      총량을 보여준다. 단, GitHub는 이 값을 청구서 총액이 아니라 소비 분석용 metrics signal로 설명하며,
+      feature·model·surface별 breakdown은 아직 제공하지 않는다고 밝힌다. 그래도 팀 운영에는 중요하다.
+      Copilot이 사용량 기반 과금으로 이동한 뒤에는 "누가 많이 썼는가"보다 "어떤 팀의 어떤 워크플로가 비용을
+      만들고 가치로 이어졌는가"를 봐야 한다. 이 필드는 에이전트 자동화, 코드 리뷰, CLI 사용량을 예산 대화로
+      연결하는 첫 관측 지점이다.
+    points:
+      - "`ai_credits_used`: 사용자별 일간/28일 AI credits 총소비량"
+      - "enterprise admin·organization owner가 REST API로 조회"
+      - "청구서가 아니라 metrics signal이며 feature/model/surface breakdown은 아직 없음"
+    source: "https://github.blog/changelog/2026-06-19-ai-credits-consumed-per-user-now-in-the-copilot-usage-metrics-api/"

@@ -703,3 +703,15 @@
 
 누적: 457카드 (453→457)
 주제: Google Agents CLI, Copilot SDK, MCP secret scanning, Codex plugins, Sites, annotations
+
+## 2026-06-21 00:41 KST — Batch 19 (agent execution and usage governance, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Google Colab CLI — 코딩 에이전트에게 GPU 런타임을 빌려주는 터미널 브리지 | developers.googleblog.com |
+| 2 | Copilot 1M 컨텍스트·추론 레벨 — 큰 창은 기본값이 아니라 고비용 모드 | github.blog |
+| 3 | Copilot Sandboxes — 에이전트 명령 실행을 로컬·클라우드 격리층에 넣기 | github.blog |
+| 4 | Copilot 사용량 API ai_credits_used — 에이전트 비용을 사람 단위로 관측하기 | github.blog |
+
+누적: 461카드 (457→461)
+주제: Colab CLI, Copilot context window, configurable reasoning, local/cloud sandboxes, usage metrics API, AI credits
