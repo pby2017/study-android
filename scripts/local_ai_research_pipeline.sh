@@ -83,7 +83,7 @@ if [[ "$AGENT_OK" != "1" ]]; then
 
 Paused at: $(date '+%Y-%m-%d %H:%M:%S %Z')
 
-Reason: Codex headless provider failed or was unavailable. The 4-hour routine is disabled to avoid wasting local/API resources on repeated failures.
+Reason: Codex headless provider failed or was unavailable. The 3-hour routine is disabled to avoid wasting local/API resources on repeated failures.
 
 Next actions:
 1. Check latest log: $RUN_LOG
@@ -119,7 +119,7 @@ updates GitHub Pages card data, verifies YAML/script health, then pushes
 the generated batch from the developer machine instead of paid Actions.
 
 Constraint: GitHub Actions intentionally disabled to avoid paid workflow use
-Constraint: Local run should fit a 4-hour cadence with research-heavy execution
+Constraint: Local run should fit a 3-hour cadence with research-heavy execution
 Confidence: medium
 Scope-risk: moderate
 Directive: Keep scheduling local-only unless the owner explicitly asks for GitHub Actions again

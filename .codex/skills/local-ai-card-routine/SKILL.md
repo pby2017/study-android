@@ -5,7 +5,7 @@ description: Research, validate, and publish Korean AI and AI+Android developer-
 
 # Local AI Card Routine
 
-Use for the recurring local 4-hour pipeline in this repo.
+Use for the recurring local 3-hour pipeline in this repo.
 
 ## Mission
 
@@ -38,7 +38,7 @@ Other sessions may push to the same repo.
 
 ## Time box
 
-- Total cadence target: 4 hours.
+- Total cadence target: 3 hours.
 - Research target: ~3h30m.
 - Implementation/publish target: final ~20m.
 - Do not fill quota by force. Weak evidence means no card.
@@ -123,7 +123,7 @@ If a run cannot finish because usage/quota/tool access is near exhaustion, unsaf
    - source URLs already opened
 3. Leave `_data/cards.yml` valid YAML.
 4. Stop cleanly so the next safe run can resume from `resume.md`.
-5. If Codex or the local environment is known-broken, create `.local-ai-research.disabled` so the 4-hour launchd loop does not waste resources until recovery is confirmed.
+5. If Codex or the local environment is known-broken, create `.local-ai-research.disabled` so the 3-hour launchd loop does not waste resources until recovery is confirmed.
 
 At the start of each run, check `research/ai-routine/resume.md`. If present, resume that plan before starting unrelated research.
 
