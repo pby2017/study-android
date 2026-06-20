@@ -6042,3 +6042,63 @@ cards:
       - "오류 분석·semantic instruction distillation·병렬 후보 테스트"
       - "온디바이스 실행을 유지하면서 프롬프트 품질 개선 루프를 운영"
     source: "https://developer.android.com/blog/posts/how-automated-prompt-optimization-unlocks-quality-gains-for-ml-kit-s-gen-ai-prompt-api"
+
+  - category: ai
+    title: "Claude Code Dynamic Workflows — 수백 서브에이전트 실행을 검증 루프로 묶기"
+    summary: >
+      Claude Code의 dynamic workflows는 큰 작업을 한 번의 대화형 응답이 아니라, 계획·분해·병렬 실행·검증
+      루프로 다루는 기능이다. Claude는 작업 중 orchestration script를 만들고, tens to hundreds of parallel
+      subagents를 한 세션에서 실행한 뒤 결과를 합쳐 사용자에게 보고한다. Anthropic은 코드베이스 전체 버그
+      탐색, 보안 감사, 대규모 마이그레이션, 고위험 작업의 독립 검증에 맞는 패턴이라고 설명한다. 다만 일반
+      Claude Code 세션보다 토큰을 많이 쓰므로, 처음에는 범위가 좁고 기존 테스트 스위트가 성공 기준이 되는
+      작업부터 적용하는 것이 안전하다.
+    points:
+      - "계획 → 하위 작업 분해 → 병렬 subagent 실행 → 결과 검증"
+      - "대규모 마이그레이션·보안 감사·코드베이스 전체 버그 탐색에 적합"
+      - "일반 세션보다 토큰 사용량이 크므로 작은 범위와 테스트 기준부터 시작"
+    source: "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code"
+
+  - category: ai
+    title: "ADK 장기 실행 에이전트 — 대화 기록 대신 상태 머신으로 재개하기"
+    summary: >
+      Google의 ADK 장기 실행 에이전트 튜토리얼은 며칠 동안 멈췄다 재개되는 업무를 대화 기록에 맡기지 말라고
+      설명한다. 핵심은 START, WELCOME_SENT, DOCUMENTS_SIGNED 같은 명시적 state machine을 만들고, 시스템
+      지시문이 현재 단계를 session state에서 읽게 하는 것이다. 각 tool call은 ToolContext.state를 갱신해
+      자동 checkpoint가 되고, 세션 저장소를 DatabaseSessionService(SQLite 또는 Cloud SQL)로 바꾸면 컨테이너
+      재시작 뒤에도 같은 단계에서 이어갈 수 있다. AI 에이전트 설계 포인트는 "모델이 기억한다"가 아니라
+      "워크플로 상태를 코드와 저장소가 소유한다"는 점이다.
+    points:
+      - "대화 기록이 아니라 명시적 state machine이 진행 상태를 소유"
+      - "ToolContext.state 갱신이 tool call마다 자동 checkpoint 역할"
+      - "DatabaseSessionService로 SQLite/Cloud SQL에 세션을 영속화"
+    source: "https://developers.googleblog.com/build-long-running-ai-agents-that-pause-resume-and-never-lose-context-with-adk/"
+
+  - category: ai
+    title: "MCP Enterprise-Managed Auth — 커넥터 권한을 IdP로 중앙 관리하기"
+    summary: >
+      Anthropic은 2026년 6월 18일 Claude의 MCP connectors에 enterprise-managed authorization을 공개했다.
+      이전에는 관리자가 조직 커넥터를 켠 뒤 사용자마다 개별 OAuth 승인이 필요했지만, 새 방식은 관리자가
+      IdP에서 한 번 권한을 설정하고 사용자는 첫 로그인부터 커넥터 접근을 상속받는다. Okta가 launch identity
+      provider이고 Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase가 시작 MCP provider로 언급됐다.
+      실무 포인트는 MCP를 편의 기능이 아니라 권한 표면으로 보고, 그룹 스코프·빠른 토큰 만료·퇴사자 회수를
+      일반 SaaS 권한 관리와 같은 평면에 올리는 것이다.
+    points:
+      - "MCP connector 접근을 사용자별 OAuth가 아니라 IdP 그룹·역할로 provision"
+      - "Okta 지원으로 시작, Asana·Atlassian·Figma·Linear·Supabase 등 provider 참여"
+      - "토큰 수명 단축과 deprovision 회수를 엔터프라이즈 권한 정책에 통합"
+    source: "https://claude.com/blog/enterprise-managed-auth"
+
+  - category: ai
+    title: "Claude WIF GA — 에이전트 자동화에서 정적 API 키 없애기"
+    summary: >
+      Claude Platform의 Workload Identity Federation(WIF)은 2026년 6월 17일 GA가 됐다. WIF는 정적 API 키
+      대신 요청 시점에 짧게 살아 있는 scoped credential을 발급하고, AWS IAM role, GCP/Kubernetes service
+      account, Azure managed identity, GitHub Actions token, Okta 같은 OIDC 호환 identity provider와 연결된다.
+      적용 범위는 Claude API endpoints, first-party SDK, Claude Code 접근까지 포함된다. 에이전트 자동화에서는
+      API 키를 저장소·CI 변수·로컬 설정에 오래 보관하지 않고, workload별 service account와 audit log로
+      호출 주체를 분리할 수 있다는 점이 핵심이다.
+    points:
+      - "정적 API key 대신 짧게 살아 있는 scoped credential을 요청 시 발급"
+      - "AWS/GCP/Kubernetes/Azure/GitHub Actions/Okta 등 OIDC identity와 연동"
+      - "workload별 service account·role·audit trail로 에이전트 호출 주체 분리"
+    source: "https://claude.com/blog/workload-identity-federation"

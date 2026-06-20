@@ -727,3 +727,15 @@
 
 누적: 465카드 (461→465)
 주제: GitHub Agent Apps, MAI-Code-1-Flash, Copilot model deprecations, ML Kit Automated Prompt Optimization, Gemini Nano v3
+
+## 2026-06-21 06:46 KST — Batch 21 (agent workflow state + enterprise AI auth, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Claude Code Dynamic Workflows — 수백 서브에이전트 실행을 검증 루프로 묶기 | claude.com |
+| 2 | ADK 장기 실행 에이전트 — 대화 기록 대신 상태 머신으로 재개하기 | developers.googleblog.com |
+| 3 | MCP Enterprise-Managed Auth — 커넥터 권한을 IdP로 중앙 관리하기 | claude.com |
+| 4 | Claude WIF GA — 에이전트 자동화에서 정적 API 키 없애기 | claude.com |
+
+누적: 469카드 (465→469)
+주제: Claude Code dynamic workflows, ADK persistent sessions, MCP enterprise-managed authorization, Workload Identity Federation, static API key removal
