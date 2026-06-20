@@ -691,3 +691,15 @@
 
 누적: 453카드 (449→453)
 주제: Firebase AI Logic Hybrid API, ADK for Android, ML Kit Prompt API Prefix Caching, third-party coding agent security validation
+
+## 2026-06-20 23:15 KST — Batch 18 (agent platform + SDK/security workflow, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Google Agents CLI — 코딩 에이전트에게 Agent Platform 빌드·평가·배포 명령을 주입 | developers.googleblog.com |
+| 2 | Copilot SDK GA — 에이전트 루프를 제품 안에 심는 여섯 언어 SDK | github.blog |
+| 3 | GitHub MCP Secret Scanning GA — 커밋 전 에이전트에게 노출 키를 찾게 하기 | github.blog |
+| 4 | Codex Plugins·Sites·Annotations — 코딩 에이전트에서 역할별 업무 에이전트로 확장 | openai.com |
+
+누적: 457카드 (453→457)
+주제: Google Agents CLI, Copilot SDK, MCP secret scanning, Codex plugins, Sites, annotations
