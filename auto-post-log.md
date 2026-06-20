@@ -667,3 +667,15 @@
 
 누적: 445카드 (441→445)
 주제: Android 17 AppFunctions, 온디바이스 NPU 선언, ML Kit GenAI Structured Output, Prefix Caching, A2A
+
+## 2026-06-20 15:08 KST — Batch 16 (공식 Android AI platform follow-up, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Android Computer Control — 코드 변경 없이 앱 UI를 에이전트 자동화 대상으로 준비 | developer.android.com |
+| 2 | ML Kit GenAI Speech Recognition — Gemini Nano Advanced 모드로 온디바이스 음성 인식 | developers.google.com |
+| 3 | Imagen Android 종료 — Firebase AI Logic 이미지는 Gemini Image(Nano Banana)로 이전 | developer.android.com |
+| 4 | Kakao Mobility Gemini Nano — 온디바이스 주소 추출로 주문 완료 시간 24% 단축 | developer.android.com |
+
+누적: 449카드 (445→449)
+주제: Android Computer Control, ML Kit GenAI Speech Recognition, Imagen deprecation, Gemini Image, Kakao Mobility Gemini Nano

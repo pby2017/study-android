@@ -5741,3 +5741,60 @@ cards:
       - "전문 에이전트에 업무 위임: 컨텍스트 오염과 권한 범위 확대를 줄임"
       - "모바일 앱은 내부 기능은 AppFunctions, 외부 업무는 A2A로 분리 가능"
     source: "https://developers.googleblog.com/how-a2a-is-building-a-world-of-collaborative-agents/"
+
+  - category: ai
+    title: "Android Computer Control — 코드 변경 없이 앱 UI를 에이전트 자동화 대상으로 준비"
+    summary: >
+      Android Computer Control은 OEM 선탑재 AI 어시스턴트가 사용자의 허가를 받은 뒤 설치된 앱을
+      가상 디스플레이에서 실행하고, 스크린샷 분석과 탭·스와이프·텍스트 입력으로 다단계 작업을 수행하는
+      preview 프레임워크다. target app은 별도 SDK 통합 없이 기존 UI를 자동화 대상으로 둘 수 있지만, 실제
+      자동화 품질은 적응형 레이아웃, 생명주기 처리, 명확한 화면 상태 같은 기본 앱 품질에 좌우된다.
+      AppFunctions가 명시적 도구 API라면 Computer Control은 UI 자동화 fallback에 가깝다.
+    points:
+      - "OEM 선탑재 assistant + 사용자 권한으로 target app 자동화"
+      - "가상 디스플레이에서 앱 실행 후 screenshot 분석, tap/swipe/text 입력"
+      - "target app 코드 변경은 없지만 adaptive UI·lifecycle 품질이 자동화 안정성 좌우"
+    source: "https://developer.android.com/ai/computer-control"
+
+  - category: ai
+    title: "ML Kit GenAI Speech Recognition — Gemini Nano Advanced 모드로 온디바이스 음성 인식"
+    summary: >
+      ML Kit의 GenAI Speech Recognition API는 Android 앱에서 음성을 텍스트로 바꾸는 새 Alpha API다.
+      Basic 모드는 기존 온디바이스 음성 인식 모델을 쓰고, Advanced 모드는 온디바이스 Gemini 모델을 사용해
+      더 넓은 언어 커버리지와 전반적 품질을 목표로 한다. 문서 기준 Advanced 모드는 Pixel 10 기기에서
+      제공되고 더 많은 기기가 개발 중이다. 앱은 `genai-speech-recognition:1.0.0-alpha1` 의존성을 추가하고,
+      모델 상태 확인·다운로드·streaming output 처리를 함께 설계해야 한다.
+    points:
+      - "Basic: 기존 온디바이스 speech model, Advanced: Gemini 기반 GenAI model"
+      - "Advanced 모드는 Pixel 10부터, 더 많은 기기 지원 개발 중"
+      - "Alpha API: 모델 상태 확인, 다운로드, Kotlin Flow streaming 출력 처리 필요"
+    source: "https://developers.google.com/ml-kit/genai/speech-recognition/android"
+
+  - category: ai
+    title: "Imagen Android 종료 — Firebase AI Logic 이미지는 Gemini Image(Nano Banana)로 이전"
+    summary: >
+      Android Developers 문서는 Imagen 모델이 2026년 6월 24일 종료되며 Gemini Image 모델, 즉
+      'Nano Banana' 계열로 이전하라고 안내한다. 기존 Android 앱은 Firebase AI Logic SDK로 Imagen을
+      호출해 아바타나 개인화 시각 자산을 만들 수 있었고, Gemini Developer API 또는 Vertex AI provider를
+      선택했다. 운영 관점의 핵심은 이미지 생성 기능을 단순 모델 교체로 보지 말고, 종료일 전에 모델명,
+      safety/person filter, watermark, output format, prompt 평가 흐름을 함께 점검하는 것이다.
+    points:
+      - "Imagen 모델 shutdown: 2026-06-24"
+      - "대체 경로: Gemini Image 모델, 문서상 Nano Banana 계열"
+      - "Firebase AI Logic 앱은 safety·watermark·format·prompt 평가까지 이전 체크"
+    source: "https://developer.android.com/ai/imagen"
+
+  - category: ai
+    title: "Kakao Mobility Gemini Nano — 온디바이스 주소 추출로 주문 완료 시간 24% 단축"
+    summary: >
+      Kakao Mobility는 ML Kit GenAI Prompt API와 Gemini Nano를 사용해 배달 주문 메시지에서 이름·주소·전화번호를
+      추출하는 기능을 온디바이스로 구현했다. 전통 ML처럼 대규모 학습 데이터와 전문 모델링을 준비하는 대신,
+      약 200개의 고품질 평가 예시와 few-shot prompting으로 hallucination을 줄이는 방향으로 튜닝했다.
+      결과적으로 배달 주문 완료 시간이 24% 줄고, 신규 사용자 전환율은 45%, 기존 사용자 전환율은 6% 증가했다.
+      피크 시즌에는 AI 기반 주문이 200% 이상 늘었다. 실무 포인트는 온디바이스 AI도 평가셋과 fallback을 갖춰야
+      production 품질에 가까워진다는 점이다.
+    points:
+      - "ML Kit Prompt API + Gemini Nano로 자연어 주문 메시지 entity extraction"
+      - "평가 예시 약 200개 + few-shot prompting으로 hallucination 최소화"
+      - "주문 완료 시간 24% 감소, 신규 전환율 45% 증가, 피크 AI 주문 200%+ 증가"
+    source: "https://developer.android.com/blog/posts/kakao-mobility-uses-gemini-nano-on-device-to-reduce-costs-and-boost-call-conversion-by-45"
