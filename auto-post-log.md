@@ -772,3 +772,15 @@
 
 누적: 478카드 (474→478)
 주제: Copilot code review MCP, agent skills, Copilot auto model selection, Codex keyring governance, LiteRT QNN Accelerator, Android on-device GenAI
+
+## 2026-06-21 18:59 KST — Batch 25 (agent runtime governance + domain MCP + Android edge agents, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Agents SDK Sandbox — 에이전트 실행 환경을 코드보다 먼저 설계하기 | openai.com |
+| 2 | ChatGPT Enterprise 사용량 분석 — Codex 비용도 운영 지표로 보기 | openai.com |
+| 3 | Google Pay & Wallet MCP — 도메인 API 통합을 에이전트 도구로 감싸기 | developers.googleblog.com |
+| 4 | AI Edge Gallery MCP — 온디바이스 모델에 작은 도구 설명만 주기 | developers.googleblog.com |
+
+누적: 482카드 (478→482)
+주제: OpenAI Agents SDK sandbox execution, ChatGPT/Codex credit analytics, Google Pay & Wallet Developer MCP, AI Edge Gallery MCP, on-device Gemma 4 tool calling
