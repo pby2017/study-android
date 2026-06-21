@@ -808,3 +808,15 @@
 
 누적: 490카드 (486→490)
 주제: Copilot Chronicle, Copilot CLI BYOK models, enterprise-managed bypass permission controls, Codex self-improving agent eval loop, production traces
+
+## 2026-06-22 01:33 KST — Batch 28 (agent execution infrastructure + AI serving, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Ona + Codex — 오래 걸리는 에이전트 작업은 실행 장소가 제품이다 | openai.com |
+| 2 | AgentKit 종료 공지 — 시각 빌더보다 코드로 남는 에이전트가 오래간다 | openai.com |
+| 3 | DiffusionGemma — 토큰을 왼쪽부터 쓰지 않는 LLM 서빙 | developers.googleblog.com |
+| 4 | Copilot-authored PR 검색 — 에이전트 산출물도 사람 책임 뷰에 합치기 | github.blog |
+
+누적: 494카드 (490→494)
+주제: Codex persistent execution, Ona secure cloud environments, AgentKit wind-down, Agents SDK migration, DiffusionGemma parallel denoising, vLLM serving, Copilot-authored pull request ownership
