@@ -784,3 +784,15 @@
 
 누적: 482카드 (478→482)
 주제: OpenAI Agents SDK sandbox execution, ChatGPT/Codex credit analytics, Google Pay & Wallet Developer MCP, AI Edge Gallery MCP, on-device Gemma 4 tool calling
+
+## 2026-06-21 22:07 KST — Batch 26 (mobile Copilot + agent task operations, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Copilot App GA — IDE 밖에서도 같은 에이전트 루프 유지하기 | github.blog |
+| 2 | Copilot Agent Tasks API — 에이전트 작업을 UI 이벤트가 아니라 리소스로 다루기 | github.blog |
+| 3 | Copilot Automations — 클라우드 에이전트에게 반복 유지보수를 맡기는 법 | github.blog |
+| 4 | VS Code Agents Window — 채팅 패널이 아니라 에이전트 작업대 | github.blog |
+
+누적: 486카드 (482→486)
+주제: GitHub Copilot mobile app GA, Copilot coding agent tasks REST API, Copilot coding agent automations, VS Code Agents Window, plan mode, terminal approval controls
