@@ -6177,3 +6177,63 @@ cards:
       - "open/click/fill/scroll/get/replay 명령을 `.ad` 스크립트로 재현"
       - "Android는 ADB + snapshot helper 백엔드로 실제 앱 검증 흐름에 연결"
     source: "https://github.com/callstack/agent-device"
+
+  - category: ai
+    title: "Copilot Code Review MCP·Skills — 리뷰가 diff 밖 컨텍스트를 읽게 하기"
+    summary: >
+      GitHub는 Copilot code review에 MCP 서버와 agent skills를 붙여 리뷰가 diff만 보지 않게 하는 흐름을
+      공개했다. 저장소 설정의 Copilot MCP servers에 JSON 설정과 인증 토큰을 넣고, `.github/skills/code-review`
+      같은 리뷰 지향 스킬을 두면 PR 설명의 이슈 키·incident ID·내부 규칙 같은 신호를 따라 외부 컨텍스트를
+      가져올 수 있다. Medium review tier는 더 깊은 분석을 제공하지만 AI Credits를 더 쓴다. 실무 포인트는
+      "AI 리뷰어에게 더 세게 봐달라"가 아니라, 조직 규칙·운영 도구·비용 등급을 리뷰 입력으로 명시해
+      반복 질문과 팀별 편차를 줄이는 것이다.
+    points:
+      - "MCP 서버로 이슈·incident·내부 도구 컨텍스트를 리뷰에 연결"
+      - "`.github/skills/code-review/SKILL.md`로 리뷰 기준을 저장소 안에 둠"
+      - "Low/Medium review tier를 코드 중요도와 AI Credits 예산에 맞춰 선택"
+    source: "https://github.blog/changelog/2026-06-02-shape-copilot-code-review-around-your-team/"
+
+  - category: ai
+    title: "Copilot Auto Mode — 모델 선택을 프롬프트가 아니라 라우터에 맡기기"
+    summary: >
+      GitHub Copilot Chat의 auto model selection은 2026년 6월 17일 github.com과 GitHub mobile app에서 모든
+      Copilot plan에 GA로 열렸다. 사용자가 매번 Claude Sonnet, GPT-5.4 계열, Haiku 같은 모델명을 고르는 대신,
+      Copilot이 요청 복잡도와 실시간 가용성을 보고 모델을 라우팅한다. 응답에 어떤 모델이 쓰였는지 확인할 수 있고,
+      사용자·관리자 model policy를 존중하며, paid subscriber에게는 auto 사용 토큰이 10% 할인된다. 개발팀 관점의
+      핵심은 모델명을 자동화 스크립트의 상수처럼 박지 말고, 단순 질의는 auto, 재현 가능한 평가나 규제 워크플로는
+      고정 모델처럼 운영 모드를 분리하는 것이다.
+    points:
+      - "요청 복잡도와 실시간 가용성에 따라 모델을 동적으로 라우팅"
+      - "사용된 모델은 확인 가능하고 관리자 model policy를 존중"
+      - "일반 채팅은 auto, 평가·회귀 자동화는 고정 모델로 분리"
+    source: "https://github.blog/changelog/2026-06-17-auto-mode-in-copilot-chat-available-for-all-users/"
+
+  - category: ai
+    title: "Codex 안전 운영 — 키 파일보다 OS keyring과 워크스페이스 고정"
+    summary: >
+      OpenAI의 Codex 안전 운영 글은 코딩 에이전트를 빠르게 쓰는 방법보다, 조직 안에서 누가 어떤 권한으로
+      실행하는지 고정하는 방법을 강조한다. 예시는 CLI auth와 MCP OAuth credentials를 OS keyring에 저장하고,
+      로그인 방식을 ChatGPT로 강제하며, 특정 ChatGPT enterprise workspace에 접근을 묶는다. 그러면 Codex 활동이
+      workspace-level control과 compliance log에 연결된다. 실무 포인트는 Codex를 개인 토큰이 든 로컬 도구로
+      방치하지 않고, MCP 권한·CLI 로그인·감사 로그를 같은 보안 경계로 묶어 에이전트 실행 주체를 추적 가능하게
+      만드는 것이다.
+    points:
+      - "`cli_auth_credentials_store`와 `mcp_oauth_credentials_store`를 keyring으로 설정"
+      - "`forced_login_method`와 workspace ID로 조직 계정 경계를 고정"
+      - "MCP 권한과 Codex 실행 로그를 compliance 관측 대상으로 올림"
+    source: "https://openai.com/index/running-codex-safely/"
+
+  - category: ai
+    title: "LiteRT QNN Accelerator — Android 온디바이스 GenAI를 NPU 경로로 보내기"
+    summary: >
+      Google은 Qualcomm NPU용 LiteRT QNN Accelerator를 공개하며 Android 온디바이스 AI 배포의 핵심 병목을
+      "모델 호출"이 아니라 하드웨어 경로 선택으로 설명했다. LiteRT는 SoC별 SDK와 컴파일러 차이를 감추고,
+      AOT 또는 on-device compilation으로 `.tflite` 모델을 여러 Qualcomm SoC에 배포하게 한다. Google 측
+      벤치마크는 72개 모델에서 NPU가 CPU 대비 최대 100배, GPU 대비 최대 10배 빠른 결과를 보였고, FastVLM
+      데모는 Snapdragon 8 Elite Gen 5 NPU에서 0.12초 TTFT와 초당 100개 이상 decode token을 기록했다.
+      Android AI 앱에서는 CPU/GPU fallback까지 포함해 NPU를 선택 가능한 실행 경로로 설계해야 한다.
+    points:
+      - "LiteRT가 Qualcomm SoC별 NPU 컴파일·런타임 차이를 통합 API로 감춤"
+      - "AOT 또는 on-device compilation 후 Google Play AI Pack으로 배포 가능"
+      - "NPU 우선 실행과 CPU/GPU fallback을 함께 설계해야 실사용성이 올라감"
+    source: "https://developers.googleblog.com/unlocking-peak-performance-on-qualcomm-npu-with-litert/"

@@ -760,3 +760,15 @@
 
 누적: 474카드 (473→474)
 주제: agent-device, AI mobile testing, Android emulator, accessibility snapshot, deterministic replay
+
+## 2026-06-21 15:57 KST — Batch 24 (agent review ops + Android on-device AI, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Copilot Code Review MCP·Skills — 리뷰가 diff 밖 컨텍스트를 읽게 하기 | github.blog |
+| 2 | Copilot Auto Mode — 모델 선택을 프롬프트가 아니라 라우터에 맡기기 | github.blog |
+| 3 | Codex 안전 운영 — 키 파일보다 OS keyring과 워크스페이스 고정 | openai.com |
+| 4 | LiteRT QNN Accelerator — Android 온디바이스 GenAI를 NPU 경로로 보내기 | developers.googleblog.com |
+
+누적: 478카드 (474→478)
+주제: Copilot code review MCP, agent skills, Copilot auto model selection, Codex keyring governance, LiteRT QNN Accelerator, Android on-device GenAI
