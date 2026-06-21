@@ -6534,3 +6534,63 @@ cards:
       - "Model Explorer로 양자화 안전성을 확인하고 AI Edge Quantizer로 INT8 적용"
       - "Android SME2 기기에서 14초→6.6초, DiT submodel 약 4배 축소 사례"
     source: "https://developers.googleblog.com/accelerating-on-device-ai-a-look-at-arm-and-google-ai-edge-optimization/"
+
+  - category: ai
+    title: "Karrot Firebase AI Logic — 번역 AI는 품질보다 배포 경로가 먼저다"
+    summary: >
+      Google Android Developers Blog의 Karrot 사례는 AI+Android 기능 선택의 기준을 잘 보여준다. Karrot은
+      북미 사용자 중 비영어 기기 언어 사용자가 30%라는 문제를 확인했고, ML Kit Translation과 Gemini Nano를
+      먼저 시험했지만 품질과 모델 다운로드 장벽 때문에 Firebase AI Logic + Gemini Flash Lite를 선택했다.
+      PoC는 3시간 안에 만들었고, 전용 백엔드 없이 2주 만에 프로덕션 기능으로 전환했다. 결과적으로 번역 배너를
+      본 비영어 사용자 3명 중 1명이 기능을 사용했고, 번역 기능을 제공받은 구매자는 판매자와 채팅을 시작할
+      가능성이 2.4배 높았다. 교훈은 모델 이름보다 배포 경로, UX opt-in, 프롬프트 운영을 먼저 검증하라는 점이다.
+    points:
+      - "ML Kit Translation·Gemini Nano를 시험한 뒤 Firebase AI Logic + Gemini Flash Lite 선택"
+      - "PoC 3시간, 전용 백엔드 없이 2주 만에 프로덕션 반영"
+      - "번역 제공 구매자는 판매자 채팅 시작 가능성이 2.4배 높았다고 보고"
+    source: "https://android-developers.googleblog.com/2026/05/how-karrot-increased-sales-with-gemini-firebase-ai-translation.html"
+
+  - category: ai
+    title: "ML Kit GenAI 지원표 — 기능마다 되는 기기가 다르다"
+    summary: >
+      ML Kit GenAI API는 "Android에서 Gemini Nano를 쓴다" 한 줄로 끝나지 않는다. 2026년 6월 19일 기준
+      공식 문서는 Summarization, Proofreading, Rewriting, Image Description 같은 feature-specific API와
+      Prompt API의 지원 기기 목록을 따로 둔다. Prompt API도 nano-v2와 nano-v3 기기가 나뉘며, Speech
+      Recognition은 대부분의 API 31+ 기기에서 되는 Basic Mode와 Pixel 10 중심의 Advanced Mode가 갈린다.
+      실무 포인트는 출시 전에 기능 단위로 device matrix를 만들라는 것이다. 같은 "온디바이스 GenAI"라도
+      요약은 되고 맞춤 프롬프트는 안 되는 기기가 생길 수 있다.
+    points:
+      - "feature-specific API와 Prompt API는 지원 기기 목록이 다름"
+      - "Prompt API는 nano-v2·nano-v3 기기군을 구분"
+      - "Speech Recognition은 Basic Mode와 GenAI 기반 Advanced Mode를 분리해서 설계"
+    source: "https://developers.google.com/ml-kit/genai"
+
+  - category: ai
+    title: "ML Kit GenAI 쿼터 — 온디바이스 AI도 무제한이 아니다"
+    summary: >
+      온디바이스 AI라고 해서 앱이 마음대로 계속 추론할 수 있는 것은 아니다. ML Kit GenAI 문서는 AICore가
+      앱별 inference quota를 강제한다고 설명한다. 짧은 시간에 요청이 많으면 `ErrorCode.BUSY`가 나올 수 있고,
+      장시간 quota를 넘기면 `ErrorCode.PER_APP_BATTERY_USE_QUOTA_EXCEEDED`가 반환될 수 있다. 또한 GenAI
+      inference는 앱이 top foreground application일 때만 허용되며, foreground service에서 호출해도
+      `ErrorCode.BACKGROUND_USE_BLOCKED`가 날 수 있다. Android AI 기능은 모델 호출 코드보다 retry, backoff,
+      foreground UX, 배터리 예산을 먼저 제품 요구사항에 넣어야 한다.
+    points:
+      - "AICore가 앱별 inference quota를 적용"
+      - "`BUSY`·`PER_APP_BATTERY_USE_QUOTA_EXCEEDED`를 retry/backoff 설계에 반영"
+      - "GenAI inference는 top foreground 앱에서만 허용, 백그라운드 호출은 차단 가능"
+    source: "https://developers.google.com/ml-kit/genai"
+
+  - category: ai
+    title: "Gemini Nano 버전 체크 — 프롬프트 품질을 기기별로 검증하기"
+    summary: >
+      ML Kit GenAI 문서는 Gemini Nano 버전에 따라 같은 프롬프트도 다른 출력이 나올 수 있다고 경고한다.
+      그래서 기기에서 실행 중인 Nano 버전을 확인하려면 `getBaseModelName()`을 사용하고, 앱의 use case가
+      여러 Nano 버전에서 괜찮은지 prompt quality evaluation을 해야 한다. 이건 작은 구현 팁이 아니라 Android
+      AI QA의 핵심이다. 서버 모델 하나를 고정하는 방식과 달리 온디바이스 모델은 기기·다운로드 상태·세대에 따라
+      달라진다. 따라서 출시 전 테스트 매트릭스에는 OS/API level뿐 아니라 Nano base model, streaming 여부,
+      실패 코드, 언어 지원까지 들어가야 한다.
+    points:
+      - "`getBaseModelName()`으로 기기의 Gemini Nano 버전을 확인"
+      - "Nano 버전이 다르면 같은 프롬프트도 출력이 달라질 수 있음"
+      - "Android AI QA는 모델 버전별 prompt quality evaluation을 포함해야 함"
+    source: "https://developers.google.com/ml-kit/genai"

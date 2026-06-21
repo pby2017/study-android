@@ -832,3 +832,15 @@
 
 누적: 498카드 (494→498)
 주제: Copilot usage metrics API, AI credits, MAI-Code-1-Flash, Copilot model routing, Google Tensor ML SDK Beta, LiteRT, Pixel TPU, Arm SME2, Google AI Edge, Android on-device AI
+
+## 2026-06-22 07:41 KST — Batch 30 (Android on-device AI operations, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Karrot Firebase AI Logic — 번역 AI는 품질보다 배포 경로가 먼저다 | android-developers.googleblog.com |
+| 2 | ML Kit GenAI 지원표 — 기능마다 되는 기기가 다르다 | developers.google.com |
+| 3 | ML Kit GenAI 쿼터 — 온디바이스 AI도 무제한이 아니다 | developers.google.com |
+| 4 | Gemini Nano 버전 체크 — 프롬프트 품질을 기기별로 검증하기 | developers.google.com |
+
+누적: 502카드 (498→502)
+주제: Karrot Firebase AI Logic translation, Gemini Flash Lite, ML Kit GenAI device support, Gemini Nano versions, AICore quota, Android foreground inference, on-device AI QA
