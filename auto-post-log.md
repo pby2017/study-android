@@ -751,3 +751,12 @@
 
 누적: 473카드 (469→473)
 주제: A2UI, MCP Apps, Jetpack Compose Adaptive Skill, R8 Agent Skill, Media3 AI Effects
+
+## 2026-06-21 12:53 KST — Batch 23 (AI mobile verification, 1카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | agent-device — AI 에이전트에게 모바일 앱의 눈과 손을 주기 | github.com/callstack |
+
+누적: 474카드 (473→474)
+주제: agent-device, AI mobile testing, Android emulator, accessibility snapshot, deterministic replay

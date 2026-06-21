@@ -6162,3 +6162,18 @@ cards:
       - "효과 실행 경로 선택을 디바이스별 효율·신뢰성 문제로 추상화"
       - "CameraX→AI Effects→Transformer→CodecDB를 한 파이프라인으로 설계"
     source: "https://android-developers.googleblog.com/2026/06/building-premium-android-experiences-google-io-26.html"
+
+  - category: ai
+    title: "agent-device — AI 에이전트에게 모바일 앱의 눈과 손을 주기"
+    summary: >
+      Callstack의 agent-device는 AI 에이전트가 iOS·Android 앱을 실제 기기, 시뮬레이터, 에뮬레이터에서 검증하도록
+      만든 CLI다. 핵심은 스크린샷을 매번 비전 모델에 던지는 것이 아니라, 접근성 트리 snapshot에서 `@e2` 같은
+      안정적인 ref를 얻고 click/fill/scroll/get/replay 명령으로 탐색을 재현 가능한 `.ad` 스크립트로 바꾸는
+      흐름이다. Android 쪽은 ADB와 Android snapshot helper를 통해 동작한다. 2026-06-21 같은 런에서 GitHub
+      2,868★, MIT 라이선스, 당일 업데이트를 확인했다. 모바일 AI 테스트의 포인트는 "에이전트가 앱을 봤다"가
+      아니라, 토큰 적은 구조화 상태와 deterministic replay로 검증 증거를 남기는 것이다.
+    points:
+      - "접근성 트리 snapshot + semantic refs로 모바일 UI를 토큰 적게 읽음"
+      - "open/click/fill/scroll/get/replay 명령을 `.ad` 스크립트로 재현"
+      - "Android는 ADB + snapshot helper 백엔드로 실제 앱 검증 흐름에 연결"
+    source: "https://github.com/callstack/agent-device"
