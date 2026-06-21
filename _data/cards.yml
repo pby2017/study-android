@@ -6476,3 +6476,61 @@ cards:
       - "웹 UI와 GitHub Mobile 먼저 적용, REST/GraphQL API는 2026-07-16 rollout 예정"
       - "에이전트 산출물도 요청한 사람의 ownership·review 흐름 안에 보여야 함"
     source: "https://github.blog/changelog/2026-06-18-copilot-authored-pull-requests-now-included-in-author-searches/"
+
+  - category: ai
+    title: "Copilot AI credits API — 에이전트 비용을 팀 단위로 관측하기"
+    summary: >
+      GitHub은 2026년 6월 19일 Copilot usage metrics API의 사용자별 리포트에 `ai_credits_used` 필드를
+      추가했다. 이 값은 하루 또는 28일 user-level report에서 각 사용자의 전체 Copilot 활동이 소비한 AI
+      credits를 보여준다. 단, 기능·모델·표면별 분해값이나 청구서 자체가 아니라 소비 경향을 보는 운영 지표다.
+      실무 포인트는 AI 코딩 도구를 "개인 생산성 도구"로만 두지 않는 것이다. 팀별 채택률, 실제 사용량,
+      예산 예측을 같은 리포트에서 보며, 어떤 자동화가 비용 대비 가치가 있는지 관측 가능한 루프로 관리해야 한다.
+    points:
+      - "`ai_credits_used`가 user-level 1일·28일 Copilot usage report에 추가"
+      - "enterprise admin·organization owner가 REST API로 소비 경향을 확인"
+      - "청구서가 아니라 adoption·budget planning을 위한 운영 지표로 해석"
+    source: "https://github.blog/changelog/2026-06-19-ai-credits-consumed-per-user-now-in-the-copilot-usage-metrics-api/"
+
+  - category: ai
+    title: "MAI-Code-1-Flash — 작은 코딩 모델을 표면마다 다르게 쓰기"
+    summary: >
+      GitHub은 2026년 6월 18일 Microsoft의 소형 코딩 모델 MAI-Code-1-Flash를 더 많은 Copilot 표면에
+      확장한다고 공지했다. Copilot CLI, Copilot app, GitHub Chat, Visual Studio, GitHub Mobile, JetBrains,
+      Eclipse, Xcode에서 순차 제공되며, 문서상 GA 모델이자 Copilot auto model selection 후보에도 포함된다.
+      교육 포인트는 "작은 모델이면 낮은 품질"이 아니라, 짧은 설명·반복 수정·가벼운 CLI 작업처럼 대기시간과
+      비용이 중요한 흐름에는 경량 모델을 기본값으로 두고, 복잡한 설계·디버깅은 강한 reasoning 모델로 올리는
+      라우팅 전략을 세우는 것이다.
+    points:
+      - "MAI-Code-1-Flash는 Microsoft 제공 GA 코딩 모델"
+      - "Copilot CLI·앱·모바일·IDE 등 여러 표면으로 확장"
+      - "가벼운 반복 작업은 경량 모델, 복잡한 판단은 강한 모델로 라우팅"
+    source: "https://github.blog/changelog/2026-06-18-mai-code-1-flash-available-on-more-copilot-surfaces/"
+
+  - category: ai
+    title: "Tensor SDK Beta + LiteRT — Pixel NPU 배포를 하나의 경로로 묶기"
+    summary: >
+      Google은 2026년 5월 Tensor ML SDK를 Beta로 올리며 Pixel 10 계열에서 Tensor TPU를 쓰는 온디바이스
+      AI 개발 경로를 LiteRT와 통합했다. 개발자는 PyTorch 또는 TFLite 모델을 LiteRT Torch로 변환·컴파일하고,
+      Play Feature Delivery와 AI Packs로 런타임·컴파일러·모델 파일을 배포한 뒤 LiteRT Runtime에서 TPU를
+      우선 사용하고 CPU/GPU fallback을 지정할 수 있다. Android AI 개발에서 배울 점은 "NPU를 직접 호출"이
+      아니라, 변환·배포·fallback까지 같은 파이프라인에 넣어 기기별 가속 실패를 제품 안정성 문제로 관리하는 것이다.
+    points:
+      - "Tensor ML SDK Beta가 LiteRT와 통합되어 Pixel 10 Tensor TPU 경로 제공"
+      - "변환·컴파일·Play Feature Delivery·AI Packs·LiteRT Runtime을 하나로 연결"
+      - "TPU 우선 실행 + CPU/GPU fallback을 앱 배포 전략에 포함"
+    source: "https://developers.googleblog.com/google-tensor-sdk-beta-with-litert/"
+
+  - category: ai
+    title: "LiteRT + Arm SME2 — 모바일 CPU도 GenAI 가속 경로가 된다"
+    summary: >
+      Google AI Edge와 Arm은 LiteRT가 XNNPACK·KleidiAI 통합을 통해 Arm SME2를 런타임에서 자동 활용하는
+      온디바이스 AI 최적화 흐름을 설명했다. Stable Audio Open Small을 PyTorch에서 LiteRT로 변환하고,
+      Model Explorer와 AI Edge Quantizer로 quantization-safe layer를 확인한 뒤 INT8/FP16 최적화를 적용한다.
+      결과로 DiT submodel은 약 4배 작아지고, Android SME2 기기에서는 14초 작업이 6.6초로 줄었다. 핵심은
+      "전용 NPU가 없으면 끝"이 아니라, CPU 경로도 측정·양자화·delegate 자동 선택으로 제품급 fallback이 될 수
+      있다는 점이다.
+    points:
+      - "LiteRT가 XNNPACK·KleidiAI를 통해 Arm SME2 가속을 자동 활용"
+      - "Model Explorer로 양자화 안전성을 확인하고 AI Edge Quantizer로 INT8 적용"
+      - "Android SME2 기기에서 14초→6.6초, DiT submodel 약 4배 축소 사례"
+    source: "https://developers.googleblog.com/accelerating-on-device-ai-a-look-at-arm-and-google-ai-edge-optimization/"

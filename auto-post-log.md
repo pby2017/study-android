@@ -820,3 +820,15 @@
 
 누적: 494카드 (490→494)
 주제: Codex persistent execution, Ona secure cloud environments, AgentKit wind-down, Agents SDK migration, DiffusionGemma parallel denoising, vLLM serving, Copilot-authored pull request ownership
+
+## 2026-06-22 04:36 KST — Batch 29 (AI cost ops + Android edge inference, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Copilot AI credits API — 에이전트 비용을 팀 단위로 관측하기 | github.blog |
+| 2 | MAI-Code-1-Flash — 작은 코딩 모델을 표면마다 다르게 쓰기 | github.blog |
+| 3 | Tensor SDK Beta + LiteRT — Pixel NPU 배포를 하나의 경로로 묶기 | developers.googleblog.com |
+| 4 | LiteRT + Arm SME2 — 모바일 CPU도 GenAI 가속 경로가 된다 | developers.googleblog.com |
+
+누적: 498카드 (494→498)
+주제: Copilot usage metrics API, AI credits, MAI-Code-1-Flash, Copilot model routing, Google Tensor ML SDK Beta, LiteRT, Pixel TPU, Arm SME2, Google AI Edge, Android on-device AI
