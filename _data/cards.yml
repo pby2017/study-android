@@ -6102,3 +6102,63 @@ cards:
       - "AWS/GCP/Kubernetes/Azure/GitHub Actions/Okta 등 OIDC identity와 연동"
       - "workload별 service account·role·audit trail로 에이전트 호출 주체 분리"
     source: "https://claude.com/blog/workload-identity-federation"
+
+  - category: ai
+    title: "A2UI + MCP Apps — 에이전트 UI를 iframe과 네이티브 렌더링 사이에서 설계하기"
+    summary: >
+      Google Developers Blog의 A2UI + MCP Apps 글은 에이전트 UI가 단순 텍스트를 넘어가면 두 선택지 사이에서
+      흔들린다고 설명한다. MCP Apps는 iframe 안에서 HTML/CSS/JavaScript로 자유롭게 만들 수 있지만, 호스트와
+      디자인·스크롤·보안 경계가 어긋날 수 있다. A2UI는 JSON payload로 무엇을 렌더링할지 선언하고 호스트가
+      네이티브 컴포넌트로 그려 일관성과 보안을 얻지만, 복잡한 클라이언트 로직에는 약하다. 실무 포인트는
+      "에이전트가 UI를 만든다"가 아니라, 표·폼·차트 같은 구조 데이터는 A2UI, 복잡한 상호작용은 MCP Apps,
+      혼합 화면은 두 방식을 조합하는 아키텍처 문제로 보는 것이다.
+    points:
+      - "MCP Apps: iframe 기반 자유도는 높지만 디자인·성능·보안 경계 비용이 있음"
+      - "A2UI: JSON 선언을 호스트 네이티브 UI로 렌더링해 일관성과 접근성을 얻음"
+      - "구조 데이터·복잡한 앱·혼합 화면을 패턴별로 나눠 선택"
+    source: "https://developers.googleblog.com/a2ui-and-mcp-apps/"
+
+  - category: ai
+    title: "Jetpack Compose Adaptive Skill — Android 17 대화면 대응을 AI 워크플로로 고정하기"
+    summary: >
+      Android 17은 대화면 resizability를 더 강하게 요구하면서, Jetpack Compose adaptive skill을 함께 공개했다.
+      이 스킬은 일반 Android 레이아웃 팁이 아니라 AI-powered developer workflow다. NavigationSuiteScaffold로
+      모바일 bottom navigation과 대화면 navigation rail을 전환하고, Navigation 3 Scenes로 list-detail·supporting
+      pane을 구성하며, Compose 1.11의 동적 레이아웃·trackpad/mouse 지원·window state 대응까지 점검하게 한다.
+      AI+Android 관점의 핵심은 에이전트에게 "화면을 예쁘게 바꿔줘"가 아니라, Android 17 적응형 기준을 체크리스트
+      겸 실행 절차로 주는 것이다.
+    points:
+      - "Android 17의 adaptive-first 요구를 AI-powered developer workflow로 다룸"
+      - "NavigationSuiteScaffold·Navigation 3 Scenes·Compose 1.11 동적 레이아웃을 점검"
+      - "에이전트 프롬프트를 대화면 기준과 테스트 가능한 작업 목록으로 접지"
+    source: "https://android-developers.googleblog.com/2026/06/Android-17.html"
+
+  - category: ai
+    title: "R8 Agent Skill — 난해한 keep rule 정리를 AI에게 맡기되 검증은 사람이 닫기"
+    summary: >
+      Android 17 메모리 효율 가이드는 R8 Configuration Analyzer와 함께 R8 Agent Skill을 언급한다. Analyzer는
+      obfuscation, optimization, shrinking 점수와 broad keep rule, redundant rule, unused rule을 보여주고,
+      R8 Agent Skill은 Android Studio agent나 다른 AI 도구로 misconfiguration을 해결하고 규칙을 다듬는 흐름에
+      붙는다. 중요한 단서도 같이 있다. AI-driven skill의 insight는 기술 검증이 필요하다. 즉 R8 규칙은 앱 동작과
+      라이브러리 공개 API를 깨뜨릴 수 있으므로, 에이전트가 후보 패치를 만들고 Configuration Analyzer·릴리즈 빌드·
+      회귀 테스트가 최종 판정을 내려야 한다.
+    points:
+      - "Configuration Analyzer로 broad/redundant/unused keep rule을 먼저 드러냄"
+      - "R8 Agent Skill은 misconfiguration 해결과 rule refinement 후보를 생성"
+      - "AI 제안은 릴리즈 빌드·회귀 테스트·분석 점수로 반드시 기술 검증"
+    source: "https://android-developers.googleblog.com/2026/06/prioritizing-memory-efficiency-steps-for-android-17.html"
+
+  - category: ai
+    title: "Media3 AI Effects — 효과 이름이 아니라 디바이스별 실행 경로를 추상화하기"
+    summary: >
+      Google I/O 26 Android premium experiences 글은 Media3 AI Effects library를 예고했다. 목표는 Image & Video
+      Enhance, Magic Eraser, Studio Sound 같은 프리미엄 AI 효과를 앱마다 따로 연결하는 것이 아니라, Media3가
+      unified interface를 제공하고 디바이스에 맞는 효율적이고 신뢰 가능한 경로 선택을 맡는 것이다. Android
+      개발자에게 중요한 점은 AI 미디어 기능을 모델 호출 한 번으로 보지 않는 것이다. CameraX 캡처, Media3 AI
+      Effects 처리, Media3 Transformer 합성, CodecDB 기반 인코딩 권장까지 하나의 미디어 파이프라인으로 설계해야
+      폴더블·태블릿·칩셋 차이에서도 일관된 품질을 낼 수 있다.
+    points:
+      - "Media3 AI Effects는 Image/Video Enhance·Magic Eraser·Studio Sound용 unified interface를 지향"
+      - "효과 실행 경로 선택을 디바이스별 효율·신뢰성 문제로 추상화"
+      - "CameraX→AI Effects→Transformer→CodecDB를 한 파이프라인으로 설계"
+    source: "https://android-developers.googleblog.com/2026/06/building-premium-android-experiences-google-io-26.html"

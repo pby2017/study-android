@@ -739,3 +739,15 @@
 
 누적: 469카드 (465→469)
 주제: Claude Code dynamic workflows, ADK persistent sessions, MCP enterprise-managed authorization, Workload Identity Federation, static API key removal
+
+## 2026-06-21 09:50 KST — Batch 22 (agentic UI + Android AI developer workflows, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | A2UI + MCP Apps — 에이전트 UI를 iframe과 네이티브 렌더링 사이에서 설계하기 | developers.googleblog.com |
+| 2 | Jetpack Compose Adaptive Skill — Android 17 대화면 대응을 AI 워크플로로 고정하기 | android-developers.googleblog.com |
+| 3 | R8 Agent Skill — 난해한 keep rule 정리를 AI에게 맡기되 검증은 사람이 닫기 | android-developers.googleblog.com |
+| 4 | Media3 AI Effects — 효과 이름이 아니라 디바이스별 실행 경로를 추상화하기 | android-developers.googleblog.com |
+
+누적: 473카드 (469→473)
+주제: A2UI, MCP Apps, Jetpack Compose Adaptive Skill, R8 Agent Skill, Media3 AI Effects
