@@ -796,3 +796,15 @@
 
 누적: 486카드 (482→486)
 주제: GitHub Copilot mobile app GA, Copilot coding agent tasks REST API, Copilot coding agent automations, VS Code Agents Window, plan mode, terminal approval controls
+
+## 2026-06-21 22:28 KST — Batch 27 (agent session memory + enterprise controls + eval loops, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Copilot Chronicle — 에이전트 세션 기록을 팀 지식으로 바꾸기 | github.blog |
+| 2 | Copilot BYOK 모델 — 기업 모델 정책을 CLI의 /model 선택지로 내리기 | github.blog |
+| 3 | Copilot Bypass Controls — yolo 모드를 조직 정책으로 끄기 | github.blog |
+| 4 | Codex 자기개선 루프 — 운영 피드백을 eval로 바꿔 다시 고치기 | openai.com |
+
+누적: 490카드 (486→490)
+주제: Copilot Chronicle, Copilot CLI BYOK models, enterprise-managed bypass permission controls, Codex self-improving agent eval loop, production traces
