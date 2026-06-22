@@ -910,3 +910,21 @@
 주제: Codex knowledge-work adoption, Copilot CLI agent picker, remote/compact/chronicle/debug controls, Dell hybrid/on-prem Codex environments, GPT-5.1-Codex-Max compaction and long-running coding-agent verification
 
 - 2026-06-22 17:00 KST | README-AI 저장소 분석 README 생성 CLI | https://github.com/eli64s/readme-ai
+
+## 2026-06-22 17:20 KST — Batch 13 (AI 인프라·도구 광범위, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Mem0 — AI 에이전트 장기 메모리 | mem0.ai |
+| 2 | Graphiti(Zep) — 시간 지식 그래프 메모리 | vectorize.io |
+| 3 | MLPerf Mobile v6.0 — 온디바이스 LLM 벤치마크 | mlcommons.org |
+| 4 | Dagster — 데이터 자산 중심 오케스트레이터 | dagster.io |
+| 5 | AutoSchemaKG — 자동 지식 그래프 구축 | github.com/HKUST-KnowComp |
+| 6 | Wan2.2 — MoE 비디오 생성 | github.com/Wan-Video |
+| 7 | Mochi 1 — 10B 비디오 생성 | github.com/genmoai |
+| 8 | Distilabel — 합성 데이터 생성 파이프라인 | github.com/argilla-io |
+| 9 | vLLM — LLM 추론 표준 엔진 | effloow.com |
+| 10 | Alibaba Open Code Review — AI 코드 리뷰 | github.com/alibaba |
+
+누적: 442카드 (432→442)
+주제: 에이전트 메모리, 온디바이스 벤치마크, 데이터 파이프라인, 지식 그래프, 비디오 생성, 합성 데이터, LLM 서빙, AI 코드 리뷰
