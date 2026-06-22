@@ -884,3 +884,5 @@
 
 누적: 518카드 (514→518)
 주제: Samsung Electronics ChatGPT Enterprise/Codex deployment, Oracle Cloud Infrastructure procurement path, Notion Codex spec-and-verification workflow, Trusted Access for Cyber, Codex Security
+
+- 2026-06-22 14:00 KST | Potpie — 코드베이스를 Neo4j 지식 그래프로 인덱싱해 디버깅·Q&A·코드생성·스펙 전문 에이전트를 붙이는 도구(Apache-2.0, 모델 비종속) | https://github.com/potpie-ai/potpie

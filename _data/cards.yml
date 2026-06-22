@@ -6803,3 +6803,15 @@ cards:
       - "Trusted Access for Cyber는 검증된 방어자와 승인된 작업 범위를 전제로 함"
       - "보안 에이전트 자동화는 권한 등급·대상 소유권·격리 환경·사람 리뷰가 핵심"
     source: "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/"
+  - category: ai
+    title: "Potpie: 코드베이스 전체를 Neo4j 지식 그래프로 인덱싱해 디버깅·Q&A·스펙 전문 에이전트를 붙이는 도구"
+    summary: >
+      Potpie는 저장소를 파싱해 모든 파일·클래스·함수와 호출관계를 담은 지식 그래프(Neo4j)로 만든다.
+      이 그래프가 모든 에이전트의 컨텍스트 backbone이 되어, 실제 코드에 근거한 답·코드·문서를 낸다.
+      License: Apache 2.0.
+    points:
+      - "지식 그래프: 함수·클래스·파일·import·호출관계를 Neo4j에 저장한 구조적 인덱스"
+      - "프리빌트 에이전트: Debugging(스택트레이스 분석·단계별 가이드)·Codebase Q&A·Code Generation(기능 생성·리팩터)·Spec(스펙/PRD/아키텍처 문서)"
+      - "Custom Agent 빌더: System Instructions·Tasks·Tools로 반복 작업용 맞춤 에이전트 설계"
+      - "모델 비종속: openai·ollama·anthropic·openrouter (LiteLLM provider/model_name 형식)"
+    source: https://github.com/potpie-ai/potpie
