@@ -1010,3 +1010,5 @@
 - code2prompt / files-to-prompt 2장 → 1장
 
 누적: 574카드 (581→574)
+
+- 2026-06-23 02:31 KST | Colab MCP Server 에이전트용 클라우드 노트북 실행 도구 | https://developers.googleblog.com/announcing-the-colab-mcp-server-connect-any-ai-agent-to-google-colab/

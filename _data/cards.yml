@@ -197,29 +197,30 @@ cards:
   - category: ai
     title: diagnose — 디버깅을 규율로 만드는 스킬
     summary: >
-      mattpocock/skills의 diagnosing-bugs는 어려운 버그를 여섯 단계로 다룬다. 먼저 실제 증상을 잡는
-      빠르고 결정적인 pass/fail 루프를 만들고, 그다음 재현·최소화 → 3~5개 가설 → 한 변수씩 계측 →
-      수정과 회귀 테스트 → 정리·포스트모템으로 간다. 핵심은 "루프가 스킬"이라는 점이다. 실패 신호가
-      없으면 가설은 감이고, 좋은 루프가 있으면 이분법·계측·회귀 테스트가 같은 신호를 소비한다. 그래서
-      SKILL.md는 red-capable 명령 하나를 이미 실행하기 전에는 가설 단계로 가지 말라고 못박는다.
+      mattpocock/skills의 diagnosing-bugs는 어려운 버그를 "재현 가능한 실패 신호"에서 시작하게 만드는
+      디버깅 루프다. 순서는 재현·최소화 → 3~5개 가설 → 한 변수씩 계측 → 수정 → 회귀 테스트 → 정리로
+      이어진다. 좋은 점은 버그를 설명하는 말솜씨보다, 같은 명령으로 빨간불과 초록불을 반복해서 볼 수
+      있는지를 먼저 묻는다는 것이다. 그래서 AI에게 바로 코드를 고치게 하기보다, 실패를 빠르게 보여주는
+      테스트·스크립트·로그 지점을 먼저 만들고 그 신호 하나로 가설을 줄여 간다.
     points:
-      - "6단계: 루프→재현·최소화→가설→계측→수정·회귀→정리"
-      - "red-capable·결정적·빠른 명령 하나가 디버깅의 출발점"
-      - "가설은 3~5개로 세우고, 계측은 한 변수씩 검증"
+      - "출발점: 재현 가능한 red/pass 신호를 먼저 만든다"
+      - "가설은 3~5개로 제한하고, 계측은 한 변수씩만 바꾼다"
+      - "수정 뒤에는 같은 실패 신호를 회귀 테스트로 남긴다"
     source: "https://github.com/mattpocock/skills"
 
   - category: ai
     title: Spec Kit — 명세 주도 개발(SDD)
     summary: >
-      GitHub Spec Kit은 "코드가 명세를 따르게 한다"는 SDD 도구다. 흐름은 constitution으로 원칙을 세우고,
-      specify로 요구사항을 구조화한 뒤 plan으로 기술 결정을 붙이고, tasks로 실행 가능한 작업을 만들고,
-      implement로 구현한다. `specify init`은 Copilot, Codex, Claude Code, Gemini CLI 등 여러 에이전트
-      통합을 설치하며, 스킬 모드에서는 `/speckit.*` 명령 대신 `speckit-*` 스킬로 들어갈 수 있다. 핵심은
-      AI가 바로 코드를 추측하지 않게 하고, 요구사항·계획·작업을 버전 관리되는 산출물로 남기는 것이다.
+      GitHub Spec Kit은 AI에게 바로 구현을 맡기기 전에, 요구사항과 기술 결정을 파일로 고정하는
+      Spec-Driven Development 도구다. 흐름은 constitution으로 프로젝트 원칙을 세우고, specify로 "무엇과
+      왜"를 적은 뒤, plan에서 기술 선택을 붙이고, tasks로 실행 가능한 작업 목록을 만든 다음 implement로
+      들어간다. `specify init`은 Copilot, Codex, Claude Code, Gemini CLI 등 30개 이상 에이전트 통합을
+      지원하고, 스킬 모드에서는 `/speckit.*` 명령 대신 `speckit-*` 스킬을 설치할 수 있다. 교훈은
+      "명세 문서"가 산출물 보관용이 아니라, AI가 추측으로 코드를 시작하지 못하게 하는 실행 경계라는 점이다.
     points:
-      - "constitution→specify→plan→tasks→implement로 의도를 단계화"
-      - "Copilot·Codex·Claude Code·Gemini CLI 등 30+ 에이전트 통합"
-      - "요구사항·기술 결정·작업 목록을 코드 전 산출물로 고정"
+      - "constitution→specify→plan→tasks→implement로 요구사항과 구현을 분리"
+      - "`specify init`은 30+ 에이전트 통합과 skills 모드 설치를 지원"
+      - "핵심 가치: AI 코딩 전에 원칙·요구사항·작업 단위를 버전 관리"
     source: "https://github.com/github/spec-kit"
 
   - category: ai
@@ -7475,3 +7476,17 @@ cards:
       - "범위: pre-training, post-training, inference, XLA, PyTorch, XProf, Pallas, KV cache offloading"
       - "자료는 code-first와 agent-ingestion friendly를 지향해 AI 보조 개발 도구가 읽기 쉽게 설계"
     source: "https://developers.googleblog.com/unlocking-the-power-of-the-tpu-stack-introducing-our-new-developer-hub/"
+  - category: ai
+    title: "Colab MCP Server — 에이전트에게 클라우드 노트북을 실행 도구로 붙이기"
+    summary: >
+      Google은 2026년 3월 Colab MCP Server를 공개해, Gemini CLI·Claude Code 같은 MCP 호환 에이전트가
+      로컬 터미널에서 Google Colab 노트북을 직접 제어하게 했다. 핵심은 "코드 조각을 복사해 Colab에
+      붙여넣기"가 아니라, 에이전트가 .ipynb 셀을 만들고, 마크다운 설명을 넣고, Python 코드를 실행하고,
+      의존성을 설치하며, 결과 노트북을 클라우드 실행 산출물로 남기는 흐름이다. 로컬 머신에서 무거운
+      GPU/데이터 작업을 돌리거나 자율 에이전트에게 직접 하드웨어 접근을 주기 부담스러울 때, Colab을
+      MCP 도구화된 샌드박스로 쓰는 패턴이다. 공개 GitHub 저장소는 Apache-2.0이고, 같은 런에서 691★를 확인했다.
+    points:
+      - "공식 발표: 2026-03-17, Colab을 MCP 호환 에이전트의 클라우드 작업공간으로 연결"
+      - "기능: 셀 생성·정렬, 코드 실행, 의존성 설치, 재현 가능한 노트북 산출물 생성"
+      - "실무 포인트: 로컬 에이전트와 GPU/노트북 환경을 복사-붙여넣기 없이 분리"
+    source: "https://developers.googleblog.com/announcing-the-colab-mcp-server-connect-any-ai-agent-to-google-colab/"

@@ -2,7 +2,24 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: start at the oldest routine-published AI / AI+Android cards in `_data/cards.yml` and `auto-post-log.md`.
+Current position: continue after `Spec Kit — 명세 주도 개발(SDD)`; next oldest reviewed candidate is `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기`.
+
+Last update: 2026-06-23 02:31 KST
+
+Reviewed:
+- `diagnose — 디버깅을 규율로 만드는 스킬`
+- `Spec Kit — 명세 주도 개발(SDD)`
+- `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기`
+
+Refined:
+- `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
+- `Spec Kit — 명세 주도 개발(SDD)` — clarified the SDD artifact flow and the role of specs as AI execution boundaries.
+
+Skipped:
+- `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
+
+Next:
+- Continue with `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` if a future source update justifies changes; otherwise move to `Ouroboros — 모호함을 수치로`.
 
 Per successful refinement run, update this file with:
 - timestamp
