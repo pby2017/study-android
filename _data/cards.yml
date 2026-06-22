@@ -6688,3 +6688,15 @@ cards:
       - "SWE-bench Verified 46.20% / full 24.89% / lite 30.67%(pass@1), 태스크당 7분 미만·$0.7 미만"
       - "논문 'AutoCodeRover: Autonomous Program Improvement'(arXiv 2404.05427), ISSTA 2024 / 라이선스는 README 미명시"
     source: https://github.com/nus-apr/auto-code-rover
+  - category: ai
+    title: "PR-Agent (Qodo Merge 오픈소스): AI 코드리뷰 에이전트"
+    summary: >
+      Qodo가 커뮤니티로 유지하는 오픈소스 AI 코드리뷰 에이전트. PR에 명령을 달면
+      자동 리뷰·설명·개선제안을 수행한다. GitHub·GitLab·BitBucket·Azure DevOps·Gitea를
+      지원하고 GitHub Action·CLI·Docker·self-hosted·webhook으로 실행한다.
+    points:
+      - "핵심 명령: /review(리뷰) /describe(PR 설명 생성) /improve(코드 개선제안) /ask(코드 라인 질의)"
+      - "각 도구는 단일 LLM 호출(README: ~30초, 저비용)로 동작"
+      - "플랫폼 무관: 여러 git 제공자·배포방식·AI 모델(OpenAI GPT, Claude 등) 지원"
+      - "실행: GitHub Action(권장)·CLI(로컬)·Docker·self-hosted·webhook"
+    source: https://github.com/qodo-ai/pr-agent

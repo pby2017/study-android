@@ -862,3 +862,5 @@
 주제: GitHub Copilot custom agents, custom instructions support matrix, Jira cloud agent integration, MCP policy settings
 
 - 2026-06-22 10:59 KST | AutoCodeRover — AST 기반 코드검색으로 GitHub 이슈 자동해결하는 자율 프로그램 개선 시스템(NUS) | https://github.com/nus-apr/auto-code-rover
+
+- 2026-06-22 11:30 KST | PR-Agent (Qodo Merge 오픈소스) — /review·/describe·/improve·/ask 명령으로 GitHub·GitLab·BitBucket·Azure DevOps·Gitea PR을 자동 리뷰하는 AI 에이전트 | https://github.com/qodo-ai/pr-agent
