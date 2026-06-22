@@ -948,3 +948,31 @@
 주제: 문서 파싱, TTS, 세그멘테이션, 브라우저 자동화, 리랭커, 피처 스토어, 코딩 에이전트, LLM 서빙, 엣지 LLM
 
 - 2026-06-22 17:30 KST | avante.nvim Neovim AI 코딩 플러그인 | https://github.com/yetone/avante.nvim
+
+## 2026-06-22 18:10 KST — Batch 15 (AI 도구·프레임워크·인프라 광범위, 20카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | n8n — 비주얼 워크플로우 자동화 | agent.nexus |
+| 2 | AI 코딩 에이전트 2026 비교 | prompt-guide.com |
+| 3 | Sherpa-ONNX — 온디바이스 음성 AI | voiceping.net |
+| 4 | Label Studio — 데이터 라벨링+AI 평가 | labelstud.io |
+| 5 | LlamaIndex — RAG 골드 스탠다드 | toolhalla.ai |
+| 6 | LangGraph — 멀티에이전트 프로덕션 | odsea.com |
+| 7 | Mobile-O — 온디바이스 멀티모달 | github.com/Amshaker |
+| 8 | DeepEval — LLM용 Pytest | genai.qa |
+| 9 | FLUX.2 — 이미지 생성 | github.com/black-forest-labs |
+| 10 | GPT-SoVITS — TTS 클로닝 | github.com/rvc-boss |
+| 11 | 하이브리드 검색(BM25+벡터) | tianpan.co |
+| 12 | ExecuTorch 1.0 — 온디바이스 LLM | v-chandra.github.io |
+| 13 | 프롬프트 캐싱 2026 | leanlm.ai |
+| 14 | LLM 벤치마크 2026 | tokenmix.ai |
+| 15 | Structured Outputs | wolf-tech.io |
+| 16 | MCP(Model Context Protocol) | workos.com |
+| 17 | DeepSeek R1 — 오픈 추론 모델 | tokenmix.ai |
+| 18 | Semblance — 로컬 주권형 AI | github.com/skygkruger |
+| 19 | CodeGraph — 코드 시맨틱 그래프 | github.com/codegraph-ai |
+| 20 | Auto-Use — Computer Use 에이전트 | github.com/auto-use |
+
+누적: 472카드 (452→472)
+주제: 워크플로우 자동화, 코딩 에이전트, 온디바이스 음성, 데이터 라벨링, RAG, 멀티에이전트, 멀티모달, LLM 평가, 이미지 생성, TTS, 하이브리드 검색, 온디바이스 LLM, 프롬프트 캐싱, 벤치마크, 구조화 출력, MCP, 추론 모델, 로컬 AI, 코드 검색, Computer Use

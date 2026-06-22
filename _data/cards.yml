@@ -7189,3 +7189,254 @@ cards:
       - "ACP(Agent Client Protocol)로 Gemini CLI·Claude Code·Goose·Codex 등 외부 에이전트 연동"
       - "provider: Claude·OpenAI·Azure·Gemini 등, 웹검색 Tavily/Brave/Kagi/SerpApi 등 연동"
     source: https://github.com/yetone/avante.nvim
+  - category: ai
+    title: "n8n — 100k+★ 비주얼 워크플로우 자동화, AI 네이티브 노드(LangChain) 내장·400+ 통합(Fair-Code)"
+    summary: >
+      n8n은 가장 빠르게 성장하는 워크플로우 자동화 플랫폼이다. 노드 기반 비주얼 에디터로 400+ 통합을
+      제공하고, AI 네이티브 노드(LangChain 기반)로 LLM 워크플로우를 직접 구축할 수 있다. JavaScript/Python
+      코드 삽입 가능. 2025년 NVIDIA Ventures 참여 Series C $180M 유치($2.5B 밸류에이션). Temporal(내구
+      실행)·Kestra(YAML 오케스트레이션)·Windmill(코드 우선) 대비 가장 접근성이 높은 로우코드 도구.
+    points:
+      - "비주얼+코드: 노드 그래프 + JS/Python 코드 삽입"
+      - "AI 네이티브: LangChain 기반 에이전트 노드 내장"
+      - "$2.5B 밸류에이션: NVIDIA Ventures 참여 Series C"
+    source: "https://agent.nexus/blog/top-10-open-source-automation-tools"
+  - category: ai
+    title: "AI 코딩 에이전트 2026 비교 — Claude Code(SWE-bench 80.8%) vs Cursor(IDE 1위) vs Codex(비동기 클라우드)"
+    summary: >
+      2026년 AI 코딩 도구는 IDE형과 터미널 에이전트형으로 양분된다. Cursor(VS Code 포크)는 인에디터
+      자동완성+Composer 멀티파일 편집으로 IDE 1위. Claude Code(터미널 CLI)는 Opus 4.6의 1M 토큰
+      context로 대규모 리팩토링·탐색에 강점, SWE-bench Verified 80.8%. Codex(OpenAI)는 샌드박스
+      비동기 클라우드 에이전트. Aider/OpenCode는 오픈소스·BYOK 터미널 대안. 실무 개발자 대부분이
+      Cursor+Claude Code 조합으로 80% 작업을 처리하는 추세.
+    points:
+      - "Cursor: IDE 1위, 인에디터 자동완성+Composer"
+      - "Claude Code: SWE-bench 80.8%, 1M context, 터미널"
+      - "실무 조합: Cursor(편집) + Claude Code(에이전트) 주류"
+    source: "https://prompt-guide.com/en/apprendre/agents-code-ia"
+  - category: ai
+    title: "Sherpa-ONNX — 온디바이스 음성 AI 올인원, Android에서 Whisper 51x 빠른 추론·13k★(Apache-2.0)"
+    summary: >
+      Sherpa-ONNX는 k2-fsa 팀이 만든 ONNX Runtime 기반 온디바이스 음성 처리 올인원 툴킷이다. STT·TTS·
+      화자 분리·음성 활동 감지·키워드 스포팅을 단일 프레임워크로 통합. Whisper·Moonshine·SenseVoice·
+      Zipformer 등 다양한 모델 지원. Android에서 Whisper Tiny 기준 whisper.cpp 대비 51x 빠른 추론(VoicePing
+      벤치마크). 12개 프로그래밍 언어 바인딩. Expo/React Native 래퍼(expo-sherpa-onnx) 제공.
+    points:
+      - "51x 빠른 추론: Android Whisper Tiny, whisper.cpp 대비"
+      - "올인원: STT·TTS·화자 분리·VAD·키워드 스포팅"
+      - "12개 언어 바인딩: C++·Python·Java·Swift·Kotlin 등"
+    source: "https://voiceping.net/en/blog/research-offline-speech-transcription-benchmark/"
+  - category: ai
+    title: "Label Studio — 오픈소스 데이터 라벨링+AI 평가 플랫폼, 이미지·텍스트·오디오·비디오·LLM 평가 통합"
+    summary: >
+      Label Studio는 HumanSignal이 만든 가장 널리 사용되는 오픈소스 데이터 라벨링 플랫폼이다. 이미지·
+      텍스트·오디오·비디오·타임시리즈·멀티모달 데이터를 단일 UI에서 라벨링. ML 백엔드 연동으로 모델
+      예측→인간 검수 Active Learning 루프 구축 가능. 2026년 LLM/에이전트 평가 기능 추가: RLHF 선호도
+      라벨링, RAG 검색 QA, 에이전트 트레이스 리뷰. Vibe Code로 커스텀 인터페이스 생성(Enterprise).
+    points:
+      - "멀티모달: 이미지·텍스트·오디오·비디오·타임시리즈"
+      - "ML 백엔드: Active Learning 루프, 모델 예측→인간 검수"
+      - "LLM 평가: RLHF·RAG QA·에이전트 트레이스 리뷰"
+    source: "https://labelstud.io/"
+  - category: ai
+    title: "LlamaIndex — RAG 데이터 프레임워크의 골드 스탠다드, 160+ 커넥터·하이브리드 검색·LlamaParse(Apache-2.0)"
+    summary: >
+      LlamaIndex는 2026년 RAG 프레임워크의 사실상 표준이다. 160+ 데이터 커넥터(LlamaHub)로 PDF·DB·API·
+      비정형 텍스트를 인덱싱. Sentence Window·하이브리드 검색·계층적 검색·Auto-Merging 등 고급 검색
+      전략 내장. LlamaParse는 복잡한 테이블·이미지·레이아웃 포함 문서를 기존 텍스트 파싱 대비 10x 정확도로
+      처리. LangChain(에이전트 오케스트레이션) 대비 검색 깊이가 차별점. 많은 팀이 LlamaIndex(검색) +
+      LangChain(오케스트레이션) 조합 사용.
+    points:
+      - "160+ 커넥터: PDF·DB·API·비정형 텍스트 인덱싱"
+      - "고급 검색: Sentence Window·하이브리드·계층적·Auto-Merging"
+      - "LlamaParse: 복잡 문서 10x 정확도 파싱"
+    source: "https://toolhalla.ai/blog/langchain-vs-llamaindex-vs-haystack-2026"
+  - category: ai
+    title: "LangGraph — 프로덕션 멀티에이전트 표준, 상태 머신 기반·LangSmith 옵저버빌리티·Klarna/Uber 사용"
+    summary: >
+      LangGraph는 LangChain 팀이 만든 프로덕션 멀티에이전트 프레임워크의 사실상 표준이다. 에이전트
+      워크플로우를 방향 그래프(상태 머신)로 모델링하여 결정론적 실행·분기·루프·human-in-the-loop을
+      명시적으로 제어. Postgres 기반 체크포인팅으로 서버 크래시 후에도 워크플로우 복구. LangSmith
+      옵저버빌리티 네이티브 통합. Klarna·LinkedIn·Uber·Replit이 프로덕션 사용. CrewAI(빠른 프로토타입) →
+      LangGraph(프로덕션) 마이그레이션 패턴이 업계 표준.
+    points:
+      - "상태 머신: 결정론적 실행, 분기·루프·HITL 명시적 제어"
+      - "체크포인팅: Postgres 기반, 서버 크래시 복구"
+      - "프로덕션 검증: Klarna·LinkedIn·Uber·Replit 사용"
+    source: "https://odsea.com/blog/langgraph-vs-crewai-vs-autogen-production"
+  - category: ai
+    title: "Mobile-O — 온디바이스 통합 멀티모달(VLM+확산 생성), iPhone에서 이미지 생성 3초·VQA 0.4초(1.6B)"
+    summary: >
+      Mobile-O는 온디바이스용 통합 비전-언어-확산 모델이다. FastVLM(FastViT+Qwen2-0.5B) 기반 멀티모달
+      이해(VQA·OCR·추론)와 SANA(600M DiT) 기반 512×512 이미지 생성을 단일 아키텍처로 통합. iPhone 15
+      Pro에서 이미지 생성 ~3초, 시각 이해 ~0.4초. 메모리 2GB 미만. MLP 커넥터(~2.4M)가 VLM과 확산
+      디코더를 경량 연결. MLX+CoreML 최적화. 클라우드 의존 없이 완전 온디바이스 실행.
+    points:
+      - "통합: VLM(이해) + 확산(생성), 단일 아키텍처"
+      - "iPhone 실시간: 이미지 생성 3초, VQA 0.4초"
+      - "경량: 1.6B 파라미터, 메모리 2GB 미만"
+    source: "https://github.com/Amshaker/Mobile-O"
+  - category: ai
+    title: "DeepEval — LLM용 Pytest, CI/CD에서 품질 게이트로 50+ 메트릭·Ragas와 상호보완(Apache-2.0)"
+    summary: >
+      DeepEval은 Confident AI가 만든 오픈소스 LLM 평가 프레임워크로 'LLM용 Pytest'를 표방한다. Pytest
+      네이티브 통합으로 LLM 테스트를 유닛 테스트처럼 작성하고 CI/CD 파이프라인에서 빌드 실패 트리거.
+      50+ 메트릭: RAG(faithfulness·context precision·recall), 에이전트(tool selection·planning quality),
+      safety(hallucination·bias·toxicity). G-Eval로 커스텀 메트릭 생성. Ragas(RAG 학술 메트릭 특화)와
+      상호보완: DeepEval=CI 게이트, Ragas=프로덕션 모니터링.
+    points:
+      - "Pytest 네이티브: LLM 테스트를 유닛 테스트처럼 CI/CD"
+      - "50+ 메트릭: RAG·에이전트·safety·hallucination"
+      - "Ragas 상호보완: DeepEval=CI, Ragas=프로덕션 모니터링"
+    source: "https://genai.qa/blog/deepeval-vs-ragas/"
+  - category: ai
+    title: "FLUX.2 — Black Forest Labs 오픈소스 이미지 생성, Klein 4B(Apache-2.0)는 8GB GPU에서 실시간(ComfyUI)"
+    summary: >
+      FLUX.2는 Black Forest Labs가 만든 최신 오픈소스 이미지 생성 모델 패밀리다. Klein 4B(Apache-2.0)는
+      ~8GB VRAM의 소비자 GPU(RTX 4070/3090)에서 서브초 생성 가능. Klein 9B(16GB)와 Dev 32B(고품질·
+      비상업)도 제공. 텍스트→이미지+이미지 편집(단일/다중 참조)을 단일 모델로 통합. ComfyUI가 표준
+      인터페이스. Stable Diffusion 3.5(LoRA/ControlNet 생태계 최대) 대비 포토리얼리즘·텍스트 렌더링 우수.
+    points:
+      - "Klein 4B: Apache-2.0, 8GB GPU에서 서브초 생성"
+      - "통합: 텍스트→이미지 + 이미지 편집, 단일 모델"
+      - "ComfyUI 표준: 노드 기반 워크플로우, 커스터마이징"
+    source: "https://github.com/black-forest-labs/flux2"
+  - category: ai
+    title: "GPT-SoVITS — 1분 음성으로 프로덕션급 TTS 클로닝, 5초 제로샷·RTF 0.014(4090)·57k+★(MIT)"
+    summary: >
+      GPT-SoVITS는 RVC-Boss 팀이 만든 Few-shot 음성 클로닝+TTS 프레임워크다. 5초 참조 오디오로 제로샷
+      TTS, 1분 데이터로 고충실도 파인튜닝. GPT 시맨틱 토큰 예측기+SoVITS(VITS 기반) 보코더 결합.
+      4090에서 RTF 0.014(실시간의 71배 속도). 영어·일본어·한국어·광동어·중국어 크로스링구얼 합성.
+      WebUI로 음원 분리·자동 세그멘테이션·ASR·라벨링 도구 내장. RVC(실시간 음성 변환)와 상호보완.
+    points:
+      - "5초 제로샷: 참조 오디오로 즉시 TTS"
+      - "RTF 0.014: 4090에서 실시간 71배 속도"
+      - "크로스링구얼: 영·일·한·광·중 5개 언어"
+    source: "https://github.com/rvc-boss/gpt-sovits"
+  - category: ai
+    title: "하이브리드 검색(BM25+벡터) — RAG의 프로덕션 기본값, RRF 퓨전으로 키워드 정밀도+시맨틱 리콜 통합"
+    summary: >
+      하이브리드 검색은 BM25(키워드)와 벡터(시맨틱)를 병렬 실행 후 하나의 랭킹으로 퓨전하는 아키텍처다.
+      2026년 RAG 프로덕션의 사실상 기본값. Reciprocal Rank Fusion(RRF, k=60)이 표준 퓨전 방법으로 점수
+      스케일 차이 문제를 순위 기반으로 해결. Elasticsearch·OpenSearch·Qdrant·Weaviate·Pinecone이 네이티브
+      지원. 최적화: RRF 베이스라인 → 레이블 데이터 있으면 convex combination → cross-encoder 리랭커 추가.
+    points:
+      - "RRF(k=60): 순위 기반 퓨전, 점수 스케일 무관"
+      - "네이티브 지원: Elasticsearch·Qdrant·Weaviate·Pinecone"
+      - "최적화: RRF → alpha 퓨전 → cross-encoder 리랭커"
+    source: "https://tianpan.co/blog/2026-04-12-hybrid-search-production-bm25-dense-embeddings"
+  - category: ai
+    title: "ExecuTorch 1.0(Meta) — 온디바이스 LLM 프로덕션 프레임워크, 50KB 런타임·12+ HW 백엔드·Instagram/WhatsApp 사용"
+    summary: >
+      ExecuTorch는 Meta가 만든 프로덕션급 온디바이스 추론 프레임워크로 2025년 10월 1.0 GA를 달성했다.
+      PyTorch torch.export 파이프라인으로 학습→모바일 배포 원스텝. 50KB 베이스 런타임으로 마이크로
+      컨트롤러부터 고급 스마트폰까지 지원. CoreML·Qualcomm QNN·MediaTek·XNNPACK 등 12+ HW 백엔드.
+      Instagram·WhatsApp·Messenger·Facebook에서 수십억 사용자 서빙. llama.cpp(CPU·GGUF·프로토타입)
+      대비 NPU 가속+HW 최적화+프로덕션 안정성이 차별점.
+    points:
+      - "50KB 런타임: MCU부터 스마트폰까지 배포"
+      - "12+ HW 백엔드: CoreML·QNN·MediaTek·XNNPACK"
+      - "Meta 스케일: Instagram·WhatsApp·Messenger 프로덕션"
+    source: "https://v-chandra.github.io/on-device-llms/"
+  - category: ai
+    title: "프롬프트 캐싱 2026 — Anthropic 90% 할인·OpenAI 자동 50%·Gemini 명시적 캐시, API 비용 70~90% 절감"
+    summary: >
+      프롬프트 캐싱은 2026년 LLM API 비용 절감의 가장 높은 ROI 수단이다. 반복되는 프롬프트 프리픽스
+      (시스템 프롬프트·도구 정의·참조 문서)를 저장해 할인 적용. Anthropic: cache_control 마커 명시, 읽기
+      90% 할인, 쓰기 1.25x(5분)/2x(1시간) 서차지. OpenAI: 1,024+ 토큰 자동 캐싱, 50% 할인, 마커 불필요.
+      Gemini: 명시적 캐시 객체 생성, 시간당 스토리지 요금. 핵심: 정적 콘텐츠를 프롬프트 맨 앞에 배치.
+    points:
+      - "Anthropic: 90% 할인, cache_control 마커 명시"
+      - "OpenAI: 자동 캐싱, 50% 할인, 설정 불필요"
+      - "핵심 규칙: 정적 콘텐츠 프롬프트 맨 앞 배치"
+    source: "https://leanlm.ai/blog/prompt-caching"
+  - category: ai
+    title: "LLM 벤치마크 2026 — SWE-bench·GPQA·HLE만 유의미, MMLU/GSM8K는 포화(상위 93%+), 포트폴리오 접근 필수"
+    summary: >
+      2026년 LLM 벤치마크에서 MMLU(93%)·GSM8K(99%)·HumanEval은 포화되어 프론티어 모델 구분 불가.
+      유의미한 벤치마크: SWE-bench Verified(실제 GitHub 버그 수정, Opus 4.6 80.8%), GPQA Diamond(PhD급
+      과학 추론, Gemini 3.1 94.3%), HLE(전문가 지식, 미포화), LiveCodeBench(월간 갱신 코딩).
+      평가 시 스캐폴드에 따라 5~15% 점수 변동 가능. 단일 벤치마크가 아닌 학술(GPQA)+에이전트(SWE-bench)
+      +선호도(Chatbot Arena) 포트폴리오 접근 필수.
+    points:
+      - "포화: MMLU 93%+, GSM8K 99%+, 프론티어 구분 불가"
+      - "유의미: SWE-bench·GPQA·HLE·LiveCodeBench"
+      - "포트폴리오: 학술+에이전트+선호도 삼각 검증"
+    source: "https://tokenmix.ai/blog/llm-leaderboard-2026"
+  - category: ai
+    title: "Structured Outputs — LLM에서 스키마 준수 JSON을 보장하는 프로덕션 패턴, strict:true로 제약 디코딩"
+    summary: >
+      Structured Outputs는 LLM이 JSON 스키마를 토큰 생성 레벨에서 강제 준수하게 하는 기능이다. OpenAI
+      response_format(type:json_schema, strict:true)로 정확한 스키마 출력 보장. Function Calling(tool use)은
+      모델이 외부 도구 호출을 결정할 때 사용. JSON 모드는 '아무 JSON', Structured Outputs는 '정확한
+      스키마 JSON', Function Calling은 '액션 결정'. 프로덕션 패턴: Function Calling(라우팅) + Structured
+      Outputs(포맷 보장). Instructor 라이브러리로 Pydantic 검증+자동 재시도.
+    points:
+      - "strict:true: 토큰 레벨 스키마 강제(제약 디코딩)"
+      - "3가지 구분: JSON 모드 vs Structured Outputs vs Function Calling"
+      - "프로덕션: FC(라우팅) + SO(포맷) + Instructor(검증)"
+    source: "https://wolf-tech.io/blog/structured-llm-outputs-in-production-json-mode-tool-use-and-validation-patterns"
+  - category: ai
+    title: "MCP(Model Context Protocol) 2026 — AI-도구 연결 USB-C, 10k+ 서버·97M SDK 다운로드·Linux Foundation 이관"
+    summary: >
+      MCP는 Anthropic이 만든 AI 모델↔외부 도구/데이터 연결 오픈 표준이다. 2025년 12월 Linux Foundation
+      (Agentic AI Foundation)에 기증되어 벤더 중립 표준화. Host(AI 앱)→Client→Server(도구/데이터) 3계층
+      아키텍처, JSON-RPC 기반. 10,000+ 공개 서버, Python/TypeScript SDK 월 97M+ 다운로드. Claude·ChatGPT·
+      Gemini·Cursor·VS Code 등 모든 주요 AI 플랫폼 지원. OAuth 2.1+PKCE 인증. Cloudflare Code Mode에서
+      도구 동적 디스커버리로 98%+ 토큰 절감 사례.
+    points:
+      - "10k+ 서버: 97M+ SDK 다운로드, 모든 주요 AI 지원"
+      - "Linux Foundation: 벤더 중립 오픈 표준"
+      - "98% 토큰 절감: Cloudflare 동적 도구 디스커버리"
+    source: "https://workos.com/blog/everything-your-team-needs-to-know-about-mcp-in-2026"
+  - category: ai
+    title: "DeepSeek R1 — 오픈웨이트 추론 모델, 671B MoE에서 37B만 활성·투명한 CoT·o3 대비 73% 저렴(MIT)"
+    summary: >
+      DeepSeek R1은 오픈웨이트 추론 모델로 GRPO 강화학습으로 학습되었다. 671B MoE 아키텍처에서 토큰당
+      37B만 활성화하여 비용 효율적. 핵심 차별점: 추론 과정(Chain-of-Thought)이 완전 투명하게 스트리밍되어
+      디버깅·감사·컴플라이언스에 유리. o3 대비 토큰당 73% 저렴($0.55/$2.19 vs $2/$8). 대부분의 실무
+      추론 태스크에서 o3의 85~97% 성능. 의료·법률·금융 분야에서 감사 가능성 때문에 R1 선호.
+    points:
+      - "MoE: 671B 중 37B만 활성, 73% 저렴"
+      - "투명 CoT: 추론 과정 완전 공개, 감사 가능"
+      - "오픈웨이트(MIT): 셀프호스팅, 커스터마이징 가능"
+    source: "https://tokenmix.ai/blog/deepseek-r1-vs-o3"
+  - category: ai
+    title: "Semblance — 완전 로컬 주권형 개인 AI, 네트워크 접근 아키텍처적 불가능·이메일/캘린더/건강 데이터 통합"
+    summary: >
+      Semblance는 완전 로컬에서 실행되는 주권형 개인 AI 어시스턴트다. AI 코어 프로세스가 아키텍처적으로
+      네트워크 접근 불가능(HTTP 라이브러리 없음, OS 샌드박스 격리). 이메일·파일·캘린더·메시지·건강·
+      금융 데이터를 로컬 지식 그래프에 수집하여 추론. 외부 통신은 단일 Gateway 프로세스를 통해 사용자
+      허용 서비스만 가능. LanceDB(벡터)+SQLite(구조화) 로컬 저장. Ollama/llama.cpp/MLX 선택. React
+      Native 모바일은 로컬 추론 피어 디바이스로 동작.
+    points:
+      - "제로 네트워크: AI 코어에 HTTP 라이브러리 없음"
+      - "로컬 지식 그래프: 이메일·캘린더·건강·금융 통합"
+      - "Gateway 격리: 사용자 허용 서비스만 외부 통신"
+    source: "https://github.com/skygkruger/semblance-core"
+  - category: ai
+    title: "CodeGraph — 코드베이스를 시맨틱 그래프로 변환, 37언어·45 MCP 도구·호출 체인·아키텍처 문서 자동 생성"
+    summary: >
+      CodeGraph는 코드베이스를 시맨틱 그래프로 구축하고 AI 에이전트에게 구조화된 코드 이해를 제공하는
+      도구다. tree-sitter로 37개 언어 파싱. symbol_search(BM25+시맨틱 하이브리드), get_callers/callees
+      (호출 체인), get_dependency_graph(의존성), blast_radius(영향 범위 분석) 등 45개 MCP 도구.
+      verify_design(문서↔코드 교차 검증), generate_architecture_doc(ARCHITECTURE.md 자동 생성).
+      파일 grep 대신 구조화된 심볼 조회로 토큰 최대 5,700x 절감(GraphMind 유사).
+    points:
+      - "37언어·45 MCP 도구: 심볼 검색·호출 체인·의존성"
+      - "토큰 절감: grep 대비 최대 5,700x 적은 컨텍스트"
+      - "아키텍처 자동 생성: 코드 그래프 기반 ARCHITECTURE.md"
+    source: "https://github.com/codegraph-ai/CodeGraph"
+  - category: ai
+    title: "Auto-Use — 접근성 트리+비전 하이브리드로 OS 전체를 AI 에이전트가 제어, macOS/Windows 통합(MIT)"
+    summary: >
+      Auto-Use는 AI가 데스크톱 OS 전체를 제어하는 Computer Use 에이전트다. 3단계 하이브리드: ①접근성
+      트리(AXUIElement) 추출 → ②마젠타 바운딩 박스 오버레이 스크린샷 생성 → ③비전 모델(Claude/GPT-4o/
+      Gemini)에 번호 인덱스+엘리먼트 트리 전송. 순수 스크린샷(비주얼봇) 대비 안정적이고 정확한 요소
+      타게팅. 브라우저 자동화+시스템 제어+코딩 태스크를 단일 에이전트로 통합. macOS+Windows 빌드
+      통합. Python app.py(데스크톱 UI) 또는 main.py(터미널) 실행.
+    points:
+      - "하이브리드: 접근성 트리 + 비전, 순수 스크린샷 대비 정확"
+      - "OS 전체 제어: 브라우저+시스템+코딩 단일 에이전트"
+      - "번호 인덱스: 오버레이 번호로 요소 타게팅, 좌표 불필요"
+    source: "https://github.com/auto-use/auto-use"
