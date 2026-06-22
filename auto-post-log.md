@@ -870,3 +870,5 @@
 - 2026-06-22 12:30 KST | Claude Engineer v3 — 대화 중 새 도구를 스스로 만들어 핫리로드하는 자기개선형 코딩 어시스턴트(CLI+웹 UI, Claude 3.5 Sonnet) | https://github.com/Doriandarko/claude-engineer
 
 - 2026-06-22 13:00 KST | ShellSage — tmux 히스토리·패널을 직접 읽어 작업 맥락을 이해하는 터미널 네이티브 AI 어시스턴트(Answer.AI, 모델 비종속) | https://github.com/AnswerDotAI/shell_sage
+
+- 2026-06-22 13:30 KST | bolt.new — 브라우저 WebContainers에서 AI에게 환경 전체 제어권을 줘 풀스택 웹앱을 프롬프트로 만들고 실행·배포하는 개발 에이전트(StackBlitz) | https://github.com/stackblitz/bolt.new
