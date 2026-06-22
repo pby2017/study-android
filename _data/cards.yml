@@ -7440,3 +7440,14 @@ cards:
       - "OS 전체 제어: 브라우저+시스템+코딩 단일 에이전트"
       - "번호 인덱스: 오버레이 번호로 요소 타게팅, 좌표 불필요"
     source: "https://github.com/auto-use/auto-use"
+  - category: ai
+    title: "GPT Researcher: 웹/로컬을 깊게 조사해 인용 달린 리포트를 자동 생성"
+    summary: >
+      "the first open deep research agent" — planner가 연구 질문을 만들고 execution 에이전트들이
+      정보를 수집, publisher가 종합 리포트로 묶는다. 20+ 소스를 모아 2,000단어 이상 리포트 생성. Apache-2.0.
+    points:
+      - "planner→execution agents→publisher 구조로 자율 조사 수행"
+      - "20+ 소스 집계, 인용 포함, PDF·Word 등으로 내보내기"
+      - "Deep Research: 트리형 재귀 탐색으로 깊이·넓이 확장"
+      - "기본 OpenAI+Tavily, OpenAI 호환 API(로컬모델 등) 연동, MCP로 GitHub·DB·커스텀 API 연결"
+    source: https://github.com/assafelovic/gpt-researcher
