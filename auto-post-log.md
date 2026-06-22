@@ -872,3 +872,15 @@
 - 2026-06-22 13:00 KST | ShellSage — tmux 히스토리·패널을 직접 읽어 작업 맥락을 이해하는 터미널 네이티브 AI 어시스턴트(Answer.AI, 모델 비종속) | https://github.com/AnswerDotAI/shell_sage
 
 - 2026-06-22 13:30 KST | bolt.new — 브라우저 WebContainers에서 AI에게 환경 전체 제어권을 줘 풀스택 웹앱을 프롬프트로 만들고 실행·배포하는 개발 에이전트(StackBlitz) | https://github.com/stackblitz/bolt.new
+
+## 2026-06-22 13:48 KST — Batch 32 (enterprise Codex operations, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Samsung Codex 배포 — 코딩 에이전트도 전사 보안 정책 안에서 굴려야 한다 | openai.com |
+| 2 | OpenAI on OCI — 모델 도입은 API 키보다 구매 경로가 막는다 | openai.com |
+| 3 | Notion Codex 워크플로 — 스펙과 검증 방법을 같이 주면 에이전트가 오래 간다 | openai.com |
+| 4 | Codex Security — AI 보안 자동화는 권한 등급과 격리 검증이 먼저다 | openai.com |
+
+누적: 518카드 (514→518)
+주제: Samsung Electronics ChatGPT Enterprise/Codex deployment, Oracle Cloud Infrastructure procurement path, Notion Codex spec-and-verification workflow, Trusted Access for Cyber, Codex Security
