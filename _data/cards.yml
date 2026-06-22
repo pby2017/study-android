@@ -6839,3 +6839,14 @@ cards:
       - "플러그인으로 로컬·원격 모델 확장(OpenAI·Claude·Gemini·Llama 등 수십 종)"
       - "설치: pip·brew·pipx·uv / 문서 llm.datasette.io"
     source: https://github.com/simonw/llm
+  - category: ai
+    title: "OpenCommit: AI가 git 커밋 메시지 자동 생성"
+    summary: >
+      스테이지된 변경(diff)을 LLM에 보내 의미 있는 커밋 메시지를 만들어주는 CLI.
+      `oco` 한 번이면 add부터 commit까지 처리. GitHub 2023 해커톤 수상작.
+    points:
+      - "설치: npm install -g opencommit, 실행은 oco"
+      - "prepare-commit-msg git hook으로 등록 가능(커밋 전 메시지 편집)"
+      - "provider: openai(기본)·anthropic·azure·ollama·gemini 등, 로컬모델(Ollama/llama.cpp) 지원"
+      - "--yes로 확인 없이 커밋, GitMoji·.opencommitignore·commitlint 연동"
+    source: https://github.com/di-sukharev/opencommit

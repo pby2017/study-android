@@ -890,3 +890,5 @@
 - 2026-06-22 14:30 KST | Rawdog — CLI 요청에 파이썬 스크립트를 즉석 생성·자동 실행하고 출력을 맥락에 넣어 스스로 재호출하는 어시스턴트(RAWDOG=Recursive Augmentation With Deterministic Output Generations) | https://github.com/AbanteAI/rawdog
 
 - 2026-06-22 15:00 KST | llm (Simon Willison) — 명령줄에서 LLM에 프롬프트를 보내고 입출력을 SQLite에 저장하며 플러그인으로 로컬·원격 모델을 확장하는 CLI 겸 파이썬 라이브러리(Apache-2.0) | https://github.com/simonw/llm
+
+- 2026-06-22 15:30 KST | OpenCommit AI 커밋 메시지 CLI | https://github.com/di-sukharev/opencommit
