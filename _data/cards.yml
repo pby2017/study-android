@@ -241,14 +241,15 @@ cards:
     title: Ouroboros — 모호함을 수치로
     summary: >
       Ouroboros는 코딩 에이전트가 막연한 요청에서 바로 구현으로 뛰지 않게 만드는 명세 우선 워크플로
-      엔진이다. 핵심은 인터뷰를 감으로 끝내지 않는 점이다. 목표·제약·성공 기준·기존 코드베이스 이해 같은
-      차원을 0.0~1.0으로 채점하고, `Ambiguity = 1 - Σ(clarity_i × weight_i)`로 남은 불확실성을 계산한다.
-      Ambiguity가 0.2 이하가 되어야 Seed를 만들 수 있고, 그보다 높으면 더 물어보는 단계에 머문다. 즉
-      "좋은 질문을 하라"가 아니라, 추측 가능한 상태와 물어봐야 하는 상태를 숫자로 가르는 장치다.
+      엔진이다. 흐름은 interview로 숨은 가정을 드러내고, seed로 확정된 스펙을 만들고, run/evaluate로
+      실행과 검증을 반복하는 구조다. 핵심은 인터뷰를 감으로 끝내지 않는 점이다. 목표·제약·성공 기준·기존
+      코드베이스 이해 같은 차원을 0.0~1.0으로 채점하고, `Ambiguity = 1 - Σ(clarity_i × weight_i)`로
+      남은 불확실성을 계산한다. Ambiguity가 0.2 이하가 되어야 Seed를 만들 수 있고, 유사도 0.95 이상이면
+      온톨로지가 수렴했다고 본다. 즉 질문을 오래 하는 도구가 아니라, 구현해도 되는 상태를 수치로 가르는 장치다.
     points:
-      - "모호도 = 1 - Σ(clarity_i × weight_i), Seed 생성 임계값은 Ambiguity <= 0.2"
-      - "Greenfield는 목표·제약·성공 기준, Brownfield는 코드베이스 컨텍스트까지 가중 평가"
-      - "불확실성이 크면 구현 대신 인터뷰를 계속해 에이전트의 추측을 차단"
+      - "interview→seed→run→evaluate로 질문·명세·실행·검증을 분리"
+      - "Seed 생성 임계값: Ambiguity <= 0.2, 수렴 기준: Similarity >= 0.95"
+      - "Brownfield는 목표·제약·성공 기준에 코드베이스 컨텍스트까지 가중 평가"
     source: "https://github.com/Q00/ouroboros/blob/main/README.ko.md"
 
   - category: ai
@@ -7507,3 +7508,33 @@ cards:
       - "컨텍스트는 MCP 서버로 런타임 주입, 팀별 문서와 지표 정의를 표준 형식으로 정규화"
       - "변경 전 offline eval: 정답 SQL·메타데이터가 있는 테스트 케이스로 정확도·지연·회귀를 비교"
     source: "https://github.blog/ai-and-ml/github-copilot/how-we-built-an-internal-data-analytics-agent/"
+
+  - category: ai
+    title: "Copilot CLI 선택적 위임 — 서브에이전트는 기본값이 아니라 레버리지다"
+    summary: >
+      GitHub은 Copilot CLI의 smarter subagent delegation을 2026년 6월 12일 공개했다. 요지는 "더 많이
+      위임"이 아니라 "직접 처리할 일과 나눌 일을 구분"하는 것이다. 좁은 파일 탐색·수정·검증은 메인 에이전트가
+      바로 처리하고, 넓은 탐색·독립 영역 검토·긴 명령처럼 병렬 가치가 있을 때만 서브에이전트를 쓴다. GitHub의
+      production A/B test에서는 tool failures per session 23% 감소, search tool failures 27% 감소,
+      edit tool failures 18% 감소, P95 대기시간 5% 감소가 보고됐다. 교훈은 멀티에이전트 품질이 에이전트
+      수가 아니라 handoff 조건·소유권·동시 진행 설계에서 나온다는 점이다.
+    points:
+      - "직접 처리: 좁고 명확한 탐색·수정·검증 루프"
+      - "위임 처리: 독립 컨텍스트, 넓은 탐색, 실제 병렬성이 있는 작업"
+      - "검증 신호: tool failure 23% 감소, P95 wait time 5% 감소"
+    source: "https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/"
+
+  - category: ai
+    title: "Deployment Simulation — 에이전트 모델 출시 전에 실제 분포를 재생하기"
+    summary: >
+      OpenAI의 Deployment Simulation은 새 모델을 배포하기 전에 과거 대화에서 기존 assistant 답변을 제거하고,
+      후보 모델이 같은 맥락에 어떻게 답하는지 재생해 위험을 추정하는 방법이다. 전통적인 eval은 어렵고
+      위험한 케이스를 잘 찌르지만, 실제 배포 분포에서 어떤 실패가 얼마나 자주 나올지는 놓칠 수 있다.
+      OpenAI는 GPT-5 계열 Thinking 배포 연구에서 약 130만 개 비식별 대화를 분석했고, 이 방법을 도구 사용이
+      포함된 agentic coding 설정에도 적용할 수 있다고 설명했다. 실무 교훈은 코딩 에이전트 평가도 문제집 점수만
+      볼 것이 아니라, 실제 작업 로그와 도구 환경을 재현해 배포 전 행동 빈도를 예측해야 한다는 점이다.
+    points:
+      - "방법: 과거 대화 prefix를 후보 모델로 재생해 배포 전 행동을 추정"
+      - "장점: synthetic eval보다 실제 사용 분포의 비꼬리 위험을 보기 좋음"
+      - "에이전트 적용: tool simulation이 있으면 agentic coding rollout 위험 평가에도 확장 가능"
+    source: "https://openai.com/index/deployment-simulation/"

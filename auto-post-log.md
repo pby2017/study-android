@@ -1014,3 +1014,7 @@
 - 2026-06-23 02:31 KST | Colab MCP Server 에이전트용 클라우드 노트북 실행 도구 | https://developers.googleblog.com/announcing-the-colab-mcp-server-connect-any-ai-agent-to-google-colab/
 
 - 2026-06-23 04:35 KST | Qubot 데이터 분석 에이전트 컨텍스트 계층 | https://github.blog/ai-and-ml/github-copilot/how-we-built-an-internal-data-analytics-agent/
+
+- 2026-06-23 06:39 KST | Copilot CLI 선택적 위임 — 서브에이전트는 기본값이 아니라 레버리지다 | https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/
+
+- 2026-06-23 06:39 KST | Deployment Simulation — 에이전트 모델 출시 전에 실제 분포를 재생하기 | https://openai.com/index/deployment-simulation/
