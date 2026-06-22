@@ -846,3 +846,5 @@
 주제: Karrot Firebase AI Logic translation, Gemini Flash Lite, ML Kit GenAI device support, Gemini Nano versions, AICore quota, Android foreground inference, on-device AI QA
 
 - 2026-06-22 09:59 KST | RA.Aid — 연구·계획·구현 3단계로 개발 작업을 자율 수행하는 LangGraph 코딩 에이전트(Apache-2.0) | https://github.com/ai-christianson/RA.Aid
+
+- 2026-06-22 10:29 KST | Devika — 한 줄 지시를 단계로 쪼개 리서치·코드작성하는 에이전틱 AI 소프트웨어 엔지니어(MIT·실험단계) | https://github.com/stitionai/devika

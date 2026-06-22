@@ -6606,3 +6606,14 @@ cards:
       - "웹 리서치(Tavily)·전문가 추론 모델 활용, 선택적 HITL(사람 개입)"
       - "모델 비종속(Anthropic·OpenAI·OpenRouter·Gemini 등), aider 통합(--use-aider)"
     source: https://github.com/ai-christianson/RA.Aid
+  - category: ai
+    title: "Devika — 한 줄 지시를 단계로 쪼개 리서치하고 코드를 작성하는 에이전틱 AI 소프트웨어 엔지니어"
+    summary: >
+      Devika는 "Agentic AI Software Engineer"를 표방하는 오픈소스(MIT) 도구로, 고수준 사람 지시를 이해해
+      단계로 분해하고 관련 정보를 리서치한 뒤 목표 달성 코드를 작성한다. README는 아직 매우 초기·실험 단계라고 밝힌다.
+    points:
+      - "고급 AI 계획·추론 + 집중 리서치용 문맥 키워드 추출"
+      - "웹 브라우징으로 정보 수집, 다중 프로그래밍 언어로 코드 작성"
+      - "동적 에이전트 상태 추적·시각화, 챗 기반 자연어 상호작용, 확장 가능한 아키텍처"
+      - "모델: Claude 3·GPT-4·Gemini·Mistral·Groq·Ollama 로컬 LLM 지원 / MIT·실험단계"
+    source: https://github.com/stitionai/devika
