@@ -896,3 +896,15 @@
 - 2026-06-22 16:00 KST | AI Shell 자연어→셸 명령 CLI | https://github.com/BuilderIO/ai-shell
 
 - 2026-06-22 16:30 KST | Micro Agent 테스트 우선 AI 코드 에이전트 | https://github.com/BuilderIO/micro-agent
+
+## 2026-06-22 16:51 KST — Batch 33 (Codex/Copilot agent operations, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Codex 지식작업 확장 — 코딩 에이전트도 사내 도구 제작대로 바뀐다 | openai.com |
+| 2 | Copilot CLI 에이전트 피커 — 실행 전에 모드를 고르는 것이 안전장치다 | github.blog |
+| 3 | Dell + Codex — 엔터프라이즈 에이전트는 데이터가 있는 곳으로 간다 | openai.com |
+| 4 | GPT-5.1-Codex-Max — 긴 작업은 큰 창보다 반복 압축이 핵심이다 | openai.com |
+
+누적: 528카드 (524→528)
+주제: Codex knowledge-work adoption, Copilot CLI agent picker, remote/compact/chronicle/debug controls, Dell hybrid/on-prem Codex environments, GPT-5.1-Codex-Max compaction and long-running coding-agent verification
