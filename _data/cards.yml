@@ -6861,3 +6861,14 @@ cards:
       - "ai chat 대화 모드, -s(--silent)로 설명 생략"
       - "출력 언어 전환(한국어 포함), OPENAI_API_ENDPOINT로 커스텀 엔드포인트, 기본 gpt-4o-mini"
     source: https://github.com/BuilderIO/ai-shell
+  - category: ai
+    title: "Micro Agent: 테스트 먼저 만들고 통과할 때까지 코드를 고치는 AI 에이전트"
+    summary: >
+      프롬프트를 주면 먼저 테스트를 생성하고, 그 테스트가 모두 통과할 때까지 코드를 반복 수정.
+      "한 가지를 잘하기" — 명확한 합격 기준(테스트)으로 피드백 루프를 좁힌 작은 에이전트.
+    points:
+      - "설치: npm install -g @builder.io/micro-agent (Node 18+)"
+      - "대화형은 micro-agent, 수동 모드는 micro-agent ./file.ts -t 'npm test'"
+      - "Claude·OpenAI·Ollama 등 OpenAI 호환 provider 지원, 기본 gpt-4o(claude 별칭 가능)"
+      - "실험적 --visual: 렌더 결과를 스크린샷과 비교해 디자인 매칭(Anthropic 키 필요)"
+    source: https://github.com/BuilderIO/micro-agent

@@ -894,3 +894,5 @@
 - 2026-06-22 15:30 KST | OpenCommit AI 커밋 메시지 CLI | https://github.com/di-sukharev/opencommit
 
 - 2026-06-22 16:00 KST | AI Shell 자연어→셸 명령 CLI | https://github.com/BuilderIO/ai-shell
+
+- 2026-06-22 16:30 KST | Micro Agent 테스트 우선 AI 코드 에이전트 | https://github.com/BuilderIO/micro-agent
