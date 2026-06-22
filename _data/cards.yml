@@ -7538,3 +7538,14 @@ cards:
       - "장점: synthetic eval보다 실제 사용 분포의 비꼬리 위험을 보기 좋음"
       - "에이전트 적용: tool simulation이 있으면 agentic coding rollout 위험 평가에도 확장 가능"
     source: "https://openai.com/index/deployment-simulation/"
+  - category: ai
+    title: "AIChat: 셸 어시스턴트·REPL·RAG·에이전트를 한 CLI에"
+    summary: >
+      "All-in-one LLM CLI tool" — Shell Assistant, 대화형 Chat-REPL, RAG, 함수호출/도구,
+      AI 에이전트(CLI판 GPTs), 로컬 서버까지 한 도구에 담은 Rust CLI. MIT/Apache-2.0 듀얼.
+    points:
+      - "설치: cargo install aichat 또는 brew install aichat (Termux는 pkg)"
+      - "Shell Assistant로 자연어→명령, Chat-REPL 대화 모드"
+      - "RAG·Function Calling·MCP·AI Agents·로컬 서버 기능 내장"
+      - "provider: OpenAI·Claude·Gemini·Ollama·Groq·Azure·Bedrock 등 OpenAI 호환 API 폭넓게 지원"
+    source: https://github.com/sigoden/aichat

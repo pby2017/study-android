@@ -1018,3 +1018,5 @@
 - 2026-06-23 06:39 KST | Copilot CLI 선택적 위임 — 서브에이전트는 기본값이 아니라 레버리지다 | https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/
 
 - 2026-06-23 06:39 KST | Deployment Simulation — 에이전트 모델 출시 전에 실제 분포를 재생하기 | https://openai.com/index/deployment-simulation/
+
+- 2026-06-23 08:00 KST | AIChat 올인원 LLM CLI(셸·REPL·RAG·에이전트) | https://github.com/sigoden/aichat
