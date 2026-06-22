@@ -7498,3 +7498,14 @@ cards:
       - "Android 신호: GPU 52 tokens/sec, MTP 최대 2.2배 속도 향상"
       - "실무 포인트: 온디바이스 개인정보·지연시간 이점은 런타임 제약 관리가 핵심"
     source: "https://developers.googleblog.com/blazing-fast-on-device-genai-with-litert-lm/"
+  - category: ai
+    title: "Open Interpreter: 저비용 모델을 위한 코딩 에이전트(Rust 버전)"
+    summary: >
+      "A coding agent for low-cost models" — 현재 README는 새 Rust 버전으로, OpenAI Codex의 fork.
+      macOS·Linux·Windows 네이티브 샌드박싱 안에서 명령을 실행한다. Apache-2.0.
+    points:
+      - "TUI에서 /model로 프로바이더·모델 전환, /harness로 Rust 네이티브 하니스 전환"
+      - "exec·MCP·skills·hooks·permissions·AGENTS.md 지원"
+      - "내장 QA 스킬로 웹·네이티브 앱 테스트, interpreter acp로 에디터용 ACP 에이전트 동작"
+      - "설정·세션 상태는 ~/.openinterpreter에 로컬 저장"
+    source: https://github.com/OpenInterpreter/open-interpreter
