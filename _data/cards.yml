@@ -197,42 +197,44 @@ cards:
   - category: ai
     title: diagnose — 디버깅을 규율로 만드는 스킬
     summary: >
-      mattpocock/skills의 diagnose는 어려운 버그를 6단계로 푼다 — 재현 가능한 피드백 루프 만들기 →
-      재현 → 가설 3~5개 → 계측 → 수정+회귀 테스트 → 정리·포스트모템. 핵심 통찰은 "피드백 루프 자체가
-      스킬"이라는 것: 빠르고 결정적인 pass/fail 신호만 있으면 이분법·가설검증·계측이 전부 그 신호를
-      소비할 뿐이다. SKILL.md는 "루프를 만들기 전엔 Phase 2로 넘어가지 말라"고 못박는다.
+      mattpocock/skills의 diagnosing-bugs는 어려운 버그를 여섯 단계로 다룬다. 먼저 실제 증상을 잡는
+      빠르고 결정적인 pass/fail 루프를 만들고, 그다음 재현·최소화 → 3~5개 가설 → 한 변수씩 계측 →
+      수정과 회귀 테스트 → 정리·포스트모템으로 간다. 핵심은 "루프가 스킬"이라는 점이다. 실패 신호가
+      없으면 가설은 감이고, 좋은 루프가 있으면 이분법·계측·회귀 테스트가 같은 신호를 소비한다. 그래서
+      SKILL.md는 red-capable 명령 하나를 이미 실행하기 전에는 가설 단계로 가지 말라고 못박는다.
     points:
-      - "6단계: 루프→재현→가설→계측→수정→정리"
-      - "'피드백 루프가 곧 스킬' — 90%는 루프에서 끝"
-      - "루프 없이 가설 단계로 진행 금지(SKILL.md 명시)"
+      - "6단계: 루프→재현·최소화→가설→계측→수정·회귀→정리"
+      - "red-capable·결정적·빠른 명령 하나가 디버깅의 출발점"
+      - "가설은 3~5개로 세우고, 계측은 한 변수씩 검증"
     source: "https://github.com/mattpocock/skills"
 
   - category: ai
     title: Spec Kit — 명세 주도 개발(SDD)
     summary: >
-      GitHub의 specify-cli는 코드 전에 명세를 먼저 쓰게 한다: specify→plan→tasks→implement 4단계.
-      `specify init <name> --integration claude`로 설치하면 /speckit-specify 같은 스킬이 생긴다(명령어가
-      아니라 스킬로 설치됨, 하이픈 표기). 각 단계 프롬프트는 $ARGUMENTS로 사용자 입력을 받아 구조화된
-      산출물을 만든다. "AI가 추측해서 짜기 전에 명세로 합의한다"는 게 핵심 가치다.
+      GitHub Spec Kit은 "코드가 명세를 따르게 한다"는 SDD 도구다. 흐름은 constitution으로 원칙을 세우고,
+      specify로 요구사항을 구조화한 뒤 plan으로 기술 결정을 붙이고, tasks로 실행 가능한 작업을 만들고,
+      implement로 구현한다. `specify init`은 Copilot, Codex, Claude Code, Gemini CLI 등 여러 에이전트
+      통합을 설치하며, 스킬 모드에서는 `/speckit.*` 명령 대신 `speckit-*` 스킬로 들어갈 수 있다. 핵심은
+      AI가 바로 코드를 추측하지 않게 하고, 요구사항·계획·작업을 버전 관리되는 산출물로 남기는 것이다.
     points:
-      - "specify → plan → tasks → implement"
-      - "설치: --integration claude (스킬로 설치, /speckit-specify)"
-      - "$ARGUMENTS로 단계별 입력 구조화"
+      - "constitution→specify→plan→tasks→implement로 의도를 단계화"
+      - "Copilot·Codex·Claude Code·Gemini CLI 등 30+ 에이전트 통합"
+      - "요구사항·기술 결정·작업 목록을 코드 전 산출물로 고정"
     source: "https://github.com/github/spec-kit"
 
   - category: ai
-    title: Karpathy의 65줄 CLAUDE.md
+    title: Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기
     summary: >
-      안드레 카파시가 공유한 짧은 CLAUDE.md가 깃헙 스타 다수를 받으며 화제가 됐다. 핵심은 4규칙 —
-      ① Think Before Coding(추측 말고 먼저 이해), ② Simplicity First(문제를 푸는 최소 코드),
-      ③ Surgical Changes(꼭 필요한 곳만 건드림), ④ Goal-Driven Execution(성공 기준을 정하고 검증될
-      때까지 반복). 규칙 ④는 diagnose의 '피드백 루프' 원리와 같다 — 검증 가능한 목표가 곧 자동화의
-      엔진이다. 도구가 아니라 '지시 방식'이 결과를 바꾼다는 사례.
+      multica-ai/andrej-karpathy-skills는 Karpathy의 LLM 코딩 실패 관찰에서 출발한 짧은 CLAUDE.md
+      가이드다. 네 규칙은 ① Think Before Coding(가정·모호함·트레이드오프를 먼저 드러내기),
+      ② Simplicity First(요청 밖 기능과 1회용 추상화 금지), ③ Surgical Changes(요청과 직접 연결된 줄만
+      바꾸기), ④ Goal-Driven Execution(성공 기준을 정하고 검증될 때까지 반복)이다. 교훈은 특정 도구보다
+      "에이전트가 어떤 행동을 하지 말아야 하는지"를 작고 검증 가능한 규칙으로 쓰는 것이 결과를 바꾼다는 점이다.
     points:
-      - "4규칙: 이해먼저·단순함·수술적변경·목표주도"
-      - "규칙④ = diagnose의 검증 루프와 동일 원리"
-      - "도구가 아니라 '룰 한 장'이 결과를 바꾼다"
-    source: "https://github.com/AndrejKarpathy"
+      - "4규칙: 먼저 이해·최소 코드·수술적 변경·목표 기반 검증"
+      - "모호하면 추측하지 않고 가정과 선택지를 드러내게 함"
+      - "규칙 파일은 작을수록 행동 경계가 선명해진다는 사례"
+    source: "https://github.com/multica-ai/andrej-karpathy-skills"
 
   - category: ai
     title: Ouroboros — 모호함을 수치로
@@ -7542,3 +7544,17 @@ cards:
       - "AI가 전체 코드베이스 생성·실행, 이후 개선 요청 반복 가능"
       - "bench 바이너리로 자체 에이전트 구현을 벤치마킹하는 인터페이스 제공"
     source: https://github.com/gpt-engineer-org/gpt-engineer
+  - category: ai
+    title: "Gemini Live API on Android — 실시간 음성 에이전트를 백엔드 없이 붙이기"
+    summary: >
+      Android Developers의 Gemini Live API 가이드는 Firebase AI Logic을 통해 Android 앱에서 Gemini Live API를
+      직접 호출하는 흐름을 보여준다. 목적은 일반 텍스트 챗봇이 아니라 실시간·저지연 음성 지원이 필요한 챗봇이나
+      에이전트 상호작용이다. 앱은 Firebase BoM과 `firebase-ai`를 추가하고, `RECORD_AUDIO` 권한을 선언한 뒤
+      `LiveModel`을 초기화해 오디오 응답 모델을 스트리밍한다. 단, Firebase AI Logic의 Live API 사용은 개발자
+      프리뷰라 호환성 변경 가능성과 제한이 있다. Android AI 설계 포인트는 "마이크 권한을 붙인다"가 아니라,
+      음성 UX·세션 수명·비용/쿼터·모델명 원격 변경을 제품 요구사항으로 다뤄야 한다는 점이다.
+    points:
+      - "Firebase AI Logic으로 Android 앱에서 Gemini Live API를 직접 호출"
+      - "`firebase-ai` 의존성 + RECORD_AUDIO 권한 + LiveModel 초기화가 기본 흐름"
+      - "개발자 프리뷰: 세션·쿼터·비용·호환성 변경을 출시 전 리스크로 관리"
+    source: "https://developer.android.com/ai/gemini/live"
