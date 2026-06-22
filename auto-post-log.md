@@ -990,3 +990,5 @@
 - 2026-06-22 20:00 KST | Open Interpreter 저비용 모델용 코딩 에이전트(Rust) | https://github.com/OpenInterpreter/open-interpreter
 
 - 2026-06-22 20:30 KST | Flowise 비주얼 AI 에이전트 빌더 | https://github.com/FlowiseAI/Flowise
+
+- 2026-06-22 21:00 KST | Kortix(Suna) AI 에이전트 커맨드 센터 | https://github.com/kortix-ai/suna

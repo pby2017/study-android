@@ -7520,3 +7520,14 @@ cards:
       - "모듈: server(Node API)·ui(React)·components(서드파티 노드)·api-documentation(swagger-ui)"
       - "자체 호스팅(AWS·Azure·GCP 등) 및 Flowise Cloud 호스팅 옵션"
     source: https://github.com/FlowiseAI/Flowise
+  - category: ai
+    title: "Kortix(Suna): 역할별 AI 에이전트 인력을 굴리는 AI 커맨드 센터"
+    summary: >
+      "A workforce of AI agents that does the real work — and everything is code you own."
+      회사 단위로 실제 업무를 수행하는 에이전트 워크포스 — 모든 게 내가 소유한 코드. 자기 인프라(노트북·VPS·VPC·에어갭)에서 자체 호스팅.
+    points:
+      - "구성: Agents(역할별 마크다운 페르소나)·Skills(재사용 노하우)·Connectors(3,000+ 앱·MCP·OpenAPI·GraphQL)"
+      - "Secrets(런타임 주입)·Channels(Slack 등)·Triggers(cron·서명 웹훅)·Memory(파일 기반 회사 두뇌)"
+      - "샌드박스에서 에이전트가 install·run·break 자유, commit한 것만 살아남음"
+      - "코딩 에이전트(OpenCode)가 작업·commit·push 수행, 노트북~에어갭까지 자체 호스팅"
+    source: https://github.com/kortix-ai/suna
