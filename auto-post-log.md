@@ -946,3 +946,5 @@
 
 누적: 452카드 (442→452)
 주제: 문서 파싱, TTS, 세그멘테이션, 브라우저 자동화, 리랭커, 피처 스토어, 코딩 에이전트, LLM 서빙, 엣지 LLM
+
+- 2026-06-22 17:30 KST | avante.nvim Neovim AI 코딩 플러그인 | https://github.com/yetone/avante.nvim

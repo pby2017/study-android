@@ -7178,3 +7178,14 @@ cards:
       - "Phi-4-Mini: GSM8K 88.6%, 추론 품질 최고"
       - "MLPerf Mobile v6.0: Llama 3.2/3.1 표준 벤치마크"
     source: "https://awesomeagents.ai/leaderboards/edge-mobile-llm-leaderboard/"
+  - category: ai
+    title: "avante.nvim: Neovim을 Cursor AI IDE처럼 만드는 AI 플러그인"
+    summary: >
+      "Use your Neovim like using Cursor AI IDE" — AI 코드 제안을 소스 파일에 원클릭으로 적용.
+      avante.md로 프로젝트별 지시를 주고, Zen Mode·Fast Apply·ACP·RAG·MCP까지 통합. Apache-2.0.
+    points:
+      - "AI 코드 제안 → One-Click Application으로 소스에 바로 반영"
+      - "Zen Mode·avante.md(프로젝트별 지시)·RAG·MCP(mcphub.nvim) 통합"
+      - "ACP(Agent Client Protocol)로 Gemini CLI·Claude Code·Goose·Codex 등 외부 에이전트 연동"
+      - "provider: Claude·OpenAI·Azure·Gemini 등, 웹검색 Tavily/Brave/Kagi/SerpApi 등 연동"
+    source: https://github.com/yetone/avante.nvim
