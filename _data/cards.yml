@@ -7058,3 +7058,123 @@ cards:
       - "Alibaba 규모 검증: 수만 명 개발자, 수백만 건 결함 탐지"
       - "라인 레벨: Git diff 기반 정밀 코멘트, CI/CD 통합"
     source: "https://github.com/alibaba/open-code-review"
+  - category: ai
+    title: "Docling(IBM) — PDF·DOCX·PPTX를 통합 구조화 문서로 변환, 테이블·수식·OCR 내장(MIT·~62k★)"
+    summary: >
+      Docling은 IBM Research가 만든 AI 기반 문서 변환 오픈소스 툴킷이다. PDF·DOCX·PPTX·XLSX·HTML·EPUB·
+      이메일·이미지·LaTeX 등 다양한 형식을 통합 DoclingDocument 구조로 변환. DocLayNet(레이아웃 분석)+
+      TableFormer(테이블 인식) AI 모델 내장. Markdown·HTML·JSON·DocTags 등 다양한 출력 형식. LangChain·
+      LlamaIndex·Crew AI·Haystack 플러그인 통합. RAG 파이프라인용 시맨틱 청킹 네이티브 지원.
+    points:
+      - "다형식: PDF·DOCX·PPTX·이미지·이메일·LaTeX 등 변환"
+      - "AI 내장: DocLayNet(레이아웃) + TableFormer(테이블) 모델"
+      - "RAG 통합: LangChain·LlamaIndex 네이티브, 시맨틱 청킹"
+    source: "https://github.com/docling-project/docling"
+  - category: ai
+    title: "Fish Audio S2 Pro — 1,000만 시간 학습·80언어 TTS, 10~30초 음성으로 즉시 보이스 클로닝(Dual-AR)"
+    summary: >
+      Fish Audio S2 Pro는 1,000만 시간 이상의 오디오로 학습된 최첨단 텍스트-투-스피치 모델이다. Dual-AR
+      (Slow 4B + Fast 400M) 아키텍처 + GRPO 강화학습 정렬. 80+ 언어 지원, [laugh]·[whisper]·[excited] 등
+      자연어 태그로 세밀한 감정·운율 인라인 제어. 10~30초 참조 오디오로 음색·화법·감정까지 복제하는
+      즉시 보이스 클로닝. SGLang 스트리밍 추론(RTF 0.195, TTFA ~100ms). PyPI/Docker 배포.
+    points:
+      - "Dual-AR: 4B+400M, GRPO 정렬, 80+ 언어"
+      - "인라인 감정 제어: [laugh]·[whisper] 등 자연어 태그"
+      - "즉시 클로닝: 10~30초 참조로 음색·감정 복제"
+    source: "https://github.com/fishaudio/fish-speech"
+  - category: ai
+    title: "SAM 2(Meta) — 이미지+비디오 통합 세그멘테이션 파운데이션 모델, 스트리밍 메모리로 실시간 추적(Apache-2.0)"
+    summary: >
+      SAM 2는 Meta가 만든 프롬프터블 비주얼 세그멘테이션 파운데이션 모델이다. 이미지를 '1프레임 비디오'로
+      취급해 이미지+비디오 세그멘테이션을 단일 모델로 통합. 스트리밍 메모리 모듈로 실시간 비디오 처리·
+      객체 추적 지원(일시 가림 후에도 이전 프레임 컨텍스트로 재추적). 클릭·바운딩 박스·마스크 프롬프트.
+      SAM 2.1 업데이트: tiny/small/base/large 체크포인트. SA-V(최대 비디오 세그멘테이션 데이터셋) 공개.
+    points:
+      - "통합: 이미지+비디오 세그멘테이션 단일 모델"
+      - "스트리밍 메모리: 실시간 추적, 가림 후 재추적"
+      - "프롬프터블: 클릭·박스·마스크 입력"
+    source: "https://github.com/facebookresearch/SAM2"
+  - category: ai
+    title: "Stagehand — 코드+AI 하이브리드 브라우저 자동화, act·extract·observe 프리미티브(MIT·~23k★)"
+    summary: >
+      Stagehand는 Browserbase가 만든 오픈소스 브라우저 자동화 프레임워크다. Playwright 기반 결정론적 코드와
+      AI 자연어 명령을 결합해 안정적인 프로덕션 자동화를 구현. act(동작)·extract(추출)·observe(관찰)·
+      agent(자율) 4가지 프리미티브. 성공한 AI 액션을 자동 캐싱해 후속 실행은 LLM 추론 없이 네이티브 속도.
+      사이트 변경 시에만 AI가 개입하는 self-healing. TypeScript+Python SDK. MIT 라이선스.
+    points:
+      - "하이브리드: Playwright(결정론적) + AI(동적) 결합"
+      - "자동 캐싱: 성공 액션 저장, 반복 시 LLM 없이 실행"
+      - "4 프리미티브: act·extract·observe·agent"
+    source: "https://github.com/browserbase/stagehand"
+  - category: ai
+    title: "Browser-Use — 자연어로 브라우저 태스크를 자동화하는 Python AI 에이전트, 멀티스텝 탐색형 자동화"
+    summary: >
+      Browser-Use는 자연어 태스크 정의로 AI 에이전트가 브라우저를 조작하는 Python 라이브러리다. 태스크를
+      정의하면 에이전트가 스텝을 스스로 결정하고 실행. 탐색적·개방형 태스크에 강함(정확한 스텝을 사전
+      정의하기 어려운 경우). Stagehand(결정론적+AI 하이브리드) 대비 완전 에이전트형. Lightpanda 등 경량
+      브라우저 엔진과 CDP로 연동 가능. 로그인·폼 입력·멀티페이지 네비게이션 지원.
+    points:
+      - "완전 에이전트: 자연어 태스크 → 에이전트가 스텝 결정"
+      - "탐색형: 정확한 셀렉터/스텝 사전 정의 불필요"
+      - "CDP 연동: Lightpanda 등 경량 브라우저 엔진 지원"
+    source: "https://www.webfuse.com/blog/lightpanda-vs-browser-use-vs-stagehand-2026"
+  - category: ai
+    title: "Jina Reranker v3 — 리스트와이즈 아키텍처로 64문서 동시 스코어링, 131k 토큰·nDCG@10 61.94(CC-BY-NC)"
+    summary: >
+      Jina Reranker v3은 0.6B 파라미터 리스트와이즈 리랭커다. 기존 크로스인코더가 쿼리-문서 쌍을 하나씩
+      처리하는 것과 달리, 최대 64개 문서를 131,000 토큰 윈도우에서 동시에 스코어링. BEIR nDCG@10 61.94로
+      오픈 모델 중 최고 점수. RAG 파이프라인에서 벡터 검색 후 2단계 리랭킹으로 precision@5를 10~30% 향상.
+      TEI(Text Embeddings Inference)로 배포. CC-BY-NC 4.0 라이선스(상업용은 별도 계약).
+    points:
+      - "리스트와이즈: 64문서 동시 스코어링, 131k 토큰"
+      - "nDCG@10 61.94: 오픈 모델 BEIR 최고 점수"
+      - "2단계 RAG: 벡터 검색 → 리랭킹으로 precision 10~30%↑"
+    source: "https://ianas.fr/en/blog/2026/06/07/reranker-comparatif-cohere-bge-jina-voyage/"
+  - category: ai
+    title: "Feast — 오픈소스 ML 피처 스토어, 오프라인(학습)+온라인(서빙) 듀얼 스토리지로 학습-서빙 스큐 방지"
+    summary: >
+      Feast는 가장 널리 사용되는 오픈소스 ML 피처 스토어다. 오프라인 스토어(BigQuery/Redshift/S3 — 학습용
+      히스토리컬 데이터)와 온라인 스토어(Redis/DynamoDB — 서빙용 저지연 조회) 듀얼 아키텍처로 동일한
+      피처 정의에서 학습-서빙 간 일관성을 보장. Git 기반 피처 레지스트리(피처 정의=코드). point-in-time
+      조인으로 시간 여행 쿼리 지원. Kafka/Kinesis 스트리밍 머터리얼라이제이션. Python SDK.
+    points:
+      - "듀얼 스토리지: 오프라인(학습) + 온라인(서빙) 일관성"
+      - "Git 레지스트리: 피처 정의를 코드로 관리"
+      - "point-in-time 조인: 학습 시 정확한 시점 데이터 보장"
+    source: "https://dev.to/gowthampotureddi/feature-stores-compared-feast-vs-tecton-vs-hopsworks-for-production-ml-4ep0"
+  - category: ai
+    title: "OpenCode — 75+ LLM 프로바이더 지원 오픈소스 코딩 에이전트, MIT 라이선스·176k★(터미널 네이티브)"
+    summary: >
+      OpenCode는 SST 팀이 만든 오픈소스 터미널 네이티브 코딩 에이전트다. Go로 작성, Bubble Tea 기반 리치
+      터미널 UI. 75개 이상 LLM 프로바이더(OpenAI·Anthropic·Google·Ollama 로컬 등) 지원으로 완전한 모델
+      선택 자유. MIT 라이선스, 176k+ GitHub 스타로 오픈소스 코딩 에이전트 중 가장 많은 스타. Claude Code
+      (프로프라이어터리)·Codex CLI 대비 벤더 종속 없이 모든 모델 사용 가능.
+    points:
+      - "75+ 프로바이더: OpenAI·Anthropic·Google·Ollama 등"
+      - "MIT·176k★: 오픈소스 코딩 에이전트 최다 스타"
+      - "터미널 네이티브: Go + Bubble Tea 리치 TUI"
+    source: "https://mightybot.ai/blog/coding-ai-agents-for-accelerating-engineering-workflows/"
+  - category: ai
+    title: "SGLang — 멀티턴·구조화 출력 특화 LLM 서빙, RadixAttention으로 공유 프리픽스 캐싱(vLLM 대비 29%↑)"
+    summary: >
+      SGLang은 멀티턴 대화·RAG·에이전트 워크플로우에 특화된 LLM 추론 엔진이다. RadixAttention으로
+      요청 간 공유 프리픽스를 Radix 트리에 캐싱해 중복 연산을 제거. H100에서 Llama 8B 기준 ~16,200 tok/s
+      (vLLM 대비 29% 높은 처리량). 구조화 출력(JSON/Grammar) 생성 시 오버랩 마스크 생성으로 추가 속도
+      향상. Multi-LoRA 네이티브 스케줄링. 분리형 서빙(disaggregated) 프로덕션 사례 다수.
+    points:
+      - "RadixAttention: 공유 프리픽스 캐싱, 멀티턴 29%↑"
+      - "구조화 출력: JSON/Grammar 오버랩 마스크 생성"
+      - "16,200 tok/s: H100 Llama 8B, vLLM 대비 29% 높은 처리량"
+    source: "https://techsy.io/en/blog/vllm-vs-sglang"
+  - category: ai
+    title: "Edge LLM 리더보드 2026 — Gemma 3 4B·Phi-4-Mini·Qwen 2.5 3B, iPhone에서 27~55 tok/s 실시간 추론"
+    summary: >
+      2026년 엣지/모바일 LLM 리더보드에서 Gemma 3 4B IT가 종합 1위다. iPhone 16 Pro에서 ~27 tok/s,
+      3GB RAM(Q4)으로 실시간 추론. Phi-4-Mini(3.8B)는 추론 품질 1위(GSM8K 88.6%, ARC-C 83.7%).
+      Qwen 2.5 3B는 파라미터 대비 최고 MMLU(65.6). Gemma 3 1B는 ~55 tok/s로 가장 빠른 유용한 모델.
+      MLPerf Mobile v6.0이 Llama 3.2/3.1 기반 표준 벤치마크 제공. Google AI Edge Portal로 120+ 기기 자동 벤치마크.
+    points:
+      - "Gemma 3 4B: iPhone 27 tok/s, 종합 1위"
+      - "Phi-4-Mini: GSM8K 88.6%, 추론 품질 최고"
+      - "MLPerf Mobile v6.0: Llama 3.2/3.1 표준 벤치마크"
+    source: "https://awesomeagents.ai/leaderboards/edge-mobile-llm-leaderboard/"

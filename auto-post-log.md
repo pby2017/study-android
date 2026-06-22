@@ -928,3 +928,21 @@
 
 누적: 442카드 (432→442)
 주제: 에이전트 메모리, 온디바이스 벤치마크, 데이터 파이프라인, 지식 그래프, 비디오 생성, 합성 데이터, LLM 서빙, AI 코드 리뷰
+
+## 2026-06-22 17:35 KST — Batch 14 (AI 인프라·도구 광범위 2차, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Docling — AI 문서 변환 | github.com/docling-project |
+| 2 | Fish Audio S2 Pro — TTS 보이스 클로닝 | github.com/fishaudio |
+| 3 | SAM 2 — 이미지+비디오 세그멘테이션 | github.com/facebookresearch |
+| 4 | Stagehand — 코드+AI 브라우저 자동화 | github.com/browserbase |
+| 5 | Browser-Use — AI 브라우저 에이전트 | webfuse.com |
+| 6 | Jina Reranker v3 — 리스트와이즈 리랭커 | ianas.fr |
+| 7 | Feast — ML 피처 스토어 | dev.to |
+| 8 | OpenCode — 오픈소스 코딩 에이전트 | mightybot.ai |
+| 9 | SGLang — 멀티턴 특화 LLM 서빙 | techsy.io |
+| 10 | Edge LLM 리더보드 2026 | awesomeagents.ai |
+
+누적: 452카드 (442→452)
+주제: 문서 파싱, TTS, 세그멘테이션, 브라우저 자동화, 리랭커, 피처 스토어, 코딩 에이전트, LLM 서빙, 엣지 LLM
