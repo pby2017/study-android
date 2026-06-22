@@ -848,3 +848,15 @@
 - 2026-06-22 09:59 KST | RA.Aid — 연구·계획·구현 3단계로 개발 작업을 자율 수행하는 LangGraph 코딩 에이전트(Apache-2.0) | https://github.com/ai-christianson/RA.Aid
 
 - 2026-06-22 10:29 KST | Devika — 한 줄 지시를 단계로 쪼개 리서치·코드작성하는 에이전틱 AI 소프트웨어 엔지니어(MIT·실험단계) | https://github.com/stitionai/devika
+
+## 2026-06-22 10:43 KST — Batch 31 (Copilot agent customization + governance, 4카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Copilot Custom Agents — 프롬프트가 아니라 역할 파일로 에이전트를 고정하기 | docs.github.com |
+| 2 | Copilot 지시문 매트릭스 — 같은 파일명도 표면마다 다르게 먹힌다 | docs.github.com |
+| 3 | Copilot Jira 연동 — 티켓 문맥은 PR에 공개될 수 있다 | docs.github.com |
+| 4 | Copilot MCP 정책 — 도구 발견보다 허용 목록이 먼저다 | docs.github.com |
+
+누적: 508카드 (504→508)
+주제: GitHub Copilot custom agents, custom instructions support matrix, Jira cloud agent integration, MCP policy settings

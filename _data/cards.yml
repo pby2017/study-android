@@ -6617,3 +6617,62 @@ cards:
       - "동적 에이전트 상태 추적·시각화, 챗 기반 자연어 상호작용, 확장 가능한 아키텍처"
       - "모델: Claude 3·GPT-4·Gemini·Mistral·Groq·Ollama 로컬 LLM 지원 / MIT·실험단계"
     source: https://github.com/stitionai/devika
+
+  - category: ai
+    title: "Copilot Custom Agents — 프롬프트가 아니라 역할 파일로 에이전트를 고정하기"
+    summary: >
+      GitHub Docs는 Copilot custom agents를 특정 워크플로, 코딩 규칙, use case에 맞춘 Copilot agent 버전으로
+      설명한다. 핵심 단위는 `.github/agents/*.agent.md` 같은 Markdown agent profile이고, YAML frontmatter에
+      name, description, target, tools를 두며 본문에는 최대 30,000자 prompt를 넣는다. repository, organization,
+      enterprise 레벨에 둘 수 있고 GitHub.com의 cloud agent, IDE, Copilot CLI에서 선택해 쓸 수 있다. 교육 포인트는
+      "매번 길게 지시하기"가 아니라, 리뷰어·문서작성자·마이그레이션 담당처럼 반복되는 역할을 파일로 버전 관리하고
+      도구 권한까지 좁혀서 같은 작업 품질을 재현하는 것이다.
+    points:
+      - "agent profile: Markdown + YAML frontmatter + 본문 prompt"
+      - "tools를 지정하지 않으면 기본적으로 모든 사용 가능 도구에 접근"
+      - "repo/org/enterprise 레벨에 두고 GitHub.com·IDE·CLI에서 선택"
+    source: "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents"
+
+  - category: ai
+    title: "Copilot 지시문 매트릭스 — 같은 파일명도 표면마다 다르게 먹힌다"
+    summary: >
+      Copilot custom instructions 지원표를 보면 지시문은 하나가 아니다. GitHub.com의 Copilot cloud agent는
+      `.github/copilot-instructions.md`, `.github/instructions/**/*.instructions.md`, `AGENTS.md`·`CLAUDE.md`·`GEMINI.md`,
+      organization instructions를 읽지만, Copilot code review나 각 IDE는 지원 범위가 다르다. 예를 들어 Xcode의
+      cloud agent는 repo/path/agent instructions를 지원하지만, Eclipse의 code review custom instructions는 현재
+      지원되지 않는다. 실무 포인트는 "AGENTS.md 하나면 끝"이 아니라, 실제로 쓰는 표면별 지원표를 기준으로
+      repo-wide 규칙, path-specific 규칙, agent instruction을 분리해 검증해야 한다는 점이다.
+    points:
+      - "cloud agent는 repo-wide·path-specific·agent·organization instructions를 조합"
+      - "IDE와 code review 표면마다 지원 조합이 다름"
+      - "지시문 설계는 파일명보다 실행 표면별 지원 여부를 먼저 확인"
+    source: "https://docs.github.com/en/copilot/reference/custom-instructions-support"
+
+  - category: ai
+    title: "Copilot Jira 연동 — 티켓 문맥은 PR에 공개될 수 있다"
+    summary: >
+      GitHub Copilot for Jira 문서는 Jira work item에서 Copilot cloud agent를 호출해 PR 생성을 맡길 수 있다고
+      설명한다. 사용자는 Jira 이슈를 Copilot에 assign하거나 댓글에서 멘션하고, 진행 상황을 Jira 댓글에서 확인하며,
+      같은 work item에서 후속 지시를 이어갈 수 있다. 하지만 중요한 안전 문장이 있다. Jira에서 캡처된 컨텍스트는
+      pull request에 추가되며, 저장소가 public이면 모두에게 보일 수 있다. 또한 이 경로는 GitHub Actions minutes와
+      AI credits를 소비한다. 그래서 티켓 기반 에이전트 자동화는 "편한 연결"보다 공개 가능 문맥, 비용, 권한, 기본
+      custom agent·branch 규칙을 먼저 정해야 한다.
+    points:
+      - "Jira work item assign/mention으로 Copilot cloud agent 세션 시작"
+      - "Jira 컨텍스트가 PR에 들어가 public repo에서는 공개될 수 있음"
+      - "실행 비용은 GitHub Actions minutes + AI credits로 계산"
+    source: "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/integrate-cloud-agent-with-jira"
+
+  - category: ai
+    title: "Copilot MCP 정책 — 도구 발견보다 허용 목록이 먼저다"
+    summary: >
+      GitHub Enterprise Cloud 문서는 조직·엔터프라이즈에서 MCP server usage를 정책으로 관리할 수 있다고 설명한다.
+      관리자는 MCP servers in Copilot로 MCP 사용 자체를 제어하고, MCP Registry URL로 개발자가 발견할 승인 서버
+      목록을 지정하며, Restrict MCP access to registry servers로 레지스트리에 있는 서버만 허용할 수 있다. Agent
+      Finder처럼 런타임에 MCP 서버·도구·스킬을 찾아 쓰는 흐름이 커질수록, 실무 핵심은 "많이 연결하기"가 아니라
+      어떤 registry를 신뢰하고 어떤 서버만 조직 표면에 노출할지 정하는 것이다. MCP는 연결 표준인 동시에 권한 표면이다.
+    points:
+      - "MCP servers in Copilot로 조직/엔터프라이즈 MCP 사용을 제어"
+      - "MCP Registry URL로 승인된 서버 발견 경로를 지정"
+      - "registry 서버만 허용해 런타임 도구 연결을 정책 경계 안에 둠"
+    source: "https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/mcp-management"
