@@ -7484,3 +7484,17 @@ cards:
       - "필터: -e 확장자(반복)·--include-hidden·--ignore 패턴·--ignore-gitignore"
       - "-o 파일출력·-n 라인번호·-0 stdin NUL 구분(find 등 파이프 입력)"
     source: https://github.com/simonw/files-to-prompt
+  - category: ai
+    title: "LiteRT-LM: Android 온디바이스 LLM을 위한 실행 오케스트레이션"
+    summary: >
+      LiteRT-LM은 LiteRT 위에서 LLM 실행의 복잡도를 맡는 Google AI Edge 런타임 계층이다.
+      Android·iOS·Web을 같은 구조로 겨냥하지만, Android 개발자에게 중요한 점은 CPU/GPU/NPU 백엔드,
+      세션 저장·복원, 멀티모달 인코더 지연 로딩, 함수 호출, constrained decoding 같은 모바일 LLM
+      운영 기능을 한곳에 묶는다는 것이다. Google은 Gemma 4 E2B가 Android GPU 백엔드에서 52 tokens/sec
+      decode를 보였고, Multi-Token Prediction으로 최대 2.2배 속도 향상을 낸다고 공개했다. 앱 기능보다
+      "기기 안에서 LLM을 안정적으로 굴리는 배포 계층"으로 이해해야 한다.
+    points:
+      - "역할: LiteRT 위 LLM 오케스트레이션, 모델 실행·세션·도구 호출 관리"
+      - "Android 신호: GPU 52 tokens/sec, MTP 최대 2.2배 속도 향상"
+      - "실무 포인트: 온디바이스 개인정보·지연시간 이점은 런타임 제약 관리가 핵심"
+    source: "https://developers.googleblog.com/blazing-fast-on-device-genai-with-litert-lm/"
