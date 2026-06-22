@@ -980,3 +980,5 @@
 - 2026-06-22 18:00 KST | GPT Researcher 자율 딥리서치 에이전트 | https://github.com/assafelovic/gpt-researcher
 
 - 2026-06-22 18:30 KST | SeaGOAT 로컬 시맨틱 코드 검색 | https://github.com/kantord/SeaGOAT
+
+- 2026-06-22 19:00 KST | code2prompt 코드베이스→단일 프롬프트 Rust CLI | https://github.com/mufeedvh/code2prompt

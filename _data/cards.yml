@@ -7462,3 +7462,14 @@ cards:
       - "로컬 벡터DB ChromaDB + 임베딩(텔레메트리 기본 off), ripgrep로 정규식/키워드 매칭 병행"
       - "Python·C/C++·TS/JS·Go·Java·PHP·Ruby 등 다언어 인덱싱"
     source: https://github.com/kantord/SeaGOAT
+  - category: ai
+    title: "code2prompt: 코드베이스를 단일 LLM 프롬프트로 변환하는 Rust CLI"
+    summary: >
+      "Convert your codebase into a single LLM prompt" — 코드베이스를 인제스트해
+      소스트리·템플릿·토큰 카운트가 붙은 LLM용 컨텍스트로 포맷해주는 context engineering 도구. MIT.
+    points:
+      - "설치: cargo/brew install code2prompt 또는 pip install code2prompt-rs, 실행 code2prompt ."
+      - "glob+.gitignore 스마트 필터, Handlebars 템플릿으로 프롬프트 커스터마이징"
+      - "토큰 추적으로 컨텍스트 한도 관리, Git diff·log·브랜치 비교 포함, TUI 제공"
+      - "Rust 코어 + Python 바인딩(code2prompt-rs), MCP 서버로 에이전트에 코드베이스 제공"
+    source: https://github.com/mufeedvh/code2prompt
