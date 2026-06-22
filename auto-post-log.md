@@ -982,3 +982,5 @@
 - 2026-06-22 18:30 KST | SeaGOAT 로컬 시맨틱 코드 검색 | https://github.com/kantord/SeaGOAT
 
 - 2026-06-22 19:00 KST | code2prompt 코드베이스→단일 프롬프트 Rust CLI | https://github.com/mufeedvh/code2prompt
+
+- 2026-06-22 19:30 KST | files-to-prompt 디렉터리→단일 프롬프트 CLI | https://github.com/simonw/files-to-prompt
