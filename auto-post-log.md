@@ -988,3 +988,5 @@
 - 2026-06-22 19:55 KST | LiteRT-LM Android 온디바이스 LLM 실행 오케스트레이션 | https://developers.googleblog.com/blazing-fast-on-device-genai-with-litert-lm/
 
 - 2026-06-22 20:00 KST | Open Interpreter 저비용 모델용 코딩 에이전트(Rust) | https://github.com/OpenInterpreter/open-interpreter
+
+- 2026-06-22 20:30 KST | Flowise 비주얼 AI 에이전트 빌더 | https://github.com/FlowiseAI/Flowise
