@@ -6712,3 +6712,15 @@ cards:
       - "확장형: prompts/ tools/ 플러그인 직접 수정, 플러그인·MCP·A2A·프로젝트별 설정 지원"
       - "모델: OpenAI Codex 플랜을 OAuth로 연동(Gemini CLI·Claude Code 통합 예고)"
     source: https://github.com/frdel/agent-zero
+  - category: ai
+    title: "Claude Engineer v3: 대화 도중 스스로 도구를 만들어 핫리로드하는 자기개선형 코딩 어시스턴트"
+    summary: >
+      "A powerful self-improving AI Assistant designed for creating and managing AI tools with Claude 3.5."
+      대화 중 새 도구의 필요를 스스로 식별해 설계·구현하고, 재시작 없이 핫리로드해 쓴다.
+      쓸수록 능력이 늘어나는 자기개선 구조. CLI(ce3.py)와 웹 UI(app.py) 둘 다 제공.
+    points:
+      - "자기개선: 자율 도구 식별·생성, 대화 중 동적 능력 확장, 능력 공백 자동 탐지, 기존 도구 자가 최적화"
+      - "핵심: 동적 도구 생성·로딩 + 핫리로드(새 도구를 재시작 없이 즉시 사용)"
+      - "모델 Claude 3.5 Sonnet, Anthropic 토큰 카운팅 API로 토큰 사용 추적·시각화"
+      - "실행: uv로 설치 후 웹 UI(uv run app.py, localhost:5000) 또는 CLI(uv run ce3.py)"
+    source: https://github.com/Doriandarko/claude-engineer
