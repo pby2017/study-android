@@ -239,28 +239,29 @@ cards:
   - category: ai
     title: Ouroboros — 모호함을 수치로
     summary: >
-      Ouroboros(Q00 제작, 한국어 README 있음)는 요청의 모호함을 정량화한다. 명확도를 1 − Σ(clarity×weight)
-      로 계산해 임계값(0.2)을 넘으면 "더 물어봐야 한다"고 판단한다. AI가 모호한 요청에 멋대로 추측하는
-      대신, 불명확함을 숫자로 드러내 사용자에게 되묻게 만드는 장치다. diagnose·Spec Kit·Karpathy 규칙과
-      한 줄로 꿰면 — 모두 "AI가 추측하지 않게 만드는" 같은 철학의 다른 구현이다.
+      Ouroboros는 코딩 에이전트가 막연한 요청에서 바로 구현으로 뛰지 않게 만드는 명세 우선 워크플로
+      엔진이다. 핵심은 인터뷰를 감으로 끝내지 않는 점이다. 목표·제약·성공 기준·기존 코드베이스 이해 같은
+      차원을 0.0~1.0으로 채점하고, `Ambiguity = 1 - Σ(clarity_i × weight_i)`로 남은 불확실성을 계산한다.
+      Ambiguity가 0.2 이하가 되어야 Seed를 만들 수 있고, 그보다 높으면 더 물어보는 단계에 머문다. 즉
+      "좋은 질문을 하라"가 아니라, 추측 가능한 상태와 물어봐야 하는 상태를 숫자로 가르는 장치다.
     points:
-      - "모호도 = 1 − Σ(clarity×weight), 임계값 0.2"
-      - "추측 대신 '되묻기'를 트리거"
-      - "diagnose/SpecKit/Karpathy와 같은 철학"
+      - "모호도 = 1 - Σ(clarity_i × weight_i), Seed 생성 임계값은 Ambiguity <= 0.2"
+      - "Greenfield는 목표·제약·성공 기준, Brownfield는 코드베이스 컨텍스트까지 가중 평가"
+      - "불확실성이 크면 구현 대신 인터뷰를 계속해 에이전트의 추측을 차단"
     source: "https://github.com/Q00/ouroboros/blob/main/README.ko.md"
 
   - category: ai
     title: "서브에이전트 — 컨텍스트를 지키는 분업"
     summary: >
-      Claude Code의 서브에이전트는 자기만의 컨텍스트 창·시스템 프롬프트·도구 접근·권한을 가진 별도
-      인스턴스다. 검색·로그·파일 읽기처럼 본 대화를 어지럽힐 곁가지 작업을 서브에이전트에 맡기면, 그
-      과정의 잡음은 서브에이전트 안에 갇히고 메인 대화에는 '요약 결과'만 돌아온다. 즉 똑똑하게
-      만드는 게 아니라 '이미 쌓인 컨텍스트의 품질을 보존'하는 장치다. Read·Grep만 주는 식으로 도구를
-      좁히면 의도치 않은 수정도 막는다.
+      Claude Code의 서브에이전트는 별도 컨텍스트 창과 전용 시스템 프롬프트를 가진 작업 단위다. 검색,
+      코드 탐색, 보안 검토처럼 메인 대화의 맥락을 흐릴 수 있는 일을 분리하면, 세부 로그와 중간 추론은
+      서브에이전트 안에 머물고 메인 세션에는 요약 결과만 돌아온다. 실무 포인트는 "많이 병렬화"보다
+      권한 설계다. 기본적으로 내부 도구와 MCP 도구를 상속하지만 `tools` allowlist나 `disallowedTools`
+      denylist로 Write/Edit, 특정 MCP 서버, 또는 하위 에이전트 호출 권한을 좁힐 수 있다.
     points:
-      - "정의: .claude/agents/(프로젝트) 또는 ~/.claude/agents/(전체)에 YAML 프런트매터 .md"
-      - "필드: name·description·tools(생략 시 전부 상속)·model / 본문=시스템 프롬프트"
-      - "호출: 자연어 언급, @멘션(해당 작업 보장), --agent(세션 전체) / 파일 직접 편집 후엔 재시작"
+      - "프로젝트 `.claude/agents/` 또는 사용자 `~/.claude/agents/`의 Markdown 파일로 정의"
+      - "`tools` allowlist와 `disallowedTools` denylist로 읽기 전용 탐색대·로컬 전용 에이전트 구성"
+      - "`Agent(agent_type)` allowlist로 어떤 서브에이전트를 다시 spawn할 수 있는지도 제한 가능"
     source: "https://code.claude.com/docs/en/sub-agents"
 
   - category: ai
@@ -7558,3 +7559,17 @@ cards:
       - "`firebase-ai` 의존성 + RECORD_AUDIO 권한 + LiveModel 초기화가 기본 흐름"
       - "개발자 프리뷰: 세션·쿼터·비용·호환성 변경을 출시 전 리스크로 관리"
     source: "https://developer.android.com/ai/gemini/live"
+  - category: ai
+    title: "TPU Developer Hub — AI 가속기는 코드 레시피와 관측 도구까지 같이 배워야 한다"
+    summary: >
+      Google은 2026년 6월 16일 TPU Developer Hub를 공식 출시했다. 이 허브는 Cloud TPU를 단순한
+      하드웨어 소개가 아니라, 사전학습·후학습·추론까지 이어지는 AI 개발 생애주기 자료로 묶는다. 범위는
+      TPU 하드웨어와 인프라 선택, XLA와 컴파일러 스택, PyTorch의 TPU 이전, XProf 기반 tracing/debugging,
+      멀티칩 병렬화, Pallas 커널 최적화, KV cache offloading, 네트워킹과 보안까지 포함한다. 개발자에게
+      중요한 점은 "더 빠른 칩을 쓰자"가 아니라, 모델 코드·컴파일러·프로파일러·네트워크를 한 루프로 보고
+      병목을 추적해야 TPU 성능이 실제 제품 추론과 학습 처리량으로 이어진다는 것이다.
+    points:
+      - "공식 출시: 2026-06-16, Cloud TPU용 중앙 교육/레시피 허브"
+      - "범위: pre-training, post-training, inference, XLA, PyTorch, XProf, Pallas, KV cache offloading"
+      - "자료는 code-first와 agent-ingestion friendly를 지향해 AI 보조 개발 도구가 읽기 쉽게 설계"
+    source: "https://developers.googleblog.com/unlocking-the-power-of-the-tpu-stack-introducing-our-new-developer-hub/"

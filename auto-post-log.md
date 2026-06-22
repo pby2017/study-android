@@ -996,3 +996,5 @@
 - 2026-06-22 21:30 KST | gpt-engineer 자연어→코드베이스 생성 | https://github.com/gpt-engineer-org/gpt-engineer
 
 - 2026-06-22 22:23 KST | Gemini Live API on Android 실시간 음성 에이전트 | https://developer.android.com/ai/gemini/live
+
+- 2026-06-23 00:28 KST | TPU Developer Hub AI 가속기 코드 레시피·관측 도구 | https://developers.googleblog.com/unlocking-the-power-of-the-tpu-stack-introducing-our-new-developer-hub/
