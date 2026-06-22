@@ -978,3 +978,5 @@
 주제: 워크플로우 자동화, 코딩 에이전트, 온디바이스 음성, 데이터 라벨링, RAG, 멀티에이전트, 멀티모달, LLM 평가, 이미지 생성, TTS, 하이브리드 검색, 온디바이스 LLM, 프롬프트 캐싱, 벤치마크, 구조화 출력, MCP, 추론 모델, 로컬 AI, 코드 검색, Computer Use
 
 - 2026-06-22 18:00 KST | GPT Researcher 자율 딥리서치 에이전트 | https://github.com/assafelovic/gpt-researcher
+
+- 2026-06-22 18:30 KST | SeaGOAT 로컬 시맨틱 코드 검색 | https://github.com/kantord/SeaGOAT

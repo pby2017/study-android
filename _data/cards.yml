@@ -7451,3 +7451,14 @@ cards:
       - "Deep Research: 트리형 재귀 탐색으로 깊이·넓이 확장"
       - "기본 OpenAI+Tavily, OpenAI 호환 API(로컬모델 등) 연동, MCP로 GitHub·DB·커스텀 API 연결"
     source: https://github.com/assafelovic/gpt-researcher
+  - category: ai
+    title: "SeaGOAT: 코드베이스를 로컬에서 의미 기반으로 검색"
+    summary: >
+      "A code search engine for the AI age" — 벡터 임베딩으로 코드베이스를 의미 단위로 검색.
+      3rd party·원격 API 없이 전부 로컬 실행, 인터넷 없이도 동작.
+    points:
+      - "설치: pipx install seagoat, 서버는 seagoat-server start /path/to/repo"
+      - "질의: gt \"Where are the numbers rounded\" (gt/seagoat 명령)"
+      - "로컬 벡터DB ChromaDB + 임베딩(텔레메트리 기본 off), ripgrep로 정규식/키워드 매칭 병행"
+      - "Python·C/C++·TS/JS·Go·Java·PHP·Ruby 등 다언어 인덱싱"
+    source: https://github.com/kantord/SeaGOAT
