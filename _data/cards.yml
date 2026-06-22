@@ -7576,3 +7576,14 @@ cards:
       - "provider: OpenAI·Cohere·Groq·Azure OpenAI, LocalAI로 로컬 모델"
       - "charmbracelet의 charm 생태계 도구 — settings는 mods --settings"
     source: https://github.com/charmbracelet/mods
+  - category: ai
+    title: "ShellGPT(sgpt): AI로 셸 명령·코드를 만드는 CLI 생산성 도구"
+    summary: >
+      "A command-line productivity tool powered by AI large language models" —
+      셸 명령·코드 스니펫·문서를 생성하고 바로 실행. Linux·macOS·Windows, 주요 셸 모두 지원.
+    points:
+      - "설치: pip install shell-gpt, 실행은 sgpt"
+      - "셸 명령 생성·실행, 코드만 생성, 명령 설명(describe) 기능"
+      - "Chat·REPL 모드로 대화 유지, Roles로 커스텀 역할 정의, Function calling"
+      - "LLM 함수호출 지원, 셸/OS 자동 감지로 환경에 맞는 명령 생성"
+    source: https://github.com/TheR1D/shell_gpt
