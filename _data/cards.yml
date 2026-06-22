@@ -6850,3 +6850,14 @@ cards:
       - "provider: openai(기본)·anthropic·azure·ollama·gemini 등, 로컬모델(Ollama/llama.cpp) 지원"
       - "--yes로 확인 없이 커밋, GitMoji·.opencommitignore·commitlint 연동"
     source: https://github.com/di-sukharev/opencommit
+  - category: ai
+    title: "AI Shell: 자연어를 셸 명령으로 바꿔주는 CLI"
+    summary: >
+      "list all log files" 같은 자연어를 셸 명령으로 변환해 제안하고,
+      설명을 붙여 실행 전에 실행·수정·취소를 물어보는 오픈소스 CLI.
+    points:
+      - "설치: npm install -g @builder.io/ai-shell, 실행은 ai <프롬프트>"
+      - "제안 명령에 Explanation 표시, Yes(실행)/Revise(수정)/Cancel 선택"
+      - "ai chat 대화 모드, -s(--silent)로 설명 생략"
+      - "출력 언어 전환(한국어 포함), OPENAI_API_ENDPOINT로 커스텀 엔드포인트, 기본 gpt-4o-mini"
+    source: https://github.com/BuilderIO/ai-shell

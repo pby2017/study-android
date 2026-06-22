@@ -892,3 +892,5 @@
 - 2026-06-22 15:00 KST | llm (Simon Willison) — 명령줄에서 LLM에 프롬프트를 보내고 입출력을 SQLite에 저장하며 플러그인으로 로컬·원격 모델을 확장하는 CLI 겸 파이썬 라이브러리(Apache-2.0) | https://github.com/simonw/llm
 
 - 2026-06-22 15:30 KST | OpenCommit AI 커밋 메시지 CLI | https://github.com/di-sukharev/opencommit
+
+- 2026-06-22 16:00 KST | AI Shell 자연어→셸 명령 CLI | https://github.com/BuilderIO/ai-shell
