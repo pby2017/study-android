@@ -1022,3 +1022,5 @@
 - 2026-06-23 08:00 KST | AIChat 올인원 LLM CLI(셸·REPL·RAG·에이전트) | https://github.com/sigoden/aichat
 
 - 2026-06-23 08:30 KST | mods 셸 파이프라인용 AI CLI | https://github.com/charmbracelet/mods
+
+- 2026-06-23 08:43 KST | Copilot CLI LSP 설정 — 에이전트에게 IDE식 코드 지능을 붙이기 | https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/

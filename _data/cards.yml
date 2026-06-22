@@ -255,15 +255,16 @@ cards:
   - category: ai
     title: "서브에이전트 — 컨텍스트를 지키는 분업"
     summary: >
-      Claude Code의 서브에이전트는 별도 컨텍스트 창과 전용 시스템 프롬프트를 가진 작업 단위다. 검색,
-      코드 탐색, 보안 검토처럼 메인 대화의 맥락을 흐릴 수 있는 일을 분리하면, 세부 로그와 중간 추론은
-      서브에이전트 안에 머물고 메인 세션에는 요약 결과만 돌아온다. 실무 포인트는 "많이 병렬화"보다
-      권한 설계다. 기본적으로 내부 도구와 MCP 도구를 상속하지만 `tools` allowlist나 `disallowedTools`
-      denylist로 Write/Edit, 특정 MCP 서버, 또는 하위 에이전트 호출 권한을 좁힐 수 있다.
+      Claude Code의 서브에이전트는 자체 컨텍스트 창, 전용 시스템 프롬프트, 별도 도구 권한을 가진 작업
+      단위다. 검색·코드 탐색·보안 검토처럼 로그와 파일 내용이 많이 쌓이는 일을 분리하면, 메인 세션에는
+      결과 요약만 돌아와 컨텍스트를 보존한다. 정의 파일은 프로젝트 `.claude/agents/`나 사용자
+      `~/.claude/agents/`에 두고, 중복 이름이 있으면 더 가까운 프로젝트 정의가 우선한다. 실무 포인트는
+      병렬화보다 권한과 비용 라우팅이다. `tools` allowlist, `disallowedTools` denylist, MCP 서버 범위,
+      `model` 필드로 읽기 전용 탐색대·로컬 전용 조사원·저비용 요약 에이전트를 분리해 설계한다.
     points:
-      - "프로젝트 `.claude/agents/` 또는 사용자 `~/.claude/agents/`의 Markdown 파일로 정의"
-      - "`tools` allowlist와 `disallowedTools` denylist로 읽기 전용 탐색대·로컬 전용 에이전트 구성"
-      - "`Agent(agent_type)` allowlist로 어떤 서브에이전트를 다시 spawn할 수 있는지도 제한 가능"
+      - "정의 위치: 프로젝트 `.claude/agents/`가 사용자 `~/.claude/agents/`보다 우선"
+      - "권한 설계: `tools`/`disallowedTools`와 MCP 서버 범위로 읽기·쓰기·외부도구를 제한"
+      - "비용 설계: `model` 또는 `CLAUDE_CODE_SUBAGENT_MODEL`로 반복 탐색은 더 빠른 모델에 라우팅"
     source: "https://code.claude.com/docs/en/sub-agents"
 
   - category: ai
@@ -7538,6 +7539,21 @@ cards:
       - "장점: synthetic eval보다 실제 사용 분포의 비꼬리 위험을 보기 좋음"
       - "에이전트 적용: tool simulation이 있으면 agentic coding rollout 위험 평가에도 확장 가능"
     source: "https://openai.com/index/deployment-simulation/"
+
+  - category: ai
+    title: "Copilot CLI LSP 설정 — 에이전트에게 IDE식 코드 지능을 붙이기"
+    summary: >
+      GitHub Blog는 2026년 6월 10일 Copilot CLI용 LSP Setup skill을 소개했다. 문제는 코딩 에이전트가
+      언어 서버 없이 JAR, `site-packages`, `node_modules`를 grep하며 API 시그니처를 추측한다는 점이다.
+      LSP를 붙이면 에이전트가 `textDocument/definition` 같은 요청으로 정의 위치, 타입, 시그니처, 참조를
+      구조적으로 받는다. 이 스킬은 OS와 언어를 확인하고, 14개 언어의 서버 설치 명령과 설정 조각을 골라
+      `~/.copilot/lsp-config.json` 또는 리포지토리 `lsp.json`에 병합한 뒤 실행 파일과 JSON을 검증한다.
+      교훈은 AI 코딩 품질이 모델만이 아니라 "도구가 코드를 어떤 단위로 보게 하느냐"에 크게 좌우된다는 것이다.
+    points:
+      - "LSP는 grep/decompile 대신 정의·참조·타입·hover 문서를 구조적으로 제공"
+      - "설정 범위: 사용자 `~/.copilot/lsp-config.json` 또는 리포지토리 `lsp.json`/`.github/lsp.json`"
+      - "실무 포인트: 큰 레포일수록 에이전트에게 파일 전체보다 심볼 단위 코드 지능을 먼저 붙인다"
+    source: "https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/"
   - category: ai
     title: "AIChat: 셸 어시스턴트·REPL·RAG·에이전트를 한 CLI에"
     summary: >
