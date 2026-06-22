@@ -864,3 +864,5 @@
 - 2026-06-22 10:59 KST | AutoCodeRover — AST 기반 코드검색으로 GitHub 이슈 자동해결하는 자율 프로그램 개선 시스템(NUS) | https://github.com/nus-apr/auto-code-rover
 
 - 2026-06-22 11:30 KST | PR-Agent (Qodo Merge 오픈소스) — /review·/describe·/improve·/ask 명령으로 GitHub·GitLab·BitBucket·Azure DevOps·Gitea PR을 자동 리뷰하는 AI 에이전트 | https://github.com/qodo-ai/pr-agent
+
+- 2026-06-22 12:00 KST | Agent Zero — Docker 컨테이너에 XFCE 데스크톱 리눅스+플러그인 허브를 담아 에이전트가 Skills로 확장하는 동적 멀티에이전트 프레임워크 | https://github.com/frdel/agent-zero

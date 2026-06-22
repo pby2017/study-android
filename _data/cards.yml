@@ -6700,3 +6700,15 @@ cards:
       - "플랫폼 무관: 여러 git 제공자·배포방식·AI 모델(OpenAI GPT, Claude 등) 지원"
       - "실행: GitHub Action(권장)·CLI(로컬)·Docker·self-hosted·webhook"
     source: https://github.com/qodo-ai/pr-agent
+  - category: ai
+    title: "Agent Zero: Docker 컨테이너에 'AI 에이전트용 완전한 리눅스 시스템'을 주는 동적 에이전트 프레임워크"
+    summary: >
+      "A full Linux system for your AI agent" — 오픈·동적·유기적 에이전트 프레임워크.
+      Docker 컨테이너 하나에 XFCE 데스크톱이 도는 완전한 리눅스 시스템과 플러그인 허브를 담아,
+      에이전트가 Skills로 스스로 확장한다.
+    points:
+      - "컨테이너 안에 실제 XFCE 데스크톱 세션이 돌고, 에이전트가 Skills로 기능 확장"
+      - "멀티에이전트: 모든 에이전트가 하위 에이전트를 만들어 작업을 분해(상위가 지시·보고 수신, 하위는 독립 컨텍스트)"
+      - "확장형: prompts/ tools/ 플러그인 직접 수정, 플러그인·MCP·A2A·프로젝트별 설정 지원"
+      - "모델: OpenAI Codex 플랜을 OAuth로 연동(Gemini CLI·Claude Code 통합 예고)"
+    source: https://github.com/frdel/agent-zero
