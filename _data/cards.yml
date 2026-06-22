@@ -6676,3 +6676,15 @@ cards:
       - "MCP Registry URL로 승인된 서버 발견 경로를 지정"
       - "registry 서버만 허용해 런타임 도구 연결을 정책 경계 안에 둠"
     source: "https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/mcp-management"
+  - category: ai
+    title: "AutoCodeRover — AST 기반 코드 검색으로 GitHub 이슈를 자동 해결하는 자율 프로그램 개선 시스템"
+    summary: >
+      AutoCodeRover(NUS)는 GitHub 이슈(버그 픽스·기능 추가)를 LLM과 프로그램 분석·디버깅으로 자동 해결한다.
+      문자열이 아닌 AST(프로그램 구조)를 이해하는 코드 검색으로 패치 위치를 우선순위화해 패치를 생성하는
+      "Autonomous Program Improvement" 접근이다.
+    points:
+      - "2단계: 컨텍스트 검색(Program Structure Aware한 AST 기반 코드검색 API) + 패치 생성"
+      - "테스트 스위트가 있으면 statistical fault localization으로 수리율 향상"
+      - "SWE-bench Verified 46.20% / full 24.89% / lite 30.67%(pass@1), 태스크당 7분 미만·$0.7 미만"
+      - "논문 'AutoCodeRover: Autonomous Program Improvement'(arXiv 2404.05427), ISSTA 2024 / 라이선스는 README 미명시"
+    source: https://github.com/nus-apr/auto-code-rover

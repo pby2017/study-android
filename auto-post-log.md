@@ -860,3 +860,5 @@
 
 누적: 508카드 (504→508)
 주제: GitHub Copilot custom agents, custom instructions support matrix, Jira cloud agent integration, MCP policy settings
+
+- 2026-06-22 10:59 KST | AutoCodeRover — AST 기반 코드검색으로 GitHub 이슈 자동해결하는 자율 프로그램 개선 시스템(NUS) | https://github.com/nus-apr/auto-code-rover
