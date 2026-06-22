@@ -53,6 +53,7 @@ fi
 PROMPT=$(cat <<'PROMPT_EOF'
 Use repo skill `.codex/skills/local-ai-card-routine/SKILL.md`.
 Run the study-android AI/Android developer-topic card routine now.
+Also perform a bounded refinement pass over previously published routine cards: follow `research/ai-routine/refinement-cursor.md`, review older cards first, and improve detail/readability only when the original claim can be re-verified from public sources.
 Important: edit this repository only; do not add GitHub Actions; do not commit or push.
 Pure Android topics are out of scope. Android topics qualify only when the core angle is AI+Android, and they are educational card content, not app feature requests. If a candidate has no AI angle, reject it as below threshold.
 Do not create, update, close, comment on, or triage app-factory-android issues, branches, or pull requests.
@@ -66,7 +67,7 @@ run_codex() {
   local codex_bin
   codex_bin="$(realpath "$(command -v codex)")"
   echo "Trying headless provider: codex"
-  timeout "${PIPELINE_TIMEOUT:-10200}" "$codex_bin" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
+  timeout "${PIPELINE_TIMEOUT:-6600}" "$codex_bin" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
 }
 
 AGENT_OK=0
@@ -83,7 +84,7 @@ if [[ "$AGENT_OK" != "1" ]]; then
 
 Paused at: $(date '+%Y-%m-%d %H:%M:%S %Z')
 
-Reason: Codex headless provider failed or was unavailable. The 3-hour routine is disabled to avoid wasting local/API resources on repeated failures.
+Reason: Codex headless provider failed or was unavailable. The 2-hour routine is disabled to avoid wasting local/API resources on repeated failures.
 
 Next actions:
 1. Check latest log: $RUN_LOG
@@ -119,7 +120,7 @@ updates GitHub Pages card data, verifies YAML/script health, then pushes
 the generated batch from the developer machine instead of paid Actions.
 
 Constraint: GitHub Actions intentionally disabled to avoid paid workflow use
-Constraint: Local run should fit a 3-hour cadence with research-heavy execution
+Constraint: Local run should fit a 2-hour cadence with research-heavy execution
 Confidence: medium
 Scope-risk: moderate
 Directive: Keep scheduling local-only unless the owner explicitly asks for GitHub Actions again

@@ -1,6 +1,6 @@
 # AI routine research notes
 
-Local 3-hour routine writes one note per run here.
+Local 2-hour routine writes one note per run here.
 
 Each note should record:
 - candidates considered
@@ -45,6 +45,18 @@ A card may be published only when all are true:
 7. The final card is safe for public GitHub Pages visibility.
 
 Weak evidence means no card. A no-card run is valid when the research note explains what was checked and why candidates were rejected.
+
+## Older-card refinement pass
+
+The routine may also improve existing cards, oldest first, while continuing new topic discovery. The goal is clearer, more useful Korean summaries, not larger cards by default.
+
+Rules:
+- Use `research/ai-routine/refinement-cursor.md` as the cursor for oldest-first traversal.
+- Re-verify the existing source URL before changing factual claims. Add one extra reputable source in the research note when the original source is not enough.
+- Keep the topic within AI or AI+Android. Do not revive pure Android cards unless the AI angle is real and source-backed.
+- Improve readability with concise context, practical developer takeaway, and clearer bullet points.
+- Refine a small batch per run, typically 1-3 cards, and log the exact titles refined.
+- Update the cursor only after YAML/script verification succeeds.
 
 ## Research note fields
 
@@ -96,7 +108,7 @@ Run the AI-card publishing pipeline from this Mac, not GitHub Actions. The job s
 4. update card data in the repo,
 5. verify YAML/script health,
 6. commit and push the batch,
-7. repeat every 3 hours.
+7. repeat every 2 hours.
 
 ### Scheduler
 
@@ -104,7 +116,7 @@ Run the AI-card publishing pipeline from this Mac, not GitHub Actions. The job s
 - Label: `com.pby2017.study-android.ai-research`
 - Plist: `~/Library/LaunchAgents/com.pby2017.study-android.ai-research.plist`
 - Installer: `scripts/install_local_ai_cron.sh`
-- Cadence: `StartInterval = 10800` seconds (3 hours)
+- Cadence: `StartInterval = 7200` seconds (2 hours)
 - Immediate run: installer uses `RunAtLoad` and `launchctl kickstart`
 - Failure guard: `.local-ai-research.disabled` stops future scheduled runs after a Codex failure until removed manually.
 - Logs:
@@ -203,18 +215,18 @@ Observed good state after debugging:
 - Before local edits, sync with `git pull --ff-only origin master` when clean because other sessions may push to the same repo.
 - Do not add GitHub Actions for this pipeline unless explicitly requested; the owner wants local scheduling to avoid paid workflow use.
 - Do not force low-quality cards to fill a quota. Weak evidence means no card.
-- If Codex/quota/tooling fails mid-run, write `research/ai-routine/resume.md` with exact next actions and source URLs gathered so far, then create `.local-ai-research.disabled` so the 3-hour loop does not waste resources.
+- If Codex/quota/tooling fails mid-run, write `research/ai-routine/resume.md` with exact next actions and source URLs gathered so far, then create `.local-ai-research.disabled` so the 2-hour loop does not waste resources.
 - Known-broken Codex or environment failures must pause repeated unattended runs until recovery is confirmed by a smoke test.
 - If `resume.md` is stale and Codex health is confirmed, remove it and `.local-ai-research.disabled` before restarting the routine.
 
 ## Current owner decision: success gate before schedule
 
-The routine must not keep retrying a known-broken Codex setup every 3 hours. The required sequence is:
+The routine must not keep retrying a known-broken Codex setup every 2 hours. The required sequence is:
 
 1. Run a Codex smoke test successfully.
 2. Remove `.local-ai-research.disabled` if it exists.
 3. Kickstart launchd once.
-4. Only then leave the 3-hour cadence enabled.
+4. Only then leave the 2-hour cadence enabled.
 
 Smoke test:
 

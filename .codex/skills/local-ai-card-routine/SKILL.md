@@ -5,7 +5,7 @@ description: Research, validate, and publish Korean AI and AI+Android developer-
 
 # Local AI Card Routine
 
-Use for the recurring local 3-hour pipeline in this repo.
+Use for the recurring local 2-hour pipeline in this repo.
 
 ## Mission
 
@@ -38,9 +38,9 @@ Other sessions may push to the same repo.
 
 ## Time box
 
-- Total cadence target: 3 hours.
-- Research target: ~2h40m.
-- Implementation/publish target: final ~20m.
+- Total cadence target: 2 hours.
+- Research target: ~1h40m.
+- Implementation/publish/refinement target: final ~20m.
 - Do not fill quota by force. Weak evidence means no card.
 - If model usage/quota becomes risky, stop with a durable checkpoint instead of losing work.
 
@@ -52,6 +52,20 @@ Only two topic classes qualify:
 2. **AI+Android topics**: Android development where AI is the central angle, such as on-device LLMs, AI-assisted Android testing, mobile AI inference, Android agent workflows, AI UX for mobile, or AI tooling that materially changes Android development.
 
 Pure Android topics are out of scope. Exclude topics whose core value is only Activity, layout, Gradle, Firebase, Kotlin, Jetpack, emulator, manifest, UI, or ordinary Android app implementation without a meaningful AI angle.
+
+## Card refinement pass
+
+In addition to discovering new AI / AI+Android topics, each run may improve previously published routine cards. This is allowed only as a bounded, evidence-backed cleanup pass.
+
+Refinement rules:
+- Process older published routine cards first, using `research/ai-routine/refinement-cursor.md` as the durable cursor.
+- Improve detail and readability, not scope. Preserve the original topic and public-facing Korean card style.
+- Re-check the card source URL and, when needed, one additional reputable source before changing factual claims.
+- Do not inflate cards with unsupported metrics or marketing language.
+- Prefer 1-3 refined cards per run so the routine still has time for fresh topic discovery.
+- Record refined titles, sources re-checked, and before/after rationale in the run research note.
+- Update `research/ai-routine/refinement-cursor.md` after a successful refinement pass.
+- Skip pure Android or weakly AI-related legacy cards unless they can be reframed honestly around an AI/AI+Android lesson; otherwise leave them unchanged and record the skip.
 
 ## Candidate selection gate
 
@@ -123,7 +137,7 @@ If a run cannot finish because usage/quota/tool access is near exhaustion, unsaf
    - source URLs already opened
 3. Leave `_data/cards.yml` valid YAML.
 4. Stop cleanly so the next safe run can resume from `resume.md`.
-5. If Codex or the local environment is known-broken, create `.local-ai-research.disabled` so the 3-hour launchd loop does not waste resources until recovery is confirmed.
+5. If Codex or the local environment is known-broken, create `.local-ai-research.disabled` so the 2-hour launchd loop does not waste resources until recovery is confirmed.
 
 At the start of each run, check `research/ai-routine/resume.md`. If present, resume that plan before starting unrelated research.
 
