@@ -6925,3 +6925,14 @@ cards:
       - "SWE-bench Verified 73.7%→77.9%, Terminal-Bench 2.0 52.8%→58.1%"
       - "기본 권장 운영: 샌드박스, 도구 로그, 테스트 결과, 사람 리뷰"
     source: "https://openai.com/index/gpt-5-1-codex-max/"
+  - category: ai
+    title: "README-AI: 저장소를 분석해 README를 자동 생성하는 CLI"
+    summary: >
+      저장소 처리 엔진과 LLM을 결합해 구조화된 README를 명령 한 번에 생성.
+      배지·프로젝트 구조·기능 표·시작 가이드 등을 자동으로 채워준다. MIT 라이선스.
+    points:
+      - "설치: pip install -U readmeai (Python 3.9+)"
+      - "소스: 로컬 파일시스템·GitHub·GitLab·Bitbucket 지원"
+      - "model agnostic — OpenAI·Anthropic·Gemini·Ollama, 기본 gpt-3.5-turbo"
+      - "오프라인 모드(--api offline): LLM API 없이 README 생성"
+    source: https://github.com/eli64s/readme-ai
