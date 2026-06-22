@@ -998,3 +998,15 @@
 - 2026-06-22 22:23 KST | Gemini Live API on Android 실시간 음성 에이전트 | https://developer.android.com/ai/gemini/live
 
 - 2026-06-23 00:28 KST | TPU Developer Hub AI 가속기 코드 레시피·관측 도구 | https://developers.googleblog.com/unlocking-the-power-of-the-tpu-stack-introducing-our-new-developer-hub/
+
+## 2026-06-23 KST — Cleanup (overlap merge, -7카드)
+
+중복·강연관 AI 카드 12장을 5장으로 병합했습니다.
+
+- LiteRT-LM 3장 → 1장
+- Copilot AI credits API 2장 → 1장
+- MAI-Code-1-Flash 2장 → 1장
+- ML Kit GenAI 운영 카드 3장 → 1장
+- code2prompt / files-to-prompt 2장 → 1장
+
+누적: 574카드 (581→574)
