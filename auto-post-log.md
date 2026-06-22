@@ -992,3 +992,5 @@
 - 2026-06-22 20:30 KST | Flowise 비주얼 AI 에이전트 빌더 | https://github.com/FlowiseAI/Flowise
 
 - 2026-06-22 21:00 KST | Kortix(Suna) AI 에이전트 커맨드 센터 | https://github.com/kortix-ai/suna
+
+- 2026-06-22 21:30 KST | gpt-engineer 자연어→코드베이스 생성 | https://github.com/gpt-engineer-org/gpt-engineer

@@ -7531,3 +7531,14 @@ cards:
       - "샌드박스에서 에이전트가 install·run·break 자유, commit한 것만 살아남음"
       - "코딩 에이전트(OpenCode)가 작업·commit·push 수행, 노트북~에어갭까지 자체 호스팅"
     source: https://github.com/kortix-ai/suna
+  - category: ai
+    title: "gpt-engineer: 자연어로 명세하면 AI가 코드베이스를 작성"
+    summary: >
+      "Specify software in natural language, sit back and watch as an AI writes and executes the code."
+      원하는 소프트웨어를 자연어로 적으면 AI가 코드를 짜고 실행, 개선 요청도 반영하는 코드 생성 실험 플랫폼.
+    points:
+      - "설치: python -m pip install gpt-engineer, 실행 gpte <project_dir>"
+      - "프로젝트 폴더에 확장자 없는 prompt 파일을 만들어 지시 작성"
+      - "AI가 전체 코드베이스 생성·실행, 이후 개선 요청 반복 가능"
+      - "bench 바이너리로 자체 에이전트 구현을 벤치마킹하는 인터페이스 제공"
+    source: https://github.com/gpt-engineer-org/gpt-engineer
