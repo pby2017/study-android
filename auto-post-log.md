@@ -886,3 +886,5 @@
 주제: Samsung Electronics ChatGPT Enterprise/Codex deployment, Oracle Cloud Infrastructure procurement path, Notion Codex spec-and-verification workflow, Trusted Access for Cyber, Codex Security
 
 - 2026-06-22 14:00 KST | Potpie — 코드베이스를 Neo4j 지식 그래프로 인덱싱해 디버깅·Q&A·코드생성·스펙 전문 에이전트를 붙이는 도구(Apache-2.0, 모델 비종속) | https://github.com/potpie-ai/potpie
+
+- 2026-06-22 14:30 KST | Rawdog — CLI 요청에 파이썬 스크립트를 즉석 생성·자동 실행하고 출력을 맥락에 넣어 스스로 재호출하는 어시스턴트(RAWDOG=Recursive Augmentation With Deterministic Output Generations) | https://github.com/AbanteAI/rawdog
