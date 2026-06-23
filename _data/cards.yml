@@ -7620,3 +7620,132 @@ cards:
       - "후보 명령을 화살표로 선택→Enter로 실행, 사용자 승인 없인 실행 안 함"
       - "stdout 출력은 절대 수집 안 함(쿼리·에러로그만 개선에 사용)"
     source: https://github.com/gorilla-llm/gorilla-cli
+  - category: ai
+    title: "QLoRA — 4비트 NF4 양자화+LoRA로 70B 모델을 단일 GPU에서 파인튜닝, VRAM 4x 절감(PEFT 표준)"
+    summary: >
+      QLoRA는 2026년 LLM 파인튜닝의 사실상 기본값이다. 기저 모델을 4비트 NF4 양자화로 동결하고,
+      0.1~1%의 LoRA 어댑터만 16비트로 학습. 70B 모델을 단일 A100 80GB에서 파인튜닝 가능(풀 파인튜닝
+      대비 4x VRAM 절감). 7B 모델은 RTX 4090(~6GB)에서 가능. PEFT 라이브러리로 LoraConfig(r=16,
+      alpha=32, target_modules="all-linear") 몇 줄로 설정. merge_and_unload()로 프로덕션 배포 시
+      추론 오버헤드 제로. DPO/GRPO와 결합해 선호도 정렬도 가능.
+    points:
+      - "4비트 NF4: 70B 모델 단일 GPU 파인튜닝"
+      - "PEFT 표준: LoraConfig 몇 줄로 설정"
+      - "추론 제로 오버헤드: merge_and_unload 병합"
+    source: "https://futureagi.com/blog/llm-fine-tuning-guide-2025/"
+  - category: ai
+    title: "Langfuse — 오픈소스(MIT) LLM 옵저버빌리티, OTel 기반·프롬프트 관리·평가·2,300+ 기업 사용"
+    summary: >
+      Langfuse는 가장 널리 채택된 오픈소스 LLM 엔지니어링 플랫폼이다. 트레이싱·프롬프트 관리·평가·
+      분석 대시보드를 단일 플랫폼으로 통합. OpenTelemetry 기반으로 80+ 프레임워크 통합, 프레임워크
+      종속 없음. 2,300+ 기업이 사용, 월 수십억 관측 처리. 2026년 1월 ClickHouse에 인수(MIT 유지).
+      셀프호스트 무료(ClickHouse+Postgres+Redis+S3 필요). Arize Phoenix(RAG 평가·드리프트 감지 특화)와
+      상호보완. LangSmith는 LangChain 생태계에 종속적.
+    points:
+      - "OTel 기반: 80+ 프레임워크, 프레임워크 종속 없음"
+      - "2,300+ 기업: 월 수십억 관측 처리"
+      - "MIT 오픈소스: 셀프호스트 무료, ClickHouse 인수"
+    source: "https://turion.ai/blog/langsmith-vs-langfuse-vs-arize-phoenix/"
+  - category: ai
+    title: "벡터 DB 선택 2026 — Qdrant(성능)·Weaviate(하이브리드)·Pinecone(매니지드)·pgvector(50M 이하 기본)"
+    summary: >
+      2026년 벡터 DB는 용도별 선택이 핵심이다. pgvector(PostgreSQL 확장): 50M 벡터 이하에서 별도 DB
+      없이 가장 효율적. Pinecone: 제로 운영 매니지드, SOC2/HIPAA, 빠른 시작. Qdrant(Rust): 셀프호스트
+      성능 1위, p99 6~15ms, 고급 페이로드 필터링. Weaviate: 네이티브 BM25+벡터 하이브리드 검색 최강.
+      Milvus/Zilliz: 10B+ 벡터 대규모 분산 배포. Chroma: 로컬 프로토타이핑. 대부분 프로덕션 RAG에서
+      매니지드 벡터 DB + 리랭커(Cohere/Voyage) 조합.
+    points:
+      - "pgvector: 50M 이하 PostgreSQL 확장, 가장 효율적"
+      - "Qdrant: Rust, p99 6~15ms, 필터링 성능 1위"
+      - "Weaviate: 네이티브 BM25+벡터 하이브리드 최강"
+    source: "https://semantic.io/insights/vector-database-comparison-2026"
+  - category: ai
+    title: "NeMo Guardrails — NVIDIA LLM 안전장치 프레임워크, 5종 레일(입력·대화·검색·실행·출력)·Colang DSL(Apache-2.0)"
+    summary: >
+      NeMo Guardrails는 NVIDIA가 만든 LLM 안전장치 오픈소스 프레임워크다. 5종 레일: 입력(탈옥·프롬프트
+      인젝션), 대화(토픽 제한·흐름 제어), 검색(RAG 검증), 실행(도구 호출 게이팅), 출력(팩트체크·
+      할루시네이션·PII). Colang DSL로 멀티턴 대화 제약을 선언적으로 정의. Llama Guard 3·Nemotron
+      Content Safety 모델 통합. LangChain·LangGraph 연동. 다른 가드레일 툴(Guardrails AI 등) 대비
+      대화 관리까지 포함하는 유일한 프레임워크.
+    points:
+      - "5종 레일: 입력·대화·검색·실행·출력 전 구간 커버"
+      - "Colang DSL: 멀티턴 대화 제약 선언적 정의"
+      - "모델 통합: Llama Guard 3·Nemotron Content Safety"
+    source: "https://appsecsanta.com/nemo-guardrails"
+  - category: ai
+    title: "Surya 2 — 650M VLM 단일 모델로 OCR·레이아웃·테이블 인식, 90+ 언어·RTX 5090에서 5페이지/초"
+    summary: >
+      Surya 2는 Datalab이 만든 650M 파라미터 VLM 기반 문서 OCR 올인원 툴킷이다. 단일 모델로 텍스트
+      인식(OCR)·레이아웃 분석·리딩 오더·테이블 인식을 처리. 90+ 언어 지원(한·중·일 포함). olmOCR-bench
+      83.3%(3B 미만 최고 점수). RTX 5090에서 5페이지/초 처리량. vllm(GPU) 또는 llama.cpp(CPU/Apple
+      Silicon) 백엔드. Marker(같은 팀)는 Surya 위에 구축된 PDF→Markdown 변환기로 수식·테이블 특화.
+    points:
+      - "단일 VLM: OCR·레이아웃·테이블, 650M 파라미터"
+      - "90+ 언어: 한·중·일 포함, olmOCR-bench 83.3%"
+      - "Marker 연계: PDF→Markdown, 수식·테이블 특화"
+    source: "https://github.com/datalab-to/surya/"
+  - category: ai
+    title: "Ollama v0.30 — 로컬 LLM 런타임→AI 플랫폼 진화, ollama launch·클라우드 하이브리드·175k★(MIT)"
+    summary: >
+      Ollama는 2026년 v0.30 시리즈로 단순 모델 런너에서 AI 플랫폼으로 진화했다. 4,500+ 모델 라이브러리.
+      ollama launch로 전체 에이전트 앱(Claude Code·Hermes Desktop) 원커맨드 배포. :cloud 접미사로
+      로컬/클라우드 모델을 동일 API로 라우팅. OpenAI+Anthropic 호환 API로 LangChain·LlamaIndex·Claude
+      Code 등 에이전트 프레임워크와 무설정 연동. MLX 엔진으로 Apple Silicon 네이티브 가속. 웹 검색
+      도구 호출 지원. 175k+ GitHub 스타.
+    points:
+      - "ollama launch: Claude Code·Hermes 원커맨드 배포"
+      - "하이브리드: :cloud로 로컬/클라우드 동일 API"
+      - "호환 API: OpenAI+Anthropic, 에이전트 무설정 연동"
+    source: "https://shubhamrajsingh.com/blog/ollama-local-ai-deployment-2026-guide/"
+  - category: ai
+    title: "AI 지식 그래프 자동 구축 — LLM이 추출·검증 엔진이 보장하는 'Propose-Verify' 아키텍처가 2026 표준"
+    summary: >
+      2026년 AI 지식 그래프 구축은 LLM이 엔티티·관계를 추출(propose)하고, SHACL/규칙 기반 엔진이
+      논리적 일관성을 검증(verify)하는 이중 구조가 표준이다. 온톨로지 엔지니어는 '빌더'에서 '거버너'로
+      역할 전환: AI가 자율 구축하되, 엔지니어가 제약·규칙·shape map을 정의. MyKG(문서→RDFS/OWL KG,
+      신뢰도 점수), HyDRA(Design-by-Contract 검증), OntoKG(Wikidata 규모 94모듈·34M 노드) 등 오픈소스
+      도구 등장. 기존 수동 큐레이션 대비 규모 확장성 획기적 개선.
+    points:
+      - "Propose-Verify: LLM 추출 + 검증 엔진 보장"
+      - "거버너 패턴: 제약·규칙 정의 → AI 자율 구축"
+      - "MyKG/HyDRA: RDFS/OWL, 신뢰도 점수, DbC 검증"
+    source: "https://medium.com/@adnanmasood/building-knowledge-graphs-with-ai-0fcc55a04b5c"
+  - category: ai
+    title: "LTX-2 — 오픈소스 AI 비디오 생성, 네이티브 4K·동기화 오디오·12GB GPU에서 로컬 실행(Apache-2.0)"
+    summary: >
+      LTX-2는 Lightricks가 만든 오픈소스 AI 비디오 생성 모델이다. 네이티브 4K 해상도·동기화 오디오
+      생성·최대 32초 클립을 지원. 12GB VRAM GPU에서 로컬 추론 가능(차세대 모델 대비 18x 효율적).
+      Apache-2.0 라이선스로 상업 사용 가능. ComfyUI 워크플로우 지원. Wan 2.6(Alibaba, MIT, 멀티샷·
+      오디오·1080p)과 HunyuanVideo 1.5(Tencent, 얼굴 품질)가 경쟁. 상업 서비스(Sora 2·Veo 3.1)에
+      근접하는 품질을 무료 로컬 실행으로 제공.
+    points:
+      - "4K+오디오: 네이티브 4K, 동기화 오디오 생성"
+      - "12GB GPU: 로컬 실행, 차세대 대비 18x 효율"
+      - "Apache-2.0: 상업 사용 가능, ComfyUI 워크플로우"
+    source: "https://jstechlog.com/en/posts/video-ai-opensource-guide/"
+  - category: ai
+    title: "LiteRT(구 TFLite) — Google 온디바이스 ML 표준, CompiledModel API로 NPU 100x·GPU 10x 가속"
+    summary: >
+      LiteRT는 Google이 TensorFlow Lite를 리브랜딩한 온디바이스 ML 프레임워크다. CompiledModel API가
+      기존 Interpreter 대체 권장: 자동 HW 선택·비동기 실행으로 NPU에서 CPU 대비 100x, GPU 대비 10x
+      가속. Qualcomm·MediaTek NPU 프로덕션 지원. Android·iOS·Web·IoT·Desktop 크로스플랫폼.
+      MediaPipe Tasks(LLM 추론·비전, 고수준 래퍼)와 조합. PyTorch·JAX·TensorFlow 모델 변환 지원.
+      ONNX Runtime Mobile(크로스플랫폼·PyTorch 우선)은 생태계 다를 때 대안.
+    points:
+      - "CompiledModel API: NPU 100x, GPU 10x 자동 가속"
+      - "프로덕션 NPU: Qualcomm·MediaTek 지원"
+      - "MediaPipe 조합: LLM·비전 고수준 래퍼"
+    source: "https://www.forasoft.com/blog/article/neural-networks-on-android-369"
+  - category: ai
+    title: "Open WebUI — 셀프호스팅 ChatGPT 대안, Ollama+OpenAI 통합·RAG·RBAC·142k★·Docker 원커맨드"
+    summary: >
+      Open WebUI는 142k+ GitHub 스타의 셀프호스팅 AI 채팅 플랫폼이다. Ollama(로컬 모델)와 OpenAI/
+      Anthropic 호환 API를 단일 인터페이스에서 통합. 내장 RAG(문서 기반 지식 베이스), 음성·비전·검색
+      지원. RBAC·SSO·LDAP으로 엔터프라이즈 팀 관리(ChatGPT Team $30+/월 기능을 무료 제공). Docker
+      원커맨드 배포(pip install open-webui도 가능). Python 파이프라인으로 확장. 주의: 커스텀 라이선스
+      (MIT 아님), 엄격한 OSS 필요 시 LibreChat 대안.
+    points:
+      - "통합 UI: Ollama(로컬) + OpenAI/Anthropic(클라우드)"
+      - "내장 RAG: 문서 기반 지식 베이스 구축"
+      - "RBAC·SSO: 엔터프라이즈 팀 관리, Docker 원커맨드"
+    source: "https://openwebui.com/"

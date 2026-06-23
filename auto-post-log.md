@@ -1032,3 +1032,21 @@
 - 2026-06-23 10:00 KST | tgpt 터미널 AI 크로스플랫폼 CLI | https://github.com/aandrew-me/tgpt
 
 - 2026-06-23 10:30 KST | Gorilla CLI 자연어→명령 후보 제안 | https://github.com/gorilla-llm/gorilla-cli
+
+## 2026-06-23 10:50 KST — Batch 16 (AI 인프라·도구·프레임워크, 10카드)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | QLoRA — 4비트 파인튜닝 | futureagi.com |
+| 2 | Langfuse — LLM 옵저버빌리티 | turion.ai |
+| 3 | 벡터 DB 선택 2026 | semantic.io |
+| 4 | NeMo Guardrails — LLM 안전장치 | appsecsanta.com |
+| 5 | Surya 2 — 문서 OCR 올인원 | github.com/datalab-to |
+| 6 | Ollama v0.30 — AI 플랫폼 | shubhamrajsingh.com |
+| 7 | AI 지식 그래프 자동 구축 | medium.com/@adnanmasood |
+| 8 | LTX-2 — AI 비디오 생성 | jstechlog.com |
+| 9 | LiteRT — 온디바이스 ML | forasoft.com |
+| 10 | Open WebUI — 셀프호스팅 AI | openwebui.com |
+
+누적: 482카드 (472→482)
+주제: PEFT/QLoRA, LLM 옵저버빌리티, 벡터 DB, AI 가드레일, 문서 OCR, 로컬 LLM, 지식 그래프, AI 비디오, 온디바이스 ML, 셀프호스팅 AI
