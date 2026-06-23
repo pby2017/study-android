@@ -1081,3 +1081,5 @@
 주제: 프론티어 모델(DeepSeek V4·Mistral Large 3), IDE AI(Cursor Tab), 모바일 테스트, 추론 최적화(LoRAX·Speculative Decoding·Groq·SambaNova), LLM Eval(Weave), 양자화(GGUF), 멀티모달 검색(ColPali), 엔터프라이즈 RAG(Cohere)
 
 - 2026-06-23 11:30 KST | kubectl-ai 자연어 의도→쿠버네티스 작업 AI 인터페이스 | https://github.com/GoogleCloudPlatform/kubectl-ai
+
+- 2026-06-23 12:00 KST | GPTScript 자연어 프롬프트로 LLM이 시스템·앱·파일과 상호작용 | https://github.com/gptscript-ai/gptscript
