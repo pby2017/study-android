@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI`; next oldest reviewed candidate is `Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다`.
+Current position: continue after `Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다`; next oldest reviewed candidate is `Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트`.
 
-Last update: 2026-06-24 03:22 KST
+Last update: 2026-06-24 05:25 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -22,6 +22,7 @@ Reviewed:
 - `Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기`
 - `Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·65k+★)`
 - `Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI`
+- `Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -37,13 +38,14 @@ Refined:
 - `Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기` — refreshed live GitHub metrics, current supported-agent table, root AGENTS.md precedence, source-marker traceability, nested-rule caveat, and MCP/skills/subagents propagation surface.
 - `Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·65k+★)` — refreshed live GitHub metrics, current package split, explicit no-built-in-permission caveat, sandbox options, and supply-chain hardening details from the README.
 - `Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI` — clarified the reusable agent-harness lessons behind the Terminal-Bench result: hierarchical prompting, model-specific tool/edit handling, minimal schemas, environment bootstrapping, timeout planning, plan-state reminders, and controlled background execution.
+- `Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다` — refreshed the source URL to the current Search docs, removed an older unsupported accuracy metric, and clarified the grep/semantic search/Explore subagent split plus current privacy/indexing behavior.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
 - `Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰` — source re-checked; the existing refined card already captures triggers, review/implementation features, structured outputs, runner location, and authentication/provider choices.
 
 Next:
-- Continue with `Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

@@ -1177,3 +1177,15 @@ Refined:
 
 누적: 548카드 (547→548)
 주제: AI agent security, AI Control Roadmap, insider-threat threat modeling, supervisor monitoring, agent-harness refinement
+
+## 2026-06-24 05:25 KST — Batch 25 (terminal coding-agent UX, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Copilot CLI GA — 터미널 에이전트도 이슈·MCP·스킬을 한 화면에서 다룬다 | github.blog |
+
+Refined:
+- Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
+
+누적: 549카드 (548→549)
+주제: Copilot CLI GA, terminal coding-agent UX, MCP registry, skills/plugins, semantic code search refinement

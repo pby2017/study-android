@@ -1412,17 +1412,16 @@ cards:
     source: https://factory.ai/news/terminal-bench
   - category: ai
     title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
-    summary: '대형 레포에서 에이전트가 "인증은 어디서 처리하지?" 같은 자연어 질문으로 코드를 찾으려면 grep만으로는 부족하다. Cursor는 코드베이스를 임베딩으로 인덱싱해 시맨틱 검색을 제공하는데, 그동안 카드엔 Aider 레포 맵(tree-sitter 그래프 랭킹)·Repomix(정적 패킹)는 있어도 ''임베딩 기반 의미 검색'' 층위는 비어
-      있었다. 동작은 이렇다: 파일을 구문 단위 청크로 쪼개 자체 학습한 임베딩 모델로 벡터화하고, 워크스페이스를 열면 백그라운드에서 자동 인덱싱(80% 시점부터 검색 가능)된다. 변경 추적은 Merkle 트리로 해시가 다른 가지만 골라 5분마다 증분 동기화한다. 질문하면 쿼리를 임베딩해 벡터DB에서 유사 청크의 ''난독화된 경로·줄번호''만 받아오고,
-      실제 코드는 내 로컬에서 그 좌표로 조회한다. 핵심 설계는 프라이버시다 — 원문 코드는 서버에 저장 안 되고, 파일명·경로는 암호화·난독화되며 코드 청크는 인덱싱 중 메모리에만 있다 폐기된다. 검색은 시맨틱+grep을 함께 쓸 때 가장 좋고(공식 블로그는 시맨틱 검색이 정확도 12.5%p↑라 주장), .gitignore·.cursorignore로 인덱싱
-      대상을 제외할 수 있다.
+    summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고,
+      각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며,
+      인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
 
       '
     points:
-      - 파일을 청크→자체 임베딩 모델로 벡터화, 워크스페이스 열면 자동 인덱싱·Merkle 트리로 5분 증분 sync
-      - 벡터DB엔 난독화된 경로·임베딩만 저장(원문 비저장), 실제 코드는 로컬에서 좌표로 조회 — 프라이버시 설계
-      - 시맨틱+grep 결합이 최선(시맨틱 단독 정확도 12.5%p↑ 주장), .gitignore·.cursorignore로 인덱싱 제외
-    source: https://cursor.com/docs/context/semantic-search
+      - 코드 청크를 벡터 임베딩으로 저장하고, 질문도 벡터화해 의미가 가까운 위치를 찾는다
+      - 자동 인덱싱, 80%부터 검색 가능, 5분 증분 동기화, .gitignore·.cursorignore로 제외
+      - Agent는 심볼/string은 grep, 개념/행동은 semantic search, 넓은 탐색은 Explore subagent로 조합
+    source: https://cursor.com/docs/agent/tools/search
   - category: ai
     title: Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트
     summary: 'Continue는 원래 VS Code·JetBrains 확장으로 유명했지만, 지금 활발히 미는 건 터미널 에이전트 ''Continue CLI(cn)''다. 공식 문서는 cn을 "오픈소스이며 모듈형인 커맨드라인 코딩 에이전트"로, 검증된 ''에이전트 루프(agent loop)''에 당신의 모델·규칙·도구를 끼워 넣는 구조라고 설명한다.
@@ -6306,3 +6305,20 @@ cards:
       - "통제 축: supervisor AI monitoring, asynchronous alert, synchronous block/response, capability-based escalation"
       - "운영 지표: coverage·recall·time-to-response로 에이전트 보안 통제가 실제로 작동하는지 측정"
     source: https://deepmind.google/blog/securing-the-future-of-ai-agents/
+  - category: ai
+    title: "Copilot CLI GA: 터미널 에이전트도 이슈·MCP·스킬을 한 화면에서 다룬다"
+    summary: >
+      GitHub은 2026-06-23 Copilot CLI의 새 터미널 인터페이스를 GA로 전환했다. 핵심은 코딩 에이전트를
+      "프롬프트 입력창"이 아니라 GitHub 작업 큐와 도구 구성을 함께 보는 운영 표면으로 만든 점이다.
+      저장소 안에서 CLI를 열면 Session, Issues, Pull requests, Gists 탭을 오가며 항목을 찾고,
+      선택한 이슈나 PR을 프롬프트에 참조로 넣어 조사·수정·댓글·리뷰를 요청할 수 있다. 도구 설정도
+      파일 편집 대신 세션 안 명령으로 옮겼다. `/mcp search`는 GitHub MCP Registry에서 서버를 찾아
+      설치하고, `/mcp add`는 MCP 서버 추가를 안내하며, 새 서버는 CLI 재시작 없이 바로 쓸 수 있다.
+      `/skills`는 스킬 토글, `/plugin`은 마켓플레이스·레포·로컬 경로 플러그인 설치를 맡는다. 교훈은
+      터미널 AI 에이전트 UX가 모델 답변 품질만이 아니라 작업 선택, 컨텍스트 참조, 도구 설치, 접근성까지
+      포함한 제어면이 되어 간다는 점이다.
+    points:
+      - "GA 공지: 2026-06-23, Build 2026 preview였던 redesigned Copilot CLI terminal interface"
+      - "작업 표면: Session/Issues/Pull requests/Gists 탭에서 이슈·PR을 프롬프트 참조로 삽입"
+      - "도구 표면: /mcp search·/mcp add, /skills, /plugin, /settings를 CLI 세션 안에서 처리"
+    source: https://github.blog/changelog/2026-06-23-copilot-cli-new-terminal-interface-is-generally-available/
