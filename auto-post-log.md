@@ -1117,3 +1117,15 @@ Refined:
 
 누적: 543카드 (541→543)
 주제: AI+Android mobile agents, mobile UI automation, mobile-agent benchmarks, MCP-augmented evaluation, LLM eval refinement
+
+## 2026-06-23 19:06 KST — Batch 20 (Codex workflow skills, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Codex Record & Replay — 손으로 보여 준 반복 업무를 재사용 스킬로 바꾸기 | developers.openai.com |
+
+Refined:
+- awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음
+
+누적: 544카드 (543→544)
+주제: Codex Record & Replay, Computer Use workflow capture, reusable skills, Agent Skills catalog refinement
