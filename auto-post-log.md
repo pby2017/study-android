@@ -1054,3 +1054,28 @@
 - 2026-06-23 10:48 KST | Copilot JetBrains 6월 업데이트 — 에이전트 선택·중간 개입·권한 상태를 한 화면에서 다루기 | https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/
 
 - 2026-06-23 11:00 KST | yai 평문→터미널 명령 빌드·실행 AI 어시스턴트 | https://github.com/ekkinox/yai
+
+## 2026-06-23 11:10 KST — Batch 17 (중복 정리 76카드 제거 + 신규 12카드)
+
+**중복 정리**: 35개 주제 그룹에서 76카드 제거 (597→521)
+- OpenHands(5), Aider(5), OpenCode(7), Gemini CLI(3), Cline(4), Repomix(3), 컨텍스트엔지니어링(4), Kilo Code(3), SWE-bench Pro(3), Superpowers(3), Context7(3), Conductor(2), 하네스엔지니어링(2), AGENTS.md(2), Goose(2), Amp(2), LiteRT(2), Tabby(2), 프롬프트캐싱(2), Codex CLI(2), Langfuse(1), NeMo(1), ExecuTorch(1), LangGraph(1), awesome-claude-code(2), Agent Skills(1), Roo Code(1), Claude Code 비용(1), Sherpa-ONNX(1), FLUX.2(1), Dagster(1), Feast(1), SGLang(1), Qdrant(1)
+
+**신규 12카드**:
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | DeepSeek-V4 — 1.6T MoE | deepinfra.com |
+| 2 | Mistral Large 3 — 675B MoE | mistral.ai |
+| 3 | Cursor Tab — 온라인 RL 자동완성 | cursor.com |
+| 4 | AI 모바일 테스트 2026 비교 | drizz.dev |
+| 5 | LoRAX — 멀티 LoRA 서빙 | github.com/predibase |
+| 6 | Speculative Decoding — 추론 가속 | premai.io |
+| 7 | W&B Weave — LLM 평가 | wandb.ai |
+| 8 | GGUF 양자화 가이드 | markaicode.com |
+| 9 | Groq LPU — 추론 전용 칩 | chatforest.com |
+| 10 | ColPali — 멀티모달 문서 검색 | arxiv.org |
+| 11 | SambaNova Cloud — RDU 추론 | sambanova.ai |
+| 12 | Cohere Command A — RAG 특화 | tokenmix.ai |
+
+누적: 533카드 (597→521 중복제거→533 신규추가)
+주제: 프론티어 모델(DeepSeek V4·Mistral Large 3), IDE AI(Cursor Tab), 모바일 테스트, 추론 최적화(LoRAX·Speculative Decoding·Groq·SambaNova), LLM Eval(Weave), 양자화(GGUF), 멀티모달 검색(ColPali), 엔터프라이즈 RAG(Cohere)
