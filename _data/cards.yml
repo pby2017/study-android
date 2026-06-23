@@ -1401,14 +1401,14 @@ cards:
     source: https://github.com/earendil-works/pi
   - category: ai
     title: Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI
-    summary: 'Factory AI의 터미널 코딩 에이전트 Droid는 Terminal-Bench에서 58.75%로 1위를 기록했고, Factory 에이전트가 상위 5위 중 3자리를 차지했다. 핵심 메시지는 "어떤 모델을 쓰느냐가 아니라 에이전트 설계(프롬프트·도구 설계·최적화)가 성능을 가른다"는 것. 같은 모델을 써도 하네스에 따라 점수가 크게 갈린다는
-      걸 같은 표 안에서 직접 비교해 보여준다. Droid는 CLI뿐 아니라 IDE 확장, Slack/Linear 연동, Action(PR 자동 리뷰)까지 제공하는 상용 플랫폼이다.
+    summary: 'Factory AI의 터미널 코딩 에이전트 Droid는 Terminal-Bench core v0.1.1에서 58.75%로 1위를 기록했고, Opus 4.1·GPT-5·Sonnet 4 조합이 상위권을 차지했다. 이 카드의 핵심은 순위표보다 설계 해부다. Factory는 성능 차이를 계층형 프롬프트, 모델별 편집·경로 처리 최적화, 작고 신뢰도 높은 도구 스키마,
+      세션 시작 시 환경 정보 주입, 짧은 기본 타임아웃, 계획 업데이트 도구, 통제된 백그라운드 실행으로 설명한다. 즉 "더 센 모델"만 찾기보다, 에이전트가 환경을 빨리 이해하고 실패한 도구 호출을 줄이며 긴 작업의 최신 맥락을 잃지 않게 만드는 하네스가 점수를 바꾼다는 사례다.
 
       '
     points:
-      - 'Terminal-Bench: Droid+Opus 4.1 58.8% · Droid+GPT-5 52.5% · Droid+Sonnet 4 50.5%'
-      - '비교: Claude Code+Opus 43.2% · Codex CLI(GPT-5) 42.8% — 같은 모델도 하네스가 결정'
-      - Droid+Sonnet(50.5%)이 다른 도구의 Opus 실행을 전부 앞섬 — 싼 모델로도 설계가 이기면 역전
+      - '검증 결과: Droid+Opus 4.1 58.8% · Droid+GPT-5 52.5% · Droid+Sonnet 4 50.5%'
+      - '설계 포인트: 계층형 프롬프트, 모델별 도구/편집 형식, 최소 도구 스키마, 환경 부트스트랩'
+      - '실무 교훈: 비용·모델 선택 전에 도구 오류율, 타임아웃, 계획 상태, 백그라운드 프로세스 통제를 먼저 설계'
     source: https://factory.ai/news/terminal-bench
   - category: ai
     title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
@@ -6290,3 +6290,19 @@ cards:
       - "AI 친화 조작: accessibility snapshot refs + click/fill/get/screenshot + batch 실행"
       - "검증 표면: state, network route/HAR, console/errors, visual diff, React tree, Web Vitals"
     source: https://github.com/vercel-labs/agent-browser
+  - category: ai
+    title: "DeepMind AI Control Roadmap: 에이전트를 '잠재적 내부자 위협'으로 다루는 보안 설계"
+    summary: >
+      Google DeepMind가 2026-06-18 공개한 AI Control Roadmap은 강력한 에이전트가 완벽히 정렬되어
+      있다고 가정하지 않고, 내부 시스템에 접근한 잠재적 insider threat처럼 다루는 방어 심층 전략이다.
+      전통 보안(샌드박스·엔드포인트 보안·프롬프트 인젝션 저항) 위에 alignment를 1차 방어로 두되,
+      실패할 수 있다고 보고 supervisor AI가 에이전트의 reasoning·action·plan을 감시한다. 위험도는
+      detection evasion 능력(D1-D4)과 attack execution 능력(R1-R3)에 맞춰 올리고, 저위험 작업은
+      사후 transcript 리뷰·알림으로, 고위험 작업은 실시간 차단·접근 제한·종료 인프라로 대응한다.
+      실무 교훈은 에이전트 권한을 사람 계정과 똑같이 복사하지 말고, coverage·recall·time-to-response로
+      감시 품질을 재며 점진적으로 권한을 열어야 한다는 점이다.
+    points:
+      - "공식 발표: 2026-06-18 AI Control Roadmap, 내부 에이전트를 잠재적 insider threat로 threat-modeling"
+      - "통제 축: supervisor AI monitoring, asynchronous alert, synchronous block/response, capability-based escalation"
+      - "운영 지표: coverage·recall·time-to-response로 에이전트 보안 통제가 실제로 작동하는지 측정"
+    source: https://deepmind.google/blog/securing-the-future-of-ai-agents/

@@ -1165,3 +1165,15 @@ Refined:
 
 누적: 547카드 (546→547)
 주제: browser automation for AI agents, accessibility snapshots, deterministic browser QA, self-extensible coding-agent sandboxing refinement
+
+## 2026-06-24 03:22 KST — Batch 24 (agent security control, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | DeepMind AI Control Roadmap — 에이전트를 잠재적 내부자 위협으로 다루는 보안 설계 | deepmind.google |
+
+Refined:
+- Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI
+
+누적: 548카드 (547→548)
+주제: AI agent security, AI Control Roadmap, insider-threat threat modeling, supervisor monitoring, agent-harness refinement
