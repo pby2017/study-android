@@ -7598,3 +7598,14 @@ cards:
       - "stdin 파이프로 실행: pbpaste | fabric --pattern summarize"
       - "유튜브 등 입력도: fabric -y URL --pattern extract_wisdom, provider OpenAI·Anthropic·Gemini·Ollama"
     source: https://github.com/danielmiessler/fabric
+  - category: ai
+    title: "tgpt: 터미널에서 AI를 쓰는 크로스플랫폼 CLI"
+    summary: >
+      "a Cross-platform Command-Line Interface (CLI) tool that allows you to use AI in your Terminal."
+      별도 페이지에 정리된 여러 provider를 골라 터미널에서 바로 AI를 호출하는 Go 기반 도구. GPL-3.0.
+    points:
+      - "설치(Linux/macOS): curl -sSL .../tgpt/main/install | bash -s /usr/local/bin"
+      - "pacman -S tgpt · brew install tgpt · Chocolatey · go install로도 설치"
+      - "Windows·FreeBSD 등 크로스플랫폼, 릴리스 바이너리 직접 다운로드 가능"
+      - "프록시 지원(환경변수 또는 설정파일), provider 목록은 별도 문서 제공"
+    source: https://github.com/aandrew-me/tgpt
