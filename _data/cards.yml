@@ -7765,3 +7765,14 @@ cards:
       - "긴 Copilot CLI 실행 중 Add to Queue / Steer with Message / Stop and Send로 개입"
       - "Claude provider preview는 현재 bypass permissions mode라 권한 정책 확인이 선행"
     source: "https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/"
+  - category: ai
+    title: "yai: 평문으로 말하면 터미널 명령을 만들고 실행해 주는 AI 어시스턴트"
+    summary: >
+      yai(your AI)는 터미널용 AI 어시스턴트. OS·배포판·사용자명·셸·홈 디렉터리·선호 에디터를
+      인지한 채로, 일상 언어로 설명한 작업을 명령으로 빌드·실행하고 일반 질문에도 답한다.
+    points:
+      - "설치: curl -sS https://raw.githubusercontent.com/ekkinox/yai/main/install.sh | bash"
+      - "환경 인지 — OS/배포판, 사용자명, 셸, 홈 디렉터리, 선호 에디터를 컨텍스트로 사용"
+      - "일상 언어 → 명령 빌드·실행, 그리고 일반 질문 답변 모두 지원"
+      - "OpenAI ChatGPT 기반, 첫 실행 시 OpenAI API 키 입력. License: MIT"
+    source: https://github.com/ekkinox/yai
