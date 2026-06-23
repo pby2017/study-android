@@ -285,13 +285,15 @@ cards:
   - category: ai
     title: "Gemini CLI — 빠른 무료 한도 + 터미널 에이전트"
     summary: >
-      Gemini CLI는 구글이 직접 제공하는 터미널형 AI 에이전트다. CLI 중심이라 스크립트·셸·리포
-      작업에 바로 붙이기 쉽고, 무료 한도가 넉넉한 편이라 실험 비용 부담이 낮다. '모델 공급자
-      종속 없이 터미널에서 바로 쓰는 에이전트'라는 점에서 팀 일상 작업용으로 자주 비교 대상이 된다.
+      Gemini CLI는 Google이 공개한 Apache-2.0 터미널 에이전트다. README 기준 개인 Google 계정으로
+      로그인하면 60 requests/min, 1,000 requests/day 무료 티어와 Gemini 3 모델, 1M 토큰 컨텍스트를
+      쓸 수 있다. 실무 포인트는 "무료 CLI"가 아니라 터미널 자동화 표면이다. 파일 작업, 셸 명령,
+      웹 fetch, Google Search grounding, MCP 서버 확장, `gemini -p` 비대화 실행, `--output-format json`
+      또는 `stream-json` 출력까지 제공하므로 리포 분석·PR 점검·운영 스크립트에 붙이기 쉽다.
     points:
-      - "터미널 중심이라 자동화/스크립트와 궁합이 좋음"
-      - "직접 제공 서비스라 초기 도입 장벽이 낮음"
-      - "무료 한도 체감이 좋아 실험용으로 많이 씀"
+      - "개인 Google 계정: 60 requests/min, 1,000 requests/day 무료 티어"
+      - "도구: 파일·셸·웹 fetch·Google Search grounding·MCP 서버 확장"
+      - "자동화: `gemini -p`와 json/stream-json 출력으로 스크립트에 연결"
     source: "https://github.com/google-gemini/gemini-cli"
 
   - category: ai
@@ -7749,3 +7751,17 @@ cards:
       - "내장 RAG: 문서 기반 지식 베이스 구축"
       - "RBAC·SSO: 엔터프라이즈 팀 관리, Docker 원커맨드"
     source: "https://openwebui.com/"
+  - category: ai
+    title: "Copilot JetBrains 6월 업데이트 — 에이전트 선택·중간 개입·권한 상태를 한 화면에서 다루기"
+    summary: >
+      GitHub의 2026년 6월 22일 JetBrains Copilot 업데이트는 코딩 에이전트를 "채팅창 기능"이 아니라
+      운영 가능한 세션으로 다루게 만드는 변화다. 조직·엔터프라이즈 관리자가 배포한 custom agent를
+      JetBrains IDE 안의 agent picker에서 고르고, Copilot CLI 세션이 도는 중에도 메시지를 큐에 넣거나
+      현재 요청을 다음 도구 실행 뒤 방향 전환시킬 수 있다. Agent Debug 패널은 세션 활동 요약을 보여주고,
+      Claude Code CLI를 agent provider로 붙이는 공개 프리뷰도 제공한다. 단, GitHub는 Claude provider가
+      현재 bypass permissions mode로 실행되어 파일 편집과 도구 호출이 자동 승인된다고 명시한다.
+    points:
+      - "조직/엔터프라이즈 custom agent를 JetBrains IDE의 agent picker에서 선택"
+      - "긴 Copilot CLI 실행 중 Add to Queue / Steer with Message / Stop and Send로 개입"
+      - "Claude provider preview는 현재 bypass permissions mode라 권한 정책 확인이 선행"
+    source: "https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/"

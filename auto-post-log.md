@@ -1050,3 +1050,5 @@
 
 누적: 482카드 (472→482)
 주제: PEFT/QLoRA, LLM 옵저버빌리티, 벡터 DB, AI 가드레일, 문서 OCR, 로컬 LLM, 지식 그래프, AI 비디오, 온디바이스 ML, 셀프호스팅 AI
+
+- 2026-06-23 10:48 KST | Copilot JetBrains 6월 업데이트 — 에이전트 선택·중간 개입·권한 상태를 한 화면에서 다루기 | https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/
