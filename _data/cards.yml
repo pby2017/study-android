@@ -6093,3 +6093,14 @@ cards:
       - "2 GPU 배포: A100/H100 2장, 처리량 150% 향상"
       - "통합 스택: Embed v3 + Rerank 3.5, 단일 API"
     source: "https://tokenmix.ai/blog/cohere-command-a-review"
+  - category: ai
+    title: "kubectl-ai: 자연어 의도를 정확한 쿠버네티스 작업으로 옮겨주는 AI 인터페이스"
+    summary: >
+      kubectl-ai는 사용자의 의도를 정밀한 Kubernetes 작업으로 번역하는 지능형 인터페이스.
+      대화형 채팅은 이전 상호작용의 컨텍스트를 유지하고, 비대화형 작업 모드와 stdin 파이핑도 지원한다.
+    points:
+      - "설치: curl -sSL https://raw.githubusercontent.com/GoogleCloudPlatform/kubectl-ai/main/install.sh | bash"
+      - "세션 영속 — 시작/목록/재개/삭제, 내장 도구로 kubectl·bash 사용"
+      - "MCP Client/Server 모드 지원, kubectl 플러그인으로 'kubectl ai' 호출 가능"
+      - "gemini·vertexai·azopenai·openai·bedrock 및 로컬 ollama·llama.cpp 지원. License: Apache-2.0"
+    source: https://github.com/GoogleCloudPlatform/kubectl-ai
