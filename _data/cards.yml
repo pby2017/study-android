@@ -1311,16 +1311,16 @@ cards:
       - 유료 Pro 연 결제 시 월 $24/인, Pro Plus $48/인; 무료 티어도 공개·비공개 무제한 + IDE·CLI 리뷰 포함
     source: https://www.coderabbit.ai/pricing
   - category: ai
-    title: Codex CLI — OpenAI가 TypeScript를 버리고 Rust로 다시 짠 91k★ 로컬 코딩 에이전트
-    summary: 'Codex CLI는 OpenAI가 만든 ''내 머신에서 도는'' 터미널 코딩 에이전트로, GitHub 91k★(Apache-2.0)의 대형 오픈소스 프로젝트다. 눈에 띄는 점은 구현 언어다. 초기 Node/TypeScript 버전을 접고 지금은 코드베이스의 96%가 Rust로, 설치는 npm(@openai/codex)·Homebrew·셸
-      스크립트로 하되 실행 바이너리는 네이티브다. 인증은 ChatGPT 요금제(Plus·Pro·Business·Edu·Enterprise) 로그인 또는 API 키 둘 다 되고, VS Code·Cursor·Windsurf용 IDE 통합과 클라우드 에이전트(Codex Web)도 함께 제공한다. 즉 Claude Code의 직접 대항마로, ''오픈소스 + 로컬
-      실행 + ChatGPT 구독 그대로 사용''이 핵심 차별점이다.
+    title: Codex CLI — Rust 네이티브 로컬 코딩 에이전트(92k+★)
+    summary: 'Codex CLI는 OpenAI가 만든 "내 컴퓨터에서 도는" 터미널 코딩 에이전트다. GitHub 저장소 기준 Apache-2.0 오픈소스이고, 2026-06-23 조회 시 92.8k★·13.7k forks·Rust 96.3%·최신 릴리스 0.142.0(2026-06-22)로 활발히 유지되고 있다. 실무 포인트는 설치 경로보다
+      운영 경계다. CLI는 셸 설치 스크립트, npm, Homebrew, GitHub Release 바이너리를 제공하고, 인증은 ChatGPT Plus·Pro·Business·Edu·Enterprise 로그인 또는 API 키로 나뉜다. 같은 README가 VS Code·Cursor·Windsurf IDE 통합과 클라우드 Codex Web을 별도 표면으로 안내하므로,
+      팀은 "로컬 CLI에서 할 일", "IDE에서 리뷰할 일", "클라우드 에이전트에 맡길 일"을 권한과 비용 기준으로 나눠야 한다.
 
       '
     points:
-      - OpenAI 공식 로컬 터미널 코딩 에이전트 — GitHub 91k★, Apache-2.0 오픈소스
-      - 구현 96%가 Rust(초기 TS 버전에서 재작성); 설치는 npm·Homebrew·셸, 실행은 네이티브 바이너리
-      - '인증: ChatGPT 요금제 로그인 또는 API 키 / VS Code·Cursor·Windsurf 통합 + 클라우드 Codex Web'
+      - '같은 런 검증: 92.8k★, 13.7k forks, Rust 96.3%, 최신 0.142.0(2026-06-22)'
+      - '설치 표면: 셸 스크립트·npm·Homebrew·GitHub Release 바이너리'
+      - '운영 경계: ChatGPT 로그인/API 키, IDE 통합, Codex Web을 작업 성격별로 분리'
     source: https://github.com/openai/codex
   - category: ai
     title: Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트
@@ -6126,3 +6126,17 @@ cards:
       - "YAML 파일로 커스텀 테마, import 명령으로 ChatGPT 대화 가져오기"
       - "Claude·ChatGPT·Gemini·Groq 및 로컬 ollama·LocalAI 등 다양한 모델 지원. License: Apache-2.0"
     source: https://github.com/darrenburns/elia
+  - category: ai
+    title: "Copilot CLI steering — 긴 에이전트 작업을 끊지 않고 방향 전환"
+    summary: >
+      GitHub Copilot CLI는 오래 걸리는 에이전트 작업 중에도 사용자가 새 지시를 넣어 흐름을 조정하는
+      steering/queueing 표면을 키우고 있다. 2026-06-22 JetBrains/Copilot 업데이트는 실행 중 Send 버튼에
+      Add to Queue, Steer with Message, Stop and Send 선택지를 추가했다고 설명한다. GitHub Docs도 Copilot이
+      생각하는 동안 입력한 프롬프트를 현재 작업 맥락의 steering으로 처리하고, 명령 참조에서 Ctrl+Enter 또는
+      Ctrl+Q로 바쁜 에이전트에게 보낼 메시지를 큐에 넣을 수 있다고 안내한다. 교훈은 긴 에이전트 세션을
+      "시작 후 방치"로 보지 말고, 중간 개입·후속 지시·즉시 중단을 별도 조작으로 설계해야 한다는 점이다.
+    points:
+      - "Add to Queue: 현재 응답 뒤 처리할 후속 지시를 쌓는다"
+      - "Steer with Message: 실행 중인 작업이 빗나갈 때 다음 도구 실행 뒤 방향을 바꾼다"
+      - "Stop and Send: 현재 턴을 끊고 새 지시를 즉시 보낸다"
+    source: https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/

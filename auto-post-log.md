@@ -1085,3 +1085,5 @@
 - 2026-06-23 12:00 KST | GPTScript 자연어 프롬프트로 LLM이 시스템·앱·파일과 상호작용 | https://github.com/gptscript-ai/gptscript
 
 - 2026-06-23 12:30 KST | Elia 터미널 키보드 중심 LLM TUI 클라이언트 | https://github.com/darrenburns/elia
+
+- 2026-06-23 12:52 KST | Copilot CLI steering — 긴 에이전트 작업을 끊지 않고 방향 전환 | https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/
