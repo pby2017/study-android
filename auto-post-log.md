@@ -1083,3 +1083,5 @@
 - 2026-06-23 11:30 KST | kubectl-ai 자연어 의도→쿠버네티스 작업 AI 인터페이스 | https://github.com/GoogleCloudPlatform/kubectl-ai
 
 - 2026-06-23 12:00 KST | GPTScript 자연어 프롬프트로 LLM이 시스템·앱·파일과 상호작용 | https://github.com/gptscript-ai/gptscript
+
+- 2026-06-23 12:30 KST | Elia 터미널 키보드 중심 LLM TUI 클라이언트 | https://github.com/darrenburns/elia

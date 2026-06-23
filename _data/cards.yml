@@ -6115,3 +6115,14 @@ cards:
       - "로컬 파일·디렉터리와 대화, 자동화된 워크플로 실행"
       - "OpenAI API 키 필요. License: Apache-2.0 (Acorn Labs, Inc.)"
     source: https://github.com/gptscript-ai/gptscript
+  - category: ai
+    title: "Elia: 터미널 안에서 키보드만으로 LLM과 대화하는 TUI 클라이언트"
+    summary: >
+      Elia는 전적으로 터미널에서 동작하는 LLM 대화 앱으로, 키보드 중심으로 설계됐다.
+      대화를 로컬 SQLite DB에 저장하고 다양한 모델을 한 자리에서 다룬다.
+    points:
+      - "설치: pipx install --python 3.11 elia-chat"
+      - "대화를 로컬 SQLite DB에 저장 — 오프라인 보관·재열람"
+      - "YAML 파일로 커스텀 테마, import 명령으로 ChatGPT 대화 가져오기"
+      - "Claude·ChatGPT·Gemini·Groq 및 로컬 ollama·LocalAI 등 다양한 모델 지원. License: Apache-2.0"
+    source: https://github.com/darrenburns/elia
