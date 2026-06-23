@@ -1189,3 +1189,15 @@ Refined:
 
 누적: 549카드 (548→549)
 주제: Copilot CLI GA, terminal coding-agent UX, MCP registry, skills/plugins, semantic code search refinement
+
+## 2026-06-24 07:28 KST — Batch 26 (agent resource discovery, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Agent Finder/ARD — 에이전트 도구를 미리 다 꽂지 말고 검색해서 붙인다 | github.blog |
+
+Refined:
+- Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트
+
+누적: 550카드 (549→550)
+주제: Agent Finder, Agentic Resource Discovery, MCP/skill/agent catalog governance, Continue CLI maintenance-status refinement
