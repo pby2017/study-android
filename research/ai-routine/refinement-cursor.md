@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기`; next oldest reviewed candidate is `Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·62.9k★)`.
+Current position: continue after `Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·65k+★)`; next oldest reviewed candidate is `Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI`.
 
-Last update: 2026-06-23 23:14 KST
+Last update: 2026-06-24 01:18 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -20,6 +20,7 @@ Reviewed:
 - `awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)`
 - `Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 'IDE는 코딩의 미래가 아니다'며 접은 사건`
 - `Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기`
+- `Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·65k+★)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -33,13 +34,14 @@ Refined:
 - `awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)` — refreshed live GitHub metrics, README skill count, current compatibility list, official/team source examples, and the practical lesson of treating SKILL.md as a reusable cross-agent knowledge unit.
 - `Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트의 피벗과 포크 생존` — refreshed live GitHub metrics, archive status, official README shutdown notice, Zoo Code continuation source, and removed older unsupported Cloud/Router/install-count wording.
 - `Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기` — refreshed live GitHub metrics, current supported-agent table, root AGENTS.md precedence, source-marker traceability, nested-rule caveat, and MCP/skills/subagents propagation surface.
+- `Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·65k+★)` — refreshed live GitHub metrics, current package split, explicit no-built-in-permission caveat, sandbox options, and supply-chain hardening details from the README.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
 - `Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰` — source re-checked; the existing refined card already captures triggers, review/implementation features, structured outputs, runner location, and authentication/provider choices.
 
 Next:
-- Continue with `Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·62.9k★)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

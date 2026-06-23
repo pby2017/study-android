@@ -1153,3 +1153,15 @@ Refined:
 
 누적: 546카드 (545→546)
 주제: Assistants API deprecation, Responses API migration, conversation state, tool-loop migration, cross-agent instruction distribution refinement
+
+## 2026-06-24 01:18 KST — Batch 23 (agent browser automation, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | agent-browser — 브라우저 자동화를 AI 에이전트용 CLI로 얇게 빼기 | github.com/vercel-labs |
+
+Refined:
+- Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트
+
+누적: 547카드 (546→547)
+주제: browser automation for AI agents, accessibility snapshots, deterministic browser QA, self-extensible coding-agent sandboxing refinement
