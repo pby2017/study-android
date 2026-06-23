@@ -7587,3 +7587,14 @@ cards:
       - "Chat·REPL 모드로 대화 유지, Roles로 커스텀 역할 정의, Function calling"
       - "LLM 함수호출 지원, 셸/OS 자동 감지로 환경에 맞는 명령 생성"
     source: https://github.com/TheR1D/shell_gpt
+  - category: ai
+    title: "fabric: 프롬프트를 Pattern으로 모아 쓰는 AI 증강 프레임워크"
+    summary: >
+      "an open-source framework for augmenting humans using AI" —
+      AI의 기본 단위인 프롬프트 자체를 마크다운 'Pattern'으로 만들어 정리·재사용. summarize·extract_wisdom 등.
+    points:
+      - "설치: go install .../fabric/cmd/fabric@latest 또는 brew install fabric-ai"
+      - "Pattern = 작업별 마크다운 프롬프트, 가독성·편집성 위해 Markdown 사용"
+      - "stdin 파이프로 실행: pbpaste | fabric --pattern summarize"
+      - "유튜브 등 입력도: fabric -y URL --pattern extract_wisdom, provider OpenAI·Anthropic·Gemini·Ollama"
+    source: https://github.com/danielmiessler/fabric

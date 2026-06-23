@@ -1026,3 +1026,5 @@
 - 2026-06-23 08:43 KST | Copilot CLI LSP 설정 — 에이전트에게 IDE식 코드 지능을 붙이기 | https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/
 
 - 2026-06-23 09:00 KST | ShellGPT(sgpt) AI 셸 명령·코드 생성 CLI | https://github.com/TheR1D/shell_gpt
+
+- 2026-06-23 09:30 KST | fabric 프롬프트 Pattern AI 증강 프레임워크 | https://github.com/danielmiessler/fabric
