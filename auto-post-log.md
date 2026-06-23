@@ -1091,3 +1091,16 @@
 - 2026-06-23 13:00 KST | Butterfish 셸을 감싸 AI 프롬프트를 더하는 AI 셸 | https://github.com/bakks/butterfish
 
 - 2026-06-23 13:30 KST | open-codex 터미널 경량 코딩 에이전트(OpenAI Codex CLI 포크) | https://github.com/ymichael/open-codex
+
+## 2026-06-23 14:56 KST — Batch 18 (agent memory + database MCP, 2카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | agentmemory — 코딩 에이전트 기억을 MCP 서버로 분리 | github.com/rohitg00 |
+| 2 | MCP Toolbox for Databases — 에이전트 DB 접근을 구조화 도구로 제한 | github.com/googleapis |
+
+Refined:
+- Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트
+
+누적: 541카드 (539→541)
+주제: persistent agent memory, MCP tools, database access governance, coding-agent terminal UX refinement

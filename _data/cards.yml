@@ -1324,15 +1324,14 @@ cards:
     source: https://github.com/openai/codex
   - category: ai
     title: Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트
-    summary: 'Crush는 Bubble Tea로 유명한 Charm 팀이 만든 터미널 코딩 에이전트로, Go로 짜여 있고(코드의 98% 이상) GitHub 25k★대를 받았다. OpenCode(sst)와 이름이 헷갈리지만 별개 프로젝트다 — 원래 ''Open Code''였다가 혼동을 피해 Crush로 개명했다. 핵심은 모델-비종속: Anthropic·OpenAI·Gemini·Groq·OpenRouter·Bedrock·Azure는
-      물론 Ollama·LM Studio 같은 로컬 모델까지 붙고, OpenAI/Anthropic 호환 API면 직접 추가할 수 있다. 세션 도중 모델을 갈아끼워도 컨텍스트가 유지되며, LSP로 코드 맥락을 보강하고 MCP(http·stdio·sse)로 기능을 확장한다. 라이선스는 MIT가 아니라 FSL-1.1-MIT(2년 뒤 MIT로 전환)인 점은 도입
-      전 확인할 부분이다.
+    summary: 'Crush는 Bubble Tea로 유명한 Charm 팀이 만든 터미널 코딩 에이전트다. 같은 런에서 GitHub 25,604★, 1,866 forks, 2026-06-23 업데이트를 확인했다. 핵심은 예쁜 TUI가 아니라 "내 터미널·내 도구·내 코드·내 워크플로를 원하는 LLM에 연결한다"는 모델-비종속 구조다. Anthropic·OpenAI·Gemini·Groq·OpenRouter·Bedrock·Azure뿐 아니라
+      OpenAI/Anthropic 호환 API를 직접 붙일 수 있고, 세션 도중 LLM을 바꿔도 컨텍스트를 유지한다. LSP로 코드 맥락을 보강하고 MCP(http·stdio·sse)로 도구를 확장하며, macOS·Linux·Windows·Android·FreeBSD·OpenBSD·NetBSD 터미널을 폭넓게 지원한다. 도입 전에는 라이선스가 단순 MIT가 아니라 FSL-1.1-MIT로 표시된다는 점도 같이 확인해야 한다.
 
       '
     points:
-      - Charm(Bubble Tea 제작사)의 Go 기반 TUI 에이전트 — 25k★대, sst의 OpenCode와는 별개(개명 이력)
-      - '모델-비종속: Anthropic·OpenAI·Gemini·OpenRouter·Bedrock + Ollama·LM Studio 로컬, 세션 중 모델 교체 시 컨텍스트 유지'
-      - LSP로 코드 맥락 보강 + MCP(http·stdio·sse) 확장 / 라이선스는 FSL-1.1-MIT(2년 후 MIT)
+      - '같은 런 검증: 25,604★, 1,866 forks, 2026-06-23 업데이트'
+      - '모델-비종속: 여러 공급자 + OpenAI/Anthropic 호환 API, 세션 중 모델 교체 시 컨텍스트 유지'
+      - 'LSP로 코드 맥락 보강 + MCP(http·stdio·sse) 확장 + Android/BSD까지 포함한 폭넓은 터미널 지원'
     source: https://github.com/charmbracelet/crush
   - category: ai
     title: promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴
@@ -6162,3 +6161,31 @@ cards:
       - "OpenAI·Gemini·OpenRouter·Ollama provider 지원"
       - "Responses API 대신 Chat Completion API 사용, Zero setup. License: Apache-2.0"
     source: https://github.com/ymichael/open-codex
+  - category: ai
+    title: "agentmemory: 코딩 에이전트 기억을 MCP 서버로 분리하기"
+    summary: >
+      agentmemory는 Claude Code, Codex CLI, Copilot CLI, Cursor, Gemini CLI, OpenCode 같은 코딩
+      에이전트가 공유할 수 있는 지속 메모리 서버다. 같은 런에서 GitHub 23,739★, 1,952 forks,
+      Apache-2.0, 최신 릴리스 v0.9.27(2026-06-07)을 확인했다. README 기준 핵심 구성은 MCP 서버,
+      REST API, 에이전트별 hook/skill 연결, 53개 MCP 도구, 12개 자동 hook이다. 실무 교훈은 기억을
+      프롬프트 맨 위에 계속 붙이는 방식이 아니라, 검색·신뢰도·생명주기·지식 그래프를 가진 별도
+      도구 계층으로 빼야 반복 설명과 컨텍스트 낭비를 줄일 수 있다는 점이다.
+    points:
+      - "같은 런 검증: 23,739★, 1,952 forks, Apache-2.0, v0.9.27(2026-06-07)"
+      - "Claude Code·Codex CLI·Copilot CLI·Cursor·Gemini CLI·OpenCode 등 MCP/훅/REST로 연결"
+      - "교훈: 장기 기억은 프롬프트가 아니라 검색 가능한 도구 계층으로 설계"
+    source: https://github.com/rohitg00/agentmemory
+  - category: ai
+    title: "MCP Toolbox for Databases: 에이전트 DB 접근을 즉흥 SQL에서 구조화 도구로 바꾸기"
+    summary: >
+      Google의 MCP Toolbox for Databases는 AI 에이전트·IDE·애플리케이션을 엔터프라이즈 데이터베이스에
+      연결하는 오픈소스 MCP 서버다. 같은 런에서 GitHub 15,685★, 1,612 forks, Apache-2.0, 최신 릴리스
+      v1.5.0(2026-06-18)을 확인했다. 빌드 타임에는 Gemini CLI, Google Antigravity, Claude Code, Codex
+      같은 MCP 클라이언트가 list_tables·execute_sql 같은 prebuilt 도구로 스키마를 탐색하고, 런타임에는
+      tools.yaml로 제한된 쿼리·시맨틱 검색·NL2SQL 도구를 정의한다. 핵심은 "에이전트에게 DB 접속 문자열을
+      주기"가 아니라, 권한·쿼리 형태·관측성을 가진 데이터 접근 API를 만들어 주는 것이다.
+    points:
+      - "같은 런 검증: 15,685★, 1,612 forks, Apache-2.0, v1.5.0(2026-06-18)"
+      - "prebuilt 도구로 스키마 탐색·SQL 실행, custom tools로 제한된 프로덕션 도구 정의"
+      - "지원 범위: AlloyDB·BigQuery·Cloud SQL·Spanner·PostgreSQL·MySQL·Oracle·MongoDB·Redis 등"
+    source: https://github.com/googleapis/mcp-toolbox
