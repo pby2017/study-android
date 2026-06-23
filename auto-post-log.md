@@ -1104,3 +1104,16 @@ Refined:
 
 누적: 541카드 (539→541)
 주제: persistent agent memory, MCP tools, database access governance, coding-agent terminal UX refinement
+
+## 2026-06-23 17:01 KST — Batch 19 (mobile AI agents, 2카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Mobilerun — LLM 에이전트에게 모바일 기기의 눈과 손을 주기 | github.com/droidrun |
+| 2 | MobileWorld — MCP까지 포함한 모바일 에이전트 벤치마크 | github.com/Tongyi-MAI |
+
+Refined:
+- promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴
+
+누적: 543카드 (541→543)
+주제: AI+Android mobile agents, mobile UI automation, mobile-agent benchmarks, MCP-augmented evaluation, LLM eval refinement

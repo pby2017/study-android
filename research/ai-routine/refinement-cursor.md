@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트`; next oldest reviewed candidate is `promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴`.
+Current position: continue after `promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴`; next oldest reviewed candidate is `awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)`.
 
-Last update: 2026-06-23 14:56 KST
+Last update: 2026-06-23 17:01 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -16,6 +16,7 @@ Reviewed:
 - `Gemini CLI — 빠른 무료 한도 + 터미널 에이전트`
 - `Codex CLI — Rust 기반 터미널 코딩 에이전트`
 - `Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트`
+- `promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -25,13 +26,14 @@ Refined:
 - `Gemini CLI — 빠른 무료 한도 + 터미널 에이전트` — clarified the free-tier limits, tool surface, MCP extensibility, and script-friendly JSON/streaming outputs from the current README.
 - `Codex CLI — Rust 네이티브 로컬 코딩 에이전트(92k+★)` — refreshed live GitHub metrics, latest release, install/auth surfaces, and the practical split between local CLI, IDE integration, and Codex Web.
 - `Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트` — refreshed live GitHub metrics and current README-supported model/LSP/MCP/platform details, while removing unsupported local-model wording from the older card.
+- `promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴` — refreshed live GitHub metrics, OpenAI acquisition/open-source continuity, and the practical test-driven LLM development workflow.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
 - `Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰` — source re-checked; the existing refined card already captures triggers, review/implementation features, structured outputs, runner location, and authentication/provider choices.
 
 Next:
-- Continue with `promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
