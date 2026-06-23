@@ -1030,3 +1030,5 @@
 - 2026-06-23 09:30 KST | fabric 프롬프트 Pattern AI 증강 프레임워크 | https://github.com/danielmiessler/fabric
 
 - 2026-06-23 10:00 KST | tgpt 터미널 AI 크로스플랫폼 CLI | https://github.com/aandrew-me/tgpt
+
+- 2026-06-23 10:30 KST | Gorilla CLI 자연어→명령 후보 제안 | https://github.com/gorilla-llm/gorilla-cli

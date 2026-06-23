@@ -7609,3 +7609,14 @@ cards:
       - "Windows·FreeBSD 등 크로스플랫폼, 릴리스 바이너리 직접 다운로드 가능"
       - "프록시 지원(환경변수 또는 설정파일), provider 목록은 별도 문서 제공"
     source: https://github.com/aandrew-me/tgpt
+  - category: ai
+    title: "Gorilla CLI: 목표를 영어로 말하면 실행할 명령 후보를 제안"
+    summary: >
+      "powers your command-line interactions with a user-centric tool" — 하려는 일을 평문으로 적으면
+      여러 LLM이 후보 명령을 만들어 화살표로 골라 실행. ~1500개 API(Kubernetes·AWS·GCP·Azure·GitHub 등). Apache-2.0.
+    points:
+      - "설치: pip install gorilla-cli, 실행은 gorilla <하려는 일>"
+      - "Gorilla LLM·GPT-4·Claude 등 복수 LLM 응답을 모아 랭킹"
+      - "후보 명령을 화살표로 선택→Enter로 실행, 사용자 승인 없인 실행 안 함"
+      - "stdout 출력은 절대 수집 안 함(쿼리·에러로그만 개선에 사용)"
+    source: https://github.com/gorilla-llm/gorilla-cli
