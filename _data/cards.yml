@@ -1359,15 +1359,16 @@ cards:
       - 공식 조직 발행 스킬과 커뮤니티 스킬을 함께 싣되, 출처와 라이선스를 보고 골라 쓰는 카탈로그
     source: https://github.com/VoltAgent/awesome-agent-skills
   - category: ai
-    title: Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 'IDE는 코딩의 미래가 아니다'며 접은 사건
-    summary: 'VS Code용 멀티모드(Architect·Code·Debug) 에이전트로 24.2k★·VS Code 마켓 300만 설치를 찍은 Roo Code가 2026년 5월 15일 확장 프로그램·Cloud·Router를 전부 닫았다. GitHub 레포는 같은 날 아카이브(읽기 전용)됐고, 공식 도메인 roocode.com은 새 제품 roomote.dev로
-      리다이렉트된다. 창업팀은 에디터 안 에이전트를 접고, Slack에서 도는 운영 엔지니어링 에이전트(Roomote)로 피벗했다. 레포 Disclaimer는 마이그레이션 대안으로 커뮤니티 포크 ZooCode와 모태인 Cline을 명시한다.
+    title: Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트의 피벗과 포크 생존
+    summary: 'VS Code용 오픈소스 코딩 에이전트 Roo Code(같은 런 검증: 24,265★, 3,331 forks, Apache-2.0)는 Code·Architect·Ask·Debug·Custom 모드, 자연어 코드 생성, 리팩터링·디버깅, 문서 업데이트, MCP 서버 사용을 제공했다. 하지만 공식 README는 Roo Code Extension이 2026-05-15
+      종료됐다고 알리고, 대안으로 커뮤니티 포크 Zoo Code와 원류인 Cline을 안내한다. GitHub API 기준 원 저장소는 archived=true라 읽기 전용이고, 마지막 push는 2026-05-15다. Zoo Code README는 Roo 팀이 Roomote에 집중하며 active Roo Code development를 접는다고 설명하고, 기존 Roo 기여자들이
+      Zoo Code로 계속 모델 업데이트·버그 수정·기능 릴리스를 하겠다고 밝힌다. 실무 교훈은 오픈소스 AI 에이전트도 "인기"만 보지 말고, 포크 가능성·설정 이식성·커뮤니티 인수 경로까지 봐야 한다는 점이다.
 
       '
     points:
-      - 2026-05-15 확장·Cloud·Router 전면 종료 · 레포 아카이브(읽기 전용, 24.2k★) — 1차 출처로 확인
-      - 'roocode.com → roomote.dev 리다이렉트: 에디터 에이전트에서 ''Slack 운영 에이전트''로 피벗'
-      - 공식 권장 이전 경로 = ZooCode(커뮤니티 포크)·Cline(모태). OSS 에이전트는 벤더 생존 리스크를 항상 깔고 가야 한다는 신호
+      - '같은 런 검증: 24,265★, 3,331 forks, Apache-2.0, archived=true, 마지막 push 2026-05-15'
+      - '공식 README: Roo Code Extension 종료일 2026-05-15, 대안은 Zoo Code(커뮤니티 포크)와 Cline'
+      - 'Zoo Code README: 기존 Roo 기여자들이 이어받아 모델 업데이트·버그 수정·기능 릴리스 지속'
     source: https://github.com/RooCodeInc/Roo-Code
   - category: ai
     title: Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기
@@ -6236,3 +6237,18 @@ cards:
       - "조건: macOS, Computer Use enabled, 초기 제공 지역은 EEA·UK·Switzerland 제외"
       - "짧고 완결된 시연 → 입력·단계·검증을 담은 reusable skill 초안 생성"
     source: https://developers.openai.com/codex/record-and-replay
+  - category: ai
+    title: "Codex App Server: Codex를 제품 안 리치 클라이언트로 붙이는 프로토콜"
+    summary: >
+      Codex App Server는 Codex VS Code 확장 같은 리치 클라이언트를 구동하는 공식 인터페이스다.
+      OpenAI 문서는 제품 안에 Codex를 깊게 붙이고 싶을 때 인증, 대화 기록, 승인, 스트리밍 에이전트
+      이벤트를 다루는 경로로 app-server를 설명한다. 같은 런에서 openai/codex는 92,966★,
+      13,757 forks, Apache-2.0, 2026-06-23 push를 확인했고, app-server 디렉터리도 같은 날
+      커밋이 있었다. 프로토콜은 MCP처럼 JSON-RPC 2.0 기반 양방향 통신을 쓰며, 기본 stdio(JSONL),
+      실험적 WebSocket, Unix socket transport를 지원한다. 중요한 경계는 CI나 백그라운드 자동화에는
+      Codex SDK를 쓰고, 사용자가 보는 대화형 제품 통합에는 app-server를 쓰라는 점이다.
+    points:
+      - "공식 용도: 인증·대화 기록·승인·streamed agent events가 필요한 제품 내 Codex 통합"
+      - "프로토콜: JSON-RPC 2.0, stdio 기본, WebSocket은 experimental/unsupported, Unix socket 지원"
+      - "같은 런 검증: openai/codex 92,966★, 13,757 forks, Apache-2.0, app-server 2026-06-23 커밋"
+    source: https://developers.openai.com/codex/app-server

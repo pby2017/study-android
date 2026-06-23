@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)`; next oldest reviewed candidate is `Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 'IDE는 코딩의 미래가 아니다'며 접은 사건`.
+Current position: continue after `Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트의 피벗과 포크 생존`; next oldest reviewed candidate is `Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기`.
 
-Last update: 2026-06-23 19:06 KST
+Last update: 2026-06-23 21:10 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -18,6 +18,7 @@ Reviewed:
 - `Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트`
 - `promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴`
 - `awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)`
+- `Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 'IDE는 코딩의 미래가 아니다'며 접은 사건`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -29,13 +30,14 @@ Refined:
 - `Crush — Charm이 만든 'TUI 맛집' 모델-비종속 터미널 코딩 에이전트` — refreshed live GitHub metrics and current README-supported model/LSP/MCP/platform details, while removing unsupported local-model wording from the older card.
 - `promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴` — refreshed live GitHub metrics, OpenAI acquisition/open-source continuity, and the practical test-driven LLM development workflow.
 - `awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)` — refreshed live GitHub metrics, README skill count, current compatibility list, official/team source examples, and the practical lesson of treating SKILL.md as a reusable cross-agent knowledge unit.
+- `Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트의 피벗과 포크 생존` — refreshed live GitHub metrics, archive status, official README shutdown notice, Zoo Code continuation source, and removed older unsupported Cloud/Router/install-count wording.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
 - `Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰` — source re-checked; the existing refined card already captures triggers, review/implementation features, structured outputs, runner location, and authentication/provider choices.
 
 Next:
-- Continue with `Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트가 'IDE는 코딩의 미래가 아니다'며 접은 사건`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

@@ -1129,3 +1129,15 @@ Refined:
 
 누적: 544카드 (543→544)
 주제: Codex Record & Replay, Computer Use workflow capture, reusable skills, Agent Skills catalog refinement
+
+## 2026-06-23 21:10 KST — Batch 21 (Codex app integration, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Codex App Server — Codex를 제품 안 리치 클라이언트로 붙이는 프로토콜 | developers.openai.com |
+
+Refined:
+- Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트의 피벗과 포크 생존
+
+누적: 545카드 (544→545)
+주제: Codex App Server, JSON-RPC agent clients, Codex product integration, OSS coding-agent fork governance
