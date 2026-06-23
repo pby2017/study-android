@@ -1141,3 +1141,15 @@ Refined:
 
 누적: 545카드 (544→545)
 주제: Codex App Server, JSON-RPC agent clients, Codex product integration, OSS coding-agent fork governance
+
+## 2026-06-23 23:14 KST — Batch 22 (OpenAI API migration, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Assistants API 종료 D-64 — Responses API 이주는 모델 교체가 아니라 상태 모델 교체 | developers.openai.com |
+
+Refined:
+- Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기
+
+누적: 546카드 (545→546)
+주제: Assistants API deprecation, Responses API migration, conversation state, tool-loop migration, cross-agent instruction distribution refinement
