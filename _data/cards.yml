@@ -1536,16 +1536,6 @@ cards:
   - '플래티넘 멤버: AWS·Anthropic·Block·Bloomberg·Cloudflare·Google·Microsoft·OpenAI. 리눅스재단 산하 directed fund로 운영(MCP는 2024년 11월 오픈소스화)'
   source: https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation
 - category: ai
-  title: CodeRabbit 'AI vs 사람 코드' 리포트 — AI가 쓴 코드는 PR당 이슈가 1.7배 더 많다
-  summary: '코드리뷰 플랫폼 CodeRabbit이 2025년 12월, 실제 PR 470개를 AI 작성과 사람 작성으로 갈라 어떤 결함이 얼마나 더 나오는지 정량 비교한 리포트를 냈다. 결론은 ''AI가 더 빠르지만 더 많은 이슈를 남긴다'' — AI 작성 PR은 사람 작성 대비 PR당 이슈가 약 1.7배 많았고, 특히 한 PR에 결함이 몰린 ''고이슈 아웃라이어''가 AI 쪽에서 더 흔해 리뷰 부담이 한쪽으로 쏠렸다(주장). 실무 시사점은 명확하다: AI 코드를 막연히 믿지 말고 ''모든 PR에 자동 코드리뷰를 품질 게이트로'' 걸고, 에이전트에게 아키텍처 제약·코딩 표준·설정 패턴 같은 컨텍스트를 더 주면 AI가 자주 내는 실수 유형이 줄어든다는 것.
-
-    '
-  points:
-  - '표본: 실제 PR 470개를 AI 작성 vs 사람 작성으로 분류해 비교 — 추측이 아니라 머지된 변경에서 잡힌 이슈 기반(CodeRabbit 자체 데이터·주장)'
-  - '핵심 수치: AI 작성 PR이 사람 대비 이슈 약 1.7배. ''결함이 몰린 PR''이 AI 쪽에서 더 흔해 리뷰 워크로드가 한쪽으로 쏠림(주장)'
-  - '권고: ①모든 PR에 AI 코드리뷰를 품질 게이트로 상시 적용 ②에이전트에 아키텍처 제약·코딩 표준·설정 패턴 컨텍스트를 주입해 빈발 실수 줄이기. 단, CodeRabbit이 코드리뷰 벤더라는 이해관계는 감안할 것'
-  source: https://www.coderabbit.ai/blog
-- category: ai
   title: security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기
   summary: 'Anthropic 공식 마켓플레이스 플러그인으로, Claude Code가 코드를 짜는 동안 자기 변경을 스스로 보안 검토해 인젝션·안전하지 않은 역직렬화·DOM 주입 같은 취약점을 PR에 도달하기 전에 같은 세션에서 고치게 한다. 검토는 깊이가 다른 3단계로 돈다 — ①파일 편집마다 모델 호출 없는 정규식 패턴 매치(비용 0), ②턴이 끝날 때 그 턴의 git diff를 백그라운드에서 별도 Claude가 보안 관점으로 리뷰, ③Claude가 git commit·push를 할 때 주변 코드(호출부·새니타이저)까지 읽는 더 깊은 에이전틱 리뷰. 핵심은 코드를 짠 같은 인스턴스가 자기를 채점하지 않는다는 점 — 리뷰는 새 컨텍스트의 독립 Claude 호출이다. `/plugin install security-guidance@claude-plugins-official`로 깐다.
 
@@ -1925,16 +1915,6 @@ cards:
   - 도구 비종속 — 한 보드에서 Claude Code·Codex·Gemini CLI·GitHub Copilot·Amp·Cursor·OpenCode·Droid·CCR·Qwen Code 등 '10+ 코딩 에이전트'를 섞어 쓴다. Rust(~50%)+TypeScript(~46%)로 작성
   - 지속성 주의 — README가 'Vibe Kanban is sunsetting'이라 명시하고 외부 PR도 사전 논의 없이는 받지 않는다. 별 수(~27k★)는 시점에 따라 변하는 GitHub 수치이니 '주장'으로 볼 것
   source: https://github.com/BloopAI/vibe-kanban
-- category: ai
-  title: Pi(earendil-works) — '서브에이전트·플랜모드·MCP 다 빼버린' 미니멀 터미널 코딩 하네스(MIT·~63k★)
-  summary: 'Pi는 모델에게 read·write·edit·bash 네 가지 도구만 쥐여주는 ''minimal terminal coding harness''다. 철학이 정반대다 — "Adapt pi to your workflows, not the other way around". 기능을 미리 박아 넣는 대신 ''공격적으로 확장 가능(aggressively extensible)''하게 만들어 워크플로를 도구가 강요하지 않게 한다. 그래서 서브에이전트·플랜모드·MCP·권한 팝업·내장 투두·백그라운드 bash가 기본적으로 ''없다''. 필요하면 TypeScript 확장·Skills·프롬프트 템플릿·테마로 직접 붙이고, 이를 Pi 패키지로 묶어 npm·git으로 공유한다.
-
-    '
-  points:
-  - 안티-피처가 핵심 — README가 'No sub-agents(필요하면 tmux로 띄워라)', 'No plan mode(계획은 파일에 써라)', 'No MCP', 'No built-in to-dos(They confuse models)', 'No background bash(Use tmux)'를 대놓고 명시. 비대한 하네스의 반대 방향
-  - 확장 = 패키지 — TypeScript 확장·Skills·프롬프트 템플릿·테마를 'Pi 패키지'로 만들어 npm/git으로 공유. 실행은 interactive·print/JSON·RPC·SDK 네 모드라 헤드리스·앱 임베딩까지 커버
-  - 공급자 무관 — pi-ai가 Anthropic·OpenAI·Gemini·Bedrock·Mistral·Groq·xAI·OpenRouter·Ollama 등 한 인터페이스로 묶고 구독(Claude Pro/Max·ChatGPT·Copilot)도 지원. 단 '내장 권한 시스템이 없어' 사용자·프로세스 권한 그대로 돈다는 점은 주의. ~63k★는 시점별 GitHub 수치
-  source: https://github.com/earendil-works/pi
 - category: ai
   title: 토스의 'Claude Code를 레이어드 아키텍처처럼' — 팀 지식을 Global/Domain/Local 3계층 플러그인으로 굳히기
   summary: '토스 기술블로그(toss.tech)는 코딩 에이전트를 ''개인 생산성 도구''에서 ''팀의 일하는 방식''으로 끌어올리는 패턴을 제안한다. 핵심은 흩어진 규칙·노하우를 Claude Code 플러그인에 담되, 그 지식을 세 계층으로 나누는 것이다 — 전사 공통(보안·코딩 스타일)은 Global, 결제·정산·회원 같은 도메인 로직은 Domain, 특정 레포의 구현 디테일은 Local. 이렇게 계층화된 플러그인이 모이면 그 자체로 ''살아있는 지식 베이스(Living Knowledge Base)''가 되고, 나아가 조직의 워크플로(예: /new-feature)를 배포하는 사내 마켓플레이스로 확장한다는 구상이다.
@@ -5547,3 +5527,99 @@ cards:
   - 'DeepSearch: multi-source agentic research·X 실시간·인용 응답'
   - Colossus 200K H100·131K ctx·Grok-4(2025-07) 후 legacy — API 잔존
   source: https://x.ai/news/grok-3
+- category: ai
+  title: NotebookLM Gemini 3.5 — Antigravity 클라우드 컴퓨터·소스 발견·다형식 출력
+  summary: Google NotebookLM(2026-06)은 Gemini 3.5·Antigravity 에이전트 코딩 플랫폼으로 전면 업그레이드됐다. 각 노트북에 secure cloud computer가 붙어 100+ curated software skills로 코드 실행·데이터 분석·PDF·Excel·PowerPoint·차트·JSON/CSV를 생성한다. 채팅만으로 Google Search 기반 소스 발견·리포지토리 구축이 가능해 import 없이 리서치를 시작할 수 있다. step-by-step reasoning 가시성, Studio Panel에서 생성물 편집. AI Ultra·Workspace AI Ultra/Expanded Access부터, 무료 티어는 기존 Audio Overview 등 유지.
+  points:
+  - 'Gemini 3.5 + Antigravity: 노트북당 secure VM, 100+ skills로 코드·분석·파일 생성'
+  - '소스 발견: loose idea→Search로 웹 소스 수집·정리, discover 기능 확장'
+  - '출력: PDF·xlsx·pptx·png/svg 차트·Nano Banana 이미지 — Ultra/Workspace 우선 롤아웃'
+  source: https://blog.google/innovation-and-ai/products/notebooklm/better-research-notebooklm/
+- category: ai
+  title: OpenRouter — 400+ 모델·70+ 프로바이더 OpenAI 호환 LLM 게이트웨이
+  summary: OpenRouter는 단일 OpenAI-compatible endpoint(https://openrouter.ai/api/v1)로 400+ 모델·70+ 프로바이더에 접근하는 managed LLM gateway다. model 필드로 모델 선택, provider 객체로 프로바이더 라우팅, models 배열로 model/provider failover를 스택한다. openrouter/auto는 NotDiamond 기반 프롬프트 복잡도·비용-품질 트레이드오프로 모델 자동 선택. :nitro(throughput)·:floor(cost) suffix, inverse-square price load balancing, data policy로 프로바이더별 데이터 거버넌스. LiteLLM(셀프호스팅)과 대비 — 인프라 없이 credits 구매·즉시 사용.
+  points:
+  - '2-layer routing: model selection + provider selection, allow_fallbacks 기본 true'
+  - 'openrouter/auto + session_id: 멀티턴에서 동일 모델·프로바이더 pin → prompt cache'
+  - Managed SaaS vs LiteLLM/Bifrost self-host — data residency 필요 시 후자
+  source: https://openrouter.ai/docs/guides/routing/model-fallbacks
+- category: ai
+  title: Fireworks AI — Disaggregated Inference Engine·Speculative Decoding·Day-0 OSS 모델
+  summary: Fireworks AI는 OSS LLM 프로덕션 추론 플랫폼으로 30T+ tokens/day 처리를 주장한다. Disaggregated inference engine — multi-node expert parallelism·disaggregated KV cache·prompt-aware routing·speculative decoding(2-3× TTFT). FireOptimizer가 GPU 선택·sharding·scheduling을 자동 튜닝. Serverless(per-token·Priority/Fast)·On-Demand·Reserved GPU, LoRA/full SFT 후 즉시 serverless 배포. GLM 5.2·Kimi K2.7 Code day-zero, Whisper 4× cheaper·10× faster vs OpenAI 주장. OpenAI/Anthropic compatible API, Azure Foundry preview, 2026-07-01 prepaid billing 전환.
+  points:
+  - 'Speculative decoding: draft model→target parallel validate, code/agent 2-3× latency↓'
+  - vLLM 대비 3.5×+ latency 우위(StarCoder 벤치)·Artificial Analysis OSS 1위 주장
+  - Serverless OpenAI-compatible·Fine-tune→deploy seconds·NVIDIA GTC 2026 파트너
+  source: https://fireworks.ai/
+- category: ai
+  title: NVIDIA NIM — Inference Microservices·OpenAI 호환·build.nvidia.com 무료 API
+  summary: 'NVIDIA NIM(NVIDIA Inference Microservices)은 LLM·비전·음성 등 AI 모델을 Docker 컨테이너로 패키징 — weights·TensorRT-LLM/vLLM/SGLang 엔진·OpenAI-compatible REST API가 번들. model-specific NIM(최적 manifest·quantization) vs model-free NIM(HF/NGC/S3 runtime 로드). Kubernetes nim-deploy·NIM Operator, LoRA adapter(HF/NeMo) multi-LLM container. build.nvidia.com: 100+ 모델 무료 API(nvapi- 키·1000 credits·40 RPM), GPU sandbox(Blackwell/Hopper), Blueprints(RAG·agentic), NemoClaw agent security. Self-host는 NVIDIA AI Enterprise license.'
+  points:
+  - OpenAI /v1/chat/completions drop-in — cloud prototype→on-prem 동일 API
+  - NIM LLM = vLLM upstream 협력·2.6× throughput vs raw vLLM(H100 Llama 8B 주장)
+  - Free tier 1000 credits·40 RPM — Nemotron·Kimi·GLM 등 DGX Cloud hosted
+  source: https://docs.api.nvidia.com/nim/docs/introduction
+- category: ai
+  title: Graphite — Stacked PR·Graphite Agent·stack-aware merge queue(GitHub 위)
+  summary: Graphite는 GitHub 위에 얹는 AI 코드리뷰·PR 워크플로 플랫폼으로 stacked diffs를 네이티브 지원한다. CLI·VS Code extension으로 대형 변경을 작은 의존 PR 체인으로 쪼개 리뷰·머지, base branch 이동 시 자동 rebase. Graphite Agent가 PR마다 high-signal AI review·fix suggestion·CI failure assist, negative feedback ~5%. Stack-aware merge queue가 의존 PR을 순서대로·병렬 CI batch. 2026-04 GitHub gh-stack(private preview) 등장했으나 merge queue·AI review·branch surgery는 Graphite가 선점. Shopify·Asana·Semgrep 사례 — Asana 7h/week 절감 주장.
+  points:
+  - 'Stacked PR: PR#3 작업 중 PR#1 리뷰 대기 — 자동 rebase·충돌 완화'
+  - 'Graphite Agent: codebase context review·~5% negative rate vs generic AI review'
+  - Free individual·팀 $20-40/user — CodeRabbit(리뷰만)과 상호보완, stacking은 Graphite 독점
+  source: https://graphite.com/
+- category: ai
+  title: Replit Agent 4 — Design Canvas·병렬 task·Kanban 협업(March 2026)
+  summary: 'Replit Agent 4(2026-03-11)는 브라우저 올인원 dev 환경에서 아이디어→프로덕션까지 돌리는 AI 에이전트다. Design Canvas(infinite board): web·mobile·slide·data viz artifact를 한 캔버스에서 variant 탐색→프레임 선택→Artifact 변환. 병렬 task: 팀원 각자 chat thread→동시 dispatch→isolated micro VM에서 실행→Kanban approve→main merge(~90% conflict auto-resolve 주장). Lite(10-60s tweak)·Economy(default)·Power(hard task)·Turbo(2.5×, Pro). fork-and-merge 폐기→single shared project. Reserved VM·Scheduled deploy·DB·auth 내장 — Cursor(기존 repo) vs Replit(greenfield browser) 포지셔닝.'
+  points:
+  - 'Design Canvas: Design Mode 대체, 모든 artifact type·live preview·direct manipulation'
+  - 'Parallel agents: plan-while-building, isolated env→Kanban→explicit approve'
+  - 'Credit/effort pricing: Lite/Economy/Power/Turbo — greenfield·non-dev friendly'
+  source: https://replit.com/blog/introducing-agent-4-built-for-creativity
+- category: ai
+  title: Perplexity Computer — 19모델 오케스트레이션·Search as Code·Max 구독
+  summary: 'Perplexity Computer(2026-02)는 chat→agent→workflow 진화의 정점으로, Opus 4.6 core reasoning + task별 sub-agent(Gemini research·Nano Banana image·Veo video·Grok speed·GPT long-context)를 orchestrate한다. hours~months 장기 workflow, browser·software stack을 human coworker처럼 조작. Search as Code(SaC): retrieval을 function call/MCP가 아닌 model-generated Python으로 SDK primitive 조합 — conditional·async·parallel pipeline. 자체 web index·pplx-embed, Agent API·Computer에 SaC 적용. Perplexity Max 구독자·Enterprise Max soon. Bumblebee(MCP scanner)와 달리 consumer/agent harness 제품.'
+  points:
+  - 'Model-agnostic: task별 best model routing — multi-model이 commodity가 아닌 specialize'
+  - 'SaC: search stack primitive→Python orchestration, agent benchmark cost-performance↑'
+  - 'Digital worker: sub-agent spawn·browser operate·deliver — Max tier'
+  source: https://www.perplexity.ai/hub/blog/introducing-perplexity-computer
+- category: ai
+  title: Microsoft Agent Framework 1.0 GA — AutoGen+Semantic Kernel 통합·graph Workflow
+  summary: 'Microsoft Agent Framework(2026-04-03 GA)는 AutoGen(maintenance)·Semantic Kernel을 통합한 production-ready OSS SDK(.NET+Python)다. Single agent(chat client·tools·MCP)·graph-based Workflow(type-safe routing·checkpointing·human-in-the-loop). Multi-agent: sequential·concurrent·handoff·group chat·Magentic-One. Foundry·Azure OpenAI·Anthropic·Ollama 등 multi-provider, A2A·MCP cross-runtime. BUILD 2026: Agent Harness·Hosted Agents·CodeAct·Handoff pattern( directed edges + agent routing). AutoGen 0.7.x는 bugfix only — 신규는 pip install agent-framework / Microsoft.Agents.AI + migration guide.'
+  points:
+  - 'Workflow vs Agent: open-ended conversational→agent, deterministic multi-step→workflow'
+  - '1.0 LTS: stable API·backward compatibility·OpenTelemetry·declarative YAML config'
+  - 'Handoff(BUILD26): router가 아닌 agent가 mid-turn peer transfer — topology는 dev가 선언'
+  source: https://learn.microsoft.com/en-us/agent-framework/overview/
+- category: ai
+  title: GitHub Copilot Extensions — @멘션으로 서드파티 도구·SSE Agent·Marketplace GA
+  summary: GitHub Copilot Extensions(2025-02 GA)는 Copilot Chat에서 @extension-name으로 Docker·Sentry·Stripe·Perplexity·Stack Overflow 등 서드파티 도구를 자연어 호출하는 통합이다. VS Code·Visual Studio·JetBrains·GitHub.com·Mobile(coming). GitHub App + HTTP backend(SSE streaming·OpenAI chat format), Agent(full conversation) vs Skill Provider(discrete capability). 조직 private extension(내부 API·모니터링) 또는 Marketplace public. OpenID Connect로 third-party auth. Copilot coding agent의 custom agents(.github/agents/)·MCP와 함께 'IDE 안에서 도구 생태계'를 완성.
+  points:
+  - 'Build: GitHub App→Copilot agent URL→SSE endpoint, @deploy-status 패턴'
+  - 'Marketplace GA: Perplexity·Docker·Sentry·Stripe 등 — Copilot license 전 tier'
+  - 'Private extension: enterprise homegrown tooling을 chat interface로 — OIDC auth'
+  source: https://github.blog/changelog/2025-02-19-announcing-the-general-availability-of-github-copilot-extensions/
+- category: ai
+  title: GitHub Copilot Workspace — Issue→Plan→Implement→Test→PR 엔터프라이즈 GA
+  summary: Copilot Workspace는 GitHub Issue 하나를 brainstorm plan·multi-file implementation·passing tests·linked PR까지 GitHub.com 안에서 완료하는 agentic SDLC 워크플로다(Enterprise GA). 3년간 IDE autocomplete bolt-on이었던 Copilot을 '조직 단위 workflow replacement'로 격상 — VS Code 없이 issue만으로 feature ship. Instrumented plans·diffs·audit trail for compliance. Coding agent(백그라운드 PR)·Copilot CLI(& cloud handoff)와 complementary — Workspace는 product intent→code visible to org. Custom agents·MCP·security scanning(coding agent 2026)과 함께 GitHub agent stack 완성.
+  points:
+  - 'Issue-in-PR-out: plan→implement→test→PR all in github.com — IDE optional'
+  - 'Enterprise GA: governance·IP protection·audit trail — team workflow ownership'
+  - 'vs coding agent: Workspace=greenfield feature, agent=background bugfix/debt/test'
+  source: https://www.joinnextdev.com/blog/copilot-workspace-ga-rethink-how-features-get-built
+- category: ai
+  title: Ell — LMP(Language Model Program) 함수·자동 버전·Ell Studio(MIT·~5.9k★)
+  summary: ell(MadcowD/ell)은 prompt를 Python 함수(LMP)로 취급하는 lightweight prompt engineering library다. @ell.simple/complex decorator→static analysis로 source·call serialize, 변경마다 gpt-4o-mini autogenerated commit message + local SQLite store(checkpointing). ell.init(store='./logdir')→모든 LMP call 저장, ell-studio로 version diff·regression·invocation dataset 시각화. LangChain one-function-at-a-time migration, multimodal I/O. Instructor(validate-after) vs ell(version-track) vs Outlines(constrain-during) — prompt lifecycle의 'git for prompts'. pip install ell-ai[all].
+  points:
+  - LMP = versioned Python function, not string template — composable pipeline
+  - 'Ell Studio: local-first SQLite, prompt evolution dashboard — no cloud dependency'
+  - 'vs Instructor/Outlines: versioning·monitoring focus, not structured output enforcement'
+  source: https://docs.ell.so/
+- category: ai
+  title: Apple Foundation Models framework AFM 3 — on-device·Private Cloud Compute·reasoning(iOS 27)
+  summary: 'Apple AFM 3(2026, Google 협력 5-model family)은 on-device AFM 3 Core(3B dense)·AFM 3 Core Advanced(20B sparse·1-4B active·multimodal)와 Private Cloud Compute model(32K ctx·reasoning)로 구성. Foundation Models framework(Swift): LanguageModelSession·tool calling·guided generation·stateful sessions. iOS 26.4+ token counting·context size inspection API, guardrail false positive 개선(iOS 27). PrivateCloudComputeLanguageModel + reasoningLevel(deep reasoning). Core AI(WWDC26)와 LanguageModel protocol 연동 — custom on-device model을 system session infra에 plug. Core AI card와 complement: FM framework=Apple Intelligence API, Core AI=bring-your-own-model inference.'
+  points:
+  - 'AFM 3 Core Advanced: 20B sparse, M5+ silicon, voice·dictation·multimodal on-device'
+  - 'Private Cloud Compute: 32K ctx reasoning model, reasoningLevel on contextOptions'
+  - 'Developer: Foundation Models framework(Swift) + Core AI custom model via LanguageModel protocol'
+  source: https://developer.apple.com/videos/play/wwdc2026/241/

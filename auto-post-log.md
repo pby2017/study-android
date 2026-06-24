@@ -1287,3 +1287,29 @@ Refined:
 
 누적: 554카드 (547→542 중복제거→554 신규추가)
 주제: 하이브리드 LLM(Jamba 2), inference 플랫폼(Together AI·vLLM 대비), 출력 검증(Guardrails AI), Apple ML(MLX·Gemma 3n), agent memory(Letta·Hindsight), agent framework(Qwen-Agent), observability(LangSmith), Green AI(1/W Law), 이미지 AI(SD 3.5 Turbo), reasoning LLM(Grok-3)
+
+## 2026-06-24 18:00 KST — Round 17 Batch 20 (중복 정리 2카드 + 신규 12카드)
+
+**중복 정리**: 2카드 제거 (554→552)
+- CodeRabbit 'AI vs 사람 코드' 리포트(2→1: 상세 수치 버전 유지)
+- Pi(earendil-works)(2→1: earendil-works·65k★ 카드 유지, badlogic/pi-mono는 별도 유지)
+
+**신규 12카드**:
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | NotebookLM Gemini 3.5 — Antigravity 클라우드 컴퓨터 | blog.google |
+| 2 | OpenRouter — 400+ 모델 LLM 게이트웨이 | openrouter.ai |
+| 3 | Fireworks AI — Disaggregated Inference Engine | fireworks.ai |
+| 4 | NVIDIA NIM — Inference Microservices | docs.api.nvidia.com |
+| 5 | Graphite — Stacked PR·Graphite Agent | graphite.com |
+| 6 | Replit Agent 4 — Design Canvas·병렬 task | replit.com |
+| 7 | Perplexity Computer — 19모델 오케스트레이션 | perplexity.ai |
+| 8 | Microsoft Agent Framework 1.0 GA | learn.microsoft.com |
+| 9 | GitHub Copilot Extensions — @멘션 서드파티 도구 | github.blog |
+| 10 | GitHub Copilot Workspace — Issue→PR 워크플로 | joinnextdev.com |
+| 11 | Ell — LMP 함수·자동 버전·Ell Studio | docs.ell.so |
+| 12 | Apple Foundation Models AFM 3 — on-device·PCC reasoning | developer.apple.com |
+
+누적: 564카드 (554→552 중복제거→564 신규추가)
+주제: 리서치 AI(NotebookLM), LLM 라우팅(OpenRouter), 추론 플랫폼(Fireworks·NIM), 코드리뷰(Graphite), AI 앱 빌더(Replit Agent 4), 검색 에이전트(Perplexity Computer), 멀티에이전트(MAF 1.0), Copilot 생태계(Extensions·Workspace), 프롬프트 버전(Ell), Apple on-device(AFM 3)
