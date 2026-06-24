@@ -2129,3 +2129,20 @@ Refined:
 
 누적: 670카드 (669→670 신규, 기존 2카드 정제)
 주제: Chrome Modern Web Guidance, coding-agent skill packaging, Baseline/DevTools-guided web implementation, Claude Code web cloud-session lifecycle, AI research skill graph
+
+## 2026-06-25 03:03 KST — Manual routine run (신규 1카드 + 기존 1카드 정제)
+
+### 신규 카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | GitHub Code Quality GA — AI 리뷰는 품질 게이트와 과금 경계를 같이 설계해야 한다 | github.blog/changelog |
+
+### 정제 카드
+
+| 제목 | 근거 |
+|------|------|
+| Goose Subrecipes — YAML 레시피를 격리 세션 도구로 쪼개기(Apache-2.0·50k★) | Goose subrecipes docs + GitHub API metrics re-check |
+
+누적: 671카드 (670→671 신규, 기존 1카드 정제)
+주제: GitHub Code Quality GA, AI-powered code review billing, CodeQL quality gates, Goose subrecipe workflow isolation

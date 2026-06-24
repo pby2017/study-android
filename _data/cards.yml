@@ -1193,14 +1193,14 @@ cards:
   - '교훈: 프롬프트 하나보다 연구 생애주기를 라우팅하는 skill graph가 재사용성과 검증성을 높임'
   source: https://github.com/Orchestra-Research/AI-research-SKILLs
 - category: ai
-  title: 서브레시피 파이프라인 — 복잡한 작업을 'YAML 레시피'로 쪼개 단계·병렬로 돌리기
-  summary: '코딩 에이전트 워크플로를 한 프롬프트에 욱여넣는 대신, 단계를 파일로 굳혀 조립하는 패턴이다. Goose(현 Linux Foundation AAIF) 레시피가 대표 구현으로, 메인 레시피의 `sub_recipes` 필드에 `name`/`path`/`values`를 적으면 각 서브레시피가 ''도구''로 등록된다. 호출되면 서브레시피는 메인과 대화 이력·메모리·상태를 공유하지 않는 ''별도 세션''에서 격리 실행되고 결과만 메인으로 돌려준다 — 즉 컨텍스트 오염 없이 "보안 스캔 → 품질 검사" 같은 전문 단계를 파이프라인으로 엮을 수 있다. 서로 다른 서브레시피는 기본적으로 순차 실행이고, 같은 서브레시피를 여러 입력으로 돌리면 최대 10개 워커로 자동 병렬화된다(공식 문서: 실험적 기능, 동작이 바뀔 수 있음).
+  title: Goose Subrecipes — YAML 레시피를 격리 세션 도구로 쪼개기(Apache-2.0·50k★)
+  summary: 'Goose Subrecipes는 코딩 에이전트 워크플로를 한 프롬프트에 욱여넣지 않고, 역할별 YAML 레시피로 나눠 메인 레시피에서 호출하는 패턴이다. 메인 레시피의 `sub_recipes`에 `name`·`path`·`values`를 적으면 Goose가 각 서브레시피를 도구처럼 노출하고, 호출 시 별도 세션과 자체 컨텍스트에서 실행한 결과만 메인으로 돌려준다. 그래서 보안 스캔, 품질 검사, 문서화처럼 전문성이 다른 단계를 같은 대화 이력에 섞지 않고 조립할 수 있다. `values`는 런타임 값보다 우선하는 고정 파라미터이고, 이전 서브레시피 결과는 대화 컨텍스트에서 다음 파라미터로 추출될 수 있다. 공식 문서는 아직 실험적 기능이라고 못박으므로, 재사용 단위는 작게 만들고 독립 실행 테스트를 먼저 두는 것이 안전하다.
 
     '
   points:
-  - '메인 레시피의 sub_recipes: {name, path, values}로 등록 → 각 서브레시피가 도구로 노출됨'
-  - 서브레시피는 별도 세션에서 격리 실행(이력·메모리 비공유), 결과만 반환 / 중첩(서브의 서브) 금지
-  - 서로 다른 레시피=기본 순차, 같은 레시피 반복=기본 병렬(최대 10워커) — 모두 실험적 기능(공식 문서)
+  - '`sub_recipes`의 `name`·`path`·`values`가 서브레시피 도구 정의가 된다'
+  - 별도 세션에서 실행해 대화 이력·메모리·상태를 공유하지 않으며, 서브레시피 중첩은 금지
+  - 단일 책임·명확한 파라미터·독립 테스트가 공식 best practice / 2026-06-25 GitHub API 기준 50,128★
   source: https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/recipes/subrecipes.md
 - category: ai
   title: GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜
@@ -6375,3 +6375,11 @@ cards:
   - '내용: 접근성·성능·보안·Baseline 호환성 지식을 에이전트 skill로 패키징'
   - '실무 포인트: 에이전트에게 최신 웹 API 사용 여부를 맡기되 DevTools evidence로 검증'
   source: https://developer.chrome.com/docs/modern-web-guidance
+- category: ai
+  title: GitHub Code Quality GA — AI 리뷰는 품질 게이트와 과금 경계를 같이 설계해야 한다
+  summary: 'GitHub Code Quality는 2026-07-20부터 public preview를 끝내고 GitHub Team·Enterprise Cloud의 유료 제품으로 GA 전환된다. 공식 공지는 10,000개 이상 enterprise가 preview에서 유지보수성·신뢰성 이슈, quality gate, coverage tracking에 썼다고 설명하고, GA 뒤에는 활성 committer당 월 $10 기본 과금에 AI-powered 기능 사용량이 따로 붙는다고 밝혔다. 핵심은 AI 리뷰를 "공짜 보조 댓글"로 보는 습관을 버리는 것이다. CodeQL 기반 deterministic 분석은 Actions minutes를 쓰고, Copilot code review·AI-assisted detection·Copilot Autofix 같은 AI 작업은 usage-based billing으로 분리된다. 팀은 PR ruleset, coverage threshold, AI findings dashboard, Autofix 적용 권한을 비용·품질·리뷰 책임 경계와 함께 정해야 한다.'
+  points:
+  - 2026-07-20 GA·유료화 — 활성 committer 월 $10 + AI-powered 기능 usage-based billing
+  - CodeQL 품질 분석은 Actions minutes, AI findings·Copilot review·Autofix는 별도 사용량 모델
+  - PR quality gate·coverage threshold·AI Autofix 권한을 운영 정책으로 정해야 함
+  source: https://github.blog/changelog/2026-06-16-github-code-quality-generally-available-july-20-2026/
