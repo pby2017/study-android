@@ -4315,16 +4315,6 @@ cards:
   - '크로스링구얼: 영·일·한·광·중 5개 언어'
   source: https://github.com/rvc-boss/gpt-sovits
 - category: ai
-  title: 하이브리드 검색(BM25+벡터) — RAG의 프로덕션 기본값, RRF 퓨전으로 키워드 정밀도+시맨틱 리콜 통합
-  summary: '하이브리드 검색은 BM25(키워드)와 벡터(시맨틱)를 병렬 실행 후 하나의 랭킹으로 퓨전하는 아키텍처다. 2026년 RAG 프로덕션의 사실상 기본값. Reciprocal Rank Fusion(RRF, k=60)이 표준 퓨전 방법으로 점수 스케일 차이 문제를 순위 기반으로 해결. Elasticsearch·OpenSearch·Qdrant·Weaviate·Pinecone이 네이티브 지원. 최적화: RRF 베이스라인 → 레이블 데이터 있으면 convex combination → cross-encoder 리랭커 추가.
-
-    '
-  points:
-  - 'RRF(k=60): 순위 기반 퓨전, 점수 스케일 무관'
-  - '네이티브 지원: Elasticsearch·Qdrant·Weaviate·Pinecone'
-  - '최적화: RRF → alpha 퓨전 → cross-encoder 리랭커'
-  source: https://tianpan.co/blog/2026-04-12-hybrid-search-production-bm25-dense-embeddings
-- category: ai
   title: ExecuTorch 1.0(Meta) — 온디바이스 LLM 프로덕션 프레임워크, 50KB 런타임·12+ HW 백엔드·Instagram/WhatsApp 사용
   summary: 'ExecuTorch는 Meta가 만든 프로덕션급 온디바이스 추론 프레임워크로 2025년 10월 1.0 GA를 달성했다. PyTorch torch.export 파이프라인으로 학습→모바일 배포 원스텝. 50KB 베이스 런타임으로 마이크로 컨트롤러부터 고급 스마트폰까지 지원. CoreML·Qualcomm QNN·MediaTek·XNNPACK 등 12+ HW 백엔드. Instagram·WhatsApp·Messenger·Facebook에서 수십억 사용자 서빙. llama.cpp(CPU·GGUF·프로토타입) 대비 NPU 가속+HW 최적화+프로덕션 안정성이 차별점.
 
@@ -5944,10 +5934,11 @@ cards:
   source: https://blog.voyageai.com/2026/01/15/voyage-4/
 - category: ai
   title: Hybrid Search — BM25+vector 병렬·RRF(k=60) 융합, RAG 1-stage retrieval 표준(2026)
-  summary: Hybrid Search는 dense vector(semantic)와 sparse BM25(lexical)를 병렬 실행 후 Reciprocal Rank Fusion으로 합치는 RAG 1-stage retrieval 아키텍처다. Bi-encoder cosine은 product code·에러 메시지·고유명사에서 실패, BM25는 paraphrase에서 실패 — 병렬+RRF가 양쪽 강점 결합. RRF score = Σ 1/(k+rank), k=60 기본(튜닝 불필요·raw score scale 불일치 해결). Weaviate·Qdrant·Elasticsearch·MongoDB Atlas native hybrid 지원. LlamaIndex alpha tuning·Redis dual index. Pure vector RAG 대비 WANDS e-commerce NDCG 7.4%↑ 사례. Cross-encoder rerank(2-stage)와 역할 분리 — hybrid=recall, rerank=precision.
+  summary: 'Hybrid Search(하이브리드 검색)는 dense vector(semantic)와 sparse BM25(lexical)를 병렬 실행 후 Reciprocal Rank Fusion으로 합치는 RAG 1-stage retrieval 아키텍처다. 2026년 RAG 프로덕션의 사실상 기본값. Bi-encoder cosine은 product code·에러 메시지·고유명사에서 실패, BM25는 paraphrase에서 실패 — 병렬+RRF가 양쪽 강점 결합. RRF score = Σ 1/(k+rank), k=60 기본(튜닝 불필요·raw score scale 불일치 해결). Elasticsearch·OpenSearch·Qdrant·Weaviate·Pinecone·MongoDB Atlas native hybrid 지원. 최적화 경로: RRF 베이스라인 → 레이블 있으면 alpha/convex combination → cross-encoder rerank(2-stage). Pure vector RAG 대비 WANDS e-commerce NDCG 7.4%↑. Cross-encoder rerank(2-stage precision)와 역할 분리 — hybrid=recall top-50, rerank=precision top-10.'
   points:
   - BM25 + vector 병렬 → RRF(k=60) rank-based fusion
   - product code·고유명사(BM25) + paraphrase(vector) 동시 커버
+  - Elasticsearch·Qdrant·Weaviate·Pinecone native 지원
   - Cross-encoder rerank과 2-stage — hybrid top-50→rerank top-10
   source: https://denser.ai/blog/hybrid-search-for-rag/
 - category: ai
@@ -6230,3 +6221,91 @@ cards:
   - LIME — model-agnostic·fast·unstable(69% consistency)
   - Fairlearn/RAGAS와 역할 분리 — tabular feature attribution·regulatory audit
   source: https://shap.readthedocs.io/
+- category: ai
+  title: Smolagents — Hugging Face 경량 CodeAgent, Python 코드로 도구 실행·~1k줄(MIT)
+  summary: Smolagents(Hugging Face)는 ~1,000줄 코드베이스의 경량 Python 에이전트 프레임워크다. CodeAgent가 JSON tool call 대신 Python 코드를 생성·실행해 함수 중첩·루프·조건문을 자연스럽게 조합 — '에이전트가 코드를 쓰는' 패턴의 반대. ToolCallingAgent(JSON/text tool call)도 지원. Model-agnostic — HF InferenceClient·LiteLLM(OpenAI·Anthropic)·Transformers·Ollama. MCP·LangChain tool·Hub Space를 tool로 사용. E2B·Docker·Modal·Blaxel sandbox 실행. smolagent·webagent CLI, Hub에 agent·tool 공유. LangChain/Deep Agents(하네스)와 달리 '최소 추상화·빠른 프로토타입' — CodeAgent 패러다임 특화.
+  points:
+  - CodeAgent — Python 코드 생성·실행, JSON tool call 대안
+  - MCP·LangChain tool·Hub Space tool 연동, sandbox(E2B/Docker)
+  - Deep Agents/LangGraph와 역할 분리 — 경량·CodeAgent 특화
+  source: https://huggingface.co/docs/smolagents/index
+- category: ai
+  title: Contextual Retrieval — Anthropic RAG 청크 컨텍스트 보강, 실패율 49~67%↓
+  summary: 'Contextual Retrieval(Anthropic, 2024)은 RAG 청킹 시 문맥 손실을 줄이는 2-subtechnique다. Contextual Embeddings: 각 chunk 앞에 LLM(Claude)이 생성한 chunk-specific 설명을 prepend 후 embedding. Contextual BM25: 동일 컨텍스트를 BM25 index에도 적용. 단독 Contextual Embeddings — top-20 retrieval failure 35%↓(5.7%→3.7%), +Contextual BM25 — 49%↓(→2.9%), +reranking — 67%↓(→1.9%). 4-layer stack: contextual embedding(Voyage/Gemini) + contextual BM25 + hybrid + rerank + top-20 chunks. prompt caching으로 비용 90%↓. Late chunking(Jina, embedding 레벨) ·semantic chunking(LlamaIndex)과 역할 분리 — LLM-generated chunk context.'
+  points:
+  - Contextual Embeddings + BM25 — chunk별 LLM context prepend
+  - hybrid + rerank 조합 시 failure 67%↓(Anthropic benchmark)
+  - Late chunking·semantic chunking과 역할 분리 — LLM context layer
+  source: https://www.anthropic.com/engineering/contextual-retrieval
+- category: ai
+  title: Late Chunking — Jina long-context embedding, chunk 전 full-doc encode 후 분할
+  summary: Late Chunking(Jina AI, arXiv 2409.04701·SIGIR 2025)은 'chunk→embed' 순서를 뒤집어 long-context embedding model로 전체 문서를 먼저 token-level encode한 뒤 chunk boundary에서 mean pooling하는 RAG 기법이다. naive chunking은 chunk가 주변 문맥을 잃어 sub-optimal embedding — late chunking은 각 chunk embedding이 full document context를 보존. jina-embeddings-v3 API late_chunking=True 한 줄, self-host는 token embedding→span annotation→mean pool. BeIR 벤치마크에서 naive 대비 일관된 개선. Contextual Retrieval(Anthropic, LLM-generated text context)과 역할 분리 — embedding architecture 레벨 context preservation, 추가 LLM 호출 불필요.
+  points:
+  - full-doc encode → chunk boundary mean pool — context 보존
+  - jina-embeddings-v3 API late_chunking=True ·8192 ctx
+  - Contextual Retrieval(LLM text)과 역할 분리 — embedding 레벨
+  source: https://jina.ai/news/late-chunking-in-long-context-embedding-models/
+- category: ai
+  title: Exa AI Search API — neural semantic search·auto-extract·deep-reasoning(2026)
+  summary: 'Exa(exa.ai)는 AI agent·RAG용으로 설계된 neural search engine API다. keyword SERP가 아닌 embedding-based semantic retrieval — exploratory research·code retrieval·의미 기반 discovery에 강점. search type: auto(~1s)·instant(~250ms)·fast·deep-lite(4s)·deep(4-15s)·deep-reasoning(12-40s). contents.highlights로 token-efficient extraction, category filter(company·research paper·news). Search as Code(SaC) — Perplexity Computer에서 retrieval을 Python SDK primitive 조합. Python/JS SDK, MCP server. Tavily(agent-ready structured)·Brave(independent index·privacy)와 3축 — Exa=semantic accuracy·structured extraction.'
+  points:
+  - Neural semantic search — keyword miss·exploratory research 특화
+  - instant~deep-reasoning 6-tier latency-quality profile
+  - Tavily(agent loop) ·Brave(index independence)와 역할 분리
+  source: https://exa.ai/docs/reference/search-api-guide
+- category: ai
+  title: Tavily Search API — agent-native web search·extract·research·MCP(2M+ dev)
+  summary: Tavily(tavily.com)는 LLM·RAG·agent workflow에 최적화된 search+extract API다. search_depth(basic·advanced·fast·ultra-fast)로 latency-quality 트레이드오프, search·extract·crawl·map·research 5 endpoint. LangChain·CrewAI·OpenAI function calling 공식 통합, tavily-mcp(~2k★) production MCP server. /research endpoint — multi-step autonomous deep research. X-Session-Id·X-Human-Id header로 multi-step agent attribution. 300M+ monthly requests·99.99% uptime·p50 sub-second. Firecrawl MCP(web scrape) ·Exa(semantic) ·Perplexity Computer(answer-first)와 역할 분리 — 'search-then-extract' agent loop 기본값.
+  points:
+  - search·extract·crawl·research — agent-ready structured output
+  - LangChain·CrewAI·MCP 공식 통합, search_depth latency control
+  - Exa(semantic) ·Firecrawl(scrape) ·Perplexity(answer)와 역할 분리
+  source: https://docs.tavily.com/documentation/api-reference/introduction
+- category: ai
+  title: Crawl4AI — OSS LLM-friendly web crawler, Playwright+Markdown+LLM extract(~40k★)
+  summary: Crawl4AI(v0.9.x)는 RAG·agent pipeline용 오픈소스 Python web crawler다. Playwright async browser pool로 JS 렌더링, HTML→clean Markdown 자동 변환(boilerplate 제거). LLMExtractionStrategy — Pydantic schema + natural language prompt로 structured JSON 추출. CSS/XPath·chunk-based·semantic(cosine) extraction 전략. Adaptive crawling — information foraging algorithm으로 충분한 정보 수집 시 자동 중단. Docker·async parallel·LangChain/LlamaIndex 통합. Firecrawl(managed API·MCP)과 달리 self-host·API key 불필요·rate limit 없음(대상 사이트 제외). ScrapeGraphAI(managed LLM extract API)와 역할 분리 — OSS·full control.
+  points:
+  - Playwright async ·LLM-ready Markdown ·Pydantic LLM extract
+  - Adaptive crawling ·Docker ·LangChain/LlamaIndex 플러그인
+  - Firecrawl(managed MCP) ·ScrapeGraphAI(SaaS)와 OSS self-host 대안
+  source: https://docs.crawl4ai.com/
+- category: ai
+  title: Jina Reader — r.jina.ai URL prefix로 LLM-ready Markdown, PDF·search(s.jina.ai)
+  summary: Jina Reader(jina-ai/reader)는 URL 앞에 https://r.jina.ai/ prefix만 붙이면 LLM-friendly Markdown을 반환하는 HTTP API다. Headless Chrome(Puppeteer)·CURL hybrid fetch, Readability.js·Reader-LM(0.5B/1.5B SLM) HTML→Markdown. PDF(PDF.js)·DOCX(LibreOffice) 지원. s.jina.ai — search→top-5 URL 자동 fetch→markdown. x-respond-with header(markdown·html·text·screenshot·frontmatter). Firecrawl(managed scrape API·MCP)과 달리 prefix-only·무료 tier(10M tokens)·self-host 가능. Crawl4AI(Python library·full pipeline)와 역할 분리 — 한 URL에서 한 Markdown 최소 API.
+  points:
+  - r.jina.ai/{URL} prefix — API key 없이 browser 테스트 가능
+  - s.jina.ai search→markdown ·PDF/DOCX ·Reader-LM SLM
+  - Firecrawl(managed) ·Crawl4AI(library)와 URL-to-MD 특화
+  source: https://github.com/jina-ai/reader
+- category: ai
+  title: LangSmith Deployment — LangGraph Platform GA, managed·hybrid·self-hosted agent runtime
+  summary: LangSmith Deployment(구 LangGraph Platform, 2025 GA)는 long-running·stateful agent를 deploy·scale·manage하는 managed runtime이다. ~400社 production 사용. Cloud SaaS(Plus $39/user·$0.001/node) — GitHub→langgraph deploy. Hybrid(Enterprise) — SaaS control plane + VPC data plane. Fully Self-Hosted(Enterprise) — K8s 전체 stack. Agent Server standalone(Docker/K8s, Developer 100k nodes/mo free). Postgres checkpointing·30+ API endpoints·LangGraph Studio IDE·human-in-the-loop·async collaboration. Framework-agnostic — LangGraph·Google ADK·CrewAI·Strands container deploy. LangGraph(OSS state machine) ·Temporal(durable infra)와 역할 분리 — agent-specific managed runtime.
+  points:
+  - Cloud·Hybrid·Self-hosted 3-tier ·GitHub deploy ·Studio IDE
+  - Postgres checkpoint ·30+ API ·human-in-the-loop native
+  - LangGraph(OSS) ·Temporal(infra)와 역할 분리 — managed runtime
+  source: https://docs.langchain.com/langsmith/deployment
+- category: ai
+  title: Agno — pure Python agent·team·workflow SDK, AgentOS FastAPI production(Apache-2.0·~40k★)
+  summary: Agno(agno-agi/agno, 구 Phidata)는 Agent·Team·Workflow 3-primitive Python SDK다. 30+ LLM provider·100+ tool·MCP·Pydantic structured I/O·memory·knowledge(RAG)·learning·compression. AgentOS — agent를 FastAPI service로 wrap, JWT RBAC·OTel tracing·scheduling(cron)·Slack/Telegram/WhatsApp interface. Postgres persistence(sessions·memory·traces). 450 contributors·v2.6.12(2026-06). Pydantic AI(type-safe agent) ·Deep Agents(LangChain harness) ·CrewAI(role-based team)와 역할 분리 — SDK→AgentOS→deploy pure Python full stack. AgentOps(옵저버빌리티)와 SDK 통합.
+  points:
+  - Agent·Team·Workflow 3-primitive ·30+ model ·MCP native
+  - AgentOS — FastAPI·JWT RBAC·cron·Slack/TG interface
+  - Pydantic AI(type) ·CrewAI(role team) ·Deep Agents(harness)와 분리
+  source: https://docs.agno.com/sdk/introduction
+- category: ai
+  title: Make.com AI Agents — 3000+ app 시나리오 canvas에 agent 통합·Reasoning Panel
+  summary: Make.com AI Agents(2026-02 next-gen)는 기존 Make scenario builder canvas 안에서 goal-driven agent를 build·run·debug하는 no-code agent platform이다. LLM이 task를 받아 attached scenario(tool)를 reasoning 후 선택 실행. Reasoning Panel — agent의 tool 선택·data analysis 과정을 step-by-step 시각화(black box 제거). Knowledge upload(PDF·CSV·MD·JSON)·conversation memory depth 설정. Library of Agents — production-ready template 공유. n8n(AI LangChain node·100k★·Fair-Code) ·Zapier(chat-only) ·Dify(AI-native app builder)와 역할 분리 — 기존 3000+ SaaS integration 위 agent layer. MCP server·Make Grid multi-agent orchestration.
+  points:
+  - Scenario canvas 내 agent — 기존 Make workflow = agent tool
+  - Reasoning Panel — decision transparency ·Library template
+  - n8n(dev-friendly OSS) ·Dify(AI app) ·Zapier(chat)와 역할 분리
+  source: https://www.make.com/en/ai-agents
+- category: ai
+  title: ScrapeGraphAI — natural language prompt→structured JSON, scrape·extract·crawl·monitor v2 API
+  summary: 'ScrapeGraphAI(scrapegraphai.com)는 natural language prompt로 webpage→structured JSON을 추출하는 AI-powered scraping SaaS API다. v2 unified API: scrape(multi-format markdown·html·screenshot)·extract(LLM prompt+schema)·search(web search+extract)·crawl(async multi-page)·monitor(cron+change detection+webhook). Python SDK(scrapegraph-py≥2.1)·JS SDK·MCP server. stealth mode(+5 credits)·Pydantic/Zod schema validation·concurrent async. Firecrawl(managed·MCP·6.6k★) ·Crawl4AI(OSS·self-host)와 역할 분리 — managed NL-prompt extraction·zero selector maintenance. SmartScraper v1→v2 extract endpoint migration.'
+  points:
+  - NL prompt→JSON ·scrape·extract·search·crawl·monitor v2
+  - Python/JS SDK ·MCP ·stealth ·schema validation
+  - Firecrawl(MCP) ·Crawl4AI(OSS)와 managed NL-extract 특화
+  source: https://docs.scrapegraphai.com/api-reference/introduction

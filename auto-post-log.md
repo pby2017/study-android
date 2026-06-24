@@ -1987,3 +1987,66 @@ Refined:
 
 누적: 651카드 (642→640 병합→651 신규)
 주제: agent evaluation(Inspect·Claw-Eval·agentevals·τ-bench), AI governance(NIST RMF GAI), DevSecOps AI(Copilot Autofix·Dependabot agents), MCP security(CSA guide), ML supply chain(CycloneDX·SPDX AI-BOM), responsible AI(Fairlearn·AIF360·SHAP·LIME), Codex Security·Phoenix merge
+
+## 2026-06-25 10:00 KST — Batch 32 (아이디어 검증 + 병합 1카드 + 신규 11카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 11카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Smolagents (HF) | CodeAgent 패러다임 — Deep Agents(하네스)·Pydantic AI(type-safe)와 경량·Python code execution 독립 |
+| Contextual Retrieval (Anthropic) | LLM chunk context prepend — Late chunking(embedding)·semantic chunking과 역할 분리, 67% failure↓ |
+| Late Chunking (Jina) | full-doc encode→chunk pool — Contextual Retrieval(LLM text)과 embedding 레벨 분리 |
+| Exa AI Search API | neural semantic search — Tavily(agent loop)·Perplexity(answer-first)와 3축 |
+| Tavily Search API | agent-native search+extract — Firecrawl MCP(scrape)·Exa(semantic)와 독립, LangChain/CrewAI 공식 |
+| Crawl4AI | OSS self-host crawler — Firecrawl(managed MCP)·ScrapeGraphAI(SaaS)와 full control 대안 |
+| Jina Reader | r.jina.ai prefix URL→MD — Firecrawl(managed)·Crawl4AI(library)와 최소 API 특화 |
+| LangSmith Deployment | managed agent runtime — LangGraph(OSS)·Temporal(infra)와 deploy layer 분리 |
+| Agno | Agent·Team·Workflow + AgentOS — Pydantic AI(type)·CrewAI(role team)·Deep Agents(harness)와 분리 |
+| Make.com AI Agents | no-code 3000+ app agent — n8n(OSS dev)·Dify(AI app builder)와 enterprise no-code |
+| ScrapeGraphAI | NL prompt→JSON SaaS v2 — Firecrawl(MCP)·Crawl4AI(OSS)와 managed extract 특화 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Pydantic AI | 기존 카드 존재 |
+| n8n / Zapier AI | n8n 기존 카드, Zapier는 Make.com 카드로 no-code 축 커버 |
+| Browser-Use / Stagehand / Playwright MCP | 기존 카드 존재 |
+| Firecrawl | Firecrawl MCP 기존 카드 |
+| Perplexity API | Perplexity Computer 기존 카드 |
+| BGE-M3 / Cohere Embed v4 / Qwen3-Embedding | 기존 임베딩 카드 존재 |
+| Docling / Surya / Multilingual embeddings | 기존 OCR·임베딩 카드 커버 |
+| ColBERT reranking | BGE-M3·Cross-encoder Reranking·ColPali 카드 커버 |
+| AI search APIs comparison 단독 | Exa+Tavily 2카드로 3축 커버, Brave는 Exa 카드 mention |
+| LangGraph | LangGraph 기존 카드, LangSmith Deployment는 managed runtime으로 분리 |
+| Brave Search API | Exa·Tavily 카드에서 index independence 축 mention, 11카드 충분 |
+| CAMEL-AI / AutoGen | Microsoft Agent Framework 1.0 GA 카드 커버 |
+| Vision language models document AI | ColPali·Docling·Surya 기존 커버 |
+
+### 병합 (1카드 제거, 651→650)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| 하이브리드 검색(BM25+벡터) | Hybrid Search — BM25+vector·RRF(k=60)·2-stage rerank·native DB 지원 통합 |
+
+### 신규 11카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Smolagents — Hugging Face 경량 CodeAgent, Python 코드로 도구 실행·~1k줄(MIT) | huggingface.co/docs/smolagents |
+| 2 | Contextual Retrieval — Anthropic RAG 청크 컨텍스트 보강, 실패율 49~67%↓ | anthropic.com/engineering/contextual-retrieval |
+| 3 | Late Chunking — Jina long-context embedding, chunk 전 full-doc encode 후 분할 | jina.ai/news/late-chunking |
+| 4 | Exa AI Search API — neural semantic search·auto-extract·deep-reasoning(2026) | exa.ai/docs |
+| 5 | Tavily Search API — agent-native web search·extract·research·MCP(2M+ dev) | docs.tavily.com |
+| 6 | Crawl4AI — OSS LLM-friendly web crawler, Playwright+Markdown+LLM extract(~40k★) | docs.crawl4ai.com |
+| 7 | Jina Reader — r.jina.ai URL prefix로 LLM-ready Markdown, PDF·search(s.jina.ai) | github.com/jina-ai/reader |
+| 8 | LangSmith Deployment — LangGraph Platform GA, managed·hybrid·self-hosted agent runtime | docs.langchain.com/langsmith/deployment |
+| 9 | Agno — pure Python agent·team·workflow SDK, AgentOS FastAPI production(Apache-2.0·~40k★) | docs.agno.com |
+| 10 | Make.com AI Agents — 3000+ app 시나리오 canvas에 agent 통합·Reasoning Panel | make.com/en/ai-agents |
+| 11 | ScrapeGraphAI — natural language prompt→structured JSON, scrape·extract·crawl·monitor v2 API | docs.scrapegraphai.com |
+
+누적: 661카드 (651→650 병합→661 신규)
+주제: agent framework(Smolagents·Agno·Make.com), RAG retrieval(Contextual Retrieval·Late Chunking·Hybrid merge), agent search(Exa·Tavily), web data(Crawl4AI·Jina Reader·ScrapeGraphAI), managed runtime(LangSmith Deployment)
