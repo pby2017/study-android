@@ -3899,15 +3899,13 @@ cards:
   - 에이전트에게는 요청보다 스펙·참조 구현·검증 루프가 중요
   source: https://openai.com/index/notion/
 - category: ai
-  title: Codex Security — AI 보안 자동화는 권한 등급과 격리 검증이 먼저다
-  summary: 'OpenAI는 2026년 5월 Trusted Access for Cyber 글에서 Codex Security가 코드베이스별 threat model을 만들고, 현실적인 attack path를 탐색하며, 격리 환경에서 이슈를 검증하고, 사람이 검토할 패치를 제안한다고 설명했다. 같은 글은 GPT-5.5 기본 접근, Trusted Access for Cyber, GPT-5.5-Cyber처럼 보안 작업 권한을 단계화한다. 실무 포인트는 "AI에게 취약점 찾아줘"가 아니라, 소유한 시스템인지, 어떤 권한 등급인지, 검증 환경이 격리돼 있는지, 패치가 사람 리뷰로 닫히는지를 먼저 정해야 한다는 것이다.
-
-    '
+  title: Codex Security — threat model·격리 검증·SARIF export까지 AI 보안 자동화 파이프라인
+  summary: OpenAI Codex Security(2026)는 코드베이스별 threat model을 만들고 attack path를 탐색한 뒤, 격리 환경에서 이슈를 검증하고 사람이 리뷰할 패치를 제안한다. Trusted Access for Cyber·GPT-5.5-Cyber처럼 보안 작업 권한을 단계화하며, "AI에게 취약점 찾아줘" 전에 소유권·권한 등급·격리·사람 리뷰를 먼저 정해야 한다. plugin 0.1.9부터는 findings workspace에서 coverage·severity·confidence·evidence를 함께 검토하고 JSON·CSV·SARIF로 export — scan-manifest.json·findings.json·coverage.json 맥락 보존. backlog triage는 scanner·advisory·bug bounty·GitHub/Jira/Linear 결과를 현재 코드와 대조해 confirmed·needs_review·not_actionable verdict·우선순위 큐 생성. Linear/GitHub/Jira issue·private draft GitHub Security Advisory는 승인 전 쓰지 않음. claude-code-security-review(Anthropic PR diff)와 달리 threat model 기반 proactive scan + portable artifact handoff.
   points:
-  - 'Codex Security: threat model→attack path→격리 검증→패치 제안'
-  - Trusted Access for Cyber는 검증된 방어자와 승인된 작업 범위를 전제로 함
-  - 보안 에이전트 자동화는 권한 등급·대상 소유권·격리 환경·사람 리뷰가 핵심
-  source: https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/
+  - Threat model→attack path→격리 검증→패치 제안, Trusted Access for Cyber 권한 등급
+  - Findings workspace + SARIF/JSON/CSV export, manifest·coverage 맥락 보존
+  - 'Triage/Track: verdict·priority 큐, 티켓·GSA 쓰기는 approval-gated'
+  source: https://developers.openai.com/codex/security/plugin/changelog
 - category: ai
   title: 'Potpie: 코드베이스 전체를 Neo4j 지식 그래프로 인덱싱해 디버깅·Q&A·스펙 전문 에이전트를 붙이는 도구'
   summary: 'Potpie는 저장소를 파싱해 모든 파일·클래스·함수와 호출관계를 담은 지식 그래프(Neo4j)로 만든다. 이 그래프가 모든 에이전트의 컨텍스트 backbone이 되어, 실제 코드에 근거한 답·코드·문서를 낸다. License: Apache 2.0.
@@ -5025,16 +5023,6 @@ cards:
   - '운영 교훈: 장기 에이전트 실행은 모델명보다 예산·위임·웹 접근 정책을 먼저 고정'
   source: https://developers.openai.com/codex/changelog
 - category: ai
-  title: 'Codex Security artifacts: AI 보안 스캔 결과를 SARIF·백로그 티켓으로 넘기기'
-  summary: 'Codex Security plugin 0.1.9의 중요한 변화는 "AI가 취약점을 찾았다"에서 끝내지 않고, 결과를 다른 보안 운영 도구가 읽을 수 있는 산출물로 고정하는 흐름이다. 완료된 scan은 findings workspace에서 findings, coverage, severity, confidence, scan artifact를 함께 검토하고, export 단계에서 JSON·CSV·SARIF로 내보낼 수 있다. 전체 맥락이 필요하면 `scan-manifest.json`, `findings.json`, `coverage.json`을 같이 보관한다. backlog triage는 scanner, advisory, bug bounty, GitHub/Jira/Linear, Codex Security 결과를 현재 코드베이스와 대조해 confirmed·needs_review·not_actionable verdict와 우선순위 큐를 만든다. track findings는 Linear/GitHub/Jira issue나 private draft GitHub Security Advisory payload를 만들되, 중복 확인, destination visibility, 정확한 본문을 보여 주고 승인 전에는 쓰지 않는다. 교훈은 AI 보안 자동화의 핵심이 "탐지"보다 traceable evidence, portable format, approval-gated handoff라는 점이다.
-
-    '
-  points:
-  - '0.1.9: findings workspace에서 coverage·severity·confidence·evidence·scan artifacts를 함께 검토'
-  - 'Export: sealed scan 결과를 JSON·CSV·SARIF로 내보내고 manifest/findings/coverage 맥락 보존'
-  - 'Triage/Track: 기존 finding을 코드베이스에 대조해 verdict·priority를 만들고, 티켓/보안권고 쓰기는 승인 후 실행'
-  source: https://developers.openai.com/codex/security/plugin/changelog
-- category: ai
   title: Claude Artifacts — 대화 옆에서 코드·앱·대시보드를 미리보기·편집·공유하는 인터랙티브 출력 패널
   summary: 'Claude Artifacts는 HTML·React·SVG·Mermaid·Markdown 등 독립 콘텐츠를 대화 옆 패널에 렌더링하는 출력 형식이다. 2024년 GA 이후 2026년에는 Live Artifacts(MCP로 Google Sheets·Linear 등 실시간 데이터 연동), 세션 간 20MB persistent storage(Pro+), 공개 링크 공유가 추가됐다. 백엔드 없이 브라우저 샌드박스에서 동작하며 CDN 라이브러리(React·Tailwind·Recharts) 사용 가능. Projects·Skills와 구분: Artifacts는 ''작업 결과물'', Skills는 ''반복 절차'', Projects는 ''지속 컨텍스트 방''.'
   points:
@@ -5362,14 +5350,6 @@ cards:
   - 'Modal: @app.function GPU decorator·scale-to-zero·파인튜닝 job — Python 네이티브 파이프라인'
   - 'Baseten: Truss 엔진 선택·엔터프라이즈 SLA·token-priced Model API — 프로덕션 steady inference'
   source: https://hostfleet.net/serverless-gpu-pricing-matrix-2026/
-- category: ai
-  title: Arize Phoenix — OTel 기반 오픈소스 LLM 트레이싱·평가·프롬프트 관리(ELv2·~10k★)
-  summary: Phoenix는 Arize AI의 오픈소스 LLM 옵저버빌리티 플랫폼으로, OpenInference+OpenTelemetry로 prompt·retrieval·tool call·output 전 과정을 트레이스한다. 로컬·셀프호스팅(Single container·SQLite/Postgres)에 특화 — Langfuse(MIT)와 달리 Elastic License 2.0. phoenix-evals로 RAG relevance·answer relevance 등 LLM-as-judge 평가, 2026년 prompt management까지 확장. 상용 Arize AX와 별개 제품 — Phoenix→AX는 업그레이드가 아니라 마이그레이션.
-  points:
-  - OpenInference OTel 표준 — LangChain·LlamaIndex·에이전트 tool call 전 과정 시각화
-  - 'phoenix-evals + @experiment: traced data 위에서 regression eval, prompt 버전 A/B'
-  - Langfuse(MIT·프로덕션) vs Phoenix(ELv2·로컬 디버깅·노트북) — 용도가 다름
-  source: https://github.com/Arize-ai/phoenix
 - category: ai
   title: Unstructured.io — 64+ 파일형식을 RAG-ready JSON으로 변환하는 엔터프라이즈 ETL
   summary: Unstructured는 PDF·DOCX·PPTX·HTML·이메일 등 64+ 형식을 canonical JSON(Header·Table·NarrativeText 등 20+ element)으로 변환하는 GenAI 데이터 플랫폼이다. Auto/Fast/High Res/VLM 4종 partitioning 전략, By Title semantic chunking, 30+ connector·1,250+ pipeline으로 vector DB·data lake에 적재. Docling(IBM)·LlamaParse와 경쟁 — Unstructured는 엔터프라이즈 connector·거overnance·no-code UI+API 양쪽 제공. DIY 파싱 파이프라인 대신 표준 JSON+metadata로 RAG retrieval latency·품질을 안정화.
@@ -5908,12 +5888,12 @@ cards:
   source: https://github.com/microsoft/PyRIT
 - category: ai
   title: Langfuse vs LangSmith vs Phoenix — OTel LLM 옵저버빌리티 3축 2026 선택 가이드
-  summary: '2026년 LLM observability 3대 OSS/SaaS 선택지. Langfuse(MIT·~2.3k org) — OTel 기반 self-host, prompt management·eval·cost tracking, 데이터 주권·EU on-prem. LangSmith(LangChain) — 프레임워크 비종속 SaaS, LangGraph native trace·eval·prompt hub, Klarna/Uber급 프로덕션. Arize Phoenix(ELv2·~10k★) — OTel trace UI+eval+prompt playground, RAG/embedding drift 특화, LangChain/LlamaIndex integration. 공통: OTel span·LLM-as-judge eval. Evidently(품질 메트릭)·Langfuse(self-host trace) vs LangSmith(SaaS eval loop) vs Phoenix(OSS trace+eval). 하이브리드: Phoenix(trace)+Langfuse(prompt)+DeepEval(CI) 조합 흔함.'
+  summary: '2026년 LLM observability 3대 선택지. Langfuse(MIT·~2.3k org) — OTel 기반 self-host, prompt management·eval·cost tracking, EU on-prem·데이터 주권. LangSmith(LangChain) — managed SaaS, OpenAI·Anthropic·CrewAI·Pydantic AI 등 80+ 프레임워크·@traceable 계측, SmithDB+Polly+Insights Agent로 nested agent trace·failure cluster, online eval·PagerDuty. Arize Phoenix(ELv2·~10k★) — OpenInference OTel, single container·SQLite/Postgres 로컬 셀프호스팅, phoenix-evals RAG relevance·@experiment regression, RAG/embedding drift 특화 — Langfuse(프로덕션 SaaS/self-host) vs LangSmith(enterprise eval loop) vs Phoenix(로컬 디버깅·노트북). OpenLLMetry(instrumentation SDK)와 spec(GenAI semconv) 분리. 하이브리드: Phoenix(trace)+Langfuse(prompt)+DeepEval(CI) 조합 흔함.'
   points:
   - Langfuse — MIT self-host, prompt·eval·cost, 데이터 주권
-  - LangSmith — SaaS, LangGraph native, enterprise eval loop
-  - Phoenix — ELv2 OSS, OTel trace+eval, RAG drift 특화
-  source: https://langfuse.com/docs
+  - LangSmith — SaaS, SmithDB·Polly, 80+ framework·online eval
+  - Phoenix — ELv2 OSS, OpenInference OTel, phoenix-evals·RAG drift·로컬 디버깅
+  source: https://github.com/Arize-ai/phoenix
 - category: ai
   title: LLM API 비용 최적화 — routing·prefix cache·semantic cache·batch 4층 FinOps(2026)
   summary: '2026년 LLM 프로덕션 비용은 routing+caching+batch 4층으로 60~80% 절감 사례가 보고된다. Model routing — 단순 분류·추출은 nano/mini, reasoning만 frontier, cascade(저가→escalate)로 40~60%↓. Prefix cache(프롬프트 캐싱) — 반복 system prompt·도구 정의·참조 문서를 저장: Anthropic cache_control 마커·읽기 90% 할인·쓰기 1.25x(5분)/2x(1h), OpenAI 1,024+ 토큰 자동 50% 할인, Gemini 명시적 cache 객체·시간당 스토리지. 핵심 규칙: 정적 콘텐츠를 프롬프트 맨 앞 배치. Semantic cache — embedding 유사 query hit 시 LLM 생략(GPTCache·Redis VSS) 20~50%↓, prefix cache와 병행. Batch API — async 24h 50% 할인. LiteLLM/Portkey(게이트웨이)와 달리 아키텍처 패턴 — cost per successful outcome·eval-driven routing gate 필수.'
@@ -6162,3 +6142,91 @@ cards:
   - Dedicated GPU — TTFT<1s·batching·fixed cost, steady production load
   - Modal/Baseten/Replicate(기존) vs topology 선택 — dev serverless + prod dedicated
   source: https://modal.com/docs/guide/resources
+- category: ai
+  title: Inspect AI (UK AISI) — sandbox·agent eval·200+ 벤치마크를 한 프레임워크로
+  summary: Inspect AI(UKGovernmentBEIS/inspect_ai, MIT·~2.2k★)는 영국 AI Security Institute가 만든 오픈소스 LLM·에이전트 평가 프레임워크다. dataset→Task→Solver→Scorer 선언형 파이프라인, ReAct·Deep Agent(subagent delegation·planning)·multi-agent composition·agent_bridge(LangChain·OpenAI Agents SDK·Pydantic AI) 내장. Docker·Kubernetes·Proxmox sandbox로 untrusted code·browser 격리, tool approval(HITL·policy gate). Inspect View(웹)·VS Code extension으로 trace 디버깅, 200+ pre-built eval. DeepEval(Pytest CI gate)·RAGAS(RAG metric)와 달리 agent trajectory·tool use·sandboxed execution까지 — production-grade eval infrastructure.
+  points:
+  - UK AISI OSS — Task/Solver/Scorer + ReAct·Deep Agent·agent_bridge
+  - Docker/K8s/Proxmox sandbox + tool approval, Inspect View·VS Code
+  - DeepEval/RAGAS와 역할 분리 — agent eval·sandbox·200+ benchmark
+  source: https://inspect.aisi.org.uk/
+- category: ai
+  title: Claw-Eval — Pass^3·trajectory audit로 에이전트 평가 신뢰성 높이기
+  summary: 'Claw-Eval(claw-eval/claw-eval)은 자율 에이전트를 Completion·Safety·Robustness 3축으로 채점하는 2026 벤치마크다. 300 human-verified task·9 category·2,159 rubric, execution trace·audit log·environment snapshot full-trajectory auditing. Pass^3(3회 연속 성공)으로 lucky run과 진짜 capability를 구분 — AgentBench·SWE-bench(pass@k)와 달리 reliability-first. hybrid pipeline: deterministic completion gate 뒤 LLM judge 기여 제한, error injection·perturbation test. PinchBench·Terminal-Bench·SWE-bench와 scaffold 분리해 모델 vs harness attribution 가능.'
+  points:
+  - 300 task·9 category, Completion/Safety/Robustness + trajectory audit
+  - Pass^3 — 3회 연속 성공, pass@k(lucky run)과 구분
+  - AgentBench/SWE-bench와 역할 분리 — auditable trajectory·safety embedded
+  source: https://github.com/claw-eval/claw-eval
+- category: ai
+  title: agentevals — OTel trace 재실행 없이 에이전트 품질 CI gate
+  summary: agentevals(agentevals-dev/agentevals)는 OpenTelemetry trace에서 에이전트 행동을 채점하는 framework-agnostic eval 도구다. LangChain·Strands·Google ADK·OpenAI Agents SDK 등 OTel-instrumented framework의 Jaeger JSON·OTLP trace를 읽어 tool trajectory matching·LLM judge·custom scorer 적용 — LLM 재호출·re-execution 없이 golden eval set 대비 pass/fail. CLI·Web UI·MCP server·Helm chart, local-first(클라우드 불필요). Langfuse/Opik(dataset re-run eval)과 달리 recorded trace scoring — OpenLLMetry(instrumentation) + GenAI semconv(spec) + agentevals(CI gate) 3층.
+  points:
+  - OTel trace scoring — re-execution·extra token 없이 eval
+  - Golden eval set·custom scorer·CLI/Web UI/MCP
+  - Opik/Langfuse re-run vs trace-only — CI gate·local-first
+  source: https://github.com/agentevals-dev/agentevals
+- category: ai
+  title: τ-bench (tau2-bench) — policy compliance·Pass^k로 고객상담 에이전트 재기
+  summary: τ-bench(Sierra Research, ICLR 2025)는 airline·retail·telecom·banking_knowledge 도메인에서 tool use·simulated user 대화·business policy 동시 준수를 재는 customer service agent benchmark다. DB end-state vs goal state deterministic eval, Pass^k( k회 모두 성공)로 consistency 측정 — GPT-4o급도 retail <50%·pass^8 <25%. τ²-bench dual-control(에이전트·유저 모두 tool), τ³ voice full-duplex·75+ task quality fix. AgentBench(다도메인) ·SWE-bench(코드)와 달리 policy document + API tool + multi-turn user simulator 3축.
+  points:
+  - Airline/retail/telecom/banking, policy+tool+user simulator
+  - Pass^k consistency — pass@k(lucky 1회)와 구분
+  - SWE-bench/AgentBench와 역할 분리 — policy compliance·CS domain
+  source: https://github.com/sierra-research/tau2-bench
+- category: ai
+  title: NIST AI RMF + GAI Profile (600-1) — GenAI 12대 리스크 거버넌스 프레임
+  summary: NIST AI RMF 1.0(2023)은 Govern·Map·Measure·Manage 4함수 voluntary framework, GAI Profile NIST AI 600-1(2024-07)은 GenAI 고유·악화 12 risk category(confabulation·data privacy·IP·CBRN 등)와 Action ID(GV-1.1-001 등) suggested actions. Playbook·Roadmap·Crosswalk 동반, 2026 Critical Infrastructure Profile concept note 추가. OWASP LLM Top 10(개발자 취약점) ·ISO 42001(경영시스템 인증)과 달리 cross-sector risk management operating model — EU AI Act·enterprise procurement에서 voluntary baseline.
+  points:
+  - AI RMF 1.0 4함수 + 600-1 GAI 12 risk·Action ID
+  - Playbook·Roadmap — voluntary, cross-sector
+  - OWASP LLM Top 10(취약점) ·ISO 42001(인증)과 역할 분리
+  source: https://www.nist.gov/itl/ai-risk-management-framework
+- category: ai
+  title: Copilot Autofix — CodeQL alert를 LLM 패치+설명으로 자동 번역
+  summary: GitHub Copilot Autofix는 CodeQL code scanning alert를 LLM(GPT-5.3-Codex)이 actionable code change+natural language explanation으로 변환한다. CodeQL 활성화만으로 기본 on, Copilot 구독 불필요(public·Code Security license). SARIF alert data·surrounding code·query help text 입력, Copilot Workspace에서 PR 내 edit·build·test 검증. 2025-10 code scanning alert→Copilot coding agent bulk assignment, 2026-03 Autofix stats가 all protected branches 집계. claude-code-security-review(diff 인지)·Open Code Review(Alibaba CLI)와 달리 CodeQL-native autofix — Dependabot version bump와 complementary.
+  points:
+  - CodeQL alert→패치+설명, Copilot 구독 불필요
+  - Copilot Workspace PR 내 검증·build·test
+  - Code review AI와 역할 분리 — CodeQL-native remediation
+  source: https://docs.github.com/en/code-security/concepts/code-scanning/copilot-autofix-for-code-scanning
+- category: ai
+  title: Dependabot + AI Agents — breaking change·malware remediation을 에이전트에 위임
+  summary: GitHub 2026-04 Dependabot alert detail에서 Assign to Agent(Copilot·Claude·Codex)로 advisory·dependency usage 분석 후 draft PR 생성·test failure 수정 시도. Dependabot security update(버전 bump PR)로 안 되는 major breaking change·compromised package downgrade·multi-file fix가 대상. 2026-03 npm malware alerting(opt-in·CVE와 별도 subcategory·OpenSSF Malware Streams 확장 예정). Code Security + Copilot coding agent plan 필요, AI patch는 반드시 review·test 후 merge. Copilot Autofix(CodeQL)·Dependabot bump(규칙 기반) 3단계 remediation stack.
+  points:
+  - Assign to Agent — breaking change·downgrade·complex fix
+  - npm malware alerting — CVE alert와 별도 triage
+  - Autofix(CodeQL)·Dependabot bump와 3단계 stack
+  source: https://github.blog/changelog/2026-04-07-dependabot-alerts-are-now-assignable-to-ai-agents-for-remediation/
+- category: ai
+  title: CSA Agentic MCP Security — OAuth 2.1·tool-level scope·description monitoring
+  summary: Cloud Security Alliance Agentic MCP Security Best Practices v1(2025-11 spec 2025-11-25)는 MCP adoption이 governance를 앞지른 attack surface를 다룬다. Remote MCP는 OAuth 2.1+PKCE mandatory, RFC 8414 metadata discovery(CVE-2025-6514 root cause), tool-level scope(least privilege), DPoP·token rotation·HITL destructive action. Invariant mcp-scan pre-commit·tool description drift monitoring. arXiv MCP 클라이언트 7종 비교(구조 취약) ·Copilot MCP policy(allowlist)와 달리 operational best practices guide — OAuth on MCP(RFC 9728 Protected Resource Metadata) 구현 체크리스트.
+  points:
+  - OAuth 2.1·PKCE·RFC 8414 discovery·tool-level scope
+  - mcp-scan pre-commit·description drift monitoring
+  - 학술 MCP 비교·Copilot policy와 역할 분리 — 운영 가이드
+  source: https://labs.cloudsecurityalliance.org/agentic/agentic-mcp-security-best-practices-v1/
+- category: ai
+  title: CycloneDX ML-BOM vs SPDX AI Profile — AI supply chain SBOM 2축
+  summary: '2026 AI-BOM 표준은 CycloneDX 1.5+ ML-BOM(OWASP·mlModel·data component·VEX inline·security-first) vs SPDX 3.0 AI Profile(Linux Foundation·ISO 5962·licensing·provenance-first). 3-layer: model(weights hash·format)·supply chain(training data·base model·runtime)·operational(model card·eval·limitations). CycloneDX 1.7 ML-BOM을 regular SBOM에 embed 가능, Sigstore signing. EU AI Act Annex IV·NIST AI RMF Map 4.x·ISO 42001 Clause 8 regulatory expectation — build-time generate·sign·mirror. Syft·CycloneDX CLI·HF model card export adjacent tooling.'
+  points:
+  - CycloneDX ML-BOM — security·CI/CD·mlModel component
+  - SPDX 3.0 AI Profile — licensing·provenance·ISO 5962
+  - model·supply chain·operational 3-layer, dual format converter
+  source: https://cyclonedx.org/capabilities/mlbom/
+- category: ai
+  title: Fairlearn vs AIF360 — ML bias detection·mitigation 2축
+  summary: Fairlearn(Microsoft) vs AIF360(IBM Trusted-AI)는 ML fairness assessment·mitigation OSS 2대 toolkit. Fairlearn — scikit-learn 호환·demographic parity·equalized odds·MetricFrame dashboard·Hardt/Agarwal mitigation, binary classification에 curated·사용 쉬움. AIF360 — 70+ fairness metric·pre/in/post-processing(Adversarial Debiasing·Calibrated Equalized Odds·Reject Option)·multi-class·German/COMPAS built-in dataset, breadth↑ learning curve↑. SHAP/LIME(explainability) ·Evidently(drift)와 달리 group fairness — EU AI Act high-risk·FCRA adverse action notice compliance pipeline.
+  points:
+  - Fairlearn — sklearn·MetricFrame·curated mitigation·쉬운 시작
+  - AIF360 — 70+ metric·pre/in/post-processing·multi-class
+  - SHAP/Evidently와 역할 분리 — group fairness·mitigation
+  source: https://fairlearn.org/
+- category: ai
+  title: SHAP vs LIME — ML explainability TreeSHAP·KernelSHAP·local surrogate 2축
+  summary: 'SHAP(Shapley value·local accuracy·missingness·consistency axiom) vs LIME(local linear surrogate·model-agnostic·run-to-run variance). TreeSHAP — XGBoost/LightGBM/RF exact·polynomial time; KernelSHAP — universal but slow; LIME — 3× faster·69% consistency vs TreeSHAP 98%. EU AI Act Art.13 high-risk transparency·FCRA adverse action notice에서 SHAP preferred(audit trail). Production hybrid: TreeSHAP global analysis + LIME fast local sketch, odd LIME→SHAP cross-check. Fairlearn(group fairness) ·LLM explainability(RAGAS)와 달리 tabular·tree ML feature attribution.'
+  points:
+  - TreeSHAP — tree exact·fast; KernelSHAP — universal·slow
+  - LIME — model-agnostic·fast·unstable(69% consistency)
+  - Fairlearn/RAGAS와 역할 분리 — tabular feature attribution·regulatory audit
+  source: https://shap.readthedocs.io/

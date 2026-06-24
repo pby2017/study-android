@@ -1924,3 +1924,66 @@ Refined:
 
 누적: 642카드 (633→632 병합→642 신규)
 주제: agent reasoning patterns(ReAct·Reflexion·LATS·Plan-and-Execute·Supervisor), structured generation(Guidance·LMQL), quantization(GPTQ·AWQ·BitsAndBytes), MLOps(Airflow AI·Triton Server·deployment topology), observability(GenAI OTel semconv), GGUF merge
+
+## 2026-06-25 02:00 KST — Batch 31 (아이디어 검증 + 병합 2카드 + 신규 11카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 11카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Inspect AI (UK AISI) | production agent eval — DeepEval(CI pytest)·RAGAS(RAG metric)와 sandbox·200+ benchmark·agent_bridge 독립 |
+| Claw-Eval | Pass^3·trajectory audit·Safety/Robustness — AgentBench(pass@k)·SWE-bench(코드)와 reliability-first 차별 |
+| agentevals | OTel trace scoring without re-execution — Langfuse/Opik dataset re-run vs CI golden-set gate 독립 |
+| τ-bench (tau2-bench) | policy+tool+user simulator CS domain — AgentBench(다도메인)·SWE-bench(코드)와 Pass^k compliance |
+| NIST AI RMF + GAI Profile | cross-sector governance operating model — OWASP LLM Top 10(취약점)·ISO 42001(인증)과 역할 분리 |
+| Copilot Autofix | CodeQL-native LLM patch — claude-code-security-review·Open Code Review와 remediation 경로 차별 |
+| Dependabot + AI Agents | breaking change·malware remediation handoff — Autofix(CodeQL)·Dependabot bump 3단계 stack |
+| CSA Agentic MCP Security | operational OAuth 2.1·tool-level scope guide — arXiv MCP 7종 비교(학술)·Copilot MCP policy와 분리 |
+| CycloneDX ML-BOM vs SPDX AI Profile | AI supply chain SBOM 2축 — HF Model Cards(문서)와 machine-readable inventory 분리 |
+| Fairlearn vs AIF360 | group fairness detection·mitigation — SHAP/LIME(feature attribution)과 역할 분리 |
+| SHAP vs LIME | tabular ML explainability 2축 — Fairlearn(group fairness)·LLM eval과 독립, EU AI Act audit |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Agenticevals | Claw-Eval·Inspect AI·agentevals 3축으로 trajectory eval 커버 |
+| ISO 42001 단독 | Augment Code 카드 ISO 42001 언급, NIST AI RMF governance 카드로 프레임 커버 |
+| NIST SP 800-218A SSDF GAI | NIST AI RMF·OWASP·CSA MCP와 niche overlap, 11카드 충분 |
+| OpenAgentBench | Claw-Eval·τ-bench와 agent eval 벤치마크 중복 |
+| AI pair programming research | 실무 독립 카드 가치 낮음, IDE 비교 회피 목록 |
+| Braintrust/DeepEval/promptfoo 단독 | 기존 카드 존재 |
+| SWE-agent/mini-SWE-agent | 기존 카드 존재 |
+| Garak/PyRIT | Batch 27·기존 카드 존재 |
+| llms.txt/Mintlify | 기존 카드 존재 |
+| Windsurf/Devin/Tabnine IDE 비교 | 회피 목록(Batch 18~30) |
+| AI PR description generators | PR-Agent·Copilot Chronicle 기존 커버 |
+| Responsible AI tooling 일반 | Fairlearn·NIST RMF 카드로 구체화 |
+
+### 병합 (2카드 제거, 642→640)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Codex Security artifacts | Codex Security — threat model·격리 검증·SARIF export까지 AI 보안 자동화 파이프라인 |
+| Arize Phoenix | Langfuse vs LangSmith vs Phoenix — OpenInference·phoenix-evals·RAG drift 상세 통합 |
+
+### 신규 11카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Inspect AI (UK AISI) — sandbox·agent eval·200+ 벤치마크 | inspect.aisi.org.uk |
+| 2 | Claw-Eval — Pass^3·trajectory audit | github.com/claw-eval/claw-eval |
+| 3 | agentevals — OTel trace CI gate | github.com/agentevals-dev/agentevals |
+| 4 | τ-bench (tau2-bench) — policy compliance·Pass^k | github.com/sierra-research/tau2-bench |
+| 5 | NIST AI RMF + GAI Profile (600-1) | nist.gov/itl/ai-risk-management-framework |
+| 6 | Copilot Autofix — CodeQL alert LLM 패치 | docs.github.com |
+| 7 | Dependabot + AI Agents — breaking change remediation | github.blog/changelog |
+| 8 | CSA Agentic MCP Security | labs.cloudsecurityalliance.org |
+| 9 | CycloneDX ML-BOM vs SPDX AI Profile | cyclonedx.org |
+| 10 | Fairlearn vs AIF360 — bias detection 2축 | fairlearn.org |
+| 11 | SHAP vs LIME — ML explainability 2축 | shap.readthedocs.io |
+
+누적: 651카드 (642→640 병합→651 신규)
+주제: agent evaluation(Inspect·Claw-Eval·agentevals·τ-bench), AI governance(NIST RMF GAI), DevSecOps AI(Copilot Autofix·Dependabot agents), MCP security(CSA guide), ML supply chain(CycloneDX·SPDX AI-BOM), responsible AI(Fairlearn·AIF360·SHAP·LIME), Codex Security·Phoenix merge
