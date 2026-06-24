@@ -1452,3 +1452,60 @@ Refined:
 
 누적: 575카드 (572→565 병합→575 신규)
 주제: codebase search AI(Cody), GitHub-native auto-PR(Sweep), enterprise on-prem AI(Tabnine), durable agent infra(Temporal), embedded vector DB(Chroma), lake-native vector(Milvus), developer memory(Pieces), free AI IDE(Trae), cross-provider tool use, static benchmark saturation
+
+## 2026-06-24 23:30 KST — Batch 23 (아이디어 검증 + 병합 4카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| Mojo | AI 네이티브 언어·1.0 beta·Python interop — 기존 카드 없음, GPU 커널/HPC 실무 가치 |
+| Haystack | deepset 프로덕션 RAG·YAML 파이프라인·내장 평가 — LlamaIndex(데이터)와 역할 분리 |
+| Chainlit | LLM 앱 UI·@cl.step 중간과정 시각화 — Gradio(데모/API)와 용도 차별 |
+| OpenAI Triton | GPU 커널 DSL·Blackwell Tile IR — Unsloth 등 'Triton 언급'과 독립 주제 |
+| TensorRT-LLM | NVIDIA LLM 추론·AutoDeploy·FP4 — vLLM·NIM 카드와 HW 특화 레이어 분리 |
+| ONNX Runtime GenAI | 크로스플랫폼 GenAI 루프·Foundry Local — LiteRT(TFLite)와 ONNX 경로 분리 |
+| DVC | Git for Data·ML 파이프라인 DAG — MLflow(실험 추적)와 역할 분리 |
+| Gradio 5 | ML 데모·SSR·MCP — Chainlit과 용도 분리, v5 프로덕션 특화 |
+| Ray Serve LLM | 멀티노드 PD 분리·GKE 5x — BentoML(단일 노드)과 분산 레이어 분리 |
+| Hugging Face TGI | maintenance mode·vLLM 이주 — vLLM 카드와 '레거시·마이그레이션' 관점 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Streamlit + AI | Gradio 5·Chainlit과 ML UI 중복, 차별화 부족 |
+| BentoML | 기존 카드 존재 |
+| Label Studio | 기존 카드 존재 |
+| MLflow 3.0 | 기존 MLflow 카드 커버 |
+| Anthropic Prompt Caching 심화 | '프롬프트 캐싱 2026' 카드 존재 |
+| Martian·Unify LLM 라우팅 | LiteLLM·OpenRouter 카드 존재 |
+| GPT Migrate | 니치·영향력 낮음 |
+| AI 에이전트 Prompt Injection 방어 | '코딩 에이전트 프롬프트 인젝션 방어'·NeMo Guardrails 존재 |
+
+### 병합 (4카드 제거, Batch 22 잔존 중복 정리)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Factory droid (2번째) | Factory droid — Terminal-Bench·Mission·Custom Droid 통합 |
+| Playwright CLI + MCP (2번째) | Playwright CLI + MCP — 2종 브라우저 인터페이스 통합 |
+| Roo Code → Zoo Code로 부활 | Roo Code → Zoo Code archive·포크 생존 통합 |
+| AWS Kiro | Kiro(AWS) — 스펙 3단계·Autonomous Agent·cc-sdd 통합 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Mojo — Python 문법·C++ 속도의 AI 네이티브 언어 | mojolang.org |
+| 2 | Haystack — deepset 프로덕션 RAG·에이전트 오케스트레이션 | haystack.deepset.ai |
+| 3 | Chainlit — Python만으로 ChatGPT급 LLM 앱 UI | github.com/Chainlit |
+| 4 | OpenAI Triton — Python DSL GPU 커널·Blackwell Tile IR | github.com/triton-lang |
+| 5 | TensorRT-LLM — NVIDIA LLM 추론·AutoDeploy | nvidia.github.io/TensorRT-LLM |
+| 6 | ONNX Runtime GenAI — 크로스플랫폼 GenAI 추론 | onnxruntime.ai |
+| 7 | DVC — Git for Data·ML 파이프라인 버전 관리 | dvc.org |
+| 8 | Gradio 5 — ML 데모·API·SSR·MCP | huggingface.co/blog/gradio-5 |
+| 9 | Ray Serve LLM — 멀티노드 LLM 분산 서빙 | docs.ray.io |
+| 10 | Hugging Face TGI — maintenance mode·vLLM 이주 | huggingface.co/docs |
+
+누적: 581카드 (575→571 병합→581 신규)
+주제: AI-native language(Mojo), production RAG(Haystack), LLM app UI(Chainlit), GPU kernels(Triton), NVIDIA inference(TensorRT-LLM), cross-platform GenAI(ONNX Runtime), ML data versioning(DVC), ML demo UI(Gradio 5), distributed LLM serving(Ray Serve), legacy TGI migration
