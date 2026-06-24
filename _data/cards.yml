@@ -771,16 +771,6 @@ cards:
   - 서브에이전트 = 별도 컨텍스트 창에서 도는 전문 일꾼. 직접 system prompt를 작성하는 대신 검증된 역할 정의를 가져다 쓰는 게 핵심 이점
   source: https://github.com/VoltAgent/awesome-claude-code-subagents
 - category: ai
-  title: Cursor 공식 에이전트 활용법 — 한 프롬프트를 여러 모델에 동시에 던지고 제일 나은 답을 고르기
-  summary: 'Cursor가 공식 블로그에 정리한 ''에이전트로 코딩하는 베스트 프랙티스''다. 가장 임팩트 큰 변화로 꼽는 건 ''코드부터 짜지 말고 계획부터'' — 숙련 개발자일수록 생성 전에 플랜을 먼저 만든다고 본다. Plan Mode(Shift+Tab)로 에이전트가 코드를 조사하고 질문한 뒤 승인 대기하는 계획을 세우게 하고, 그 플랜은 .cursor/plans/에 저장해 둔다. 병렬 작업에서는 워크트리로 각 에이전트의 파일을 격리하고, 같은 프롬프트를 여러 모델에 동시에 돌려 가장 좋은 결과를 고르게 하는 패턴을 권한다.
-
-    '
-  points:
-  - '계획 우선: Plan Mode(Shift+Tab)로 조사→질문→승인 대기 계획을 만들고 .cursor/plans/에 저장. Cursor는 ''계획을 먼저 세우는 것''을 가장 임팩트 큰 변화로 꼽음 — 막 코드부터 짜는 대신 큰 변경엔 아키텍처 다이어그램까지 붙이라고 권장'
-  - '여러 모델 동시 실행: 같은 프롬프트를 여러 모델에 한 번에 돌리고 Cursor가 가장 나은 결과를 제안 — ''경쟁시켜 최종 출력 품질을 높이는'' 패턴. 병렬 에이전트는 네이티브 워크트리로 파일 충돌 없이 격리'
-  - '그 외: 잘못 들어가면 @Branch로 컨텍스트 되돌리기, 백로그성 작업은 클라우드 에이전트(@Cursor)로 원격 샌드박스 실행, Debug Mode는 가설→로깅→런타임 데이터 수집으로 레이스컨디션·성능·회귀에 강함'
-  source: https://cursor.com/blog/agent-best-practices
-- category: ai
   title: 대형 코드베이스에서 Claude Code — CLAUDE.md를 루트가 아니라 하위 디렉터리에 두라
   summary: 'Anthropic이 모노레포·레거시·마이크로서비스 같은 대형 코드베이스 운영 패턴을 공식 정리했다. Claude Code는 인덱스(RAG/임베딩) 없이 파일을 직접 traverse하고 grep하는 ''에이전틱 검색''으로 도므로, ''어디를 봐야 할지'' 알려 주는 시작 컨텍스트의 품질이 성능을 좌우한다. 가장 실용적인 조언은 CLAUDE.md를 레포 루트에 몰아넣지 말고 하위 디렉터리에 두라는 것 — Claude가 현재 위치에서 디렉터리 트리를 거슬러 올라가며 만나는 모든 CLAUDE.md를 누적해 읽기 때문에 루트 컨텍스트는 사라지지 않는다. 또 모델이 바뀌면 옛 지침이 새 모델을 오히려 방해할 수 있어 주기적으로 설정을 재검토하라고 권한다.
 
@@ -1668,16 +1658,6 @@ cards:
   - cc-sdd로 Kiro 워크플로를 다른 코딩 에이전트에 이식 — 큰 기능에만 스펙 오버헤드 투자
   source: https://kiro.dev/docs
 - category: ai
-  title: Cursor 2.0 — 'git 워크트리'로 에이전트 여러 개를 동시에·충돌 없이 돌리고 '제일 잘한 놈'을 고르는 IDE
-  summary: 'Cursor 2.0(2025-10-29)은 인터페이스를 ''파일 중심''에서 ''에이전트 중심''으로 갈아엎고, 에이전트 여러 개를 동시에 돌리는 멀티 에이전트를 핵심으로 내세웠다. 여러 에이전트가 서로 충돌하지 않는 비결은 ''git 워크트리(또는 원격 머신)''로 작업 공간을 격리하는 것 — 같은 레포에서 여러 시도가 병렬로 돈다. Cursor는 "여러 모델이 같은 문제를 풀게 한 뒤 결과가 제일 좋은 걸 고르면" 특히 어려운 작업의 품질이 크게 오른다는 걸 발견했다고 밝혔다. 에이전트 사용이 늘며 생긴 새 병목 — 코드 리뷰와 테스트 — 을 위해 변경 검토를 빠르게 하는 UI와, 에이전트가 자기 결과를 직접 테스트하는 네이티브 브라우저 도구도 같이 넣었다.
-
-    '
-  points:
-  - '병렬 격리 메커니즘: 동시에 도는 에이전트들이 충돌 안 나는 건 ''git worktrees 또는 원격 머신''으로 작업 공간을 분리하기 때문 — Conductor·claude --worktree와 같은 발상을 IDE에 기본 내장'
-  - '''best-of-N'' 패턴: 여러 모델이 같은 문제를 동시에 풀고 그중 최선을 채택 → 어려운 작업일수록 품질↑(Cursor 공식 주장). 자체 모델 Composer는 대부분 턴을 ''30초 미만''에 끝내는 저지연 에이전트 코딩용이라고 소개'
-  - '새 병목=리뷰+테스트: 에이전트가 짠 코드를 빠르게 검토하는 UI와, 에이전트가 직접 브라우저로 자기 결과를 테스트·반복하는 네이티브 도구를 같이 탑재. 깊은 코드 작업엔 ''클래식 IDE''로 토글 가능'
-  source: https://cursor.com/blog/2-0
-- category: ai
   title: Amp(Sourcegraph) — '토큰 아끼지 마라'를 철학으로 내건, 스레드·서브에이전트·Oracle로 미는 프런티어 코딩 에이전트
   summary: 'Amp는 Sourcegraph가 만든 터미널·에디터용 코딩 에이전트로, "프런티어 모델과 그다음에 올 것을 위해 만든 에이전트"를 표방한다. 설계 철학이 다른 도구와 갈리는데, 토큰을 아끼려 컨텍스트를 깎기보다 ''제약 없이'' 쓰는 쪽에 무게를 둔다 — 작업 품질을 위해 토큰 비용을 감수한다는 입장이다. 작업 단위는 ''스레드(Thread)''로, 대화·작업 맥락이 영속 저장돼 살아있는 메모리이자 팀 협업·공유 수단이 된다(스레드 포킹으로 대안 시도도 가능). 서브에이전트는 전문 작업을 떼어 맡고 메인 스레드에 결과를 보고하며, 읽기·검색·진단 같은 독립 작업은 기본적으로 병렬로 돌린다(같은 파일·공유 계약을 건드리는 쓰기만 직렬화). ''Oracle''이라는 별도 도구로 더 강한 추론 모델에 어려운 분석을 위임할 수 있고, AGENT.md 파일로 규칙·제약을 코드베이스에 박아 둔다.
 
@@ -1927,16 +1907,6 @@ cards:
   - 실무 교훈 — 'AI가 짰으니 리뷰 덜 해도 된다'는 정반대. AI 코드일수록 자동 코드리뷰(claude-code-security-review·Bugbot·/code-review 등)와 테스트 게이트를 PR 단계에 강제하라
   - 측정 — ROI를 보려면 'AI 작성 코드 비율 / PR당 결함 수 / 보안 발견 수'를 같이 추적. 도입률만 보면 품질 꼬리(review tail)가 숨는다. 단일 벤더 수치이니 사내 데이터로 교차검증
   source: https://www.businesswire.com/news/home/20251217666881/en/CodeRabbits-State-of-AI-vs-Human-Code-Generation-Report-Finds-That-AI-Written-Code-Produces-1.7x-More-Issues-Than-Human-Code
-- category: ai
-  title: Cursor 3 'Glass'(2026-04-02) — 사이드 'Composer'를 접고, 로컬·worktree·클라우드·SSH 에이전트를 한 'Agents Window'에서 병렬로 돌리는 IDE
-  summary: 'Cursor가 2026년 4월 2일 내놓은 3.0(''Glass'')은 모델이 아니라 ''IDE의 모양''을 바꾼 릴리스다. 2024년부터 Cursor를 정의하던 사이드 패널 Composer 대신, 에이전트를 1급 시민으로 두는 별도 표면 ''Agents Window''가 중심이 됐다. 공식 체인지로그에 따르면 Agents Window(Cmd+Shift+P → Agents Window)는 에이전트 여러 개를 "로컬·git worktree·클라우드·원격 SSH"에서 동시에 돌릴 수 있고, 기존 에디터로 되돌아가거나 둘을 같이 켤 수도 있다. 실무 핵심은 두 슬래시 커맨드다. /worktree는 변경을 격리하는 별도 worktree를 만들고, /best-of-n은 같은 작업을 여러 모델에 각자 worktree로 병렬 시켜 결과를 비교한다. 에디터 안의 기존 worktree/best-of-n 선택 UI는 폐기됐고, 클라우드 에이전트는 에디터에서 빠져 Agents Window로 옮겨졌다. 브라우저 UI 요소를 집어 에이전트에 피드백하는 Design Mode(⌘+Shift+D), 백그라운드 작업 완료를 기다리는 Await 도구도 함께 들어왔다.
-
-    '
-  points:
-  - 구조 변화 — 사이드 패널 Composer(UI) → Agents Window(병렬 에이전트 표면). 단 in-house 코딩 모델 'Composer 2'는 그대로 남음(UI 이름과 모델 이름을 구분할 것)
-  - 병렬 격리 — /worktree로 변경 격리, /best-of-n으로 한 작업을 여러 모델·각자 worktree에 돌려 'best one' 고르기. 클라우드 에이전트는 이제 Agents Window 전용
-  - 도입 — 기존 구독자 무료 업데이트, Agents Window·Composer 2·worktree는 Pro/Pro+/Ultra/Teams에서 제공(가격·플랜 범위는 Cursor 공지 기준)
-  source: https://cursor.com/changelog/3-0
 - category: ai
   title: GitHub Copilot, 정액제를 버리다 — 2026-06-01부터 'AI 크레딧' 사용량 과금으로 전환
   summary: 'GitHub가 2026-06-01부터 Copilot 전 요금제를 ''프리미엄 리퀘스트 수''가 아니라 ''소비한 토큰(=AI 크레딧)'' 기반 사용량 과금으로 바꿨다. 모델과 입력·출력·캐시 토큰 양에 따라 비용이 매겨지고, 각 요금제에는 월 크레딧 할당량이 포함되며 초과분은 예산을 걸어 추가 구매한다. 고정 구독료는 그대로지만 ''측정 단위''가 바뀐 셈이라, 에이전트 워크플로를 많이 돌리는 헤비 유저의 청구서가 출렁일 수 있다는 우려가 컸다(공식 디스커션에 400+ 댓글). 헤비 워크플로용 상위 ''Copilot Max'' 티어도 신설됐고, 코드 리뷰는 크레딧에 더해 Actions 분까지 소비하게 됐다.
@@ -3822,16 +3792,6 @@ cards:
   - WebContainers 기반이라 로컬 환경 설정 없이 브라우저에서 전 과정 수행
   source: https://github.com/stackblitz/bolt.new
 - category: ai
-  title: Samsung Codex 배포 — 코딩 에이전트도 전사 보안 정책 안에서 굴려야 한다
-  summary: 'OpenAI는 2026년 6월 21일 Samsung Electronics가 한국 전 임직원과 전 세계 DX(Device eXperience) 부문 직원에게 ChatGPT Enterprise와 Codex를 제공한다고 발표했다. 포인트는 "대기업도 Codex를 쓴다"가 아니라, 코딩 에이전트가 R&D·제조·마케팅·사내 도구 자동화까지 넓어질 때 데이터 보호, 사용자·접근 관리, 보안 통제 같은 엔터프라이즈 경계가 먼저 필요하다는 점이다. Codex 주간 활성 사용자는 500만 명을 넘었고, 한국 주간 활성 사용자는 2026년 2월 1일 이후 약 800% 증가했다고 OpenAI는 밝혔다.
-
-    '
-  points:
-  - 한국 전 임직원 + 전 세계 DX 부문에 ChatGPT Enterprise·Codex 제공
-  - Codex는 코드 작성·리뷰·디버깅뿐 아니라 사내 도구·웹사이트·워크플로 자동화에 사용
-  - 전사 배포의 핵심은 모델 성능보다 데이터 보호·접근 관리·보안 정책
-  source: https://openai.com/index/samsung-electronics-chatgpt-codex-deployment/
-- category: ai
   title: OpenAI on OCI — 모델 도입은 API 키보다 구매 경로가 막는다
   summary: 'OpenAI와 Oracle은 2026년 6월 10일 Oracle Cloud Infrastructure 고객이 기존 Oracle Universal Credits를 OpenAI 모델과 Codex 접근에 적용할 수 있는 경로를 예고했다. 개발자에게 중요한 교육 포인트는 기술 통합보다 조달·거버넌스다. 기업 AI 에이전트 도입은 "어떤 SDK를 붙일까"보다 기존 클라우드 약정, 승인된 구매 프로세스, 비용 귀속, 보안 심사 안에서 모델과 Codex를 쓸 수 있는지가 먼저 병목이 된다. 자동화 계획에는 코드뿐 아니라 사용량 관측, 예산 주체, 클라우드 계약 경계도 포함해야 한다.
 
@@ -3925,16 +3885,6 @@ cards:
   - Claude·OpenAI·Ollama 등 OpenAI 호환 provider 지원, 기본 gpt-4o(claude 별칭 가능)
   - '실험적 --visual: 렌더 결과를 스크린샷과 비교해 디자인 매칭(Anthropic 키 필요)'
   source: https://github.com/BuilderIO/micro-agent
-- category: ai
-  title: Codex 지식작업 확장 — 코딩 에이전트도 사내 도구 제작대로 바뀐다
-  summary: 'OpenAI는 2026년 6월 Codex가 주간 활성 사용자 500만 명을 넘었고, 비개발 지식작업자가 사용자 중 약 20%를 차지하며 개발자보다 3배 이상 빠르게 늘고 있다고 밝혔다. 핵심은 "코딩 도구가 개발자 밖으로 퍼졌다"가 아니라, 리서치·데이터 분석·보고서·스프레드시트·계약서·가벼운 내부 도구 제작이 같은 에이전트 실행 환경으로 들어온다는 점이다. 개발자는 이제 앱 기능만이 아니라, 반복 업무를 코드·파일·도구 호출이 섞인 작은 자동화로 바꾸는 운영자다.
-
-    '
-  points:
-  - Codex 주간 활성 사용자 500만+
-  - 비개발 지식작업자 약 20%, 개발자보다 3배 이상 빠르게 성장
-  - 리서치·분석·문서·내부 도구 제작이 같은 에이전트 워크스페이스로 이동
-  source: https://openai.com/index/codex-for-knowledge-work/
 - category: ai
   title: Copilot CLI 에이전트 피커 — 실행 전에 모드를 고르는 것이 안전장치다
   summary: 'GitHub의 2026년 6월 JetBrains Copilot 업데이트는 CLI 세션에 agent picker를 넣었다. 사용자는 Agent mode, Ask mode, Custom agents, Plan mode 중에서 작업 성격에 맞는 모드를 고른다. 같은 릴리스에는 `/remote`, `/compact`, `/chronicle`, Agent Debug Panel도 들어갔다. 교육 포인트는 코딩 에이전트 운영을 "항상 자동 실행"으로 두지 않는 것이다. 질문, 계획, 구현, 맞춤 역할, 원격 제어, 로그 관찰을 분리해야 비용·안전·디버깅 경계가 선명해진다.
@@ -6430,3 +6380,99 @@ cards:
   - 'multi-pass: tool collapse→summarize→truncate — 60% budget에서 proactive'
   - Frequent Intentional Compaction(workflow) ·/context(diagnosis)과 역할 분리
   source: https://arxiv.org/html/2508.21433v1
+- category: ai
+  title: Codex enterprise 확장 — Samsung 전사 배포·지식작업 20%·500만 WAU(2026-06)
+  summary: OpenAI는 2026년 6월 Codex가 주간 활성 사용자 500만 명을 넘었고, 비개발 지식작업자가 약 20%를 차지하며 개발자보다 3배 빠르게 성장한다고 밝혔다. 같은 달 Samsung Electronics는 한국 전 임직원과 전 세계 DX 부문에 ChatGPT Enterprise·Codex를 제공한다고 발표했다. 핵심은 "대기업도 Codex를 쓴다"가 아니라, 코딩 에이전트가 R&D·제조·마케팅·사내 도구 자동화·리서치·분석·문서까지 넓어질 때 데이터 보호·접근 관리·보안 통제 같은 엔터프라이즈 경계가 먼저 필요하다는 점이다. 한국 주간 활성 사용자는 2026년 2월 1일 이후 약 800% 증가했다고 OpenAI는 밝혔다.
+  points:
+  - Samsung — 한국 전 임직원 + DX 부문 ChatGPT Enterprise·Codex, 데이터 보호·접근 관리·보안 정책이 전사 배포 핵심
+  - 500만+ WAU — 비개발 지식작업 20%, 개발자보다 3배 성장, 리서치·분석·문서·내부 도구가 같은 워크스페이스로
+  - 백그라운드 코딩 에이전트 카드와 역할 분리 — 이 카드는 enterprise adoption·비개발 확장 트렌드
+  source: https://openai.com/index/codex-for-knowledge-work/
+- category: ai
+  title: Cursor 병렬 에이전트 — git worktree→Agents Window·/best-of-n·Plan Mode(2.0→3.0)
+  summary: Cursor는 2025-10 2.0에서 git worktree로 에이전트 병렬 격리·best-of-N을 내세웠고, 2026-04 3.0(Glass)은 사이드 Composer를 접고 Agents Window(Cmd+Shift+P)로 로컬·worktree·클라우드·SSH 에이전트를 한 표면에서 돌린다. /worktree로 변경 격리, /best-of-n으로 같은 작업을 여러 모델·각자 worktree에 병렬 시켜 최선을 고른다. 공식 베스트 프랙티스는 Plan Mode(Shift+Tab)로 조사→질문→승인 대기 계획을 .cursor/plans/에 저장한 뒤 실행하고, 같은 프롬프트를 여러 모델에 동시에 돌려 품질을 높이는 패턴을 권한다. Conductor·claude --worktree와 같은 worktree 격리 발상을 IDE에 기본 내장한 셈이다.
+  points:
+  - 2.0→3.0 — worktree 병렬 격리(2.0) → Agents Window·/worktree·/best-of-n(3.0), 클라우드 에이전트는 Agents Window 전용
+  - Plan Mode(Shift+Tab) — 코드 전 계획·.cursor/plans/ 저장, @Branch로 컨텍스트 되돌리기·Debug Mode 가설→로깅
+  - Cursor Composer 2.5(모델) ·Cursor Tab(자동완성)과 UI/모델 축 분리 — 이 카드는 병렬 에이전트 orchestration
+  source: https://cursor.com/changelog/3-0
+- category: ai
+  title: OpenAI Batch API — JSONL 50K건·50% 할인·동기 rate limit과 분리된 async pool
+  summary: OpenAI Batch API는 /v1/batches로 JSONL 파일(최대 50,000건·200MB)을 업로드해 chat/completions·embeddings·responses 등을 24시간 이내 비동기 처리한다. 표준 API 대비 50% 할인, enqueued prompt tokens·batch creation rate(2,000/h) 등 별도 rate limit pool — 동기 API quota를 소비하지 않는다. 대부분 1~6시간 내 완료(SLA 24h). 분류·요약·eval·embedding bulk·RAG 인덱싱처럼 latency-tolerant workload에 특화. LLM API 비용 최적화(FinOps 4층) 카드와 달리 OpenAI-native 구현·JSONL 포맷·status polling·webhook 패턴에 초점.
+  points:
+  - POST /v1/batches — input_file_id(JSONL, purpose=batch)·endpoint·completion_window=24h
+  - 50% 할인 + 별도 rate limit pool — 동기 TPM/RPM과 분리, prefix cache와 스택 가능
+  - LLM API 비용 최적화(generic FinOps) ·LCEL batch()와 역할 분리 — provider-native bulk job
+  source: https://developers.openai.com/api/docs/guides/batch
+- category: ai
+  title: Anthropic Message Batches API — 100K requests·50%·prompt cache 스택·29일 결과 보관
+  summary: Anthropic Message Batches API(POST /v1/messages/batches)는 Messages API 요청을 최대 100,000건(256MB)까지 한 번에 제출해 24시간 이내 비동기 처리한다. 입력·출력 토큰 모두 50% 할인, prompt caching과 할인이 스택(캐시 hit 30~98%는 best-effort). vision·tools·system prompt·caching 전부 지원. streaming·multi-turn tool loop는 batch entry 하나로 불가. 대부분 1시간 내 완료, 결과 29일간 다운로드 가능. OpenAI Batch API와 대칭이지만 Bedrock/Vertex 동일 API·cache stacking이 차별점.
+  points:
+  - client.messages.batches.create(requests=[{custom_id, params}]) — 50% off all models
+  - prompt caching + batch 50% 스택 — concurrent batch라 cache hit은 best-effort
+  - OpenAI Batch API ·LLM API 비용 최적화와 역할 분리 — Anthropic-native async bulk
+  source: https://platform.claude.com/docs/en/build-with-claude/batch-processing
+- category: ai
+  title: LakeFS for Agentic AI — zero-copy branch·agent sandbox·Git-for-data governance
+  summary: LakeFS는 object storage 위 Git-like data version control control plane으로, 2026년 Agentic AI용으로 agent별 zero-copy branch·pre-merge validation·immutable commit·agent identity/run ID attribution을 제공한다. 에이전트는 표준 file operation으로 branch-scoped credential workspace에 read/write — custom MCP/SDK 불필요. Parquet·Iceberg·Delta·PDF·이미지 등 structured/unstructured 통합 버전. DVC(Git+LFS artifact) ·Milvus External Collection(lake query)과 달리 "agent가 production data를 안전하게 변경"하는 merge gate·audit trail 레이어.
+  points:
+  - agent당 zero-copy branch — 실수 격리·seconds rollback·pre-merge hook(schema·row count)
+  - commit = immutable data version — debug/audit/replay에 exact input state 재현
+  - DVC(artifact versioning) ·Mem0(agent memory)와 역할 분리 — data layer governance
+  source: https://lakefs.io/blog/agentic-ai-will-make-or-break-on-the-data-layer-meet-lakefs-for-agentic-ai/
+- category: ai
+  title: Celery + Redis LLM Inference Queue — GPU worker pool·prefetch=1·broker/backend 분리
+  summary: Celery 5.4 + Redis 7.2는 LLM inference를 HTTP gateway에서 decouple하는 production queue 패턴이다. FastAPI가 job을 Redis list/stream에 push, GPU worker는 --pool=solo --concurrency=1 --prefetch=1로 모델 1개만 VRAM에 로드. task_acks_late=True + task_reject_on_worker_lost=True로 worker crash 시 재큐. broker(Redis Streams consumer group)와 result backend를 별도 Redis instance로 분리, result_expires=3600·allkeys-lru. CPU preprocessing queue와 GPU inference queue를 route 분리해 head-of-line blocking 방지. Temporal(durable workflow) ·W&B Launch(experiment queue)와 달리 Python-native inference decoupling.
+  points:
+  - GPU worker — concurrency=1·prefetch=1·CUDA_VISIBLE_DEVICES pin, gevent=I/O preprocessing
+  - Redis Streams > simple list — exactly-once·XACK·consumer group for retry traceability
+  - Temporal+AI(durable agent state) ·OpenAI Batch(async provider job)와 역할 분리
+  source: https://markaicode.com/architecture/celery-llm-architecture/
+- category: ai
+  title: KEDA + Redis LLM Autoscaling — queue depth ScaledObject·cold start vs minReplica=1
+  summary: KEDA 2.14 Redis scaler는 inference_queue listLength를 polling(15s)해 LLM worker Deployment replica를 1~N으로 autoscale한다. vLLM pending queue(Prometheus scaler) 또는 Redis BLPOP queue depth 중 signal 선택. GPU cold start(모델 load 60~90s+) 때문에 user-facing prod는 minReplicaCount=1 권장 — scale-to-zero는 dev/staging. Karpenter/GKE Cluster Autoscaler와 조합해 pending GPU pod→node provision(~2min). cooldownPeriod=300으로 scale-down thrashing 방지. Celery(queue consumer) ·AI deployment patterns(topology)와 달리 K8s event-driven autoscaling 구현.
+  points:
+  - 'ScaledObject redis trigger — listName·listLength(예: 5 items/pod)·activationListLength'
+  - minReplicaCount=1 for prod — cold start TTFT vs idle GPU cost trade-off, CronTrigger peak pre-warm
+  - Celery(worker app) ·Ray Serve(orchestrated serving)와 역 role — infra autoscaling layer
+  source: https://agentbus.sh/posts/how-to-autoscale-llm-inference-on-kubernetes/
+- category: ai
+  title: Runloop Devbox — microVM sandbox·Blueprint·suspend/resume·OpenAI Agents SDK native
+  summary: Runloop은 AI agent용 hardware-isolated microVM Devbox를 API-first로 제공한다. Blueprint(Dockerfile-as-code)·Snapshot(point-in-time fork)·Suspend-Resume(idle compute 절감·state 유지)·Network egress policy(per-Devbox allowlist)가 composable primitive. OpenAI Agents SDK native sandbox backend(2026-04) — Blaxel·Cloudflare·Daytona·E2B·Modal·Vercel과 BYO provider. Agent Gateway·MCP Hub로 credential을 devbox 밖에 두고 LLM·tool 접근. E2B(ephemeral microVM·~150ms) ·Daytona(persistent Docker·sub-90ms) ·Agents SDK Sandbox(generic manifest)와 역할 분리 — enterprise devbox·SOC2·10K+ parallel.
+  points:
+  - Devbox lifecycle — create→shell.exec→snapshot→suspend→resume→shutdown, Docker-in-Docker 지원
+  - OpenAI Agents SDK RunloopSandbox — cloud-native, local Docker 불필요, session serialize/rehydrate
+  - E2B(microVM ephemeral) ·Daytona(OCI persistent) ·Copilot Sandboxes(IDE)와 sandbox 축 분리
+  source: https://docs.runloop.ai/docs/tutorials/openai-agentssdk-runloop
+- category: ai
+  title: Daytona Sandbox — sub-90ms OCI·persistent agent workspace·GPU snapshot·Open SWE backend
+  summary: Daytona(daytonaio/daytona, AGPL-3.0·~71k★)는 AI agent용 secure elastic sandbox infrastructure다. OCI/Docker-compatible isolated VM, sub-90ms creation, unlimited persistence(auto_stop_interval), snapshot fork·GPU snapshot(daytona-gpu). File·Git·LSP·Execute API, per-sandbox network allowlist/block-all. Open SWE(LangChain)·pydantic-ai CompositeBackend의 cloud execution backend. E2B(Firecracker ephemeral microVM)와 대비 — Daytona=persistent composable computer·Docker daemon 불필요(cloud API key only), E2B=hardware isolation·ephemeral security execution.
+  points:
+  - daytona.create() — Python/TS/Ruby/Go SDK, pre-built snapshot(daytona-small/medium/large/gpu)
+  - Persistent state — package·filesystem·process across stop/start, Open SWE·CI/CD cloud agent backend
+  - E2B(microVM ephemeral) ·Runloop(suspend/resume enterprise) ·OpenHands(local Docker)와 역할 분리
+  source: https://www.daytona.io/docs/en/sandboxes/
+- category: ai
+  title: LLM Load Testing — TTFT·ITL·TPS·soak test, k6/Locust 한계와 LLM Locust·GenAI-Perf
+  summary: LLM load test는 HTTP latency가 아니라 TTFT(Time to First Token)·ITL(inter-token latency)·TPS(tokens/s)·cache warm/cold 분리·soak(4h+)가 핵심이다. k6(SSE·Grafana CI)와 Locust(GIL bottleneck on tokenization)는 LLM-native metric이 없어 total response time만 재면 "통과했지만 신호 없음". LLM Locust(TrueFoundry, Locust extension) — streaming TTFT/TPS native. NVIDIA GenAI-Perf — Triton/vLLM/NIM backend inference layer. vLLM bench — server canonical. production-representative prompt distribution(길이·multi-turn) 없으면 saturation 예측 실패. Meticulous(frontend E2E) ·Claw-Eval(agent eval)과 역할 분리 — inference throughput·latency SLO.
+  points:
+  - Metric — TTFT(user-perceived) ·ITL(stream consistency) ·TPS(GPU saturation) ·soak 4h+ for memory leak
+  - Tool — LLM Locust(streaming native) ·GenAI-Perf(self-host) ·k6+xk6-sse(infra layer) ·vLLM bench
+  - Meticulous(UI replay) ·Inspect AI(agent eval)와 역할 분리 — LLM serving capacity planning
+  source: https://valuestreamai.com/blog/load-testing-ai-applications-2026
+- category: ai
+  title: Delta Lake Catalog-Managed Tables — Unity Catalog commit·AI Gateway·Iceberg 정렬(4.1.0)
+  summary: Delta Lake 4.1.0 catalog-managed tables는 commit coordination을 filesystem→catalog(Unity Catalog 0.4.0)로 이동 — inline commit·faster query planning·multi-table transaction boundary. delta.feature.catalogManaged=supported로 opt-in. 2026 Databricks Unity AI Gateway — models·agents·tools·MCP runtime governance. Predictive optimization(AI-driven OPTIMIZE/VACUUM/ANALYZE) GA on managed tables. Iceberg v3·Managed Iceberg·multimodal FILE type(Beta). DVC(data artifact Git) ·LakeFS(agent branch) ·Milvus External Collection(vector on lake)와 달리 Delta+Unity=enterprise lakehouse catalog+AI governance stack.
+  points:
+  - Catalog commits — Unity Catalog = source of truth, skip cloud storage metadata latency
+  - Unity AI Gateway(2026) — model·agent·tool·MCP runtime governance on same catalog
+  - DVC ·LakeFS ·HuggingFace Datasets v5(Iceberg read)와 역할 분리 — Delta catalog-managed OLAP
+  source: https://delta.io/blog/2026-02-02-delta-catalog-managed-tables
+- category: ai
+  title: AI Pipeline Orchestration 비교 — Temporal·Prefect·Flyte·Dagster·Airflow·n8n 역할 분리(2026)
+  summary: '2026 AI pipeline orchestration은 "에이전트 프레임워크" vs "durable execution 인프라" vs "데이터 자산 DAG" 3층으로 나뉜다. Temporal — Workflow/Activity/Signal, OpenAI Agents SDK·Google ADK 공식 통합, CQRS durable execution 인프라. Prefect — Python @flow/@task, Pydantic AI PrefectAgent state recovery. Flyte 2 — pure Python asyncio agent runtime, self-healing checkpoint. Dagster — @asset 데이터 자산 1등 시민, dbt native. Airflow Common AI Provider — Pydantic AI HookToolset·350+ hook. n8n — 400+ integration 로우코드, LangChain AI node. 선택: agent state machine→Flyte/Temporal, Python ML team→Prefect/ZenML, data asset lineage→Dagster, hook ecosystem→Airflow, non-dev automation→n8n.'
+  points:
+  - Temporal/Prefect/Flyte — durable agent execution(retry·resume·human gate), framework 아님 infra
+  - Dagster/ZenML/Kubeflow — ML/data asset pipeline, agent fan-out budget limit
+  - n8n/Apache Airflow — integration breadth vs Python-native, 개별 카드와 이 카드=선택 framework
+  source: https://temporal.io/blog/from-agent-zoo-to-agent-orchestra-temporal-agentic-control-plane

@@ -2208,3 +2208,65 @@ Refined:
 
 누적: 678카드 (671→668 병합→678 신규)
 주제: agent tool design(MCP), HITL approval, graceful degradation, audit logging, session architecture, Zod validation, RAG chunking(semantic·parent-child), error handling, context compaction
+
+## 2026-06-25 23:30 KST — Batch 35 (아이디어 검증 + 병합 5카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 20개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| OpenAI Batch API | JSONL·별도 rate limit pool·provider-native 구현 — LLM API 비용 최적화(FinOps generic)와 implementation 분리 |
+| Anthropic Message Batches API | 100K·cache stack·29일 보관 — OpenAI Batch와 provider 대칭, Bedrock/Vertex 동일 API |
+| LakeFS for Agentic AI | zero-copy agent branch·pre-merge gate — DVC(artifact) ·Mem0(memory)와 data layer governance 분리 |
+| Celery + Redis LLM Queue | GPU prefetch=1·broker/backend 분리 — Temporal(durable workflow) ·W&B Launch와 inference decoupling 분리 |
+| KEDA + Redis LLM Autoscaling | queue depth ScaledObject·cold start trade-off — Celery(worker app) ·AI deployment patterns(topology)와 infra layer 분리 |
+| Runloop Devbox | microVM·suspend/resume·Agents SDK native — E2B(ephemeral) ·Daytona(persistent OCI)와 enterprise sandbox 축 분리 |
+| Daytona Sandbox | sub-90ms·persistent workspace·Open SWE backend — E2B 카드 mention만으로는 독립 implementation 가치 |
+| LLM Load Testing | TTFT/ITL/TPS·soak — Meticulous(frontend) ·Inspect AI(agent eval) ·Claw-Eval과 serving capacity 분리 |
+| Delta Lake Catalog-Managed Tables | Unity Catalog commit·AI Gateway — DVC ·LakeFS ·Milvus Iceberg와 lakehouse catalog governance 분리 |
+| AI Pipeline Orchestration 비교 | Temporal/Prefect/Flyte/Dagster/Airflow/n8n 역할 분리 — 개별 카드 존재하나 선택 framework 카드 가치 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Anthropic/OpenAI Batch API(generic) | OpenAI Batch ·Message Batches 카드에 통합 |
+| GPU cold start optimization 단독 | AI deployment patterns ·KEDA 카드에 cold start trade-off 포함 |
+| AI async processing patterns(generic) | Celery ·Batch API 카드 커버 |
+| Docker for AI agents(generic) | OpenHands ·Agent Zero ·Copilot Sandboxes 카드 존재 |
+| Modal sandbox for agents | Modal vs Baseten ·E2B ·Runloop ·Daytona 카드 커버 |
+| Computer Use / Mobilerun / Meticulous | 기존 카드 존재 |
+| Temporal+AI / Prefect+AI / Flyte 2 | 개별 카드 존재, orchestration 비교 카드에 통합 |
+| BullMQ / SQS workers 단독 | Celery+Redis 카드에 queue pattern 포함 |
+| Iceberg + ML 단독 | HuggingFace Datasets v5(Iceberg) ·Delta Lake 카드 커버 |
+| LLM API 비용 Batch layer | LLM API 비용 최적화 카드 존재, provider-native Batch는 별도 카드로 분리 |
+
+### 병합 (5카드 제거, 678→675)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Samsung Codex 배포 | Codex enterprise 확장 — Samsung 전사 배포·지식작업 20%·500만 WAU |
+| Codex 지식작업 확장 | ↑ 동일 |
+| Cursor 2.0 | Cursor 병렬 에이전트 — git worktree→Agents Window·/best-of-n·Plan Mode |
+| Cursor 3 'Glass' | ↑ 동일 |
+| Cursor 공식 에이전트 활용법 | ↑ 동일 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | OpenAI Batch API — JSONL 50K건·50% 할인·async rate limit pool | developers.openai.com/api/docs/guides/batch |
+| 2 | Anthropic Message Batches API — 100K·50%·prompt cache stack | platform.claude.com/docs/en/build-with-claude/batch-processing |
+| 3 | LakeFS for Agentic AI — zero-copy branch·agent sandbox | lakefs.io/blog/agentic-ai-will-make-or-break-on-the-data-layer |
+| 4 | Celery + Redis LLM Inference Queue — GPU worker pool·prefetch=1 | markaicode.com/architecture/celery-llm-architecture |
+| 5 | KEDA + Redis LLM Autoscaling — queue depth·cold start vs minReplica | agentbus.sh/posts/how-to-autoscale-llm-inference-on-kubernetes |
+| 6 | Runloop Devbox — microVM·Blueprint·suspend/resume·Agents SDK | docs.runloop.ai/docs/tutorials/openai-agentssdk-runloop |
+| 7 | Daytona Sandbox — sub-90ms OCI·persistent agent workspace | daytona.io/docs/en/sandboxes |
+| 8 | LLM Load Testing — TTFT·ITL·TPS·LLM Locust·GenAI-Perf | valuestreamai.com/blog/load-testing-ai-applications-2026 |
+| 9 | Delta Lake Catalog-Managed Tables — Unity Catalog·AI Gateway | delta.io/blog/2026-02-02-delta-catalog-managed-tables |
+| 10 | AI Pipeline Orchestration 비교 — Temporal·Prefect·Flyte·Dagster·Airflow·n8n | temporal.io/blog/from-agent-zoo-to-agent-orchestra |
+
+누적: 685카드 (678→675 병합→685 신규)
+주제: Batch API(OpenAI·Anthropic), LakeFS agent data, Celery/KEDA LLM queue, Runloop/Daytona sandbox, LLM load testing, Delta catalog-managed, pipeline orchestration comparison
