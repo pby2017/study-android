@@ -2395,3 +2395,5 @@ Refined:
 
 누적: 703카드 (694→693 병합→703 신규)
 주제: mobile on-device AI(Qualcomm AI Hub·MediaTek NeuroPilot·LiteRT delegate), thermal/battery(sustained inference), Swift Concurrency+Core AI, offline-first·model delivery OTA, LLM SDK comparison, TinyMLDelta, private AI architecture
+
+- 2026-06-25 06:12 KST | Codex-maxxing — 긴 작업은 프롬프트가 아니라 지속되는 작업 공간으로 설계하기 | https://openai.com/index/codex-maxxing-long-running-work/

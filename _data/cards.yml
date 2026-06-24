@@ -1203,13 +1203,13 @@ cards:
   source: https://github.com/farol-team/gnap
 - category: ai
   title: Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트
-  summary: 'Open SWE는 LangChain이 ''org 내부 코딩 에이전트를 만드는 프레임워크''로 공개한 오픈소스 프로젝트(MIT). 터미널에 붙어 있지 않아도 깃허브 이슈에 `open-swe-auto` 같은 라벨을 붙이면 알아서 작업해 PR을 올리는 비동기·클라우드 호스팅 방식이다. LangGraph(Deep Agents) 위에서 Manager→Planner→Programmer→Reviewer 네 에이전트가 역할을 나눠 돈다. 모든 작업은 Daytona 같은 격리 샌드박스 안에서 실행돼 내 머신을 건드리지 않고, 계획이 나오면 멈춰 사람이 수정·승인할 수 있게 끊어 준다.
+  summary: 'Open SWE는 LangChain이 공개한 MIT 라이선스 오픈소스 비동기 코딩 에이전트다. 깃허브 이슈에 `open-swe-auto` 같은 라벨을 붙이거나 전용 UI에서 작업을 만들면, 클라우드에서 코드베이스 조사→계획→구현→테스트→자체 리뷰→PR 생성을 진행한다. 핵심 학습 포인트는 "코딩 에이전트 UX"다. 계획이 나오면 accept/edit/reject로 끊고, 실행 중에도 double texting으로 추가 지시를 넣으며, 추적 이슈에는 상태·계획·PR 링크가 계속 남는다. 내부 구조는 LangGraph 기반 Manager→Planner→Programmer→Reviewer 흐름이고, LangGraph Platform의 persistence·autoscaling과 Daytona 격리 샌드박스를 써서 긴 작업을 로컬 머신과 분리한다. 2026-06-25 GitHub API 기준 10,039★·MIT다.
 
     '
   points:
-  - '비동기: 깃허브 이슈에 라벨 붙이면 백그라운드에서 돌아 PR 생성(터미널 상주 불필요)'
-  - '역할 분업: Manager(라우팅)→Planner(계획)→Programmer(실행)→Reviewer(품질 검토)'
-  - 격리 샌드박스(Daytona 등) + 계획 단계에서 멈춰 사람이 accept/edit/reject
+  - 'GitHub-native UX: 이슈 라벨/추적 이슈/PR 링크로 에이전트 작업을 기존 흐름에 붙임'
+  - 'Human-in-loop + double texting: 계획 승인·수정, 실행 중 피드백 주입'
+  - '런타임: LangGraph Platform persistence/autoscaling + Daytona sandbox + Planner/Reviewer 게이트'
   source: https://www.langchain.com/blog/introducing-open-swe-an-open-source-asynchronous-coding-agent
 - category: ai
   title: DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다
@@ -6615,3 +6615,11 @@ cards:
   - Cloud=opt-in fallback, default on-device; encrypted sync for user data only
   - Model weights separate delivery, PII never in analytics pipeline
   source: https://nearform.com/digital-community/ai-beyond-the-cloud-the-current-and-future-state-of-on-device-generative-ai/
+- category: ai
+  title: Codex-maxxing — 긴 작업은 프롬프트가 아니라 지속되는 작업 공간으로 설계하기
+  summary: 'OpenAI가 2026-06-22 공개한 Codex-maxxing whitepaper는 Codex를 "한 번 답하는 챗봇"보다 오래가는 작업 공간으로 쓰는 패턴을 정리한다. 핵심은 durable thread다. 중요한 작업은 같은 스레드에 맥락·선호·결정·열린 루프를 쌓고, 필요하면 memory vault에 사람·프로젝트·결정·닫힌 루프를 diff 가능한 기록으로 남긴다. 실행 중에는 steering으로 방향을 바로잡거나 다음 액션을 큐에 넣고, thread automation으로 같은 스레드가 주기적으로 Slack·Gmail·PR·배포 상태를 확인하게 할 수 있다. 단, 자동화의 끝은 사람 승인이다. 강한 goal은 "계획을 구현하라"가 아니라 원래 테스트 통과, 리뷰 기준, 제약, definition of done처럼 Codex가 검증할 수 있는 기준을 준다. 교훈은 장기 에이전트 운영에서 컨텍스트 보존·반복 wake-up·검증 가능한 목표·사람 승인 게이트가 한 묶음이라는 점이다.'
+  points:
+  - Durable thread + memory vault로 맥락·결정·열린 루프를 재사용 가능한 기록으로 유지
+  - Steering·thread automation으로 실행 중 방향 수정과 주기적 재개를 같은 스레드 안에서 처리
+  - 목표는 테스트·리뷰 기준·제약·완료 정의처럼 에이전트가 검증 가능한 형태로 쓴다
+  source: https://openai.com/index/codex-maxxing-long-running-work/
