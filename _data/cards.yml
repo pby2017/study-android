@@ -2350,16 +2350,6 @@ cards:
   - 프린스턴+스탠퍼드 연구진 작품 · 현재 개발 무게중심은 후속작 mini-swe-agent로 이동했다고 repo가 명시
   source: https://github.com/SWE-agent/SWE-agent
 - category: ai
-  title: Garak — LLM의 취약점을 nmap처럼 자동으로 스캔하는 NVIDIA의 AI 레드팀 도구(Apache-2.0·~8k★)
-  summary: 'Garak(Generative AI Red-teaming & Assessment Kit)는 NVIDIA가 주도하는 오픈소스 LLM 취약점 스캐너다. 프롬프트 인젝션·데이터 유출·탈옥·환각·독성 생성 등을 자동으로 탐지하며, nmap/Metasploit의 LLM 버전이라 보면 된다. HuggingFace·OpenAI·Bedrock·LiteLLM·llama.cpp 등 다양한 모델에 연결 가능. NeMo Guardrails와 통합해 가드레일 적용 전후 보호율을 측정할 수 있다. OWASP Top 10 for LLM과 연동한 보안 파이프라인 구축에 핵심.
-
-    '
-  points:
-  - '자동 레드팀: 프롬프트 인젝션·탈옥·데이터 유출·환각 탐지'
-  - 'NeMo Guardrails 통합: 가드레일 보호율 측정'
-  - NVIDIA 주도, Apache-2.0, OWASP LLM Top 10 대응
-  source: https://github.com/nvidia/garak
-- category: ai
   title: llama.cpp + GGUF — convert→imatrix→quantize, Q4_K_M이 2026년 엣지·로컬 표준
   summary: 'llama.cpp는 C/C++ LLM 추론 엔진으로 GGUF(GPT-Generated Unified Format) 포맷을 통해 CPU·Apple Silicon·NVIDIA·AMD·Intel 등 거의 모든 하드웨어에서 LLM을 실행한다. Ollama·LM Studio·KoboldCpp의 백엔드. 양자화 파이프라인 3단계: 1) convert_hf_to_gguf.py로 HF→GGUF F16, 2) llama-imatrix로 중요도 행렬 생성(4bit 이하 품질 핵심), 3) llama-quantize로 목표 비트폭 압축. Q4_K_M이 2026 기본(8B ~4.7GB, FP16 대비 1~3% perplexity 손실), Q5_K_M은 +15% 크기에 추론·코드 품질↑, IQ4_XS는 imatrix 기반 코드북으로 Q4_K_M보다 작지만 동등. 프로덕션 GPU 서빙은 AWQ+vLLM, 로컬/엣지/맥은 llama.cpp+GGUF.'
   points:
@@ -5743,14 +5733,6 @@ cards:
   - Garak/PyRIT(도구)과 역할 분리 — 표준 위협 모델·procurement questionnaire
   source: https://owasp.org/www-project-top-10-for-large-language-model-applications/
 - category: ai
-  title: PyRIT — Microsoft AI red team, Crescendo·TAP multi-turn·OWASP 매핑·CI gate(MIT·~4k★)
-  summary: PyRIT(Python Risk Identification Tool)은 Microsoft AI Red Team의 오픈소스 adversarial testing 프레임워크(MIT·~4k★). Target(Azure OpenAI·HTTP·agent)·Orchestrator(single/multi-turn Crescendo·TAP)·Converter(Base64·Leetspeak obfuscation)·Scorer(LLM-as-judge·content safety)·Memory(forensic log) 5계층. 53+ adversarial dataset·70+ prompt converter·6 attack strategy, Copilot 등 100+ 제품 red team에 사용. Garak(nmap식 단일턴 스캔)과 상호보완 — PyRIT=multi-turn surgical campaign·CI release gate. Microsoft Foundry AI Red Teaming Agent와 연동.
-  points:
-  - Orchestrator — Crescendo·TAP multi-turn, converter stack
-  - 53+ dataset·70+ converter — OWASP LLM 매핑·exit code gate
-  - Garak과 역할 분리 — deep adaptive multi-turn vs surface scan
-  source: https://github.com/microsoft/PyRIT
-- category: ai
   title: Langfuse vs LangSmith vs Phoenix — OTel LLM 옵저버빌리티 3축 2026 선택 가이드
   summary: '2026년 LLM observability 3대 선택지. Langfuse(MIT·~2.3k org) — OTel 기반 self-host, prompt management·eval·cost tracking, EU on-prem·데이터 주권. LangSmith(LangChain) — managed SaaS, OpenAI·Anthropic·CrewAI·Pydantic AI 등 80+ 프레임워크·@traceable 계측, SmithDB+Polly+Insights Agent로 nested agent trace·failure cluster, online eval·PagerDuty. Arize Phoenix(ELv2·~10k★) — OpenInference OTel, single container·SQLite/Postgres 로컬 셀프호스팅, phoenix-evals RAG relevance·@experiment regression, RAG/embedding drift 특화 — Langfuse(프로덕션 SaaS/self-host) vs LangSmith(enterprise eval loop) vs Phoenix(로컬 디버깅·노트북). OpenLLMetry(instrumentation SDK)와 spec(GenAI semconv) 분리. 하이브리드: Phoenix(trace)+Langfuse(prompt)+DeepEval(CI) 조합 흔함.'
   points:
@@ -6113,11 +6095,12 @@ cards:
   source: https://www.anthropic.com/engineering/contextual-retrieval
 - category: ai
   title: RAG Chunking Strategies — semantic boundary vs late embedding vs parent-child
-  summary: '2026 RAG chunking은 "어떻게 자를 것인가"와 "무엇을 retrieve/generate할 것인가" 두 축으로 나뉜다. Semantic chunking — fixed token 대신 embedding cosine similarity threshold(percentile/stddev)로 topic shift 지점 분할, LangChain SemanticChunker. thematically cohesive chunk→retrieval precision↑(benchmark ~70% lift 사례) but uneven size(80~1400 token). Late Chunking(Jina, arXiv 2409.04701) — long-context model로 full-doc token encode 후 chunk boundary mean pool, embedding architecture 레vel context preservation, jina-embeddings-v3 late_chunking=True 한 줄. Parent-child — child(200-400t) embed→parent(1000+t) generate, LangChain ParentDocumentRetriever. production default: recursive baseline→recall low면 parent-child→semantic→late/contextual 조합. Contextual Retrieval(Anthropic LLM prefix) ·RAPTOR(tree)와 다른 축.'
+  summary: '2026 RAG chunking은 "어떻게 자를 것인가"와 "무엇을 retrieve/generate할 것인가" 두 축으로 나뉜다. Semantic chunking — fixed token 대신 embedding cosine similarity threshold(percentile/stddev)로 topic shift 지점 분할, LangChain SemanticChunker. thematically cohesive chunk→retrieval precision↑(benchmark ~70% lift 사례) but uneven size(80~1400 token). Late Chunking(Jina, arXiv 2409.04701) — long-context model로 full-doc token encode 후 chunk boundary mean pool, embedding architecture 레vel context preservation, jina-embeddings-v3 late_chunking=True 한 줄. Parent-child(small-to-big) — production default: child(200-400 token) embed/index → retrieve 시 child match → parent(1000+ token section/paragraph)를 LLM에 generate context로 전달. LangChain ParentDocumentRetriever ·LlamaIndex auto-merge retriever built-in — "small-chunk recall + large-chunk context"로 precision-context tension 해결. production ladder: recursive baseline→recall low면 parent-child→semantic→late/contextual 조합. Contextual Retrieval(Anthropic LLM prefix) ·RAPTOR(tree)와
+    다른 축.'
   points:
   - Semantic — similarity threshold topic boundary, uneven size trade-off
   - Late — full-doc encode→boundary mean pool, embedding-level context
-  - Parent-child — small retrieve·large generate, production built-in default
+  - Parent-child — child(200-400t) embed→parent(1000+t) generate, production built-in default
   source: https://langcopilot.com/posts/2025-10-11-document-chunking-for-rag-practical-guide
 - category: ai
   title: Exa AI Search API — neural semantic search·auto-extract·deep-reasoning(2026)
@@ -6319,14 +6302,6 @@ cards:
   - safeParse + ZodError retry — constrained decoding 후에도 logical error catch
   - Instructor(Python) ·Structured Outputs(provider)와 역할 분리 — TS app layer
   source: https://techsy.io/en/blog/llm-structured-outputs-guide
-- category: ai
-  title: Parent-Child Chunking — small retrieve·large generate, production RAG default
-  summary: 'Parent-child(small-to-big) chunking은 retrieval unit과 generation unit을 decouple한다. Child chunk(200-400 token)를 embed/index → retrieve 시 child match → parent chunk(1000+ token, section/paragraph)를 LLM에 전달. LangChain ParentDocumentRetriever ·LlamaIndex auto-merge retriever가 built-in. "Small-chunk recall + large-chunk context" — precision-context tension 해결. 2026 production default: recursive baseline→recall low면 parent-child→semantic chunking. RAPTOR(tree summarization) ·Late Chunking(embedding)과 다른 축 — parent-child는 storage granularity 분리.'
-  points:
-  - child(200-400t) embed → parent(1000+t) generate — precision+context 동시
-  - LangChain ParentDocumentRetriever ·LlamaIndex auto-merge — production built-in
-  - recursive baseline→recall low→parent-child — RAPTOR/Late Chunking과 축 분리
-  source: https://sureprompts.com/blog/chunking-strategies-for-rag
 - category: ai
   title: AI Agent Error Handling — circuit breaker·validation gate·idempotent saga·budget guardrail
   summary: 'Production agent error handling 5-pattern(Kevin Tan 2026): (1) Circuit breaker — HTTP error뿐 아니라 schema violation·hallucination rate 등 semantic quality failure도 track (2) Validation gate — write tool 전 Pydantic/Zod schema check, destructive tool은 interrupt() (3) Idempotent saga — partial failure 시 rollback, side effect는 validation 통과 후 (4) Budget guardrail — max turns·max tokens·max tool calls hard limit (5) Human escalation — confidence×blast-radius matrix로 agent가 stop deciding. LLM API Retry(429/5xx backoff) ·Graceful Degradation(fallback chain)과 3-layer: retry→degrade→escalate.'
@@ -6687,3 +6662,91 @@ cards:
   - MinHash+LSH dedup — eval example training contamination 차단
   - Replay buffer — catastrophic forgetting·self-reinforcing error 방지
   source: https://tianpan.co/blog/2026-04-16-continuous-fine-tuning-data-contamination
+- category: ai
+  title: Garak vs PyRIT — LLM Red Team 2축, surface scan vs multi-turn campaign
+  summary: 'LLM red team은 Garak(NVIDIA·Apache-2.0·~8k★)과 PyRIT(Microsoft·MIT·~4k★) 두 축으로 나뉜다. Garak — nmap/Metasploit식 probe library로 prompt injection·탈옥·데이터 유출·환각·독성을 단일턴·배치 스캔. HuggingFace·OpenAI·Bedrock·LiteLLM·llama.cpp 등 다양한 generator 연결, NeMo Guardrails 통합으로 가드레일 전후 보호율 측정. PyRIT — Target(Azure OpenAI·HTTP·agent)·Orchestrator(Crescendo·TAP multi-turn)·Converter(Base64·Leetspeak)·Scorer(LLM-as-judge)·Memory(forensic log) 5계층. 53+ adversarial dataset·70+ prompt converter·6 attack strategy, Copilot 등 100+ 제품 red team에 사용. 실무 조합: release gate는 Garak surface scan→PyRIT adaptive multi-turn campaign→OWASP LLM/ASI 매핑. OWASP LLM Top 10(위협 모델) ·NeMo Guardrails(런타임 레일)와 역할 분리 — red team=offensive validation layer.'
+  points:
+  - Garak — probe library surface scan, NeMo Guardrails 보호율 A/B
+  - PyRIT — Crescendo/TAP multi-turn, 53+ dataset·70+ converter·CI exit gate
+  - Garak→PyRIT pipeline — surface→adaptive campaign, OWASP 매핑
+  source: https://github.com/nvidia/garak
+- category: ai
+  title: Indirect Prompt Injection — Rule of Two·Dual-LLM·tool-output quarantine
+  summary: Indirect prompt injection은 이메일·웹페이지·RAG chunk·MCP tool response처럼 "데이터 경로"로 들어와 에이전트 목표를 가로채는 공격이다. OpenAI·Anthropic·Google DeepMind는 2025~2026에 prompt-only 방어로는 구조적으로 완전 해결 불가를 인정했다. Meta Rule of Two — 단일 operation에서 untrusted input 처리·sensitive system 접근·external state 변경 셋 중 최대 2개만 허용. Dual-LLM(Simon Willison 2023→Microsoft Zero Trust 2026 Spotlighting) — privileged planner(도구 결정)와 quarantined reader(비신뢰 바이트만 읽음) 분리, schema-validated channel로 structured extraction만 교환. tool poisoning 방어 — tool output free-text를 planner context에 직접 merge하지 말고 typed field만 통과. 코딩 에이전트 프롬프트 인젝션 방어(Claude Code) ·OWASP LLM01과 축 분리 — indirect=untrusted data plane.
+  points:
+  - Rule of Two — untrusted input·sensitive access·state change 중 2개까지만
+  - Dual-LLM — planner/quarantined reader + schema-validated channel
+  - Tool output quarantine — typed field만 planner에, free-text 격리
+  source: https://zylos.ai/research/2026-04-12-indirect-prompt-injection-defenses-agents-untrusted-content/
+- category: ai
+  title: Tool Execution Layer — agent가 도구를 직접 호출하지 않게
+  summary: Tool Execution Layer는 LLM의 tool_call proposal과 실제 side effect 사이에 끼는 fail-closed gateway다. 에이전트 runtime은 API를 직접 때리지 않고 tool_call JSON만 제출 → gateway가 existence·allowlist·argument schema·role policy·rate limit·timeout을 검증 후 실행. write/destructive tool은 interrupt() 또는 human approval queue, idempotent read-only만 auto-execute. Joseph Manzambi secure-by-design agent 패턴 — Input Guard(확률적) 위에 Tool Authorizer(결정론적)를 두어 jailbreak와 무관하게 allowlist+schema gate. OWASP ASI02 Tool Misuse ·Human-in-the-Loop Approval과 complement — TEL=모든 tool_call의 단일 enforcement point. MCP per-tool scope(CSA) ·Cursor Auto-review(문맥 위험도)와 역할 분리 — TEL=실행 직전 deterministic gate.
+  points:
+  - agent→proposal→gateway(validate·authorize·execute)→normalized result
+  - deny-by-default allowlist + schema validation + write approval
+  - OWASP ASI02/HITL complement — LLM 밖 deterministic enforcement
+  source: https://www.agentpatterns.tech/en/architecture/tool-execution-layer
+- category: ai
+  title: Pickle vs Safetensors — torch.load RCE·picklescan·weights_only 한계
+  summary: PyTorch .pt/.pth는 pickle deserialization이라 악성 checkpoint가 torch.load() 시 임의 코드 실행(RCE) 가능 — CWE-502. CVE-2025-32434·CVE-2026-24747처럼 weights_only=True도 parser bug로 bypass 사례가 있어 "플래그=영구 안전"이 아니다. Safetensors(Hugging Face·Apache-2.0) — header+raw tensor bytes만, zero-copy load, 코드 실행 경로 제거. legacy pickle은 isolated network-off 환경에서 picklescan/fickling(Trail of Bits) opcode scan → safetensors 변환 후 promote. secure-torch·model-provenance-guard는 signature+pickle scan+header inspection을 CI gate로 묶는다. CycloneDX ML-BOM(provenance) ·Sigstore signing(identity)과 3-layer — format safety→scan→sign→deploy.
+  points:
+  - pickle=torch.load RCE sink, weights_only는 완전 해결 아님
+  - safetensors — non-executable format, HF Hub 기본 권장
+  - picklescan/fickling CI gate → safetensors convert → sign
+  source: https://mlcves.com/posts/unsafe-model-deserialization-pickle-cves/
+- category: ai
+  title: Sigstore Model Signing — OpenSSF model-signing v1.0·HF verify gate
+  summary: 'Google·OpenSSF가 2026에 model-signing Python v1.0 stable을 릴리스 — Sigstore OIDC keyless signing으로 ML artifact에 투명성 로그+감사 가능 provenance. 디렉터리 트리 단위 sign/verify CLI — 단일 .safetensors부터 multi-shard model folder까지. Hugging Face Hub upload flow에 verify integration 예정 — split-view·model substitution 방지. modelsign(Ed25519 offline) ·CycloneDX ML-BOM(SBOM metadata)과 complement — Sigstore=enterprise transparency log, modelsign=air-gapped quick sign. model-provenance-guard GitHub Action — SHA-256 hash registry+cosign verify+picklescan before pipeline admit. Patch the Planet(Sigstore participant) ·CycloneDX ML-BOM과 supply chain 3-tier: format→BOM→signature.'
+  points:
+  - OpenSSF model-signing v1.0 — Sigstore keyless, directory-tree sign
+  - HF Hub verify integration — substitution·split-view 방지
+  - 'CI gate: hash registry+cosign+picklescan before deploy'
+  source: https://blog.google/security/taming-wild-west-of-ml-practical-mode/
+- category: ai
+  title: Agent Egress Security — capability separation·kernel isolation·DLP proxy
+  summary: Agent egress security는 LLM이 active party로 outbound traffic을 날리는 threat model — credential·PII·prompt-injection exfiltration이 HTTP body·URL·DNS·MCP argument로 새는 경로를 통제한다. Capability separation — agent process는 secret 보유 but network 없음, egress proxy는 network 있지만 secret 없음 → 단독으로는 exfil 불가. HTTPS_PROXY env만으로는 부족 — prompt injection이 unset 가능, kernel nftables/iptables·network namespace로 direct connect 차단. Pipelock(Apache-2.0) — 62+ DLP pattern·SSRF CIDR block·DNS rebinding pin·MCP/A2A transport inspect·signed action receipt. AI BFF(server-side key) ·Project KARL(zero device egress)와 축 분리 — egress=agent runtime outbound control plane.
+  points:
+  - Capability separation — agent=secrets/no-net, proxy=net/no-secrets
+  - Kernel enforcement — nftables/namespace, env proxy만으로 불충분
+  - DLP+SSRF proxy — content inspect, DNS pin, signed receipt
+  source: https://pipelab.org/learn/agent-egress-security/
+- category: ai
+  title: AI Agent SSRF Defense — metadata blocklist·DNS pinning·scheme allowlist
+  summary: 'AI agent SSRF는 poisoned tool description·RAG URL·user-supplied link로 agent가 169.254.169.254(cloud metadata)·10.0.0.0/8(private)·fd00::/8(ULA) 등 internal endpoint를 호출하게 만드는 공격. 3-layer defense: scheme allowlist(http/https only) → URL canonicalization → DNS resolve 후 CIDR blocklist → resolved IP pin(connection lifetime re-resolve 금지). Activepieces egress proxy 패턴 — ssrf-guard(dns.lookup+Socket.connect monkeypatch) + loopback CONNECT proxy(multi A/AAAA record check) + iptables per-UID kernel lockdown. IPv4-mapped IPv6·decimal IP·URL encoding bypass는 canonicalization layer에서 먼저 정규화. Agent Egress Security(DLP) ·MCP tool URL argument와 연계 — MCP fetch tool도 동일 pipeline 통과.'
+  points:
+  - metadata+private CIDR blocklist after DNS resolve
+  - DNS pinning — resolve once, pin IP for request lifetime
+  - ssrf-guard+CONNECT proxy+iptables 3-layer stack
+  source: https://pipelab.org/learn/preventing-ssrf-in-ai-agents/
+- category: ai
+  title: HashiCorp Vault AI Secrets — dynamic DB creds·short-lived agent tokens
+  summary: AI agent·MCP server·CI pipeline에 API key를 .env·settings.json·prompt에 하드코딩하면 leak blast radius가 전체 key lifetime과 같다. HashiCorp Vault — dynamic secrets engine이 DB·cloud IAM·KV credential을 TTL-bound short-lived token으로 mint, agent는 vault agent sidecar/injector로 runtime fetch. Vault Secrets Operator(K8s) — CRD로 secret sync, pod는 file/env mount만, git에는 placeholder. OpenAI/Anthropic key rotation — static key 대신 Vault KV v2 versioned secret + automatic lease renewal. AI BFF(server-side key custody) ·GitHub MCP Secret Scanning(pre-commit)과 3-tier — never-in-prompt→scan→dynamic lease. Codex safe ops(OS keyring) ·MCP OAuth token storage와 complement — Vault=central policy+audit+rotation.
+  points:
+  - Dynamic secrets — TTL-bound creds, static API key 금지
+  - Vault Agent/Operator — sidecar inject, git에는 placeholder만
+  - AI BFF·secret scanning·Vault = custody→detect→rotate
+  source: https://developer.hashicorp.com/vault/docs/secrets
+- category: ai
+  title: OWASP ASI Top 10 — agentic apps 2026·LLM Top 10과 축 분리
+  summary: OWASP Agentic Security Initiative(ASI) Top 10 for Agentic Applications 2026(2025-12, 100+ expert peer review)는 autonomous agent 고유 실패 모드를 10개로 정의한다. ASI01 Goal Hijack ·ASI02 Tool Misuse ·ASI03 Identity/Privilege Abuse ·ASI04 Supply Chain ·ASI05 Unexpected Code Execution ·ASI06 Memory/Context Poisoning ·ASI07 Insecure Inter-Agent Comms ·ASI08 Cascading Failures ·ASI09 Human-Agent Trust Exploitation ·ASI10 Rogue Agents. OWASP LLM Top 10(2025)은 GenAI app risk, ASI는 plan·act·persist·delegate agent risk — procurement·threat modeling에서 병행. least agency principle — minimum autonomy for bounded task가 cross-cutting mitigation. Five Eyes "Careful Adoption of Agentic AI"(2026-05)가 ASI control mapping을 국제 규제 signal로 채택. CSA MCP Security(operational) ·코딩 에이전트 7종 비교(academic)와 complement — ASI=procurement baseline.
+  points:
+  - ASI01~10 — goal hijack·tool misuse·privilege·supply chain·RCE·memory poison
+  - LLM Top 10 ≠ ASI Top 10 — GenAI app vs autonomous agent
+  - least agency — cross-cutting, Five Eyes 2026-05 regulatory alignment
+  source: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+- category: ai
+  title: MCP Tool Poisoning — description drift·Invariant mcp-scan·pre-commit gate
+  summary: MCP tool poisoning은 tool description·schema·return example에 "ignore previous instructions"류 hidden directive를 embed해 LLM이 benign tool을 malicious action으로 호출하게 하는 supply chain attack. APIScout 2026 documented attack — spec은 tool definition integrity verification을 enforce하지 않음. Invariant mcp-scan — connected MCP server tool list를 baseline snapshot하고 description/schema drift를 diff, pre-commit·CI gate로 merge block. CSA Agentic MCP Security v1 — tool-level OAuth scope + description monitoring + RFC 8414 metadata validation(CVE-2025-6514). Bumblebee(Perplexity) — MCP extension supply chain scanner, mcp-scan과 complement(static diff vs supply chain crawl). Writing Effective MCP Tools(design) ·Copilot MCP policy(allowlist)와 3-layer — design→scan→policy.
+  points:
+  - Tool description=untrusted input — LLM이 instruction으로 해석
+  - Invariant mcp-scan — baseline diff, pre-commit/CI drift block
+  - OAuth tool-scope + description monitoring + allowlist policy
+  source: https://apiscout.dev/guides/anthropic-mcp-server-security-2026
+- category: ai
+  title: AI Browser Agent Security — Playwright agent·session isolation·origin policy
+  summary: 'Browser-using agent(Playwright MCP·Playwright CLI·Computer Use)는 웹의 untrusted DOM·cookie·localStorage·download surface를 agent tool로 노출한다. 핵심 통제: dedicated browser profile per agent session — production SSO cookie·password manager와 분리, task 종료 시 profile delete. navigation allowlist — agent가 arbitrary URL fetch 전 domain policy check, file://·javascript: scheme 차단. download/upload gate — agent-initiated file write는 quarantine dir only, sensitive path symlink traversal block. Same-origin에서 indirect injection — page content를 planner prompt에 raw merge 금지, accessibility tree/snapshot structured field만. Playwright CLI+MCP(도구) ·Indirect Prompt Injection(data plane) ·Agent Egress Security(network)와 3-layer 분리.'
+  points:
+  - Dedicated ephemeral browser profile — SSO cookie 격리
+  - Navigation allowlist + download quarantine dir
+  - DOM snapshot structured only — raw HTML prompt merge 금지
+  source: https://playwright.dev/agents

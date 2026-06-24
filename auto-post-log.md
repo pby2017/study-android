@@ -2464,3 +2464,70 @@ Refined:
 
 누적: 712카드 (704→702 병합→712 신규)
 주제: AI backend architecture(BFF·modular monolith·Kafka+Flink event stack), streaming transport(SSE vs WS), reliability(Goodput SLO·vendor SLA gap·incident runbook·postmortem), continuous improvement(data flywheel·contamination-safe fine-tuning)
+
+## 2026-06-25 22:30 KST — Batch 39 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Indirect Prompt Injection | Rule of Two·Dual-LLM·tool-output quarantine — Claude Code direct injection·OWASP LLM01과 data plane 분리 |
+| Tool Execution Layer | fail-closed gateway·deterministic schema gate — OWASP ASI02/HITL complement, MCP scope와 execution layer 분리 |
+| Pickle vs Safetensors | torch.load RCE·CVE-2026-24747 weights_only bypass — CycloneDX ML-BOM(provenance)과 format safety layer 분리 |
+| Sigstore Model Signing | OpenSSF v1.0·HF verify gate — CycloneDX(sign metadata)·modelsign(offline Ed25519) complement |
+| Agent Egress Security | capability separation·kernel nftables·DLP proxy — AI BFF(server key)·Project KARL(device zero egress)와 outbound control 분리 |
+| AI Agent SSRF Defense | metadata blocklist·DNS pinning·CONNECT proxy — Agent Egress Security(DLP) ·MCP URL argument pipeline 연계 |
+| HashiCorp Vault AI Secrets | dynamic TTL creds·sidecar inject — AI BFF(custody)·GitHub MCP Secret Scanning(detect) 3-tier |
+| OWASP ASI Top 10 | agentic-specific ASI01~10 — OWASP LLM Top 10(GenAI app) ·CSA MCP(operational) procurement baseline 분리 |
+| MCP Tool Poisoning | description drift·Invariant mcp-scan — CSA guide(overview) ·Bumblebee(supply crawl) ·Copilot policy(allowlist) 3-layer |
+| AI Browser Agent Security | ephemeral profile·navigation allowlist·DOM quarantine — Playwright MCP(tool) ·Indirect injection ·Egress 3-layer |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| OWASP LLM Top 10 generic | 기존 카드 존재, ASI Top 10으로 agentic 축 분리 |
+| CSA Agentic MCP Security generic | Batch 28~38 MCP security 카드·CSA 카드 존재 |
+| 코딩 에이전트 7종 MCP 보안 비교 | arXiv 2026 카드 존재 |
+| Claude Code prompt injection defense | 코딩 에이전트 프롬프트 인젝션 방어 카드 존재 |
+| NeMo Guardrails / Guardrails AI | 각각 독립 카드 존재 |
+| Garak / PyRIT standalone | Garak vs PyRIT 2축 비교 카드로 병합 |
+| E2B / Daytona / Copilot Sandboxes | sandbox 카드 다수 존재(사용자 skip 지시) |
+| Bumblebee MCP scanner standalone | MCP Tool Poisoning 카드에 complement로 통합 |
+| CycloneDX ML-BOM standalone | 기존 카드 존재, Sigstore/Pickle 카드가 layer 분리 |
+| AI zero-trust architecture generic | Agent Egress·SSRF·Vault 카드로 actionable 분해 |
+| AI network isolation generic | Agent Egress Security 카드로 kernel enforcement 구체화 |
+| AI data exfiltration prevention generic | Egress DLP·SSRF·Indirect injection 3카드로 분산 |
+| AI prompt injection defense generic | Indirect injection + Tool Execution Layer로 actionable화 |
+| AI tool permission models generic | Tool Execution Layer + OWASP ASI02 + CSA tool-scope로 커버 |
+| Least privilege for AI agents generic | OWASP ASI least agency + CSA tool-level scope로 통합 |
+| Hugging Face model security generic | Pickle vs Safetensors + Sigstore signing 2카드로 pipeline 분리 |
+| AI dependency scanning ML packages | Dependabot+AI Agents 카드 + picklescan in Pickle card |
+| Vault for AI workloads generic only | HashiCorp Vault AI Secrets 카드로 dynamic secret 패턴 구체화 |
+
+### 병합 2카드
+
+| 병합 | Before | After | 근거 |
+|------|--------|-------|------|
+| Parent-Child Chunking → RAG Chunking Strategies | 2 | 1 | 동일 chunk boundary 주제, RAG Chunking Strategies가 semantic/late/parent-child 3축 이미 포함 |
+| Garak + PyRIT → Garak vs PyRIT Red Team 2축 | 2 | 1 | surface scan vs multi-turn campaign 상호보완, PyRIT 카드가 Garak 분리 명시 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Indirect Prompt Injection — Rule of Two·Dual-LLM·tool-output quarantine | zylos.ai/research/2026-04-12-indirect-prompt-injection-defenses-agents-untrusted-content |
+| 2 | Tool Execution Layer — agent가 도구를 직접 호출하지 않게 | agentpatterns.tech/en/architecture/tool-execution-layer |
+| 3 | Pickle vs Safetensors — torch.load RCE·picklescan·weights_only 한계 | mlcves.com/posts/unsafe-model-deserialization-pickle-cves |
+| 4 | Sigstore Model Signing — OpenSSF model-signing v1.0·HF verify gate | blog.google/security/taming-wild-west-of-ml-practical-mode |
+| 5 | Agent Egress Security — capability separation·kernel isolation·DLP proxy | pipelab.org/learn/agent-egress-security |
+| 6 | AI Agent SSRF Defense — metadata blocklist·DNS pinning·scheme allowlist | pipelab.org/learn/preventing-ssrf-in-ai-agents |
+| 7 | HashiCorp Vault AI Secrets — dynamic DB creds·short-lived agent tokens | developer.hashicorp.com/vault/docs/secrets |
+| 8 | OWASP ASI Top 10 — agentic apps 2026·LLM Top 10과 축 분리 | genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026 |
+| 9 | MCP Tool Poisoning — description drift·Invariant mcp-scan·pre-commit gate | apiscout.dev/guides/anthropic-mcp-server-security-2026 |
+| 10 | AI Browser Agent Security — Playwright agent·session isolation·origin policy | playwright.dev/agents |
+
+누적: 720카드 (712→710 병합→720 신규)
+주제: AI agent security(indirect injection·tool execution gate·egress/SSRF), ML supply chain(pickle/safetensors·Sigstore signing), secrets(Vault dynamic creds), governance(OWASP ASI·MCP tool poisoning·browser agent isolation)
