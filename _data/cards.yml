@@ -1140,23 +1140,23 @@ cards:
   source: https://github.com/mastra-ai/mastra
 - category: ai
   title: Cursor CLI 헤드리스 모드 — `agent -p`로 CI·스크립트에서 코드 작업 자동화
-  summary: 'Cursor도 터미널용 에이전트 CLI를 제공한다. `curl https://cursor.com/install -fsS | bash`로 깔면 `agent` 명령이 생기고, 그냥 치면 대화형 세션, `-p`(`--print`)를 붙이면 비대화형 ''프린트 모드''로 돌아 스크립트·자동화에 쓸 수 있다. `claude -p`와 같은 발상이다. 문서가 명시하는 핵심 플래그는 두 가지. `-p --print`는 사람 개입 없이 최종 답만 깔끔히 내놓는 모드이고, `--force`(별칭 `--yolo`)는 확인 없이 파일을 직접 고치게 허용한다 — 안 붙이면 편집은 ''제안''에만 머문다. 출력 형식은 `--output-format`으로 고른다: 기본 text(최종 답만), json(구조화된 분석 결과), stream-json(메시지 단위 실시간 진행 추적). stream-json에 `--stream-partial-output`을 더하면 델타 단위로 증분 스트리밍된다. 인증은 CURSOR_API_KEY 환경변수로 한다. 즉 Cursor를 에디터 밖 CI 파이프라인·리팩터링 배치 작업에 끼워 넣을 수 있다는 뜻.
+  summary: 'Cursor의 Headless CLI는 에디터 안 대화형 에이전트를 CI·스크립트용 비대화형 작업자로 꺼내 쓰는 방식이다. 설치 후 `agent`를 그냥 실행하면 대화형 세션이고, `-p`/`--print`를 붙이면 프롬프트를 받아 최종 결과를 출력하는 자동화 모드가 된다. 중요한 분기점은 권한이다. 기본은 사람이 검토할 여지를 남기지만, `--force`(별칭 `--yolo`)를 주면 확인 없이 파일 편집까지 허용하므로 신뢰된 브랜치·격리된 워크스페이스에서만 써야 한다. 결과 소비 방식도 운영 포인트다. `--output-format`은 text·json·stream-json을 제공하고, stream-json에 `--stream-partial-output`을 더하면 긴 작업의 진행을 메시지/델타 단위로 추적할 수 있다. 인증은 `CURSOR_API_KEY` 환경변수로 처리한다. 즉 핵심은 "Cursor를 CI에 붙인다"가 아니라, 출력 형식과 편집 권한을 명시해 에이전트를 파이프라인 구성요소로 다루는 것이다.
 
     '
   points:
-  - 설치하면 `agent` 명령 — 인자 없이 대화형, `-p/--print`면 비대화형 프린트 모드(스크립트·자동화용)
-  - '`--force`(=`--yolo`)로 확인 없이 직접 파일 편집, 없으면 편집은 ''제안''만 / 인증은 CURSOR_API_KEY 환경변수'
-  - '`--output-format`: text(기본)·json·stream-json, stream-json+`--stream-partial-output`로 델타 증분 스트리밍'
+  - '`-p/--print` = CI·스크립트용 비대화형 실행, 인자 없이 실행하면 대화형 세션'
+  - '`--force`/`--yolo`는 직접 편집 권한이므로 격리된 워크스페이스와 명시적 승인 정책이 필요'
+  - '`--output-format` text·json·stream-json + `--stream-partial-output`로 자동화가 진행 상태를 읽게 한다'
   source: https://cursor.com/docs/cli/headless
 - category: ai
   title: Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기
-  summary: 'Gartner는 2026-05-20 이 분야 매직 쿼드런트의 이름을 ''Enterprise AI Coding Agents''로 바꿨다. 예전의 ''AI Code Assistants(자동완성·채팅 보조)''에서 ''에이전트(스스로 여러 단계를 수행)''로 카테고리 정의 자체가 옮겨간 것으로, 자동완성이 아니라 에이전트 능력으로 기업용 도구를 평가하기 시작했다는 신호다. 12개 벤더를 ''실행력(ability to execute)''과 ''비전 완성도'' 두 축으로 평가했고, Leaders는 GitHub·Anthropic·Cursor·OpenAI 네 곳이었다(GitHub가 3년 연속 Leader이자 실행력 1위). 도구 고를 때 ''자동완성 품질''보다 ''에이전트로 일을 끝까지 맡길 수 있나''를 먼저 보라는 흐름의 공식 확인이다.
+  summary: 'GitHub가 공개한 2026 Gartner Magic Quadrant 요약에서 눈에 띄는 점은 카테고리명이 ''AI Code Assistants''가 아니라 ''Enterprise AI Coding Agents''라는 것이다. GitHub 글은 Gartner가 2026-05-20 보고서에서 12개 벤더를 실행력과 비전 완성도 기준으로 평가했고, GitHub·Anthropic·Cursor·OpenAI를 Leader 사분면에 뒀다고 설명한다. 다만 이 글은 GitHub의 해설이므로 "GitHub가 1위라서 좋다"가 교훈은 아니다. 더 실용적인 신호는 시장의 평가 단위가 자동완성·채팅에서 이슈 처리, 코드 리뷰, PR, 보안, 거버넌스까지 포함한 에이전트 워크플로로 넓어졌다는 점이다. 도구를 고를 때도 모델 품질 하나보다 멀티모델 선택, 감사·통제, SDLC 표면 통합을 같이 봐야 한다.
 
     '
   points:
-  - '카테고리명 변경: AI Code Assistants → Enterprise AI Coding Agents(2026-05-20) — 평가 기준이 ''보조''에서 ''에이전트''로 이동'
-  - 'Leaders 4곳: GitHub·Anthropic·Cursor·OpenAI / GitHub는 3년 연속 Leader·실행력 최고점(12개 벤더 평가)'
-  - '실무 함의: 기업 도구 선정 기준이 ''자동완성·채팅''에서 ''멀티스텝 자율 실행 능력''으로 재편 중'
+  - '공개 출처 기준: 2026-05-20 Gartner 보고서명은 Enterprise AI Coding Agents'
+  - 'GitHub 글은 12개 벤더 평가와 Leader 4곳(GitHub·Anthropic·Cursor·OpenAI)을 설명'
+  - '실무 함의: 자동완성보다 이슈→리뷰→PR→보안→거버넌스까지 이어지는 에이전트 표면을 평가'
   source: https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/
 - category: ai
   title: ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다
@@ -5708,3 +5708,19 @@ cards:
   - v3.3.7 마지막 — continuous batching·TP·quantization·OpenAI API
   - 기존 TGI → vLLM/SGLang 마이그레이션 계획 — long-context 레거시만 유지
   source: https://huggingface.co/docs/inference-endpoints/engines/tgi
+- category: ai
+  title: Cursor Auto-review — 권한 프롬프트를 '스위치'가 아니라 위험도 다이얼로 만들기
+  summary: 'Cursor Auto-review는 로컬 코딩 에이전트의 자율성을 전부 허용하거나 전부 묻는 방식 대신, 다음 행동의 위험도를 문맥에서 판단하는 안전장치다. Cursor는 2026-06-11 글에서 파일·자격증명·환경변수·MCP 도구·프로덕션 시스템 가까이에서 도는 로컬 에이전트는 권한 프롬프트가 너무 많아도 위험하다고 설명한다. 반복 승인에 익숙해지면 사용자가 읽지 않고 누르기 때문이다. Auto-review는 부모 에이전트의 도구 호출 직전에 작은 classifier 에이전트를 실행해, 명령 자체뿐 아니라 사용자 의도·결과 위험·필요하면 파일 내용까지 보고 통과·차단·피드백을 정한다. 차단도 곧바로 사용자 팝업이 아니라 부모 에이전트에게 설명을 돌려 더 좁고 안전한 경로로 계속하게 설계했다. 교훈은 에이전트 권한 설계가 allowlist 목록보다 "이 요청에서 이 행동이 정당한가"를 평가하는 런타임 정책 문제라는 점이다.'
+  points:
+  - 로컬 에이전트 안전은 전면 허용/전면 확인이 아니라 행동별 문맥 위험도 판단
+  - classifier 에이전트가 도구 호출 전 사용자 의도·결과 위험·파일 맥락을 검토
+  - 차단 피드백은 부모 에이전트가 더 안전한 경로를 찾게 하는 제어 신호가 된다
+  source: https://cursor.com/blog/agent-autonomy-auto-review
+- category: ai
+  title: Patch the Planet — AI 보안 발견은 '사람 검증'을 지나야 패치가 된다
+  summary: 'OpenAI의 Patch the Planet은 Daybreak 아래에서 Trail of Bits와 함께 오픈소스 유지관리자를 돕는 AI 보안 패치 프로그램이다. 2026-06-22 공개 글은 핵심을 분명히 한다. AI가 취약점 후보를 더 많이 찾는 것만으로는 사용자를 보호하지 못하고, 이미 바쁜 유지관리자에게 미검증 리포트가 쏟아지면 부담만 늘어난다. 그래서 프로그램은 frontier 모델과 Codex Security로 분석·패치·테스트·문서화를 지원하되, Trail of Bits 보안 엔지니어가 재현, 중복 제거, 심각도 재평가, 프로젝트 문서·위협모델 대조를 거쳐 유지관리자에게 전달한다. 초기 참여 프로젝트는 cURL, NATS Server, pyca/cryptography, Sigstore, aiohttp, Go, freenginx, Python, python.org 등이고, Trail of Bits는 19개 프로젝트에서 수백 건 이슈와 수십 개 패치를 보고했다고 밝혔다. 실무 교훈은 AI 보안 자동화의 병목이 탐지가 아니라 검증·우선순위·패치 수용이라는 점이다.'
+  points:
+  - AI 발견 → 전문가 재현·중복 제거·심각도 재평가 → 유지관리자 승인 순서
+  - Codex Security와 frontier 모델은 분석·패치·테스트·문서화 지원 도구로 사용
+  - 오픈소스 보안 자동화의 핵심 병목은 더 많은 알림이 아니라 검증된 패치 흐름
+  source: https://openai.com/index/patch-the-planet/

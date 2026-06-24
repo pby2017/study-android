@@ -1509,3 +1509,21 @@ Refined:
 
 누적: 581카드 (575→571 병합→581 신규)
 주제: AI-native language(Mojo), production RAG(Haystack), LLM app UI(Chainlit), GPU kernels(Triton), NVIDIA inference(TensorRT-LLM), cross-platform GenAI(ONNX Runtime), ML data versioning(DVC), ML demo UI(Gradio 5), distributed LLM serving(Ray Serve), legacy TGI migration
+
+## 2026-06-24 17:52 KST — Local AI routine (2카드 + 2 refinements)
+
+### 신규 2카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Cursor Auto-review — 권한 프롬프트를 '스위치'가 아니라 위험도 다이얼로 만들기 | cursor.com/blog |
+| 2 | Patch the Planet — AI 보안 발견은 '사람 검증'을 지나야 패치가 된다 | openai.com |
+
+### Refinements
+
+| 제목 | 근거 |
+|------|------|
+| Cursor CLI 헤드리스 모드 — `agent -p`로 CI·스크립트에서 코드 작업 자동화 | Cursor headless CLI docs 재확인, 비대화형 실행·출력 형식·직접 편집 권한 위험을 명확화 |
+| Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기 | GitHub/Gartner 공개 요약 재확인, 벤더 순위보다 SDLC 에이전트 평가 표면 중심으로 정리 |
+
+주제: contextual agent autonomy governance, AI security patch validation, headless coding-agent automation, enterprise AI coding-agent category framing
