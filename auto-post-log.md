@@ -1313,3 +1313,65 @@ Refined:
 
 누적: 564카드 (554→552 중복제거→564 신규추가)
 주제: 리서치 AI(NotebookLM), LLM 라우팅(OpenRouter), 추론 플랫폼(Fireworks·NIM), 코드리뷰(Graphite), AI 앱 빌더(Replit Agent 4), 검색 에이전트(Perplexity Computer), 멀티에이전트(MAF 1.0), Copilot 생태계(Extensions·Workspace), 프롬프트 버전(Ell), Apple on-device(AFM 3)
+
+## 2026-06-24 19:00 KST — Batch 21-B (아이디어 검증 + 병합 5카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| RAGAS | RAG eval 전용, DeepEval과 역할 분리, 프로덕션 RAG 필수 |
+| Anthropic Computer Use | API vs Cowork 구분, 에이전트 데스크톱 자동화 독립 주제 |
+| LlamaIndex vs LangChain | 하이브리드 스택 가이드, 단독 LlamaIndex/LangGraph와 차별 |
+| Meticulous | 세션 리플레이 E2E, QA Wolf/agent-device와 다른 접근 |
+| Modal vs Baseten vs Replicate | GPU 서빙 선택, vLLM/Fireworks와 다른 배포 레이어 |
+| Arize Phoenix | OTel LLM tracing, Langfuse와 라이선스·용도 차별 |
+| Unstructured.io | 엔터프라이즈 ETL, Docling과 다른 connector·governance |
+| Lovable | Supabase 풀스택 빌더, bolt/v0와 포지셔닝·보안 이슈 |
+| Claude Community Marketplace | 분산 marketplace 생태계, claude-plugins-official과 보완 |
+| Braintrust | eval-first CI, RAGAS/LangSmith와 다른 범용 eval |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Devin 신규 카드 | 기존 Devin 카드 업데이트로 충분 (2.0·DeepWiki·ACU) |
+| Bolt.new / v0 | Batch 20 이전 이미 존재 |
+| Outlines / Instructor | 기존 카드 존재, Structured Outputs와 중복 |
+| CrewAI / LangGraph 단독 | 비교 카드·LangGraph 카드로 커버 |
+| CodeRabbit | 기존 2카드(리포트 포함) 존재 |
+| Constitutional AI | 학술 주제, 실무 개발 카드 가치 낮음 |
+| Edge AI 칩(MediaTek 등) | NexaSDK·Edge LLM 리더보드·MLPerf 존재 |
+| Testim | Meticulous와 유사, Meticulous 선택 |
+| Multi-modal RAG | ColPali·GraphRAG·Qwen3-VL 존재 |
+| Haystack | LlamaIndex/LangChain 생태계 내, 독립 가치 낮음 |
+
+### 병합 (5카드 제거, 564→559)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Dynamic Workflows + ultracode (Bun 사례) | Dynamic Workflows(ultracode) — Bun Zig→Rust 사례 통합 |
+| Ralph 기법 | Ralph Wiggum 루프 — bash 패턴+공식 플러그인 통합 |
+| Alibaba Open Code Review | Open Code Review(Alibaba) — ~8k★ 통합 |
+| GitHub Agent Finder | Agent Finder/ARD — 상세 버전 유지 |
+| CrewAI 단독 | LangGraph vs CrewAI vs AutoGen — CrewAI 53.7k★ 보강 |
+
+**Refined**: Cognition Devin 2.0 — ACU·DeepWiki·67% PR merge (구 Devin 가격표 카드)
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | RAGAS — RAG faithfulness·context precision 자동 평가 | docs.ragas.io |
+| 2 | Anthropic Computer Use — API 데스크톱 자동화(베타) | platform.claude.com |
+| 3 | LlamaIndex vs LangChain — 2026 하이브리드 RAG 스택 | axiomlogica.com |
+| 4 | Meticulous — 세션 녹화·재생 AI E2E 테스트 | meticulous.ai |
+| 5 | Modal vs Baseten vs Replicate — GPU 추론 플랫폼 | hostfleet.net |
+| 6 | Arize Phoenix — OTel LLM tracing·eval | github.com/Arize-ai/phoenix |
+| 7 | Unstructured.io — 64+ 형식 RAG ETL | docs.unstructured.io |
+| 8 | Lovable — React+Supabase AI 앱 빌더 | docs.lovable.dev |
+| 9 | Claude Community Marketplace — 분산 플러그인 생태계 | code.claude.com |
+| 10 | Braintrust — eval-first LLM CI·Playground | braintrust.dev |
+
+누적: 569카드 (564→559 병합→569 신규+refine)
+주제: RAG eval(RAGAS), desktop automation(Computer Use), RAG framework hybrid, AI E2E testing(Meticulous), GPU serving(Modal/Baseten/Replicate), LLM observability(Phoenix), document ETL(Unstructured), AI app builder(Lovable), plugin marketplace, eval CI(Braintrust), Devin 2.0 refine
