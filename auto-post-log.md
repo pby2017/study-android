@@ -1213,3 +1213,15 @@ Refined:
 
 누적: 551카드 (550→551)
 주제: reusable prompt objects deprecation, prompt-as-code migration, Responses API prompt builders, Continuous Claude PR-loop refinement
+
+## 2026-06-24 11:37 KST — Batch 28 (agent budget controls, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Codex rollout token budgets — 에이전트 루프를 토큰 예산으로 강제 중단하기 | developers.openai.com |
+
+Refined:
+- Codebuff — 단일 모델이 아니라 '에이전트 4종 팀'으로 코드를 고치는 터미널 에이전트
+
+누적: 552카드 (551→552)
+주제: Codex CLI rollout token budgets, app-server multi-agent delegation controls, indexed web search policy, Codebuff multi-agent architecture refinement
