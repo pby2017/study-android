@@ -1213,13 +1213,13 @@ cards:
   source: https://www.langchain.com/blog/introducing-open-swe-an-open-source-asynchronous-coding-agent
 - category: ai
   title: DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다
-  summary: '개발자 생산성 분석 회사 DX가 219개 기업·6만4,680명 개발자의 ''실제 머지된 PR'' 데이터를 도구별로 집계해 공개했다(2026 Q1, 2026-01-21 갱신). 핵심은 도구를 매일 쓰는 ''빈번 사용자''의 주당 머지 PR 중앙값이 모든 주요 도구에서 함께 올랐다는 것 — Cursor는 2.8→4.1(46% 증가), Claude는 2.6→4.0 이상, GitHub Copilot은 2.5→3.61로 뛰었다. 즉 어떤 도구를 고르느냐보다 ''매일 손에 붙이느냐''가 처리량 차이를 더 크게 가른다는 게 데이터의 메시지다. 단, DX 스스로도 PR 수는 ''움직임''이지 제품 가치·품질의 증거는 아니라고 단서를 단다.
+  summary: 'DX가 219개 기업·6만4,680명 개발자의 ''실제 머지된 PR'' 데이터를 AI 도구별로 다시 집계했다(2026 Q1, 2026-01-21 갱신). headline은 도구 순위보다 사용 빈도다. 매일 쓰는 개발자의 주당 머지 PR 중앙값은 Cursor 2.8→4.1(46% 증가), Claude 주간·월간 사용자는 4.0 초과, GitHub Copilot 일간 사용자는 2.5→3.61로 올랐다. 반대로 adoption 지표는 생산성 자체가 아니라 ''일상 도구가 됐는지''를 보는 보조 신호다. Copilot은 일간 adoption 9.76%로 가장 끈끈했고, Cursor는 주간 adoption 31.56%, Windsurf는 월간 adoption 35.87%로 패턴이 달랐다. 교훈은 벤더 이름으로 ROI를 단정하지 말고, 일간·주간 cohort별 사용 빈도와 실제 PR 처리량을 같이 봐야 한다는 점이다.
 
     '
   points:
-  - '표본: 219개 기업·64,680명 개발자의 실제 머지된 PR(자기보고 아님), 2026 Q1'
-  - '빈번 사용자 주당 PR 중앙값: Cursor 4.1(+46%)·Claude 4.0+·Copilot 3.61 — 전 도구 동반 상승'
-  - 'DX 단서: PR 수는 ''코드 변경량''일 뿐 품질·고객가치의 척도가 아님'
+  - '표본: 219개 기업·64,680명 개발자의 실제 머지 PR, 2026 Q1'
+  - '빈번 사용자 주당 PR 중앙값: Cursor 4.1(+46%)·Claude 4.0+·Copilot 3.61'
+  - '운영 포인트: seat 수가 아니라 daily/weekly cohort 사용률 + PR 처리량을 함께 추적'
   source: https://getdx.com/blog/ai-tooling-benchmarks-pr-throughput-and-usage-by-tool/
 - category: ai
   title: Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지
@@ -6750,3 +6750,11 @@ cards:
   - Navigation allowlist + download quarantine dir
   - DOM snapshot structured only — raw HTML prompt merge 금지
   source: https://playwright.dev/agents
+- category: ai
+  title: Copilot Agent Tasks REST API — 클라우드 에이전트를 스크립트 가능한 작업 큐로 쓰기
+  summary: 'GitHub가 Copilot cloud agent 작업을 REST API로 시작·조회·추적하는 Agent tasks API를 공개 프리뷰로 열었다. 핵심 엔드포인트는 `POST /agents/repos/{owner}/{repo}/tasks`와 `GET /agents/repos/{owner}/{repo}/tasks`다. 요청 body의 필수값은 prompt 하나이고, 선택값으로 base_ref, model, create_pull_request를 넣을 수 있다. 응답은 queued/in_progress/waiting_for_user/completed/failed 같은 상태, session_count, PR artifact, head/base ref를 돌려준다. 중요한 제약은 인증이다. docs 기준 user-to-server 토큰만 지원하고 GitHub App installation token은 안 되며, fine-grained token에는 Agent tasks 권한이 필요하다. 교훈은 "에이전트를 버튼으로 부른다"에서 끝내지 말고, 사내 포털·릴리스 스크립트·마이그레이션 팬아웃이 같은 API로 작업을 만들고 상태를 추적하게 설계하라는 것이다.'
+  points:
+  - '`POST /agents/repos/{owner}/{repo}/tasks` — prompt만 필수, base_ref/model/PR 생성은 선택'
+  - '`GET`으로 repo별·사용자별 task 상태 추적 — queued/in_progress/waiting_for_user/completed 등'
+  - user-to-server token + Agent tasks 권한 필요, public preview라 계약 변경 가능
+  source: https://github.blog/changelog/2026-06-04-agent-tasks-rest-api-now-available-for-copilot-pro-pro-and-max/

@@ -2531,3 +2531,11 @@ Refined:
 
 누적: 720카드 (712→710 병합→720 신규)
 주제: AI agent security(indirect injection·tool execution gate·egress/SSRF), ML supply chain(pickle/safetensors·Sigstore signing), secrets(Vault dynamic creds), governance(OWASP ASI·MCP tool poisoning·browser agent isolation)
+
+## 2026-06-25 08:17 KST — Local AI card routine
+
+- Published: `Copilot Agent Tasks REST API — 클라우드 에이전트를 스크립트 가능한 작업 큐로 쓰기`
+- Source: https://github.blog/changelog/2026-06-04-agent-tasks-rest-api-now-available-for-copilot-pro-pro-and-max/
+- Supporting docs: https://docs.github.com/en/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10
+- Refined: `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다`
+- Rejected: VS Code Agents window May releases as overlapping existing Copilot/agent UX cards; Copilot App GA and MAI-Code-1-Flash as duplicates; pure Android topics as below threshold.

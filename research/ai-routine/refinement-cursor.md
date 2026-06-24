@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트`; next oldest reviewed candidate is `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다`.
+Current position: continue after `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다`; next oldest reviewed candidate is `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지`.
 
-Last update: 2026-06-25 06:12 KST
+Last update: 2026-06-25 08:17 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -39,6 +39,7 @@ Reviewed:
 - `서브레시피 파이프라인 — 복잡한 작업을 'YAML 레시피'로 쪼개 단계·병렬로 돌리기`
 - `GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜`
 - `Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트`
+- `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -70,6 +71,7 @@ Refined:
 - `Goose Subrecipes — YAML 레시피를 격리 세션 도구로 쪼개기(Apache-2.0·50k★)` — re-checked current subrecipes docs plus GitHub API metrics, refreshed the title/source-supported popularity signal, clarified `sub_recipes` registration, isolated session behavior, parameter precedence, experimental status, and independent-test guidance.
 - `GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜` — re-checked current README plus GitHub API metrics, clarified the `.gnap/` version + four-entity protocol, heartbeat loop, git-history audit log, Farol Labs production-use claim, and added a caution that its live star signal is small.
 - `Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트` — re-checked the LangChain launch post, GitHub repo, and GitHub API metrics, then clarified GitHub-native tracking issues, human-in-loop planning, double texting, Daytona sandboxing, LangGraph Platform persistence/autoscaling, Reviewer gate, and live popularity/license signal.
+- `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다` — re-checked the DX Q1 2026 benchmark, preserved the PR-throughput claims, clarified adoption metrics as usage-frequency signals rather than direct productivity proof, and added the daily/weekly/monthly adoption patterns from the same source.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -77,7 +79,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
