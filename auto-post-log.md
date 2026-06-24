@@ -1634,3 +1634,60 @@ Refined:
 
 누적: 601카드 (592→591 병합→601 신규)
 주제: MLOps pipeline(ZenML·Metaflow·ClearML), experiment tracking(Comet), reactive notebook(Marimo), agent observability(AgentOps), embedding(Sentence Transformers), translation API(DeepL), enterprise GenAI(Mosaic AI), RAG prototype(Embedchain), mobile agent testing merge
+
+## 2026-06-24 23:30 KST — Batch 26 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| Kubeflow Pipelines v2 | IR YAML·MLMD·Vertex 호환 — Dagster/ZenML/Prefect와 K8s 네이티브 ML 파이프라인 축 분리 |
+| Flyte 2 | pure Python·self-healing·agent runtime — Kubeflow(K8s DAG)와 durable agent orchestration 차별 |
+| Evidently AI | ML+LLM 100+ eval·드리프트 — Phoenix(OTel trace)·Langfuse와 품질 메트릭 라이브러리 분리 |
+| W&B Sweeps | Bayesian·Hyperband HP — Weave(LLM trace)·Registry(CI/CD)와 HP 탐색 축 분리 |
+| Hugging Face Spaces | Git push 데모 호스팅·ZeroGPU — Gradio 5(로컬 UI)와 배포·공유 레이어 분리 |
+| AgentBench FC | 8환경 agent eval·AgentRL — SWE-bench(코드)와 범용 tool-use 평가 분리 |
+| 온디바이스 ML 3종 비교 | Core ML·LiteRT·ExecuTorch 선택 가이드 — 개별 카드는 있으나 통합 비교 독립 가치 |
+| Tabnine vs Copilot vs Cursor | IDE·프라이버시 3축 — 기존 Claude/Cursor/Codex 비교와 다른 SaaS 3종 비교 |
+| Fiddler AI | Centor Trust Models·Guardrails — Phoenix/Evidently(OSS)와 엔터프라이즈 compliance 분리 |
+| W&B Artifacts | artifact lineage·:latest 금지 — Registry(promote)와 입출력 버전 관리 분리 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| WhyLabs / whylogs | 2025 Apple 인수 후 상용 종료, OSS만 잔존 — Evidently로 ML 모니터링 축 커버 |
+| Arize AX | Arize Phoenix 카드 존재, 엔터프라이즈 SaaS는 Fiddler와 역할 중복 |
+| Dagster / Feast / Modal | 기존 카드 존재 |
+| Structured Outputs / Instructor | 기존 카드 존재 |
+| MCP 서버 개발 가이드 | MCP 관련 45+ 카드, 독립 가치 부족 |
+| AgencyBench | AgentBench FC로 agent eval 축 커버, 1M-token 장기 시나리오는 niche |
+| W&B Experiments | MLflow·Weave·Registry·Sweeps·Artifacts로 W&B 축 이미 분화 |
+| Codeium / Windsurf 단독 | Devin Desktop 병합 카드로 흡수 |
+| Sourcegraph Cody / Amp | 기존 카드 존재 |
+| Neptune.ai | 2026-03 SaaS 영구 종료 |
+
+### 병합 (2카드 제거, 601→599)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Cline 서브에이전트 | Cline — Plan→Act + 읽기 전용 서브에이전트 통합 |
+| Windsurf Cascade Workflows | Devin Desktop(구 Windsurf) — Cloud·Desktop·Workflows·ACP 패밀리 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Kubeflow Pipelines v2 — K8s ML 워크플로 | kubeflow.org |
+| 2 | Flyte 2 — pure Python agent runtime | flyte.org |
+| 3 | Evidently AI — ML+LLM eval·드리프트 | github.com/evidentlyai |
+| 4 | W&B Sweeps — HP 탐색 | docs.wandb.ai |
+| 5 | Hugging Face Spaces — ML 데모 호스팅 | huggingface.co/docs |
+| 6 | AgentBench FC — 8환경 agent 벤치마크 | github.com/THUDM/AgentBench |
+| 7 | 온디바이스 ML 3종 — Core ML·LiteRT·ExecuTorch | executorch.ai |
+| 8 | Tabnine vs Copilot vs Cursor 3축 비교 | pilottools.ai |
+| 9 | Fiddler AI — 엔터프라이즈 observability | fiddler.ai |
+| 10 | W&B Artifacts — artifact lineage | docs.wandb.ai |
+
+누적: 609카드 (601→599 병합→609 신규)
+주제: K8s ML pipeline(Kubeflow·Flyte), ML monitoring(Evidently·Fiddler), W&B HP+Artifacts, HF Spaces hosting, AgentBench eval, on-device runtime comparison, coding assistant comparison(Tabnine/Copilot/Cursor), Devin Desktop merge, Cline merge
