@@ -1097,14 +1097,12 @@ cards:
   - '안전장치: `--dry-run`, `--max-runs`, `--max-duration`, `--max-cost`, `--stall-threshold`로 무한 루프를 제한'
   source: https://github.com/AnandChowdhary/continuous-claude
 - category: ai
-  title: Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼
-  summary: '구글이 2026 I/O(2026-05-19)에서 Antigravity를 ''agent-first development platform''으로 다시 밀었다. 핵심은 IDE 하나가 아니라 개발 표면 묶음이라는 점이다. Antigravity 2.0 데스크톱 앱은 여러 에이전트를 병렬로 오케스트레이션하고, dynamic subagents·scheduled tasks·Google AI Studio/Android/Firebase 연동을 담는다. Antigravity CLI는 GUI 없이 터미널에서 에이전트를 만들고 실행하는 경량 표면이며, 구글은 Gemini CLI 사용자에게 이 CLI로 이전하라고 안내한다. Antigravity SDK는 구글 제품을 움직이는 같은 agent harness를 프로그래밍 가능한 형태로 제공해 커스텀 에이전트 동작과 자체 인프라 호스팅을 열어 둔다. 워크호스 모델은 Gemini 3.5 Flash이고, 구글은 Gemini 3.1 Pro보다 대부분 벤치마크에서 앞서며 다른 frontier 모델보다 4배 빠르다고 주장한다. 실무 교훈은 "CLI 대체재"가 아니라 데스크톱·CLI·SDK·호스팅 환경을 함께 보는 에이전트 플랫폼 전환이라는 점이다.
-
-    '
+  title: Google Antigravity 2.0 — 데스크톱·CLI(Go)·SDK 3표면 에이전트 플랫폼, Gemini CLI 이전(I/O 2026)
+  summary: 구글이 2026 I/O(2026-05-19)에서 Antigravity 2.0을 'agent-first development platform'으로 공개했다. 1.0 단일 IDE에서 '리뉴얼 데스크톱 앱 + Go CLI + 커스텀 SDK' 3표면으로 확장 — dynamic subagents·scheduled tasks·Google AI Studio/Android/Firebase 연동. Antigravity CLI는 GUI 없이 터미널에서 에이전트 생성·실행, 구글은 Gemini CLI 소비자(AI Pro/Ultra/무료) 접근을 2026-06-18부터 차단하고 Antigravity로 이전 안내. Antigravity SDK는 agent harness를 프로그래밍·자체 인프라 호스팅에 개방. 워크호스 모델 Gemini 3.5 Flash — 구글 주장 3.1 Pro보다 대부분 벤치마크 앞서고 4배 빠름. Cursor/Claude Code(터미널 에이전트)와 달리 'IDE+CLI+SDK+호스팅' 통합 플랫폼.
   points:
-  - '데스크톱 앱: 여러 에이전트 병렬 오케스트레이션, dynamic subagents, scheduled tasks, AI Studio/Android/Firebase 연동'
-  - 'CLI: GUI 없이 터미널에서 에이전트 생성·실행 / 구글은 Gemini CLI 사용자에게 Antigravity CLI 이전 안내'
-  - 'SDK: Antigravity agent harness를 커스텀 동작·자체 인프라 호스팅에 사용 / 모델은 Gemini 3.5 Flash'
+  - '3표면: 데스크톱(병렬 오케스트레이션) + CLI(Go) + SDK(커스텀 harness)'
+  - Gemini CLI 소비자 접근 2026-06-18 종료 → Antigravity로 이주
+  - Gemini 3.5 Flash 워크호스 — AI Studio·Android·Firebase 네이티브 연동
   source: https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
 - category: ai
   title: Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크
@@ -1162,8 +1160,8 @@ cards:
 
     '
   points:
-  - 'WhatsApp·Telegram·Slack·Discord·Signal·iMessage·Teams·Matrix·LINE·WeChat 등 다채널 assistant'
-  - 'Gateway daemon + `openclaw onboard`가 workspace·channel·skill 설정을 묶는 운영 표면'
+  - WhatsApp·Telegram·Slack·Discord·Signal·iMessage·Teams·Matrix·LINE·WeChat 등 다채널 assistant
+  - Gateway daemon + `openclaw onboard`가 workspace·channel·skill 설정을 묶는 운영 표면
   - 'GitHub API 확인: 380,229★·79,633 forks(2026-06-24) / README는 MIT badge와 ChatGPT·Codex OAuth 언급'
   source: https://github.com/openclaw/openclaw
 - category: ai
@@ -1983,16 +1981,6 @@ cards:
   - 도입 — 기존 구독자 무료 업데이트, Agents Window·Composer 2·worktree는 Pro/Pro+/Ultra/Teams에서 제공(가격·플랜 범위는 Cursor 공지 기준)
   source: https://cursor.com/changelog/3-0
 - category: ai
-  title: Google Antigravity 2.0 — IDE 하나가 '데스크톱·CLI·SDK' 3종 플랫폼으로 벌어지다(I/O 2026)
-  summary: '구글이 2026-05-19 I/O에서 에이전트 우선 IDE Antigravity의 2.0을 공개했다. 단일 에디터였던 1.0(2025-11)을 ''리뉴얼된 데스크톱 앱 + Go로 새로 짠 CLI + 커스텀 에이전트용 SDK'' 3개 표면으로 확장한 것이 핵심이다. 모델은 Gemini 3.1 Pro보다 거의 전 벤치마크에서 앞서고 4배 빠르다고 주장하는 Gemini 3.5 Flash로 갈아탔다. 커스텀 서브에이전트 워크플로 설계, 백그라운드 예약 작업, 네이티브 음성 명령이 새로 들어왔다. 같은 날, Gemini CLI·Code Assist의 소비자(AI Pro/Ultra/무료) 접근은 2026-06-18부터 끊고 Antigravity로 몰아간다고 못박았다.
-
-    '
-  points:
-  - 1.0 '에디터' → 2.0 '데스크톱·CLI(Go)·SDK' 3표면 플랫폼으로 확장
-  - 모델은 Gemini 3.5 Flash — '3.1 Pro보다 빠르고 강하다'는 건 구글 주장
-  - Gemini CLI 소비자 접근은 2026-06-18 차단, Antigravity로 이주 강제
-  source: https://thenextweb.com/news/google-antigravity-2-desktop-cli-sdk-io-2026
-- category: ai
   title: GitHub Copilot, 정액제를 버리다 — 2026-06-01부터 'AI 크레딧' 사용량 과금으로 전환
   summary: 'GitHub가 2026-06-01부터 Copilot 전 요금제를 ''프리미엄 리퀘스트 수''가 아니라 ''소비한 토큰(=AI 크레딧)'' 기반 사용량 과금으로 바꿨다. 모델과 입력·출력·캐시 토큰 양에 따라 비용이 매겨지고, 각 요금제에는 월 크레딧 할당량이 포함되며 초과분은 예산을 걸어 추가 구매한다. 고정 구독료는 그대로지만 ''측정 단위''가 바뀐 셈이라, 에이전트 워크플로를 많이 돌리는 헤비 유저의 청구서가 출렁일 수 있다는 우려가 컸다(공식 디스커션에 400+ 댓글). 헤비 워크플로용 상위 ''Copilot Max'' 티어도 신설됐고, 코드 리뷰는 크레딧에 더해 Actions 분까지 소비하게 됐다.
 
@@ -2779,15 +2767,13 @@ cards:
   - '데이터: 115,000 앱·$16B 매출·10억 트랜잭션 분석'
   source: https://www.revenuecat.com/state-of-subscription-apps/
 - category: ai
-  title: ADK for Android — Google의 온디바이스 AI 에이전트 프레임워크, Gemini Nano로 프라이버시 우선 에이전트
-  summary: 'ADK(Agent Development Kit) for Android는 Google이 만든 온디바이스 AI 에이전트 프레임워크다. ML Kit GenAI Prompt API로 Gemini Nano 4를 온디바이스 실행하고, 클라우드 Gemini와 하이브리드 조합 가능. AppFunctions(Android MCP)로 앱의 도구·서비스·데이터를 시스템 에이전트에 노출. A2UI Jetpack Compose Renderer로 에이전트가 네이티브 UI를 자동 렌더링. Prefix Caching으로 반복 프롬프트 추론 최적화.
-
-    '
+  title: ADK for Android 0.1.0 — Gemini Nano 온디바이스·클라우드 하이브리드 에이전트, AppFunctions(Android MCP)
+  summary: 'ADK(Agent Development Kit) for Android 0.1.0(2026-05)은 Google의 앱 내 AI 에이전트 프레임워크다. `com.google.adk:google-adk-kotlin-core-android:0.1.0`으로 시작, ML Kit GenAI Prompt API로 Gemini Nano 4 온디바이스 실행 + 클라우드 Gemini 하이브리드(PREFER_ON_DEVICE/PREFER_CLOUD). AppFunctions(Android MCP)로 앱 도구·서비스·데이터를 시스템 에이전트에 노출, A2UI Compose Renderer로 에이전트 UI 자동 렌더링. 예: 클라우드 orchestrator가 문제를 이해하고 예약 확인 등 민감 작업은 온디바이스 subagent에 위임. ADK Python 2.0(서버 에이전트)과 달리 Android 온디바이스·프라이버시 우선 에이전트 축.'
   points:
-  - 'Gemini Nano 4 온디바이스: ML Kit GenAI Prompt API'
-  - 'AppFunctions(Android MCP): 앱 도구·데이터를 에이전트에 노출'
-  - '하이브리드: PREFER_ON_DEVICE / PREFER_CLOUD 모드 전환'
-  source: https://developer.android.com/ai/adk
+  - google-adk-kotlin-core-android:0.1.0 — 온디바이스·클라우드 하이브리드 orchestration
+  - AppFunctions(Android MCP) + A2UI Compose — 앱 도구·UI를 에이전트에 노출
+  - ADK Python 2.0(서버)과 역할 분리 — Android Nano 프라이버시 우선
+  source: https://developers.googleblog.com/adk-kotlin-android-building-ai-agents/
 - category: ai
   title: OWASP MASVS-RESILIENCE + R8 — 모바일 앱 리버스 엔지니어링 방어의 2026년 표준 가이드
   summary: 'OWASP MASVS v2.0의 MASVS-RESILIENCE 카테고리는 모바일 앱의 리버스 엔지니어링·변조 방어 표준이다. Layer 1: R8(ProGuard 후속)로 이름 난독화·데드 코드 제거(무료, 필수), Layer 2: RASP(루트·디버거· Frida 후킹 탐지), Layer 3: Google Play Integrity API·Apple App Attest로 서버사이드 검증. R8는 제어 흐름 난독화·문자열 암호화 미지원 → jadx로 디컴파일 시 구조 노출. 핵심 로직은 서버에.
@@ -3328,16 +3314,6 @@ cards:
   - 온디바이스 모델 미지원 시 클라우드 fallback으로 도달 범위 확대
   - 'Experimental 기능: SLA·호환성 변경 가능성을 운영 리스크로 반영'
   source: https://developer.android.com/ai/hybrid
-- category: ai
-  title: ADK for Android 0.1.0 — 앱 안에서 온디바이스·클라우드 에이전트를 조율
-  summary: 'Google은 2026년 5월 ADK for Kotlin과 함께 ADK for Android 0.1.0을 공개했다. Android용 ADK는 앱 내부에서 AI 에이전트를 만들고, Gemini Nano 같은 온디바이스 모델과 클라우드 모델을 함께 쓰는 하이브리드 오케스트레이션을 목표로 한다. 예시 흐름은 클라우드 orchestrator가 사용자 문제를 이해하고, 예약 확인처럼 민감한 로컬 문서 접근이 필요한 작업은 온디바이스 subagent에 위임하는 방식이다. 개발자는 `com.google.adk:google-adk-kotlin-core-android:0.1.0` 의존성으로 시작하며, 핵심은 에이전트가 모든 데이터를 클라우드로 보내지 않도록 역할과 데이터 경계를 먼저 나누는 것이다.
-
-    '
-  points:
-  - 'ADK for Android: 앱 내부 에이전트 + 온디바이스 최적화'
-  - 클라우드 orchestrator가 민감 작업을 로컬 subagent에 위임
-  - '시작 의존성: google-adk-kotlin-core-android:0.1.0'
-  source: https://developers.googleblog.com/adk-kotlin-android-building-ai-agents/
 - category: ai
   title: ML Kit Prefix Caching — 반복 프롬프트를 캐시해 Gemini Nano 지연 줄이기
   summary: 'ML Kit Prompt API의 Prefix Caching은 반복되는 프롬프트 앞부분을 static prefix로 분리하고, 매번 바뀌는 내용만 dynamic suffix로 보내 온디바이스 LLM의 중간 상태를 재사용한다. 문서 기준 Pixel 9 예시에서 300토큰 prefix+50토큰 suffix는 0.82초에서 cache hit 0.45초, 1000토큰 prefix+100토큰 suffix는 2.11초에서 0.5초로 줄었다. 단, 현재 experimental이고 일부 기기에서만 가능하며 text-only 입력만 지원한다. 앱 설계 관점에서는 긴 시스템 지침, 고정 분류 기준, 반복 템플릿을 prefix로 빼고 이미지 입력이나 민감 prefix 저장 정책은 별도로 검토해야 한다.
@@ -5978,3 +5954,83 @@ cards:
   - Prefix cache+semantic cache — prefill 90%↓·반복 query 30~50%↓
   - Batch 50% off — eval hold-out 200~500 query로 routing 품질 검증
   source: https://stochasticsandbox.com/posts/cost-optimization-for-llm-applications-2026-05-26/
+- category: ai
+  title: W&B Tables — 구조화 데이터 탐색·모델 예측 비교, IMMUTABLE/MUTABLE/INCREMENTAL 로깅
+  summary: 'W&B Tables는 run에 로그한 표 형식 데이터를 대화형으로 탐색·쿼리하는 ML 데이터 탐색 도구다. wandb.Table(columns, data) → run.log() 한 줄, 이미지·오디오·비디오 등 rich media 컬럼 지원. log_mode: IMMUTABLE(기본·1회), MUTABLE(재로그), INCREMENTAL(학습 중 append). group·filter·sort·calculated column·side-by-side artifact 버전 비교로 misclassified 예시·하이퍼파라미터-메트릭 관계 분석. W&B Reports(스냅샷 문서)·Weave(LLM trace)·Sweeps(HP)와 역할 분리 — Tables는 dataset·prediction row-level 탐색.'
+  points:
+  - wandb.Table — rich media 컬럼·IMMUTABLE/MUTABLE/INCREMENTAL
+  - group·filter·sort·artifact 버전 side-by-side 비교
+  - Reports/Weave와 역할 분리 — row-level 데이터 탐색·쿼리
+  source: https://docs.wandb.ai/models/tables
+- category: ai
+  title: W&B Panels — workspace 대시보드·Custom Charts(Vega), wandb_workspaces API
+  summary: W&B Panels는 project workspace에서 run 메트릭·로그 키를 시각화하는 대시보드 패널 시스템이다. Automated workspace(모든 키 자동 생성) vs Manual(필요 패널만) 모드, LinePlot·ScatterPlot·ParallelCoordinates·ParameterImportance 등. Custom Charts는 GraphQL 쿼리 + Vega spec으로 PR curve·커스텀 histogram 등 기본 패널 밖 시각화. 2026 wandb_workspaces API로 ws.Workspace(sections=[ws.Section(panels=[wr.LinePlot(...)])]).save() 프로그래밍 생성. W&B Reports(공유 문서)·Tables(row 탐색)와 역할 분리 — Panels는 실험 중 live metric 모니터링.
+  points:
+  - Automated vs Manual workspace — Quick add로 패널 일괄 생성
+  - Custom Charts — GraphQL + Vega spec, preset 저장·재사용
+  - wandb_workspaces API — LinePlot·BarPlot 프로그래밍 대시보드
+  source: https://docs.wandb.ai/models/app/features/panels
+- category: ai
+  title: OpenLLMetry — OTel GenAI instrumentation, Traceloop SDK·ServiceNow 인수 후 OSS 유지(Apache-2.0)
+  summary: OpenLLMetry(traceloop/openllmetry)는 OpenTelemetry 위에 LLM·Vector DB 호출을 auto-instrument하는 OSS 라이브러리(Apache-2.0·~6.9k★). traceloop-sdk Traceloop.init() 한 줄로 OpenAI·Anthropic·LangChain·LlamaIndex·Chroma·Pinecone 등 40+ provider span emit, OTel GenAI semantic conventions 준수. span을 Datadog·Honeycomb·Jaeger·Phoenix·Langfuse 등 기존 APM 백엔드로 export — vendor lock-in 없음. 2026-03 ServiceNow가 Traceloop($60-80M) 인수했으나 OpenLLMetry Apache-2.0·독립 유지 약속. Langfuse/Phoenix(SaaS UI)와 달리 instrumentation layer — 기존 OTel 파이프라인에 LLM span 추가.
+  points:
+  - Traceloop.init() — 40+ LLM/VectorDB auto-instrumentation
+  - OTel GenAI conventions — Datadog·Honeycomb·Tempo 등 export
+  - Langfuse/Phoenix와 역할 분리 — instrumentation vs UI, ServiceNow 인수 후 OSS
+  source: https://github.com/traceloop/openllmetry
+- category: ai
+  title: Cohere Embed v4 — 128K·Matryoshka·멀티모달(text+image) 통합 임베딩, 100+ 언어
+  summary: 'Cohere embed-v4.0(2025-04)은 엔터프라이즈 RAG용 flagship 임베딩 API다. 128K context·Matryoshka 256/512/1024/1536 dims·text+image+PDF mixed modality 단일 벡터 공간. input_type: search_document/search_query로 retrieval 최적화, 100+ 언어. AWS Bedrock·Azure AI Foundry·Cohere Platform 배포. BGE-M3(OSS·로컬)·Qwen3-Embedding(OSS)과 달리 API-only·멀티모달 PDF 스크린샷 ETL 불필요 — regulated enterprise·멀티모달 RAG. Cohere Command A(RAG LLM)와 Embed+Rerank 통합 스택.'
+  points:
+  - 128K·Matryoshka·text+image mixed modality 단일 벡터
+  - search_document/search_query input_type — retrieval 최적화
+  - BGE-M3/Qwen3-Embedding(OSS)과 역할 분리 — API·멀티모달·enterprise
+  source: https://docs.cohere.com/docs/cohere-embed
+- category: ai
+  title: Voyage AI 4 — shared embedding space·MoE voyage-4-large, asymmetric index/query(2026-01)
+  summary: Voyage AI 4 시리즈(2026-01, MongoDB 인수)는 industry-first shared embedding space를 도입한 차세대 text embedding이다. voyage-4-large(MoE·40% 저비용)·voyage-4·voyage-4-lite·voyage-4-nano(Apache-2.0 HF) — 4시리즈 내 모든 모델 embedding 호환. index는 voyage-4-large, query는 voyage-4-lite로 asymmetric retrieval — re-index 없이 quality-latency-cost 트레이드오프. 32K context·Matryoshka 256/512/1024/2048·int8/binary quantization. MongoDB Atlas·GCP Vertex·AWS Marketplace. Cohere Embed v4(API multimodal)와 달리 text retrieval 특화·shared space asymmetric.
+  points:
+  - Shared embedding space — index large + query lite, re-index 불필요
+  - voyage-4-large MoE — dense 대비 40% serving cost↓
+  - voyage-4-nano Apache-2.0 — local dev→production 경로
+  source: https://blog.voyageai.com/2026/01/15/voyage-4/
+- category: ai
+  title: Hybrid Search — BM25+vector 병렬·RRF(k=60) 융합, RAG 1-stage retrieval 표준(2026)
+  summary: Hybrid Search는 dense vector(semantic)와 sparse BM25(lexical)를 병렬 실행 후 Reciprocal Rank Fusion으로 합치는 RAG 1-stage retrieval 아키텍처다. Bi-encoder cosine은 product code·에러 메시지·고유명사에서 실패, BM25는 paraphrase에서 실패 — 병렬+RRF가 양쪽 강점 결합. RRF score = Σ 1/(k+rank), k=60 기본(튜닝 불필요·raw score scale 불일치 해결). Weaviate·Qdrant·Elasticsearch·MongoDB Atlas native hybrid 지원. LlamaIndex alpha tuning·Redis dual index. Pure vector RAG 대비 WANDS e-commerce NDCG 7.4%↑ 사례. Cross-encoder rerank(2-stage)와 역할 분리 — hybrid=recall, rerank=precision.
+  points:
+  - BM25 + vector 병렬 → RRF(k=60) rank-based fusion
+  - product code·고유명사(BM25) + paraphrase(vector) 동시 커버
+  - Cross-encoder rerank과 2-stage — hybrid top-50→rerank top-10
+  source: https://denser.ai/blog/hybrid-search-for-rag/
+- category: ai
+  title: Cross-encoder Reranking — RAG 2-stage precision, BGE-Reranker·Cohere Rerank·Jina v3
+  summary: 'Cross-encoder reranking은 hybrid/vector 1-stage top-50~100 후보를 query-document pair로 joint scoring해 top-5~10을 LLM에 전달하는 RAG 2-stage precision layer다. Bi-encoder는 query·doc을 독립 encode(빠르지만 nuance 손실), cross-encoder는 pair-wise attention(느리지만 hyper-accurate). OSS: BGE-Reranker-v2-m3(568M·multilingual·~80ms/50doc CPU), Jina Reranker v3(listwise·nDCG@10 61.94). Managed: Cohere Rerank API($1/1k search). TEI(Text Embeddings Inference)로 production batching. Latency budget(<200ms)+circuit breaker fallback 필수. Jina Reranker v3(제품)와 달리 2-stage funnel 아키텍처 패턴.'
+  points:
+  - 2-stage funnel — retrieve 50-100 → cross-encoder → top 5-10
+  - BGE-Reranker-v2-m3(OSS) vs Cohere Rerank(managed) vs Jina v3(listwise)
+  - Hybrid search(1-stage recall)과 짝 — NDCG@10 +5~15pt typical lift
+  source: https://localaimaster.com/blog/reranking-cross-encoders-guide
+- category: ai
+  title: LangChain Expression Language (LCEL) — Runnable | pipe, invoke/stream/batch 자동(2026 표준)
+  summary: LCEL(LangChain Expression Language)은 LangChain 컴포넌트를 `|` pipe operator로 조합하는 선언적 파이프라인 프로토콜이다. LLMChain·SequentialChain(deprecated) 대체 — prompt | model | StrOutputParser 한 줄. 모든 LCEL chain은 Runnable 인터face로 invoke·ainvoke·stream·astream·batch 자동 지원. RunnableParallel(동시 실행)·RunnablePassthrough(입력 전달)·RunnableBranch(조건 분기)·with_fallbacks(장애 failover). LangGraph(상태 머신 멀티에이전트)와 역할 분리 — LCEL=단일/병렬 chain, LangGraph=순환·조건부 에이전트 워크플로. LangSmith trace native 연동.
+  points:
+  - prompt | model | parser — invoke/stream/batch/async 자동
+  - RunnableParallel·Passthrough·Branch·with_fallbacks
+  - LangGraph와 역할 분리 — chain composition vs state machine agent
+  source: https://python.langchain.com/docs/concepts/lcel/
+- category: ai
+  title: Hugging Face Model Cards — README.md YAML metadata·discoverability·ModelCard.validate
+  summary: Hugging Face Model Card는 model repo의 README.md — YAML frontmatter(pipeline_tag·library_name·license·language·base_model·eval_results) + Markdown 본문. discoverability·reproducibility·sharing의 핵심 — pipeline_tag로 task filter·widget·API 결정, eval_results는 Hub UI widget 자동 렌더. ModelCard.from_template() + ModelCard.validate()로 schema compliance, 누락 시 search hidden·manual review. safetensors·Spaces demo·Collection(모델 변형 그룹)·quantized GGUF(base_model link) best practice. HF Datasets(데이터)·Spaces(데모)와 역할 분리 — Model Card는 모델 artifact 문서·계약.
+  points:
+  - 'YAML: pipeline_tag·library_name·license·eval_results — search/filter'
+  - ModelCard.from_template + validate — schema compliance gate
+  - Datasets/Spaces와 역할 분리 — 모델 README=artifact contract
+  source: https://huggingface.co/docs/hub/en/model-cards
+- category: ai
+  title: Azure AI Foundry Agent Service — Hosted agents·MAF·LangGraph·OTel GA(2026 Build)
+  summary: 'Microsoft Foundry Agent Service(구 Azure AI Foundry Agents)는 prompt agent(포털 정의·코드 없음) + Hosted agents(컨테이너/zip 배포·자동 스케일) 이중 모델의 managed agent platform이다. Microsoft Agent Framework v1.0 GA — Python/.NET SDK, Foundry Toolkit for VS Code로 local trace→deploy. Hosted agents: per-session sandbox·Microsoft Entra identity·filesystem persistence·Responses API + Invocations protocol. Build 2026: long-running agents·routines(스케줄)·Teams/M365 Copilot publish·agent optimizer(eval loop). AWS Bedrock AgentCore(framework-agnostic Runtime/Gateway/Memory)와 3대 cloud agent platform 축. LangGraph·OpenAI Agents SDK·Anthropic SDK container deploy 지원.'
+  points:
+  - Prompt agent(노코드) + Hosted agent(컨테이너·MAF/LangGraph)
+  - Foundry Toolkit VS Code — local trace→deploy, OTel GA
+  - Bedrock AgentCore와 역할 분리 — Azure Entra·M365·Teams 생태계
+  source: https://learn.microsoft.com/en-us/azure/foundry/agents/overview

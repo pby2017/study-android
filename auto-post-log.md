@@ -1748,3 +1748,60 @@ Refined:
 
 누적: 617카드 (609→607 병합→617 신규)
 주제: HP tuning(Optuna), distributed training(Ray Train V2), W&B Reports, LLM eval(TruLens), HF Datasets v5, synthetic data(NeMo Data Designer), GenAI security(OWASP LLM Top 10·PyRIT), observability comparison(Langfuse/LangSmith/Phoenix), LLM FinOps, Pi/MCP merge
+
+## 2026-06-25 00:15 KST — Batch 28 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| W&B Tables | row-level 데이터 탐색·rich media — Reports(스냅샷)·Panels(차트)와 축 분리 |
+| W&B Panels | live metric 대시보드·Vega Custom Charts — Reports·Tables와 W&B 제품군 분리 |
+| OpenLLMetry | OTel instrumentation layer — Langfuse/Phoenix(SaaS UI) 비교 카드와 instrumentation vs UI 분리 |
+| Cohere Embed v4 | 128K·멀티모달 API — BGE-M3/Qwen3-Embedding(OSS)과 enterprise API 축 |
+| Voyage AI 4 | shared embedding space asymmetric — Cohere Embed v4(multimodal)와 text retrieval 특화 분리 |
+| Hybrid Search RRF | BM25+vector 1-stage 아키텍처 — LlamaIndex(하이브리드 언급)와 독립 패턴 카드 |
+| Cross-encoder Reranking | 2-stage precision funnel — Jina Reranker v3(제품)와 아키텍처 패턴 분리 |
+| LCEL | Runnable pipe composition — LangGraph(상태 머신)와 chain vs agent 분리 |
+| HF Model Cards | README YAML metadata — Datasets v5·Spaces(데모)와 모델 문서 축 |
+| Azure AI Foundry | Hosted agents·MAF — Bedrock AgentCore(AWS)와 cloud agent platform 3축 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Amazon Bedrock AgentCore | Azure Foundry 카드로 cloud agent platform 축 커버, 별도 카드는 Batch 29 후보 |
+| Google Vertex AI Agent Builder | ADK 2.0·ADK for Android 카드 존재, Agent Builder는 ADK+Runtime 통합 설명 중복 |
+| Anthropic Message Batches API | LLM API 비용 최적화 카드에 batch 50% off 포함, 300K output은 niche |
+| OpenAI Assistants vs Responses API | Assistants API 종료 D-64 카드 존재 |
+| Cohere Rerank 단독 | Cross-encoder Reranking 패턴 카드에 Cohere Rerank 포함 |
+| Jina AI Embeddings | Jina Reranker v3 카드 존재, embedding은 BGE-M3·Cohere Embed v4 축 커버 |
+| Docling / LlamaParse | 기존 카드 존재 |
+| n8n AI / Zapier AI | n8n 카드 존재, Zapier는 low differentiation |
+| Langfuse/LangSmith/Phoenix 단독 | Batch 27 3축 비교 카드 존재 |
+| Helicone / Portkey / LiteLLM | 기존 게이트웨이·비용 카드 존재 |
+
+### 병합 (2카드 제거, 617→615)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Google Antigravity + Google Antigravity 2.0 | Google Antigravity 2.0 — 데스크톱·CLI(Go)·SDK 3표면, Gemini CLI 이전 |
+| ADK for Android + ADK for Android 0.1.0 | ADK for Android 0.1.0 — Nano 하이브리드·AppFunctions(Android MCP) |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | W&B Tables — 구조화 데이터 탐색 | docs.wandb.ai |
+| 2 | W&B Panels — workspace 대시보드 | docs.wandb.ai |
+| 3 | OpenLLMetry — OTel GenAI instrumentation | github.com/traceloop/openllmetry |
+| 4 | Cohere Embed v4 — 멀티모달 임베딩 | docs.cohere.com |
+| 5 | Voyage AI 4 — shared embedding space | blog.voyageai.com |
+| 6 | Hybrid Search — BM25+vector RRF | denser.ai |
+| 7 | Cross-encoder Reranking — 2-stage precision | localaimaster.com |
+| 8 | LangChain Expression Language (LCEL) | python.langchain.com |
+| 9 | Hugging Face Model Cards — YAML metadata | huggingface.co |
+| 10 | Azure AI Foundry Agent Service — Hosted agents | learn.microsoft.com |
+
+누적: 625카드 (617→615 병합→625 신규)
+주제: W&B Tables/Panels, OTel LLM instrumentation(OpenLLMetry), embedding API(Cohere Embed v4·Voyage AI 4), RAG retrieval(Hybrid Search·Cross-encoder Reranking), LangChain LCEL, HF Model Cards, cloud agent platform(Azure AI Foundry), Antigravity/ADK merge
