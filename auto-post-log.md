@@ -1581,3 +1581,56 @@ Refined:
 
 누적: 592카드 (583→582 병합→592 신규)
 주제: TypeScript AI SDK(Vercel), AI gateway(Portkey·Kong), Java LLM(Spring AI), agent workflow(Prefect), TTS API(ElevenLabs), AI docs(Mintlify), ML registry(W&B), distributed training(Determined), video API(Runway)
+
+## 2026-06-24 22:00 KST — Batch 25 (아이디어 검증 + 병합 1카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| ZenML | Dynamic Pipelines·에이전트 fan-out budget — Prefect(범용)·MLflow(추적)와 파이프라인 오케스트레이션 레이어 분리 |
+| Metaflow | Netflix Spin·@step 데코레이터·Maestro 연동 — ZenML(파이프라인 조립)과 DS 친화적 flow 모델 차별 |
+| ClearML | Task.init 2줄+Agent+Triton Serving 올인원 — MLflow(추적)와 experiment→orchestration→serving 통합 차별 |
+| Comet ML | compare·report·Model Registry SaaS — W&B Weave(LLM trace)와 전통 ML 실험 UX 분리 |
+| Marimo | reactive .py 노트북 — Gradio(ML UI)·Chainlit(에이전트 UI)와 재현 가능 Python 프로그램 축 |
+| AgentOps | time-travel debugging·400+ LLM — Langfuse(범용 trace)와 에이전트 reasoning chain 특화 |
+| Sentence Transformers | v5.6 멀티모달+Agent Skill — ColPali(멀티모달 RAG)와 범용 임베딩 라이브러리 분리 |
+| DeepL API | document·glossary·model_type — LLM 번역(컨텍스트)과 deterministic SLA API 분리 |
+| Databricks Mosaic AI | AI Runtime GPU+250k QPS Serving+Unity Catalog — Determined AI(학습 infra)와 엔터프라이즈 통합 |
+| Embedchain | 10줄 RAG·30+ 소스 — Mem0(에이전트 메모리)와 빠른 ingestion 프로토타입 분리 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Neptune.ai | OpenAI 인수 후 2026-03 SaaS 영구 종료, 신규 도입 불가 |
+| W&B Experiments | MLflow 카드·W&B Weave·Registry로 실험 추적 축 이미 커버 |
+| LiteLLM | 기존 카드 존재 |
+| Pydantic AI | 기존 카드 존재 |
+| Cursor Composer/Agent | Composer 2.5·듀얼 스택 카드 존재 |
+| Galileo AI / Uizard | Google Stitch(Galileo) 카드 존재, Uizard는 AI 디자인 도구 중복 |
+| Anthropic Workbench | 프롬프트 실험은 LangSmith·Braintrust로 커버 |
+
+### 병합 (1카드 제거, 592→591)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| agent-device + Mobilerun | 모바일 에이전트 테스트 — agent-device vs Mobilerun, 접근성 트리로 앱의 눈과 손 주기 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | ZenML — Python-first ML 파이프라인 오케스트레이션 | docs.zenml.io |
+| 2 | Metaflow — Netflix human-centric ML | github.com/Netflix/metaflow |
+| 3 | ClearML — 2줄 실험 추적+Agent+서빙 | github.com/clearml/clearml |
+| 4 | Comet ML — 실험 추적·Model Registry SaaS | comet.com/docs |
+| 5 | Marimo — reactive Python 노트북 | docs.marimo.io |
+| 6 | AgentOps — 에이전트 time-travel debugging | github.com/AgentOps-AI/agentops |
+| 7 | Sentence Transformers — v5.6 멀티모달 임베딩 | sbert.net |
+| 8 | DeepL API — 프로덕션 번역 REST API | developers.deepl.com |
+| 9 | Databricks Mosaic AI — AI Runtime+Model Serving | databricks.com/blog |
+| 10 | Embedchain — 10줄 RAG 프로토타입 | docs.embedchain.ai |
+
+누적: 601카드 (592→591 병합→601 신규)
+주제: MLOps pipeline(ZenML·Metaflow·ClearML), experiment tracking(Comet), reactive notebook(Marimo), agent observability(AgentOps), embedding(Sentence Transformers), translation API(DeepL), enterprise GenAI(Mosaic AI), RAG prototype(Embedchain), mobile agent testing merge
