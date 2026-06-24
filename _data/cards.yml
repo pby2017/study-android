@@ -413,14 +413,12 @@ cards:
   - '예: ["**/vendor/**/CLAUDE.md"] — vendor 트리의 CLAUDE.md를 컨텍스트에서 빼기'
   source: https://code.claude.com/docs/en/settings
 - category: ai
-  title: Playwright MCP — 스크린샷 대신 접근성 트리로 브라우저 조작
-  summary: 'Playwright MCP는 LLM에게 브라우저 자동화 도구를 MCP로 열어 주는 공식 서버다. 핵심은 화면 픽셀을 추측하는 대신 페이지의 접근성 트리 스냅샷을 읽고, 그 안의 역할·텍스트·참조값으로 클릭·입력·탭 전환·네트워크 확인을 수행한다는 점이다. 그래서 비전 모델 없이도 Todo 입력칸 같은 요소를 안정적으로 찾아 조작할 수 있다. 공식 문서는 VS Code·Cursor·Windsurf·Claude Code·Codex 같은 MCP 클라이언트에서 `npx @playwright/mcp@latest`로 붙이는 구성을 제시한다. 단, 임의 Playwright 코드를 실행하는 browser_run_code_unsafe는 RCE와 같으므로 신뢰한 클라이언트에서만 켜야 한다.
-
-    '
+  title: Playwright CLI + MCP — Microsoft의 코딩·LLM 에이전트용 브라우저 제어 2종(접근성 트리·토큰 효율)
+  summary: Playwright가 테스트 프레임워크를 넘어 에이전트 전용 브라우저 인터페이스 2종을 공식 출시했다. Playwright MCP는 LLM 에이전트용 — 접근성 트리 스냅샷으로 픽셀·비전 모델 없이 클릭·입력·탭·네트워크 확인 (Apache-2.0·34k★). Playwright CLI는 Claude Code·Copilot 같은 코딩 에이전트용 — MCP 대비 토큰 효율적 (대형 도구 스키마·접근성 트리를 컨텍스트에 안 넣음). Model Context Protocol과 CLI 두 레이어로 에이전트 유형별 브라우저 자동화를 분리한 설계가 핵심.
   points:
-  - 접근성 트리 스냅샷 기반 — 픽셀/스크린샷 추측 의존↓
-  - 클릭·입력·탭·스크린샷·네트워크/콘솔 확인까지 MCP 도구로 제공
-  - '공식 GitHub: Apache-2.0, 2026-06-18 확인 34,069★ / unsafe 코드 실행은 신뢰 클라이언트 전용'
+  - Playwright MCP = 접근성 트리 스냅샷, 비전 불필요, 클릭·입력·탭·네트워크·콘솔(Apache-2.0·34k★)
+  - Playwright CLI = 코딩 에이전트용, MCP 대비 토큰 효율적 브라우저 제어
+  - 테스트 프레임워크 → 에이전트 인프라로 역할 확장
   source: https://playwright.dev/docs/getting-started-mcp
 - category: ai
   title: allowManagedHooksOnly — 조직이 승인한 훅만 돌게 잠그기
@@ -705,14 +703,12 @@ cards:
   - 비개발 직군도 사용 — 디자인팀은 Figma 파일을 자율 루프에 넣어 코드·테스트 반복, 마케팅은 광고 변형 최대 100개 자동 생성
   source: https://claude.com/blog/how-anthropic-teams-use-claude-code
 - category: ai
-  title: Continue가 'AI 체크'로 피벗 — 채팅·자동완성 말고 PR마다 도는 AI 검사
-  summary: '한때 VS Code·JetBrains용 오픈소스 AI 코딩 어시스턴트 중 스타가 가장 많던 Continue(약 33k★, Apache-2.0)가 제품 방향을 크게 틀었다. 이제 핵심은 IDE 안 채팅·자동완성이 아니라 ''모든 PR에서 AI 검사를 돌리는'' 것이다. 각 검사는 레포 안 `.continue/checks/` 폴더의 마크다운 파일 하나로 정의되고, GitHub 상태 체크로 나타난다 — 통과하면 초록, 실패하면 빨강과 함께 수정 제안을 단다. 검사 규칙을 코드와 같은 레포에 버전 관리한다는 점에서 "소스로 관리되는, CI에서 강제 가능한 AI 검사"라는 슬로건을 단다.
-
-    '
+  title: Continue(continuedev) — AI Checks 피벗·read-only 보관·CLI 유산(~33.7k★)
+  summary: 한때 VS Code·JetBrains·CLI로 성장한 오픈소스 코딩 에이전트 Continue(Apache-2.0·~33.7k★)는 2026년 두 갈래 변화를 겪었다. 첫째, 제품 핵심이 IDE 채팅·자동완성에서 '모든 PR에 AI 검사를 돌리는' AI Checks로 피벗 — `.continue/checks/` 마크다운 하나가 검사 규칙이 되고 GitHub 상태 체크·CI에서 실행된다. 둘째, 메인 레포(continuedev/continue)는 2.0.0 최종 릴리스 후 read-only 보관 — 더 이상 능동 유지보수 없음. CLI(cn)는 모듈형 터미널 에이전트(TUI·헤드리스 `-p`)로 100+ LLM·Ollama 지원했으나 같은 운명. JetBrains는 @continuedev/cli 사용 권장. Roo Code·Zoo Code와 함께 'OSS 에이전트 도입 시 archived 여부'를 PoC 단계에서 확인해야 하는 대표 사례.
   points:
-  - 검사 = 마크다운 1개(`.continue/checks/`)로 정의 → 깃에 커밋되어 코드와 함께 버전 관리·리뷰됨
-  - 'GitHub 상태 체크로 표시: 통과=초록, 실패=빨강+수정 제안, CI에서 실행(Run Checks in CI) 가능'
-  - 린트가 못 잡는 '팀 규칙'(네이밍·아키텍처·보안 관례 등)을 자연어로 적어 PR 게이트로 거는 용도 / 오픈소스 CLI 기반
+  - AI Checks = `.continue/checks/` 마크다운 → PR마다 자연어 규칙 검사, GitHub 상태 체크·CI 연동
+  - 메인 레포 read-only(2.0.0 최종) — 스타·라이선스만 보지 말고 유지보수 상태·포크 경로 확인
+  - CLI(cn) = 모듈형 TUI·헤드리스, 100+ LLM·Ollama — 같은 보관 상태, @continuedev/cli 권장
   source: https://docs.continue.dev/
 - category: ai
   title: MCP 도구를 코드로 호출하기 — 토큰 150k→2k로 줄인 'Code execution with MCP'
@@ -1001,14 +997,12 @@ cards:
   - Agents 패널·GitHub.com·VS Code·이슈 등 여러 진입점에서 @copilot으로 호출 가능
   source: https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent
 - category: ai
-  title: npx skills — 에이전트 스킬의 '패키지 매니저'(vercel-labs·22.5k★)
-  summary: '스킬(SKILL.md)이 쏟아지면서 생긴 문제는 ''어떤 걸 어떻게 깔지''다. Vercel Labs의 skills CLI는 스스로를 ''오픈 에이전트 스킬 생태계를 위한 CLI''라 부르며, npm 패키지처럼 스킬을 검색·설치·갱신하게 해준다(깃허브 22.5k★·MIT). 핵심 명령은 `npx skills find`(키워드·대화형 검색), `add`(설치, 예: `npx skills add vercel-labs/agent-skills`), `use`(설치 없이 1회 실행), `list`/`update`/`remove`/`init`이다. 설치 방식은 심링크(권장)와 복사 두 가지를 지원한다. 특히 한 도구에 묶이지 않는다 — README는 Claude Code·Codex·Cursor·OpenCode를 비롯해 Gemini CLI·Copilot·Windsurf·Zed 등 71개 이상의 에이전트에 같은 스킬을 깔 수 있다고 밝힌다. 동반 디렉터리 skills.sh에서 공개 스킬을 둘러볼 수 있다.
-
-    '
+  title: skills.sh / npx skills — SKILL.md를 70+ 에이전트에 npm처럼 까는 스킬 패키지 매니저(Vercel·~22.6k★)
+  summary: 스킬(SKILL.md)이 쏟아지면서 생긴 문제는 '어떤 걸 어떻게 깔지'다. Vercel Labs의 skills CLI(skills.sh)는 오픈 에이전트 스킬 생태계를 위한 npm식 패키지 매니저(MIT·~22.6k★)다. `npx skills add <owner/repo>` 한 줄로 Claude Code·Codex·Cursor·OpenCode 등 70여 개 에이전트 폴더에 심볼릭 링크 설치. find·use(1회)·list·update·remove·init 서브커맨드, `-g`(전역)·`-a`(대상 에이전트)·`-y`(비대화형) 플래그. GitHub·GitLab·URL·로컬 경로 지원. SKILL.md 표준을 '설치·배포 레이어'로 묶어 도구 비종속 스킬 공유를 가능하게 한다.
   points:
-  - '스킬을 npm처럼 다루는 CLI: find(검색)·add(설치)·use(1회 실행)·update·remove·init (22.5k★·MIT)'
-  - 한 도구 전용이 아님 — Claude Code·Codex·Cursor·OpenCode 등 71개+ 에이전트에 동일 스킬 설치(README 주장)
-  - 심링크(권장)/복사 설치 지원, 공개 스킬은 skills.sh 디렉터리에서 탐색
+  - '`npx skills add/find/use/update/remove/init` — npm처럼 스킬 검색·설치·갱신(MIT·~22.6k★)'
+  - 70+ 에이전트 비종속 — Claude Code·Cursor·Codex·OpenCode 등에 심볼릭 링크로 동일 SKILL.md 공유
+  - '`-g` 전역 / 프로젝트 스코프, skills.sh 디렉터리에서 공개 스킬 탐색'
   source: https://github.com/vercel-labs/skills
 - category: ai
   title: 코딩 에이전트 프롬프트 인젝션 방어 — Claude Code가 실제로 거는 안전장치
@@ -1069,14 +1063,12 @@ cards:
   - 공식 조직 발행 스킬과 커뮤니티 스킬을 함께 싣되, 출처와 라이선스를 보고 골라 쓰는 카탈로그
   source: https://github.com/VoltAgent/awesome-agent-skills
 - category: ai
-  title: Roo Code 셧다운 — 24k★ 오픈소스 에디터 에이전트의 피벗과 포크 생존
-  summary: 'VS Code용 오픈소스 코딩 에이전트 Roo Code(같은 런 검증: 24,265★, 3,331 forks, Apache-2.0)는 Code·Architect·Ask·Debug·Custom 모드, 자연어 코드 생성, 리팩터링·디버깅, 문서 업데이트, MCP 서버 사용을 제공했다. 하지만 공식 README는 Roo Code Extension이 2026-05-15 종료됐다고 알리고, 대안으로 커뮤니티 포크 Zoo Code와 원류인 Cline을 안내한다. GitHub API 기준 원 저장소는 archived=true라 읽기 전용이고, 마지막 push는 2026-05-15다. Zoo Code README는 Roo 팀이 Roomote에 집중하며 active Roo Code development를 접는다고 설명하고, 기존 Roo 기여자들이 Zoo Code로 계속 모델 업데이트·버그 수정·기능 릴리스를 하겠다고 밝힌다. 실무 교훈은 오픈소스 AI 에이전트도 "인기"만 보지 말고, 포크 가능성·설정 이식성·커뮤니티 인수 경로까지 봐야 한다는 점이다.
-
-    '
+  title: Roo Code 종료 → Zoo Code — 24k★ OSS 에디터 에이전트의 archive·커뮤니티 포크 생존
+  summary: Cline에서 갈라진 VS Code 코딩 에이전트 Roo Code(24k★·Apache-2.0)는 Code·Architect·Ask·Debug·Custom 5모드·MCP·자연어 생성·리팩터링을 제공했다. 2026-05-15 v3.54.0을 마지막으로 저장소 archive(read-only) — 메인테이너는 Roomote 등 다른 프로젝트로 이동. 공식 README는 Zoo Code(커뮤니티 포크, 기존 기여자 인계)와 Cline을 대안으로 안내. Zoo Code는 같은 기능·설정·Apache-2.0, export→import로 이주 가능. 계보 Cline→Roo→Zoo는 BYOK+오픈 라이선스+설정 이식성이 포크 생존을 보장하는 실제 사례.
   points:
-  - '같은 런 검증: 24,265★, 3,331 forks, Apache-2.0, archived=true, 마지막 push 2026-05-15'
-  - '공식 README: Roo Code Extension 종료일 2026-05-15, 대안은 Zoo Code(커뮤니티 포크)와 Cline'
-  - 'Zoo Code README: 기존 Roo 기여자들이 이어받아 모델 업데이트·버그 수정·기능 릴리스 지속'
+  - 2026-05-15 archive — 24k★·Apache-2.0, 공식 대안 Zoo Code·Cline
+  - Zoo Code = 기존 Roo 기여자 포크, 5모드·설정 그대로, export→import 이주
+  - '교훈: OSS 에이전트는 archived 여부·포크 경로를 PoC 단계에서 확인'
   source: https://github.com/RooCodeInc/Roo-Code
 - category: ai
   title: Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기
@@ -1099,15 +1091,13 @@ cards:
   - '교훈: self extensible 구조는 외부 샌드박싱과 dependency supply-chain review를 함께 설계해야 안전하다'
   source: https://github.com/earendil-works/pi
 - category: ai
-  title: Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI
-  summary: 'Factory AI의 터미널 코딩 에이전트 Droid는 Terminal-Bench core v0.1.1에서 58.75%로 1위를 기록했고, Opus 4.1·GPT-5·Sonnet 4 조합이 상위권을 차지했다. 이 카드의 핵심은 순위표보다 설계 해부다. Factory는 성능 차이를 계층형 프롬프트, 모델별 편집·경로 처리 최적화, 작고 신뢰도 높은 도구 스키마, 세션 시작 시 환경 정보 주입, 짧은 기본 타임아웃, 계획 업데이트 도구, 통제된 백그라운드 실행으로 설명한다. 즉 "더 센 모델"만 찾기보다, 에이전트가 환경을 빨리 이해하고 실패한 도구 호출을 줄이며 긴 작업의 최신 맥락을 잃지 않게 만드는 하네스가 점수를 바꾼다는 사례다.
-
-    '
+  title: Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼
+  summary: Factory AI의 터미널 코딩 에이전트 droid는 Terminal-Bench core v0.1.1에서 Opus 4.1 조합 58.8%로 1위를 기록했다. 성능 차이의 핵심은 모델 선택보다 에이전트 설계 — 계층형 프롬프트, 모델별 편집·경로 처리, 최소 도구 스키마, 환경 부트스트랩. `curl -fsSL https://app.factory.ai/cli | sh` 또는 `npm i -g droid`로 설치, 대화형 세션·`droid exec` 헤드리스·`droid exec --mission` 다단계 워크플로. Custom Droid로 팀 규칙·도구를 커스터마이즈. 단일 AI 공급자 락인 없이 작업별 모델 라우팅을 내세운 엔터프라이즈 플랫폼.
   points:
-  - '검증 결과: Droid+Opus 4.1 58.8% · Droid+GPT-5 52.5% · Droid+Sonnet 4 50.5%'
-  - '설계 포인트: 계층형 프롬프트, 모델별 도구/편집 형식, 최소 도구 스키마, 환경 부트스트랩'
-  - '실무 교훈: 비용·모델 선택 전에 도구 오류율, 타임아웃, 계획 상태, 백그라운드 프로세스 통제를 먼저 설계'
-  source: https://factory.ai/news/terminal-bench
+  - Terminal-Bench 1위(58.8%) — 계층형 프롬프트·최소 도구 스키마·환경 부트스트랩이 모델보다 중요
+  - '`droid` 대화형 + `droid exec` 헤드리스 + `--mission` 다단계 워크플로'
+  - Custom Droid·모델 비종속 라우팅 — 엔터프라이즈 코딩 플랫폼
+  source: https://docs.factory.ai/cli/getting-started/overview
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
   summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고, 각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며, 인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
@@ -1118,16 +1108,6 @@ cards:
   - 자동 인덱싱, 80%부터 검색 가능, 5분 증분 동기화, .gitignore·.cursorignore로 제외
   - Agent는 심볼/string은 grep, 개념/행동은 semantic search, 넓은 탐색은 Explore subagent로 조합
   source: https://cursor.com/docs/agent/tools/search
-- category: ai
-  title: Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트
-  summary: 'Continue CLI(cn)는 "오픈소스이며 모듈형인 커맨드라인 코딩 에이전트"라는 설계 자체가 배울 만한 사례다. 공식 CLI 문서는 cn이 검증된 agent loop를 제공하고, 사용자가 모델·규칙·도구를 꽂아 쓰는 구조라고 설명한다. 사용 방식은 둘이다. 사람이 터미널에서 대화하는 TUI 모드(`cn`)와, 최종 답변만 출력하는 헤드리스 모드(`cn -p`)다. 헤드리스 모드는 git diff를 파이프로 넣어 커밋 메시지를 만들거나 CI·스크립트에서 결과 문자열만 받는 Unix식 자동화에 맞다. 다만 현재 continuedev/continue README는 레포가 더 이상 능동적으로 유지보수되지 않고 모든 사용자에게 read-only이며, VS Code 확장·CLI·JetBrains 플러그인의 final 2.0.0 릴리스를 냈다고 밝힌다. 그래서 실무 교훈은 "도입 추천 도구"보다, 에이전트 CLI가 interactive/headless/config 공유를 어떻게 나누는지와 OSS 에이전트의 유지보수 상태를 함께 확인해야 한다는 점이다.
-
-    '
-  points:
-  - cn = 오픈소스 모듈형 터미널 코딩 에이전트, agent loop에 모델·규칙·도구를 플러그인
-  - 대화형 TUI 모드(`cn`) + 최종 출력만 남기는 헤드리스 모드(`cn -p`)
-  - 현재 README 기준 no longer actively maintained/read-only, final 2.0.0 릴리스 — 기능뿐 아니라 유지보수 상태까지 검토
-  source: https://docs.continue.dev/guides/cli
 - category: ai
   title: Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'
   summary: 'Ralph 루프가 "끝날 때까지 새 컨텍스트로 다시 돌리는" 패턴이라면, Continuous Claude(AnandChowdhary)는 그 루프에 GitHub PR 생명주기를 붙인 CLI다. 매 반복마다 Claude Code 또는 Codex CLI가 작업하고, 새 브랜치에 커밋한 뒤 `gh pr create`로 PR을 열고, `gh pr checks`와 리뷰 통과를 기다린다. 초록불이면 머지하고, 실패하면 PR을 닫고 작업을 버린 뒤 다음 반복에서 실패 지식을 반영한다. 반복 사이 맥락은 기본 `SHARED_TASK_NOTES.md`에 남겨 컨텍스트 드리프트를 줄이고, `--worktree`로 병렬 실행도 지원한다. 현재 README 기준 GitHub PR 자동화가 핵심 경로이며 self-hosted forge는 미지원이다. 로컬 검증이나 안전한 시험 운전은 `--dry-run`, `--disable-commits`, `--disable-branches`, `--max-runs`, `--max-duration`, `--max-cost` 같은 제한 플래그로 먼저 좁히는 편이 낫다.
@@ -1519,16 +1499,6 @@ cards:
   - '본인 셸 커밋은 제외: Bash 도구로 Claude가 한 commit·push만 리뷰됨(`!` 셸 이스케이프·직접 셸 커밋은 안 봄). 전부 훅(SessionStart·UserPromptSubmit·Stop·PostToolUse)으로 구현 — 소스가 ''훅에서 별도 모델 호출'' 예제. PR엔 Code Review, CI엔 기존 스캐너로 단계 분담'
   source: https://code.claude.com/docs/en/security-guidance
 - category: ai
-  title: Continue(continuedev) — IDE 확장에서 'cn' CLI로 무게중심을 옮긴 오픈소스 코딩 에이전트(~33.7k★)
-  summary: 'Continue는 "pioneering open-source coding agent"를 표방하는 Apache-2.0 프로젝트로, 이제 CLI·VS Code 확장·JetBrains 플러그인 세 갈래로 제공된다. 특히 2026년 들어 터미널 CLI(''cn'')에 무게가 실렸는데, 대화형 TUI 모드와 스크립트로 돌리는 헤드리스 모드를 함께 갖춰 로컬 개발과 CI 자동화 양쪽에 쓰게 했다. 모델을 안 가리는 게 핵심 — 어떤 LLM이든 붙일 수 있고 Ollama 같은 로컬 모델로 코드를 외부에 안 보내고도 돌릴 수 있다.
-
-    '
-  points:
-  - '세 갈래 배포: CLI(''cn'')·VS Code 확장·JetBrains 플러그인(공식 README ''available as CLI, VS Code extension, and JetBrains plugin''). 라이선스 Apache-2.0(© 2023-2026 Continue Dev, Inc.), GitHub 별 약 33.7k(대략치)'
-  - 'CLI 두 모드: 사람이 터미널에서 대화하는 TUI 모드와, 출력만 받아 파이프라인에 꽂는 헤드리스 모드. 같은 에이전트를 로컬 손작업과 CI 무인 실행 양쪽에 재사용 — Claude Code의 headless(`-p`)와 같은 발상'
-  - '모델 안 가림(open architecture): 100+ LLM 연결, 로컬 Ollama로 코드 유출 없이 구동 가능. 자체 모델·라우팅을 쥐려는 팀, JetBrains 사용자, 프라이버시·예산 제약 팀에 자주 추천되는 자리'
-  source: https://github.com/continuedev/continue
-- category: ai
   title: AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)
   summary: 'AGENTS.md는 "코딩 에이전트를 안내하는 단순·개방 포맷"으로, 공식 사이트가 "a README for agents"라 부른다. README와 분리해 사람용 문서는 짧게 두고, 빌드·테스트·컨벤션 같은 에이전트용 상세 지침을 에이전트가 확실히 찾는 곳에 둔다는 발상이다. 필수 필드는 없고 "그냥 표준 Markdown"이라, 핵심은 양식이 아니라 ''어디에 두느냐''다. 공식 사이트 기준 Codex·Jules·Cursor·Gemini CLI·Copilot 등 다수 도구가 지원하고 6만+ 오픈소스 프로젝트가 쓴다고 명시한다.
 
@@ -1689,16 +1659,6 @@ cards:
   - '운영 흐름: 여러 에이전트를 띄워두고 → 끝난 작업의 diff를 리뷰 → PR 생성·머지. ''사람의 리뷰·통합''을 병목으로 보고 그 단계를 줄이는 설계. 현재 맥 중심·v0.65.0대'
   source: https://www.conductor.build/
 - category: ai
-  title: GitHub Octoverse 2025 — 'AI가 기본값'이 된 해, 그리고 그 부작용(타입스크립트 1위·AI slop·Broken Access Control 172%↑)
-  summary: 'GitHub의 연례 개발자 동향 리포트 Octoverse 2025가 공개됐다. 1년간 신규 개발자 3,600만 명 이상이 합류해(평균 1초에 1명 이상) 전체 1억 8,000만 명을 넘겼고, 저장소는 6억 3,000만 개를 돌파했다. 핵심은 ''AI가 더 이상 옵션이 아니라 기본값''이라는 것 — 신규 개발자의 약 80%가 가입 첫 주에 Copilot을 썼고, LLM SDK를 import하는 공개 저장소는 1년 새 178% 늘어 110만 개를 넘었다. 2026년 실무자에게 직접적인 신호는 두 가지다. ① 타입스크립트가 10여 년 만에 파이썬·자바스크립트를 제치고 사용량 1위 — LLM이 만든 코드의 컴파일 오류 상당수가 타입 체크 실패라서 엄격한 타입 시스템이 ''AI 코드를 일찍 거르는 안전망''으로 가치가 커졌다는 분석이다. ② 부작용도 공식 집계됐다. CodeQL 경보 1위가 Injection에서 Broken Access Control로 바뀌어 15만+ 저장소에서 잡혔고(전년比 172%↑) — GitHub은 그 상당수를 ''AI가 생성한 스캐폴드가 인증 체크를 건너뛴'' 데서 비롯한다고 짚는다. 동시에 ''AI slop''(저품질 자동생성 PR)이 메인테이너 시간을 갉아먹는 문제도 처음 리포트에 명시됐다.
-
-    '
-  points:
-  - '규모(공식): 신규 개발자 3,600만+(1초당 1명 이상)→누적 1.8억+, 저장소 6.3억+. 신규 개발자 ~80%가 첫 주에 Copilot 사용, LLM SDK import 공개 저장소 110만+(전년比 +178%)'
-  - '타입스크립트 1위(10여 년 만의 언어 지각변동): GitHub은 ''LLM이 만든 컴파일 오류의 다수가 타입 체크 실패''라는 2025 학술 결과를 근거로, 엄격 타입 시스템이 AI 코드 오류를 파이프라인 초반에 거르는 장치로 부상했다고 분석'
-  - '부작용도 공식 집계: CodeQL 경보 1위가 Injection→Broken Access Control(15만+ 저장소, +172% YoY)로 바뀜 — ''인증 체크를 건너뛴 AI 스캐폴드''가 원인 다수. ''AI slop'' 저품질 PR이 메인테이너 부담으로 처음 명시'
-  source: https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/
-- category: ai
   title: MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)
   summary: 'MCP 서버를 여러 개 붙이면 세션 시작 전에 도구 정의가 컨텍스트를 다 잡아먹는 ''context pollution''이 오래 문제였다(한 개발자는 첫 프롬프트도 치기 전에 6.6만 토큰이 사라졌다고 기록). Claude Code의 MCP Tool Search는 세션 시작 시 도구 이름과 서버 instructions만 올리고, 실제 도구 정의는 Claude가 필요할 때 검색해서 불러온다. Anthropic은 2026-01-14에 이 기능을 공개했고, 공식 문서 기준 현재 기본값으로 켜져 있다. 실무 효과는 ''MCP 서버를 더 붙여도 컨텍스트 영향이 거의 없다''는 것 — 그래서 서버 개수보다 서버 instructions를 잘 써두는 게 중요해진다.
 
@@ -1829,16 +1789,6 @@ cards:
   - '표준 채택 현황(agentskills.io 클라이언트 쇼케이스 기준): Claude Code/Claude·Cursor·OpenAI Codex·Gemini CLI·GitHub Copilot·VS Code·OpenHands·Goose·Roo Code·Amp·Factory·Kiro·Letta 등. openai/skills(Codex용 Skills Catalog)는 22.3k★. Anthropic이 발원해 오픈 표준으로 풀고 생태계가 확장 중'
   source: https://agentskills.io
 - category: ai
-  title: skills.sh(Vercel) — 'npx skills add'로 SKILL.md를 70여 개 에이전트에 한 번에 까는 npm식 스킬 패키지 매니저(MIT·22.6k★)
-  summary: 'Vercel-labs가 만든 skills.sh는 AI 코딩 에이전트용 스킬(SKILL.md)을 npm 패키지처럼 설치·관리하는 오픈소스 CLI다. GitHub shorthand·URL·GitLab·로컬 경로에서 스킬을 받아 add·use·list·find·update·remove·init 서브커맨드로 다루며, OpenCode·Claude Code·Codex·Cursor를 포함해 70여 개 에이전트에 동시에 설치한다. 핵심은 스킬을 한 곳에 두고 각 에이전트 디렉터리로 심볼릭 링크를 거는 방식이라, 도구를 바꿔도 같은 스킬을 그대로 쓴다. 라이선스는 MIT, README 기준 약 22.6k★다.
-
-    '
-  points:
-  - '설치 한 줄: ''npx skills add <owner/repo>''. 안 깔고 한 번만 돌리는 ''use'', 키워드 검색 ''find'', 새 스킬 뼈대 만드는 ''init''까지 — 패키지 매니저처럼 add/list/update/remove 풀세트'
-  - '스코프 플래그: ''-g''는 ~/<agent>/skills/(전역), 기본은 ./<agent>/skills/(프로젝트). ''-a''로 대상 에이전트, ''-s''로 스킬, ''-y''로 비대화형 지정'
-  - 도구 비종속이 핵심 — 스킬 원본을 한 벌 두고 OpenCode·Claude Code·Codex·Cursor 등 67개+ 에이전트 폴더에 심볼릭 링크. SKILL.md 표준을 '설치·배포 레이어'로 묶은 셈(MIT·~22.6k★)
-  source: https://github.com/vercel-labs/skills
-- category: ai
   title: OpenHands(All-Hands-AI) — 에이전트의 모든 행동을 'Docker 샌드박스'에서 돌리는 오픈소스 코딩 에이전트(MIT·~77k★)
   summary: 'OpenHands(옛 OpenDevin)는 코드를 짜고 수정할 뿐 아니라 명령 실행·웹 브라우징·API 호출까지 사람 개발자처럼 하는 오픈소스 자율 코딩 에이전트다. 핵심 차별점은 에이전트의 모든 행동을 격리된 Docker 런타임(샌드박스)에서 실행한다는 점 — 로컬 환경을 직접 건드리지 않고 컨테이너 안에서 셸·파일 편집·브라우저를 돌린다. CLI·웹 GUI·Cloud·Agent SDK 등 여러 형태로 쓰며 특정 모델에 묶이지 않고 다양한 LLM 공급자를 붙일 수 있다. 라이선스는 MIT(단, enterprise/ 디렉터리는 별도)이며 README 기준 약 77k★다.
 
@@ -1848,16 +1798,6 @@ cards:
   - 한 코어, 여러 표면 — 동일 엔진을 CLI(헤드리스 포함)·웹 GUI·OpenHands Cloud·파이썬 Software Agent SDK로 노출. 모델 비종속이라 Claude·GPT 등 원하는 LLM 공급자를 끼운다
   - SWE-bench Verified 상위권을 '주장' — 공식은 77.6% 해결(검증된 리더보드 수치라기보다 프로젝트 측 주장으로 받아들일 것). 라이선스 MIT·~77k★, '87% 버그 티켓 당일 해결' 류 마케팅 수치는 검증 안 됨
   source: https://github.com/All-Hands-AI/OpenHands
-- category: ai
-  title: Cursor Bugbot — 'AI가 짠 코드'를 PR 단계에서 잡으려고 만든 전용 코드리뷰 봇(GitHub·GitLab)
-  summary: 'Bugbot은 Cursor 팀이 만든 PR 전용 AI 코드리뷰 도구다. 새 PR이 열리면 백그라운드에서 자동으로 돌면서 논리 버그·보안 문제를 잡아 코멘트로 달고, 변경된 줄뿐 아니라 그 변경이 기존 코드와 어떻게 충돌하는지까지 본다. 공식 페이지는 ''Bugbot이 단 플래그의 70% 이상이 머지 전에 해결된다''고 밝힌다. GitHub과 GitLab에 붙으며, PR 코멘트나 `bugbot run`으로 수동 트리거할 수 있고, 프런티어 모델과 자체 모델을 섞어 쓴다. Anthropic 공식 보안 리뷰 액션이나 Claude Code `/code-review`와 같은 ''에이전트 코드리뷰 자동화'' 흐름의 상용 버전 격이다.
-
-    '
-  points:
-  - 'PR 자동 리뷰가 핵심 — 새 PR에 자동 작동해 버그·보안 이슈를 코멘트로 남기고, diff뿐 아니라 변경이 코드베이스의 다른 가정과 어떻게 상호작용하는지까지 검사(공식 표현: ''가장 어려운 논리 버그를 낮은 오탐률로'')'
-  - 팀 규칙을 코드로 — `.cursor/BUGBOT.md`에 프로젝트별 코딩 표준을 적어 리뷰 기준을 맞추고, `@cursor remember`로 리뷰 중 배운 규칙을 누적시킨다. GitHub·GitLab 둘 다 지원(공식 docs 기준)
-  - 검증 가능한 수치만 — '머지 전 플래그 70%+ 해결', '발견한 버그의 절반 이상이 수정됨'은 공식 페이지 주장. '월 200만 PR 처리·8개 병렬 패스·90초 리뷰' 류는 2차 보도 수치로, 1차 출처 미확인이니 그대로 인용하지 말 것
-  source: https://cursor.com/docs/bugbot
 - category: ai
   title: android/skills(Google 공식) — Android 개발 베스트프랙티스를 'SKILL.md'로 에이전트에 주입하는 공식 스킬 묶음(Apache-2.0·~5.8k★)
   summary: 'Google Android 팀이 직접 내는 공식 에이전트 스킬 저장소다. developer.android.com의 모범 사례를 Agent Skills 오픈 표준(SKILL.md) 형식으로 묶어, LLM이 약한 Android 작업에서 헛짚지 않도록 ''근거''를 깔아 준다. Expo의 expo/skills에 대응하는 네이티브 Android판 격으로, 2026-04-20 발표 뒤 빠르게 성장했고 현재 약 5.8k★·Apache-2.0 라이선스다. CLI가 감지된 모든 에이전트에 스킬을 깔아 주며(기본값 Gemini·Antigravity), LLM이 이미 잘하는 영역이 아니라 ''평가상 못하는 워크플로''를 골라 채우는 게 설계 방향이다.
@@ -2098,16 +2038,6 @@ cards:
   - 병렬 격리 — /worktree로 변경 격리, /best-of-n으로 한 작업을 여러 모델·각자 worktree에 돌려 'best one' 고르기. 클라우드 에이전트는 이제 Agents Window 전용
   - 도입 — 기존 구독자 무료 업데이트, Agents Window·Composer 2·worktree는 Pro/Pro+/Ultra/Teams에서 제공(가격·플랜 범위는 Cursor 공지 기준)
   source: https://cursor.com/changelog/3-0
-- category: ai
-  title: Continue(continuedev) 2.0 — 33.7k★ 오픈소스 IDE 에이전트가 '최종 릴리스 후 read-only'로 보관됨, 또 하나의 OSS 코딩 에이전트 종료 사례
-  summary: 'Continue는 VS Code·JetBrains·CLI로 제공되던 대표적 오픈소스 코딩 에이전트(Apache-2.0·~33.7k★)다. 2023년 ''Claude Dev''류 초기 OSS 에이전트 물결의 일원으로 자동완성·채팅·에이전트 모드·rules/MCP 허브를 무기로 성장했다. 그러나 메인 레포(github.com/continuedev/continue)는 README가 명시하듯 "더 이상 능동적으로 유지보수되지 않으며 모든 사용자에게 read-only"가 됐다. 팀은 "VS Code 확장·CLI·JetBrains 플러그인의 최종 2.0.0 릴리스"를 내며 익명 텔레메트리 제거·인증 제거·버그 정리로 마무리했다. JetBrains 사용자에게는 "플러그인 대신 Continue CLI 사용"을 권한다. README 본문에는 활성 개발을 이어갈 명시적 후속 레포 링크가 없고, 코드베이스가 "다른 이들의 토대로 계속 쓰이길" 바란다고만 적었다. 실무 시사점: Roo Code(Zoo Code로 부활)·Gemini CLI 차단 사례와 같은 결의 ''오픈소스 에이전트는 메인테이너가 손을 떼면 어떻게 되나'' 리스크다. 도구를 팀 워크플로에 박아 넣기 전, 라이선스만이 아니라 ''유지보수 상태''를 봐야 한다.
-
-    '
-  points:
-  - 사실(README 인용) — 'continuedev/continue 레포는 더 이상 능동적으로 유지보수되지 않으며 모든 사용자에게 read-only'. VS Code/CLI/JetBrains 최종 2.0.0 릴리스로 텔레메트리·인증 제거 후 보관(Apache-2.0·~33.7k★)
-  - 권고 — JetBrains 플러그인 대신 Continue CLI(@continuedev/cli) 사용 권장. 본문엔 활성 개발을 이어갈 명시적 후속 레포 링크 없음('foundation for others'로 남기길 희망)
-  - 교훈 — OSS 에이전트 도입 시 스타 수·라이선스만 보지 말고 '유지보수 상태(archived/read-only 여부)'를 PoC 단계에서 확인. 종료돼도 포크·CLI 전환 경로가 있는지가 락인 리스크를 가른다
-  source: https://github.com/continuedev/continue
 - category: ai
   title: Google Antigravity 2.0 — IDE 하나가 '데스크톱·CLI·SDK' 3종 플랫폼으로 벌어지다(I/O 2026)
   summary: '구글이 2026-05-19 I/O에서 에이전트 우선 IDE Antigravity의 2.0을 공개했다. 단일 에디터였던 1.0(2025-11)을 ''리뉴얼된 데스크톱 앱 + Go로 새로 짠 CLI + 커스텀 에이전트용 SDK'' 3개 표면으로 확장한 것이 핵심이다. 모델은 Gemini 3.1 Pro보다 거의 전 벤치마크에서 앞서고 4배 빠르다고 주장하는 Gemini 3.5 Flash로 갈아탔다. 커스텀 서브에이전트 워크플로 설계, 백그라운드 예약 작업, 네이티브 음성 명령이 새로 들어왔다. 같은 날, Gemini CLI·Code Assist의 소비자(AI Pro/Ultra/무료) 접근은 2026-06-18부터 끊고 Antigravity로 몰아간다고 못박았다.
@@ -2448,14 +2378,6 @@ cards:
   - '딥 문서 이해: 표·이미지·수기 노트 포함 PDF/DOCX 정밀 파싱'
   - '에이전트 + MCP + 코드 실행: 검색 넘어 자율 행동 가능'
   source: https://github.com/infiniflow/ragflow
-- category: ai
-  title: LangGraph vs CrewAI vs AutoGen — 2026년 에이전트 프레임워크 3파전, '무엇을 만드느냐'로 고르는 가이드
-  summary: 2026년 에이전트 프레임워크 선택은 '어느 게 좋은가'가 아니라 '무엇을 만드는가'로 결정된다. LangGraph는 그래프 기반 상태 관리·체크포인팅·human-in-the-loop가 강점으로 프로덕션급 복잡 워크플로우에 적합(Uber· LinkedIn·Replit 사용). CrewAI는 역할 기반 멀티에이전트 팀 구성이 간편해 빠른 프로토타이핑에 최적(~30k★). AutoGen(AG2)은 대화형 에이전트 상호작용과 MCP 연동이 특장점이나 프로덕션에서 토큰 폭주 리스크 있음. JetBrains 2026년 6월 가이드 기준. CrewAI(MIT·53.7k★)는 역할 기반 Crew+결정적 Flow를 한 프레임워크에 담아 빠른 멀티에이전트 프로토타입에 적합하다.
-  points:
-  - 'LangGraph: 프로덕션 복잡 워크플로우 — 명시적 상태·체크포인트·HITL'
-  - 'CrewAI: 빠른 프로토타이핑 — 역할 기반 YAML 설정, ~30k★'
-  - 'AutoGen: 대화형 연구용 — MCP McpWorkbench 네이티브, 토큰 폭주 주의'
-  source: https://blog.jetbrains.com/pycharm/2026/06/top-agentic-frameworks-for-building-applications-2026/
 - category: ai
   title: cc-sdd(Spec-Driven Development) — Kiro의 '스펙→설계→태스크' 워크플로우를 아무 코딩 에이전트에서 쓰기(오픈소스)
   summary: 'cc-sdd는 AWS Kiro IDE가 도입한 spec-driven development 워크플로우(requirements.md → design.md → tasks.md)를 Claude Code·Copilot·Gemini CLI·Windsurf 등 어떤 코딩 에이전트에서든 쓸 수 있게 만든 오픈소스 CLI 도구다. npx cc-sdd@latest --claude "프롬프트" 한 줄이면 3종 스펙 문서가 생성된다. AWS Labs의 aidlc-workflows도 유사하게 ADLC 가드레일을 제공한다. 핵심은 "프롬프트를 바로 코드로 바꾸지 말고, 요구사항·설계·태스크로 구조화한 뒤 코드를 생성하라"는 원칙.
@@ -5646,7 +5568,7 @@ cards:
   source: https://www.braintrust.dev/docs
 - category: ai
   title: Claude Tag — Slack에서 @Claude를 팀원처럼 호출하는 협업 에이전트
-  summary: 'Claude Tag는 Claude를 Slack 채널에 초대해 팀 대화, 선택한 도구, 데이터, 코드베이스 맥락 위에서 작업을 위임하는 Anthropic의 팀 협업 기능이다. 채널 멤버가 `@Claude`를 태그하면 Claude가 PR 작성·머지, 데이터 분석, 장애 원인 조사 같은 일을 맡고, 채널 기록을 따라가며 매번 배경 설명을 다시 요구하지 않도록 컨텍스트를 쌓는다. ambient behavior를 켜면 조용해진 스레드나 관련 정보를 먼저 짚어 주는 더 능동적인 패턴도 가능하다. 개발자 교훈은 "코딩 에이전트는 IDE 안 개인 도구"에서 "팀 채널의 공유 작업자"로 이동 중이라는 점이다. 단, 채널·도구 접근권한을 어디까지 줄지와 사람이 승인해야 할 작업 경계를 먼저 설계해야 한다.'
+  summary: Claude Tag는 Claude를 Slack 채널에 초대해 팀 대화, 선택한 도구, 데이터, 코드베이스 맥락 위에서 작업을 위임하는 Anthropic의 팀 협업 기능이다. 채널 멤버가 `@Claude`를 태그하면 Claude가 PR 작성·머지, 데이터 분석, 장애 원인 조사 같은 일을 맡고, 채널 기록을 따라가며 매번 배경 설명을 다시 요구하지 않도록 컨텍스트를 쌓는다. ambient behavior를 켜면 조용해진 스레드나 관련 정보를 먼저 짚어 주는 더 능동적인 패턴도 가능하다. 개발자 교훈은 "코딩 에이전트는 IDE 안 개인 도구"에서 "팀 채널의 공유 작업자"로 이동 중이라는 점이다. 단, 채널·도구 접근권한을 어디까지 줄지와 사람이 승인해야 할 작업 경계를 먼저 설계해야 한다.
   points:
   - Slack 채널에서 `@Claude` 호출 → 선택한 채널·도구·데이터·코드베이스 맥락으로 작업 위임
   - PR 작성·머지, 데이터 분석, 장애 조사처럼 팀 대화와 코드 작업을 잇는 협업형 에이전트
@@ -5654,7 +5576,7 @@ cards:
   source: https://www.anthropic.com/news/introducing-claude-tag
 - category: ai
   title: Copilot enterprise-managed plugins — VS Code까지 내려오는 조직 표준 에이전트 배포
-  summary: 'GitHub Copilot의 enterprise-managed plugins는 기업 관리자가 플러그인 마켓플레이스, 자동 설치 플러그인, hooks, MCP 설정을 한 번 정의해 Copilot CLI와 VS Code 사용자에게 같이 배포하는 기능이다. VS Code 1.122부터 Copilot CLI에서 시작한 enterprise-managed capability를 지원하며, 설정 파일은 `.github-private/.github/copilot/settings.json` 위치에 둔다. 플러그인은 custom agents와 skills를 자동 설치해 온보딩을 줄이고, 항상 켜야 하는 hook·MCP 구성을 조직 표준으로 밀어 넣을 수 있다. 교훈은 AI 도구 도입이 개인 설정 싸움에서 끝나지 않고, 보안·리뷰·도메인 지식을 중앙 정책으로 배포하는 플랫폼 운영 문제가 된다는 점이다.'
+  summary: GitHub Copilot의 enterprise-managed plugins는 기업 관리자가 플러그인 마켓플레이스, 자동 설치 플러그인, hooks, MCP 설정을 한 번 정의해 Copilot CLI와 VS Code 사용자에게 같이 배포하는 기능이다. VS Code 1.122부터 Copilot CLI에서 시작한 enterprise-managed capability를 지원하며, 설정 파일은 `.github-private/.github/copilot/settings.json` 위치에 둔다. 플러그인은 custom agents와 skills를 자동 설치해 온보딩을 줄이고, 항상 켜야 하는 hook·MCP 구성을 조직 표준으로 밀어 넣을 수 있다. 교훈은 AI 도구 도입이 개인 설정 싸움에서 끝나지 않고, 보안·리뷰·도메인 지식을 중앙 정책으로 배포하는 플랫폼 운영 문제가 된다는 점이다.
   points:
   - '`.github-private/.github/copilot/settings.json`으로 marketplace·자동 설치·hook·MCP 표준을 정의'
   - Copilot Business/Enterprise 사용자의 Copilot CLI와 VS Code가 같은 조직 플러그인 정책을 적용
@@ -5668,3 +5590,83 @@ cards:
   - 테스트·스캐너·MCP·로그 도구를 직접 실행해야 정적 제안이 아니라 검증 가능한 결과가 된다
   - 사람은 아키텍처·제품 의도·최종 품질을 소유하고, 에이전트는 반복 가능한 하위 워크플로부터 맡긴다
   source: https://developers.openai.com/codex/guides/build-ai-native-engineering-team
+- category: ai
+  title: Cody(Sourcegraph) — 코드베이스 검색 API로 @-mention 멀티레포 컨텍스트를 IDE에 끼워 넣는 AI 어시스턴트
+  summary: Sourcegraph Cody는 VS Code·JetBrains·Visual Studio·웹에서 동작하는 AI 코딩 어시스턴트다. 핵심 차별점은 Sourcegraph Search API — 로컬·원격 코드베이스 전체에서 API·심볼·사용 패턴을 검색해 @-mention으로 채팅·자동완성·Smart Apply에 끼워 넣는다. Enterprise는 멀티레포 컨텍스트, Context Filters로 특정 레포 제외, LLM 선택·프롬프트 라이브러리·MCP 지원. Auto-edit은 커서 이동·타이핑을 분석해 맥락 수정 제안. Amp(에이전트)와 달리 '코드 이해·검색'에 특화.
+  points:
+  - Sourcegraph Search API — @-mention으로 파일·심볼·원격 레포 컨텍스트 주입
+  - Chat·Autocomplete·Smart Apply·Auto-edit·프롬프트 라이브러리·MCP
+  - 'Enterprise: 멀티레포·Context Filters·온프레미스 추론(Ollama) — Amp와 역할 분리'
+  source: https://sourcegraph.com/docs/cody
+- category: ai
+  title: Sweep AI — GitHub 이슈·Jira 티켓을 'Sweep:' 라벨만으로 PR까지 자동 생성하는 AI 주니어 개발자
+  summary: 'Sweep AI는 GitHub App + JetBrains 플러그인으로 동작하는 AI 코딩 어시스턴트(Y Combinator). 핵심 워크플로: 이슈에 ''Sweep'' 라벨 또는 제목 ''Sweep:'' 접두 → 코드베이스 읽기 → 변경 계획 → PR 생성 → CI 자동 수정·머지 충돌 해결. 주니어 개발자에게 일을 맡기듯 버그·소규모 기능·리팩터링을 자연어로 설명하면 된다. JetBrains 쪽은 에이전트 모드·무제한 autocomplete·Privacy Mode. Copilot 코딩 에이전트·SWE-agent와 달리 GitHub-native 이슈→PR 파이프라인에 특화.'
+  points:
+  - 'GitHub App: ''Sweep'' 라벨·''Sweep:'' 접두 → 코드베이스 분석 → PR 자동 생성'
+  - CI 자동 수정·머지 충돌 해결 PR — PR 코멘트로 피드백 반복
+  - 'JetBrains 플러그인: 에이전트 모드·autocomplete·Privacy Mode — GitHub-native 자동 PR'
+  source: https://docs.sweep.dev/
+- category: ai
+  title: Tabnine Enterprise — VPC·온프rem·air-gapped에서 전 스택(모델·Context Engine·거버넌스)을 로컬 실행
+  summary: 'Tabnine Enterprise는 코드·프롬프트·텔레메트리가 기본적으로 환경 밖으로 나가지 않는 셀프호스팅 AI 코딩 플랫폼이다. 2026년 GA: 모델 추론·Context Engine(조직 지식 그래프)·거버넌스·정책 평가·오케스트레이션이 전부 고객 trust boundary 안에서 동작. VPC(AWS/GCP/Azure)·온프rem Kubernetes·완전 air-gapped 배포. Tabby(자동완성 서버)와 달리 Context Engine·코딩 에이전트·MCP·SSO·SOC2/ISO27001까지 엔터프라이즈 풀스택.'
+  points:
+  - 로컬 퍼스트 — 추론·인덱싱·정책 평가·검색 전부 trust boundary 내부, air-gapped 지원
+  - Context Engine = 아키텍처 결정·코딩 표준·의존성 정책·인시던트 이력 조직 지식 그래프
+  - Tabby(자동완성)와 차별 — 에이전트·MCP·SSO·컴플라이언스 풀스택
+  source: https://docs.tabnine.com/main/welcome/readme/tabnine-subscription-plans/enterprise-private-installation
+- category: ai
+  title: Temporal + AI — 크래시·rate limit에도 에이전트 상태가 살아남는 durable execution 오케스트레이션
+  summary: LLM 에이전트를 프로덕션에 올리면 rate limit·서버 크래시·장시간 대기에서 상태가 유실된다. Temporal은 Workflow(결정적 오케스트레이션)·Activity(비결정적 LLM·도구 호출·자동 재시도)·Signal/Query(외부·휴먼 인터랙션)로 durable execution을 제공한다. OpenAI Agents SDK·Google ADK와 공식 통합. Nexus로 팀 간 에이전트 서비스 호출, workflow.patched()로 버전 마이그레이션. CrewAI·LangGraph와 달리 '에이전트 프레임워크'가 아니라 '에이전트가 돌아가는 인프라 레이어'.
+  points:
+  - Workflow = 오케스트레이션·상태, Activity = LLM·도구(자동 재시도·Event History)
+  - Signal/Query = 휴먼 인더 루프, Nexus = 팀 간 버전드 에이전트 서비스 호출
+  - OpenAI Agents SDK·ADK 통합 — 프레임워크가 아닌 durable execution 인프라
+  source: https://temporal.io/blog/from-agent-zoo-to-agent-orchestra-temporal-agentic-control-plane
+- category: ai
+  title: ChromaDB — pip install 한 줄로 시작하는 임베디드 벡터 DB, dev→server→Cloud 동일 API
+  summary: 'Chroma는 AI-native 오픈소스 임베딩 DB(Apache-2.0·16k★+)로, RAG 프로토타입의 사실상 기본 선택지다. 핵심 API 4개(add/query/update/delete), 자동 임베딩·메타데이터 필터·LangChain/LlamaIndex 통합. 배포 3패턴: Embedded(PersistentClient·로컬 폴더)·Server(HttpClient·Docker)·Chroma Cloud(관리형). 2026년 hybrid retrieval(벡터+BM25+sparse), collection forking, object storage tiering 추가. ''벡터 DB 선택 2026'' 비교 카드와 달리 ''로컬 임베디드→프로덕션'' 마이그레이션 경로에 특화.'
+  points:
+  - Embedded(PersistentClient) → Server(HttpClient) → Cloud — 동일 API, 스레드-safe·프로세스-safe 주의
+  - 자동 임베딩·메타데이터 필터·LangChain/LlamaIndex 1급 통합
+  - '2026: hybrid retrieval·collection forking·object storage tiering'
+  source: https://cookbook.chromadb.dev/running/deployment-patterns/
+- category: ai
+  title: Milvus 3.0 — External Collection·Snapshot으로 벡터 DB를 데이터 레이크와 zero-copy 통합(Zilliz Lakebase)
+  summary: Milvus 3.0-beta(2026-05)는 벡터 DB를 Zilliz Vector Lakebase의 코어 커널로 확장한다. External Collection = Parquet·Iceberg·Lance 파일을 복사 없이 zero-copy 참조, Milvus는 스키마·인덱스·쿼리만 관리. Snapshot = MVCC 격리 read-only 뷰로 배치 분석·A/B 평가. EmbList+DiskANN(변长 벡터·ColBERT), nullable vector(온라인 컬럼 추가), MinHash dedup, Storage V3(manifest 기반 columnar). Qdrant·Pinecone 비교 카드와 달리 '레이크-native·대규모 배치+서빙 통합'에 특화.
+  points:
+  - External Collection — Parquet/Iceberg/Lance zero-copy, Refresh로 동기화
+  - Snapshot — MVCC read-only 뷰, 라이브 Collection 쓰기와 병행
+  - EmbList+DiskANN·nullable vector·MinHash·Storage V3 — Zilliz Lakebase 코어
+  source: https://milvus.io/docs/release_notes.md
+- category: ai
+  title: Pieces for Developers — OS 레벨 AI 동반자, 코드 스니펫·워크플로 컨텍스트를 로컬 장기 기억으로
+  summary: Pieces는 Copilot·Cursor가 '새 코드 작성'을 돕는 반면, '전에 풀었던 코드를 어디서 찾지?' 문제를 푼다. OS 레벨 companion으로 클립보드·IDE·스크린샷(OCR)·브라우저 탭을 자동 캡처, AI가 태그·설명·관련 사람(Git history)으로 enrich. Long-term Memory로 자연어 검색, Copilot Chat에서 저장 스니펫 참조. 로컬 퍼스트(코드가 디바이스에 기본), GPT·Claude·Gemini·로컬 모델 선택. 개인 무료, Team $10/seat.
+  points:
+  - Auto-capture — 클립보드·IDE·스크린샷·브라우저 탭, AI enrich(태그·설명·PII/API key 감지)
+  - Long-term Memory — 자연어로 과거 스니펫·컨텍스트 검색, Copilot Chat 연동
+  - 로컬 퍼스트 — Copilot/Cursor(작성)와 다른 '개발자 기억' 카테고리
+  source: https://pieces.app/features/drive
+- category: ai
+  title: Trae AI IDE — ByteDance VS Code 포크, Claude·GPT-4o·DeepSeek 무료 티어·Builder/SOLO 모드
+  summary: 'Trae는 ByteDance(TikTok 모회사)가 2025년 출시한 VS Code 포크 AI IDE. Builder Mode로 자연어 한 줄에서 프로젝트 생성, SOLO Mode로 에이전트 병렬 실행. Claude Sonnet 4·GPT-4o·DeepSeek R1·Gemini를 API 키 없이 내장. 2026년 freemium: 무료 5,000 autocomplete/월·10 fast+50 slow premium 요청, Lite $3~Ultra $100. Windsurf·Cursor와 경쟁하나 프라이버시(텔레메트리·5년 데이터 보관) 이슈 — 사이드 프로젝트·학습용 적합, 프로prietary 코드엔 부적합.'
+  points:
+  - VS Code 포크 — Builder(프로젝트 생성)·SOLO(에이전트 병렬), MCP·웹 프리뷰
+  - Claude·GPT-4o·DeepSeek·Gemini 내장, 무료 티어 quota(Lite $3~Ultra $100)
+  - Windsurf/Cursor 대비 무료 모델 접근 — ByteDance 텔레메트리·프라이버시 주의
+  source: https://www.trae.ai/
+- category: ai
+  title: Function Calling vs Tool Use — OpenAI·Anthropic·Gemini 프로덕션 패턴 비교(2026)
+  summary: '세 제공자 모두 JSON Schema 기반 도구 호출을 지원하지만 API 설계가 다르다. OpenAI: tools+tool_calls, arguments는 JSON string(파싱 필요), strict:true로 스키마 강제. Anthropic: tool_use content block, arguments는 dict(사전 파싱), Tool Search로 대규모 레지스트리 lazy-load, 텍스트·도구 혼합 응답. Gemini: function_declarations, Google 서비스 통합. 공통: parallel tool calls, agentic loop는 직접 구현 또는 LiteLLM/Vercel AI SDK. Gemma·Qwen 모델별 언급과 달리 ''크로스 프로바이더 프로덕션'' 관점.'
+  points:
+  - 'OpenAI: tool_calls·JSON string args·strict:true / Anthropic: tool_use block·dict args·Tool Search'
+  - 'Gemini: function_declarations·Google 서비스 grounding — parallel calls 공통'
+  - '프로덕션: agentic loop 직접 구현 또는 LiteLLM 추상화, is_error 플래그(Anthropic) 주의'
+  source: https://ofox.ai/blog/function-calling-tool-use-complete-guide-2026/
+- category: ai
+  title: MMLU-Pro·HumanEval+ — 정적 벤치마크 포화와 EvalPlus 80x 테스트 강화(2026)
+  summary: 기존 MMLU·HumanEval은 프론티어 모델이 88-94%에 몰려 변별력이 사라졌다. MMLU-Pro = 12,000 graduate-level·10지선다·추론 중심(MMLU 대비 16-33%p 하락). HumanEval+ = EvalPlus 프레임워크로 테스트 케이스 80배 확장, 기능 정확도 엄격 평가. 그러나 2026년 MMLU-Pro도 88-94% 밴드로 재포화 중 — 정적 벤치 단독 신뢰 불가. SWE-bench·Terminal-Bench·Arena Elo와 포트폴리오로 triangulate해야 한다.
+  points:
+  - MMLU-Pro — 12k문항·10지선다·추론, 원 MMLU 16-33%p harder, 그러나 2026 재포화
+  - HumanEval+ — EvalPlus 80x 테스트, Phi-4 Reasoning ~92.9% 등 코딩 정확도 엄격 측정
+  - 정적 벤치 단독 금지 — SWE-bench·GPQA·Arena·자체 50-500 prompt eval 병행
+  source: https://www.digitalapplied.com/blog/llm-benchmark-methodology-2026-contamination-leaderboard-guide

@@ -1394,3 +1394,61 @@ Refined:
 
 누적: 572카드 (569→572 신규+refine)
 주제: 팀 채널형 코딩 에이전트(Claude Tag), 엔터프라이즈 플러그인·스킬·MCP 배포(Copilot), SDLC 전반 AI-native 엔지니어링 운영(OpenAI Codex)
+
+## 2026-06-24 22:00 KST — Batch 22 (아이디어 검증 + 병합 7카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| Cody(Sourcegraph) | Amp와 역할 분리, 코드베이스 검색·@-mention 멀티레포 컨텍스트 독립 주제 |
+| Sweep AI | GitHub-native 이슈→PR, Copilot 에이전트·SWE-agent와 워크플로 차별 |
+| Tabnine Enterprise | Tabby(자동완성)와 차별, air-gapped 풀스택·Context Engine |
+| Temporal + AI | CrewAI/LangGraph와 다른 durable execution 인프라 레이어 |
+| ChromaDB | 벡터 DB 비교 카드와 달리 embedded→server→Cloud 마이그레이션 경로 |
+| Milvus 3.0 | Qdrant/Pinecone 비교와 달리 lake-native zero-copy·Snapshot |
+| Pieces for Developers | Copilot/Cursor(작성)와 다른 '개발자 기억' 카테고리 |
+| Trae AI IDE | Windsurf/Cursor와 ByteDance 무료 티어·프라이버시 트레이드오프 |
+| Function Calling vs Tool Use | Gemma/Qwen 모델별 언급과 달리 크로스 프로바이더 프로덕션 패턴 |
+| MMLU-Pro·HumanEval+ | 기존 LLM 벤치마크 카드와 달리 EvalPlus·재포화 구체화 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Continue.dev 신규 | 기존 4카드 → 1카드 병합으로 충분 |
+| W&B Prompts | W&B Weave 카드가 프롬프트 버전 관리 커버 |
+| PearAI | Trae·Windsurf·Cursor와 차별화 부족, 영향력 낮음 |
+| Pinecone Serverless / Weaviate 단독 | '벡터 DB 선택 2026' 비교 카드 존재 |
+| Prompt Engineering 2026 | '컨텍스트 엔지니어링(Anthropic)' 카드와 중복 |
+| AI 페어 프로그래밍 연구 | 학술·모호, 실무 개발 카드 가치 낮음 |
+| OpenRouter / Fireworks | Batch 20 이미 존재 |
+| Milvus vs Qdrant 비교 | Milvus 3.0 단독 + 벡터 DB 선택 카드로 커버 |
+
+### 병합 (7카드 제거, 572→565)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Continue AI Checks / CLI / IDE / 2.0 read-only (4→1) | Continue — AI Checks 피벗·read-only·CLI 유산 통합 |
+| npx skills | skills.sh / npx skills — Vercel 스킬 패키지 매니저 통합 |
+| Roo Code 셧다운 | Roo Code → Zoo Code archive·포크 생존 통합 |
+| Droid(Factory AI) | Factory droid — Terminal-Bench·Mission·Custom Droid 통합 |
+| Playwright MCP | Playwright CLI + MCP — 2종 브라우저 인터페이스 통합 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Cody(Sourcegraph) — @-mention 멀티레포 컨텍스트 | sourcegraph.com/docs/cody |
+| 2 | Sweep AI — GitHub 이슈→PR 자동 생성 | docs.sweep.dev |
+| 3 | Tabnine Enterprise — air-gapped 풀스택 | docs.tabnine.com |
+| 4 | Temporal + AI — durable execution | temporal.io |
+| 5 | ChromaDB — embedded→Cloud 마이그레이션 | cookbook.chromadb.dev |
+| 6 | Milvus 3.0 — lake-native zero-copy | milvus.io |
+| 7 | Pieces for Developers — 개발자 장기 기억 | pieces.app |
+| 8 | Trae AI IDE — ByteDance 무료 IDE | trae.ai |
+| 9 | Function Calling vs Tool Use — 3사 비교 | ofox.ai |
+| 10 | MMLU-Pro·HumanEval+ — 정적 벤치 재포화 | digitalapplied.com |
+
+누적: 575카드 (572→565 병합→575 신규)
+주제: codebase search AI(Cody), GitHub-native auto-PR(Sweep), enterprise on-prem AI(Tabnine), durable agent infra(Temporal), embedded vector DB(Chroma), lake-native vector(Milvus), developer memory(Pieces), free AI IDE(Trae), cross-provider tool use, static benchmark saturation
