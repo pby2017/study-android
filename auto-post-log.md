@@ -1262,3 +1262,28 @@ Refined:
 
 누적: 547카드 (553→535 중복제거→547 신규추가)
 주제: Claude 워크스페이스(Artifacts·Projects), 프론티어 모델(Llama 4·Phi-4-mini), 음성 AI(Whisper turbo), 신규 아키텍처(KAN·MoA·RWKV-7·Diff Transformer), AI 규제(EU AI Act·RSP), 코드 보안(Snyk vs Semgrep)
+
+## 2026-06-24 17:00 KST — Round 16 Batch 19 (중복 정리 5카드 + 신규 12카드)
+
+**중복 정리**: 5카드 제거 (547→542)
+- Claude Code GitHub Action(2→1), Terminal-Bench 일반 소개(2.0·2.1 유지), Spotify Honk(2→1), Dynamic Workflows(4→2: ultracode 상세+사례 유지)
+
+**신규 12카드**:
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Jamba 2 — AI21 SSM+Transformer 하이브리드 | ai21.com |
+| 2 | Together AI — Serverless Inference Platform | together.ai |
+| 3 | Guardrails AI — LLM 입출력 검증 | github.com/guardrails-ai |
+| 4 | MLX — Apple Silicon ML 프레임워크 | github.com/ml-explore/mlx |
+| 5 | LangSmith — LLM·에이전트 옵저버빌리티 | docs.langchain.com |
+| 6 | Gemma 3n — MatFormer·PLE 온디바이스 | ai.google.dev |
+| 7 | Letta(Letta Code) — git-backed agent memory | letta.com |
+| 8 | Hindsight — Retain·Recall·Reflect memory | arxiv.org |
+| 9 | Qwen-Agent — Qwen3.5 네이티브 agent framework | github.com/QwenLM |
+| 10 | 1/W Law — Green AI 에너지 효율 | arxiv.org |
+| 11 | Stable Diffusion 3.5 Large Turbo — ADD 4-step | huggingface.co |
+| 12 | xAI Grok-3 — Think·DeepSearch reasoning | x.ai |
+
+누적: 554카드 (547→542 중복제거→554 신규추가)
+주제: 하이브리드 LLM(Jamba 2), inference 플랫폼(Together AI·vLLM 대비), 출력 검증(Guardrails AI), Apple ML(MLX·Gemma 3n), agent memory(Letta·Hindsight), agent framework(Qwen-Agent), observability(LangSmith), Green AI(1/W Law), 이미지 AI(SD 3.5 Turbo), reasoning LLM(Grok-3)

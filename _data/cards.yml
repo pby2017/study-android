@@ -193,16 +193,6 @@ cards:
   - '비용 설계: `model` 또는 `CLAUDE_CODE_SUBAGENT_MODEL`로 반복 탐색은 더 빠른 모델에 라우팅'
   source: https://code.claude.com/docs/en/sub-agents
 - category: ai
-  title: Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰
-  summary: 'Claude Code GitHub Action은 PR·이슈 안의 @claude 멘션, 이슈 할당, 명시적 프롬프트 자동화 같은 GitHub 이벤트를 Claude Code 실행으로 연결한다. 현재 README는 이 액션이 코드 질문 답변, PR 변경 분석, 간단한 수정·리팩터링·기능 구현, 진행 체크박스, JSON 구조화 출력을 지원한다고 설명한다. 중요한 운영 포인트는 "PR에 봇을 부른다"가 아니라, 실행 모드·도구 권한·인증 공급자·러너 위치를 워크플로별로 좁히는 것이다. 액션은 GitHub runner에서 돌고, Anthropic API·Bedrock·Vertex AI·Microsoft Foundry 같은 인증 경로를 고를 수 있으므로 CI 자동화와 코드 변경 권한을 같이 설계해야 한다.
-
-    '
-  points:
-  - '트리거: @claude 멘션, 이슈 할당, 명시적 프롬프트 자동화'
-  - '기능: 질문 답변, PR 리뷰, 코드 구현, 진행 체크박스, JSON action output'
-  - '운영 핵심: runner·인증·도구 권한·워크플로 트리거를 함께 제한'
-  source: https://github.com/anthropics/claude-code-action
-- category: ai
   title: reloadSkills — SessionStart 훅으로 같은 세션에서 스킬 즉시 반영
   summary: 'Claude Code의 스킬 탐색은 보통 SessionStart 훅이 끝나기 전에 한 번만 돌기 때문에, 훅이 ~/.claude/skills/ 나 .claude/skills/ 에 새 스킬을 써넣어도 다음 세션에야 나타난다. 이를 해결하려고 SessionStart 훅이 JSON으로 `reloadSkills: true`를 반환하면, 훅 완료 후 Claude Code가 스킬·커맨드 디렉터리를 다시 스캔해 방금 설치한 스킬을 같은 세션에서 바로 쓸 수 있다. 팀 스킬 레포를 git pull로 동기화한 뒤 즉시 적용하는 부트스트랩 패턴에 유용하다.
 
@@ -372,16 +362,6 @@ cards:
   - 'source 종류: 상대경로(./) · github · url · git-subdir · npm — github/url은 ref·sha로 핀 고정'
   - 버전 미설정 시 git 커밋 SHA가 버전 — 핀 걸린 plugin.json version은 바꿔야 업데이트 전파
   source: https://code.claude.com/docs/en/plugin-marketplaces
-- category: ai
-  title: 다이내믹 워크플로 — Claude가 짠 스크립트로 서브에이전트 수십~수백 개 굴리기
-  summary: '다이내믹 워크플로는 서브에이전트를 대량으로 오케스트레이션하는 자바스크립트 스크립트다. Claude가 작업에 맞는 스크립트를 직접 작성하고, 런타임이 그걸 백그라운드에서 돌려서 세션은 그대로 응답 가능한 상태로 남는다. 한 대화가 조율하기엔 에이전트가 너무 많이 필요할 때 쓴다 — 레포 전체 버그 훑기, 500개 파일 마이그레이션, 출처 교차검증이 필요한 리서치 같은 것. `/workflows`로 실행·완료된 워크플로 목록을 보고 진행 상황을 드릴다운할 수 있고, `/effort` 의 ultracode 모드를 켜면 Claude가 작업마다 워크플로를 띄울지 알아서 판단한다.
-
-    '
-  points:
-  - Claude가 JS 스크립트를 작성 → 런타임이 백그라운드 실행, 세션은 계속 응답 가능
-  - '`/workflows`로 실행·완료 목록 확인 / 저장하면 `/<이름>` 명령이 되고 args로 입력 받음'
-  - 에이전트를 많이 띄워 토큰 사용 큼 — 작은 슬라이스(디렉터리 하나)부터 시험 권장
-  source: https://code.claude.com/docs/en/workflows
 - category: ai
   title: MessageDisplay 훅 — 화면에 보이는 답변 텍스트만 바꿔치기
   summary: 'MessageDisplay는 어시스턴트 메시지 텍스트가 화면에 출력되는 동안 도는 표시 전용(display-only) 훅이다. hookSpecificOutput.displayContent로 문자열을 돌려주면 화면에 보이는 텍스트가 그것으로 교체된다. 단 트랜스크립트와 Claude가 보는 내용은 원본 그대로 유지돼, 모델의 판단에는 영향을 주지 않고 사람 눈에 보이는 것만 손댄다. matcher를 지원하지 않아 매번 발생하고, 기본 타임아웃이 10초로 낮게 잡혀 있으며, 블로킹은 불가(exit 2면 원본이 그대로 표시).
@@ -633,16 +613,6 @@ cards:
   - 자유 텍스트 파싱(정규식) 대신 형태를 못박아 CI·배치에서 LLM 출력을 안정적으로 소비
   source: https://code.claude.com/docs/en/headless
 - category: ai
-  title: Terminal-Bench — '모델'이 아니라 '에이전트+모델 쌍'을 재는 벤치마크
-  summary: 'Terminal-Bench는 스탠퍼드와 Laude Institute가 만든, 에이전트가 실제 터미널을 몰아가며 작업을 끝내는지(파일 편집·명령 실행·실패 수정)를 재는 벤치마크다. 핵심 발상은 ''에이전트와 모델을 함께 묶어 한 단위로 평가''한다는 점 — 같은 모델이라도 어떤 에이전트(스캐폴드) 안에 넣느냐에 따라 점수가 달라지기 때문이다. 도구를 고를 때 ''GPT-5는 몇 점'' 같은 모델 단독 점수보다 ''이 에이전트 + 이 모델'' 조합 점수를 봐야 실전에 맞는다는 게 이 벤치마크가 던지는 실무 메시지다. 채점은 각 과제를 도커 환경에서 검증 스크립트로 프로그래밍적으로 판정한다.
-
-    '
-  points:
-  - 1.0=80과제 → 2.0=89과제(SW엔지니어링·ML·보안·데이터사이언스 등), 이후 2.1·3.0·Science 진행 중
-  - 평가 단위는 '에이전트+모델 쌍' — 같은 모델도 스캐폴드가 다르면 점수가 갈린다
-  - SWE-bench Pro(깃 이슈 고치기)와 보상하는 게 다름 — 이쪽은 '터미널을 끝까지 몰아가는 능력'을 잰다
-  source: https://www.tbench.ai/
-- category: ai
   title: 멀티에이전트 오케스트레이션 — 리드 에이전트가 서브에이전트에게 일을 쪼개 맡기는 패턴
   summary: 'Anthropic 엔지니어링 블로그가 자사 리서치 기능을 만들며 정리한 ''오케스트레이터-워커'' 패턴이다. 리드 에이전트(LeadResearcher)가 계획을 세워 메모리에 저장하고, 전문 서브에이전트들을 병렬로 띄워 각자 조사하게 한 뒤 결과를 종합하고, 마지막에 CitationAgent가 출처를 붙여 답을 돌려준다. 내부 평가에서 이 멀티에이전트 구성(리드=Opus 4, 서브=Sonnet 4)이 단일 Opus 4 대비 90.2% 더 나은 성능을 냈고, BrowseComp 분석에선 ''토큰 사용량 하나만으로 성능 분산의 80%가 설명''됐다 — 다만 채팅 대비 토큰을 약 15배 더 먹는다. 그래서 만능이 아니라, 병렬화가 잘 되고 단일 컨텍스트를 넘는 정보를 다루며 과제 가치가 높을 때만 값을 한다 — 공유 컨텍스트나 에이전트 간 의존이 많은 일(대부분의 코딩 포함)엔 오히려 안 맞는다고 명시한다.
 
@@ -754,16 +724,6 @@ cards:
   - 필요한 도구 파일만 읽는 점진적 공개로 컨텍스트 절약 / 중간 결과를 코드 안에서 필터·집계 후 요약만 반환(1만 행 → 5행)
   - 회의록 예시 150k→2k 토큰(98.7% 절감) 주장 / PII를 모델에 안 흘리고 토큰화 가능 / Cloudflare도 'Code Mode'로 동일 결론. 단 샌드박스 실행 환경 필요
   source: https://www.anthropic.com/engineering/code-execution-with-mcp
-- category: ai
-  title: Spotify Honk — 슬랙으로 시키면 PR을 자동으로 올리는 사내 코딩 에이전트
-  summary: 'Spotify가 Claude Agent SDK를 사내 Fleet Management 인프라에 붙여 만든 자동 코딩 에이전트 ''Honk''다. 엔지니어가 슬랙(또는 깃에 버전 관리되는 프롬프트 파일)으로 "이 마이그레이션 해줘"라고 자연어로 시키면, Honk가 샌드박스된 쿠버네티스 Job에서 Claude Code를 돌려 코드를 고치고 포매터·린트·빌드·테스트까지 통과시킨 뒤 PR을 연다. 핵심 설계는 ''에이전트 런타임''과 ''검증 런타임''을 분리한 것 — 에이전트가 브랜치를 푸시하면 별도 검증 서비스가 CI를 돌리고, 통과한 것만 PR이 된다(에이전트가 테스트를 주석 처리해 통과시키는 부정을 막는 안전장치). 대화형 코딩이 아니라 대규모 자동 백그라운드 변환에 초점을 둔 사례로, 도구가 인프라 위에 얹히는 ''얇은 래퍼''라는 점이 특징이다.
-
-    '
-  points:
-  - '구조: 슬랙/깃 프롬프트 → 샌드박스 K8s Job에서 Claude Code 실행(도구는 verify·Git·Bash 허용목록) → 검증 통과분만 PR / 에이전트≠검증 런타임 분리'
-  - 'Spotify 자체 발표(2026-06 엔지니어링 블로그): 엔지니어 99%+가 주간 AI 코딩 도구 사용, 94%가 생산성 향상 보고, PR 빈도 76% 증가'
-  - 'Anthropic 고객 사례 주장: Honk가 월 650개+ PR을 프로덕션에 머지, 수작업 마이그레이션 대비 최대 90% 시간 절감 / 단 15년치 Fleet Management 인프라 위에 얹힌 점이 전제'
-  source: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint
 - category: ai
   title: Aider Polyglot 벤치마크 — Python 점수에 가려진 '편집 포맷' 실력을 6개 언어로 잰다
   summary: 'Aider의 Polyglot 리더보드는 모델이 ''코드를 잘 짜느냐''가 아니라 ''사람 개입 없이 지시를 따라 파일을 제대로 편집하느냐''를 잰다. Exercism에서 가장 어려운 225문제를 C++·Go·Java·JavaScript·Python·Rust 6개 언어로 풀린다. 각 문제는 두 번까지 시도하는데, 1차에서 실패하면 유닛 테스트 결과를 보여주고 스스로 고치게 한다 — 헤드라인 점수(Percent correct)는 이 2차 시도 후 통과율이다. 별도로 ''Percent cases well formed'' 지표가 있어, 모델이 diff/whole 같은 기대 포맷으로 문법에 맞는 편집을 내놓았는지를 정답률과 분리해서 본다(포맷은 맞췄지만 테스트는 틀릴 수 있으므로). 대부분의 LLM이 Python에 편향 학습돼 Python 단일 벤치는 실제 실력을 과대평가하기 쉬운데, 6개 언어 구성이 이 착시를 드러낸다.
@@ -3742,16 +3702,6 @@ cards:
   - 온디바이스 실행을 유지하면서 프롬프트 품질 개선 루프를 운영
   source: https://developer.android.com/blog/posts/how-automated-prompt-optimization-unlocks-quality-gains-for-ml-kit-s-gen-ai-prompt-api
 - category: ai
-  title: Claude Code Dynamic Workflows — 수백 서브에이전트 실행을 검증 루프로 묶기
-  summary: 'Claude Code의 dynamic workflows는 큰 작업을 한 번의 대화형 응답이 아니라, 계획·분해·병렬 실행·검증 루프로 다루는 기능이다. Claude는 작업 중 orchestration script를 만들고, tens to hundreds of parallel subagents를 한 세션에서 실행한 뒤 결과를 합쳐 사용자에게 보고한다. Anthropic은 코드베이스 전체 버그 탐색, 보안 감사, 대규모 마이그레이션, 고위험 작업의 독립 검증에 맞는 패턴이라고 설명한다. 다만 일반 Claude Code 세션보다 토큰을 많이 쓰므로, 처음에는 범위가 좁고 기존 테스트 스위트가 성공 기준이 되는 작업부터 적용하는 것이 안전하다.
-
-    '
-  points:
-  - 계획 → 하위 작업 분해 → 병렬 subagent 실행 → 결과 검증
-  - 대규모 마이그레이션·보안 감사·코드베이스 전체 버그 탐색에 적합
-  - 일반 세션보다 토큰 사용량이 크므로 작은 범위와 테스트 기준부터 시작
-  source: https://claude.com/blog/introducing-dynamic-workflows-in-claude-code
-- category: ai
   title: ADK 장기 실행 에이전트 — 대화 기록 대신 상태 머신으로 재개하기
   summary: 'Google의 ADK 장기 실행 에이전트 튜토리얼은 며칠 동안 멈췄다 재개되는 업무를 대화 기록에 맡기지 말라고 설명한다. 핵심은 START, WELCOME_SENT, DOCUMENTS_SIGNED 같은 명시적 state machine을 만들고, 시스템 지시문이 현재 단계를 session state에서 읽게 하는 것이다. 각 tool call은 ToolContext.state를 갱신해 자동 checkpoint가 되고, 세션 저장소를 DatabaseSessionService(SQLite 또는 Cloud SQL)로 바꾸면 컨테이너 재시작 뒤에도 같은 단계에서 이어갈 수 있다. AI 에이전트 설계 포인트는 "모델이 기억한다"가 아니라 "워크플로 상태를 코드와 저장소가 소유한다"는 점이다.
 
@@ -5501,3 +5451,99 @@ cards:
   - 'CBRN threshold: 중간 자원 국가 프로그램 uplift 가능 수준'
   - 'ASL-3: hardened weight storage, Constitutional Classifiers++ 배포'
   source: https://www.anthropic.com/news/responsible-scaling-policy-v3
+- category: ai
+  title: Jamba 2 — AI21 SSM+Transformer 하이브리드, 3B 엣지·52B/12A MoE·256K ctx(Apache-2.0)
+  summary: AI21 Labs가 2026-01 공개한 Jamba 2는 Mamba SSM과 Transformer attention을 교차 배치한 하이브리드 오픈웨이트 패밀리다. Jamba2 3B(dense)는 iPhone·Mac에서 돌릴 수 있는 엣지 모델, Jamba2 Mini(52B total·12B active MoE)는 256K 컨텍스트에서 reasoning 모델의 thinking token 오버헤드 없이 enterprise QA·RAG·장문 분석에 최적화됐다. 500B 토큰 mid-training(수학·코드·장문 비중↑) 후 on-policy RL(DPO→verifiable reward)로 instruction-following·grounding 벤치(IFBench·FACTS)에서 동급 Ministral3 14B 대비 통계적으로 유의한 우위를 보인다. Apache-2.0, Hugging Face·AI21 Studio·AWS Bedrock 제공.
+  points:
+  - 3B dense + Mini 52B/12A MoE, 256K ctx, Apache-2.0
+  - 'SSM-Transformer 교차: 100K+ ctx에서도 메모리 효율·throughput 유지'
+  - Enterprise QA·grounded RAG 특화 — reasoning 모델 대비 낮은 compute
+  source: https://www.ai21.com/blog/introducing-jamba2/
+- category: ai
+  title: Together AI — 200+ 오픈소스 모델 서버리스 추론, OpenAI 호환 API·배치 50% 할인
+  summary: Together AI는 오픈소스 LLM 추론·파인튜닝·GPU 클러스터를 한 플랫폼에 묶은 full-stack AI 인프라다. Serverless Inference는 200+ 모델(Qwen·Kimi·DeepSeek·FLUX 등)을 per-token API로 호출하며 OpenAI SDK와 base_url만 바꿔 drop-in 연동 가능하다. Adaptive speculative decoding으로 GPT-OSS·Qwen 등 고난도 모델에서 최대 2.75× 빠른 서버리스 추론을 주장하고, 비실시간 워크로드는 Batch API로 50% 할인된다. Dedicated Endpoints는 GPU를 분 단위로 예약해 steady traffic·파인�uning 모델 서빙에 쓴다. LangChain·Vercel AI SDK·LlamaIndex·Helicone 등 서드파티 통합 제공.
+  points:
+  - 'OpenAI 호환: base_url=https://api.together.ai/v1, model만 교체'
+  - Serverless(per-token) vs Dedicated(GPU/min) — 트래픽 패턴에 선택
+  - Batch 50% 할인·Helicone observability·100+ 모델 카탈로그
+  source: https://docs.together.ai/docs/inference/overview
+- category: ai
+  title: Guardrails AI — Validator Hub로 LLM 입출력을 런타임 검증·구조화 출력 강제(MIT)
+  summary: Guardrails AI는 LLM 애플리케이션에 런타임 안전장치를 씌우는 Python 프레임워크다. Guard 객체가 LLM 호출 전후로 Input/Output Guard를 실행하고, Guardrails Hub의 Validator(PiiDetection·ToxicLanguage·Jailbreak·Hallucination 등)를 조합해 위험을 탐지·정량화·완화한다. Pydantic/RAIL(XML) 스키마로 구조화 출력을 강제하며, 검증 실패 시 reask·filter·fix·exception 등 on-fail 액션을 설정한다. 2025-02 Guardrails Index 벤치마크로 Validator별 latency·accuracy 공개. 모델 비종속(OpenAI·Anthropic·로컬)이며 REST API 서버로도 배포 가능.
+  points:
+  - 'Guard + Validator Hub: PII·탈옥·유해·할루시네이션 등 조합'
+  - Pydantic/RAIL 스키마 → function calling 또는 prompt optimization
+  - 'on-fail: reask·filter·fix·exception — Guardrails Index로 Validator 품질 비교'
+  source: https://github.com/guardrails-ai/guardrails
+- category: ai
+  title: MLX — Apple Silicon 전용 ML 프레임워크, unified memory·lazy compute·M5 Neural Accelerator(MIT·~26k★)
+  summary: MLX는 Apple ML Research가 만든 Apple Silicon 전용 array 프레임워크로, unified memory 아키텍처를 활용해 GPU·CPU·Neural Engine 간 데이터 복사 없이 효율적 수치 연산·학습·추론을 제공한다. NumPy-like core + PyTorch/JAX-like nn·optimizer 패키지, lazy computation·automatic differentiation·function transformation을 지원한다. Python·Swift·C++·C API, WWDC25 공식 세션. MLX-LM으로 Hugging Face LLM 텍스트 생성·파인튜닝, macOS 26.2+ JACCL(RDMA over Thunderbolt)로 Mac 간 분산 학습. M5 Neural Accelerator(TensorOps·Metal 4) 지원으로 inference 가속.
+  points:
+  - 'Unified memory: GPU↔CPU 복사 없이 lazy compute·autograd'
+  - 'MLX-LM: HF LLM on-device 생성·파인튜닝, LM Studio·Apple Research 데모'
+  - JACCL 분산(Mac Thunderbolt 5)·M5 Neural Accelerator·MIT·26k★
+  source: https://github.com/ml-explore/mlx
+- category: ai
+  title: LangSmith — 프레임워크 비종속 LLM·에이전트 옵저버빌리티·평가·프롬프트 관리 플랫폼
+  summary: LangSmith는 LangChain 팀의 managed AI agent engineering platform으로, trace 기반 디버깅·평가·모니터링·프롬프트 관리를 통합한다. OpenAI·Anthropic·CrewAI·Vercel AI SDK·Pydantic AI 등 80+ 프레임워크와 OpenTelemetry 연동, LangChain 종속 없이 @traceable 또는 SDK로 계측 가능. Polly AI assistant로 긴 trace 분석, Insights Agent로 usage pattern·failure mode 클러스터링, SmithDB(purpose-built DB)로 nested agent trace 검색. Online eval(LLM-as-judge·code eval)·dashboard·PagerDuty alert. 2025-10 Series B $125M($1.25B valuation), 월 10억+ trace 처리.
+  points:
+  - 'Trace-first: conversation thread·tool·sub-agent delegation 1급 개념'
+  - SmithDB + Polly + Insights Agent — nested trace 디버깅·패턴 분석
+  - Online eval·cost/latency dashboard·OpenTelemetry·80+ framework
+  source: https://docs.langchain.com/langsmith/home
+- category: ai
+  title: Gemma 3n — MatFormer·PLE로 2GB RAM에 8B급, 텍스트·이미지·오디오 온디바이스(Gemma)
+  summary: Gemma 3n은 Google DeepMind의 mobile-first 오픈 멀티모달 모델로, Gemini Nano와 공유 아키텍처를 Gemma로 먼저 공개한 버전이다. MatFormer(Matryoshka Transformer)로 E4B(8B raw·4B effective) 안에 E2B(5B raw·2B effective) 서브모델이 중첩되어 latency·품질 트레이드오프를 런타임에 조절한다. Per-Layer Embedding(PLE) caching으로 embedding을 CPU에 두고 accelerator에는 core transformer(~2B/4B)만 로드 — E2B 2GB·E4B 3GB RAM. MobileNet-v5 vision·오디오 encoder, 32K ctx·140개 언어. Google AI Edge·Android Gemma Gallery·LiteRT 배포.
+  points:
+  - 'MatFormer: E4B 안에 E2B 중첩, Mix-n-Match로 2B~4B 사이 커스텀'
+  - 'PLE: 8B raw → 4B effective, 2GB(E2B)·3GB(E4B) RAM'
+  - 텍스트·이미지·오디오·Gemini Nano 동일 아키·Android/Chrome 예정
+  source: https://ai.google.dev/gemma/docs/gemma-3n
+- category: ai
+  title: Letta(Letta Code) — MemGPT 후속, git-backed Context Repository로 학습하는 에이전트(MIT)
+  summary: 'Letta(구 MemGPT)는 UC Berkeley Sky Computing Lab 출신 AI 연구실의 기계가 학습하는 에이전트 플랫폼이다. Letta Code는 stateful agent harness로 memory·identity·skills가 경험과 함께 진화한다. Context Repository(MemFS)는 에이전트 컨텍스트를 git-backed 로컬 파일시스템에 버전 관리 — /memfs로 활성화, memory subagent(dream·doctor)가 git worktree로 비동기 메모리 정리. Sleep-time Compute(드리밍): idle 중 reflection·defragmentation. Constellation 클라우드 백엔드 + 로컬 clone, GitHub Actions·chat.letta.com 연동. MemGPT(2023)·Context Constitution(2026) 연구 기반.'
+  points:
+  - 'MemFS: git-backed memory, subagent worktree로 비동기 dream/doctor'
+  - 'Sleep-time compute: idle 중 메모리 정리·학습 — blocking 없음'
+  - Constellation 클라우드 + npm i -g @letta-ai/letta-code, MIT
+  source: https://www.letta.com/blog/context-repositories
+- category: ai
+  title: Hindsight — Retain·Recall·Reflect 3연산, 4-network agent memory(MIT·~17k★)
+  summary: Hindsight(Vectorize.io)는 기억이 아니라 학습에 초점을 맞춘 agent memory 아키텍처다. 4개 논리 네트work(world·experience·observation·opinion)로 사실과 신념을 분리하고, retain(추출·저장)·recall(4-way parallel search+rerank)·reflect( disposition 기반 추론) 3연산을 제공한다. TEMPR(Temporal Entity Memory Priming Retrieval)이 pgvector+그래프+BM25+temporal filter 하이브리드 검색. LongMemEval 91.4%(Gemini-3 Pro)·83.6%(20B OSS)로 Mem0·Graphiti·full-context GPT-4o 초과. pip install hindsight-all, MCP 서버 내장, Microsoft Agent Framework 통합 사례.
+  points:
+  - '4 network: world/experience/observation/opinion — fact vs belief 분리'
+  - 'TEMPR: semantic+keyword+graph+temporal parallel → cross-encoder rerank'
+  - 'reflect: mission·directives·disposition(skepticism 등)로 추론 스타일 조절'
+  source: https://arxiv.org/abs/2512.12818
+- category: ai
+  title: Qwen-Agent — Qwen3.5 네이티브 Function Calling·MCP·Code Interpreter·RAG(Apache-2.0·~16.6k★)
+  summary: Qwen-Agent는 Alibaba가 Qwen 모델 생태계용으로 만든 Python agent 프레임워크다. Function Calling 템플릿·파서가 Qwen3/Qwen3.5에 최적화되어 generic framework 대비 tool call 안정성이 높다. Assistant·ReAct·GroupChat 에이전트, 내장 code_interpreter·browser·doc_parser·RAG, MCP(stdio·SSE·streamable-http) 동적 tool discovery. DashScope API 또는 vLLM/Ollama 로컬 OpenAI-compatible endpoint. 2026-02 Qwen3.5·Qwen3-Coder·reasoning_content·think-with-images(zoom·image search) 지원. Gradio GUI·Chrome extension·qwen-agent[gui,rag,mcp] extras.
+  points:
+  - 'Qwen-native FC: vLLM tool call parsing·reasoning_content·Qwen3.5 demo'
+  - 'MCPManager singleton: stdio/SSE/HTTP MCP → BaseTool 자동 등록'
+  - DashScope 또는 localhost:8000/v1 — code_interpreter·RAG·Browser 내장
+  source: https://github.com/QwenLM/Qwen-Agent
+- category: ai
+  title: 1/W Law — LLM 추론 에너지, ctx 2배마다 tok/W 절반·라우팅이 GPU 세대보다 강력
+  summary: '2026년 LLM inference 에너지 연구의 핵심 발견. 1/W Law: serving context window가 2배될 때마다 tokens-per-watt 효율이 절반으로 떨어진다 — KV-cache concurrency 한계 때문. FleetOpt two-pool routing(짧은 ctx pool + 긴 ctx pool)은 homogeneous fleet 대비 ~2.5× tok/W, H100→B200 GPU 업그레이드는 ~1.7× — 독립적으로 곱해져 ~4.25×. Watt Counts 벤치(5,000+ 실험·50 LLM·10 GPU)는 server scenario에서 UX 손실 없이 70%·batch 20% 에너지 절감 가능을 보여준다. ML 커뮤니티는 J/token·PUE·utilization을 accuracy/latency와 동등 1급 지표로 보고하자는 Position Paper(2026)도 제안.'
+  points:
+  - '1/W Law: ctx 2× → tok/W ½ — agent 워크로드 전환 시 2~4× 효율 하락'
+  - Two-pool routing ~2.5× > GPU gen upgrade ~1.7× — gains multiply
+  - 'Watt Counts: 50 LLM×10 GPU 에너지 DB, server -70%·batch -20% 가능'
+  source: https://arxiv.org/pdf/2603.17280
+- category: ai
+  title: Stable Diffusion 3.5 Large Turbo — ADD 4-step·MMDiT·typography·8.1B(MMDiT)
+  summary: Stable Diffusion 3.5 Large Turbo는 Stability AI의 ADD(Adversarial Diffusion Distillation)로 4 inference step만에 Large급 품질을 내는 distilled MMDiT 모델이다. SD 3.5 Large(8.1B) 대비 ~4-6초/장(RTX 4090)으로 concept exploration·batch workflow에 최적. 3개 fixed text encoder·QK-normalization·guidance_scale=0.0. SDXL Turbo(1-step·512px·텍스트 렌더링 약함) 대비 prompt adherence·typography·complex scene 일관성이 크게 개선. ComfyUI·Diffusers StableDiffusion3Pipeline, Stability AI Enterprise API·self-host. FLUX.1 schnell(리얼리즘)과 상호보완 — SD 3.5는 LoRA/ControlNet 생태계가 SDXL보다 작지만 MMDiT 아키텍처 품질 천장이 높다.
+  points:
+  - 'ADD 4-step: num_inference_steps=4, guidance_scale=0.0'
+  - MMDiT 8.1B distilled — typography·complex prompt > SDXL Turbo
+  - ComfyUI·HF Diffusers·Enterprise API — batch/concept용, final은 Large
+  source: https://huggingface.co/stabilityai/stable-diffusion-3.5-large-turbo
+- category: ai
+  title: xAI Grok-3 — Colossus 200K H100·Think RL·DeepSearch·131K ctx(2025-02)
+  summary: 'xAI Grok-3(2025-02-17)는 Colossus 슈퍼컴퓨터(200,000 H100)에서 10× compute로 학습된 reasoning LLM이다. Chatbot Arena Elo 1402(출시 시 1위), Think mode(RL chain-of-thought·backtrack·self-correct), DeepSearch(90+ 소스 동시 분석·인용 synthesis), Big Brain(max compute). 131K ctx, Grok-3 Mini($0.30/$0.50 per M). X(Twitter) 실시간 데이터 네이티브 통합 — trending·시장·뉴스 쿼리에 static cutoff 없음. 2025-07 Grok-4 후속 출시로 legacy화됐으나 Think/DeepSearch 패턴과 Colossus infra story는 2026 agentic research 참고점. API: grok-3·grok-3-mini·grok-3-fast.'
+  points:
+  - 'Think: RL reasoning·visible CoT·backtrack — AIME 2025 93.3%(cons@64)'
+  - 'DeepSearch: multi-source agentic research·X 실시간·인용 응답'
+  - Colossus 200K H100·131K ctx·Grok-4(2025-07) 후 legacy — API 잔존
+  source: https://x.ai/news/grok-3
