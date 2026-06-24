@@ -2397,3 +2397,70 @@ Refined:
 주제: mobile on-device AI(Qualcomm AI Hub·MediaTek NeuroPilot·LiteRT delegate), thermal/battery(sustained inference), Swift Concurrency+Core AI, offline-first·model delivery OTA, LLM SDK comparison, TinyMLDelta, private AI architecture
 
 - 2026-06-25 06:12 KST | Codex-maxxing — 긴 작업은 프롬프트가 아니라 지속되는 작업 공간으로 설계하기 | https://openai.com/index/codex-maxxing-long-running-work/
+
+## 2026-06-25 21:00 KST — Batch 38 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| AI BFF Pattern | API key·PII·streaming server-side — Portkey/Kong(enterprise gateway) ·Helicone(proxy FinOps)와 app-tailored layer 분리 |
+| Modular Monolith for LLM Apps | 2026 default architecture — AI deployment patterns(topology) ·BFF(app layer)와 structure layer 분리 |
+| Kafka + Flink Agent Stack | MCP+A2A event backbone — Celery+Redis(inference queue) ·Temporal(workflow) ·A2A 1년(protocol)와 infra layer 분리 |
+| SSE vs WebSocket for AI Streaming | LLM token transport decision — OpenAI Realtime API(WebRTC/WS speech) ·ElevenLabs TTS WS와 text streaming 분리 |
+| LLM Goodput SLO | latency+cost+quality composite metric — Langfuse/LangSmith(trace) ·Statsig(quality gate)와 SLO design layer 분리 |
+| Vendor SLA Gap | functional availability vs provider uptime — Goodput SLO(design) ·Agent Graceful Degradation(fallback) complement |
+| AI Incident Response Runbook | 6-phase LLM incident — Human-in-the-Loop(approval) ·Graceful Degradation(fallback) ·Datadog(trace)와 response playbook 분리 |
+| AI Postmortem | version snapshot+eval gap — AI Incident Runbook(response) ·traditional SRE postmortem과 AI-specific learning loop 분리 |
+| LLM Data Flywheel | trace→curate→promote automation — Distilabel(RLHF synthetic) ·Continuous Fine-Tuning(contamination) complement |
+| Continuous Fine-Tuning Pipeline | eval/train physical separation — LLM Data Flywheel(automation) ·Distilabel(synthetic data) ·Pioneer Agent(repair) complement |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Portkey/Kong AI Gateway | Batch 25~36 gateway 카드 존재 |
+| Helicone proxy | Batch 36 카드 존재 |
+| LaunchDarkly/Statsig AI Evals | Batch 36 카드 존재 |
+| LLM-as-judge patterns | LangSmith·Statsig·RAGAS·NeMo Data Designer 등 다수 카드 커버 |
+| Online eval in production | Statsig·LaunchDarkly·LangSmith 카드 커버 |
+| AI feature flags mobile | LaunchDarkly AgentControl·GrowthBook·Firebase Remote Config mention |
+| Redis Streams for AI agents | Celery+Redis LLM Inference Queue 카드에 Redis Streams consumer group 포함 |
+| RLHF for product | Distilabel(RLHF synthetic pipeline) 카드 존재 |
+| AI copilot in existing apps | Copilot SDK GA·Extensions·Workspace 등 30+ Copilot 카드 |
+| AI real-time collaboration | Claude Tag·Copilot Workspace·Realtime API 등 분산 커버 |
+| AI analytics for product teams | Langfuse·Datadog·Statsig product analytics angle 커버 |
+| AI on-call runbooks generic | AI Incident Runbook 카드로 6-phase+EU AI Act 통합 |
+| AI reliability engineering generic | Goodput SLO·Vendor SLA Gap·Incident Runbook·Graceful Degradation로 분산 |
+| Event-driven architecture generic | Kafka+Flink 카드로 MCP+A2A+event stack 구체화 |
+| Microservices vs monolith generic | Modular Monolith 카드로 LLM-specific ADR 통합 |
+| Fine-tuning from user feedback generic | Data Flywheel·Continuous Fine-Tuning 2카드로 pipeline 분리 |
+| AI quality metrics generic | Goodput SLO·RAGAS·DeepEval·Evidently 등 기존 카드 커버 |
+| WebSocket vs SSE generic only | AI streaming transport + prod checklist(SSE default)로 actionable화 |
+
+### 병합 2카드
+
+| 병합 | Before | After | 근거 |
+|------|--------|-------|------|
+| Late Chunking + Semantic Chunking → RAG Chunking | 2 | 1 | 동일 RAG chunk boundary 주제 분산, Parent-Child Chunking(production default)과 축 분리 유지 |
+| OpenAI Batch + Anthropic Message Batches → LLM Batch API | 2 | 1 | 동일 async 50% 할인·rate limit pool 분리 패턴, provider별 quota/detail을 비교 카드로 통합 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | AI BFF Pattern — API key·PII·streaming을 서버 레이어로, 클라이언트는 렌더만 | github.com/stevekinney/stevekinney.net ai-integration-patterns |
+| 2 | Modular Monolith for LLM Apps — microservices보다 먼저 모듈 경계, 필요 시만 extract | github.com/ruchit07/ai-native-app-blueprint |
+| 3 | Kafka + Flink Agent Stack — MCP·A2A 위 durable event backbone | thenewstack.io/a2a-mcp-kafka-and-flink |
+| 4 | SSE vs WebSocket for AI Streaming — LLM token은 SSE 기본, bidirectional만 WS | tianpan.co/blog/2026-04-10-streaming-real-time-agent-uis |
+| 5 | LLM Goodput SLO — uptime이 아니라 latency+cost+quality 동시 충족률 | valuestreamai.com/blog/ai-monitoring-in-production-guide-2026 |
+| 6 | Vendor SLA Gap — 200 OK인데 제품은 broken, functional availability 측정 | tianpan.co/blog/2026-05-13-vendor-sla-gap |
+| 7 | AI Incident Response Runbook — 6-phase·version snapshot·EU AI Act Article 73 | valuestreamai.com/blog/ai-incident-response-2026 |
+| 8 | AI Postmortem — model·prompt·index version snapshot + eval gap analysis | tianpan.co/blog/2026-04-19-ai-incident-response-playbook |
+| 9 | LLM Data Flywheel — production trace→curate→eval gate→fine-tune→promote | github.com/tohio/data-flywheel |
+| 10 | Continuous Fine-Tuning Pipeline — eval/train physical separation·replay buffer | tianpan.co/blog/2026-04-16-continuous-fine-tuning-data-contamination |
+
+누적: 712카드 (704→702 병합→712 신규)
+주제: AI backend architecture(BFF·modular monolith·Kafka+Flink event stack), streaming transport(SSE vs WS), reliability(Goodput SLO·vendor SLA gap·incident runbook·postmortem), continuous improvement(data flywheel·contamination-safe fine-tuning)
