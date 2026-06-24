@@ -2050,3 +2050,64 @@ Refined:
 
 누적: 661카드 (651→650 병합→661 신규)
 주제: agent framework(Smolagents·Agno·Make.com), RAG retrieval(Contextual Retrieval·Late Chunking·Hybrid merge), agent search(Exa·Tavily), web data(Crawl4AI·Jina Reader·ScrapeGraphAI), managed runtime(LangSmith Deployment)
+
+## 2026-06-25 21:30 KST — Batch 33 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Tree of Thoughts (ToT) | CoT 단일 path→tree search — ReAct(single loop)·LATS(agent+tool)와 reasoning search 레벨 분리, proposer/evaluator 제어 |
+| Self-Consistency Decoding | CoT + N-sample majority vote — ToT(search)·Reflexion(critique)과 answer-level consensus 독립 |
+| Chain-of-Thought Prompting | zero-shot·few-shot·Auto-CoT 기본 패턴 — DeepSeek R1(내장 reasoning stream)과 prompt-level technique 분리 |
+| Few-Shot vs Zero-Shot | production decision framework — eval baseline→incremental sweep, few-shot collapse 경고 |
+| Dynamic Few-Shot Retrieval | static example→embedding retrieval — KV cache·retrieval quality eval 실무 포인트 |
+| Least-to-Most Prompting | decompose→sequential solve — Plan-and-Execute(agent)·CoT(prompt)와 compositional generalization 축 분리 |
+| OpenAI Realtime API | speech-to-speech GA — Gemini Live(Android on-device)·chained STT→LLM→TTS와 transport·ecosystem 분리 |
+| LLM API Retry & Exponential Backoff | 429/5xx retry+jitter+Retry-After — Portkey/Temporal/LiteLLM(infra)과 app-level pattern 분리 |
+| Skeleton-of-Thought (SoT) | skeleton→parallel expand 2.39×↓ — CoT(순차)·ToT(search)와 parallel generation for structured answers |
+| In-Context Learning | example curation·ordering·3~8 sweet spot — Few-Shot decision·Dynamic retrieval·DSPy(auto)와 원칙 레이어 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Anthropic/OpenAI prompt engineering guide | 컨텍스트 엔지니어링(Anthropic)·OpenAI reusable prompts deprecation 카드 커버 |
+| Mem0 / Zep / Graphiti / Hindsight | 기존 agent memory 카드 존재 |
+| OpenRouter / Portkey / Martian / Unify | OpenRouter·Portkey·LiteLLM·LLM FinOps routing 카드 커버 |
+| GPTCache / Vercel AI SDK 6 | 기존 카드 존재 |
+| Plan-and-Execute / Supervisor / ReAct·LATS | Batch 30 카드 존재 |
+| Multi-model ensemble / cascade routing | LLM FinOps 4층·Portkey fallback chain 카드 커버 |
+| AI streaming SSE/WebSocket | Vercel AI SDK 6 streaming 카드 커버 |
+| Document AI (Unstructured/Docling) | 기존 OCR·document 카드 커버 |
+| DSPy / Instructor / Outlines / ell | 기존 structured output·prompt optimization 카드 존재 |
+| Auto-CoT 단독 | Chain-of-Thought 카드에 포함 |
+| RASC / CISC / DSC 단독 | Self-Consistency 카드에 2025 효율 변형 mention |
+
+### 병합 (2카드 제거, 661→659)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Zed Parallel Agents | Zed 1.0 — GPUI·ACP Agent Panel·Parallel Agents·Threads Sidebar 통합 |
+| Zed (ACP external agents) | ↑ 동일 |
+| Zed 1.0 (1.0 GA) | ↑ 동일 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Tree of Thoughts (ToT) — 다중 reasoning path 탐색·backtrack, beam search prompting | arxiv.org/abs/2305.10601 |
+| 2 | Self-Consistency Decoding — CoT 다중 샘플→majority vote, GSM8K +17.9% | arxiv.org/abs/2203.11171 |
+| 3 | Chain-of-Thought Prompting — zero-shot·few-shot·Auto-CoT, 중간 추론을 명시하는 기본 패턴 | learn.microsoft.com/dotnet/ai/conceptual/chain-of-thought-prompting |
+| 4 | Few-Shot vs Zero-Shot — eval baseline 먼저, example은 측정 후에만 추가 | tianpan.co/blog/2026-04-17-zero-shot-vs-few-shot-production-decision |
+| 5 | Dynamic Few-Shot Retrieval — query별 embedding 유사 example 선택, static 대비 double-digit↑ | tianpan.co/blog/2026-04-12-dynamic-few-shot-retrieval-static-examples-accuracy |
+| 6 | Least-to-Most Prompting — decompose→sequential solve, CoT보다 compositional generalization↑ | arxiv.org/abs/2205.10625 |
+| 7 | OpenAI Realtime API — native speech-to-speech, WebRTC/WebSocket·Agents SDK(2026 GA) | developers.openai.com/api/docs/guides/voice-agents |
+| 8 | LLM API Retry & Exponential Backoff — 429/5xx만 retry, jitter+Retry-After 필수 | learnwithparam.com/blog/retry-patterns-llm-api-errors-production |
+| 9 | Skeleton-of-Thought (SoT) — answer skeleton→parallel expand, latency 2.39×↓(ICLR 2024) | arxiv.org/abs/2307.15337 |
+| 10 | In-Context Learning — example curation·ordering·3~8 sweet spot, ICL production playbook | byaiteam.com/blog/2025/12/18/few-shot-learning-in-production-design-in-context-examples |
+
+누적: 669카드 (661→659 병합→669 신규)
+주제: prompting patterns(ToT·Self-Consistency·CoT·LtM·SoT), ICL production(Few-Shot vs Zero-Shot·Dynamic Retrieval·ICL curation), voice AI(OpenAI Realtime), API resilience(retry·backoff), editor merge(Zed 1.0)

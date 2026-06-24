@@ -879,15 +879,13 @@ cards:
   - MCP 커뮤니티 소유(Anthropic·GitHub·PulseMCP·Microsoft·Block 등 참여), 레포 약 6.9k★ — 단 아직 프리뷰(데이터 리셋·breaking change 가능)
   source: https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/
 - category: ai
-  title: Zed Parallel Agents — 한 창에서 에이전트 여러 개를 동시에 굴리는 첫 에디터
-  summary: 'Zed는 Rust로 새로 짠 GPU 렌더링 오픈소스 에디터(에디터는 GPL, GPUI 프레임워크는 Apache/MIT)다. 2026-04-22 ''Parallel Agents''를 내놓으며 한 창에서 여러 에이전트를 동시에 오케스트레이션하는 기능을 공식 지원했다. 새 Threads Sidebar가 모든 스레드를 프로젝트별로 묶어 보여주고, 스레드마다 어떤 폴더·레포에 접근할지 통제한다. 스레드별로 다른 에이전트를 섞어 쓸 수 있고, 한 스레드가 여러 레포를 가로질러 읽고 쓰게 하거나, 실행 중인 스레드를 모니터링·중단할 수 있다. 원할 때 스레드마다 워크트리를 격리하는 것도 선택 가능하다. 외부 에이전트는 ACP(Agent Client Protocol)로 붙는데, Claude Code·Codex·Gemini CLI를 그대로 연결할 수 있다. 자기 API 키를 쓰는 AI 기능은 무료이며, 자체 오픈소스 보완 모델 Zeta도 제공한다.
-
-    '
+  title: Zed 1.0 — Rust GPUI 에디터·ACP 에이전트 호스트·Parallel Agents(GPL-3.0·~85k★)
+  summary: Zed(zed-industries/zed)는 Atom·Tree-sitter 제작진이 GPUI를 Rust로 바닥부터 짜 5년 만에 만든 GPU 가속 오픈소스 에디터다. 2026-04-29 1.0 GA, GitHub ~85k★·GPL-3.0. 핵심 정체성은 '자체 AI를 강제하지 않고 ACP(Agent Client Protocol)로 외부 코딩 에이전트를 호스트' — Claude Code·Codex·Gemini CLI·OpenCode·goose·Cline을 Agent Panel에 그대로 띄우고, 인증·과금·모델 선택은 각 에이전트가 소유(Zed는 과금 없음). 2026-04-22 Parallel Agents — Threads Sidebar(opt-cmd-j)로 프로젝트별 스레드 묶음, 스레드마다 접근 레포·워크트리 격리·에이전트 교체, 한 스레드가 여러 레포 가로질러 읽기·쓰기. JetBrains도 ACP 채택·양사 공동 에이전트 레지스트리. Cursor(IDE 1위)와 달리 '빠른 에디터=에이전트 공용 작업대'.
   points:
-  - 2026-04-22 Parallel Agents — 한 창에서 여러 에이전트 동시 실행, Threads Sidebar로 프로젝트별 묶음·접근 레포 통제(opt-cmd-j)
-  - 스레드별로 에이전트 갈아끼우기·워크트리 격리 선택 가능, 한 스레드가 여러 레포 가로질러 읽기·쓰기
-  - ACP로 Claude Code·Codex·Gemini CLI 연결, 자기 키 쓰면 AI 무료 — 에디터는 GPL 오픈소스(Zed·Zeta·ACP 공개)
-  source: https://zed.dev/blog/parallel-agents
+  - GPUI Rust 렌더링 ·2026-04-29 1.0 GA ·mac/Windows/Linux ·~85k★ GPL-3.0
+  - ACP Agent Panel — Claude Code·Codex·Gemini CLI·OpenCode·goose·Cline, 인증·과금은 에이전트 소유
+  - Parallel Agents — Threads Sidebar·스레드별 레포/워크트리 격리·멀티 에이전트 동시 실행
+  source: https://zed.dev/blog/zed-1-0
 - category: ai
   title: openskills — Claude Code 스킬을 Cursor·Codex·Aider까지 그대로 쓰게 해주는 범용 로더
   summary: 'openskills는 Anthropic의 SKILL.md 스킬 시스템을 Claude Code 밖의 다른 에이전트에서도 쓰게 해주는 CLI 도구다(Apache 2.0, GitHub 10.4k★, TypeScript). 핵심은 "범용 SKILL.md 설치기" — 스킬을 받아 `AGENTS.md`에 Claude Code와 똑같은 `<available_skills>` XML 포맷으로 박아 넣어, AGENTS.md를 읽는 모든 호환 에이전트가 같은 스킬을 쓰게 만든다. 지원 대상은 Claude Code·Cursor·Windsurf·Aider·Codex 등이고, `npm i -g openskills` 후 `npx openskills install anthropics/skills`로 공식 스킬 모음을 한 번에 깔 수 있다. Claude Code의 점진적 공개(progressive disclosure) 방식을 그대로 따라 평소엔 이름·설명만 로드하고 필요할 때만 본문을 읽으므로, 여러 도구를 오가며 작업하는 팀이 스킬 자산을 한 벌로 공유하기 좋다. Anthropic 비공식 프로젝트다.
@@ -1294,16 +1292,6 @@ cards:
   - MCP로 에디터에 직접 붙고(CLI도 지원), 모델 역할을 main/research/fallback로 분리
   - 라이선스는 MIT + Commons Clause(호스팅 서비스·경쟁 제품화는 제한), 레포 표기 27.5k★ 주장
   source: https://github.com/eyaltoledano/claude-task-master
-- category: ai
-  title: Zed — Atom·Tree-sitter 제작진의 에디터, Claude Code·Codex·Gemini를 '패널'에 품다(GPL-3.0·85k★)
-  summary: 'Zed(zed-industries/zed)는 Atom·Tree-sitter를 만든 팀의 고성능 오픈소스 코드 에디터(GPL-3.0, 레포 표기 약 85k★)다. 핵심은 자체 AI만 미는 게 아니라 Agent Client Protocol(ACP)로 외부 코딩 에이전트를 에디터 안 Agent Panel에 그대로 띄운다는 점 — Claude Code·Codex·OpenCode·Copilot·Cursor·Gemini CLI를 ACP Registry에서 설치해 쓴다. 외부 에이전트는 별도 프로세스로 돌고 인증·과금·모델선택·도구를 각자 소유하며, Zed는 스레드만 호스팅한다. Zed는 외부 에이전트 사용에 과금하지 않는다고 문서가 명시한다(과금은 에이전트 제공자와 사용자 사이).
-
-    '
-  points:
-  - ACP로 Claude Code·Codex·Gemini CLI·Cursor·OpenCode를 에디터 Agent Panel에 통합
-  - '외부 에이전트는 별도 프로세스 — 인증(예: Claude는 /login)·과금·모델을 에이전트가 직접 소유'
-  - 'Zed가 설정한 MCP 서버를 ACP로 외부 에이전트에 전달 가능, dev: open acp logs로 통신 디버깅'
-  source: https://zed.dev/docs/ai/external-agents
 - category: ai
   title: Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK
   summary: 'Claude Agent SDK는 Claude Code를 구동하는 도구·에이전트 루프·컨텍스트 관리를 Python·TypeScript 라이브러리로 그대로 노출한 Anthropic 공식 SDK다. CLI는 사람이 타이핑하는 셸이고, 이 SDK는 같은 엔진을 코드에서 query()로 호출하는 형태 — `query(prompt=..., options=ClaudeAgentOptions(allowed_tools=["Read","Edit","Bash"]))` 한 줄로 파일을 읽고 버그를 찾아 고치는 에이전트가 돈다. 핵심은 모델을 직접 부르는 게 아니라 ''에이전트 루프''를 SDK가 대신 돌려준다는 점이다. Anthropic이 직접 운영하는 Managed Agents(호스티드 REST API)와 달리, Agent SDK는 에이전트 루프를 내 프로세스 안에서 돌린다고 공식 문서가 구분한다.
@@ -1800,16 +1788,6 @@ cards:
   - 모델 비종속·세션 중 전환 — Anthropic/OpenAI/Groq/OpenRouter/Vercel AI Gateway 등 여러 공급자 지원, OpenAI·Anthropic 호환이면 연결, '세션 도중 LLM 교체' 가능. 프로젝트별 컨텍스트가 나뉘는 세션 기반
   - 설치·확장 — brew/npm(@charmland/crush)/winget/Arch/Nix/FreeBSD 등 패키지 다양, 'no configuration'으로도 동작하고 crush.json으로 설정. MCP를 http·stdio·sse로 붙여 도구 확장
   source: https://github.com/charmbracelet/crush
-- category: ai
-  title: Zed 1.0 — Rust로 5년 짠 고성능 에디터가 '에이전트 호스트'로 1.0을 찍다(Atom·Tree-sitter 제작진·~85k★)
-  summary: 'Atom·Tree-sitter를 만든 Zed Industries가 2026-04-29 에디터 Zed의 1.0을 발표했다. Atom 시절의 ''Electron 위 JS''를 버리고 GPUI라는 렌더링 프레임워크를 Rust로 바닥부터 새로 짜, 5년·100만 줄 넘는 코드로 GPU 가속 에디터를 만든 게 핵심이다(GitHub ~85.4k★·주로 GPL-3.0). 코딩 에이전트 관점의 차별점은 Zed가 ''에이전트를 직접 만든 게 아니라 호스트''라는 점이다 — 자체 표준 ACP(Agent Client Protocol)로 Claude Code·Codex·Gemini CLI·goose 같은 외부 에이전트를 에디터 안에서 네이티브로 돌리고, Agent Panel에서 여러 에이전트를 병렬로 띄운다. 즉 ''터미널 에이전트 vs IDE''가 아니라, 빠른 에디터를 에이전트들의 공용 작업대로 쓰는 방향이다.
-
-    '
-  points:
-  - 정체성 — Nathan Sobo(전 Atom 공동제작) 팀의 Zed Industries 작품. 2026-04-29 1.0, Rust 97%대·GPUI를 Rust로 자작, mac·Windows·Linux, GitHub ~85.4k★·라이선스 주로 GPL-3.0
-  - 에이전트 호스트 모델 — 자체 에이전트를 강제하지 않고 ACP로 Claude Code·Codex·Gemini CLI·OpenCode·goose·Cline 등 외부 에이전트를 에디터에 붙여 씀. JetBrains도 ACP 채택, 양사 공동 에이전트 레지스트리
-  - 병렬 에이전트 — Agent Panel에서 여러 에이전트를 한 창에서 동시에 실행(Parallel Agents). 코드 검색·파일 편집·터미널 실행 같은 내장 툴을 에이전트가 호출하는 agentic editing 지원
-  source: https://zed.dev/blog/zed-1-0
 - category: ai
   title: '''Coding Beyond Your Training''(arXiv 2026) — Claude Code 도입이 개발자의 ''쓰는 언어·레포 폭''을 넓힌다는 5,838명 패널 연구'
   summary: '이코노미스트 Alexander Quispe가 2026년 5월 arXiv에 올린 워킹페이퍼로, AI 코딩 어시스턴트 도입이 개발자 개인의 ''기술적 프런티어''(다루는 언어·레포·커밋량)를 넓히는지를 GitHub 데이터로 추정한다. 2025-05~2026-01 사이 Claude Code가 GitHub에 퍼진 staggered rollout을 활용해, 개발자 5,838명을 28개월간 월 단위로 추적했다. ''첫 Claude 공동저자(Co-authored) 커밋'' 시점을 도입 기준으로 잡고, 아직 도입 안 한 개발자를 대조군으로 쓰는 staggered DiD 방식이다. 도입 후 월 커밋 +41개, 기여 레포 +1.5개, 사용 언어 수 +0.83, 신규 언어 +0.31 등 ''양''과 ''다양성''이 모두 늘었다고 보고한다.
@@ -6309,3 +6287,83 @@ cards:
   - Python/JS SDK ·MCP ·stealth ·schema validation
   - Firecrawl(MCP) ·Crawl4AI(OSS)와 managed NL-extract 특화
   source: https://docs.scrapegraphai.com/api-reference/introduction
+- category: ai
+  title: Tree of Thoughts (ToT) — 다중 reasoning path 탐색·backtrack, beam search prompting
+  summary: 'Tree of Thoughts(Yao et al., NeurIPS 2023)는 Chain-of-Thought의 단일 선형 추론을 tree search로 일반화한 prompting/orchestration 패턴이다. 매 step마다 LLM이 k개 candidate ''thought''를 생성하고, evaluator(LLM-judge 또는 deterministic checker)가 점수를 매긴 뒤 BFS/DFS/beam search로 promising branch만 확장·prune한다. Game of 24에서 CoT 4%→ToT 74%(GPT-4). 2026 실무: frontier reasoning model(GPT-5·Claude extended thinking)이 내부적으로 유사 search를 수행하므로, 투명성·제어·proposer/evaluator 모델 분리가 필요할 때만 explicit ToT. 비용 10~100× CoT — planning·combinatorial·architecture tradeoff에만. CoT first → eval fail 시 ToT escalation이 production-safe 패턴.'
+  points:
+  - 3 knobs — branching factor k, beam width/depth, evaluator(LLM-judge vs verifier)
+  - Search policy — BFS·DFS·best-first·bounded beam(프로덕션 최다)
+  - ReAct/LATS와 분리 — ToT=reasoning search, LATS=agent tree+tool, ReAct=single-path loop
+  source: https://arxiv.org/abs/2305.10601
+- category: ai
+  title: Self-Consistency Decoding — CoT 다중 샘플→majority vote, GSM8K +17.9%
+  summary: 'Self-Consistency(Wang et al., ICLR 2023)는 CoT prompting에 greedy decode 대신 temperature>0으로 diverse reasoning path N개를 샘플링하고, final answer를 majority vote로 선택하는 decoding strategy다. GSM8K +17.9%, SVAMP +11%, StrategyQA +6.4%. 2025 효율 변형: CISC(Confidence-Informed, ACL 2025) — confidence-weighted vote로 sample 40%↓, RASC(NAACL 2025) — reasoning quality 평가+early stop으로 70%↓, DSC(Difficulty-Adaptive) — easy question은 1-shot·hard만 N-sample. Instructor(validate-after)·Outlines(constrain-during)와 달리 ''추론 다양성→합의'' 패턴. Tree of Thoughts(탐색)와 조합 가능.'
+  points:
+  - CoT + N samples(temp>0) → extract final answer → majority vote
+  - 2025 효율 — CISC(confidence weight)·RASC(early stop)·DSC(difficulty-adaptive)
+  - ToT(탐색)·Reflexion(자기비평)과 역할 분리 — SC=answer-level consensus
+  source: https://arxiv.org/abs/2203.11171
+- category: ai
+  title: Chain-of-Thought Prompting — zero-shot·few-shot·Auto-CoT, 중간 추론을 명시하는 기본 패턴
+  summary: 'Chain-of-Thought(Wei et al., 2022)는 LLM이 final answer 전 intermediate reasoning step을 출력하게 해 multi-step task 정확도를 10~40%p 올리는 prompting 패턴이다. Zero-shot CoT — ''Let''s think step by step'' 한 줄 trigger, exemplar 불필요·latency 최소(GSM8K 10.4→40.7%). Few-shot CoT — domain-specific worked example로 step 정의·format lock-in. Auto-CoT — question cluster→representative example 자동 선택. DeepSeek R1(투명 CoT stream)과 달리 ''prompt engineering technique'' — 모델 무관·API 호출 1회. Self-Consistency(N-sample vote)·ToT(tree search)·Least-to-Most(decompose)의 기반. production: CoT output을 log/eval에 저장해 reasoning trace debug.'
+  points:
+  - Zero-shot — trigger phrase 1줄, few-shot — worked example로 domain step 정의
+  - Auto-CoT — question clustering→representative exemplar 자동 생성
+  - Self-Consistency·ToT·LtM의 기반 — DeepSeek R1(내장 reasoning)과 prompt-level CoT 분리
+  source: https://learn.microsoft.com/en-us/dotnet/ai/conceptual/chain-of-thought-prompting
+- category: ai
+  title: Few-Shot vs Zero-Shot — eval baseline 먼저, example은 측정 후에만 추가
+  summary: 'Zero-shot은 instruction만, few-shot은 2~5 input-output example을 prompt에 포함하는 in-context learning(ICL) 방식이다. 2026 production-safe protocol: (1) representative eval set으로 zero-shot baseline 측정 (2) 1→2→3→4 example sweep, peak 이후 decline(''few-shot collapse'') 확인 (3) 도움이 증명될 때만 static few-shot 유지. Zero-shot 장점 — token 절약·model version change에 robust. Few-shot 장점 — format·tone·edge case·custom taxonomy lock-in. 85~95% 필요→few-shot 3~5개, 99%+→fine-tuning. DSPy(자동 optimize)와 달리 ''수동 example curation decision framework''.'
+  points:
+  - Zero-shot first — eval baseline 없이 4 example 넣지 말 것
+  - Non-monotonic — example 수↑가 항상 quality↑ 아님, peak 찾아 stop
+  - Dynamic retrieval(Dynamic Few-Shot) — task diversity↑ 시 static→retrieved examples
+  source: https://tianpan.co/blog/2026-04-17-zero-shot-vs-few-shot-production-decision
+- category: ai
+  title: Dynamic Few-Shot Retrieval — query별 embedding 유사 example 선택, static 대비 double-digit↑
+  summary: 'Dynamic few-shot는 고정 example 대신 live query와 embedding cosine similarity로 example library에서 k개를 retrieve해 prompt에 주입하는 ICL 기법이다. Static few-shot의 input distribution mismatch·token waste를 줄여 classification·extraction 등 diverse task에서 double-digit quality margin 보고. Production 주의: (1) retrieved example을 system prompt가 아닌 user message 직전에 inject — KV cache on static prefix (2) 3~5 example sweet spot, 10+는 fine-tuning 검토 (3) retrieval quality 별도 eval — bad retrieval > no examples. Embedchain(RAG ingestion)과 달리 ''prompt-level example selection''. Few-Shot vs Zero-Shot 카드의 dynamic escalation path.'
+  points:
+  - Embedding retrieval — example library→cosine top-k→prompt inject
+  - KV cache — static system prompt + dynamic example을 user turn 직전 배치
+  - Static few-shot(validation) → dynamic(when diversity exceeds static coverage)
+  source: https://tianpan.co/blog/2026-04-12-dynamic-few-shot-retrieval-static-examples-accuracy
+- category: ai
+  title: Least-to-Most Prompting — decompose→sequential solve, CoT보다 compositional generalization↑
+  summary: 'Least-to-Most(Zhou et al., ICLR 2023)는 complex problem을 2-stage로 푸는 prompting 기법: (1) Decomposition — subproblem list 생성 (2) Subproblem Solving — 이전 subproblem answer를 context로 다음 solve. CoT는 demonstration보다 hard한 compositional task에서 generalization 실패 — LtM은 SCAN 76%(CoT 6%), code-davinci-002 99.7%. Plan-and-Execute(agent planner·executor 분리)와 달리 ''single LLM prompt pattern'', training 불필요. Self-Consistency·CoT와 조합 가능. 실무: ETL step chain·multi-file refactor plan·math word problem decomposition.'
+  points:
+  - Stage 1 decompose → Stage 2 sequential solve(previous answers as context)
+  - CoT 대비 — easy-to-hard generalization·compositional task에서 우위
+  - Plan-and-Execute(agent) ·ReAct(tool loop)와 분리 — prompt-only decomposition
+  source: https://arxiv.org/abs/2205.10625
+- category: ai
+  title: OpenAI Realtime API — native speech-to-speech, WebRTC/WebSocket·Agents SDK(2026 GA)
+  summary: 'OpenAI Realtime API는 audio를 first-class modality로 처리하는 speech-to-speech API다(2026 GA, gpt-realtime-2). STT→LLM→TTS pipeline 없이 단일 session에서 barge-in·turn-taking·tool call·MCP 지원. Transport: WebRTC(브라우저·모바일, ~300-500ms TTFA, ephemeral client secret) vs WebSocket(서버-side orchestration·compliance logging·+80~150ms). POST /v1/realtime/client_secrets로 ephemeral key 발급, Agents SDK RealtimeSession으로 tool·handoff·guardrail 연결. Gemini Live API(Android on-device)와 분리 — OpenAI ecosystem·SIP(beta) telephony·server-side tool mediation.'
+  points:
+  - Speech-to-speech native — barge-in·turn-taking·tool/MCP in audio session
+  - WebRTC(browser direct) vs WebSocket(server mediate) transport 선택
+  - Gemini Live(on-device) ·chained VoicePipeline(STT→LLM→TTS)과 역할 분리
+  source: https://developers.openai.com/api/docs/guides/voice-agents
+- category: ai
+  title: LLM API Retry & Exponential Backoff — 429/5xx만 retry, jitter+Retry-After 필수
+  summary: 'Production LLM integration의 baseline resilience: retry with exponential backoff + full jitter. Retryable — 429(rate limit)·500/502/503/504·timeout. Non-retryable(fail fast) — 400·401/403·content policy. Config — base 1~2s, multiplier 2×, max 30~60s, full jitter(0~base random), max 3~5 attempts, Retry-After header 우선. Thundering herd 방지 — jitter 없으면 outage 시 모든 client 동시 retry. Portkey(circuit breaker 내장) ·Temporal(durable retry) ·LiteLLM(auto retry)과 달리 ''애플리케이션 레벨 패턴''. Circuit breaker(>10% fail/60s→open) + fallback chain과 3-layer 조합.'
+  points:
+  - 429/5xx/timeout만 retry — 400/401/403/content policy는 즉시 fail
+  - Exponential backoff + full jitter + Retry-After header respect
+  - Circuit breaker + fallback chain과 3-layer — Portkey/Temporal은 infra 구현
+  source: https://www.learnwithparam.com/blog/retry-patterns-llm-api-errors-production
+- category: ai
+  title: Skeleton-of-Thought (SoT) — answer skeleton→parallel expand, latency 2.39×↓(ICLR 2024)
+  summary: Skeleton-of-Thought(Microsoft+Tsinghua, ICLR 2024)는 LLM sequential decoding latency를 줄이는 data-centric prompting 기법. Stage 1 — answer skeleton(구조 outline) 생성, Stage 2 — 각 skeleton point를 parallel API call 또는 batched decode로 동시 expand. 12 LLM에서 up to 2.39× speed-up, GPT-3.5/4에서 2× 가속+품질 개선 사례. SoT-R(router) — step-by-step reasoning·short answer는 standard decode fallback. Chain-of-Thought(순차 reasoning) ·Tree of Thoughts(search)와 달리 'parallel generation for structured long answers'. asyncio.gather로 point별 parallel API call 구현.
+  points:
+  - Skeleton outline → parallel point expansion — black-box LLM, model 수정 불필요
+  - Up to 2.39× latency↓ — long structured answer(list·report·consulting)에 최적
+  - SoT-R router — reasoning-heavy task는 sequential fallback
+  source: https://arxiv.org/abs/2307.15337
+- category: ai
+  title: In-Context Learning — example curation·ordering·3~8 sweet spot, ICL production playbook
+  summary: 'In-Context Learning(ICL)은 fine-tuning 없이 prompt 내 demonstration으로 task를 학습하는 LLM emergent capability(Brown et al., 2020)다. Production playbook: (1) relevance — production input distribution과 semantic match (2) quality — label·format·delimiter 일관, edge case 포함 (3) count — 3~8 sweet spot, sweep으로 peak 찾기 (4) ordering — strongest example last(recency bias) (5) dynamic selection — embedding retrieval로 query별 example. Negative demo·noisy example은 accuracy regress. Few-Shot vs Zero-Shot(결정 framework) ·Dynamic Few-Shot Retrieval(구현) ·DSPy(auto optimize)와 역할 분리 — ICL은 ''example design 원칙''.'
+  points:
+  - 3~8 examples — token/latency vs accuracy trade-off, peak 이후 regress
+  - Strongest example last ·consistent format/delimiter ·edge case 포함
+  - Dynamic retrieval + offline eval replay + production A/B로 drift monitor
+  source: https://byaiteam.com/blog/2025/12/18/few-shot-learning-in-production-design-in-context-examples/
