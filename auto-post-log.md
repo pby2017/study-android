@@ -1201,3 +1201,15 @@ Refined:
 
 누적: 550카드 (549→550)
 주제: Agent Finder, Agentic Resource Discovery, MCP/skill/agent catalog governance, Continue CLI maintenance-status refinement
+
+## 2026-06-24 09:33 KST — Batch 27 (prompt operations, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Reusable prompts 종료 — 프롬프트도 코드 리뷰·테스트 대상이 된다 | developers.openai.com |
+
+Refined:
+- Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'
+
+누적: 551카드 (550→551)
+주제: reusable prompt objects deprecation, prompt-as-code migration, Responses API prompt builders, Continuous Claude PR-loop refinement

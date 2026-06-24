@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트`; next oldest reviewed candidate is `Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'`.
+Current position: continue after `Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'`; next oldest reviewed candidate is `Codebuff — 단일 모델이 아니라 '에이전트 4종 팀'으로 코드를 고치는 터미널 에이전트`.
 
-Last update: 2026-06-24 07:28 KST
+Last update: 2026-06-24 09:33 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -24,6 +24,7 @@ Reviewed:
 - `Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI`
 - `Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다`
 - `Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트`
+- `Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -41,13 +42,14 @@ Refined:
 - `Droid(Factory AI) — '모델보다 에이전트 설계'를 Terminal-Bench로 증명한 CLI` — clarified the reusable agent-harness lessons behind the Terminal-Bench result: hierarchical prompting, model-specific tool/edit handling, minimal schemas, environment bootstrapping, timeout planning, plan-state reminders, and controlled background execution.
 - `Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다` — refreshed the source URL to the current Search docs, removed an older unsupported accuracy metric, and clarified the grep/semantic search/Explore subagent split plus current privacy/indexing behavior.
 - `Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트` — preserved the CLI design lesson, refreshed live maintenance state from the README, removed stale active-development wording, and clarified TUI/headless/config-sharing behavior without calling the repository archived.
+- `Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'` — refreshed live GitHub metrics, provider support, PR lifecycle, context continuity, worktree support, GitHub-only automation boundary, and bounding/safety flags from the current README.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
 - `Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰` — source re-checked; the existing refined card already captures triggers, review/implementation features, structured outputs, runner location, and authentication/provider choices.
 
 Next:
-- Continue with `Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Codebuff — 단일 모델이 아니라 '에이전트 4종 팀'으로 코드를 고치는 터미널 에이전트`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

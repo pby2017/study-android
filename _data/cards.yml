@@ -1436,15 +1436,15 @@ cards:
     source: https://docs.continue.dev/guides/cli
   - category: ai
     title: Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'
-    summary: 'Ralph 루프가 "끝날 때까지 새 컨텍스트로 다시 돌리는" 패턴이라면, Continuous Claude(AnandChowdhary)는 그 루프에 깃 워크플로 전체를 붙인 CLI다. 매 반복마다 Claude Code(또는 Codex)가 코드를 고치고 → 새 브랜치에 커밋 → ''gh pr create''로 PR을 열고 → ''gh pr
-      checks''로 CI·리뷰 통과를 기다린 뒤 → 초록불이면 머지, 실패면 버리고 다시 도는 식이다. 창작 동기가 구체적이다 — 수십만 줄 코드베이스의 테스트 커버리지를 몇 주 안에 0%→80%로 올려야 하는 계약 때문에 만들었다. 반복 사이 맥락은 SHARED_TASK_NOTES.md 파일로 이어 붙여 보존하고, 워크트리로 여러 인스턴스를 병렬로
-      굴릴 수 있다. 단 완전한 PR 자동화는 GitHub 레포에서만 되고(Gitea 등 self-hosted forge 미지원), 로컬 전용 모드는 --disable-commits/--disable-branches로 쓴다.
+    summary: 'Ralph 루프가 "끝날 때까지 새 컨텍스트로 다시 돌리는" 패턴이라면, Continuous Claude(AnandChowdhary)는 그 루프에 GitHub PR 생명주기를 붙인 CLI다. 매 반복마다 Claude Code 또는 Codex CLI가 작업하고, 새 브랜치에 커밋한 뒤 `gh pr create`로
+      PR을 열고, `gh pr checks`와 리뷰 통과를 기다린다. 초록불이면 머지하고, 실패하면 PR을 닫고 작업을 버린 뒤 다음 반복에서 실패 지식을 반영한다. 반복 사이 맥락은 기본 `SHARED_TASK_NOTES.md`에 남겨 컨텍스트 드리프트를 줄이고, `--worktree`로 병렬 실행도 지원한다. 현재 README 기준
+      GitHub PR 자동화가 핵심 경로이며 self-hosted forge는 미지원이다. 로컬 검증이나 안전한 시험 운전은 `--dry-run`, `--disable-commits`, `--disable-branches`, `--max-runs`, `--max-duration`, `--max-cost` 같은 제한 플래그로 먼저 좁히는 편이 낫다.
 
       '
     points:
-      - 'Ralph 루프 + 깃 자동화: 커밋→PR(gh pr create)→CI 대기(gh pr checks)→머지/폐기를 반복(MIT, GitHub Star 약 1.4k 주장)'
-      - 맥락 보존은 SHARED_TASK_NOTES.md로, 병렬 실행은 git worktree로 — 필요 도구는 Claude Code CLI·GitHub CLI(gh)·jq
-      - 완전 PR 자동화는 GitHub 전용, self-hosted forge는 로컬 모드(--disable-commits/--disable-branches)만 가능
+      - '같은 런 검증: MIT, 1.4k★, Claude Code/Codex provider 지원, GitHub CLI PR 자동화'
+      - 맥락 보존은 기본 SHARED_TASK_NOTES.md, 병렬 실행은 `--worktree`, 완료 판단은 연속 completion signal
+      - '안전장치: `--dry-run`, `--max-runs`, `--max-duration`, `--max-cost`, `--stall-threshold`로 무한 루프를 제한'
     source: https://github.com/AnandChowdhary/continuous-claude
   - category: ai
     title: Codebuff — 단일 모델이 아니라 '에이전트 4종 팀'으로 코드를 고치는 터미널 에이전트
@@ -6341,3 +6341,18 @@ cards:
       - "운영 경계: 선택한 public/private registry 안에서만 검색, managed settings로 허용 범위 제한, 자동 설치 없음"
       - "ARD 패턴: domain-hosted catalogs + federated registries + native protocol handoff; 같은 런 검증 293 catalog resources, ard-spec 268★"
     source: https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/
+  - category: ai
+    title: "Reusable prompts 종료: 프롬프트도 코드 리뷰·테스트 대상이 된다"
+    summary: >
+      OpenAI는 2026-06-03 reusable prompt objects의 deprecation을 공지했고, `v1/prompts` API와
+      reusable prompt objects를 2026-11-30에 종료할 예정이라고 문서화했다. 최신 prompt engineering
+      가이드는 새 작업에서 production prompt를 대시보드 객체로 저장하지 말고 애플리케이션 코드 안의
+      작은 prompt builder로 옮기라고 권한다. 동적 값은 typed function argument나 schema로 받고,
+      생성된 `instructions`와 `input`을 Responses API에 직접 넘기며, 변경 전에는 대표 fixture,
+      테스트, evaluation check를 붙이라는 흐름이다. 실무 교훈은 "프롬프트 관리 UI"에 의존하지 말고
+      프롬프트를 코드 변경처럼 diff, 리뷰, 테스트, feature flag, 배포 파이프라인으로 다루라는 점이다.
+    points:
+      - "공식 일정: 2026-06-03 deprecation 공지, 2026-11-30 `v1/prompts`/reusable prompt objects 종료 예정"
+      - "이주 방향: prompt content를 application code로 옮기고 Responses API에 instructions/input으로 전달"
+      - "운영 원칙: typed inputs, fixtures, tests, eval checks, staged rollout로 프롬프트 변경을 관리"
+    source: https://developers.openai.com/api/docs/deprecations
