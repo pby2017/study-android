@@ -1527,3 +1527,57 @@ Refined:
 | Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기 | GitHub/Gartner 공개 요약 재확인, 벤더 순위보다 SDLC 에이전트 평가 표면 중심으로 정리 |
 
 주제: contextual agent autonomy governance, AI security patch validation, headless coding-agent automation, enterprise AI coding-agent category framing
+
+## 2026-06-24 21:00 KST — Batch 24 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| Vercel AI SDK 6 | ToolLoopAgent·UI streaming·AI Gateway — OpenRouter(게이트웨이)와 프론트엔드 통합 레이어 분리 |
+| Portkey AI Gateway | Config JSON 라우팅·가드레일·self-host — OpenRouter와 엔터프라이즈 제어·관측 차별 |
+| Spring AI 2.0 | Java Boot 4 LLM 통합·ChatClient·MCP — MS Agent Framework(오케스트레이션)와 역할 분리 |
+| Prefect + AI | Pydantic AI durable execution·Python control flow — Temporal(인프라)와 Python ML 팀 친화 |
+| ElevenLabs TTS API | Flash 75ms·상용 SLA — GPT-SoVITS(로컬 OSS)와 프로덕션 voice agent 차별 |
+| Mintlify | Workflows PR·llms.txt·MCP doc platform — llms.txt(표준) 카드와 풀스택 hosting 분리 |
+| W&B Model Registry | ML artifact CI/CD·alias — W&B Weave(LLM trace)와 model lifecycle 분리 |
+| Determined AI | 분산학습·HP tuning·GPU scheduler — DVC(데이터)·Ray Serve(서빙)와 레이어 분리 |
+| Kong AI Gateway | API-first·semantic routing(Redis VSS) — Portkey(SaaS)와 Kong 인프라 사용자 차별 |
+| Runway Gen-3 API | image-to-video task API — Meshy(3D)와 2D video generation 분리 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Semantic Kernel / MS Agent Framework | Microsoft Agent Framework 1.0 GA 카드 존재 |
+| Meshy 3D API | Runway(비디오) 선택, 3D는 다음 배치 후보 |
+| Swimm | Mintlify와 docs 카테고리 중복, CI doc sync은 Mintlify Workflows로 커버 |
+| Coqui/Bark | GPT-SoVITS·ElevenLabs로 TTS 축 커버 |
+| Sora API | 공개 developer API 미제공 |
+| Apache Spark + AI | 범위 과대, 독립 카드 가치 낮음 |
+| Cursor Rules | Cursor 규칙(.mdc) 카드 존재 |
+
+### 병합 (2카드 제거, 583→582)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Terminal-Bench 2.0 | Terminal-Bench 2.x — 벤치마크 정의+Harbor+2.1 리더보드 통합 |
+| Terminal-Bench 2.1 리더보드 | ↑ 동일 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Vercel AI SDK 6 — ToolLoopAgent·스트리밍·AI Gateway | sdk.vercel.ai |
+| 2 | Portkey AI Gateway — 1600+ LLM 라우팅·가드레일 | portkey.ai |
+| 3 | Spring AI 2.0 — Java LLM·RAG·MCP | docs.spring.io/spring-ai |
+| 4 | Prefect + AI — Pydantic AI durable execution | docs.prefect.io |
+| 5 | ElevenLabs TTS API — Flash v2.5 75ms | elevenlabs.io/docs |
+| 6 | Mintlify — AI-native docs·Workflows | mintlify.com |
+| 7 | W&B Model Registry — ML CI/CD 게이트 | docs.wandb.ai |
+| 8 | Determined AI — 분산학습·GPU 스케줄링 | github.com/determined-ai |
+| 9 | Kong AI Gateway — semantic routing | developer.konghq.com |
+| 10 | Runway Gen-3 Alpha Turbo API — image-to-video | docs.dev.runwayml.com |
+
+누적: 592카드 (583→582 병합→592 신규)
+주제: TypeScript AI SDK(Vercel), AI gateway(Portkey·Kong), Java LLM(Spring AI), agent workflow(Prefect), TTS API(ElevenLabs), AI docs(Mintlify), ML registry(W&B), distributed training(Determined), video API(Runway)
