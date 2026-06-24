@@ -1237,3 +1237,28 @@ Refined:
 
 누적: 553카드 (552→553)
 주제: Codex Security plugin artifacts, SARIF export, backlog triage, approval-gated security issue handoff, Google Antigravity official-source refinement
+
+## 2026-06-24 15:00 KST — Round 15 Batch 18 (중복 정리 18카드 + 신규 12카드)
+
+**중복 정리**: 17개 주제 그룹에서 18카드 제거 (553→535)
+- 공식 MCP 레지스트리(2), /context(2), Agent Teams(2), ACP(3→1), mini-swe-agent(2), Codebuff(2), Mastra(2), Serena(2), Ruflo(2), Crush(3→1), awesome-claude-code-subagents(2), awesome-agent-skills(2), claude-code-router(2), claude --worktree(2), GitHub Agent Apps(2), Distilabel(2)
+
+**신규 12카드**:
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Claude Artifacts — 인터랙티브 출력 패널 | anthropic.com |
+| 2 | Claude Projects — 지속 워크스페이스 | anthropic.com |
+| 3 | Llama 4 — Scout/Maverick/Behemoth | ai.meta.com |
+| 4 | Phi-4-mini — 3.8B SLM | azure.microsoft.com |
+| 5 | Whisper large-v3-turbo — 809M ASR | github.com/openai/whisper |
+| 6 | KAN — Kolmogorov-Arnold Networks | arxiv.org |
+| 7 | Mixture of Agents(MoA) — 다층 LLM 협업 | arxiv.org |
+| 8 | RWKV-7 Goose — 선형시간 RNN | arxiv.org |
+| 9 | Differential Transformer — 노이즈 제거 attention | arxiv.org |
+| 10 | EU AI Act 2026 시행 | digital-strategy.ec.europa.eu |
+| 11 | Snyk vs Semgrep — AI 코드 보안 | snyk.io |
+| 12 | Anthropic RSP v3.0 — Responsible Scaling | anthropic.com |
+
+누적: 547카드 (553→535 중복제거→547 신규추가)
+주제: Claude 워크스페이스(Artifacts·Projects), 프론티어 모델(Llama 4·Phi-4-mini), 음성 AI(Whisper turbo), 신규 아키텍처(KAN·MoA·RWKV-7·Diff Transformer), AI 규제(EU AI Act·RSP), 코드 보안(Snyk vs Semgrep)
