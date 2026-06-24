@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Codebuff — 단일 모델이 아니라 '에이전트 4종 팀'으로 코드를 고치는 터미널 에이전트`; next oldest reviewed candidate is `Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼`.
+Current position: continue after `Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼`; next oldest reviewed candidate is `Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크`.
 
-Last update: 2026-06-24 11:37 KST
+Last update: 2026-06-24 13:43 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -26,6 +26,7 @@ Reviewed:
 - `Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트`
 - `Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'`
 - `Codebuff — 단일 모델이 아니라 '에이전트 4종 팀'으로 코드를 고치는 터미널 에이전트`
+- `Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -45,13 +46,14 @@ Refined:
 - `Continue CLI(cn) — 모델·규칙·도구를 끼워 쓰는 모듈형 오픈소스 터미널 에이전트` — preserved the CLI design lesson, refreshed live maintenance state from the README, removed stale active-development wording, and clarified TUI/headless/config-sharing behavior without calling the repository archived.
 - `Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'` — refreshed live GitHub metrics, provider support, PR lifecycle, context continuity, worktree support, GitHub-only automation boundary, and bounding/safety flags from the current README.
 - `Codebuff — 단일 모델이 아니라 '에이전트 4종 팀'으로 코드를 고치는 터미널 에이전트` — refreshed live GitHub metrics, current README-supported multi-agent architecture, `/init` custom-agent setup, TypeScript generator, SDK embedding, and removed stale OpenRouter wording from the older card.
+- `Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼` — replaced third-party-source wording with Google I/O 2026 official-source details about Antigravity 2.0 desktop app, CLI, SDK, Gemini CLI migration guidance, dynamic subagents, scheduled tasks, and Google ecosystem integrations.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
 - `Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰` — source re-checked; the existing refined card already captures triggers, review/implementation features, structured outputs, runner location, and authentication/provider choices.
 
 Next:
-- Continue with `Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

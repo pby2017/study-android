@@ -1460,16 +1460,17 @@ cards:
     source: https://github.com/CodebuffAI/codebuff
   - category: ai
     title: Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼
-    summary: '구글이 2026 I/O(2026-05-19)에서 발표한 Antigravity는 단순 CLI가 아니라 ''에이전트 우선'' 개발 플랫폼이다. 한 화면이 아니라 세 개의 표면(surface)으로 일한다 — 에이전트에게 일을 맡기고 병렬로 굴리는 Agent Manager, 직접 코드를 손보는 에디터, 그리고 에이전트가 만든 웹앱을 직접 띄워
-      테스트하고 스크린샷까지 찍는 브라우저. 한 작업을 서브에이전트로 쪼개 동시에 돌릴 수 있고, 기존 데스크톱 에디터에 더해 새 CLI와 SDK도 함께 나왔다. 구글은 Gemini CLI 사용자에게 Antigravity로 이전(migrate)할 것을 요청하고 있어, Gemini CLI를 쓰던 팀이라면 갈아탈 대상으로 봐야 한다. 워크호스 모델은 Gemini
-      3.5 Flash로, 구글은 작년 Gemini 3.1 Pro를 대부분 벤치마크에서 앞서면서 약 4배 빠르다고 주장한다(구글 자체 주장).
+    summary: '구글이 2026 I/O(2026-05-19)에서 Antigravity를 ''agent-first development platform''으로 다시 밀었다. 핵심은 IDE 하나가 아니라 개발 표면 묶음이라는 점이다. Antigravity 2.0 데스크톱 앱은 여러 에이전트를 병렬로 오케스트레이션하고, dynamic subagents·scheduled
+      tasks·Google AI Studio/Android/Firebase 연동을 담는다. Antigravity CLI는 GUI 없이 터미널에서 에이전트를 만들고 실행하는 경량 표면이며, 구글은 Gemini CLI 사용자에게 이 CLI로 이전하라고 안내한다. Antigravity SDK는 구글 제품을 움직이는 같은 agent harness를 프로그래밍 가능한
+      형태로 제공해 커스텀 에이전트 동작과 자체 인프라 호스팅을 열어 둔다. 워크호스 모델은 Gemini 3.5 Flash이고, 구글은 Gemini 3.1 Pro보다 대부분 벤치마크에서 앞서며 다른 frontier 모델보다 4배 빠르다고 주장한다. 실무 교훈은 "CLI 대체재"가 아니라 데스크톱·CLI·SDK·호스팅 환경을 함께 보는
+      에이전트 플랫폼 전환이라는 점이다.
 
       '
     points:
-      - '세 표면: Agent Manager(위임·병렬)·에디터(직접 편집, Plan/Fast 모드)·브라우저(에이전트가 앱 띄워 테스트·스크린샷)'
-      - 데스크톱 에디터 + 새 CLI + SDK 동시 출시 / 한 작업을 서브에이전트로 쪼개 병렬 실행
-      - 구글이 Gemini CLI 사용자에게 Antigravity 이전 요청 — Gemini CLI 후속으로 봐야 / 모델은 Gemini 3.5 Flash
-    source: https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/
+      - '데스크톱 앱: 여러 에이전트 병렬 오케스트레이션, dynamic subagents, scheduled tasks, AI Studio/Android/Firebase 연동'
+      - 'CLI: GUI 없이 터미널에서 에이전트 생성·실행 / 구글은 Gemini CLI 사용자에게 Antigravity CLI 이전 안내'
+      - 'SDK: Antigravity agent harness를 커스텀 동작·자체 인프라 호스팅에 사용 / 모델은 Gemini 3.5 Flash'
+    source: https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
   - category: ai
     title: Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크
     summary: 'Mastra(mastra-ai)는 코딩 에이전트(터미널 툴)가 아니라, 당신이 직접 AI 에이전트·앱을 짤 때 쓰는 TypeScript 프레임워크다. 거의 100% TypeScript로 쓰였고 Node.js·React·Next.js와 붙으며, 만든 곳은 정적 사이트 도구 Gatsby를 만든 팀(YC W25)이다. 핵심 구성요소가 또렷하다
@@ -6371,3 +6372,21 @@ cards:
       - "app-server: multi-agent delegation을 thread/turn별 disabled·explicit-request-only·proactive로 제어"
       - "운영 교훈: 장기 에이전트 실행은 모델명보다 예산·위임·웹 접근 정책을 먼저 고정"
     source: https://developers.openai.com/codex/changelog
+  - category: ai
+    title: "Codex Security artifacts: AI 보안 스캔 결과를 SARIF·백로그 티켓으로 넘기기"
+    summary: >
+      Codex Security plugin 0.1.9의 중요한 변화는 "AI가 취약점을 찾았다"에서 끝내지 않고,
+      결과를 다른 보안 운영 도구가 읽을 수 있는 산출물로 고정하는 흐름이다. 완료된 scan은
+      findings workspace에서 findings, coverage, severity, confidence, scan artifact를 함께
+      검토하고, export 단계에서 JSON·CSV·SARIF로 내보낼 수 있다. 전체 맥락이 필요하면
+      `scan-manifest.json`, `findings.json`, `coverage.json`을 같이 보관한다. backlog triage는
+      scanner, advisory, bug bounty, GitHub/Jira/Linear, Codex Security 결과를 현재 코드베이스와
+      대조해 confirmed·needs_review·not_actionable verdict와 우선순위 큐를 만든다. track findings는
+      Linear/GitHub/Jira issue나 private draft GitHub Security Advisory payload를 만들되, 중복 확인,
+      destination visibility, 정확한 본문을 보여 주고 승인 전에는 쓰지 않는다. 교훈은 AI 보안 자동화의
+      핵심이 "탐지"보다 traceable evidence, portable format, approval-gated handoff라는 점이다.
+    points:
+      - "0.1.9: findings workspace에서 coverage·severity·confidence·evidence·scan artifacts를 함께 검토"
+      - "Export: sealed scan 결과를 JSON·CSV·SARIF로 내보내고 manifest/findings/coverage 맥락 보존"
+      - "Triage/Track: 기존 finding을 코드베이스에 대조해 verdict·priority를 만들고, 티켓/보안권고 쓰기는 승인 후 실행"
+    source: https://developers.openai.com/codex/security/plugin/changelog

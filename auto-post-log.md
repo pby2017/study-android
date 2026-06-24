@@ -1225,3 +1225,15 @@ Refined:
 
 누적: 552카드 (551→552)
 주제: Codex CLI rollout token budgets, app-server multi-agent delegation controls, indexed web search policy, Codebuff multi-agent architecture refinement
+
+## 2026-06-24 13:43 KST — Batch 29 (AI security operations, 1카드 + 1 refinement)
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Codex Security artifacts — AI 보안 스캔 결과를 SARIF·백로그 티켓으로 넘기기 | developers.openai.com |
+
+Refined:
+- Google Antigravity — Gemini CLI를 접고 갈아타라는 '에디터·터미널·브라우저' 통합 에이전트 플랫폼
+
+누적: 553카드 (552→553)
+주제: Codex Security plugin artifacts, SARIF export, backlog triage, approval-gated security issue handoff, Google Antigravity official-source refinement
