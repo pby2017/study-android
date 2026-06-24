@@ -1098,7 +1098,7 @@ cards:
   source: https://github.com/AnandChowdhary/continuous-claude
 - category: ai
   title: Google Antigravity 2.0 — 데스크톱·CLI(Go)·SDK·Gemini CLI 통합, 3표면 에이전트 플랫폼(I/O 2026)
-  summary: '구글이 2026 I/O에서 Antigravity 2.0을 agent-first development platform으로 공개했다. 1.0 단일 IDE에서 리뉴얼 데스크톱 앱 + Go CLI + 커스텀 SDK 3표면으로 확장 — dynamic subagents·scheduled tasks·Google AI Studio/Android/Firebase 연동. 2025-06 공개 Gemini CLI(google-gemini/gemini-cli, Apache-2.0·~105k★)는 터미널 네이티브 코딩 에이전트로 Gemini 2.5 Pro·1M ctx·MCP 기본 지원·개인 구글 계정 무료(분당 60·일 1,000 요청)였으나, 구글은 소비자(AI Pro/Ultra/무료) Gemini CLI 접근을 2026-06-18부터 차단하고 Antigravity로 이전 안내. Antigravity CLI는 GUI 없이 터미널 에이전트 생성·실행, SDK는 harness 프로그래밍·자체 호스팅 개방. 워크호스 Gemini 3.5 Flash — 3.1 Pro 대비 대부분 벤치마크 앞서고 4배 빠름. Cursor/Claude Code(터미널 에이전트)와 달리 IDE+CLI+SDK+호스팅 통합.'
+  summary: 구글이 2026 I/O에서 Antigravity 2.0을 agent-first development platform으로 공개했다. 1.0 단일 IDE에서 리뉴얼 데스크톱 앱 + Go CLI + 커스텀 SDK 3표면으로 확장 — dynamic subagents·scheduled tasks·Google AI Studio/Android/Firebase 연동. 2025-06 공개 Gemini CLI(google-gemini/gemini-cli, Apache-2.0·~105k★)는 터미널 네이티브 코딩 에이전트로 Gemini 2.5 Pro·1M ctx·MCP 기본 지원·개인 구글 계정 무료(분당 60·일 1,000 요청)였으나, 구글은 소비자(AI Pro/Ultra/무료) Gemini CLI 접근을 2026-06-18부터 차단하고 Antigravity로 이전 안내. Antigravity CLI는 GUI 없이 터미널 에이전트 생성·실행, SDK는 harness 프로그래밍·자체 호스팅 개방. 워크호스 Gemini 3.5 Flash — 3.1 Pro 대비 대부분 벤치마크 앞서고 4배 빠름. Cursor/Claude Code(터미널 에이전트)와 달리 IDE+CLI+SDK+호스팅 통합.
   points:
   - '3표면: 데스크톱(병렬 오케스트레이션) + CLI(Go) + SDK(커스텀 harness)'
   - Gemini CLI(~105k★) 소비자 접근 2026-06-18 종료 → Antigravity로 이주, MCP·1M ctx 유지
@@ -2425,14 +2425,12 @@ cards:
   - NVIDIA 주도, Apache-2.0, OWASP LLM Top 10 대응
   source: https://github.com/nvidia/garak
 - category: ai
-  title: llama.cpp + GGUF — CPU·맥·엣지에서 LLM을 돌리는 사실상 표준, Q4_K_M이 2026년 최적 균형점
-  summary: 'llama.cpp는 C/C++로 작성된 LLM 추론 엔진으로, GGUF 포맷을 통해 CPU·Apple Silicon·NVIDIA·AMD·Intel 등 거의 모든 하드웨어에서 LLM을 실행한다. 2026년 기준 양자화 최적점은 Q4_K_M(4bit)으로, FP16 대비 퍼플렉시티 1~3% 손실에 VRAM 3.5~4배 절감. Ollama·LM Studio·KoboldCpp의 백엔드 엔진이기도 하다. 프로덕션 GPU 서빙은 AWQ+vLLM이 표준이지만, 로컬/엣지/맥에서는 llama.cpp+GGUF가 유일한 선택.
-
-    '
+  title: llama.cpp + GGUF — convert→imatrix→quantize, Q4_K_M이 2026년 엣지·로컬 표준
+  summary: 'llama.cpp는 C/C++ LLM 추론 엔진으로 GGUF(GPT-Generated Unified Format) 포맷을 통해 CPU·Apple Silicon·NVIDIA·AMD·Intel 등 거의 모든 하드웨어에서 LLM을 실행한다. Ollama·LM Studio·KoboldCpp의 백엔드. 양자화 파이프라인 3단계: 1) convert_hf_to_gguf.py로 HF→GGUF F16, 2) llama-imatrix로 중요도 행렬 생성(4bit 이하 품질 핵심), 3) llama-quantize로 목표 비트폭 압축. Q4_K_M이 2026 기본(8B ~4.7GB, FP16 대비 1~3% perplexity 손실), Q5_K_M은 +15% 크기에 추론·코드 품질↑, IQ4_XS는 imatrix 기반 코드북으로 Q4_K_M보다 작지만 동등. 프로덕션 GPU 서빙은 AWQ+vLLM, 로컬/엣지/맥은 llama.cpp+GGUF.'
   points:
-  - '범용 하드웨어: CPU·Mac·NVIDIA·AMD·Intel 모두 지원'
-  - 'Q4_K_M: 품질 대비 최적 양자화, FP16 대비 1~3% 손실'
-  - 'Ollama·LM Studio 백엔드: 소비자 LLM 생태계의 기반'
+  - '3단계: convert → imatrix → quantize, LoRA는 merge_and_unload() 후 변환'
+  - 'Q4_K_M: 8B ~4.7GB 가성비 기본, imatrix가 4bit 품질 좌우'
+  - 범용 HW + Ollama/LM Studio 백엔드 — GPU 프로덕션은 AWQ+vLLM
   source: https://github.com/ggml-org/llama.cpp
 - category: ai
   title: Qwen3-VL — 오픈소스 비전-언어 모델 1위, OCR 32개 언어·문서·차트·GUI 에이전트까지(Apache-2.0)
@@ -4802,16 +4800,6 @@ cards:
   - '스코어러: 커스텀 함수 + LLM-graded + 임베딩'
   source: https://docs.wandb.ai/weave
 - category: ai
-  title: GGUF 양자화 가이드 — convert→imatrix→quantize 3단계, Q4_K_M이 2026년 기본 선택
-  summary: 'GGUF(GPT-Generated Unified Format)는 llama.cpp의 모델 포맷으로, 가중치·토크나이저·하이퍼파라미터를 단일 바이너리에 번들. 양자화 파이프라인 3단계: 1) convert_hf_to_gguf.py로 HF→GGUF F16 변환, 2) llama-imatrix로 중요도 행렬(imatrix) 생성(4비트 이하 품질 핵심), 3) llama-quantize로 목표 비트폭 압축. Q4_K_M이 기본 선택(8B 모델 ~4.7GB, 6GB RAM), Q5_K_M은 +15% 크기에 추론·코드 품질 향상, Q8_0은 거의 무손실. IQ4_XS는 imatrix 기반 코드북 인코딩으로 Q4_K_M보다 작지만 동등 품질. LoRA 어댑터는 merge_and_unload() 후 변환.
-
-    '
-  points:
-  - '3단계: convert → imatrix → quantize'
-  - 'Q4_K_M: 8B ~4.7GB, 가성비 기본값'
-  - 'imatrix: 4비트 이하 품질의 핵심 차이'
-  source: https://markaicode.com/gguf-quantization-after-fine-tuning-llama-cpp/
-- category: ai
   title: Groq LPU — SRAM 기반 결정론적 추론 칩, Llama 70B 276 tok/s(GPU 대비 3~10배)·TTFT <1초
   summary: 'Groq의 LPU(Language Processing Unit)는 온칩 SRAM 기반 데이터플로우 아키텍처로, DRAM/HBM 병목을 제거해 결정론적 추론 속도를 달성한다. Artificial Analysis 독립 벤치마크(72시간 중앙값): Llama 3.3 70B 276 tok/s(Fireworks 83 tok/s의 3배), Llama 3.1 8B 840 tok/s. TTFT 0.6~0.9초. GroqCloud API 전용(클라우드 온리, 하드웨어 구매 불가). OpenAI 호환 API로 base_url 변경만으로 전환. 2025년 NVIDIA가 Groq 핵심 기술 인수 → Groq 3 LPU가 Vera Rubin 플랫폼의 추론 코프로세서로 통합. 실시간 음성·채팅 등 지연 민감 워크로드에 최적.
 
@@ -6016,7 +6004,7 @@ cards:
   source: https://learn.microsoft.com/en-us/azure/foundry/agents/overview
 - category: ai
   title: W&B Launch — Git/Docker/Artifact→Queue→K8s·SageMaker·Vertex 실험 실행
-  summary: 'W&B Launch는 ML 실험을 자동 컨테이너화·원격 실행하는 MLOps 워크플로 커넥터다. Job = source code+dependencies+inputs를 캡처한 W&B Artifact — Git repo·Docker image·기존 Artifact에서 생성. wandb launch -j JOB -q QUEUE -r kubernetes|sagemaker|gcp-vertex|local-container로 큐에 enqueue, launch-agent가 pull·build·run. launch_add() Python SDK·Sweeps on Launch로 HP 탐색+인프라 스케일 동시. W&B Sweeps(HP)·Artifacts(lineage)와 역할 분리 — Launch는 compute dispatch·reproducible container. MLOps 1회 infra 설정 후 practitioner가 클릭으로 GPU cluster 접근.'
+  summary: W&B Launch는 ML 실험을 자동 컨테이너화·원격 실행하는 MLOps 워크플로 커넥터다. Job = source code+dependencies+inputs를 캡처한 W&B Artifact — Git repo·Docker image·기존 Artifact에서 생성. wandb launch -j JOB -q QUEUE -r kubernetes|sagemaker|gcp-vertex|local-container로 큐에 enqueue, launch-agent가 pull·build·run. launch_add() Python SDK·Sweeps on Launch로 HP 탐색+인프라 스케일 동시. W&B Sweeps(HP)·Artifacts(lineage)와 역할 분리 — Launch는 compute dispatch·reproducible container. MLOps 1회 infra 설정 후 practitioner가 클릭으로 GPU cluster 접근.
   points:
   - Job Artifact — Git/Docker/code artifact→자동 Dockerfile·requirements.txt
   - Queue→Resource — kubernetes·sagemaker·gcp-vertex·local-container
@@ -6024,7 +6012,7 @@ cards:
   source: https://docs.wandb.ai/platform/launch/create-launch-job
 - category: ai
   title: LightRAG — dual-layer KG+vector, GraphRAG 대비 경량·증분 업데이트(EMNLP2025·~37k★)
-  summary: 'LightRAG(HKUDS, MIT·~37k★, EMNLP2025)는 Microsoft GraphRAG의 경량 대안으로 knowledge graph+vector embedding dual-layer 아키텍처를 채택한다. GraphRAG의 Local/Global search 분기 대신 local+global keyword를 병렬 생성·동시 retrieval — entity·relationship+1-hop neighbor expansion을 한 패스에. incremental update algorithm으로 새 데이터 추가 시 full graph rebuild 불필요. v1.5.3(2026-06) — OpenSearch unified storage·role-specific LLM(EXTRACT/QUERY/KEYWORDS/VLM)·RagAnything multimodal merge(MinerU/Docling). GraphRAG(Microsoft, Leiden community)와 역할 분리 — LightRAG=빠른 indexing·incremental·dual-level retrieval.'
+  summary: LightRAG(HKUDS, MIT·~37k★, EMNLP2025)는 Microsoft GraphRAG의 경량 대안으로 knowledge graph+vector embedding dual-layer 아키텍처를 채택한다. GraphRAG의 Local/Global search 분기 대신 local+global keyword를 병렬 생성·동시 retrieval — entity·relationship+1-hop neighbor expansion을 한 패스에. incremental update algorithm으로 새 데이터 추가 시 full graph rebuild 불필요. v1.5.3(2026-06) — OpenSearch unified storage·role-specific LLM(EXTRACT/QUERY/KEYWORDS/VLM)·RagAnything multimodal merge(MinerU/Docling). GraphRAG(Microsoft, Leiden community)와 역할 분리 — LightRAG=빠른 indexing·incremental·dual-level retrieval.
   points:
   - Dual-layer — KG entity/relation + vector chunk, local+global 병렬 retrieval
   - Incremental update — full rebuild 없이 새 문서 통합
@@ -6032,7 +6020,7 @@ cards:
   source: https://github.com/HKUDS/LightRAG
 - category: ai
   title: RAPTOR — recursive clustering+summarization tree, multi-granularity RAG retrieval
-  summary: 'RAPTOR(Recursive Abstractive Processing for Tree-Organized Retrieval)는 flat chunk RAG의 한계 — 긴 문서 전체 맥락·multi-hop 관계 추론 불가 — 를 해결하는 hierarchical RAG 프레임워크다. leaf=raw chunk → bottom-up clustering(GMM+UMAP) → abstractive summary → parent node 반복으로 tree 구축. inference 시 collapsed-tree(모든 레벨 동시) 또는 tree-traversal retrieval — abstract summary에서 시작해 drill-down. QuALITY benchmark GPT-4+RAPTOR 67.2%(baseline 62.2%). GraphRAG(community graph)와 역할 분리 — RAPTOR=within-document hierarchy·recursive summary. LlamaIndex·LangChain 통합 모듈 존재.'
+  summary: RAPTOR(Recursive Abstractive Processing for Tree-Organized Retrieval)는 flat chunk RAG의 한계 — 긴 문서 전체 맥락·multi-hop 관계 추론 불가 — 를 해결하는 hierarchical RAG 프레임워크다. leaf=raw chunk → bottom-up clustering(GMM+UMAP) → abstractive summary → parent node 반복으로 tree 구축. inference 시 collapsed-tree(모든 레벨 동시) 또는 tree-traversal retrieval — abstract summary에서 시작해 drill-down. QuALITY benchmark GPT-4+RAPTOR 67.2%(baseline 62.2%). GraphRAG(community graph)와 역할 분리 — RAPTOR=within-document hierarchy·recursive summary. LlamaIndex·LangChain 통합 모듈 존재.
   points:
   - Bottom-up tree — cluster→summarize→repeat, leaf=chunk parent=summary
   - Collapsed-tree retrieval — multi-granularity 동시 검색
@@ -6040,7 +6028,7 @@ cards:
   source: https://arxiv.org/html/2401.18059
 - category: ai
   title: MergeKit — TIES·DARE·SLERP model merging, 8GB VRAM·MoE frankenmerge(Apache-2.0)
-  summary: 'MergeKit(Arcee AI, Apache-2.0, EMNLP2024 Industry)는 사전학습 LLM checkpoint를 추가 학습 없이 합치는 오픈소스 툴킷이다. out-of-core lazy loading으로 CPU 또는 8GB VRAM에서 unreasonably elaborate merge 가능. TIES(Task Arithmetic+sparsification+sign consensus) — 다수 모델 interference 감소. DARE(Drop And REscale) — random pruning+rescale로 skill retention. SLERP·linear·Frankenmerge(layer-wise assembly)·MoE merge·LORA extraction·multi-stage pipeline. Meditron-7B+Llama2-7B-chat TIES merge가 USMLE·MedMCQA에서 base 초과. Unsloth/Axolotl(fine-tuning)과 역할 분리 — MergeKit=zero-training model composition.'
+  summary: MergeKit(Arcee AI, Apache-2.0, EMNLP2024 Industry)는 사전학습 LLM checkpoint를 추가 학습 없이 합치는 오픈소스 툴킷이다. out-of-core lazy loading으로 CPU 또는 8GB VRAM에서 unreasonably elaborate merge 가능. TIES(Task Arithmetic+sparsification+sign consensus) — 다수 모델 interference 감소. DARE(Drop And REscale) — random pruning+rescale로 skill retention. SLERP·linear·Frankenmerge(layer-wise assembly)·MoE merge·LORA extraction·multi-stage pipeline. Meditron-7B+Llama2-7B-chat TIES merge가 USMLE·MedMCQA에서 base 초과. Unsloth/Axolotl(fine-tuning)과 역할 분리 — MergeKit=zero-training model composition.
   points:
   - TIES/DARE/SLERP — interference-aware multi-model merge
   - 8GB VRAM·out-of-core — CPU/GPU hybrid, MoE frankenmerge
@@ -6048,7 +6036,7 @@ cards:
   source: https://github.com/arcee-ai/mergekit
 - category: ai
   title: GPTCache Semantic Caching — embedding 유사 query→LLM 생략, 20~50% API 절감
-  summary: 'Semantic caching은 byte-identical이 아닌 의미적으로 유사한 query에 cached LLM response를 반환하는 2-tier cache layer다. Exact-match(hash) + Semantic(embedding cosine similarity) 2층 — "비밀번호 재설정" vs "forgotten password steps" 동일 hit. GPTCache(Zilliz, MIT) — LangChain·LlamaIndex native, SQLite→Redis/PostgreSQL scale-out. Redis Stack/RedisVL — FT.SEARCH KNN+TAG filter sub-ms. threshold 0.95 시작, factual 0.85~0.90·reasoning 0.95+. LLM-as-judge로 borderline(0.74~0.81) false positive 방지. Prefix cache(Anthropic/OpenAI provider-side)와 역할 분리 — semantic=paraphrase hit, prefix=identical prefix hit. FinOps 4층 중 semantic cache 구현 레이어.'
+  summary: Semantic caching은 byte-identical이 아닌 의미적으로 유사한 query에 cached LLM response를 반환하는 2-tier cache layer다. Exact-match(hash) + Semantic(embedding cosine similarity) 2층 — "비밀번호 재설정" vs "forgotten password steps" 동일 hit. GPTCache(Zilliz, MIT) — LangChain·LlamaIndex native, SQLite→Redis/PostgreSQL scale-out. Redis Stack/RedisVL — FT.SEARCH KNN+TAG filter sub-ms. threshold 0.95 시작, factual 0.85~0.90·reasoning 0.95+. LLM-as-judge로 borderline(0.74~0.81) false positive 방지. Prefix cache(Anthropic/OpenAI provider-side)와 역할 분리 — semantic=paraphrase hit, prefix=identical prefix hit. FinOps 4층 중 semantic cache 구현 레이어.
   points:
   - 2-tier — exact hash + embedding cosine, threshold per category
   - GPTCache·Redis VSS·LangChain SemanticCache — production stack
@@ -6056,7 +6044,7 @@ cards:
   source: https://github.com/zilliztech/GPTCache
 - category: ai
   title: FlashAttention-3 — Hopper TMA·WGMMA·FP8, H100 75% utilization·Paged KV(SM90)
-  summary: 'FlashAttention-3(Dao-AILab, 2024)는 NVIDIA Hopper(SM90) Tensor Core·TMA(Tensor Memory Accelerator)를 활용한 I/O-aware attention 최적화다. FlashAttention-2 H100 35% utilization → FA-3 FP16 740 TFLOPs/s(75%), FP8 ~1.2 PFLOPs/s. warp-specialization으로 matmul+softmax interleave, block quantization+incoherent processing으로 FP8 numerical error 2.6×↓. 2026-03 SM90 paged KV attention merge — page_size==block_size TMA path(fast) vs cp.async(general). vLLM PagedAttention(KV storage)과 역할 분리 — FA-3=attention computation kernel, PagedAttention=KV memory layout. SGLang·vLLM backend로 production 통합.'
+  summary: FlashAttention-3(Dao-AILab, 2024)는 NVIDIA Hopper(SM90) Tensor Core·TMA(Tensor Memory Accelerator)를 활용한 I/O-aware attention 최적화다. FlashAttention-2 H100 35% utilization → FA-3 FP16 740 TFLOPs/s(75%), FP8 ~1.2 PFLOPs/s. warp-specialization으로 matmul+softmax interleave, block quantization+incoherent processing으로 FP8 numerical error 2.6×↓. 2026-03 SM90 paged KV attention merge — page_size==block_size TMA path(fast) vs cp.async(general). vLLM PagedAttention(KV storage)과 역할 분리 — FA-3=attention computation kernel, PagedAttention=KV memory layout. SGLang·vLLM backend로 production 통합.
   points:
   - Hopper TMA+WGMMA — computation/communication overlap, FP8 2× throughput
   - SM90 paged KV — TMA vs cp.async auto-select, vLLM 통합
@@ -6064,7 +6052,7 @@ cards:
   source: https://arxiv.org/html/2407.08608v2
 - category: ai
   title: Amazon Bedrock AgentCore — Runtime·Gateway·Memory·Identity managed agent infra
-  summary: 'Amazon Bedrock AgentCore(AWS, 2026 GA)는 framework-agnostic managed agent infrastructure platform이다. AgentCore Runtime — Firecracker microVM per session(2 vCPU·8GB fixed), 8h max·100MB payload·SSE streaming, CrewAI/LangGraph/LlamaIndex container deploy. Gateway — API·Lambda→MCP-compatible tools zero-code, 1000 gateway·100 target/gateway. Memory — short-term(session) + long-term(cross-session insight), RetrieveMemoryRecords API. Identity(OAuth/IAM)·Observability(OTel)·Code Interpreter·Browser Use. Azure AI Foundry(MAF·Entra·M365)와 3대 cloud agent platform 축. Runtime vs Lambda — 8h stateful·100MB vs 15min·6MB.'
+  summary: Amazon Bedrock AgentCore(AWS, 2026 GA)는 framework-agnostic managed agent infrastructure platform이다. AgentCore Runtime — Firecracker microVM per session(2 vCPU·8GB fixed), 8h max·100MB payload·SSE streaming, CrewAI/LangGraph/LlamaIndex container deploy. Gateway — API·Lambda→MCP-compatible tools zero-code, 1000 gateway·100 target/gateway. Memory — short-term(session) + long-term(cross-session insight), RetrieveMemoryRecords API. Identity(OAuth/IAM)·Observability(OTel)·Code Interpreter·Browser Use. Azure AI Foundry(MAF·Entra·M365)와 3대 cloud agent platform 축. Runtime vs Lambda — 8h stateful·100MB vs 15min·6MB.
   points:
   - Runtime — microVM isolation·8h session·LangGraph/CrewAI deploy
   - Gateway+Memory — MCP tools zero-code·cross-session persistence
@@ -6072,7 +6060,7 @@ cards:
   source: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agents-tools-runtime.html
 - category: ai
   title: LLaMA-Factory — 100+ LLM/VLM zero-code fine-tuning, LlamaBoard Web UI(ACL2024·~72k★)
-  summary: 'LLaMA-Factory(hiyouga, Apache-2.0, ACL2024·~72k★)는 100+ LLM·VLM을 코드 없이 fine-tuning하는 unified framework다. LlamaBoard(Gradio Web UI)+CLI — SFT·DPO·KTO·ORPO·PPO·RM·pre-training. LoRA·QLoRA(2~8bit AQLM/AWQ/GPTQ)·DoRA·PiSSA·GaLore·OFT. LLaMA·Qwen3·DeepSeek·Gemma·Mistral·Phi·LLaVA 등. Axolotl(YAML orchestrator·multi-GPU enterprise)과 역할 분리 — LLaMA-Factory=zero-code breadth·Web UI. Unsloth(GPU kernel speedup)과 역할 분리 — LLaMA-Factory=method+model coverage, Unsloth=training speed. llamafactory-cli webui 한 줄 시작.'
+  summary: LLaMA-Factory(hiyouga, Apache-2.0, ACL2024·~72k★)는 100+ LLM·VLM을 코드 없이 fine-tuning하는 unified framework다. LlamaBoard(Gradio Web UI)+CLI — SFT·DPO·KTO·ORPO·PPO·RM·pre-training. LoRA·QLoRA(2~8bit AQLM/AWQ/GPTQ)·DoRA·PiSSA·GaLore·OFT. LLaMA·Qwen3·DeepSeek·Gemma·Mistral·Phi·LLaVA 등. Axolotl(YAML orchestrator·multi-GPU enterprise)과 역할 분리 — LLaMA-Factory=zero-code breadth·Web UI. Unsloth(GPU kernel speedup)과 역할 분리 — LLaMA-Factory=method+model coverage, Unsloth=training speed. llamafactory-cli webui 한 줄 시작.
   points:
   - LlamaBoard Web UI — SFT/DPO/KTO/RLHF zero-code, 100+ model
   - LoRA·QLoRA·DoRA·GaLore — 2~8bit quantization stack
@@ -6080,7 +6068,7 @@ cards:
   source: https://github.com/hiyouga/LLaMA-Factory
 - category: ai
   title: Ring Attention — blockwise KV P2P ring, device-count× context scaling
-  summary: 'Ring Attention(UC Berkeley, 2023)는 long sequence를 여러 GPU에 blockwise 분산해 near-infinite context를 달성하는 sequence parallelism 기법이다. 각 device가 sequence chunk의 KV block만 hold → ring topology P2P로 KV block circulate하면서 blockwise attention compute — communication+computation overlap. device N개 → context N× single-GPU limit, 100M+ token training without attention approximation. 2026 inference — pass-KV/pass-Q variant(Llama3 405B 1M ctx 77s/128 H100), TokenRing(bidirectional P2P). DeepSpeed-Ulysses(all-to-all, head-parallel)와 complementary — Ring=sequence dim, Ulysses=attention head dim. FlashAttention-3(blockwise compute) 위에 Ring(spatial distribution) 적층.'
+  summary: Ring Attention(UC Berkeley, 2023)는 long sequence를 여러 GPU에 blockwise 분산해 near-infinite context를 달성하는 sequence parallelism 기법이다. 각 device가 sequence chunk의 KV block만 hold → ring topology P2P로 KV block circulate하면서 blockwise attention compute — communication+computation overlap. device N개 → context N× single-GPU limit, 100M+ token training without attention approximation. 2026 inference — pass-KV/pass-Q variant(Llama3 405B 1M ctx 77s/128 H100), TokenRing(bidirectional P2P). DeepSpeed-Ulysses(all-to-all, head-parallel)와 complementary — Ring=sequence dim, Ulysses=attention head dim. FlashAttention-3(blockwise compute) 위에 Ring(spatial distribution) 적층.
   points:
   - Blockwise KV ring — P2P overlap, context ∝ GPU count
   - pass-KV/pass-Q — inference latency optimization, 1M ctx 77s(405B)
@@ -6088,9 +6076,89 @@ cards:
   source: https://arxiv.org/html/2310.01889v1
 - category: ai
   title: Knowledge Distillation for LLM — teacher→student compression, task-specific vs general
-  summary: 'LLM Knowledge Distillation은 large teacher model의 output distribution·reasoning trace·intermediate representation을 small student에 전달해 capability를 유지하면서 inference cost를 줄이는 기법이다. Response distillation — teacher generated answer를 SFT data로. Logit/token-level distillation — soft label(KL divergence)로 dark knowledge transfer. Reasoning distillation — DeepSeek-R1/Qwen3 등 CoT trace를 student SFT. Task-specific distillation(분류·NER) vs general capability distillation(범용 chat). MergeKit(zero-training merge)과 역할 분리 — distillation=training required. Unsloth/LLaMA-Factory(fine-tuning infra) 위에서 student SFT 실행. Eval — student/teacher gap on hold-out + latency/cost trade-off curve.'
+  summary: LLM Knowledge Distillation은 large teacher model의 output distribution·reasoning trace·intermediate representation을 small student에 전달해 capability를 유지하면서 inference cost를 줄이는 기법이다. Response distillation — teacher generated answer를 SFT data로. Logit/token-level distillation — soft label(KL divergence)로 dark knowledge transfer. Reasoning distillation — DeepSeek-R1/Qwen3 등 CoT trace를 student SFT. Task-specific distillation(분류·NER) vs general capability distillation(범용 chat). MergeKit(zero-training merge)과 역할 분리 — distillation=training required. Unsloth/LLaMA-Factory(fine-tuning infra) 위에서 student SFT 실행. Eval — student/teacher gap on hold-out + latency/cost trade-off curve.
   points:
   - Response·logit·CoT distillation — SFT data vs soft label vs reasoning trace
   - Task-specific vs general — narrow domain vs broad capability retention
   - MergeKit과 역할 분리 — training-based compression vs checkpoint merge
   source: https://arxiv.org/abs/2305.0239
+- category: ai
+  title: ReAct vs Reflexion vs LATS — 에이전트 추론 루프 3축 비교(2026)
+  summary: 'ReAct(ICLR 2023)은 Thought→Action→Observation을 한 스텝씩 반복하는 기본 루프로, 탐색·도구 체인·대화형 작업에 적합하나 infinite loop 위험 → max_steps+no-progress detector 필수. Reflexion(NeurIPS 2023)은 Act→Critique→Revise로 자기 비평 후 재시도 — HumanEval 80→91% 등 검증 가능 작업(코드·추출)에 강하지만 토큰 3배+. LATS(Language Agent Tree Search)는 여러 reasoning path를 tree search로 탐색·backtrack — 복잡 최적화에 최고 품질이나 latency·비용 최대. 2026 실무: interactive→ReAct, high-stakes final output→Reflexion outer loop, complex planning→Plan-and-Execute, rare optimization→LATS.'
+  points:
+  - 'ReAct: step-by-step 탐색, max_steps·escalation 필수 — LangGraph/CrewAI 기본'
+  - 'Reflexion: critic-budget·no-progress detector — 코드·검증 가능 출력'
+  - 'LATS: tree search·backtrack — 품질↑ 비용↑, ReAct+Reflexion hybrid가 흔함'
+  source: https://arxiv.org/abs/2210.03629
+- category: ai
+  title: Plan-and-Execute — planner·executor 분리로 ReAct drift·비용을 줄이는 에이전트 패턴
+  summary: 'Plan-and-Execute는 planner LLM이 전체 multi-step plan을 먼저 작성하고, executor(보통 더 싼 모델)가 순차 실행하는 2-phase 패턴이다. ReAct는 매 step마다 strong model 호출 → 긴 체인에서 비용·drift 누적. Plan-and-Execute는 plan 1회 + executor N회로 비용 예측 가능, known task shape(ETL·리포트·정형 파이프라인)에 최적. 실패 모드: stale plan(observation 변화 시 re-plan trigger), planner hallucination(plan validator 선행). LangGraph·CrewAI·OpenAI Agents SDK 모두 지원. ReAct와 hybrid — outer Plan-and-Execute + inner step ReAct.'
+  points:
+  - Planner(strong 1회) + Executor(cheap N회) — 비용·latency bounded
+  - Stale plan → observation-signal re-plan, plan validator로 hallucination 차단
+  - 정형 파이프라인·반복 워크플로우 — ReAct drift 비용 누적 시 전환
+  source: https://www.compelframework.org/articles/agent-loop-patterns-react-plan-execute-reflexion
+- category: ai
+  title: Supervisor Agent — hierarchical orchestration, LangGraph tool-calling handoff(2026)
+  summary: 'Supervisor 패턴은 central supervisor agent가 specialized worker agent에게 task를 위임·라우팅하는 hierarchical multi-agent architecture다. LangGraph 2026 권장: langgraph-supervisor 라이브러리 대신 supervisor를 tool-calling agent로 직접 구현 — context engineering·handoff 제어가 유연. Supervisor는 communication flow·task delegation 전담, worker는 domain 특화(검색·코드·DB). Multi-level hierarchy(supervisor of supervisors)도 가능. 기존 멀티에이전트 오케스트레이션(Anthropic research) 카드가 개념이면, Supervisor는 LangGraph/CrewAI 구현 패턴·handoff tool·message history 관리에 특화.'
+  points:
+  - Central supervisor → worker routing — LangGraph tool-based handoff 권장(2026)
+  - Multi-level hierarchy — supervisor of supervisors, streaming·memory·HITL 내장
+  - Anthropic research 패턴(개념) vs LangGraph supervisor(구현) — 역할 분리
+  source: https://docs.langchain.com/oss/python/langchain/multi-agent
+- category: ai
+  title: Microsoft Guidance + LLGuidance — Python 제약 + Rust grammar engine, OpenAI Structured Outputs 백엔드
+  summary: 'Guidance(Microsoft Research)는 Python에서 JSON·SQL·regex·CFG 제약을 선언하면 inference layer에서 token-by-token constrained decoding으로 100% 스키마 준수를 보장하는 라이브러리(~17k★). 2025년 LLGuidance(Rust) v1.0이 grammar engine으로 교체 — ~50μs/token, llama.cpp·vLLM·SGLang·OpenAI Structured Outputs·Chromium에 통합. Instructor(Pydantic retry)·Outlines(FSM local)와 3축: Guidance=Python DSL+cloud/local+grammar engine, Outlines=로컬 FSM, Instructor=API retry. 30~50% latency·비용 절감(retry 제거), Azure Phi-3·전 모델 확장 예정.'
+  points:
+  - LLGuidance v1.0 — ~50μs/token CFG mask, OpenAI Structured Outputs 백엔드
+  - Instructor(retry)·Outlines(FSM local)와 3축 — grammar engine vs Pydantic vs FSM
+  - Python f-string DSL — JSON·SQL·regex·select() 제약, retry 없이 100% 준수
+  source: https://github.com/guidance-ai/guidance
+- category: ai
+  title: LMQL — LLM용 쿼리 언어, where 절로 타입·길이·포맷 제약을 생성 중 강제
+  summary: LMQL(Language Model Query Language)은 SQL처럼 LLM 호출을 프로그래밍하는 Python 기반 쿼리 언어다. 전통 알고리즘 로직과 constrained LLM call을 interleave하고, where 절로 출력 타입·길이·포맷·regex 제약을 generation 중에 enforce한다. Instructor(Pydantic post-hoc)·Guidance(token mask)와 달리 쿼리 언어 관점 — branching·loop·aggregation을 LLM 파이프라인에 natively 표현. Decoding constraints·best-of-n·beam search·token budget을 선언적으로 제어. RAG·multi-step extraction·structured pipeline prototyping에 적합, Instructor/Guidance와 complementary.
+  points:
+  - where 절 — 타입·regex·길이·set 제약을 generation 중 enforce
+  - Algorithm + LLM interleave — branching·loop·aggregation 쿼리 언어
+  - Instructor(Pydantic)·Guidance(token mask)와 complementary — 선언적 파이프라인
+  source: https://lmql.ai/
+- category: ai
+  title: GPTQ vs AWQ vs BitsAndBytes — inference·training 양자화 3축 비교(2026)
+  summary: 'LLM 양자화 3대 방법론. AWQ(activation-aware): activation magnitude 기반 weight scaling, 4bit inference 품질·속도 최고, vLLM native, calibration ~128 token. GPTQ(Hessian layer-wise): 4bit 표준·3bit extreme compression(8GB GPU), ExLlamaV2 backend, calibration 30분~수시간. BitsAndBytes(NF4/FP4): calibration 불필요·on-the-fly quantize, QLoRA fine-tuning 유일 지원(gradient flow). GGUF(llama.cpp 엣지)와 역할 분리. 2026 선택: production inference→AWQ 4bit, 3bit extreme→GPTQ, fine-tuning→BitsAndBytes+QLoRA.'
+  points:
+  - AWQ 4bit — vLLM production default, activation-aware 최고 품질·속도
+  - GPTQ — 3bit extreme·ExLlamaV2, calibration 필요·pre-quantized HF Hub
+  - BitsAndBytes NF4 — QLoRA 유일·calibration-free, dev/experiment용
+  source: https://mljourney.com/awq-vs-gptq-vs-bitsandbytes-llm-quantization-methods-compared/
+- category: ai
+  title: Apache Airflow Common AI Provider — Pydantic AI·HookToolset·350+ hook을 에이전트 도구로
+  summary: apache-airflow-providers-common-ai 0.1.0(2026-04)은 Airflow에 LLM·AI agent capability를 공식 provider로 추가한다. Pydantic AI 기반, @task.agent·@task.llm TaskFlow decorator, 20+ model provider(OpenAI·Anthropic·Bedrock·Ollama). HookToolset이 Airflow 350+ provider hook method를 typed agent tool로 노출 — s3_list_keys·SQL query 등 connection·secret backend 인증 그대로. durable=True로 retry 시 cached step replay, OTel GenAI semantic conventions native. Prefect+AI(Python durable)·Dagster(데이터 자산)와 3축 — Airflow=기존 350+ integration·HookToolset compound effect.
+  points:
+  - HookToolset — 350+ Airflow hook → agent tool, connection auth 재사용
+  - '@task.agent·durable=True — retry cached replay, OTel GenAI span'
+  - Prefect(durable Python)·Dagster(data asset)와 3축 — hook ecosystem compound
+  source: https://airflow.apache.org/blog/common-ai-provider/
+- category: ai
+  title: OpenTelemetry GenAI Semantic Conventions — gen_ai.* 표준 속성, vendor-neutral LLM observability
+  summary: 'OpenTelemetry GenAI SIG(2024~)가 정의하는 LLM·agent·tool call 표준 span attribute 스키마. gen_ai.operation.name·gen_ai.request.model·gen_ai.usage.input/output_tokens·gen_ai.agent.name·gen_ai.tool.name·gen_ai.*.cost 등 vendor-neutral 속성. 2026-03 대부분 experimental — OTEL_SEMCONV_STABILITY_OPT_IN으로 legacy+new dual emission. OpenLLMetry(Traceloop instrumentation SDK)와 역할 분리: OTel GenAI=spec/schema, OpenLLMetry=auto-instrumentation library. Datadog OTel v1.37·Grafana Loki native 지원 시작. Langfuse·Phoenix·Jaeger·Tempo backend agnostic.'
+  points:
+  - gen_ai.* 속성 — model·token·agent·tool·cost vendor-neutral schema
+  - Experimental(2026) — OTEL_SEMCONV_STABILITY_OPT_IN dual emission
+  - OpenLLMetry(SDK instrumentation) vs GenAI semconv(spec) — 역할 분리
+  source: https://opentelemetry.io/docs/specs/semconv/gen-ai/
+- category: ai
+  title: NVIDIA Triton Inference Server — multi-model GPU serving, TensorRT·ONNX·Python backend
+  summary: NVIDIA Triton Inference Server는 production GPU/CPU model serving platform으로 dynamic batching·concurrent model execution·model ensemble·A/B testing·metrics(Prometheus)를 제공한다. TensorRT·ONNX·PyTorch·Python backend 지원, multi-GPU·multi-node. OpenAI Triton(Python GPU kernel DSL)과 완전히 다른 제품 — Triton Server=serving, Triton DSL=kernel. TensorRT-LLM(Batch 23)과 연계해 LLM optimized serving. vLLM/SGLang(dynamic LLM serving)과 역할 분리 — Triton=multi-model heterogeneous·enterprise MLOps, vLLM=LLM-specialized PagedAttention.
+  points:
+  - Dynamic batching·ensemble·A/B·Prometheus — enterprise multi-model serving
+  - OpenAI Triton(DSL kernel) ≠ Triton Server — naming 혼동 주의
+  - vLLM/SGLang(LLM specialized) vs Triton(heterogeneous multi-model)
+  source: https://github.com/triton-inference-server/server
+- category: ai
+  title: AI deployment patterns — serverless vs dedicated GPU, latency·cost·cold start trade-off(2026)
+  summary: 'LLM 배포 3대 패턴. Serverless(Replicate·Modal·Baseten·AWS Lambda): zero infra·auto-scale·cold start 5~30s·per-token 과금, prototype·spiky traffic. Dedicated GPU(vLLM·Triton on K8s/EC2): reserved capacity·TTFT <1s·batching 최적·fixed cost, production steady load. Hybrid: serverless dev/staging + dedicated prod, 또는 Groq/Sambanova API(dedicated chip·serverless UX). BentoML(rapid deploy)·Ray Serve(distributed DAG)와 complementary — BentoML=packaging speed, Ray Serve=orchestration, 이 카드=infra topology 선택.'
+  points:
+  - Serverless — zero ops·cold start·per-token, prototype·spiky traffic
+  - Dedicated GPU — TTFT<1s·batching·fixed cost, steady production load
+  - Modal/Baseten/Replicate(기존) vs topology 선택 — dev serverless + prod dedicated
+  source: https://modal.com/docs/guide/resources

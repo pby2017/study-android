@@ -1864,3 +1864,63 @@ Refined:
 
 누적: 633카드 (625→623 병합→633 신규)
 주제: W&B Launch compute dispatch, graph RAG evolution(LightRAG·RAPTOR), model composition(MergeKit·Knowledge Distillation), inference optimization(FlashAttention-3·Ring Attention), semantic caching(GPTCache), cloud agent platform(Bedrock AgentCore), fine-tuning(LLaMA-Factory), Antigravity/Gemini CLI merge, FinOps prefix cache merge
+
+## 2026-06-25 01:30 KST — Batch 30 (아이디어 검증 + 병합 1카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| ReAct vs Reflexion vs LATS | agent reasoning loop 3축 비교 — LangGraph/CrewAI 기본(ReAct)과 high-stakes(Reflexion)·tree search(LATS) 독립 패턴 |
+| Plan-and-Execute | planner·executor 2-phase — ReAct drift·비용 누적 대안, 정형 파이프라인 독립 패턴 |
+| Supervisor Agent | hierarchical orchestration 구현 — Anthropic research(개념) vs LangGraph tool-calling handoff(구현) 분리 |
+| Microsoft Guidance + LLGuidance | constrained decoding grammar engine — Instructor(Pydantic retry)·Outlines(FSM local) 3축, OpenAI Structured Outputs 백엔드 |
+| LMQL | LLM query language·where 절 — Guidance/Instructor와 선언적 파이프라인 complementary |
+| GPTQ vs AWQ vs BitsAndBytes | inference·training 양자화 3축 — GGUF(엣지 포맷)·QLoRA(NF4 fine-tune)와 역할 분리 |
+| Apache Airflow Common AI Provider | HookToolset·350+ hook→agent tool — Prefect(durable)·Dagster(data asset) 3축 |
+| OpenTelemetry GenAI Semantic Conventions | gen_ai.* spec/schema — OpenLLMetry(instrumentation SDK)와 spec vs SDK 분리 |
+| NVIDIA Triton Inference Server | multi-model GPU serving — OpenAI Triton(DSL kernel)·vLLM/SGLang(LLM specialized) 3축 |
+| AI deployment patterns | serverless vs dedicated topology — Modal/Baseten/Replicate(플랫폼) vs infra 선택 프레임 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Instructor/Outlines 단독 | 기존 카드 존재, Guidance 카드로 3축 비교 커버 |
+| SGLang/vLLM/TGI 단독 | 기존 카드 존재 |
+| TensorRT-LLM 단독 | Batch 23 카드 존재 |
+| BentoML/Dagster/Prefect/Feast 단독 | 기존 카드 존재 |
+| ReWOO 단독 | ReAct vs Reflexion vs LATS 카드에 token efficiency 언급, niche |
+| AI tool use best practices | Function Calling vs Tool Use 카드 존재 |
+| GenAI OTel instrumentation 단독 | OpenLLMetry 카드 + GenAI semconv spec 카드로 SDK vs spec 분리 |
+| BitsAndBytes 단독 | GPTQ vs AWQ vs BitsAndBytes 3축 카드로 통합 |
+| GGUF 양자화 가이드 단독 | llama.cpp + GGUF 카드와 병합 |
+| Hierarchical agent 개념 단독 | 멀티에이전트 오케스트레이션·LangGraph 카드 존재, Supervisor는 구현 패턴으로 차별화 |
+| Semantic caching/FinOps 단독 | Batch 27·29 카드 존재 |
+| Quantization HQQ/AutoRound | GPTQ/AWQ/BnB 3축으로 커버, niche emerging methods |
+
+### 병합 (1카드 제거, 633→632)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| GGUF 양자화 가이드 | llama.cpp + GGUF — convert→imatrix→quantize 3단계·Q4_K_M·범용 HW 통합 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | ReAct vs Reflexion vs LATS — 에이전트 추론 루프 3축 비교 | arxiv.org/abs/2210.03629 |
+| 2 | Plan-and-Execute — planner·executor 분리 패턴 | compelframework.org |
+| 3 | Supervisor Agent — hierarchical orchestration | docs.langchain.com |
+| 4 | Microsoft Guidance + LLGuidance — constrained decoding | github.com/guidance-ai/guidance |
+| 5 | LMQL — LLM query language | lmql.ai |
+| 6 | GPTQ vs AWQ vs BitsAndBytes — 양자화 3축 | mljourney.com |
+| 7 | Apache Airflow Common AI Provider | airflow.apache.org |
+| 8 | OpenTelemetry GenAI Semantic Conventions | opentelemetry.io |
+| 9 | NVIDIA Triton Inference Server | github.com/triton-inference-server |
+| 10 | AI deployment patterns — serverless vs dedicated | modal.com |
+
+누적: 642카드 (633→632 병합→642 신규)
+주제: agent reasoning patterns(ReAct·Reflexion·LATS·Plan-and-Execute·Supervisor), structured generation(Guidance·LMQL), quantization(GPTQ·AWQ·BitsAndBytes), MLOps(Airflow AI·Triton Server·deployment topology), observability(GenAI OTel semconv), GGUF merge
