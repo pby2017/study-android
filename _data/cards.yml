@@ -1193,15 +1193,14 @@ cards:
   - '교훈: 프롬프트 하나보다 연구 생애주기를 라우팅하는 skill graph가 재사용성과 검증성을 높임'
   source: https://github.com/Orchestra-Research/AI-research-SKILLs
 - category: ai
-  title: Goose Subrecipes — YAML 레시피를 격리 세션 도구로 쪼개기(Apache-2.0·50k★)
-  summary: 'Goose Subrecipes는 코딩 에이전트 워크플로를 한 프롬프트에 욱여넣지 않고, 역할별 YAML 레시피로 나눠 메인 레시피에서 호출하는 패턴이다. 메인 레시피의 `sub_recipes`에 `name`·`path`·`values`를 적으면 Goose가 각 서브레시피를 도구처럼 노출하고, 호출 시 별도 세션과 자체 컨텍스트에서 실행한 결과만 메인으로 돌려준다. 그래서 보안 스캔, 품질 검사, 문서화처럼 전문성이 다른 단계를 같은 대화 이력에 섞지 않고 조립할 수 있다. `values`는 런타임 값보다 우선하는 고정 파라미터이고, 이전 서브레시피 결과는 대화 컨텍스트에서 다음 파라미터로 추출될 수 있다. 공식 문서는 아직 실험적 기능이라고 못박으므로, 재사용 단위는 작게 만들고 독립 실행 테스트를 먼저 두는 것이 안전하다.
-
-    '
+  title: goose(AAIF) — Rust BYO-LLM 에이전트·Subrecipes YAML 파이프라인(50k★)
+  summary: 'goose는 Block이 만들어 공개한 Apache-2.0 오픈소스 AI 에이전트로, 깃허브 별이 약 49.5k다. 레포 태그라인은 "코드 제안을 넘어 — 어떤 LLM으로든 설치·실행·편집·테스트하는 확장 가능한 오픈소스 에이전트"로, 코드 한 줄 추천이 아니라 명령 실행·파일 편집·테스트까지 직접 하는 범용 에이전트를 표방한다. Rust(약 64%)로 작성됐고 데스크톱 앱(맥·리눅스·윈도)·CLI·임베더블 API 세 형태로 제공되며, MCP로 70여 개 확장을 물리고 Anthropic·OpenAI·구글·Ollama·Bedrock 등 15개 이상 모델 공급자를 갈아끼울 수 있다. 최근 레포는 block/goose에서 리눅스재단 산하 Agentic AI Foundation(AAIF·aaif-goose/goose)으로 이관됐다. Subrecipes(sub_recipes)로 복잡한 워크플로를 YAML로 쪼개: 메인 레시피의 {name, path, values}로 등록→별도 세션 격리 실행→결과만 반환. values는 런타임보다 우선, 서브레시피 중첩 금지, 같은 레시피 반복=최대 10워커 병렬(실험적).'
   points:
-  - '`sub_recipes`의 `name`·`path`·`values`가 서브레시피 도구 정의가 된다'
-  - 별도 세션에서 실행해 대화 이력·메모리·상태를 공유하지 않으며, 서브레시피 중첩은 금지
-  - 단일 책임·명확한 파라미터·독립 테스트가 공식 best practice / 2026-06-25 GitHub API 기준 50,128★
-  source: https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/recipes/subrecipes.md
+  - '정체성: ''BYO-LLM'' 범용 로컬 에이전트 — 특정 모델·클라우드에 묶이지 않고 API 키든 기존 Claude·ChatGPT·Gemini 구독이든(ACP 경유) 꽂아 쓴다. Cursor류 IDE 확장이 아니라 데스크톱 앱+CLI+API 묶음이다'
+  - '확장: MCP 표준으로 70여 개 익스텐션을 붙여 깃허브·브라우저·셸 등 외부 도구를 도구로 노출. Rust 코어라 단일 바이너리로 가볍게 돈다'
+  - '거버넌스: 원래 Block 사내 도구였다가 오픈소스화, 이제 MCP·AGENTS.md와 함께 리눅스재단 중립 거버넌스(AAIF)로 옮겨졌다. 별 수·공급자 수는 레포 표기 기준 주장이며 변동한다'
+  - Subrecipes — sub_recipes YAML·격리 세션·순차/병렬(최대 10워커), 실험적 기능
+  source: https://github.com/aaif-goose/goose
 - category: ai
   title: GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜
   summary: 'GNAP(Git-Native Agent Protocol)은 서버·DB 없이 오직 git만으로 여러 에이전트를 협업시키는 MIT 라이선스 프로토콜이다. "JSON 파일 네 개가 프로토콜 전부"라는 게 모토로, .gnap/ 폴더 안의 agents.json(팀), tasks/(할 일), runs/(시도), messages/(소통) 만으로 돌아간다. 각 에이전트는 git pull→agents.json에서 자기 활성 여부 확인→ tasks/에서 맡은 일·messages/ 확인→작업 후 커밋·push를 하트비트처럼 반복하고, git 히스토리 자체가 감사 로그가 된다. 만든 곳(Farol Labs)에서는 AI 2 + 사람 2, 총 4 에이전트가 같은 레포로 50개 넘는 작업을 굴리고 있다.
@@ -1520,16 +1519,6 @@ cards:
   - '쓰임새: PR이나 작업 브랜치의 UI 변경을 머지 전에 에이전트가 라이브 브라우저로 점검 — 정적 diff로는 못 잡는 레이아웃 깨짐·대비·반응형 문제를 잡는 게 목적'
   - 별 수·포크 수는 현재 기준 주장이며 변동한다. 본인 프로젝트의 디자인 가이드에 맞춰 룰을 고쳐 쓰는 출발점으로 의도된 레퍼런스 모음
   source: https://github.com/OneRedOak/claude-code-workflows
-- category: ai
-  title: goose(Block→AAIF) — Rust로 짠 모델 비종속 오픈소스 에이전트, 데스크톱·CLI·API로 다 쓴다(49.5k★)
-  summary: 'goose는 Block이 만들어 공개한 Apache-2.0 오픈소스 AI 에이전트로, 깃허브 별이 약 49.5k다. 레포 태그라인은 "코드 제안을 넘어 — 어떤 LLM으로든 설치·실행·편집·테스트하는 확장 가능한 오픈소스 에이전트"로, 코드 한 줄 추천이 아니라 명령 실행·파일 편집·테스트까지 직접 하는 범용 에이전트를 표방한다. Rust(약 64%)로 작성됐고 데스크톱 앱(맥·리눅스·윈도)·CLI·임베더블 API 세 형태로 제공되며, MCP로 70여 개 확장을 물리고 Anthropic·OpenAI·구글·Ollama·Bedrock 등 15개 이상 모델 공급자를 갈아끼울 수 있다. 최근 레포는 block/goose에서 리눅스재단 산하 Agentic AI Foundation(AAIF·aaif-goose/goose)으로 이관됐다.
-
-    '
-  points:
-  - '정체성: ''BYO-LLM'' 범용 로컬 에이전트 — 특정 모델·클라우드에 묶이지 않고 API 키든 기존 Claude·ChatGPT·Gemini 구독이든(ACP 경유) 꽂아 쓴다. Cursor류 IDE 확장이 아니라 데스크톱 앱+CLI+API 묶음이다'
-  - '확장: MCP 표준으로 70여 개 익스텐션을 붙여 깃허브·브라우저·셸 등 외부 도구를 도구로 노출. Rust 코어라 단일 바이너리로 가볍게 돈다'
-  - '거버넌스: 원래 Block 사내 도구였다가 오픈소스화, 이제 MCP·AGENTS.md와 함께 리눅스재단 중립 거버넌스(AAIF)로 옮겨졌다. 별 수·공급자 수는 레포 표기 기준 주장이며 변동한다'
-  source: https://github.com/aaif-goose/goose
 - category: ai
   title: 서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법
   summary: 'Claude Code 서브에이전트는 정의 파일 프런트매터의 model 필드로 각자 다른 모델을 쓸 수 있고, 값은 sonnet·opus·haiku·fable·전체 모델 ID(예: claude-opus-4-8)·inherit이며 생략 시 기본은 inherit(메인 대화와 동일 모델)이다. 공식 문서는 서브에이전트의 핵심 이점 중 하나로 "Haiku 같은 더 빠르고 저렴한 모델로 작업을 라우팅해 비용을 통제"하는 것을 명시한다. 즉 매번 같은 종류의 일(탐색·린트·요약)은 값싼 모델 서브에이전트에 정의 파일로 박아두면, 개발자가 일일이 모델을 고르지 않아도 설정만으로 비용 천장이 걸린다. 서브에이전트가 자체 격리 컨텍스트 창에서 돌아 메인 대화 히스토리를 안 보는 구조라 탐색 같은 토큰 폭증 작업을 메인에서 떼어내는 효과까지 겹친다.
@@ -2159,14 +2148,12 @@ cards:
   - '지원 표면: Claude Code·Cursor·Codex·GitHub Copilot·Gemini 배포 repo'
   source: https://supabase.com/docs/guides/ai-tools/plugins
 - category: ai
-  title: GitHub Code Quality GA — AI 리뷰도 품질 예산으로 관리한다
-  summary: 'GitHub Code Quality는 유지보수성·신뢰성·커버리지 문제를 PR 품질 게이트와 조직 대시보드로 관리하는 GitHub의 코드 품질 제품이다. 2026-07-20부터 public preview를 끝내고 유료 GA로 전환되며, 가격은 활성 커미터당 월 10달러 기본 구독 + AI 기능 사용량 과금이다. 중요한 포인트는 Copilot code review, AI-assisted detection, Copilot Autofix 같은 AI 작업이 별도 사용량으로 잡히고, CodeQL 기반의 결정적 분석은 GitHub Actions minutes를 쓴다는 점. 에이전트 리뷰를 켜는 팀은 이제 "좋아 보이면 켠다"가 아니라 커버리지 게이트, PR 차단 기준, AI 사용량 예산을 함께 설계해야 한다.
-
-    '
+  title: GitHub Code Quality GA — AI 리뷰·품질 게이트·과금 경계를 같이 설계
+  summary: GitHub Code Quality는 2026-07-20부터 public preview를 끝내고 GitHub Team·Enterprise Cloud 유료 제품으로 GA 전환된다. 10,000+ enterprise가 preview에서 유지보수성·신뢰성 이슈·quality gate·coverage tracking에 활용했다. GA 뒤 활성 committer당 월 $10 기본 + AI-powered 기능 usage-based billing. CodeQL deterministic 분석은 Actions minutes, Copilot code review·AI-assisted detection·Autofix는 별도 사용량. AI 리뷰를 "공짜 보조 댓글"로 보지 말고 PR ruleset·coverage threshold·Autofix 권한을 비용·품질·책임 경계와 함께 정해야 한다.
   points:
-  - '2026-07-20 GA: 활성 커미터당 월 10달러 + AI 기능 사용량 과금'
-  - AI 리뷰·Autofix는 사용량 과금, CodeQL 분석은 Actions minutes 사용
-  - 10,000+ 엔터프라이즈 preview 사용 신호, Team/Enterprise Cloud 대상
+  - 2026-07-20 GA — committer 월 $10 + AI 기능 usage-based billing
+  - CodeQL=Actions minutes, AI review·Autofix=별도 사용량 모델
+  - PR quality gate·coverage threshold·Autofix 권한을 운영 정책으로 정의
   source: https://github.blog/changelog/2026-06-16-github-code-quality-generally-available-july-20-2026/
 - category: ai
   title: ARD(Agentic Resource Discovery) — AI 에이전트가 필요한 도구를 '런타임에 직접 찾는' 개방형 표준(Apache-2.0·MS+Google+HF 공동)
@@ -2602,14 +2589,12 @@ cards:
   - '모델 비종속: Anthropic·OpenAI·Google·xAI·OpenRouter 100+ 또는 llama.cpp 완전 로컬'
   source: https://github.com/gptme/gptme
 - category: ai
-  title: Copilot Code Review + AGENTS.md — 리뷰 기준을 레포 루트 파일로 고정하기
-  summary: 'GitHub Copilot code review가 2026년 6월 18일부터 레포 루트의 AGENTS.md를 읽어 리뷰 피드백에 반영한다. 이전처럼 매 PR마다 "우리 팀 규칙을 봐 달라"고 설명하는 대신, 코드 스타일·테스트 기준·보안 체크리스트를 저장소 파일에 두고 리뷰 자동화가 같은 기준을 쓰게 만드는 변화다. 공식 문서는 별도의 .github/copilot-instructions.md, 경로별 instructions, agent skills, MCP 서버도 리뷰 컨텍스트로 연결할 수 있다고 설명한다. 실전 포인트는 간단하다: PR 리뷰 기준은 대화 프롬프트가 아니라 버전 관리되는 파일이어야 재현성과 팀 합의가 생긴다.
-
-    '
+  title: Copilot Code Review — AGENTS.md·MCP·Skills로 리뷰 컨텍스트 고정
+  summary: 'GitHub Copilot code review(2026 GA)는 diff만 보는 리뷰에서 벗어나 레포·외부 도구·스킬로 컨텍스트를 고정하는 방향으로 진화했다. 2026-06-18부터 루트 AGENTS.md를 자동 읽어 코드 스타일·테스트·보안 기준을 PR마다 재현하고, .github/copilot-instructions.md·경로별 instructions·agent skills·MCP 서버도 리뷰 입력으로 연결된다. MCP로 이슈 키·incident ID·내부 규칙을 따라 외부 컨텍스트를 가져오고, `.github/skills/code-review/SKILL.md`로 리뷰 기준을 저장소 안에 둔다. Low/Medium review tier로 코드 중요도와 AI Credits 예산을 맞춘다. 핵심: "더 세게 봐달라"가 아니라 조직 규칙·운영 도구·비용 등급을 리뷰 입력으로 명시해 반복 질문과 팀별 편차를 줄인다.'
   points:
-  - '2026-06-18 GA: Copilot code review가 루트 AGENTS.md를 자동 활용'
-  - .github/copilot-instructions.md·경로별 instructions·skills·MCP도 리뷰 컨텍스트로 확장
-  - 리뷰 기준을 프롬프트가 아니라 레포 파일로 관리해 재현성 확보
+  - '2026-06-18 GA: 루트 AGENTS.md 자동 활용 + copilot-instructions·경로별 rules'
+  - MCP 서버로 이슈·incident·내부 도구 컨텍스트를 diff 밖에서 연결
+  - '`.github/skills/code-review/SKILL.md` + Low/Medium tier로 기준·예산 분리'
   source: https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/
 - category: ai
   title: 'smol developer: 제품 스펙(마크다운)만 주면 코드베이스 전체를 스캐폴딩하는 ''주니어 개발자'' 에이전트'
@@ -3488,16 +3473,6 @@ cards:
   - Mobilerun — 멀티 LLM·manager-executor·Phoenix/Langfuse trace·app cards·custom tools
   - 선택: CI replay 증거(agent-device) vs 멀티모델 탐색+관측(Mobilerun)
   source: https://github.com/callstack/agent-device
-- category: ai
-  title: Copilot Code Review MCP·Skills — 리뷰가 diff 밖 컨텍스트를 읽게 하기
-  summary: 'GitHub는 Copilot code review에 MCP 서버와 agent skills를 붙여 리뷰가 diff만 보지 않게 하는 흐름을 공개했다. 저장소 설정의 Copilot MCP servers에 JSON 설정과 인증 토큰을 넣고, `.github/skills/code-review` 같은 리뷰 지향 스킬을 두면 PR 설명의 이슈 키·incident ID·내부 규칙 같은 신호를 따라 외부 컨텍스트를 가져올 수 있다. Medium review tier는 더 깊은 분석을 제공하지만 AI Credits를 더 쓴다. 실무 포인트는 "AI 리뷰어에게 더 세게 봐달라"가 아니라, 조직 규칙·운영 도구·비용 등급을 리뷰 입력으로 명시해 반복 질문과 팀별 편차를 줄이는 것이다.
-
-    '
-  points:
-  - MCP 서버로 이슈·incident·내부 도구 컨텍스트를 리뷰에 연결
-  - '`.github/skills/code-review/SKILL.md`로 리뷰 기준을 저장소 안에 둠'
-  - Low/Medium review tier를 코드 중요도와 AI Credits 예산에 맞춰 선택
-  source: https://github.blog/changelog/2026-06-02-shape-copilot-code-review-around-your-team/
 - category: ai
   title: Copilot Auto Mode — 모델 선택을 프롬프트가 아니라 라우터에 맡기기
   summary: 'GitHub Copilot Chat의 auto model selection은 2026년 6월 17일 github.com과 GitHub mobile app에서 모든 Copilot plan에 GA로 열렸다. 사용자가 매번 Claude Sonnet, GPT-5.4 계열, Haiku 같은 모델명을 고르는 대신, Copilot이 요청 복잡도와 실시간 가용성을 보고 모델을 라우팅한다. 응답에 어떤 모델이 쓰였는지 확인할 수 있고, 사용자·관리자 model policy를 존중하며, paid subscriber에게는 auto 사용 토큰이 10% 할인된다. 개발팀 관점의 핵심은 모델명을 자동화 스크립트의 상수처럼 박지 말고, 단순 질의는 auto, 재현 가능한 평가나 규제 워크플로는 고정 모델처럼 운영 모드를 분리하는 것이다.
@@ -6369,17 +6344,89 @@ cards:
   source: https://byaiteam.com/blog/2025/12/18/few-shot-learning-in-production-design-in-context-examples/
 - category: ai
   title: Modern Web Guidance — Chrome 팀의 웹 플랫폼 스킬을 코딩 에이전트에 설치하기
-  summary: 'Chrome Modern Web Guidance는 접근성·성능·보안·브라우저 호환성 지식을 코딩 에이전트가 바로 호출할 수 있는 skills 묶음으로 제공하는 early preview다. `npx modern-web-guidance@latest install` 또는 Vercel `npx skills add GoogleChrome/modern-web-guidance`, Claude Code/Copilot CLI plugin marketplace, Antigravity CLI로 설치한다. 공식 I/O 2026 글은 Baseline과 연결해 목표 브라우저 범위에 맞는 기능·fallback을 고르게 하고, 100개 이상 use case를 계속 업데이트한다고 설명한다. Chrome DevTools for agents와 함께 쓰면 콘솔 로그·네트워크·접근성 트리·성능 audit을 읽고 modern CSS/API 수정까지 이어갈 수 있다. 2026-06-24 GitHub API 기준 Apache-2.0, 1,424★다.'
+  summary: Chrome Modern Web Guidance는 접근성·성능·보안·브라우저 호환성 지식을 코딩 에이전트가 바로 호출할 수 있는 skills 묶음으로 제공하는 early preview다. `npx modern-web-guidance@latest install` 또는 Vercel `npx skills add GoogleChrome/modern-web-guidance`, Claude Code/Copilot CLI plugin marketplace, Antigravity CLI로 설치한다. 공식 I/O 2026 글은 Baseline과 연결해 목표 브라우저 범위에 맞는 기능·fallback을 고르게 하고, 100개 이상 use case를 계속 업데이트한다고 설명한다. Chrome DevTools for agents와 함께 쓰면 콘솔 로그·네트워크·접근성 트리·성능 audit을 읽고 modern CSS/API 수정까지 이어갈 수 있다. 2026-06-24 GitHub API 기준 Apache-2.0, 1,424★다.
   points:
   - '설치: npx CLI, npx skills, Claude/Copilot plugin marketplace, Antigravity CLI 지원'
   - '내용: 접근성·성능·보안·Baseline 호환성 지식을 에이전트 skill로 패키징'
   - '실무 포인트: 에이전트에게 최신 웹 API 사용 여부를 맡기되 DevTools evidence로 검증'
   source: https://developer.chrome.com/docs/modern-web-guidance
 - category: ai
-  title: GitHub Code Quality GA — AI 리뷰는 품질 게이트와 과금 경계를 같이 설계해야 한다
-  summary: 'GitHub Code Quality는 2026-07-20부터 public preview를 끝내고 GitHub Team·Enterprise Cloud의 유료 제품으로 GA 전환된다. 공식 공지는 10,000개 이상 enterprise가 preview에서 유지보수성·신뢰성 이슈, quality gate, coverage tracking에 썼다고 설명하고, GA 뒤에는 활성 committer당 월 $10 기본 과금에 AI-powered 기능 사용량이 따로 붙는다고 밝혔다. 핵심은 AI 리뷰를 "공짜 보조 댓글"로 보는 습관을 버리는 것이다. CodeQL 기반 deterministic 분석은 Actions minutes를 쓰고, Copilot code review·AI-assisted detection·Copilot Autofix 같은 AI 작업은 usage-based billing으로 분리된다. 팀은 PR ruleset, coverage threshold, AI findings dashboard, Autofix 적용 권한을 비용·품질·리뷰 책임 경계와 함께 정해야 한다.'
+  title: Writing Effective MCP Tools — agent-native 설계, namespacing·pagination·high-signal output
+  summary: 'Anthropic "Writing effective tools for AI agents"(2025)는 MCP 도구를 API wrapper가 아니라 agent-native interface로 설계하라고 강조한다. 핵심: (1) verb-noun snake_case 이름·enum으로 입력 제약·description에 concrete example (2) multi-action tool(action 파라미터) 대신 narrow single-purpose tool 분리 (3) pagination·filtering·truncation으로 25k token 응답 상한 (4) uuid·mime_type 대신 name·file_type 등 agent-actionable 필드 반환 (5) namespacing(asana_search vs jira_search)으로 tool selection 정확도↑. MCP Tool Search(on-demand loading) ·Code execution with MCP(programmatic compose)와 조합하면 context bloat 없이 수십 개 도구 운용.'
   points:
-  - 2026-07-20 GA·유료화 — 활성 committer 월 $10 + AI-powered 기능 usage-based billing
-  - CodeQL 품질 분석은 Actions minutes, AI findings·Copilot review·Autofix는 별도 사용량 모델
-  - PR quality gate·coverage threshold·AI Autofix 권한을 운영 정책으로 정해야 함
-  source: https://github.blog/changelog/2026-06-16-github-code-quality-generally-available-july-20-2026/
+  - verb-noun naming + enum + example in description — model tool selection 정확도
+  - multi-action tool 분리·pagination/truncation — context 25k token 상한
+  - high-signal 필드만 반환 — MCP Tool Search·programmatic calling과 조합
+  source: https://www.anthropic.com/engineering/writing-tools-for-agents
+- category: ai
+  title: Human-in-the-Loop Approval Workflows — policy gate·durable checkpointer·approval timeout
+  summary: 'Production HITL은 "모든 action 승인"이 아니라 action manifest(severity×reversibility)로 high-stakes write만 pause한다. OpenAI Agents SDK — tool에 needs_approval 선언→RunState.approve/reject→Runner.run(state) resume. LangGraph — interrupt() + PostgresSaver/SqliteSaver durable checkpointer + Command(resume=payload). Policy layer(tool gateway)는 allow/deny/approval_required 3-state를 매 step마다 판단하고 audit log에 기록. Async pattern: 202 Accepted + thread_id 반환, background scheduler가 approval_timeout 시 escalate/reject. Side effect는 interrupt() 이후에 배치(idempotent) — resume 시 node가 처음부터 재실행되므로.'
+  points:
+  - action manifest — severity×reversibility로 high-stakes write만 approval_required
+  - durable checkpointer(Postgres/SQLite) + interrupt/resume — InMemorySaver는 dev only
+  - approval_timeout SLA + async 202 pattern — side effect는 interrupt 이후(idempotent)
+  source: https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/
+- category: ai
+  title: Agent Graceful Degradation — 4 service level·fallback chain·user disclosure
+  summary: 'Graceful degradation은 dependency failure 시 terminal error 대신 reduced-but-truthful answer를 제공하는 설계 모드다. 4 service level: Full(모든 tool healthy) → Reduced(non-critical tool skip/mock) → Fallback(secondary model/cached decision) → Refusal(primary+secondary unavailable). Fallback chain: primary model → secondary provider(different vendor) → cached structured-intent decision → templated refusal. Circuit breaker(>10% fail/60s→open) + semantic quality failure(schema violation·hallucination rate) 감지. User disclosure 필수 — silent degradation은 trust erosion. Per-feature fallback: vision fail→text-only, retrieval fail→no citations, code exec fail→simple summary.'
+  points:
+  - '4 level: Full→Reduced→Fallback→Refusal — 각 level마다 user disclosure 규칙'
+  - 'fallback chain: primary→secondary vendor→cached decision→refusal'
+  - circuit breaker + per-feature downgrade — silent failure 금지
+  source: https://www.agentpatternscatalog.org/patterns/graceful-degradation/
+- category: ai
+  title: AI Agent Audit Logging — tool invocation을 first-class event로, append-only storage
+  summary: 'Chat-only audit log(input/output)는 agent compliance에 불충분 — EU AI Act Article 12는 tool call·delegation chain까지 기록을 요구한다. First-class audit event: tool name·arguments·return/error·duration·reasoning step link를 단일 trace event로 emit. Write-once storage(S3 Object Lock) + append-only permission — agent runtime account는 delete 불가. Cryptographic chaining(hash chain) + meta-audit trail(reviewer access log). OpenTelemetry AgentTrace(2026) — cognitive/operational/contextual 3-surface taxonomy. SignalVault: "financial systems treat transactions"처럼 agent behavior를 material decision 단위로 capture.'
+  points:
+  - tool call = first-class event — name·args·result·duration·reasoning step join
+  - append-only write-once storage — agent가 자신의 audit trail 수정 불가
+  - hash chain + meta-audit + OpenTelemetry AgentTrace 3-surface
+  source: https://signalvault.io/blog/ai-audit-logging-agent-era
+- category: ai
+  title: Session·Harness·Sandbox Separation — append-only log·wake(sessionId)·crash recovery
+  summary: 'Long-running agent architecture(Anthropic 2026)는 3 primitive로 분리: Session(append-only event log, authoritative state), Harness(stateless loop, wake(sessionId)로 replay resume), Sandbox(provisioned execution env, uniform tool interface). Crash recovery: failed harness→replacement harness.wake(sessionId)→getEvents() replay→resume at next tool call. Inference-sandbox decoupling: model call은 sandbox provisioning과 병렬(~60% p50 TTFT↓). Horizontal scaling trivial — any harness picks up any session. Trade-off: unbounded log growth→compaction with irreversible decisions. GNAP(git-native) ·AgentOps Replay(hash-chained)과 다른 enterprise-scale 패턴.'
+  points:
+  - Session(log) ·Harness(stateless) ·Sandbox(execution) — 3 primitive 분리
+  - wake(sessionId) + event replay — crash recovery·horizontal scaling
+  - inference∥provisioning — TTFT↓, log growth→compaction trade-off
+  source: https://agentpatterns.ai/agent-design/session-harness-sandbox-separation/
+- category: ai
+  title: Zod + LLM Structured Output — TypeScript validation layer, z.toJSONSchema()·safeParse retry
+  summary: 'Zod는 TypeScript LLM integration의 single source of truth — schema 1회 정의로 compile-time type + runtime parse 동시 확보. 2026 패턴: (1) Zod schema 정의 (2) z.toJSONSchema()(Zod v4 native)로 provider JSON Schema 생성 (3) OpenAI strict:true / Anthropic tool use로 constrained decoding (4) safeParse() + ZodError detail을 retry prompt에 포함. Vercel AI SDK generateObject()가 provider별 best strategy 자동 선택. Instructor(Python/Pydantic) ·Structured Outputs(provider-level)와 분리 — Zod는 TypeScript app validation layer. Constrained decoding도 logical error·data hallucination은 못 잡으므로 post-validation 필수.'
+  points:
+  - Zod schema → z.toJSONSchema() → provider strict mode → safeParse() 4-layer
+  - safeParse + ZodError retry — constrained decoding 후에도 logical error catch
+  - Instructor(Python) ·Structured Outputs(provider)와 역할 분리 — TS app layer
+  source: https://techsy.io/en/blog/llm-structured-outputs-guide
+- category: ai
+  title: Semantic Chunking for RAG — embedding similarity boundary, uneven chunk trade-off
+  summary: 'Semantic chunking은 fixed token count 대신 embedding cosine similarity threshold(percentile/stddev)로 topic shift 지점에서 분할한다. LangChain SemanticChunker — sentence embed→similarity drop→boundary. 장점: thematically cohesive chunk→retrieval precision↑(benchmark에서 naive baseline 대비 ~70% accuracy lift 사례). 단점: uneven chunk size(80~1400 token) → similarity score calibration 어려움·long chunk embedding dilution. API reference·legal prose에 유리, structured doc(header splitting)에는 recursive가 near-optimal. Late Chunking(full-doc encode 후 split) ·Contextual Retrieval(chunk context prefix)와 조합 가능.'
+  points:
+  - embedding similarity threshold로 topic boundary — fixed-size 대비 precision↑
+  - uneven chunk size trade-off — long-form prose에 유리, structured doc엔 recursive
+  - Late Chunking ·Contextual Retrieval과 조합 — boundary failure 추가 완화
+  source: https://langcopilot.com/posts/2025-10-11-document-chunking-for-rag-practical-guide
+- category: ai
+  title: Parent-Child Chunking — small retrieve·large generate, production RAG default
+  summary: 'Parent-child(small-to-big) chunking은 retrieval unit과 generation unit을 decouple한다. Child chunk(200-400 token)를 embed/index → retrieve 시 child match → parent chunk(1000+ token, section/paragraph)를 LLM에 전달. LangChain ParentDocumentRetriever ·LlamaIndex auto-merge retriever가 built-in. "Small-chunk recall + large-chunk context" — precision-context tension 해결. 2026 production default: recursive baseline→recall low면 parent-child→semantic chunking. RAPTOR(tree summarization) ·Late Chunking(embedding)과 다른 축 — parent-child는 storage granularity 분리.'
+  points:
+  - child(200-400t) embed → parent(1000+t) generate — precision+context 동시
+  - LangChain ParentDocumentRetriever ·LlamaIndex auto-merge — production built-in
+  - recursive baseline→recall low→parent-child — RAPTOR/Late Chunking과 축 분리
+  source: https://sureprompts.com/blog/chunking-strategies-for-rag
+- category: ai
+  title: AI Agent Error Handling — circuit breaker·validation gate·idempotent saga·budget guardrail
+  summary: 'Production agent error handling 5-pattern(Kevin Tan 2026): (1) Circuit breaker — HTTP error뿐 아니라 schema violation·hallucination rate 등 semantic quality failure도 track (2) Validation gate — write tool 전 Pydantic/Zod schema check, destructive tool은 interrupt() (3) Idempotent saga — partial failure 시 rollback, side effect는 validation 통과 후 (4) Budget guardrail — max turns·max tokens·max tool calls hard limit (5) Human escalation — confidence×blast-radius matrix로 agent가 stop deciding. LLM API Retry(429/5xx backoff) ·Graceful Degradation(fallback chain)과 3-layer: retry→degrade→escalate.'
+  points:
+  - circuit breaker — HTTP + semantic quality failure(schema·hallucination rate)
+  - validation gate(write前) + idempotent saga(partial rollback) + budget guardrail
+  - 'LLM API Retry ·Graceful Degradation과 3-layer: retry→degrade→escalate'
+  source: https://blog.jztan.com/ai-agent-error-handling-patterns/
+- category: ai
+  title: Context Window Compaction — observation masking vs LLM summarization, multi-pass pipeline
+  summary: 'Long-running agent context management(2026 research): observation masking(old tool output→placeholder)가 LLM summarization과 동등 이상 성능·비용 1/10(JetBrains 500 SWE-bench). Multi-pass pipeline: (1) tool result collapse (2) LLM structured summarization (3) truncation last resort. Proactive compaction at 60% budget > reactive at 95%. Anthropic: compaction=high-fidelity distill→new window+recent files. Microsoft Agent Framework: Truncation·SlidingWindow·ToolCallCollapsing·Summarization 4 strategy. Frequent Intentional Compaction(40-60% workflow) ·/context(diagnosis)과 분리 — 이 카드는 technical strategy 선택 framework.'
+  points:
+  - observation masking ≥ LLM summarization — cost 1/10, trajectory elongation 방지
+  - 'multi-pass: tool collapse→summarize→truncate — 60% budget에서 proactive'
+  - Frequent Intentional Compaction(workflow) ·/context(diagnosis)과 역할 분리
+  source: https://arxiv.org/html/2508.21433v1

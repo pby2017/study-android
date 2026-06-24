@@ -2146,3 +2146,65 @@ Refined:
 
 누적: 671카드 (670→671 신규, 기존 1카드 정제)
 주제: GitHub Code Quality GA, AI-powered code review billing, CodeQL quality gates, Goose subrecipe workflow isolation
+
+## 2026-06-25 22:00 KST — Batch 34 (아이디어 검증 + 병합 3카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Writing Effective MCP Tools | Anthropic agent-native tool design — MCP Tool Search(on-demand)·Function Calling vs Tool Use(provider API)와 implementation/design 레벨 분리 |
+| Human-in-the-Loop Approval Workflows | action manifest·durable checkpointer·approval timeout — NeMo Guardrails(입력 필터)와 runtime approval gate 분리 |
+| Agent Graceful Degradation | 4 service level·fallback chain·user disclosure — LLM API Retry(transport) ·fallbackModel(모델 전환)과 service-level resilience 분리 |
+| AI Agent Audit Logging | tool invocation first-class event·append-only — Claw-Eval(eval trajectory) ·Codex 안전 운영(compliance log mention)과 production audit trail 분리 |
+| Session·Harness·Sandbox Separation | append-only log·wake(sessionId) — reloadSkills(SessionStart) ·Mem0(장기 메모리)와 long-running agent architecture 분리 |
+| Zod + LLM Structured Output | TypeScript validation layer·z.toJSONSchema() — Instructor(Python) ·Structured Outputs(provider-level)와 app-layer validation 분리 |
+| Semantic Chunking for RAG | embedding similarity boundary — Late Chunking(embedding timing) ·Contextual Retrieval(chunk prefix)와 chunking strategy 축 분리 |
+| Parent-Child Chunking | small retrieve·large generate — RAPTOR(tree summarization) ·recursive baseline과 storage granularity decouple 패턴 |
+| AI Agent Error Handling | circuit breaker·validation gate·saga — LLM API Retry(429/5xx) ·Graceful Degradation(service level)과 application error pattern 분리 |
+| Context Window Compaction | observation masking vs LLM summarization — Frequent Intentional Compaction(workflow) ·/context(diagnosis)와 technical strategy framework 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Function Calling vs Tool Use | 기존 카드 존재 |
+| Instructor / Pydantic AI / Outlines | Structured output·validation 카드 커버 |
+| JSON Schema for LLM outputs | Structured Outputs ·Zod 카드 커버 |
+| Gemini Live / Voice agents architecture | Gemini Live(on-device) ·OpenAI Realtime(speech-to-speech) 카드 존재 |
+| Entity/Metadata extraction / NER | Unstructured.io ·Contextual Retrieval 카드 커버, 독립 카드 가치 부족 |
+| Recursive summarization 단독 | RAPTOR ·Context Window Compaction 카드 커버 |
+| Token budget optimization 단독 | Codex rollout token budgets ·/context ·ccusage 카드 커버 |
+| AI approval workflows(generic) | HITL Approval Workflows 카드에 통합 |
+| MCP tool design best practices(generic) | Writing Effective MCP Tools(Anthropic) 카드에 통합 |
+| Guardrails AI / NeMo Guardrails | 기존 카드 존재 |
+
+### 병합 (3카드 제거, 671→668)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Copilot Code Review + AGENTS.md | Copilot Code Review — AGENTS.md·MCP·Skills로 리뷰 컨텍스트 고정 |
+| Copilot Code Review MCP·Skills | ↑ 동일 |
+| goose(Block→AAIF) | goose(AAIF) — Rust BYO-LLM·Subrecipes YAML 파이프라인 |
+| Goose Subrecipes | ↑ 동일 |
+| GitHub Code Quality GA (중복 2건) | GitHub Code Quality GA — AI 리뷰·품질 게이트·과금 경계를 같이 설계 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Writing Effective MCP Tools — agent-native 설계, namespacing·pagination·high-signal output | anthropic.com/engineering/writing-tools-for-agents |
+| 2 | Human-in-the-Loop Approval Workflows — policy gate·durable checkpointer·approval timeout | developers.cloudflare.com/agents |
+| 3 | Agent Graceful Degradation — 4 service level·fallback chain·user disclosure | agentpatternscatalog.org |
+| 4 | AI Agent Audit Logging — tool invocation을 first-class event로, append-only storage | signalvault.io |
+| 5 | Session·Harness·Sandbox Separation — append-only log·wake(sessionId)·crash recovery | agentpatterns.ai |
+| 6 | Zod + LLM Structured Output — TypeScript validation layer, z.toJSONSchema()·safeParse retry | techsy.io |
+| 7 | Semantic Chunking for RAG — embedding similarity boundary, uneven chunk trade-off | langcopilot.com |
+| 8 | Parent-Child Chunking — small retrieve·large generate, production RAG default | sureprompts.com |
+| 9 | AI Agent Error Handling — circuit breaker·validation gate·idempotent saga·budget guardrail | blog.jztan.com |
+| 10 | Context Window Compaction — observation masking vs LLM summarization, multi-pass pipeline | arxiv.org/html/2508.21433v1 |
+
+누적: 678카드 (671→668 병합→678 신규)
+주제: agent tool design(MCP), HITL approval, graceful degradation, audit logging, session architecture, Zod validation, RAG chunking(semantic·parent-child), error handling, context compaction
