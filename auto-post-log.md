@@ -1805,3 +1805,62 @@ Refined:
 
 누적: 625카드 (617→615 병합→625 신규)
 주제: W&B Tables/Panels, OTel LLM instrumentation(OpenLLMetry), embedding API(Cohere Embed v4·Voyage AI 4), RAG retrieval(Hybrid Search·Cross-encoder Reranking), LangChain LCEL, HF Model Cards, cloud agent platform(Azure AI Foundry), Antigravity/ADK merge
+
+## 2026-06-25 00:45 KST — Batch 29 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| W&B Launch | Git/Docker/Artifact→Queue→K8s 실험 dispatch — Sweeps(HP)·Artifacts(lineage)와 compute execution 축 분리 |
+| LightRAG | GraphRAG(Microsoft) 대비 경량·incremental KG RAG — dual-layer local+global 병렬 retrieval 독립 패턴 |
+| RAPTOR | recursive tree summarization multi-granularity RAG — GraphRAG/LightRAG(graph)와 document-internal hierarchy 분리 |
+| MergeKit | TIES/DARE/SLERP zero-training model merge — Unsloth/Axolotl(fine-tuning)과 composition vs training 분리 |
+| GPTCache Semantic Caching | embedding paraphrase hit 구현 레이어 — FinOps prefix cache(provider-side)와 semantic cache(app-side) 분리 |
+| FlashAttention-3 | Hopper TMA·FP8·SM90 paged KV kernel — vLLM PagedAttention(KV storage layout)과 compute vs memory 분리 |
+| Amazon Bedrock AgentCore | Runtime·Gateway·Memory managed infra — Azure Foundry(MAF·M365)와 AWS cloud agent platform 3축 |
+| LLaMA-Factory | 100+ model zero-code LlamaBoard — Axolotl(YAML orchestrator)·Unsloth(kernel speed)와 fine-tuning 축 분리 |
+| Ring Attention | blockwise KV ring P2P sequence parallelism — FlashAttention-3(kernel)·Ulysses(head-parallel)와 spatial distribution 분리 |
+| Knowledge Distillation for LLM | teacher→student compression 패턴 — MergeKit(zero-training merge)과 training-based vs checkpoint 분리 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Semantic caching 단독 (FinOps 외) | GPTCache 카드로 구현 레이어 커버, FinOps 카드에 prefix cache provider detail 통합 |
+| MiniRAG | LightRAG 팀 small-model RAG, niche·LightRAG 카드로 계보 언급 |
+| DeepSpeed-Ulysses | Ring Attention 카드에 complementary 관계 포함, 단독 카드는 niche |
+| TokenRing | Ring Attention inference variant, 2026 논문 niche |
+| Google Vertex AI Agent Builder | ADK 2.0·ADK for Android 카드 존재, Agent Builder는 ADK+Runtime 통합 중복 |
+| LiteLLM/OpenRouter 단독 | 기존 카드 존재 |
+| Kong/Portkey AI Gateway | 기존 카드 존재 |
+| Mem0/Letta 단독 | 기존 agent memory 카드 존재 |
+| Unsloth/Axolotl 단독 | 기존 카드 존재, LLaMA-Factory와 3축 분리로 커버 |
+| GraphRAG 단독 | 기존 카드 존재, LightRAG와 대비 |
+| Inference cost calculator tools | LLM API FinOps 카드 + provider pricing으로 커버, niche SaaS |
+| AI model distillation tools (DistilBERT 등) | Knowledge Distillation 패턴 카드로 LLM 축 커버 |
+
+### 병합 (2카드 제거, 625→623)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Gemini CLI(google-gemini) | Google Antigravity 2.0 — Gemini CLI(~105k★) 통합·소비자 2026-06-18 이전 |
+| 프롬프트 캐싱 2026 | LLM API 비용 최적화 — Anthropic/OpenAI/Gemini prefix cache provider detail 통합 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | W&B Launch — Git/Docker/Artifact→Queue 실험 실행 | docs.wandb.ai |
+| 2 | LightRAG — dual-layer KG+vector GraphRAG 대안 | github.com/HKUDS/LightRAG |
+| 3 | RAPTOR — recursive tree multi-granularity RAG | arxiv.org/abs/2401.18059 |
+| 4 | MergeKit — TIES·DARE model merging | github.com/arcee-ai/mergekit |
+| 5 | GPTCache Semantic Caching — embedding paraphrase hit | github.com/zilliztech/GPTCache |
+| 6 | FlashAttention-3 — Hopper TMA·FP8·Paged KV | arxiv.org/abs/2407.08608 |
+| 7 | Amazon Bedrock AgentCore — Runtime·Gateway·Memory | docs.aws.amazon.com |
+| 8 | LLaMA-Factory — 100+ model zero-code fine-tuning | github.com/hiyouga/LLaMA-Factory |
+| 9 | Ring Attention — blockwise KV ring sequence parallelism | arxiv.org/abs/2310.01889 |
+| 10 | Knowledge Distillation for LLM — teacher→student compression | arxiv.org/abs/2305.0239 |
+
+누적: 633카드 (625→623 병합→633 신규)
+주제: W&B Launch compute dispatch, graph RAG evolution(LightRAG·RAPTOR), model composition(MergeKit·Knowledge Distillation), inference optimization(FlashAttention-3·Ring Attention), semantic caching(GPTCache), cloud agent platform(Bedrock AgentCore), fine-tuning(LLaMA-Factory), Antigravity/Gemini CLI merge, FinOps prefix cache merge

@@ -1097,11 +1097,11 @@ cards:
   - '안전장치: `--dry-run`, `--max-runs`, `--max-duration`, `--max-cost`, `--stall-threshold`로 무한 루프를 제한'
   source: https://github.com/AnandChowdhary/continuous-claude
 - category: ai
-  title: Google Antigravity 2.0 — 데스크톱·CLI(Go)·SDK 3표면 에이전트 플랫폼, Gemini CLI 이전(I/O 2026)
-  summary: 구글이 2026 I/O(2026-05-19)에서 Antigravity 2.0을 'agent-first development platform'으로 공개했다. 1.0 단일 IDE에서 '리뉴얼 데스크톱 앱 + Go CLI + 커스텀 SDK' 3표면으로 확장 — dynamic subagents·scheduled tasks·Google AI Studio/Android/Firebase 연동. Antigravity CLI는 GUI 없이 터미널에서 에이전트 생성·실행, 구글은 Gemini CLI 소비자(AI Pro/Ultra/무료) 접근을 2026-06-18부터 차단하고 Antigravity로 이전 안내. Antigravity SDK는 agent harness를 프로그래밍·자체 인프라 호스팅에 개방. 워크호스 모델 Gemini 3.5 Flash — 구글 주장 3.1 Pro보다 대부분 벤치마크 앞서고 4배 빠름. Cursor/Claude Code(터미널 에이전트)와 달리 'IDE+CLI+SDK+호스팅' 통합 플랫폼.
+  title: Google Antigravity 2.0 — 데스크톱·CLI(Go)·SDK·Gemini CLI 통합, 3표면 에이전트 플랫폼(I/O 2026)
+  summary: '구글이 2026 I/O에서 Antigravity 2.0을 agent-first development platform으로 공개했다. 1.0 단일 IDE에서 리뉴얼 데스크톱 앱 + Go CLI + 커스텀 SDK 3표면으로 확장 — dynamic subagents·scheduled tasks·Google AI Studio/Android/Firebase 연동. 2025-06 공개 Gemini CLI(google-gemini/gemini-cli, Apache-2.0·~105k★)는 터미널 네이티브 코딩 에이전트로 Gemini 2.5 Pro·1M ctx·MCP 기본 지원·개인 구글 계정 무료(분당 60·일 1,000 요청)였으나, 구글은 소비자(AI Pro/Ultra/무료) Gemini CLI 접근을 2026-06-18부터 차단하고 Antigravity로 이전 안내. Antigravity CLI는 GUI 없이 터미널 에이전트 생성·실행, SDK는 harness 프로그래밍·자체 호스팅 개방. 워크호스 Gemini 3.5 Flash — 3.1 Pro 대비 대부분 벤치마크 앞서고 4배 빠름. Cursor/Claude Code(터미널 에이전트)와 달리 IDE+CLI+SDK+호스팅 통합.'
   points:
   - '3표면: 데스크톱(병렬 오케스트레이션) + CLI(Go) + SDK(커스텀 harness)'
-  - Gemini CLI 소비자 접근 2026-06-18 종료 → Antigravity로 이주
+  - Gemini CLI(~105k★) 소비자 접근 2026-06-18 종료 → Antigravity로 이주, MCP·1M ctx 유지
   - Gemini 3.5 Flash 워크호스 — AI Studio·Android·Firebase 네이티브 연동
   source: https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
 - category: ai
@@ -1920,16 +1920,6 @@ cards:
   - 절약 패턴(문서 권장) — 관련 질문은 한 메시지로 묶고, 프로젝트에 올린 내용은 캐싱돼 재사용 시 한도에 안 잡힌다. 모델·effort를 낮추고 첨부 크기를 줄이는 것도 직접적 효과
   - 정량 쿼터는 비공개 — Anthropic은 토큰 수가 아니라 배수(Pro 1x / Max 5x / Max 20x)만 발표. '몇 토큰'이 아니라 '내 진행바가 어디까지 찼나'로 관리하는 게 현실적
   source: https://support.claude.com/en/articles/9797557-usage-limit-best-practices
-- category: ai
-  title: Gemini CLI(google-gemini) — '개인 구글 계정 로그인'만으로 Gemini 2.5 Pro·1M 컨텍스트를 무료로 터미널에 꽂는 오픈소스 에이전트(Apache-2.0·~105k★)
-  summary: 'Gemini CLI는 구글이 2025년 6월 공개한 터미널 네이티브 코딩 에이전트로, GitHub에서 Apache-2.0 라이선스·약 10.5만 스타에 v0.46.0까지 활발히 릴리스되고 있다(주장이 아니라 레포에서 직접 확인되는 사실). 가장 실무적인 포인트는 진입 장벽이 거의 없다는 것 — 개인 구글 계정으로 로그인하면 Gemini Code Assist 무료 라이선스가 딸려와 분당 60요청·하루 1,000요청까지 비용 없이 쓸 수 있다고 구글 공식 블로그가 명시한다. 모델은 100만 토큰 컨텍스트의 Gemini 2.5 Pro에 무료로 접근하며, MCP(Model Context Protocol)를 기본 지원해 Claude Code·Codex와 같은 도구·서버 생태계를 그대로 붙일 수 있다. 더 많은 한도가 필요하면 Google AI Studio/Vertex AI 키로 사용량 과금 모드로 전환한다. Claude Code의 무료 대안이나 멀티 에이전트 스택의 한 축으로 평가해 볼 만하다.
-
-    '
-  points:
-  - 무료 진입 — 개인 구글 계정 로그인만으로 분당 60·하루 1,000 요청을 무과금 사용(공식 블로그 수치). API 키나 결제 등록 없이 바로 시작
-  - 스펙 — Gemini 2.5 Pro + 1M 토큰 컨텍스트, MCP 기본 지원으로 기존 MCP 서버/도구를 그대로 연결. VS Code(Gemini Code Assist)와 기술 공유
-  - 오픈소스 사실 — Apache-2.0, github.com/google-gemini/gemini-cli에서 ~105k★·523개 릴리스(v0.46.0, 2026-06). 일부 블로그의 '서비스 종료설'은 레포에 deprecation 표기가 없어 1차 출처로는 미확인 — 카드에서 제외
-  source: https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-cli-open-source-ai-agent/
 - category: ai
   title: awesome-claude-code(hesreallyhim) — 스킬·훅·슬래시커맨드·오케스트레이터를 '한 분류에 검증된 하나'로 골라주는 정전(正典) 큐레이션 목록(CC BY-NC-ND·~46.6k★)
   summary: 'awesome-claude-code는 hesreallyhim이 관리하는 Claude Code 생태계의 ''정전'' 큐레이션 목록으로, GitHub에서 약 46.6k 스타·4.1k 포크·1,157 커밋까지 활발히 갱신되고 있다(레포에서 직접 확인되는 사실). 단순 링크 덤프가 아니라 스킬·훅·슬래시커맨드·에이전트 오케스트레이터·애플리케이션·플러그인·상태줄·개발 도구를 분류별로 모으고, 동작하지 않는 도구는 잘라내고 동작하는 것만 ''무슨 용도인지'' 태깅하는 방식이라 ''분류당 하나만 고르기''에 적합하다는 평가를 받는다. 이슈가 1,000건을 넘길 만큼 제출·검증이 활발하며, 레포 자체는 Python 98%로 구성된 자동 검증 파이프라인으로 목록을 관리한다. 라이선스는 CC BY-NC-ND 4.0(저작자표시·비영리·변경금지)이라 그대로 재배포·상업적 가공에는 제약이 있으니 ''읽고 도구를 고르는'' 용도로 쓰는 게 맞다.
@@ -4349,16 +4339,6 @@ cards:
   - 'Meta 스케일: Instagram·WhatsApp·Messenger 프로덕션'
   source: https://v-chandra.github.io/on-device-llms/
 - category: ai
-  title: 프롬프트 캐싱 2026 — Anthropic 90% 할인·OpenAI 자동 50%·Gemini 명시적 캐시, API 비용 70~90% 절감
-  summary: '프롬프트 캐싱은 2026년 LLM API 비용 절감의 가장 높은 ROI 수단이다. 반복되는 프롬프트 프리픽스 (시스템 프롬프트·도구 정의·참조 문서)를 저장해 할인 적용. Anthropic: cache_control 마커 명시, 읽기 90% 할인, 쓰기 1.25x(5분)/2x(1시간) 서차지. OpenAI: 1,024+ 토큰 자동 캐싱, 50% 할인, 마커 불필요. Gemini: 명시적 캐시 객체 생성, 시간당 스토리지 요금. 핵심: 정적 콘텐츠를 프롬프트 맨 앞에 배치.
-
-    '
-  points:
-  - 'Anthropic: 90% 할인, cache_control 마커 명시'
-  - 'OpenAI: 자동 캐싱, 50% 할인, 설정 불필요'
-  - '핵심 규칙: 정적 콘텐츠 프롬프트 맨 앞 배치'
-  source: https://leanlm.ai/blog/prompt-caching
-- category: ai
   title: LLM 벤치마크 2026 — SWE-bench·GPQA·HLE만 유의미, MMLU/GSM8K는 포화(상위 93%+), 포트폴리오 접근 필수
   summary: '2026년 LLM 벤치마크에서 MMLU(93%)·GSM8K(99%)·HumanEval은 포화되어 프론티어 모델 구분 불가. 유의미한 벤치마크: SWE-bench Verified(실제 GitHub 버그 수정, Opus 4.6 80.8%), GPQA Diamond(PhD급 과학 추론, Gemini 3.1 94.3%), HLE(전문가 지식, 미포화), LiveCodeBench(월간 갱신 코딩). 평가 시 스캐폴드에 따라 5~15% 점수 변동 가능. 단일 벤치마크가 아닌 학술(GPQA)+에이전트(SWE-bench) +선호도(Chatbot Arena) 포트폴리오 접근 필수.
 
@@ -5947,12 +5927,12 @@ cards:
   - Phoenix — ELv2 OSS, OTel trace+eval, RAG drift 특화
   source: https://langfuse.com/docs
 - category: ai
-  title: LLM API 비용 최적화 — model routing·prefix cache·semantic cache·batch 4층(2026 FinOps)
-  summary: 2026년 LLM 프로덕션 비용은 routing+caching+인프라 3층 스택으로 60~80% 절감 사례가 보고된다. Model routing — 단순 분류·추출은 nano/mini, reasoning만 frontier, cascade(저가 먼저→실패 시 escalate)로 40~60%↓. Prefix/KV cache — Anthropic cache_control·OpenAI auto cache로 stable system prompt 75~90% prefill 절감. Semantic cache — embedding 유사 query hit 시 LLM 호출 생략(GPTCache 등) 30~50%↓. Batch API — async 24h window 50% 할인. LiteLLM/Portkey(게이트웨이)와 달리 아키텍처 패턴 — cost per successful outcome·eval-driven routing gate 필수.
+  title: LLM API 비용 최적화 — routing·prefix cache·semantic cache·batch 4층 FinOps(2026)
+  summary: '2026년 LLM 프로덕션 비용은 routing+caching+batch 4층으로 60~80% 절감 사례가 보고된다. Model routing — 단순 분류·추출은 nano/mini, reasoning만 frontier, cascade(저가→escalate)로 40~60%↓. Prefix cache(프롬프트 캐싱) — 반복 system prompt·도구 정의·참조 문서를 저장: Anthropic cache_control 마커·읽기 90% 할인·쓰기 1.25x(5분)/2x(1h), OpenAI 1,024+ 토큰 자동 50% 할인, Gemini 명시적 cache 객체·시간당 스토리지. 핵심 규칙: 정적 콘텐츠를 프롬프트 맨 앞 배치. Semantic cache — embedding 유사 query hit 시 LLM 생략(GPTCache·Redis VSS) 20~50%↓, prefix cache와 병행. Batch API — async 24h 50% 할인. LiteLLM/Portkey(게이트웨이)와 달리 아키텍처 패턴 — cost per successful outcome·eval-driven routing gate 필수.'
   points:
   - Model routing/cascade — task complexity별 cheapest capable model
-  - Prefix cache+semantic cache — prefill 90%↓·반복 query 30~50%↓
-  - Batch 50% off — eval hold-out 200~500 query로 routing 품질 검증
+  - Prefix cache — Anthropic 90%·OpenAI auto 50%·Gemini explicit, 정적 콘텐츠 맨 앞
+  - Semantic cache+Batch 50% — GPTCache/Redis VSS·eval hold-out 200~500 query
   source: https://stochasticsandbox.com/posts/cost-optimization-for-llm-applications-2026-05-26/
 - category: ai
   title: W&B Tables — 구조화 데이터 탐색·모델 예측 비교, IMMUTABLE/MUTABLE/INCREMENTAL 로깅
@@ -6034,3 +6014,83 @@ cards:
   - Foundry Toolkit VS Code — local trace→deploy, OTel GA
   - Bedrock AgentCore와 역할 분리 — Azure Entra·M365·Teams 생태계
   source: https://learn.microsoft.com/en-us/azure/foundry/agents/overview
+- category: ai
+  title: W&B Launch — Git/Docker/Artifact→Queue→K8s·SageMaker·Vertex 실험 실행
+  summary: 'W&B Launch는 ML 실험을 자동 컨테이너화·원격 실행하는 MLOps 워크플로 커넥터다. Job = source code+dependencies+inputs를 캡처한 W&B Artifact — Git repo·Docker image·기존 Artifact에서 생성. wandb launch -j JOB -q QUEUE -r kubernetes|sagemaker|gcp-vertex|local-container로 큐에 enqueue, launch-agent가 pull·build·run. launch_add() Python SDK·Sweeps on Launch로 HP 탐색+인프라 스케일 동시. W&B Sweeps(HP)·Artifacts(lineage)와 역할 분리 — Launch는 compute dispatch·reproducible container. MLOps 1회 infra 설정 후 practitioner가 클릭으로 GPU cluster 접근.'
+  points:
+  - Job Artifact — Git/Docker/code artifact→자동 Dockerfile·requirements.txt
+  - Queue→Resource — kubernetes·sagemaker·gcp-vertex·local-container
+  - Sweeps+Launch — HP 탐색을 원격 cluster에서 reproducible 실행
+  source: https://docs.wandb.ai/platform/launch/create-launch-job
+- category: ai
+  title: LightRAG — dual-layer KG+vector, GraphRAG 대비 경량·증분 업데이트(EMNLP2025·~37k★)
+  summary: 'LightRAG(HKUDS, MIT·~37k★, EMNLP2025)는 Microsoft GraphRAG의 경량 대안으로 knowledge graph+vector embedding dual-layer 아키텍처를 채택한다. GraphRAG의 Local/Global search 분기 대신 local+global keyword를 병렬 생성·동시 retrieval — entity·relationship+1-hop neighbor expansion을 한 패스에. incremental update algorithm으로 새 데이터 추가 시 full graph rebuild 불필요. v1.5.3(2026-06) — OpenSearch unified storage·role-specific LLM(EXTRACT/QUERY/KEYWORDS/VLM)·RagAnything multimodal merge(MinerU/Docling). GraphRAG(Microsoft, Leiden community)와 역할 분리 — LightRAG=빠른 indexing·incremental·dual-level retrieval.'
+  points:
+  - Dual-layer — KG entity/relation + vector chunk, local+global 병렬 retrieval
+  - Incremental update — full rebuild 없이 새 문서 통합
+  - GraphRAG와 역할 분리 — 경량·속도 vs Microsoft community summarization
+  source: https://github.com/HKUDS/LightRAG
+- category: ai
+  title: RAPTOR — recursive clustering+summarization tree, multi-granularity RAG retrieval
+  summary: 'RAPTOR(Recursive Abstractive Processing for Tree-Organized Retrieval)는 flat chunk RAG의 한계 — 긴 문서 전체 맥락·multi-hop 관계 추론 불가 — 를 해결하는 hierarchical RAG 프레임워크다. leaf=raw chunk → bottom-up clustering(GMM+UMAP) → abstractive summary → parent node 반복으로 tree 구축. inference 시 collapsed-tree(모든 레벨 동시) 또는 tree-traversal retrieval — abstract summary에서 시작해 drill-down. QuALITY benchmark GPT-4+RAPTOR 67.2%(baseline 62.2%). GraphRAG(community graph)와 역할 분리 — RAPTOR=within-document hierarchy·recursive summary. LlamaIndex·LangChain 통합 모듈 존재.'
+  points:
+  - Bottom-up tree — cluster→summarize→repeat, leaf=chunk parent=summary
+  - Collapsed-tree retrieval — multi-granularity 동시 검색
+  - GraphRAG/LightRAG와 역할 분리 — document-internal hierarchy
+  source: https://arxiv.org/html/2401.18059
+- category: ai
+  title: MergeKit — TIES·DARE·SLERP model merging, 8GB VRAM·MoE frankenmerge(Apache-2.0)
+  summary: 'MergeKit(Arcee AI, Apache-2.0, EMNLP2024 Industry)는 사전학습 LLM checkpoint를 추가 학습 없이 합치는 오픈소스 툴킷이다. out-of-core lazy loading으로 CPU 또는 8GB VRAM에서 unreasonably elaborate merge 가능. TIES(Task Arithmetic+sparsification+sign consensus) — 다수 모델 interference 감소. DARE(Drop And REscale) — random pruning+rescale로 skill retention. SLERP·linear·Frankenmerge(layer-wise assembly)·MoE merge·LORA extraction·multi-stage pipeline. Meditron-7B+Llama2-7B-chat TIES merge가 USMLE·MedMCQA에서 base 초과. Unsloth/Axolotl(fine-tuning)과 역할 분리 — MergeKit=zero-training model composition.'
+  points:
+  - TIES/DARE/SLERP — interference-aware multi-model merge
+  - 8GB VRAM·out-of-core — CPU/GPU hybrid, MoE frankenmerge
+  - Fine-tuning과 역할 분리 — training 없이 checkpoint composition
+  source: https://github.com/arcee-ai/mergekit
+- category: ai
+  title: GPTCache Semantic Caching — embedding 유사 query→LLM 생략, 20~50% API 절감
+  summary: 'Semantic caching은 byte-identical이 아닌 의미적으로 유사한 query에 cached LLM response를 반환하는 2-tier cache layer다. Exact-match(hash) + Semantic(embedding cosine similarity) 2층 — "비밀번호 재설정" vs "forgotten password steps" 동일 hit. GPTCache(Zilliz, MIT) — LangChain·LlamaIndex native, SQLite→Redis/PostgreSQL scale-out. Redis Stack/RedisVL — FT.SEARCH KNN+TAG filter sub-ms. threshold 0.95 시작, factual 0.85~0.90·reasoning 0.95+. LLM-as-judge로 borderline(0.74~0.81) false positive 방지. Prefix cache(Anthropic/OpenAI provider-side)와 역할 분리 — semantic=paraphrase hit, prefix=identical prefix hit. FinOps 4층 중 semantic cache 구현 레이어.'
+  points:
+  - 2-tier — exact hash + embedding cosine, threshold per category
+  - GPTCache·Redis VSS·LangChain SemanticCache — production stack
+  - Prefix cache와 역할 분리 — paraphrase vs identical prefix
+  source: https://github.com/zilliztech/GPTCache
+- category: ai
+  title: FlashAttention-3 — Hopper TMA·WGMMA·FP8, H100 75% utilization·Paged KV(SM90)
+  summary: 'FlashAttention-3(Dao-AILab, 2024)는 NVIDIA Hopper(SM90) Tensor Core·TMA(Tensor Memory Accelerator)를 활용한 I/O-aware attention 최적화다. FlashAttention-2 H100 35% utilization → FA-3 FP16 740 TFLOPs/s(75%), FP8 ~1.2 PFLOPs/s. warp-specialization으로 matmul+softmax interleave, block quantization+incoherent processing으로 FP8 numerical error 2.6×↓. 2026-03 SM90 paged KV attention merge — page_size==block_size TMA path(fast) vs cp.async(general). vLLM PagedAttention(KV storage)과 역할 분리 — FA-3=attention computation kernel, PagedAttention=KV memory layout. SGLang·vLLM backend로 production 통합.'
+  points:
+  - Hopper TMA+WGMMA — computation/communication overlap, FP8 2× throughput
+  - SM90 paged KV — TMA vs cp.async auto-select, vLLM 통합
+  - PagedAttention과 역할 분리 — compute kernel vs KV memory management
+  source: https://arxiv.org/html/2407.08608v2
+- category: ai
+  title: Amazon Bedrock AgentCore — Runtime·Gateway·Memory·Identity managed agent infra
+  summary: 'Amazon Bedrock AgentCore(AWS, 2026 GA)는 framework-agnostic managed agent infrastructure platform이다. AgentCore Runtime — Firecracker microVM per session(2 vCPU·8GB fixed), 8h max·100MB payload·SSE streaming, CrewAI/LangGraph/LlamaIndex container deploy. Gateway — API·Lambda→MCP-compatible tools zero-code, 1000 gateway·100 target/gateway. Memory — short-term(session) + long-term(cross-session insight), RetrieveMemoryRecords API. Identity(OAuth/IAM)·Observability(OTel)·Code Interpreter·Browser Use. Azure AI Foundry(MAF·Entra·M365)와 3대 cloud agent platform 축. Runtime vs Lambda — 8h stateful·100MB vs 15min·6MB.'
+  points:
+  - Runtime — microVM isolation·8h session·LangGraph/CrewAI deploy
+  - Gateway+Memory — MCP tools zero-code·cross-session persistence
+  - Azure Foundry와 역할 분리 — AWS Entra·Bedrock model 생태계
+  source: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agents-tools-runtime.html
+- category: ai
+  title: LLaMA-Factory — 100+ LLM/VLM zero-code fine-tuning, LlamaBoard Web UI(ACL2024·~72k★)
+  summary: 'LLaMA-Factory(hiyouga, Apache-2.0, ACL2024·~72k★)는 100+ LLM·VLM을 코드 없이 fine-tuning하는 unified framework다. LlamaBoard(Gradio Web UI)+CLI — SFT·DPO·KTO·ORPO·PPO·RM·pre-training. LoRA·QLoRA(2~8bit AQLM/AWQ/GPTQ)·DoRA·PiSSA·GaLore·OFT. LLaMA·Qwen3·DeepSeek·Gemma·Mistral·Phi·LLaVA 등. Axolotl(YAML orchestrator·multi-GPU enterprise)과 역할 분리 — LLaMA-Factory=zero-code breadth·Web UI. Unsloth(GPU kernel speedup)과 역할 분리 — LLaMA-Factory=method+model coverage, Unsloth=training speed. llamafactory-cli webui 한 줄 시작.'
+  points:
+  - LlamaBoard Web UI — SFT/DPO/KTO/RLHF zero-code, 100+ model
+  - LoRA·QLoRA·DoRA·GaLore — 2~8bit quantization stack
+  - Axolotl/Unsloth와 역할 분리 — zero-code UI vs YAML orchestrator vs kernel speed
+  source: https://github.com/hiyouga/LLaMA-Factory
+- category: ai
+  title: Ring Attention — blockwise KV P2P ring, device-count× context scaling
+  summary: 'Ring Attention(UC Berkeley, 2023)는 long sequence를 여러 GPU에 blockwise 분산해 near-infinite context를 달성하는 sequence parallelism 기법이다. 각 device가 sequence chunk의 KV block만 hold → ring topology P2P로 KV block circulate하면서 blockwise attention compute — communication+computation overlap. device N개 → context N× single-GPU limit, 100M+ token training without attention approximation. 2026 inference — pass-KV/pass-Q variant(Llama3 405B 1M ctx 77s/128 H100), TokenRing(bidirectional P2P). DeepSpeed-Ulysses(all-to-all, head-parallel)와 complementary — Ring=sequence dim, Ulysses=attention head dim. FlashAttention-3(blockwise compute) 위에 Ring(spatial distribution) 적층.'
+  points:
+  - Blockwise KV ring — P2P overlap, context ∝ GPU count
+  - pass-KV/pass-Q — inference latency optimization, 1M ctx 77s(405B)
+  - Ulysses·FlashAttention-3와 역할 분리 — head-parallel vs sequence-parallel vs kernel
+  source: https://arxiv.org/html/2310.01889v1
+- category: ai
+  title: Knowledge Distillation for LLM — teacher→student compression, task-specific vs general
+  summary: 'LLM Knowledge Distillation은 large teacher model의 output distribution·reasoning trace·intermediate representation을 small student에 전달해 capability를 유지하면서 inference cost를 줄이는 기법이다. Response distillation — teacher generated answer를 SFT data로. Logit/token-level distillation — soft label(KL divergence)로 dark knowledge transfer. Reasoning distillation — DeepSeek-R1/Qwen3 등 CoT trace를 student SFT. Task-specific distillation(분류·NER) vs general capability distillation(범용 chat). MergeKit(zero-training merge)과 역할 분리 — distillation=training required. Unsloth/LLaMA-Factory(fine-tuning infra) 위에서 student SFT 실행. Eval — student/teacher gap on hold-out + latency/cost trade-off curve.'
+  points:
+  - Response·logit·CoT distillation — SFT data vs soft label vs reasoning trace
+  - Task-specific vs general — narrow domain vs broad capability retention
+  - MergeKit과 역할 분리 — training-based compression vs checkpoint merge
+  source: https://arxiv.org/abs/2305.0239
