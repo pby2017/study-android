@@ -2270,3 +2270,18 @@ Refined:
 
 누적: 685카드 (678→675 병합→685 신규)
 주제: Batch API(OpenAI·Anthropic), LakeFS agent data, Celery/KEDA LLM queue, Runloop/Daytona sandbox, LLM load testing, Delta catalog-managed, pipeline orchestration comparison
+
+## 2026-06-25 04:08 KST — Batch 36 (신규 2카드 + 기존 1카드 정제)
+
+### 신규 2카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Mobile MCP — Android/iOS 기기를 에이전트 도구로 여는 MCP 서버(5.3k★) | github.com/mobile-next/mobile-mcp |
+| 2 | mobile-use — 자연어로 실제 Android 앱을 조작하는 오픈소스 모바일 에이전트(2.6k★) | github.com/minitap-ai/mobile-use |
+
+### 정제 1카드
+
+| 제목 | 근거 |
+|------|------|
+| GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜 | README와 GitHub API를 재확인해 4-entity 프로토콜, heartbeat loop, git-history audit log, Farol Labs 4-agent/50+ tasks 사례, 낮은 star signal을 더 정확히 반영 |

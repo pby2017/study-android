@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Goose Subrecipes — YAML 레시피를 격리 세션 도구로 쪼개기(Apache-2.0·50k★)`; next oldest reviewed candidate is `GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜`.
+Current position: continue after `GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜`; next oldest reviewed candidate is `Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트`.
 
-Last update: 2026-06-25 03:03 KST
+Last update: 2026-06-25 04:08 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -37,6 +37,7 @@ Reviewed:
 - `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기`
 - `AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)`
 - `서브레시피 파이프라인 — 복잡한 작업을 'YAML 레시피'로 쪼개 단계·병렬로 돌리기`
+- `GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -66,6 +67,7 @@ Refined:
 - `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기` — re-checked current Anthropic web and quickstart docs, then clarified cloud-session lifecycle, same-session review loop, fit versus local/Remote Control, and GitHub permission caveat.
 - `AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)` — re-checked README plus GitHub API metrics, refreshed the title star signal, clarified 98-skill/23-category scope, autoresearch lifecycle routing, npx installer, marketplace install, MIT license, and live popularity signal.
 - `Goose Subrecipes — YAML 레시피를 격리 세션 도구로 쪼개기(Apache-2.0·50k★)` — re-checked current subrecipes docs plus GitHub API metrics, refreshed the title/source-supported popularity signal, clarified `sub_recipes` registration, isolated session behavior, parameter precedence, experimental status, and independent-test guidance.
+- `GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜` — re-checked current README plus GitHub API metrics, clarified the `.gnap/` version + four-entity protocol, heartbeat loop, git-history audit log, Farol Labs production-use claim, and added a caution that its live star signal is small.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -73,7 +75,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
