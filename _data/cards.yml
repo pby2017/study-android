@@ -1142,33 +1142,33 @@ cards:
   source: https://arxiv.org/abs/2602.11988
 - category: ai
   title: Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰
-  summary: 'Dreams는 Anthropic Managed Agents의 리서치 프리뷰 기능으로, 에이전트가 일하며 쌓은 메모리 스토어를 세션 밖에서 한 번에 정리한다. 에이전트는 평소 메모리에 점진적·국소적으로 기록하기 때문에 세션이 쌓일수록 중복·모순·낡은 항목이 누적되는데, 한 번의 ''dream''이 기존 메모리 스토어와 과거 세션 기록(1~100개)을 함께 읽어 중복은 병합하고 낡거나 어긋난 값은 최신으로 바꾸고 새 인사이트는 끌어올린 ''새 메모리 스토어''를 만들어 낸다. 핵심은 입력 스토어를 절대 건드리지 않는다는 점 — 결과를 검토하고 마음에 안 들면 버리면 된다. 모델을 재학습하는 게 아니라 비동기 잡으로 수 분~수십 분 돌아가며, API 토큰 표준 요율로 과금된다.
+  summary: 'Dreams는 Anthropic Managed Agents의 리서치 프리뷰 기능으로, 에이전트가 세션마다 조금씩 쌓은 memory store를 비동기 정리 작업으로 다시 만든다. 입력은 기존 memory store와 과거 세션 기록 1~100개이고, 출력은 별도의 새 memory store다. 파이프라인은 중복 메모리를 병합하고, 낡거나 모순된 항목은 최신 세션 근거로 바꾸며, 흩어진 패턴을 새 인사이트로 끌어올린다. 중요한 운영 경계는 입력 store가 불변이라는 점이다. 완료된 출력 store를 future session에 붙여 쓰거나, 품질이 마음에 들지 않으면 삭제·아카이브하면 된다. instructions는 "코딩 스타일 선호에 집중" 같은 합성 방향을 주는 용도이지, 특정 줄을 고치는 편집기가 아니다.
 
     '
   points:
-  - 입력=기존 메모리 스토어 + 세션 1~100개 → 출력=재정리된 '새' 스토어(입력은 불변, 버려도 됨)
-  - '비동기 잡: pending→running→completed/failed/canceled, 수 분~수십 분 / instructions로 정리 방향 조정'
-  - 리서치 프리뷰(별도 베타 헤더 dreaming-2026-04-21), 모델 재학습 아님 · 표준 토큰 요율 과금
+  - 입력=기존 memory store + 세션 1~100개, 출력=별도 새 store(입력은 절대 수정 안 됨)
+  - '상태: pending→running→completed/failed/canceled / 수 분~수십 분 / 실패·취소 시 partial output inspect 가능'
+  - instructions는 합성 방향 조정용 / 리서치 프리뷰(beta header dreaming-2026-04-21) / 표준 API 토큰 요율 과금
   source: https://platform.claude.com/docs/en/managed-agents/dreams
 - category: ai
   title: OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)
-  summary: 'OpenClaw는 Peter Steinberger와 커뮤니티가 만든 오픈소스 개인 AI 어시스턴트로, "자기 기기에서 돌리는 개인 AI 어시스턴트"를 표방한다. WhatsApp·Telegram·Slack·Discord· Signal·iMessage 등 이미 쓰는 메신저 채널을 격리된 에이전트로 라우팅한다. 핵심은 Gateway라는 로컬-퍼스트 컨트롤 플레인(launchd/systemd 데몬)이 세션·채널·도구·이벤트를 한 곳에서 관리한다는 점이다. 모델 비종속이고, 메인 세션에선 도구가 호스트에서 직접 돌아 에이전트가 bash·read·write·edit 같은 권한을 갖는다(샌드박스 설정 가능). MIT 라이선스이며 GitHub 별은 37만 개 이상(README 기준 주장)으로 2026년 초 폭발적으로 늘었다.
+  summary: 'OpenClaw는 "내 기기에서 돌리는 개인 AI 어시스턴트"를 지향하는 오픈소스 프로젝트다. WhatsApp·Telegram·Slack·Discord·Google Chat·Signal·iMessage·Teams·Matrix·LINE·WeChat 같은 이미 쓰는 채널을 한 assistant 표면으로 묶고, Gateway 데몬(launchd/systemd user service)이 채널·워크스페이스·스킬 설정의 컨트롤 플레인 역할을 한다. 설치 흐름은 `openclaw onboard --install-daemon`으로 gateway, workspace, channel, skill을 단계별로 잡는 방식이다. README는 ChatGPT/Codex OAuth 구독과 여러 provider/model 지원을 언급한다. 2026-06-24 GitHub API 기준 380,229★·79,633 forks로 관심 신호는 강하지만, 실무 교훈은 별 수보다 "개인 비서 에이전트는 모델보다 채널 라우팅·데몬 운영·권한 경계가 제품"이라는 점이다.
 
     '
   points:
-  - 메신저(WhatsApp·Telegram·Slack·Signal·iMessage 등) → 격리된 에이전트로 라우팅
-  - Gateway = 로컬-퍼스트 컨트롤 플레인(데몬) / 모델 비종속 / MIT 라이선스
-  - 메인 세션은 호스트에서 bash·read·write·edit 직접 실행(샌드박스 설정 가능)·별 37만+ 주장
+  - 'WhatsApp·Telegram·Slack·Discord·Signal·iMessage·Teams·Matrix·LINE·WeChat 등 다채널 assistant'
+  - 'Gateway daemon + `openclaw onboard`가 workspace·channel·skill 설정을 묶는 운영 표면'
+  - 'GitHub API 확인: 380,229★·79,633 forks(2026-06-24) / README는 MIT badge와 ChatGPT·Codex OAuth 언급'
   source: https://github.com/openclaw/openclaw
 - category: ai
   title: ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)
-  summary: 'ccusage(ryoppippi)는 "코딩 에이전트 CLI의 토큰 사용량·비용을 로컬 데이터에서 분석"하는 CLI다. API 호출 없이 ~/.claude 같은 로컬 사용 기록(JSONL)을 읽어 일·주·월·세션 단위 리포트와 USD 비용을 보여준다. `bunx ccusage`로 바로 실행되고, `blocks`는 Claude Code의 5시간 과금 창을 추적하며 활성 블록을 모니터링한다. `--offline`으로 네트워크 없이 번들된 LiteLLM 가격표를 쓰고, `--json`·`--breakdown`(모델별)·`--since/--until` 필터, 그리고 상태줄(statusline, 베타) 표시도 지원한다. MIT 라이선스, README 기준 별 16.2k개. Claude Code뿐 아니라 Codex·OpenCode·Amp·Goose·Gemini CLI·Copilot CLI 등 다수 에이전트를 통합 리포트로 묶는다.
+  summary: 'ccusage는 코딩 에이전트 CLI의 로컬 사용 기록을 읽어 토큰·비용을 일/주/월/세션 단위로 집계하는 CLI다. `npx ccusage@latest`나 `bunx ccusage`로 바로 실행하고, 기본 리포트는 감지된 모든 source를 날짜별로 합친다. Claude Code 전용 `blocks`는 5시간 과금 창과 active block을 추적하고, `statusline`은 상태줄 표시용이다. 더 중요한 변화는 통합 범위다. README 기준 Claude Code, Codex, OpenCode, Amp, Droid, Codebuff, Hermes, pi-agent, Goose, OpenClaw, Kilo, Kimi, Qwen, GitHub Copilot CLI, Gemini CLI를 한 CLI에서 보고, `--json`, `--breakdown`, `--since/--until`, `--offline`, custom pricing override까지 제공한다. 2026-06-24 GitHub API 기준 16,517★다.
 
     '
   points:
-  - 로컬 JSONL만 읽어 일·주·월·세션 비용 집계 — API 호출 없이 동작, `--offline` 지원
-  - '`blocks`로 Claude Code 5시간 과금 창 추적 / `--breakdown`은 모델별 분해'
-  - Claude Code·Codex·OpenCode·Amp·Goose·Gemini/Copilot CLI 등 통합 / MIT·16.2k★(주장)
+  - '`daily`·`weekly`·`monthly`·`session`으로 감지된 source 전체를 한 리포트에 합산'
+  - '`blocks`=Claude Code 5시간 창, `statusline`=상태줄, `--breakdown`=모델별 비용 분해'
+  - Claude Code·Codex·OpenCode·Amp·Droid·Goose·OpenClaw·Copilot CLI·Gemini CLI 등 지원 / 16,517★ 확인
   source: https://github.com/ryoppippi/ccusage
 - category: ai
   title: Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기

@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다`; next oldest reviewed candidate is `Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰`.
+Current position: continue after `ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)`; next oldest reviewed candidate is `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기`.
 
-Last update: 2026-06-24 17:52 KST
+Last update: 2026-06-24 19:58 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -31,6 +31,9 @@ Reviewed:
 - `Cursor CLI 헤드리스 모드 — agent -p로 CI·스크립트에서 코드 작업 자동화`
 - `Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기`
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다`
+- `Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰`
+- `OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)`
+- `ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -54,6 +57,9 @@ Refined:
 - `Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크` — refreshed live GitHub metrics, README-supported model routing/Agent/Workflow/HITL/RAG/MCP/evals surface, and clarified the core/enterprise license split while preserving the original TypeScript agent-framework lesson.
 - `Cursor CLI 헤드리스 모드 — agent -p로 CI·스크립트에서 코드 작업 자동화` — re-checked the current Cursor headless CLI source and clarified the automation lesson around non-interactive execution, output formats, and explicit edit-permission risk.
 - `Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기` — re-checked the public GitHub/Gartner-summary source and made the wording more careful: the educational point is category expansion toward SDLC agent workflows, not vendor ranking as a product recommendation.
+- `Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰` — re-checked Anthropic Managed Agents docs and clarified input/output store immutability, future-session attachment, partial output handling, and the limits of `instructions`.
+- `OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)` — re-checked the current README plus GitHub API metrics and clarified channel routing, Gateway/onboard operation, provider/OAuth wording, and live popularity signals while removing unsupported host-tool/sandbox phrasing.
+- `ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)` — re-checked the current README plus GitHub API metrics and clarified unified source reports, `blocks`/`statusline`, source-focused commands, JSON/breakdown/offline controls, and live star count.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -61,7 +67,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
