@@ -2271,17 +2271,64 @@ Refined:
 누적: 685카드 (678→675 병합→685 신규)
 주제: Batch API(OpenAI·Anthropic), LakeFS agent data, Celery/KEDA LLM queue, Runloop/Daytona sandbox, LLM load testing, Delta catalog-managed, pipeline orchestration comparison
 
-## 2026-06-25 04:08 KST — Batch 36 (신규 2카드 + 기존 1카드 정제)
+## 2026-06-25 12:00 KST — Batch 36 (아이디어 검증 + 병합 2카드 + 신규 11카드)
 
-### 신규 2카드
+### 아이디어 검증 토론
+
+**후보 20개 → 통과 11카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Helicone | per-user cost attribution·semantic cache·rate limit — Langfuse(OTel trace) ·LLM API FinOps(generic) ·Portkey(gateway)와 proxy-layer FinOps 분리 |
+| Microsoft Presidio | PII sandwich guardrail — NeMo Guardrails(대화 레일) ·Guardrails AI(validator)와 data privacy/redaction 레이어 분리 |
+| LaunchDarkly AgentControl | AI runtime control·Guarded Rollout·Offline/Online eval — GrowthBook(DWH A/B) ·Firebase Remote Config(모바일)와 agent governance 분리 |
+| Statsig AI Evals | Prompt Live/Candidate shadow eval — Braintrust(CI eval gate) ·GrowthBook(feature flag)와 prod shadow+experiment 통합 분리 |
+| LLM Shadow→Canary Rollout | offline→shadow 100%→canary gate→auto rollback funnel — AI deployment patterns(topology) ·Graceful Degradation(service level)과 model promotion pipeline 분리 |
+| OpenAI Moderation API | omni-moderation-latest text+image·inline Responses — NeMo/Guardrails AI와 provider-native toxicity classifier 분리 |
+| Perspective API Sunset | 2026-12-31 hard deadline·migration urgency — OpenAI Moderation 카드와 대체 경로 complement |
+| GDPR + EU AI Act | DPIA+FRIA·prompt-layer PII·audit log — Agent HITL Approval(runtime gate) ·NeMo Guardrails(safety rail)와 regulatory architecture 분리 |
+| Datadog Agent Observability | LangGraph·CrewAI span trace+APM correlation — Langfuse(OTel OSS) ·AgentOps(agent debug)와 enterprise APM-integrated layer 분리 |
+| Mobile MCP | Android/iOS 기기 MCP 도구 표면 — Playwright MCP(브라우저) ·agent-device(테스트 선택)와 mobile tool surface 분리 |
+| mobile-use | 자연어→Android UI agent runtime — Mobile MCP(MCP server) ·Mobilerun(E2E)와 agent execution pattern 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| OpenLLMetry / OTel GenAI deep dive | OpenLLMetry ·OpenTelemetry GenAI Semantic Conventions 카드 존재 |
+| MLflow / W&B experiment tracking | MLflow ·W&B Weave ·W&B Model Registry 카드 존재 |
+| Ell / prompt versioning | Ell ·Braintrust ·Langfuse prompt management 카드 커버 |
+| Guardrails AI / NeMo Guardrails | 기존 카드 존재, Presidio(PII)와 역할 분리로 1장만 추가 |
+| BurnLens / Tokonomics / LLMeter | Helicone 대안·niche, 독립 카드 가치 부족 |
+| Azure AI Content Safety 단독 | OpenAI Moderation ·Perspective sunset 카드에 migration path 포함 |
+| Hive / Tisane / Lasso moderation | 3rd-party moderation API, OpenAI Moderation+Perspective로 충분 |
+| Llama Guard / safety classifiers | NeMo Guardrails 카드에 Llama Guard 3 mention |
+| AI blue-green / model rollback 단독 | Shadow→Canary Rollout 카드에 auto rollback gate 포함 |
+| LaunchDarkly vs Statsig generic | AgentControl ·Statsig AI Evals 카드로 implementation 분리 |
+| GDPR generic / EU AI Act generic | GDPR+EU AI Act 통합 카드로 developer actionable control 포함 |
+
+### 병합 2카드
+
+| 병합 | Before | After | 근거 |
+|------|--------|-------|------|
+| Claude Artifacts + Claude Projects | 2 | 1 | 동일 source(anthropic.com/news/projects), Artifacts 카드가 Projects·Skills 역할 분리 이미 설명 |
+| Tensor SDK Beta + LiteRT → LiteRT main | 2 | 1 | Tensor SDK는 LiteRT 배포 파이프라인 확장, CompiledModel·Arm SME2와 단일 온디바이스 ML execution 카드로 통합 |
+
+### 신규 11카드
 
 | # | 제목 | 출처 |
 |---|------|------|
 | 1 | Mobile MCP — Android/iOS 기기를 에이전트 도구로 여는 MCP 서버(5.3k★) | github.com/mobile-next/mobile-mcp |
 | 2 | mobile-use — 자연어로 실제 Android 앱을 조작하는 오픈소스 모바일 에이전트(2.6k★) | github.com/minitap-ai/mobile-use |
+| 3 | Helicone — LLM 프록시 per-user 비용·캐시·rate limit | docs.helicone.ai/getting-started/quick-start |
+| 4 | Microsoft Presidio — PII sandwich guardrail | microsoft.github.io/presidio |
+| 5 | LaunchDarkly AgentControl — AI runtime control·Guarded Rollout | launchdarkly.com/docs/home/ai-configs |
+| 6 | Statsig AI Evals — shadow eval·Prompt versioning | docs.statsig.com/ai-evals/online-evals |
+| 7 | LLM Shadow→Canary Rollout — shadow 100%→canary gate→auto rollback | futureagi.com/blog/llm-eval-shadow-traffic-canary-2026 |
+| 8 | OpenAI Moderation API — omni-moderation-latest | developers.openai.com/api/docs/guides/moderation |
+| 9 | Perspective API Sunset — 2026-12-31 종료 | perspectiveapi.com |
+| 10 | GDPR + EU AI Act for AI Apps — DPIA+FRIA·prompt-layer PII | strac.io/blog/gdpr-for-ai |
+| 11 | Datadog Agent Observability — LangGraph·CrewAI span trace | docs.datadoghq.com/llm_observability/monitoring/agent_monitoring |
 
-### 정제 1카드
-
-| 제목 | 근거 |
-|------|------|
-| GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜 | README와 GitHub API를 재확인해 4-entity 프로토콜, heartbeat loop, git-history audit log, Farol Labs 4-agent/50+ tasks 사례, 낮은 star signal을 더 정확히 반영 |
+누적: 694카드 (687→685 병합→694 신규)
+주제: LLM FinOps(Helicone), PII guardrail(Presidio), AI runtime control(LaunchDarkly·Statsig), safe model rollout(shadow→canary), content moderation(OpenAI·Perspective), GDPR+EU AI Act, Datadog agent observability, mobile agent(Mobile MCP·mobile-use)

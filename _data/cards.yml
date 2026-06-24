@@ -3624,16 +3624,6 @@ cards:
   - 에이전트 산출물도 요청한 사람의 ownership·review 흐름 안에 보여야 함
   source: https://github.blog/changelog/2026-06-18-copilot-authored-pull-requests-now-included-in-author-searches/
 - category: ai
-  title: Tensor SDK Beta + LiteRT — Pixel NPU 배포를 하나의 경로로 묶기
-  summary: 'Google은 2026년 5월 Tensor ML SDK를 Beta로 올리며 Pixel 10 계열에서 Tensor TPU를 쓰는 온디바이스 AI 개발 경로를 LiteRT와 통합했다. 개발자는 PyTorch 또는 TFLite 모델을 LiteRT Torch로 변환·컴파일하고, Play Feature Delivery와 AI Packs로 런타임·컴파일러·모델 파일을 배포한 뒤 LiteRT Runtime에서 TPU를 우선 사용하고 CPU/GPU fallback을 지정할 수 있다. Android AI 개발에서 배울 점은 "NPU를 직접 호출"이 아니라, 변환·배포·fallback까지 같은 파이프라인에 넣어 기기별 가속 실패를 제품 안정성 문제로 관리하는 것이다.
-
-    '
-  points:
-  - Tensor ML SDK Beta가 LiteRT와 통합되어 Pixel 10 Tensor TPU 경로 제공
-  - 변환·컴파일·Play Feature Delivery·AI Packs·LiteRT Runtime을 하나로 연결
-  - TPU 우선 실행 + CPU/GPU fallback을 앱 배포 전략에 포함
-  source: https://developers.googleblog.com/google-tensor-sdk-beta-with-litert/
-- category: ai
   title: LiteRT + Arm SME2 — 모바일 CPU도 GenAI 가속 경로가 된다
   summary: 'Google AI Edge와 Arm은 LiteRT가 XNNPACK·KleidiAI 통합을 통해 Arm SME2를 런타임에서 자동 활용하는 온디바이스 AI 최적화 흐름을 설명했다. Stable Audio Open Small을 PyTorch에서 LiteRT로 변환하고, Model Explorer와 AI Edge Quantizer로 quantization-safe layer를 확인한 뒤 INT8/FP16 최적화를 적용한다. 결과로 DiT submodel은 약 4배 작아지고, Android SME2 기기에서는 14초 작업이 6.6초로 줄었다. 핵심은 "전용 NPU가 없으면 끝"이 아니라, CPU 경로도 측정·양자화·delegate 자동 선택으로 제품급 fallback이 될 수 있다는 점이다.
 
@@ -4580,15 +4570,13 @@ cards:
   - 'Apache-2.0: 상업 사용 가능, ComfyUI 워크플로우'
   source: https://jstechlog.com/en/posts/video-ai-opensource-guide/
 - category: ai
-  title: LiteRT(구 TFLite) — Google 온디바이스 ML 표준, CompiledModel API로 NPU 100x·GPU 10x 가속
-  summary: 'LiteRT는 Google이 TensorFlow Lite를 리브랜딩한 온디바이스 ML 프레임워크다. CompiledModel API가 기존 Interpreter 대체 권장: 자동 HW 선택·비동기 실행으로 NPU에서 CPU 대비 100x, GPU 대비 10x 가속. Qualcomm·MediaTek NPU 프로덕션 지원. Android·iOS·Web·IoT·Desktop 크로스플랫폼. MediaPipe Tasks(LLM 추론·비전, 고수준 래퍼)와 조합. PyTorch·JAX·TensorFlow 모델 변환 지원. ONNX Runtime Mobile(크로스플랫폼·PyTorch 우선)은 생태계 다를 때 대안.
-
-    '
+  title: LiteRT(구 TFLite) — Google 온디바이스 ML 표준, CompiledModel·Tensor SDK·Arm SME2
+  summary: 'LiteRT는 Google이 TensorFlow Lite를 리브랜딩한 온디바이스 ML 프레임워크다. CompiledModel API가 Interpreter 대체: 자동 HW 선택·비동기 실행으로 NPU CPU 대비 100x·GPU 10x 가속. 2026년 Tensor ML SDK Beta가 LiteRT와 통합 — Pixel 10 Tensor TPU 경로, PyTorch/TFLite→LiteRT Torch 변환, Play Feature Delivery·AI Packs 배포, TPU 우선+CPU/GPU fallback. Arm SME2는 XNNPACK·KleidiAI로 자동 활용, INT8/FP16 양자화로 Android SME2 기기 14초→6.6초 사례. Qualcomm·MediaTek NPU 프로덕션, MediaPipe Tasks(LLM·비전) 조합.'
   points:
-  - 'CompiledModel API: NPU 100x, GPU 10x 자동 가속'
-  - '프로덕션 NPU: Qualcomm·MediaTek 지원'
-  - 'MediaPipe 조합: LLM·비전 고수준 래퍼'
-  source: https://www.forasoft.com/blog/article/neural-networks-on-android-369
+  - 'CompiledModel API: NPU 100x, GPU 10x, Qualcomm·MediaTek NPU'
+  - 'Tensor SDK Beta: Pixel TPU + LiteRT Torch + Play Feature Delivery'
+  - 'Arm SME2: XNNPACK·KleidiAI 자동 delegate, CPU fallback도 제품급'
+  source: https://developers.googleblog.com/google-tensor-sdk-beta-with-litert/
 - category: ai
   title: Open WebUI — 셀프호스팅 ChatGPT 대안, Ollama+OpenAI 통합·RAG·RBAC·142k★·Docker 원커맨드
   summary: 'Open WebUI는 142k+ GitHub 스타의 셀프호스팅 AI 채팅 플랫폼이다. Ollama(로컬 모델)와 OpenAI/ Anthropic 호환 API를 단일 인터페이스에서 통합. 내장 RAG(문서 기반 지식 베이스), 음성·비전·검색 지원. RBAC·SSO·LDAP으로 엔터프라이즈 팀 관리(ChatGPT Team $30+/월 기능을 무료 제공). Docker 원커맨드 배포(pip install open-webui도 가능). Python 파이프라인으로 확장. 주의: 커스텀 라이선스 (MIT 아님), 엄격한 OSS 필요 시 LibreChat 대안.
@@ -4916,20 +4904,12 @@ cards:
   - '운영 교훈: 장기 에이전트 실행은 모델명보다 예산·위임·웹 접근 정책을 먼저 고정'
   source: https://developers.openai.com/codex/changelog
 - category: ai
-  title: Claude Artifacts — 대화 옆에서 코드·앱·대시보드를 미리보기·편집·공유하는 인터랙티브 출력 패널
-  summary: 'Claude Artifacts는 HTML·React·SVG·Mermaid·Markdown 등 독립 콘텐츠를 대화 옆 패널에 렌더링하는 출력 형식이다. 2024년 GA 이후 2026년에는 Live Artifacts(MCP로 Google Sheets·Linear 등 실시간 데이터 연동), 세션 간 20MB persistent storage(Pro+), 공개 링크 공유가 추가됐다. 백엔드 없이 브라우저 샌드박스에서 동작하며 CDN 라이브러리(React·Tailwind·Recharts) 사용 가능. Projects·Skills와 구분: Artifacts는 ''작업 결과물'', Skills는 ''반복 절차'', Projects는 ''지속 컨텍스트 방''.'
+  title: Claude Projects + Artifacts — 지속 워크스페이스와 인터랙티브 출력 패널
+  summary: 'Claude Projects는 관련 대화·커스텀 지침·참조 문서를 한 공간에 모아 세션 간 컨텍스트를 유지하는 워크스페이스다. Pro/Team 무제한, Free 5개. 200K 컨텍스트(Enterprise 500K), RAG 방식으로 관련 섹션만 주입, Project-scoped memory로 채팅 간 학습 유지. Claude Artifacts는 HTML·React·SVG·Mermaid 등 독립 콘텐츠를 대화 옆 패널에 렌더링 — 2026년 Live Artifacts(MCP로 Google Sheets·Linear 실시간 연동), Pro+ 20MB persistent storage, 공개 링크 공유. 역할 분리: Projects=지속 컨텍스트 방, Artifacts=작업 결과물, Skills=반복 절차.'
   points:
-  - 'Live Artifacts: MCP 연결로 재오픈 시 데이터 자동 갱신(2026-04)'
-  - 'Persistent storage: Pro+에서 아티팩트당 20MB, 상태ful 앱 가능'
-  - '공개 링크: Claude 계정 없이도 열람·리믹스 가능'
-  source: https://www.anthropic.com/news/projects
-- category: ai
-  title: Claude Projects — 지침·문서·채팅을 묶는 지속 워크스페이스, 200K(Enterprise 500K) 컨텍스트
-  summary: Claude Projects는 관련 대화·커스텀 지침·참조 문서를 한 공간에 모아 세션 간 컨텍스트를 유지하는 워크스페이스다. Pro/Team은 무제한, Free는 5개. 프로젝트 콘텐츠는 캐시되어 메시지 한도에 포함되지 않으며, RAG 방식으로 관련 섹션만 활성 컨텍스트에 주입한다. 2025년 후반 Project-scoped memory 도입으로 채팅 간 상태 유지. Team/Enterprise에서는 팀원과 최고 대화 공유 가능. Cowork Projects(데스크톱 로컬 폴더·자동화)와는 별개 기능.
-  points:
-  - 200K 컨텍스트(Enterprise 500K), 채팅당 파일 20개·30MB
-  - 'Project-scoped memory: 유료 플랜에서 채팅 간 학습 유지'
-  - 'Skills·Artifacts와 역할 분리: Projects=방, Skills=플레이북, Artifacts=결과물'
+  - 'Projects: 200K ctx, RAG 주입, Project-scoped memory, Team 공유'
+  - 'Artifacts: Live MCP 연동, 20MB persistent storage, 공개 링크'
+  - Skills·Projects·Artifacts 3축 역할 분리 — 방·결과물·플레이북
   source: https://www.anthropic.com/news/projects
 - category: ai
   title: Llama 4 — Scout(10M ctx)·Maverick(128E MoE)·Behemoth(2T teacher), 네이티브 멀티모달 오픈웨이트
@@ -6478,7 +6458,7 @@ cards:
   source: https://temporal.io/blog/from-agent-zoo-to-agent-orchestra-temporal-agentic-control-plane
 - category: ai
   title: Mobile MCP — Android/iOS 기기를 에이전트 도구로 여는 MCP 서버(5.3k★)
-  summary: 'mobile-next/mobile-mcp는 Android 에뮬레이터·실기기와 iOS 시뮬레이터·실기기를 MCP 도구로 노출하는 Apache-2.0 서버다. 에이전트는 모바일 화면을 비전 모델에만 맡기지 않고 접근성 트리, 화면 좌표, 스크린샷 fallback을 함께 써서 앱 실행·종료·설치·삭제, 화면 요소 열람, 탭·롱프레스·스와이프·텍스트 입력 같은 조작을 수행한다. Claude Code, Codex, Gemini CLI, Cursor, Copilot, Goose 등에는 `npx @mobilenext/mobile-mcp@latest` 형태로 붙인다. 실무 포인트는 모바일 QA를 "테스트 코드 생성"만으로 보지 말고, 실제 기기를 LLM 도구 표면으로 열어 관찰→행동→증거 수집을 반복하게 하는 것이다. 2026-06-25 GitHub API 기준 5,269★, Apache-2.0, 최신 push는 2026-06-15다.'
+  summary: mobile-next/mobile-mcp는 Android 에뮬레이터·실기기와 iOS 시뮬레이터·실기기를 MCP 도구로 노출하는 Apache-2.0 서버다. 에이전트는 모바일 화면을 비전 모델에만 맡기지 않고 접근성 트리, 화면 좌표, 스크린샷 fallback을 함께 써서 앱 실행·종료·설치·삭제, 화면 요소 열람, 탭·롱프레스·스와이프·텍스트 입력 같은 조작을 수행한다. Claude Code, Codex, Gemini CLI, Cursor, Copilot, Goose 등에는 `npx @mobilenext/mobile-mcp@latest` 형태로 붙인다. 실무 포인트는 모바일 QA를 "테스트 코드 생성"만으로 보지 말고, 실제 기기를 LLM 도구 표면으로 열어 관찰→행동→증거 수집을 반복하게 하는 것이다. 2026-06-25 GitHub API 기준 5,269★, Apache-2.0, 최신 push는 2026-06-15다.
   points:
   - '도구 표면: list devices/apps, launch/install/uninstall, screenshot, element list, tap/swipe/type'
   - 'Android 경로: ADB + UI Automator, iOS 경로: native accessibility + WebDriverAgent'
@@ -6486,9 +6466,81 @@ cards:
   source: https://github.com/mobile-next/mobile-mcp
 - category: ai
   title: mobile-use — 자연어로 실제 Android 앱을 조작하는 오픈소스 모바일 에이전트(2.6k★)
-  summary: 'minitap-ai/mobile-use는 자연어 명령으로 Android/iOS 앱 UI를 조작하는 Apache-2.0 모바일 에이전트다. README 기준 Android 실기기·에뮬레이터와 iOS 시뮬레이터를 지원하고, UI-aware navigation, 앱 데이터 스크래핑, JSON 같은 구조화 출력, OpenAI·Google·xAI·OpenRouter·MiniMax 등 모델 설정을 제공한다. Android 빠른 실행은 USB 디버깅이 켜진 기기나 에뮬레이터를 Docker 스크립트로 붙이는 방식이다. 기존 agent-device/Mobilerun 카드가 "테스트 검증 도구 선택"에 초점이었다면, 이 카드는 자연어 작업을 실제 모바일 앱 행동으로 바꾸는 agent runtime 패턴을 보여준다. 2026-06-25 GitHub API 기준 2,624★, Apache-2.0, 최신 push는 2026-06-24다.'
+  summary: minitap-ai/mobile-use는 자연어 명령으로 Android/iOS 앱 UI를 조작하는 Apache-2.0 모바일 에이전트다. README 기준 Android 실기기·에뮬레이터와 iOS 시뮬레이터를 지원하고, UI-aware navigation, 앱 데이터 스크래핑, JSON 같은 구조화 출력, OpenAI·Google·xAI·OpenRouter·MiniMax 등 모델 설정을 제공한다. Android 빠른 실행은 USB 디버깅이 켜진 기기나 에뮬레이터를 Docker 스크립트로 붙이는 방식이다. 기존 agent-device/Mobilerun 카드가 "테스트 검증 도구 선택"에 초점이었다면, 이 카드는 자연어 작업을 실제 모바일 앱 행동으로 바꾸는 agent runtime 패턴을 보여준다. 2026-06-25 GitHub API 기준 2,624★, Apache-2.0, 최신 push는 2026-06-24다.
   points:
   - '자연어→모바일 UI 행동: 메시지 전송, 앱 탐색, 데이터 추출 같은 실제 앱 흐름 수행'
   - 'Android quick launch: USB debugging 기기/에뮬레이터 + Docker 스크립트, ADB 연결 필요'
   - '학습 포인트: 모바일 에이전트 품질은 LLM보다 accessibility tree, replay, output schema가 좌우'
   source: https://github.com/minitap-ai/mobile-use
+- category: ai
+  title: Helicone — LLM 프록시로 per-user 비용·캐시·rate limit, Helicone-User-Id 헤더(Apache-2.0)
+  summary: Helicone은 LLM API 앞에 한 줄 baseURL 변경으로 끼우는 관측·비용 프록시다. Helicone-User-Id·Helicone-Session-Id·Helicone-Property-* 헤더로 사용자·세션·티어별 비용 attribution. 300+ 모델 자동 비용 계산, semantic cache(반복 요청 최대 95% 절감), request/token/dollar 기준 rate limit. 2026년 3월 Mintlify 인수 후 maintenance mode — 기존 통합은 유지되나 신규 기능 개발 중단. Langfuse(OTel trace+eval) ·Portkey(gateway routing)와 달리 "프록시 1줄→per-user FinOps"에 특화 — BurnLens·Tokonomics가 hard-cap 대안.
+  points:
+  - Helicone-User-Id 헤더 → per-user cost histogram, session 그룹핑
+  - semantic cache + rate limit(request/token/$), 300+ 모델 pricing DB
+  - 2026 Mintlify 인수→maintenance mode, hard-cap 필요 시 BurnLens 검토
+  source: https://docs.helicone.ai/getting-started/quick-start
+- category: ai
+  title: Microsoft Presidio — PII detect·anonymize·de-anonymize, LLM sandwich guardrail(Apache-2.0)
+  summary: 'Presidio는 Microsoft 오픈소스 PII 탐지·익명화 프레임워크다. Analyzer(NER+regex+checksum+다국어) → Anonymizer(replace/mask/hash/encrypt) → 선택적 Deanonymizer로 LLM sandwich 패턴 구현: 프롬프트 PII 치환→LLM 호출→응답 복원. presidio-analyzer·anonymizer·image-redactor·structured 4모듈. Azure APIM inbound/outbound policy·PII Shield(Microsoft Community)로 엣지 배포. NeMo Guardrails(대화 흐름) ·Guardrails AI(validator)와 달리 "PII가 LLM provider tenancy를 안 넘게" 데이터 프라이버시 레이어.'
+  points:
+  - 'Sandwich: analyze→anonymize→LLM→deanonymize, GDPR/DPDP by construction'
+  - 'Analyzer: spaCy/ONNX/HuggingFace backend, 커스텀 recognizer 확장'
+  - 'APIM·PII Shield: 앱 코드 변경 없이 모든 LLM 호출에 프록시 적용'
+  source: https://microsoft.github.io/presidio/
+- category: ai
+  title: LaunchDarkly AgentControl — AI config·prompt·model을 200ms 런타임 제어, Guarded Rollout
+  summary: 'LaunchDarkly AgentControl(2026)은 기존 feature flag 인프라(50T+/day)를 AI 런타임 제어로 확장한다. AI Config SDK로 prompt·model·parameters·tools를 코드 배포 없이 200ms 이내 갱신. Offline Evals(LLM judge·golden dataset) → Guarded Rollout(점진 traffic split·quality/cost/latency gate·auto rollback) → Online Evals(프로덕션 LLM judge). Adaptive Triggers: provider error rate 임계→모델 전환 자동. GrowthBook(DWH 네이티브 A/B) ·Firebase Remote Config(모바일)와 달리 "에이전트 runtime control plane+eval gate"에 특화.'
+  points:
+  - 'AI Config SDK: prompt/model/tools 런타임, provider 직접 호출(프록시 아님)'
+  - 'Guarded Rollout: traffic split→quality gate→auto rollback, Offline+Online eval'
+  - GrowthBook/Firebase와 역할 분리 — AgentControl=에이전트 governance+eval
+  source: https://launchdarkly.com/docs/home/ai-configs
+- category: ai
+  title: Statsig AI Evals — Prompt versioning·shadow eval·LLM-as-judge, 코드 배포 없이 A/B
+  summary: Statsig AI Evals는 Prompt(=Dynamic Config) + Grader(LLM-as-judge/rule-based) + Online Evals를 통합한다. Prompt Live/Candidate/Draft/Archive 4단계 — Candidate는 사용자에게 노출 안 하고 shadow-run하여 Live와 grade 비교. Node/Python AI SDK로 런타임 prompt fetch, logEvalGrade()로 0-1 score 반환. Critical Grader는 must-pass gate. Braintrust(eval-first CI) ·GrowthBook(feature flag)와 달리 "shadow candidate eval→winner promote" 프로덕션 패턴에 특화.
+  points:
+  - 'Prompt versioning: Live vs Candidate shadow-run, 사용자 impact zero'
+  - 'Grader: rule-based + LLM-as-judge, Critical Grader must-pass gate'
+  - Braintrust(CI eval gate)와 달리 Statsig=prod shadow+experiment 통합
+  source: https://docs.statsig.com/ai-evals/online-evals
+- category: ai
+  title: LLM Shadow→Canary Rollout — offline eval→shadow 100%→canary 2-10%→auto rollback gate
+  summary: '2026 LLM 모델·프롬프트·RAG 업데이트는 코드 배포와 다른 실패 패턴을 가진다 — schema drift·semantic regression·tail input category. 안전 rollout funnel: (1) offline eval on golden set (2) shadow mode — production traffic duplicate inference, 사용자는 incumbent만 수신 (3) canary — sticky hash(user_id)로 2-10% live candidate (4) gate check — schema conformance·p95 latency·quality score vs 7일 baseline, fail→auto rollback 0%. AI deployment patterns(topology) ·Graceful Degradation(service level)과 달리 "model artifact promotion pipeline"에 특화.'
+  points:
+  - 'Shadow: 100% duplicate inference, zero user impact, 24-72h tail failure 수집'
+  - 'Canary: sticky session key, 2%→10%→50% gate, fail→router repoint <60s'
+  - LaunchDarkly Guarded Rollout ·Statsig shadow eval과 연계하는 infra layer
+  source: https://futureagi.com/blog/llm-eval-shadow-traffic-canary-2026/
+- category: ai
+  title: OpenAI Moderation API — omni-moderation-latest, 텍스트+이미지·inline Responses API(무료)
+  summary: 'OpenAI Moderation API는 omni-moderation-latest(GPT-4o 기반)로 텍스트·이미지 harmful content를 분류한다. hate·violence·self-harm·sexual 6+ 카테고리, category_scores 0-1 probability. standalone POST /v1/moderations 또는 Chat Completions/Responses API inline moderation(model: omni-moderation-latest) — input+output 동시 score, request ID로 audit trail 통합. 무료(Free 250 RPM). NeMo Guardrails(대화 레일) ·Guardrails AI(validator hub)와 달리 "provider-native toxicity classifier" — Perspective API(2026-12-31 sunset) 마이그레이션 1순위.'
+  points:
+  - 'omni-moderation-latest: text+image, non-English 정확도 개선, 무료'
+  - 'inline moderation: Responses/Chat Completions 1-call, input+output score'
+  - Perspective sunset(2026-12-31) → OpenAI Moderation 또는 Azure Content Safety
+  source: https://developers.openai.com/api/docs/guides/moderation
+- category: ai
+  title: Perspective API Sunset — 2026-12-31 서비스 종료, toxicity 마이그레이션 필수
+  summary: 'Google Jigsaw Perspective API는 2026년 12월 31일 공식 종료(sunset)된다. 신규 가입·quota 요청은 2026년 2월부터 중단, migration support 없음. TOXICITY·SEVERE_TOXICITY 등 0-1 probability score, Reddit·NYT 등 decade 사용. 한계: 영어 80-85%·비영어 60-75%, AAVE·LGBTQ+ over-flag, fully automated moderation 금지 권고. 2026 마이그레이션 경로: OpenAI omni-moderation(무료) ·Azure AI Content Safety ·Hive ·Tisane — threshold 재캘리브레이션 필수.'
+  points:
+  - 2026-12-31 hard deadline, extension·migration support 없음
+  - 영어 외 정확도·공정성 한계 — 단순 drop-in 아닌 re-benchmark 필요
+  - OpenAI Moderation ·Azure Content Safety ·Hive로 대체, HITL 유지 권고
+  source: https://perspectiveapi.com/
+- category: ai
+  title: GDPR + EU AI Act for AI Apps — DPIA+FRIA·prompt-layer PII·audit log by design(2026)
+  summary: '2026년 AI 앱은 GDPR과 EU AI Act가 동시 적용된다 — AI Act 고위험 의무 2026-08-02, GDPR은 그 위에 stack. EDPB Opinion 28/2024: 대부분 AI 모델은 anonymous 아님, training lawful basis 엄격. 실무 3층: (1) prompt-layer data minimization — Presidio redaction·pseudonymization before LLM (2) combined DPIA+FRIA — privacy+기본권 impact 단일 문서 (3) per-interaction audit log — model version·redaction rule·tool call, Article 30. Agent HITL Approval ·NeMo Guardrails와 달리 "regulatory architecture+technical control" 프레임워크.'
+  points:
+  - EU AI Act 2026-08-02 high-risk + GDPR 동시, EDPB 28/2024 lawful basis 엄격
+  - Prompt-layer PII redaction = data minimization by design, DPA training 금지
+  - DPIA+FRIA 통합, per-interaction audit log(Article 30), agent kill switch
+  source: https://www.strac.io/blog/gdpr-for-ai
+- category: ai
+  title: Datadog Agent Observability — LangGraph·CrewAI·OpenAI Agents SDK span trace+eval
+  summary: 'Datadog LLM Observability Agent Monitoring(2026)은 OpenAI Agents SDK·LangGraph·CrewAI에 Python SDK auto-instrumentation. intra/inter-agent span: tool call·LLM call·memory·handoff·retry를 unified trace. APM correlation으로 backend service→agent reasoning→user impact end-to-end. Custom LLM-as-a-judge eval(trace/span/session level), offline experiment+dataset+production monitoring 단일 플랫폼. Langfuse(OTel OSS) ·AgentOps(agent reasoning debug)와 달리 "기존 Datadog APM 위 AI agent layer" — infra+agent+UX correlation.'
+  points:
+  - 'Auto-instrument: OpenAI Agents·LangGraph·CrewAI, tool/LLM/memory span'
+  - 'APM correlation: service issue→agent step→user impact root cause'
+  - LLM-as-judge eval trace/span/session, offline experiment→prod 동일 UI
+  source: https://docs.datadoghq.com/llm_observability/monitoring/agent_monitoring/
