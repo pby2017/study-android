@@ -1375,3 +1375,22 @@ Refined:
 
 누적: 569카드 (564→559 병합→569 신규+refine)
 주제: RAG eval(RAGAS), desktop automation(Computer Use), RAG framework hybrid, AI E2E testing(Meticulous), GPU serving(Modal/Baseten/Replicate), LLM observability(Phoenix), document ETL(Unstructured), AI app builder(Lovable), plugin marketplace, eval CI(Braintrust), Devin 2.0 refine
+
+## 2026-06-24 15:47 KST — Manual local routine (refine 1 + 신규 3카드)
+
+### Refinement
+
+| 제목 | 출처 | 변경 이유 |
+|------|------|-----------|
+| Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크 | github.com/mastra-ai/mastra | README와 GitHub API로 재검증해 25,394★, 프레임워크 범위, HITL/RAG/MCP/evals, 라이선스 split을 명확화 |
+
+### 신규 3카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Claude Tag — Slack에서 @Claude를 팀원처럼 호출하는 협업 에이전트 | anthropic.com |
+| 2 | Copilot enterprise-managed plugins — VS Code까지 내려오는 조직 표준 에이전트 배포 | github.blog |
+| 3 | AI-native engineering team — 코딩 에이전트는 SDLC 전체의 첫 패스가 된다 | developers.openai.com |
+
+누적: 572카드 (569→572 신규+refine)
+주제: 팀 채널형 코딩 에이전트(Claude Tag), 엔터프라이즈 플러그인·스킬·MCP 배포(Copilot), SDLC 전반 AI-native 엔지니어링 운영(OpenAI Codex)
