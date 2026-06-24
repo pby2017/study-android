@@ -1691,3 +1691,60 @@ Refined:
 
 누적: 609카드 (601→599 병합→609 신규)
 주제: K8s ML pipeline(Kubeflow·Flyte), ML monitoring(Evidently·Fiddler), W&B HP+Artifacts, HF Spaces hosting, AgentBench eval, on-device runtime comparison, coding assistant comparison(Tabnine/Copilot/Cursor), Devin Desktop merge, Cline merge
+
+## 2026-06-24 23:59 KST — Batch 27 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**통과 (10카드)**:
+| 주제 | 통과 이유 |
+|------|-----------|
+| Optuna | define-by-run OSS HP 엔진 — W&B Sweeps(SaaS)·Determined AI(GPU 스케줄)와 HP 축 분리 |
+| Ray Train V2 | 분산 학습 async checkpoint — Ray Serve LLM(추론)과 학습 축 분리 |
+| W&B Reports | 실험 스냅샷 공유 문서 — Weave(trace)·Sweeps(HP)·Artifacts(lineage)와 협업 리포트 분리 |
+| TruLens | RAG Triad·Unified Metric v2.7 — DeepEval(Pytest)·promptfoo(회귀)와 feedback function 축 |
+| Hugging Face Datasets v5 | load_dataset·agent traces SFT — DVC(Git for Data)와 Hub 생태계 분리 |
+| NeMo Data Designer | Gretel→NVIDIA SDG — Distilabel(LLM teacher)과 스키마·validator 중심 분리 |
+| OWASP LLM Top 10 2025 | GenAI 보안 표준 — Garak(스캔 도구)과 위협 모델링 체크리스트 분리 |
+| PyRIT | Microsoft multi-turn red team — Garak(nmap식 단일턴)과 Crescendo/TAP 분리 |
+| Langfuse vs LangSmith vs Phoenix | OTel observability 3축 통합 비교 — 개별 카드 존재하나 선택 가이드 독립 가치 |
+| LLM API 비용 최적화 | routing·cache·batch FinOps 패턴 — LiteLLM/Portkey(게이트웨이)와 아키텍처 레이어 분리 |
+
+**탈락**:
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Neptune.ai | 2026-03 SaaS 영구 종료 |
+| Helicone | 2026-03 Mintlify 인수 후 maintenance mode, Mintlify·LiteLLM 카드 존재 |
+| MLflow Model Registry | MLflow 카드에 레지스트리 포함 |
+| Promptfoo / DeepEval / TruLens 단독 | 기존 카드 존재(TruLens는 v2.7 업데이트로 신규) |
+| Mostly AI / Gretel Navigator 단독 | NeMo Data Designer로 Gretel 계보 통합 |
+| HarmBench | PyRIT+Garak red team 축 커버, niche 학술 벤치마크 |
+| tiktoken / OpenAI token counter | Codex token budgets·AFM token counting 카드 존재 |
+| Cursor Background Agent / Copilot Coding Agent | 백그라운드 에이전트·Copilot tasks 카드 존재 |
+| Docling / LlamaParse | 기존 카드 존재 |
+| Langfuse / LangSmith / Phoenix 단독 신규 | 3축 비교 카드로 통합, 개별 카드 유지 |
+
+### 병합 (2카드 제거, 609→607)
+
+| 제거 | 유지·통합 |
+|------|-----------|
+| Pi(earendil-works) + Pi(badlogic/pi-mono) | Pi 2종 — earendil-works vs badlogic/pi-mono 이름 충돌 비교 |
+| MCP 2026 개요 + MCP 2026-07-28 RC | MCP 2026 — Linux Foundation 표준·Stateless RC·10k+ 서버 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Optuna — define-by-run HP 최적화 | optuna.readthedocs.io |
+| 2 | Ray Train V2 — PyTorch·HF·JAX 분산 학습 | docs.ray.io |
+| 3 | W&B Reports — 실험 스냅샷 공유 문서 | docs.wandb.ai |
+| 4 | TruLens — RAG Triad·에이전트 eval | trulens.org |
+| 5 | Hugging Face Datasets v5 — agent traces·streaming | github.com/huggingface/datasets |
+| 6 | NeMo Data Designer — synthetic data | github.com/NVIDIA-NeMo/DataDesigner |
+| 7 | OWASP LLM Top 10 2025 | owasp.org |
+| 8 | PyRIT — Microsoft AI red team | github.com/microsoft/PyRIT |
+| 9 | Langfuse vs LangSmith vs Phoenix 3축 비교 | langfuse.com |
+| 10 | LLM API 비용 최적화 4층 FinOps | stochasticsandbox.com |
+
+누적: 617카드 (609→607 병합→617 신규)
+주제: HP tuning(Optuna), distributed training(Ray Train V2), W&B Reports, LLM eval(TruLens), HF Datasets v5, synthetic data(NeMo Data Designer), GenAI security(OWASP LLM Top 10·PyRIT), observability comparison(Langfuse/LangSmith/Phoenix), LLM FinOps, Pi/MCP merge

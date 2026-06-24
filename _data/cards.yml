@@ -996,7 +996,7 @@ cards:
   source: https://code.claude.com/docs/en/security
 - category: ai
   title: Devin Desktop(구 Windsurf) — Agent Command Center·Cloud·Cascade Workflows 통합 패밀리
-  summary: '2026-06 Cognition이 Windsurf(Codeium IDE)를 Devin Desktop으로 리브랜딩, Devin을 Cloud·Desktop·CLI·Review 하나의 패밀리로 통합했다. Devin Cloud — 샌드박스 VM에서 계획→코드→테스트→PR 비동기(67% PR merge). Devin Desktop — Agent Command Center(Kanban)·Spaces(Git worktree)·ACP로 Codex·Claude Agent·OpenCode 등 서드파티 에이전트도 관리. Cascade Workflows — 반복 멀티스텝을 .md 레시피로 정의해 /슬래시 호출(`.windsurf/workflows/*.md` 팀 공유). Pro $20/월에 Cloud+Desktop+SWE-1.6. Cursor(IDE 1위)와 달리 ''에이전트 관리 센터+클라우드 VM'' 통합이 차별.'
+  summary: 2026-06 Cognition이 Windsurf(Codeium IDE)를 Devin Desktop으로 리브랜딩, Devin을 Cloud·Desktop·CLI·Review 하나의 패밀리로 통합했다. Devin Cloud — 샌드박스 VM에서 계획→코드→테스트→PR 비동기(67% PR merge). Devin Desktop — Agent Command Center(Kanban)·Spaces(Git worktree)·ACP로 Codex·Claude Agent·OpenCode 등 서드파티 에이전트도 관리. Cascade Workflows — 반복 멀티스텝을 .md 레시피로 정의해 /슬래시 호출(`.windsurf/workflows/*.md` 팀 공유). Pro $20/월에 Cloud+Desktop+SWE-1.6. Cursor(IDE 1위)와 달리 '에이전트 관리 센터+클라우드 VM' 통합이 차별.
   points:
   - Devin Desktop OTA — Windsurf→Devin Desktop, ACP·Spaces·Kanban·Devin Local(Rust)
   - Cascade Workflows — .md 레시피·/슬래시 호출·워크스페이스 커밋으로 팀 공유
@@ -1061,15 +1061,21 @@ cards:
   - '실무 포인트: nested rule loading은 유용하지만 experimental, `--dry-run`으로 배포 diff를 먼저 확인'
   source: https://github.com/intellectronica/ruler
 - category: ai
-  title: Pi — '고쳐 쓰라고' 만든 자기확장형 터미널 코딩 에이전트(earendil-works·65k+★)
-  summary: 'Pi는 earendil-works가 만든 오픈소스 AI 에이전트 하네스다. 2026-06-24 같은 런에서 GitHub 65,018★·7,927 forks·MIT·archived=false·2026-06-23 push를 확인했다. README는 Pi를 "self extensible coding agent"로 설명하고, 모노레포를 pi-ai(OpenAI·Anthropic·Google 등 멀티프로바이더 LLM API), pi-agent-core(툴 호출·상태 관리 런타임), pi-tui(터미널 UI), pi-coding-agent(대화형 코딩 CLI)로 나눈다. 실무 포인트는 "확장 가능"이 곧 "안전"은 아니라는 점이다. Pi는 파일시스템·프로세스·네트워크·자격증명 접근을 제한하는 내장 권한 시스템이 없고, 필요하면 Gondolin micro-VM, Docker, OpenShell 같은 외부 샌드박스로 경계를 치라고 안내한다. 공급망 쪽도 직접 의존성 exact pin, min-release-age, shrinkwrap, lifecycle-script allowlist, audit/signature checks를 README에 공개하므로, 자기확장형 에이전트를 도입할 때는 기능 확장성과 실행 경계를 같은 설계 항목으로 봐야 한다.
-
-    '
+  title: Pi 2종 — earendil-works vs badlogic/pi-mono, 같은 이름 다른 철학의 터미널 에이전트
+  summary: '2026년 "Pi" 코딩 에이전트는 이름은 같지만 완전히 다른 두 프로젝트다. earendil-works/pi(MIT·~65k★)는 pi-ai·pi-agent-core·pi-tui·pi-coding-agent 모노레포로 멀티프로바이더 LLM API와 self-extensible 구조를 강조 — 내장 권한 시스템 없어 Gondolin micro-VM·Docker 샌드박스를 README가 권한다. badlogic/pi-mono(MIT·TypeScript·~63k★, Mario Zechner)는 Read·Write·Edit·Bash 4도구만 두고 MCP는 의도적 미지원, "에이전트가 .ts 익스텐션을 직접 작성"하는 최소주의 — Armin Ronacher가 "역대 최단 시스템 프롬프트"로 소개. 공통 교훈: self-extensible·minimal 모두 실행 경계(샌드박스)와 supply-chain review를 같은 설계 항목으로 봐야 한다.'
   points:
-  - '같은 런 검증: 65,018★, 7,927 forks, MIT, archived=false, 2026-06-23 push'
-  - '모노레포 4축: pi-ai(멀티프로바이더 LLM API)·pi-agent-core(런타임)·pi-tui(UI)·pi-coding-agent(CLI)'
-  - '교훈: self extensible 구조는 외부 샌드박싱과 dependency supply-chain review를 함께 설계해야 안전하다'
+  - earendil/pi — 4패키지 모노레포, 멀티프로바이더, self-extensible, 외부 VM/Docker 필수
+  - badlogic/pi-mono — 도구 4개·MCP 없음·TS 익스텐션 자가작성, 세션 트리·핫 리로드
+  - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
   source: https://github.com/earendil-works/pi
+- category: ai
+  title: MCP 2026 — Linux Foundation 표준·Stateless RC·10k+ 서버
+  summary: MCP(Model Context Protocol)는 AI↔도구/데이터 연결 오픈 표준(Anthropic→2025-12 Linux Foundation Agentic AI Foundation 기증). Host→Client→Server 3계층, JSON-RPC, 10,000+ 공개 서버·SDK 월 97M+ 다운로드, Claude·ChatGPT·Gemini·Cursor·VS Code 지원. 2026-07-28 RC는 출시 이후 최대 개정 — stateless 코어로 Mcp-Session-Id·initialize 핸드셰이크 제거, 표준 HTTP LB 뒤 라운드로빈 가능. MCP Apps(서버 렌더 UI)·Tasks(장기 작업)가 Extensions로 승격, Roots·Sampling·Logging은 12개월 deprecation. 원격 MCP 운영자는 세션 의존 코드를 명시적 핸들로 마이그레이션해야 한다.
+  points:
+  - Linux Foundation — 벤더 중립, 10k+ 서버·OAuth 2.1+PKCE
+  - 2026-07-28 RC — stateless 코어, Mcp-Session-Id 제거, LB 친화
+  - Extensions — MCP Apps(UI)·Tasks(장기), Roots/Sampling/Logging deprecated
+  source: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
   summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고, 각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며, 인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
@@ -1538,16 +1544,6 @@ cards:
   - '확장: MCP 표준으로 70여 개 익스텐션을 붙여 깃허브·브라우저·셸 등 외부 도구를 도구로 노출. Rust 코어라 단일 바이너리로 가볍게 돈다'
   - '거버넌스: 원래 Block 사내 도구였다가 오픈소스화, 이제 MCP·AGENTS.md와 함께 리눅스재단 중립 거버넌스(AAIF)로 옮겨졌다. 별 수·공급자 수는 레포 표기 기준 주장이며 변동한다'
   source: https://github.com/aaif-goose/goose
-- category: ai
-  title: Pi(Mario Zechner) — 도구 4개·'역대 최단 시스템 프롬프트'로 미는 미니멀 코딩 에이전트(badlogic/pi-mono)
-  summary: 'Pi는 Mario Zechner가 만든 TypeScript 기반 미니멀 코딩 에이전트로, Flask·Jinja2 제작자 Armin Ronacher가 블로그로 알리며 주목받았다. 핵심 철학은 ''도구를 잔뜩 박지 말고 에이전트가 스스로 코드를 짜 확장하게 하라''다. 그래서 내장 도구가 Read·Write·Edit·Bash 단 4개뿐이고, Ronacher는 "내가 아는 어떤 에이전트보다 시스템 프롬프트가 짧다"고 주장한다. 추가 기능이 필요하면 플러그인을 받는 게 아니라 에이전트에게 "너 자신을 확장해줘"라고 시켜 .ts 익스텐션·슬래시 커맨드를 직접 작성하게 한다. MCP는 설계상 빼버렸고, 세션이 ''트리''라 분기·탐색이 되며 핫 리로딩으로 짜고-테스트하고-다시 로드하는 루프가 빠르다.
-
-    '
-  points:
-  - '정체성: ''도구 최소·프롬프트 최소''로 모델 능력을 신뢰하는 BYO-LLM 터미널 에이전트. 내장 도구는 Read/Write/Edit/Bash 4개가 전부 — 나머지는 모델이 Bash로 코드를 짜 해결한다고 본다(MCP는 의도적으로 미지원)'
-  - '확장 방식: 마켓플레이스에서 받는 대신 에이전트가 자기 기능을 TypeScript로 직접 작성(/answer·/todos·/review 같은 .ts 익스텐션). ''코드가 코드를 쓰고 실행한다''는 발상'
-  - '주의: 파일·프로세스·네트워크·크리덴셜을 막는 내장 권한 시스템이 없어 README가 컨테이너 격리(Docker 등)를 권한다. 레포는 badlogic/pi-mono(MIT·TypeScript)이며 별 수 약 63k는 레포 표기 기준 주장으로 변동한다'
-  source: https://github.com/badlogic/pi-mono
 - category: ai
   title: 서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법
   summary: 'Claude Code 서브에이전트는 정의 파일 프런트매터의 model 필드로 각자 다른 모델을 쓸 수 있고, 값은 sonnet·opus·haiku·fable·전체 모델 ID(예: claude-opus-4-8)·inherit이며 생략 시 기본은 inherit(메인 대화와 동일 모델)이다. 공식 문서는 서브에이전트의 핵심 이점 중 하나로 "Haiku 같은 더 빠르고 저렴한 모델로 작업을 라우팅해 비용을 통제"하는 것을 명시한다. 즉 매번 같은 종류의 일(탐색·린트·요약)은 값싼 모델 서브에이전트에 정의 파일로 박아두면, 개발자가 일일이 모델을 고르지 않아도 설정만으로 비용 천장이 걸린다. 서브에이전트가 자체 격리 컨텍스트 창에서 돌아 메인 대화 히스토리를 안 보는 구조라 탐색 같은 토큰 폭증 작업을 메인에서 떼어내는 효과까지 겹친다.
@@ -2226,16 +2222,6 @@ cards:
   - ai-catalog.json 매니페스트 기반 연합형(federated) 레지스트리
   - 'GitHub Agent Finder: Copilot이 ARD로 도구를 런타임 검색 → context window 절약'
   source: https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/
-- category: ai
-  title: MCP 2026-07-28 RC — 세션을 죽이고 Stateless로 전환, '가장 큰 프로토콜 개정'(Anthropic)
-  summary: 'MCP의 2026-07-28 릴리스 후보는 프로토콜 출시 이후 최대 규모 개정이다. 핵심은 stateless 코어 전환: initialize 핸드셰이크와 Mcp-Session-Id 헤더가 사라지고, 모든 요청이 Mcp-Method·Mcp-Name 헤더를 담아 표준 HTTP 로드밸런서 뒤에서 라운드로빈으로 동작한다. MCP Apps(서버 렌더링 UI)와 Tasks(장기 실행 작업 핸들)가 공식 Extensions 프레임워크로 승격됐고, Roots·Sampling·Logging은 deprecated(12개월 유예). 원격 MCP 서버 운영자는 7월 28일 전까지 세션 의존 코드를 명시적 핸들로 마이그레이션해야 한다.
-
-    '
-  points:
-  - 'Stateless 코어: Mcp-Session-Id 제거 → 표준 라운드로빈 LB로 운영 가능'
-  - 'Extensions 프레임워크: MCP Apps(샌드박스 UI) + Tasks(장기 작업) 공식화'
-  - 12개월 deprecation 정책 도입 — Roots·Sampling·Logging 폐지 예고
-  source: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
 - category: ai
   title: Open Code Review(Alibaba) — 수백만 건 실전 검증 AI 코드리뷰 CLI(Apache-2.0·~8k★)
   summary: 'Alibaba 내부에서 2년간 수만 명 개발자, 수백만 건 결함 탐지에 사용된 AI 코드리뷰 도구가 오픈소스로 공개됐다. 결정론적 파이프라인 + LLM 에이전트 하이브리드 아키텍처로, 에이전트가 파일 전체 읽기·코드베이스 검색·다른 변경 파일 교차 참조를 수행해 line 단위 정밀 코멘트를 생성한다. NPE·스레드 안전성·XSS·SQL 인젝션 등 내장 규칙셋을 포함하고, OpenAI·Anthropic API 호환. Claude Code의 /code-review보다 벤치마크 점수가 높다는 자체 평가(200 PR·50개 OSS 저장소)도 공개했다.
@@ -4417,16 +4403,6 @@ cards:
   - '프로덕션: FC(라우팅) + SO(포맷) + Instructor(검증)'
   source: https://wolf-tech.io/blog/structured-llm-outputs-in-production-json-mode-tool-use-and-validation-patterns
 - category: ai
-  title: MCP(Model Context Protocol) 2026 — AI-도구 연결 USB-C, 10k+ 서버·97M SDK 다운로드·Linux Foundation 이관
-  summary: 'MCP는 Anthropic이 만든 AI 모델↔외부 도구/데이터 연결 오픈 표준이다. 2025년 12월 Linux Foundation (Agentic AI Foundation)에 기증되어 벤더 중립 표준화. Host(AI 앱)→Client→Server(도구/데이터) 3계층 아키텍처, JSON-RPC 기반. 10,000+ 공개 서버, Python/TypeScript SDK 월 97M+ 다운로드. Claude·ChatGPT· Gemini·Cursor·VS Code 등 모든 주요 AI 플랫폼 지원. OAuth 2.1+PKCE 인증. Cloudflare Code Mode에서 도구 동적 디스커버리로 98%+ 토큰 절감 사례.
-
-    '
-  points:
-  - '10k+ 서버: 97M+ SDK 다운로드, 모든 주요 AI 지원'
-  - 'Linux Foundation: 벤더 중립 오픈 표준'
-  - '98% 토큰 절감: Cloudflare 동적 도구 디스커버리'
-  source: https://workos.com/blog/everything-your-team-needs-to-know-about-mcp-in-2026
-- category: ai
   title: DeepSeek R1 — 오픈웨이트 추론 모델, 671B MoE에서 37B만 활성·투명한 CoT·o3 대비 73% 저렴(MIT)
   summary: 'DeepSeek R1은 오픈웨이트 추론 모델로 GRPO 강화학습으로 학습되었다. 671B MoE 아키텍처에서 토큰당 37B만 활성화하여 비용 효율적. 핵심 차별점: 추론 과정(Chain-of-Thought)이 완전 투명하게 스트리밍되어 디버깅·감사·컴플라이언스에 유리. o3 대비 토큰당 73% 저렴($0.55/$2.19 vs $2/$8). 대부분의 실무 추론 태스크에서 o3의 85~97% 성능. 의료·법률·금융 분야에서 감사 가능성 때문에 R1 선호.
 
@@ -5004,7 +4980,6 @@ cards:
   - prebuilt 도구로 스키마 탐색·SQL 실행, custom tools로 제한된 프로덕션 도구 정의
   - '지원 범위: AlloyDB·BigQuery·Cloud SQL·Spanner·PostgreSQL·MySQL·Oracle·MongoDB·Redis 등'
   source: https://github.com/googleapis/mcp-toolbox
-
 - category: ai
   title: 'MobileWorld: MCP까지 포함한 모바일 에이전트 벤치마크'
   summary: 'MobileWorld는 AndroidWorld 이후 모바일 에이전트 평가가 더 어려워져야 하는 이유를 보여 주는 ACL 2026 벤치마크다. arXiv v3는 201개 태스크, 20개 앱, 평균 27.8 step 장기 작업, 멀티앱 태스크 62.2%, agent-user interaction, MCP-augmented task를 제시한다. GitHub는 같은 런에서 Apache-2.0, 224★, 2026-06-23 push를 확인했다. 환경은 Docker-in-Docker 안에 rooted AVD, Mattermost·Mastodon·Mall4Uni 같은 오픈소스 앱 백엔드, API 서버를 넣고, DB 검증·로컬 저장소 검사·앱 콜백으로 성공 여부를 판정한다. 교훈은 모바일 에이전트 성능을 단일 앱 클릭 성공률로 재지 말고, 사용자와 대화하고 MCP 도구를 섞는 장기·교차앱 흐름으로 검증해야 한다는 점이다.
@@ -5765,7 +5740,7 @@ cards:
   source: https://docs.dev.runwayml.com/guides/setup/
 - category: ai
   title: ZenML — Python-first ML 파이프라인 오케스트레이션, Dynamic Pipelines로 에이전트 워크플로까지(Apache-2.0)
-  summary: 'ZenML은 MLflow·Vertex·K8s·SageMaker 등과 플러그인으로 연결되는 오픈소스 MLOps 프레임워크다. Orchestrator+Artifact Store+Metadata Store 3 Stack Component로 step 단위 캐싱·재현·협업을 제공한다. 2025-2026 Dynamic Pipelines는 런타임에 DAG를 생성 — fan-out/fan-in·step.submit() 병렬·zenml.wait() 휴먼 게이트·에이전트 RAG fan-out에 budget limit을 걸 수 있다. Prefect(범용 durable execution)·MLflow(실험 추적)·DVC(데이터 버전)와 달리 "ML step 파이프라인+클라우드 오케스트레이터" 레이어에 특화.'
+  summary: ZenML은 MLflow·Vertex·K8s·SageMaker 등과 플러그인으로 연결되는 오픈소스 MLOps 프레임워크다. Orchestrator+Artifact Store+Metadata Store 3 Stack Component로 step 단위 캐싱·재현·협업을 제공한다. 2025-2026 Dynamic Pipelines는 런타임에 DAG를 생성 — fan-out/fan-in·step.submit() 병렬·zenml.wait() 휴먼 게이트·에이전트 RAG fan-out에 budget limit을 걸 수 있다. Prefect(범용 durable execution)·MLflow(실험 추적)·DVC(데이터 버전)와 달리 "ML step 파이프라인+클라우드 오케스트레이터" 레이어에 특화.
   points:
   - pip install zenml → Stack(Orchestrator·Artifact·Metadata) 조합으로 재현 가능 파이프라인
   - Dynamic Pipelines — 런타임 DAG·map/reduce·isolated runtime·K8s/Vertex/SageMaker
@@ -5773,7 +5748,7 @@ cards:
   source: https://docs.zenml.io/concepts/steps_and_pipelines/dynamic_pipelines
 - category: ai
   title: Metaflow — Netflix가 만든 human-centric ML, 노트북처럼 짜고 Maestro로 프로덕션까지(Apache-2.0)
-  summary: 'Metaflow는 Netflix가 2019년 오픈소스한 "데이터 과학자가 인프라 몰라도" 노트북→프로덕션까지 가는 Python ML 프레임워크다. Outerbounds가 유지하며 Netflix 단독 3,000+ ML 프로젝트·수억 job을 처리한다. @step·@batch·@kubernetes 데코레이터로 로컬 실행→클라우드 스케일을 코드 변경 없이 전환, 모든 run의 코드·데이터·아티팩트를 자동 버전. Metaflow 2.19 Spin은 셀 단위처럼 개별 step만 반복 실행해 개발 속도를 높인다. Netflix는 대규모 오케스트레이션을 오픈소스 Maestro와 연동 — ZenML(파이프라인 조립)과 달리 DS 친화적 flow+데코레이터 모델.'
+  summary: Metaflow는 Netflix가 2019년 오픈소스한 "데이터 과학자가 인프라 몰라도" 노트북→프로덕션까지 가는 Python ML 프레임워크다. Outerbounds가 유지하며 Netflix 단독 3,000+ ML 프로젝트·수억 job을 처리한다. @step·@batch·@kubernetes 데코레이터로 로컬 실행→클라우드 스케일을 코드 변경 없이 전환, 모든 run의 코드·데이터·아티팩트를 자동 버전. Metaflow 2.19 Spin은 셀 단위처럼 개별 step만 반복 실행해 개발 속도를 높인다. Netflix는 대규모 오케스트레이션을 오픈소스 Maestro와 연동 — ZenML(파이프라인 조립)과 달리 DS 친화적 flow+데코레이터 모델.
   points:
   - '@step/@batch/@kubernetes — 로컬→AWS Step Functions·K8s·Airflow·Maestro'
   - Spin(2.19) — step 단위 iterative debug, 노트북 UX+프로덕션 workflow
@@ -5781,7 +5756,7 @@ cards:
   source: https://github.com/Netflix/metaflow
 - category: ai
   title: ClearML — 2줄 코드 실험 추적+Agent+파이프라인+서빙 올인원 MLOps(Apache-2.0·v2.1.8)
-  summary: 'ClearML(구 Trains)은 Task.init() 2줄로 코드·HP·메트릭·GPU·모델·콘솔·플롯을 자동 로깅하는 MLOps/LLMOps 플랫폼이다. ClearML Server(셀프호스트·SaaS)+ClearML Agent(K8s/클라우드/bare-metal job 큐)+Model Serving(NVIDIA Triton·모니터링)까지 한 스위트. 데이터셋 버전·HP 최적화(PBT)·원격 GPU worker 큐·GenAI job orchestration. MLflow(Linux Foundation·LLM Gateway 확장)와 달리 experiment+orchestration+serving을 단일 제품으로 — W&B(SaaS UX)와 달리 셀프호스트 $0 가능.'
+  summary: ClearML(구 Trains)은 Task.init() 2줄로 코드·HP·메트릭·GPU·모델·콘솔·플롯을 자동 로깅하는 MLOps/LLMOps 플랫폼이다. ClearML Server(셀프호스트·SaaS)+ClearML Agent(K8s/클라우드/bare-metal job 큐)+Model Serving(NVIDIA Triton·모니터링)까지 한 스위트. 데이터셋 버전·HP 최적화(PBT)·원격 GPU worker 큐·GenAI job orchestration. MLflow(Linux Foundation·LLM Gateway 확장)와 달리 experiment+orchestration+serving을 단일 제품으로 — W&B(SaaS UX)와 달리 셀프호스트 $0 가능.
   points:
   - Task.init() 2줄 — PyTorch·TF·HF auto-logging, git diff·환경·GPU 자동 캡처
   - ClearML Agent — K8s/cloud GPU 큐·파이프라인·원격 실행
@@ -5789,7 +5764,7 @@ cards:
   source: https://github.com/clearml/clearml
 - category: ai
   title: Comet ML — 실험 추적·모델 레지스트리·팀 협업 SaaS, VPC/on-prem 지원
-  summary: 'Comet ML은 Uber·Autodesk·Ancestry 등 Fortune 100이 쓰는 실험 관리·모델 레지스트리 플랫폼이다. Experiment() 2줄로 파라미터·메트릭·코드 스냅샷·아티팩트·시스템 메트릭을 자동 로깅 — PyTorch·TF·Scikit·HF auto-logging. 2025-2026 compare view 10실험·parallel coordinates·block-based report editor·artifact 기반 실험 필터·Model Registry webhook·staging/production 태그. W&B Weave(LLM trace)·W&B Registry(artifact CI/CD)와 달리 전통 ML 실험 UX·협업·VPC/on-prem에 특화 — MLflow(오픈소스)와 달리 SaaS polish.'
+  summary: Comet ML은 Uber·Autodesk·Ancestry 등 Fortune 100이 쓰는 실험 관리·모델 레지스트리 플랫폼이다. Experiment() 2줄로 파라미터·메트릭·코드 스냅샷·아티팩트·시스템 메트릭을 자동 로깅 — PyTorch·TF·Scikit·HF auto-logging. 2025-2026 compare view 10실험·parallel coordinates·block-based report editor·artifact 기반 실험 필터·Model Registry webhook·staging/production 태그. W&B Weave(LLM trace)·W&B Registry(artifact CI/CD)와 달리 전통 ML 실험 UX·협업·VPC/on-prem에 특화 — MLflow(오픈소스)와 달리 SaaS polish.
   points:
   - Experiment() 2줄 — 코드 스냅샷·offline/resume·프레임워크 auto-logging
   - Model Registry — 버전·태그·webhook·production baseline 비교
@@ -5797,7 +5772,7 @@ cards:
   source: https://www.comet.com/docs/v2/guides/experiment-management/quickstart/
 - category: ai
   title: Marimo — reactive Python 노트북, hidden state 없이 Git-friendly .py(Apache-2.0·~21k★)
-  summary: 'Marimo는 Jupyter hidden state·out-of-order 실행 문제를 reactive execution으로 해결하는 Python 노트북이다. 셀 변경 시 dependent 셀 자동 재실행(또는 lazy stale 표시), 변수 삭제 시 program memory에서 제거. 노트북이 JSON이 아니라 순수 .py — git diff·merge·CLI 실행(marimo run)·웹 앱 배포·내장 SQL·Sliders/Tables 인터랙션. v0.23+(2026-06) — Jupyter·Streamlit·ipywidgets·papermill 대체 지향. Gradio(ML UI)·Chainlit(에이전트 UI)과 달리 "재현 가능한 Python 프로그램"으로서의 노트북.'
+  summary: Marimo는 Jupyter hidden state·out-of-order 실행 문제를 reactive execution으로 해결하는 Python 노트북이다. 셀 변경 시 dependent 셀 자동 재실행(또는 lazy stale 표시), 변수 삭제 시 program memory에서 제거. 노트북이 JSON이 아니라 순수 .py — git diff·merge·CLI 실행(marimo run)·웹 앱 배포·내장 SQL·Sliders/Tables 인터랙션. v0.23+(2026-06) — Jupyter·Streamlit·ipywidgets·papermill 대체 지향. Gradio(ML UI)·Chainlit(에이전트 UI)과 달리 "재현 가능한 Python 프로그램"으로서의 노트북.
   points:
   - reactive execution — dependency 자동 추적, hidden state 제거
   - 순수 .py 저장 — git-friendly·marimo run·앱 배포·SQL 내장
@@ -5805,7 +5780,7 @@ cards:
   source: https://docs.marimo.io/
 - category: ai
   title: AgentOps — 에이전트 전용 옵저버빌리티, time-travel debugging·400+ LLM 비용 추적
-  summary: 'AgentOps는 CrewAI·LangGraph·AutoGen(AG2)·Agno·OpenAI Agents SDK 등에 2줄(agentops.init/end_session)로 붙는 에이전트 옵저버빌리티 SDK다. monkey-patch로 LLM 호출·tool call·multi-agent decision tree를 span hierarchy로 캡처 — prompt/completion·토큰·모델·temperature까지. time-travel debugging으로 세션을 step-by-step replay, infinite loop·비용 폭주($5k/3h) 원인 추적. LangSmith(LangChain)·Langfuse(OTel LLM trace)와 달리 "에이전트 reasoning chain+비용"에 특화 — Braintrust(eval-first)와 역할 분리.'
+  summary: AgentOps는 CrewAI·LangGraph·AutoGen(AG2)·Agno·OpenAI Agents SDK 등에 2줄(agentops.init/end_session)로 붙는 에이전트 옵저버빌리티 SDK다. monkey-patch로 LLM 호출·tool call·multi-agent decision tree를 span hierarchy로 캡처 — prompt/completion·토큰·모델·temperature까지. time-travel debugging으로 세션을 step-by-step replay, infinite loop·비용 폭주($5k/3h) 원인 추적. LangSmith(LangChain)·Langfuse(OTel LLM trace)와 달리 "에이전트 reasoning chain+비용"에 특화 — Braintrust(eval-first)와 역할 분리.
   points:
   - pip install agentops → init()+end_session() 2줄, CrewAI·LangGraph·AutoGen 자동 계측
   - time-travel replay — multi-agent decision tree·토큰/비용 per operation
@@ -5813,7 +5788,7 @@ cards:
   source: https://github.com/AgentOps-AI/agentops
 - category: ai
   title: Sentence Transformers — 임베딩·reranker·sparse encoder, v5.6 멀티모달+AI 학습 Agent Skill(HF·Apache-2.0)
-  summary: 'Sentence Transformers(SBERT)는 Hugging Face가 2025년 인수한 임베딩 라이브러리 — 18k★·15,000+ 사전학습 모델·MTEB 리더보드 다수. SentenceTransformer.encode()·CrossEncoder reranker·Sparse Encoder(SPLADE)를 동일 API로 — semantic search·RAG·clustering·paraphrase. v5.4+ 멀티모달(text·image·audio·video) encoding, v5.5 train-sentence-transformers Agent Skill로 Claude/Codex/Cursor가 end-to-end fine-tuning. ColPali(멀티모달 RAG)와 달리 "범용 임베딩+reranker 파이프라인" 기반 — OpenAI embedding API(클라우드)와 달리 로컬·fine-tune 가능.'
+  summary: Sentence Transformers(SBERT)는 Hugging Face가 2025년 인수한 임베딩 라이브러리 — 18k★·15,000+ 사전학습 모델·MTEB 리더보드 다수. SentenceTransformer.encode()·CrossEncoder reranker·Sparse Encoder(SPLADE)를 동일 API로 — semantic search·RAG·clustering·paraphrase. v5.4+ 멀티모달(text·image·audio·video) encoding, v5.5 train-sentence-transformers Agent Skill로 Claude/Codex/Cursor가 end-to-end fine-tuning. ColPali(멀티모달 RAG)와 달리 "범용 임베딩+reranker 파이프라인" 기반 — OpenAI embedding API(클라우드)와 달리 로컬·fine-tune 가능.
   points:
   - SentenceTransformer("all-MiniLM-L6-v2").encode() — 15k+ HF 모델·MTEB SOTA
   - v5.4 멀티모달·CrossEncoder reranker·Sparse Encoder(SPLADE)
@@ -5829,7 +5804,7 @@ cards:
   source: https://developers.deepl.com/docs/getting-started/quickstart
 - category: ai
   title: Databricks Mosaic AI — Unity Catalog 거버넌스+AI Runtime GPU+Model Serving 250k QPS
-  summary: 'Mosaic AI는 Databricks 위 엔터프라이즈 GenAI 플랫폼 — 학습·파인튜닝·서빙·에이전트·거버넌스를 Unity Catalog 하나로 묶는다. AI Runtime(2025 GA) — serverless NVIDIA A10/H100 on-demand, DBRX급 custom LLM 학습·LoRA 파인튜닝·MLflow 연동. Model Serving 250k+ QPS·자체 inference engine(vLLM 대비 1.5x 빠름 주장)·Agent Bricks·Unity AI Gateway. Determined AI(GPU 스케줄러)·Modal(서버리스)과 달리 "데이터 레이크+거버넌스+학습+서빙" 통합 — MLflow(추적)는 Mosaic AI의 한 컴포넌트.'
+  summary: Mosaic AI는 Databricks 위 엔터프라이즈 GenAI 플랫폼 — 학습·파인튜닝·서빙·에이전트·거버넌스를 Unity Catalog 하나로 묶는다. AI Runtime(2025 GA) — serverless NVIDIA A10/H100 on-demand, DBRX급 custom LLM 학습·LoRA 파인튜닝·MLflow 연동. Model Serving 250k+ QPS·자체 inference engine(vLLM 대비 1.5x 빠름 주장)·Agent Bricks·Unity AI Gateway. Determined AI(GPU 스케줄러)·Modal(서버리스)과 달리 "데이터 레이크+거버넌스+학습+서빙" 통합 — MLflow(추적)는 Mosaic AI의 한 컴포넌트.
   points:
   - AI Runtime — serverless GPU(A10/H100)·분산학습·LoRA·MLflow registry
   - Model Serving 250k QPS·자체 inference engine·Agent Bricks
@@ -5837,7 +5812,7 @@ cards:
   source: https://www.databricks.com/blog/mosaic-ai-announcements-data-ai-summit-2025
 - category: ai
   title: Embedchain — 10줄 RAG 프로토타입, 30+ 데이터소스·Mem0 생태계(Apache-2.0)
-  summary: 'Embedchain은 app.add(url)+app.query()로 RAG 파이프라인을 10줄 이내에 만드는 오픈소스 프레임워크다. PDF·YouTube·웹·Notion·CSV 등 30+ 소스 자동 로드→chunk→embed→vector store, Chroma·Pinecone·Qdrant·OpenAI·Ollama·HF LLM 교체 가능. 2026년 Mem0 생태계 편입 — Mem0(에이전트 장기 메모리)와 달리 "빠른 RAG ingestion+query" 특화. LlamaIndex(복잡 RAG·에이전트)·Haystack(프로덕션 파이프라인)·RAGFlow(딥 문서)와 달리 프로토타입·내부 도구 속도 최우선.'
+  summary: Embedchain은 app.add(url)+app.query()로 RAG 파이프라인을 10줄 이내에 만드는 오픈소스 프레임워크다. PDF·YouTube·웹·Notion·CSV 등 30+ 소스 자동 로드→chunk→embed→vector store, Chroma·Pinecone·Qdrant·OpenAI·Ollama·HF LLM 교체 가능. 2026년 Mem0 생태계 편입 — Mem0(에이전트 장기 메모리)와 달리 "빠른 RAG ingestion+query" 특화. LlamaIndex(복잡 RAG·에이전트)·Haystack(프로덕션 파이프라인)·RAGFlow(딥 문서)와 달리 프로토타입·내부 도구 속도 최우선.
   points:
   - App().add(source).query() — chunk·embed·retrieve 자동, 30+ 소스
   - LLM·vector DB·embedding provider config 교체 — Mem0(메모리)와 역할 분리
@@ -5845,7 +5820,7 @@ cards:
   source: https://docs.embedchain.ai/get-started/introduction
 - category: ai
   title: Kubeflow Pipelines v2 — K8s ML 워크플로 Python SDK, IR YAML·MLMD 아티팩트·Vertex 호환(Apache-2.0)
-  summary: 'Kubeflow Pipelines(KFP) v2는 Kubernetes 위 ML 워크플로를 Python 데코레이터(@dsl.pipeline·@dsl.component)로 정의하는 오픈소스 플랫폼(Apache-2.0·v2.16+). v1 대비 Argo YAML 직결을 버리고 IR(Intermediate Representation) YAML로 컴파일 — Vertex AI Pipelines 등 다중 백엔드 지원. ML Metadata로 Dataset·Model·Metrics 아티팩트 추적, dsl.If·ParallelFor·캐싱·retry·GPU node selector. Dagster(데이터 자산)·ZenML(ML stack)·Prefect(범용 durable)와 달리 ''K8s 네이티브 ML 파이프라인'' 표준 — 기존 K8s 클러스터·Kubeflow Platform 위 배포.'
+  summary: Kubeflow Pipelines(KFP) v2는 Kubernetes 위 ML 워크플로를 Python 데코레이터(@dsl.pipeline·@dsl.component)로 정의하는 오픈소스 플랫폼(Apache-2.0·v2.16+). v1 대비 Argo YAML 직결을 버리고 IR(Intermediate Representation) YAML로 컴파일 — Vertex AI Pipelines 등 다중 백엔드 지원. ML Metadata로 Dataset·Model·Metrics 아티팩트 추적, dsl.If·ParallelFor·캐싱·retry·GPU node selector. Dagster(데이터 자산)·ZenML(ML stack)·Prefect(범용 durable)와 달리 'K8s 네이티브 ML 파이프라인' 표준 — 기존 K8s 클러스터·Kubeflow Platform 위 배포.
   points:
   - '@dsl.component·@dsl.pipeline — Python→IR YAML, Vertex AI·Argo 백엔드'
   - MLMD 아티팩트 — Dataset·Model·Metrics lineage, 컴포넌트 캐싱
@@ -5853,7 +5828,7 @@ cards:
   source: https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline/
 - category: ai
   title: Flyte 2 — pure Python 에이전트 런타임, self-healing·asyncio·Devbox 로컬 개발(v2.0.20)
-  summary: 'Flyte 2(2026-06 v2.0.20)는 Netflix/Lyft 계보 워크플로 오케스트레이터의 근본적 재설계 — @workflow DSL 대신 pure Python(@env.task)·asyncio.gather·if/else·try/except. 동적 런타임 DAG·checkpointing·self-healing(실패 지점부터 재개)으로 장기 에이전트 워크플로에 특화. GenAI 예제(hello_agent.py)·LangGraph 통합·GPU/TPU·circuit breaker·OOM retrier 내장. flyte start devbox로 로컬 풀스택(Docker). OSS 백엔드는 2026년 공개 예정, 프로덕션은 Union.ai. Kubeflow(K8s DAG)·Prefect(범용)·ZenML(ML stack)과 달리 ''durable agent runtime'' 포지션.'
+  summary: Flyte 2(2026-06 v2.0.20)는 Netflix/Lyft 계보 워크플로 오케스트레이터의 근본적 재설계 — @workflow DSL 대신 pure Python(@env.task)·asyncio.gather·if/else·try/except. 동적 런타임 DAG·checkpointing·self-healing(실패 지점부터 재개)으로 장기 에이전트 워크플로에 특화. GenAI 예제(hello_agent.py)·LangGraph 통합·GPU/TPU·circuit breaker·OOM retrier 내장. flyte start devbox로 로컬 풀스택(Docker). OSS 백엔드는 2026년 공개 예정, 프로덕션은 Union.ai. Kubeflow(K8s DAG)·Prefect(범용)·ZenML(ML stack)과 달리 'durable agent runtime' 포지션.
   points:
   - Pure Python — @env.task·asyncio, Flyte 1 @workflow/@dynamic 마이그레이션
   - Self-healing·checkpoint — 장기 에이전트·fan-out 병렬, GenAI/LangGraph 예제
@@ -5861,7 +5836,7 @@ cards:
   source: https://flyte.org/platform/flyte-2
 - category: ai
   title: Evidently AI — ML+LLM 100+ eval·드리프트·모니터링, RAG·에이전트 품질 통합(Apache-2.0)
-  summary: 'Evidently는 tabular ML부터 RAG·에이전트까지 100+ 내장 메트릭으로 evaluate·test·monitor하는 오픈소스 프레임워크(Apache-2.0·~25M 다운로드). Dataset+Descriptor+Report 파이프라인 — sentiment·toxicity·hallucination·data drift·LLM-as-judge. 오프라인 batch eval·CI/CD·self-host Monitoring UI(demo.evidentlyai.com). Arize Phoenix(OTel trace)·Langfuse(범용 LLM trace)와 달리 ''ML+GenAI 품질 메트릭 라이브러리'' — RAGAS(RAG eval)와 상호보완, DeepEval(Pytest)과 CI 게이트 조합.'
+  summary: Evidently는 tabular ML부터 RAG·에이전트까지 100+ 내장 메트릭으로 evaluate·test·monitor하는 오픈소스 프레임워크(Apache-2.0·~25M 다운로드). Dataset+Descriptor+Report 파이프라인 — sentiment·toxicity·hallucination·data drift·LLM-as-judge. 오프라인 batch eval·CI/CD·self-host Monitoring UI(demo.evidentlyai.com). Arize Phoenix(OTel trace)·Langfuse(범용 LLM trace)와 달리 'ML+GenAI 품질 메트릭 라이브러리' — RAGAS(RAG eval)와 상호보완, DeepEval(Pytest)과 CI 게이트 조합.
   points:
   - 100+ metrics — data drift·LLM judge·RAG faithfulness·agent safety
   - Report+Test — batch eval·Monitoring UI self-host·Evidently Cloud
@@ -5869,7 +5844,7 @@ cards:
   source: https://github.com/evidentlyai/evidently
 - category: ai
   title: W&B Sweeps — Bayesian·Hyperband HP 탐색, wandb agent 병렬 GPU 스케일
-  summary: 'W&B Sweeps는 wandb sweep config(YAML)로 hyperparameter 탐색을 자동화하는 도구다. grid·random·Bayesian(bayes)·Hyperband early stopping — 실험 tracking(W&B Run)과 네이티브 통합. wandb sweep --project <name> config.yaml → sweep ID → wandb agent <ID>로 multi-GPU/multi-node 병렬. Parallel coordinates·parameter importance 시각화. W&B Model Registry(artifact CI/CD)·W&B Weave(LLM trace)와 역할 분리 — Sweeps는 ''HP 탐색+실험 비교'', Determined AI(GPU 스케줄링)와 조합 가능.'
+  summary: W&B Sweeps는 wandb sweep config(YAML)로 hyperparameter 탐색을 자동화하는 도구다. grid·random·Bayesian(bayes)·Hyperband early stopping — 실험 tracking(W&B Run)과 네이티브 통합. wandb sweep --project <name> config.yaml → sweep ID → wandb agent <ID>로 multi-GPU/multi-node 병렬. Parallel coordinates·parameter importance 시각화. W&B Model Registry(artifact CI/CD)·W&B Weave(LLM trace)와 역할 분리 — Sweeps는 'HP 탐색+실험 비교', Determined AI(GPU 스케줄링)와 조합 가능.
   points:
   - sweep config — bayes/grid/random, Hyperband early stopping
   - wandb agent — 동일 sweep ID로 GPU 병렬, Run 자동 로깅
@@ -5885,7 +5860,7 @@ cards:
   source: https://huggingface.co/docs/hub/en/spaces-overview
 - category: ai
   title: AgentBench FC — 8환경 LLM-as-Agent 벤치마크, Function Calling+AgentRL 통합(ICLR'24)
-  summary: 'AgentBench(THUDM·ICLR 2024)는 LLM을 자율 에이전트로 평가하는 8환경 벤치마크 — OS shell·SQL·Knowledge Graph·Web Shopping·Web Browsing·ALFWorld 등. 2025-10 AgentBench FC는 function-calling 스타일+AgentRL end-to-end RL 프레임워크로 전환, fully-containerized 배포. Claude Opus 4.7 ~73% overall(2026 커뮤니티 추적). SWE-bench(코드 수정)·Terminal-Bench(터미널)와 달리 ''범용 도구 사용·다중 환경 의사결정'' — promptfoo(커스텀 eval)와 조합해 에이전트 선택 전 사전 검증.'
+  summary: AgentBench(THUDM·ICLR 2024)는 LLM을 자율 에이전트로 평가하는 8환경 벤치마크 — OS shell·SQL·Knowledge Graph·Web Shopping·Web Browsing·ALFWorld 등. 2025-10 AgentBench FC는 function-calling 스타일+AgentRL end-to-end RL 프레임워크로 전환, fully-containerized 배포. Claude Opus 4.7 ~73% overall(2026 커뮤니티 추적). SWE-bench(코드 수정)·Terminal-Bench(터미널)와 달리 '범용 도구 사용·다중 환경 의사결정' — promptfoo(커스텀 eval)와 조합해 에이전트 선택 전 사전 검증.
   points:
   - 8 environments — OS·DB·KG·Web·ALFWorld, 5~50 turn multi-step
   - AgentBench FC — function calling+AgentRL, containerized 재현
@@ -5893,7 +5868,7 @@ cards:
   source: https://github.com/THUDM/AgentBench
 - category: ai
   title: 온디바이스 ML 3종 — Core ML vs LiteRT vs ExecuTorch 2026 선택 가이드
-  summary: '2026년 모바일/엣지 ML 런타임은 플랫폼·export 파이프라인·모델 생태계 3축으로 갈린다. Core ML(Apple) — .mlpackage, ANE/GPU 직접 접근, 런타임 0, iOS/macOS 전용. LiteRT(구 TFLite) — Google 표준, CompiledModel API(NPU 100x), Android·iOS·Web·IoT, MediaPipe Tasks. ExecuTorch(Meta) — torch.export→.pte, 50KB·12+ 백엔드(CoreML delegate 포함), Instagram/WhatsApp 프로덕션. Apple-only+최대 ANE → Core ML. Google/Pixel NPU → LiteRT. PyTorch-first+cross-platform LLM → ExecuTorch(Apple에서 Core ML delegate).'
+  summary: 2026년 모바일/엣지 ML 런타임은 플랫폼·export 파이프라인·모델 생태계 3축으로 갈린다. Core ML(Apple) — .mlpackage, ANE/GPU 직접 접근, 런타임 0, iOS/macOS 전용. LiteRT(구 TFLite) — Google 표준, CompiledModel API(NPU 100x), Android·iOS·Web·IoT, MediaPipe Tasks. ExecuTorch(Meta) — torch.export→.pte, 50KB·12+ 백엔드(CoreML delegate 포함), Instagram/WhatsApp 프로덕션. Apple-only+최대 ANE → Core ML. Google/Pixel NPU → LiteRT. PyTorch-first+cross-platform LLM → ExecuTorch(Apple에서 Core ML delegate).
   points:
   - Core ML — Apple 전용, ANE 직접, 런타임 의존성 0
   - LiteRT — CompiledModel NPU 100x, Qualcomm/MediaTek, 크로스플랫폼
@@ -5901,7 +5876,7 @@ cards:
   source: https://executorch.ai/
 - category: ai
   title: Tabnine vs Copilot vs Cursor — IDE·에이전트·프라이버시 3축 2026 비교
-  summary: '2026년 AI 코딩 어시스턴트 3대 선택지. GitHub Copilot($10/월) — VS Code·JetBrains·Neovim 플러그인, GitHub PR·Actions·Workspace 통합, 가성비·폭넓은 IDE. Cursor($20/월) — VS Code 포크 AI-native IDE, Composer 멀티파일·코드베이스 인덱싱·에이전트 병렬, SWE-bench 강점. Tabnine($9~15/월) — VPC·on-prem·air-gapped 전체 스택, 코드가 인프라 밖으로 안 나감, 금융·의료·방산. Copilot=GitHub 워크플로, Cursor=IDE 1위 생산성, Tabnine=데이터 주권. Claude Code·Codex는 터미널/클라우드 축.'
+  summary: 2026년 AI 코딩 어시스턴트 3대 선택지. GitHub Copilot($10/월) — VS Code·JetBrains·Neovim 플러그인, GitHub PR·Actions·Workspace 통합, 가성비·폭넓은 IDE. Cursor($20/월) — VS Code 포크 AI-native IDE, Composer 멀티파일·코드베이스 인덱싱·에이전트 병렬, SWE-bench 강점. Tabnine($9~15/월) — VPC·on-prem·air-gapped 전체 스택, 코드가 인프라 밖으로 안 나감, 금융·의료·방산. Copilot=GitHub 워크플로, Cursor=IDE 1위 생산성, Tabnine=데이터 주권. Claude Code·Codex는 터미널/클라우드 축.
   points:
   - Copilot $10 — 플러그인·GitHub 생태계·Agent Workspace
   - Cursor $20 — AI-native IDE·Composer·worktree 병렬 에이전트
@@ -5909,7 +5884,7 @@ cards:
   source: https://pilottools.ai/blog/best-ai-coding-tools-2026-github-copilot-vs-cursor-vs-tabnine/
 - category: ai
   title: Fiddler AI — Centor Trust Models·Guardrails·에이전트 옵저버빌리티 엔터프라이즈
-  summary: 'Fiddler AI는 ML·LLM·멀티에이전트를 통합 모니터링하는 엔터프라이즈 AI Observability+Security 플랫폼이다. Fiddler Centor(Trust) Models — in-environment 평가(<100ms), hallucination·toxicity·PII·drift 100+ 메트릭. Real-time Guardrails — prompt injection·유해 출력 차단. OTel trace→step-level agent debugging(Nielsen Ask Nielsen 사례). Arize Phoenix(OSS OTel trace)·Evidently(오픈소스 eval)와 달리 ''엔터프라이즈 SOC2/HIPAA·Guardrails·agent lifecycle'' — regulated industry 프로덕션.'
+  summary: Fiddler AI는 ML·LLM·멀티에이전트를 통합 모니터링하는 엔터프라이즈 AI Observability+Security 플랫폼이다. Fiddler Centor(Trust) Models — in-environment 평가(<100ms), hallucination·toxicity·PII·drift 100+ 메트릭. Real-time Guardrails — prompt injection·유해 출력 차단. OTel trace→step-level agent debugging(Nielsen Ask Nielsen 사례). Arize Phoenix(OSS OTel trace)·Evidently(오픈소스 eval)와 달리 '엔터프라이즈 SOC2/HIPAA·Guardrails·agent lifecycle' — regulated industry 프로덕션.
   points:
   - Centor Trust Models — in-env eval, 100+ ML+LLM metrics, <100ms guardrails
   - Agent observability — OTel trace→span hierarchy, step-level RCA
@@ -5923,3 +5898,83 @@ cards:
   - alias(prod/staging) — :latest race condition 방지
   - Model Registry와 연결 — run.link_artifact() promote, DVC와 역할 분리
   source: https://docs.wandb.ai/models/artifacts
+- category: ai
+  title: Optuna — define-by-run HP 최적화, TPE·Hyperband pruning·Optuna Dashboard(Apache-2.0·v4.9.0)
+  summary: Optuna는 Preferred Networks 계열 오픈소스 hyperparameter optimization 프레임워크(Apache-2.0·v4.9.0·2026-06). define-by-run API로 Python if/for로 동적 search space 구성 — grid search 대비 TPE(Tree-structured Parzen Estimator) 샘플링+Hyperband/Median pruning으로 unpromising trial 조기 종료. study.optimize(objective, n_trials=100) 한 줄, PostgreSQL backend로 multi-worker 분산. Optuna Dashboard 실시간 web UI, AutoSampler·GPSampler로 multi-objective·constrained 최적화. W&B Sweeps(SaaS HP+실험 UI)와 달리 범용 OSS HP 엔진 — PyTorch·Ray Tune·MLflow와 조합.
+  points:
+  - define-by-run — 동적 search space, TPE+pruning으로 GPU 낭비 차단
+  - PostgreSQL study — multi-worker 병렬, Optuna Dashboard 시각화
+  - W&B Sweeps/Determined AI와 역할 분리 — OSS HP 엔진·프레임워크 무관
+  source: https://optuna.readthedocs.io/en/stable/index.html
+- category: ai
+  title: Ray Train V2 — PyTorch·HF·JAX 분산 학습, async checkpoint·JaxTrainer(Apache-2.0·Ray 2.55+)
+  summary: 'Ray Train은 단일 머신→클러스터 ML 학습/파인튜닝 스케일링 라이브러리(Apache-2.0·Ray 2.55+). 2025-08부터 Train V2가 기본 — Tune과 decouple, TorchTrainer·TensorFlowTrainer·JaxTrainer(TPU) 단일 컨트롤러 API. ray.train.torch.prepare_model()이 DDP·NCCL·gradient sync를 자동 처리, Ray Data와 결합해 HF datasets streaming+분산 학습. V2 신기능: async checkpoint(GPU I/O 중단 없음)·async validation·local mode 디버그. Ray Serve LLM(추론 서빙)과 역할 분리 — Train=학습, Serve=배포.'
+  points:
+  - TorchTrainer+ScalingConfig — num_workers·use_gpu, DDP 자동
+  - Train V2 — async checkpoint·validation, Tune decouple
+  - Ray Serve와 역할 분리 — 학습(Train) vs 추론(Serve LLM)
+  source: https://docs.ray.io/en/latest/train/train.html
+- category: ai
+  title: W&B Reports — 실험 스냅샷 공유 문서, wandb-workspaces API·버전 고정(2026)
+  summary: W&B Reports는 run 차트·메트릭·markdown을 하나의 공유 문서로 묶는 협업 아티팩트다. UI에서 run 선택→차트 drag→Publish로 URL 공유, 2026년 Report and Workspace API(public preview)로 wandb-workspaces로 프로그래밍 생성 가능. Report는 생성 시점 run 데이터의 스냅샷 — 이후 새 run이 자동 반영되지 않아 audit·리뷰에 유리, explicit version·artifact pin으로 재현성 확보. W&B Weave(LLM trace)·Sweeps(HP)·Artifacts(lineage)와 역할 분리 — Reports는 비개발자 stakeholder에게 실험 내러티브 전달.
+  points:
+  - 스냅샷 문서 — loss curve·param importance+markdown 내러티브
+  - wandb-workspaces API — wr.Report().save() 프로그래밍 생성
+  - Weave/Sweeps와 역할 분리 — 실험 결과 공유·버전 고정 리포트
+  source: https://docs.wandb.ai/models/reports/create-a-report
+- category: ai
+  title: TruLens — RAG Triad·에이전트 eval, OTel trace·MLflow 3.10 scorer 통합(Snowflake OSS·v2.7)
+  summary: TruLens(TruEra→Snowflake 인수 후 OSS 유지)는 feedback function으로 LLM 앱 품질을 측정하는 프레임워크다. RAG Triad(context relevance·groundedness·answer relevance)가 RAG eval 표준 어휘를 확립. 2026 v2.7 Unified Metric API — Metric 클래스로 Feedback·MetricConfig 통합, 7종 agentic eval(PlanAdherence·ToolSelection·ExecutionEfficiency 등). OTel span emit으로 Jaeger·Grafana·Datadog 연동, MLflow 3.10+ mlflow.genai.evaluate에 TruLens scorer first-class. DeepEval(Pytest CI)·promptfoo(회귀)·Phoenix(OTel trace UI)와 달리 커스텀 feedback+leaderboard 비교.
+  points:
+  - RAG Triad — context·groundedness·answer relevance 3축
+  - Unified Metric API v2.7 — agent eval 7종, OTel native
+  - MLflow scorer 통합 — DeepEval/promptfoo와 CI·회귀 조합
+  source: https://www.trulens.org/
+- category: ai
+  title: Hugging Face Datasets v5 — load_dataset 한 줄·agent traces·Iceberg·100x streaming(Apache-2.0)
+  summary: 'Hugging Face Datasets는 Hub+로컬 파일을 ML-ready dataloader로 변환하는 라이브러리(Apache-2.0·v5.0.0·2026-06). load_dataset("rajpurkar/squad") 한 줄, Arrow memory-map·streaming=True(Xet backend 100x faster). v5.0: agent traces(claude_code/pi/codex) teich 파싱→messages SFT, Apache Iceberg·3D mesh·robotics batching, multi-shard streaming shuffle. dataset.map(num_proc=N) 병렬 전처리, FAISS/Elasticsearch index 내장. DVC(Git for Data)와 달리 공개 Hub+전처리 파이프라인 — Ray Train·TRL·fine-tuning과 직결.'
+  points:
+  - load_dataset — 467+ 언어·멀티모달·agent traces Hub
+  - v5.0 streaming — Xet 100x, Iceberg·teich SFT messages
+  - DVC와 역할 분리 — Hub 생태계·map(num_proc) 전처리
+  source: https://github.com/huggingface/datasets
+- category: ai
+  title: NeMo Data Designer — Gretel 계보 synthetic data, dependency-aware·LLM-as-judge(Apache-2.0·v0.5.7)
+  summary: NVIDIA NeMo Data Designer(구 Gretel, 2025-03 NVIDIA 인수)는 code-first synthetic data 생성 프레임워크(Apache-2.0·~1.6k★·v0.5.7). statistical sampler+LLM으로 scratch·seed data 생성, field dependency·Python/SQL/custom validator·LLM-as-judge scoring. preview mode→full-scale generation, NeMo Platform microservice로 Inference Gateway 경유 분산 job. Distilabel(Argilla·LLM teacher 파이프라인)과 달리 스키마·제약·검증 중심 SDG — fine-tuning·RAG eval·agent tool-use 데이터셋.
+  points:
+  - dependency-aware generation — validator·LLM judge 품질 게이트
+  - NeMo Platform service — distributed job·artifact storage
+  - Distilabel과 역할 분리 — 스키마 SDG vs LLM teacher 파이프라인
+  source: https://github.com/NVIDIA-NeMo/DataDesigner
+- category: ai
+  title: OWASP LLM Top 10 2025 — GenAI 보안 10대 리스크, LLM01 Prompt Injection~LLM10 Unbounded Consumption
+  summary: OWASP Top 10 for LLM Applications 2025(2024-11 GA)는 LLM 통합 앱 보안의 표준 awareness 문서다. LLM01 Prompt Injection·LLM02 Sensitive Info Disclosure·LLM03 Supply Chain·LLM04 Data/Model Poisoning·LLM05 Improper Output Handling·LLM06 Excessive Agency·LLM07 System Prompt Leakage(신규)·LLM08 Vector/Embedding Weaknesses(신규)·LLM09 Misinformation·LLM10 Unbounded Consumption. 2023 대비 agentic·RAG·비용 공격 벡터 반영. Garak(자동 스캔 도구)과 달리 위협 모델링 체크리스트 — 출력을 untrusted·도구 least-privilege·defense-in-depth가 실무 핵심.
+  points:
+  - 10 risks — prompt injection·excessive agency·embedding weakness 등
+  - 2025 신규 — system prompt leakage·vector weakness·unbounded consumption
+  - Garak/PyRIT(도구)과 역할 분리 — 표준 위협 모델·procurement questionnaire
+  source: https://owasp.org/www-project-top-10-for-large-language-model-applications/
+- category: ai
+  title: PyRIT — Microsoft AI red team, Crescendo·TAP multi-turn·OWASP 매핑·CI gate(MIT·~4k★)
+  summary: PyRIT(Python Risk Identification Tool)은 Microsoft AI Red Team의 오픈소스 adversarial testing 프레임워크(MIT·~4k★). Target(Azure OpenAI·HTTP·agent)·Orchestrator(single/multi-turn Crescendo·TAP)·Converter(Base64·Leetspeak obfuscation)·Scorer(LLM-as-judge·content safety)·Memory(forensic log) 5계층. 53+ adversarial dataset·70+ prompt converter·6 attack strategy, Copilot 등 100+ 제품 red team에 사용. Garak(nmap식 단일턴 스캔)과 상호보완 — PyRIT=multi-turn surgical campaign·CI release gate. Microsoft Foundry AI Red Teaming Agent와 연동.
+  points:
+  - Orchestrator — Crescendo·TAP multi-turn, converter stack
+  - 53+ dataset·70+ converter — OWASP LLM 매핑·exit code gate
+  - Garak과 역할 분리 — deep adaptive multi-turn vs surface scan
+  source: https://github.com/microsoft/PyRIT
+- category: ai
+  title: Langfuse vs LangSmith vs Phoenix — OTel LLM 옵저버빌리티 3축 2026 선택 가이드
+  summary: '2026년 LLM observability 3대 OSS/SaaS 선택지. Langfuse(MIT·~2.3k org) — OTel 기반 self-host, prompt management·eval·cost tracking, 데이터 주권·EU on-prem. LangSmith(LangChain) — 프레임워크 비종속 SaaS, LangGraph native trace·eval·prompt hub, Klarna/Uber급 프로덕션. Arize Phoenix(ELv2·~10k★) — OTel trace UI+eval+prompt playground, RAG/embedding drift 특화, LangChain/LlamaIndex integration. 공통: OTel span·LLM-as-judge eval. Evidently(품질 메트릭)·Langfuse(self-host trace) vs LangSmith(SaaS eval loop) vs Phoenix(OSS trace+eval). 하이브리드: Phoenix(trace)+Langfuse(prompt)+DeepEval(CI) 조합 흔함.'
+  points:
+  - Langfuse — MIT self-host, prompt·eval·cost, 데이터 주권
+  - LangSmith — SaaS, LangGraph native, enterprise eval loop
+  - Phoenix — ELv2 OSS, OTel trace+eval, RAG drift 특화
+  source: https://langfuse.com/docs
+- category: ai
+  title: LLM API 비용 최적화 — model routing·prefix cache·semantic cache·batch 4층(2026 FinOps)
+  summary: 2026년 LLM 프로덕션 비용은 routing+caching+인프라 3층 스택으로 60~80% 절감 사례가 보고된다. Model routing — 단순 분류·추출은 nano/mini, reasoning만 frontier, cascade(저가 먼저→실패 시 escalate)로 40~60%↓. Prefix/KV cache — Anthropic cache_control·OpenAI auto cache로 stable system prompt 75~90% prefill 절감. Semantic cache — embedding 유사 query hit 시 LLM 호출 생략(GPTCache 등) 30~50%↓. Batch API — async 24h window 50% 할인. LiteLLM/Portkey(게이트웨이)와 달리 아키텍처 패턴 — cost per successful outcome·eval-driven routing gate 필수.
+  points:
+  - Model routing/cascade — task complexity별 cheapest capable model
+  - Prefix cache+semantic cache — prefill 90%↓·반복 query 30~50%↓
+  - Batch 50% off — eval hold-out 200~500 query로 routing 품질 검증
+  source: https://stochasticsandbox.com/posts/cost-optimization-for-llm-applications-2026-05-26/
