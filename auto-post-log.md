@@ -2332,3 +2332,66 @@ Refined:
 
 누적: 694카드 (687→685 병합→694 신규)
 주제: LLM FinOps(Helicone), PII guardrail(Presidio), AI runtime control(LaunchDarkly·Statsig), safe model rollout(shadow→canary), content moderation(OpenAI·Perspective), GDPR+EU AI Act, Datadog agent observability, mobile agent(Mobile MCP·mobile-use)
+
+## 2026-06-25 18:00 KST — Batch 37 (아이디어 검증 + 병합 1카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Qualcomm AI Hub | qai-hub-models·Genie SDK export pipeline — NexaSDK(런타임) ·MLPerf Mobile(벤치)와 end-to-end deploy 분리 |
+| MediaTek NeuroPilot + LiteRT | Google 협력 LiteRT Accelerator, Dimensity NPU 단일 API — ExecuTorch delegate ·Qualcomm Genie와 vendor 경로 분리 |
+| Mobile LLM Thermal Throttling | sustained vs peak tok/s, duty cycling — PowerLens(전력 정책 agent) ·ML Kit quota와 thermal physics 분리 |
+| Swift Concurrency + Core AI | ComputeStream·Sendable InferenceFunction — Core AI(WWDC26) overview ·AFM 3 framework와 Swift API 패턴 분리 |
+| Offline-First AI App | Room+WorkManager sync architecture — ObjectBox/sqlite-vector(벡터 DB) ·Firebase Hybrid API와 data layer 분리 |
+| On-Device AI Model Delivery | server-side registry·incremental OTA·hot rollback — Play Asset Delivery ·Delta Lake와 mobile model lifecycle 분리 |
+| Mobile LLM SDK 2026 | ExecuTorch·MLC·NexaSDK·llama.cpp 4-way — 온디바이스 ML 3종(runtime) ·개별 SDK 카드와 LLM-specific 선택 가이드 |
+| TinyMLDelta | TFLite Micro binary patch OTA — oxide(ONNX fleet) ·server-side model delivery와 MCU scale 분리 |
+| LiteRT Delegate Patterns | GPU/NPU/NNAPI fallback + Android 17 NPU manifest — LiteRT main(framework) ·FEATURE_NEURAL_PROCESSING_UNIT 카드와 delegate 설계 분리 |
+| Private AI App Architecture | inference·telemetry·sync 3-boundary — SideEye(앱 사례) ·GDPR+EU AI Act(regulatory)와 privacy architecture 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Ollama mobile | Ollama·llama.cpp·Open WebUI 등 다수 카드 커버 |
+| MLC LLM mobile | MLC LLM 크로스플랫폼 카드 + Mobile LLM SDK 비교에 포함 |
+| NexaSDK 단독 | NexaSDK·SideEye 카드 존재, Qualcomm AI Hub와 역할 분리 |
+| Apple Core ML Tools 2026 | Core AI(WWDC26)·온디바이스 ML 3종 카드 커버 |
+| Flutter + on-device AI | Genkit Dart·nsfw_detect·flutter_doclayout_kit 카드 존재 |
+| React Native + AI | React Native ExecuTorch+RAG·AgenTest 카드 존재 |
+| KMP + AI | kmp-ai·koog-compose·Driftx 카드 존재 |
+| Federated learning mobile | KotlinSyft 카드 존재 |
+| Mobile RAG patterns | RN ExecuTorch+RAG·Locanara·ObjectBox 카드 커버 |
+| oxide fleet OTA | TinyMLDelta 카드에 complement mention, 독립 카드 가치 부족 |
+| EnerInfer/CORE 단독 | Mobile LLM Thermal Throttling 카드에 DVFS governor 포함 |
+| AI mobile SDK comparison generic | Mobile LLM SDK 2026 카드로 LLM-specific 비교 통합 |
+| Edge AI inference optimization generic | Thermal·Delegate·LiteRT SME2(병합)로 분산 커버 |
+| On-device personalization | Project KARL·Cadence 카드 존재 |
+| Qualcomm vs MediaTek generic | AI Hub·NeuroPilot 각각 독립 카드로 vendor별 actionable |
+
+### 병합 1카드
+
+| 병합 | Before | After | 근거 |
+|------|--------|-------|------|
+| LiteRT + Arm SME2 → LiteRT main | 2 | 1 | LiteRT(구 TFLite) 카드가 CompiledModel·Tensor SDK·Arm SME2·Stable Audio 사례를 이미 포함, SME2 단독 카드는 중복 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Qualcomm AI Hub — Snapdragon NPU용 LLM export·Genie SDK·ChatApp 레시피 | aihub.qualcomm.com/mobile |
+| 2 | MediaTek NeuroPilot + LiteRT Accelerator — Dimensity NPU를 단일 API로 | mediatek.com/tek-talk-blogs |
+| 3 | Mobile LLM Thermal Throttling — sustained inference는 peak tok/s가 아니다 | arxiv.org/html/2603.23640v1 |
+| 4 | Swift Concurrency + Core AI ComputeStream — 온디바이스 추론을 async로 | developer.apple.com/videos/play/wwdc2026/326 |
+| 5 | Offline-First AI App — Room이 source of truth, WorkManager가 sync | proandroiddev.com/offline-first-architecture |
+| 6 | On-Device AI Model Delivery — APK에서 모델 lifecycle 분리·incremental OTA | xckevin.com/android-on-device-ai-model-delivery |
+| 7 | Mobile On-Device LLM SDK 2026 — ExecuTorch·MLC·NexaSDK·llama.cpp 선택 가이드 | cactuscompute.com/compare/mlc-llm-vs-executorch |
+| 8 | TinyMLDelta — TFLite Micro 모델 OTA를 binary patch로 | github.com/felixgalindo/TinyMLDelta |
+| 9 | LiteRT Delegate Patterns — GPU·NPU·NNAPI·CPU fallback·Android 17 NPU 선언 | developer.android.com/develop/ai/on-device |
+| 10 | Private AI App Architecture — inference·telemetry·sync 3-boundary | nearform.com/on-device-generative-ai |
+
+누적: 703카드 (694→693 병합→703 신규)
+주제: mobile on-device AI(Qualcomm AI Hub·MediaTek NeuroPilot·LiteRT delegate), thermal/battery(sustained inference), Swift Concurrency+Core AI, offline-first·model delivery OTA, LLM SDK comparison, TinyMLDelta, private AI architecture

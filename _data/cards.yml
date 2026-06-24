@@ -3624,16 +3624,6 @@ cards:
   - 에이전트 산출물도 요청한 사람의 ownership·review 흐름 안에 보여야 함
   source: https://github.blog/changelog/2026-06-18-copilot-authored-pull-requests-now-included-in-author-searches/
 - category: ai
-  title: LiteRT + Arm SME2 — 모바일 CPU도 GenAI 가속 경로가 된다
-  summary: 'Google AI Edge와 Arm은 LiteRT가 XNNPACK·KleidiAI 통합을 통해 Arm SME2를 런타임에서 자동 활용하는 온디바이스 AI 최적화 흐름을 설명했다. Stable Audio Open Small을 PyTorch에서 LiteRT로 변환하고, Model Explorer와 AI Edge Quantizer로 quantization-safe layer를 확인한 뒤 INT8/FP16 최적화를 적용한다. 결과로 DiT submodel은 약 4배 작아지고, Android SME2 기기에서는 14초 작업이 6.6초로 줄었다. 핵심은 "전용 NPU가 없으면 끝"이 아니라, CPU 경로도 측정·양자화·delegate 자동 선택으로 제품급 fallback이 될 수 있다는 점이다.
-
-    '
-  points:
-  - LiteRT가 XNNPACK·KleidiAI를 통해 Arm SME2 가속을 자동 활용
-  - Model Explorer로 양자화 안전성을 확인하고 AI Edge Quantizer로 INT8 적용
-  - Android SME2 기기에서 14초→6.6초, DiT submodel 약 4배 축소 사례
-  source: https://developers.googleblog.com/accelerating-on-device-ai-a-look-at-arm-and-google-ai-edge-optimization/
-- category: ai
   title: Karrot Firebase AI Logic — 번역 AI는 품질보다 배포 경로가 먼저다
   summary: 'Google Android Developers Blog의 Karrot 사례는 AI+Android 기능 선택의 기준을 잘 보여준다. Karrot은 북미 사용자 중 비영어 기기 언어 사용자가 30%라는 문제를 확인했고, ML Kit Translation과 Gemini Nano를 먼저 시험했지만 품질과 모델 다운로드 장벽 때문에 Firebase AI Logic + Gemini Flash Lite를 선택했다. PoC는 3시간 안에 만들었고, 전용 백엔드 없이 2주 만에 프로덕션 기능으로 전환했다. 결과적으로 번역 배너를 본 비영어 사용자 3명 중 1명이 기능을 사용했고, 번역 기능을 제공받은 구매자는 판매자와 채팅을 시작할 가능성이 2.4배 높았다. 교훈은 모델 이름보다 배포 경로, UX opt-in, 프롬프트 운영을 먼저 검증하라는 점이다.
 
@@ -4571,11 +4561,12 @@ cards:
   source: https://jstechlog.com/en/posts/video-ai-opensource-guide/
 - category: ai
   title: LiteRT(구 TFLite) — Google 온디바이스 ML 표준, CompiledModel·Tensor SDK·Arm SME2
-  summary: 'LiteRT는 Google이 TensorFlow Lite를 리브랜딩한 온디바이스 ML 프레임워크다. CompiledModel API가 Interpreter 대체: 자동 HW 선택·비동기 실행으로 NPU CPU 대비 100x·GPU 10x 가속. 2026년 Tensor ML SDK Beta가 LiteRT와 통합 — Pixel 10 Tensor TPU 경로, PyTorch/TFLite→LiteRT Torch 변환, Play Feature Delivery·AI Packs 배포, TPU 우선+CPU/GPU fallback. Arm SME2는 XNNPACK·KleidiAI로 자동 활용, INT8/FP16 양자화로 Android SME2 기기 14초→6.6초 사례. Qualcomm·MediaTek NPU 프로덕션, MediaPipe Tasks(LLM·비전) 조합.'
+  summary: 'LiteRT는 Google이 TensorFlow Lite를 리브랜딩한 온디바이스 ML 프레임워크다. CompiledModel API가 Interpreter 대체: 자동 HW 선택·비동기 실행으로 NPU CPU 대비 100x·GPU 10x 가속. 2026년 Tensor ML SDK Beta가 LiteRT와 통합 — Pixel 10 Tensor TPU 경로, PyTorch/TFLite→LiteRT Torch 변환, Play Feature Delivery·AI Packs 배포, TPU 우선+CPU/GPU fallback. Arm SME2는 XNNPACK·KleidiAI로 자동 활용, INT8/FP16 양자화로 Android SME2 기기 14초→6.6초 사례. Qualcomm·MediaTek NPU 프로덕션, MediaPipe Tasks(LLM·비전) 조합. Stable Audio Open Small PyTorch→LiteRT 변환·Model Explorer 양자화 검증 사례 포함.'
   points:
   - 'CompiledModel API: NPU 100x, GPU 10x, Qualcomm·MediaTek NPU'
   - 'Tensor SDK Beta: Pixel TPU + LiteRT Torch + Play Feature Delivery'
   - 'Arm SME2: XNNPACK·KleidiAI 자동 delegate, CPU fallback도 제품급'
+  - 'Stable Audio→LiteRT: DiT submodel 4x 축소, SME2 Android 14s→6.6s'
   source: https://developers.googleblog.com/google-tensor-sdk-beta-with-litert/
 - category: ai
   title: Open WebUI — 셀프호스팅 ChatGPT 대안, Ollama+OpenAI 통합·RAG·RBAC·142k★·Docker 원커맨드
@@ -6544,3 +6535,83 @@ cards:
   - 'APM correlation: service issue→agent step→user impact root cause'
   - LLM-as-judge eval trace/span/session, offline experiment→prod 동일 UI
   source: https://docs.datadoghq.com/llm_observability/monitoring/agent_monitoring/
+- category: ai
+  title: Qualcomm AI Hub — Snapdragon NPU용 LLM export·Genie SDK·ChatApp 레시피
+  summary: Qualcomm AI Hub(aihub.qualcomm.com)는 Snapdragon Hexagon NPU에 최적화된 380+ 모델 zoo와 export·compile·deploy 파이프라인을 제공한다. qai-hub-models(PyPI)로 Hugging Face Llama 3.2 3B 등을 device-specific bundle로 export하고, QAIRT SDK(구 QNN)의 Genie SDK로 Android·Windows·Linux에서 on-device LLM을 실행한다. genie-t2t-run CLI 또는 ChatApp(Android Java/C++) 샘플로 Llama-v3.2-3B-Instruct를 Snapdragon 8 Elite Gen 5에서 TTFT·response rate 벤치마크 가능. NexaSDK(앱 SDK)와 달리 Hub는 모델 최적화·compile·reference app까지 end-to-end. 16GB RAM(7B+)·12GB(3B+) 메모리 요구, Android 15+.
+  points:
+  - qai-hub-models→QAIRT Genie bundle export, genie-t2t-run·ChatApp 배포
+  - 380+ 모델 zoo, Llama 3.2 3B on Snapdragon 8 Elite Gen 5 벤치마크
+  - NexaSDK(런타임 SDK) vs AI Hub(export+compile+sample app) 역할 분리
+  source: https://aihub.qualcomm.com/mobile
+- category: ai
+  title: MediaTek NeuroPilot + LiteRT Accelerator — Dimensity NPU를 단일 API로
+  summary: MediaTek NeuroPilot는 Edge AI용 SDK·converter·compiler 생태계로, 2026년 Google과 협력해 LiteRT NeuroPilot Accelerator를 통합했다. LiteRT 단일 API로 MediaTek NPU를 타겟하고, AOT offline compile·on-device compile·CPU/GPU 자동 fallback을 지원. Gemma 3(270M·1B·3n E2B)·Qwen3 0.6B·EmbeddingGemma 300M 등 open-weight 모델이 Dimensity NPU에서 CPU 대비 최대 12x·GPU 대비 10x 빠른 추론. ExecuTorch(MediaTek delegate) ·Qualcomm AI Hub(Snapdragon Genie)와 달리 Google LiteRT 경로로 Dimensity 칩셋 millions-scale 배포.
+  points:
+  - 'LiteRT NeuroPilot Accelerator: 단일 API, AOT+on-device compile, auto fallback'
+  - Gemma 3·Qwen3 0.6B·EmbeddingGemma, NPU 12x CPU·10x GPU 속도
+  - NeuroPilot SDK(converter) + LiteRT(runtime) = code once deploy everywhere
+  source: https://www.mediatek.com/tek-talk-blogs/mediatek-npus-neuropilot-and-litert-are-ready-to-bring-power-ai-in-millions-of-devices
+- category: ai
+  title: Mobile LLM Thermal Throttling — sustained inference는 peak tok/s가 아니다
+  summary: '2026년 벤치마크는 모바일 LLM의 binding constraint가 peak compute가 아니라 thermal management임을 보여준다. iPhone 16 Pro는 peak 40 tok/s지만 2회 inference 후 44% degradation, benchmark 65% 시간 throttled 상태. Snapdragon 8 Gen 2는 90–120초 full-speed 후 clock 30–40% drop. 스마트폰 passive cooling은 2–3W sustained만 허용. 프로덕션 대응: duty cycling(추론·idle 2:1), batch size를 thermal pressure에 따라 4→2→1 축소, INT4 양자화로 bandwidth·발열 절감. EnerInfer·CORE(MLSys 2026)는 NPU/DDR frequency를 QoE·thermal comfort에 맞춰 joint control.'
+  points:
+  - 'Peak≠sustained: iPhone 16 Pro 40→22 tok/s, S24 hard GPU frequency floor'
+  - Duty cycling·dynamic batch·INT4 quantization = production thermal strategy
+  - 'EnerInfer/CORE: NPU+memory DVFS joint governor, always-on agent에 필수'
+  source: https://arxiv.org/html/2603.23640v1
+- category: ai
+  title: Swift Concurrency + Core AI ComputeStream — 온디바이스 추론을 async로
+  summary: Core AI(WWDC26)는 Sendable InferenceFunction·ComputeStream으로 Swift Concurrency와 네이티브 통합한다. AIModel은 lightweight handle, loadFunction(named:)으로 InferenceFunction을 얻고 ComputeStream에 encode하면 Neural Engine/GPU 작업이 async로 직렬화된다. 동일 stream에 encode된 inference는 data dependency 기반 자동 순서 보장, InferenceFunction은 Sendable이라 concurrent task에서 per-caller buffer 자동 할당. SpecializationOptions로 ComputeUnitKind(CPU/GPU/Neural Engine) 명시, coreai-build CLI로 AOT compile해 first-run specialization latency 제거. Foundation Models LanguageModelSession에 CoreAILanguageModel을 plug하면 streaming·@Generable·tool calling 재사용.
+  points:
+  - ComputeStream + Sendable InferenceFunction = async on-device pipeline
+  - coreai-build AOT compile → first-run specialization 시간 대폭 단축
+  - 'Core AI overview 카드와 complement: Swift API·concurrency 설계 패턴'
+  source: https://developer.apple.com/videos/play/wwdc2026/326/
+- category: ai
+  title: Offline-First AI App — Room이 source of truth, WorkManager가 sync
+  summary: '온디바이스 AI 앱에서 offline-first는 "네트워크 없으면 disabled"가 아니라 local DB가 single source of truth이고 cloud는 sync mechanism이다. Android: Room/Kotlin Flow로 UI 즉시 반영, write는 pending sync 표시 후 WorkManager가 POST/PUT queue. Flutter: docs.flutter.dev offline-first 패턴 — repository가 local remote 병합, pull-to-refresh 또는 background workmanager sync. AI inference boundary는 local-first: embedding·RAG·LLM 생성은 디바이스, cloud는 model update·analytics coordination만. ObjectBox·sqlite-vector 카드(벡터 DB)와 complement: 아키텍처 레이어(데이터·sync·inference 분리).'
+  points:
+  - Local DB=truth, network=sync — UI는 Flow/ReactiveStream으로 즉시 갱신
+  - Write→pending sync→WorkManager/background task guaranteed delivery
+  - Inference local-first, cloud=model update·coordination layer only
+  source: https://proandroiddev.com/the-complete-guide-to-offline-first-architecture-in-android-490d5e9d27ea
+- category: ai
+  title: On-Device AI Model Delivery — APK에서 모델 lifecycle 분리·incremental OTA
+  summary: '프로덕션 on-device AI는 모델을 APK에 bundling하면 Play 배포·rollback이 app release에 묶인다. 패턴: server-side model registry(버전·호환성·실험군 3-layer) + WiFi+charging+screen-off 조건부 download + incremental patch(BSDiff/tensor delta, patch>50% base면 full download) + staged rollout(1%→100%) + hot rollback. Play Asset Delivery·on-demand pack도 app version에 종속. A/B experiment group별 model binding으로 blast radius 제어. ExecuTorch(.pte)·LiteRT·GGUF 모두 동일 delivery pipeline 적용 가능.'
+  points:
+  - 'Model registry 3-layer: version·compatibility·experiment group'
+  - Incremental patch vs full download threshold, WiFi+charging policy
+  - Staged rollout + hot rollback, app release와 model iteration 완전 분리
+  source: https://xckevin.com/en/blog/android-on-device-ai-model-delivery-versioning/
+- category: ai
+  title: Mobile On-Device LLM SDK 2026 — ExecuTorch·MLC·NexaSDK·llama.cpp 선택 가이드
+  summary: '2026년 모바일 LLM SDK는 export pipeline·HW delegate·integration complexity 3축으로 갈린다. ExecuTorch(Meta): PyTorch torch.export→.pte, 12+ delegate(QNN·CoreML·XNNPACK), Instagram/WhatsApp 프로덕션 스케일 — PyTorch 팀에 최적. MLC LLM: TVM compile→hardware-native, iOS Metal·Android GPU·WebGPU 크로스플랫폼 — browser deployment unique. NexaSDK(Qualcomm): NPU-first, LLM·VLM·ASR·TTS 올인원, OpenAI 호환 API — Snapdragon NPU 최적·integration simplest. llama.cpp: GGUF·CPU/GPU portable, framework overhead 최소 — 프로토타입·fallback. 온디바이스 ML 3종(Core ML·LiteRT·ExecuTorch) 카드와 complement: LLM-specific SDK 비교.'
+  points:
+  - ExecuTorch=PyTorch prod scale, MLC=TVM compile+cross-platform+WebGPU
+  - NexaSDK=NPU-first multimodal simplest, llama.cpp=GGUF leanest
+  - '선택: PyTorch→ExecuTorch, cross-platform+web→MLC, Snapdragon NPU→NexaSDK'
+  source: https://cactuscompute.com/compare/mlc-llm-vs-executorch
+- category: ai
+  title: TinyMLDelta — TFLite Micro 모델 OTA를 binary patch로, flash wear 최소화
+  summary: 'TinyMLDelta(felixgalindo/TinyMLDelta)는 embedded/TinyML 디바이스에서 full TFLite Micro model(20–200KB+) 대신 binary patch(수 KB)로 OTA 업데이트한다. PatchGen(off-target)이 tensor-level diff 생성, MCU runtime(on-target)이 flash에 atomic apply + metadata TLV compatibility 검증(opset·arena·signature). Flash wear는 changed byte만 write. Arduino UNO Q thermocouple anomaly demo: on-device train→PC patch gen→OTA push→infer. oxide(ONNX fleet delta) ·Android server-side model delivery와 complement: MCU/IoT scale incremental update.'
+  points:
+  - PatchGen(off-target)→MCU runtime(on-target), metadata TLV compatibility gate
+  - 'Diff not full model: bandwidth·flash wear·update latency 대폭 절감'
+  - TFLite Micro embedded 전용, oxide(ONNX fleet)와 스케일 분리
+  source: https://github.com/felixgalindo/TinyMLDelta
+- category: ai
+  title: LiteRT Delegate Patterns — GPU·NPU·NNAPI·CPU fallback 선택과 Android 17 NPU 선언
+  summary: 'LiteRT(구 TFLite)는 CompiledModel API가 Interpreter를 대체해 자동 HW 선택·비동기 실행을 제공한다. Delegate 계층: GPU delegate(OpenCL/Vulkan), NNAPI(deprecated but legacy), vendor NPU delegate(Qualcomm·MediaTek via NeuroPilot Accelerator), XNNPACK CPU(+Arm SME2 via KleidiAI). Android 17: FEATURE_NEURAL_PROCESSING_UNIT manifest 선언 없으면 targetSdk 37+ NPU 접근 차단 — LiteRT NPU delegate·벤더 SDK·NNAPI 사용 앱 모두 해당. Fallback chain 설계: NPU→GPU→CPU, 각 경로 latency·accuracy·thermal profile 측정 필수. MediaPipe Tasks(LLM·vision)와 조합 시 delegate 자동 선택.'
+  points:
+  - 'CompiledModel: auto HW select, GPU/NPU/XNNPACK delegate chain'
+  - Android 17 FEATURE_NEURAL_PROCESSING_UNIT manifest 필수(targetSdk 37+)
+  - NPU→GPU→CPU fallback + per-path benchmark, NNAPI legacy 주의
+  source: https://developer.android.com/develop/ai/on-device
+- category: ai
+  title: Private AI App Architecture — inference boundary·telemetry 분리·local-first UX
+  summary: 'Private/local-first AI 앱은 "모델을 디바이스에 넣었다"로 끝나지 않는다. 3-layer boundary: (1) inference boundary — PII·prompt·embedding·generation이 디바이스를 안 떠남, cloud API는 opt-in fallback only (2) telemetry boundary — diagnostic metadata(model version·latency·error code)와 user content 분리, SideEye·nsfw_detect 패턴 (3) sync boundary — user-generated content만 encrypted sync, model weights는 separate delivery channel. React Native ExecuTorch+RAG·Genkit Dart hybrid·Firebase AI Logic routing 카드와 complement: privacy architecture 프레임워크.'
+  points:
+  - Inference·telemetry·sync 3-boundary — content vs diagnostic 분리
+  - Cloud=opt-in fallback, default on-device; encrypted sync for user data only
+  - Model weights separate delivery, PII never in analytics pipeline
+  source: https://nearform.com/digital-community/ai-beyond-the-cloud-the-current-and-future-state-of-on-device-generative-ai/
