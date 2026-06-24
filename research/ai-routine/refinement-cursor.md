@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)`; next oldest reviewed candidate is `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기`.
+Current position: continue after `AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)`; next oldest reviewed candidate is `서브레시피 파이프라인 — 복잡한 작업을 'YAML 레시피'로 쪼개 단계·병렬로 돌리기`.
 
-Last update: 2026-06-24 19:58 KST
+Last update: 2026-06-24 22:03 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -34,6 +34,8 @@ Reviewed:
 - `Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰`
 - `OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)`
 - `ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)`
+- `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기`
+- `AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -60,6 +62,8 @@ Refined:
 - `Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰` — re-checked Anthropic Managed Agents docs and clarified input/output store immutability, future-session attachment, partial output handling, and the limits of `instructions`.
 - `OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)` — re-checked the current README plus GitHub API metrics and clarified channel routing, Gateway/onboard operation, provider/OAuth wording, and live popularity signals while removing unsupported host-tool/sandbox phrasing.
 - `ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)` — re-checked the current README plus GitHub API metrics and clarified unified source reports, `blocks`/`statusline`, source-focused commands, JSON/breakdown/offline controls, and live star count.
+- `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기` — re-checked current Anthropic web and quickstart docs, then clarified cloud-session lifecycle, same-session review loop, fit versus local/Remote Control, and GitHub permission caveat.
+- `AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)` — re-checked README plus GitHub API metrics, refreshed the title star signal, clarified 98-skill/23-category scope, autoresearch lifecycle routing, npx installer, marketplace install, MIT license, and live popularity signal.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -67,7 +71,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `서브레시피 파이프라인 — 복잡한 작업을 'YAML 레시피'로 쪼개 단계·병렬로 돌리기`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

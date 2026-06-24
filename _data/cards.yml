@@ -1174,23 +1174,23 @@ cards:
   source: https://github.com/ryoppippi/ccusage
 - category: ai
   title: Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기
-  summary: 'Claude Code를 터미널 없이 claude.ai/code에서 돌리는 리서치 프리뷰다. GitHub 레포를 연결하고 할 일을 적으면, Anthropic이 관리하는 클라우드 VM에 레포가 클론된 채 작업이 돌고 끝나면 PR 초안까지 자동으로 만들어 준다. 여러 작업을 여러 레포에 걸쳐 병렬로 띄울 수 있어 버그 백로그·반복 수정 같은 일을 한 화면에서 한꺼번에 굴리기 좋다. 세션은 브라우저를 닫아도 유지되고 Claude 모바일 앱에서 모니터링된다. Pro·Max·Team과 일부 Enterprise 좌석이 대상이다.
+  summary: 'Claude Code on the web은 터미널 없이 claude.ai/code나 Claude 모바일 앱에서 클라우드 세션을 시작하는 리서치 프리뷰다. GitHub 레포를 연결하면 Anthropic 관리 VM에 레포가 클론되고, setup script 실행·네트워크 정책 적용·코드 수정·테스트·브랜치 push까지 한 세션 안에서 이어진다. 브라우저를 닫아도 세션은 유지되고, PR 생성 뒤에도 같은 대화에서 diff 리뷰·인라인 코멘트·추가 수정이 가능하다. 로컬 설정과 도구가 꼭 필요한 일은 로컬 Claude Code나 Remote Control이 맞고, 웹은 잘 정의된 백로그·코드 탐색·여러 독립 작업을 각자 세션/브랜치로 병렬 처리할 때 적합하다.
 
     '
   points:
-  - 각 세션은 격리된 Anthropic 관리 VM에서 실행 / GitHub은 보안 프록시로 인증돼 토큰이 컨테이너에 안 들어감
-  - 터미널의 `--remote`로 클라우드 작업을 띄우고 `--teleport`로 웹↔터미널 세션을 옮긴다
-  - 네트워크는 기본 Trusted 허용목록(npm·PyPI·crates.io 등)으로 제한, 환경별로 조정 / 리서치 프리뷰
+  - '흐름: clone→setup script→network policy→work/test→branch push, PR 뒤에도 같은 세션에서 반복'
+  - '적합: 로컬 checkout 없는 탐색, 독립 백로그 병렬 처리, 모바일/브라우저 모니터링'
+  - '주의: GitHub 접근 범위는 연결 계정 권한을 따름 / local config 필요 시 로컬·Remote Control 우선'
   source: https://code.claude.com/docs/en/claude-code-on-the-web
 - category: ai
-  title: AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(9.7k★)
-  summary: '코딩 에이전트에 파인튜닝·분산학습·RAG·평가 같은 AI 리서치/엔지니어링 지식을 SKILL.md 형태로 주입하는 오픈소스 라이브러리다. README 기준 98개 스킬을 23개 카테고리(파인튜닝, 포스트트레이닝, 추론 서빙, 토크나이저, 평가, 안전·정렬, RAG, 멀티모달, MLOps, 메카닉 인터프 등)로 나눠 담았고, 깃허브 별 9.7k(주장)를 받았다. 스킬은 표준 SKILL.md 포맷이라 Claude Code뿐 아니라 OpenCode·Cursor·Codex·Gemini CLI·Qwen Code 등 여러 에이전트에서 그대로 쓸 수 있다.
+  title: AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)
+  summary: 'Orchestra Research의 AI-research-SKILLs는 코딩 에이전트에 모델 아키텍처·파인튜닝·분산학습·평가·RAG·MLOps 같은 AI 연구/엔지니어링 절차를 SKILL.md 단위로 주입하는 MIT 라이선스 오픈소스 라이브러리다. README 기준 98개 스킬을 23개 카테고리로 나누고, autoresearch 스킬이 문헌 조사→아이디어→실험→논문 작성까지의 생애주기를 다른 도메인 스킬로 라우팅한다. 설치는 `npx @orchestra-research/ai-research-skills`로 에이전트를 자동 감지해 `~/.orchestra/skills/`에 깔거나, Claude Code 플러그인 마켓플레이스에서 카테고리별로 설치한다. 2026-06-24 GitHub API 기준 10,041★·748 forks다.
 
     '
   points:
-  - 'Claude Code 설치: `/plugin marketplace add orchestra-research/AI-research-SKILLs` 후 카테고리별로 `/plugin install fine-tuning@ai-research-skills`'
-  - 범용 SKILL.md 표준이라 OpenCode·Cursor·Codex·Gemini CLI·Qwen Code 등에서 동일하게 사용(README 명시)
-  - '''어떤 스킬을 쓸지'' 에이전트가 알 필요 없게 리서치 생애주기(서베이→아이디어→실험→합성→논문)를 자동 라우팅'
+  - '범위: 98개 스킬·23개 카테고리 — fine-tuning, serving, eval, safety, RAG, MLOps 등'
+  - '설치: npx 인터랙티브 installer 또는 Claude Code marketplace 카테고리별 plugin install'
+  - '교훈: 프롬프트 하나보다 연구 생애주기를 라우팅하는 skill graph가 재사용성과 검증성을 높임'
   source: https://github.com/Orchestra-Research/AI-research-SKILLs
 - category: ai
   title: 서브레시피 파이프라인 — 복잡한 작업을 'YAML 레시피'로 쪼개 단계·병렬로 돌리기
@@ -6367,3 +6367,11 @@ cards:
   - Strongest example last ·consistent format/delimiter ·edge case 포함
   - Dynamic retrieval + offline eval replay + production A/B로 drift monitor
   source: https://byaiteam.com/blog/2025/12/18/few-shot-learning-in-production-design-in-context-examples/
+- category: ai
+  title: Modern Web Guidance — Chrome 팀의 웹 플랫폼 스킬을 코딩 에이전트에 설치하기
+  summary: 'Chrome Modern Web Guidance는 접근성·성능·보안·브라우저 호환성 지식을 코딩 에이전트가 바로 호출할 수 있는 skills 묶음으로 제공하는 early preview다. `npx modern-web-guidance@latest install` 또는 Vercel `npx skills add GoogleChrome/modern-web-guidance`, Claude Code/Copilot CLI plugin marketplace, Antigravity CLI로 설치한다. 공식 I/O 2026 글은 Baseline과 연결해 목표 브라우저 범위에 맞는 기능·fallback을 고르게 하고, 100개 이상 use case를 계속 업데이트한다고 설명한다. Chrome DevTools for agents와 함께 쓰면 콘솔 로그·네트워크·접근성 트리·성능 audit을 읽고 modern CSS/API 수정까지 이어갈 수 있다. 2026-06-24 GitHub API 기준 Apache-2.0, 1,424★다.'
+  points:
+  - '설치: npx CLI, npx skills, Claude/Copilot plugin marketplace, Antigravity CLI 지원'
+  - '내용: 접근성·성능·보안·Baseline 호환성 지식을 에이전트 skill로 패키징'
+  - '실무 포인트: 에이전트에게 최신 웹 API 사용 여부를 맡기되 DevTools evidence로 검증'
+  source: https://developer.chrome.com/docs/modern-web-guidance

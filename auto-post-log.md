@@ -2111,3 +2111,21 @@ Refined:
 
 누적: 669카드 (661→659 병합→669 신규)
 주제: prompting patterns(ToT·Self-Consistency·CoT·LtM·SoT), ICL production(Few-Shot vs Zero-Shot·Dynamic Retrieval·ICL curation), voice AI(OpenAI Realtime), API resilience(retry·backoff), editor merge(Zed 1.0)
+
+## 2026-06-25 02:10 KST — Rebased routine run (신규 1카드 + 기존 2카드 정제)
+
+### 신규 카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Modern Web Guidance — Chrome 팀의 웹 플랫폼 스킬을 코딩 에이전트에 설치하기 | developer.chrome.com |
+
+### 정제 카드
+
+| 제목 | 근거 |
+|------|------|
+| Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기 | Anthropic web/quickstart docs re-check |
+| AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★) | GitHub README + API metrics re-check |
+
+누적: 670카드 (669→670 신규, 기존 2카드 정제)
+주제: Chrome Modern Web Guidance, coding-agent skill packaging, Baseline/DevTools-guided web implementation, Claude Code web cloud-session lifecycle, AI research skill graph
