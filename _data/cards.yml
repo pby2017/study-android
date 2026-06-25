@@ -1273,14 +1273,12 @@ cards:
   source: https://github.com/Fission-AI/OpenSpec
 - category: ai
   title: Code Mode(Cloudflare) — MCP 도구를 'TypeScript API'로 바꿔 LLM에게 코드로 호출하게 하기
-  summary: 'Cloudflare가 제안한 패턴으로, MCP 도구를 LLM에게 직접 노출해 ''tool call''을 시키는 대신 도구 스키마를 doc 주석 달린 TypeScript API로 변환한 뒤 LLM이 그 API를 호출하는 코드를 짜게 한다. 근거는 "LLM은 tool call보다 코드를 훨씬 많이 학습했다"는 것 — tool 호출보다 코드 작성을 더 잘한다는 가정이다. 여러 도구를 한 번에 엮어 호출해 왕복 횟수·토큰 낭비를 줄이며, 생성된 코드는 컨테이너가 아니라 V8 isolate 샌드박스(Worker Loader API)에서 수 ms 만에 띄워 실행한다.
-
-    '
+  summary: Cloudflare Code Mode는 MCP 도구를 LLM에게 직접 tool call로 노출하지 않고 doc 주석 달린 TypeScript API로 변환한 뒤, LLM이 그 API를 호출하는 코드를 작성·실행하게 하는 패턴이다. Agents SDK·@cloudflare/codemode 패키지가 MCP 스키마→TS API 변환·Dynamic Worker Loader V8 isolate 샌드박스 실행을 제공한다. 2026-06 cloudflare/mcp OSS 서버는 Cloudflare API 2,500+ endpoint를 search()+execute() 두 도구(~1k token)로 노출 — 개별 endpoint tool 등록 시 ~244k token 대비 99%↓. 복잡 multi-step(31-event 캘린더 생성) 벤치에서 direct tool call 대비 81% token 절감. MCP code execution with MCP(Anthropic) ·Pipelock과 동일 축 — LLM은 code 작성에 더 익숙, pagination·filter·compose를 sandbox 내부에서 처리.
   points:
-  - Agents SDK가 MCP 서버 스키마를 가져와 TypeScript API(doc 주석 포함)로 변환 → 에이전트엔 '그 코드를 샌드박스에서 실행하는 도구' 하나만 준다
-  - 직접 tool call 대신 코드로 도구를 엮어 호출 → 여러 단계를 한 번에 처리해 왕복·토큰 절감(글은 정량 %는 제시 안 함, 정성적 주장)
-  - 샌드박스는 컨테이너가 아닌 V8 isolate — 수 ms·수 MB로 기동(Worker Loader API). 저자 Kenton Varda·Sunil Pai, 2025-09-26 공개
-  source: https://blog.cloudflare.com/code-mode/
+  - cloudflare/mcp — search()+execute() 2 tools, 2500 endpoints·GraphQL Analytics·~1k token footprint
+  - 81% token↓ complex task ·99% vs per-endpoint tool registration — loop·filter·chain in generated code
+  - V8 isolate Worker Loader — ms boot, binding hides API keys, codemode=false for legacy per-tool mode
+  source: https://github.com/cloudflare/mcp
 - category: ai
   title: 에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 '하네스'를 설계하는 실전 교훈
   summary: 'Anthropic 연구원 Nicholas Carlini가 Claude 에이전트 16개를 동시에 돌려, Linux 6.9를 x86·ARM·RISC-V에서 빌드하는 10만 줄짜리 Rust C 컴파일러를 만든 실험 기록이다(약 2,000세션·약 $20,000 소요). 핵심 교훈은 도구 이름이 아니라 ''하네스(작업 환경)''를 어떻게 설계하느냐에 있다. 검증기(verifier)가 거의 완벽해야 하며 그렇지 않으면 "Claude가 엉뚱한 문제를 푼다". 또 Claude는 시간 감각이 없어("can''t tell time") 방치하면 진척 대신 테스트만 몇 시간씩 돌리므로, 1%·10% 무작위 샘플을 도는 --fast 옵션으로 회귀를 빨리 잡게 했다.
@@ -1501,13 +1499,11 @@ cards:
   source: https://zed.dev/acp
 - category: ai
   title: Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터
-  summary: 'Conductor(conductor.build)는 여러 코딩 에이전트를 동시에 돌리기 위한 맥용 데스크톱 앱으로, Claude Code·Codex·Cursor를 한 인터페이스에서 병렬 실행한다. 핵심은 작업 격리다 — "각 태스크가 자기만의 workspace·브랜치·파일·터미널·diff·리뷰 경로를 받는다"고 공식 문서가 밝힌다. 그래서 에이전트들이 서로의 파일을 덮어쓰지 않고 독립적으로 굴러가고, 사람은 작업이 끝난 순서대로 diff를 리뷰하고 PR로 만들어 머지하면 된다. 이는 ''에이전트는 싸지만 사람의 리뷰·통합 시간이 병목''이라는 2026년 병렬 에이전트 워크플로의 전제를 그대로 제품화한 것 — 단일 작업 디렉터리를 공유하는 데서 오는 동시 편집 충돌을 작업별 격리 workspace로 푼다.
-
-    '
+  summary: Conductor(conductor.build)는 macOS 데스크톱에서 Claude Code·Codex·Cursor를 git worktree 격리 workspace로 병렬 실행하는 ADE(Agent Development Environment)다. 2026년 Orca(stablyai/orca·MIT·~7k★)가 cross-platform(macOS·Windows·Linux·iOS·Android) ADE로 같은 축을 확장 — 25+ CLI agent·Ghostty-class terminal·`orca worktree create` CLI scriptable·Annotate AI Diff inline review·Computer Use mode. Vibe Kanban(sunsetting) ·Cursor Agents Window과 달리 BYO-subscription·worktree-per-task·human merge gate. Conductor=mac-first, Orca=cross-platform+fleet CLI+mobile companion.
   points:
-  - '무엇을: Claude Code·Codex·Cursor를 한 맥 앱에서 병렬 실행(공식 표현 ''run ... in parallel''). 모델·에이전트를 직접 가져와(BYO) 꽂는 호스트 레이어'
-  - '격리 방식(1차 출처): ''각 태스크가 자기 workspace·브랜치·파일·터미널·diff·리뷰 경로를 가진다'' → 병렬 에이전트의 동시 편집 충돌을 작업별 격리로 차단'
-  - '운영 흐름: 여러 에이전트를 띄워두고 → 끝난 작업의 diff를 리뷰 → PR 생성·머지. ''사람의 리뷰·통합''을 병목으로 보고 그 단계를 줄이는 설계. 현재 맥 중심·v0.65.0대'
+  - Worktree isolation — task마다 branch·terminal·diff·review path, parallel agent collision 방지
+  - Orca 2026 — desktop+mobile ADE, fan-one-prompt-across-5-agents, CLI automation surface
+  - Human merge gate — agent cheap, review/integration bottleneck → diff-first workflow
   source: https://www.conductor.build/
 - category: ai
   title: MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)
@@ -7446,3 +7442,83 @@ cards:
   - OpenAI 내부는 엔지니어링뿐 아니라 법무·재무·리크루팅도 Codex를 주 도구로 사용, 99퍼센타일은 하루 60시간+ 병렬 에이전트 턴
   - 수치는 LLM-as-judge와 0.1% 표본 기반 방향 신호 — 운영 KPI는 위임 시간+검증 산출물+리뷰 통과율로 설계
   source: https://openai.com/index/how-agents-are-transforming-work/
+- category: ai
+  title: gstack — Garry Tan YC CEO 23-role slash-command sprint, /office-hours→/ship→/cso
+  summary: gstack(garrytan/gstack·MIT·~108k★)는 Y Combinator CEO Garry Tan이 공개한 Claude Code skill pack — 23+ opinionated slash command가 Think→Plan→Build→Review→Test→Ship→Reflect sprint loop를 role persona로 강제한다. /office-hours(product scoping) → /plan-ceo-review·/plan-eng-review·/plan-design-review → /review(staff engineer) → /qa(real Chromium browser) → /cso(OWASP+STRIDE·confidence 8/10 gate) → /ship(PR). gbrain cross-session decision memory·10-agent adapter(Codex·Cursor·OpenCode·Hermes·OpenClaw). Superpowers(TDD-first rigid pipeline) ·Citadel(worktree fleet plugin)와 달리 opt-in role-based sprint·real browser QA·security audit 내장.
+  points:
+  - 23 roles — CEO·Eng Manager·Designer·Staff Engineer·QA·CSO·Release Engineer slash commands
+  - /browse real Chromium ~100ms ·/cso OWASP+STRIDE 17 false-positive exclusions
+  - 10-agent adapter — Claude Code·Codex·Cursor·OpenCode·Hermes·OpenClaw auto-detect setup
+  source: https://github.com/garrytan/gstack
+- category: ai
+  title: Paperclip — AI agent org chart control plane, heartbeat·budget·atomic checkout
+  summary: Paperclip(paperclipai/paperclip·MIT·~71k★)는 self-hosted AI agent team orchestration control plane — Jira/Linear처럼 보이지만 org chart·budget·governance·audit log가 핵심이다. Agent=role+title+reporting line+budget, adapter로 Claude Code·Codex·Cursor·OpenClaw·HTTP bot 연결. Heartbeat execution — agent는 continuous loop가 아니라 timer/assignment/on_demand wakeup window에서 실행, cost event·token usage 기록. Atomic task checkout — 이슈 1개=1 agent lock, chain-of-command escalation. Vibe Kanban(worktree GUI) ·Citadel(plugin harness) ·Conductor(local ADE)와 달리 enterprise org simulation·board approval·16 company templates.
+  points:
+  - Control plane not framework — identity·scheduling·budget·audit owned, agent loop=adapter black box
+  - Heartbeat — timer·assignment·on_demand wakeup, orphaned run recovery, no runaway cost
+  - Atomic checkout — task ownership lock, hierarchical issue chain, MIT self-host embedded Postgres
+  source: https://github.com/paperclipai/paperclip
+- category: ai
+  title: jcodemunch-mcp — GitHub AST symbol retrieval MCP, 95%+ token 절약·blast-radius
+  summary: jcodemunch-mcp(jgravelle/jcodemunch-mcp·~1.9k★)는 tree-sitter AST 기반 GitHub source code retrieval MCP server다. repo 전체 file dump 대신 symbol-level precise fetch — importance ranking·cross-language symbol map·10 preset anti-pattern detector·schema/contract diff. 313B+ tokens saved claim·Claude Code·Cursor·Codex·Windsurf·Goose·Paperclip 호환. codebase-memory-mcp(local knowledge graph·14 tools·159 lang) ·mcp-codemap(progressive fold) ·Aider repo map(ranking)와 달리 remote GitHub-first·symbol blast-radius analysis·contract/schema diff 축.
+  points:
+  - Symbol-level AST — 95%+ token cut vs full-file read, importance ranking+anti-pattern scan
+  - GitHub-native — remote repo indexing, cross-language symbol map, schema diff
+  - vs codebase-memory-mcp — cloud GitHub retrieval vs local full graph, complementary axes
+  source: https://github.com/jgravelle/jcodemunch-mcp
+- category: ai
+  title: Orca — Stably ADE, parallel worktree fleet·CLI scriptable·mobile companion
+  summary: Orca(stablyai/orca·MIT·~7k★)는 Agent Development Environment — Claude Code·Codex·OpenCode·Cursor CLI·Hermes·Pi 등 25+ agent를 git worktree별 isolated workspace에서 side-by-side 실행. Fan one prompt across 5 agents→compare diffs→merge winner. Ghostty-inspired WebGL terminal·built-in file editor·Annotate AI Diff inline comment→agent feedback·`orca worktree create`·`snapshot`·`click` CLI. Desktop(macOS·Windows·Linux)+iOS/Android mobile companion·SSH remote worktree. Conductor(mac-only) ·Vibe Kanban(sunsetting) ·Cursor Agents Window과 달리 cross-platform ADE·agent-drives-Orca automation·Computer Use mode.
+  points:
+  - Parallel worktrees — same prompt 3 agents 3 branches, split pane watch, pick winner merge
+  - CLI scriptable — orca worktree create/snapshot/click/fill, agent can drive Orca workflows
+  - 25+ agents BYO-subscription — Claude·Codex·Cursor·OpenCode·Hermes·Pi preconfigured
+  source: https://github.com/stablyai/orca
+- category: ai
+  title: Hunk — review-first terminal diff viewer, agent live session comment API
+  summary: Hunk(modem-dev/hunk·~5k★)는 agent-authored changeset review-first terminal diff viewer다. OpenTUI+Pierre diffs — multi-file sidebar·split/stack layout·syntax highlight·watch mode. Agent integration — `hunk session review --json`로 structure inspect, `hunk session comment add`로 live TUI에 inline annotation, SKILL.md bundled. delta/difftastic(structural) ·Lumen(review UI) ·IDE diff와 달리 agent↔human review loop — developer reads diff, agent posts rationale inline without leaving terminal. `--agent-context` JSON sidecar for batch notes.
+  points:
+  - Live session API — hunk session list/review/navigate/comment, agent never runs interactive hunk diff
+  - Inline agent annotations — comment beside code in open TUI, batch apply via stdin JSON
+  - Review-first — multi-file stream+sidebar, mouse+keyboard, vs pager-only delta/difftastic
+  source: https://github.com/modem-dev/hunk
+- category: ai
+  title: DeerFlow 2.0 — ByteDance LangGraph SuperAgent harness, sandbox·subagent·skills
+  summary: DeerFlow 2.0(bytedance/deer-flow·MIT·~70k★)는 v1 deep-research와 code 공유 없는 ground-up rewrite SuperAgent harness다. LangGraph+LangChain — sub-agent spawn·persistent memory·extensible skills·message gateway로 minutes-to-hours long-horizon task. Sandbox 3 mode — Local(host dir·bash disabled default) ·Docker AIO(headless Chromium+bash+pip) ·K8s provisioner(production pod). Virtual path /mnt/user-data/{workspace,uploads,outputs}·/mnt/skills·thread-isolated filesystem. OpenHands(IDE copilot) ·OpenAI Agents SDK(harness/compute split) ·Hermes(persistent VPS)와 달리 batteries-included research+coding+create stack·Docker-first isolation default.
+  points:
+  - SuperAgent harness — subagents·memory·skills·sandbox out-of-box, not framework wiring
+  - AIO Docker sandbox — Chromium+bash+filesystem per thread, K8s production option
+  - Virtual paths — /mnt/user-data·/mnt/skills, str_replace per-sandbox file lock
+  source: https://github.com/bytedance/deer-flow
+- category: ai
+  title: CC Switch — 7 CLI agent config hub, MCP·Skills·provider hot-swap
+  summary: CC Switch(farion1231/cc-switch·MIT·~104k★)는 Claude Code·Codex·Gemini CLI·OpenCode·OpenClaw·Hermes·Claude Desktop 설정을 하나의 Tauri 2 desktop app에서 관리한다. 50+ provider preset one-click import·system tray hot-swap(Claude Code restart 불필요) ·unified MCP panel(bidirectional sync Claude+Codex+Gemini+OpenCode) ·Skills GitHub one-click install·local Axum proxy(API format translation·failover·circuit breaker) ·WebDAV multi-device sync. ccusage(CLI cost analytics) ·manual JSON/TOML edit과 달리 visual config SSOT·atomic SQLite write·ccswitch:// deep link import.
+  points:
+  - 7 tools one app — provider+MCP+Skills+prompt, 50+ preset, tray instant switch
+  - Unified MCP — edit once sync all enabled apps, per-app enable/disable toggle
+  - Local proxy — OpenAI-compatible→Claude format, failover+circuit breaker+cost tracking
+  source: https://github.com/farion1231/cc-switch
+- category: ai
+  title: Loop Engineering — Addy Osmani, prompt 대신 자동화·worktree·skill·subagent loop 설계
+  summary: Loop Engineering(Addy Osmani·2026-06)는 "프롬프트하는 사람"을 "loop를 설계하는 사람"으로 바꾸는 방법론 — recursive goal에 AI가 iterate until complete. 5 primitive — Automations(cron·Codex Automations tab·Claude /loop·hooks·GitHub Actions) ·Worktrees(parallel collision-free) ·Skills(SKILL.md persistent instructions) ·Plugins/MCP(real tool integration) ·Sub-agents(explore·implement·verify split). External spine(MEMORY.md·state JSON) 필수 — agent는 cold start. cobusgreyling/loop-engineering OSS — 7 patterns(daily-triage·PR babysitter·CI sweeper)·loop-init·loop-audit·loop-cost CLI. Dynamic Workflows(ultracode) ·Agent Teams과 달리 recurring autonomous cadence+human triage gate+token budget awareness.
+  points:
+  - 5 primitives — Automations·Worktrees·Skills·MCP·Sub-agents, one memory spine
+  - Maker/checker split — writer agent≠verifier, don't trust self-graded output
+  - Token economics — pattern picker by cadence+cost(L1 report vs L2 cautious CI sweeper)
+  source: https://addyosmani.com/blog/loop-engineering/
+- category: ai
+  title: Praxia — 5-layer memory stack, personal tacit→org know-how auto promotion
+  summary: Praxia(praxia-dev/praxia·Apache-2.0)는 multi-agent orchestrator with cyclic memory — L1 Personal(auto-extract·6 backend Mem0/Letta/Zep/HindSight/LangMem/JSON) → L2 Sleep-time Consolidator(3-path promotion frequency+outcome+LLM self-eval) → L3 SharedMemory(org blocks·RBAC) → L4 MarkdownStore(git PR-reviewed frozen) → L5 Graph(optional Zep/Graphiti). CompositeBackend(RRF fusion) ·RoutedBackend(query-aware dispatch). Honcho(dialectic peer) ·Mem0(drop-in API) ·Cognee(graph-native)와 달리 personal→org promotion engine·skill registry promotion·SSO+RBAC+audit enterprise stack.
+  points:
+  - 3-path promotion — frequency·outcome correlation·LLM self-eval parallel, nightly batch
+  - 6 LTM backends — Mem0·Letta·Zep·HindSight·LangMem·JSON, Composite/Routed fusion
+  - L4 frozen layer — git Markdown PR-reviewed immutable, portable exit no vendor lock
+  source: https://github.com/praxia-dev/praxia
+- category: ai
+  title: MarkItDown MCP — Microsoft AutoGen PDF·Office→Markdown boundary, convert_to_markdown(uri)
+  summary: MarkItDown(microsoft/markitdown·MIT·~156k★)는 AutoGen team의 lightweight document→Markdown converter — PDF·DOCX·PPTX·XLSX·HTML·image 등 15+ format, heading·table·list structure preserve. Agent boundary pattern — raw file/token-heavy markup 대신 LLM-native Markdown(~62% token reduction reported). markitdown-mcp — single tool convert_to_markdown(uri) for http/https/file/data URI, Claude Desktop·agent mid-conversation on-demand. Unstructured(enterprise ETL·64+ format·canonical JSON) ·Docling(table accuracy) ·Crawl4AI(web)와 달리 zero-GPU fast prototype·MCP one-tool minimal surface·AutoGen ecosystem default.
+  points:
+  - convert_to_markdown(uri) — one MCP tool, agent converts on-demand not pre-process pipeline
+  - Structure preserve — headings·tables·links as Markdown, LLM-native token-efficient
+  - vs Unstructured — lightweight OSS boundary vs enterprise connector+JSON ETL platform
+  source: https://github.com/microsoft/markitdown

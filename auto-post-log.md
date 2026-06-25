@@ -3307,6 +3307,62 @@ Refined:
 주제: self-improving agent(Hermes), code intelligence MCP(codebase-memory-mcp), MCP debug(mcp-devtools·Inspector), sandbox triad(OpenSandbox·CubeSandbox·Microsandbox), eval platform(Confident AI·Deepchecks), dialectic memory(Honcho), OTel MCP semconv merge
 - Rejected: broad AI+Android follow-ups as duplicate/overlap with existing cards; MCP structured tool output/resource links deferred as lower distinctness this run.
 
+## 2026-06-26 04:00 KST — Batch 52 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 병합 2카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| (확장) cloudflare/mcp → **Code Mode(Cloudflare) — MCP 도구를 TypeScript API로** | search()+execute() 2 tools·2500 endpoints·~1k token·81% complex savings |
+| (갱신) Orca ADE landscape → **Conductor — macOS 병렬 오케스트레이터** | Orca cross-platform·CLI scriptable·mobile companion 축 추가 |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드 + 병합 2건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| gstack | YC CEO 23-role sprint·/cso OWASP·real browser QA, Superpowers/Citadel과 role-based opt-in 축 분리 |
+| Paperclip | 71k★ org chart control plane·heartbeat·atomic checkout, Vibe Kanban/Conductor와 enterprise governance 축 |
+| jcodemunch-mcp | GitHub remote AST symbol fetch·95% token cut, codebase-memory-mcp(local graph)와 remote/complementary |
+| Orca | Stably ADE·25+ agent worktree fleet·CLI scriptable, Conductor mac-only 한계 보완 cross-platform |
+| Hunk | review-first TUI diff·agent live session comment API, IDE diff/delta와 human-agent review loop 축 |
+| DeerFlow 2.0 | LangGraph SuperAgent harness·AIO Docker sandbox·subagent, OpenHands/Hermes와 batteries-included stack |
+| CC Switch | 104k★ 7 CLI config hub·MCP/Skills sync·hot-swap, ccusage(analytics)와 visual SSOT 축 분리 |
+| Loop Engineering | Addy Osmani 5-primitive methodology·external spine, Dynamic Workflows와 recurring cadence+token budget |
+| Praxia | 5-layer personal→org promotion·6 LTM backend fusion, Honcho/Mem0와 org know-how promotion 축 |
+| MarkItDown MCP | Microsoft 156k★ boundary convert·single MCP tool, Unstructured(enterprise ETL)와 lightweight agent boundary |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Ponytail | Batch 51과 동일 — YAGNI skill philosophy, developer 실무 도구 축 약함 |
+| krusch-context-mcp | codebase-memory-mcp+episodic memory 축 중복 |
+| agent-browser | 기존 카드 존재 |
+| OpenMontage | creative video pipeline, dev tooling 축 아님 |
+| Cognee | Batch 47 신규 중복 회피 |
+| herdr/jcode | adoption signal 부족, niche multiplexer |
+| Batch 45–51 신규 50개 | 중복 회피 — sandbox·eval·memory·MCP security 재추가 금지 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | gstack — Garry Tan YC CEO 23-role slash-command sprint | github.com/garrytan/gstack |
+| 2 | Paperclip — AI agent org chart control plane, heartbeat·budget | github.com/paperclipai/paperclip |
+| 3 | jcodemunch-mcp — GitHub AST symbol retrieval MCP, 95%+ token 절약 | github.com/jgravelle/jcodemunch-mcp |
+| 4 | Orca — Stably ADE, parallel worktree fleet·CLI scriptable | github.com/stablyai/orca |
+| 5 | Hunk — review-first terminal diff viewer, agent session API | github.com/modem-dev/hunk |
+| 6 | DeerFlow 2.0 — ByteDance LangGraph SuperAgent harness | github.com/bytedance/deer-flow |
+| 7 | CC Switch — 7 CLI agent config hub, MCP·Skills hot-swap | github.com/farion1231/cc-switch |
+| 8 | Loop Engineering — Addy Osmani autonomous loop 5-primitive | addyosmani.com/blog/loop-engineering |
+| 9 | Praxia — 5-layer memory stack, personal→org promotion | github.com/praxia-dev/praxia |
+| 10 | MarkItDown MCP — Microsoft PDF·Office→Markdown boundary | github.com/microsoft/markitdown |
+
+누적: 823카드 (813→823 신규, 병합 2건은 기존 카드 갱신)
+주제: role-based sprint(gstack), agent org control(Paperclip), GitHub code intel(jcodemunch), ADE fleet(Orca), review loop(Hunk), SuperAgent harness(DeerFlow), CLI config hub(CC Switch), loop methodology(Loop Engineering), org memory(Praxia), document boundary(MarkItDown)
+
 ## 2026-06-26 00:29 KST — Local AI card routine
 
 - Published: `Codex 경제 리서치 — 에이전트 작업은 '질문 수'보다 위임 시간으로 봐야 한다`
