@@ -3370,3 +3370,10 @@ Refined:
 - Refined: `AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff)`
 - Refined sources re-checked: https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone, https://openai.com/index/openai-to-acquire-astral/, and https://astral.sh/blog/openai
 - Rejected: Claude Tag, ARD/Agent Finder, and ADK+A2A cross-language agents as duplicates; pure Android topics as below threshold.
+
+## 2026-06-26 00:53 KST — Local AI card routine
+
+- Published: none; no fresh candidate cleared the duplicate and scope gates without forcing the batch.
+- Refined: `ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI`
+- Refined sources re-checked: https://github.com/jeremylongshore/claude-code-plugins-plus-skills, https://raw.githubusercontent.com/jeremylongshore/claude-code-plugins-plus-skills/main/README.md, and https://api.github.com/repos/jeremylongshore/claude-code-plugins-plus-skills
+- Rejected: AgentKit shutdown, Agent Finder/ARD, GitHub MCP secret scanning, third-party agent security validation, MAI-Code-1-Flash, ChatGPT Enterprise spend controls, and Codex role-specific plugins as duplicates; pure Android topics as below threshold.

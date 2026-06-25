@@ -1243,13 +1243,13 @@ cards:
   source: https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone
 - category: ai
   title: ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI
-  summary: 'Claude Code 플러그인 생태계가 커지면서, 흩어진 플러그인을 ''검색→설치→업데이트''로 다루는 패키지 매니저식 도구가 등장했다. jeremylongshore의 claude-code-plugins-plus-skills 레포(MIT)는 ccpi라는 CLI와 tonsofskills.com 호스팅 마켓플레이스를 함께 제공한다. ccpi는 `ccpi search devops`로 키워드 검색, `ccpi install <pack>`로 설치, `ccpi list --installed`·`ccpi update`로 관리, `ccpi validate ./my-plugin`로 자작 플러그인 검증까지 한다. 실무 포인트: `/plugin marketplace add`로 GitHub 레포를 마켓플레이스로 붙이면 Discover 탭에 공식 플러그인과 나란히 뜨므로, 팀 공용 플러그인을 한 소스로 배포·갱신하기 좋다.
+  summary: 'Tons of Skills는 Claude Code용 플러그인·스킬·에이전트를 GitHub marketplace repo와 웹 카탈로그, ccpi CLI로 묶은 오픈소스 배포 표면이다. 현재 README는 432개 플러그인, 2,769개 스킬, 297개 에이전트와 30명 커뮤니티 기여자를 내세우며, `marketplace.extended.json`과 Claude Code CLI가 읽는 `marketplace.json`을 같은 원천으로 둔다고 설명한다. ccpi는 `pnpm add -g @intentsolutionsio/ccpi`로 설치해 검색·설치·목록·업데이트·검증을 맡고, Claude Code 안에서는 `/plugin marketplace add jeremylongshore/claude-code-plugins`로 바로 붙일 수 있다. 실무 포인트는 "좋은 프롬프트 모음"이 아니라, 팀 공용 에이전트 자산을 검증 가능한 패키지와 카탈로그로 배포하는 운영 문제로 보는 것이다.
 
     '
   points:
-  - 'ccpi 설치: `pnpm add -g @intentsolutionsio/ccpi` — search/install/list/update/validate 서브커맨드 제공(MIT)'
-  - '마켓플레이스 추가는 Claude Code 내장 명령으로도 가능: `/plugin marketplace add jeremylongshore/claude-code-plugins`'
-  - '레포 README 주장 규모(검증 시점 기준): 플러그인 425개·스킬 약 2,800개·에이전트 200개, 별 2.4k★ — 숫자는 갱신될 수 있어 참고치'
+  - '현재 README 기준 432 plugins·2,769 skills·297 agents·30 contributors'
+  - '`marketplace.extended.json`과 Claude Code CLI용 `marketplace.json`을 같은 카탈로그 원천으로 관리'
+  - 'validator와 공개 100점 rubric으로 spec-correct 패키지만 병합하는 구조'
   source: https://github.com/jeremylongshore/claude-code-plugins-plus-skills
 - category: ai
   title: BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49k★)
