@@ -193,14 +193,12 @@ cards:
   - '비용 설계: `model` 또는 `CLAUDE_CODE_SUBAGENT_MODEL`로 반복 탐색은 더 빠른 모델에 라우팅'
   source: https://code.claude.com/docs/en/sub-agents
 - category: ai
-  title: reloadSkills — SessionStart 훅으로 같은 세션에서 스킬 즉시 반영
-  summary: 'Claude Code의 스킬 탐색은 보통 SessionStart 훅이 끝나기 전에 한 번만 돌기 때문에, 훅이 ~/.claude/skills/ 나 .claude/skills/ 에 새 스킬을 써넣어도 다음 세션에야 나타난다. 이를 해결하려고 SessionStart 훅이 JSON으로 `reloadSkills: true`를 반환하면, 훅 완료 후 Claude Code가 스킬·커맨드 디렉터리를 다시 스캔해 방금 설치한 스킬을 같은 세션에서 바로 쓸 수 있다. 팀 스킬 레포를 git pull로 동기화한 뒤 즉시 적용하는 부트스트랩 패턴에 유용하다.
-
-    '
+  title: reloadSkills·sessionTitle·/reload-skills — SessionStart 훅·수동 명령으로 스킬·세션 제목 즉시 반영
+  summary: 'Claude Code v2.1.152+는 스킬 탐색을 SessionStart 훅 종료 전 1회만 돌리므로, 훅이 ~/.claude/skills/에 새 SKILL.md를 써도 기본적으로 다음 세션에야 보인다. SessionStart 훅이 hookSpecificOutput.reloadSkills:true를 반환하면 훅 직후 스킬·커맨드 디렉터리를 재스캔해 같은 세션에서 즉시 사용 가능. 수동 경로는 /reload-skills — 대화 컨텍스트를 유지한 채 디렉터리만 재스캔(edit→reload→test 루프). 같은 릴리스에서 hookSpecificOutput.sessionTitle로 startup·resume 시 세션 제목을 프로그래밍 방식으로 설정 가능 — CI·팀 부트스트랩·스킬 authoring loop에 유용.'
   points:
-  - 스킬 탐색은 SessionStart 훅 종료 전에 1회 실행 — 새 스킬은 원래 다음 세션에야 보임
-  - SessionStart 훅이 hookSpecificOutput에 reloadSkills:true 반환 시 디렉터리 재스캔
-  - git pull로 팀 스킬 받아 같은 세션에 즉시 반영하는 부트스트랩에 적합
+  - SessionStart reloadSkills:true — 훅이 스킬 설치 후 같은 세션에 등록
+  - /reload-skills — 수동 재스캔, 컨텍스트 유지(edit SKILL.md→reload→test)
+  - sessionTitle — startup/resume 시 세션 제목 programmatic set
   source: https://code.claude.com/docs/en/hooks
 - category: ai
   title: --safe-mode — 커스터마이징 다 끄고 설정 문제 격리
@@ -303,14 +301,12 @@ cards:
   - 압축으로 요약돼 사라질 컨텍스트를 미리 저장하는 '마지막 기회' 패턴 (SessionStart와 짝)
   source: https://code.claude.com/docs/en/hooks
 - category: ai
-  title: 훅 핸들러 5종 — 셸 말고도 HTTP·MCP 도구·프롬프트·에이전트로 받기
-  summary: '훅은 더 이상 셸 명령(command)만 부르는 게 아니다. 핸들러 type이 5종으로 늘었다. command(셸/실행파일), http(설정에 적은 URL로 POST), mcp_tool(이미 연결된 MCP 서버의 도구 호출), prompt(프롬프트 텍스트를 빠른 모델에 보내 평가), agent(서브에이전트로 평가)다. prompt/agent는 $ARGUMENTS 자리에 훅 입력 JSON이 들어가고 model 필드로 평가 모델을 고를 수 있다(기본은 빠른 모델). 단, /hooks 대화형 메뉴는 다섯 종을 다 보여주지만 실제로 추가·편집할 수 있는 건 command와 mcp_tool 둘뿐이라, http·prompt·agent는 settings.json에 직접 적어야 한다.
-
-    '
+  title: 훅 핸들러 5종 — 셸·HTTP·MCP 도구·프롬프트·에이전트로 받기
+  summary: '훅 핸들러 type 5종 — command(셸), http(URL POST), mcp_tool(연결된 MCP 서버 도구 직접 호출), prompt(빠른 모델 평가), agent(서브에이전트 평가). v2.1.x에서 mcp_tool은 이미 실행 중인 MCP 연결을 재사용 — 별도 셸 프로세스 spawn 없이 PreToolUse 검증·PostToolUse 집계가 단순해짐. prompt/agent는 $ARGUMENTS에 훅 입력 JSON, model 필드로 평가 모델 지정. /hooks 메뉴는 5종 표시하나 추가·편집은 command·mcp_tool만 — http·prompt·agent는 settings.json 직접 작성.'
   points:
-  - '5종: command(셸) / http(URL POST) / mcp_tool(연결된 MCP 도구) / prompt / agent'
-  - prompt·agent는 $ARGUMENTS로 훅 입력 JSON 주입, model 필드로 평가 모델 지정(기본 빠른 모델)
-  - /hooks 메뉴는 5종 다 표시하나 추가·편집은 command·mcp_tool만 — 나머지는 settings.json 직접 작성
+  - '5종: command / http / mcp_tool / prompt / agent'
+  - mcp_tool — running MCP server 재사용, shell spawn 불필요
+  - /hooks 메뉴는 command·mcp_tool만 편집 — 나머지는 settings.json
   source: https://code.claude.com/docs/en/hooks
 - category: ai
   title: 스킬 disallowed-tools — 활성 동안 도구를 아예 풀에서 빼기
@@ -791,12 +787,12 @@ cards:
   - 최고 AI 모델 vs 사람 전문가 사이 성능 개선 격차(약 8.59%p 주장)가 남음 — 정확성은 포화돼도 최적화는 여전히 난제
   source: https://swe-perf.github.io/
 - category: ai
-  title: Dynamic Workflows(ultracode) — Claude가 직접 스크립트를 짜서 서브에이전트 수십~수백 개를 굴리는 법
-  summary: 'Dynamic workflow는 Claude가 작업 설명을 받아 직접 짜는 JavaScript 오케스트레이션 스크립트다. 런타임이 백그라운드에서 돌리는 동안 본 세션은 계속 응답 가능하며, 서브에이전트/스킬과 달리 루프·분기·중간 결과를 스크립트 변수에 담아 Claude 컨텍스트에는 최종 답만 남긴다. Anthropic 공식 사례로 Bun 제작자 Jarred Sumner가 ultracode로 Zig→Rust 75만 줄 포팅을 11일 만에 완료했다 — Rust 테스트 99.8% 통과, 파일마다 리뷰어 2명이 병렬 검수. 3단계는 ①struct 필드별 Rust lifetime 매핑 → ②.zig→.rs 동작동일 포팅 → ③rustc 진단 루프. 켜는 법: 프롬프트에 ultracode 키워드 또는 /effort ultracode.'
+  title: Dynamic Workflows(ultracode) — GA·스크립트 오케스트레이션으로 서브에이전트 수백 개
+  summary: 'Dynamic workflow(v2.1.154+·2026-05-28 GA)는 Claude가 작업 설명을 받아 JavaScript 오케스트레이션 스크립트를 짜고 런타임이 백그라운드 실행 — 본 세션은 응답 가능. 서브에이전트/스킬과 달리 루프·분기·중간 결과가 스크립트 변수에, Claude 컨텍스트엔 최종 답만. 핵심 primitive — agent(spawn), parallel(barrier), pipeline(stage stream). 동시 16·런당 1,000 에이전트 상한. 켜는 법 — 프롬프트 ultracode·/effort ultracode(xhigh+자동 workflow)·/workflows 관리. managed settings disableWorkflows로 조직 비활성. Bun Zig→Rust 75만 줄 11일(테스트 99.8%) 공식 사례.'
   points:
-  - '요건: v2.1.154+ · 유료 플랜. 동시 에이전트 최대 16개, 런당 총 1,000개 상한'
-  - '공식 사례: Bun Zig→Rust ~75만 줄, 테스트 99.8% 통과, 11일·파일당 리뷰어 2명(2026-05-28)'
-  - 스크립트는 ~/.claude/projects/에 저장 → /workflows에서 진행·일시정지·/<이름>으로 재사용
+  - GA v2.1.154+ — agent/parallel/pipeline primitive, 동시 16·런당 1,000
+  - /effort ultracode — xhigh+자동 workflow, /workflows pause·resume·slash 재사용
+  - disableWorkflows managed gate — 토큰 소비 주의, pilot slice 먼저
   source: https://code.claude.com/docs/en/workflows
 - category: ai
   title: /context — 200k 컨텍스트가 어디로 새는지 한눈에 보고 막는 진단 명령
@@ -1007,13 +1003,13 @@ cards:
   - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
   source: https://github.com/earendil-works/pi
 - category: ai
-  title: MCP 2026 — Linux Foundation 표준·Stateless RC·10k+ 서버
-  summary: MCP(Model Context Protocol)는 AI↔도구/데이터 연결 오픈 표준(Anthropic→2025-12 Linux Foundation Agentic AI Foundation 기증). Host→Client→Server 3계층, JSON-RPC, 10,000+ 공개 서버·SDK 월 97M+ 다운로드, Claude·ChatGPT·Gemini·Cursor·VS Code 지원. 2026-07-28 RC는 출시 이후 최대 개정 — stateless 코어로 Mcp-Session-Id·initialize 핸드셰이크 제거, 표준 HTTP LB 뒤 라운드로빈 가능. MCP Apps(서버 렌더 UI)·Tasks(장기 작업)가 Extensions로 승격, Roots·Sampling·Logging은 12개월 deprecation. 원격 MCP 운영자는 세션 의존 코드를 명시적 핸들로 마이그레이션해야 한다.
+  title: MCP 2026 — Linux Foundation·Stateless 07-28·Python SDK v2 alpha
+  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy. MCP Apps·Tasks는 Extensions, Roots/Sampling/Logging deprecated. Python SDK v2.0.0a2(2026-06-16) — mcp.types.v2026_07_28 per-version wire validation, ClientSession dispatcher refactor, migration guide. pip install mcp는 1.x stable 유지 — alpha opt-in. 원격 MCP 운영자는 세션 의존 코드를 7/28 전 마이그레이션.
   points:
-  - Linux Foundation — 벤더 중립, 10k+ 서버·OAuth 2.1+PKCE
-  - 2026-07-28 RC — stateless 코어, Mcp-Session-Id 제거, LB 친화
-  - Extensions — MCP Apps(UI)·Tasks(장기), Roots/Sampling/Logging deprecated
-  source: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
+  - 2026-07-28 — stateless·Mcp-Method/Name·12mo deprecation policy
+  - Python SDK v2.0.0a2 — per-version types·wire validation·migration.md
+  - Extensions MCP Apps·Tasks — LB 친화 stateless HTTP
+  source: https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.0.0a2
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
   summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고, 각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며, 인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
@@ -3200,15 +3196,13 @@ cards:
   - DatabaseSessionService로 SQLite/Cloud SQL에 세션을 영속화
   source: https://developers.googleblog.com/build-long-running-ai-agents-that-pause-resume-and-never-lose-context-with-adk/
 - category: ai
-  title: MCP Enterprise-Managed Auth — 커넥터 권한을 IdP로 중앙 관리하기
-  summary: 'Anthropic은 2026년 6월 18일 Claude의 MCP connectors에 enterprise-managed authorization을 공개했다. 이전에는 관리자가 조직 커넥터를 켠 뒤 사용자마다 개별 OAuth 승인이 필요했지만, 새 방식은 관리자가 IdP에서 한 번 권한을 설정하고 사용자는 첫 로그인부터 커넥터 접근을 상속받는다. Okta가 launch identity provider이고 Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase가 시작 MCP provider로 언급됐다. 실무 포인트는 MCP를 편의 기능이 아니라 권한 표면으로 보고, 그룹 스코프·빠른 토큰 만료·퇴사자 회수를 일반 SaaS 권한 관리와 같은 평면에 올리는 것이다.
-
-    '
+  title: MCP EMA stable — Enterprise-Managed Auth·IdP zero-touch SSO
+  summary: MCP Enterprise-Managed Authorization extension(io.modelcontextprotocol/enterprise-managed-authorization)이 2026-06-18 stable. 조직 IdP(Okta launch·Cross App Access ID-JAG)가 MCP 서버 접근을 중앙 provision — 사용자는 per-server OAuth consent 없이 첫 로그인부터 승인된 커넥터 상속. Client — Claude·Claude Code·Cowork(Anthropic shared MCP layer), VS Code(Copilot·third-party MCP). Server launch — Asana·Atlassian·Canva·Figma·Granola·Linear·Supabase·Slack 추가 중. regulated enterprise에서 MCP를 SaaS 권한 평면과 동일 audit·revoke로 다루는 신호.
   points:
-  - MCP connector 접근을 사용자별 OAuth가 아니라 IdP 그룹·역할로 provision
-  - Okta 지원으로 시작, Asana·Atlassian·Figma·Linear·Supabase 등 provider 참여
-  - 토큰 수명 단축과 deprovision 회수를 엔터프라이즈 권한 정책에 통합
-  source: https://claude.com/blog/enterprise-managed-auth
+  - Stable 2026-06-18 — ID-JAG via Okta XAA, zero-touch first login
+  - Client — Claude family·VS Code; Server — Linear·Supabase·Figma 등
+  - IdP group scope·deprovision revoke — per-user OAuth 대체
+  source: https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/
 - category: ai
   title: Claude WIF GA — 에이전트 자동화에서 정적 API 키 없애기
   summary: 'Claude Platform의 Workload Identity Federation(WIF)은 2026년 6월 17일 GA가 됐다. WIF는 정적 API 키 대신 요청 시점에 짧게 살아 있는 scoped credential을 발급하고, AWS IAM role, GCP/Kubernetes service account, Azure managed identity, GitHub Actions token, Okta 같은 OIDC 호환 identity provider와 연결된다. 적용 범위는 Claude API endpoints, first-party SDK, Claude Code 접근까지 포함된다. 에이전트 자동화에서는 API 키를 저장소·CI 변수·로컬 설정에 오래 보관하지 않고, workload별 service account와 audit log로 호출 주체를 분리할 수 있다는 점이 핵심이다.
@@ -7758,3 +7752,67 @@ cards:
   - Can block expansion — exit 2 or decision block
   - vs UserPromptSubmit(raw) ·SessionStart(predictive) — reactive gate
   source: https://code.claude.com/docs/en/hooks
+- category: ai
+  title: North Mini Code — Cohere 30B-A3B MoE·256K·sovereign agentic coding
+  summary: North Mini Code(CohereLabs/North-Mini-Code-1.0·2026-06-09·Apache-2.0)는 Cohere 첫 open-weight agentic coding model — 30B total·3B active MoE·256K ctx·64K max gen·1× H100 FP8/FP4 self-host. sub-agent orchestration·architecture mapping·code review·terminal task에 특화, multi-scaffold training으로 OpenCode 등 harness-agnostic. Artificial Analysis Coding Index 33.4 — Devstral Small 2·Nemotron 3 Super(120B) 초과 size class. throughput 2.8× Devstral Small 2 but 3× output token verbosity — pipeline cost model 필요. MiniMax M3(multimodal 1M) ·GLM-5.2(753B MIT)와 달리 sovereign·single-GPU deploy 축.
+  points:
+  - 30B-A3B MoE ·256K ctx ·Apache-2.0 ·1× H100 deploy
+  - Agentic SFT+RLVR — sub-agent orchestration·terminal·code review
+  - Sovereign tradeoff — on-prem control vs managed Fable 5 verbosity/cost
+  source: https://cohere.com/blog/north-mini-code
+- category: ai
+  title: Grok Build /goal — verify-until-done·GOAL.md·status/pause/resume
+  summary: xAI Grok Build /goal(2026-06-22)는 long-running autonomous coding mode — single objective→plan·checklist·execute→verify(code review·webpage inspect·script run) until complete. /goal status·pause·resume·clear로 live steering. GOAL.md repo external memory — context compact across turns but objective survives. Subagent rounds implement+verify closed loop. SuperGrok·X Premium Plus required. Codex /goal(evidence contract·check_model) ·Claude Outcomes(rubric grader)와 3축 goal engineering — Grok=terminal-native verify loop.
+  points:
+  - Verify-until-done — code review·page inspect·script exec, not attempt-only
+  - GOAL.md external state — objective·done definition·guardrails persist
+  - vs Codex /goal ·Claude Outcomes — terminal checklist vs API rubric
+  source: https://x.ai/news/introducing-goal
+- category: ai
+  title: Codex /goal GA — evidence-based completion·maker-verifier check_model
+  summary: OpenAI Codex /goal(2026-05-21 GA)는 durable thread-scoped objective — app·IDE·CLI 동일. /goal <outcome>·pause·resume·clear·4,000 char cap. completion은 model self-assess가 아니라 files·tests·benchmark·artifact evidence audit — maker-verifier separation, check_model(o4-mini default)이 별도 평가. config.toml goals.max_turns·timeout_minutes·job control. 100+ hour single goal 사례. Grok /goal(terminal verify) ·Claude Outcomes(rubric API)와 complementary — Codex=production Copilot harness evidence contract.
+  points:
+  - GA app·IDE·CLI — evidence audit before complete, not self-assess
+  - check_model maker-verifier — writer≠grader, config.toml turn/timeout
+  - Automations·worktree·subagents compose — hours-to-days objective
+  source: https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex
+- category: ai
+  title: Claude Managed Agents Outcomes — rubric grader·needs_revision loop
+  summary: Claude Managed Agents Outcomes(public beta·managed-agents-2026-04-01) — user.define_outcome으로 deliverable description+rubric markdown, max_iterations(default 3·cap 20). 별도 grader agent가 writer reasoning 없이 artifact만 rubric 채점 — satisfied·needs_revision·max_iterations_reached·failed. span.outcome_evaluation_* telemetry. Codex /goal(evidence contract) ·Grok /goal(terminal verify)와 3축 — Outcomes=API rubric quality gate for hosted CMA sessions. Dreaming(cross-session memory) ·multi-agent orchestration과 compose.
+  points:
+  - define_outcome — description+rubric, grader separate context window
+  - needs_revision loop — per-criterion pass/fail→writer retry
+  - vs Codex /goal ·Grok /goal — API rubric vs CLI evidence vs terminal verify
+  source: https://platform.claude.com/docs/en/managed-agents/define-outcomes
+- category: ai
+  title: smolagents CodeAgent — HF code-first agent·MCP·sandbox·~28k★
+  summary: smolagents(huggingface/smolagents·Apache-2.0·~28k★)는 barebones Python agent library — CodeAgent가 JSON tool call 대신 Python code snippet으로 action 실행(nesting·loop·if composable). ToolCallingAgent(JSON/text blob) alternative. ToolCollection.from_mcp(smolagents[mcp])·LangChain·Hub Space tool. Sandbox — Docker·E2B·Modal·Blaxel. model-agnostic — HF Inference·LiteLLM·Transformers·Ollama. ~1,000 LOC core. LangGraph(state graph) ·CrewAI(role crew)와 달리 minimal code-agent-first — quick prototype·HF ecosystem.
+  points:
+  - CodeAgent — actions as Python code not JSON tool blobs
+  - smolagents[mcp] ToolCollection.from_mcp — MCP native integration
+  - Sandbox Docker/E2B/Modal — secure code execution default path
+  source: https://github.com/huggingface/smolagents
+- category: ai
+  title: AA Coding Agent Index v1.1 — DeepSWE+Terminal-Bench+SWE-Atlas-QnA composite
+  summary: Artificial Analysis Coding Agent Index v1.1(June 2026) — agent harness+model composite pass@1 across 3 benchmarks(321 tasks). DeepSWE 113(long-horizon SE·contamination-free) replaces SWE-Bench-Pro-Hard-AA — reorder index(Codex GPT-5.5 xhigh 76, Claude Opus 4.8 73, Fable 5 77). Terminal-Bench v2 84(agentic terminal). SWE-Atlas-QnA 124(repo Q&A rubric). Simple average composite — harness matters as much as model. DeepSWE card(verifier accuracy) ·Terminal-Bench 2.1 card와 complementary — index=headline cross-benchmark score.
+  points:
+  - v1.1 — DeepSWE replaces SWE-Bench-Pro-Hard, 321 tasks 3-run pass@1
+  - Fable 5 77 ·Codex GPT-5.5 76 ·Opus 4.8 73 — index reorder
+  - Harness+model pair — not model-only leaderboard
+  source: https://artificialanalysis.ai/methodology/coding-agents-benchmarking
+- category: ai
+  title: Codex Appshots — macOS frontmost window screenshot+accessibility→context
+  summary: Codex Appshots(2026-05-21 stable) — macOS Codex app에서 frontmost window를 screenshot+accessible text로 캡처해 Codex attachment로 전달. custom hotkey(default both Command keys) — visual context without manual describe. UI bug report·design review·'이 화면 고쳐' workflow. Computer Use·in-app browser와 compose — Appshots=instant pixel+text snapshot, not full browser automation. macOS only, Codex app users.
+  points:
+  - Hotkey capture — screenshot + accessibility tree as attachment
+  - UI review·bug repro — describe-less visual context injection
+  - macOS Codex app only — complements Computer Use·browser
+  source: https://developers.openai.com/codex/app/features
+- category: ai
+  title: Steering Claude Code — CLAUDE.md·Rules·Skills·Hooks 선택 가이드
+  summary: Anthropic steering guide(2026) — 4 steering surface decision matrix. CLAUDE.md — session start load·high context·facts(build cmd·layout·norms). Rules — path-scoped constraints·re-inject on compaction. Skills — name+desc at start·full body on invoke·shared budget·procedural workflows. Hooks — lifecycle deterministic guardrails(PreToolUse block·SessionStart inject). 30-line procedure in CLAUDE.md는 anti-pattern → skill로. compaction behavior differs — CLAUDE.md memoized, skills oldest-drop-first budget.
+  points:
+  - CLAUDE.md=facts always-on ·Skills=procedures on-demand ·Hooks=deterministic code
+  - Rules path-scoped — medium cost, re-inject on compact
+  - Anti-pattern — long runbook in CLAUDE.md, belongs in skill
+  source: https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more

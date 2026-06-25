@@ -3557,6 +3557,59 @@ Refined:
 누적: 853카드 (845→853 신규 8, 병합 3건은 기존 카드 갱신)
 주제: agent security eval(OASB·HackMyAgent)·open coding model(MiniMax M3)·Codex batch subagent·Claude permission/error hooks·LangChain/LangGraph 1.0·LangSmith Engine
 
+## 2026-06-26 16:00 KST — Batch 56 (아이디어 검증 + 병합 5카드 + 신규 8카드)
+
+### 병합 5카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| reloadSkills 단독 → **reloadSkills·sessionTitle·/reload-skills** | v2.1.152+ SessionStart reloadSkills + /reload-skills 수동 + sessionTitle |
+| 훅 mcp_tool shell spawn → **훅 핸들러 5종** | running MCP server 재사용 direct mcp_tool hook |
+| Dynamic Workflows preview → **Dynamic Workflows(ultracode) GA** | agent/parallel/pipeline·/effort ultracode·disableWorkflows |
+| MCP 2026 RC only → **MCP 2026 + Python SDK v2.0.0a2** | per-version wire validation·Mcp-Method/Name·migration guide |
+| MCP Enterprise-Managed Auth preview → **MCP EMA stable** | 2026-06-18 stable·Okta ID-JAG·VS Code client |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 5건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| North Mini Code | Cohere 첫 open agentic coding·30B-A3B·1×H100 sovereign — MiniMax M3·GLM-5.2와 size/deploy 축 분리 |
+| Grok Build /goal | xAI 2026-06-22 verify-until-done·GOAL.md — Codex/Outcomes와 goal engineering 3축 |
+| Codex /goal GA | maker-verifier check_model·evidence contract — production Copilot harness primitive |
+| Claude Outcomes | rubric grader separate context·needs_revision — API hosted quality gate |
+| smolagents CodeAgent | ~28k★ code-first agent·MCP sandbox — LangGraph/CrewAI와 minimal 축 |
+| AA Coding Agent Index v1.1 | DeepSWE composite reorder·321 tasks — DeepSWE card와 index headline 분리 |
+| Codex Appshots | macOS screenshot+a11y→attachment — Computer Use와 instant snapshot 축 |
+| Steering Claude Code | CLAUDE.md/Rules/Skills/Hooks decision matrix — 공식 steering guide |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| FrontierCode·Kimi K2.7·MAI-Code-1-Flash | 기존 카드 중복 |
+| Batch 55 신규 8(OASB·HackMyAgent·MiniMax M3 등) | overlap 회피 |
+| PostToolUse duration_ms | minor field, 독립 카드 YAGNI |
+| MCP 2026-07-28 final standalone | MCP 2026 카드 병합 확장으로 흡수 |
+| OpenClaw·Microsoft Agent Framework | 기존 카드 존재 |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | North Mini Code — Cohere 30B-A3B MoE·256K·sovereign agentic coding | cohere.com/blog/north-mini-code |
+| 2 | Grok Build /goal — verify-until-done·GOAL.md·status/pause/resume | x.ai/news/introducing-goal |
+| 3 | Codex /goal GA — evidence-based completion·maker-verifier check_model | developers.openai.com/cookbook/.../using_goals_in_codex |
+| 4 | Claude Managed Agents Outcomes — rubric grader·needs_revision loop | platform.claude.com/docs/en/managed-agents/define-outcomes |
+| 5 | smolagents CodeAgent — HF code-first agent·MCP·sandbox·~28k★ | github.com/huggingface/smolagents |
+| 6 | AA Coding Agent Index v1.1 — DeepSWE+Terminal-Bench+SWE-Atlas-QnA composite | artificialanalysis.ai/methodology/coding-agents-benchmarking |
+| 7 | Codex Appshots — macOS frontmost window screenshot+accessibility→context | developers.openai.com/codex/app/features |
+| 8 | Steering Claude Code — CLAUDE.md·Rules·Skills·Hooks 선택 가이드 | claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more |
+
+누적: 861카드 (853→861 신규 8, 병합 5건은 기존 카드 갱신)
+주제: goal engineering 3축(Codex/Grok/Outcomes)·sovereign coding model(North Mini Code)·AA index v1.1·Claude steering·MCP EMA stable·SDK v2 alpha
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.
