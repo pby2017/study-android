@@ -3662,6 +3662,58 @@ Refined:
 누적: 869카드 (861→869 신규 8, 병합 3건은 기존 카드 갱신)
 주제: beyond-bug-fix benchmark(SWE-Atlas)·eval infra(Harbor)·Mistral open stack(Devstral/Vibe)·Claude automation surface(Remote Control·Channels)·OpenHands org automation(Agent Canvas)·UI agent trust(PTA)·Copilot×Claude IDE bridge
 
+## 2026-06-26 20:00 KST — Batch 58 (아이디어 검증 + 병합 3카드 + 신규 8카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Boris Cherny @Scale loops standalone → **Loop Engineering — Addy Osmani·Cherny, agent가 agent를 돌리는 loop 설계** | Meta @Scale 2026-06-19 — agents prompt agents, non-deterministic subagent stop, arch/dedup PR bots |
+| Codex Developer mode only → **chrome-devtools-mcp — CDP MCP·Codex Developer mode(44.4k★)** | app v26.609 CDP·2× browser·@Browser/@Chrome·codex mcp add CLI path |
+| Managed Agents API standalone → **Google Antigravity 2.0 — Managed Agents API·Gemini 3.5 Flash stack** | Interactions API single-call isolated Linux agent + I/O 2026 3-surface platform |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| BenchJack | Berkeley RDI — 10 benchmark near-100% exploit, conftest.py trust boundary, benchmark pen-test infra |
+| Claw-SWE-Bench | harness as controlled variable — 54pp adapter gap same model, cost-accuracy Pareto |
+| SWE-Cycle | full lifecycle 489 task + SWE-Judge — isolated→FullCycle sharp drop, beyond bug-fix |
+| ProgramBench | cleanroom rebuild from binary — 0% fully resolved vs 79% SWE-bench, architectural axis |
+| Bitbucket Codex | 2026-06-25 3rd CI agent provider — codex-config-overrides.toml parity with local |
+| OpenAI Shift to Agentic | primary evidence — 99.8% internal tokens, p99 60h agent/day, org vs consumer gap |
+| ITBench-AA | enterprise SRE unsaturated — all frontier <50%, Stirrup harness, full recall strict |
+| Cursor /automate | 2026-06-18 cloud always-on — computer use default, multi-repo, vs /loop local split |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| MCP 2026-07 stateless·Tasks extension | Batch 56 MCP 2026 card 커버 |
+| Batch 57 8·Batch 55–56 security/hooks | overlap 회피 |
+| DeepSWE·Harbor·SWE-Atlas·Terminal-Bench | 기존 카드 중복 |
+| AgentKit deprecation·Codex quota bug | YAGNI·transient incident |
+| Gemini 3.5 Flash standalone | Antigravity merge로 흡수 |
+| Cherny loops standalone | Loop Engineering merge |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | BenchJack — SWE-bench·Terminal-Bench reward-hack red-team, conftest.py 10줄 exploit | rdi.berkeley.edu/blog/trustworthy-benchmarks-cont |
+| 2 | Claw-SWE-Bench — harness(claw)를 controlled variable로, adapter·cost 1급 축 | arxiv.org/abs/2606.12344 |
+| 3 | SWE-Cycle / SWE-Judge — env setup·implement·test gen·FullCycle 489 task | arxiv.org/html/2605.13139 |
+| 4 | ProgramBench — binary+docs만으로 FFmpeg·SQLite 재구현, fully resolved≈0% | programbench.com |
+| 5 | Bitbucket Agentic Pipelines Codex — Rovo Dev·Claude에 이어 3번째 CI agent provider | atlassian.com/blog/bitbucket/agentic-pipelines-now-supports-openai-codex |
+| 6 | OpenAI Shift to Agentic — 내부 99.8% Codex token·99th percentile 60h agent/day | openai.com/index/how-agents-are-transforming-work |
+| 7 | ITBench-AA — K8s incident RCA 59 task, frontier 전원 50% 미만·Stirrup harness | artificialanalysis.ai/evaluations/itbench-aa |
+| 8 | Cursor Automations /automate — cloud always-on agent·computer use·multi-repo | cursor.com/changelog/06-18-26 |
+
+누적: 877카드 (869→877 신규 8, 병합 3건은 기존 카드 갱신)
+주제: benchmark trust(BenchJack)·harness eval(Claw-SWE)·lifecycle eval(SWE-Cycle)·architectural eval(ProgramBench)·CI agent surface(Bitbucket Codex)·adoption evidence(Shift to Agentic)·enterprise ops eval(ITBench-AA)·cloud automation(Cursor /automate)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.

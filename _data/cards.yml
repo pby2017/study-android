@@ -1031,12 +1031,12 @@ cards:
   - '안전장치: `--dry-run`, `--max-runs`, `--max-duration`, `--max-cost`, `--stall-threshold`로 무한 루프를 제한'
   source: https://github.com/AnandChowdhary/continuous-claude
 - category: ai
-  title: Google Antigravity 2.0 — 데스크톱·CLI(Go)·SDK·Gemini CLI 통합, 3표면 에이전트 플랫폼(I/O 2026)
-  summary: 구글이 2026 I/O에서 Antigravity 2.0을 agent-first development platform으로 공개했다. 1.0 단일 IDE에서 리뉴얼 데스크톱 앱 + Go CLI + 커스텀 SDK 3표면으로 확장 — dynamic subagents·scheduled tasks·Google AI Studio/Android/Firebase 연동. 2025-06 공개 Gemini CLI(google-gemini/gemini-cli, Apache-2.0·~105k★)는 터미널 네이티브 코딩 에이전트로 Gemini 2.5 Pro·1M ctx·MCP 기본 지원·개인 구글 계정 무료(분당 60·일 1,000 요청)였으나, 구글은 소비자(AI Pro/Ultra/무료) Gemini CLI 접근을 2026-06-18부터 차단하고 Antigravity로 이전 안내. Antigravity CLI는 GUI 없이 터미널 에이전트 생성·실행, SDK는 harness 프로그래밍·자체 호스팅 개방. 워크호스 Gemini 3.5 Flash — 3.1 Pro 대비 대부분 벤치마크 앞서고 4배 빠름. Cursor/Claude Code(터미널 에이전트)와 달리 IDE+CLI+SDK+호스팅 통합.
+  title: Google Antigravity 2.0 — 데스크톱·CLI·SDK·Managed Agents API, Gemini 3.5 Flash agent stack(I/O 2026)
+  summary: 구글이 2026 I/O에서 Antigravity 2.0을 agent-first development platform으로 공개 — 데스크톱(병렬 multi-agent)·Go CLI·Antigravity SDK 3표면. Gemini 3.5 Flash — Terminal-Bench 2.1 76.2%·MCP Atlas 83.6%·3.1 Pro 대비 4× faster·Antigravity co-optimized 12×. Managed Agents in Gemini API(Interactions API) — single API call로 Antigravity harness+Gemini 3.5 Flash agent spin-up, Google-hosted isolated Linux sandbox에서 reason·tool·code execute. AI Studio agent templates·Android vibe coding·Firebase 연동. Gemini CLI(~105k★) 소비자 접근 2026-06-18 종료→Antigravity 이주. Claude Managed Agents(Anthropic REST) ·OpenAI Codex platform ·Microsoft Foundry Hosted agents와 4대 managed agent API 축.
   points:
-  - '3표면: 데스크톱(병렬 오케스트레이션) + CLI(Go) + SDK(커스텀 harness)'
-  - Gemini CLI(~105k★) 소비자 접근 2026-06-18 종료 → Antigravity로 이주, MCP·1M ctx 유지
-  - Gemini 3.5 Flash 워크호스 — AI Studio·Android·Firebase 네이티브 연동
+  - 3표면 IDE+CLI+SDK + Managed Agents API — one call isolated Linux agent
+  - Gemini 3.5 Flash agentic default — Search·Gemini app·Antigravity co-designed
+  - Gemini CLI consumer sunset 2026-06-18 — Antigravity가 터미널 agent surface
   source: https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
 - category: ai
   title: Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크
@@ -1306,15 +1306,13 @@ cards:
   - 대규모/멀티레포에선 임베딩 근사 검색보다 '결정적·전수(deterministic, exhaustive) 검색'을 권장 — 단 Sourcegraph 자사(코드검색 제품) 글이라 제품 포지셔닝은 감안할 것
   source: https://sourcegraph.com/blog/agentic-coding
 - category: ai
-  title: chrome-devtools-mcp(Google) — 에이전트가 '생성한 코드가 브라우저에서 실제로 뭘 하는지' 직접 들여다보게 하는 MCP(43.7k★)
-  summary: 'chrome-devtools-mcp는 Chrome DevTools 공식 조직이 내놓은 MCP 서버로, 코딩 에이전트(Claude·Cursor·Copilot·Antigravity 등)가 ''살아 있는 Chrome''을 직접 제어·검사하게 해준다. 에이전트가 코드를 짜고도 그게 브라우저에서 실제로 어떻게 동작하는지 못 봐서 생기는 ''AI 생성→사람이 테스트→에러 보고→다시 시도''의 왕복을 없애는 것이 목적이다. puppeteer로 동작을 자동화하고 결과를 자동 대기하며, 네트워크 요청 분석·콘솔 메시지 확인·성능 트레이스 기록까지 한다. 라이선스는 Apache-2.0.
-
-    '
+  title: chrome-devtools-mcp(Google) — CDP MCP·Codex Developer mode, 브라우저 F12를 에이전트에(44.4k★)
+  summary: 'chrome-devtools-mcp(ChromeDevTools/chrome-devtools-mcp·Apache-2.0·~44.4k★)는 Chrome DevTools Protocol(CDP)을 MCP로 노출 — puppeteer 기반 DOM·console·network·performance trace·Lighthouse. Codex CLI — `codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest` 한 줄 등록, headless CI·SSH에서도 browser debug. Codex app v26.609(2026-06-11) Developer mode — Settings>Browser>Enable full CDP access, @Browser(in-app)·@Chrome(extension logged-in session), per-site approval·admin browser_use_full_cdp_access=false. Browser use 2× faster via CDP+DOM snapshot(스크린샷 추론 대비 round-trip↓). Playwright MCP(a11y tree·cross-browser) ·Stagehand(hybrid) ·Browser Use(CDP library)와 3축 — DevTools depth vs accessibility tree vs NL hybrid.'
   points:
-  - 약 48개 도구를 카테고리로 제공 — 입력 자동화(click·fill·type 등 10개)·내비게이션(6)·성능 트레이스(3)·네트워크(2)·디버깅(evaluate_script·take_screenshot·list_console_messages·lighthouse_audit 등 8)·메모리 힙스냅샷(8) 등
-  - Playwright MCP가 '크로스브라우저 사용자 플로 실행'에 강하다면, 이쪽은 'Chrome 한 페이지를 DevTools 깊이로 디버깅·성능 프로파일링'에 특화 — 둘은 겹치되 용도가 다름
-  - Claude Code·Cursor·Gemini CLI·Copilot 등 다수 클라이언트 지원 — 별 수 약 43.7k★, 포크 2.8k(레포 표기 기준)
-  source: https://github.com/ChromeDevTools/chrome-devtools-mcp
+  - ~29 MCP tools — DOM·console·network·perf trace·Lighthouse; Codex one-liner mcp add
+  - Codex app Developer mode — full CDP default-off, per-site approval, enterprise kill switch
+  - CLI path = headless/CI; app @Browser/@Chrome = interactive logged-in frontend debug
+  source: https://developers.openai.com/codex/app/browser
 - category: ai
   title: Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'
   summary: 'Cipher는 코딩 에이전트에 영속적·구조적 메모리를 붙여주는 오픈소스 프로젝트로, 지금은 ByteRover CLI(brv)로 리브랜딩됐다(ByteRover 팀). 핵심 발상은 프로젝트 지식을 ''컨텍스트 트리''에 담고 git처럼 branch·commit·merge·push/pull로 버전 관리하며, 이를 클라우드에 동기화해 도구·팀 간에 공유하는 것이다. 덕분에 Cursor에서 쌓은 맥락을 Claude Code·Windsurf·Cline에서도 그대로 이어 쓸 수 있다 — 에이전트마다 컨텍스트를 처음부터 다시 쌓을 필요가 없다. MCP로 연동하고 20개 LLM 제공사·24개 내장 도구를 지원하며, 22개 이상의 AI 코딩 에이전트와 붙는다. 라이선스는 Elastic License 2.0.
@@ -7483,13 +7481,13 @@ cards:
   - Local proxy — OpenAI-compatible→Claude format, failover+circuit breaker+cost tracking
   source: https://github.com/farion1231/cc-switch
 - category: ai
-  title: Loop Engineering — Addy Osmani, prompt 대신 자동화·worktree·skill·subagent loop 설계
-  summary: Loop Engineering(Addy Osmani·2026-06)는 "프롬프트하는 사람"을 "loop를 설계하는 사람"으로 바꾸는 방법론 — recursive goal에 AI가 iterate until complete. 5 primitive — Automations(cron·Codex Automations tab·Claude /loop·hooks·GitHub Actions) ·Worktrees(parallel collision-free) ·Skills(SKILL.md persistent instructions) ·Plugins/MCP(real tool integration) ·Sub-agents(explore·implement·verify split). External spine(MEMORY.md·state JSON) 필수 — agent는 cold start. cobusgreyling/loop-engineering OSS — 7 patterns(daily-triage·PR babysitter·CI sweeper)·loop-init·loop-audit·loop-cost CLI. Dynamic Workflows(ultracode) ·Agent Teams과 달리 recurring autonomous cadence+human triage gate+token budget awareness.
+  title: Loop Engineering — Addy Osmani·Cherny, prompt 대신 agent가 agent를 돌리는 loop 설계
+  summary: Loop Engineering(Addy Osmani·2026-06)는 "프롬프트하는 사람"을 "loop를 설계하는 사람"으로 바꾸는 방법론 — recursive goal에 AI가 iterate until complete. Claude Code creator Boris Cherny(Meta @Scale·2026-06-19)는 "agents prompting agents"를 source code→agent만큼 큰 단계로 — hand-written code→agent writes code→agents prompt agents that write code. Cherny 내부 setup — architecture improvement agent·dedup abstraction agent가 PR을 계속 제출, codebase가 변하므로 stop condition 없음; 종료는 subagent가 non-deterministic하게 판단(Ralph Loop·Continuous Claude와 같은 CS recursive loop의 AI판). 5 primitive — Automations(cron·Codex Automations·Claude /loop·Cursor /loop) ·Worktrees ·Skills ·MCP ·Sub-agents. External spine(MEMORY.md·state JSON)·circuit breaker(max-cost·max-turns) 필수. Dynamic Workflows(ultracode batch spawn) ·Agent Teams(in-session chat)와 달리 always-on background cadence+token budget policy.
   points:
-  - 5 primitives — Automations·Worktrees·Skills·MCP·Sub-agents, one memory spine
-  - Maker/checker split — writer agent≠verifier, don't trust self-graded output
-  - Token economics — pattern picker by cadence+cost(L1 report vs L2 cautious CI sweeper)
-  source: https://addyosmani.com/blog/loop-engineering/
+  - Cherny @Scale — loops as big as hand-code→agents; non-deterministic stop via subagent
+  - 5 primitives + memory spine — Automations·Worktrees·Skills·MCP·Sub-agents
+  - Loop policy — which tasks loop-safe, max token spend, audit/rollback when verifier misses
+  source: https://techcrunch.com/2026/06/22/the-ai-world-is-getting-loopy/
 - category: ai
   title: Praxia — 5-layer memory stack, personal tacit→org know-how auto promotion
   summary: Praxia(praxia-dev/praxia·Apache-2.0)는 multi-agent orchestrator with cyclic memory — L1 Personal(auto-extract·6 backend Mem0/Letta/Zep/HindSight/LangMem/JSON) → L2 Sleep-time Consolidator(3-path promotion frequency+outcome+LLM self-eval) → L3 SharedMemory(org blocks·RBAC) → L4 MarkdownStore(git PR-reviewed frozen) → L5 Graph(optional Zep/Graphiti). CompositeBackend(RRF fusion) ·RoutedBackend(query-aware dispatch). Honcho(dialectic peer) ·Mem0(drop-in API) ·Cognee(graph-native)와 달리 personal→org promotion engine·skill registry promotion·SSO+RBAC+audit enterprise stack.
@@ -7874,3 +7872,67 @@ cards:
   - Cloud agent GA ·per-turn AI credits indicator ·debug logs summary
   - Preview caveat — bypass permissions mode, enterprise policy gate
   source: https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/
+- category: ai
+  title: BenchJack — SWE-bench·Terminal-Bench reward-hack red-team, conftest.py 10줄 exploit
+  summary: 'BenchJack(Berkeley RDI·arXiv 2605.12673)는 agent benchmark vulnerability scanner — eval pipeline trust boundary·scoring mechanism 분석→working exploit 자동 생성. 10개 벤치마크 audit — SWE-bench Verified(500)·Pro(731)·Terminal-Bench(89)·WebArena·OSWorld 등 9/10 near-100% without solving task. SWE-bench exploit — repo root conftest.py pytest hook이 모든 test outcome을 passed로 rewrite(Pytest auto-discover, reset 후에도 survive). 219 flaws·8 flaw taxonomy·iterative patch pipeline(WebArena·OSWorld 3 attempt内 unhackable). promptfoo(adversarial prompt) ·GitHub PTA(structural UI) ·OASB(product security)와 축 분리 — benchmark integrity penetration test before publish.'
+  points:
+  - conftest.py 10-line hook — force all tests passed, zero bugs fixed, 100% score
+  - Trust boundary flaw — agent patch runs inside test container with full privileges
+  - Pre-publish benchmark audit — patch loop reduces hackable tasks to <10%
+  source: https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/
+- category: ai
+  title: Claw-SWE-Bench — harness(claw)를 controlled variable로, adapter·cost 1급 축
+  summary: 'Claw-SWE-Bench(arXiv 2606.12344·opensquilla/claw-swe-bench) — general-purpose agent(OpenClaw 등)를 SWE-bench Docker contract에 adapter protocol로 연결. 350 instance·8 language·43 repo + Lite 80 subset. OpenClaw minimal adapter 19.1% vs full adapter 73.4% same GLM 5.1 — harness 54pp gap. Model sweep 29.4pp ·claw sweep 27.4pp under fixed model; similar accuracy can differ 10× API cost. Harbor(eval infra) ·Terminal-Bench 2.1(agent+model pair) ·AA Index(composite)와 축 분리 — claw=adapter design as first-class eval axis.'
+  points:
+  - Adapter protocol — fixed prompt·budget·workspace·patch extraction for fair claw compare
+  - Harness gap — 19.1%→73.4% same model; cost-accuracy Pareto not accuracy-only
+  - Lite 80 — cost-aware calibration subset for fast harness iteration
+  source: https://arxiv.org/abs/2606.12344
+- category: ai
+  title: SWE-Cycle / SWE-Judge — env setup·implement·test gen·FullCycle 489 task
+  summary: 'SWE-Cycle(arXiv 2605.13139) — issue resolution full lifecycle benchmark — Environment Reconstruction·Code Implementation·Verification Test Generation·FullCycle(bare repo, no human scaffold). 489 filtered instance. Isolated task→FullCycle 전환 시 solve rate sharp drop — cross-phase dependency·code quality bottleneck. SWE-Judge — static review + dynamic testing execution-capable evaluator, autonomous trajectory parsing error 제거. SWE-Atlas(QnA·Test Writing·Refactoring rubric) ·Harbor(harness infra) ·DeepSWE(long-horizon)와 축 분리 — end-to-end autonomy without pre-configured env.'
+  points:
+  - 4 tasks — env rebuild·implement·test gen·FullCycle integrated bare repo
+  - SWE-Judge — static+dynamic, fixes parser errors on full autonomous paths
+  - FullCycle gap — isolated success≠end-to-end; cross-phase deps expose bottlenecks
+  source: https://arxiv.org/html/2605.13139
+- category: ai
+  title: ProgramBench — binary+docs만으로 FFmpeg·SQLite 재구현, fully resolved≈0%
+  summary: 'ProgramBench(arXiv 2605.03546·programbench.com) — agent가 executable+binary docs만 받고 architecture·language·build script 전부 자율 설계 — source·decompile·internet 금지. 200 task(jq·ripgrep→FFmpeg·SQLite·PHP interpreter). Agent-driven fuzzing hidden behavioral tests — implementation structure 무관 behavior match. Fully resolved intentionally strict — Fable 5 4/200·Opus 4.8 2/200(June 2026 vals.ai); raw pass rate ~70% but architecture wrong(monolithic single-file). DeepSWE(bug-fix decontaminated) ·SWE-bench(local surgery)와 축 분리 — cleanroom architectural reasoning stress test.'
+  points:
+  - Inverts SWE-bench — no repo, only binary+docs; every design decision is model's
+  - 0% headline vs 79%+ SWE-bench — measures different capability not contradiction
+  - Almost resolved(95% tests) — progress signal while fully resolved stays near zero
+  source: https://programbench.com/
+- category: ai
+  title: Bitbucket Agentic Pipelines Codex — Rovo Dev·Claude에 이어 3번째 CI agent provider
+  summary: 'Bitbucket Agentic Pipelines(open beta·2026-06-25) — bitbucket-pipelines.yml에 provider: codex로 OpenAI Codex를 CI step에 embed. Rovo Dev(default)·Claude Code(2026-05)에 이어 3번째 — merge·schedule·failing build·PR comment trigger. codex-config-overrides.toml로 local과 동일 model pin·sandbox·MCP wiring. YAML policy·auth scope·audit trail은 provider 무관 일관 적용. Third-Party Product agreement — source·prompt·log→OpenAI, Atlassian no liability. GitHub Actions @claude ·Copilot Automations(cloud) ·OpenHands Agent Canvas(self-host)와 축 분리 — Bitbucket-native multi-provider agentic CI.'
+  points:
+  - provider: codex keyword — same YAML agent defs as rovodev/claude
+  - codex-config-overrides.toml — pin model·tighten sandbox·extra MCP in repo
+  - Unified policy layer — approval·scopes·audit regardless of agent vendor
+  source: https://www.atlassian.com/blog/bitbucket/agentic-pipelines-now-supports-openai-codex
+- category: ai
+  title: OpenAI Shift to Agentic — 내부 99.8% Codex token·99th percentile 60h agent/day
+  summary: 'OpenAI "How agents are transforming work"(2026-06-25) + Columbia/Duke/UPenn paper — Codex adoption evidence. OpenAI internal — Codex 99.8% weekly output tokens(vs ChatGPT), engineer 99%, Legal/Finance/Recruiting 85%+ since Apr 2026. External org 63.3%·individual 16.5%. 99th percentile daily active — 60+ hours Codex agent turns/day parallel agents(June 2026). Individual sample — 80.6% requests >30min human work, 25.6% >8h delegated. Research dept median token use 56× Nov 2025. Consumer Plus/Pro <1% Codex among active users. Codex /goal ·parallel agents ·Bitbucket CI와 compose — adoption curve not capability headline.'
+  points:
+  - Internal 99.8% tokens — agentic default when cost/access/training removed
+  - Org 63% vs individual 16.5% — enterprise ahead, consumer still chat-first
+  - Parallel orchestration — 60h agent-turns/day at p99, not single-thread Q&A
+  source: https://openai.com/index/how-agents-are-transforming-work/
+- category: ai
+  title: ITBench-AA — K8s incident RCA 59 task, frontier 전원 50% 미만·Stirrup harness
+  summary: 'ITBench-AA(IBM×Artificial Analysis·2026-05) — enterprise IT agent benchmark, SRE 59 Kubernetes incident root-cause analysis first release(FinOps·CISO roadmap). Offline snapshot — alerts·events·traces·metrics·topology→structured JSON root-cause entities. Stirrup OSS reference harness·100-turn cap·3 repeats·full recall scoring(miss one root cause→0). Best Claude Opus 4.7 ~47%·GPT-5.5 ~46% — all frontier <50%. vs SWE-bench Verified 80%+ — enterprise ops unsaturated. DeepSWE(coding) ·ProgramBench(architectural) ·Terminal-Bench(infra shell)와 축 분리 — diagnose live system not patch repo.'
+  points:
+  - 59 SRE tasks — 40 public + 19 held-out; precision-weighted entity scoring
+  - Stirrup harness — reproducible shell-access sandbox, github.com/itbench-hub/ITBench
+  - Full recall strict — one missed root cause zeros the incident score
+  source: https://artificialanalysis.ai/evaluations/itbench-aa
+- category: ai
+  title: Cursor Automations /automate — cloud always-on agent·computer use·multi-repo
+  summary: 'Cursor Automations(2026-03 GA·2026-06-18 /automate skill) — cursor.com/automations cloud agent, cron·GitHub·GitLab·Slack·Linear·webhook trigger. /automate in local session — plain language→triggers·instructions·tools auto-config. 2026-05-20 — Agents Window·multi-repo·no-repo(read-only digest). 2026-06-18 — computer use default on automations(demo artifact), default open PR, incomplete state save. Isolated cloud sandbox — diff staged for review, default no auto-apply. vs /loop(local·session-bound·localhost access) ·Claude Scheduled Tasks ·OpenHands Agent Canvas(self-host). Rule — persistent cloud vs local env-bound loop.'
+  points:
+  - /automate skill — describe workflow, Cursor configures triggers+tools
+  - Multi-repo May 2026 — one automation targets several repos; no-repo for Slack-only
+  - Cloud vs /loop — Automations persist laptop-off; /loop needs Cursor session open
+  source: https://cursor.com/changelog/06-18-26
