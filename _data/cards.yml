@@ -1400,12 +1400,12 @@ cards:
   - Custom Droid·모델 비종속 라우팅 — 엔터프라이즈 코딩 플랫폼
   source: https://docs.factory.ai/cli/getting-started/overview
 - category: ai
-  title: Terminal-Bench 2.x — 셸 전체가 문제 공간, '에이전트+모델 쌍'으로 재는 벤치마크(Stanford×Laude·89태스크)
-  summary: Terminal-Bench는 Stanford×Laude Institute가 만든, 코딩 에이전트를 실제 터미널 환경에서 평가하는 벤치마크다. SWE-bench가 레포 경계 안 코드 수정이라면, Terminal-Bench는 환경 전체가 문제 — 커널 빌드·서버 배포·모델 학습 같은 end-to-end 시스템 작업을 Bash만으로 풀게 한다. 2.0은 229개 후보 중 3명 리뷰로 89개 하드 태스크만 채택, Harbor 하네스(tb CLI)로 Claude Code·Codex CLI·OpenHands 등을 그대로 붙인다. 2.1 리더보드(tbench.ai)는 측정 단위가 '모델'이 아니라 '에이전트+모델 쌍' — Codex CLI+GPT-5.5 83.4% > Claude Code+Opus 4.8 78.9% > Terminus 2+GPT-5.5 78.2%. 같은 GPT-5.5도 에이전트에 따라 5%p+ 갈려 하네스 설계가 모델만큼 중요함을 보여준다.
+  title: Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Fable 5 83.1% (2026-06)
+  summary: Terminal-Bench는 Stanford×Laude Institute가 만든 터미널 환경 코딩 에이전트 벤치마크 — SWE-bench(레포 수정)와 달리 커널 빌드·서버 배포·모델 학습 등 환경 전체가 문제. 2.1 리더보드(tbench.ai)는 '에이전트+모델 쌍' 측정 — Codex CLI+GPT-5.5 83.4% > Claude Code+Fable 5 83.1%(6월 17일 진입, 6/12 정부 지시로 전면 중단) > Claude Code+Opus 4.8 78.9%. 같은 GPT-5.5도 Terminus 2 harness 76.4% vs Codex CLI 83.4%로 7%p 갭 — 하네스가 모델만큼 중요. Harbor tb CLI로 Claude Code·Codex·OpenHands 교체 가능, 2.0은 89개 큐레이션 태스크.
   points:
-  - 환경 전체가 문제 — Docker+자동 테스트 판정, SWE-bench(레포 수정)와 다른 '돌아가는 시스템' 과제
-  - Harbor 하네스 — tb CLI로 에이전트 교체·Terminus 2 중립 스캐폴드, 2.0은 89개 큐레이션 태스크
-  - 2.1 리더보드 — '에이전트+모델 쌍' 측정, 벤더 자체발표·버전 간 절대 수치 직접 비교 불가
+  - 2.1 June 2026 — Codex CLI+GPT-5.5 83.4% 1위, Fable 5 83.1% 3일 가용 후 중단
+  - Harness gap — 동일 GPT-5.5도 Terminus 2 76.4% vs Codex CLI 83.4%, 설정이 경쟁력
+  - 환경 전체 문제 — Docker+자동 판정, SWE-bench와 다른 '돌아가는 시스템' 과제
   source: https://www.tbench.ai/leaderboard/terminal-bench/2.1
 - category: ai
   title: SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크
@@ -4853,12 +4853,12 @@ cards:
   - Free tier 1000 credits·40 RPM — Nemotron·Kimi·GLM 등 DGX Cloud hosted
   source: https://docs.api.nvidia.com/nim/docs/introduction
 - category: ai
-  title: Graphite — Stacked PR·Graphite Agent·stack-aware merge queue(GitHub 위)
-  summary: Graphite는 GitHub 위에 얹는 AI 코드리뷰·PR 워크플로 플랫폼으로 stacked diffs를 네이티브 지원한다. CLI·VS Code extension으로 대형 변경을 작은 의존 PR 체인으로 쪼개 리뷰·머지, base branch 이동 시 자동 rebase. Graphite Agent가 PR마다 high-signal AI review·fix suggestion·CI failure assist, negative feedback ~5%. Stack-aware merge queue가 의존 PR을 순서대로·병렬 CI batch. 2026-04 GitHub gh-stack(private preview) 등장했으나 merge queue·AI review·branch surgery는 Graphite가 선점. Shopify·Asana·Semgrep 사례 — Asana 7h/week 절감 주장.
+  title: Graphite Agent — Diamond+Chat 통합, PR 페이지에서 대화·수정·머지까지
+  summary: Graphite는 GitHub 위 stacked PR·merge queue 플랫폼이며 2026-01 Diamond(AI reviewer)+Chat을 Graphite Agent로 통합했다. 정적 코멘트가 아니라 PR 페이지에서 codebase context로 버그·보안·로직 이슈를 잡고, diff 설명·CI failure patch·one-click commit까지 대화형 collaborator. Custom rules(plain language)·exclusions·acceptance rate dashboard. Cursor 인수(2025) 이후 Cursor Cloud Agents가 Graphite PR에 embed — 로컬 코딩→PR 리뷰 seamless. stacked diffs·stack-aware merge queue는 Graphite 독점, CodeRabbit(리뷰만)·Greptile(whole-repo)과 축 분리.
   points:
-  - 'Stacked PR: PR#3 작업 중 PR#1 리뷰 대기 — 자동 rebase·충돌 완화'
-  - 'Graphite Agent: codebase context review·~5% negative rate vs generic AI review'
-  - Free individual·팀 $20-40/user — CodeRabbit(리뷰만)과 상호보완, stacking은 Graphite 독점
+  - PR-native Chat — static comment→explain·fix·commit loop, CI failure in-PR patch
+  - Stacked PR+merge queue — 의존 PR chain auto-rebase·parallel CI batch
+  - Cursor Cloud Agents in Graphite — IDE agent→PR review handoff, ~5% negative rate
   source: https://graphite.com/
 - category: ai
   title: Replit Agent 4 — Design Canvas·병렬 task·Kanban 협업(March 2026)
@@ -7169,12 +7169,12 @@ cards:
   - vs trace-mcp — structural fold vs framework graph, complementary not replacement
   source: https://github.com/breca/mcp-codemap
 - category: ai
-  title: Warp Oz — multi-harness cloud control plane, Claude Code·Codex·Warp Agent
-  summary: Warp Oz(warp.dev/oz·2026 GA)는 cloud agent orchestration platform — Claude Code·Codex·Warp Agent를 unified control plane에서 launch·track·govern. multi-harness — harness+model 조합별 effectiveness compare·consistent audit·access control. automatic multi-agent orchestration — parent/child·parallel subagents·harness-agnostic mailbox(Codex parent→Claude child). Agent Memory cross-harness research preview. Conductor(mac local GUI) · Citadel(plugin harness) · Vibe Kanban(kanban)와 달리 cloud-first enterprise control plane — triggers(Slack·Linear·CI·API)·environments·secrets shared across harnesses.
+  title: Warp — open-source ADE·Oz cloud control plane, Claude Code·Codex·Warp Agent
+  summary: Warp(warp.dev·AGPL-3.0·~62k★)는 2026년 터미널 코어를 open-source로 전환한 agentic development environment — Rust GPUI·vertical tabs·native code editor·agent diff review·MCP. Built-in Warp Agent + Claude Code·Codex·Gemini CLI·OpenCode BYO harness. Oz(warp.dev/oz)는 cloud orchestration — multi-harness launch·Slack·Linear·GitHub trigger·Docker/K8s sandbox·parent/child parallel·Agent Memory preview. OpenAI founding sponsor. Conductor(mac local) ·Citadel(plugin)와 달리 terminal-native surface + open core + cloud control plane 3-tier stack.
   points:
-  - Multi-harness — Claude Code·Codex·Warp Agent same triggers·env·observability
-  - Orchestration — parent/child parallel, harness-agnostic inter-agent mailbox
-  - Cloud infra — Docker/K8s sandbox, POST /agent/run API+Python/TS SDK
+  - Open-source terminal — AGPL-3.0 Rust, vertical tabs·LSP editor·agent review loop
+  - Oz cloud — multi-harness control plane, triggers·env·secrets shared across agents
+  - BYO harness — Claude Code·Codex·Gemini CLI·OpenCode same surface, Warp Agent built-in
   source: https://www.warp.dev/oz
 - category: ai
   title: mcp-code-review — GitHub·GitLab·local diff MCP, 13-category engineering checklist
@@ -7522,3 +7522,91 @@ cards:
   - Structure preserve — headings·tables·links as Markdown, LLM-native token-efficient
   - vs Unstructured — lightweight OSS boundary vs enterprise connector+JSON ETL platform
   source: https://github.com/microsoft/markitdown
+- category: ai
+  title: Claude Fable 5 — SWE-bench Pro 80.3%·6/12 전면 중단, Opus 4.8이 fallback
+  summary: Claude Fable 5(anthropic·2026-06-09 GA)는 Mythos-class 첫 공개 모델 — SWE-bench Verified 95.0%·SWE-bench Pro 80.3%·Terminal-Bench 2.1 83.1%·DeepSWE #1(70% PASS@1). Stripe 50M-line Ruby migration 2개월→1일·Cognition FrontierCode 최고점. 6/12 US 정부 export-control 지시로 Fable 5·Mythos 5 전 세계 중단(Bedrock 포함) — 3일 만에 역사적 벤치마크만 남음. 6/25 Anthropic "zero traffic" 확인, UI 잔존은 front-end bug. 실무 fallback은 claude-opus-4-8 — daily task는 충분, multi-day autonomous session gap. Kimi K2.7-Code·GLM-5.2가 open-weight 대안.
+  points:
+  - 6/9~6/12 3일 GA — 95% Verified·80.3% Pro·83.1% Terminal-Bench, 6/12 worldwide suspend
+  - Opus 4.8 fallback — daily coding OK, long-horizon autonomous gap remains
+  - Open alternatives — Kimi K2.7-Code·GLM-5.2 MIT weights, near-Fable on coding axes
+  source: https://www.anthropic.com/news/claude-fable-5-mythos-5
+- category: ai
+  title: Kimi K2.7 Code — 1T MoE·32B active·256K·Modified MIT open-weight coding agent
+  summary: Kimi K2.7 Code(moonshotai/Kimi-K2.7-Code·2026-06-12)는 Moonshot AI coding-focused agentic model — 1T total·32B active MoE·256K ctx·Modified MIT weights on HuggingFace. K2.6 대비 reasoning token ~30% 절감·long-horizon coding task success rate↑. thinking mode mandatory(disabled 불가) — multi-step tool call·repo-scale engineering. Kimi Code platform default·API kimi-k2.7-code·highspeed 180 tok/s. vLLM·SGLang·KTransformers self-host(~595GB). Claude Fable 5 중단 후 open-weight coding 대안 — Kimi Code Bench v2 62.0 vs Opus 4.8 67.4·MCP Atlas 76.0.
+  points:
+  - 1T MoE 32B active — 256K ctx, mandatory thinking, Modified MIT open weights
+  - 30% fewer reasoning tokens vs K2.6 — long-horizon end-to-end task success↑
+  - Self-host or API — vLLM/SGLang, Kimi Code default, Fable 5 shutdown alternative
+  source: https://www.kimi.com/resources/kimi-k2-7-code
+- category: ai
+  title: GLM-5.2 — 753B MoE·1M ctx·MIT·SWE-bench Pro 62.1 GPT-5.5 초과
+  summary: GLM-5.2(zai-org/GLM-5.2·2026-06-13)는 Zhipu/Z.ai flagship coding model — ~753B total·~40B active sparse MoE·1M ctx·128K max output·MIT license(no restriction). IndexShare sparse attention 2.9× FLOPs cut·MTP speculative decoding +20% acceptance. SWE-bench Pro 62.1(vs GPT-5.5 58.6)·Terminal-Bench 2.1 81.0·FrontierSWE 74.4. Anthropic-compatible API — Claude Code·OpenCode·Cline·Cursor base URL swap drop-in. ZCode desktop agent deep optimization·GLM Coding Plan 3× peak quota. Qwen3-Coder-Next(local 3B active) ·Kimi K2.7(Modified MIT)와 달리 unrestricted MIT·1M repo dump single request.
+  points:
+  - MIT open weights — commercial·self-host·fine-tune unrestricted, BF16 ~1.51TB
+  - 1M context — whole repo slice in one request, reasoning effort High/Max selectable
+  - Claude Code drop-in — Anthropic-compatible API, 20+ coding environments base URL swap
+  source: https://z.ai/blog/glm-5.2
+- category: ai
+  title: Junie GA — JetBrains AI coding agent, debugger MCP·ACP·BYOK·원격 제어
+  summary: Junie(junie.jetbrains.com·2026-06-17 GA)는 JetBrains AI coding agent — beta 1년 만에 정식 전환. IDE+Junie CLI+CI/CD, ACP(Agent Client Protocol)로 IntelliJ·Android Studio deep integration — real debugger attach(breakpoint·runtime inspect)·semantic check·test run. Plan mode — requirements(EARS)→design→tasks 3-stage before code. Brave Mode auto-approve·Remote Control phone→desktop session steer·Custom Guidelines&Skills. BYOK Anthropic·OpenAI·Google·OpenRouter·Ollama local. Kiro(AWS spec-driven) ·Cursor(agent IDE) ·Claude Code(terminal)와 달리 JetBrains IDE native debugger MCP·Android Studio 공식 지원.
+  points:
+  - Debug mode — real IDE debugger MCP, not println — breakpoint·expression eval
+  - ACP integration — IntelliJ 2026.1.1+ Debugger MCP Toolset, Android Studio
+  - LLM-neutral — BYOK any provider, Remote Control async CLI+web monitor
+  source: https://www.jetbrains.com/junie/
+- category: ai
+  title: mcp-eval — MCP server+agent real-env eval, OpenTelemetry trace·pytest·LLM judge
+  summary: mcp-eval(lastmile-ai/mcp-eval·mcpevals PyPI)는 MCP server와 agent를 mock 없이 real environment에서 테스트하는 eval framework — LLM/agent가 actual MCP tool call. OpenTelemetry trace가 source of truth — tool path·latency·token·error pattern. pytest·@task decorator·dataset 3 style·language agnostic(Python·TS·Go·Rust server 모두). Rich assertion — content check·tool verification·path efficiency·LLM judge·performance gate. mcp-agent 위 구축. Promptfoo(red team) ·DeepEval(metric pytest) ·MCP Inspector(conformance UI)와 달리 production-like agent↔server integration eval·CI regression.
+  points:
+  - No mocks — real agent→real MCP server, OTEL trace→metrics→assertions
+  - 3 test styles — pytest·decorator·dataset, language-agnostic server
+  - vs MCP Inspector — integration eval vs protocol debug UI, complementary
+  source: https://github.com/lastmile-ai/mcp-eval
+- category: ai
+  title: mcptest — pytest for MCP agents, YAML mock server·trajectory assertion·regression diff
+  summary: mcptest(josephgec/mcptest·mcp-agent-test PyPI)는 vendor-neutral MCP agent testing — "pytest for MCP agents". YAML fixture로 mock MCP server(tools·responses·error scenarios) 선언, agent를 isolation에서 실행, tool-call trajectory assert. 17 assertions(tool_called·param_matches·tool_order·error_handled) ·7 metrics(efficiency·redundancy·stability) ·regression baseline diff ·non-determinism retry(N runs ≥T% pass). mcptest capture — live server→auto fixture+test YAML. 6 fixture packs(GitHub·Slack·filesystem·DB·HTTP·git) ·19 MCP conformance checks. mcp-eval(real env) ·Galileo(acquired)와 달리 token-free YAML mock·trajectory-focused·CI badge.
+  points:
+  - YAML mock servers — no LLM tokens burned, real MCP stdio/SSE protocol
+  - mcptest capture — auto-discover tools, sample responses, write fixture+test
+  - Regression diff — prompt/model/server change→trajectory drift detect
+  source: https://github.com/josephgec/mcptest
+- category: ai
+  title: MCP-AgentBench — 33 MCP server·188 tool·600 query, MCP-Eval outcome judge
+  summary: MCP-AgentBench(AAAI 2026·arXiv 2509.09734)는 MCP-mediated tool use를 평가하는 첫 대규모 벤치마크 — function-calling leaderboard가 못 잡는 protocol-driven real-world interaction. 33 operational MCP server·188 tool unified router·600 query 6 complexity category(single-server→multi-server sequential). MCP-Eval — outcome-oriented LLM-as-judge, execution path not scored(self-correction·multiple valid paths). Qwen3-235B·Kimi K2가 GPT-4o outperform 사례. MCP-Eval 91.7% human agreement. mcp-eval(production test) ·Promptfoo(red team) ·Terminal-Bench(shell env)와 달리 MCP protocol-specific agent capability benchmark.
+  points:
+  - 33 servers 188 tools — realistic MCP ecosystem, not isolated function call
+  - Outcome judge — goal achieved regardless of path, 600 queries 6 complexity tiers
+  - Open models competitive — Qwen3·Kimi K2 vs GPT-4o on MCP tasks
+  source: https://arxiv.org/abs/2509.09734
+- category: ai
+  title: FrontierCode — Cognition '머지할 PR인가' 벤치, Diamond 13.4%·maintainer rubric
+  summary: FrontierCode(cognition.ai/blog/frontier-code·2026-06-08)는 '코드가 통과하는가'가 아니라 'maintainer가 merge할 PR인가'를 재는 벤치마크 — Cognition(Devin)이 36 flagship OSS repo maintainer 20+명과 공동 제작. 150 Extended·100 Main·50 Diamond nested subset, task당 40h+ maintainer effort. 6-axis rubric — correctness·regression safety·mechanical cleanliness·test quality·scope discipline·code quality, blocker fail→score 0. Reverse-Classical(test가 broken code에서 fail)·scope check·mutagent adaptive grading. Opus 4.8 Diamond 13.4%·Main 34.3%·Extended 51.8% — SWE-bench Pro 81% false positive rate vs FrontierCode QC. tasks private(contamination 방지).
+  points:
+  - Mergeability not pass — scope discipline·test quality·style, blocker=zero score
+  - 81% fewer misclassification — vs SWE-bench Pro, maintainer-authored rubric
+  - Unsaturated — Diamond best 13.4%, production-ready signal not correctness-only
+  source: https://cognition.ai/blog/frontier-code
+- category: ai
+  title: ZCode — Z.ai desktop ADE, long-horizon GLM-5.2·SSH remote·mobile Remote Control
+  summary: ZCode(zcode.z.ai·2026-06-13 v3.0)는 Zhipu/Z.ai Agentic Development Environment — long-horizon multi-step task에 특화. in-house ZCode Agent core(Gen 3.0부터 third-party adapter deprecated) — files·terminal·browser·Git state single task continuity. GLM-5.2 deep optimization·GLM Start Plan 150% quota·/goal long-horizon. Remote Workspace SSH·Docker·WSL first-class·mobile Remote Control QR→desktop session steer·Feishu/WeChat Bot Channel. Zread auto project knowledge base·grouped task workspace·Git branch graph. Orca(cross-agent fleet) ·DeerFlow(LangGraph harness) ·Cursor(AI IDE)와 달리 GLM stack native ADE·mobile vibeworking.
+  points:
+  - Long-horizon native — plan→code→verify→review single task, context no mid-break
+  - Remote SSH/Docker/WSL — same desktop UX on server/container, mobile steer
+  - GLM-5.2 optimized — in-house agent, Coding Plan quota, /goal multi-hour tasks
+  source: https://zcode.z.ai/en/docs/welcome
+- category: ai
+  title: Claude Code plugin monitors·LSP·skills-dir — 세션 감시·진단·스킬 즉시 배포
+  summary: Claude Code plugin v2.1.105+ 3 experimental component — monitors(monitors/monitors.json)·LSP(.lsp.json)·skills-dir auto-discovery. Monitors — shell command persistent background, stdout→Claude notification, when always(session start) or on-skill-invoke. LSP — edit 후 type error·missing import 자동 diagnostic·go-to-definition. skills-dir — ~/.claude/skills/<folder>/.claude-plugin/plugin.json 있으면 @skills-dir로 install 없이 next session auto-load. bin/ executables→Bash PATH·settings.json defaults. security-guidance(plugin) ·Context7(MCP doc) ·official LSP 11 languages와 함께 plugin packaging layer 완성.
+  points:
+  - Background monitors — log tail·build watcher auto-arm, plugin author ships watcher
+  - LSP plugins — 11 languages C/C++→TypeScript, post-edit diagnostic without agent ask
+  - skills-dir — SKILL.md folder→@skills-dir plugin, no marketplace install step
+  source: https://code.claude.com/docs/en/plugins-reference
+- category: ai
+  title: Endor Labs Agent Security League — FuncPass 85%·SecPass 24%, AI 코드 보안 격차
+  summary: Endor Labs Agent Security League(endorlabs.com/research/ai-code-security-benchmark)는 AI coding agent functional vs security correctness live leaderboard — CMU SusVibes 200 task·108 OSS Python·77 CWE extend. FuncPass(task test pass) vs SecPass(security test also pass) — Cursor+GPT-5.5 FuncPass 84.9%·SecPass 24.0% best security, gap ~60%p. Anti-cheating — prompt hardening·workspace sanitization·training recall detection(re-eval June 2026). Claude Fable 5 SecPass 29% peak before shutdown. DeepEval(metric) ·Snyk Agent Scan(static) ·OWASP MCP Top 10(protocol)와 달리 agent+model pair real-world vulnerability re-implementation eval.
+  points:
+  - FuncPass vs SecPass — works≠safe, best security 24% vs functional 85%
+  - SusVibes 200 tasks — historical vuln fix re-implement, hidden security tests
+  - Anti-cheating pipeline — workspace leak·patch recall detection, re-eval audit
+  source: https://www.endorlabs.com/research/ai-code-security-benchmark

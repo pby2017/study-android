@@ -3363,6 +3363,68 @@ Refined:
 누적: 823카드 (813→823 신규, 병합 2건은 기존 카드 갱신)
 주제: role-based sprint(gstack), agent org control(Paperclip), GitHub code intel(jcodemunch), ADE fleet(Orca), review loop(Hunk), SuperAgent harness(DeerFlow), CLI config hub(CC Switch), loop methodology(Loop Engineering), org memory(Praxia), document boundary(MarkItDown)
 
+## 2026-06-26 06:00 KST — Batch 53 (아이디어 검증 + 병합 3카드 + 신규 11카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Graphite stacked PR only → **Graphite Agent — Diamond+Chat 통합, PR 페이지 협업 리뷰** | Cursor Cloud Agents embed·one-click fix·CI in-PR |
+| Terminal-Bench 2.x → **Terminal-Bench 2.1 — Fable 5 83.1%·6/12 중단·harness gap** | Codex CLI+GPT-5.5 83.4%·Terminus 2 76.4% same model |
+| Warp Oz only → **Warp — open-source ADE·Oz cloud control plane** | AGPL-3.0 terminal·62k★·multi-harness BYO |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Claude Fable 5 | 3일 GA 후 전면 중단 역사적 사건, SWE-bench Pro 80.3%·Opus fallback 실무 영향 |
+| Kimi K2.7 Code | Fable 중단 후 open-weight coding 대안, 1T MoE MIT weights·256K·mandatory thinking |
+| GLM-5.2 | unrestricted MIT·1M ctx·SWE-bench Pro GPT-5.5 초과, Claude Code drop-in API |
+| Junie GA | JetBrains debugger MCP·ACP·Android Studio, IDE-native agent GA milestone |
+| mcp-eval | real-env MCP eval·OTEL trace, Promptfoo/Inspector와 integration vs debug 축 분리 |
+| mcptest | YAML mock trajectory test, mcp-eval(real)과 mock/CI 축 분리 |
+| MCP-AgentBench | AAAI MCP protocol benchmark 33 server, function-calling leaderboard와 축 분리 |
+| FrontierCode | mergeability rubric Diamond 13.4%, SWE-bench correctness-only와 축 분리 |
+| ZCode | Z.ai GLM-native ADE long-horizon, Orca/DeerFlow cross-stack과 vendor stack 축 |
+| Endor Labs Agent Security League | FuncPass 85% vs SecPass 24% 격차, agent security live leaderboard |
+| Claude plugin monitors·LSP·skills-dir | v2.1.105 plugin 3 component, packaging layer completion |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Ponytail | Batch 52 탈락 동일 — YAGNI skill, developer tooling 축 약함 |
+| Claude Mythos 5 standalone | Fable 5 card에 6/12 동시 중단 병합 |
+| OpenCode 160k★ update | 기존 OpenCode 카드 존재, star count 갱신만 |
+| Trae SOLO standalone | Trae 카드 존재, privacy 이슈는 기존 카드 보완 수준 |
+| Graphite Agent standalone | Graphite card merge로 Diamond+Chat+Cursor embed |
+| Warp open-source standalone | Warp Oz card merge로 open core+Oz 통합 |
+| Batch 45–52 신규 50+ | gstack·Paperclip·DeerFlow·CC Switch 등 중복 회피 |
+| Seed 2.1 Pro | DeerFlow/ByteDance stack 중복, adoption signal 부족 |
+| OpenRouter Fusion | niche research model, production adoption signal 약함 |
+| ViBench | vibe-coding niche, dev tooling 축 약함 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Claude Fable 5 — SWE-bench Pro 80.3%·6/12 전면 중단 | anthropic.com/news/claude-fable-5-mythos-5 |
+| 2 | Kimi K2.7 Code — 1T MoE·32B active·256K·Modified MIT | moonshotai/Kimi-K2.7-Code |
+| 3 | GLM-5.2 — 753B MoE·1M ctx·MIT·SWE-bench Pro 62.1 | z.ai/blog/glm-5.2 |
+| 4 | Junie GA — JetBrains debugger MCP·ACP·BYOK | jetbrains.com/junie |
+| 5 | mcp-eval — MCP real-env eval·OpenTelemetry trace | github.com/lastmile-ai/mcp-eval |
+| 6 | mcptest — pytest for MCP agents·YAML mock | github.com/josephgec/mcptest |
+| 7 | MCP-AgentBench — 33 MCP server·600 query | arxiv.org/abs/2509.09734 |
+| 8 | FrontierCode — maintainer mergeability rubric | cognition.ai/blog/frontier-code |
+| 9 | ZCode — Z.ai desktop ADE·GLM-5.2 long-horizon | zcode.z.ai |
+| 10 | Endor Labs Agent Security League — FuncPass vs SecPass | endorlabs.com/research/ai-code-security-benchmark |
+| 11 | Claude Code plugin monitors·LSP·skills-dir | code.claude.com/docs/en/plugins-reference |
+
+누적: 834카드 (823→834 신규 11, 병합 3건은 기존 카드 갱신)
+주제: Fable shutdown·open-weight coding(Kimi·GLM), JetBrains Junie GA, MCP eval triple(mcp-eval·mcptest·MCP-AgentBench), mergeability(FrontierCode), GLM ADE(ZCode), agent security(Endor), plugin packaging(monitors·LSP·skills-dir)
+
 ## 2026-06-26 00:29 KST — Local AI card routine
 
 - Published: `Codex 경제 리서치 — 에이전트 작업은 '질문 수'보다 위임 시간으로 봐야 한다`
