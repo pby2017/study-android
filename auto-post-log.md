@@ -2603,6 +2603,63 @@ Refined:
 누적: 730카드 (721→720 병합→730 신규)
 주제: LLM API engineering(idempotency·webhook·REST/GraphQL tier), developer docs(Fern/Mintlify/ReadMe), testing(mock·VCR cassette), observability(structured log·PII-safe·correlation·debug ladder)
 
+## 2026-06-25 16:45 KST — Batch 42 (아이디어 검증 + 병합 0카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Codemod Platform | ast-grep(단일 치환) ·OpenRewrite(enterprise)와 AI authoring + workflow + MCP layer 분리 |
+| GritQL | ast-grep agent-skill ·Codemod workflow와 declarative 10M LOC migration language 분리 |
+| Locofy.ai | v0/bolt(그린필드) ·Stitch(모바일 탐색)와 LDM layout scaffold export 분리 |
+| Builder.io Fusion | ai-shell/micro-agent(Builder CLI tools)와 Fusion design-to-code+CMS+CLI axis 분리 |
+| Figma MCP Server | v0/Locofy(one-time export)와 living design reference + use_figma write loop 분리 |
+| Figma Code Layers | Config 2026 code-as-material — export plugin이 아닌 canvas-native paradigm |
+| Visily | v0(개발자 React) ·Figma Make(native)와 PM/non-designer wireframe+collaboration 분리 |
+| Uizard Autodesigner 2.0 | Visily(end-to-end 확장) ·Stitch(모바일)와 sketch/screenshot scanner ideation 분리 |
+| Sourcery | ast-grep(structural) ·CodeRabbit/Greptile(review)와 Python idiomatic refactor + Sentry loop 분리 |
+| agent-desktop | Anthropic Computer Use(vision) ·Playwright MCP(browser)와 AX-tree deterministic native control 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Augment Context Engine MCP | Augment Code 카드 존재, MCP standalone은 overlap |
+| GhostDesk | agent-desktop과 desktop automation niche 중복, vision Docker vs AX-tree 중 AX-tree가 dev tooling에 더 actionable |
+| TeleportHQ | Locofy/Builder.io/Figma MCP 3카드로 design-to-code 축 커버 |
+| Moderne/OpenRewrite | enterprise migration niche, Codemod+GritQL 2카드로 actionable 분해 |
+| Figma Make standalone | Figma MCP + Code Layers 2카드로 native Figma AI 분해 |
+| Relume/UX Pilot | marketing/wireframe niche, Visily+Uizard 2카드로 wireframe axis 커버 |
+| Anima design-to-code | Locofy 카드에서 Anima 비교·benchmark 포함 |
+| Copilot CLI/GitHub Copilot CLI | 기존 Copilot CLI 5카드 존재 |
+| Cody/Sourcegraph | 기존 Cody 카드 존재 |
+| bolt.new/Lovable/n8n | 기존 카드 존재 |
+| GPT Migrate/Understand-Anything | 기존 또는 recent routine 커버 |
+
+### 병합 0카드
+
+전체 744카드 title 키워드·Jaccard≥0.6·exact prefix·summary overlap(≥0.5) 스캔 — 유사/중복 병합 대상 없음.
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Codemod Platform — AI before/after + YAML workflow 멀티레포 | docs.codemod.com/model-context-protocol |
+| 2 | GritQL — declarative 10M+ LOC migration | docs.grit.io |
+| 3 | Locofy.ai — LDM Figma→React layout scaffold | locofy.ai |
+| 4 | Builder.io Fusion — CLI codebase context integration | builder.io/c/docs/figma-to-code |
+| 5 | Figma MCP Server — living design reference + use_figma | developers.figma.com/figma-mcp-server |
+| 6 | Figma Code Layers — Config 2026 code-as-material | figma.com/blog/config-2026-recap |
+| 7 | Visily — PM wireframe screenshot/diagram/text→UI | visily.ai |
+| 8 | Uizard Autodesigner 2.0 — sketch/screenshot scanner | uizard.io/autodesigner |
+| 9 | Sourcery — Python refactor + Sentry prod error loop | sourcery.ai |
+| 10 | agent-desktop — accessibility tree native app control | github.com/lahfir/agent-desktop |
+
+누적: 754카드 (744→754 신규)
+주제: AI code modernization(Codemod·GritQL·Sourcery), design-to-code(Locofy·Builder.io·Figma MCP·Code Layers), wireframe/prototyping(Visily·Uizard), desktop automation beyond Computer Use(agent-desktop)
+
 ## 2026-06-25 23:30 KST — Batch 41 (아이디어 검증 + 병합 0카드 + 신규 10카드)
 
 ### 아이디어 검증 토론

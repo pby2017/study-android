@@ -6940,3 +6940,83 @@ cards:
   - 2026-06-24부터 새 Business PAYG 좌석 중단, 기존 좌석은 영향 없음
   - 운영 포인트는 좌석 수보다 token consumption·팀 예산·워크플로 ROI 태그
   source: https://openai.com/index/codex-flexible-pricing-for-teams/
+- category: ai
+  title: Codemod Platform — AI가 before/after 예시로 codemod를 만들고 YAML workflow로 멀티레포 마이그레이션
+  summary: 'Codemod는 프레임워크 업그레이드·보안 패치·대규모 리팩터를 자동화하는 AI 네이티브 codemod 플랫폼이다. Codemod CLI(Rust)는 ast-grep·JSSG(TypeScript AST) 변환을 scaffold·test·run하고, workflow.yaml로 matrix strategy·manual approval gate가 있는 멀티스텝 마이그레이션을 오케스트레이션한다. Codemod AI는 before/after 예시 쌍을 넣으면 declarative YAML rule 또는 NAPI imperative script를 생성하고, 3회 refinement iteration으로 registry 57개 샘플 기준 정확도 38.6%→64.9%까지 올린다. Codemod MCP(`npx codemod@latest mcp`)는 dump_ast·run_jssg_tests·jssg-gotchas 같은 도구로 Cursor·Claude Code가 IDE 안에서 codemod package를 작성·검증하게 한다. ast-grep(단일 구조 치환 CLI) ·OpenRewrite(enterprise)와 complement — Codemod=AI authoring + registry + cross-repo workflow.'
+  points:
+  - CLI + workflow.yaml — matrix·approval gate·multi-repo orchestration
+  - Codemod AI — multiple before/after pairs, 3 refinement iterations
+  - Codemod MCP — dump_ast·JSSG test·docs-backed authoring in IDE
+  source: https://docs.codemod.com/model-context-protocol
+- category: ai
+  title: GritQL — 백틱 패턴 하나로 10M+ LOC 코드베이스를 검색·치환하는 선언적 마이그레이션 언어
+  summary: 'Grit(GritQL)은 코드를 텍스트가 아니라 구조로 매칭하는 선언적 query language다. `grit apply ''`console.log($msg)` => `winston.log($msg)`''`처럼 백틱에 코드 스니펫을 쓰고 $msg metavariable로 임의 노드를 잡는다. where 절로 test/it 블록 내부는 제외 같은 side condition을 붙이고, 200+ standard library pattern을 재사용한다. Rust 엔진으로 10M+ LOC 레포에서도 동작하며 JS/TS·Python·Java·Go·Rust·Terraform·Solidity·YAML 등 12+ 언어를 지원한다(MIT·~4.5k★). ast-grep(sg CLI·agent-skill) ·Codemod Platform(AI workflow) ·Semgrep(보안 taint)와 역할 분리 — GritQL=declarative pattern migration at repo scale.'
+  points:
+  - 백틱 패턴 + $metavariable + where — regex보다 syntax-safe
+  - 200+ stdlib pattern — API upgrade·dependency migration 재사용
+  - 10M+ LOC scale ·12+ language ·MIT open source
+  source: https://docs.grit.io/
+- category: ai
+  title: Locofy.ai — Large Design Model로 Figma를 React/Next.js 레이아웃 스캐폴드로 변환
+  summary: 'Locofy.ai는 Figma 디자인을 프로덕션 프론트엔드 코드로 변환하는 design-to-code 플랫폼이다. Large Design Models(LDM)로 수백만 디자인을 학습해 flexbox 기반 named component·responsive layout을 생성한다. Lightning mode(원클릭 AI)와 Classic mode(단계별 태깅·수동 제어) 두 경로를 제공하고, Convert Figma Styles and Variables 토글로 디자인 토큰을 CSS 변수로 끌어온다. 2026 벤치마크에서 Anima(absolute positioning·flat HTML)보다 component 구조가 깔끔하고, v0/bolt.new(그린필드 생성)와 달리 기존 Figma 파일에서 layout scaffold를 뽑는 용도에 특화. token 기반 과금(복잡 화면 $80-120)이 Builder.io($3-5)보다 비싸므로 대량 UI 생성 job에서 ROI를 재야 한다.'
+  points:
+  - LDM + Lightning/Classic — speed vs control trade-off
+  - flexbox named components ·Figma variables→CSS — Anima 대비 유지보수성
+  - layout scaffold 용도 — v0/bolt 그린필드와 complement
+  source: https://www.locofy.ai/
+- category: ai
+  title: Builder.io Fusion — 디자인→코드를 ZIP export가 아니라 CLI codebase context로 통합
+  summary: 'Builder.io Fusion은 design-to-code와 visual CMS를 합친 visual development platform이다. Figma·스크린샷·프롬프트에서 React UI를 생성하고, 생성 전에 ''refactor into smaller components''처럼 tool 안에서 AI prompting으로 구조를 다듬을 수 있다. 핵심 차별점은 Fusion CLI — ZIP drop 대신 기존 codebase context를 읽어 design token·component pattern에 맞춘 integration code를 만든다. design token registry(color·font·spacing)를 등록하면 Tailwind·Emotion·Styled Components 출력이 on-brand로 유지된다. 2026 비교에서 Locofy 대비 화면당 $3-5 token cost로 대량 생성에 유리. ai-shell(자연어→셸) ·micro-agent(TDD agent) 카드와 다른 제품 축 — Fusion=design-to-code + CMS + codebase-aware CLI.'
+  points:
+  - Fusion CLI — existing repo context, ZIP drop 아님
+  - design token registry — Tailwind/Emotion on-brand output
+  - screen $3-5 vs Locofy $80-120 — bulk UI generation cost trade-off
+  source: https://www.builder.io/c/docs/figma-to-code
+- category: ai
+  title: Figma MCP Server — one-time export 대신 living design reference로 에이전트에 붙이기
+  summary: 'Figma MCP Server(https://mcp.figma.com/mcp)는 코딩 에이전트가 Figma 파일의 component·variable·layout·FigJam·Make resource를 structured context로 읽게 하는 remote MCP다. 2026년 use_figma tool(beta)로 agent가 기존 design system component·variable을 인지한 채 native Figma object를 생성·수정한다 — /figma-use skill과 짝. Code Connect로 Figma component↔GitHub code mapping, generate_figma_design(Code to Canvas)는 running app snapshot, use_figma는 structured generation으로 complement. Cursor `/add-plugin figma` ·Claude Code `claude plugin install figma@claude-plugins-official`로 MCP+skills+asset rules 일괄 설치. v0(Figma import) ·Locofy(export) ·Stitch(모바일 탐색)와 달리 brownfield는 ''기존 codebase에 component 추가''가 MCP loop.'
+  points:
+  - remote MCP — component·variable·layout structured read
+  - use_figma write(beta) — design system aware canvas edit
+  - Code Connect + Code to Canvas — mapping vs flat snapshot complement
+  source: https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/
+- category: ai
+  title: Figma Code Layers — Config 2026, 코드를 design material로 캔버스에 올리다
+  summary: 'Figma Config 2026은 ''design vs code'' 이분법을 깨고 code layers를 canvas에 도입했다. design layer를 클릭 한 번(또는 prompt)으로 interactive code layer로 전환하고, side-by-side duplicate로 여러 implementation direction을 frame처럼 탐색한다. Figma Motion timeline은 Dev Mode에서 easing·keyframe·timing을 inspectable하게 노출하고 CSS·JSON·React animation code를 copy하며 MCP-compatible frame을 coding agent에 전달한다. generative plugins·Weave tools·shader·motion이 같은 canvas material family로 묶인다. bolt.new(WebContainers) ·v0(React gen) ·Figma MCP(read/write loop)와 complement — Code Layers=design process 안에서 code prototype을 first-class layer로 다루는 패러다임 shift.'
+  points:
+  - design layer→code layer 1-click ·side-by-side exploration
+  - Figma Motion — Dev Mode inspectable timeline + MCP handoff
+  - code=material — export plugin이 아닌 canvas-native prototype
+  source: https://www.figma.com/blog/config-2026-recap/
+- category: ai
+  title: Visily — PM·비개발자용 AI wireframe, screenshot·diagram·text→UI
+  summary: 'Visily는 ''UI design tool for non-designers''를 표방하는 AI wireframing·prototyping 도구다. text prompt·screenshot·diagram·template·조합 입력에서 wireframe을 생성하고, Smart Components·Auto-Prototyping·AI chat edit으로 canvas에서 바로 다듬는다. 2025-2026 업데이트로 code generation from design·Plan Mode(prompt structuring)·Deep Design(aesthetic polish)·Figma import·Slack/Jira/Notion 연동을 추가 — Uizard(Autodesigner)보다 design-to-code 쪽으로 확장 중. Figma export·on-canvas chat·follower mode로 PM이 spec document를 engineer handoff 전에 clickable prototype으로 만든다. v0(개발자 React gen) ·Stitch(모바일) ·Figma Make(Figma-native)와 complement — Visily=non-designer ideation·wireframe·collaboration layer.'
+  points:
+  - text·screenshot·diagram→wireframe — non-designer entry
+  - Plan Mode·Deep Design·code gen(2025-26) — Uizard 대비 end-to-end 확장
+  - Figma export·Jira/Slack — spec→clickable prototype before handoff
+  source: https://www.visily.ai/
+- category: ai
+  title: Uizard Autodesigner 2.0 — 손그림·스크린샷 스캔으로 multi-screen prototype
+  summary: 'Uizard는 AI로 wireframe·mockup을 만드는 design tool로, Autodesigner 2.0(2024)이 text prompt에서 multi-screen clickable prototype을 한 번에 생성한다. Wireframe Scanner는 손그림 sketch를 digitize하고, Screenshot Scanner는 기존 UI 캡처를 editable mockup으로 변환한다. vector editor 대신 drag-and-drop component editor를 써서 비개발자 진입 장벽을 낮췄고, Figma·Miro export로 design handoff를 이어간다. Visily(code gen·Plan Mode) ·Stitch(모바일) ·v0(React code)와 complement — Uizard=sketch/screenshot heavy rapid ideation·clickable demo, production code export는 약함.'
+  points:
+  - Autodesigner 2.0 — multi-screen from text, one-shot clickable
+  - Wireframe/Screenshot Scanner — sketch·capture digitize
+  - Figma/Miro export — ideation→handoff, production code는 약함
+  source: https://uizard.io/autodesigner/
+- category: ai
+  title: Sourcery — Python idiomatic refactor + Sentry 연동 production error diagnosis
+  summary: 'Sourcery는 Python 코드를 idiomatic하게 리팩터하고 PR review까지 자동화하는 AI code quality tool이다. IDE plugin·CLI·GitHub/GitLab integration으로 duplicate code·overly complex branch·type hint 누락 같은 smell을 suggestion으로 제시하고, one-click apply 또는 PR comment로 제안한다. Sentry integration(2025)은 production exception stack trace를 Sourcery가 읽어 root cause hypothesis와 fix suggestion을 PR로 연결한다 — static refactor tool이 runtime telemetry와 만나는 패턴. 30+ language surface가 있지만 deepest analysis는 Python. ast-grep(구조 치환) ·CodeRabbit(PR review) ·Greptile(repo graph review)와 complement — Sourcery=Python idiomatic refactor + prod error loop.'
+  points:
+  - Python-first idiomatic refactor — IDE·CLI·PR integration
+  - Sentry integration — prod exception→fix suggestion loop
+  - CodeRabbit/Greptile(review) ·ast-grep(structural)와 다른 refactor axis
+  source: https://sourcery.ai/
+- category: ai
+  title: agent-desktop — accessibility tree로 네이티브 앱을 JSON ref(@e1)로 제어하는 Rust CLI
+  summary: 'agent-desktop(lahfir/agent-desktop)는 AI agent용 native desktop automation CLI다. 스크린샷·pixel matching 대신 OS accessibility tree(AXUIElement)로 Finder·Safari·Xcode·Slack 등 네이티브 앱을 observe·control하고 structured JSON + deterministic element ref(@e1, @e2)로 반환한다. 54 commands — observation·interaction·keyboard·mouse·clipboard·window management, progressive skeleton traversal로 dense app에서 78-96% token reduction. C-ABI cdylib로 Python/Swift/Go/Node에서 fork 없이 load. Anthropic Computer Use(vision API·screenshot loop) ·Auto-Use(hybrid AX+vision) ·Playwright MCP(browser-only)와 complement — agent-desktop=accessibility-first deterministic desktop control for coding agents.'
+  points:
+  - accessibility tree — no screenshot/pixel, structured JSON refs
+  - progressive skeleton traversal — 78-96% token reduction on dense UI
+  - 54 commands ·cdylib — native app control beyond browser MCP
+  source: https://github.com/lahfir/agent-desktop
