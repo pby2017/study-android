@@ -3183,3 +3183,12 @@ Refined:
 - Refined: `Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)`
 - Refined sources re-checked: https://github.com/eyaltoledano/claude-task-master and https://api.github.com/repos/eyaltoledano/claude-task-master
 - Rejected: Google Agents CLI and A2A updates as duplicates; OpenAI knowledge-work/agents-transforming-work as overlap with existing Codex knowledge-work card; pure Android topics as out of scope.
+
+## 2026-06-25 22:47 KST — Local AI card routine
+
+- Published: `MCP Elicitation — 서버가 도구 실행 중 필요한 입력을 구조화해서 묻기`
+- Source: https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation
+- Supporting sources: https://modelcontextprotocol.io/specification/2025-06-18/changelog and https://devblogs.microsoft.com/dotnet/mcp-csharp-sdk-2025-06-18-update/
+- Refined: `Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK`
+- Refined sources re-checked: https://code.claude.com/docs/en/agent-sdk/overview
+- Rejected: broad AI+Android follow-ups as duplicate/overlap with existing cards; MCP structured tool output/resource links deferred as lower distinctness this run.
