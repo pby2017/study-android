@@ -1232,15 +1232,15 @@ cards:
   - CLI=대화형 개발, SDK=CI/CD·커스텀 앱·프로덕션 자동화, Managed Agents=호스팅 REST API
   source: https://code.claude.com/docs/en/agent-sdk/overview
 - category: ai
-  title: AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff)
-  summary: 'AI 랩이 코딩 에이전트의 바깥 도구까지 사들이기 시작했다. Anthropic은 2025년 12월 JavaScript 런타임·패키지 매니저·번들러·테스트 러너인 Bun을 인수했고, OpenAI는 2026년 3월 Python 툴링 회사 Astral(uv·Ruff·ty)을 인수한다고 발표했다. 이유는 둘 다 코딩 에이전트의 실행 루프와 맞닿아 있다. Anthropic은 Bun이 Claude Code 인프라와 네이티브 설치에 중요하다고 설명했고, OpenAI는 Astral 도구를 Codex가 개발 생명주기 전체에서 쓰는 Python 기반 도구로 연결하겠다고 했다. 실무 포인트: uv·Ruff·Bun 같은 "그냥 개발 도구"도 이제 에이전트 제품의 전략 자산이다. 양쪽 모두 오픈소스 지속 지원을 말하지만, 도구 선택 때는 성능뿐 아니라 소유권, 로드맵 우선순위, 대체 경로까지 같이 봐야 한다.
+  title: AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun($1B), OpenAI→Astral(FTC 승인)
+  summary: 'AI 랩이 코딩 에이전트의 바깥 도구까지 사들이기 시작했다. Anthropic은 2025-12 Bun(JavaScript runtime·bundler·test runner)을 인수 — Claude Code가 Bun executable로 배포되며 "Bun이 깨지면 Claude Code가 깨진다". Claude Code $1B run-rate(6개월) milestone과 동시 발표. OpenAI는 2026-03 Astral(uv·Ruff·ty) 인수 발표, 2026-04 FTC early termination 승인으로 close 진행 — Astral 팀 Codex 합류. uv 126M·Ruff 179M monthly downloads. Bun·Astral 모두 MIT/오픈소스 지속 약속. 실무: Node/pip 대신 Bun/uv가 에이전트 기본 toolchain으로 밀리는 추세 — 소유권·로드맵·포크 가능성을 도구 리스크로 관리.
 
     '
   points:
-  - Anthropic→Bun(2025-12), OpenAI→Astral(2026-03, uv·Ruff·ty) — JS·Python 핵심 툴체인이 에이전트 전략으로 편입
-  - '동기: 에이전트가 코드 생성 뒤 설치·실행·린트·포맷·타입체크까지 반복하는 개발 루프를 더 직접 제어'
-  - 오픈소스 지속 지원 약속은 긍정적이지만, 팀은 소유권·로드맵·포크/대체 가능성을 도구 리스크로 관리해야 한다
-  source: https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone
+  - Anthropic→Bun(2025-12, $1B milestone) — Claude Code native installer·single binary distribution
+  - OpenAI→Astral(2026-03 announce, 2026-04 FTC approve) — uv·Ruff·ty→Codex Python lifecycle
+  - Strategic asset — install·lint·format·typecheck loop가 에이전트 vendor roadmap에 편입
+  source: https://openai.com/index/openai-to-acquire-astral/
 - category: ai
   title: ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI
   summary: 'Tons of Skills는 Claude Code용 플러그인·스킬·에이전트를 GitHub marketplace repo와 웹 카탈로그, ccpi CLI로 묶은 오픈소스 배포 표면이다. 현재 README는 432개 플러그인, 2,769개 스킬, 297개 에이전트와 30명 커뮤니티 기여자를 내세우며, `marketplace.extended.json`과 Claude Code CLI가 읽는 `marketplace.json`을 같은 원천으로 둔다고 설명한다. ccpi는 `pnpm add -g @intentsolutionsio/ccpi`로 설치해 검색·설치·목록·업데이트·검증을 맡고, Claude Code 안에서는 `/plugin marketplace add jeremylongshore/claude-code-plugins`로 바로 붙일 수 있다. 실무 포인트는 "좋은 프롬프트 모음"이 아니라, 팀 공용 에이전트 자산을 검증 가능한 패키지와 카탈로그로 배포하는 운영 문제로 보는 것이다.
@@ -4829,13 +4829,13 @@ cards:
   - '출력: PDF·xlsx·pptx·png/svg 차트·Nano Banana 이미지 — Ultra/Workspace 우선 롤아웃'
   source: https://blog.google/innovation-and-ai/products/notebooklm/better-research-notebooklm/
 - category: ai
-  title: OpenRouter — 400+ 모델·70+ 프로바이더 OpenAI 호환 LLM 게이트웨이
-  summary: OpenRouter는 단일 OpenAI-compatible endpoint(https://openrouter.ai/api/v1)로 400+ 모델·70+ 프로바이더에 접근하는 managed LLM gateway다. model 필드로 모델 선택, provider 객체로 프로바이더 라우팅, models 배열로 model/provider failover를 스택한다. openrouter/auto는 NotDiamond 기반 프롬프트 복잡도·비용-품질 트레이드오프로 모델 자동 선택. :nitro(throughput)·:floor(cost) suffix, inverse-square price load balancing, data policy로 프로바이더별 데이터 거버넌스. LiteLLM(셀프호스팅)과 대비 — 인프라 없이 credits 구매·즉시 사용.
+  title: OpenRouter — 400+ 모델 게이트웨이·공식 MCP Server(benchmarks·chat-send)
+  summary: OpenRouter는 단일 OpenAI-compatible endpoint(https://openrouter.ai/api/v1)로 400+ 모델·70+ 프로바이더에 접근하는 managed LLM gateway다. model·provider failover·openrouter/auto·:nitro/:floor suffix·data policy. 2026 공식 OpenRouter MCP Server — 에이전트가 live catalog·Artificial Analysis/Design Arena benchmark·per-provider latency·chat-send test inference를 도구 호출로 조회. models-list·model-endpoints·benchmarks·rankings-daily·docs-search·credits-get. "어떤 모델이 코딩에 좋고 싸나"를 training cutoff가 아닌 live data로 답한다. community pricing MCP(Semicolon-D)와 달리 OpenRouter first-party·benchmark 통합·chat-send in-agent test.
   points:
-  - '2-layer routing: model selection + provider selection, allow_fallbacks 기본 true'
-  - 'openrouter/auto + session_id: 멀티턴에서 동일 모델·프로바이더 pin → prompt cache'
-  - Managed SaaS vs LiteLLM/Bifrost self-host — data residency 필요 시 후자
-  source: https://openrouter.ai/docs/guides/routing/model-fallbacks
+  - 'Gateway: 2-layer routing·openrouter/auto·:nitro/:floor, LiteLLM self-host 대비 managed SaaS'
+  - 'Official MCP: models-list·benchmarks·chat-send — live AA/Design Arena score·cost·latency'
+  - Agent model pick — stale memory 대신 MCP tools로 catalog·ranking·test prompt grounding
+  source: https://openrouter.ai/docs/mcp-server
 - category: ai
   title: Fireworks AI — Disaggregated Inference Engine·Speculative Decoding·Day-0 OSS 모델
   summary: Fireworks AI는 OSS LLM 프로덕션 추론 플랫폼으로 30T+ tokens/day 처리를 주장한다. Disaggregated inference engine — multi-node expert parallelism·disaggregated KV cache·prompt-aware routing·speculative decoding(2-3× TTFT). FireOptimizer가 GPU 선택·sharding·scheduling을 자동 튜닝. Serverless(per-token·Priority/Fast)·On-Demand·Reserved GPU, LoRA/full SFT 후 즉시 serverless 배포. GLM 5.2·Kimi K2.7 Code day-zero, Whisper 4× cheaper·10× faster vs OpenAI 주장. OpenAI/Anthropic compatible API, Azure Foundry preview, 2026-07-01 prepaid billing 전환.
@@ -7595,12 +7595,12 @@ cards:
   - GLM-5.2 optimized — in-house agent, Coding Plan quota, /goal multi-hour tasks
   source: https://zcode.z.ai/en/docs/welcome
 - category: ai
-  title: Claude Code plugin monitors·LSP·skills-dir — 세션 감시·진단·스킬 즉시 배포
-  summary: Claude Code plugin v2.1.105+ 3 experimental component — monitors(monitors/monitors.json)·LSP(.lsp.json)·skills-dir auto-discovery. Monitors — shell command persistent background, stdout→Claude notification, when always(session start) or on-skill-invoke. LSP — edit 후 type error·missing import 자동 diagnostic·go-to-definition. skills-dir — ~/.claude/skills/<folder>/.claude-plugin/plugin.json 있으면 @skills-dir로 install 없이 next session auto-load. bin/ executables→Bash PATH·settings.json defaults. security-guidance(plugin) ·Context7(MCP doc) ·official LSP 11 languages와 함께 plugin packaging layer 완성.
+  title: Claude Code plugin monitors·LSP·skills-dir·/plugin list — packaging·감시·인벤토리
+  summary: Claude Code plugin v2.1.105+ experimental component — monitors(monitors/monitors.json)·LSP(.lsp.json)·skills-dir auto-discovery. Monitors — shell command persistent background, stdout→Claude notification. LSP — edit 후 type error·missing import diagnostic. skills-dir — ~/.claude/skills/<folder>/.claude-plugin/plugin.json→@skills-dir install 없이 auto-load. v2.1.163 `/plugin list`·`claude plugin list` — installed plugin inline inventory, `--enabled`/`--disabled` filter, `/plugin` menu 없이 확인. `claude plugin details` — component inventory·projected per-session token cost·LSP server list. security-guidance ·Context7 ·official LSP 11 languages와 plugin packaging layer 완성.
   points:
   - Background monitors — log tail·build watcher auto-arm, plugin author ships watcher
-  - LSP plugins — 11 languages C/C++→TypeScript, post-edit diagnostic without agent ask
-  - skills-dir — SKILL.md folder→@skills-dir plugin, no marketplace install step
+  - LSP plugins — 11 languages, post-edit diagnostic·go-to-definition without agent ask
+  - '/plugin list — enabled/disabled filter, details pane token cost·LSP inventory'
   source: https://code.claude.com/docs/en/plugins-reference
 - category: ai
   title: Endor Labs Agent Security League — FuncPass 85%·SecPass 24%, AI 코드 보안 격차
@@ -7610,3 +7610,91 @@ cards:
   - SusVibes 200 tasks — historical vuln fix re-implement, hidden security tests
   - Anti-cheating pipeline — workspace leak·patch recall detection, re-eval audit
   source: https://www.endorlabs.com/research/ai-code-security-benchmark
+- category: ai
+  title: MCPMark Verified — 127 CRUD MCP task·5 server·gpt-5.5 92.9%·kimi-k2.7 81.1%
+  summary: MCPMark(eval-sys/mcpmark·Apache-2.0·mcpmark.ai)는 MCP agent capability stress-test benchmark — read-heavy 기존 벤치와 달리 Notion·GitHub·Filesystem·Postgres·Playwright 5 environment에서 create/read/update/delete full workflow. 127 Verified task — version-pinned environment·stabilized verifier, programmatic auto-check·isolated sandbox·pass@k/pass^4. gpt-5.5(xhigh) 92.9%·kimi-k2.7 81.1% Verified set lead(June 2026). avg 16.2 turns·17.4 tool calls/task — shallow MCP benchmark 대비 depth stress. MCP-AgentBench(protocol query) ·mcp-eval(production pytest) ·mcptest(YAML mock)와 달리 multi-server CRUD realism·leaderboard.
+  points:
+  - 127 Verified — CRUD-heavy·5 MCP server, programmatic verifier·Docker isolation
+  - Leaderboard June 2026 — gpt-5.5 92.9%·kimi-k2.7 81.1%, earlier numbers not comparable
+  - vs MCP-AgentBench — tool-use depth·multi-env CRUD vs 33-server query outcome judge
+  source: https://mcpmark.ai/
+- category: ai
+  title: MOSAIC-Bench — innocent ticket 3-stage→exploitable code 53–86% ASR
+  summary: MOSAIC-Bench(arXiv 2605.03952·mosaic-benchmark/mosaic-benchmark)는 compositional vulnerability induction benchmark — 199 oracle-backed 3-stage Jira-style ticket chain·10 web-app substrate(Express·Flask·Spring 등)·31 CWE·5 language. 각 ticket은 routine engineering request로 보이지만 compose하면 exploitable — production agent 53–86% end-to-end ASR, direct prompt same chain 0–20.4%(Claude refuse·Codex harden). context fragmentation·safety bypass alternative both fail — ticket staging silences defense reflex. AI reviewer 25.8% vulnerable diff approve. pentester-framed reviewer가 evasion 3–17.6%로↓. Endor(SusVibes single-task) ·SecureVibeBench(C/C++)와 달리 multi-ticket compositional insider threat.
+  points:
+  - 199 chains 3-stage — innocent ticket compose→PoC oracle VULNERABLE/SECURE
+  - 53–86% staged vs 0–20% direct — defense reflex silenced by ticket decomposition
+  - Reviewer blind spot — 25.8% approve vulnerable diff; pentester framing mitigates
+  source: https://arxiv.org/abs/2605.03952
+- category: ai
+  title: SecureVibeBench — ACL 2026·105 C/C++ task·SWE-C4.5 23.8% correct+secure
+  summary: SecureVibeBench(iCSawyer/SecureVibeBench·ACL 2026 Main)는 secure vibe coding benchmark — OSS-Fuzz/ARVO 41 project 105 C/C++ memory-safety task. human developer가 vulnerability를 introduce한 real scenario reconstruct — agent에 same requirement 주고 same vuln repeat 여부 측정. multi-file edit·PoV dynamic oracle·SAST static check 3-layer eval. SWE-agent+Claude Sonnet 4.5 best 23.8% correct+secure(C-SEC). Endor(SusVibes Python 200 task) ·MOSAIC(ticket compose web) ·OWASP MCP(protocol)와 달리 C/C++ repo-scale·vulnerability introduction point aligned context.
+  points:
+  - 105 C/C++ tasks — reconstruct human vuln-intro scenario, not synthetic snippet
+  - C-SEC metric — functional pass AND security pass(PoV+SAST), best 23.8%
+  - vs SusVibes — same security gap axis, C/C++ multi-file·introduction-point aligned
+  source: https://aclanthology.org/2026.acl-long.1107/
+- category: ai
+  title: mcp-agent — MCP-native Python framework·Temporal durable·Effective Agents patterns
+  summary: mcp-agent(lastmile-ai/mcp-agent·docs.mcp-agent.com)는 MCP protocol purpose-built agent framework — full MCP lifecycle(tools·resources·prompts·OAuth·sampling·elicitation)·Anthropic Building Effective Agents 패턴 composable(map-reduce·router·orchestrator-workers·evaluator-optimizer·swarm). execution_engine asyncio↔temporal config switch만으로 pause/resume·retry·human-in-the-loop·days-long workflow — workflow code 변경 없음. mcp-eval·MCPMark same org(lastmile/eval-sys). LangGraph(stateful graph) ·OpenAI Agents SDK(delegation) ·Microsoft Agent Framework(enterprise .NET)와 달리 MCP-native·Temporal durability first-class·Pythonic decorator.
+  points:
+  - MCP-native — any MCP server connect, lifecycle managed, no custom adapter
+  - Temporal switch — execution_engine:temporal, same workflow code production durable
+  - Effective Agents patterns — composable workflow decorator, mcp-eval integration
+  source: https://github.com/lastmile-ai/mcp-agent
+- category: ai
+  title: CrewAI 1.14 — 54k★·MCPServerAdapter·~2B agent executions/12mo
+  summary: CrewAI(crewAIInc/crewAI·MIT·54k+★)는 LangChain independent multi-agent Python framework — Crew(role-playing agent team)·Flow(event-driven workflow). v1.14 native MCP via crewai-tools MCPServerAdapter — Stdio/SSE/Streamable HTTP, context manager로 tool 1:1 map, Agent mcps DSL field shortcut. ~2 billion agent executions prior 12mo(May 2026). AgentExecutor default(CrewAgentExecutor deprecated)·pluggable memory/knowledge/rag backend·Snowflake Cortex LLM. Datadog trace mention과 달리 framework 자체 — Crew+Flow+MCP가 핵심. LangGraph(state machine) ·AutoGen(merged→Microsoft AF) ·OpenAI Agents SDK와 달리 role-based crew metaphor·MCP adapter built-in.
+  points:
+  - MCPServerAdapter — with context manager, stdio/SSE/HTTPS, tools 1:1 MCP server map
+  - Crew vs Flow — collaborative autonomy vs event-driven single-LLM orchestration
+  - 54k★·2B executions — production adoption signal, AgentExecutor migration v1.14
+  source: https://github.com/crewAIInc/crewAI
+- category: ai
+  title: Google ADK Java·Go 1.0 — 5-language agent SDK·A2A·YAML config·SAIF HITL
+  summary: Google Agent Development Kit ADK Java·Go 1.0 GA(March 2026) — Python·TypeScript에 이어 Java·Go production-ready. Java 1.5.0(June 2026) — GoogleMapsTool·UrlContextTool·ContainerCodeExecutor·VertexAiCodeExecutor·plugin architecture·ToolConfirmation HITL·Firestore/Vertex session·native A2A cross-language. Go 1.0 — Retry-and-Reflect self-healing plugin·RequireConfirmation SAIF security·YAML agent config(adk CLI)·Sequential/Parallel/LoopAgents. adk.dev 5-language·Agent Runtime one-command Cloud deploy. ADK for Android(Gemini Nano) ·ADK long-running(state machine)와 달리 server-side multi-language GA milestone.
+  points:
+  - 5 languages GA — Python·TS·Java·Go·Kotlin, A2A cross-runtime agent collaboration
+  - Go Retry-and-Reflect — tool error→model self-correct; RequireConfirmation HITL gate
+  - YAML config parity — adk CLI run agent without Go/Java boilerplate per change
+  source: https://developers.googleblog.com/announcing-adk-for-java-100-building-the-future-of-ai-agents-in-java/
+- category: ai
+  title: /rewind — checkpoint undo·Summarize from here·/clear 후 세션 복구
+  summary: Claude Code /rewind(v2.1.191+·Esc Esc)는 session checkpoint rollback — every prompt 후 file edit capture, menu에서 point 선택. Restore code+conversation(full fork)·Restore conversation only·Restore code only·Summarize from here(compress forward)·Summarize up to here(compress backward). /clear 직후 `/resume (previous session)` entry — v2.1.191+ same process 내 이전 세션 복구. bash command edit·manual outside edit·deleted file 미추적 — git은 permanent safety net. /compact(context free) ·/clear(fresh start) ·/branch(fork)와 complementary session management triad.
+  points:
+  - 5 modes — full rollback·code-only·conversation-only·summarize forward/backward
+  - Wrong path fix — rewind to after file reads, re-prompt with learned constraint
+  - /clear recovery — v2.1.191+ previous session resume from rewind menu top entry
+  source: https://code.claude.com/docs/en/checkpointing
+- category: ai
+  title: PostToolBatch hook — parallel tool batch 1회·additionalContext injection
+  summary: Claude Code PostToolBatch hook — full parallel tool call batch resolve 후 next model call 전 1회 fire. PostToolUse(per-tool·concurrent N회)와 cardinality 차이 — batch-level dedup 없이 once-per-decision-cycle work. input tool_calls array full batch·matcher 없음(always fire). decision block(next model call halt)·hookSpecificOutput.additionalContext(next turn inject). Permission gating은 PreToolUse — PostToolBatch는 side effect 후 eval·aggregate·context inject. InstructionsLoaded(observability) ·Stop(turn end) ·PostToolUse(per-tool audit)와 batch boundary axis 분리.
+  points:
+  - Once per batch — parallel Read×5→1 hook not 5, aggregate result inject
+  - additionalContext — batch summary to model next turn without per-tool dedup hack
+  - PreToolUse for block — PostToolBatch after execution, block halts loop not single call
+  source: https://code.claude.com/docs/en/hooks
+- category: ai
+  title: InstructionsLoaded hook — CLAUDE.md·rules/*.md load audit·lazy nested trigger
+  summary: Claude Code InstructionsLoaded hook(v2.1.69+) — CLAUDE.md·.claude/rules/*.md context load 시 fire. session_start eager load·nested_traversal(subdir CLAUDE.md)·path_glob_match(conditional paths)·include·compact re-load. payload file_path·memory_type(User/Project/Local/Managed)·load_reason·globs·trigger_file_path. decision control 없음 — block/modify 불가, observability-only async. compliance audit·instruction surface tracking·"어떤 rule이 언제 loaded" 디버그. SessionStart(before load) ·InstructionsLoaded(at load) ·PreCompact(before compress) lifecycle 분리.
+  points:
+  - Lazy load trigger — subdir navigate·path_glob_match·compact re-load each fire event
+  - Observability-only — no block, audit/compliance/telemetry use case
+  - vs SessionStart — reactive to actual loaded files not predictive injection
+  source: https://code.claude.com/docs/en/hooks
+- category: ai
+  title: requiredMinimumVersion·enforceAvailableModels — managed settings enterprise gate
+  summary: Claude Code managed settings(v2.1.163–175) enterprise compliance — requiredMinimumVersion·requiredMaximumVersion approved version range, outside→startup exit·org update method 안내(claude update/doctor still work). enforceAvailableModels(v2.1.175+) — availableModels allowlist non-empty일 때 Default model picker도 allowlist 적용, tier default restricted→first allowed fallback. MDM·server-managed·managed-settings.json highest precedence·no merge override. minimumVersion(auto-update floor) vs requiredMinimumVersion(hard startup block) 구분. allowManagedHooksOnly ·modelOverrides Bedrock ARN과 함께 fleet governance stack.
+  points:
+  - Version range gate — requiredMin/Max, bad policy fail-open(strip invalid not block all)
+  - enforceAvailableModels — Default option respects allowlist, v2.1.175+
+  - Recovery preserved — claude update/install/doctor work below floor for self-fix
+  source: https://code.claude.com/docs/en/settings
+- category: ai
+  title: continueOnBlock PostToolUse — rejection reason feed back·turn continue
+  summary: Claude Code PostToolUse continueOnBlock(v2.1.142+) — PostToolUse hook rejection 시 turn end 대신 hook rejection reason을 Claude에 feed back하고 turn continue. PostToolUseFailure(tool error) ·PermissionDenied(retry:true) ·Stop(additionalContext)와 complementary — blocked tool result를 model이 read하고 alternate approach 시도. plugin hooks.json·user settings.json 동일. QA loop — hook rejects bad diff pattern→Claude revises same turn without user re-prompt. decision block without continueOnBlock — hard stop user intervention required.
+  points:
+  - Rejection→feedback loop — hook says no→reason in context→model retries same turn
+  - vs Stop additionalContext — PostToolUse per-tool eval, continueOnBlock explicit config
+  - Plugin authoring — quality gate without ending turn, reduce user re-prompt friction
+  source: https://code.claude.com/docs/en/whats-new/2026-w20

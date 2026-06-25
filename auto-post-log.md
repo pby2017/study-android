@@ -3439,3 +3439,65 @@ Refined:
 - Refined: `ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI`
 - Refined sources re-checked: https://github.com/jeremylongshore/claude-code-plugins-plus-skills, https://raw.githubusercontent.com/jeremylongshore/claude-code-plugins-plus-skills/main/README.md, and https://api.github.com/repos/jeremylongshore/claude-code-plugins-plus-skills
 - Rejected: AgentKit shutdown, Agent Finder/ARD, GitHub MCP secret scanning, third-party agent security validation, MAI-Code-1-Flash, ChatGPT Enterprise spend controls, and Codex role-specific plugins as duplicates; pure Android topics as below threshold.
+
+## 2026-06-26 12:00 KST — Batch 54 (아이디어 검증 + 병합 3카드 + 신규 11카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| OpenRouter MCP Server standalone → **OpenRouter — 400+ 모델 게이트웨이·공식 MCP Server(benchmarks·chat-send)** | models-list·benchmarks·chat-send live catalog |
+| Astral FTC close standalone → **AI 랩이 개발 툴체인 — Anthropic→Bun($1B), OpenAI→Astral(FTC 승인)** | April 2026 FTC early termination·Codex close |
+| /plugin list standalone → **Claude Code plugin monitors·LSP·skills-dir·/plugin list** | v2.1.163 inline inventory·enabled/disabled filter |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 11카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| MCPMark Verified | MCP CRUD stress-test 127 task·Verified pin, gpt-5.5 92.9%·leaderboard June 2026 |
+| MOSAIC-Bench | compositional ticket staging 53–86% ASR, Endor single-task·direct prompt eval miss |
+| SecureVibeBench | ACL 2026 C/C++ vuln-intro reconstruct, 23.8% C-SEC, SusVibes Python과 축 분리 |
+| mcp-agent | MCP-native+Temporal durability, lastmile same org as mcp-eval, framework not eval |
+| CrewAI 1.14 MCP | 54k★·MCPServerAdapter native·2B executions, Datadog mention≠framework card |
+| Google ADK Java·Go 1.0 | March 2026 GA 5-language·A2A·YAML·SAIF HITL, Android ADK와 축 분리 |
+| /rewind | checkpoint 5-mode·/clear recovery v2.1.191, session management triad 완성 |
+| PostToolBatch hook | batch boundary once-per-cycle vs PostToolUse per-tool cardinality |
+| InstructionsLoaded hook | CLAUDE.md load audit lazy trigger, SessionStart predictive와 축 분리 |
+| requiredMinimumVersion·enforceAvailableModels | enterprise fleet version+model gate v2.1.163–175 |
+| continueOnBlock PostToolUse | rejection→feedback same turn, QA loop without user re-prompt |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Microsoft Agent Framework 1.0 | Batch 48 전후 기존 카드 존재, GA 내용 이미 커버 |
+| --safe-mode·/cd·nested subagents | Week 24 카드 이미 존재 |
+| Anthropic Bun·OpenAI Astral standalone | AI 랩 toolchain 카드 병합으로 흡수 |
+| OpenRouter MCP standalone | OpenRouter 카드 병합 |
+| SusVibes standalone | Endor Agent Security League 카드가 extend |
+| OpenRouter Fusion·Seed 2.1·ViBench | Batch 53 탈락 동일 |
+| Code execution with MCP | 기존 150k→2k 카드 존재 |
+| Batch 45–53 신규 60+ | Browser Use·gstack·Fable 5·Junie 등 중복 회피 |
+| Ponytail·AgentKit shutdown | YAGNI·shutdown niche |
+| terminalSequence·args exec form | Week 20 minor hook detail, 독립 카드 가치 부족 |
+
+### 신규 11카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | MCPMark Verified — 127 CRUD MCP task·5 server·gpt-5.5 92.9%·kimi-k2.7 81.1% | mcpmark.ai |
+| 2 | MOSAIC-Bench — innocent ticket 3-stage→exploitable code 53–86% ASR | arxiv.org/abs/2605.03952 |
+| 3 | SecureVibeBench — ACL 2026·105 C/C++ task·SWE-C4.5 23.8% correct+secure | aclanthology.org/2026.acl-long.1107 |
+| 4 | mcp-agent — MCP-native Python framework·Temporal durable·Effective Agents patterns | github.com/lastmile-ai/mcp-agent |
+| 5 | CrewAI 1.14 — 54k★·MCPServerAdapter·~2B agent executions/12mo | github.com/crewAIInc/crewAI |
+| 6 | Google ADK Java·Go 1.0 — 5-language agent SDK·A2A·YAML config·SAIF HITL | developers.googleblog.com/adk-java-100 |
+| 7 | /rewind — checkpoint undo·Summarize from here·/clear 후 세션 복구 | code.claude.com/docs/en/checkpointing |
+| 8 | PostToolBatch hook — parallel tool batch 1회·additionalContext injection | code.claude.com/docs/en/hooks |
+| 9 | InstructionsLoaded hook — CLAUDE.md·rules/*.md load audit·lazy nested trigger | code.claude.com/docs/en/hooks |
+| 10 | requiredMinimumVersion·enforceAvailableModels — managed settings enterprise gate | code.claude.com/docs/en/settings |
+| 11 | continueOnBlock PostToolUse — rejection reason feed back·turn continue | code.claude.com/docs/en/whats-new/2026-w20 |
+
+누적: 845카드 (834→845 신규 11, 병합 3건은 기존 카드 갱신)
+주제: MCP eval(MCPMark)·compositional security(MOSAIC·SecureVibeBench)·MCP framework(mcp-agent·CrewAI)·Google ADK GA·Claude Code session/hook/governance(/rewind·PostToolBatch·InstructionsLoaded·continueOnBlock·managed settings)
