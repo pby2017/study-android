@@ -3306,3 +3306,11 @@ Refined:
 누적: 812카드 (802→812 신규, 병합 2건은 기존 카드 갱신)
 주제: self-improving agent(Hermes), code intelligence MCP(codebase-memory-mcp), MCP debug(mcp-devtools·Inspector), sandbox triad(OpenSandbox·CubeSandbox·Microsandbox), eval platform(Confident AI·Deepchecks), dialectic memory(Honcho), OTel MCP semconv merge
 - Rejected: broad AI+Android follow-ups as duplicate/overlap with existing cards; MCP structured tool output/resource links deferred as lower distinctness this run.
+
+## 2026-06-26 00:29 KST — Local AI card routine
+
+- Published: `Codex 경제 리서치 — 에이전트 작업은 '질문 수'보다 위임 시간으로 봐야 한다`
+- Source: https://openai.com/index/how-agents-are-transforming-work/
+- Refined: `AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff)`
+- Refined sources re-checked: https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone, https://openai.com/index/openai-to-acquire-astral/, and https://astral.sh/blog/openai
+- Rejected: Claude Tag, ARD/Agent Finder, and ADK+A2A cross-language agents as duplicates; pure Android topics as below threshold.

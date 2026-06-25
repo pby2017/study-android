@@ -1233,13 +1233,13 @@ cards:
   source: https://code.claude.com/docs/en/agent-sdk/overview
 - category: ai
   title: AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff)
-  summary: '2025년 12월 Anthropic이 첫 인수로 JavaScript 런타임 Bun(MIT)을, 비슷한 시기 OpenAI가 Python 툴링 회사 Astral(uv·ruff·ty 제작)을 인수한다고 발표했다. 이유는 같다 — 코딩 에이전트가 곧 회사 매출의 핵심이 됐고(Claude Code는 발표 당시 연 환산 10억 달러), 에이전트가 코드를 생성·설치·린트·타입체크하는 토대를 직접 소유해야 빠르고 안정적이기 때문이다. Anthropic은 "Claude Code가 Bun 실행 파일로 배포된다 — Bun이 깨지면 Claude Code가 깨진다"고 명시했다. 실무 포인트: 당신이 매일 쓰는 uv·ruff·Bun이 특정 AI 랩의 전략 자산이 됐다는 뜻 — 양쪽 모두 오픈소스·기존 라이선스 유지를 약속했지만, 로드맵 우선순위가 그 랩의 에이전트에 맞춰질 수 있음을 감안해 도구 선택을 하라.
+  summary: 'AI 랩이 코딩 에이전트의 바깥 도구까지 사들이기 시작했다. Anthropic은 2025년 12월 JavaScript 런타임·패키지 매니저·번들러·테스트 러너인 Bun을 인수했고, OpenAI는 2026년 3월 Python 툴링 회사 Astral(uv·Ruff·ty)을 인수한다고 발표했다. 이유는 둘 다 코딩 에이전트의 실행 루프와 맞닿아 있다. Anthropic은 Bun이 Claude Code 인프라와 네이티브 설치에 중요하다고 설명했고, OpenAI는 Astral 도구를 Codex가 개발 생명주기 전체에서 쓰는 Python 기반 도구로 연결하겠다고 했다. 실무 포인트: uv·Ruff·Bun 같은 "그냥 개발 도구"도 이제 에이전트 제품의 전략 자산이다. 양쪽 모두 오픈소스 지속 지원을 말하지만, 도구 선택 때는 성능뿐 아니라 소유권, 로드맵 우선순위, 대체 경로까지 같이 봐야 한다.
 
     '
   points:
-  - Anthropic→Bun(2025-12, MIT 유지·기존 팀 잔류), OpenAI→Astral(uv·ruff·ty, 오픈소스 지속 지원 약속) — 둘 다 '첫 인수'급 전략 거래
-  - '동기는 수직 통합: 에이전트의 코드 생성→의존성→린트→타입체크 루프를 자사 툴로 닫아 속도·안정성 확보'
-  - 오픈소스·permissive 라이선스라 커뮤니티 포크는 언제든 가능 — 단 로드맵이 인수사 에이전트 우선순위로 기울 리스크는 남는다
+  - Anthropic→Bun(2025-12), OpenAI→Astral(2026-03, uv·Ruff·ty) — JS·Python 핵심 툴체인이 에이전트 전략으로 편입
+  - '동기: 에이전트가 코드 생성 뒤 설치·실행·린트·포맷·타입체크까지 반복하는 개발 루프를 더 직접 제어'
+  - 오픈소스 지속 지원 약속은 긍정적이지만, 팀은 소유권·로드맵·포크/대체 가능성을 도구 리스크로 관리해야 한다
   source: https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone
 - category: ai
   title: ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI
@@ -7436,3 +7436,13 @@ cards:
   - Transport — stdio local·SSE·streamable HTTP remote OAuth server
   - Debug workflow — connectivity→capability→edge case→client integration order
   source: https://modelcontextprotocol.io/docs/tools/inspector
+- category: ai
+  title: Codex 경제 리서치 — 에이전트 작업은 '질문 수'보다 위임 시간으로 봐야 한다
+  summary: 'OpenAI의 2026년 6월 경제 리서치는 Codex 사용을 단순 채팅 횟수가 아니라 "사람이 했다면 걸렸을 작업 시간"으로 해석한다. 핵심 신호는 짧은 답변보다 장기 위임이다. 2026년 5월 기준 표본 개인 사용자의 80.6%가 30분 초과 작업, 70.2%가 1시간 초과 작업, 25.6%가 8시간 초과 작업으로 추정되는 Codex 요청을 최소 1번 보냈다. OpenAI 내부에서도 Codex는 엔지니어링을 넘어 법무·재무·리크루팅까지 주 도구가 됐고, 2026년 6월 99퍼센타일 활성 사용자는 하루 60시간이 넘는 병렬 에이전트 턴을 만들었다. 단, 작업 시간은 transcript를 본 LLM 판정이고 개인 사용자 0.1% 표본 기반이라 정밀 KPI가 아니라 방향 신호로 읽어야 한다. 실무 교훈은 에이전트 도입 지표를 "프롬프트 몇 번"이 아니라 장기 작업 위임, 병렬 세션, 검증 가능한 산출물로 잡아야 한다는 점이다.
+
+    '
+  points:
+  - 2026-05 표본 개인 사용자 기준 30분+ 80.6%, 1시간+ 70.2%, 8시간+ 25.6%가 장기 Codex 요청을 최소 1회 보냄
+  - OpenAI 내부는 엔지니어링뿐 아니라 법무·재무·리크루팅도 Codex를 주 도구로 사용, 99퍼센타일은 하루 60시간+ 병렬 에이전트 턴
+  - 수치는 LLM-as-judge와 0.1% 표본 기반 방향 신호 — 운영 KPI는 위임 시간+검증 산출물+리뷰 통과율로 설계
+  source: https://openai.com/index/how-agents-are-transforming-work/
