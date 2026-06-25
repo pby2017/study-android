@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기`; next oldest reviewed candidate is `Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)`.
+Current position: continue after `Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)`; next oldest reviewed candidate is `Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK`.
 
-Last update: 2026-06-25 18:37 KST
+Last update: 2026-06-25 20:43 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -45,6 +45,7 @@ Reviewed:
 - `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트`
 - `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트`
 - `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기`
+- `Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -82,6 +83,7 @@ Refined:
 - `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트` — re-checked Sentry's current press release and pricing docs, clarified runtime telemetry plus source-code RCA, local Sentry MCP and PR review workflows, production-risk focus, and active-contributor pricing semantics.
 - `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트` — re-checked current Jules getting-started docs, usage limits, and FAQ; clarified Public Beta status, fresh VM task execution, plan approval before edits, AGENTS.md automatic reading, no private-repo training, and practical security/setup-script caveats.
 - `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기` — re-checked current Claude Code subagent and session docs, clarified full-conversation inheritance, running-fork panel steering, shared prompt-cache semantics, no nested forks, and the need for worktree isolation or explicit write boundaries for edit-heavy fork work.
+- `Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)` — re-checked the current README plus GitHub API metrics and clarified PRD/spec/issue decomposition, MCP/CLI split, task graph operations, model roles, workstream/tag surface, live popularity signal, and license wording.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -89,7 +91,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

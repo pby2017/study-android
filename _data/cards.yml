@@ -1213,13 +1213,13 @@ cards:
   source: https://code.claude.com/docs/en/sub-agents
 - category: ai
   title: Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)
-  summary: 'Task Master(eyaltoledano/claude-task-master)는 PRD 문서 하나를 넣으면 `task-master parse-prd`로 작업을 잘게 나누고, 태스크 사이 의존성·우선순위까지 정리해 에이전트가 예측 가능하게 일하도록 구조를 잡아주는 태스크 매니저다. Cursor·Claude Code·Windsurf·VS Code 등에 MCP로 붙거나 `npm i -g task-master-ai`로 CLI로 쓸 수 있고, `task-master next`로 다음 할 일을, `list`로 전체를 본다. 모델은 main·research·fallback 세 역할로 나눠 쓰며, Claude Code나 Codex의 OAuth를 쓰면 별도 API 키 없이도 돌릴 수 있다.
+  summary: 'Task Master(eyaltoledano/claude-task-master)는 PRD·spec·GitHub issue를 `parse-prd`로 dependency-aware task graph로 바꿔, 에이전트가 "다음에 뭘 해야 하나"를 추측하지 않게 만드는 태스크 매니저다. MCP로 Cursor·Claude Code·Windsurf·VS Code·Amazon Q CLI에 붙거나 `npm i -g task-master-ai` CLI로 쓸 수 있고, `next`·`list`·`expand`·`analyze-complexity`·`set-status`로 작업 흐름을 관리한다. 핵심은 PRD를 작은 TODO로 쪼개는 데서 끝나지 않고, main/research/fallback 모델 역할과 optional research model, 태스크 의존성·복잡도·workstream tag를 함께 운영 표면으로 만든다는 점이다. 별도 API 키를 쓰거나 Claude Code/Codex CLI OAuth 경로를 쓸 수 있지만, 어떤 경로든 "상세 PRD가 좋아야 좋은 태스크가 나온다"는 제약은 그대로다.
 
     '
   points:
-  - PRD→태스크 분해 + 의존성/복잡도 분석이 핵심 — `parse-prd`, `next`, `expand`, `move`
-  - MCP로 에디터에 직접 붙고(CLI도 지원), 모델 역할을 main/research/fallback로 분리
-  - 라이선스는 MIT + Commons Clause(호스팅 서비스·경쟁 제품화는 제한), 레포 표기 27.5k★ 주장
+  - PRD/spec/issue→task graph — dependency edge·priority·complexity·status를 명시
+  - MCP+CLI 동시 지원 — editor chat 안에서는 tool, 자동화에서는 `task-master` command
+  - GitHub API 기준 27.7k★·archived=false, README 표기는 MIT with Commons Clause
   source: https://github.com/eyaltoledano/claude-task-master
 - category: ai
   title: Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK
@@ -7148,3 +7148,11 @@ cards:
   - 필터링·페이지네이션으로 CodeQL 품질 이슈를 에이전트/툴링 큐로 변환
   - public preview on github.com / GHES 미지원이라 운영 자동화 전 가용성 확인 필요
   source: https://github.blog/changelog/2026-06-23-fetch-code-quality-findings-via-rest-api/
+- category: ai
+  title: AI Coding Agent CI 보안 — tag pinning만으론 부족, 런타임 egress까지 본다
+  summary: 'StepSecurity의 2026년 글은 Claude Code·Cursor·Codex·Gemini·Copilot 같은 AI coding agent가 개발자 머신, PR, GitHub Actions까지 이어지는 3단계 공격면을 만든다고 정리한다. 에이전트는 패키지를 설치하고, MCP 서버·IDE 확장에 연결하고, CI에서 GITHUB_TOKEN 권한으로 branch push·dependency install·GitHub API 호출까지 수행한다. 그래서 방어도 "생성 코드 스캔"만으로는 부족하다. GitHub 공식 Actions 보안 문서는 third-party action을 full-length commit SHA로 pinning하라고 권고하지만, 2026-06-24 compromised action 사례처럼 tag가 repoint되면 tag pin은 깨진다. 실전 교훈은 agent workflow를 privileged build system으로 보고, dependency cooldown/PR block, least-privilege GITHUB_TOKEN, full SHA pin, runner network egress policy, process/network attribution을 한 묶음으로 설계하는 것이다.'
+  points:
+  - 3단계 공격면 — dev machine/MCP·repo dependency PR·CI runner secret/GITHUB_TOKEN
+  - GitHub 공식 권고 — third-party action은 tag보다 full-length commit SHA pinning
+  - AI agent CI는 runtime 관측 필요 — outbound endpoint·spawned process·package install을 step 단위로 추적
+  source: https://www.stepsecurity.io/blog/securing-vibe-coding-and-ai-coding-agents-an-end-to-end-approach-with-stepsecurity

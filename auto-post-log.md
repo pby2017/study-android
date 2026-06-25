@@ -3057,3 +3057,12 @@ Refined:
 
 누적: 776카드 (767→766 병합→776 신규)
 주제: sandbox infra tier(Blaxel·Sandcastle·mcp-sandboxd·Cloudflare·Sprites), agent orchestration(Taskmaster·ClawTeam·Citadel), regression testing(agentverify), graph memory(Cognee)
+
+## 2026-06-25 20:43 KST — Local AI card routine
+
+- Published: `AI Coding Agent CI 보안 — tag pinning만으론 부족, 런타임 egress까지 본다`
+- Source: https://www.stepsecurity.io/blog/securing-vibe-coding-and-ai-coding-agents-an-end-to-end-approach-with-stepsecurity
+- Supporting source: https://docs.github.com/en/actions/reference/security/secure-use
+- Refined: `Task Master — PRD를 던지면 '의존성 달린 태스크 목록'으로 쪼개주는 에이전트(MIT+CC)`
+- Refined sources re-checked: https://github.com/eyaltoledano/claude-task-master and https://api.github.com/repos/eyaltoledano/claude-task-master
+- Rejected: Google Agents CLI and A2A updates as duplicates; OpenAI knowledge-work/agents-transforming-work as overlap with existing Codex knowledge-work card; pure Android topics as out of scope.
