@@ -5666,12 +5666,12 @@ cards:
   - Prefect(durable Python)·Dagster(data asset)와 3축 — hook ecosystem compound
   source: https://airflow.apache.org/blog/common-ai-provider/
 - category: ai
-  title: OpenTelemetry GenAI Semantic Conventions — gen_ai.* 표준 속성, vendor-neutral LLM observability
-  summary: 'OpenTelemetry GenAI SIG(2024~)가 정의하는 LLM·agent·tool call 표준 span attribute 스키마. gen_ai.operation.name·gen_ai.request.model·gen_ai.usage.input/output_tokens·gen_ai.agent.name·gen_ai.tool.name·gen_ai.*.cost 등 vendor-neutral 속성. 2026-03 대부분 experimental — OTEL_SEMCONV_STABILITY_OPT_IN으로 legacy+new dual emission. OpenLLMetry(Traceloop instrumentation SDK)와 역할 분리: OTel GenAI=spec/schema, OpenLLMetry=auto-instrumentation library. Datadog OTel v1.37·Grafana Loki native 지원 시작. Langfuse·Phoenix·Jaeger·Tempo backend agnostic.'
+  title: OpenTelemetry GenAI — agent-spans v1.41·5 operation types·gen_ai.*
+  summary: 'OpenTelemetry GenAI SIG(2024~)가 정의하는 LLM·agent·tool call 표준 span attribute·agent-spans v1.41(2026-05 GA). 5 agent span operation: create_agent·invoke_agent_client·invoke_agent_internal·invoke_workflow·execute_tool — gen_ai.operation.name·gen_ai.tool.name·gen_ai.conversation.id·gen_ai.usage.reasoning.output_tokens. gen_ai.provider.name(v1.37 rename from gen_ai.system). OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental dual emission. OpenLLMetry(instrumentation SDK) vs semconv(spec) ·Langfuse/Phoenix/Jaeger backend agnostic. Datadog·New Relic native gen_ai.* ingest.'
   points:
-  - gen_ai.* 속성 — model·token·agent·tool·cost vendor-neutral schema
-  - Experimental(2026) — OTEL_SEMCONV_STABILITY_OPT_IN dual emission
-  - OpenLLMetry(SDK instrumentation) vs GenAI semconv(spec) — 역할 분리
+  - 5 agent spans v1.41 — create·invoke_client/internal·workflow·execute_tool
+  - gen_ai.* — model·token·agent·tool·cost·conversation.id vendor-neutral
+  - Experimental stability opt-in — pin deps, dual-emit during spec churn
   source: https://opentelemetry.io/docs/specs/semconv/gen-ai/
 - category: ai
   title: NVIDIA Triton Inference Server — multi-model GPU serving, TensorRT·ONNX·Python backend
@@ -5745,14 +5745,6 @@ cards:
   - npm malware alerting — CVE alert와 별도 triage
   - Autofix(CodeQL)·Dependabot bump와 3단계 stack
   source: https://github.blog/changelog/2026-04-07-dependabot-alerts-are-now-assignable-to-ai-agents-for-remediation/
-- category: ai
-  title: CSA Agentic MCP Security — OAuth 2.1·tool-level scope·description monitoring
-  summary: Cloud Security Alliance Agentic MCP Security Best Practices v1(2025-11 spec 2025-11-25)는 MCP adoption이 governance를 앞지른 attack surface를 다룬다. Remote MCP는 OAuth 2.1+PKCE mandatory, RFC 8414 metadata discovery(CVE-2025-6514 root cause), tool-level scope(least privilege), DPoP·token rotation·HITL destructive action. Invariant mcp-scan pre-commit·tool description drift monitoring. arXiv MCP 클라이언트 7종 비교(구조 취약) ·Copilot MCP policy(allowlist)와 달리 operational best practices guide — OAuth on MCP(RFC 9728 Protected Resource Metadata) 구현 체크리스트.
-  points:
-  - OAuth 2.1·PKCE·RFC 8414 discovery·tool-level scope
-  - mcp-scan pre-commit·description drift monitoring
-  - 학술 MCP 비교·Copilot policy와 역할 분리 — 운영 가이드
-  source: https://labs.cloudsecurityalliance.org/agentic/agentic-mcp-security-best-practices-v1/
 - category: ai
   title: CycloneDX ML-BOM vs SPDX AI Profile — AI supply chain SBOM 2축
   summary: '2026 AI-BOM 표준은 CycloneDX 1.5+ ML-BOM(OWASP·mlModel·data component·VEX inline·security-first) vs SPDX 3.0 AI Profile(Linux Foundation·ISO 5962·licensing·provenance-first). 3-layer: model(weights hash·format)·supply chain(training data·base model·runtime)·operational(model card·eval·limitations). CycloneDX 1.7 ML-BOM을 regular SBOM에 embed 가능, Sigstore signing. EU AI Act Annex IV·NIST AI RMF Map 4.x·ISO 42001 Clause 8 regulatory expectation — build-time generate·sign·mirror. Syft·CycloneDX CLI·HF model card export adjacent tooling.'
@@ -5964,7 +5956,7 @@ cards:
   source: https://www.anthropic.com/engineering/writing-tools-for-agents
 - category: ai
   title: Human-in-the-Loop Approval — policy gate·HumanLayer·Permit Access Request MCP
-  summary: 'Production HITL은 "모든 action 승인"이 아니라 action manifest(severity×reversibility)로 high-stakes write만 pause한다. OpenAI Agents SDK needs_approval→RunState.approve/reject, LangGraph interrupt()+PostgresSaver durable checkpointer. Policy layer는 allow/deny/approval_required 3-state+audit. HumanLayer(humanlayer·~11k★)는 require_approval()로 send_email·deploy 같은 high-stakes tool을 Slack·email·web dashboard에서 productized pause. Permit Access Request MCP는 LangGraph+policy engine 위에 agent가 sensitive action을 request→human final decision workflow. Async 202+approval_timeout SLA, side effect는 interrupt 이후 idempotent batch.'
+  summary: Production HITL은 "모든 action 승인"이 아니라 action manifest(severity×reversibility)로 high-stakes write만 pause한다. OpenAI Agents SDK needs_approval→RunState.approve/reject, LangGraph interrupt()+PostgresSaver durable checkpointer. Policy layer는 allow/deny/approval_required 3-state+audit. HumanLayer(humanlayer·~11k★)는 require_approval()로 send_email·deploy 같은 high-stakes tool을 Slack·email·web dashboard에서 productized pause. Permit Access Request MCP는 LangGraph+policy engine 위에 agent가 sensitive action을 request→human final decision workflow. Async 202+approval_timeout SLA, side effect는 interrupt 이후 idempotent batch.
   points:
   - action manifest — severity×reversibility, HumanLayer=productized Slack/email channel
   - durable checkpointer(Postgres/SQLite) + interrupt/resume — InMemorySaver dev only
@@ -6435,13 +6427,13 @@ cards:
   - least agency — cross-cutting, Five Eyes 2026-05 regulatory alignment
   source: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
 - category: ai
-  title: MCP Tool Poisoning — description drift·Invariant mcp-scan·pre-commit gate
-  summary: MCP tool poisoning은 tool description·schema·return example에 "ignore previous instructions"류 hidden directive를 embed해 LLM이 benign tool을 malicious action으로 호출하게 하는 supply chain attack. APIScout 2026 documented attack — spec은 tool definition integrity verification을 enforce하지 않음. Invariant mcp-scan — connected MCP server tool list를 baseline snapshot하고 description/schema drift를 diff, pre-commit·CI gate로 merge block. CSA Agentic MCP Security v1 — tool-level OAuth scope + description monitoring + RFC 8414 metadata validation(CVE-2025-6514). Bumblebee(Perplexity) — MCP extension supply chain scanner, mcp-scan과 complement(static diff vs supply chain crawl). Writing Effective MCP Tools(design) ·Copilot MCP policy(allowlist)와 3-layer — design→scan→policy.
+  title: MCP Tool Poisoning — description drift·Snyk Agent Scan·skill supply-chain·toxic flows
+  summary: MCP tool poisoning은 tool description·schema·return example에 hidden directive를 embed해 LLM이 benign tool을 malicious action으로 호출하는 supply chain attack. Snyk Agent Scan(snyk/agent-scan·Invariant mcp-scan 후속)은 Cursor·Claude·Windsurf MCP config auto-discover→server 실행→tools/list 수집→15+ risk scan — tool poisoning·tool shadowing·toxic flows·skill malware payload(E006). skills ecosystem report(2026) — SKILL.md hidden instruction·credential handling·malware payload. pre-commit·CI `--dangerously-run-mcp-servers` gate. Pipelock(runtime proxy) ·Promptfoo redteam mcp plugin과 3-layer — static scan→runtime proxy→adversarial eval.
   points:
-  - Tool description=untrusted input — LLM이 instruction으로 해석
-  - Invariant mcp-scan — baseline diff, pre-commit/CI drift block
-  - OAuth tool-scope + description monitoring + allowlist policy
-  source: https://apiscout.dev/guides/anthropic-mcp-server-security-2026
+  - Snyk Agent Scan — MCP+skills inventory, tool poisoning·shadowing·toxic flows
+  - Runtime server execution — tools/list must run server, consent/sandbox required
+  - 3-layer defense — Snyk static scan·Pipelock runtime·Promptfoo adversarial CI
+  source: https://github.com/snyk/agent-scan
 - category: ai
   title: AI Browser Agent Security — Playwright agent·session isolation·origin policy
   summary: 'Browser-using agent(Playwright MCP·Playwright CLI·Computer Use)는 웹의 untrusted DOM·cookie·localStorage·download surface를 agent tool로 노출한다. 핵심 통제: dedicated browser profile per agent session — production SSO cookie·password manager와 분리, task 종료 시 profile delete. navigation allowlist — agent가 arbitrary URL fetch 전 domain policy check, file://·javascript: scheme 차단. download/upload gate — agent-initiated file write는 quarantine dir only, sensitive path symlink traversal block. Same-origin에서 indirect injection — page content를 planner prompt에 raw merge 금지, accessibility tree/snapshot structured field만. Playwright CLI+MCP(도구) ·Indirect Prompt Injection(data plane) ·Agent Egress Security(network)와 3-layer 분리.'
@@ -7198,7 +7190,7 @@ cards:
   source: https://github.com/mauriziomocci/mcp-code-review
 - category: ai
   title: AI Coding Agent CI 보안 — tag pinning만으론 부족, 런타임 egress까지 본다
-  summary: 'StepSecurity의 2026년 글은 Claude Code·Cursor·Codex·Gemini·Copilot 같은 AI coding agent가 개발자 머신, PR, GitHub Actions까지 이어지는 3단계 공격면을 만든다고 정리한다. 에이전트는 패키지를 설치하고, MCP 서버·IDE 확장에 연결하고, CI에서 GITHUB_TOKEN 권한으로 branch push·dependency install·GitHub API 호출까지 수행한다. 그래서 방어도 "생성 코드 스캔"만으로는 부족하다. GitHub 공식 Actions 보안 문서는 third-party action을 full-length commit SHA로 pinning하라고 권고하지만, 2026-06-24 compromised action 사례처럼 tag가 repoint되면 tag pin은 깨진다. 실전 교훈은 agent workflow를 privileged build system으로 보고, dependency cooldown/PR block, least-privilege GITHUB_TOKEN, full SHA pin, runner network egress policy, process/network attribution을 한 묶음으로 설계하는 것이다.'
+  summary: StepSecurity의 2026년 글은 Claude Code·Cursor·Codex·Gemini·Copilot 같은 AI coding agent가 개발자 머신, PR, GitHub Actions까지 이어지는 3단계 공격면을 만든다고 정리한다. 에이전트는 패키지를 설치하고, MCP 서버·IDE 확장에 연결하고, CI에서 GITHUB_TOKEN 권한으로 branch push·dependency install·GitHub API 호출까지 수행한다. 그래서 방어도 "생성 코드 스캔"만으로는 부족하다. GitHub 공식 Actions 보안 문서는 third-party action을 full-length commit SHA로 pinning하라고 권고하지만, 2026-06-24 compromised action 사례처럼 tag가 repoint되면 tag pin은 깨진다. 실전 교훈은 agent workflow를 privileged build system으로 보고, dependency cooldown/PR block, least-privilege GITHUB_TOKEN, full SHA pin, runner network egress policy, process/network attribution을 한 묶음으로 설계하는 것이다.
   points:
   - 3단계 공격면 — dev machine/MCP·repo dependency PR·CI runner secret/GITHUB_TOKEN
   - GitHub 공식 권고 — third-party action은 tag보다 full-length commit SHA pinning
@@ -7278,7 +7270,7 @@ cards:
   source: https://github.com/highflame-ai/zeroID
 - category: ai
   title: Multi-tenant token budget — token bucket·WFQ·Jain fairness for agent APIs
-  summary: 'Multi-tenant agent platform에서 request/min rate limit은 LLM 비용·noisy neighbor를 못 막는다 — token-aware budget+fair scheduling이 minimum viable. Redis Lua atomic token bucket per tenant(capacity·refill_per_sec tier별), soft cap→queue·hard cap→429 Retry-After. Weighted Fair Queuing — enterprise tier priority without free-tier starvation, max-wait timer. Helicone(per-user cost header) ·AgentLedger(budget proxy)와 달리 fairness engineering pattern — Jain index(Σx)²/(n·Σx²)>0.90 healthy, hogging scenario other tenants <2% reject.'
+  summary: Multi-tenant agent platform에서 request/min rate limit은 LLM 비용·noisy neighbor를 못 막는다 — token-aware budget+fair scheduling이 minimum viable. Redis Lua atomic token bucket per tenant(capacity·refill_per_sec tier별), soft cap→queue·hard cap→429 Retry-After. Weighted Fair Queuing — enterprise tier priority without free-tier starvation, max-wait timer. Helicone(per-user cost header) ·AgentLedger(budget proxy)와 달리 fairness engineering pattern — Jain index(Σx)²/(n·Σx²)>0.90 healthy, hogging scenario other tenants <2% reject.
   points:
   - Token bucket not request count — TPM reflects actual LLM cost
   - Tier capacity/refill — free 10K·enterprise 2M TPM, burst multiplier 1.2–2×
@@ -7292,3 +7284,75 @@ cards:
   - 응답은 accept/decline/cancel 3상태 — 사용자가 검토·수정·거절 가능
   - 민감 정보 요청 금지, 서버 표시·스키마 검증·rate limit이 안전 기본값
   source: https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation
+- category: ai
+  title: OWASP MCP Top 10 — MCP01~MCP10 agent tool integration risk taxonomy
+  summary: 'OWASP MCP Top 10(2025 beta·Vandana Verma Sehgal)는 Model Context Protocol 전용 보안 프레임워크 — MCP01 token mismanagement·MCP02 scope creep·MCP03 tool poisoning·MCP04 supply chain·MCP05 command injection·MCP06 intent flow subversion·MCP07 authZ·MCP08 audit/telemetry·MCP09 shadow MCP·MCP10 context over-sharing. OWASP LLM Top 10(model/app) ·ASI Top 10(agentic app)와 축 분리 — MCP는 tool discovery·description trust boundary. CSA Agentic MCP Security v1(OAuth 2.1·tool-level scope) operational checklist와 complement. Unit42: 5 MCP server 연결 시 compromised 1개→78.3% attack success. Week 1: OAuth 2.1·tool pinning·audit log·server allowlist.'
+  points:
+  - MCP01~MCP10 — protocol-specific taxonomy, not LLM/ASI Top 10 duplicate
+  - MCP03 tool poisoning + MCP09 shadow server — highest priority in 2026
+  - CSA OAuth 2.1·RFC 8414·tool-scope checklist maps to MCP07/MCP01
+  source: https://owasp.org/www-project-mcp-top-10/
+- category: ai
+  title: Pipelock — open-source agent firewall, MCP runtime bidirectional scan
+  summary: Pipelock(luckyPipewrench/pipelock·Apache-2.0)는 AI agent egress firewall — HTTP·WebSocket·MCP traffic inline inspect. mcp proxy subcommand으로 stdio/HTTP MCP server wrap — tools/list description poisoning scan·SHA-256 fingerprint rug-pull detect·tools/call args 62 credential pattern·response 29 injection pattern 6-pass normalization. fail-closed default — scanner error→block. OWASP MCP Top 10 MCP03/MCP05/MCP10 runtime coverage. Snyk Agent Scan(pre-deploy static) ·Permit MCP Gateway(auth proxy)와 3-layer — install scan→runtime proxy→gateway policy. SARIF v2.1.0 GitHub Code Scanning·MITRE ATLAS mapping.
+  points:
+  - pipelock mcp proxy — bidirectional MCP frame scan, rug-pull hash drift
+  - 6-pass injection normalization — base64·leetspeak·whitespace evasion catch
+  - Pre-deploy + runtime pair — static scan alone misses live-only attacks
+  source: https://pipelab.org/pipelock/
+- category: ai
+  title: Promptfoo — YAML red team CI, MCP plugin·50+ vulnerability scan
+  summary: 'Promptfoo(promptfoo/promptfoo·MIT·OpenAI 인수·OSS 유지)는 LLM eval+red team CLI — promptfooconfig.yaml declarative, GitHub Actions merge gate. redteam plugins: mcp(tool poisoning·unauthorized discovery)·pii·bfla·bola·sql-injection·40+ strategies jailbreak/best-of-n. MCP provider config로 agent가 실제 tool call하는 redteam-mcp-agent scenario. DeepEval(pytest metric gate) ·Giskard(adversarial probe)와 complement — Promptfoo=adversarial/security CI, DeepEval=quality metric CI. promptfoo redteam run — generate+eval shortcut, --tag for CI traceability.'
+  points:
+  - mcp redteam plugin — OWASP Agentic AI aligned MCP-specific attack vectors
+  - Dual CI pattern — Promptfoo security gate + DeepEval quality gate
+  - YAML-first — multi-model compare·caching·concurrency·code scanning
+  source: https://www.promptfoo.dev/docs/red-team/mcp-security-testing/
+- category: ai
+  title: FastMCP — Python MCP server framework, 70% servers·Prefect Horizon deploy
+  summary: FastMCP(jlowin/fastmcp·Prefect·v3.4·~1M/day downloads)는 production MCP server/client framework — @mcp.tool decorator→auto JSON schema·validation·OpenAPI/FastAPI generation·enterprise OAuth(Google·GitHub·Auth0). FastMCP 1.0은 official MCP Python SDK에 merge, standalone v3는 server composition·proxying·testing·client library. Prefect Horizon — GitHub branch preview deploy·private MCP registry·SSO·tool-level RBAC·audit. Smithery(registry) ·Arcade(auth runtime)와 달리 developer framework — MCP server를 Python function에서 production microservice로.
+  points:
+  - '@mcp.tool — schema·validation·error handling auto, 70% MCP servers use FastMCP'
+  - Server composition·proxy·OpenAPI gen — beyond basic MCP SDK
+  - Prefect Horizon — enterprise MCP gateway deploy from GitHub
+  source: https://gofastmcp.com/getting-started/welcome
+- category: ai
+  title: Logfire — Pydantic AI-native OTel observability, evals·MCP trace query
+  summary: Logfire(pydantic/logfire·MIT SDK·~4k★)는 Pydantic 팀 AI observability — OTel-native, any OTLP backend portable. Pydantic AI built-in instrumentation — agent run·tool call·LLM span gen_ai.* compliant. SQL query interface·LLM cost tracking·online eval·pydantic-evals integration. Logfire MCP server — AI assistant가 trace query·error fix. Langfuse(OSS LLM obs) ·Datadog(full-stack APM)와 달리 Pydantic stack unified — Validation→Agent→Observability same team, code-first evals any Python function.
+  points:
+  - OTel-native — SDK portable to Jaeger/Tempo/Datadog, no lock-in
+  - Pydantic AI auto-instrument — gen_ai semantic conventions built-in
+  - Logfire MCP — query traces via MCP for AI-assisted debugging
+  source: https://pydantic.dev/logfire
+- category: ai
+  title: AG-UI Protocol — agent-frontend event stream, MCP/A2A와 축 분리
+  summary: AG-UI(ag-ui-protocol/ag-ui·CopilotKit·MIT·~1k★)는 agent-user interaction open protocol — HTTP POST→SSE JSON event stream(TEXT_MESSAGE_CONTENT·TOOL_CALL_START·STATE_DELTA·lifecycle). JSON Patch state sync — agent·frontend bidirectional shared state. LangGraph·CrewAI·Mastra·Microsoft Agent Framework integration. MCP=tool/context layer ·A2A=agent-to-agent ·AG-UI=agent-to-user "last mile". CopilotKit useAgent hook·HttpAgent client — vendor-neutral frontend, backend agent swap without UI rewrite.
+  points:
+  - Event types — message·tool call·state delta·lifecycle standardized
+  - MCP vs A2A vs AG-UI — tools vs agent mesh vs user interface
+  - JSON Patch state — real-time agent-frontend collaborative sync
+  source: https://docs.ag-ui.com/concepts/architecture
+- category: ai
+  title: LangMem — LangGraph native memory SDK, hot-path tools·background manager
+  summary: LangMem(langchain-ai/langmem)는 LangGraph ecosystem official long-term memory SDK — create_manage_memory_tool·create_search_memory_tool로 agent가 conversation 중 memory record/search. Background memory manager — extract·consolidate·update 자동. LangGraph Platform Long-term Memory Store native integration·AsyncPostgresStore production persist. Mem0(drop-in API·hybrid vector+graph) ·Cognee(graph-native)와 달리 LangGraph-first — checkpointer+BaseStore 위 memory logic, framework lock-in tradeoff.
+  points:
+  - Hot-path memory tools — agent explicitly manage/search during conversation
+  - Background manager — auto extract·consolidate without agent tool call
+  - LangGraph Store native — Platform deployment default LTM backend
+  source: https://langchain-ai.github.io/langmem/
+- category: ai
+  title: 'Supermemory — #1 LongMemEval context stack, memory+RAG+connectors API'
+  summary: Supermemory(supermemoryai/supermemory·~#1 LongMemEval·LoCoMo·ConvoMem)는 unified context layer — memory(fact extraction·contradiction·expiry)+RAG+user profile+connectors+file processing single API. Browser extension·MCP server·self-host(`supermemory start` localhost:6767). Vercel AI SDK·LangGraph·OpenAI Agents SDK·Mastra integration. Mem0(drop-in layer) ·memoryx(compression)와 달리 full context stack — "memory is not RAG" thesis, fact temporal supersede vs document chunk retrieval.
+  points:
+  - 5-layer context — memory·RAG·profile·connectors·files one system
+  - Temporal fact tracking — "moved to SF" supersedes "live in NYC"
+  - Self-host + MCP — local Ollama, data never leaves machine option
+  source: https://github.com/supermemoryai/supermemory
+- category: ai
+  title: OpenAI Agents SDK — SandboxAgent·handoffs·guardrails, harness/compute split
+  summary: 'OpenAI Agents SDK(openai-agents-python·~27k★·MIT)는 production multi-agent framework — Agent+Runner minimal primitive, provider-agnostic(Responses API default). SandboxAgent(v0.14+) — harness(control plane: loop·handoffs·approvals·tracing) vs compute(sandbox: files·shell·manifest·capabilities) 분리. Handoffs(specialist owns reply) vs agents-as-tools(manager retains control). input/output guardrails parallel validation·RunState serialize→human review→resume. LangGraph(state machine) ·Pydantic AI(type-safe)와 달리 OpenAI-native·SandboxAgent workspace lifecycle·MCP server integration.'
+  points:
+  - SandboxAgent — Manifest+Capabilities, harness owns loop sandbox owns FS/shell
+  - Handoffs vs as_tool — ownership transfer vs nested bounded task
+  - Guardrails+RunState — parallel validation, serialize for HITL resume
+  source: https://openai.github.io/openai-agents-python/

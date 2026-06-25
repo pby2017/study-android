@@ -3175,6 +3175,62 @@ Refined:
 누적: 793카드 (784→783 병합→793 신규)
 주제: agent authorization(Cerbos·Oso·Permit·SpiceDB·OPA), identity gateway(Aperture·Arcade·Scalekit·ZeroID), multi-tenant fairness(token budget), HITL merge(HumanLayer·Permit), PII 4-boundary(Presidio), Cedar policy(AgentCore)
 
+## 2026-06-25 23:30 KST — Batch 50 (아이디어 검증 + 병합 3카드 + 신규 9카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Invariant mcp-scan → **MCP Tool Poisoning — description drift·Snyk Agent Scan·skill supply-chain·toxic flows** | Snyk Agent Scan 15+ risk·skills malware·3-layer defense |
+| (확장) OpenTelemetry GenAI → **agent-spans v1.41·5 operation types·gen_ai.*** | create_agent·invoke_agent·execute_tool span taxonomy |
+| CSA Agentic MCP Security → **OWASP MCP Top 10 — MCP01~MCP10 risk taxonomy** | OAuth 2.1·tool-scope checklist cross-ref |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 9카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| OWASP MCP Top 10 | OWASP LLM·ASI Top 10과 축 분리, MCP protocol-specific MCP01~MCP10 taxonomy |
+| Pipelock | Snyk Agent Scan(static pre-deploy) ·Permit Gateway(auth)와 runtime bidirectional MCP proxy 축 분리 |
+| Promptfoo | DeepEval(pytest metric) ·Giskard(scan)와 adversarial red team CI·MCP plugin 축 분리 |
+| FastMCP | Smithery(registry) ·Arcade(auth runtime)와 MCP server developer framework 축 분리 |
+| Logfire | Langfuse(OSS obs) ·Datadog(APM)와 Pydantic stack unified Validation→Agent→Observability |
+| AG-UI Protocol | MCP(tool layer) ·A2A(agent mesh)와 agent-frontend "last mile" event protocol 축 분리 |
+| LangMem | Mem0(drop-in API) ·Cognee(graph)와 LangGraph-native hot-path memory SDK 축 분리 |
+| Supermemory | Mem0(layer) ·memoryx(compression)와 full context stack memory+RAG+connectors |
+| OpenAI Agents SDK | LangGraph(state machine) ·Pydantic AI와 SandboxAgent harness/compute split·handoffs |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Snyk Agent Scan standalone | MCP Tool Poisoning card merge로 static scan·skills·toxic flows 커버 |
+| OTel agent-spans standalone | OpenTelemetry GenAI card v1.41 확장으로 5 span type 커버 |
+| CSA Agentic MCP standalone | OWASP MCP Top 10 merge로 OAuth 2.1·tool-scope operational checklist 커버 |
+| Upstash Semantic Cache · Redis LangCache | GPTCache card semantic caching 축으로 abstract |
+| Operant AI · Nightfall · Cisco MCP scanner | commercial gateway niche, Pipelock+Promptfoo+Snyk 3-layer 커버 |
+| MCPGuard · Damn Vulnerable MCP | academic/training env, Promptfoo redteam·OWASP taxonomy로 실무 커버 |
+| LangGraph Platform Memory | LangMem card Platform Store integration으로 커버 |
+| Batch 45–49 신규 40개 | 중복 회피 — auth·sandbox·eval·cost·prompt·code-review 재추가 금지 |
+
+### 신규 9카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | OWASP MCP Top 10 — MCP01~MCP10 agent tool integration risk taxonomy | owasp.org/www-project-mcp-top-10 |
+| 2 | Pipelock — open-source agent firewall, MCP runtime bidirectional scan | pipelab.org/pipelock |
+| 3 | Promptfoo — YAML red team CI, MCP plugin·50+ vulnerability scan | promptfoo.dev/docs/red-team/mcp-security-testing |
+| 4 | FastMCP — Python MCP server framework, 70% servers·Prefect Horizon deploy | gofastmcp.com |
+| 5 | Logfire — Pydantic AI-native OTel observability, evals·MCP trace query | pydantic.dev/logfire |
+| 6 | AG-UI Protocol — agent-frontend event stream, MCP/A2A와 축 분리 | docs.ag-ui.com/concepts/architecture |
+| 7 | LangMem — LangGraph native memory SDK, hot-path tools·background manager | langchain-ai.github.io/langmem |
+| 8 | Supermemory — #1 LongMemEval context stack, memory+RAG+connectors API | github.com/supermemoryai/supermemory |
+| 9 | OpenAI Agents SDK — SandboxAgent·handoffs·guardrails, harness/compute split | openai.github.io/openai-agents-python |
+
+누적: 801카드 (793→792 병합→801 신규)
+주제: MCP security taxonomy(OWASP MCP Top 10), runtime defense(Pipelock·Snyk merge), red team CI(Promptfoo), MCP dev(FastMCP), observability(Logfire·OTel merge), agent UI(AG-UI), memory(LangMem·Supermemory), multi-agent(OpenAI Agents SDK)
+
 ## 2026-06-25 20:43 KST — Local AI card routine
 
 - Published: `AI Coding Agent CI 보안 — tag pinning만으론 부족, 런타임 egress까지 본다`
