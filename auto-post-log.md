@@ -2933,3 +2933,62 @@ Refined:
 - Refined: `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트`
 - Refined sources re-checked: https://jules.google/docs/, https://jules.google/docs/usage-limits/, and https://jules.google/docs/faq/
 - Rejected: GitHub Copilot app BYOK, Copilot CLI terminal interface GA, Copilot Free/Student auto model selection, and ADK for Kotlin/Android as duplicates or overlap with existing cards.
+
+## 2026-06-25 24:45 KST — Batch 46 (아이디어 검증 + 병합 3카드 + 신규 10카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Steel.dev · Browserbase → **Browser agent cloud platform — Steel.dev·Browserbase** | Browser Use · Stagehand · agent-browser |
+| Giskard · Lakera Guard → **LLM agent security — Giskard pre-deploy scan·Lakera Guard runtime firewall** | NeMo Guardrails · OWASP LLM Top 10 |
+| Browser-Use(구) 중복 제거 | Browser Use(Batch 45) |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| New Relic Preflight | Langfuse(production LLM trace) · /usage(quota)와 developer-side AI coding assistant cost·anti-pattern observability 축 분리 |
+| EvalView | DeepEval(metric pytest) · promptfoo(prompt compare)와 tool trajectory diff regression gating 축 분리 |
+| Iris eval MCP | LangWatch(platform) · Braintrust(CI)와 MCP-native eval protocol·no SDK 축 분리 |
+| Restate | Temporal(cluster) · Inngest(serverless step.run) · DBOS(Postgres)와 single-binary lightweight + Vercel AI SDK middleware 분리 |
+| DBOS | Temporal(separate cluster) · Restate(single binary) · Inngest(event)와 Postgres-only zero-new-infra durable execution 분리 |
+| Morph Fast Apply | Cursor instant apply · Aider edit format과 specialized 7B merge model·10k tok/s 축 분리 |
+| Morph WarpGrep | Aider repo map · trace-mcp(graph)와 isolated search subagent·SWE-Bench Pro lift 축 분리 |
+| trace-mcp | Aider repo map(ranking) · Sourcegraph(search) · Qartez(PageRank)와 framework-aware cross-language graph edges 분리 |
+| BAML | Instructor(Pydantic runtime) · Outlines(FSM decode) · Guidance와 schema-first DSL + SAP sloppy JSON parser 분리 |
+| Smithery | Composio(app toolkit) · individual MCP OAuth와 MCP registry·hosting·managed OAuth gateway infra 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| preflight-dev/preflight | New Relic Preflight(코딩 observability)와 prompt discipline MCP 이름 축 혼동, 별도 배치 검토 |
+| Qartez | trace-mcp(framework-aware 138 tools)와 code graph MCP axis overlap |
+| Vercel Sandbox · Together sandbox | E2B·Daytona 2카드로 agent sandbox axis 커버 |
+| Maxim AI · Galileo observability | LangWatch·Braintrust·Langfuse eval/observability axis overlap |
+| Inngest Agent Kit · Vercel WDK | Inngest(Batch 45)·Temporal 카드로 durable execution axis 커버 |
+| Instructor · Marvin · PydanticAI | BAML·기존 Instructor·Pydantic AI structured output axis overlap |
+| New Relic MCP server(prod observability) | Preflight(AI coding)와 production NRQL MCP는 다른 제품 축 |
+| Intent workspace | niche multi-agent attribution, Augment Code enterprise context와 overlap |
+| Browser Use·Composio·Inngest 등 Batch 45 10개 | 중복 회피 규칙 — 신규 추가 금지 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | New Relic Preflight — AI 코딩 어시스턴트 비용·행동·효율 점수를 MCP로 관측 | github.com/newrelic-experimental/preflight |
+| 2 | EvalView — tool call trajectory diff로 AI agent 회귀를 pytest처럼 잡기 | github.com/hidai25/eval-view |
+| 3 | Iris eval MCP — MCP-native agent output quality·safety·cost budget 표준 | github.com/iris-eval/mcp-server |
+| 4 | Restate — single-binary durable execution + Vercel AI SDK middleware | docs.restate.dev/ai/patterns/durable-agents |
+| 5 | DBOS — Postgres만으로 AI agent workflow를 crash-safe durable execution | docs.dbos.dev/ai/ai-quickstart |
+| 6 | Morph Fast Apply — 7B specialized model로 code edit merge 10,500 tok/s | docs.morphllm.com/models/apply |
+| 7 | Morph WarpGrep — isolated search subagent, SWE-Bench Pro #1 lift | morphllm.com/products/warpgrep |
+| 8 | trace-mcp — framework-aware codebase graph MCP, 138 tools·81 language | github.com/nikolai-vysotskyi/trace-mcp |
+| 9 | BAML — schema-first LLM function DSL + SAP로 sloppy JSON도 파싱 | github.com/BoundaryML/baml |
+| 10 | Smithery — MCP registry·hosting·managed OAuth gateway, 7300+ servers | smithery.ai/docs/use/connect |
+
+누적: 766카드 (759→756 병합→766 신규)
+주제: AI coding observability(Preflight), agent regression/eval(EvalView·Iris), durable execution 3축(Restate·DBOS), specialized agent models(Morph Apply·WarpGrep), code intelligence(trace-mcp), structured output DSL(BAML), MCP infra(Smithery)

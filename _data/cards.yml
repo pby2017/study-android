@@ -3827,16 +3827,6 @@ cards:
   - '4 프리미티브: act·extract·observe·agent'
   source: https://github.com/browserbase/stagehand
 - category: ai
-  title: Browser-Use — 자연어로 브라우저 태스크를 자동화하는 Python AI 에이전트, 멀티스텝 탐색형 자동화
-  summary: 'Browser-Use는 자연어 태스크 정의로 AI 에이전트가 브라우저를 조작하는 Python 라이브러리다. 태스크를 정의하면 에이전트가 스텝을 스스로 결정하고 실행. 탐색적·개방형 태스크에 강함(정확한 스텝을 사전 정의하기 어려운 경우). Stagehand(결정론적+AI 하이브리드) 대비 완전 에이전트형. Lightpanda 등 경량 브라우저 엔진과 CDP로 연동 가능. 로그인·폼 입력·멀티페이지 네비게이션 지원.
-
-    '
-  points:
-  - '완전 에이전트: 자연어 태스크 → 에이전트가 스텝 결정'
-  - '탐색형: 정확한 셀렉터/스텝 사전 정의 불필요'
-  - 'CDP 연동: Lightpanda 등 경량 브라우저 엔진 지원'
-  source: https://www.webfuse.com/blog/lightpanda-vs-browser-use-vs-stagehand-2026
-- category: ai
   title: Jina Reranker v3 — 리스트와이즈 아키텍처로 64문서 동시 스코어링, 131k 토큰·nDCG@10 61.94(CC-BY-NC)
   summary: 'Jina Reranker v3은 0.6B 파라미터 리스트와이즈 리랭커다. 기존 크로스인코더가 쿼리-문서 쌍을 하나씩 처리하는 것과 달리, 최대 64개 문서를 131,000 토큰 윈도우에서 동시에 스코어링. BEIR nDCG@10 61.94로 오픈 모델 중 최고 점수. RAG 파이프라인에서 벡터 검색 후 2단계 리랭킹으로 precision@5를 10~30% 향상. TEI(Text Embeddings Inference)로 배포. CC-BY-NC 4.0 라이선스(상업용은 별도 계약).
 
@@ -6967,22 +6957,6 @@ cards:
   - Head Start + sub-agents — parallel cold-start + nested AgentChat stream
   source: https://trigger.dev/docs/ai-chat/overview
 - category: ai
-  title: Steel.dev — AI agent용 cloud headless browser API·Agent Traces
-  summary: Steel(steel-dev/steel-browser·Apache-2.0·~7.2k★)는 Puppeteer·Playwright·Selenium을 cloud session API로 제공하는 open-source browser infrastructure다. sub-1s session start·24h long session·proxy·CAPTCHA·stealth fingerprint·Live Session Viewer·Agent Traces로 debug/replay. markdown/screenshot/pdf extraction endpoint로 read-only job도 지원. Browserbase(Stagehand SDK·Search/Fetch·Agent Identity)와 같은 cloud browser infra 축이지만 Steel은 OSS self-host docker+CLI skill(steel-browser skill)에 무게. Browser Use(library)와 complement — Steel=infra, Browser Use=agent logic.
-  points:
-  - Sessions API — Puppeteer/Playwright/Selenium over WebSocket CDP
-  - 24h session·proxy·CAPTCHA·stealth·Live Viewer·Agent Traces
-  - OSS self-host + CLI skill — infra layer vs Browser Use agent library
-  source: https://github.com/steel-dev/steel-browser
-- category: ai
-  title: Browserbase — Search·Fetch·Stagehand·Agent Identity가 붙은 browser agent platform
-  summary: Browserbase는 agents that browse like humans를 위한 complete browser agent platform이다. one API key로 headless browser fleet·web Search API·Fetch(markdown/JSON)·Functions(deploy agent code next to browser·<5ms)·Model Gateway·Agent Identity(Cloudflare Signed Agents·1Password cred·AgentKit proof-of-humanity)를 제공. Stagehand SDK는 Playwright control + act/extract/observe AI primitives with self-heal. Live View embedded UI로 HITL auth/CAPTCHA intervention. Steel.dev( OSS infra) · Browser Use(library+cloud) · Stagehand(SDK only)와 달리 search+fetch+identity+deployment를 one bill로 묶는 platform play.
-  points:
-  - One API key — browsers·Search·Fetch·Functions·Gateway·Identity
-  - Stagehand — act/extract/observe self-healing AI primitives
-  - Live View HITL — embedded remote control for auth/CAPTCHA
-  source: https://docs.browserbase.com/welcome/what-is-browserbase
-- category: ai
   title: HumanLayer — high-stakes tool call을 Slack·email approval workflow로
   summary: HumanLayer(humanlayer/humanlayer·~11k★)는 AI agent가 function call 전에 human approval을 받게 하는 HITL layer다. require_approval()로 send_email·deploy·create_issue 같은 high-stakes tool을 pause하고 Slack·email·web dashboard에서 approve/reject. human_as_tool()로 agent가 사람에게 질문하는 async workflow도 지원. LangChain·LangGraph·CrewAI·AutoGen·Bring-your-own-framework. Generic Human-in-the-Loop Approval Workflows 카드(정책 gate·checkpointer)와 달리 productized approval channel·escalation policy.
   points:
@@ -6999,18 +6973,98 @@ cards:
   - OTel native — dev eval + production trace in one platform
   source: https://langwatch.ai/
 - category: ai
-  title: Giskard — pre-deploy agent red teaming·OWASP LLM Top-10 scan
-  summary: Giskard(Giskard-AI/giskard-oss·~5.5k★) v3는 agentic system testing/evaluation modular Python packages다. giskard-checks(Beta)는 scenario API·LLM-as-judge, giskard-scan(roadmap)은 prompt injection·harmful content·stereotype adversarial suite auto-generation from plain-language agent description. Black-box testing — internal RAG/vector DB 불필요. NeMo Guardrails(runtime colang rails) · Lakera Guard(inline firewall) · OWASP Top 10( taxonomy)와 달리 pre-deploy exhaustive adversarial test generation.
+  title: Browser agent cloud platform — Steel.dev·Browserbase
+  summary: Steel(steel-dev/steel-browser·Apache-2.0·~7.2k★)와 Browserbase는 AI agent용 cloud headless browser infra/platform 2축이다. Steel은 Puppeteer·Playwright·Selenium을 Sessions API로 제공하는 OSS self-host infra — sub-1s start·24h session·proxy·CAPTCHA·stealth·Agent Traces·Live Viewer. Browserbase는 Search·Fetch·Functions(<5ms)·Model Gateway·Agent Identity(Cloudflare Signed Agents·1Password·AgentKit)까지 one API key platform play. Stagehand SDK(act/extract/observe self-heal)는 Browserbase가 만든 하이브리드 primitives. Browser Use(library+cloud)와 complement — Steel/Browserbase=infra/platform, Browser Use=agent logic.
   points:
-  - giskard-checks — scenario API·built-in checks·LLM-as-judge
-  - giskard-scan — auto adversarial suite from agent description
-  - Black-box — no internal component access, pre-deploy not runtime
+  - Steel — OSS Sessions API, Puppeteer/Playwright/Selenium, 24h·Traces·self-host
+  - Browserbase — Search/Fetch/Functions/Gateway/Identity one platform
+  - Stagehand SDK — act/extract/observe, self-healing Playwright+AI hybrid
+  source: https://docs.browserbase.com/welcome/what-is-browserbase
+- category: ai
+  title: LLM agent security — Giskard pre-deploy scan·Lakera Guard runtime firewall
+  summary: Giskard(Giskard-AI/giskard-oss·~5.5k★) v3는 pre-deploy agentic testing — giskard-checks(scenario API·LLM-as-judge)와 giskard-scan(plain-language agent description→adversarial suite auto-gen). Black-box, prompt injection·harmful content·stereotype. Lakera Guard는 runtime inline AI security — direct/indirect injection·jailbreak·PII를 sub-50ms로 detect/block. Gandalf challenge→product feed. NeMo Guardrails(runtime colang DSL) · OWASP Top 10(taxonomy)와 complementary — Giskard=ship 전 exhaustive scan, Lakera=production inline firewall.
+  points:
+  - Giskard — pre-deploy adversarial scan, black-box scenario generation
+  - Lakera Guard — runtime inline firewall, sub-50ms latency
+  - Red team→runtime — pre-launch scan then Guard production defense
   source: https://github.com/Giskard-AI/giskard-oss
 - category: ai
-  title: Lakera Guard — runtime prompt injection·jailbreak firewall (<50ms)
-  summary: Lakera Guard는 LLM/API 경계에 inline으로 붙는 runtime AI security platform이다. direct·indirect prompt injection·jailbreak·PII leakage를 sub-50ms latency로 detect/block. Gandalf prompt injection challenge·Gandalf Agent Breaker로 adversarial research를 product에 feed. OWASP LLM01·LLM02·LLM07 mapping. Workforce·Agent·Red Teaming 3-module — red team pre-launch → Guard runtime defense. Giskard(pre-deploy scan) · NeMo Guardrails(policy DSL) · Indirect Prompt Injection(card)와 달리 production inline firewall.
+  title: New Relic Preflight — AI 코딩 어시스턴트 비용·행동·효율 점수를 MCP로 관측
+  summary: New Relic Preflight(newrelic-experimental/preflight·2026-06 OSS)는 Claude Code·Cursor·Copilot·Windsurf·Zed·Continue·Amazon Q 등 AI coding assistant에 붙는 observability MCP server다. session metrics·cost breakdown·behavioral anti-pattern(thrashing·stuck loop)·efficiency score(비용/완료율/도구 선택 품질)를 structured telemetry로 수집. local-only mode는 New Relic 계정 없이 dashboard·weekly coaching·alerting을 로컬에 저장. NR 연결 시 NRQL·NerdGraph로 org-wide aggregation. Langfuse(production LLM trace) · /usage(Copilot quota)와 달리 developer-side AI assistant infra observability.
   points:
-  - Runtime inline — prompt in/out scan, sub-50ms latency claim
-  - Gandalf research — public adversarial challenge → product signal
-  - 3-module — Red Teaming pre-launch + Guard runtime + Workforce
-  source: https://www.lakera.ai/guard-book-a-demo
+  - MCP+hooks — Claude/Cursor/Copilot/Windsurf/Zed/Continue/Amazon Q
+  - Efficiency score — cost/outcome·anti-pattern·weekly coaching report
+  - Local-only or NRQL — no account required, optional org-wide telemetry
+  source: https://github.com/newrelic-experimental/preflight
+- category: ai
+  title: EvalView — tool call trajectory diff로 AI agent 회귀를 pytest처럼 잡기
+  summary: EvalView(hidai25/eval-view·OSS)는 AI agent regression testing framework — golden baseline을 record하고 tool calls·parameters·sequence·output·cost·latency를 diff해 silent regression을 CI에서 catch한다. 4 status(PASSED·TOOLS_CHANGED·OUTPUT_CHANGED·REGRESSION). LangGraph·CrewAI·OpenAI·Anthropic·MCP·Ollama offline 지원. multi-reference baseline(비결정 agent용)·hermetic record/replay cassette·MCP contract testing·SKILL.md validation. DeepEval(metric unit test) · promptfoo(prompt/model compare) · LangWatch(simulation)와 달리 tool trajectory diff gating.
+  points:
+  - Golden baseline — tool call+param+order diff, not just output
+  - CI gate — PASSED/TOOLS_CHANGED/OUTPUT_CHANGED/REGRESSION 4 status
+  - Offline+hermetic — Ollama·record/replay, no API key for deterministic diff
+  source: https://github.com/hidai25/eval-view
+- category: ai
+  title: Iris eval MCP — MCP-native agent output quality·safety·cost budget 표준
+  summary: 'Iris(iris-eval/mcp-server·OSS)는 MCP-compatible agent가 자동 discover하는 eval standard server다. evaluate_output(13 built-in rules: completeness·relevance·safety·cost, PII 10 patterns·prompt injection 13 patterns·hallucination markers), evaluate_with_llm_judge(5 templates, BYO API key), trace lifecycle(get_traces·store_trace). SDK/code change 없이 any MCP agent가 invoke. LangWatch(Scenario simulation platform) · Braintrust(eval CI) · DeepEval(Python pytest)와 달리 MCP-native eval protocol.'
+  points:
+  - 13 heuristic rules — PII·injection·stub-output·hallucination markers free
+  - LLM-as-judge — 5 templates, BYO Anthropic/OpenAI key, cost-capped
+  - MCP-native — no SDK, agent discovers evaluate_output automatically
+  source: https://github.com/iris-eval/mcp-server
+- category: ai
+  title: Restate — single-binary durable execution + Vercel AI SDK middleware
+  summary: Restate(restate.dev·OSS single binary)는 journal-and-replay durable execution으로 AI agent step을 crash-safe하게 만든다. @restatedev/vercel-ai-middleware의 durableCalls(ctx)로 LLM response persist, ctx.run()으로 tool execution retry. Vercel AI SDK·Pydantic AI·OpenAI Agents SDK integration. Temporal(cluster ops·multi-week workflow) · Inngest(step.run serverless) · DBOS(Postgres library)와 달리 lightweight single-binary·exactly-once writes·Vercel/Cloudflare/Lambda deploy. 2025-11 Vercel AI SDK integration GA.
+  points:
+  - durableCalls(ctx) — LLM responses journaled, replayed on recovery
+  - ctx.run() tools — side-effect steps retried until success
+  - Single binary — lighter than Temporal, vs Inngest event-native vs DBOS Postgres
+  source: https://docs.restate.dev/ai/patterns/durable-agents
+- category: ai
+  title: DBOS — Postgres만으로 AI agent workflow를 crash-safe durable execution
+  summary: DBOS(dbos.dev·OSS library)는 Postgres에 workflow·step state를 checkpoint해 agent가 crash·restart·network outage 후 마지막 completed step부터 resume한다. @DBOS.workflow + @DBOS.step 또는 DBOSAgent(Pydantic AI)·DBOSRunner(OpenAI Agents SDK) wrapper. Conductor control plane으로 distributed recovery·pause/restart·retention policy. Temporal(separate cluster) · Inngest(serverless event) · Restate(single binary)와 달리 Postgres-native — zero new infra if Postgres already runs. SQLite dev → Postgres prod.
+  points:
+  - '@DBOS.workflow/@DBOS.step — LLM+tool calls checkpointed to Postgres'
+  - DBOSAgent/DBOSRunner — Pydantic AI·OpenAI Agents SDK native wrappers
+  - Postgres-only infra — no separate orchestrator cluster, Conductor optional
+  source: https://docs.dbos.dev/ai/ai-quickstart
+- category: ai
+  title: Morph Fast Apply — 7B specialized model로 code edit merge 10,500 tok/s
+  summary: Morph Fast Apply(morphllm.com·morph-v3-fast/large/auto)는 AI agent가 생성한 edit snippet(// ... existing code ... markers)을 original file에 semantic merge하는 specialized 7B model이다. 10,500+ tok/s·98% accuracy·OpenAI-compatible API·MCP·Vercel AI SDK. search-and-replace(whitespace fail·multi-chunk) · full-file rewrite(느리고 비쌈) 대신 single-call whole-file merge. Cursor instant apply·Aider(edit format)와 complement — agent planning model과 merge model 분리. E2B·Daytona sandbox의 applyEdit code-in/code-out 지원.
+  points:
+  - SAP-style merge — // ... existing code ... markers, semantic not text replace
+  - 10,500 tok/s·98% — 7B on custom CUDA kernels, OpenAI-compatible API
+  - Agent architecture — planning model + Fast Apply merge model separation
+  source: https://docs.morphllm.com/models/apply
+- category: ai
+  title: 'Morph WarpGrep — isolated search subagent, SWE-Bench Pro #1 lift'
+  summary: Morph WarpGrep(morph-warp-grep-v2.1)는 coding agent의 search를 별도 context window subagent로 offload하는 specialized search model이다. 8 parallel tool calls/turn·up to 4 turns·returns (file, [start_line, end_line]) spans only — main agent never sees dead-end greps. SWE-Bench Pro에서 Opus 55.4→57.5·Codex 56.0→59.1 lift. Aider repo map(pre-index ranking) · trace-mcp(code graph) · grep과 달리 parallel breadth-first search subagent. E2B·Modal·Daytona remoteCommands로 sandbox search 지원.
+  points:
+  - Isolated context — 8 parallel tools/turn, clean spans back to main agent
+  - SWE-Bench Pro lift — +2~4pp on Opus/Codex/MiniMax when paired
+  - Subagent pattern — search cost fraction of main model self-search
+  source: https://www.morphllm.com/products/warpgrep
+- category: ai
+  title: trace-mcp — framework-aware codebase graph MCP, 138 tools·81 language
+  summary: trace-mcp(nikolai-vysotskyi/trace-mcp·npm)는 codebase를 cross-language dependency graph로 index해 MCP로 serve한다. 81 language·58 framework integration(Laravel/Inertia/Vue cross-edge 등)·138 tools — get_change_impact·get_call_graph·find_usages·get_request_flow. trace-mcp init이 Claude Code·Cursor·Windsurf·Codex 등 auto-detect·one-click wire. Aider repo map(tree-sitter ranking) · Sourcegraph(search) · Qartez(PageRank graph)와 달리 framework-aware cross-language edges. Optional Electron GPU graph explorer.
+  points:
+  - Framework-aware edges — Laravel route→Vue page, ORM→migration cross-language
+  - 138 MCP tools — get_change_impact one call vs 80 Greps+190 reads
+  - init auto-detect — Claude/Cursor/Windsurf/Codex one-click MCP wire
+  source: https://github.com/nikolai-vysotskyi/trace-mcp
+- category: ai
+  title: BAML — schema-first LLM function DSL + SAP로 sloppy JSON도 파싱
+  summary: BAML(BoundaryML/baml·MIT·~5k★)은 .baml 파일에 LLM function interface·prompt·schema를 정의하고 Python·TypeScript·Go·Ruby·Rust client를 generate하는 DSL toolchain이다. Schema-Aligned Parsing(SAP)은 markdown-in-JSON·chain-of-thought·trailing comma 등 sloppy output에서 structured data recover — strict json.loads() retry loop 대신. VS Code playground에서 prompt test·streaming·API inspect. Instructor(Pydantic runtime) · Outlines(FSM constrained decode) · Microsoft Guidance와 달리 cross-language schema source of truth + SAP parser.
+  points:
+  - SAP parser — recover structure from sloppy LLM output, not strict JSON
+  - .baml DSL — prompt+schema in one file, generate typed clients 6+ languages
+  - VS Code playground — test prompts without full app environment
+  source: https://github.com/BoundaryML/baml
+- category: ai
+  title: Smithery — MCP registry·hosting·managed OAuth gateway, 7300+ servers
+  summary: Smithery(smithery.ai)는 MCP ecosystem의 registry+hosting+connection platform — 7300+ MCP server catalog·REST API search·smithery CLI publish. Managed OAuth gateway가 redirect URI·client secret·token refresh를 Smithery가 처리하고 namespace URL 하나로 N connection을 Claude·Cursor·ChatGPT에 portable하게 expose. scoped service token으로 browser/mobile agent에 short-TTL credential. Composio(1000+ app toolkit integration) · individual MCP server OAuth와 달리 MCP server discovery+hosting infra layer. MCPB bundle local stdio distribution 지원.
+  points:
+  - 7300+ registry — GET /servers search, smithery mcp publish CLI
+  - Managed OAuth gateway — no per-server redirect URI, auto token refresh
+  - Namespace URL — one endpoint bundles N MCP connections, portable across clients
+  source: https://smithery.ai/docs/use/connect
