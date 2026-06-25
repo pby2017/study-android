@@ -1252,14 +1252,14 @@ cards:
   - 'validator와 공개 100점 rubric으로 spec-correct 패키지만 병합하는 구조'
   source: https://github.com/jeremylongshore/claude-code-plugins-plus-skills
 - category: ai
-  title: BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49k★)
-  summary: 'BMAD-METHOD(Breakthrough Method for Agile AI-Driven Development)는 단일 코딩 툴이 아니라 PM·아키텍트·개발자·UX·QA 등 12종 이상 역할 에이전트를 오케스트레이션하는 방법론 프레임워크다(MIT, 약 49.2k★). 핵심은 2단계 분업: 먼저 웹 LLM(Gemini Gems·ChatGPT Custom GPT 등)에서 브레인스토밍→제품 브리프→PRD→아키텍처 문서를 만들고, 그 ''폴리시된 산출물''을 IDE로 가져와 구현한다. Scrum Master 에이전트가 이 문서를 잘게 쪼갠 ''개발 스토리''로 바꿔 dev 에이전트에 통째로 넘기는 게 특징이라, 컨텍스트 누락이 줄어든다. Claude Code·Cursor·Cline·Roo·Aider 등 에이전트를 가리지 않고 `npx bmad-method install`로 붙는다.
+  title: BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49.7k★)
+  summary: 'BMAD-METHOD(BMad Method)는 코딩 에이전트 하나를 잘 쓰는 팁이 아니라, 기획→분석→아키텍처→구현→테스트를 12+ 전문 에이전트와 34+ 워크플로로 나누는 AI 주도 개발 프레임워크다. V6 기준 `bmad-help`가 다음 단계를 안내하고, Party Mode는 여러 페르소나를 한 세션에 불러 토론하게 하며, 모듈 구조는 BMad Builder·Test Architect·Game Dev Studio 같은 도메인 확장을 붙인다. 실무 포인트는 "바로 코드"가 아니라 웹 번들(Gemini Gems·ChatGPT Custom GPTs)로 브레인스토밍·제품 브리프·PRD·UX·시장조사를 먼저 정리한 뒤, 그 산출물을 IDE 에이전트로 넘겨 구현 컨텍스트 누락을 줄이는 것이다. 2026-06-26 확인 기준 GitHub 49,673★·5,737 forks, 최신 릴리스 v6.9.0(2026-06-22), MIT 라이선스다.
 
     '
   points:
-  - '2단계 워크플로: (1)웹 LLM에서 기획·아키텍처 문서 작성 → (2)IDE에서 구현. Scrum Master가 문서를 ''개발 스토리''로 분해해 dev에 전달'
-  - 12+ 역할 에이전트(PM·Architect·Developer·UX·QA…)와 여러 페르소나를 한 세션에 모으는 'Party Mode' 제공
-  - IDE 비종속(Claude Code·Cursor·Cline·Roo·Aider 등) — `npx bmad-method install`로 설치, 라이선스 MIT(공식 레포 bmad-code-org, 약 49.2k★)
+  - 12+ 전문 에이전트와 34+ 워크플로로 기획·설계·구현·테스트를 단계화
+  - 웹 번들로 PRD·UX·시장조사를 먼저 만들고 IDE 에이전트에는 정리된 산출물을 전달
+  - '`npx bmad-method install`; Node 20.12+·Python 3.10+·uv 필요, v6.9.0 최신 릴리스'
   source: https://github.com/bmad-code-org/BMAD-METHOD
 - category: ai
   title: OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(55k★)

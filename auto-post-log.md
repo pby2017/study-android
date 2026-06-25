@@ -3501,3 +3501,10 @@ Refined:
 
 누적: 845카드 (834→845 신규 11, 병합 3건은 기존 카드 갱신)
 주제: MCP eval(MCPMark)·compositional security(MOSAIC·SecureVibeBench)·MCP framework(mcp-agent·CrewAI)·Google ADK GA·Claude Code session/hook/governance(/rewind·PostToolBatch·InstructionsLoaded·continueOnBlock·managed settings)
+
+## 2026-06-26 02:58 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.
+- Refined: `BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49.7k★)`
+- Refined sources re-checked: https://github.com/bmad-code-org/BMAD-METHOD, https://docs.bmad-method.org/, https://api.github.com/repos/bmad-code-org/BMAD-METHOD, and https://api.github.com/repos/bmad-code-org/BMAD-METHOD/releases/latest
+- Rejected: ADK for Kotlin/Android, GitHub Agent Finder/ARD, Copilot CLI GA terminal interface, Claude Tag, and OpenAI agent-work usage research as duplicates; pure Android topics as below threshold.

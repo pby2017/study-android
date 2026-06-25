@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI`; next oldest reviewed candidate is `BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49k★)`.
+Current position: continue after `BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49.7k★)`; next oldest reviewed candidate is `OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(55k★)`.
 
-Last update: 2026-06-26 00:53 KST
+Last update: 2026-06-26 02:58 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -49,6 +49,7 @@ Reviewed:
 - `Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK`
 - `AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff)`
 - `ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI`
+- `BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49.7k★)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -90,6 +91,7 @@ Refined:
 - `Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK` — re-checked current Anthropic Agent SDK overview and clarified SDK vs CLI vs Managed Agents, built-in tool/loop/session scope, Python/TypeScript install/runtime notes, and production automation fit.
 - `AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun, OpenAI→Astral(uv·ruff)` — re-checked Anthropic, OpenAI, and Astral official announcements; corrected the timing from a vague "similar period" to 2025-12 Anthropic/Bun and 2026-03 OpenAI/Astral, removed unsupported "first acquisition" wording, and clarified the agent-toolchain ownership risk.
 - `ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI` — re-checked the current README plus GitHub API metrics, refreshed plugin/skill/agent/contributor counts, clarified the shared marketplace catalog source, validator/rubric gate, and reframed the lesson around validated team agent-asset distribution.
+- `BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49.7k★)` — re-checked the current README, docs, GitHub API metrics, and latest release; refreshed live stars/forks/release, clarified V6 modules, 34+ workflows, `bmad-help`, Party Mode, web-bundle planning, and the practical lesson of handing polished planning artifacts to IDE agents.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -97,7 +99,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49k★)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(55k★)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
