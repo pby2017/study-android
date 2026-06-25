@@ -6995,12 +6995,12 @@ cards:
   - Local-only or NRQL — no account required, optional org-wide telemetry
   source: https://github.com/newrelic-experimental/preflight
 - category: ai
-  title: EvalView — tool call trajectory diff로 AI agent 회귀를 pytest처럼 잡기
-  summary: EvalView(hidai25/eval-view·OSS)는 AI agent regression testing framework — golden baseline을 record하고 tool calls·parameters·sequence·output·cost·latency를 diff해 silent regression을 CI에서 catch한다. 4 status(PASSED·TOOLS_CHANGED·OUTPUT_CHANGED·REGRESSION). LangGraph·CrewAI·OpenAI·Anthropic·MCP·Ollama offline 지원. multi-reference baseline(비결정 agent용)·hermetic record/replay cassette·MCP contract testing·SKILL.md validation. DeepEval(metric unit test) · promptfoo(prompt/model compare) · LangWatch(simulation)와 달리 tool trajectory diff gating.
+  title: Agent regression testing — EvalView trajectory diff·agentverify YAML cassette
+  summary: EvalView(hidai25/eval-view)는 golden baseline을 record하고 tool call·param·sequence·output·cost·latency를 diff해 4 status(PASSED·TOOLS_CHANGED·OUTPUT_CHANGED·REGRESSION)로 CI gate한다. agentverify(simukappu/agentverify·pytest plugin)는 real LLM 1회 record→human-readable YAML cassette→zero-cost CI replay로 tool name·param·order·cost·safety rule을 assert — prompt variation tolerance matcher 포함. EvalView=trajectory diff golden gating, agentverify=cassette record/replay action assert. DeepEval(metric pytest) · Iris(MCP rules) · promptfoo(prompt compare)와 complement — LangGraph·CrewAI·OpenAI·Anthropic·MCP·LangChain adapter 지원.
   points:
-  - Golden baseline — tool call+param+order diff, not just output
-  - CI gate — PASSED/TOOLS_CHANGED/OUTPUT_CHANGED/REGRESSION 4 status
-  - Offline+hermetic — Ollama·record/replay, no API key for deterministic diff
+  - EvalView — tool trajectory diff, 4-status CI gate, Ollama offline hermetic replay
+  - agentverify — YAML cassette record/replay, zero API cost deterministic assert
+  - Complementary — diff gating vs cassette matcher, both regression not production observability
   source: https://github.com/hidai25/eval-view
 - category: ai
   title: Iris eval MCP — MCP-native agent output quality·safety·cost budget 표준
@@ -7067,21 +7067,13 @@ cards:
   - Co-located hosting — agent+execution same platform, MCP+Model Gateway bundle
   source: https://docs.blaxel.ai/Sandboxes/Overview
 - category: ai
-  title: Sandcastle — tiered isolation MCP sandbox, gVisor·Firecracker 3단계
-  summary: Sandcastle(pruthvirajdgit/sandcastle·MIT)는 MCP execute_code tool로 AI agent에 tiered sandbox execution을 제공한다. low(Linux namespace+seccomp·~5ms)·medium(gVisor runsc·~50ms·default)·high(Firecracker microVM·~250ms) 3 isolation level — threat model에 맞게 선택. network blocked by default+domain allowlist·multi-language·pre-warmed pool·snapshot restore·usage-based billing. E2B(Firecracker only) · mcp-sandboxd(Docker persistent) · Agents SDK Sandbox(manifest harness)와 달리 MCP-native isolation tier selection.
+  title: MCP sandbox 실행 — Sandcastle tiered isolation·mcp-sandboxd persistent identifier
+  summary: Sandcastle(pruthvirajdgit/sandcastle·MIT)는 MCP execute_code로 tiered sandbox — low(namespace+seccomp·~5ms)·medium(gVisor·~50ms default)·high(Firecracker·~250ms) 3 isolation level, network blocked+allowlist·pre-warmed pool. mcp-sandboxd(jeliasson/mcp-sandboxd)는 identifier(대화 ID)마다 long-running Docker/K8s sandbox를 run_sandbox·restart_sandbox·delete_sandbox로 유지 — deps 1회 install 후 iterate·/artifacts HTTP proxy. Sandcastle=stateless tiered execute, mcp-sandboxd=conversation-scoped persistent machine. E2B(ephemeral API) · Agents SDK Sandbox(manifest)와 달리 MCP-native 2축 — threat model별 tier vs session persistence.
   points:
-  - 3 tiers — namespace(5ms) / gVisor(50ms default) / Firecracker(250ms untrusted)
-  - MCP execute_code — any MCP agent, network blocked+allowlist, pre-warmed pools
-  - vs E2B single-tier — pick security/performance tradeoff per execution
+  - Sandcastle — 3 isolation tiers, execute_code MCP, security/perf tradeoff per call
+  - mcp-sandboxd — identifier→persistent sandbox, Docker·K8s·DinD same MCP surface
+  - Complementary — tiered one-shot execution vs reuse env across agent turns
   source: https://github.com/pruthvirajdgit/sandcastle
-- category: ai
-  title: mcp-sandboxd — identifier-keyed persistent Docker/K8s sandbox MCP
-  summary: mcp-sandboxd(jeliasson/mcp-sandboxd)는 MCP run_sandbox·delete_sandbox·restart_sandbox tool로 identifier(대화 ID 등)마다 long-running isolated sandbox를 Docker 또는 Kubernetes backend에 유지한다. deps 한 번 install 후 iterate·/artifacts HTTP proxy로 sandbox 내부 생성 파일 download·DinD·K8s-native backend 동일 MCP interface. E2B(ephemeral microVM API) · Sandcastle(stateless execute_code) · Agents SDK Sandbox(manifest)와 달리 conversation-scoped persistent machine feel. IDE test/lint/build를 MCP로 host 오염 없이 실행.
-  points:
-  - identifier→sandbox — reuse env across runs, install deps once iterate fast
-  - run_sandbox/restart_sandbox/delete_sandbox — Docker·K8s·DinD same MCP surface
-  - /artifacts HTTP proxy — generate in sandbox, download via server endpoint
-  source: https://github.com/jeliasson/mcp-sandboxd
 - category: ai
   title: Taskmaster AI — PRD→dependency-aware task graph MCP, 27k★
   summary: Taskmaster AI(eyaltoledano/claude-task-master·~27k★)는 PRD·spec·GitHub issue를 structured dependency-aware coding task graph로 decompose하는 MCP server다. Cursor·Claude Code·Windsurf 등 에디터에서 parse-prd·expand-task·analyze-complexity·set-status MCP tool 호출. multi-model orchestration — main·research(Perplexity)·fallback role 분리. Backlog.md(마크다운 칸반) · Ralph loop(bash retry) · Spec Kit(SDD scaffold)와 달리 AI-powered task decomposition+dependency graph+complexity scoring. tiered MCP tool loading(core/standard/all)로 context 절약.
@@ -7090,22 +7082,6 @@ cards:
   - Multi-model roles — main codegen·research Perplexity·fallback auto-switch
   - MCP-native — Cursor/Claude Code/Windsurf in-editor, tiered tool loading
   source: https://github.com/eyaltoledano/claude-task-master
-- category: ai
-  title: ClawTeam — CLI agent swarm, tmux+git worktree로 8 GPU 병렬
-  summary: ClawTeam(HKUDS/clawteam·MIT·~5.3k★)는 Claude Code·Codex·OpenClaw·nanobot·Kimi CLI 등 CLI agent를 clawteam spawn tmux으로 git worktree 격리 병렬 실행하는 swarm framework다. leader agent가 task decompose→specialist spawn→discovery share→resource reallocate. Agent Teams(Claude native 대화) · Vibe Kanban(GUI 칸반) · Ruflo(queen swarm plugin)와 달리 CLI-agnostic tmux/subprocess spawn·worktree isolation·no custom SDK. v0.2.0(2026-03) Cursor subprocess experimental.
-  points:
-  - clawteam spawn tmux — Claude/Codex/OpenClaw/nanobot/Kimi parallel in worktrees
-  - Leader orchestration — decompose·spawn·collect discoveries·rebalance
-  - CLI-agnostic — any shell-capable agent, subprocess for Cursor experimental
-  source: https://github.com/HKUDS/clawteam
-- category: ai
-  title: agentverify — YAML cassette replay로 agent action을 pytest처럼 검증
-  summary: agentverify(simukappu/agentverify·MIT·v0.3)는 pytest plugin으로 AI agent action을 deterministic하게 assert한다. real LLM call 1회 record→human-readable YAML cassette→CI zero-cost replay. tool name·param·sequence·cost·safety rule matcher. LangChain·LangGraph·Strands·OpenAI Agents SDK adapter·custom converter. EvalView(trajectory diff golden baseline) · Iris eval MCP(heuristic rules) · DeepEval(metric pytest)와 달리 cassette record/replay + flexible matcher로 prompt variation tolerance. regression-test layer — quality eval·production observability와 complement.
-  points:
-  - Record→YAML cassette→CI replay — zero API cost deterministic action assert
-  - Tool sequence+param+order — flexible matchers tolerate prompt variation
-  - Framework adapters — LangChain/LangGraph/Strands/OpenAI Agents SDK
-  source: https://github.com/simukappu/agentverify
 - category: ai
   title: Cloudflare Sandbox SDK — Workers Containers·Durable Objects stateful sandbox
   summary: Cloudflare Sandbox SDK는 Cloudflare Workers+Containers ecosystem 위 AI agent sandbox platform이다. Durable Objects로 container stateful coordination·R2 bucket mount persistent storage·sleepAfter idle timeout(기본 10분)·keepAlive indefinite·configurable network egress. Code Mode(MCP→TypeScript API·V8 isolate) · Agents SDK 8 provider · Blaxel(perpetual standby)와 달리 Workers-native deploy·edge proximity·R2 mount. OpenAI Agents SDK CloudflareSandboxClient integration.
@@ -7131,12 +7107,12 @@ cards:
   - Scale-to-zero 30s — HTTP URL access, programmable API+SDK thousands concurrent
   source: https://fly.io/docs/sandbox/
 - category: ai
-  title: Citadel — Claude/Codex orchestration harness, /do routing·compiled memory
-  summary: Citadel(SethGammon/Citadel·MIT·~614★)는 Claude Code+OpenAI Codex용 open-source orchestration layer — compiled repo memory·/do intent routing·safety hooks·cost telemetry·parallel agent fleet in git worktrees. Campaign/Marshal/Fleet agent roles로 multi-session work decompose·resume·handoff. Conductor(GUI parallel) · Ruflo(queen swarm) · Continuous Claude(Ralph+PR) · Vibe Kanban(kanban)와 달리 plugin harness — durable project context·English→workflow routing·token spend dashboard. Claude Code plugin marketplace 등록.
+  title: Citadel — Claude/Codex orchestration harness, /do routing·ClawTeam-style fleet
+  summary: Citadel(SethGammon/Citadel·MIT·~614★)는 Claude Code+OpenAI Codex용 orchestration plugin — compiled repo memory·/do intent routing·safety hooks·cost telemetry·git worktree parallel fleet. ClawTeam(HKUDS/clawteam·~5.3k★) swarm 패턴도 흡수 — Claude/Codex/OpenClaw/Kimi CLI를 tmux+worktree로 CLI-agnostic spawn, leader가 decompose→specialist spawn→discovery share. Campaign/Marshal/Fleet roles로 multi-session resume·handoff. Agent Teams(Claude native) · Vibe Kanban(GUI) · Conductor(mac GUI)와 달리 plugin harness+durable compiled memory+English→workflow routing.
   points:
-  - /do intent routing — English→lightest workflow, not manual command pick
-  - Compiled repo memory — survives context reset, campaign resume+handoff
-  - Fleet parallel — git worktree isolated agents, cost telemetry dashboard
+  - /do intent routing — English→lightest workflow, compiled memory survives reset
+  - Fleet parallel — git worktree isolation, ClawTeam-style tmux spawn any CLI agent
+  - Cost telemetry — token spend dashboard, campaign resume+handoff across sessions
   source: https://github.com/SethGammon/Citadel
 - category: ai
   title: Code Quality Findings REST API — CodeQL 이슈를 에이전트 수리 큐로 읽기
@@ -7148,6 +7124,86 @@ cards:
   - 필터링·페이지네이션으로 CodeQL 품질 이슈를 에이전트/툴링 큐로 변환
   - public preview on github.com / GHES 미지원이라 운영 자동화 전 가용성 확인 필요
   source: https://github.blog/changelog/2026-06-23-fetch-code-quality-findings-via-rest-api/
+- category: ai
+  title: CodeMCP Workflows — MCP로 TDD·V-model·EPCC 엔지니어링 프로세스 주입
+  summary: CodeMCP Workflows(@codemcp/workflows·MIT)는 AI coding agent에 battle-tested engineering workflow를 MCP·skills로 주입하는 structured development partner다. TDD·V-model·Anthropic EPCC·reproduction-based bugfix·greenfield 등 methodology preset, context compression·세션 넘어 survive하는 process notes·decision tracking·auto documentation. `npx @codemcp/workflows setup claude --mode skill`로 Claude·Gemini·Copilot·OpenCode·Kiro에 설치. Spec Kit(SDD scaffold) · Superpowers(methodology bundle) · Taskmaster(task graph)와 달리 phase-aware process guidance — agent가 현재 단계와 next focus를 MCP가 주도.
+  points:
+  - Workflow presets — TDD·V-model·EPCC·bugfix·greenfield, survives context compression
+  - MCP+skills dual mode — any MCP agent, skill mode for on-demand loading
+  - vs Spec Kit — process phase guidance not just spec→implement scaffold
+  source: https://github.com/codemcp/workflows
+- category: ai
+  title: memoryx — embedding 없이 agent memory+auto compression, 78–84% 토큰 절약
+  summary: memoryx(@munesoft/memoryx·MIT·zero dependency)는 AI agent용 universal memory layer — remember·recall·context·compress API 한 줄로 stateless LLM에 continuity 부여. vector DB·embedding 없이 substring+Jaccard+fuzzy recall, long-term limit 초과 시 low-signal entry를 extractive digest로 fold(optional LLM summarizer). in-memory·file·Redis adapter. Cognee(graph-native 14 mode) · Mem0(vector+graph hybrid) · Letta(agent OS)와 달리 zero-setup lightweight JS — browser·edge·$0 offline compression.
+  points:
+  - Auto compression — low-signal entries fold to digest, 78–84% token savings
+  - No embeddings — substring+Jaccard+fuzzy, optional LLM summarizer plug-in
+  - context(scope) — budget-aware prompt-ready text, hooks onRemember/onCompress
+  source: https://github.com/munesoft/memoryx
+- category: ai
+  title: Context Compression Engine — LLM 메시지 lossless round-trip deterministic 압축
+  summary: Context Compression Engine(SimplyLiz/ContextCompressionEngine·MIT·zero dep)는 LLM message array를 prose summarize+code/JSON/SQL verbatim preserve로 compress하고 uncompress로 byte-identical restore한다. deterministic engine 1.3–6.1x·zero latency·zero API cost, optional LLM summarizer plug-in. tokenBudget binary search·recencyWindow·agentToolPrepass(verbose tool output strip)·exact+fuzzy dedup. PreCompact hook(passive) · context engineering(card) · memoryx(memory layer)와 달리 harness-side message array compressor — agent tool pre-pass로 verbose output 먼저 제거.
+  points:
+  - Lossless round-trip — compress/uncompress byte-identical, VerbatimMap metadata
+  - Deterministic 1.3–6.1x — zero API, optional Claude/GPT/Gemini/Ollama summarizer
+  - agentToolPrepass — strip verbose tool output before prose summarization
+  source: https://github.com/SimplyLiz/ContextCompressionEngine
+- category: ai
+  title: CodeLedger — Claude Code plugin, project·agent·skill별 토큰·비용 MCP 집계
+  summary: CodeLedger(bhvbhushan/codeledger·MIT·v0.3)는 Claude Code plugin+MCP server로 AI coding token spend를 project·agent·skill 단위로 attribute한다. user coding vs plugin overhead cost split·session category·efficiency recommendation·budget alert·anomaly detection·local web dashboard. MCP conversational query. ccusage(multi-tool log CLI·16k★) · New Relic Preflight(observability MCP) · /usage(quota UI)와 달리 per-skill·per-agent breakdown — "어느 skill이 토큰을 태우나" 질문에 답.
+  points:
+  - Per-project·agent·skill — overhead vs user cost split, ~estimated skill attribution
+  - Budget alerts+anomaly — local dashboard, MCP conversational query
+  - Claude Code plugin — vs ccusage log aggregation across 16+ CLIs
+  source: https://github.com/bhvbhushan/codeledger
+- category: ai
+  title: AgentLedger — reverse proxy로 LLM 호출 비용·budget을 코드 변경 없이 enforce
+  summary: AgentLedger(WDZ-Dev/agent-ledger·Go·MIT)는 AI agent와 LLM provider 사이 reverse proxy — every request metered·daily/monthly budget block·pre-flight estimation·15+ provider·zero code change(base URL override). MCP metering·multi-tenancy·Prometheus /metrics·admin API. CodeLedger(local log attribution) · New Relic Preflight(assistant observability) · AgentCostFirewall(loop block)와 달리 infrastructure gateway — OPENAI_BASE_URL=http://localhost:8787/v1 한 줄로 전체 agent stack에 budget gate.
+  points:
+  - Reverse proxy — zero code change, base URL override for any OpenAI/Anthropic SDK
+  - Pre-flight reject — block before API call if budget would exceed
+  - Multi-provider+MCP metering — Prometheus metrics, daily/monthly limits
+  source: https://github.com/WDZ-Dev/agent-ledger
+- category: ai
+  title: Prompt versioning platform — reaatech PVC eval-gated draft→staging→production
+  summary: reaatech/prompt-version-control(MIT monorepo)는 Git-like prompt versioning + eval-gated promotion platform — SHA-256 checksum·auto numbering·draft/staging/production tag lifecycle·A/B weighted traffic·sticky session·semantic diff·per-version cost/latency metrics. staging→production promotion blocked on eval harness fail. MCP server로 agent runtime에 managed prompt pull. promptdiff(CLI diff/eval) · promptctl(local git-like store) · Braintrust(eval CI)와 달리 self-hosted tag lifecycle+A/B serve+eval gate — SaaS 아닌 team-owned prompt registry.
+  points:
+  - Tag lifecycle — draft/staging/production, eval-gated promotion block
+  - A/B deployments — weighted traffic split, sticky session, semantic diff
+  - MCP pull — agents fetch managed prompts at runtime, Prometheus /metrics
+  source: https://github.com/reaatech/prompt-version-control
+- category: ai
+  title: Prompt versioning CLI — promptdiff eval·promptctl git-like store
+  summary: promptdiff(ManasVardhan/promptdiff·MIT)는 CLI-first prompt version control — numbered versions·line diff·Jaccard similarity·optional embedding·eval against test cases·changelog auto-gen·CI integration. promptctl(nayaai·single binary)는 git mental model — commit·colorized diff·rollback·`.promptctl/store.json` project-local·editor watch mode. reaatech PVC(platform eval gate) · Braintrust(SaaS eval)와 달리 developer-local CLI — prompt를 application code 밖 artifact로 version without hosted service.
+  points:
+  - promptdiff — version+diff+similarity+eval+changelog, Rich terminal output
+  - promptctl — git-like commit/diff/rollback, store.json walk-up discovery
+  - Local-first — no SaaS, team shares via git commit of store.json
+  source: https://github.com/ManasVardhan/promptdiff
+- category: ai
+  title: Code map MCP — mcp-codemap progressive disclosure·jonnonz1 cheap file select
+  summary: mcp-codemap(breca/mcp-codemap·MIT)는 tree-sitter AST index→SQLite `.codemap/graph.db`로 codebase mental map — map(progressive detail level)·query(entity deep dive+source)·reindex(git diff auto-detect). IDE foldable section처럼 LLM context bloat 방지. jonnonz1/codemap(Go)는 cheap model(Haiku/Flash)로 파일 one-line summary index→codemap_select가 task description에 relevant 5–10 files full source 반환 — exploration phase skip. trace-mcp(138 tools graph) · Aider repo map(tree-sitter ranking)와 달리 progressive structural map vs cheap-model file router 2축.
+  points:
+  - mcp-codemap — map/query/reindex, progressive disclosure, git diff auto-refresh
+  - jonnonz1 codemap — cheap model summary index, codemap_select one-shot context
+  - vs trace-mcp — structural fold vs framework graph, complementary not replacement
+  source: https://github.com/breca/mcp-codemap
+- category: ai
+  title: Warp Oz — multi-harness cloud control plane, Claude Code·Codex·Warp Agent
+  summary: Warp Oz(warp.dev/oz·2026 GA)는 cloud agent orchestration platform — Claude Code·Codex·Warp Agent를 unified control plane에서 launch·track·govern. multi-harness — harness+model 조합별 effectiveness compare·consistent audit·access control. automatic multi-agent orchestration — parent/child·parallel subagents·harness-agnostic mailbox(Codex parent→Claude child). Agent Memory cross-harness research preview. Conductor(mac local GUI) · Citadel(plugin harness) · Vibe Kanban(kanban)와 달리 cloud-first enterprise control plane — triggers(Slack·Linear·CI·API)·environments·secrets shared across harnesses.
+  points:
+  - Multi-harness — Claude Code·Codex·Warp Agent same triggers·env·observability
+  - Orchestration — parent/child parallel, harness-agnostic inter-agent mailbox
+  - Cloud infra — Docker/K8s sandbox, POST /agent/run API+Python/TS SDK
+  source: https://www.warp.dev/oz
+- category: ai
+  title: mcp-code-review — GitHub·GitLab·local diff MCP, 13-category engineering checklist
+  summary: mcp-code-review(mauriziomocci/mcp-code-review·MIT)는 MCP server로 GitHub PR·GitLab MR·local git diff·single file·project scan review — Ruff lint+Bandit security·`.codereview.yml` conventions·13-category professional checklist(SOLID·architecture·security·performance·concurrency·observability). review_github_pr·post_github_review·save_review_report·multi-language output(EN/IT/ES). Claude Code GitHub Action(@claude PR fix) · Copilot Code Review(AGENTS.md context) · Open Code Review(Alibaba CLI)와 달리 MCP-native structured checklist — any MCP client에서 PR URL 하나로 review+post.
+  points:
+  - 13-category checklist — SOLID·security·performance·concurrency·observability
+  - GitHub+GitLab+local diff — Ruff+Bandit static analysis, post review back
+  - .codereview.yml — project conventions, skill auto-orchestrates MCP tools
+  source: https://github.com/mauriziomocci/mcp-code-review
 - category: ai
   title: AI Coding Agent CI 보안 — tag pinning만으론 부족, 런타임 egress까지 본다
   summary: 'StepSecurity의 2026년 글은 Claude Code·Cursor·Codex·Gemini·Copilot 같은 AI coding agent가 개발자 머신, PR, GitHub Actions까지 이어지는 3단계 공격면을 만든다고 정리한다. 에이전트는 패키지를 설치하고, MCP 서버·IDE 확장에 연결하고, CI에서 GITHUB_TOKEN 권한으로 branch push·dependency install·GitHub API 호출까지 수행한다. 그래서 방어도 "생성 코드 스캔"만으로는 부족하다. GitHub 공식 Actions 보안 문서는 third-party action을 full-length commit SHA로 pinning하라고 권고하지만, 2026-06-24 compromised action 사례처럼 tag가 repoint되면 tag pin은 깨진다. 실전 교훈은 agent workflow를 privileged build system으로 보고, dependency cooldown/PR block, least-privilege GITHUB_TOKEN, full SHA pin, runner network egress policy, process/network attribution을 한 묶음으로 설계하는 것이다.'

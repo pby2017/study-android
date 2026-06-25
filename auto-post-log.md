@@ -3058,6 +3058,65 @@ Refined:
 누적: 776카드 (767→766 병합→776 신규)
 주제: sandbox infra tier(Blaxel·Sandcastle·mcp-sandboxd·Cloudflare·Sprites), agent orchestration(Taskmaster·ClawTeam·Citadel), regression testing(agentverify), graph memory(Cognee)
 
+## 2026-06-26 02:00 KST — Batch 48 (아이디어 검증 + 병합 3카드 + 신규 10카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Sandcastle · mcp-sandboxd → **MCP sandbox 실행 — Sandcastle tiered isolation·mcp-sandboxd persistent identifier** | Blaxel · Cloudflare · Fly.io Sprites |
+| ClawTeam → **Citadel — Claude/Codex orchestration harness, /do routing·ClawTeam-style fleet** | Agent Teams · Vibe Kanban |
+| agentverify → **Agent regression testing — EvalView trajectory diff·agentverify YAML cassette** | Iris eval MCP · DeepEval |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| CodeMCP Workflows | Spec Kit(SDD scaffold) · Superpowers(bundle) · Taskmaster(task graph)와 phase-aware TDD·V-model·EPCC process guidance 축 분리 |
+| memoryx | Cognee(graph 14 mode) · Mem0(vector hybrid)와 zero-dep extractive digest compression·no embedding 축 분리 |
+| Context Compression Engine | PreCompact hook(passive) · memoryx(memory layer)와 harness-side lossless message array compressor 축 분리 |
+| CodeLedger | ccusage(multi-CLI log) · Preflight(observability)와 per-agent·per-skill attribution Claude plugin 축 분리 |
+| AgentLedger | CodeLedger(local log) · Preflight(assistant MCP)와 reverse proxy budget gate·zero code change 축 분리 |
+| reaatech PVC | promptdiff(CLI) · Braintrust(SaaS)와 self-hosted eval-gated tag lifecycle+A/B serve 축 분리 |
+| promptdiff·promptctl | reaatech PVC(platform)와 developer-local git-like prompt store+eval CLI 축 분리(1카드 병합) |
+| mcp-codemap·jonnonz1 | trace-mcp(138 tool graph) · Aider repo map와 progressive structural map+cheap file select 2축 분리(1카드 병합) |
+| Warp Oz | Conductor(mac GUI) · Citadel(plugin) · Vibe Kanban(kanban)와 cloud multi-harness control plane 축 분리 |
+| mcp-code-review | Copilot Code Review · Claude GitHub Action · Open Code Review와 MCP-native 13-category checklist 축 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| crowd-mcp | CodeMCP crowd workflow · ClawTeam · Agent Teams multi-agent axis overlap |
+| mcp-ts-engineer | CodeMCP Workflows · existing TDD skill patterns overlap |
+| AgentMeter · AgentCostFirewall · Runcap | CodeLedger+AgentLedger 2카드로 cost axis 커버, gateway/firewall niche |
+| AyoubAchour/codemap | Cognee(graph memory) · trace-mcp(code intelligence) repo graph axis overlap |
+| prabhaharanv/mcp-code-review-agent | mcp-code-review(checklist MCP) · existing PR review cards overlap |
+| Focus agent paper | research architecture not shippable developer tool |
+| Batch 45·46·47 신규 30개 | 중복 회피 — browser·sandbox·eval·ClawTeam·agentverify 등 신규 재추가 금지(병합·확장만) |
+| Microsoft Agent Framework · Mastra | 기존 카드 존재, GA update는 별도 refinement |
+| Backlog.md · Taskmaster | 기존 카드 존재 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | CodeMCP Workflows — MCP로 TDD·V-model·EPCC 엔지니어링 프로세스 주입 | github.com/codemcp/workflows |
+| 2 | memoryx — embedding 없이 agent memory+auto compression, 78–84% 토큰 절약 | github.com/munesoft/memoryx |
+| 3 | Context Compression Engine — LLM 메시지 lossless round-trip deterministic 압축 | github.com/SimplyLiz/ContextCompressionEngine |
+| 4 | CodeLedger — Claude Code plugin, project·agent·skill별 토큰·비용 MCP 집계 | github.com/bhvbhushan/codeledger |
+| 5 | AgentLedger — reverse proxy로 LLM 호출 비용·budget을 코드 변경 없이 enforce | github.com/WDZ-Dev/agent-ledger |
+| 6 | Prompt versioning platform — reaatech PVC eval-gated draft→staging→production | github.com/reaatech/prompt-version-control |
+| 7 | Prompt versioning CLI — promptdiff eval·promptctl git-like store | github.com/ManasVardhan/promptdiff |
+| 8 | Code map MCP — mcp-codemap progressive disclosure·jonnonz1 cheap file select | github.com/breca/mcp-codemap |
+| 9 | Warp Oz — multi-harness cloud control plane, Claude Code·Codex·Warp Agent | warp.dev/oz |
+| 10 | mcp-code-review — GitHub·GitLab·local diff MCP, 13-category engineering checklist | github.com/mauriziomocci/mcp-code-review |
+
+누적: 784카드 (777→774 병합→784 신규)
+주제: engineering process MCP(CodeMCP), context/memory compression(memoryx·CCE), cost attribution+gateway(CodeLedger·AgentLedger), prompt versioning(PVC·promptdiff/promptctl), codebase navigation(mcp-codemap), cloud orchestration(Warp Oz), PR review MCP(mcp-code-review)
+
 ## 2026-06-25 20:43 KST — Local AI card routine
 
 - Published: `AI Coding Agent CI 보안 — tag pinning만으론 부족, 런타임 egress까지 본다`
