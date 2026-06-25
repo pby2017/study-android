@@ -1243,13 +1243,13 @@ cards:
   source: https://github.com/simstudioai/sim
 - category: ai
   title: Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트
-  summary: 'Seer(옛 Autofix)는 Sentry가 만든 AI 디버깅 에이전트로, 스택트레이스를 챗봇에 붙여넣는 대신 Sentry가 이미 수집한 에러·트레이스·로그·커밋 같은 프로덕션 컨텍스트 위에서 직접 추론해 근본원인을 짚는다. 2026-01-27 발표로 활동 범위가 프로덕션을 넘어 로컬 개발과 코드리뷰까지 확장됐고, 로컬에서는 Sentry MCP 서버를 통해 코딩 에이전트에 붙는다. 핵심은 정적 코드 분석만으로는 안 잡히는 런타임·분산 시스템 버그까지 실제 운영 데이터로 좁힌다는 점이다. 요금은 기여자(active contributor) 1명당 월 $40 무제한 정액제다.
+  summary: 'Seer는 Sentry의 AI 디버깅 에이전트다. 스택트레이스를 챗봇에 붙여넣는 대신, Sentry가 이미 수집한 에러·트레이스·로그·메트릭·소스코드를 합쳐 "어디서 터졌나"보다 "왜 터졌나"를 추론한다. 2026-01-27 발표로 범위가 프로덕션 RCA에서 로컬 개발과 코드리뷰까지 넓어졌다. 로컬에서는 Sentry MCP 서버가 재현 중 생긴 텔레메트리를 보내고, Seer가 원인 분석 결과를 Claude·Cursor·Copilot 같은 코딩 에이전트의 수정 컨텍스트로 넘긴다. PR에서는 스타일 지적보다 배포 뒤 장애가 될 가능성이 큰 결함을 찾는다. 교훈은 AI 디버깅을 코드 정적 분석만으로 보지 말고, 런타임 텔레메트리와 PR 컨텍스트를 같은 루프에 묶어야 한다는 점이다. 요금은 Seer 연결 저장소에서 월 2개 이상 PR을 만든 active contributor 기준 $40/월이다.
 
     '
   points:
-  - 스택트레이스 붙여넣기 대신 Sentry의 프로덕션 텔레메트리(에러·트레이스·로그·커밋) 위에서 근본원인 추론
-  - 근본원인 분석을 Claude·Cursor·GitHub Copilot 에이전트에 넘겨 자동으로 수정·PR 생성(공식 통합)
-  - 프로덕션·로컬(Sentry MCP)·코드리뷰 3면 커버, 요금은 활동 기여자당 월 $40 무제한 정액
+  - 런타임 텔레메트리(에러·트레이스·로그·메트릭) + 소스코드로 정적 분석이 놓치는 분산·부하·프로덕션 버그 RCA
+  - 로컬 재현은 Sentry MCP 서버로 코딩 에이전트에 연결, PR에서는 장애 가능성이 큰 결함 중심 리뷰
+  - 요금은 Seer-connected repo에서 월 2개 이상 PR을 만든 active contributor당 $40/월, Seer 사용량은 PAYG와 별도
   source: https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent
 - category: ai
   title: Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트
@@ -6844,3 +6844,11 @@ cards:
   - '인증은 Bedrock API key 또는 AWS SDK credential chain — ChatGPT 로그인/OPENAI_API_KEY 아님'
   - '제약: commercial region Mantle path, Fast Mode와 일부 cloud-managed 기능 미지원'
   source: https://developers.openai.com/codex/amazon-bedrock
+- category: ai
+  title: Jules Eval — proactive coding agent는 '작업 완료'가 아니라 insight policy로 잰다
+  summary: 'Google Labs의 2026-06-22 Jules 평가 글은 코딩 에이전트가 "요청받은 버그를 고쳤나"에서 "묻기 전에 중요한 신호를 찾았나"로 이동할 때 평가도 바뀌어야 한다고 주장한다. SWE-bench류는 좁은 태스크 완료를 재지만, proactive agent는 무엇이 중요한지, 근거가 충분한지, 개발자를 방해할지 말지를 고르는 insight policy를 봐야 한다. Google은 내부 코드베이스의 705개 버그와 1,178개 CL을 묶어 시간적으로 가깝고 의미적으로 유사한 버그 클러스터를 만들고, 각 클러스터를 상위 목표의 ground truth로 삼았다. 에이전트는 pre-fix 상태 코드베이스를 최대 3라운드 탐색한 뒤 insight를 내고, LLM judge가 1~5점과 Hit@K로 채점했다. 한 라운드에서도 평균 4.5/5 신호를 잡았지만, 복잡한 문제는 탐색 예산을 2→3라운드로 늘리자 Hit@5가 33%→57%로 회복됐다. 교훈은 장기 에이전트 평가에서 시간·컨텍스트·탐색 예산을 빼면 실제 개발 가치가 보이지 않는다는 점이다.'
+  points:
+  - 평가 대상은 자율성 자체가 아니라 무엇을 보고·알리고·묻고·침묵할지 고르는 insight policy
+  - 705 bugs·1,178 CL로 관련 버그 클러스터를 만들고 pre-fix 상태에서 proactive insight를 채점
+  - 탐색 예산 2→3라운드에서 Hit@5 33%→57% — 긴 작업은 추가 조사 예산을 평가 변수로 둬야 함
+  source: https://developers.googleblog.com/measuring-what-matters-with-jules/

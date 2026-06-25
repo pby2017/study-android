@@ -2620,3 +2620,12 @@ Refined:
 - Refined: `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)`
 - Refined sources re-checked: https://github.com/simstudioai/sim and https://api.github.com/repos/simstudioai/sim
 - Rejected: Google Tensor SDK Beta with LiteRT, ADK for Kotlin/Android, Gemma 4/LiteRT-LM/AI Edge Gallery updates, and Samsung Codex deployment as duplicates of existing cards or recent routine coverage.
+
+## 2026-06-25 14:29 KST — Local AI card routine
+
+- Published: `Jules Eval — proactive coding agent는 '작업 완료'가 아니라 insight policy로 잰다`
+- Source: https://developers.googleblog.com/measuring-what-matters-with-jules/
+- Supporting source: https://arxiv.org/abs/2605.06717
+- Refined: `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트`
+- Refined sources re-checked: https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent/ and https://docs.sentry.io/pricing/
+- Rejected: Codex role-specific plugins/Sites/annotations as duplicate; GitHub Copilot app/code review/Agents window updates as duplicate or overlap; Android AI Edge/LiteRT/ADK/Gemma updates as duplicate or below threshold; pure Android topics as out of scope.
