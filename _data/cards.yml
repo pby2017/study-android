@@ -1223,14 +1223,14 @@ cards:
   source: https://getdx.com/blog/ai-tooling-benchmarks-pr-throughput-and-usage-by-tool/
 - category: ai
   title: Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지
-  summary: 'Affaan Mustafa가 만든 ECC는 코딩 에이전트용 설정·자산을 한 레포에 모은 MIT 라이선스 프로젝트로, GitHub 스타 200k 이상을 주장하는 최상위 인기 저장소다. 약 67개 서브에이전트, 260여 개 스킬, 80여 개 슬래시 커맨드 호환 심(shim), 훅·MCP 설정을 담고 있고 Claude Code뿐 아니라 Codex·Cursor· OpenCode·Gemini·Zed·Copilot 등 여러 하네스에 걸쳐 동작한다고 명시한다(하네스별 자산 수는 다름). 특히 AgentShield라는 보안 감사 도구가 함께 들어 있어 CLAUDE.md·settings.json·MCP 설정·훅·에이전트 정의·스킬을 정적 분석해 비밀키 노출·권한·훅 인젝션 위험 등을 등급(A~F)으로 리포트한다. 단, README 자체가 섹션마다 수치(에이전트·스킬 개수)가 달라 정확한 숫자는 ''대략''으로 받아들이는 게 안전하다.
+  summary: 'Affaan Mustafa의 ECC는 "Claude Code 설정 모음"에서 크로스하네스 에이전트 운영 시스템으로 확장된 MIT 프로젝트다. 2026-06-25 같은 런에서 GitHub API 기준 221,207★·33,877 forks·archived=false를 확인했고, README는 Codex·Claude Code·Cursor·OpenCode·Gemini·Zed·Copilot을 지원한다고 설명한다. v2.0.0은 261개 skills, control-pane substrate, worktree lifecycle service, `orch-*` orchestrator 계열을 내세우고, RC 문서에는 66 agents·268 skills·84 legacy command shims 같은 설치 표면 수가 별도로 나온다. 실무 포인트는 숫자를 그대로 베끼는 게 아니라, 플러그인·수동 설치·rules 복사 경로를 섞으면 중복 동작이 생긴다는 README 경고처럼 "에이전트 자산 배포"도 설치 상태와 권한 경계를 관리해야 한다는 점이다. AgentShield는 별도 CLI/GitHub Action/App로 `.claude/` 설정의 secret, permission, hook, MCP, agent prompt injection 위험을 A~F 리포트와 JSON/HTML/evidence pack으로 감사한다.
 
     '
   points:
-  - 'MIT·크로스하네스: Claude Code/Codex/Cursor/OpenCode/Gemini/Zed/Copilot 지원, 자산 수는 하네스별로 다름'
-  - '구성(README 기준 대략): 서브에이전트 ~67개, 스킬 260여 개, 슬래시 커맨드 심 80여 개 + 훅·MCP 설정'
-  - 'AgentShield: 설정·훅·MCP를 정적 분석(102개 룰·비밀키 14패턴), A~F 등급 리포트·critical 시 exit 2'
-  source: https://github.com/affaan-m/everything-claude-code
+  - '같은 런 검증: 221,207★·33,877 forks·MIT·archived=false'
+  - 'v2.0.0: 261 skills, control pane, worktree lifecycle, `orch-*` orchestration'
+  - 'AgentShield: CLI/Action/App로 secrets·permissions·hooks·MCP·agent prompts 감사'
+  source: https://github.com/affaan-m/ECC
 - category: ai
   title: Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(simstudioai·28.8k★)
   summary: 'Sim(simstudioai/sim)은 팀이 AI 에이전트를 만들고 배포·운영하는 Apache-2.0 오픈소스 워크스페이스로, README 기준 GitHub 스타 28.8k·포크 3.7k를 보인다. "Build, deploy, and orchestrate AI agents"를 내걸고 대화(Chat)·블록 단위 비주얼 캔버스(Workflow builder)·코드 세 방식으로 에이전트를 구성하게 한다. RAG용 지식베이스, 내장 DB격 Tables, 프롬프트로 파일·문서 생성 같은 기능을 갖췄고 1,000개 이상의 통합을 연결한다고 명시한다. 로컬 실행은 Docker가 깔린 상태에서 `npx simstudio`(http://localhost:3000) 한 줄이면 되고, Ollama·vLLM로 로컬 모델도 붙일 수 있어(docker-compose.ollama.yml) 데이터를 밖으로 안 내보내고 self-host 할 수 있다. (스타·통합 수는 README가 주장하는 수치다.)
@@ -6828,3 +6828,11 @@ cards:
   - tool_call_id propagate — OpenInference result correlation
   - subagent spawn parent context inherit — orphan trace 방지
   source: https://zylos.ai/research/2026-02-28-opentelemetry-ai-agent-observability/
+- category: ai
+  title: ADK+A2A Cross-Language Agents — LLM은 모호함, Go는 정책 검증
+  summary: 'Google Developers Blog의 2026-06-22 튜토리얼은 Python ADK 에이전트와 Go A2A 서비스를 하나의 계약 컴플라이언스 파이프라인으로 묶는다. Python 쪽은 Gemini/ADK로 계약 내용을 추출하고, Go 쪽은 LLM 없이 HTTP+JSON-RPC A2A 서비스로 결정론적 정책 검증을 수행한다. 연결점은 A2A Agent Card(`/.well-known/agent.json`)와 ADK의 `RemoteA2aAgent`다. ADK는 원격 A2A 서비스를 로컬 sub-agent처럼 감싸고, `ToolContext.state`에 INGESTED·EXTRACTED·COMPLIANCE_PENDING·MANUAL_REVIEW 같은 체크포인트를 남긴다. 교훈은 멀티에이전트가 프롬프트 체인이 아니라 분산 시스템 설계라는 점이다. 애매한 추출은 LLM에게, 감사 가능한 정책 판정은 반복 가능한 코드에게 맡기면 언어·팀·배포 경계를 넘으면서도 테스트와 장애 대응이 쉬워진다.'
+  points:
+  - 'A2A Agent Card + JSON-RPC로 Python 에이전트와 Go 검증 서비스를 연결'
+  - '`RemoteA2aAgent`가 원격 A2A 서비스를 ADK sub-agent처럼 래핑'
+  - '장애 시 MANUAL_REVIEW 체크포인트로 전환 — 단일 거대 프롬프트보다 감사·복구 쉬움'
+  source: https://developers.googleblog.com/build-cross-language-multi-agent-team-with-google-agent-development-kit-and-a2a/

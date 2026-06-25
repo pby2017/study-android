@@ -2602,3 +2602,12 @@ Refined:
 
 누적: 730카드 (721→720 병합→730 신규)
 주제: LLM API engineering(idempotency·webhook·REST/GraphQL tier), developer docs(Fern/Mintlify/ReadMe), testing(mock·VCR cassette), observability(structured log·PII-safe·correlation·debug ladder)
+
+## 2026-06-25 10:21 KST — Local AI card routine
+
+- Published: `ADK+A2A Cross-Language Agents — LLM은 모호함, Go는 정책 검증`
+- Source: https://developers.googleblog.com/build-cross-language-multi-agent-team-with-google-agent-development-kit-and-a2a/
+- Supporting source: https://github.com/GoogleCloudPlatform/generative-ai/tree/main/agents/adk/contract-compliance-pipeline
+- Refined: `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지`
+- Refined sources re-checked: https://github.com/affaan-m/ECC and https://github.com/affaan-m/agentshield
+- Rejected: Copilot Free/Student auto model selection as duplicate of Copilot Auto Mode; Claude Tag as duplicate; GitHub Agent Finder/ARD as duplicate; broad ADK/Android AI candidates as duplicate or below threshold.
