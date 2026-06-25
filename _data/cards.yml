@@ -1232,14 +1232,14 @@ cards:
   - 'AgentShield: CLI/Action/App로 secrets·permissions·hooks·MCP·agent prompts 감사'
   source: https://github.com/affaan-m/ECC
 - category: ai
-  title: Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(simstudioai·28.8k★)
-  summary: 'Sim(simstudioai/sim)은 팀이 AI 에이전트를 만들고 배포·운영하는 Apache-2.0 오픈소스 워크스페이스로, README 기준 GitHub 스타 28.8k·포크 3.7k를 보인다. "Build, deploy, and orchestrate AI agents"를 내걸고 대화(Chat)·블록 단위 비주얼 캔버스(Workflow builder)·코드 세 방식으로 에이전트를 구성하게 한다. RAG용 지식베이스, 내장 DB격 Tables, 프롬프트로 파일·문서 생성 같은 기능을 갖췄고 1,000개 이상의 통합을 연결한다고 명시한다. 로컬 실행은 Docker가 깔린 상태에서 `npx simstudio`(http://localhost:3000) 한 줄이면 되고, Ollama·vLLM로 로컬 모델도 붙일 수 있어(docker-compose.ollama.yml) 데이터를 밖으로 안 내보내고 self-host 할 수 있다. (스타·통합 수는 README가 주장하는 수치다.)
+  title: Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)
+  summary: 'Sim(simstudioai/sim)은 팀이 AI 에이전트를 만들고 배포·운영하는 Apache-2.0 오픈소스 워크스페이스다. 2026-06-25 GitHub API 기준 28,859★·3,674 forks·archived=false이고, README는 "Build conversationally, visually, or with code"를 핵심 흐름으로 설명한다. 대화형 Chat은 워크스페이스를 이해한 뒤 에이전트를 만들고 실행하며, Workflow builder는 블록 캔버스에서 자연어로 블록 생성·변수 연결·오류 수정을 돕는다. 문서/보고서 생성, RAG 지식베이스, 내장 Tables, 1,000개 이상 통합도 같은 워크스페이스에 묶인다. 실무 포인트는 low-code 도구를 "간단한 챗봇 빌더"로만 보지 말고, Chat·캔버스·코드·DB·RAG·실행 환경을 한 팀 작업대로 묶을 때 어떤 권한과 운영 경계가 필요한지 보는 것이다. 로컬 실행은 Docker 기반 `npx simstudio`, 더 깊은 self-host는 PostgreSQL+pgvector와 Bun/Next.js 스택을 요구한다.
 
     '
   points:
-  - Apache-2.0 오픈소스, 28.8k★(README 기준) — 에이전트 빌드·배포·오케스트레이션 워크스페이스
-  - '구성 3방식: 대화형 Chat·블록 비주얼 캔버스·코드 / RAG 지식베이스·Tables·1,000+ 통합'
-  - '로컬: Docker 위 `npx simstudio`로 :3000 / Ollama·vLLM로 로컬 모델 self-host 가능'
+  - '같은 런 검증: 28,859★·3,674 forks·Apache-2.0·archived=false'
+  - '구성 3방식: Chat·블록 Workflow builder·코드 / RAG 지식베이스·Tables·문서 생성'
+  - 'self-host: `npx simstudio` 빠른 실행, 고급 구성은 PostgreSQL+pgvector·Bun·Next.js'
   source: https://github.com/simstudioai/sim
 - category: ai
   title: Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트
@@ -6836,3 +6836,11 @@ cards:
   - '`RemoteA2aAgent`가 원격 A2A 서비스를 ADK sub-agent처럼 래핑'
   - '장애 시 MANUAL_REVIEW 체크포인트로 전환 — 단일 거대 프롬프트보다 감사·복구 쉬움'
   source: https://developers.googleblog.com/build-cross-language-multi-agent-team-with-google-agent-development-kit-and-a2a/
+- category: ai
+  title: Codex on Amazon Bedrock — OPENAI_API_KEY 없이 AWS 경계 안에서 쓰기
+  summary: 'OpenAI는 2026-06-01 OpenAI frontier models와 Codex가 AWS에서 generally available이라고 발표했다. 핵심은 "Codex가 AWS에도 있다"가 아니라 provider path가 바뀐다는 점이다. OpenAI 개발자 문서에 따르면 Codex를 `amazon-bedrock` provider로 설정하면 OpenAI-hosted Responses API가 요청 경로에 없고, Codex가 Amazon Bedrock의 OpenAI-compatible Responses API 구현으로 모델 요청을 보낸다. 인증도 ChatGPT 로그인이나 `OPENAI_API_KEY`가 아니라 Bedrock API key 또는 AWS SDK credential chain(IAM, SSO, federated identity 등)을 쓴다. 그래서 이미 AWS로 보안·조달·감사·리전 관리를 하는 조직은 코딩 에이전트를 별도 SaaS 예외로 두지 않고 기존 클라우드 통제면 안에 넣을 수 있다. 단, 초기 구성은 commercial region의 Bedrock Mantle path만 다루며 GovCloud Mantle endpoint, Fast Mode, 일부 OpenAI-hosted cloud 기능은 지원되지 않는다.'
+  points:
+  - '`model_provider = "amazon-bedrock"` 설정 시 OpenAI-hosted Responses API가 요청 경로에서 빠짐'
+  - '인증은 Bedrock API key 또는 AWS SDK credential chain — ChatGPT 로그인/OPENAI_API_KEY 아님'
+  - '제약: commercial region Mantle path, Fast Mode와 일부 cloud-managed 기능 미지원'
+  source: https://developers.openai.com/codex/amazon-bedrock

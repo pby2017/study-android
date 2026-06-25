@@ -2611,3 +2611,12 @@ Refined:
 - Refined: `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지`
 - Refined sources re-checked: https://github.com/affaan-m/ECC and https://github.com/affaan-m/agentshield
 - Rejected: Copilot Free/Student auto model selection as duplicate of Copilot Auto Mode; Claude Tag as duplicate; GitHub Agent Finder/ARD as duplicate; broad ADK/Android AI candidates as duplicate or below threshold.
+
+## 2026-06-25 12:26 KST — Local AI card routine
+
+- Published: `Codex on Amazon Bedrock — OPENAI_API_KEY 없이 AWS 경계 안에서 쓰기`
+- Source: https://developers.openai.com/codex/amazon-bedrock
+- Supporting sources: https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws/ and https://aws.amazon.com/bedrock/openai/
+- Refined: `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)`
+- Refined sources re-checked: https://github.com/simstudioai/sim and https://api.github.com/repos/simstudioai/sim
+- Rejected: Google Tensor SDK Beta with LiteRT, ADK for Kotlin/Android, Gemma 4/LiteRT-LM/AI Edge Gallery updates, and Samsung Codex deployment as duplicates of existing cards or recent routine coverage.

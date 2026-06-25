@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지`; next oldest reviewed candidate is `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(simstudioai·28.8k★)`.
+Current position: continue after `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)`; next oldest reviewed candidate is `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트`.
 
-Last update: 2026-06-25 10:21 KST
+Last update: 2026-06-25 12:26 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -41,6 +41,7 @@ Reviewed:
 - `Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트`
 - `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다`
 - `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지`
+- `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -74,6 +75,7 @@ Refined:
 - `Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트` — re-checked the LangChain launch post, GitHub repo, and GitHub API metrics, then clarified GitHub-native tracking issues, human-in-loop planning, double texting, Daytona sandboxing, LangGraph Platform persistence/autoscaling, Reviewer gate, and live popularity/license signal.
 - `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다` — re-checked the DX Q1 2026 benchmark, preserved the PR-throughput claims, clarified adoption metrics as usage-frequency signals rather than direct productivity proof, and added the daily/weekly/monthly adoption patterns from the same source.
 - `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지` — re-checked the current ECC README, AgentShield README, and GitHub API metrics; refreshed live stars/forks/license/archive state, updated the repository source URL, clarified ECC v2.0.0 operational surface and install-path caveat, and reframed the lesson around managing agent-asset install state and permission boundaries rather than copying approximate asset counts.
+- `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)` — re-checked the current README plus GitHub API metrics, refreshed live stars/forks/license/archive state, clarified Chat/Workflow builder/code, knowledge base, Tables, document generation, self-hosting requirements, and reframed the lesson around team workspace and operations boundaries rather than only low-code setup.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -81,7 +83,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(simstudioai·28.8k★)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
