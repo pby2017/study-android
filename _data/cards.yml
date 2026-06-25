@@ -3360,15 +3360,13 @@ cards:
   - 기록은 기본 비공개, 필요할 때 view-only 공유로 팀 맥락 제공
   source: https://github.blog/changelog/2026-06-02-gain-insights-across-your-agent-sessions-with-chronicle/
 - category: ai
-  title: Copilot BYOK 모델 — 기업 모델 정책을 CLI의 /model 선택지로 내리기
-  summary: 'GitHub은 2026년 6월 17일 Copilot CLI가 enterprise bring your own key 모델을 지원한다고 발표했다. 관리자가 외부 제공자 모델을 설정하면 개발자는 CLI의 `/model` picker에서 해당 모델을 고를 수 있고, 별도로 개인 사용자는 클라이언트 쪽에서 로컬 모델이나 외부 모델도 구성할 수 있다. 중요한 변화는 모델 선택이 개인 취향 프롬프트가 아니라 기업 정책·키 관리·비용 구조와 연결된 실행 옵션이 된다는 점이다. 에이전트 운영에서는 모델명을 문서에 박아두기보다, 허용 모델 목록과 업무별 선택 기준을 관리 표면에서 내려보내고 감사 가능한 방식으로 쓰게 해야 한다.
-
-    '
+  title: Copilot BYOK — CLI·Copilot app enterprise BYOK·LM Studio·Ollama
+  summary: 'GitHub Copilot BYOK(2026-06) — enterprise admin이 외부 LLM을 등록하면 Copilot CLI `/model` picker와 Copilot app(2026-06-23 GA)에서 동일 모델 선택. 지원: OpenAI·Azure OpenAI·Microsoft Foundry·Anthropic·LM Studio·Ollama·OpenAI-compatible endpoint. CLI(6/17)와 app(6/23) 양쪽 — 터미널 agent와 데스크톱 Copilot app이 같은 기업 모델 정책 공유. 개인 사용자는 클라이언트 로컬·외부 모델도 구성 가능. LiteLLM(gateway) ·OpenRouter(400+ model)와 달리 Copilot-native — AI credits·usage metrics API와 같은 billing surface.'
   points:
-  - enterprise admin이 설정한 외부 제공자 모델이 Copilot CLI `/model` picker에 노출
-  - 개인 사용자는 클라이언트 쪽 로컬 모델·외부 모델도 구성 가능
-  - 모델 선택을 프롬프트 상수가 아니라 정책·키·비용 관리 대상으로 다뤄야 함
-  source: https://github.blog/changelog/2026-06-17-copilot-cli-supports-enterprise-bring-your-own-key-byok-models/
+  - CLI /model picker(6/17) + Copilot app BYOK(6/23) — unified enterprise model policy
+  - OpenAI·Azure·Foundry·Anthropic·LM Studio·Ollama·compatible endpoints
+  - Model choice = governance not prompt constant — audit via usage metrics API
+  source: https://github.blog/changelog/2026-06-23-github-copilot-app-support-for-byok
 - category: ai
   title: Copilot Bypass Controls — yolo 모드를 조직 정책으로 끄기
   summary: 'GitHub은 enterprise-managed settings에 첫 governance capability로 `disableBypassPermissionsMode`를 추가했다. 관리자가 enterprise-managed `settings.json`에 이 값을 `disable`로 두면 Copilot CLI와 VS Code가 permission prompt를 자동으로 건너뛰는 auto-approve, 이른바 yolo mode를 막을 수 있다. 설정은 `.github-private` 기반 관리 저장소에서 배포되고, VS Code 1.122 이상은 해당 정책을 따른다. 개발팀 관점의 핵심은 에이전트 속도보다 실행 권한 경계를 먼저 표준화하는 것이다. 자동 명령 승인은 개인 편의 기능이 아니라 보안·감사 정책으로 통제해야 할 운영 리스크다.
@@ -3803,15 +3801,13 @@ cards:
   - '프롬프터블: 클릭·박스·마스크 입력'
   source: https://github.com/facebookresearch/SAM2
 - category: ai
-  title: Stagehand — 코드+AI 하이브리드 브라우저 자동화, act·extract·observe 프리미티브(MIT·~23k★)
-  summary: 'Stagehand는 Browserbase가 만든 오픈소스 브라우저 자동화 프레임워크다. Playwright 기반 결정론적 코드와 AI 자연어 명령을 결합해 안정적인 프로덕션 자동화를 구현. act(동작)·extract(추출)·observe(관찰)· agent(자율) 4가지 프리미티브. 성공한 AI 액션을 자동 캐싱해 후속 실행은 LLM 추론 없이 네이티브 속도. 사이트 변경 시에만 AI가 개입하는 self-healing. TypeScript+Python SDK. MIT 라이선스.
-
-    '
+  title: Stagehand v3 — hybrid CUA+DOM agent·Browserbase MCP Streamable HTTP
+  summary: 'Stagehand(browserbase/stagehand·MIT·~23k★·v3.6)는 Playwright+AI 하이브리드 브라우저 자동화 SDK. v3 agent() 3 mode — DOM(text tool call) ·CUA(coordinate Computer Use) ·Hybrid(both). act/extract/observe atomic + agent() multi-step with step cache(cache hit→no LLM). Browserbase MCP Server — hosted Streamable HTTP(권장) or local STDIO, natural language browser control for coding agents. Browser Use(CDP library) ·Playwright MCP(a11y tree) ·agent-browser(CLI wrapper)와 달리 code+NL hybrid with self-healing cache.'
   points:
-  - '하이브리드: Playwright(결정론적) + AI(동적) 결합'
-  - '자동 캐싱: 성공 액션 저장, 반복 시 LLM 없이 실행'
-  - '4 프리미티브: act·extract·observe·agent'
-  source: https://github.com/browserbase/stagehand
+  - v3 agent() — DOM·CUA·Hybrid modes ·custom tool injection
+  - Step cache — successful actions replay without LLM re-call
+  - Browserbase MCP Streamable HTTP — hosted browser for Claude/Cline agents
+  source: https://docs.stagehand.dev/v3/basics/agent
 - category: ai
   title: Jina Reranker v3 — 리스트와이즈 아키텍처로 64문서 동시 스코어링, 131k 토큰·nDCG@10 61.94(CC-BY-NC)
   summary: 'Jina Reranker v3은 0.6B 파라미터 리스트와이즈 리랭커다. 기존 크로스인코더가 쿼리-문서 쌍을 하나씩 처리하는 것과 달리, 최대 64개 문서를 131,000 토큰 윈도우에서 동시에 스코어링. BEIR nDCG@10 61.94로 오픈 모델 중 최고 점수. RAG 파이프라인에서 벡터 검색 후 2단계 리랭킹으로 precision@5를 10~30% 향상. TEI(Text Embeddings Inference)로 배포. CC-BY-NC 4.0 라이선스(상업용은 별도 계약).
@@ -3833,15 +3829,13 @@ cards:
   - 'point-in-time 조인: 학습 시 정확한 시점 데이터 보장'
   source: https://dev.to/gowthampotureddi/feature-stores-compared-feast-vs-tecton-vs-hopsworks-for-production-ml-4ep0
 - category: ai
-  title: OpenCode — 75+ LLM 프로바이더 지원 오픈소스 코딩 에이전트, MIT 라이선스·176k★(터미널 네이티브)
-  summary: 'OpenCode는 SST 팀이 만든 오픈소스 터미널 네이티브 코딩 에이전트다. Go로 작성, Bubble Tea 기반 리치 터미널 UI. 75개 이상 LLM 프로바이더(OpenAI·Anthropic·Google·Ollama 로컬 등) 지원으로 완전한 모델 선택 자유. MIT 라이선스, 176k+ GitHub 스타로 오픈소스 코딩 에이전트 중 가장 많은 스타. Claude Code (프로프라이어터리)·Codex CLI 대비 벤더 종속 없이 모든 모델 사용 가능.
-
-    '
+  title: OpenCode(anomalyco) — Models.dev 75+ 프로바이더·Mission Control TUI·~179k★
+  summary: 'OpenCode(anomalyco/opencode·MIT·~179k★)는 터미널 네이티브 오픈소스 코딩 에이전트 — 2026년 repo가 sst/opencode에서 anomalyco/opencode로 이전·TypeScript TUI. Models.dev 카탈로그로 75+ LLM 프로바이더(OpenAI·Anthropic·Google·Bedrock·Vertex·Ollama·ChatGPT Plus·GitHub Copilot 구독 재사용) hot-swap. Mission Control TUI — 멀티파일 agent task를 단일 pane에서 시각 관리. honor agent step limits·Copilot custom headers·Devstral model detection 등 v1.17.x active release. Goose(AAIF·범용 agent) ·OpenHands(Docker sandbox)와 달리 provider breadth+TUI-first coding agent.'
   points:
-  - '75+ 프로바이더: OpenAI·Anthropic·Google·Ollama 등'
-  - 'MIT·176k★: 오픈소스 코딩 에이전트 최다 스타'
-  - '터미널 네이티브: Go + Bubble Tea 리치 TUI'
-  source: https://mightybot.ai/blog/coding-ai-agents-for-accelerating-engineering-workflows/
+  - anomalyco/opencode ·MIT ·~179k★ ·Models.dev provider catalog
+  - Mission Control TUI — multi-file task organizer in terminal
+  - ChatGPT/Copilot subscription reuse ·75+ provider config-only switch
+  source: https://github.com/anomalyco/opencode
 - category: ai
   title: SGLang — 멀티턴·구조화 출력 특화 LLM 서빙, RadixAttention으로 공유 프리픽스 캐싱(vLLM 대비 29%↑)
   summary: 'SGLang은 멀티턴 대화·RAG·에이전트 워크플로우에 특화된 LLM 추론 엔진이다. RadixAttention으로 요청 간 공유 프리픽스를 Radix 트리에 캐싱해 중복 연산을 제거. H100에서 Llama 8B 기준 ~16,200 tok/s (vLLM 대비 29% 높은 처리량). 구조화 출력(JSON/Grammar) 생성 시 오버랩 마스크 생성으로 추가 속도 향상. Multi-LoRA 네이티브 스케줄링. 분리형 서빙(disaggregated) 프로덕션 사례 다수.
@@ -7816,3 +7810,67 @@ cards:
   - Rules path-scoped — medium cost, re-inject on compact
   - Anti-pattern — long runbook in CLAUDE.md, belongs in skill
   source: https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more
+- category: ai
+  title: SWE-Atlas — Codebase QnA·Test Writing·Refactoring 284 rubric task
+  summary: 'SWE-Atlas(Scale AI·arXiv 2605.08366·scaleapi/SWE-Atlas)는 bug-fix 벤치마크를 넘어 3 professional SE workflow를 재는 suite — Codebase QnA(124)·Test Writing(90)·Refactoring(70) = 284 expert task. sandboxed real repo·Harbor scaffold·programmatic check + expert rubric — functional correctness만이 아니라 test completeness·maintainability·hygiene까지. GPT-5.4·Opus 4.7 top but open-weight poor; native harness(Claude Code·Codex CLI)가 generic harness 대비 1.5–2× exploration→score↑. DeepSWE(long-horizon) ·FrontierCode(mergeability) ·AA Index v1.1(SWE-Atlas-QnA composite)와 축 분리 — investigative·maintenance workflow.'
+  points:
+  - 284 tasks 3 leaderboards — QnA·Test Writing·Refactoring rubric eval
+  - Harbor scaffold + vendor-native harness comparison built-in
+  - Beyond bug-fix — runtime analysis·coverage·refactor behavior preservation
+  source: https://scale.com/blog/swe-atlas-complete
+- category: ai
+  title: Harbor — Terminal-Bench 공식 harness·50+ benchmark adapter
+  summary: 'Harbor(harbor-framework/harbor·~2.7k★·v0.15)는 Terminal-Bench 제작팀의 agent eval framework — agent·dataset·environment provider를 common interface로 표준화. harbor run -d terminal-bench@2.0 -a claude-code -m anthropic/claude-opus-4-8 --n-concurrent 100 --env daytona. 50+ adapters(SWE-bench·Aider Polyglot·BFCL·MLGym 등)·installed agents(claude-code·codex·openhands·goose·opencode·mini-swe-agent·terminus-2). SWE-Atlas·Terminal-Bench 2.1 card가 score를 말하면 Harbor는 ''같은 benchmark를 어떻게 공정히 돌리나'' infra. promptfoo(red team) ·mcp-eval(MCP)와 축 분리.'
+  points:
+  - Terminal-Bench official harness — agent black-box + declarative benchmark
+  - Parallel via Daytona·Modal·LangSmith·Blaxel sandbox providers
+  - terminus/terminus-2 built-in — harness gap measurement native
+  source: https://github.com/harbor-framework/harbor
+- category: ai
+  title: Devstral 2 / Mistral Vibe CLI — 123B·72.2% SWE-bench·vibe-acp ACP
+  summary: 'Devstral 2(Mistral·2025-12) — 123B dense·256K ctx·72.2% SWE-bench Verified open SOTA; Devstral Small 2(24B·Apache-2.0·68.0%) local deploy+multimodal. Mistral Vibe CLI(mistralai/mistral-vibe·Apache-2.0·~4.6k★) — Devstral-native terminal agent, file edit·shell·todo·auto-approve toggle. vibe-acp ACP server — Zed extension·JetBrains AI Assistant·avante.nvim integration. North Mini Code(30B sovereign) ·GLM-5.2(MIT 753B) ·MiniMax M3(428B multimodal)와 open-weight coding 4축 — Mistral=Devstral+Vibe ACP stack.'
+  points:
+  - Devstral 2 123B modified MIT ·Small 2 24B Apache-2.0 ·256K ctx
+  - Vibe CLI — terminal agent + config.toml provider/tool permissions
+  - vibe-acp — ACP for Zed·JetBrains·Neovim without IDE lock-in
+  source: https://mistral.ai/news/devstral-2-vibe-cli
+- category: ai
+  title: Claude Code Remote Control — local session·phone/browser steer
+  summary: 'Claude Code Remote Control(research preview·v2.1.51+) — claude.ai/code·Claude mobile app이 로컬 machine의 running CLI/VS Code session에 연결. Claude Code on the web(Anthropic cloud VM)와 달리 execution은 local — MCP·filesystem·project config 그대로, UI만 remote window. /remote-control·claude --remote-control·Desktop default toggle. Team/Enterprise는 admin Remote Control toggle 필요. ~10min network timeout — long unattended는 web/cloud agent. Channels(MCP push event) ·Scheduled Tasks(poll) ·Routines(cloud)와 4축 automation surface.'
+  points:
+  - Local execution remote UI — MCP+files stay on your machine
+  - vs claude.ai/code cloud — no local setup vs keep local context
+  - Steering in-progress work from phone without re-uploading repo
+  source: https://code.claude.com/docs/en/remote-control
+- category: ai
+  title: Claude Code Channels — MCP push CI·chat·webhook into open session
+  summary: 'Claude Code Channels(research preview·v2.1.80+) — MCP server가 running session에 event push — CI failure·Slack·monitoring alert를 Claude context에 inject, two-way reply 가능. --channels flag·claude-plugins-official allowlist·org allowedChannelPlugins gate. Session open일 때만 event 도착 — always-on은 background process 필요. vs Scheduled Tasks(/loop poll) ·Remote Control(human steer) ·UserPromptSubmit(reactive enter) — Channels=external push trigger. Enterprise admin enable required.'
+  points:
+  - MCP channel server — push events into live session, bidirectional reply
+  - CI failure→Claude already has project context loaded
+  - vs /loop poll ·Routines cloud — event-driven not schedule-driven
+  source: https://code.claude.com/docs/en/channels
+- category: ai
+  title: OpenHands Agent Canvas — Slack·GitHub·Linear event automation workspace
+  summary: 'OpenHands Agent Canvas(2026-06-16·agent-canvas npm) — self-hostable browser workspace for coding agent automations. cron schedule·GitHub webhook·Slack·Linear·custom webhook trigger. OpenHands default agent but ACP로 Claude Code·Codex·Gemini CLI third-party harness. local laptop→VM always-on promotion path. OpenHands(Docker sandbox interactive) ·Copilot Automations(cloud) ·Paperclip(org chart)와 축 분리 — harness-neutral event-driven automation UI.'
+  points:
+  - agent-canvas one command — local or VM self-host full stack
+  - Slack PR review·issue triage·Linear ticket automation recipes
+  - ACP harness-neutral — not locked to OpenHands agent only
+  source: https://www.openhands.dev/blog/introducing-agent-canvas
+- category: ai
+  title: GitHub PTA Dominator Tree — non-deterministic agent behavior validation
+  summary: 'GitHub Trust Layer PTA(2026-05 blog) — Computer Use agent가 VS Code extension test suite를 non-deterministic하게 실행할 때 ''correct''가 path-dependent. 2–10 successful session 관찰→Dominator Tree structural model — state+action equivalence로 valid variation vs real failure 분리. VS Code CUA experiment: self-assessment 80% accuracy vs PTA 100% (+20), recall 60%→100%. promptfoo(adversarial) ·Deepchecks(session judge) ·OASB(product security)와 축 분리 — structural trust layer for UI agent eval.'
+  points:
+  - Learn-by-example from 2–10 success sessions — not rigid script replay
+  - Dominator Tree — state/action equivalence not pixel-exact match
+  - Agent self-grade unreliable — external structural validator required
+  source: https://github.blog/ai-and-ml/generative-ai/validating-agentic-behavior-when-correct-isnt-deterministic/
+- category: ai
+  title: Copilot JetBrains Claude agent — Claude Code CLI를 Copilot agent picker에
+  summary: 'GitHub Copilot for JetBrains(2026-06-22 preview) — Claude as agent provider: Claude Code CLI path 설정→Copilot Chat agent picker에서 Claude session. Organization/enterprise Copilot agents + queue/steer Copilot CLI messages + Agent Debug logs summary view. Cloud agent GA(editor preview flag 제거). 현재 bypass permissions(auto-approve all edits) — configurable permissions coming. Junie(JetBrains native debugger MCP) ·Copilot CLI(GA terminal)와 축 분리 — Copilot subscription surface에서 Claude harness 선택.'
+  points:
+  - Install Claude Code CLI → set path in Copilot Chat settings
+  - Cloud agent GA ·per-turn AI credits indicator ·debug logs summary
+  - Preview caveat — bypass permissions mode, enterprise policy gate
+  source: https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/

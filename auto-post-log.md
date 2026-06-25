@@ -3610,6 +3610,58 @@ Refined:
 누적: 861카드 (853→861 신규 8, 병합 5건은 기존 카드 갱신)
 주제: goal engineering 3축(Codex/Grok/Outcomes)·sovereign coding model(North Mini Code)·AA index v1.1·Claude steering·MCP EMA stable·SDK v2 alpha
 
+## 2026-06-26 18:00 KST — Batch 57 (아이디어 검증 + 병합 3카드 + 신규 8카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| OpenCode SST/Go legacy → **OpenCode(anomalyco) — Models.dev·Mission Control·~179k★** | anomalyco/opencode·TypeScript TUI·Copilot/ChatGPT subscription reuse |
+| Copilot BYOK CLI only → **Copilot BYOK — CLI·Copilot app·LM Studio·Ollama** | 6/17 CLI + 6/23 app BYOK unified enterprise model policy |
+| Stagehand v2 preview → **Stagehand v3 — hybrid CUA+DOM·Browserbase MCP Streamable HTTP** | agent() 3 mode·step cache·hosted MCP for coding agents |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| SWE-Atlas | 284 rubric task QnA+Test Writing+Refactoring — bug-fix 벤치와 investigative/maintenance 축 분리 |
+| Harbor | Terminal-Bench 공식 harness·50+ adapter — score card가 아닌 eval infra 표준 |
+| Devstral 2 / Vibe CLI | 72.2% SWE-bench open SOTA + vibe-acp ACP — North/GLM/MiniMax와 vendor stack 축 |
+| Remote Control | local execution + remote UI — cloud web·Scheduled Tasks와 4축 automation surface |
+| Channels | MCP push event into open session — /loop poll·Routines cloud와 event-driven 분리 |
+| OpenHands Agent Canvas | harness-neutral event automation UI — interactive OpenHands·Copilot Automations와 분리 |
+| GitHub PTA Dominator Tree | non-deterministic UI agent structural validation — OASB/HackMyAgent product eval과 축 분리 |
+| Copilot JetBrains Claude | Claude Code CLI as Copilot agent picker — Junie native vs Copilot subscription surface |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Routines·Scheduled Tasks·/loop standalone | 'Claude를 정기 실행하는 4가지' 카드 이미 커버 |
+| Terminus 2·Harbor tb standalone | Terminal-Bench 2.1·Harbor 카드로 흡수 |
+| Batch 56 신규 8·Batch 55 security eval | overlap 회피 |
+| Fable 5·Kimi·GLM·MiniMax·North Mini | 기존 카드 중복 |
+| MCP/security/sandbox/memory/browser agent 단순 변형 | batches 45–56 축 포화 |
+| Ponytail·AgentKit·Seed 2.1·OpenRouter Fusion | YAGNI·adoption signal 부족 |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | SWE-Atlas — Codebase QnA·Test Writing·Refactoring 284 rubric task | scale.com/blog/swe-atlas-complete |
+| 2 | Harbor — Terminal-Bench 공식 harness·50+ benchmark adapter | github.com/harbor-framework/harbor |
+| 3 | Devstral 2 / Mistral Vibe CLI — 123B·72.2% SWE-bench·vibe-acp ACP | mistral.ai/news/devstral-2-vibe-cli |
+| 4 | Claude Code Remote Control — local session·phone/browser steer | code.claude.com/docs/en/remote-control |
+| 5 | Claude Code Channels — MCP push CI·chat·webhook into open session | code.claude.com/docs/en/channels |
+| 6 | OpenHands Agent Canvas — Slack·GitHub·Linear event automation workspace | openhands.dev/blog/introducing-agent-canvas |
+| 7 | GitHub PTA Dominator Tree — non-deterministic agent behavior validation | github.blog/.../validating-agentic-behavior-when-correct-isnt-deterministic |
+| 8 | Copilot JetBrains Claude agent — Claude Code CLI를 Copilot agent picker에 | github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides |
+
+누적: 869카드 (861→869 신규 8, 병합 3건은 기존 카드 갱신)
+주제: beyond-bug-fix benchmark(SWE-Atlas)·eval infra(Harbor)·Mistral open stack(Devstral/Vibe)·Claude automation surface(Remote Control·Channels)·OpenHands org automation(Agent Canvas)·UI agent trust(PTA)·Copilot×Claude IDE bridge
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.
