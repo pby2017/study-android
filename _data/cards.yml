@@ -5666,13 +5666,13 @@ cards:
   - Prefect(durable Python)·Dagster(data asset)와 3축 — hook ecosystem compound
   source: https://airflow.apache.org/blog/common-ai-provider/
 - category: ai
-  title: OpenTelemetry GenAI — agent-spans v1.41·5 operation types·gen_ai.*
-  summary: 'OpenTelemetry GenAI SIG(2024~)가 정의하는 LLM·agent·tool call 표준 span attribute·agent-spans v1.41(2026-05 GA). 5 agent span operation: create_agent·invoke_agent_client·invoke_agent_internal·invoke_workflow·execute_tool — gen_ai.operation.name·gen_ai.tool.name·gen_ai.conversation.id·gen_ai.usage.reasoning.output_tokens. gen_ai.provider.name(v1.37 rename from gen_ai.system). OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental dual emission. OpenLLMetry(instrumentation SDK) vs semconv(spec) ·Langfuse/Phoenix/Jaeger backend agnostic. Datadog·New Relic native gen_ai.* ingest.'
+  title: OpenTelemetry GenAI — agent-spans v1.41·MCP semconv·gen_ai.*
+  summary: 'OpenTelemetry GenAI SIG(2024~)가 정의하는 LLM·agent·tool call 표준 span attribute·agent-spans v1.41(2026-05 GA). 5 agent span operation: create_agent·invoke_agent_client·invoke_agent_internal·invoke_workflow·execute_tool — gen_ai.operation.name·gen_ai.tool.name·gen_ai.conversation.id·gen_ai.usage.reasoning.output_tokens. v1.39+ MCP semantic conventions — mcp.method.name(Required)·mcp.session.id(Recommended)·mcp.protocol.version, span name `{mcp.method.name} {target}`(e.g. tools/call echo). MCP instrumentation은 기존 execute_tool span에 mcp.* attribute를 enrich(duplicate span 방지). FastMCP·Elastic APM·Datadog LLM Observability adoption. OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental dual emission. OpenLLMetry(instrumentation SDK) vs semconv(spec) ·Langfuse/Phoenix/Jaeger backend agnostic.'
   points:
   - 5 agent spans v1.41 — create·invoke_client/internal·workflow·execute_tool
-  - gen_ai.* — model·token·agent·tool·cost·conversation.id vendor-neutral
-  - Experimental stability opt-in — pin deps, dual-emit during spec churn
-  source: https://opentelemetry.io/docs/specs/semconv/gen-ai/
+  - MCP semconv v1.39 — mcp.method.name·session.id, execute_tool enrich not duplicate
+  - Span name `{method} {target}` — tools/call echo, gen_ai.tool.name cross-ref
+  source: https://opentelemetry.io/docs/specs/semconv/gen-ai/mcp/
 - category: ai
   title: NVIDIA Triton Inference Server — multi-model GPU serving, TensorRT·ONNX·Python backend
   summary: NVIDIA Triton Inference Server는 production GPU/CPU model serving platform으로 dynamic batching·concurrent model execution·model ensemble·A/B testing·metrics(Prometheus)를 제공한다. TensorRT·ONNX·PyTorch·Python backend 지원, multi-GPU·multi-node. OpenAI Triton(Python GPU kernel DSL)과 완전히 다른 제품 — Triton Server=serving, Triton DSL=kernel. TensorRT-LLM(Batch 23)과 연계해 LLM optimized serving. vLLM/SGLang(dynamic LLM serving)과 역할 분리 — Triton=multi-model heterogeneous·enterprise MLOps, vLLM=LLM-specialized PagedAttention.
@@ -6067,13 +6067,13 @@ cards:
   - E2B(microVM ephemeral) ·Daytona(OCI persistent) ·Copilot Sandboxes(IDE)와 sandbox 축 분리
   source: https://docs.runloop.ai/docs/tutorials/openai-agentssdk-runloop
 - category: ai
-  title: Daytona Sandbox — sub-90ms OCI·persistent agent workspace·GPU snapshot·Open SWE backend
-  summary: Daytona(daytonaio/daytona, AGPL-3.0·~71k★)는 AI agent용 secure elastic sandbox infrastructure다. OCI/Docker-compatible isolated VM, sub-90ms creation, unlimited persistence(auto_stop_interval), snapshot fork·GPU snapshot(daytona-gpu). File·Git·LSP·Execute API, per-sandbox network allowlist/block-all. Open SWE(LangChain)·pydantic-ai CompositeBackend의 cloud execution backend. E2B(Firecracker ephemeral microVM)와 대비 — Daytona=persistent composable computer·Docker daemon 불필요(cloud API key only), E2B=hardware isolation·ephemeral security execution.
+  title: Daytona Sandbox — sub-90ms OCI·persistent agent workspace·2026 closed-source pivot
+  summary: Daytona(daytona.io)는 AI agent용 secure elastic sandbox infrastructure다. OCI/Docker-compatible isolated VM, sub-90ms creation, unlimited persistence, snapshot fork·GPU sandbox(H100·RTX PRO). File·Git·LSP·Execute API, per-sandbox network allowlist. Open SWE·pydantic-ai CompositeBackend cloud execution backend. 2026-06 production isolation layer closed-source — legacy daytonaio/daytona OSS repo public 유지·fork 가능, ongoing SDK/docs는 github.com/daytona. E2B(Firecracker microVM) ·Microsandbox(self-host libkrun) ·OpenSandbox(Alibaba K8s)와 역할 분리 — Daytona=managed persistent composable computer·Computer Use desktop, E2B/Microsandbox=hardware isolation self-host option.
   points:
-  - daytona.create() — Python/TS/Ruby/Go SDK, pre-built snapshot(daytona-small/medium/large/gpu)
-  - Persistent state — package·filesystem·process across stop/start, Open SWE·CI/CD cloud agent backend
-  - E2B(microVM ephemeral) ·Runloop(suspend/resume enterprise) ·OpenHands(local Docker)와 역할 분리
-  source: https://www.daytona.io/docs/en/sandboxes/
+  - daytona.create() — Python/TS SDK, snapshot fork·GPU·mid-execution pause/resume
+  - 2026 closed-source — isolation blueprint 공개 방지, legacy OSS repo fork·self-host 경로 유지
+  - E2B(microVM) ·Microsandbox(libkrun) ·OpenSandbox(K8s credential vault)와 축 분리
+  source: https://www.daytona.io/dotfiles/updates/daytona-is-going-closed-source
 - category: ai
   title: LLM Load Testing — TTFT·ITL·TPS·soak test, k6/Locust 한계와 LLM Locust·GenAI-Perf
   summary: LLM load test는 HTTP latency가 아니라 TTFT(Time to First Token)·ITL(inter-token latency)·TPS(tokens/s)·cache warm/cold 분리·soak(4h+)가 핵심이다. k6(SSE·Grafana CI)와 Locust(GIL bottleneck on tokenization)는 LLM-native metric이 없어 total response time만 재면 "통과했지만 신호 없음". LLM Locust(TrueFoundry, Locust extension) — streaming TTFT/TPS native. NVIDIA GenAI-Perf — Triton/vLLM/NIM backend inference layer. vLLM bench — server canonical. production-representative prompt distribution(길이·multi-turn) 없으면 saturation 예측 실패. Meticulous(frontend E2E) ·Claw-Eval(agent eval)과 역할 분리 — inference throughput·latency SLO.
@@ -7356,3 +7356,83 @@ cards:
   - Handoffs vs as_tool — ownership transfer vs nested bounded task
   - Guardrails+RunState — parallel validation, serialize for HITL resume
   source: https://openai.github.io/openai-agents-python/
+- category: ai
+  title: Hermes Agent — Nous Research self-improving agent, skills learning loop·6 terminal backend
+  summary: Hermes Agent(NousResearch/hermes-agent·MIT·~165k★)는 Nous Research의 self-improving open-source autonomous agent다. closed learning loop — complex task 완료 후 SKILL.md skill 자동 생성·use 중 self-improve·FTS5 cross-session recall·Honcho dialectic user modeling. agentskills.io 표준 호환·Skills Hub community install. 6 terminal backend — local·Docker·SSH·Singularity·Modal·Daytona(serverless hibernate/wake). Messaging gateway — Telegram·Discord·Slack·WhatsApp·Signal single process. Atropos trajectory export·RL training pipeline. OpenHands(IDE copilot) ·OpenAI Agents SDK(harness framework)와 달리 persistent VPS agent·skill authoring from experience 축.
+  points:
+  - Learning loop — auto skill creation·improvement·FTS5 recall·Honcho dialectic
+  - 6 backends — Modal/Daytona serverless persistence, messaging gateway multi-platform
+  - Research-ready — Atropos batch trajectory·RL fine-tuning export pipeline
+  source: https://github.com/nousresearch/hermes-agent
+- category: ai
+  title: codebase-memory-mcp — tree-sitter knowledge graph MCP, 120x token 절약·14 tools
+  summary: codebase-memory-mcp(DeusData/codebase-memory-mcp·MIT)는 AI coding agent용 structural code intelligence MCP server다. tree-sitter AST 159 languages→persistent knowledge graph(function·class·call chain·HTTP route·cross-service link). 14 MCP tools — search_graph·trace_call_path·detect_changes(git diff risk)·query_graph(Cypher-like)·semantic_query(on-device embedding). avg repo ms-index·Linux kernel 28M LOC 3min·query <1ms. single static C binary zero dependency·100% local. mcp-codemap(progressive fold) ·trace-mcp(framework graph) ·Aider repo map(ranking)와 달리 full graph+semantic+impact analysis — arXiv eval 83% quality at 10x fewer tokens.
+  points:
+  - 14 tools — trace_call_path·detect_changes·semantic_query·manage_adr
+  - 159 languages tree-sitter — static C binary, 11 agents one-command install
+  - vs mcp-codemap — full graph query vs progressive fold, complementary axes
+  source: https://github.com/DeusData/codebase-memory-mcp
+- category: ai
+  title: mcp-devtools — Chrome DevTools for MCP, proxy·replay·diff·token cost
+  summary: mcp-devtools(adityachilka1/mcp-devtools·MIT)는 MCP protocol-level inspector·profiler다. MCP client→proxy→real server 사이에 끼워 모든 JSON-RPC stream을 browser UI timeline으로 capture. tools/call input schema validation·latency histogram·LLM-attributed token cost·error grouping. replay — past call args edit→re-run→response diff. time-travel slider·`.mcptrace` export·stdio+streamable HTTP. MCP Inspector(official capability test) ·Logfire(production trace)와 달리 local-first session debug·cost attribution·replay without re-prompting agent.
+  points:
+  - Proxy recorder — initialize/tools/list/call/resources timeline in browser
+  - Replay+diff — edit args, re-hit upstream, compare original response
+  - Local-only — no telemetry leaves machine, MIT self-hostable
+  source: https://github.com/adityachilka1/mcp-devtools
+- category: ai
+  title: OpenSandbox — Alibaba Apache-2.0 agent sandbox, Docker/K8s·credential vault
+  summary: OpenSandbox(opensandbox-group/OpenSandbox·Apache-2.0·~11.5k★)는 general-purpose AI agent sandbox platform이다. multi-language SDK(Python·Go·Kotlin·C#·TS·Java)·unified lifecycle API·Docker(local dev)+Kubernetes(production) dual runtime. Ingress Gateway routing·per-sandbox egress control·Credential Vault(secret injection without exposing to workload). gVisor·Kata·Firecracker secure runtime option. Blaxel(perpetual standby) ·Cloudflare Sandbox SDK(edge) ·mcp-sandboxd(identifier)와 달리 enterprise K8s scale+credential vault+network policy 통합 OSS stack.
+  points:
+  - Dual runtime — Docker dev, K8s prod, same API surface
+  - Credential Vault — outbound request secret injection, workload never sees raw key
+  - Network policy — Ingress Gateway+egress controls, gVisor/Kata/Firecracker option
+  source: https://github.com/opensandbox-group/OpenSandbox
+- category: ai
+  title: CubeSandbox — Tencent KVM dedicated-kernel sandbox, E2B SDK compatible·sub-60ms
+  summary: CubeSandbox(TencentCloud/CubeSandbox·Apache-2.0·~6.5k★)는 RustVMM+KVM hardware-level isolation sandbox다. dedicated Guest OS kernel per agent — Docker namespace escape risk 제거. sub-60ms boot·<5MB memory overhead·E2B SDK compatible(URL swap migration). CubeVS eBPF virtual switch network isolation·CubeHypervisor KVM layer. single-node→multi-node cluster. E2B(Firecracker managed cloud) ·Microsandbox(libkrun self-host) ·OpenSandbox(K8s orchestration)와 달리 dedicated kernel per VM·E2B migration path·Tencent cloud scale.
+  points:
+  - Dedicated kernel — not shared-kernel container, LLM-generated code safe boundary
+  - E2B SDK compatible — swap endpoint for seamless migration
+  - sub-60ms boot — RustVMM+KVM, CubeVS eBPF network policy
+  source: https://github.com/TencentCloud/CubeSandbox
+- category: ai
+  title: Microsandbox — libkrun self-host microVM, secrets never enter VM·MCP server
+  summary: Microsandbox(superradcompany/microsandbox·Apache-2.0·~6.6k★)는 self-hosted hardware-isolated microVM sandbox다. libkrun embeds KVM(Linux)/Hypervisor.framework(Apple Silicon) — sub-100ms boot·no daemon·OCI image compatible·rootless. secrets placeholder injection — API key never enters guest VM. network policy public-only/allow-all/airgapped·DNS domain block·HTTPS inspection. Agent Skills+npx skills add·microsandbox-mcp MCP server(lifecycle·exec·filesystem). E2B(managed cloud) ·Daytona(persistent managed) ·Blaxel(25ms resume cloud)와 달리 embeddable self-host microVM·Apache-2.0 no copyleft.
+  points:
+  - libkrun microVM — own Linux kernel, sub-100ms, no long-running daemon
+  - Secrets can't leak — guest sees placeholder, host injects on outbound
+  - Agent-ready — Skills package+MCP server for Claude Code·Cursor·Codex
+  source: https://github.com/superradcompany/microsandbox
+- category: ai
+  title: Confident AI — DeepEval cloud platform, trace→dataset→CI eval·red team
+  summary: Confident AI(confident-ai.com)는 DeepEval OSS framework 위의 AI quality platform이다. production trace→auto test case·dataset curation·50+ research-backed metrics(G-Eval·DAG·QAG)·multi-turn agent simulation·span-level tool call scoring. PM/QA no-code annotation·red team vulnerability scan·PDF compliance report. DeepEval(pytest local CI) ·Braintrust(eval SaaS) ·Promptfoo(adversarial YAML)와 달리 DeepEval-native cloud — trace ingestion·online monitoring·eval gate in one platform. DeepEval Apache-2.0 독립 유지·Confident AI cloud optional.
+  points:
+  - Trace→dataset — production failure auto-categorize→golden test set
+  - 50+ metrics — tool selection·planning·step faithfulness agent-specific
+  - DeepEval CI gate — pytest integration, threshold fail blocks deploy
+  source: https://www.confident-ai.com/
+- category: ai
+  title: Deepchecks Agent Evaluation — session-level swarm SLM judges·BFCL benchmark
+  summary: Deepchecks Agent Evaluation(deepchecks.com/agentic-evaluation)는 tool-calling agent end-to-end validation platform이다. session(interaction sequence) 단위 scoring — planning·action·response 전체 workflow를 하나의 평가 단위로. swarm of evaluation agents — hallucination·planning accuracy·rule-based SLM experts Mixture-of-Experts. BFCL·xLAM augmented benchmark dataset·version A/B compare·auto-scoring pipeline. DeepEval(pytest metric library) ·Promptfoo(red team CI) ·Confident AI(DeepEval cloud)와 달리 session-level MoE judge·enterprise VPC/on-prem deployment heritage.
+  points:
+  - Session scoring — multi-step workflow not single-turn, version A/B compare
+  - Swarm SLM judges — hallucination·planning·rule experts MoE ensemble
+  - BFCL/xLAM benchmark — augmented corruption dataset for tool-call eval
+  source: https://deepchecks.com/agentic-evaluation/
+- category: ai
+  title: Honcho — dialectic reasoning memory, peer representation·formal logic inference
+  summary: Honcho(plastic-labs/honcho·MIT)는 AI-native memory infrastructure for stateful agents다. RAG chunk retrieval이 아니라 formal logic reasoning engine — message→background multi-pass conclusion→peer representation. Workspace·Peer(user/agent/group)·Session·Message model. 5 tools — honcho_profile·honcho_search·honcho_context(dialectic Q&A)·honcho_conclude(writeback). cadence·depth·reasoningLevel 3 knobs. Hermes Agent integration·MCP·Claude Code·OpenCode. Mem0(drop-in API) ·Supermemory(context stack) ·LangMem(LangGraph hot-path)와 달리 dialectic user modeling·inductive/abductive inference·peer-centric not document-centric.
+  points:
+  - Dialectic reasoning — multi-pass formal logic, not semantic chunk match
+  - Peer model — user·agent·group representation changes over time
+  - Hermes integration — recallMode hybrid, dialecticCadence·contextCadence knobs
+  source: https://github.com/plastic-labs/honcho
+- category: ai
+  title: MCP Inspector — official MCP debug UI+CLI, stdio·SSE·HTTP transport
+  summary: MCP Inspector(modelcontextprotocol/inspector·MIT)는 MCP 공식 interactive debug tool이다. npx @modelcontextprotocol/inspector — stdio·SSE·streamable HTTP transport connect. UI Mode — Tools/Resources/Prompts tab·form-based param input·real-time JSON-RPC notification·request history. CLI Mode — CI/scriptable tools/list·tools/call JSON output·Cursor feedback loop integration. mcp-devtools(session replay·cost) ·FastMCP(server framework) ·Smithery(registry)와 달리 protocol conformance test·capability negotiation verify first step before client integration.
+  points:
+  - UI+CLI dual mode — interactive dev vs CI automation same server
+  - Transport — stdio local·SSE·streamable HTTP remote OAuth server
+  - Debug workflow — connectivity→capability→edge case→client integration order
+  source: https://modelcontextprotocol.io/docs/tools/inspector

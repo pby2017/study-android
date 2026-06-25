@@ -3247,4 +3247,62 @@ Refined:
 - Supporting sources: https://modelcontextprotocol.io/specification/2025-06-18/changelog and https://devblogs.microsoft.com/dotnet/mcp-csharp-sdk-2025-06-18-update/
 - Refined: `Claude Agent SDK — 'Claude Code를 라이브러리로' 받아 자체 에이전트를 짜는 공식 SDK`
 - Refined sources re-checked: https://code.claude.com/docs/en/agent-sdk/overview
+
+## 2026-06-26 02:00 KST — Batch 51 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 병합 2카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| (확장) OTel MCP semconv → **OpenTelemetry GenAI — agent-spans v1.41·MCP semconv·gen_ai.*** | mcp.method.name·session.id·execute_tool enrich |
+| (갱신) Daytona closed-source → **Daytona Sandbox — sub-90ms OCI·2026 closed-source pivot** | legacy OSS fork·SDK github.com/daytona |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드 + 병합 2건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Hermes Agent | Nous Research self-improving loop·agentskills.io·6 backend, OpenHands/Cline과 persistent VPS agent 축 분리 |
+| codebase-memory-mcp | mcp-codemap(progressive fold)와 full graph+semantic 14 tools·120x token 절약 축 분리 |
+| mcp-devtools | MCP Inspector(official test) ·Logfire(prod trace)와 local replay·diff·cost attribution 축 분리 |
+| OpenSandbox | Blaxel(standby) ·Sandcastle(tiered) ·Fly.io Sprites(checkpoint)와 K8s credential vault+egress OSS stack |
+| CubeSandbox | E2B(Firecracker cloud) ·Microsandbox(libkrun)와 dedicated Guest OS kernel·E2B SDK migration |
+| Microsandbox | E2B(managed) ·Daytona(persistent managed)와 self-host embeddable libkrun·secrets placeholder |
+| Confident AI | DeepEval(pytest OSS) ·Braintrust(SaaS)와 DeepEval-native cloud trace→dataset→CI |
+| Deepchecks Agent Evaluation | DeepEval(metric) ·Promptfoo(red team)와 session-level MoE SLM judge·BFCL benchmark |
+| Honcho | Mem0(drop-in) ·Supermemory(context stack)와 dialectic formal logic peer modeling |
+| MCP Inspector | mcp-devtools(replay) ·FastMCP(framework)와 official protocol conformance UI+CLI |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Project Sentinel | 2★ reference testbed, production adoption signal 부족 |
+| BoxLite | Microsandbox(6.6k★)와 libkrun embeddable microVM 축 중복, Microsandbox 채택 |
+| Ragas standalone | DeepEval card Ragas 상호보완으로 커버 |
+| Langfuse ClickHouse | Langfuse card 2026-01 ClickHouse 인수 이미 반영 |
+| Atropos standalone | Hermes Agent card RL trajectory export로 커버 |
+| OpenMontage·Ponytail | creative pipeline·lazy coding philosophy, developer 실무 도구 축 약함 |
+| MintMCP | primary source 불충분, mcp-devtools+MCP Inspector로 debug 축 커버 |
+| Galileo/Cisco Splunk | commercial acquisition niche, OTel GenAI+Datadog ingest로 observability 커ver |
+| Batch 45–50 신규 40개 | 중복 회피 — auth·sandbox·eval·memory·MCP security 재추가 금지 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Hermes Agent — Nous Research self-improving agent, skills learning loop·6 terminal backend | github.com/nousresearch/hermes-agent |
+| 2 | codebase-memory-mcp — tree-sitter knowledge graph MCP, 120x token 절약·14 tools | github.com/DeusData/codebase-memory-mcp |
+| 3 | mcp-devtools — Chrome DevTools for MCP, proxy·replay·diff·token cost | github.com/adityachilka1/mcp-devtools |
+| 4 | OpenSandbox — Alibaba Apache-2.0 agent sandbox, Docker/K8s·credential vault | github.com/opensandbox-group/OpenSandbox |
+| 5 | CubeSandbox — Tencent KVM dedicated-kernel sandbox, E2B SDK compatible·sub-60ms | github.com/TencentCloud/CubeSandbox |
+| 6 | Microsandbox — libkrun self-host microVM, secrets never enter VM·MCP server | github.com/superradcompany/microsandbox |
+| 7 | Confident AI — DeepEval cloud platform, trace→dataset→CI eval·red team | confident-ai.com |
+| 8 | Deepchecks Agent Evaluation — session-level swarm SLM judges·BFCL benchmark | deepchecks.com/agentic-evaluation |
+| 9 | Honcho — dialectic reasoning memory, peer representation·formal logic inference | github.com/plastic-labs/honcho |
+| 10 | MCP Inspector — official MCP debug UI+CLI, stdio·SSE·HTTP transport | modelcontextprotocol.io/docs/tools/inspector |
+
+누적: 812카드 (802→812 신규, 병합 2건은 기존 카드 갱신)
+주제: self-improving agent(Hermes), code intelligence MCP(codebase-memory-mcp), MCP debug(mcp-devtools·Inspector), sandbox triad(OpenSandbox·CubeSandbox·Microsandbox), eval platform(Confident AI·Deepchecks), dialectic memory(Honcho), OTel MCP semconv merge
 - Rejected: broad AI+Android follow-ups as duplicate/overlap with existing cards; MCP structured tool output/resource links deferred as lower distinctness this run.
