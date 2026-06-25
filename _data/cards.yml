@@ -1350,15 +1350,13 @@ cards:
   - Go 1.25+·비표준 의존성 0개, 일회성 스캐너(반복은 cron/launchd 책임), 탐지는 PR로 갱신되는 노출 카탈로그에 의존
   source: https://github.com/perplexityai/bumblebee
 - category: ai
-  title: Deep Agents(LangChain) — 'Claude Code에서 영감받아' 만든 범용 에이전트 하네스(MIT)
-  summary: '그냥 LLM에 도구만 물려 루프 돌리면(ReAct) 멀티스텝 장기 작업에서 금방 헤맨다. LangChain의 Deep Agents는 Claude Code 같은 도구가 왜 잘 도는지를 일반화해 ''바로 쓸 수 있는, 의견이 들어간 하네스''로 묶었다. LangGraph 위 `create_agent`에 네 가지 기본기 — ① 할 일 계획(todo) 도구 ② 컨텍스트가 격리된 서브에이전트 ③ 읽기·쓰기·편집·검색되는 가상 파일시스템 ④ 빡빡하게 튜닝된 시스템 프롬프트 — 를 미리 끼워 넣었다. `uv add deepagents` 한 줄로 받고, 거기에 컨텍스트 관리·셸·영속 메모리·스킬·MCP를 더 붙일 수 있다.
-
-    '
+  title: Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5
+  summary: '그냥 LLM에 도구만 물려 루프 돌리면(ReAct) 멀티스텝 장기 작업에서 금방 헤맨다. LangChain Deep Agents는 Claude Code 같은 도구가 왜 잘 도는지를 일반화해 LangGraph 위 `create_agent`에 계획(todo)·서브에이전트·가상 파일시스템·튜닝 시스템 프롬프트를 미리 끼운 ''바로 쓸 수 있는 하네스''다. 2026-06 LangChain harness engineering 블로그: deepagents-cli가 gpt-5.2-codex 고정·하네스만 변경해 Terminal Bench 2.0 52.8%→66.5%(Top 30→Top 5) — system prompt·tools·middleware 3축만 조정. PreCompletionChecklistMiddleware가 exit 직전 verification pass 강제(Ralph Wiggum loop 변형). trace 분석→하네스 개선 루프가 핵심 — 모델 교체보다 prompt·tool·hook 튜닝 ROI가 클 수 있다.'
   points:
-  - '핵심 네 기둥: 계획(todo) 도구 + 서브에이전트(컨텍스트 격리) + 가상 파일시스템 + 상세 시스템 프롬프트 — ''장기·멀티스텝 작업''에 맞춰 튜닝'
-  - LangGraph 런타임 위 LangChain `create_agent`를 더 의견 있게 감싼 층, 'Claude Code에서 영감받음'을 명시 — 무엇이 그런 도구를 범용으로 만드는지를 일반화한 시도
-  - MIT 라이선스, `uv add deepagents`로 설치, 파일시스템은 로컬·샌드박스·원격 백엔드로 교체 가능(pluggable)
-  source: https://github.com/langchain-ai/deepagents
+  - Terminal Bench 2.0 52.8→66.5 — model fixed, harness only changed (Top 30→Top 5)
+  - PreCompletionChecklistMiddleware — exit 전 task spec verification pass 강제
+  - todo·subagent·filesystem·prompt 4기둥 + MIT `uv add deepagents` + JS/TS port
+  source: https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering
 - category: ai
   title: Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다
   summary: '2025년 12월 9일, 리눅스재단이 ''Agentic AI Foundation(AAIF)''을 출범하며 에이전트 시대의 ''기초 배관'' 격인 오픈 프로젝트 셋을 한데 모았다. Anthropic이 MCP(도구·데이터 연결 표준), Block이 goose(로컬 우선 에이전트 프레임워크), OpenAI가 AGENTS.md(레포별 에이전트 지침 표준)를 각각 기증했다 — 서로 경쟁사인 세 곳이 핵심 자산을 중립 거버넌스에 내놓은 점이 핵심이다. 실무자 입장에선, 지금 쓰는 코딩 에이전트가 의존하는 표준들이 한 벤더에 묶이지 않고 개방·중립으로 유지된다는 신호이자, AGENTS.md를 레포에 두는 관행이 ''사실상 표준''으로 굳어졌다는 뜻이다.
@@ -3932,15 +3930,13 @@ cards:
   - 'LlamaParse: 복잡 문서 10x 정확도 파싱'
   source: https://toolhalla.ai/blog/langchain-vs-llamaindex-vs-haystack-2026
 - category: ai
-  title: LangGraph — 프로덕션 멀티에이전트 표준, 상태 머신 기반·LangSmith 옵저버빌리티·Klarna/Uber 사용
-  summary: 'LangGraph는 LangChain 팀이 만든 프로덕션 멀티에이전트 프레임워크의 사실상 표준이다. 에이전트 워크플로우를 방향 그래프(상태 머신)로 모델링하여 결정론적 실행·분기·루프·human-in-the-loop을 명시적으로 제어. Postgres 기반 체크포인팅으로 서버 크래시 후에도 워크플로우 복구. LangSmith 옵저버빌리티 네이티브 통합. Klarna·LinkedIn·Uber·Replit이 프로덕션 사용. CrewAI(빠른 프로토타입) → LangGraph(프로덕션) 마이그레이션 패턴이 업계 표준.
-
-    '
+  title: LangGraph 1.0 — durable agent runtime GA, checkpointing·HITL·LangChain 상호운용
+  summary: 'LangGraph 1.0(2025-10 GA)은 production-ready durable agent framework 첫 stable major — 1년+ Uber·LinkedIn·Klarna·Replit adoption 후 semver 보장. 방향 그래프(상태 머신)로 분기·루프·human-in-the-loop·streaming·persistence를 low-level 제어. Postgres checkpointing으로 crash·multi-day resume. langgraph.prebuilt deprecated→langchain.agents로 이동 — LangChain 1.0 create_agent(high-level)와 LangGraph(custom graph) composable, lock-in 없이 drop-down. Deep Agents·LangSmith Deployment·Temporal integration과 3층 — LangGraph=OSS runtime, LangChain=agent loop abstraction, LangSmith=obs+deploy+Engine.'
   points:
-  - '상태 머신: 결정론적 실행, 분기·루프·HITL 명시적 제어'
-  - '체크포인팅: Postgres 기반, 서버 크래시 복구'
-  - '프로덕션 검증: Klarna·LinkedIn·Uber·Replit 사용'
-  source: https://odsea.com/blog/langgraph-vs-crewai-vs-autogen-production
+  - v1.0 GA 2025-10 — first stable durable agent framework semver
+  - langgraph.prebuilt→langchain.agents — high-level/low-level composable stack
+  - Postgres checkpoint ·HITL ·Klarna/Uber/LinkedIn production
+  source: https://www.langchain.com/blog/langchain-langgraph-1dot0
 - category: ai
   title: Mobile-O — 온디바이스 통합 멀티모달(VLM+확산 생성), iPhone에서 이미지 생성 3초·VQA 0.4초(1.6B)
   summary: 'Mobile-O는 온디바이스용 통합 비전-언어-확산 모델이다. FastVLM(FastViT+Qwen2-0.5B) 기반 멀티모달 이해(VQA·OCR·추론)와 SANA(600M DiT) 기반 512×512 이미지 생성을 단일 아키텍처로 통합. iPhone 15 Pro에서 이미지 생성 ~3초, 시각 이해 ~0.4초. 메모리 2GB 미만. MLP 커넥터(~2.4M)가 VLM과 확산 디코더를 경량 연결. MLX+CoreML 최적화. 클라우드 의존 없이 완전 온디바이스 실행.
@@ -5823,13 +5819,13 @@ cards:
   - Firecrawl(managed) ·Crawl4AI(library)와 URL-to-MD 특화
   source: https://github.com/jina-ai/reader
 - category: ai
-  title: LangSmith Deployment — LangGraph Platform GA, managed·hybrid·self-hosted agent runtime
-  summary: LangSmith Deployment(구 LangGraph Platform, 2025 GA)는 long-running·stateful agent를 deploy·scale·manage하는 managed runtime이다. ~400社 production 사용. Cloud SaaS(Plus $39/user·$0.001/node) — GitHub→langgraph deploy. Hybrid(Enterprise) — SaaS control plane + VPC data plane. Fully Self-Hosted(Enterprise) — K8s 전체 stack. Agent Server standalone(Docker/K8s, Developer 100k nodes/mo free). Postgres checkpointing·30+ API endpoints·LangGraph Studio IDE·human-in-the-loop·async collaboration. Framework-agnostic — LangGraph·Google ADK·CrewAI·Strands container deploy. LangGraph(OSS state machine) ·Temporal(durable infra)와 역할 분리 — agent-specific managed runtime.
+  title: LangSmith Deployment·Engine — managed runtime + production trace→fix loop
+  summary: LangSmith Deployment(구 LangGraph Platform, 2025 GA)는 long-running agent deploy·scale managed runtime — Cloud·Hybrid·Self-hosted 3-tier, Postgres checkpoint, LangGraph Studio. 2026 LangSmith Engine(public beta)은 ''agent for agent engineering'' — production trace 6h scan→failure cluster→root cause diagnosis(GitHub repo 연결 시 code read)→proposed fix PR·custom online evaluator·offline dataset example 생성. closed loop — issue close 후 evaluator re-fire 시 auto-reopen. screener(Haiku subagent 20 trace batch)→investigator→fix agent pipeline. LangGraph(OSS runtime) ·Deployment(managed host) ·Engine(improvement agent) 3-product stack.
   points:
-  - Cloud·Hybrid·Self-hosted 3-tier ·GitHub deploy ·Studio IDE
-  - Postgres checkpoint ·30+ API ·human-in-the-loop native
-  - LangGraph(OSS) ·Temporal(infra)와 역할 분리 — managed runtime
-  source: https://docs.langchain.com/langsmith/deployment
+  - Deployment — Cloud/Hybrid/Self-hosted, ~400社, GitHub deploy
+  - Engine — trace cluster→diagnosis→PR+evaluator, 6h scan, GitHub optional
+  - Engine screener→investigator→fix agent — production signal→named issue loop
+  source: https://docs.langchain.com/langsmith/engine
 - category: ai
   title: Agno — pure Python agent·team·workflow SDK, AgentOS FastAPI production(Apache-2.0·~40k★)
   summary: Agno(agno-agi/agno, 구 Phidata)는 Agent·Team·Workflow 3-primitive Python SDK다. 30+ LLM provider·100+ tool·MCP·Pydantic structured I/O·memory·knowledge(RAG)·learning·compression. AgentOS — agent를 FastAPI service로 wrap, JWT RBAC·OTel tracing·scheduling(cron)·Slack/Telegram/WhatsApp interface. Postgres persistence(sessions·memory·traces). 450 contributors·v2.6.12(2026-06). Pydantic AI(type-safe agent) ·Deep Agents(LangChain harness) ·CrewAI(role-based team)와 역할 분리 — SDK→AgentOS→deploy pure Python full stack. AgentOps(옵저버빌리티)와 SDK 통합.
@@ -7698,3 +7694,67 @@ cards:
   - vs Stop additionalContext — PostToolUse per-tool eval, continueOnBlock explicit config
   - Plugin authoring — quality gate without ending turn, reduce user re-prompt friction
   source: https://code.claude.com/docs/en/whats-new/2026-w20
+- category: ai
+  title: OASB — Open Agent Security Benchmark, 222 MITRE ATLAS scenario
+  summary: OASB(opena2a-org/oasb·Apache-2.0·v0.3.2)는 AI agent runtime security product(EDR·guard·prompt scanner)를 평가하는 product-agnostic benchmark — agent 자체가 아니라 '보안 제품이 이 공격을 잡나'를 재는 MITRE ATT&CK Evaluations AI판. 222 standardized attack scenario(atomic·integration·baseline·E2E) — process spawn·network exfil·filesystem·MCP tool abuse·A2A trust·prompt injection 15 MITRE ATLAS technique. SecurityProductAdapter interface 구현→OASB_ADAPTER env→npm test→detection coverage scorecard. declared capability 없는 surface는 N/A penalize 안 함. HackMyAgent(agent pentest) ·Endor Agent Security League(agent code quality) ·OWASP MCP Top 10(protocol taxonomy)와 3축 — product eval vs agent pentest vs protocol checklist.
+  points:
+  - 222 scenario ·15 MITRE ATLAS ·SecurityProductAdapter plug-in
+  - Product eval not agent eval — 'Does your EDR catch this exfiltration?'
+  - OASB-1 compliance ·OASB-2 governance ·OASB Eval 3-module suite
+  source: https://oasb.ai/
+- category: ai
+  title: HackMyAgent — agent·MCP·skill pentest, 209 static·164 adversarial payload
+  summary: HackMyAgent(opena2a-org/hackmyagent·Apache-2.0·npm hackmyagent)는 AI agent·skill·MCP server·A2A integration 보안 scanner+red-team toolkit. secure(own project CI)·check(pre-install trust)·red-team(adaptive attack)·attack(164 payload 16 category) 4 mode. 209 static check 44 category(7 AST analyzer) + 29 NanoMind semantic(ONNX 3M Mamba TME, first-run HF download) + --deep 20-probe behavioral simulation(skill declared vs actual behavior). passive/active/aggressive intensity tier. auto-fix with rollback. npx hackmyagent secure — OASB Eval(product benchmark)과 complement — HackMyAgent=pentest your agent, OASB=test your security product. opena2a-cli unified entry.
+  points:
+  - 209 static ·29 semantic ·164 adversarial ·--deep 20-probe behavior sim
+  - secure/check/red-team/attack 4 mode — CI pre-install trust gate
+  - vs OASB — agent pentest not security product eval
+  source: https://opena2a.org/docs/hackmyagent
+- category: ai
+  title: MiniMax M3 — 428B MoE·1M ctx·MSA sparse·coding+multimodal open weights
+  summary: MiniMax M3(2026-06·MiniMaxAI/MiniMax-M3·arXiv 2606.13392)는 coding+agentic+multimodal 3 frontier를 동시에 갖춘 첫 open-weight model — 428B total·23B active MoE·1M token context·image/video native input. MiniMax Sparse Attention(MSA) — 1M ctx에서 M2 대비 per-token compute 1/20·prefill 9×·decode 15× faster. bugfix·frontend/backend·long-horizon agentic benchmark frontier-level. HuggingFace weights·vLLM·SGLang·KTransformers self-host·MiniMax Code platform default. GLM-5.2(753B·MIT) ·Kimi K2.7 Code(1T MoE·256K)와 open-weight coding model 3축 — M3=multimodal+1M ctx+MSA efficiency.
+  points:
+  - 428B/23B active MoE ·1M ctx ·MSA sparse attention
+  - Native multimodal step-0 training ·coding+agentic+cowork frontier
+  - Open weights HF ·vLLM/SGLang ·MiniMax Code platform integration
+  source: https://www.minimax.io/blog/minimax-m3
+- category: ai
+  title: Codex subagents·spawn_agents_on_csv — explorer/worker·CSV fan-out batch
+  summary: OpenAI Codex(2026-03+) subagent — built-in default·worker(implementation) ·explorer(read-heavy) + custom .codex/agents/ TOML project-scoped agent. /agent CLI thread switch·agents.max_threads(default 6) ·agents.max_depth(default 1) concurrency cap. spawn_agents_on_csv(experimental) — CSV row당 worker 1개 fan-out, {column} template instruction·output_schema JSON·report_agent_job_result 1회 필수·combined output CSV. max_concurrency·job_max_runtime_seconds control. map-reduce over spreadsheet — repo-wide component audit·batch review pattern. Claude Code git worktree parallel과 다른 축 — Codex=CSV-native batch orchestration.
+  points:
+  - Built-in default/worker/explorer + .codex/agents/ custom TOML
+  - spawn_agents_on_csv — row-per-worker, template {column}, result CSV export
+  - agents.max_threads·max_depth·job_max_runtime_seconds fleet control
+  source: https://developers.openai.com/codex/subagents
+- category: ai
+  title: PermissionRequest·PermissionDenied hooks — auto-approve/deny·retry:true
+  summary: Claude Code PermissionRequest hook — permission dialog 직전 1회, hookSpecificOutput decision allow/deny + updatedInput으로 승인과 동시에 command 수정 가능. PreToolUse(block before execute)와 complementary — PermissionRequest는 'dialog would appear' fallback point. PermissionDenied — auto mode classifier가 deny한 직후, {retry:true} return 시 model이 alternate approach 시도 가능. continueOnBlock(PostToolUse rejection loop) ·PreToolUse(exit 2 block) ·PermissionRequest(dialog intercept) 3-tier permission stack. Safe command auto-approve — npm run lint·git status prefix matcher pattern.
+  points:
+  - PermissionRequest — dialog intercept, allow/deny+updatedInput
+  - PermissionDenied retry:true — classifier deny→model retry alternate
+  - vs PreToolUse block ·continueOnBlock PostToolUse — 3-tier stack
+  source: https://code.claude.com/docs/en/hooks
+- category: ai
+  title: PostToolUseFailure hook — tool error observability·stderr to Claude
+  summary: Claude Code PostToolUseFailure — tool call fail 직후(error_message·error_type in JSON input). block 불가(observability-only) — stderr를 Claude context에 inject. PostToolUse(success) ·PostToolUseFailure(error) ·continueOnBlock(rejection) ·PermissionDenied(retry) complementary error handling stack. plugin hooks.json·settings.json 동일. use case — failed test output capture→Claude reads error→fix same turn, MCP connection failure log→retry alternate server, lint failure→auto-format suggestion inject.
+  points:
+  - Fires after tool fails — error_message·error_type in stdin JSON
+  - Observability-only — cannot block, stderr→Claude context
+  - vs PostToolUse success ·continueOnBlock rejection — error path stack
+  source: https://code.claude.com/docs/en/hooks
+- category: ai
+  title: LangChain 1.0 — agent middleware·create_agent·LangGraph composable
+  summary: LangChain 1.0(2025-10 GA)은 langchain 패키지 첫 stable major — agent loop에 middleware concept 도입, create_agent standard tool-calling architecture, provider-agnostic model integration. LangGraph 1.0과 동시 GA — LangChain=high-level agent(start fast), LangGraph=low-level graph(custom control), Deep Agents=opinionated harness(long-horizon). langgraph.prebuilt→langchain.agents migration — create_agent inside custom LangGraph node composable, lock-in 없음. LangSmith trace·eval·Deployment·Engine unified platform.
+  points:
+  - v1.0 GA 2025-10 — middleware·create_agent·provider agnostic
+  - LangChain(high) + LangGraph(low) + Deep Agents(harness) stack
+  - langgraph.prebuilt deprecated → langchain.agents
+  source: https://www.langchain.com/blog/langchain-langgraph-1dot0
+- category: ai
+  title: UserPromptExpansion hook — slash command expand audit·block before Claude
+  summary: Claude Code UserPromptExpansion — user-typed slash command이 full prompt로 expand된 직후·Claude process 직전. expansion result audit·block 가능(exit 2). UserPromptSubmit(raw user input)과 complementary — Submit=enter key, Expansion=slash→expanded text gate. custom slash command injection attack surface control — expanded prompt에 sensitive path·credential pattern detect→block. SessionStart predictive injection과 달리 reactive — actual expansion event only.
+  points:
+  - Fires after slash expand ·before Claude processes
+  - Can block expansion — exit 2 or decision block
+  - vs UserPromptSubmit(raw) ·SessionStart(predictive) — reactive gate
+  source: https://code.claude.com/docs/en/hooks

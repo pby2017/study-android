@@ -3502,6 +3502,61 @@ Refined:
 누적: 845카드 (834→845 신규 11, 병합 3건은 기존 카드 갱신)
 주제: MCP eval(MCPMark)·compositional security(MOSAIC·SecureVibeBench)·MCP framework(mcp-agent·CrewAI)·Google ADK GA·Claude Code session/hook/governance(/rewind·PostToolBatch·InstructionsLoaded·continueOnBlock·managed settings)
 
+## 2026-06-26 14:00 KST — Batch 55 (아이디어 검증 + 병합 3카드 + 신규 8카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Deep Agents standalone harness intro → **Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5** | Terminal Bench 52.8→66.5 harness-only, PreCompletionChecklistMiddleware |
+| LangGraph production overview → **LangGraph 1.0 — durable agent runtime GA** | v1.0 GA 2025-10, langgraph.prebuilt→langchain.agents |
+| LangSmith Deployment standalone → **LangSmith Deployment·Engine — managed runtime + trace→fix loop** | Engine 6h scan·cluster→PR·evaluator closed loop |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| OASB | 222 MITRE ATLAS product eval, SecurityProductAdapter — Endor/HackMyAgent/OWASP와 축 분리 |
+| HackMyAgent | 209 static·164 payload·NanoMind semantic agent pentest, npm published |
+| MiniMax M3 | June 2026 428B MoE·1M ctx·MSA·multimodal open weights |
+| Codex subagents·spawn_agents_on_csv | explorer/worker·CSV row fan-out unique batch primitive |
+| PermissionRequest·PermissionDenied | dialog intercept+retry:true, PreToolUse/continueOnBlock과 3-tier stack |
+| PostToolUseFailure | tool error observability path, PostToolUse success와 complementary |
+| LangChain 1.0 | middleware·create_agent GA, LangGraph 1.0 동시 milestone |
+| UserPromptExpansion | slash expand audit gate, UserPromptSubmit과 reactive 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| MCP 2026-07-28 final | MCP 2026 card RC 이미 커버 |
+| MAI-Code-1-Flash | Batch 54 탈락 동일 |
+| LangSmith Engine standalone | Deployment 카드 병합으로 흡수 |
+| RAIL Score MCP | niche compliance, adoption signal 약함 |
+| Cursor 3 /multitask | Cursor parallel card 존재 |
+| Deep Agents JS port | minor, standalone 가치 부족 |
+| updatedToolOutput | minor PostToolUse field, 독립 카드 YAGNI |
+| Batch 45–54 신규 60+ | Browser Use·gstack·Fable 5·MCPMark 등 중복 회피 |
+| Ponytail·AgentKit shutdown | YAGNI·shutdown niche |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | OASB — Open Agent Security Benchmark, 222 MITRE ATLAS scenario | oasb.ai |
+| 2 | HackMyAgent — agent·MCP·skill pentest, 209 static·164 adversarial payload | opena2a.org/docs/hackmyagent |
+| 3 | MiniMax M3 — 428B MoE·1M ctx·MSA sparse·coding+multimodal open weights | minimax.io/blog/minimax-m3 |
+| 4 | Codex subagents·spawn_agents_on_csv — explorer/worker·CSV fan-out batch | developers.openai.com/codex/subagents |
+| 5 | PermissionRequest·PermissionDenied hooks — auto-approve/deny·retry:true | code.claude.com/docs/en/hooks |
+| 6 | PostToolUseFailure hook — tool error observability·stderr to Claude | code.claude.com/docs/en/hooks |
+| 7 | LangChain 1.0 — agent middleware·create_agent·LangGraph composable | langchain.com/blog/langchain-langgraph-1dot0 |
+| 8 | UserPromptExpansion hook — slash command expand audit·block before Claude | code.claude.com/docs/en/hooks |
+
+누적: 853카드 (845→853 신규 8, 병합 3건은 기존 카드 갱신)
+주제: agent security eval(OASB·HackMyAgent)·open coding model(MiniMax M3)·Codex batch subagent·Claude permission/error hooks·LangChain/LangGraph 1.0·LangSmith Engine
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.
