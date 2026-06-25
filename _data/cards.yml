@@ -5578,13 +5578,13 @@ cards:
   - PagedAttention과 역할 분리 — compute kernel vs KV memory management
   source: https://arxiv.org/html/2407.08608v2
 - category: ai
-  title: Amazon Bedrock AgentCore — Runtime·Gateway·Memory·Identity managed agent infra
-  summary: Amazon Bedrock AgentCore(AWS, 2026 GA)는 framework-agnostic managed agent infrastructure platform이다. AgentCore Runtime — Firecracker microVM per session(2 vCPU·8GB fixed), 8h max·100MB payload·SSE streaming, CrewAI/LangGraph/LlamaIndex container deploy. Gateway — API·Lambda→MCP-compatible tools zero-code, 1000 gateway·100 target/gateway. Memory — short-term(session) + long-term(cross-session insight), RetrieveMemoryRecords API. Identity(OAuth/IAM)·Observability(OTel)·Code Interpreter·Browser Use. Azure AI Foundry(MAF·Entra·M365)와 3대 cloud agent platform 축. Runtime vs Lambda — 8h stateful·100MB vs 15min·6MB.
+  title: Amazon Bedrock AgentCore — Runtime·Gateway·Policy(Cedar)·Memory·Identity
+  summary: Amazon Bedrock AgentCore(AWS, 2026 GA)는 framework-agnostic managed agent infrastructure platform이다. AgentCore Runtime — Firecracker microVM per session(2 vCPU·8GB fixed), 8h max·100MB payload·SSE streaming, CrewAI/LangGraph/LlamaIndex container deploy. Gateway — API·Lambda→MCP-compatible tools zero-code, 1000 gateway·100 target/gateway. Policy in AgentCore(2026-03 GA) — Cedar policy engine가 Gateway에서 agent-to-tool 요청마다 default-deny·forbid-wins 평가, OAuth claim·tool input parameter·runtime context 조건, natural language→Cedar authoring, LOG_ONLY→ENFORCE 단계적 rollout. Memory — short-term(session) + long-term(cross-session insight). Identity(OAuth/IAM)·Observability(OTel)·Code Interpreter·Browser Use. Azure AI Foundry(MAF·Entra·M365)와 3대 cloud agent platform 축.
   points:
   - Runtime — microVM isolation·8h session·LangGraph/CrewAI deploy
-  - Gateway+Memory — MCP tools zero-code·cross-session persistence
-  - Azure Foundry와 역할 분리 — AWS Entra·Bedrock model 생태계
-  source: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agents-tools-runtime.html
+  - Gateway+Policy — MCP tools zero-code, Cedar per-tool-call authorization at gateway
+  - LOG_ONLY→ENFORCE — prompt instruction이 아닌 외부 deterministic tool gate
+  source: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy-core-concepts.html
 - category: ai
   title: LLaMA-Factory — 100+ LLM/VLM zero-code fine-tuning, LlamaBoard Web UI(ACL2024·~72k★)
   summary: LLaMA-Factory(hiyouga, Apache-2.0, ACL2024·~72k★)는 100+ LLM·VLM을 코드 없이 fine-tuning하는 unified framework다. LlamaBoard(Gradio Web UI)+CLI — SFT·DPO·KTO·ORPO·PPO·RM·pre-training. LoRA·QLoRA(2~8bit AQLM/AWQ/GPTQ)·DoRA·PiSSA·GaLore·OFT. LLaMA·Qwen3·DeepSeek·Gemma·Mistral·Phi·LLaVA 등. Axolotl(YAML orchestrator·multi-GPU enterprise)과 역할 분리 — LLaMA-Factory=zero-code breadth·Web UI. Unsloth(GPU kernel speedup)과 역할 분리 — LLaMA-Factory=method+model coverage, Unsloth=training speed. llamafactory-cli webui 한 줄 시작.
@@ -5963,13 +5963,13 @@ cards:
   - high-signal 필드만 반환 — MCP Tool Search·programmatic calling과 조합
   source: https://www.anthropic.com/engineering/writing-tools-for-agents
 - category: ai
-  title: Human-in-the-Loop Approval Workflows — policy gate·durable checkpointer·approval timeout
-  summary: 'Production HITL은 "모든 action 승인"이 아니라 action manifest(severity×reversibility)로 high-stakes write만 pause한다. OpenAI Agents SDK — tool에 needs_approval 선언→RunState.approve/reject→Runner.run(state) resume. LangGraph — interrupt() + PostgresSaver/SqliteSaver durable checkpointer + Command(resume=payload). Policy layer(tool gateway)는 allow/deny/approval_required 3-state를 매 step마다 판단하고 audit log에 기록. Async pattern: 202 Accepted + thread_id 반환, background scheduler가 approval_timeout 시 escalate/reject. Side effect는 interrupt() 이후에 배치(idempotent) — resume 시 node가 처음부터 재실행되므로.'
+  title: Human-in-the-Loop Approval — policy gate·HumanLayer·Permit Access Request MCP
+  summary: 'Production HITL은 "모든 action 승인"이 아니라 action manifest(severity×reversibility)로 high-stakes write만 pause한다. OpenAI Agents SDK needs_approval→RunState.approve/reject, LangGraph interrupt()+PostgresSaver durable checkpointer. Policy layer는 allow/deny/approval_required 3-state+audit. HumanLayer(humanlayer·~11k★)는 require_approval()로 send_email·deploy 같은 high-stakes tool을 Slack·email·web dashboard에서 productized pause. Permit Access Request MCP는 LangGraph+policy engine 위에 agent가 sensitive action을 request→human final decision workflow. Async 202+approval_timeout SLA, side effect는 interrupt 이후 idempotent batch.'
   points:
-  - action manifest — severity×reversibility로 high-stakes write만 approval_required
-  - durable checkpointer(Postgres/SQLite) + interrupt/resume — InMemorySaver는 dev only
-  - approval_timeout SLA + async 202 pattern — side effect는 interrupt 이후(idempotent)
-  source: https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/
+  - action manifest — severity×reversibility, HumanLayer=productized Slack/email channel
+  - durable checkpointer(Postgres/SQLite) + interrupt/resume — InMemorySaver dev only
+  - Permit Access Request MCP — policy-backed approval, LangChain MCP Adapters 연동
+  source: https://www.permit.io/blog/delegating-ai-permissions-to-human-users-with-permitios-access-request-mcp
 - category: ai
   title: Agent Graceful Degradation — 4 service level·fallback chain·user disclosure
   summary: 'Graceful degradation은 dependency failure 시 terminal error 대신 reduced-but-truthful answer를 제공하는 설계 모드다. 4 service level: Full(모든 tool healthy) → Reduced(non-critical tool skip/mock) → Fallback(secondary model/cached decision) → Refusal(primary+secondary unavailable). Fallback chain: primary model → secondary provider(different vendor) → cached structured-intent decision → templated refusal. Circuit breaker(>10% fail/60s→open) + semantic quality failure(schema violation·hallucination rate) 감지. User disclosure 필수 — silent degradation은 trust erosion. Per-feature fallback: vision fail→text-only, retrieval fail→no citations, code exec fail→simple summary.'
@@ -6131,12 +6131,12 @@ cards:
   - 2026 Mintlify 인수→maintenance mode, hard-cap 필요 시 BurnLens 검토
   source: https://docs.helicone.ai/getting-started/quick-start
 - category: ai
-  title: Microsoft Presidio — PII detect·anonymize·de-anonymize, LLM sandwich guardrail(Apache-2.0)
-  summary: 'Presidio는 Microsoft 오픈소스 PII 탐지·익명화 프레임워크다. Analyzer(NER+regex+checksum+다국어) → Anonymizer(replace/mask/hash/encrypt) → 선택적 Deanonymizer로 LLM sandwich 패턴 구현: 프롬프트 PII 치환→LLM 호출→응답 복원. presidio-analyzer·anonymizer·image-redactor·structured 4모듈. Azure APIM inbound/outbound policy·PII Shield(Microsoft Community)로 엣지 배포. NeMo Guardrails(대화 흐름) ·Guardrails AI(validator)와 달리 "PII가 LLM provider tenancy를 안 넘게" 데이터 프라이버시 레이어.'
+  title: Microsoft Presidio — PII sandwich·agent 4-boundary pipeline·APIM guardrail
+  summary: 'Presidio는 Microsoft 오픈소스 PII 탐지·익명화 프레임워크다. Analyzer(NER+regex+checksum+다국어) → Anonymizer(replace/mask/hash/encrypt) → 선택적 Deanonymizer로 LLM sandwich 패턴: 프롬프트 PII 치환→LLM→응답 복원. 에이전트는 user prompt뿐 아니라 tool argument·tool result·final response 4 boundary마다 outbound model call 전 redaction이 필요 — 첫 turn만 치환하면 cross-turn·tool hop에서 PII가 누적된다. Legend(deconvolute-labs)는 4-boundary pseudonymization+Boundary D restore, Philter는 NLP+pattern deterministic proxy. Azure APIM·PII Shield로 엣지 배포. NeMo Guardrails(대화) ·Guardrails AI(validator)와 달리 데이터 residency·provider tenancy 경계.'
   points:
-  - 'Sandwich: analyze→anonymize→LLM→deanonymize, GDPR/DPDP by construction'
-  - 'Analyzer: spaCy/ONNX/HuggingFace backend, 커스텀 recognizer 확장'
-  - 'APIM·PII Shield: 앱 코드 변경 없이 모든 LLM 호출에 프록시 적용'
+  - 'Sandwich: analyze→anonymize→LLM→deanonymize — agent는 4 outbound hop마다 반복'
+  - 'Analyzer: spaCy/ONNX/HuggingFace, LLM redactor 아닌 deterministic detection 권장'
+  - Legend/Philter와 역할 분리 — Presidio=framework, Legend=4-boundary agent adapter
   source: https://microsoft.github.io/presidio/
 - category: ai
   title: LaunchDarkly AgentControl — AI config·prompt·model을 200ms 런타임 제어, Guarded Rollout
@@ -6955,14 +6955,6 @@ cards:
   - Head Start + sub-agents — parallel cold-start + nested AgentChat stream
   source: https://trigger.dev/docs/ai-chat/overview
 - category: ai
-  title: HumanLayer — high-stakes tool call을 Slack·email approval workflow로
-  summary: HumanLayer(humanlayer/humanlayer·~11k★)는 AI agent가 function call 전에 human approval을 받게 하는 HITL layer다. require_approval()로 send_email·deploy·create_issue 같은 high-stakes tool을 pause하고 Slack·email·web dashboard에서 approve/reject. human_as_tool()로 agent가 사람에게 질문하는 async workflow도 지원. LangChain·LangGraph·CrewAI·AutoGen·Bring-your-own-framework. Generic Human-in-the-Loop Approval Workflows 카드(정책 gate·checkpointer)와 달리 productized approval channel·escalation policy.
-  points:
-  - require_approval() — pause before high-stakes function_call
-  - Slack·email·dashboard — approval channel + escalation policy
-  - human_as_tool() — agent asks human async, framework-agnostic
-  source: https://github.com/humanlayer/humanlayer
-- category: ai
   title: LangWatch — agent simulation·eval·prompt versioning OTel observability
   summary: LangWatch(langwatch/langwatch·~3.3k★·OSS)는 LLM/agent testing+observability platform으로 trace inspect 외에 Scenario simulation(user persona·pass/fail criteria·HTTP/voice endpoint)과 prompt versioning·feature-flag rollout을 한 UI에 묶는다. OpenTelemetry native, LangChain·CrewAI·custom framework hook. Langfuse(OSS trace+eval)·Braintrust(eval-first CI)와 달리 no-code agent simulation+production monitor를 bundle. ISO27001·SOC2 certified cloud 또는 self-host.
   points:
@@ -7212,3 +7204,83 @@ cards:
   - GitHub 공식 권고 — third-party action은 tag보다 full-length commit SHA pinning
   - AI agent CI는 runtime 관측 필요 — outbound endpoint·spawned process·package install을 step 단위로 추적
   source: https://www.stepsecurity.io/blog/securing-vibe-coding-and-ai-coding-agents-an-end-to-end-approach-with-stepsecurity
+- category: ai
+  title: Cerbos — YAML policy PDP로 agent tool call·MCP server authorization
+  summary: Cerbos(cerbos·Apache-2.0)는 agent tool invocation을 코드 밖 YAML policy로 평가하는 stateless authorization PDP다. cerbos.checkResource({principal, resource, actions})로 OpenAI Agents SDK·MCP server·LiteLLM gateway·Tailscale Aperture hook에서 tool call 직전 allow/deny. RBAC→ABAC(condition expr로 amount·department·time) 확장, Cerbos Hub로 policy CI/CD·audit·kill switch. Cursor Auto-review(ML classifier) ·prompt allowlist와 달리 declarative·versioned·sub-ms deterministic policy — identity는 WorkOS/Okta, Cerbos는 "무엇을 할 수 있나".
+  points:
+  - checkResource before tool call — principal·resource·action+context attributes
+  - MCP server pattern — cerbos로 session별 authorizedTools 동적 필터
+  - Aperture·OpenAI SDK integration — gateway intercept→PDP→enforce
+  source: https://www.cerbos.dev/blog/dynamic-authorization-for-ai-agents-guide-to-fine-grained-permissions-mcp-servers
+- category: ai
+  title: Oso — Polar policy-as-code, agent RBAC·ReBAC·RAG list filtering
+  summary: Oso(osohq·Polar DSL)는 Duolingo·Intercom·PagerDuty가 쓰는 fine-grained authorization engine으로 agent workflow에 RBAC·ReBAC·ABAC를 policy-as-code로 통합한다. authorize(actor, action, resource) API를 tool call·vector search·DB lookup마다 호출 — LLM이 runtime에 정한 query sequence도 매 hop에서 filter. Oso Cloud Facts+Polar rules, list filtering으로 RAG retrieval 후 unauthorized chunk 제거. Cerbos(YAML PDP) ·SpiceDB(Zanzibar graph)와 달리 Polar declarative rules+behavioral risk scoring·dynamic permission tightening for agents.
+  points:
+  - Polar — roles·relations·permissions decoupled from app code
+  - RAG list filtering — vector search result를 authorized subset만 LLM에 전달
+  - Oso for Agents — runtime guardrail, novel tool use alert, instant revoke
+  source: https://www.osohq.com/learn/best-practices-of-authorizing-ai-agents
+- category: ai
+  title: Permit MCP Gateway — agent.security MCP proxy, deny-by-default·consent·audit
+  summary: Permit MCP Gateway(permit.io/agent.security·MCPermit)는 MCP client(Cursor·Claude·VS Code)와 upstream MCP server 사이 drop-in proxy — identity-aware access·deny-by-default·consent-based delegation·complete audit trail. MCP server→resource·tool→action 매핑, RBAC+ABAC+ReBAC, OAuth 2.1+token vault(agent runtime에 upstream credential 없음). Access Request MCP로 agent가 sensitive action request→human approve. Cerbos(PDP library) ·Arcade(MCP runtime)와 달리 managed gateway+consent service+app.agent.security dashboard.
+  points:
+  - Deny by default — tool access explicit grant until admin sets trust ceiling
+  - Consent Service — OAuth login·human consent·upstream MCP OAuth brokering
+  - Zero standing permissions — ephemeral scoped token per tool call evaluation
+  source: https://docs.permit.io/permit-mcp-gateway/
+- category: ai
+  title: SpiceDB/Authzed — Zanzibar ReBAC, agent·RAG authorization infrastructure
+  summary: SpiceDB(authzed/spicedb·~6k★·Apache-2.0)는 Google Zanzibar-inspired authorization database — trillions ACL·millions checks/sec. Authzed Authorization Infrastructure for AI(2026)는 document ingestion→vector search→agent tool execution 전 단계 fine-grained permission. langchain-spicedb — post-filter RAG(retrieve→SpiceDB CheckBulkPermissions→generate), SpiceDBPermissionTool for agentic workflows. Agent를 first-class non-human identity로 model, inherited user permission·functionality control·approval gate. Cerbos(YAML action policy) ·Oso(Polar)와 달리 relationship graph(ReBAC) native — "manager on project X can view doc Y".
+  points:
+  - Agentic RAG LangGraph node — deterministic authorization node, LLM bypass 불가
+  - CheckBulkPermissions — retrieval N건을 single API로 filter
+  - Agent identity model — tool restriction·inherited user perm·audit log
+  source: https://authzed.com/blog/authzed-announces-support-for-ai-by-providing-permissions-aware-ai
+- category: ai
+  title: OPA/Rego — CNCF policy-as-code, agent tool loop decision point
+  summary: Open Policy Agent(openpolicyagent·CNCF graduated)는 Rego declarative language로 agent tool call마다 allow/deny를 평가하는 general-purpose PDP다. input={principal, tool.name, args, context}→Rego policy→decision — prompt instruction과 분리된 deterministic gate. @ai-sdk/policy-opa(Vercel AI SDK 6 toolApproval) ·sidecar gateway ·MCP 3-layer(tool·device·command) 패턴. opa test CI·WASM bundle·OCI registry policy artifact — agent redeploy 없이 policy update. Cedar(AgentCore) ·Cerbos(YAML)와 달리 domain-agnostic·Rego expressiveness·infra-wide reuse(K8s·API·agent 동일 engine).
+  points:
+  - Rego tool_approval — git status/log allow, rm/curl deny, args constraint
+  - Decouple enforcement — agent proposes, OPA decides, app enforces
+  - Shadow mode first — log allow/deny before strict block rollout
+  source: https://openpolicyagent.org/docs
+- category: ai
+  title: Tailscale Aperture — tailnet identity AI gateway, MCP connector·Cerbos hook
+  summary: Aperture by Tailscale(beta·2026)는 Tailscale cryptographic identity로 LLM·MCP·HTTP connector 요청을 중앙 프록시 — API key distribute 없이 alice@corp identity로 OpenAI·Anthropic·Google·self-hosted route. MCP protocol — client는 Aperture만 보고 remote tool discover, per-user OAuth 2.0 token Aperture vault. Grants+hooks로 Cerbos·Oso·Highflame·Cribl integration — tool call intercept→PDP→allow/deny. Portkey(routing config) ·Helicone(cost proxy)와 달리 tailnet identity layer+enterprise AI inventory·spending limit·audit trail day one.
+  points:
+  - Tailscale identity — remote IP→login name, no per-user API key rotation
+  - MCP+HTTP connectors — credential inject once, agent/client zero secret
+  - Cerbos/Oso hooks — tool call metadata→PDP before LLM execution
+  source: https://tailscale.com/docs/aperture
+- category: ai
+  title: Arcade.dev — MCP runtime for delegated agent auth·token vault·JIT consent
+  summary: Arcade.dev(arcade.dev)는 MCP spec OAuth handshake 위에 token vaulting·just-in-time consent·user verification·RBAC·immutable audit를 native로 제공하는 agent authorization runtime이다. custom user verifier(production) — OAuth redirect flow_id→server-side confirm_user로 phishing 방지. URL Elicitation로 mid-task granular consent, per-user OAuth delegation(not bot token). Composio(1000+ catalog) ·Scalekit(B2B auth stack)와 달리 auth-first MCP runtime — 9 capability checklist(OIDC·OAuth 2.1·RFC8693 token exchange·Resource Indicators).
+  points:
+  - Custom verifier route — session user_id must match authorization flow starter
+  - Token vault — agent never sees upstream OAuth credential
+  - OTel-exportable immutable per-action audit log
+  source: https://docs.arcade.dev/en/guides/user-facing-agents/secure-auth-production
+- category: ai
+  title: Scalekit — agent auth stack, OBO delegation·token vault·MCP OAuth 2.1
+  summary: Scalekit(scalekit.com·scalekit-sdk-node)는 human SSO(SAML·SCIM·passwordless)+agent auth를 unified platform으로 제공한다. Agent Identity — agent as first-class actor with human ownership. connected account abstraction — agent executes via scoped identifier, Scalekit manages OAuth exchange·refresh·tenant isolation internally. On-Behalf-Of nested claims — InfraBot acts for support agent acts for user, auditable delegation chain. Ephemeral task-scoped credential(minutes not days). Composio(tool catalog) ·Arcade(MCP runtime)와 달리 B2B SaaS builder용 auth infrastructure — MCP-native OAuth 2.1 DCR/PKCE.
+  points:
+  - connection+connectedAccount — provider boundary vs authenticated identity
+  - execute_tool single method — no endpoint URL·auth header in agent runtime
+  - Immutable audit — which user initiated, which agent acted, which resource
+  source: https://www.scalekit.com/agent-auth
+- category: ai
+  title: ZeroID — open-source agent identity, scope attenuation·token exchange·revoke chain
+  summary: ZeroID(highflame-ai/zeroID·Apache-2.0·2026)는 autonomous agent용 identity infrastructure — WIMSE/SPIFFE URI·OAuth 2.1·RFC8693 token exchange·CIBA backchannel approval. orchestrator→sub-agent delegation 시 scope intersection enforced — parent fs:read+write+execute → reviewer fs:read+write only. parent revoke→downstream chain instant invalidation. forward-auth subrequest(nginx·Caddy·Traefik)로 any agent framework hook. Highflame commercial Agent Control Platform governance layer 위 open identity. Claude WIF(workload API key) ·MCP Enterprise Auth(IdP provision)와 달리 agent-native cryptographic identity+delegation chain.
+  points:
+  - SPIFFE URI identity — org·project·type·name in every short-lived token
+  - token_exchange — sub-agent scope ≤ parent, offline chain verification
+  - CIBA — agent posts bc-authorize, human approves via Slack/email/push OOB
+  source: https://github.com/highflame-ai/zeroID
+- category: ai
+  title: Multi-tenant token budget — token bucket·WFQ·Jain fairness for agent APIs
+  summary: 'Multi-tenant agent platform에서 request/min rate limit은 LLM 비용·noisy neighbor를 못 막는다 — token-aware budget+fair scheduling이 minimum viable. Redis Lua atomic token bucket per tenant(capacity·refill_per_sec tier별), soft cap→queue·hard cap→429 Retry-After. Weighted Fair Queuing — enterprise tier priority without free-tier starvation, max-wait timer. Helicone(per-user cost header) ·AgentLedger(budget proxy)와 달리 fairness engineering pattern — Jain index(Σx)²/(n·Σx²)>0.90 healthy, hogging scenario other tenants <2% reject.'
+  points:
+  - Token bucket not request count — TPM reflects actual LLM cost
+  - Tier capacity/refill — free 10K·enterprise 2M TPM, burst multiplier 1.2–2×
+  - Jain fairness index — measure cross-tenant equitable throughput allocation
+  source: https://zylos.ai/research/2026-02-25-rate-limiting-backpressure-ai-agent-apis

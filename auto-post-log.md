@@ -3117,6 +3117,64 @@ Refined:
 누적: 784카드 (777→774 병합→784 신규)
 주제: engineering process MCP(CodeMCP), context/memory compression(memoryx·CCE), cost attribution+gateway(CodeLedger·AgentLedger), prompt versioning(PVC·promptdiff/promptctl), codebase navigation(mcp-codemap), cloud orchestration(Warp Oz), PR review MCP(mcp-code-review)
 
+## 2026-06-25 22:00 KST — Batch 49 (아이디어 검증 + 병합 3카드 + 신규 10카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| HumanLayer → **Human-in-the-Loop Approval — policy gate·HumanLayer·Permit Access Request MCP** | Generic HITL pattern · Permit approval workflow |
+| (확장) Amazon Bedrock AgentCore → **Runtime·Gateway·Policy(Cedar)·Memory·Identity** | Azure Foundry · existing Runtime card |
+| (확장) Microsoft Presidio → **PII sandwich·agent 4-boundary pipeline·APIM guardrail** | Legend · Philter cross-ref |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Cerbos | Cursor Auto-review(ML classifier) · prompt allowlist와 YAML PDP·MCP checkResource 축 분리 |
+| Oso Polar | Cerbos(YAML) · SpiceDB(graph)와 Polar+ReBAC+RAG list filtering 축 분리 |
+| Permit MCP Gateway | MCP Enterprise Auth(IdP provision) · Cerbos(PDP lib)와 managed MCP proxy+consent+deny-default 축 분리 |
+| SpiceDB/Authzed | Oso(Polar) · Cerbos(action YAML)와 Zanzibar ReBAC+langchain-spicedb agentic RAG 축 분리 |
+| OPA/Rego | Cedar(AgentCore) · Cerbos와 CNCF general-purpose+@ai-sdk/policy-opa tool loop 축 분리 |
+| Tailscale Aperture | Portkey(routing) · Helicone(cost)와 tailnet identity AI gateway+Cerbos/Oso hook 축 분리 |
+| Arcade.dev | Composio(catalog) · Scalekit(B2B auth)와 auth-first MCP runtime+verifier 축 분리 |
+| Scalekit | Composio(integration) · Arcade(MCP runtime)와 B2B OBO·token vault·Agent Identity 축 분리 |
+| ZeroID | Claude WIF · MCP Enterprise Auth와 agent-native SPIFFE·scope attenuation·chain revoke 축 분리 |
+| Multi-tenant token budget | Helicone(per-user header) · AgentLedger(budget proxy)와 token bucket·WFQ·Jain fairness pattern 축 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Agent Control Protocol (ACP) | academic spec, ZeroID·IETF AAT draft와 delegation token axis overlap |
+| IETF Attenuating Authorization Tokens | draft stage, ZeroID token_exchange로 실무 커버 |
+| Legend · Philter | Presidio card 4-boundary 확장으로 agent PII pipeline 커버 |
+| Highflame commercial platform | ZeroID OSS가 identity deliverable, commercial은 marketing-heavy |
+| AWS Cedar standalone | AgentCore Policy merge로 Cedar agent auth 커버 |
+| WorkOS FGA · Okta FGA | SpiceDB card Zanzibar 축으로 enterprise ReBAC 커버 |
+| Zuplo · TrueFoundry token limit | gateway product niche, fairness pattern card로 abstract |
+| Batch 45–48 신규 40개 | 중복 회피 — browser·sandbox·eval·cost·prompt·code-review 재추가 금지 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Cerbos — YAML policy PDP로 agent tool call·MCP server authorization | cerbos.dev/blog/dynamic-authorization-for-ai-agents |
+| 2 | Oso — Polar policy-as-code, agent RBAC·ReBAC·RAG list filtering | osohq.com/learn/best-practices-of-authorizing-ai-agents |
+| 3 | Permit MCP Gateway — agent.security MCP proxy, deny-by-default·consent·audit | docs.permit.io/permit-mcp-gateway |
+| 4 | SpiceDB/Authzed — Zanzibar ReBAC, agent·RAG authorization infrastructure | authzed.com/blog/authzed-announces-support-for-ai |
+| 5 | OPA/Rego — CNCF policy-as-code, agent tool loop decision point | openpolicyagent.org/docs |
+| 6 | Tailscale Aperture — tailnet identity AI gateway, MCP connector·Cerbos hook | tailscale.com/docs/aperture |
+| 7 | Arcade.dev — MCP runtime for delegated agent auth·token vault·JIT consent | docs.arcade.dev/en/guides/user-facing-agents/secure-auth-production |
+| 8 | Scalekit — agent auth stack, OBO delegation·token vault·MCP OAuth 2.1 | scalekit.com/agent-auth |
+| 9 | ZeroID — open-source agent identity, scope attenuation·token exchange·revoke chain | github.com/highflame-ai/zeroID |
+| 10 | Multi-tenant token budget — token bucket·WFQ·Jain fairness for agent APIs | zylos.ai/research/2026-02-25-rate-limiting-backpressure-ai-agent-apis |
+
+누적: 793카드 (784→783 병합→793 신규)
+주제: agent authorization(Cerbos·Oso·Permit·SpiceDB·OPA), identity gateway(Aperture·Arcade·Scalekit·ZeroID), multi-tenant fairness(token budget), HITL merge(HumanLayer·Permit), PII 4-boundary(Presidio), Cedar policy(AgentCore)
+
 ## 2026-06-25 20:43 KST — Local AI card routine
 
 - Published: `AI Coding Agent CI 보안 — tag pinning만으론 부족, 런타임 egress까지 본다`
