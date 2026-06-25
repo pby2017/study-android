@@ -1269,11 +1269,11 @@ cards:
   source: https://github.com/Fission-AI/OpenSpec
 - category: ai
   title: Code Mode(Cloudflare) — MCP 도구를 'TypeScript API'로 바꿔 LLM에게 코드로 호출하게 하기
-  summary: Cloudflare Code Mode는 MCP 도구를 LLM에게 직접 tool call로 노출하지 않고 doc 주석 달린 TypeScript API로 변환한 뒤, LLM이 그 API를 호출하는 코드를 작성·실행하게 하는 패턴이다. Agents SDK·@cloudflare/codemode 패키지가 MCP 스키마→TS API 변환·Dynamic Worker Loader V8 isolate 샌드박스 실행을 제공한다. 2026-06 cloudflare/mcp OSS 서버는 Cloudflare API 2,500+ endpoint를 search()+execute() 두 도구(~1k token)로 노출 — 개별 endpoint tool 등록 시 ~244k token 대비 99%↓. 복잡 multi-step(31-event 캘린더 생성) 벤치에서 direct tool call 대비 81% token 절감. MCP code execution with MCP(Anthropic) ·Pipelock과 동일 축 — LLM은 code 작성에 더 익숙, pagination·filter·compose를 sandbox 내부에서 처리.
+  summary: Cloudflare Code Mode는 MCP 도구를 LLM에게 직접 tool call로 노출하지 않고, doc 주석 달린 TypeScript API로 바꾼 뒤 LLM이 그 API를 호출하는 코드를 쓰게 하는 패턴이다. 핵심은 "도구 호출을 잘 고르기"보다 "짧은 코드를 써서 search→execute→filter→compose를 샌드박스 안에서 끝내기"다. cloudflare/mcp 서버는 Cloudflare API 2,500+ endpoint를 docs/search/execute 세 도구와 약 1.1k token footprint로 노출한다. codemode=false로 끄면 endpoint별 2,594개 도구가 등록되고 required param만 남겨도 약 244k token이 든다. 실행은 Dynamic Worker Loader의 V8 isolate에서 돌며, 일반 인터넷 접근은 막고 MCP binding만 열어 API key를 LLM 코드에 노출하지 않는다.
   points:
-  - cloudflare/mcp — search()+execute() 2 tools, 2500 endpoints·GraphQL Analytics·~1k token footprint
-  - 81% token↓ complex task ·99% vs per-endpoint tool registration — loop·filter·chain in generated code
-  - V8 isolate Worker Loader — ms boot, binding hides API keys, codemode=false for legacy per-tool mode
+  - cloudflare/mcp — docs/search/execute 3 tools, 2,500+ endpoints, GraphQL Analytics까지 같은 execute 경로
+  - Token budget — Code Mode 약 1.1k vs endpoint별 MCP 최소 스키마 약 244k
+  - Sandbox — V8 isolate + MCP binding, 일반 인터넷 차단, supervisor가 token 보관
   source: https://github.com/cloudflare/mcp
 - category: ai
   title: 에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 '하네스'를 설계하는 실전 교훈
@@ -7936,3 +7936,11 @@ cards:
   - Multi-repo May 2026 — one automation targets several repos; no-repo for Slack-only
   - Cloud vs /loop — Automations persist laptop-off; /loop needs Cursor session open
   source: https://cursor.com/changelog/06-18-26
+- category: ai
+  title: Cloudflare Temporary Accounts — 에이전트가 OAuth 없이 배포·검증하고 60분 안에 사람이 claim
+  summary: Cloudflare Temporary Accounts for AI agents는 코딩 에이전트의 배포 루프에서 사람용 가입·OAuth·API 토큰 복사를 걷어내는 Workers 기능이다. Wrangler 4.102.0+에서 로그인 없이 배포를 시도하면 `--temporary` 플래그를 안내하고, 에이전트는 `wrangler deploy --temporary`로 임시 계정에 Worker를 배포한다. 결과는 live Worker URL과 claim URL이다. 임시 배포는 60분 동안 살아 있고, 그 안에 사람이 claim URL로 로그인·가입하면 영구 계정으로 가져갈 수 있으며, 아니면 만료된다. 교육 포인트는 "에이전트에게 production credential을 주기"가 아니라, throwaway 배포 타깃을 만들어 write→deploy→curl verify→redeploy 루프를 credential 없이 돌리게 하는 것이다.
+  points:
+  - Wrangler 4.102.0+ — unauthenticated deploy가 `--temporary` 재시도를 안내
+  - 60분 preview account — live URL+claim URL 반환, unclaimed 배포는 자동 만료
+  - 지원 범위 — Workers, Static Assets, KV, D1, Durable Objects, Hyperdrive, Queues 등 제한된 리소스
+  source: https://developers.cloudflare.com/changelog/post/2026-06-19-temporary-accounts-for-agents/

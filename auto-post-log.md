@@ -3727,3 +3727,12 @@ Refined:
 - Refined: `OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(56.6k★)`
 - Refined sources re-checked: https://github.com/Fission-AI/OpenSpec, https://api.github.com/repos/Fission-AI/OpenSpec, and https://api.github.com/repos/Fission-AI/OpenSpec/releases/latest
 - Rejected: ADK for Kotlin/Android, GitHub Copilot app BYOK, Copilot code review billing, OpenAI agent-work usage research, and broad Android AI/LiteRT/ML Kit follow-ups as duplicates or overlap; pure Android topics as below threshold.
+
+## 2026-06-26 07:05 KST — Local AI card routine
+
+- Published: `Cloudflare Temporary Accounts — 에이전트가 OAuth 없이 배포·검증하고 60분 안에 사람이 claim`
+- Source: https://developers.cloudflare.com/changelog/post/2026-06-19-temporary-accounts-for-agents/
+- Refined: `Code Mode(Cloudflare) — MCP 도구를 'TypeScript API'로 바꿔 LLM에게 코드로 호출하게 하기`
+- Refined sources re-checked: https://github.com/cloudflare/mcp and https://blog.cloudflare.com/code-mode/
+- Skipped after re-check: `에이전트 팀으로 C 컴파일러 짜기(Anthropic)`, `서브에이전트 4가지 패턴(Philipp Schmid)`, and `에이전트 코딩의 '80% 문제'` because the existing cards were already clear and source-supported.
+- Rejected: Cloudflare Workflows saga rollback as pure infrastructure without a core AI angle; Copilot Free/Student auto model selection, Codex App Server, OpenAI Shift to Agentic, ADK for Kotlin/Android, and broad Android AI/LiteRT/ML Kit follow-ups as duplicates or overlap.
