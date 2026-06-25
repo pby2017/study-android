@@ -2603,7 +2603,65 @@ Refined:
 누적: 730카드 (721→720 병합→730 신규)
 주제: LLM API engineering(idempotency·webhook·REST/GraphQL tier), developer docs(Fern/Mintlify/ReadMe), testing(mock·VCR cassette), observability(structured log·PII-safe·correlation·debug ladder)
 
-## 2026-06-25 10:21 KST — Local AI card routine
+## 2026-06-25 23:30 KST — Batch 41 (아이디어 검증 + 병합 0카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Multi-Agent Handoff Integration Testing | routing·context·return path 3-point — agentevals(trace gate) ·Supervisor Agent(orchestration)와 seam test layer 분리 |
+| Agent Chaos Engineering | faultkit/agentfuzz/Khaos SDK/API boundary — WireMock(pre-backend mock) ·AI Agent Error Handling(circuit breaker)와 runtime fault layer 분리 |
+| LLM API Connection Pooling | httpx lifespan shared client·http2·keepalive 120s — Celery GPU worker ·LiteLLM proxy와 client-side pool design 분리 |
+| LLM SSE Backpressure | bounded Queue·is_disconnected·proxy_buffering off — SSE vs WebSocket(transport) ·AI BFF(custody)와 memory-bounded fan-out 분리 |
+| AI Agent Graceful Shutdown | drain→checkpoint→503 lifecycle — Agent Graceful Degradation(fallback UX) ·LLM Idempotency Keys(resume)와 deploy lifecycle 분리 |
+| LLM Health Check Probes | startup/readiness/liveness 3-probe vLLM — LLM Goodput SLO(quality metric) ·AI deployment patterns(cold start trade-off)와 routing safety 분리 |
+| Agent Deadline Propagation | absolute deadline tree·gRPC model — Human-in-the-Loop Approval(timeout gate) ·LLM Correlation IDs(trace join)와 time budget design 분리 |
+| LLM Capacity Planning | concurrency-aware Little's Law·kv-planner — KEDA autoscaling(queue) ·LLM Load Testing(soak) ·AI deployment patterns와 physics planning 분리 |
+| Per-Request GPU Cost Attribution | gpu_time_share·DCGM·minute-bucket — LLM API 비용 최적화(routing/cache 4-layer) ·LLM Goodput SLO와 shared GPU split 분리 |
+| Agent Structural Coverage Testing | typed graph 4 criteria·arxiv — Multi-Agent Handoff(seam) ·promptfoo(assertion) ·Inspect AI(sandbox)와 graph adequacy 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| LLM Load Testing | 기존 LLM Load Testing 카드 존재 (TTFT·ITL·GenAI-Perf) |
+| KEDA + Redis LLM Autoscaling | 기존 KEDA 카드 존재, Capacity Planning이 physics+λ complement |
+| LLM Batch API / Request Batching | 기존 LLM Batch API 카드 존재 |
+| AI Circuit Breaker standalone | AI Agent Error Handling 카드에 circuit breaker 포함 |
+| Cold Start Mitigation standalone | AI deployment patterns·KEDA cold start 이미 커버 |
+| Token Streaming Best Practices generic | SSE vs WebSocket + SSE Backpressure 2카드로 actionable 분해 |
+| AI Performance Profiling generic | Per-Request GPU Cost Attribution + LLM Capacity Planning으로 분해 |
+| AI Memory Profiling for LLM | kv-planner memory waterfall·Capacity Planning 카드 complement |
+| AI Latency Tracing multi-hop | LLM Correlation IDs·Agent Deadline Propagation 2카드로 분해 |
+| AI Bottleneck Analysis generic | Deadline tree·Capacity Planning·Connection Pooling 3카드로 분해 |
+| AI E2E Testing for Workflows generic | nit·Maestro·Autonoma tool 카드 + Handoff Integration·Structural Coverage로 agent-specific 분해 |
+| AI Integration Testing generic | Multi-Agent Handoff Integration Testing 카드로 handoff seam 구체화 |
+| Agent Graceful Degradation merge | Graceful Degradation(UX fallback) vs Graceful Shutdown(deploy lifecycle) 축 분리 유지 |
+
+### 병합 0카드
+
+전체 743카드 title 키워드·Jaccard≥0.6·exact prefix 스캔 — 유사/중복 병합 대상 없음.
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Multi-Agent Handoff Integration Testing — routing·context·return path 3-point assert | qaskills.sh/blog/multi-agent-system-testing-guide-2026 |
+| 2 | Agent Chaos Engineering — faultkit·agentfuzz·Khaos SDK boundary fault injection | faultkit.dev |
+| 3 | LLM API Connection Pooling — httpx AsyncClient lifespan·http2·keepalive 120s | ezaiapi.com/blog/ai-api-connection-pooling-performance |
+| 4 | LLM SSE Backpressure — bounded queue·is_disconnected·X-Accel-Buffering no | mvpfactory.io/blog/streaming-llm-tokens-to-10k-concurrent-users-backpressure-coroutine-channels |
+| 5 | AI Agent Graceful Shutdown — drain→checkpoint→503, terminationGracePeriod+10s | geodocs.dev/ai-agents/agent-startup-shutdown-spec |
+| 6 | LLM Health Check Probes — startup/readiness/liveness 3-probe vLLM pattern | github.com/llm-d/llm-d/blob/main/docs/readiness-probes.md |
+| 7 | Agent Deadline Propagation — absolute deadline tree, per-step timeout 아님 | tianpan.co/blog/2026-04-17-deadline-propagation-agent-chains-slo |
+| 8 | LLM Capacity Planning — concurrency-aware Little's Law, per-token naive 17-36× 오차 | arxiv.org/html/2606.11690v1 |
+| 9 | Per-Request GPU Cost Attribution — gpu_time_share·DCGM·minute-bucket slicing | last9.io/blog/every-token-has-a-price-per-request-gpu-cost-attribution |
+| 10 | Agent Structural Coverage Testing — typed coordination graph 4 criteria, arxiv 2026 | arxiv.org/html/2605.26521v1 |
+
+누적: 743카드 (733→743 신규)
+주제: agent reliability testing(handoff integration·chaos·structural coverage), performance engineering(connection pool·backpressure·deadline·capacity), production ops(shutdown·health probe·GPU cost attribution)
+
 
 - Published: `ADK+A2A Cross-Language Agents — LLM은 모호함, Go는 정책 검증`
 - Source: https://developers.googleblog.com/build-cross-language-multi-agent-team-with-google-agent-development-kit-and-a2a/

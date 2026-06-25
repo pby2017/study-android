@@ -6852,3 +6852,83 @@ cards:
   - 705 bugs·1,178 CL로 관련 버그 클러스터를 만들고 pre-fix 상태에서 proactive insight를 채점
   - 탐색 예산 2→3라운드에서 Hit@5 33%→57% — 긴 작업은 추가 조사 예산을 평가 변수로 둬야 함
   source: https://developers.googleblog.com/measuring-what-matters-with-jules/
+- category: ai
+  title: Multi-Agent Handoff Integration Testing — routing·context·return path 3-point assert
+  summary: '멀티에이전트 버그의 대부분은 개별 agent eval이 아니라 handoff seam에서 발생한다 — coordinator가 잘못된 agent에 위임, context payload 누락, sub-agent 결과가 coordinator로 복귀하지 않음, deadlock·runaway loop. per-agent unit test는 이 실패를 보지 못한다. integration test는 delegation마다 3-point assert: (1) Routing — task가 expected agent type으로 갔는가 (2) Context Completeness — payload에 sub-agent가 필요한 필드가 있는가 (3) Return Path — sub-agent result가 coordinator state에 merge됐는가. handoff contract schema(API contract testing analog)로 input/output schema를 정의하고 E2E에서 contract chain 검증. hard wall-clock timeout + max handoff depth(3-5) + consistency test(N회 반복 success rate). agentevals(OTel trace gate) ·Claw-Eval(trajectory) ·Supervisor Agent(orchestration)와 complement — handoff=coordination seam test.'
+  points:
+  - Routing·Context·Return Path — delegation마다 3-point assert
+  - handoff contract schema — microservices API contract testing analog
+  - hard timeout + max depth + N-run consistency — stall·loop·flake catch
+  source: https://qaskills.sh/blog/multi-agent-system-testing-guide-2026
+- category: ai
+  title: Agent Chaos Engineering — faultkit·agentfuzz·Khaos SDK boundary fault injection
+  summary: 'LLM agent unit test는 seam이 정상이라고 가정한다 — tool timeout·malformed JSON·429 burst·schema drift·prompt injection은 production에서만 터진다. Agent chaos engineering은 SDK/API boundary에서 fault를 주입해 resilience를 CI 전에 검증한다. faultkit — single-shot CLI, localhost proxy+ephemeral CA, vendor-accurate 429/timeout/streaming cutoff, exit code로 CI gate. agentfuzz(Python) — ToolTimeout·MalformedToolResponse·SchemaDrift·CostSpiral·PromptInjection fault catalog, pass-rate per category 리포트. Khaos SDK — security+resilience eval pack, capability-aware attack selection, `khaos ci --resilience-threshold 70`. WireMock(stateful fault) ·LLM VCR(replay) ·AI Agent Error Handling(circuit breaker)와 역할 분리 — chaos=runtime seam break, mock=pre-backend contract.'
+  points:
+  - faultkit/agentfuzz/Khaos — SDK/API boundary fault, infra chaos 아님
+  - pass-rate per fault category — timeout vs JSON vs injection survival
+  - CI gate — chaos replay trace로 regression set 축적
+  source: https://faultkit.dev/
+- category: ai
+  title: LLM API Connection Pooling — httpx AsyncClient lifespan·http2·keepalive 120s
+  summary: 'LLM API latency의 숨은 killer는 model inference가 아니라 connection churn이다. request마다 httpx.AsyncClient()를 새로 만들면 TCP+TLS handshake가 매 call 반복, file descriptor exhaustion(OSError 24)까지 간다. production 패턴: FastAPI lifespan에서 단일 shared AsyncClient 생성→app.state 또는 DI로 주입→shutdown에서 aclose(). httpx.Limits(max_connections=256, max_keepalive_connections=128, keepalive_expiry=120) — AI burst pattern(30-60s read gap)에 default 5-15s keepalive는 너무 짧다. http2=True — 20 concurrent call이 2-3 socket으로 multiplex. LangChain ChatOpenAI(http_client=shared) — library가 자체 pool 만들지 않게 explicit pass. Celery GPU worker ·LiteLLM proxy ·AI BFF와 complement — pool=client-side connection reuse design.'
+  points:
+  - request-per-client 금지 — lifespan shared AsyncClient 1개
+  - keepalive_expiry=120s+ ·http2=True — burst gap·socket count↓
+  - LangChain/LiteLLM에 http_client explicit pass — isolated pool 방지
+  source: https://ezaiapi.com/blog/ai-api-connection-pooling-performance
+- category: ai
+  title: LLM SSE Backpressure — bounded queue·is_disconnected·X-Accel-Buffering no
+  summary: 'LLM token SSE streaming은 producer(model)가 consumer(client)보다 빠르면 proxy buffer가 unbounded growth→OOM. backpressure 핵심: producer-consumer 사이 bounded asyncio.Queue(maxsize=32-128). queue full이면 producer가 upstream LLM read를 block→TCP flow control→model generation pause. client disconnect 시 await request.is_disconnected() per token으로 upstream abort — tab close 후에도 token burn 방지. infra: nginx proxy_buffering off + X-Accel-Buffering: no + CDN no-transform. 10K concurrent SSE는 connection당 ~13-15KB budget, 4GB container 8-10K ceiling. slow client는 trySend fail→disconnect rather than unbounded buffer. SSE vs WebSocket(streaming transport) ·AI BFF(streaming custody) ·Token Streaming Proxy(zero-buffer)와 complement — backpressure=memory-bounded fan-out design.'
+  points:
+  - bounded Queue 32-128 — full이면 upstream read block, end-to-end backpressure
+  - is_disconnected() per token — client leave 시 upstream abort, token burn stop
+  - proxy_buffering off ·4GB≈8-10K concurrent SSE memory budget
+  source: https://mvpfactory.io/blog/streaming-llm-tokens-to-10k-concurrent-users-backpressure-coroutine-channels/
+- category: ai
+  title: AI Agent Graceful Shutdown — drain→checkpoint→503, terminationGracePeriod+10s
+  summary: 'rolling deploy에서 SIGTERM 즉시 kill은 long-running agent turn을 mid-flight drop — user retry·duplicate side effect. 5-phase lifecycle: init→warmup→ready→drain→terminate. SIGTERM 시 readiness probe fail→new turn HTTP 503→in-flight turn은 drain_deadline_seconds까지 complete→deadline 초과 turn은 checkpoint(trace·tool results·memory delta) persist→exit 0. K8s terminationGracePeriodSeconds ≥ drain_deadline + 10s buffer — equality면 SIGKILL이 checkpoint interrupt. idempotency key(run_id+step_id+tool_call_id)로 resume 시 duplicate write 방지. vLLM drain mode(ServiceUnavailableMiddleware reject new) ·Agent Checkpoint spec ·LLM Idempotency Keys와 complement — shutdown=deploy-safe lifecycle contract.'
+  points:
+  - ready→drain→terminate — 503 new, in-flight bounded complete
+  - deadline 초과 checkpoint — trace·tool·memory persist, resume token
+  - terminationGracePeriod ≥ drain + 10s ·idempotency key resume safety
+  source: https://geodocs.dev/ai-agents/agent-startup-shutdown-spec
+- category: ai
+  title: LLM Health Check Probes — startup/readiness/liveness 3-probe vLLM pattern
+  summary: '/health는 process alive만 확인, model loaded 아님 — GPU page fault 후에도 liveness pass→broken pod에 traffic routing. K8s 3-probe pattern: startupProbe /v1/models (model-aware, 503 while loading, failureThreshold×period=max startup window) ·readinessProbe /v1/models (traffic routing gate) ·livenessProbe /health (process hang/CUDA deadlock detect). 70B model은 initialDelaySeconds 120-180s 필요 — 45s default는 premature restart 유발. vLLM /health/ready — execute_dummy_batch_async 1-token GPU forward pass, silent inference failure catch. LiteLLM proxy — /health/liveliness(container) ·/health/readiness(DB) ·/health(model API call). LLM Goodput SLO(quality+latency) ·AI deployment patterns(cold start) ·Graceful Shutdown(drain)와 complement — probe=traffic routing safety.'
+  points:
+  - startup+readiness=/v1/models ·liveness=/health — model-aware vs process-alive
+  - 70B→120-180s startup window ·/health/ready GPU dummy forward
+  - LiteLLM 3-tier — liveliness/readiness/model health 분리
+  source: https://github.com/llm-d/llm-d/blob/main/docs/readiness-probes.md
+- category: ai
+  title: Agent Deadline Propagation — absolute deadline tree, per-step timeout 아님
+  summary: 'agent timeout을 step마다 10s fixed로 주면 planner 4s + 3 tool×10s = 34s authorized against 6s user SLO — zombie request·token burn. latency budget은 line이 아니라 tree: critical path=longest root-to-leaf, sibling branch optimize는 zero effect. fix: request entry에서 absolute deadline(wall-clock timestamp, duration 아님) 생성→every LLM call·tool·sub-agent에 remaining budget propagate→node마다 check_or_raise→retry bounded by remaining budget not retry count. gRPC grpc-timeout header model — each hop subtracts elapsed, chain dies together. LangChain asyncio.wait_for·LangGraph env timeout은 local concern, propagation 없음 — custom Deadline context 필요. LLM Correlation IDs(trace join) ·Human-in-the-Loop Approval(timeout) ·AI Agent Error Handling(budget guardrail)와 complement — deadline=distributed time budget design.'
+  points:
+  - absolute deadline timestamp — duration per-step 금지, tree critical path
+  - remaining budget propagate — sub-agent·tool·retry 모두 parent budget 차감
+  - LangGraph/LangChain local timeout 한계 — custom Deadline context 필요
+  source: https://tianpan.co/blog/2026-04-17-deadline-propagation-agent-chains-slo
+- category: ai
+  title: LLM Capacity Planning — concurrency-aware Little's Law, per-token naive 17-36× 오차
+  summary: 'LLM inference capacity planning에서 per-token cost calculator는 arrival rate λ를 무시해 self-hosted cost를 17-36× underestimate한다 — GPU utilization naive Θmax 가정 vs 실제 arrival-limited idle. Little''s Law: in-flight concurrency L=λ×W(residence time)가 cost dominant term. concurrency-aware model: hardware+model+quantization+λ+SLO→effective cost-per-million-tokens. physics tools: kv-planner — roofline engine, memory waterfall(weights+KV+activations), size_fleet(target_rps, p99), calibrate from live vLLM load. llm-infra-planner — client-side VRAM/throughput/cost, TTFT/TPOT SLO slider. prefill=compute-bound·decode=memory-bandwidth-bound — batching strategy가 capacity curve shape 결정. KEDA autoscaling(queue depth) ·LLM Load Testing(TTFT soak) ·AI deployment patterns(serverless vs dedicated)와 complement — capacity=physics+λ grounded planning.'
+  points:
+  - per-token naive 17-36× underestimate — λ(concurrency)가 dominant cost term
+  - kv-planner roofline — memory waterfall·size_fleet·calibrate from live traffic
+  - prefill compute-bound ·decode bandwidth-bound — SLO별 batching curve
+  source: https://arxiv.org/html/2606.11690v1
+- category: ai
+  title: Per-Request GPU Cost Attribution — gpu_time_share·DCGM·minute-bucket slicing
+  summary: 'continuous batching GPU에서 per-request cost는 token count×flat rate가 아니다 — shared GPU time·utilization·power를 request별로 split해야 feature-level FinOps·capacity model이 가능. 3-signal join: (1) inference trace OTel span gpu_time_share (2) DCGM/NVML per-GPU utilization+power per minute (3) cloud instance $/GPU-hour. attributed_cost = gpu_time_share × (cost_per_gpu_hour/3600) × avg_utilization adjustment — thin batch idle period는 lower attributed cost. minute-bucket slicing — request가 10:01:45-10:02:30 span이면 각 minute bucket의 actual GPU metrics로 split. feature tag(trace attribute)로 agent step·tool·user tier별 cost rollup. LLM API 비용 최적화(routing·cache 4-layer) ·LLM Goodput SLO(quality+latency+cost) ·LLM Data Flywheel(production trace)와 complement — attribution=shared GPU cost split design.'
+  points:
+  - gpu_time_share × DCGM utilization × $/hr — continuous batching cost split
+  - minute-bucket slicing — cross-minute request correct GPU metrics
+  - feature tag rollup — agent step·tool·user tier별 FinOps
+  source: https://last9.io/blog/every-token-has-a-price-per-request-gpu-cost-attribution/
+- category: ai
+  title: Agent Structural Coverage Testing — typed coordination graph 4 criteria, arxiv 2026
+  summary: 'agent E2E eval은 output quality만 본다 — declared coordination structure(delegation path·tool-access rule·restricted tool edge)가 test에서 exercise됐는지 증거 없음. structural coverage model: typed multi-agent coordination graph에서 4 criteria — (1) reachable agents (2) allowed tool edges (3) restricted tool edges (4) delegation edges. coverage-driven generation: graph에서 structural witness objective 추출→DSPy로 natural-language scenario synthesize→runtime witness로 obligation covered 확인. OpenAI Agents SDK customer_service workflow benchmark: 54/75 allowed-tool·36/48 delegation obligations witnessed, 23/248 restricted-call violations detected. promptfoo(assertion eval) ·Multi-Agent Handoff Integration(handoff seam) ·Inspect AI(sandbox eval)와 complement — structural=graph adequacy, E2E=semantic quality.'
+  points:
+  - 4 criteria — agents·allowed tools·restricted tools·delegation edges covered
+  - graph→witness objective→scenario — structural meaning fixed, LLM realizes NL
+  - restricted-tool violations — misrouting concrete failure separate from output pass
+  source: https://arxiv.org/html/2605.26521v1
