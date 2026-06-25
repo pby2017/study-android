@@ -3001,3 +3001,59 @@ Refined:
 - Refined: `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기`
 - Refined sources re-checked: https://code.claude.com/docs/en/sub-agents and https://code.claude.com/docs/en/sessions
 - Rejected: ADK for Kotlin/Android, Android AI/AppFunctions/Gemini Nano recap, Copilot `ai_credits_used`, Codex role-specific plugins/Sites/annotations, and Modern Web Guidance/WebMCP as duplicates or overlap with existing cards.
+
+## 2026-06-25 25:00 KST — Batch 47 (아이디어 검증 + 병합 2카드 + 신규 10카드)
+
+### 병합 2카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Morph Fast Apply · Morph WarpGrep → **Morph agent models — Fast Apply merge·WarpGrep search subagent** | trace-mcp · Aider repo map |
+| Agents SDK Sandbox(구) → **Agents SDK Sandbox — Manifest workspace·dual memory·8 provider sandbox** | E2B · Runloop · Daytona 개별 provider |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Blaxel | E2B(30일)·Daytona(30일)·Modal(7일) pause cap과 perpetual standby·25ms resume 축 분리 |
+| Sandcastle | E2B(single Firecracker) · mcp-sandboxd(Docker persistent)와 MCP-native 3-tier isolation(gVisor default) 분리 |
+| mcp-sandboxd | E2B(ephemeral API) · Sandcastle(stateless execute)와 identifier-scoped persistent machine MCP 분리 |
+| Taskmaster AI | Backlog.md(kanban) · Ralph(bash loop) · Spec Kit(SDD)와 PRD→dependency graph MCP decomposition 분리 |
+| ClawTeam | Agent Teams(Claude native) · Vibe Kanban(GUI) · Ruflo(plugin swarm)와 CLI-agnostic tmux+worktree spawn 분리 |
+| agentverify | EvalView(trajectory diff) · Iris(MCP rules) · DeepEval(metrics)와 YAML cassette record/replay zero-cost CI 분리 |
+| Cloudflare Sandbox SDK | Code Mode(V8 isolate codegen) · Blaxel(perpetual API)와 Workers Containers+Durable Objects 분리 |
+| Cognee | Mem0(fact layer) · Letta(agent OS) · Graphiti/Zep(temporal KG)와 graph-native 14-mode+memify self-improve 분리 |
+| Fly.io Sprites | Runloop(snapshot branch) · E2B(ephemeral) · Blaxel(standby API)와 ~300ms checkpoint/restore VM primitive 분리 |
+| Citadel | Conductor(GUI) · Ruflo(swarm plugin) · Continuous Claude(Ralph+PR)와 /do routing+compiled memory harness 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| OpenAI Agents SDK Sandbox Memory standalone | 기존 Agents SDK Sandbox 카드 갱신으로 v0.14 dual memory 흡수 |
+| agent-fox · AgentProbe · understudy · recut-ai | adoption 미미(★<10) 또는 EvalView·agentverify·LangWatch axis overlap |
+| Mem0 · Letta · Zep/Graphiti | 기존 memory 카드, Cognee가 graph-native complement |
+| Modal sandbox-mcp · stillmatic | Modal GPU/sandbox 카드·E2B axis overlap |
+| Microsandbox · OpenShell · Snipara | niche local-first/policy, Augment sandbox guide·E2B로 축 커버 |
+| Batch 45·46 신규 20개 | 중복 회피 규칙 — Browser Use·Morph 등 신규 재추가 금지(병합만) |
+| Prefect+AI · Maxim · Galileo | Inngest·LangWatch·Braintrust observability axis overlap |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Blaxel — perpetual standby sandbox, 25ms resume·zero idle compute | docs.blaxel.ai |
+| 2 | Sandcastle — tiered isolation MCP sandbox, gVisor·Firecracker 3단계 | github.com/pruthvirajdgit/sandcastle |
+| 3 | mcp-sandboxd — identifier-keyed persistent Docker/K8s sandbox MCP | github.com/jeliasson/mcp-sandboxd |
+| 4 | Taskmaster AI — PRD→dependency-aware task graph MCP, 27k★ | github.com/eyaltoledano/claude-task-master |
+| 5 | ClawTeam — CLI agent swarm, tmux+git worktree로 8 GPU 병렬 | github.com/HKUDS/clawteam |
+| 6 | agentverify — YAML cassette replay로 agent action을 pytest처럼 검증 | github.com/simukappu/agentverify |
+| 7 | Cloudflare Sandbox SDK — Workers Containers·Durable Objects stateful sandbox | developers.cloudflare.com/sandbox |
+| 8 | Cognee — graph-native AI memory, 14 retrieval mode·memify self-improve | github.com/topoteretes/cognee |
+| 9 | Fly.io Sprites — ~300ms checkpoint/restore stateful Linux VM sandbox | fly.io/docs/sandbox |
+| 10 | Citadel — Claude/Codex orchestration harness, /do routing·compiled memory | github.com/SethGammon/Citadel |
+
+누적: 776카드 (767→766 병합→776 신규)
+주제: sandbox infra tier(Blaxel·Sandcastle·mcp-sandboxd·Cloudflare·Sprites), agent orchestration(Taskmaster·ClawTeam·Citadel), regression testing(agentverify), graph memory(Cognee)

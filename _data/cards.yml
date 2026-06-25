@@ -3294,15 +3294,13 @@ cards:
   - MCP 권한과 Codex 실행 로그를 compliance 관측 대상으로 올림
   source: https://openai.com/index/running-codex-safely/
 - category: ai
-  title: Agents SDK Sandbox — 에이전트 실행 환경을 코드보다 먼저 설계하기
-  summary: 'OpenAI는 2026년 4월 Agents SDK에 native sandbox execution을 추가했다고 설명했다. 핵심은 모델에게 파일·명령·패치 도구를 그냥 주는 것이 아니라, controlled workspace와 Manifest로 입력 디렉터리, 출력 위치, 외부 저장소 마운트를 명시하는 것이다. Blaxel, Cloudflare, Daytona, E2B, Modal, Runloop, Vercel 같은 샌드박스 제공자를 붙일 수 있고, agent state를 외부화하면 컨테이너가 만료돼도 snapshot과 rehydration으로 재개할 수 있다. 실무 포인트는 "에이전트가 코드를 실행한다"가 아니라, credential이 있는 harness와 모델 생성 코드가 도는 compute를 분리해 prompt injection·exfiltration 피해를 줄이는 것이다.
-
-    '
+  title: Agents SDK Sandbox — Manifest workspace·dual memory·8 provider sandbox
+  summary: OpenAI Agents SDK v0.14(2026-04) Sandbox Agents는 SandboxAgent+Manifest+SandboxRunConfig로 persistent isolated workspace에서 shell·filesystem·skills·compaction을 capability로 bind한다. Blaxel·Cloudflare·Daytona·E2B·Modal·Runloop·Vercel 8 hosted provider + Docker/UnixLocal BYO. Session memory(대화 히스토리)와 Sandbox memory(완료 run에서 distill한 lessons→memories/MEMORY.md)를 분리 — progressive disclosure로 memory_summary.md만 inject하고 Shell+Filesystem로 deep search·live stale update. RunState·SandboxSessionState·snapshot으로 resume, S3/R2/GCS mount. E2B·Runloop 개별 provider 카드와 달리 SDK-native manifest·capability·dual-memory harness layer.
   points:
-  - Manifest로 입력·출력·마운트 구조를 선언해 작업공간을 예측 가능하게 만듦
-  - built-in sandbox provider와 bring-your-own sandbox를 모두 지원
-  - harness와 compute를 분리해 credential 노출과 컨테이너 장애 리스크를 낮춤
-  source: https://openai.com/index/the-next-evolution-of-the-agents-sdk/
+  - SandboxAgent+Manifest — workspace root·mount·capability(Shell/FS/Memory/Skills) 선언
+  - Dual memory — Session(메시지) vs Sandbox memory(rollout lessons, MemoryLayoutConfig isolation)
+  - 8 provider extras — Blaxel/Cloudflare/Daytona/E2B/Modal/Runloop/Vercel + snapshot resume
+  source: https://openai.github.io/openai-agents-python/sandbox/memory/
 - category: ai
   title: ChatGPT Enterprise 사용량 분석 — Codex 비용도 운영 지표로 보기
   summary: 'OpenAI는 2026년 6월 18일 ChatGPT Enterprise에 credit usage analytics와 업데이트된 spend controls를 공개했다. Global Admin Console은 ChatGPT와 Codex credit usage를 한 화면에 묶고, 사용자·제품·모델별 credit spend와 usage trend를 보여준다. 같은 데이터를 unified Cost API로 가져가 내부 분석 시스템에 연결할 수도 있다. 관리자는 workspace 기본 한도, 그룹별 한도, 개인별 override를 설정하고, 사용자는 남은 credit과 요청 사유를 함께 볼 수 있다. 에이전트 운영에서 중요한 점은 비용을 사후 청구서가 아니라 adoption, 모델 선택, 자동화 범위 조정에 쓰는 관측 신호로 다루는 것이다.
@@ -7029,21 +7027,13 @@ cards:
   - Postgres-only infra — no separate orchestrator cluster, Conductor optional
   source: https://docs.dbos.dev/ai/ai-quickstart
 - category: ai
-  title: Morph Fast Apply — 7B specialized model로 code edit merge 10,500 tok/s
-  summary: Morph Fast Apply(morphllm.com·morph-v3-fast/large/auto)는 AI agent가 생성한 edit snippet(// ... existing code ... markers)을 original file에 semantic merge하는 specialized 7B model이다. 10,500+ tok/s·98% accuracy·OpenAI-compatible API·MCP·Vercel AI SDK. search-and-replace(whitespace fail·multi-chunk) · full-file rewrite(느리고 비쌈) 대신 single-call whole-file merge. Cursor instant apply·Aider(edit format)와 complement — agent planning model과 merge model 분리. E2B·Daytona sandbox의 applyEdit code-in/code-out 지원.
+  title: Morph agent models — Fast Apply merge·WarpGrep search subagent
+  summary: Morph(morphllm.com)는 coding agent용 specialized model 2축을 제공한다. Fast Apply(morph-v3-fast/large/auto·7B)는 // ... existing code ... marker snippet을 original file에 semantic merge — 10,500+ tok/s·98% accuracy·OpenAI-compatible API·MCP·E2B/Daytona applyEdit. WarpGrep(v2.1)는 search를 isolated context subagent로 offload — 8 parallel tool/turn·4 turns max·(file,[start,end]) span만 main agent에 반환. SWE-Bench Pro Opus 55.4→57.5·Codex 56.0→59.1 lift. Cursor instant apply·Aider repo map·trace-mcp와 complement — planning model + merge model + search subagent 3-tier 분리.
   points:
-  - SAP-style merge — // ... existing code ... markers, semantic not text replace
-  - 10,500 tok/s·98% — 7B on custom CUDA kernels, OpenAI-compatible API
-  - Agent architecture — planning model + Fast Apply merge model separation
+  - Fast Apply — SAP-style semantic merge, 10,500 tok/s, planning/merge model split
+  - WarpGrep — isolated search subagent, +2~4pp SWE-Bench Pro when paired
+  - OpenAI-compatible API+MCP — E2B/Modal/Daytona sandbox remoteCommands 지원
   source: https://docs.morphllm.com/models/apply
-- category: ai
-  title: 'Morph WarpGrep — isolated search subagent, SWE-Bench Pro #1 lift'
-  summary: Morph WarpGrep(morph-warp-grep-v2.1)는 coding agent의 search를 별도 context window subagent로 offload하는 specialized search model이다. 8 parallel tool calls/turn·up to 4 turns·returns (file, [start_line, end_line]) spans only — main agent never sees dead-end greps. SWE-Bench Pro에서 Opus 55.4→57.5·Codex 56.0→59.1 lift. Aider repo map(pre-index ranking) · trace-mcp(code graph) · grep과 달리 parallel breadth-first search subagent. E2B·Modal·Daytona remoteCommands로 sandbox search 지원.
-  points:
-  - Isolated context — 8 parallel tools/turn, clean spans back to main agent
-  - SWE-Bench Pro lift — +2~4pp on Opus/Codex/MiniMax when paired
-  - Subagent pattern — search cost fraction of main model self-search
-  source: https://www.morphllm.com/products/warpgrep
 - category: ai
   title: trace-mcp — framework-aware codebase graph MCP, 138 tools·81 language
   summary: trace-mcp(nikolai-vysotskyi/trace-mcp·npm)는 codebase를 cross-language dependency graph로 index해 MCP로 serve한다. 81 language·58 framework integration(Laravel/Inertia/Vue cross-edge 등)·138 tools — get_change_impact·get_call_graph·find_usages·get_request_flow. trace-mcp init이 Claude Code·Cursor·Windsurf·Codex 등 auto-detect·one-click wire. Aider repo map(tree-sitter ranking) · Sourcegraph(search) · Qartez(PageRank graph)와 달리 framework-aware cross-language edges. Optional Electron GPU graph explorer.
@@ -7068,6 +7058,86 @@ cards:
   - Managed OAuth gateway — no per-server redirect URI, auto token refresh
   - Namespace URL — one endpoint bundles N MCP connections, portable across clients
   source: https://smithery.ai/docs/use/connect
+- category: ai
+  title: Blaxel — perpetual standby sandbox, 25ms resume·zero idle compute
+  summary: Blaxel(blaxel.ai)는 AI agent용 perpetual sandbox platform — standby 상태에서 compute 비용 0·25ms 이내 resume·filesystem+memory state 유지. E2B(30일 pause 삭제)·Daytona(30일 archive)·Modal(7일 alpha cap)과 달리 unlimited standby duration. microVM isolation(AWS Lambda 동일 접근)·15초 network idle 후 auto-standby·Volumes로 장기 persistence. Sandboxes+Agents Hosting+Batch Jobs+MCP Servers Hosting+Model Gateway one stack. OpenAI Agents SDK v0.14 8 provider 중 하나 — co-located agent hosting으로 agent↔sandbox network roundtrip 제거.
+  points:
+  - Perpetual standby — zero compute cost, <25ms resume, full FS+memory state
+  - vs E2B/Daytona/Modal — no 7~30 day pause/archive deletion cap
+  - Co-located hosting — agent+execution same platform, MCP+Model Gateway bundle
+  source: https://docs.blaxel.ai/Sandboxes/Overview
+- category: ai
+  title: Sandcastle — tiered isolation MCP sandbox, gVisor·Firecracker 3단계
+  summary: Sandcastle(pruthvirajdgit/sandcastle·MIT)는 MCP execute_code tool로 AI agent에 tiered sandbox execution을 제공한다. low(Linux namespace+seccomp·~5ms)·medium(gVisor runsc·~50ms·default)·high(Firecracker microVM·~250ms) 3 isolation level — threat model에 맞게 선택. network blocked by default+domain allowlist·multi-language·pre-warmed pool·snapshot restore·usage-based billing. E2B(Firecracker only) · mcp-sandboxd(Docker persistent) · Agents SDK Sandbox(manifest harness)와 달리 MCP-native isolation tier selection.
+  points:
+  - 3 tiers — namespace(5ms) / gVisor(50ms default) / Firecracker(250ms untrusted)
+  - MCP execute_code — any MCP agent, network blocked+allowlist, pre-warmed pools
+  - vs E2B single-tier — pick security/performance tradeoff per execution
+  source: https://github.com/pruthvirajdgit/sandcastle
+- category: ai
+  title: mcp-sandboxd — identifier-keyed persistent Docker/K8s sandbox MCP
+  summary: mcp-sandboxd(jeliasson/mcp-sandboxd)는 MCP run_sandbox·delete_sandbox·restart_sandbox tool로 identifier(대화 ID 등)마다 long-running isolated sandbox를 Docker 또는 Kubernetes backend에 유지한다. deps 한 번 install 후 iterate·/artifacts HTTP proxy로 sandbox 내부 생성 파일 download·DinD·K8s-native backend 동일 MCP interface. E2B(ephemeral microVM API) · Sandcastle(stateless execute_code) · Agents SDK Sandbox(manifest)와 달리 conversation-scoped persistent machine feel. IDE test/lint/build를 MCP로 host 오염 없이 실행.
+  points:
+  - identifier→sandbox — reuse env across runs, install deps once iterate fast
+  - run_sandbox/restart_sandbox/delete_sandbox — Docker·K8s·DinD same MCP surface
+  - /artifacts HTTP proxy — generate in sandbox, download via server endpoint
+  source: https://github.com/jeliasson/mcp-sandboxd
+- category: ai
+  title: Taskmaster AI — PRD→dependency-aware task graph MCP, 27k★
+  summary: Taskmaster AI(eyaltoledano/claude-task-master·~27k★)는 PRD·spec·GitHub issue를 structured dependency-aware coding task graph로 decompose하는 MCP server다. Cursor·Claude Code·Windsurf 등 에디터에서 parse-prd·expand-task·analyze-complexity·set-status MCP tool 호출. multi-model orchestration — main·research(Perplexity)·fallback role 분리. Backlog.md(마크다운 칸반) · Ralph loop(bash retry) · Spec Kit(SDD scaffold)와 달리 AI-powered task decomposition+dependency graph+complexity scoring. tiered MCP tool loading(core/standard/all)로 context 절약.
+  points:
+  - parse-prd→task graph — dependency edges·complexity analysis·status tracking
+  - Multi-model roles — main codegen·research Perplexity·fallback auto-switch
+  - MCP-native — Cursor/Claude Code/Windsurf in-editor, tiered tool loading
+  source: https://github.com/eyaltoledano/claude-task-master
+- category: ai
+  title: ClawTeam — CLI agent swarm, tmux+git worktree로 8 GPU 병렬
+  summary: ClawTeam(HKUDS/clawteam·MIT·~5.3k★)는 Claude Code·Codex·OpenClaw·nanobot·Kimi CLI 등 CLI agent를 clawteam spawn tmux으로 git worktree 격리 병렬 실행하는 swarm framework다. leader agent가 task decompose→specialist spawn→discovery share→resource reallocate. Agent Teams(Claude native 대화) · Vibe Kanban(GUI 칸반) · Ruflo(queen swarm plugin)와 달리 CLI-agnostic tmux/subprocess spawn·worktree isolation·no custom SDK. v0.2.0(2026-03) Cursor subprocess experimental.
+  points:
+  - clawteam spawn tmux — Claude/Codex/OpenClaw/nanobot/Kimi parallel in worktrees
+  - Leader orchestration — decompose·spawn·collect discoveries·rebalance
+  - CLI-agnostic — any shell-capable agent, subprocess for Cursor experimental
+  source: https://github.com/HKUDS/clawteam
+- category: ai
+  title: agentverify — YAML cassette replay로 agent action을 pytest처럼 검증
+  summary: agentverify(simukappu/agentverify·MIT·v0.3)는 pytest plugin으로 AI agent action을 deterministic하게 assert한다. real LLM call 1회 record→human-readable YAML cassette→CI zero-cost replay. tool name·param·sequence·cost·safety rule matcher. LangChain·LangGraph·Strands·OpenAI Agents SDK adapter·custom converter. EvalView(trajectory diff golden baseline) · Iris eval MCP(heuristic rules) · DeepEval(metric pytest)와 달리 cassette record/replay + flexible matcher로 prompt variation tolerance. regression-test layer — quality eval·production observability와 complement.
+  points:
+  - Record→YAML cassette→CI replay — zero API cost deterministic action assert
+  - Tool sequence+param+order — flexible matchers tolerate prompt variation
+  - Framework adapters — LangChain/LangGraph/Strands/OpenAI Agents SDK
+  source: https://github.com/simukappu/agentverify
+- category: ai
+  title: Cloudflare Sandbox SDK — Workers Containers·Durable Objects stateful sandbox
+  summary: Cloudflare Sandbox SDK는 Cloudflare Workers+Containers ecosystem 위 AI agent sandbox platform이다. Durable Objects로 container stateful coordination·R2 bucket mount persistent storage·sleepAfter idle timeout(기본 10분)·keepAlive indefinite·configurable network egress. Code Mode(MCP→TypeScript API·V8 isolate) · Agents SDK 8 provider · Blaxel(perpetual standby)와 달리 Workers-native deploy·edge proximity·R2 mount. OpenAI Agents SDK CloudflareSandboxClient integration.
+  points:
+  - Workers Containers+Durable Objects — stateful sandbox coordination at edge
+  - R2 mount+keepAlive — persistent storage, configurable idle/sleep policy
+  - vs Code Mode — full Linux container sandbox, not V8 isolate tool codegen
+  source: https://developers.cloudflare.com/sandbox/
+- category: ai
+  title: Cognee — graph-native AI memory, 14 retrieval mode·memify self-improve
+  summary: Cognee(topoteretes/cognee·Apache-2.0·~7k★)는 vector+graph+relational 3-layer unified memory engine으로 agent에 persistent long-term memory를 제공한다. ingest→knowledge graph build→GRAPH_COMPLETION(default graph traversal+vector hint) 등 14 retrieval mode. memify가 stale node prune·edge reweight·derived fact 추가로 self-improving memory. Session memory(fast cache)↔Permanent memory(graph sync) 2-tier. Mem0(drop-in fact layer) · Letta(self-editing agent OS) · Graphiti/Zep(temporal KG)와 달리 graph-native control plane+Claude Code plugin(SessionStart/PostToolUse/PreCompact hooks).
+  points:
+  - 14 retrieval modes — GRAPH_COMPLETION graph traverse vs vanilla RAG top-k
+  - memify — prune·reweight·derive facts, memory evolves not static storage
+  - Claude Code plugin — hooks capture tool calls→session→permanent graph sync
+  source: https://github.com/topoteretes/cognee
+- category: ai
+  title: Fly.io Sprites — ~300ms checkpoint/restore stateful Linux VM sandbox
+  summary: Fly.io Sprites(2026-01 GA)는 checkpoint/restore stateful Linux VM sandbox — create 1~2s·restore ~300ms entire FS+apt packages+running services. 100GB NVMe root+object storage durability·scale-to-zero 30s idle·HTTP unique URL+TLS·network egress policy. Docker image pull 없이 base Linux+manual install 또는 checkpoint configured env. Runloop(snapshot/branch) · E2B(ephemeral microVM) · Blaxel(perpetual standby API)와 달리 programmable checkpoint/restore primitive·Claude Code remote runtime use case. Northflank/OCI alternatives comparison axis.
+  points:
+  - sprite checkpoint/restore — ~300ms full env restore incl running services
+  - No Docker pull — base Linux+install or checkpoint configured state
+  - Scale-to-zero 30s — HTTP URL access, programmable API+SDK thousands concurrent
+  source: https://fly.io/docs/sandbox/
+- category: ai
+  title: Citadel — Claude/Codex orchestration harness, /do routing·compiled memory
+  summary: Citadel(SethGammon/Citadel·MIT·~614★)는 Claude Code+OpenAI Codex용 open-source orchestration layer — compiled repo memory·/do intent routing·safety hooks·cost telemetry·parallel agent fleet in git worktrees. Campaign/Marshal/Fleet agent roles로 multi-session work decompose·resume·handoff. Conductor(GUI parallel) · Ruflo(queen swarm) · Continuous Claude(Ralph+PR) · Vibe Kanban(kanban)와 달리 plugin harness — durable project context·English→workflow routing·token spend dashboard. Claude Code plugin marketplace 등록.
+  points:
+  - /do intent routing — English→lightest workflow, not manual command pick
+  - Compiled repo memory — survives context reset, campaign resume+handoff
+  - Fleet parallel — git worktree isolated agents, cost telemetry dashboard
+  source: https://github.com/SethGammon/Citadel
 - category: ai
   title: Code Quality Findings REST API — CodeQL 이슈를 에이전트 수리 큐로 읽기
   summary: 'GitHub는 2026-06-23 Code Quality findings용 repository-level REST API를 public preview로 열었다. 새 read-only 엔드포인트는 저장소의 Code Quality CodeQL finding 목록과 단일 finding 상세를 가져오며, 목록 API는 필터링과 페이지네이션을 지원한다. 중요한 점은 "UI에서 보던 품질 경고"가 에이전트가 읽을 수 있는 작업 큐가 된다는 것이다. 자동 수정 에이전트가 바로 쓰기 권한을 갖기보다, 먼저 findings를 읽고 심각도·파일·규칙·소유 팀 기준으로 묶은 뒤 사람 승인·Copilot cloud agent·사내 remediation workflow에 넘기는 식으로 안전한 triage 레이어를 둘 수 있다. 단, 현재는 github.com public preview이고 GitHub Enterprise Server에는 아직 제공되지 않는다.
