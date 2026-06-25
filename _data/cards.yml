@@ -801,16 +801,6 @@ cards:
   - '설치: pipx 또는 PyPI(`SuperClaude install`), npm 경로도 제공 / Superpowers와 차이는 명령·에이전트·모드를 /sc: 네임스페이스로 일괄 패키징한 점 (별 수는 현재 기준·변동)'
   source: https://github.com/SuperClaude-Org/SuperClaude_Framework
 - category: ai
-  title: Claude Code 공식 플러그인 마켓플레이스 — 개발자가 실제로 가장 많이 까는 8개
-  summary: 'Claude Code에는 `claude-plugins-official` 마켓플레이스가 내장돼 있고, `/plugin`으로 둘러보거나 claude.com/plugins 공개 디렉터리에서 설치 수를 확인할 수 있다. 플러그인은 ''배포 단위''이고 스킬·MCP 서버·서브에이전트·훅을 묶을 수 있는 그릇 — 설치하는 건 플러그인, 쓰는 건 그 안의 스킬이다. 공개 디렉터리 기준 설치 수 상위는 Frontend Design(약 90만), Superpowers(약 82만), Code Review(약 37만), Context7(약 37만), Skill Creator(약 31만), Code Simplifier(약 30만), GitHub(약 28만), Playwright(약 27만) 순이다(수치는 변동·증가 중인 주장). Frontend Design는 프로덕션급 프런트엔드 제작, Superpowers는 브레인스토밍·디버깅·TDD·스킬 작성 워크플로를 얹는 묶음이다.
-
-    '
-  points:
-  - 내장 마켓플레이스 `claude-plugins-official` — `/plugin`으로 탐색·설치, 공개 디렉터리는 claude.com/plugins (설치 수 공개)
-  - '설치 수 상위(공개 디렉터리 기준·증가 중 주장): Frontend Design ~90만, Superpowers ~82만, Code Review ~37만, Context7 ~37만, Skill Creator ~31만, Code Simplifier ~30만, GitHub ~28만, Playwright ~27만'
-  - 플러그인=배포 단위(스킬·MCP·서브에이전트·훅을 묶음), 스킬=실제 쓰는 내용 — 과적재(훅+MCP+스킬 중첩)는 체감 속도를 떨어뜨리니 주의
-  source: https://claude.com/plugins
-- category: ai
   title: SWE-Perf — '버그 수정' 말고 '성능 최적화'를 재는 첫 저장소급 벤치마크
   summary: 'SWE-bench류 벤치마크는 대부분 ''GitHub 이슈를 고쳐 테스트를 통과시키는가''(정확성)를 잰다. SWE-Perf는 결이 다르다 — 실제 코드를 더 빠르게 만드는 능력, 즉 성능 최적화를 잰다. 인기 Python 저장소 9개에서 실제로 실행 속도를 개선한 PR들을 모아 만들었고, 10만 건이 넘는 PR(102,241건)을 필터링해 140개의 검증된 과제로 추렸다. 과제는 ''버그를 안 만들면서 테스트 실행 시간을 줄이는 패치''를 저장소 전체 맥락에서 생성하는 것이다. 결과적으로 현재 최고 AI 모델과 사람 전문가 사이에 성능 개선 격차가 남아 있어, 정확성 벤치마크가 포화돼도 ''빠르게 만들기''는 아직 사람이 앞선다는 신호다.
 
@@ -944,16 +934,6 @@ cards:
   - 'stateless 핵심: 진행은 LLM 컨텍스트가 아니라 git·파일에 — 매 반복 새 인스턴스'
   - 공식 ralph-wiggum 플러그인(/ralph-loop), Continuous Claude는 PR·CI·머지까지 확장
   source: https://ghuntley.com/ralph/
-- category: ai
-  title: Claude Code 비용 줄이기 — 공식 문서가 권하는 실전 체크리스트
-  summary: 'Claude Code는 API 토큰 소비량으로 과금되는데, Anthropic 공식 ''Manage costs'' 문서는 개발자 1인 평균 비용을 활동일당 약 $13, 월 $150~250로 제시하고 사용자 90%는 활동일당 $30 미만이라고 밝힌다. 비용을 줄이는 1순위는 모델 라우팅이다 — 대부분의 코딩은 Sonnet으로 처리하고 Opus는 복잡한 아키텍처 결정·다단계 추론에만 아껴 쓰며, `/model`로 세션 중 전환하거나 서브에이전트엔 `model: haiku`를 지정한다. 컨텍스트 관리도 핵심이다 — `/context`로 무엇이 공간을 잡아먹는지 보고, CLAUDE.md는 핵심만 담아 200줄 이하로 유지하며, 안 쓰는 MCP 서버는 `/mcp`로 끈다. 도구는 MCP보다 `gh`·`aws`·`gcloud` 같은 CLI를 선호하면 도구 목록이 컨텍스트에 안 올라가 토큰을 아낀다. 어디서 새는지는 `/usage`(스킬·서브에이전트·플러그인·MCP별 % 분해)로 추적한다.
-
-    '
-  points:
-  - '공식 기준치: 개발자 1인 활동일당 약 $13, 월 $150~250 / 사용자 90%는 활동일당 $30 미만 (Anthropic ''Manage costs'' 문서)'
-  - '1순위는 모델 라우팅 — 기본 Sonnet, Opus는 아키텍처·다단계 추론만, 서브에이전트엔 model: haiku'
-  - '컨텍스트 절약: /context로 점유 확인 · CLAUDE.md 200줄 이하 · 안 쓰는 MCP는 /mcp로 끄기 · 도구는 MCP보다 gh/aws/gcloud 같은 CLI 선호(목록이 컨텍스트에 안 올라감)'
-  source: https://code.claude.com/docs/en/costs
 - category: ai
   title: GitHub Copilot 코딩 에이전트 — 이슈를 던지면 알아서 PR을 올리는 비동기 에이전트
   summary: '터미널 CLI 에이전트와 달리, GitHub Copilot 코딩 에이전트는 깃허브 안에서 ''비동기''로 도는 자율 에이전트다. 이슈를 `@copilot`에게 할당하거나 Agents 패널에서 작업을 주면, 에이전트가 백그라운드에서 레포를 조사하고 구현 계획을 세운 뒤 브랜치에 코드를 고쳐 초안 PR(draft pull request)을 연다. 실행은 GitHub Actions 위에서 돌아 격리된 환경에서 빌드·테스트를 거치고, 사람은 결과 PR을 리뷰만 하면 된다. 즉 ''내가 옆에서 지켜보며 짜는'' 동기식 페어 프로그래밍이 아니라, ''일을 맡겨두고 다른 일을 하다 PR로 받는'' 워크플로다. VS Code·GitHub.com·이슈 어디서든 `@copilot` 멘션으로 호출할 수 있어, 자잘한 버그·반복 작업을 사람 손에서 떼어내 백로그를 비우는 용도에 맞는다.
@@ -1162,16 +1142,6 @@ cards:
   - '`blocks`=Claude Code 5시간 창, `statusline`=상태줄, `--breakdown`=모델별 비용 분해'
   - Claude Code·Codex·OpenCode·Amp·Droid·Goose·OpenClaw·Copilot CLI·Gemini CLI 등 지원 / 16,517★ 확인
   source: https://github.com/ryoppippi/ccusage
-- category: ai
-  title: Claude Code on the web — 터미널 안 열고 브라우저·모바일에서 작업을 클라우드에 던지기
-  summary: 'Claude Code on the web은 터미널 없이 claude.ai/code나 Claude 모바일 앱에서 클라우드 세션을 시작하는 리서치 프리뷰다. GitHub 레포를 연결하면 Anthropic 관리 VM에 레포가 클론되고, setup script 실행·네트워크 정책 적용·코드 수정·테스트·브랜치 push까지 한 세션 안에서 이어진다. 브라우저를 닫아도 세션은 유지되고, PR 생성 뒤에도 같은 대화에서 diff 리뷰·인라인 코멘트·추가 수정이 가능하다. 로컬 설정과 도구가 꼭 필요한 일은 로컬 Claude Code나 Remote Control이 맞고, 웹은 잘 정의된 백로그·코드 탐색·여러 독립 작업을 각자 세션/브랜치로 병렬 처리할 때 적합하다.
-
-    '
-  points:
-  - '흐름: clone→setup script→network policy→work/test→branch push, PR 뒤에도 같은 세션에서 반복'
-  - '적합: 로컬 checkout 없는 탐색, 독립 백로그 병렬 처리, 모바일/브라우저 모니터링'
-  - '주의: GitHub 접근 범위는 연결 계정 권한을 따름 / local config 필요 시 로컬·Remote Control 우선'
-  source: https://code.claude.com/docs/en/claude-code-on-the-web
 - category: ai
   title: AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)
   summary: 'Orchestra Research의 AI-research-SKILLs는 코딩 에이전트에 모델 아키텍처·파인튜닝·분산학습·평가·RAG·MLOps 같은 AI 연구/엔지니어링 절차를 SKILL.md 단위로 주입하는 MIT 라이선스 오픈소스 라이브러리다. README 기준 98개 스킬을 23개 카테고리로 나누고, autoresearch 스킬이 문헌 조사→아이디어→실험→논문 작성까지의 생애주기를 다른 도메인 스킬로 라우팅한다. 설치는 `npx @orchestra-research/ai-research-skills`로 에이전트를 자동 감지해 `~/.orchestra/skills/`에 깔거나, Claude Code 플러그인 마켓플레이스에서 카테고리별로 설치한다. 2026-06-24 GitHub API 기준 10,041★·748 forks다.
@@ -1500,16 +1470,6 @@ cards:
   - '주장(연구 수치): 총 194,480회 호출 중 거부는 0.035%로 드물었다. 실제 과제는 이 최소 실험보다 복잡하므로 현업에서의 열화는 더 심할 것이라고 저자는 명시. 코드 전체 오픈소스로 재현 가능'
   source: https://www.trychroma.com/research/context-rot
 - category: ai
-  title: claude-code-workflows(OneRedOak) — 디자인을 '눈으로' 자동 리뷰시키는 Playwright 기반 워크플로(3.8k★)
-  summary: 'OneRedOak/claude-code-workflows는 Claude Code용 워크플로 모음을 공유하는 MIT 라이선스 레포다(별 약 3.8k·포크 약 567). 핵심은 ''design-review'' 워크플로 — Claude Code가 Playwright MCP로 실제 브라우저를 띄워 변경된 UI를 직접 클릭·스크린샷하며 디자인 일관성·접근성·반응형을 검토하게 만든다. 텍스트 diff만 읽고 "괜찮아 보인다"고 말하는 코드 리뷰의 사각지대(렌더링 결과)를 사람 대신 에이전트가 눈으로 메우는 패턴이다.
-
-    '
-  points:
-  - '구성: 슬래시 커맨드 + 서브에이전트 + 룰 파일을 묶은 워크플로 3종(대표가 design-review). Playwright MCP를 통해 페이지를 띄우고 상호작용·스크린샷을 찍어 시각적으로 검증한다'
-  - '쓰임새: PR이나 작업 브랜치의 UI 변경을 머지 전에 에이전트가 라이브 브라우저로 점검 — 정적 diff로는 못 잡는 레이아웃 깨짐·대비·반응형 문제를 잡는 게 목적'
-  - 별 수·포크 수는 현재 기준 주장이며 변동한다. 본인 프로젝트의 디자인 가이드에 맞춰 룰을 고쳐 쓰는 출발점으로 의도된 레퍼런스 모음
-  source: https://github.com/OneRedOak/claude-code-workflows
-- category: ai
   title: 서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법
   summary: 'Claude Code 서브에이전트는 정의 파일 프런트매터의 model 필드로 각자 다른 모델을 쓸 수 있고, 값은 sonnet·opus·haiku·fable·전체 모델 ID(예: claude-opus-4-8)·inherit이며 생략 시 기본은 inherit(메인 대화와 동일 모델)이다. 공식 문서는 서브에이전트의 핵심 이점 중 하나로 "Haiku 같은 더 빠르고 저렴한 모델로 작업을 라우팅해 비용을 통제"하는 것을 명시한다. 즉 매번 같은 종류의 일(탐색·린트·요약)은 값싼 모델 서브에이전트에 정의 파일로 박아두면, 개발자가 일일이 모델을 고르지 않아도 설정만으로 비용 천장이 걸린다. 서브에이전트가 자체 격리 컨텍스트 창에서 돌아 메인 대화 히스토리를 안 보는 구조라 탐색 같은 토큰 폭증 작업을 메인에서 떼어내는 효과까지 겹친다.
 
@@ -1559,16 +1519,6 @@ cards:
   - '백엔드 2종: 기본은 무료 오픈소스 LSP, 별도로 JetBrains 분석엔진을 쓰는 유료 플러그인이 move·inline 같은 더 깊은 리팩터링을 제공'
   - '★설치 주의(공식): MCP/플러그인 마켓플레이스의 설치 명령은 ''오래되고 부적절''하니 쓰지 말고, PyPI에서 `uv tool install -p 3.13 serena-agent` 후 `serena init`으로 깔라고 메인테이너가 명시한다'
   source: https://github.com/oraios/serena
-- category: ai
-  title: claude-code-templates(aitmpl) — 에이전트·커맨드·MCP를 골라 깔고, 사용량을 대시보드로 보는 CLI(~28k★)
-  summary: 'claude-code-templates는 Daniel Avila가 만든 오픈소스 CLI(약 28.1k★, MIT)로, Claude Code용 ''바로 쓰는 설정 마켓플레이스''를 표방한다. `npx claude-code-templates@latest` 한 줄이면 100개 넘는 컴포넌트(전문 서브에이전트·슬래시 커맨드·설정·MCP 구성 등)를 골라 현재 프로젝트에 설치해 준다 — 직접 .claude 디렉터리를 손으로 채울 필요 없이 검증된 구성을 받아 시작하는 식이다. 단순 설치기를 넘어 운영 도구도 들어 있다. `--analytics` 플래그는 로컬 세션 로그를 읽어 실시간 사용량·대화 모니터링 대시보드를 띄우고, `--health-check`는 설치·설정 상태를 점검해 무엇이 빠졌는지 알려준다. aitmpl.com에서 웹으로 컴포넌트를 둘러볼 수도 있다.
-
-    '
-  points:
-  - '설치: `npx claude-code-templates@latest` — 100+ 컴포넌트(서브에이전트·커맨드·설정·MCP)를 대화형으로 골라 프로젝트에 주입. 별도 글로벌 설치 불필요'
-  - '운영 플래그 2종: `--analytics`=로컬 로그 기반 실시간 사용량·대화 모니터링 대시보드 / `--health-check`=설치·설정 상태 진단'
-  - MIT 라이선스·약 28.1k★(레포 기준 주장값) · 웹 카탈로그 aitmpl.com에서 컴포넌트를 미리 탐색 가능
-  source: https://github.com/davila7/claude-code-templates
 - category: ai
   title: Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)
   summary: 'ACP(Agent Client Protocol)는 Zed가 만들고 JetBrains와 함께 미는 개방형 표준으로, 코딩 에이전트와 그것을 띄우는 에디터(클라이언트) 사이를 표준 JSON-RPC 인터페이스로 갈라놓는다. 목표는 ''LSP가 언어 서버를 에디터에서 떼어낸 것''을 에이전트에도 하는 것 — 에이전트는 한 번만 ACP를 구현하면 ACP를 지원하는 모든 에디터에서 돌고, 에디터는 한 번만 구현하면 어떤 ACP 에이전트든 꽂아 쓴다. 그래서 한 에디터 안에서 어려운 리팩터링은 Claude Code로, 테스트 스윕은 다른 에이전트로 갈아끼우는 식의 ''에이전트 자유 교체''가 가능해진다. 특정 모델·도구에 묶이는 락인을 줄이는 게 핵심이다.
@@ -1858,16 +1808,6 @@ cards:
   - 맥락·한계 — Opus 4 발표(2025)와 묶여 나온 고객 레퍼런스다. 1,250만 줄 코드베이스에서의 단일 작업 일화이며 통제된 벤치마크가 아니므로, 일반 성능 보장이 아니라 '엔터프라이즈 자율 코딩이 가능했다'는 사례로 읽어야 한다
   source: https://claude.com/customers/rakuten
 - category: ai
-  title: Claude Code 사용량 한도 읽는 법 — '5시간 세션 + 주간 한도' 두 버킷에 Opus는 따로 카운트(공식 문서)
-  summary: 'Pro/Max 플랜의 Claude Code 사용량은 단일 숫자가 아니라 두 개의 윈도가 동시에 돈다고 Anthropic 공식 지원 문서가 명시한다. 하나는 ''5시간 롤링 세션'', 다른 하나는 ''주간 한도''이며, 설정의 Usage 페이지에서 두 진행바를 각각 보고 리셋 시각도 확인할 수 있다. 특히 주간 한도는 ''Opus 전용''과 ''그 외 모든 모델''이 별도 버킷으로 추적돼, Opus를 다 써도 Sonnet/Haiku로는 계속 작업할 수 있다. Anthropic은 정확한 토큰 쿼터를 공개하지 않고 플랜 배수(Pro 1x, Max 5x/20x)만 제시하므로, 실제 소진 속도는 모델·대화 길이·툴 사용·effort에 따라 달라진다.
-
-    '
-  points:
-  - 두 윈도 동시 적용 — 5시간 세션 한도와 주간 한도가 따로 존재하고, `/usage`(또는 웹 Usage 설정)에서 각 진행바와 리셋 시점을 본다. 주간 버킷은 'Opus 전용 / 그 외 모델'로 분리 카운트
-  - 절약 패턴(문서 권장) — 관련 질문은 한 메시지로 묶고, 프로젝트에 올린 내용은 캐싱돼 재사용 시 한도에 안 잡힌다. 모델·effort를 낮추고 첨부 크기를 줄이는 것도 직접적 효과
-  - 정량 쿼터는 비공개 — Anthropic은 토큰 수가 아니라 배수(Pro 1x / Max 5x / Max 20x)만 발표. '몇 토큰'이 아니라 '내 진행바가 어디까지 찼나'로 관리하는 게 현실적
-  source: https://support.claude.com/en/articles/9797557-usage-limit-best-practices
-- category: ai
   title: awesome-claude-code(hesreallyhim) — 스킬·훅·슬래시커맨드·오케스트레이터를 '한 분류에 검증된 하나'로 골라주는 정전(正典) 큐레이션 목록(CC BY-NC-ND·~46.6k★)
   summary: 'awesome-claude-code는 hesreallyhim이 관리하는 Claude Code 생태계의 ''정전'' 큐레이션 목록으로, GitHub에서 약 46.6k 스타·4.1k 포크·1,157 커밋까지 활발히 갱신되고 있다(레포에서 직접 확인되는 사실). 단순 링크 덤프가 아니라 스킬·훅·슬래시커맨드·에이전트 오케스트레이터·애플리케이션·플러그인·상태줄·개발 도구를 분류별로 모으고, 동작하지 않는 도구는 잘라내고 동작하는 것만 ''무슨 용도인지'' 태깅하는 방식이라 ''분류당 하나만 고르기''에 적합하다는 평가를 받는다. 이슈가 1,000건을 넘길 만큼 제출·검증이 활발하며, 레포 자체는 Python 98%로 구성된 자동 검증 파이프라인으로 목록을 관리한다. 라이선스는 CC BY-NC-ND 4.0(저작자표시·비영리·변경금지)이라 그대로 재배포·상업적 가공에는 제약이 있으니 ''읽고 도구를 고르는'' 용도로 쓰는 게 맞다.
 
@@ -2008,16 +1948,6 @@ cards:
   - 오픈웨이트는 Pro에서 부진(표준 스캐폴딩 1위 qwen3-coder 38.7%)
   source: https://www.morphllm.com/swe-bench-pro
 - category: ai
-  title: Claude Code Review — Anthropic이 직접 굴리는 'PR 열면 자동 리뷰' 매니지드 서비스(2026-03)
-  summary: 'Anthropic이 2026-03 PR이 열리면 자동으로 코드 리뷰를 도는 매니지드(서버형) 멀티에이전트 서비스 Claude Code Review를 내놨다. 직접 설정·운영하는 오픈소스 리뷰 워크플로와 달리, 관리자가 Claude Code 설정에서 켜고 GitHub 앱을 깐 뒤 레포만 고르면 새 PR마다 리뷰가 자동으로 돈다. Team·Enterprise 고객 대상 리서치 프리뷰로, 출시 시점엔 GitHub 전용(GitLab·Azure DevOps·Bitbucket 미지원)이며 Zero Data Retention과는 호환되지 않는다. 과금은 토큰 기반으로 리뷰당 평균 $15~25이며, 월 지출 상한·레포 단위 우선순위를 걸 수 있다(주장). ''리뷰를 사람이 직접 거는 부담''을 서비스로 떠넘기되, 리뷰마다 실제 비용이 든다는 게 핵심 트레이드오프다.
-
-    '
-  points:
-  - PR 열면 자동으로 도는 '매니지드' 멀티에이전트 리뷰(직접 운영 아님)
-  - Team·Enterprise 리서치 프리뷰, 출시 시 GitHub 전용·ZDR 비호환
-  - 토큰 과금 리뷰당 평균 $15~25 + 월 상한·레포 우선순위(주장)
-  source: https://www.anthropic.com/news/claude-code-review
-- category: ai
   title: 백그라운드 코딩 에이전트 — '맡기고 잊는' 비동기 에이전트가 2026 주류가 되다
   summary: '백그라운드 코딩 에이전트란 격리된 클라우드 샌드박스에서 비동기로 도는 ''AI 소프트웨어 엔지니어''다. GitHub 이슈·Linear 티켓·Slack 메시지 같은 일감을 맡기면 수 분~수 시간 혼자 일한 뒤 PR을 돌려준다 — 타이핑을 보조하는 인라인 도구와 정반대로 ''티켓→클라우드 샌드박스→자율 편집→PR→사람 리뷰'' 한 사이클을 돈다. Devin(2024 말)으로 장기 에이전트 역량이 무르익은 뒤 2025년 Codex Cloud·Cursor Background Agents·Jules가 쌓였고, Anthropic의 Claude Code Remote Tasks가 2026-03-20 합류하며 카테고리가 주류가 됐다. 다만 모든 백그라운드 에이전트는 레포·CI 시크릿을 만지려 ''범위가 좁고 회수 가능한 비인간 ID''가 필요해, 기업이 보안 통제로 다루기 시작했다.
 
@@ -2047,16 +1977,6 @@ cards:
   - '당근: 전사 전환·해커톤으로 반복 업무 자동화(의사결정은 사람 중심)'
   - '채널톡: Cursor 전사 도입으로 IDE까지 교체(품질 책임은 사람)'
   source: https://www.codetree.ai/blog/2026-%EB%B0%94%EC%9D%B4%EB%B8%8C-%EC%BD%94%EB%94%A9-%ED%88%B4-5%EA%B0%80%EC%A7%80-%EC%B6%94%EC%B2%9C-ai-%EC%BD%94%EB%94%A9-%ED%88%B4%EB%A1%9C-%EB%8B%AC%EB%9D%BC%EC%A7%84-%EA%B0%9C%EB%B0%9C%EC%9E%90/
-- category: ai
-  title: Claude Code hooks — 에이전트 행동을 '기억' 말고 이벤트로 고정하기
-  summary: 'Claude Code hooks는 모델이 규칙을 기억하길 기대하는 대신, 특정 생명주기 이벤트에서 사용자가 정한 명령을 실행하게 하는 자동화 장치다. 공식 문서는 PreToolUse, PostToolUse, UserPromptSubmit, Stop, SessionStart, PreCompact 같은 이벤트를 설정 파일에 등록하고, 이벤트→매처→핸들러 순서로 실행한다고 설명한다. 그래서 파일 수정 뒤 포맷, 위험 명령 차단, 세션 시작 컨텍스트 주입, 압축 전 메모 백업처럼 "매번 해야 하는 일"을 모델 판단 밖으로 빼낼 수 있다. 실전 포인트는 훅을 프롬프트가 아니라 작고 결정적인 제어면으로 보는 것이다.
-
-    '
-  points:
-  - 생명주기 이벤트에 명령을 걸어 반복 작업을 자동 실행
-  - PreToolUse·PostToolUse·Stop·SessionStart·PreCompact 등 지원
-  - 규칙 기억에 의존하지 않고 포맷·차단·컨텍스트 주입을 고정
-  source: https://code.claude.com/docs/en/hooks
 - category: ai
   title: Aider — 변경마다 자동 git 커밋해 'diff/undo'를 보장하는 터미널 페어 프로그래머(Apache-2.0·~46.4k★)
   summary: 'Aider는 터미널에서 LLM과 짝 코딩하는 오픈소스 도구다. 공식 태그라인은 "aider is AI pair programming in your terminal". 가장 차별적인 설계는 ''git 일등 시민''이다 — 에이전트가 코드를 고칠 때마다 의미 있는 메시지로 자동 커밋하므로, 마음에 안 들면 그 단위로 diff·undo가 된다(에이전트의 무분별한 수정에 대한 안전망). 또 레포 전체의 ''맵(repo map)''을 만들어 큰 코드베이스에서도 관련 파일을 집어주고, 100개 이상 언어를 지원하며, 클라우드·로컬 LLM을 모두 붙일 수 있다. 그 밖에 자동 린트·테스트 후 문제 자동 수정, 이미지·웹페이지 입력, 음성 코딩, 에디터 코멘트로 IDE 안에서 호출까지 제공한다. 라이선스 Apache-2.0, 주 언어 Python, GitHub ~46.4k★(레포 표시 기준).
@@ -2696,16 +2616,6 @@ cards:
   - 'OWASP MASVS v2.0: RESILIENCE-1~4, 모든 모바일 앱 보안 기준'
   source: https://mas.owasp.org/MASVS/11-MASVS-RESILIENCE/
 - category: ai
-  title: ML Kit Text Recognition + Apple Vision — 모바일 온디바이스 OCR 양대 표준, 외부 의존성 없이 텍스트 인식
-  summary: 'Google ML Kit Text Recognition v2와 Apple Vision VNRecognizeTextRequest는 모바일 온디바이스 OCR의 양대 표준이다. ML Kit는 Latin·중국어·일본어·한국어·데바나가리 5개 스크립트를 지원하고, Android는 번들/언번들 선택 가능, iOS는 38MB 정적 링크. Apple Vision은 OS 내장이라 의존성 $0, fast/accurate 두 경로 제공. react-native-nitro-ocr는 두 API를 통합 래핑. Tesseract 대비 네이티브 NPU 가속 우위.
-
-    '
-  points:
-  - 'ML Kit v2: 5개 스크립트, Android 번들/언번들, iOS 정적 링크'
-  - 'Apple Vision: OS 내장 $0, fast/accurate 경로, VNRecognizeTextRequest'
-  - 'react-native-nitro-ocr: 두 API 통합, 오프라인 완전 지원'
-  source: https://developers.google.com/ml-kit/vision/text-recognition/v2/ios
-- category: ai
   title: ObjectBox — 모바일/엣지 온디바이스 벡터 DB, HNSW 검색 + ACID + 오프라인 우선(Apache-2.0·~4.6k★)
   summary: 'ObjectBox는 Java·Kotlin·Swift·Flutter·C/C++용 온디바이스 NoSQL+벡터 데이터베이스다. HNSW 인덱스로 ANN 검색을 지원하고, 바이너리 <8MB·동적 RAM KB 수준으로 모바일에 최적화. ACID 트랜잭션·양방향 동기화· 오프라인 우선 설계. 벡터와 일반 객체 데이터를 함께 저장 가능해 RAG·시맨틱 검색에 적합. LG G8S(5년 전 단말)에서 쿼리당 ~0.25ms, 4,000 QPS 달성. LangChain VectorStore 통합.
 
@@ -2956,16 +2866,6 @@ cards:
   - '6개 플랫폼: Android·iOS·Flutter·RN·Unity·Unreal'
   source: https://github.com/salmanashraf/mobile-agency
 - category: ai
-  title: ML Kit GenAI Summarization API — Gemini Nano로 온디바이스 텍스트 요약, 개인 채팅·이메일도 프라이버시 보장
-  summary: 'ML Kit GenAI Summarization API는 Google의 온디바이스 텍스트 요약 API다. Gemini Nano 모델로 기사와 대화를 1~3개 불릿포인트로 요약하며, 모든 처리가 디바이스에서 실행되어 개인 채팅·이메일·메모의 프라이버시를 보장한다. 입력 4,000토큰(~3,000 영단어) 제한, 초과 시 자동 절삭 옵션. ARTICLE· CONVERSATION 입력 타입 지원. checkFeatureStatus()로 디바이스 지원 여부 런타임 확인 필수.
-
-    '
-  points:
-  - '온디바이스 Gemini Nano: 채팅·이메일·메모 요약, 프라이버시 보장'
-  - '1~3개 불릿포인트: ARTICLE·CONVERSATION 타입별 최적화'
-  - 'checkFeatureStatus(): 디바이스 지원 여부 런타임 확인'
-  source: https://developers.google.com/ml-kit/genai/summarization/android
-- category: ai
   title: NeuralPulse — Wear OS 7 + Android 16 임상급 헬스 생태계, PPG·ECG·EDA를 FHIR R4로 내보내기(오픈소스)
   summary: 'NeuralPulse은 Samsung Galaxy Watch + Android 16용 임상급 건강 모니터링 오픈소스 생태계다. 웨어러블 센서 허브에서 PPG·ECG·EDA·BIA 고주파 생체 데이터를 스트리밍하고, 온디바이스 DSP 필터링 + MediaPipe INT8 MobileNetV3 + 로컬 Gemma 모델로 엣지 AI 분석. Android 16 Health Connect FHIR R4 관측 스키마로 임상 기록 동기화. 카메라 기반 영양 분석까지 단일 코드베이스에 통합한 유일한 오픈소스 플랫폼.
 
@@ -3086,16 +2986,6 @@ cards:
   - 'GitHub 소스와 README 중심: 학습용으로 복사 가능한 self-contained 샘플'
   source: https://developer.android.com/blog/posts/explore-ai-on-android-with-our-sample-catalog-app
 - category: ai
-  title: ML Kit Prompt API — Gemini Nano를 고정 기능 API 밖의 맞춤 온디바이스 GenAI로 쓰기
-  summary: 'ML Kit Prompt API는 Android 앱이 자연어·멀티모달 요청을 Gemini Nano에 직접 보내도록 하는 Alpha API다. 기존 ML Kit GenAI가 요약·이미지 설명처럼 정해진 기능을 제공했다면, Prompt API는 영수증 OCR 결과를 카테고리화하거나 긴 글을 알림 제목으로 바꾸고, 리뷰 감정 분류나 이메일 일정 정보 추출처럼 앱별 변환 로직을 로컬에서 처리한다. 처리가 디바이스에서 실행되므로 오프라인 동작과 개인정보 보호에 유리하다. 단, Alpha 단계이고 지원 기기 확인이 필요하므로 프로덕션에서는 device support와 fallback 설계를 함께 봐야 한다.
-
-    '
-  points:
-  - 'Alpha API: Gemini Nano에 앱별 자연어·멀티모달 프롬프트 전달'
-  - 영수증 분류·알림 제목 생성·리뷰 감정 분석·이메일 정보 추출
-  - '온디바이스 처리: 오프라인·프라이버시 장점, 지원 기기 확인 필수'
-  source: https://developer.android.com/blog/posts/ml-kit-s-prompt-api-unlock-custom-on-device-gemini-nano-experiences
-- category: ai
   title: Android CLI + Skills — 어떤 코딩 에이전트든 Android 개발 규칙에 맞게 접지
   summary: 'Google은 2026년 4월 Android CLI, Android skills, Android Knowledge Base를 에이전트용 개발 표면으로 공개했다. 핵심은 Android Studio 밖의 Claude Code, Codex, Antigravity 같은 에이전트도 SDK 설치, 프로젝트 생성, 에뮬레이터 생성, 실행 같은 Android 작업을 추측 없이 수행하게 만드는 것이다. 공식 블로그는 내부 실험에서 표준 도구만 쓸 때보다 LLM 토큰 사용을 70% 이상 줄이고 작업을 3배 빠르게 끝냈다고 설명한다. skills는 Navigation 3, edge-to-edge, AGP 9, XML-to-Compose, R8 분석 같은 반복 작업을 SKILL.md 지침으로 제공하고, Knowledge Base는 최신 Android/Firebase/Kotlin 문서를 에이전트 컨텍스트로 가져오게 한다.
 
@@ -3185,16 +3075,6 @@ cards:
   - 가상 디스플레이에서 앱 실행 후 screenshot 분석, tap/swipe/text 입력
   - target app 코드 변경은 없지만 adaptive UI·lifecycle 품질이 자동화 안정성 좌우
   source: https://developer.android.com/ai/computer-control
-- category: ai
-  title: ML Kit GenAI Speech Recognition — Gemini Nano Advanced 모드로 온디바이스 음성 인식
-  summary: 'ML Kit의 GenAI Speech Recognition API는 Android 앱에서 음성을 텍스트로 바꾸는 새 Alpha API다. Basic 모드는 기존 온디바이스 음성 인식 모델을 쓰고, Advanced 모드는 온디바이스 Gemini 모델을 사용해 더 넓은 언어 커버리지와 전반적 품질을 목표로 한다. 문서 기준 Advanced 모드는 Pixel 10 기기에서 제공되고 더 많은 기기가 개발 중이다. 앱은 `genai-speech-recognition:1.0.0-alpha1` 의존성을 추가하고, 모델 상태 확인·다운로드·streaming output 처리를 함께 설계해야 한다.
-
-    '
-  points:
-  - 'Basic: 기존 온디바이스 speech model, Advanced: Gemini 기반 GenAI model'
-  - Advanced 모드는 Pixel 10부터, 더 많은 기기 지원 개발 중
-  - 'Alpha API: 모델 상태 확인, 다운로드, Kotlin Flow streaming 출력 처리 필요'
-  source: https://developers.google.com/ml-kit/genai/speech-recognition/android
 - category: ai
   title: Imagen Android 종료 — Firebase AI Logic 이미지는 Gemini Image(Nano Banana)로 이전
   summary: 'Android Developers 문서는 Imagen 모델이 2026년 6월 24일 종료되며 Gemini Image 모델, 즉 ''Nano Banana'' 계열로 이전하라고 안내한다. 기존 Android 앱은 Firebase AI Logic SDK로 Imagen을 호출해 아바타나 개인화 시각 자산을 만들 수 있었고, Gemini Developer API 또는 Vertex AI provider를 선택했다. 운영 관점의 핵심은 이미지 생성 기능을 단순 모델 교체로 보지 말고, 종료일 전에 모델명, safety/person filter, watermark, output format, prompt 평가 흐름을 함께 점검하는 것이다.
@@ -3613,16 +3493,6 @@ cards:
   - PoC 3시간, 전용 백엔드 없이 2주 만에 프로덕션 반영
   - 번역 제공 구매자는 판매자 채팅 시작 가능성이 2.4배 높았다고 보고
   source: https://android-developers.googleblog.com/2026/05/how-karrot-increased-sales-with-gemini-firebase-ai-translation.html
-- category: ai
-  title: ML Kit GenAI 운영 매트릭스 — 지원 기기·쿼터·Nano 버전을 함께 검증
-  summary: 'ML Kit GenAI는 "Android에서 Gemini Nano를 쓴다"로 끝나지 않는다. 기존 세 카드를 합치면 출시 전에 반드시 만들어야 할 운영 매트릭스가 보인다. 첫째, Summarization·Proofreading·Rewriting·Image Description·Prompt API·Speech Recognition은 지원 기기와 Basic/Advanced 모드가 다르다. 둘째, AICore는 앱별 inference quota를 강제하므로 `BUSY`, `PER_APP_BATTERY_USE_QUOTA_EXCEEDED`, `BACKGROUND_USE_BLOCKED` 같은 실패 코드를 retry/backoff와 foreground UX에 반영해야 한다. 셋째, Gemini Nano 버전이 다르면 같은 프롬프트도 다른 결과가 나올 수 있어 `getBaseModelName()` 기반 품질 평가가 필요하다.
-
-    '
-  points:
-  - 기능별 지원 기기·nano-v2/v3·Speech Basic/Advanced 모드를 분리
-  - AICore quota와 foreground 제약을 오류 처리·배터리 예산에 반영
-  - '`getBaseModelName()`으로 Nano 버전별 prompt quality evaluation 수행'
-  source: https://developers.google.com/ml-kit/genai
 - category: ai
   title: RA.Aid — 연구·계획·구현 3단계로 개발 작업을 자율 수행하는 LangGraph 기반 코딩 에이전트
   summary: 'RA.Aid는 "Develop software autonomously"를 표방하는 오픈소스(Apache-2.0) 코딩 에이전트로, LangGraph 위에서 Research(정보·컨텍스트 수집) → Planning(작업 분해·전략) → Implementation(실행) 3단계 아키텍처로 멀티스텝 개발 작업을 거의 자율적으로 처리한다.
@@ -6830,23 +6700,23 @@ cards:
   source: https://zylos.ai/research/2026-02-28-opentelemetry-ai-agent-observability/
 - category: ai
   title: ADK+A2A Cross-Language Agents — LLM은 모호함, Go는 정책 검증
-  summary: 'Google Developers Blog의 2026-06-22 튜토리얼은 Python ADK 에이전트와 Go A2A 서비스를 하나의 계약 컴플라이언스 파이프라인으로 묶는다. Python 쪽은 Gemini/ADK로 계약 내용을 추출하고, Go 쪽은 LLM 없이 HTTP+JSON-RPC A2A 서비스로 결정론적 정책 검증을 수행한다. 연결점은 A2A Agent Card(`/.well-known/agent.json`)와 ADK의 `RemoteA2aAgent`다. ADK는 원격 A2A 서비스를 로컬 sub-agent처럼 감싸고, `ToolContext.state`에 INGESTED·EXTRACTED·COMPLIANCE_PENDING·MANUAL_REVIEW 같은 체크포인트를 남긴다. 교훈은 멀티에이전트가 프롬프트 체인이 아니라 분산 시스템 설계라는 점이다. 애매한 추출은 LLM에게, 감사 가능한 정책 판정은 반복 가능한 코드에게 맡기면 언어·팀·배포 경계를 넘으면서도 테스트와 장애 대응이 쉬워진다.'
+  summary: Google Developers Blog의 2026-06-22 튜토리얼은 Python ADK 에이전트와 Go A2A 서비스를 하나의 계약 컴플라이언스 파이프라인으로 묶는다. Python 쪽은 Gemini/ADK로 계약 내용을 추출하고, Go 쪽은 LLM 없이 HTTP+JSON-RPC A2A 서비스로 결정론적 정책 검증을 수행한다. 연결점은 A2A Agent Card(`/.well-known/agent.json`)와 ADK의 `RemoteA2aAgent`다. ADK는 원격 A2A 서비스를 로컬 sub-agent처럼 감싸고, `ToolContext.state`에 INGESTED·EXTRACTED·COMPLIANCE_PENDING·MANUAL_REVIEW 같은 체크포인트를 남긴다. 교훈은 멀티에이전트가 프롬프트 체인이 아니라 분산 시스템 설계라는 점이다. 애매한 추출은 LLM에게, 감사 가능한 정책 판정은 반복 가능한 코드에게 맡기면 언어·팀·배포 경계를 넘으면서도 테스트와 장애 대응이 쉬워진다.
   points:
-  - 'A2A Agent Card + JSON-RPC로 Python 에이전트와 Go 검증 서비스를 연결'
+  - A2A Agent Card + JSON-RPC로 Python 에이전트와 Go 검증 서비스를 연결
   - '`RemoteA2aAgent`가 원격 A2A 서비스를 ADK sub-agent처럼 래핑'
-  - '장애 시 MANUAL_REVIEW 체크포인트로 전환 — 단일 거대 프롬프트보다 감사·복구 쉬움'
+  - 장애 시 MANUAL_REVIEW 체크포인트로 전환 — 단일 거대 프롬프트보다 감사·복구 쉬움
   source: https://developers.googleblog.com/build-cross-language-multi-agent-team-with-google-agent-development-kit-and-a2a/
 - category: ai
   title: Codex on Amazon Bedrock — OPENAI_API_KEY 없이 AWS 경계 안에서 쓰기
-  summary: 'OpenAI는 2026-06-01 OpenAI frontier models와 Codex가 AWS에서 generally available이라고 발표했다. 핵심은 "Codex가 AWS에도 있다"가 아니라 provider path가 바뀐다는 점이다. OpenAI 개발자 문서에 따르면 Codex를 `amazon-bedrock` provider로 설정하면 OpenAI-hosted Responses API가 요청 경로에 없고, Codex가 Amazon Bedrock의 OpenAI-compatible Responses API 구현으로 모델 요청을 보낸다. 인증도 ChatGPT 로그인이나 `OPENAI_API_KEY`가 아니라 Bedrock API key 또는 AWS SDK credential chain(IAM, SSO, federated identity 등)을 쓴다. 그래서 이미 AWS로 보안·조달·감사·리전 관리를 하는 조직은 코딩 에이전트를 별도 SaaS 예외로 두지 않고 기존 클라우드 통제면 안에 넣을 수 있다. 단, 초기 구성은 commercial region의 Bedrock Mantle path만 다루며 GovCloud Mantle endpoint, Fast Mode, 일부 OpenAI-hosted cloud 기능은 지원되지 않는다.'
+  summary: OpenAI는 2026-06-01 OpenAI frontier models와 Codex가 AWS에서 generally available이라고 발표했다. 핵심은 "Codex가 AWS에도 있다"가 아니라 provider path가 바뀐다는 점이다. OpenAI 개발자 문서에 따르면 Codex를 `amazon-bedrock` provider로 설정하면 OpenAI-hosted Responses API가 요청 경로에 없고, Codex가 Amazon Bedrock의 OpenAI-compatible Responses API 구현으로 모델 요청을 보낸다. 인증도 ChatGPT 로그인이나 `OPENAI_API_KEY`가 아니라 Bedrock API key 또는 AWS SDK credential chain(IAM, SSO, federated identity 등)을 쓴다. 그래서 이미 AWS로 보안·조달·감사·리전 관리를 하는 조직은 코딩 에이전트를 별도 SaaS 예외로 두지 않고 기존 클라우드 통제면 안에 넣을 수 있다. 단, 초기 구성은 commercial region의 Bedrock Mantle path만 다루며 GovCloud Mantle endpoint, Fast Mode, 일부 OpenAI-hosted cloud 기능은 지원되지 않는다.
   points:
   - '`model_provider = "amazon-bedrock"` 설정 시 OpenAI-hosted Responses API가 요청 경로에서 빠짐'
-  - '인증은 Bedrock API key 또는 AWS SDK credential chain — ChatGPT 로그인/OPENAI_API_KEY 아님'
+  - 인증은 Bedrock API key 또는 AWS SDK credential chain — ChatGPT 로그인/OPENAI_API_KEY 아님
   - '제약: commercial region Mantle path, Fast Mode와 일부 cloud-managed 기능 미지원'
   source: https://developers.openai.com/codex/amazon-bedrock
 - category: ai
   title: Jules Eval — proactive coding agent는 '작업 완료'가 아니라 insight policy로 잰다
-  summary: 'Google Labs의 2026-06-22 Jules 평가 글은 코딩 에이전트가 "요청받은 버그를 고쳤나"에서 "묻기 전에 중요한 신호를 찾았나"로 이동할 때 평가도 바뀌어야 한다고 주장한다. SWE-bench류는 좁은 태스크 완료를 재지만, proactive agent는 무엇이 중요한지, 근거가 충분한지, 개발자를 방해할지 말지를 고르는 insight policy를 봐야 한다. Google은 내부 코드베이스의 705개 버그와 1,178개 CL을 묶어 시간적으로 가깝고 의미적으로 유사한 버그 클러스터를 만들고, 각 클러스터를 상위 목표의 ground truth로 삼았다. 에이전트는 pre-fix 상태 코드베이스를 최대 3라운드 탐색한 뒤 insight를 내고, LLM judge가 1~5점과 Hit@K로 채점했다. 한 라운드에서도 평균 4.5/5 신호를 잡았지만, 복잡한 문제는 탐색 예산을 2→3라운드로 늘리자 Hit@5가 33%→57%로 회복됐다. 교훈은 장기 에이전트 평가에서 시간·컨텍스트·탐색 예산을 빼면 실제 개발 가치가 보이지 않는다는 점이다.'
+  summary: Google Labs의 2026-06-22 Jules 평가 글은 코딩 에이전트가 "요청받은 버그를 고쳤나"에서 "묻기 전에 중요한 신호를 찾았나"로 이동할 때 평가도 바뀌어야 한다고 주장한다. SWE-bench류는 좁은 태스크 완료를 재지만, proactive agent는 무엇이 중요한지, 근거가 충분한지, 개발자를 방해할지 말지를 고르는 insight policy를 봐야 한다. Google은 내부 코드베이스의 705개 버그와 1,178개 CL을 묶어 시간적으로 가깝고 의미적으로 유사한 버그 클러스터를 만들고, 각 클러스터를 상위 목표의 ground truth로 삼았다. 에이전트는 pre-fix 상태 코드베이스를 최대 3라운드 탐색한 뒤 insight를 내고, LLM judge가 1~5점과 Hit@K로 채점했다. 한 라운드에서도 평균 4.5/5 신호를 잡았지만, 복잡한 문제는 탐색 예산을 2→3라운드로 늘리자 Hit@5가 33%→57%로 회복됐다. 교훈은 장기 에이전트 평가에서 시간·컨텍스트·탐색 예산을 빼면 실제 개발 가치가 보이지 않는다는 점이다.
   points:
   - 평가 대상은 자율성 자체가 아니라 무엇을 보고·알리고·묻고·침묵할지 고르는 insight policy
   - 705 bugs·1,178 CL로 관련 버그 클러스터를 만들고 pre-fix 상태에서 proactive insight를 채점
@@ -6862,7 +6732,7 @@ cards:
   source: https://qaskills.sh/blog/multi-agent-system-testing-guide-2026
 - category: ai
   title: Agent Chaos Engineering — faultkit·agentfuzz·Khaos SDK boundary fault injection
-  summary: 'LLM agent unit test는 seam이 정상이라고 가정한다 — tool timeout·malformed JSON·429 burst·schema drift·prompt injection은 production에서만 터진다. Agent chaos engineering은 SDK/API boundary에서 fault를 주입해 resilience를 CI 전에 검증한다. faultkit — single-shot CLI, localhost proxy+ephemeral CA, vendor-accurate 429/timeout/streaming cutoff, exit code로 CI gate. agentfuzz(Python) — ToolTimeout·MalformedToolResponse·SchemaDrift·CostSpiral·PromptInjection fault catalog, pass-rate per category 리포트. Khaos SDK — security+resilience eval pack, capability-aware attack selection, `khaos ci --resilience-threshold 70`. WireMock(stateful fault) ·LLM VCR(replay) ·AI Agent Error Handling(circuit breaker)와 역할 분리 — chaos=runtime seam break, mock=pre-backend contract.'
+  summary: LLM agent unit test는 seam이 정상이라고 가정한다 — tool timeout·malformed JSON·429 burst·schema drift·prompt injection은 production에서만 터진다. Agent chaos engineering은 SDK/API boundary에서 fault를 주입해 resilience를 CI 전에 검증한다. faultkit — single-shot CLI, localhost proxy+ephemeral CA, vendor-accurate 429/timeout/streaming cutoff, exit code로 CI gate. agentfuzz(Python) — ToolTimeout·MalformedToolResponse·SchemaDrift·CostSpiral·PromptInjection fault catalog, pass-rate per category 리포트. Khaos SDK — security+resilience eval pack, capability-aware attack selection, `khaos ci --resilience-threshold 70`. WireMock(stateful fault) ·LLM VCR(replay) ·AI Agent Error Handling(circuit breaker)와 역할 분리 — chaos=runtime seam break, mock=pre-backend contract.
   points:
   - faultkit/agentfuzz/Khaos — SDK/API boundary fault, infra chaos 아님
   - pass-rate per fault category — timeout vs JSON vs injection survival
@@ -6934,7 +6804,7 @@ cards:
   source: https://arxiv.org/html/2605.26521v1
 - category: ai
   title: Codex PAYG 좌석 — 파일럿 비용을 좌석비가 아니라 토큰 원장으로 보기
-  summary: 'OpenAI는 2026-04-02 ChatGPT Business·Enterprise 워크스페이스에 Codex-only pay-as-you-go 좌석을 도입했다. 고정 좌석비 없이 Codex 전체 접근을 주고, 별도 rate limit 대신 토큰 사용량으로 과금해 파일럿 팀이 예산·워크플로·팀 단위 비용을 더 직접 추적하게 하려는 모델이었다. 다만 같은 글의 2026-06-24 업데이트는 새 Business 플랜 PAYG 좌석 제공을 중단했고, 기존 PAYG 좌석은 영향 없다고 밝혔다. 그래서 교훈은 "싸게 시작한다"가 아니라, 코딩 에이전트 도입을 계약·좌석·토큰 원장·spend control이 바뀔 수 있는 운영 체계로 봐야 한다는 점이다. 반복 자동화나 장기 에이전트 작업은 seat count보다 token consumption, 팀별 budget owner, workflow별 ROI 태그가 중요하다. OpenAI는 같은 글에서 paying business user 900만+와 주간 Codex builder 200만+, Business·Enterprise 내 Codex 사용자 1월 이후 6배 성장을 adoption signal로 제시했다.'
+  summary: OpenAI는 2026-04-02 ChatGPT Business·Enterprise 워크스페이스에 Codex-only pay-as-you-go 좌석을 도입했다. 고정 좌석비 없이 Codex 전체 접근을 주고, 별도 rate limit 대신 토큰 사용량으로 과금해 파일럿 팀이 예산·워크플로·팀 단위 비용을 더 직접 추적하게 하려는 모델이었다. 다만 같은 글의 2026-06-24 업데이트는 새 Business 플랜 PAYG 좌석 제공을 중단했고, 기존 PAYG 좌석은 영향 없다고 밝혔다. 그래서 교훈은 "싸게 시작한다"가 아니라, 코딩 에이전트 도입을 계약·좌석·토큰 원장·spend control이 바뀔 수 있는 운영 체계로 봐야 한다는 점이다. 반복 자동화나 장기 에이전트 작업은 seat count보다 token consumption, 팀별 budget owner, workflow별 ROI 태그가 중요하다. OpenAI는 같은 글에서 paying business user 900만+와 주간 Codex builder 200만+, Business·Enterprise 내 Codex 사용자 1월 이후 6배 성장을 adoption signal로 제시했다.
   points:
   - 2026-04-02 Codex-only PAYG 좌석 도입, 토큰 사용량 기반 비용 추적 모델
   - 2026-06-24부터 새 Business PAYG 좌석 중단, 기존 좌석은 영향 없음
@@ -6942,7 +6812,7 @@ cards:
   source: https://openai.com/index/codex-flexible-pricing-for-teams/
 - category: ai
   title: Codemod Platform — AI가 before/after 예시로 codemod를 만들고 YAML workflow로 멀티레포 마이그레이션
-  summary: 'Codemod는 프레임워크 업그레이드·보안 패치·대규모 리팩터를 자동화하는 AI 네이티브 codemod 플랫폼이다. Codemod CLI(Rust)는 ast-grep·JSSG(TypeScript AST) 변환을 scaffold·test·run하고, workflow.yaml로 matrix strategy·manual approval gate가 있는 멀티스텝 마이그레이션을 오케스트레이션한다. Codemod AI는 before/after 예시 쌍을 넣으면 declarative YAML rule 또는 NAPI imperative script를 생성하고, 3회 refinement iteration으로 registry 57개 샘플 기준 정확도 38.6%→64.9%까지 올린다. Codemod MCP(`npx codemod@latest mcp`)는 dump_ast·run_jssg_tests·jssg-gotchas 같은 도구로 Cursor·Claude Code가 IDE 안에서 codemod package를 작성·검증하게 한다. ast-grep(단일 구조 치환 CLI) ·OpenRewrite(enterprise)와 complement — Codemod=AI authoring + registry + cross-repo workflow.'
+  summary: Codemod는 프레임워크 업그레이드·보안 패치·대규모 리팩터를 자동화하는 AI 네이티브 codemod 플랫폼이다. Codemod CLI(Rust)는 ast-grep·JSSG(TypeScript AST) 변환을 scaffold·test·run하고, workflow.yaml로 matrix strategy·manual approval gate가 있는 멀티스텝 마이그레이션을 오케스트레이션한다. Codemod AI는 before/after 예시 쌍을 넣으면 declarative YAML rule 또는 NAPI imperative script를 생성하고, 3회 refinement iteration으로 registry 57개 샘플 기준 정확도 38.6%→64.9%까지 올린다. Codemod MCP(`npx codemod@latest mcp`)는 dump_ast·run_jssg_tests·jssg-gotchas 같은 도구로 Cursor·Claude Code가 IDE 안에서 codemod package를 작성·검증하게 한다. ast-grep(단일 구조 치환 CLI) ·OpenRewrite(enterprise)와 complement — Codemod=AI authoring + registry + cross-repo workflow.
   points:
   - CLI + workflow.yaml — matrix·approval gate·multi-repo orchestration
   - Codemod AI — multiple before/after pairs, 3 refinement iterations
@@ -6950,7 +6820,7 @@ cards:
   source: https://docs.codemod.com/model-context-protocol
 - category: ai
   title: GritQL — 백틱 패턴 하나로 10M+ LOC 코드베이스를 검색·치환하는 선언적 마이그레이션 언어
-  summary: 'Grit(GritQL)은 코드를 텍스트가 아니라 구조로 매칭하는 선언적 query language다. `grit apply ''`console.log($msg)` => `winston.log($msg)`''`처럼 백틱에 코드 스니펫을 쓰고 $msg metavariable로 임의 노드를 잡는다. where 절로 test/it 블록 내부는 제외 같은 side condition을 붙이고, 200+ standard library pattern을 재사용한다. Rust 엔진으로 10M+ LOC 레포에서도 동작하며 JS/TS·Python·Java·Go·Rust·Terraform·Solidity·YAML 등 12+ 언어를 지원한다(MIT·~4.5k★). ast-grep(sg CLI·agent-skill) ·Codemod Platform(AI workflow) ·Semgrep(보안 taint)와 역할 분리 — GritQL=declarative pattern migration at repo scale.'
+  summary: Grit(GritQL)은 코드를 텍스트가 아니라 구조로 매칭하는 선언적 query language다. `grit apply '`console.log($msg)` => `winston.log($msg)`'`처럼 백틱에 코드 스니펫을 쓰고 $msg metavariable로 임의 노드를 잡는다. where 절로 test/it 블록 내부는 제외 같은 side condition을 붙이고, 200+ standard library pattern을 재사용한다. Rust 엔진으로 10M+ LOC 레포에서도 동작하며 JS/TS·Python·Java·Go·Rust·Terraform·Solidity·YAML 등 12+ 언어를 지원한다(MIT·~4.5k★). ast-grep(sg CLI·agent-skill) ·Codemod Platform(AI workflow) ·Semgrep(보안 taint)와 역할 분리 — GritQL=declarative pattern migration at repo scale.
   points:
   - 백틱 패턴 + $metavariable + where — regex보다 syntax-safe
   - 200+ stdlib pattern — API upgrade·dependency migration 재사용
@@ -6958,7 +6828,7 @@ cards:
   source: https://docs.grit.io/
 - category: ai
   title: Locofy.ai — Large Design Model로 Figma를 React/Next.js 레이아웃 스캐폴드로 변환
-  summary: 'Locofy.ai는 Figma 디자인을 프로덕션 프론트엔드 코드로 변환하는 design-to-code 플랫폼이다. Large Design Models(LDM)로 수백만 디자인을 학습해 flexbox 기반 named component·responsive layout을 생성한다. Lightning mode(원클릭 AI)와 Classic mode(단계별 태깅·수동 제어) 두 경로를 제공하고, Convert Figma Styles and Variables 토글로 디자인 토큰을 CSS 변수로 끌어온다. 2026 벤치마크에서 Anima(absolute positioning·flat HTML)보다 component 구조가 깔끔하고, v0/bolt.new(그린필드 생성)와 달리 기존 Figma 파일에서 layout scaffold를 뽑는 용도에 특화. token 기반 과금(복잡 화면 $80-120)이 Builder.io($3-5)보다 비싸므로 대량 UI 생성 job에서 ROI를 재야 한다.'
+  summary: Locofy.ai는 Figma 디자인을 프로덕션 프론트엔드 코드로 변환하는 design-to-code 플랫폼이다. Large Design Models(LDM)로 수백만 디자인을 학습해 flexbox 기반 named component·responsive layout을 생성한다. Lightning mode(원클릭 AI)와 Classic mode(단계별 태깅·수동 제어) 두 경로를 제공하고, Convert Figma Styles and Variables 토글로 디자인 토큰을 CSS 변수로 끌어온다. 2026 벤치마크에서 Anima(absolute positioning·flat HTML)보다 component 구조가 깔끔하고, v0/bolt.new(그린필드 생성)와 달리 기존 Figma 파일에서 layout scaffold를 뽑는 용도에 특화. token 기반 과금(복잡 화면 $80-120)이 Builder.io($3-5)보다 비싸므로 대량 UI 생성 job에서 ROI를 재야 한다.
   points:
   - LDM + Lightning/Classic — speed vs control trade-off
   - flexbox named components ·Figma variables→CSS — Anima 대비 유지보수성
@@ -6966,7 +6836,7 @@ cards:
   source: https://www.locofy.ai/
 - category: ai
   title: Builder.io Fusion — 디자인→코드를 ZIP export가 아니라 CLI codebase context로 통합
-  summary: 'Builder.io Fusion은 design-to-code와 visual CMS를 합친 visual development platform이다. Figma·스크린샷·프롬프트에서 React UI를 생성하고, 생성 전에 ''refactor into smaller components''처럼 tool 안에서 AI prompting으로 구조를 다듬을 수 있다. 핵심 차별점은 Fusion CLI — ZIP drop 대신 기존 codebase context를 읽어 design token·component pattern에 맞춘 integration code를 만든다. design token registry(color·font·spacing)를 등록하면 Tailwind·Emotion·Styled Components 출력이 on-brand로 유지된다. 2026 비교에서 Locofy 대비 화면당 $3-5 token cost로 대량 생성에 유리. ai-shell(자연어→셸) ·micro-agent(TDD agent) 카드와 다른 제품 축 — Fusion=design-to-code + CMS + codebase-aware CLI.'
+  summary: Builder.io Fusion은 design-to-code와 visual CMS를 합친 visual development platform이다. Figma·스크린샷·프롬프트에서 React UI를 생성하고, 생성 전에 'refactor into smaller components'처럼 tool 안에서 AI prompting으로 구조를 다듬을 수 있다. 핵심 차별점은 Fusion CLI — ZIP drop 대신 기존 codebase context를 읽어 design token·component pattern에 맞춘 integration code를 만든다. design token registry(color·font·spacing)를 등록하면 Tailwind·Emotion·Styled Components 출력이 on-brand로 유지된다. 2026 비교에서 Locofy 대비 화면당 $3-5 token cost로 대량 생성에 유리. ai-shell(자연어→셸) ·micro-agent(TDD agent) 카드와 다른 제품 축 — Fusion=design-to-code + CMS + codebase-aware CLI.
   points:
   - Fusion CLI — existing repo context, ZIP drop 아님
   - design token registry — Tailwind/Emotion on-brand output
@@ -6974,7 +6844,7 @@ cards:
   source: https://www.builder.io/c/docs/figma-to-code
 - category: ai
   title: Figma MCP Server — one-time export 대신 living design reference로 에이전트에 붙이기
-  summary: 'Figma MCP Server(https://mcp.figma.com/mcp)는 코딩 에이전트가 Figma 파일의 component·variable·layout·FigJam·Make resource를 structured context로 읽게 하는 remote MCP다. 2026년 use_figma tool(beta)로 agent가 기존 design system component·variable을 인지한 채 native Figma object를 생성·수정한다 — /figma-use skill과 짝. Code Connect로 Figma component↔GitHub code mapping, generate_figma_design(Code to Canvas)는 running app snapshot, use_figma는 structured generation으로 complement. Cursor `/add-plugin figma` ·Claude Code `claude plugin install figma@claude-plugins-official`로 MCP+skills+asset rules 일괄 설치. v0(Figma import) ·Locofy(export) ·Stitch(모바일 탐색)와 달리 brownfield는 ''기존 codebase에 component 추가''가 MCP loop.'
+  summary: Figma MCP Server(https://mcp.figma.com/mcp)는 코딩 에이전트가 Figma 파일의 component·variable·layout·FigJam·Make resource를 structured context로 읽게 하는 remote MCP다. 2026년 use_figma tool(beta)로 agent가 기존 design system component·variable을 인지한 채 native Figma object를 생성·수정한다 — /figma-use skill과 짝. Code Connect로 Figma component↔GitHub code mapping, generate_figma_design(Code to Canvas)는 running app snapshot, use_figma는 structured generation으로 complement. Cursor `/add-plugin figma` ·Claude Code `claude plugin install figma@claude-plugins-official`로 MCP+skills+asset rules 일괄 설치. v0(Figma import) ·Locofy(export) ·Stitch(모바일 탐색)와 달리 brownfield는 '기존 codebase에 component 추가'가 MCP loop.
   points:
   - remote MCP — component·variable·layout structured read
   - use_figma write(beta) — design system aware canvas edit
@@ -6982,7 +6852,7 @@ cards:
   source: https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/
 - category: ai
   title: Figma Code Layers — Config 2026, 코드를 design material로 캔버스에 올리다
-  summary: 'Figma Config 2026은 ''design vs code'' 이분법을 깨고 code layers를 canvas에 도입했다. design layer를 클릭 한 번(또는 prompt)으로 interactive code layer로 전환하고, side-by-side duplicate로 여러 implementation direction을 frame처럼 탐색한다. Figma Motion timeline은 Dev Mode에서 easing·keyframe·timing을 inspectable하게 노출하고 CSS·JSON·React animation code를 copy하며 MCP-compatible frame을 coding agent에 전달한다. generative plugins·Weave tools·shader·motion이 같은 canvas material family로 묶인다. bolt.new(WebContainers) ·v0(React gen) ·Figma MCP(read/write loop)와 complement — Code Layers=design process 안에서 code prototype을 first-class layer로 다루는 패러다임 shift.'
+  summary: Figma Config 2026은 'design vs code' 이분법을 깨고 code layers를 canvas에 도입했다. design layer를 클릭 한 번(또는 prompt)으로 interactive code layer로 전환하고, side-by-side duplicate로 여러 implementation direction을 frame처럼 탐색한다. Figma Motion timeline은 Dev Mode에서 easing·keyframe·timing을 inspectable하게 노출하고 CSS·JSON·React animation code를 copy하며 MCP-compatible frame을 coding agent에 전달한다. generative plugins·Weave tools·shader·motion이 같은 canvas material family로 묶인다. bolt.new(WebContainers) ·v0(React gen) ·Figma MCP(read/write loop)와 complement — Code Layers=design process 안에서 code prototype을 first-class layer로 다루는 패러다임 shift.
   points:
   - design layer→code layer 1-click ·side-by-side exploration
   - Figma Motion — Dev Mode inspectable timeline + MCP handoff
@@ -6990,7 +6860,7 @@ cards:
   source: https://www.figma.com/blog/config-2026-recap/
 - category: ai
   title: Visily — PM·비개발자용 AI wireframe, screenshot·diagram·text→UI
-  summary: 'Visily는 ''UI design tool for non-designers''를 표방하는 AI wireframing·prototyping 도구다. text prompt·screenshot·diagram·template·조합 입력에서 wireframe을 생성하고, Smart Components·Auto-Prototyping·AI chat edit으로 canvas에서 바로 다듬는다. 2025-2026 업데이트로 code generation from design·Plan Mode(prompt structuring)·Deep Design(aesthetic polish)·Figma import·Slack/Jira/Notion 연동을 추가 — Uizard(Autodesigner)보다 design-to-code 쪽으로 확장 중. Figma export·on-canvas chat·follower mode로 PM이 spec document를 engineer handoff 전에 clickable prototype으로 만든다. v0(개발자 React gen) ·Stitch(모바일) ·Figma Make(Figma-native)와 complement — Visily=non-designer ideation·wireframe·collaboration layer.'
+  summary: Visily는 'UI design tool for non-designers'를 표방하는 AI wireframing·prototyping 도구다. text prompt·screenshot·diagram·template·조합 입력에서 wireframe을 생성하고, Smart Components·Auto-Prototyping·AI chat edit으로 canvas에서 바로 다듬는다. 2025-2026 업데이트로 code generation from design·Plan Mode(prompt structuring)·Deep Design(aesthetic polish)·Figma import·Slack/Jira/Notion 연동을 추가 — Uizard(Autodesigner)보다 design-to-code 쪽으로 확장 중. Figma export·on-canvas chat·follower mode로 PM이 spec document를 engineer handoff 전에 clickable prototype으로 만든다. v0(개발자 React gen) ·Stitch(모바일) ·Figma Make(Figma-native)와 complement — Visily=non-designer ideation·wireframe·collaboration layer.
   points:
   - text·screenshot·diagram→wireframe — non-designer entry
   - Plan Mode·Deep Design·code gen(2025-26) — Uizard 대비 end-to-end 확장
@@ -6998,7 +6868,7 @@ cards:
   source: https://www.visily.ai/
 - category: ai
   title: Uizard Autodesigner 2.0 — 손그림·스크린샷 스캔으로 multi-screen prototype
-  summary: 'Uizard는 AI로 wireframe·mockup을 만드는 design tool로, Autodesigner 2.0(2024)이 text prompt에서 multi-screen clickable prototype을 한 번에 생성한다. Wireframe Scanner는 손그림 sketch를 digitize하고, Screenshot Scanner는 기존 UI 캡처를 editable mockup으로 변환한다. vector editor 대신 drag-and-drop component editor를 써서 비개발자 진입 장벽을 낮췄고, Figma·Miro export로 design handoff를 이어간다. Visily(code gen·Plan Mode) ·Stitch(모바일) ·v0(React code)와 complement — Uizard=sketch/screenshot heavy rapid ideation·clickable demo, production code export는 약함.'
+  summary: Uizard는 AI로 wireframe·mockup을 만드는 design tool로, Autodesigner 2.0(2024)이 text prompt에서 multi-screen clickable prototype을 한 번에 생성한다. Wireframe Scanner는 손그림 sketch를 digitize하고, Screenshot Scanner는 기존 UI 캡처를 editable mockup으로 변환한다. vector editor 대신 drag-and-drop component editor를 써서 비개발자 진입 장벽을 낮췄고, Figma·Miro export로 design handoff를 이어간다. Visily(code gen·Plan Mode) ·Stitch(모바일) ·v0(React code)와 complement — Uizard=sketch/screenshot heavy rapid ideation·clickable demo, production code export는 약함.
   points:
   - Autodesigner 2.0 — multi-screen from text, one-shot clickable
   - Wireframe/Screenshot Scanner — sketch·capture digitize
@@ -7006,7 +6876,7 @@ cards:
   source: https://uizard.io/autodesigner/
 - category: ai
   title: Sourcery — Python idiomatic refactor + Sentry 연동 production error diagnosis
-  summary: 'Sourcery는 Python 코드를 idiomatic하게 리팩터하고 PR review까지 자동화하는 AI code quality tool이다. IDE plugin·CLI·GitHub/GitLab integration으로 duplicate code·overly complex branch·type hint 누락 같은 smell을 suggestion으로 제시하고, one-click apply 또는 PR comment로 제안한다. Sentry integration(2025)은 production exception stack trace를 Sourcery가 읽어 root cause hypothesis와 fix suggestion을 PR로 연결한다 — static refactor tool이 runtime telemetry와 만나는 패턴. 30+ language surface가 있지만 deepest analysis는 Python. ast-grep(구조 치환) ·CodeRabbit(PR review) ·Greptile(repo graph review)와 complement — Sourcery=Python idiomatic refactor + prod error loop.'
+  summary: Sourcery는 Python 코드를 idiomatic하게 리팩터하고 PR review까지 자동화하는 AI code quality tool이다. IDE plugin·CLI·GitHub/GitLab integration으로 duplicate code·overly complex branch·type hint 누락 같은 smell을 suggestion으로 제시하고, one-click apply 또는 PR comment로 제안한다. Sentry integration(2025)은 production exception stack trace를 Sourcery가 읽어 root cause hypothesis와 fix suggestion을 PR로 연결한다 — static refactor tool이 runtime telemetry와 만나는 패턴. 30+ language surface가 있지만 deepest analysis는 Python. ast-grep(구조 치환) ·CodeRabbit(PR review) ·Greptile(repo graph review)와 complement — Sourcery=Python idiomatic refactor + prod error loop.
   points:
   - Python-first idiomatic refactor — IDE·CLI·PR integration
   - Sentry integration — prod exception→fix suggestion loop
@@ -7014,9 +6884,105 @@ cards:
   source: https://sourcery.ai/
 - category: ai
   title: agent-desktop — accessibility tree로 네이티브 앱을 JSON ref(@e1)로 제어하는 Rust CLI
-  summary: 'agent-desktop(lahfir/agent-desktop)는 AI agent용 native desktop automation CLI다. 스크린샷·pixel matching 대신 OS accessibility tree(AXUIElement)로 Finder·Safari·Xcode·Slack 등 네이티브 앱을 observe·control하고 structured JSON + deterministic element ref(@e1, @e2)로 반환한다. 54 commands — observation·interaction·keyboard·mouse·clipboard·window management, progressive skeleton traversal로 dense app에서 78-96% token reduction. C-ABI cdylib로 Python/Swift/Go/Node에서 fork 없이 load. Anthropic Computer Use(vision API·screenshot loop) ·Auto-Use(hybrid AX+vision) ·Playwright MCP(browser-only)와 complement — agent-desktop=accessibility-first deterministic desktop control for coding agents.'
+  summary: agent-desktop(lahfir/agent-desktop)는 AI agent용 native desktop automation CLI다. 스크린샷·pixel matching 대신 OS accessibility tree(AXUIElement)로 Finder·Safari·Xcode·Slack 등 네이티브 앱을 observe·control하고 structured JSON + deterministic element ref(@e1, @e2)로 반환한다. 54 commands — observation·interaction·keyboard·mouse·clipboard·window management, progressive skeleton traversal로 dense app에서 78-96% token reduction. C-ABI cdylib로 Python/Swift/Go/Node에서 fork 없이 load. Anthropic Computer Use(vision API·screenshot loop) ·Auto-Use(hybrid AX+vision) ·Playwright MCP(browser-only)와 complement — agent-desktop=accessibility-first deterministic desktop control for coding agents.
   points:
   - accessibility tree — no screenshot/pixel, structured JSON refs
   - progressive skeleton traversal — 78-96% token reduction on dense UI
   - 54 commands ·cdylib — native app control beyond browser MCP
   source: https://github.com/lahfir/agent-desktop
+- category: ai
+  title: Claude Code 생태계 개요 — 플러그인·비용·웹·워크플로·한도·리뷰·훅을 한 장으로
+  summary: Claude Code는 터미널 CLI를 중심으로 플러그인 마켓·클라우드 웹·GitHub Action·매니지드 리뷰·훅 자동화까지 확장되는 에코시스템이다. 공식 `claude-plugins-official` 마켓(Frontend Design·Superpowers·Code Review 등)과 aitmpl·ccpi 같은 서드파티 템플릿 CLI로 스킬·MCP·서브에이전트를 배포하고, 비용은 모델 라우팅(Sonnet 기본·Opus는 아키텍처만)·CLAUDE.md 200줄 이하·MCP 끄기·CLI 선호가 1순위다. Pro/Max 한도는 5시간 세션+주간 두 버킷이며 Opus는 별도 카운트, `/usage`로 스킬·MCP별 %를 본다. 실행면은 claude.ai/code(클라우드 VM·PR 후 diff 리뷰), claude-code-workflows(Playwright 시각 리뷰), Claude Code Review(매니지드 PR 리뷰·리뷰당 $15~25), hooks(PreToolUse·Stop·SessionStart 등 이벤트 고정)로 나뉜다.
+  points:
+  - '배포: claude-plugins-official + aitmpl/npx CLI — 플러그인=스킬·MCP·훅 묶음, 과적재는 속도 저하'
+  - '비용·한도: Sonnet 기본·Opus는 추론만 / 5h+주간 두 버킷·Opus 분리 / /usage·/context로 누수 추적'
+  - '실행면: Web(클라우드 VM) · workflows(Playwright 시각) · Review(매니지드) · hooks(이벤트 자동화)'
+  source: https://code.claude.com/docs/en/overview
+- category: ai
+  title: ML Kit GenAI 개요 — OCR·요약·프롬프트·음성·운영 매트릭스를 Gemini Nano로
+  summary: Google ML Kit GenAI는 Gemini Nano를 Android/iOS 온디바이스에서 돌리는 API 묶음이다. Text Recognition v2(5개 스크립트 OCR)와 Summarization·Speech Recognition은 고정 기능 API로 데이터가 클라우드를 떠나지 않고, Prompt API는 고정 기능 밖 맞춤 GenAI를 허용한다. Apple Vision VNRecognizeTextRequest가 iOS OCR 표준이며 react-native-nitro-ocr로 통합 가능. 운영 시 지원 기기(AICore·Nano 버전)·쿼터·Firebase AI Logic 하이브리드 라우팅을 함께 검증해야 한다. Structured Output·Prefix Caching·APO는 별도 카드로 다룬다.
+  points:
+  - '고정 API: Text Recognition(5스크립트) · Summarization · Speech(Advanced) — 완전 온디바이스'
+  - 'Prompt API: 고정 기능 밖 맞춤 GenAI — Kakao Mobility 사례(주소 추출 24% 단축)'
+  - '운영: AICore 지원 기기·Nano 버전·쿼터·Firebase Hybrid API를 매트릭스로 함께 검증'
+  source: https://developers.google.com/ml-kit/genai
+- category: ai
+  title: AI 코드 제안 수락률 — FCML·Acceptance Rate가 품질 프록시가 아닌 이유
+  summary: Google 내부 AI IDE 실험(arXiv 2601.19964)은 acceptance rate(수락÷(수락+거절))를 품질·불쾌감 프록시로 쓰고 FCML(ML이 쓴 코드 비율)을 생산성 지표로 본다. FCML 28.7%(붙여넣기 제외 70.6%), acceptance 45%가 기준치다. Opsera 2026 벤치마크는 업계 acceptance 25~55%가 건강하고 60%↑는 무심사 rubber-stamping, 30%↓는 설정·워크플로 문제 신호라고 경고한다. 수락률만 보면 AI PR이 리뷰 대기 4.6× 길어지는 병목을 놓치므로 review wait time·code turnover·change failure rate와 함께 봐야 한다.
+  points:
+  - FCML = ML 수락 문자÷(수동+붙여넣기+ML) — Google 기준 28.7%, acceptance 45%
+  - 'Opsera 2026: 건강 25~55% / 60%↑ rubber-stamp / 30%↓ 설정·프롬프트 문제'
+  - 수락률 단독 금지 — review wait(4.6×), turnover rate, change failure rate 병행
+  source: https://arxiv.org/html/2601.19964
+- category: ai
+  title: AI PR 수락률 Task-Stratified — 에이전트별 1위가 작업 유형마다 바뀐다
+  summary: AIDev 7,156 PR 분석(arXiv 2602.08915)은 AI 코딩 에이전트 PR merge율이 작업 유형에 따라 29pp까지 갈린다는 걸 보여준다. documentation 82.1% vs feature 66.1%(16pp), chore 84% vs perf 55.4%. Codex는 9개 카테고리 전반 59.6~88.6%로 안정적이나, Claude Code는 documentation 92.3%·feature 72.6% 1위, Cursor는 fix 80.4% 1위 — '하나만 고르기'가 아니라 task type별 라우팅이 맞다. Devin만 32주간 +0.77%/week 상승 추세, 나머지는 plateau.
+  points:
+  - '작업 유형 격차: doc 82% vs feature 66% — inter-agent variance보다 task type이 dominant'
+  - '에이전트별 강점: Claude Code=doc/feature · Cursor=fix · Codex=전 카테고리 안정'
+  - Devin만 +0.77%/week 상승 — 나머지 agent는 32주 plateau
+  source: https://arxiv.org/html/2602.08915
+- category: ai
+  title: AI Code Turnover Rate — 30~90일 내 AI 코드 재작성 비율로 진짜 품질 잰다
+  summary: Opsera 2026 AI Coding Impact Benchmark는 acceptance rate 대신 code turnover rate를 핵심 품질 지표로 제시한다. AI 생성 코드가 30일 내 재작성되는 비율 — 건강 목표 15% 미만(30일)·22% 미만(90일), AI:human turnover ratio 1.5× 미만. AI 도입 후 22~24% 이슈가 장기 잔존하고, AI PR은 리뷰 대기가 4.6× 길어 time-to-PR 48~58% 개선이 review 병목에 상쇄된다. velocity vanity metric 대신 retention·wait time·vulnerability density·realized ROI를 executive reporting에 포함하라.
+  points:
+  - 'Turnover: 30일 <15%, 90일 <22%, AI:human ratio <1.5× — acceptance보다 장기 품질 신호'
+  - AI PR review wait 4.6× — coding 50% 빨라져도 throughput neutralization
+  - 'Executive metric: retention + wait time + change failure + vulnerability density'
+  source: https://ajoconnell.com/wp-content/uploads/2026/02/opsera-2026-AI-coding-impact-benchmark-report.pdf
+- category: ai
+  title: ghostcall — LLM이 지어낸 API 호출을 설치된 패키지로 검증하는 Python CLI
+  summary: ghostcall(linosorice)는 LLM 생성 Python 코드에서 hallucinated API call을 잡는 오픈소스 CLI다. ast로 import chain을 추적하고 importlib+getattr로 실제 설치된 패키지 버전과 대조한다. mypy/pyright(타입·프로젝트 컨텍스트)와 달리 snippet 단위 existence check — `pd.DataFrame.to_jsonl` 같은 phantom method를 difflib로 유사 제안까지 한다. 로컬 변수 체인(`df.fake()`)·import *·`__getattr__` magic module은 한계.
+  points:
+  - '동작: AST import chain → importlib introspection — snippet 단위 phantom API 탐지'
+  - 'mypy/pyright와 분리: existence vs type — Copilot/ChatGPT 디버깅 20분 절약 목적'
+  - '한계: 로컬 변수 chain·import *·magic module skip — auto-fix 없음'
+  source: https://github.com/linosorice/ghostcall
+- category: ai
+  title: wraith — AI 생성 Python의 hallucinated API·phantom package를 Rust로 350ms 스캔
+  summary: 'wraith(PyPI v0.2.0)는 AI 생성 Python 코드용 deterministic linter(Rust·tree-sitter)다. 20규칙: hallucinated API(introspection)·phantom package(PyPI 검증·typosquatting)·secret detection(4-layer)·taint analysis·AI artifact cleanup(`# Generated by Claude` 제거). 1121 FastAPI 파일 350ms, zero config. arXiv 2601.19106 AST hallucination guard와 ghostcall(existence)과 complement — wraith는 프로젝트 전체 린트·supply chain까지.'
+  points:
+  - 'Rust+tree-sitter: 1121 files/350ms — hallucinated API·phantom PyPI·secret·taint 20 rules'
+  - 'ghostcall complement: snippet existence vs project-wide lint + supply chain'
+  - arXiv 2601.19106 AST KCH detection(87.6% recall)과 같은 hallucination defense 축
+  source: https://pypi.org/project/wraith/
+- category: ai
+  title: SWE-PRBench — AI 코드리뷰는 diff만으로도 human expert의 15~31%만 잡는다
+  summary: SWE-PRBench(arXiv 2603.26130)는 350 PR human annotation으로 AI 코드리뷰 품질을 재는 벤치마크다. 8 frontier model이 diff-only(config_A)에서 human-flagged issue 15~31%만 탐지 — code generation 벤치마크와 달리 review는 human expert에 한참 못 미친다. config_A→config_C(전체 컨텍스트)로 갈수록 모든 모델 monotonic degrade — attention dilution으로 Type2_Contextual issue detection collapse. 구조화 2,000-token diff+summary가 2,500-token full context보다 8모델 전부 우수.
+  points:
+  - 350 PR·κ=0.75 LLM judge — diff-only 15~31% human issue detection
+  - 'Context 역설: full context > diff — attention dilution, Type2_Contextual collapse'
+  - '교훈: structured diff+summary > raw full context — review는 generation과 다른 난이도'
+  source: https://arxiv.org/pdf/2603.26130
+- category: ai
+  title: CR-Bench — 코드리뷰 에이전트는 usefulness rate·SNR로 개발자 신뢰를 잰다
+  summary: CR-Bench(arXiv 2603.11078)는 AI 코드리뷰 에이전트의 real-world utility를 재는 데이터셋+평가기다. Precision·Recall·F1 외 usefulness rate(개발자가 실제로 고친 비율)와 signal-to-noise ratio(SNR)를 도입 — Reflexion agent(GPT-5.2)는 recall 32.76%·F1 8.83%로 bug를 더 찾지만 SNR 1.95, single-shot은 recall 27%·SNR 5.11로 noise 적음. '더 많이 찾기'와 '신뢰할 수 있는 신호' 사이 sweet spot이 production adoption의 핵심이다.
+  points:
+  - 'CR-Evaluator: P/R/F1 + usefulness rate + SNR — developer trust metric'
+  - 'Reflexion: recall↑ SNR↓(1.95) vs single-shot: recall↓ SNR↑(5.11) — pressure spectrum'
+  - 'Production: precision alone insufficient — accepted issue rate + SNR pair'
+  source: https://arxiv.org/pdf/2603.11078
+- category: ai
+  title: CodeReviewBench — 오프라인 golden comment + 온라인 fresh PR로 AI 리뷰 도구 평가
+  summary: 'withmartian/code-review-benchmark는 AI 코드리뷰 도구 평가를 오픈소스로 공개한다. 오프라인: 50 human-verified PR + severity-labeled golden comments, LLM judge가 tool comment와 match해 precision/recall. 온라인: GitHub fresh PR을 continuous sampling — training data leakage 방지. Recall = bot이 잡은 golden/total golden, precision = useful bot comment/total bot comment. Post-review commit diff로 ''개발자가 실제로 고친 것''과 bot suggestion을 매칭.'
+  points:
+  - 'Dual pipeline: offline 50 PR golden comments + online fresh PR continuous'
+  - 'Judge: bot suggestion ↔ post-review human fix matching — accepted issue proxy'
+  - 'Training leakage 방지: online benchmark는 recent PR only — memorization 차단'
+  source: https://github.com/withmartian/code-review-benchmark/
+- category: ai
+  title: SWE-Mutation — LLM 생성 테스트는 mutant 10%만 검증·36%만 탐지한다
+  summary: SWE-Mutation(ACL Findings 2026)은 LLM 생성 test suite의 discriminative power를 재는 벤치마크다. 800 instance에서 agentic mutation으로 2,636 variant 생성 — mutant가 test를 속이는지 검증. DeepSeek-V3.1도 verification 10.20%·detection 36.15% — current LLM test generation inadequacy. Agentic mutation은 conventional 대비 detection 71%→40%로 realism↑ — superficial test를 걸러낸다. 9개 언어 multilingual subset 포함.
+  points:
+  - 2,636 mutants from 800 instances — test가 mutant를 속이는지 discriminative power
+  - 'DeepSeek-V3.1: verification 10.2%, detection 36.2% — even top model inadequate'
+  - 'Agentic mutation: realism↑ detection 71→40% — superficial test filter'
+  source: https://aclanthology.org/2026.findings-acl.1976/
+- category: ai
+  title: CSAP — 코드 제안 수락 예측으로 거절될 suggestion을 표시 전에 필터링
+  summary: FSE 2026 CSAP(Code Suggestion Acceptance Prediction)은 66,329 industrial developer-AI interaction 데이터로 제안 표시 전 수락 여부를 예측한다. 수락 suggestion은 historical acceptance count/ratio↑, generation interval↑, preceding context↓ 특성. imbalanced dataset accuracy 0.973, in-production industrial filter 대비 +69.5% — developer interruption 감소. LLM baseline 대비 +12.6%. 범용 booster가 아니라 personalization/filtering이 acceptance rate 개선의 실제 레버.
+  points:
+  - 66,329 industrial interactions — display-before-accept prediction, accuracy 0.973
+  - 'Features: dev/project historical acceptance, gen interval, context length'
+  - In-production filter +69.5% vs industrial baseline — interruption reduction lever
+  source: https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/46/Understanding-and-Predicting-Accepted-Code-Suggestions-in-AI-Assisted-Programming

@@ -2603,6 +2603,72 @@ Refined:
 누적: 730카드 (721→720 병합→730 신규)
 주제: LLM API engineering(idempotency·webhook·REST/GraphQL tier), developer docs(Fern/Mintlify/ReadMe), testing(mock·VCR cassette), observability(structured log·PII-safe·correlation·debug ladder)
 
+## 2026-06-25 23:45 KST — Batch 43 (아이디어 검증 + 병합 13카드 + 신규 10카드)
+
+### 병합 13카드 (Claude Code 8 + ML Kit 5)
+
+**Claude Code 11장 → 4장** (개요 1 + 유지 3)
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| 플러그인 마켓플레이스 · 비용 줄이기 · on the web · workflows · templates · 사용량 한도 · Review · hooks → **Claude Code 생태계 개요** | GitHub Action · security-review · claude-code-router |
+
+**ML Kit 8장 → 4장** (개요 1 + 유지 3)
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Text Recognition · Summarization · Prompt · Speech · 운영 매트릭스 → **ML Kit GenAI 개요** | Structured Output · Prefix Caching · APO |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| AI Code Suggestion Acceptance Rate | Google FCML 28.7%/acceptance 45% + Opsera 25~55% healthy band — DX PR throughput 카드와 metric axis 분리 |
+| AI PR Acceptance Task-Stratified | AIDev 7,156 PR — agent comparison 카드와 task-type dominant factor 분리 |
+| AI Code Turnover Rate | Opsera 2026 — acceptance vanity vs 30/90-day rewrite retention metric |
+| ghostcall | mypy/pyright(type) ·wraith(project lint)와 snippet existence check 분리 |
+| wraith | ghostcall(snippet) ·Semgrep(generic SAST)와 AI-specific hallucinated API+phantom PyPI Rust linter 분리 |
+| SWE-PRBench | Greptile/Copilot Code Review(review tool) ·SWE-bench(generation)와 review quality benchmark 분리 |
+| CR-Bench | SWE-PRBench(detection %) ·CodeRabbit(accepted issue)와 usefulness rate+SNR utility metric 분리 |
+| CodeReviewBench | CR-Bench(dataset) ·SWE-PRBench(350 PR)와 offline golden+online fresh PR dual pipeline 분리 |
+| SWE-Mutation | TestGenEval/MultiFileTest(generation) ·SWE-bench(repair)와 mutant discriminative power 분리 |
+| CSAP | acceptance rate(metric) ·Copilot Auto Mode(routing)와 display-before-accept prediction filter 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Code Whisperer hybrid smell | arXiv 2604.13114 research-only, no production tool — Sourcery(ast-grep refactor) 카드와 overlap |
+| Beyond the Commit developer survey | subjective metric, FCML+turnover 2카드로 objective complement |
+| Library Hallucination static analysis paper | ghostcall+wraith 2카드로 actionable tool 분해 |
+| MultiFileTest/ProjectTest standalone | SWE-Mutation 1카드로 test generation inadequacy 대표 |
+| Google internal CSAP duplicate detail | CSAP 카드에 industrial filter +69.5% 포함 |
+| AI documentation generation quality | Batch 18~42 주제 pool overlap, 이번 batch productivity metrics 축 집중 |
+| AI cyclomatic/maintainability index | 정적 분석 일반 주제, Code Whisperer 탈락과 동일 축 |
+| AI import optimization/dead code | Codemod/GritQL/Sourcery modernization 카드와 overlap |
+| W&B 8장 병합 | 다음 Batch 예약 — Claude Code·ML Kit 2그룹 우선 처리 |
+| Copilot CLI/GitHub Copilot 4~5장 | 다음 Batch 예약 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | AI 코드 제안 수락률 — FCML·Acceptance Rate가 품질 프록시가 아닌 이유 | arxiv.org/html/2601.19964 |
+| 2 | AI PR 수락률 Task-Stratified — 에이전트별 1위가 작업 유형마다 바뀐다 | arxiv.org/html/2602.08915 |
+| 3 | AI Code Turnover Rate — 30~90일 내 AI 코드 재작성 비율로 진짜 품질 잰다 | opsera 2026 benchmark report |
+| 4 | ghostcall — LLM이 지어낸 API 호출을 설치된 패키지로 검증 | github.com/linosorice/ghostcall |
+| 5 | wraith — AI 생성 Python hallucinated API·phantom package Rust linter | pypi.org/project/wraith |
+| 6 | SWE-PRBench — AI 코드리뷰 diff-only 15~31% human issue detection | arxiv.org/pdf/2603.26130 |
+| 7 | CR-Bench — usefulness rate·SNR로 리뷰 에이전트 신뢰 측정 | arxiv.org/pdf/2603.11078 |
+| 8 | CodeReviewBench — offline golden + online fresh PR dual pipeline | github.com/withmartian/code-review-benchmark |
+| 9 | SWE-Mutation — LLM test suite mutant detection 36% | aclanthology.org/2026.findings-acl.1976 |
+| 10 | CSAP — 코드 제안 수락 예측 display-before-accept filter | conf.researchr.org/fse-2026 |
+
+누적: 753카드 (754→753, 병합 -11 + 신규 +10)
+주제: AI developer productivity metrics(FCML·acceptance·turnover·task-stratified PR), hallucination defense(ghostcall·wraith), code review quality benchmarks(SWE-PRBench·CR-Bench·CodeReviewBench), test generation adequacy(SWE-Mutation), acceptance prediction(CSAP)
+
 ## 2026-06-25 16:45 KST — Batch 42 (아이디어 검증 + 병합 0카드 + 신규 10카드)
 
 ### 아이디어 검증 토론
