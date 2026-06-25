@@ -3769,6 +3769,59 @@ Refined:
 누적: 886카드 (878→886 신규 8, 병합 4건은 기존 카드 갱신)
 주제: scientific discovery eval(NatureBench)·feature-dev eval(FeatureBench)·review QA eval(c-CRAB)·gov MCP security(NSA)·ecosystem migration(Gemini CLI)·desktop agent surface(Copilot app)·hosted multiagent(CMA)·hybrid CUA eval(WeaveBench)
 
+## 2026-06-26 24:00 KST — Batch 60 (아이디어 검증 + 병합 3카드 + 신규 8카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| OWASP ASI Top 10 standalone → **OWASP ASI Top 10 + AIUC-1 crosswalk — agentic procurement baseline·SOC2 analog certification** | 2026-05-25 bidirectional ASI↔AIUC-1 mapping·8 gap areas·Five Eyes alignment |
+| Braintrust eval-first only → **Braintrust — eval-first + agent observability(trace·drift·online eval) 통합** | 2026 agent observability guide — semantic trace·behavioral drift·online eval on production traces |
+| ADK Nano hybrid only → **ADK for Android 0.1.0 — Gemini Nano 4·AppFunctions·A2UI 하이브리드 온디바이스 에이전트** | Nano 4 Fast/Full·tool calling roadmap·GenaiPrompt hybrid orchestration |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| AGT + ACS | Build 2026 runtime governance — 8 intervention points·fail-closed·OWASP 10/10, distinct from NSA MCP operational card |
+| ASSERT | policy→executable eval — org-specific safety not generic benchmark, pairs ACS closed loop |
+| MobileRisk-Live | ACL 2026 mobile GUI safety — Android emulator sandbox distinct from WeaveBench capability |
+| Agent-SafetyBench | 349 env none >60% — interactive tool safety unsaturated axis |
+| CUAHarm | verifiable harm execution not refusal — terminal CUA misuse distinct from OS-Harm GUI |
+| OS-Harm | NeurIPS Spotlight 3-vector GUI CUA safety — misuse/injection/misbehavior |
+| Gemini Nano 4 | on-device model tier milestone — tool calling roadmap, distinct from ADK framework card |
+| Agent behavioral drift | observability beyond trace — silent failure·5 primitives, complements OTel semconv |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| τ²-bench standalone | τ-bench card already covers dual-control·Pass^k |
+| Claw-Eval·BenchJack·NatureBench·FeatureBench | Batch 58–59 eval overlap |
+| OTel invoke_agent v1.41 standalone | OpenTelemetry GenAI card already has CLIENT/INTERNAL split |
+| AIUC-1 standalone | merged into OWASP ASI crosswalk update |
+| reaatech agent-eval-harness | niche TS harness vs ASSERT |
+| State of Agentic AI Security 2.0 | survey without single developer action |
+| OASB·HackMyAgent·NSA MCP | Batch 55–59 governance/security 포화 |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Agent Governance Toolkit + ACS — fail-closed runtime governance·8 intervention points | github.com/microsoft/agent-governance-toolkit |
+| 2 | ASSERT — natural-language policy→executable agent eval·Build 2026 open trust stack | github.com/responsibleai/ASSERT |
+| 3 | MobileRisk-Live / OS-Sentinel — Android GUI agent safety sandbox·hybrid verifier | arxiv.org/abs/2510.24411 |
+| 4 | Agent-SafetyBench — 349 env·2000 case·frontier 전원 safety score 60% 미만 | github.com/thu-coai/Agent-SafetyBench |
+| 5 | CUAHarm — CUA misuse 104 task·refusal가 아니라 harmful execution verifiable reward | arxiv.org/abs/2508.00935 |
+| 6 | OS-Harm — GUI CUA 150 task·misuse·injection·misbehavior 3 harm vector | github.com/tml-epfl/os-harm |
+| 7 | Gemini Nano 4 — Fast/Full on-device·Gemma 4 E2B/E4B·tool calling 로드맵 | developers.googleblog.com/en/adk-kotlin-android-building-ai-agents |
+| 8 | Agent behavioral drift — trace만으로는 silent failure·5 observability primitive | areebi.com/resources/blog/ai-agent-monitoring-observability-2026 |
+
+누적: 894카드 (886→894 신규 8, 병합 3건은 기존 카드 갱신)
+주제: runtime governance(AGT+ACS)·policy eval(ASSERT)·mobile safety(MobileRisk-Live)·interactive safety(Agent-SafetyBench)·CUA harm(CUAHarm/OS-Harm)·on-device model(Gemini Nano 4)·observability drift(behavioral drift)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.

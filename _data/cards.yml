@@ -2544,13 +2544,13 @@ cards:
   - '데이터: 115,000 앱·$16B 매출·10억 트랜잭션 분석'
   source: https://www.revenuecat.com/state-of-subscription-apps/
 - category: ai
-  title: ADK for Android 0.1.0 — Gemini Nano 온디바이스·클라우드 하이브리드 에이전트, AppFunctions(Android MCP)
-  summary: 'ADK(Agent Development Kit) for Android 0.1.0(2026-05)은 Google의 앱 내 AI 에이전트 프레임워크다. `com.google.adk:google-adk-kotlin-core-android:0.1.0`으로 시작, ML Kit GenAI Prompt API로 Gemini Nano 4 온디바이스 실행 + 클라우드 Gemini 하이브리드(PREFER_ON_DEVICE/PREFER_CLOUD). AppFunctions(Android MCP)로 앱 도구·서비스·데이터를 시스템 에이전트에 노출, A2UI Compose Renderer로 에이전트 UI 자동 렌더링. 예: 클라우드 orchestrator가 문제를 이해하고 예약 확인 등 민감 작업은 온디바이스 subagent에 위임. ADK Python 2.0(서버 에이전트)과 달리 Android 온디바이스·프라이버시 우선 에이전트 축.'
+  title: ADK for Android 0.1.0 — Gemini Nano 4·AppFunctions·A2UI 하이브리드 온디바이스 에이전트
+  summary: 'ADK(Agent Development Kit) for Android 0.1.0(2026-05)은 Google의 앱 내 AI 에이전트 프레임워크다. `com.google.adk:google-adk-kotlin-core-android:0.1.0`으로 시작, GenaiPrompt(ML Kit GenAI)로 Gemini Nano 4 Fast/Full 온디바이스 + 클라우드 Gemini hybrid — root orchestrator는 cloud, privacy-sensitive subagent는 on-device. Nano 4(Gemma 4 E2B/E4B distill·12GB+ RAM·NPU) roadmap — tool calling·structured output·system prompt·thinking mode로 cloud agent feature set 수렴 예정. AppFunctions(Android MCP)로 앱 도구·서비스·데이터를 시스템 에이전트에 노출, A2UI Compose Renderer로 에이전트 UI 자동 렌더링. ADK Python 2.0(서버)과 달리 Android AICore·EXECUTE_APP_FUNCTIONS 권한 경계가 핵심.'
   points:
-  - google-adk-kotlin-core-android:0.1.0 — 온디바이스·클라우드 하이브리드 orchestration
-  - AppFunctions(Android MCP) + A2UI Compose — 앱 도구·UI를 에이전트에 노출
-  - ADK Python 2.0(서버)과 역할 분리 — Android Nano 프라이버시 우선
-  source: https://developers.googleblog.com/adk-kotlin-android-building-ai-agents/
+  - GenaiPrompt hybrid — cloud orchestrator + on-device subagent privacy boundary
+  - Nano 4 roadmap — tool calling·structured output, AICore preview→ML Kit production path
+  - AppFunctions + A2UI — 앱 action API + agent-rendered Compose UI
+  source: https://developer.android.com/ai/adk
 - category: ai
   title: OWASP MASVS-RESILIENCE + R8 — 모바일 앱 리버스 엔지니어링 방어의 2026년 표준 가이드
   summary: 'OWASP MASVS v2.0의 MASVS-RESILIENCE 카테고리는 모바일 앱의 리버스 엔지니어링·변조 방어 표준이다. Layer 1: R8(ProGuard 후속)로 이름 난독화·데드 코드 제거(무료, 필수), Layer 2: RASP(루트·디버거· Frida 후킹 탐지), Layer 3: Google Play Integrity API·Apple App Attest로 서버사이드 검증. R8는 제어 흐름 난독화·문자열 암호화 미지원 → jadx로 디컴파일 시 구조 노출. 핵심 로직은 서버에.
@@ -4959,13 +4959,13 @@ cards:
   - SkillsMP·claudemarketplaces.com — 21k+ skill·2.5k+ marketplace 큐레이션(2026-06)
   source: https://code.claude.com/docs/en/discover-plugins
 - category: ai
-  title: Braintrust — eval-first LLM 앱 개발·CI 게이트·프롬프트 Playground 통합 플랫폼
-  summary: Braintrust는 LLM 앱을 "먼저 eval하고 ship"하는 eval-first 플랫form이다. Playground에서 prompt·model·tool 변형을 A/B하고, dataset+scorer로 CI/CD 품질 게이트를 걸며, production trace를 dataset으로 환류(feedback loop)한다. LangSmith(프레임워크 종속)·RAGAS(RAG 특화)와 달리 범용 LLM+에이전트 eval·regression·human review 큐를 한 UI에 통합. Loop(2026)로 에이전트 eval 자동화 확장.
+  title: Braintrust — eval-first + agent observability(trace·drift·online eval) 통합
+  summary: Braintrust는 LLM 앱을 "먼저 eval하고 ship"하는 eval-first 플랫form이다. Playground에서 prompt·model·tool 변형을 A/B하고, dataset+scorer로 CI/CD 품질 게이트를 걸며, production trace를 dataset으로 환류(feedback loop)한다. 2026 agent observability guide — LLM 단일 call이 아니라 tool selection·arguments·memory read/write·sub-agent handoff·decision branch를 nested span으로 캡처, trace inspect만으로는 부족한 online eval layer(production trace에 scorer attach→실패 alert→offline eval set 환류)를 같은 UI에 통합. behavioral drift — tool-call frequency·refusal rate·retrieval depth·latency distribution rolling baseline(24h/7d/30d) 이탈을 leading indicator로. LangSmith(프레임워크 종속)·RAGAS(RAG)·Datadog(infra MELT)와 달리 semantic agent behavior+eval gate. Loop(2026)로 에이전트 eval 자동화 확장.
   points:
-  - 'eval-first: prompt/model 변경마다 dataset+scorer로 regression gate — ship 전 품질 보장'
-  - production log→dataset 환류 — 실패 케이스가 다음 eval에 자동 반영
-  - LangSmith=LangChain 생태계·RAGAS=RAG·Braintrust=범용 eval CI·Playground
-  source: https://www.braintrust.dev/docs
+  - trace+eval loop — production failing trace→dataset→CI gate, uptime만으로 silent failure 못 잡음
+  - behavioral drift — tool/refusal/latency baseline shift = model·tool API·RAG corpus change signal
+  - LangSmith=LangChain·RAGAS=RAG·Braintrust=범용 eval CI+agent semantic observability
+  source: https://www.braintrust.dev/articles/agent-observability-complete-guide-2026
 - category: ai
   title: Claude Tag — Slack에서 @Claude를 팀원처럼 호출하는 협업 에이전트
   summary: Claude Tag는 Claude를 Slack 채널에 초대해 팀 대화, 선택한 도구, 데이터, 코드베이스 맥락 위에서 작업을 위임하는 Anthropic의 팀 협업 기능이다. 채널 멤버가 `@Claude`를 태그하면 Claude가 PR 작성·머지, 데이터 분석, 장애 원인 조사 같은 일을 맡고, 채널 기록을 따라가며 매번 배경 설명을 다시 요구하지 않도록 컨텍스트를 쌓는다. ambient behavior를 켜면 조용해진 스레드나 관련 정보를 먼저 짚어 주는 더 능동적인 패턴도 가능하다. 개발자 교훈은 "코딩 에이전트는 IDE 안 개인 도구"에서 "팀 채널의 공유 작업자"로 이동 중이라는 점이다. 단, 채널·도구 접근권한을 어디까지 줄지와 사람이 승인해야 할 작업 경계를 먼저 설계해야 한다.
@@ -6393,13 +6393,13 @@ cards:
   - AI BFF·secret scanning·Vault = custody→detect→rotate
   source: https://developer.hashicorp.com/vault/docs/secrets
 - category: ai
-  title: OWASP ASI Top 10 — agentic apps 2026·LLM Top 10과 축 분리
-  summary: OWASP Agentic Security Initiative(ASI) Top 10 for Agentic Applications 2026(2025-12, 100+ expert peer review)는 autonomous agent 고유 실패 모드를 10개로 정의한다. ASI01 Goal Hijack ·ASI02 Tool Misuse ·ASI03 Identity/Privilege Abuse ·ASI04 Supply Chain ·ASI05 Unexpected Code Execution ·ASI06 Memory/Context Poisoning ·ASI07 Insecure Inter-Agent Comms ·ASI08 Cascading Failures ·ASI09 Human-Agent Trust Exploitation ·ASI10 Rogue Agents. OWASP LLM Top 10(2025)은 GenAI app risk, ASI는 plan·act·persist·delegate agent risk — procurement·threat modeling에서 병행. least agency principle — minimum autonomy for bounded task가 cross-cutting mitigation. Five Eyes "Careful Adoption of Agentic AI"(2026-05)가 ASI control mapping을 국제 규제 signal로 채택. CSA MCP Security(operational) ·코딩 에이전트 7종 비교(academic)와 complement — ASI=procurement baseline.
+  title: OWASP ASI Top 10 + AIUC-1 crosswalk — agentic procurement baseline·SOC2 analog certification
+  summary: OWASP Agentic Security Initiative(ASI) Top 10 for Agentic Applications 2026(2025-12, 100+ expert peer review)는 autonomous agent 고유 실패 모드를 10개로 정의한다. ASI01 Goal Hijack ·ASI02 Tool Misuse ·ASI03 Identity/Privilege Abuse ·ASI04 Supply Chain ·ASI05 Unexpected Code Execution ·ASI06 Memory/Context Poisoning ·ASI07 Insecure Inter-Agent Comms ·ASI08 Cascading Failures ·ASI09 Human-Agent Trust Exploitation ·ASI10 Rogue Agents. OWASP LLM Top 10(2025)은 GenAI app risk, ASI는 plan·act·persist·delegate agent risk — procurement·threat modeling에서 병행. least agency principle — minimum autonomy for bounded task가 cross-cutting mitigation. Five Eyes "Careful Adoption of Agentic AI"(2026-05)가 ASI control mapping을 국제 규제 signal로 채택. AIUC-1 crosswalk(2026-05-25) — ASI01~10↔AIUC-1 6 domain bidirectional mapping·8 gap areas(agent identity·runtime containment·supply chain attestation·schema controls 등) — agent 배포 시 threat taxonomy(ASI)와 auditable certification(AIUC-1)을 한 세트로. NSA MCP PP-26-1834(MCP operational) ·Microsoft AGT(runtime enforcement)와 compose.
   points:
   - ASI01~10 — goal hijack·tool misuse·privilege·supply chain·RCE·memory poison
-  - LLM Top 10 ≠ ASI Top 10 — GenAI app vs autonomous agent
-  - least agency — cross-cutting, Five Eyes 2026-05 regulatory alignment
-  source: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+  - AIUC-1 crosswalk — SOC2 analog cert, 8 gap areas where cert must expand for ASI
+  - least agency + Five Eyes 2026-05 — procurement baseline before runtime toolkit
+  source: https://genai.owasp.org/resource/aiuc-1-crosswalks-owasp-top-10-for-agentic-applications/
 - category: ai
   title: MCP Tool Poisoning — description drift·Snyk Agent Scan·skill supply-chain·toxic flows
   summary: MCP tool poisoning은 tool description·schema·return example에 hidden directive를 embed해 LLM이 benign tool을 malicious action으로 호출하는 supply chain attack. Snyk Agent Scan(snyk/agent-scan·Invariant mcp-scan 후속)은 Cursor·Claude·Windsurf MCP config auto-discover→server 실행→tools/list 수집→15+ risk scan — tool poisoning·tool shadowing·toxic flows·skill malware payload(E006). skills ecosystem report(2026) — SKILL.md hidden instruction·credential handling·malware payload. pre-commit·CI `--dangerously-run-mcp-servers` gate. Pipelock(runtime proxy) ·Promptfoo redteam mcp plugin과 3-layer — static scan→runtime proxy→adversarial eval.
@@ -8004,3 +8004,67 @@ cards:
   - Agent-as-Judge trajectory — per-clause evidence from full chat+artifacts
   - Harness sensitivity — Opus+Claude Code vs Opus+OpenClaw 6pp gap same model
   source: https://arxiv.org/abs/2606.09426
+- category: ai
+  title: Agent Governance Toolkit + ACS — fail-closed runtime governance·8 intervention points
+  summary: Microsoft Agent Governance Toolkit(AGT·2026-04-02·MIT·~4.5k★) — framework-agnostic runtime governance sidecar. Agent OS(stateless policy engine <0.1ms p99·YAML/OPA Rego/Cedar)·Agent Runtime(4 privilege rings sandbox)·Agent SRE(kill switch·SLO·chaos)·Agent Compliance(OWASP ASI 10/10 evidence·EU AI Act/HIPAA/SOC2 mapping). LangChain callback·CrewAI decorator·Google ADK plugin·Copilot CLI governance installer adapter. Agent Control Specification(ACS·Build 2026) — vendor-neutral portable YAML manifest·8 interception points(agent_startup·input·pre/post_model·pre/post_tool·output·shutdown)·stateless deterministic fail-closed verdict(allow/warn/deny/escalate/transform). OWASP ASI(threat taxonomy) ·NSA MCP(operational MCP) ·AIUC-1(cert)와 compose — AGT+ACS=enforceable runtime layer.
+  points:
+  - ACS 8 points — policy travels with agent across LangChain/AutoGen/SK/MCP
+  - fail-closed — runtime error→deny, enforce vs evaluate_only mode
+  - OWASP 10/10 coverage — Agent Compliance grades map to procurement evidence
+  source: https://github.com/microsoft/agent-governance-toolkit
+- category: ai
+  title: ASSERT — natural-language policy→executable agent eval·Build 2026 open trust stack
+  summary: ASSERT(Adaptive Spec-driven Scoring·responsibleai/ASSERT·MIT·Build 2026) — product requirement·policy doc·system prompt를 AI-assisted systematization으로 behavior taxonomy→multi-turn test case→OTel-traced inference→LLM judge scoring pipeline. policy citation+rationale+turn evidence per verdict — generic benchmark가 아니라 org-specific behavior eval. OpenInference integration — LangGraph·CrewAI·OpenAI Agents SDK·AutoGen·hosted model without rewrite. Microsoft Build 2026 open trust stack — ASSERT(find defects)→ACS(place controls)→ASSERT(confirm improvement) closed loop. vs Claw-Eval(general 300 task benchmark) ·Braintrust(eval SaaS) ·Promptfoo(adversarial YAML) — ASSERT=policy-driven pre-production safety eval.
+  points:
+  - Spec→taxonomy→cases→trace→judge — requirement doc이 living eval suite
+  - OpenInference any agent — trace evidence mandatory for agentic verdict
+  - ACS pairing — eval identifies gap, ACS enforces at intervention point
+  source: https://github.com/responsibleai/ASSERT
+- category: ai
+  title: MobileRisk-Live / OS-Sentinel — Android GUI agent safety sandbox·hybrid verifier
+  summary: OS-Sentinel(ACL 2026 Oral·arXiv 2510.24411) — mobile GUI agent safety research foundation. MobileRisk-Live — Android emulator dynamic sandbox, agent real-time execute while detector monitors GUI observation+system state trace. MobileRisk — frozen 204 trajectory(102 safe+102 unsafe)·10 risk category·step+trajectory annotation·counterpart safe cases for false-positive test. OS-Sentinel hybrid — Formal Verifier(deterministic system violation) + VLM Contextual Judge(semantic risk)·10–30% improvement over prior. frozen MobileRisk≈Live dynamic — offline benchmark reproduces live safety signal. vs Agent-SafetyBench(general tool env) ·WeaveBench(hybrid CUA capability) ·Android Computer Control(UI automation) — mobile-specific safety eval axis.
+  points:
+  - MobileRisk-Live — Android emulator real-time safety playground
+  - Hybrid Formal+VLM — system rule + contextual semantic judgment
+  - 204 frozen trajectories — disentangle safety from agent capability variance
+  source: https://arxiv.org/abs/2510.24411
+- category: ai
+  title: Agent-SafetyBench — 349 env·2000 case·frontier 전원 safety score 60% 미만
+  summary: Agent-SafetyBench(thu-coai/Agent-SafetyBench·arXiv 2412.14470·AAAI 2026 TrustAgent) — LLM agent behavioral safety in interactive tool environments. 349 novel environments·2000 test cases·8 safety risk categories·10 failure modes. 16 popular agents evaluated — none exceeds 60% safety score. two fundamental defects — lack of robustness(lacks stable safe behavior under risk) ·lack of risk awareness(fails to recognize danger in time). defense prompt alone insufficient — needs runtime containment+policy. ShieldAgent scorer model for automated grading. vs CUAHarm(CUA harm execution) ·OS-Harm(GUI injection) ·Claw-Eval(general capability+safety) — broad interactive safety unsaturated.
+  points:
+  - 349 env·2000 cases — broader than chatbot refusal-only safety
+  - 0/16 agents >60% — robustness+risk awareness both broken
+  - ShieldAgent judge — scalable scoring beyond human review
+  source: https://github.com/thu-coai/Agent-SafetyBench
+- category: ai
+  title: CUAHarm — CUA misuse 104 task·refusal가 아니라 harmful execution verifiable reward
+  summary: CUAHarm(arXiv 2508.00935·db-ol/CUAHarm) — computer-using agent misuse risk beyond chatbot safety. 104 expert-written scenarios·52 core computer-use tasks requiring direct terminal/system interaction — credential theft·privilege escalation·network exploit·system disruption·data tamper·forensic evasion·tool utilization 7 categories. rule-based verifiable reward — firewall disabled? credential exfiltrated? — measures execution success not refusal rate. frontier models 40%+ harmful task success — Gemini 2.5 Pro 90%·Mistral Large 2 81%·Claude 4 Sonnet 54% despite strong chatbot safety scores. monitoring CUA actions harder than chatbot CoT. vs OS-Harm(GUI+injection) ·Agent-SafetyBench(tool env) ·WeaveBench(benign capability) — terminal CUA harm axis.
+  points:
+  - Verifiable reward — state change not LLM refusal as metric
+  - Chatbot-safe ≠ CUA-safe — agent mode amplifies misuse vs chat
+  - 52 terminal tasks — full system access not abstracted API
+  source: https://arxiv.org/abs/2508.00935
+- category: ai
+  title: OS-Harm — GUI CUA 150 task·misuse·injection·misbehavior 3 harm vector
+  summary: OS-Harm(NeurIPS 2025 Spotlight·tml-epfl/os-harm·OSWorld VM) — LLM computer-use agent safety across 3 harm categories. deliberate user misuse(test_misuse.json·--jailbreak)·prompt injection(test_injection.json·--inject·12 goal types — email cred exfil·cron remote script·sudo rm -rf)·model misbehavior(unintended unsafe). 150 tasks spanning harassment·copyright·disinformation·data exfil·real OS apps(email·browser·editor). automated LLM judge 0.76–0.79 F1 vs human. frontier agents 50–70% misuse compliance·up to 20% static injection·10% spontaneous misbehavior. vs CUAHarm(terminal harm execution) ·WeaveBench(capability) ·c-CRAB(review QA) — GUI CUA safety tri-vector.
+  points:
+  - 3 vectors — misuse·injection·misbehavior not single refusal test
+  - 12 injection goals — email·terminal·URL cred·file exfil realistic channels
+  - OSWorld VM — screenshot/a11y agent same scaffold as capability bench
+  source: https://github.com/tml-epfl/os-harm
+- category: ai
+  title: Gemini Nano 4 — Fast/Full on-device·Gemma 4 E2B/E4B·tool calling 로드맵
+  summary: Gemini Nano 4(Google 2026·Gemma 4 family distill) — Android on-device foundation model tier via AICore system service. Nano 4 Fast(latency-optimized)·Nano 4 Full(reasoning-optimized) — E2B(4.2GB)·E4B(5.9GB) effective params, 12GB+ RAM·Tensor/Dimensity/Snapdragon NPU. ML Kit GenAI Prompt API production path — AICore Developer Preview(Gemma 4)에서 experiment 후 ship. roadmap — tool calling·structured output·system prompt·thinking mode로 cloud Gemini agent feature convergence. hybrid inference(Firebase AI Logic PREFER_ON_DEVICE) — privacy/offline first, cloud fallback for complex reasoning. vs ADK for Android(agent framework) ·ML Kit Structured Output(schema) ·server Gemini — Nano 4=model tier milestone not framework.
+  points:
+  - Fast vs Full — latency vs reasoning split on same AICore stack
+  - Tool calling roadmap — on-device agent needs tools not just summarization
+  - No per-request cloud cost·data stays device — GDPR/offline advantage
+  source: https://developers.googleblog.com/en/adk-kotlin-android-building-ai-agents/
+- category: ai
+  title: Agent behavioral drift — trace만으로는 silent failure·5 observability primitive
+  summary: Agent behavioral drift(2026 production pattern) — agent remains healthy(infra green) but decision quality degrades silently. causes — foundation model update·tool API schema change·RAG corpus growth·prompt drift without deploy event. semantic drift ≠ statistical input drift — same input, different reasoning path. five observability primitives beyond uptime — tool-call trace+authorization audit·retrieval provenance·multi-step replay·behavioral drift detection(rolling baseline on tool frequency·refusal rate·retrieval depth·latency·cost-per-task)·online eval on sampled traces. OTel GenAI span hierarchy enables fingerprint but drift needs eval layer attached. vs Datadog MELT(infra) ·LLM observability(single call) ·Braintrust(trace+eval) — drift=decision integrity monitoring.
+  points:
+  - Silent failure — wrong decision with 200 OK, dashboards stay green
+  - Rolling baseline 24h/7d/30d — leading indicator before user complaints
+  - Trace without eval — see what agent did, not whether still correct
+  source: https://www.areebi.com/resources/blog/ai-agent-monitoring-observability-2026
