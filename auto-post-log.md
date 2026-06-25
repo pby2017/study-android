@@ -2687,3 +2687,11 @@ Refined:
 - Refined: `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트`
 - Refined sources re-checked: https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent/ and https://docs.sentry.io/pricing/
 - Rejected: Codex role-specific plugins/Sites/annotations as duplicate; GitHub Copilot app/code review/Agents window updates as duplicate or overlap; Android AI Edge/LiteRT/ADK/Gemma updates as duplicate or below threshold; pure Android topics as out of scope.
+
+## 2026-06-25 16:32 KST — Local AI card routine
+
+- Published: `Codex PAYG 좌석 — 파일럿 비용을 좌석비가 아니라 토큰 원장으로 보기`
+- Source: https://openai.com/index/codex-flexible-pricing-for-teams/
+- Refined: `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트`
+- Refined sources re-checked: https://jules.google/docs/, https://jules.google/docs/usage-limits/, and https://jules.google/docs/faq/
+- Rejected: GitHub Copilot app BYOK, Copilot CLI terminal interface GA, Copilot Free/Student auto model selection, and ADK for Kotlin/Android as duplicates or overlap with existing cards.

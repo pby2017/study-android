@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트`; next oldest reviewed candidate is `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트`.
+Current position: continue after `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트`; next oldest reviewed candidate is `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기`.
 
-Last update: 2026-06-25 14:29 KST
+Last update: 2026-06-25 16:32 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -43,6 +43,7 @@ Reviewed:
 - `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지`
 - `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)`
 - `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트`
+- `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -78,6 +79,7 @@ Refined:
 - `Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지` — re-checked the current ECC README, AgentShield README, and GitHub API metrics; refreshed live stars/forks/license/archive state, updated the repository source URL, clarified ECC v2.0.0 operational surface and install-path caveat, and reframed the lesson around managing agent-asset install state and permission boundaries rather than copying approximate asset counts.
 - `Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)` — re-checked the current README plus GitHub API metrics, refreshed live stars/forks/license/archive state, clarified Chat/Workflow builder/code, knowledge base, Tables, document generation, self-hosting requirements, and reframed the lesson around team workspace and operations boundaries rather than only low-code setup.
 - `Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트` — re-checked Sentry's current press release and pricing docs, clarified runtime telemetry plus source-code RCA, local Sentry MCP and PR review workflows, production-risk focus, and active-contributor pricing semantics.
+- `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트` — re-checked current Jules getting-started docs, usage limits, and FAQ; clarified Public Beta status, fresh VM task execution, plan approval before edits, AGENTS.md automatic reading, no private-repo training, and practical security/setup-script caveats.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -85,7 +87,7 @@ Skipped:
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
 
 Next:
-- Continue with `Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
