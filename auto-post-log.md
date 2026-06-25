@@ -3714,6 +3714,61 @@ Refined:
 누적: 877카드 (869→877 신규 8, 병합 3건은 기존 카드 갱신)
 주제: benchmark trust(BenchJack)·harness eval(Claw-SWE)·lifecycle eval(SWE-Cycle)·architectural eval(ProgramBench)·CI agent surface(Bitbucket Codex)·adoption evidence(Shift to Agentic)·enterprise ops eval(ITBench-AA)·cloud automation(Cursor /automate)
 
+## 2026-06-26 22:00 KST — Batch 59 (아이디어 검증 + 병합 4카드 + 신규 8카드)
+
+### 병합 4카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Copilot CLI experimental TUI preview only → **Copilot CLI 생태계 개요 — TUI GA·Issues/PR 탭·/mcp add·LSP·steering** | 2026-06-23 GA tabs·/mcp add·theme·screen reader·c-key PR reference |
+| Dreams API memory store standalone → **Dreams(Anthropic) — cross-session memory merge·Harvey 6× task completion** | Harvey legal 6×·Outcomes·Multiagent 3-primitive loop |
+| Gemini Enterprise Agent Registry standalone → **Agent Finder/ARD — Copilot·Gemini Enterprise runtime discovery** | Microsoft ARD spec·Google Agent Registry·293 public catalog |
+| EvoCode-Bench paper-only metrics → **EvoCodeBench — Harbor multi-step·MT@4 vs SR 22–40pp·grader leak audit** | Harbor #1960 grader leak·full re-run June 2026·ranking inversion |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 4건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| NatureBench | June 2026 discovery axis — NatureGym 90 task·information firewall·validity judge beyond PaperBench |
+| FeatureBench | ICLR 2026 — 74.4%→11% SWE-bench gap exposes feature-dev unsaturated axis |
+| c-CRAB | test-based review oracle distinct from CR-Bench SNR·SWE-PRBench diff-only |
+| NSA PP-26-1834 | first US gov MCP CSI·9 controls·Sep 2026 contractor deadline |
+| Gemini CLI shutdown | June 18 ecosystem shock·410 Gone·OpenCode migration signal |
+| Copilot app GA | June 17 parallel worktree desktop·Canvases·cloud automations distinct from SDK |
+| CMA Multiagent | coordinator roster·shared sandbox·25 threads — hosted harness primitive |
+| WeaveBench | hybrid GUI+shell CUA 114 task·harness pairing 6pp spread |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| /rewind·PostToolBatch·InstructionsLoaded | Batch 57–58 hooks/session 축 이미 커버 |
+| BenchJack·Claw-SWE·SWE-Cycle·ProgramBench·ITBench-AA | Batch 58 신규 8 overlap |
+| Copilot SDK GA·Agent Finder duplicate | 기존 카드·병합 확장으로 흡수 |
+| EvoCodeBench duplicate standalone | EvoCodeBench merge로 흡수 |
+| Paperclip·Loop Engineering·Cursor /automate | 기존 카드 |
+| Fable 5·MiniMax M3·North Mini·DeepSWE | batches 55–57 모델/harness 포화 |
+| MCP 2026 stateless·MCP EMA | Batch 56 축 |
+| OX Security·Jarvis Registry standalone | NSA card로 gateway pattern 흡수, adoption signal 부족 |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | NatureBench — Nature-family 90 discovery task·NatureGym firewall·SOTA gap g | arxiv.org/abs/2606.24530 |
+| 2 | FeatureBench — feature-oriented 200 task·Opus 74.4% SWE-bench→11% resolved | arxiv.org/pdf/2602.10975 |
+| 3 | c-CRAB — human review comment→executable test oracle, PR-agent eval | arxiv.org/html/2603.23448v3 |
+| 4 | NSA MCP PP-26-1834 — 9 design controls·gateway·sandbox·Sep 2026 contractor deadline | nsa.gov Press Release PP-26-1834 |
+| 5 | Gemini CLI→Antigravity CLI — 2026-06-18 individual tier shutdown·agy migration | github.com/google-gemini/gemini-cli/discussions/27274 |
+| 6 | GitHub Copilot app GA — Canvases·cloud automations·parallel worktree sessions | github.blog/changelog/2026-06-17-github-copilot-app-generally-available |
+| 7 | Claude Managed Agents Multiagent — coordinator roster·shared sandbox·25 threads | platform.claude.com/docs/en/managed-agents/multi-agent |
+| 8 | WeaveBench — hybrid GUI+shell CUA 114 task·trajectory-aware agent-as-judge | arxiv.org/abs/2606.09426 |
+
+누적: 886카드 (878→886 신규 8, 병합 4건은 기존 카드 갱신)
+주제: scientific discovery eval(NatureBench)·feature-dev eval(FeatureBench)·review QA eval(c-CRAB)·gov MCP security(NSA)·ecosystem migration(Gemini CLI)·desktop agent surface(Copilot app)·hosted multiagent(CMA)·hybrid CUA eval(WeaveBench)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.

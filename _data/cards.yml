@@ -1079,14 +1079,12 @@ cards:
   - '권고: LLM 자동 생성 파일은 빼고, 사람이 추론 불가능한 정보(특수 빌드·툴 커맨드)만 짧게 적어라 — ''자동 생성 디테일''은 독'
   source: https://arxiv.org/abs/2602.11988
 - category: ai
-  title: Dreams(Anthropic) — 에이전트가 세션 사이에 '잠자며' 메모리를 정리하는 리서치 프리뷰
-  summary: 'Dreams는 Anthropic Managed Agents의 리서치 프리뷰 기능으로, 에이전트가 세션마다 조금씩 쌓은 memory store를 비동기 정리 작업으로 다시 만든다. 입력은 기존 memory store와 과거 세션 기록 1~100개이고, 출력은 별도의 새 memory store다. 파이프라인은 중복 메모리를 병합하고, 낡거나 모순된 항목은 최신 세션 근거로 바꾸며, 흩어진 패턴을 새 인사이트로 끌어올린다. 중요한 운영 경계는 입력 store가 불변이라는 점이다. 완료된 출력 store를 future session에 붙여 쓰거나, 품질이 마음에 들지 않으면 삭제·아카이브하면 된다. instructions는 "코딩 스타일 선호에 집중" 같은 합성 방향을 주는 용도이지, 특정 줄을 고치는 편집기가 아니다.
-
-    '
+  title: Dreams(Anthropic) — cross-session memory merge·Harvey 6× task completion
+  summary: Dreams(Anthropic Managed Agents·research preview·Code with Claude 2026-05-06)는 세션 사이 비동기 memory curation — input memory store+1~100 session transcript→output store(입력 불변). duplicate merge·stale/contradicted replace·pattern→insight synthesis. instructions로 합성 방향 steer. Harvey legal-drafting case study — Dreams enable 후 agent task completion ~6×. Outcomes(rubric gate) ·Multiagent Orchestration(coordinator roster)와 3축 Managed Agents loop — memory drift·undefined done·context overload. beta headers managed-agents-2026-04-01 + dreaming-2026-04-21.
   points:
-  - 입력=기존 memory store + 세션 1~100개, 출력=별도 새 store(입력은 절대 수정 안 됨)
-  - '상태: pending→running→completed/failed/canceled / 수 분~수십 분 / 실패·취소 시 partial output inspect 가능'
-  - instructions는 합성 방향 조정용 / 리서치 프리뷰(beta header dreaming-2026-04-21) / 표준 API 토큰 요율 과금
+  - Input store immutable — output new store, review/apply/delete via Memory Stores API
+  - Harvey ~6× completion — cross-session mistake pattern→memory update loop
+  - vs Outcomes(session rubric) ·Multiagent(shared sandbox delegation) — complementary CMA primitives
   source: https://platform.claude.com/docs/en/managed-agents/dreams
 - category: ai
   title: OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)
@@ -4589,15 +4587,13 @@ cards:
   - '운영 지표: coverage·recall·time-to-response로 에이전트 보안 통제가 실제로 작동하는지 측정'
   source: https://deepmind.google/blog/securing-the-future-of-ai-agents/
 - category: ai
-  title: 'Agent Finder/ARD: 에이전트 도구를 미리 다 꽂지 말고 검색해서 붙인다'
-  summary: 'GitHub이 2026-06-17 공개한 Agent Finder는 Copilot이 MCP 서버, 스킬, 캔버스, 에이전트, 도구를 매번 설정 파일에 미리 꽂아 두는 대신 작업 설명으로 검색해 찾는 기능이다. 사용자가 자연어로 일을 설명하면 Agent Finder가 선택한 레지스트리의 AI 리소스 인덱스를 검색하고, Copilot이 필요할 때 끌어올 수 있는 후보를 순위화한다. 중요한 점은 "자동 설치"가 아니라는 경계다. GitHub 공지는 엔터프라이즈 관리 설정으로 허용된 리소스만 보이게 하고, 연결 여부는 사용자가 통제한다고 설명한다. 기반 표준은 Google·GitHub·GoDaddy·Hugging Face·Microsoft가 함께 발표한 open Agentic Resource Discovery(ARD)이며, Google 발표는 ARD를 조직 도메인 아래 게시한 catalog와 이를 색인하는 registry의 조합으로 설명한다. 같은 런에서 GitHub Agent Finder 공개 카탈로그 293개 리소스, ards-project/ard-spec 268★, Apache-2.0을 확인했다. 실무 교훈은 에이전트 확장이 "컨텍스트에 도구 전부 적재"에서 "검증 가능한 카탈로그를 검색해 필요한 것만 연결"하는 거버넌스 문제로 이동한다는 점이다.
-
-    '
+  title: 'Agent Finder/ARD — Copilot·Gemini Enterprise runtime discovery, context bloat 방지'
+  summary: 'Agentic Resource Discovery(ARD·Apache-2.0·Microsoft+Google+GitHub+HF+GoDaddy·2026-06-17) — domain-hosted catalogs + federated registries로 MCP·skills·agents·tools를 publish/index/discover. GitHub Agent Finder — Copilot이 task description으로 registry 검색→ranked matches on-demand inject, auto-install 없음·managed settings gate. Google Gemini Enterprise Agent Registry — hosted search/onboarding, native ARD months内. 문제 정의: single client가 explicit wiring한 수십 도구 vs ecosystem 수십만 리소스 — orders-of-magnitude gap. vs MCP Tool Search(Claude preload) ·pre-wired MCP list — ARD=runtime catalog search across registries.'
   points:
-  - '공식 공지: 2026-06-17 GitHub Agent Finder, Copilot이 작업에 맞는 MCP·skills·agents·tools를 검색'
-  - '운영 경계: 선택한 public/private registry 안에서만 검색, managed settings로 허용 범위 제한, 자동 설치 없음'
-  - 'ARD 패턴: domain-hosted catalogs + federated registries + native protocol handoff; 같은 런 검증 293 catalog resources, ard-spec 268★'
-  source: https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/
+  - ARD spec — catalogs on org domain + registry index + client discovery handoff
+  - GitHub Agent Finder — public 293 resources or private enterprise registry, no silent install
+  - Google Agent Registry — Gemini Enterprise ARD backing, federated discovery same model
+  source: https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/
 - category: ai
   title: 'Reusable prompts 종료: 프롬프트도 코드 리뷰·테스트 대상이 된다'
   summary: 'OpenAI는 2026-06-03 reusable prompt objects의 deprecation을 공지했고, `v1/prompts` API와 reusable prompt objects를 2026-11-30에 종료할 예정이라고 문서화했다. 최신 prompt engineering 가이드는 새 작업에서 production prompt를 대시보드 객체로 저장하지 말고 애플리케이션 코드 안의 작은 prompt builder로 옮기라고 권한다. 동적 값은 typed function argument나 schema로 받고, 생성된 `instructions`와 `input`을 Responses API에 직접 넘기며, 변경 전에는 대표 fixture, 테스트, evaluation check를 붙이라는 흐름이다. 실무 교훈은 "프롬프트 관리 UI"에 의존하지 말고 프롬프트를 코드 변경처럼 diff, 리뷰, 테스트, feature flag, 배포 파이프라인으로 다루라는 점이다.
@@ -6805,13 +6801,13 @@ cards:
   - SWE-bench·ProjDevBench와 역할 분리 — backend lifecycle·executable workflow
   source: https://aclanthology.org/2026.findings-acl.1142.pdf
 - category: ai
-  title: EvoCodeBench — 5~15라운드 요구 변경에도 프로젝트가 살아남는지 재는 멀티턴 벤치마크
-  summary: EvoCodeBench(UniPat-AI·Harbor multi-step)는 26개 stateful coding task·227 evaluated rounds로 코딩 에이전트의 '요구가 바뀌어도 누적 테스트를 통과하는가'를 측정한다. 단일 persistent Docker workspace·continuous agent session·per-step verifier·multi_step_reward_strategy(mean)로 MT@4(멀티턴) vs SR(단일라운드) 격차를 명시한다. Terminal-X suite의 iteration 축 — DeepTerminalBench(1-shot depth)와 RoadmapBench(version upgrade)와 보완. SWE-bench(단일 패치)와 달리 cumulative regression detection.
+  title: EvoCodeBench — Harbor multi-step·MT@4 vs SR 22–40pp·grader leak audit
+  summary: EvoCodeBench(EvoCode-Bench·UniPat-AI·Harbor official multi-step) — 26 stateful task·227 steps·5–15 rounds per task, single persistent workspace+cumulative executable tests. MT@4(fail-stop multi-round) vs SR(single-round from reference state) — most agents SR exceeds MT@4 by 22–40pp, highest SR(78.9) ranks 3rd in MT@4(44.0). Round-5 aggregate pass < half of round-1. June 2026 integrity audit — Harbor shared multi-step grader script leak in agent workspace(12/26 tasks), upstream fix PR #1961, full re-run. Terminal-X iteration axis with DeepTerminalBench·RoadmapBench.
   points:
-  - 26 tasks / 227 Harbor steps — persistent workspace + continuous session
-  - MT@4 vs SR — state-carrying gap을 같은 task에서 분리 측정
-  - Terminal-X iteration 축 — DeepTerminalBench·RoadmapBench와 3축 complement
-  source: https://github.com/UniPat-AI/EvoCodeBench
+  - MT@4 vs SR ranking inversion — single-round overstates persistent reliability
+  - Harbor native [[steps]] — no fork for full task, mean multi_step_reward_strategy
+  - Grader leak lesson — benchmark trust requires harness workspace isolation audit
+  source: https://arxiv.org/html/2605.24110
 - category: ai
   title: RoadmapBench — 실제 버전 업그레이드 roadmap을 에이전트가 얼마나 구현하는가
   summary: RoadmapBench(arxiv 2605.15846)는 17 OSS repo·5언어·115 task에서 V_OLD 스냅샷과 multi-target roadmap instruction만 주고 target-version 코드·테스트·oracle patch 접근을 차단한다. subtask 순서는 강제하지 않아 에이전트가 planning·우선순위를 스스로 정해야 한다. Resolved Rate(전 subtask pass)와 Completion Score(가중 partial credit)를 동시 보고 — Claude-4.7·GPT-5.4가 30~39% resolved, median ~3,700 LOC·51 files. SWE-EVO(48 Python version)·ProjDevBench(그린필드)와 달리 real upstream test suite 기반 version evolution.
@@ -6885,13 +6881,13 @@ cards:
   - architect+Polyglot — 2-pass 모델 분업·6언어 편집 벤치로 실력 검증
   source: https://github.com/Aider-AI/aider
 - category: ai
-  title: Copilot CLI 생태계 개요 — GA 터미널·모드 피커·선택적 위임·LSP·steering
-  summary: GitHub Copilot CLI GA(2026)는 터미널 한 화면에서 이슈·PR·Gist·MCP·스킬·플러그인을 다루는 에이전트 CLI다. agent picker로 Agent/Ask/Custom agents/Plan mode를 세션 시작 전에 고르고, smarter subagent delegation은 좁은 탐색은 inline·넓은 탐색만 subagent로 보내 tool failure 23% 감소를 보고했다. LSP Setup skill은 grep 대신 textDocument/definition으로 14개 언어 코드 지능을 붙이고, steering/queueing은 Add to Queue·Steer with Message·Stop and Send로 긴 작업 중 방향 전환한다. /fleet·Critic·Rubber Duck은 별도 카드로 best-of-N·self-review 축을 다룬다.
+  title: Copilot CLI 생태계 개요 — TUI GA·Issues/PR 탭·/mcp add·LSP·steering
+  summary: GitHub Copilot CLI GA(2026-06-23 TUI redesign)는 Session·Issues·Pull requests·Gists 탭으로 GitHub를 터미널에 통합한 에이전트 CLI다. 이슈/PR 하이라이트 후 c로 프롬프트에 참조 삽입·/search로 탐색·/mcp add 대화형 폼·/mcp search로 Registry 설치(재시작 불필요)·/skills·/plugin·/settings in-session 설정. theme-aware semantic color·high-contrast·colorblind·screen reader auto-detect. agent picker Agent/Ask/Custom/Plan·smarter subagent delegation(inline vs subagent A/B tool failure -23%). LSP Setup skill 14언어·steering Add to Queue/Steer/Stop. /fleet·Critic·Rubber Duck은 별도 카드.
   points:
-  - GA surface — Issues/PRs/Gists tab + MCP/skills/plugins in-session
-  - 선택적 위임 — inline vs subagent handoff, production A/B tool failure -23%
-  - LSP+steering — 심볼 단위 코드 지능 + 실행 중 queue/steer/stop
-  source: https://github.com/features/copilot/cli
+  - TUI GA 2026-06-23 — Issues/PR/Gists tab, c-key reference, no browser switch
+  - In-session /mcp add·/plugin·/skills — guided setup, registry install without restart
+  - Accessibility — theme modes, responsive narrow terminal, screen reader labels
+  source: https://github.blog/changelog/2026-06-23-copilot-cli-new-terminal-interface-is-generally-available/
 - category: ai
   title: Browser Use — CDP+LLM으로 웹을 자연어 작업으로, 100k★ OSS·클라우드 에이전트
   summary: Browser Use(browser-use/browser-use·MIT·~100k★)는 LLM+Chrome DevTools Protocol로 웹사이트를 자연어 task로 자동화하는 Python 라이브러리다. Agent가 DOM/비전으로 요소를 분석하고 click/type/scroll/extract를 CDP로 실행한다. 0.13 beta는 Rust core browser harness로 frontier model용 persistent tool·recovery loop를 추가한다. ChatBrowserUse()는 browser automation 전용 모델로 3-5× 빠르다고 README가 주장. Playwright MCP(접근성 트리)·Stagehand(act/extract/observe)·agent-browser(CLI thin wrapper)와 달리 라이브러리+클라우드 Hosted Agent 풀스택. Browser Use Cloud는 stealth·proxy·CAPTCHA·1000+ integration.
@@ -7944,3 +7940,67 @@ cards:
   - 60분 preview account — live URL+claim URL 반환, unclaimed 배포는 자동 만료
   - 지원 범위 — Workers, Static Assets, KV, D1, Durable Objects, Hyperdrive, Queues 등 제한된 리소스
   source: https://developers.cloudflare.com/changelog/post/2026-06-19-temporary-accounts-for-agents/
+- category: ai
+  title: NatureBench — Nature-family 90 discovery task·NatureGym firewall·SOTA gap g
+  summary: NatureBench(arXiv 2606.24530·June 2026) — coding agent가 bug-fix reproduction을 넘어 scientific discovery를 할 수 있는가. 5,500 Nature-family papers(2022–25)에서 build-then-verify pipeline으로 90 containerized task — task brief+dataset+held-out test+evaluator. information firewall removes source method — agent must discover not reproduce. 6 domains(cellular omics·protein·biomedical·physical·molecular·relational). SOTA-normalized relative gap g primary metric + validity judge(output fabrication·feedback gaming). Claude Opus 4.7·GPT-5.5 top but far below published SOTA — understanding≠discovery. PaperBench(understand→code) ·PostTrainBench(engineering opt)와 축 분리.
+  points:
+  - NatureGym pipeline — paper→containerized task package, anti environment-fragmentation
+  - Information firewall — method stripped, discovery not reproduction
+  - Validity judge — shortcut detection beyond raw metric gaming
+  source: https://arxiv.org/abs/2606.24530
+- category: ai
+  title: FeatureBench — feature-oriented 200 task·Opus 74.4% SWE-bench→11% resolved
+  summary: FeatureBench(arXiv 2602.10975·ICLR 2026) — bug-fix single-PR 범위를 넘어 end-to-end feature development 평가. test-driven automated collection — unit test dependency graph tracing→multi-commit multi-PR feature tasks, 200 eval + 3825 executable env from 24 repos. continually updatable anti-leakage pipeline. Claude 4.5 Opus 74.4% SWE-bench Verified→11.0% FeatureBench — feature scope exposes new bottleneck. SWE-bench(local surgery) ·ProjDevBench(greenfield) ·SWE-EVO(release evolution)와 축 분리 — scattered PR timeline feature assembly.
+  points:
+  - Automated task mining — dependency graph from tests, minimal human curation
+  - 11% SOTA vs 74% SWE-bench — feature dev unsaturated axis
+  - Continually updatable — scalable collection toolkit mitigates contamination
+  source: https://arxiv.org/pdf/2602.10975
+- category: ai
+  title: c-CRAB — human review comment→executable test oracle, PR-agent eval
+  summary: c-CRAB(arXiv 2603.23448·Code Review Agent Benchmark) — AI 코드리뷰 품질을 test-based oracle로 평가. human PR review feedback→executable tests capturing underlying issues — review agent finds issue iff patch from review feedback passes test. vs CR-Bench(usefulness rate·SNR) ·SWE-PRBench(diff-only 15–31%) — c-CRAB=objective test oracle not LLM-as-judge. Evaluated PR-agent·Devin·Claude Code·Codex commercial review agents. Agent-generated code volume↑ → review QA becomes first-class eval axis alongside generation.
+  points:
+  - Test oracle not comment similarity — review quality = actionable fix verification
+  - vs CR-Bench SNR ·CodeReviewBench golden comment — complementary review metrics
+  - Production axis — who reviews the agent's PR matters as much as who writes it
+  source: https://arxiv.org/html/2603.23448v3
+- category: ai
+  title: NSA MCP PP-26-1834 — 9 design controls·gateway·sandbox·Sep 2026 contractor deadline
+  summary: NSA AISC Cybersecurity Information Sheet(May 20 2026·PP-26-1834) — first US government MCP-specific security guidance. agentic AI+MCP novel risks — dynamic tool invocation·implicit trust·context sharing beyond endpoint patch. 9 recommendations — filtering outgoing proxy+DLP·strict output filtering(prompt injection·tool-chain pivot)·structured SIEM audit logging·OS sandbox per server(seccomp/Landlock)·tool inventory pinning·MCP message signing+replay protection·network MCP listener scan·least privilege·HITL for consequential actions. Federal contractor alignment expectation Sep 30 2026. OX Security RCE disclosure ·Bumblebee supply chain scan ·MCP gateway pattern과 compose.
+  points:
+  - Treat agentic environment as continuum — misalignment at any stage compounds
+  - Gateway+DLP chokepoint — NSA names enterprise egress filter explicitly
+  - Sep 30 2026 contractor deadline — procurement leverage for MCP hardening
+  source: https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4217828/nsa-releases-guidance-on-securing-ai-systems-using-the-model-context-protocol/
+- category: ai
+  title: Gemini CLI→Antigravity CLI — 2026-06-18 individual tier shutdown·agy migration
+  summary: Google I/O 2026-05-19 announcement — Gemini CLI stops serving free·Google AI Pro·Ultra·individual Code Assist on June 18 2026. Replacement Antigravity CLI(closed-source Go·agy command) — async multi-agent workflows Gemini CLI TypeScript single-agent couldn't support. Enterprise Code Assist Standard/Enterprise + paid Gemini Enterprise Agent Platform API key retain gemini indefinitely. Apache-2.0 source remains but Google backend returns HTTP 410 for affected tiers — CI/CD gemini command breaks without migration. OpenCode(~179k★ MIT)·Claude Code·Aider primary individual migration paths. Antigravity 2.0 card(3-surface platform) ·OpenCode(anomalyco) card와 ecosystem shift axis.
+  points:
+  - June 18 hard cutoff — no grace period, Pro/Ultra/free individual affected
+  - agy closed-source — fewer rights vs OSS gemini CLI community fork
+  - Enterprise exempt — Standard/Enterprise Code Assist + GEAP API key keep gemini
+  source: https://github.com/google-gemini/gemini-cli/discussions/27274
+- category: ai
+  title: GitHub Copilot app GA — Canvases·cloud automations·parallel worktree sessions
+  summary: GitHub Copilot app GA(2026-06-17·macOS/Windows/Linux) — agent-native desktop control center built on Copilot CLI+GitHub native integration. parallel sessions each on isolated git worktree+branch — issue·PR·prompt start. Canvases bidirectional surfaces — plan·PR·terminal·browser co-edited not buried in chat. Cloud automations schedule recurring agent work without laptop awake. BYOM+MCP+skills+plugins in-session. My Work dashboard·Agent Merge PR lifecycle·/chronicle session history. vs Copilot SDK(embed runtime) ·Copilot CLI(TUI terminal) ·IDE extension(sidebar) — app=parallel orchestration surface.
+  points:
+  - Parallel worktrees — multiple agents same repo no branch collision
+  - Canvases — inspectable shared surface vs chat-only agent history loss
+  - Cloud automations — fire-and-forget scheduled agent tasks on GitHub runners
+  source: https://github.blog/changelog/2026-06-17-github-copilot-app-generally-available/
+- category: ai
+  title: Claude Managed Agents Multiagent — coordinator roster·shared sandbox·25 threads
+  summary: Claude Managed Agents multiagent orchestration(public beta·managed-agents-2026-04-01) — coordinator agent delegates to 1–20 roster agents, max 25 concurrent threads·depth 1 only(subagents cannot delegate). shared container+filesystem+vault but each agent own context-isolated thread(model·system·tools·MCP·skills per agent). coordinator primary thread condensed subagent activity — drill per-thread for full trace. vs Claude Code subagents(local) ·Outcomes(rubric) ·Dreams(memory) — CMA hosted cloud harness. Use case — cheap search agent + Opus reviewer + domain specialist parallel fan-out.
+  points:
+  - multiagent top-level field on agents.create — not tools[] entry
+  - Shared sandbox filesystem — workers see same repo, isolated conversation context
+  - Depth=1 cap — coordinator→workers only, 25 concurrent thread ceiling
+  source: https://platform.claude.com/docs/en/managed-agents/multi-agent
+- category: ai
+  title: WeaveBench — hybrid GUI+shell CUA 114 task·trajectory-aware agent-as-judge
+  summary: WeaveBench(arXiv 2606.09426·weavebench.github.io) — long-horizon real-world computer-use where every task interleaves GUI clicks with shell/code in one trajectory. 114 tasks 8 work domains·trajectory-aware Agent-as-Judge reads chat trace+deliverables per-clause evidence — harder to spoof than file-existence checks. Best Claude Opus 4.7+Claude Code 41.2% PassRate vs GPT-5.5+Codex 35.1% — harness pairing matters. OpenClaw as harness variable 19–35% spread same model. vs OSWorld(pure GUI) ·Terminal-Bench(shell) ·ITBench-AA(SRE) — hybrid interface real desk work.
+  points:
+  - GUI+shell interleave required — neither pure terminal nor pure browser CUA
+  - Agent-as-Judge trajectory — per-clause evidence from full chat+artifacts
+  - Harness sensitivity — Opus+Claude Code vs Opus+OpenClaw 6pp gap same model
+  source: https://arxiv.org/abs/2606.09426
