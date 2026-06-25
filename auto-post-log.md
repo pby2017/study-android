@@ -2539,3 +2539,66 @@ Refined:
 - Supporting docs: https://docs.github.com/en/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10
 - Refined: `DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다`
 - Rejected: VS Code Agents window May releases as overlapping existing Copilot/agent UX cards; Copilot App GA and MAI-Code-1-Flash as duplicates; pure Android topics as below threshold.
+
+## 2026-06-25 22:30 KST — Batch 40 (아이디어 검증 + 병합 1카드 + 신규 10카드)
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| LLM Idempotency Keys | orchestrator-owned key derivation — AI Agent Error Handling(saga) ·Tool Execution Layer(gateway)와 contract layer 분리 |
+| LLM API Webhook Patterns | 202+Standard Webhooks+webhook-id dedup — LLM Batch API(offline) ·SSE(streaming) ·Copilot Tasks REST(async poll) complement |
+| Fern vs Mintlify vs ReadMe | AI-native docs 3축 platform bake-off — llms.txt(표준) ·Mintlify(단독) 카드와 platform 선택 분리 |
+| WireMock vs Prism | OpenAPI contract mock vs stateful fault injection — LLM VCR(replay) ·LiteLLM(routing)과 mock layer 분리 |
+| LLM VCR Cassette Testing | promptecho/llmvcr/reel SSE-native — VCR.py 한계·promptfoo(assertion) ·Codex Record & Replay(skill demo) 분리 |
+| Structured Logging for LLM Apps | event taxonomy·log-trace correlation — OpenTelemetry GenAI(spec) ·Langfuse(backend) design layer 분리 |
+| PII-Safe LLM Logging | hash·redact·Collector pipeline — Presidio(guardrail) ·GDPR(compliance) ·Structured Logging(taxonomy) 3-layer |
+| REST vs GraphQL for LLM Backends | inference REST·app data GraphQL tier — SSE vs WebSocket(streaming) ·AI BFF(custody) protocol choice 분리 |
+| LLM Debug Mode Ladder | verbose→local trace→prod OTel — AgentOps(time-travel prod) ·LangSmith(trace SaaS) dev-time escalation 분리 |
+| LLM Correlation IDs | W3C traceparent·subagent propagate — OpenTelemetry GenAI(spec) ·Datadog Agent Observability(product) propagation design |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| AgentOps time-travel debugging | 기존 AgentOps 카드 존재, Debug Mode Ladder가 dev-time 분기로 커버 |
+| LLM local dev stack (Ollama+LiteLLM) | Ollama·LiteLLM·Open WebUI 각각 독립 카드 존재, 통합 카드는 tool 나열 |
+| promptfoo contract/regression testing | promptfoo ·DeepEval ·Braintrust eval 카드 존재 |
+| Golden dataset management | LaunchDarkly AgentControl(runtime) ·LLM Data Flywheel(curation loop) 커버 |
+| Eval dataset curation | Few-Shot vs Zero-Shot ·LLM Data Flywheel ·Continuous Fine-Tuning 분산 |
+| Synthetic test data for agents | NeMo Data Designer ·Distilabel 카드 존재 |
+| AI API design generic | REST vs GraphQL + Idempotency Keys 2카드로 actionable 분해 |
+| Request deduplication | Helicone semantic cache ·LLM Idempotency Keys(side-effect dedup) 축 분리 |
+| AI correlation IDs generic only | LLM Correlation IDs 카드로 W3C traceparent·subagent propagate 구체화 |
+| llms.txt standalone merge Mintlify | 표준 vs platform complement, 병합 시 독립 카드 가치 상실 |
+| Langfuse vs LangSmith merge standalone | 3축 comparison 카드가 이미 존재, standalone은 depth complement |
+| OpenTelemetry GenAI duplicate | 기존 GenAI Semantic Conventions 카드, Structured Logging이 design layer |
+| Maida vs llm-devproxy standalone | Debug Mode Ladder 카드에 2-tool complement로 통합 |
+| REST API for AI agents generic | REST guide + REST vs GraphQL tier card로 분산 |
+| OpenAI webhook-only standalone | LLM API Webhook Patterns가 multi-provider Standard Webhooks로 통합 |
+
+### 병합 1카드
+
+| 병합 | Before | After | 근거 |
+|------|--------|-------|------|
+| Copilot Agent Tasks API + REST API → Copilot Agent Tasks REST API | 2 | 1 | 동일 Agent tasks REST API, 2026-06-04·06-19 changelog 2각 — queue·lifecycle·POST/GET endpoint·auth 제약 단일 카드 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | LLM Idempotency Keys — orchestrator가 만든 키, LLM이 아닌 | tianpan.co/blog/2026-04-23-agent-idempotency-orchestration-contract |
+| 2 | LLM API Webhook Patterns — 202 Accepted·Standard Webhooks·at-least-once | ai.google.dev/gemini-api/docs/interactions/webhooks |
+| 3 | Fern vs Mintlify vs ReadMe — AI-native docs 3축 2026 | apiscout.dev/guides/mintlify-vs-readme-vs-fern-api-docs-2026 |
+| 4 | WireMock vs Prism — LLM API mock 2축, stateful fault vs OpenAPI contract | statuscodefyi.com/guides/testing-mock-server-guide |
+| 5 | LLM VCR Cassette Testing — promptecho·llmvcr·reel vs VCR.py | github.com/shwetank/promptecho |
+| 6 | Structured Logging for LLM Apps — event taxonomy·log-trace correlation | fieldjournal.ai/blog/what-to-log-for-llm-apps |
+| 7 | PII-Safe LLM Logging — hash·redact·OTel Collector pipeline | valuestreamai.com/blog/ai-logging-observability-guide-2026 |
+| 8 | REST vs GraphQL for LLM Backends — inference REST·app data GraphQL tier 분리 | ai-solutions.wiki/comparisons/rest-vs-graphql-ai |
+| 9 | LLM Debug Mode Ladder — verbose→local trace→production observability | github.com/Maida-AI/maida |
+| 10 | LLM Correlation IDs — W3C traceparent·multi-agent·subagent propagation | zylos.ai/research/2026-02-28-opentelemetry-ai-agent-observability |
+
+누적: 730카드 (721→720 병합→730 신규)
+주제: LLM API engineering(idempotency·webhook·REST/GraphQL tier), developer docs(Fern/Mintlify/ReadMe), testing(mock·VCR cassette), observability(structured log·PII-safe·correlation·debug ladder)

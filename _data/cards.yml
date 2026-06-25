@@ -3504,16 +3504,6 @@ cards:
   - 모바일은 triage·리뷰·질문, 변경·검증은 재현 가능한 개발 환경으로 분리
   source: https://github.blog/changelog/2026-06-18-github-copilot-app-is-generally-available-on-ios-and-android/
 - category: ai
-  title: Copilot Agent Tasks API — 에이전트 작업을 UI 이벤트가 아니라 리소스로 다루기
-  summary: 'GitHub은 2026년 6월 19일 Copilot coding agent tasks용 REST API를 public preview로 공개했다. API는 저장소 안에서 task를 만들고, 진행 중 task 목록과 상태를 조회하며, 결과 PR을 추적하게 해준다. 이것은 코딩 에이전트 실행을 채팅창의 일회성 버튼이 아니라 queue, status, PR output을 가진 운영 리소스로 다루게 만든다. 개발팀 관점의 핵심은 자동화를 붙일 때 에이전트에게 바로 쓰기 권한을 넓히는 것이 아니라, 어떤 task가 언제 생성됐고 어떤 PR로 끝났는지 관측 가능한 API 표면을 먼저 확보하는 것이다.
-
-    '
-  points:
-  - REST API로 Copilot coding agent task 생성·목록·상태·결과 PR 조회
-  - 채팅 이벤트가 아니라 queue와 lifecycle이 있는 작업 리소스로 모델링
-  - 자동화 전 관측성·권한 경계·PR 추적을 먼저 설계해야 함
-  source: https://github.blog/changelog/2026-06-19-github-copilot-coding-agent-tasks-rest-api-now-available-in-public-preview/
-- category: ai
   title: Copilot Automations — 클라우드 에이전트에게 반복 유지보수를 맡기는 법
   summary: 'GitHub은 2026년 6월 20일 Copilot coding agent의 automations public preview를 공개했다. 사용자는 자연어로 예약 작업을 만들 수 있고, Copilot은 GitHub Actions처럼 repository secrets와 hosted runner를 이용해 정해진 주기마다 에이전트 작업을 실행한다. 예시는 매주 TODO comments 정리, dependency update, failing tests 조사처럼 반복 유지보수에 가깝다. 교육적 포인트는 에이전트 자동화가 cron을 대체한다는 뜻이 아니라, 반복 작업을 "명령 실행"이 아닌 issue/PR 산출물과 review gate가 있는 maintenance loop로 설계해야 한다는 점이다.
 
@@ -6751,10 +6741,90 @@ cards:
   - DOM snapshot structured only — raw HTML prompt merge 금지
   source: https://playwright.dev/agents
 - category: ai
-  title: Copilot Agent Tasks REST API — 클라우드 에이전트를 스크립트 가능한 작업 큐로 쓰기
-  summary: 'GitHub가 Copilot cloud agent 작업을 REST API로 시작·조회·추적하는 Agent tasks API를 공개 프리뷰로 열었다. 핵심 엔드포인트는 `POST /agents/repos/{owner}/{repo}/tasks`와 `GET /agents/repos/{owner}/{repo}/tasks`다. 요청 body의 필수값은 prompt 하나이고, 선택값으로 base_ref, model, create_pull_request를 넣을 수 있다. 응답은 queued/in_progress/waiting_for_user/completed/failed 같은 상태, session_count, PR artifact, head/base ref를 돌려준다. 중요한 제약은 인증이다. docs 기준 user-to-server 토큰만 지원하고 GitHub App installation token은 안 되며, fine-grained token에는 Agent tasks 권한이 필요하다. 교훈은 "에이전트를 버튼으로 부른다"에서 끝내지 말고, 사내 포털·릴리스 스크립트·마이그레이션 팬아웃이 같은 API로 작업을 만들고 상태를 추적하게 설계하라는 것이다.'
+  title: Copilot Agent Tasks REST API — 에이전트 작업을 queue·lifecycle·PR 추적 리소스로
+  summary: 'GitHub Copilot coding agent task를 REST API로 생성·조회·추적하는 Agent tasks API(public preview, 2026-06). 핵심 엔드포인트: POST/GET /agents/repos/{owner}/{repo}/tasks. body 필수 prompt, 선택 base_ref·model·create_pull_request. 응답 queued/in_progress/waiting_for_user/completed/failed·session_count·PR artifact·head/base ref. 교훈: 채팅 버튼이 아니라 queue·status·PR output을 가진 운영 리소스로 모델링 — 사내 포털·릴리스 스크립트·마이그레이션 팬아웃이 같은 API로 task 생성·상태 추적. 인증: user-to-server token만(GitHub App installation token 불가), fine-grained token에 Agent tasks 권한 필요. 자동화 전 관측성·권한 경계·PR 추적을 먼저 확보 — agent에 바로 write 권한 넓히지 말 것.'
   points:
-  - '`POST /agents/repos/{owner}/{repo}/tasks` — prompt만 필수, base_ref/model/PR 생성은 선택'
-  - '`GET`으로 repo별·사용자별 task 상태 추적 — queued/in_progress/waiting_for_user/completed 등'
-  - user-to-server token + Agent tasks 권한 필요, public preview라 계약 변경 가능
-  source: https://github.blog/changelog/2026-06-04-agent-tasks-rest-api-now-available-for-copilot-pro-pro-and-max/
+  - POST/GET /agents/repos/{owner}/{repo}/tasks — prompt 필수, base_ref/model/PR 선택
+  - queue·lifecycle·PR artifact — UI 이벤트가 아닌 운영 리소스로 모델링
+  - user-to-server token + Agent tasks 권한, public preview 계약 변경 가능
+  source: https://docs.github.com/en/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10
+- category: ai
+  title: LLM Idempotency Keys — orchestrator가 만든 키, LLM이 아닌
+  summary: 'Agent idempotency는 tool property가 아니라 orchestration contract다. LLM이 Idempotency-Key를 생성하면 retry 시 paraphrase로 새 키가 나와 dedup이 무력화된다. 실무 패턴: orchestrator가 run_id+step_id+tool_name+business_scope로 deterministic key derive → tool execution layer가 dedup store 확인 후 side effect 실행. Stripe Idempotency-Key header·DB unique constraint(tenant_id, idempotency_key)가 defense in depth. chaos test: runner kill 후 resume 시 downstream write count가 single-attempt baseline과 일치해야 pass. AI Agent Error Handling(idempotent saga) ·Tool Execution Layer(gateway)와 complement — key derivation=orchestrator 책임.'
+  points:
+  - orchestrator-owned key — run_id+step_id+tool_name+scope, LLM 생성 금지
+  - dedup store before side effect — HTTP header 또는 DB unique constraint
+  - chaos replay test — kill mid-step 후 resume, write count baseline 일치
+  source: https://tianpan.co/blog/2026-04-23-agent-idempotency-orchestration-contract
+- category: ai
+  title: LLM API Webhook Patterns — 202 Accepted·Standard Webhooks·at-least-once
+  summary: 'Long-running LLM job은 sync request-response로 처리하지 않는다. 표준 패턴: POST submit→202 Accepted+job_id 즉시 반환 → queue(BullMQ/SQS) → worker LLM call → webhook POST callback. OpenAI(2025~)·Gemini·Anthropic이 Standard Webhooks(HMAC-SHA256, webhook-id·webhook-timestamp·webhook-signature) 정렬 — generic library로 verify. handler는 verify→enqueue→2xx ms 응답, heavy processing은 async worker. webhook-id=idempotency key로 at-least-once dedup. timestamp 5분 reject(replay attack). polling GET /jobs/{id} fallback 필수(CLI·browser SPA). LLM Batch API(offline bulk) ·SSE(streaming UX)와 역할 분리 — webhook=server-to-server completion notify.'
+  points:
+  - 202+job_id → queue → webhook callback, Standard Webhooks verify
+  - webhook-id dedup ·timestamp 5min reject ·2xx fast ack+async worker
+  - GET /jobs/{id} polling fallback — webhook 불가 client용
+  source: https://ai.google.dev/gemini-api/docs/interactions/webhooks
+- category: ai
+  title: Fern vs Mintlify vs ReadMe — AI-native docs 3축 2026
+  summary: 'llms.txt 표준 이후 docs platform 선택은 AI discoverability가 핵심이다. Mintlify — AI-native docs, llms.txt·llms-full.txt·skill.md·MCP server 자동 생성, Git/MDX authoring, polished site. Fern — OpenAPI 단일 source→docs+SDK+snippets sync, llms.txt/full 자동, Markdown bot delivery(HTML 대비 90% token↓), content tag로 AI/human visibility 분리, LLM provider별 analytics. ReadMe — interactive developer portal·try-it·API metrics, llms.txt+MCP 생성 있으나 llms-full·granular AI control·bot analytics 약함. 선택: docs site=product surface→Mintlify, OpenAPI=SDK truth→Fern, portal+usage feedback→ReadMe. llms.txt(표준) ·Mintlify(플랫폼) 카드와 complement — 3-way platform bake-off.'
+  points:
+  - Mintlify — zero-config AI-native, llms.txt+MCP+skill.md 자동
+  - Fern — OpenAPI→docs+SDK, bot Markdown·content tag·LLM analytics
+  - ReadMe — portal+try-it, llms.txt 기본·AI control/analytics 약함
+  source: https://apiscout.dev/guides/mintlify-vs-readme-vs-fern-api-docs-2026
+- category: ai
+  title: WireMock vs Prism — LLM API mock 2축, stateful fault vs OpenAPI contract
+  summary: 'LLM backend 개발·테스트에서 mock server 선택은 contract-first vs chaos engineering 두 축이다. Prism(Stoplight) — OpenAPI spec→zero-config mock+validation proxy, schema example/generate, spec drift 즉시 catch. stateful behavior 미지원 — API-first daily dev에 적합. WireMock — request matching·stateful scenario·fault injection(502/timeout/malformed)·record-playback, agent downtime handling 테스트. 실무 stack: OpenAPI define→Prism daily frontend dev→WireMock edge-case failure suite→FastAPI prototype promote. LLM VCR cassette(응답 replay) ·LiteLLM proxy(routing)와 역할 분리 — mock=pre-backend contract·failure simulation.'
+  points:
+  - Prism — OpenAPI→mock+validation proxy, zero-config, stateless
+  - WireMock — stateful·fault injection·record-playback, chaos QA
+  - Prism contract dev → WireMock failure suite → promote prototype
+  source: https://statuscodefyi.com/guides/testing-mock-server-guide/
+- category: ai
+  title: LLM VCR Cassette Testing — promptecho·llmvcr·reel vs VCR.py
+  summary: 'LLM 테스트 3대 문제: flaky output·slow network·expensive CI token burn. VCR.py는 raw HTTP intercept → SSE streaming crash·API key plaintext·temperature drift로 cassette miss. LLM-native cassette 도구: promptecho(httpx intercept, SSE stream replay, actionable miss diff) ·llmvcr(SDK layer, YAML cassette, streaming native) ·reel(HTTP proxy, JSONL cassette, pytest --reel-mode replay CI gate) ·vcr-llm(14 provider auto-detect, JSONL). 패턴: record once real API→playback CI free/offline/deterministic. cassette miss=prompt drift signal. promptfoo(eval assertion) ·WireMock(API mock)와 complement — VCR=real response capture replay.'
+  points:
+  - VCR.py 한계 — SSE crash·key leak·param drift, SDK/proxy layer 필요
+  - promptecho/llmvcr/reel — streaming replay·CI replay mode·actionable diff
+  - record once→CI playback — cost·flake·latency 제거
+  source: https://github.com/shwetank/promptecho
+- category: ai
+  title: Structured Logging for LLM Apps — event taxonomy·log-trace correlation
+  summary: 'LLM 앱 로그는 print/debug가 아니라 incident reconstruction artifact다. 필수 event taxonomy: request.received·context.assembled(prompt/index version hash)·model.started/completed(token·latency)·tool.called/completed(idempotency key·scope)·approval.requested/resolved. structured JSON + OTel log SDK가 trace_id·span_id 자동 inject — span↔log pivot zero effort. prompt/completion은 span attribute가 아닌 span event(크기·PII). OpenTelemetry GenAI Semantic Conventions(gen_ai.* spec) ·Langfuse(trace backend)와 역할 분리 — structured log=what to log design, OTel=how to correlate.'
+  points:
+  - event taxonomy — context.assembled·tool.called·approval gate audit
+  - JSON log + OTel trace_id/span_id auto inject
+  - prompt/completion → span event, attribute 아님
+  source: https://fieldjournal.ai/blog/what-to-log-for-llm-apps/
+- category: ai
+  title: PII-Safe LLM Logging — hash·redact·OTel Collector pipeline
+  summary: 'LLM 로그에 raw prompt·user_id·email을 넣으면 GDPR·SOC2·내부 audit에서 incident가 된다. 3-layer: (1) application — user_id→SHA-256 hash, email/phone Presidio detect+mask before log emit (2) span — PII in event not attribute, OTel Collector redaction processor (3) retention — prompt full text 7-30d, hash/metadata 1y. tool.called log에 idempotency key+args hash만, raw args redact. Microsoft Presidio(sandwich guardrail) ·GDPR+EU AI Act(prompt-layer PII) ·Structured Logging(event taxonomy)와 complement — PII-safe=logging pipeline design.'
+  points:
+  - user_id hash ·Presidio mask ·args hash only in tool log
+  - PII → span event + Collector redaction processor
+  - retention tier — full prompt short, metadata long
+  source: https://valuestreamai.com/blog/ai-logging-observability-guide-2026
+- category: ai
+  title: REST vs GraphQL for LLM Backends — inference REST·app data GraphQL tier 분리
+  summary: 'LLM tier와 application data tier는 API style을 분리하는 게 2026 production default다. LLM inference/chat/streaming/tool-calling — OpenAI-compatible REST+SSE가 ecosystem(LiteLLM·SDK·monitoring) 표준. GraphQL streaming·tool-calling integration은 custom·awkward. Application data(agent run history·tool config·dashboard) — GraphQL nested query·schema introspection(agent discoverability·token waste↓). Multi-agent internal — gRPC+bidi stream option. Anti-pattern: LLM+data를 single GraphQL endpoint에 conflate. SSE vs WebSocket(streaming UX) ·AI BFF(server-side key)와 complement — tier separation=protocol choice.'
+  points:
+  - LLM tier=OpenAI REST+SSE — SDK·LiteLLM·streaming native
+  - App data tier=GraphQL — nested query·agent schema introspection
+  - LLM+data single GraphQL conflate 금지
+  source: https://ai-solutions.wiki/comparisons/rest-vs-graphql-ai/
+- category: ai
+  title: LLM Debug Mode Ladder — verbose→local trace→production observability
+  summary: LLM/agent 디버깅은 단계적 visibility ladder가 효율적이다. L1 verbose(set_verbose) — 30초 setup, thought·tool·observation readable summary. L2 debug(set_debug) — full prompt string·raw LLM I/O, context window bloat catch. L3 local trace(Maida JSONL·llm-devproxy SQLite rewind) — step-through·loop guardrail·rewind branch, cloud 없음. L4 production(Langfuse·OTel trace) — persistent history·team collaboration·cost. AgentOps(time-travel prod) ·Codex Record & Replay(demo→skill)와 역할 분리 — ladder=dev-time 점진 escalation.
+  points:
+  - L1 verbose → L2 debug → L3 local trace(Maida/devproxy)
+  - L4 production OTel/Langfuse — team·persistent
+  - local trace rewind — mid-run branch without re-spend
+  source: https://github.com/Maida-AI/maida
+- category: ai
+  title: LLM Correlation IDs — W3C traceparent·multi-agent·subagent propagation
+  summary: 'Multi-agent·subagent·MCP tool chain에서 request correlation 없으면 incident debug가 impossible. W3C TraceContext traceparent header — service boundary마다 inject/extract, root span=用户 request, child=LLM call·tool·subagent. OpenTelemetry GenAI: gen_ai.operation.name chat/invoke_agent/execute_tool, tool_call_id explicit propagate(OpenInference message.tool_call_results). Custom correlation: X-Request-ID + X-Agent-Run-ID + X-Step-ID — log·metric·trace 3-signal join. subagent spawn 시 parent trace context inherit 필수 — orphan trace=blind spot. OpenTelemetry GenAI Semantic Conventions(spec) ·Datadog Agent Observability(LangGraph span)와 complement — correlation=propagation design.'
+  points:
+  - W3C traceparent — boundary inject/extract, parent-child hierarchy
+  - tool_call_id propagate — OpenInference result correlation
+  - subagent spawn parent context inherit — orphan trace 방지
+  source: https://zylos.ai/research/2026-02-28-opentelemetry-ai-agent-observability/
