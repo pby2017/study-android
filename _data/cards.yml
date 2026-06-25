@@ -1258,14 +1258,14 @@ cards:
   - '`npx bmad-method install`; Node 20.12+·Python 3.10+·uv 필요, v6.9.0 최신 릴리스'
   source: https://github.com/bmad-code-org/BMAD-METHOD
 - category: ai
-  title: OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(55k★)
-  summary: 'OpenSpec은 AI 코딩 에이전트용 명세 주도 개발(SDD) 프레임워크다(MIT, 약 55k★). 이미 다룬 GitHub Spec Kit이 파이썬 설치·엄격한 단계 게이트의 ''무거운'' 쪽이라면, OpenSpec은 ''fluid not rigid, brownfield not just greenfield''를 내세워 더 가볍게 자유롭게 반복하도록 설계됐다. 핵심은 변경(change) 단위 워크플로: `/opsx:propose`로 제안·스펙·설계·태스크가 담긴 변경 폴더를 만들고, `/opsx:apply`로 태스크를 구현하고, `/opsx:archive`로 완료된 변경을 정리하면서 진짜 스펙을 갱신한다. Claude Code·Cursor 등 25개 이상 도구와 npm/pnpm/bun/nix로 붙는다(Node 20.19+).
+  title: OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(56.6k★)
+  summary: 'OpenSpec은 AI 코딩 에이전트용 명세 주도 개발(SDD) 프레임워크다(MIT, 2026-06-26 확인 기준 56,605★). 이미 다룬 GitHub Spec Kit이 파이썬 설치·엄격한 단계 게이트의 ''무거운'' 쪽이라면, OpenSpec은 ''fluid not rigid, brownfield not just greenfield''를 내세워 더 가볍게 반복하도록 설계됐다. 핵심은 변경(change) 단위 워크플로다. 불확실하면 `/opsx:explore`로 코드와 선택지를 먼저 훑고, `/opsx:propose`로 proposal/specs/design/tasks가 담긴 변경 폴더를 만들고, `/opsx:apply`로 구현한 뒤, `/opsx:archive`로 완료분을 정리하면서 실제 스펙을 갱신한다. Claude Code·Cursor 등 25개 이상 도구와 npm/pnpm/yarn/bun/nix로 붙고, Node 20.19+가 필요하다. 최신 릴리스는 v1.4.1(2026-06-03)이다.
 
     '
   points:
-  - '변경 단위 워크플로 3종: /opsx:propose(제안·스펙·설계·태스크 생성) → /opsx:apply(구현) → /opsx:archive(완료분 정리·스펙 갱신)'
-  - 'Spec Kit과의 차이: Spec Kit은 파이썬·엄격한 단계 게이트의 ''무거운'' SDD, OpenSpec은 단계 게이트 없이 산출물을 자유롭게 수정하는 ''가벼운'' SDD'
-  - 25+ 도구 지원(Claude Code·Cursor 등), MIT 라이선스, Node 20.19+ 필요(공식 레포 Fission-AI/OpenSpec, 약 55k★)
+  - '변경 단위 흐름: /opsx:explore → /opsx:propose → /opsx:apply → /opsx:archive'
+  - 'Spec Kit과의 차이: 엄격한 단계 게이트보다 자유로운 산출물 수정과 brownfield 도입을 강조'
+  - 25+ 도구 지원, MIT 라이선스, Node 20.19+ 필요, 최신 릴리스 v1.4.1
   source: https://github.com/Fission-AI/OpenSpec
 - category: ai
   title: Code Mode(Cloudflare) — MCP 도구를 'TypeScript API'로 바꿔 LLM에게 코드로 호출하게 하기

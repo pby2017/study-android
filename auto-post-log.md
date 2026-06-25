@@ -3616,3 +3616,10 @@ Refined:
 - Refined: `BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49.7k★)`
 - Refined sources re-checked: https://github.com/bmad-code-org/BMAD-METHOD, https://docs.bmad-method.org/, https://api.github.com/repos/bmad-code-org/BMAD-METHOD, and https://api.github.com/repos/bmad-code-org/BMAD-METHOD/releases/latest
 - Rejected: ADK for Kotlin/Android, GitHub Agent Finder/ARD, Copilot CLI GA terminal interface, Claude Tag, and OpenAI agent-work usage research as duplicates; pure Android topics as below threshold.
+
+## 2026-06-26 05:01 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.
+- Refined: `OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(56.6k★)`
+- Refined sources re-checked: https://github.com/Fission-AI/OpenSpec, https://api.github.com/repos/Fission-AI/OpenSpec, and https://api.github.com/repos/Fission-AI/OpenSpec/releases/latest
+- Rejected: ADK for Kotlin/Android, GitHub Copilot app BYOK, Copilot code review billing, OpenAI agent-work usage research, and broad Android AI/LiteRT/ML Kit follow-ups as duplicates or overlap; pure Android topics as below threshold.
