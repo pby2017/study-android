@@ -2992,3 +2992,12 @@ Refined:
 
 누적: 766카드 (759→756 병합→766 신규)
 주제: AI coding observability(Preflight), agent regression/eval(EvalView·Iris), durable execution 3축(Restate·DBOS), specialized agent models(Morph Apply·WarpGrep), code intelligence(trace-mcp), structured output DSL(BAML), MCP infra(Smithery)
+
+## 2026-06-25 18:37 KST — Local AI card routine
+
+- Published: `Code Quality Findings REST API — CodeQL 이슈를 에이전트 수리 큐로 읽기`
+- Source: https://github.blog/changelog/2026-06-23-fetch-code-quality-findings-via-rest-api/
+- Supporting source: https://docs.github.com/en/code-security/concepts/about-code-quality
+- Refined: `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기`
+- Refined sources re-checked: https://code.claude.com/docs/en/sub-agents and https://code.claude.com/docs/en/sessions
+- Rejected: ADK for Kotlin/Android, Android AI/AppFunctions/Gemini Nano recap, Copilot `ai_credits_used`, Codex role-specific plugins/Sites/annotations, and Modern Web Guidance/WebMCP as duplicates or overlap with existing cards.
