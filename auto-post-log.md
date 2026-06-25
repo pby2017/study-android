@@ -3228,7 +3228,7 @@ Refined:
 | 8 | Supermemory — #1 LongMemEval context stack, memory+RAG+connectors API | github.com/supermemoryai/supermemory |
 | 9 | OpenAI Agents SDK — SandboxAgent·handoffs·guardrails, harness/compute split | openai.github.io/openai-agents-python |
 
-누적: 801카드 (793→792 병합→801 신규)
+누적: 802카드 (794→793 병합→802 신규)
 주제: MCP security taxonomy(OWASP MCP Top 10), runtime defense(Pipelock·Snyk merge), red team CI(Promptfoo), MCP dev(FastMCP), observability(Logfire·OTel merge), agent UI(AG-UI), memory(LangMem·Supermemory), multi-agent(OpenAI Agents SDK)
 
 ## 2026-06-25 20:43 KST — Local AI card routine
