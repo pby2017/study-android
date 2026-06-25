@@ -3376,6 +3376,10 @@ Refined:
 ### 아이디어 검증 토론
 
 **후보 18개 → 통과 11카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Claude Fable 5 | 3일 GA 후 전면 중단 역사적 사건, SWE-bench Pro 80.3%·Opus fallback 실무 영향 |
 | Kimi K2.7 Code | Fable 중단 후 open-weight coding 대안, 1T MoE MIT weights·256K·mandatory thinking |
 | GLM-5.2 | unrestricted MIT·1M ctx·SWE-bench Pro GPT-5.5 초과, Claude Code drop-in API |
 | Junie GA | JetBrains debugger MCP·ACP·Android Studio, IDE-native agent GA milestone |
