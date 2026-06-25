@@ -4510,14 +4510,12 @@ cards:
   - '배치 1~4 최적: 고처리량 환경은 양자화 우선'
   source: https://blog.premai.io/speculative-decoding-2-3x-faster-llm-inference-2026/
 - category: ai
-  title: W&B Weave — LLM 옵저버빌리티+평가를 기존 ML 실험 트래킹과 한 UI에 통합(Weights & Biases)
-  summary: 'W&B Weave는 Weights & Biases의 LLM 옵저버빌리티·평가 플랫폼이다. @weave.op 한 줄로 모든 LLM 호출 트레이싱. weave.Evaluation으로 데이터셋+스코어러 파이프라인 구축 → 버전별 비교 대시보드 자동 생성. 커스텀 스코어러(함수/@weave.op)·내장 스코어러(exact match·regex·LLM-graded· 임베딩 유사도) 제공. Python+TypeScript SDK. 기존 W&B 학습 실험 UI와 동일 워크스페이스에서 LLM eval 관리 → ML 팀 전환 비용 최소. Langfuse(오픈소스 특화), Arize Phoenix(드리프트 감지)와 경쟁하나, 이미 W&B 사용 팀에는 가장 자연스러운 확장.
-
-    '
+  title: W&B 생태계 개요 — Weave·Registry·Sweeps·Artifacts·Reports·Launch를 한 UI로
+  summary: Weights & Biases는 ML 실험 tracking부터 LLM 에이전트 eval·모델 CI/CD·원격 GPU 실행까지 한 워크스페이스로 묶는 MLOps/LLMOps 플랫폼이다. Weave는 @weave.op·start_session/start_turn/start_llm/start_tool로 에이전트 session→turn→LLM→tool 계층 trace와 weave.Evaluation 스코어링. Run+Artifacts는 dataset·model v1,v2… 버전·lineage — 프로덕션에서 :latest 금지, alias(staging/production) 또는 pinned version. Model Registry는 run.link_artifact() promote로 artifact CI/CD gate. Sweeps는 bayes/grid/random+Hyperband HP 탐색, wandb agent로 multi-GPU 병렬. Tables·Panels·Reports는 row-level 탐색·live metric dashboard·스냅샷 공유 문서. Launch는 Git/Docker Job Artifact→Queue→kubernetes|SageMaker|Vertex dispatch. Langfuse(OSS LLM trace)·MLflow(LF·셀프호스트)와 달리 ML+LLM eval+artifact lifecycle+compute dispatch 통합 SaaS.
   points:
-  - '@weave.op: 한 줄 트레이싱, 버전 비교 대시보드'
-  - '통합 UI: ML 학습 + LLM eval 같은 워크스페이스'
-  - '스코어러: 커스텀 함수 + LLM-graded + 임베딩'
+  - Weave — @weave.op + Agents SDK(session/turn/llm/tool), Evaluation+스코어러
+  - Artifacts+Registry — lineage·alias CI/CD gate, :latest race condition 금지
+  - Sweeps+Launch — HP 탐색+원격 cluster dispatch, Reports/Tables/Panels 협업 UI
   source: https://docs.wandb.ai/weave
 - category: ai
   title: Groq LPU — SRAM 기반 결정론적 추론 칩, Llama 70B 276 tok/s(GPU 대비 3~10배)·TTFT <1초
@@ -5345,14 +5343,6 @@ cards:
   - llms.txt(표준)와 달리 authoring·hosting·API reference·enterprise governance 통합
   source: https://www.mintlify.com/docs/ai-native
 - category: ai
-  title: W&B Model Registry — 실험→프로덕션 모델·데이터셋 CI/CD 게이트
-  summary: Weights & Biases Registry는 조직 차원 모델·데이터셋 artifact 버전을 큐레이션·공유·거버넌스하는 중앙 저장소다. 실험 tracking(W&B Run)과 연결 — run.link_artifact()로 성공 실험을 Registry collection에 promote, alias(latest·staging·production)로 CI/CD 파이프라인이 '어떤 모델을 배포할지' 단일 source of truth 확보. lineage·메트릭 비교·access control·automations(다운스트림 재학습·평가 트리거). W&B Weave(LLM observability·eval)와 역할 분리 — Registry는 ML artifact lifecycle·model CI/CD, Weave는 LLM trace·prompt eval.
-  points:
-  - run.link_artifact() — 실험 artifact→Registry promote, alias로 staging/production 관리
-  - lineage·메트릭 비교·access control·downstream automation(CI/CD 트리거)
-  - W&B Weave(LLM trace/eval)와 역할 분리 — ML model·dataset registry·재현성
-  source: https://docs.wandb.ai/models/registry
-- category: ai
   title: Determined AI — PyTorch·TF 분산학습·HP 튜닝·GPU 스케줄링 올인원(MIT)
   summary: 'Determined AI(HPE)는 분산 딥러닝·하이퍼파라미터 튜닝·실험 추적·GPU 리소스 관리를 YAML 하나로 묶는 오픈소스 ML 플랫폼(MIT·v0.38+). resources.slots_per_trial: 8로 multi-GPU·multi-node 자동 분산 — ring all-reduce·computation-communication overlap. Adaptive ASHA searcher로 HP 탐색, Web UI에서 loss curve·cluster utilization·model registry. det deploy로 local·AWS·GCP·K8s·Slurm 배포. DVC(데이터 버전)·MLflow(실험)와 달리 ''GPU 클러스터에서 학습 job을 돌리는'' 인프라 — Axolotl(YAML 파인튜닝)과 조합해 multi-GPU LLM 학습 orchestration.'
   points:
@@ -5481,14 +5471,6 @@ cards:
   - Phoenix/Langfuse와 역할 분리 — 품질 메트릭·드리프트 eval-first
   source: https://github.com/evidentlyai/evidently
 - category: ai
-  title: W&B Sweeps — Bayesian·Hyperband HP 탐색, wandb agent 병렬 GPU 스케일
-  summary: W&B Sweeps는 wandb sweep config(YAML)로 hyperparameter 탐색을 자동화하는 도구다. grid·random·Bayesian(bayes)·Hyperband early stopping — 실험 tracking(W&B Run)과 네이티브 통합. wandb sweep --project <name> config.yaml → sweep ID → wandb agent <ID>로 multi-GPU/multi-node 병렬. Parallel coordinates·parameter importance 시각화. W&B Model Registry(artifact CI/CD)·W&B Weave(LLM trace)와 역할 분리 — Sweeps는 'HP 탐색+실험 비교', Determined AI(GPU 스케줄링)와 조합 가능.
-  points:
-  - sweep config — bayes/grid/random, Hyperband early stopping
-  - wandb agent — 동일 sweep ID로 GPU 병렬, Run 자동 로깅
-  - Registry/Weave와 역할 분리 — HP 튜닝·실험 비교 특화
-  source: https://docs.wandb.ai/models/sweeps
-- category: ai
   title: Hugging Face Spaces — Gradio·Docker ML 데모 무료 호스팅, ZeroGPU·1M+ Spaces
   summary: 'Hugging Face Spaces는 ML/LLM 데모를 Git push만으로 배포하는 무료(유료 GPU 업그레이드) 호스팅 플랫폼이다. SDK: Gradio(app.py)·Streamlit·Docker·Static HTML. 기본 16GB RAM·2 CPU·50GB disk, NVIDIA A100/L4·ZeroGPU(Pro 구독 on-demand GPU) 업그레이드. hf.co/new-space → app.py push → 자동 CI/CD 빌드. gr.load("space/name", src="spaces")로 Spaces 간 리믹스. Gradio 5(로컬 UI)·Modal(서버리스 GPU)과 달리 ''공개 데모·프로토타입 배포'' — llms.txt·MCP 없이도 URL 하나로 공유.'
   points:
@@ -5529,14 +5511,6 @@ cards:
   - Phoenix/Evidently와 역할 분리 — 엔터프라이즈 compliance+real-time block
   source: https://www.fiddler.ai/ai-observability
 - category: ai
-  title: W&B Artifacts — dataset·model 버전·lineage, :latest 금지 프로덕션 패턴
-  summary: 'W&B Artifacts는 Run 입출력(dataset·model·preprocessed data)을 버전 관리하는 ML artifact 시스템이다. wandb.Artifact(name, type) → add_file/add_dir → run.log_artifact()로 v1,v2… 자동 버전. run.use_artifact("name:v1") → download로 downstream 재현 — lineage 그래프 자동 생성. W&B Model Registry(collection·alias staging/production)와 연결 — run.link_artifact()로 promote. 핵심: 프로덕션에서 :latest 금지, alias(prod/staging) 또는 pinned version. DVC(Git for Data)와 달리 W&B Run·실험 UI와 네이티브 통합.'
-  points:
-  - log_artifact/use_artifact — dataset·model 버전·lineage 자동
-  - alias(prod/staging) — :latest race condition 방지
-  - Model Registry와 연결 — run.link_artifact() promote, DVC와 역할 분리
-  source: https://docs.wandb.ai/models/artifacts
-- category: ai
   title: Optuna — define-by-run HP 최적화, TPE·Hyperband pruning·Optuna Dashboard(Apache-2.0·v4.9.0)
   summary: Optuna는 Preferred Networks 계열 오픈소스 hyperparameter optimization 프레임워크(Apache-2.0·v4.9.0·2026-06). define-by-run API로 Python if/for로 동적 search space 구성 — grid search 대비 TPE(Tree-structured Parzen Estimator) 샘플링+Hyperband/Median pruning으로 unpromising trial 조기 종료. study.optimize(objective, n_trials=100) 한 줄, PostgreSQL backend로 multi-worker 분산. Optuna Dashboard 실시간 web UI, AutoSampler·GPSampler로 multi-objective·constrained 최적화. W&B Sweeps(SaaS HP+실험 UI)와 달리 범용 OSS HP 엔진 — PyTorch·Ray Tune·MLflow와 조합.
   points:
@@ -5552,14 +5526,6 @@ cards:
   - Train V2 — async checkpoint·validation, Tune decouple
   - Ray Serve와 역할 분리 — 학습(Train) vs 추론(Serve LLM)
   source: https://docs.ray.io/en/latest/train/train.html
-- category: ai
-  title: W&B Reports — 실험 스냅샷 공유 문서, wandb-workspaces API·버전 고정(2026)
-  summary: W&B Reports는 run 차트·메트릭·markdown을 하나의 공유 문서로 묶는 협업 아티팩트다. UI에서 run 선택→차트 drag→Publish로 URL 공유, 2026년 Report and Workspace API(public preview)로 wandb-workspaces로 프로그래밍 생성 가능. Report는 생성 시점 run 데이터의 스냅샷 — 이후 새 run이 자동 반영되지 않아 audit·리뷰에 유리, explicit version·artifact pin으로 재현성 확보. W&B Weave(LLM trace)·Sweeps(HP)·Artifacts(lineage)와 역할 분리 — Reports는 비개발자 stakeholder에게 실험 내러티브 전달.
-  points:
-  - 스냅샷 문서 — loss curve·param importance+markdown 내러티브
-  - wandb-workspaces API — wr.Report().save() 프로그래밍 생성
-  - Weave/Sweeps와 역할 분리 — 실험 결과 공유·버전 고정 리포트
-  source: https://docs.wandb.ai/models/reports/create-a-report
 - category: ai
   title: TruLens — RAG Triad·에이전트 eval, OTel trace·MLflow 3.10 scorer 통합(Snowflake OSS·v2.7)
   summary: TruLens(TruEra→Snowflake 인수 후 OSS 유지)는 feedback function으로 LLM 앱 품질을 측정하는 프레임워크다. RAG Triad(context relevance·groundedness·answer relevance)가 RAG eval 표준 어휘를 확립. 2026 v2.7 Unified Metric API — Metric 클래스로 Feedback·MetricConfig 통합, 7종 agentic eval(PlanAdherence·ToolSelection·ExecutionEfficiency 등). OTel span emit으로 Jaeger·Grafana·Datadog 연동, MLflow 3.10+ mlflow.genai.evaluate에 TruLens scorer first-class. DeepEval(Pytest CI)·promptfoo(회귀)·Phoenix(OTel trace UI)와 달리 커스텀 feedback+leaderboard 비교.
@@ -5608,22 +5574,6 @@ cards:
   - Prefix cache — Anthropic 90%·OpenAI auto 50%·Gemini explicit, 정적 콘텐츠 맨 앞
   - Semantic cache+Batch 50% — GPTCache/Redis VSS·eval hold-out 200~500 query
   source: https://stochasticsandbox.com/posts/cost-optimization-for-llm-applications-2026-05-26/
-- category: ai
-  title: W&B Tables — 구조화 데이터 탐색·모델 예측 비교, IMMUTABLE/MUTABLE/INCREMENTAL 로깅
-  summary: 'W&B Tables는 run에 로그한 표 형식 데이터를 대화형으로 탐색·쿼리하는 ML 데이터 탐색 도구다. wandb.Table(columns, data) → run.log() 한 줄, 이미지·오디오·비디오 등 rich media 컬럼 지원. log_mode: IMMUTABLE(기본·1회), MUTABLE(재로그), INCREMENTAL(학습 중 append). group·filter·sort·calculated column·side-by-side artifact 버전 비교로 misclassified 예시·하이퍼파라미터-메트릭 관계 분석. W&B Reports(스냅샷 문서)·Weave(LLM trace)·Sweeps(HP)와 역할 분리 — Tables는 dataset·prediction row-level 탐색.'
-  points:
-  - wandb.Table — rich media 컬럼·IMMUTABLE/MUTABLE/INCREMENTAL
-  - group·filter·sort·artifact 버전 side-by-side 비교
-  - Reports/Weave와 역할 분리 — row-level 데이터 탐색·쿼리
-  source: https://docs.wandb.ai/models/tables
-- category: ai
-  title: W&B Panels — workspace 대시보드·Custom Charts(Vega), wandb_workspaces API
-  summary: W&B Panels는 project workspace에서 run 메트릭·로그 키를 시각화하는 대시보드 패널 시스템이다. Automated workspace(모든 키 자동 생성) vs Manual(필요 패널만) 모드, LinePlot·ScatterPlot·ParallelCoordinates·ParameterImportance 등. Custom Charts는 GraphQL 쿼리 + Vega spec으로 PR curve·커스텀 histogram 등 기본 패널 밖 시각화. 2026 wandb_workspaces API로 ws.Workspace(sections=[ws.Section(panels=[wr.LinePlot(...)])]).save() 프로그래밍 생성. W&B Reports(공유 문서)·Tables(row 탐색)와 역할 분리 — Panels는 실험 중 live metric 모니터링.
-  points:
-  - Automated vs Manual workspace — Quick add로 패널 일괄 생성
-  - Custom Charts — GraphQL + Vega spec, preset 저장·재사용
-  - wandb_workspaces API — LinePlot·BarPlot 프로그래밍 대시보드
-  source: https://docs.wandb.ai/models/app/features/panels
 - category: ai
   title: OpenLLMetry — OTel GenAI instrumentation, Traceloop SDK·ServiceNow 인수 후 OSS 유지(Apache-2.0)
   summary: OpenLLMetry(traceloop/openllmetry)는 OpenTelemetry 위에 LLM·Vector DB 호출을 auto-instrument하는 OSS 라이브러리(Apache-2.0·~6.9k★). traceloop-sdk Traceloop.init() 한 줄로 OpenAI·Anthropic·LangChain·LlamaIndex·Chroma·Pinecone 등 40+ provider span emit, OTel GenAI semantic conventions 준수. span을 Datadog·Honeycomb·Jaeger·Phoenix·Langfuse 등 기존 APM 백엔드로 export — vendor lock-in 없음. 2026-03 ServiceNow가 Traceloop($60-80M) 인수했으나 OpenLLMetry Apache-2.0·독립 유지 약속. Langfuse/Phoenix(SaaS UI)와 달리 instrumentation layer — 기존 OTel 파이프라인에 LLM span 추가.
@@ -5689,14 +5639,6 @@ cards:
   - Foundry Toolkit VS Code — local trace→deploy, OTel GA
   - Bedrock AgentCore와 역할 분리 — Azure Entra·M365·Teams 생태계
   source: https://learn.microsoft.com/en-us/azure/foundry/agents/overview
-- category: ai
-  title: W&B Launch — Git/Docker/Artifact→Queue→K8s·SageMaker·Vertex 실험 실행
-  summary: W&B Launch는 ML 실험을 자동 컨테이너화·원격 실행하는 MLOps 워크플로 커넥터다. Job = source code+dependencies+inputs를 캡처한 W&B Artifact — Git repo·Docker image·기존 Artifact에서 생성. wandb launch -j JOB -q QUEUE -r kubernetes|sagemaker|gcp-vertex|local-container로 큐에 enqueue, launch-agent가 pull·build·run. launch_add() Python SDK·Sweeps on Launch로 HP 탐색+인프라 스케일 동시. W&B Sweeps(HP)·Artifacts(lineage)와 역할 분리 — Launch는 compute dispatch·reproducible container. MLOps 1회 infra 설정 후 practitioner가 클릭으로 GPU cluster 접근.
-  points:
-  - Job Artifact — Git/Docker/code artifact→자동 Dockerfile·requirements.txt
-  - Queue→Resource — kubernetes·sagemaker·gcp-vertex·local-container
-  - Sweeps+Launch — HP 탐색을 원격 cluster에서 reproducible 실행
-  source: https://docs.wandb.ai/platform/launch/create-launch-job
 - category: ai
   title: LightRAG — dual-layer KG+vector, GraphRAG 대비 경량·증분 업데이트(EMNLP2025·~37k★)
   summary: LightRAG(HKUDS, MIT·~37k★, EMNLP2025)는 Microsoft GraphRAG의 경량 대안으로 knowledge graph+vector embedding dual-layer 아키텍처를 채택한다. GraphRAG의 Local/Global search 분기 대신 local+global keyword를 병렬 생성·동시 retrieval — entity·relationship+1-hop neighbor expansion을 한 패스에. incremental update algorithm으로 새 데이터 추가 시 full graph rebuild 불필요. v1.5.3(2026-06) — OpenSearch unified storage·role-specific LLM(EXTRACT/QUERY/KEYWORDS/VLM)·RagAnything multimodal merge(MinerU/Docling). GraphRAG(Microsoft, Leiden community)와 역할 분리 — LightRAG=빠른 indexing·incremental·dual-level retrieval.
@@ -6986,3 +6928,83 @@ cards:
   - 'Features: dev/project historical acceptance, gen interval, context length'
   - In-production filter +69.5% vs industrial baseline — interruption reduction lever
   source: https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/46/Understanding-and-Predicting-Accepted-Code-Suggestions-in-AI-Assisted-Programming
+- category: ai
+  title: ABC-Bench — 백엔드 에이전트를 repo 탐색→컨테이너 서비스→E2E API 테스트까지 평가
+  summary: ABC-Bench(ACL 2026 Findings)는 정적 코드 생성 벤치마크가 놓치는 백엔드 실무 — 환경 설정·컨테이너 서비스 기동·외부 E2E API 테스트 — 를 224개 태스크(8언어·19프레임워크)로 평가한다. 에이전트는 레포 탐색부터 docker compose up까지 전체 lifecycle을 스스로 수행해야 pass. OpenHands≈50% vs mini-SWE-agent+GPT-5<20% — 같은 모델도 프레임워크 interaction strategy가 성공률을 2.5배 이상 가른다. SWE-bench(패치)·ProjDevBench(그린필드)와 달리 '실행 가능한 백엔드 서비스' holisticsystem 평가.
+  points:
+  - 224 tasks / 8 langs / 19 frameworks — containerized service + external API test
+  - Framework-sensitive — OpenHands peak ~50%, mini-SWE-agent drops GPT-5 below 20%
+  - SWE-bench·ProjDevBench와 역할 분리 — backend lifecycle·executable workflow
+  source: https://aclanthology.org/2026.findings-acl.1142.pdf
+- category: ai
+  title: EvoCodeBench — 5~15라운드 요구 변경에도 프로젝트가 살아남는지 재는 멀티턴 벤치마크
+  summary: EvoCodeBench(UniPat-AI·Harbor multi-step)는 26개 stateful coding task·227 evaluated rounds로 코딩 에이전트의 '요구가 바뀌어도 누적 테스트를 통과하는가'를 측정한다. 단일 persistent Docker workspace·continuous agent session·per-step verifier·multi_step_reward_strategy(mean)로 MT@4(멀티턴) vs SR(단일라운드) 격차를 명시한다. Terminal-X suite의 iteration 축 — DeepTerminalBench(1-shot depth)와 RoadmapBench(version upgrade)와 보완. SWE-bench(단일 패치)와 달리 cumulative regression detection.
+  points:
+  - 26 tasks / 227 Harbor steps — persistent workspace + continuous session
+  - MT@4 vs SR — state-carrying gap을 같은 task에서 분리 측정
+  - Terminal-X iteration 축 — DeepTerminalBench·RoadmapBench와 3축 complement
+  source: https://github.com/UniPat-AI/EvoCodeBench
+- category: ai
+  title: RoadmapBench — 실제 버전 업그레이드 roadmap을 에이전트가 얼마나 구현하는가
+  summary: RoadmapBench(arxiv 2605.15846)는 17 OSS repo·5언어·115 task에서 V_OLD 스냅샷과 multi-target roadmap instruction만 주고 target-version 코드·테스트·oracle patch 접근을 차단한다. subtask 순서는 강제하지 않아 에이전트가 planning·우선순위를 스스로 정해야 한다. Resolved Rate(전 subtask pass)와 Completion Score(가중 partial credit)를 동시 보고 — Claude-4.7·GPT-5.4가 30~39% resolved, median ~3,700 LOC·51 files. SWE-EVO(48 Python version)·ProjDevBench(그린필드)와 달리 real upstream test suite 기반 version evolution.
+  points:
+  - 115 tasks / 17 repos / 5 langs — V_OLD snapshot, target code blocked
+  - Resolved Rate + Completion Score — unordered multi-target planning
+  - SWE-EVO·ProjDevBench와 역할 분리 — real version-upgrade roadmap
+  source: https://github.com/UniPat-AI/RoadmapBench
+- category: ai
+  title: Omnionix AgentBench — MCP·reliability·long-session을 재는 production harness
+  summary: Omnionix AgentBench(v0.2.9)는 one-shot answer prompt가 아니라 coding·data workflow·MCP tool use·persistent memory drift·resumed-session reliability·public leaderboard reproducibility hash를 first-class track으로 평가하는 production-oriented harness다. CLI·Docker·Python adapter 3가지 agent-exec contract, GitHub Actions regression compare, family/tag slice(mcp·reliability·long-session·workflow·coding·data). THUDM AgentBench FC(8환경 LLM-as-Agent·ICLR'24)와 이름은 같지만 축이 다르다 — Omnionix는 MCP+운영 신뢰성+재현성 pipeline.
+  points:
+  - Tracks — MCP·reliability·long-session·workflow·coding·data tag slice
+  - Leaderboard pipeline — reproducibility hash·signed attestation·regression compare
+  - THUDM AgentBench FC와 역할 분리 — production harness·MCP·session resume
+  source: https://github.com/OmnionixAI/AgentBench
+- category: ai
+  title: holster-scan — slopsquat 패키지·에이전트 boundary를 로컬에서 먼저 검사
+  summary: holster-scan(nauta-ai)은 AI 생성 코드의 hallucinated/typosquatted import와 에이전트가 상속하는 shell env·MCP tool·cloud cred blast radius를 로컬·무료·no-signup으로 preflight한다. 10 major repo에서 95% recall·0.36% FP — Semgrep(generic SAST)이 못 잡는 slopsquat 축. safe-to-run vs safe-to-share를 분리하고 .holster.yml allow-list로 private package noise 제거. ghostcall(snippet API check)·wraith(Python linter)와 complement — repo+agent config boundary preflight.
+  points:
+  - Slopsquat detection — 95% recall / 0.36% FP on 10 major repos
+  - Agent boundary — shell·MCP·cred blast radius, safe-to-run vs safe-to-share
+  - ghostcall·wraith와 역할 분리 — repo-level preflight + allow-list
+  source: https://github.com/nauta-ai/holster-scan
+- category: ai
+  title: pkgguard — AI가 추천한 패키지 8개 생태계를 설치 전에 vet
+  summary: pkgguard(Highcrypto7)는 PyPI·npm·crates.io·Go·RubyGems·Packagist·NuGet·pub.dev 8 ecosystem에서 existence·typosquat·homoglyph·OSV CVE·license trap·maintenance·popularity·repo health를 API key 없이 10-check pipeline으로 판정한다. optional --scan은 archive static malware scan, --deep는 fake star detection. 에이전트가 prose로 패키지명을 제시할 때 ecosystem 미명시면 PyPI+npm 동시 검사. ghostcall(import snippet)·wraith(Python-only linter)와 달리 multi-ecosystem install vet.
+  points:
+  - 8 registries — existence·typosquat·CVE·license trap·maintenance, no API key
+  - Optional --scan static malware · --deep fake stars
+  - ghostcall·wraith와 역할 분리 — multi-ecosystem pre-install vet
+  source: https://github.com/Highcrypto7/pkgguard
+- category: ai
+  title: safedeps — npm lockfile closure 검증·자동 rollback으로 에이전트 supply chain gate
+  summary: safedeps(aldegad)는 Claude Code·Codex CLI install hook으로 pkg@version과 transitive closure를 OSV·CISA KEV·GitHub Advisory에 pre-approve하고, PostToolUse에서 실제 package-lock.json closure를 re-verify한다. unapproved·KEV·vulnerable package가 lockfile에 들어가면 last-known-safe snapshot으로 auto-reorg — Claude Code는 --ignore-scripts로 rejected package lifecycle script 차단. AgentGuard(install intercept)와 달리 npm effect gate — '명령은 통과했지만 lockfile이 다른 closure' 우회를 fail-closed.
+  points:
+  - Pre-approve direct+transitive npm closure against OSV·KEV·GHSA
+  - PostToolUse lockfile re-verify → auto-reorg to safe snapshot
+  - AgentGuard·holster-scan과 역할 분리 — npm closure effect gate
+  source: https://github.com/aldegad/safedeps
+- category: android
+  title: Compose Testing v2 — StandardTestDispatcher 기본, advanceUntilIdle이 필수
+  summary: Jetpack Compose 1.11(April '26)은 v2 testing API를 default로 전환하고 v1을 deprecated했다. 핵심 변화는 UnconfinedTestDispatcher(즉시 실행) → StandardTestDispatcher(큐잉) — waitForIdle()만 쓰는 테스트는 대부분 그대로지만 LaunchedEffect·rememberCoroutineScope 직접 검증은 advanceUntilIdle() 또는 runCurrent()가 필요하다. race condition을 숨기던 v1 false green을 제거해 production-like timing에 가까워진다. LookaheadAnimationVisualDebugging·performTrackpadInput도 같은 릴리스에 추가.
+  points:
+  - v2 default — StandardTestDispatcher queues coroutines until clock advance
+  - LaunchedEffect 테스트 — advanceUntilIdle/runCurrent 명시 필요
+  - v1 UnconfinedTestDispatcher deprecated — hidden race condition 제거
+  source: https://developer.android.com/develop/ui/compose/testing/migrate-v2
+- category: ai
+  title: Copilot /fleet — 같은 작업을 병렬 subagent에 던져 best-of-N 수렴
+  summary: GitHub Copilot CLI /fleet는 동일 task를 여러 subagent·여러 model에 병렬 실행하고 decision-ready result 하나로 수렴시키는 command다. /model로 모델을 바꾼 뒤 /fleet로 parallelize — branch 생성·implement·PR까지 background subagent coordination. Copilot CLI 선택적 위임(좁은 탐색은 inline·넓은 탐색만 subagent)과 complement — /fleet는 '같은 문제를 여러 관점에서 동시에' best-of-N. Cursor /best-of-n·Claude Agent Teams(상호 대화)와 달리 GitHub-native terminal fleet.
+  points:
+  - /fleet — parallel subagents on same task, converge to one decision-ready result
+  - /model + /fleet — multi-model parallel compare in terminal
+  - 선택적 위임·Agent Teams와 역할 분분 — best-of-N terminal fleet
+  source: https://github.com/features/copilot/cli
+- category: ai
+  title: Copilot Critic·Rubber Duck — complementary model이 plan·구현을 자동 검토
+  summary: Copilot CLI 1.0.60+(experimental) Critic agent는 Claude model에서 plan·complex implementation을 complementary model로 자동 review해 early error catch. Rubber Duck agent는 builtInAgents.rubberDuckAutoInvoke 설정으로 critical reviewer 역할 — 2026-06 기본 enabled. Plan mode→Autopilot handoff 전에 '다른 모델이 틀린 가정을 잡아내는' self-review layer. 공식 /code-review 플러그인(4 parallel reviewer→재검증)과 complement — 내장 critic은 plan/implement 단계 inline gate.
+  points:
+  - Critic agent — complementary model reviews plan·complex implementation (experimental)
+  - Rubber Duck — critical reviewer, rubberDuckAutoInvoke setting
+  - /code-review plugin과 역할 분리 — inline plan/implement self-review gate
+  source: https://github.com/github/copilot-cli/blob/main/changelog.md

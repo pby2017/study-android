@@ -2603,6 +2603,64 @@ Refined:
 누적: 730카드 (721→720 병합→730 신규)
 주제: LLM API engineering(idempotency·webhook·REST/GraphQL tier), developer docs(Fern/Mintlify/ReadMe), testing(mock·VCR cassette), observability(structured log·PII-safe·correlation·debug ladder)
 
+## 2026-06-25 24:30 KST — Batch 44 (아이디어 검증 + 병합 8카드 + 신규 10카드)
+
+### 병합 8카드 (W&B 8장 → 1장)
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| W&B Weave · Model Registry · Sweeps · Artifacts · Reports · Tables · Panels · Launch → **W&B 생태계 개요** | — |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| ABC-Bench | SWE-bench(패치)·ProjDevBench(그린필드)와 backend lifecycle·containerized E2E API 축 분리 |
+| EvoCodeBench | SWE-bench 단일 패치와 MT@4 vs SR state-carrying gap 분리, Terminal-X iteration 축 |
+| RoadmapBench | SWE-EVO·ProjDevBench와 real version-upgrade multi-target·partial credit 분리 |
+| Omnionix AgentBench | THUDM AgentBench FC(8환경)와 MCP·reliability·leaderboard pipeline 분리 |
+| holster-scan | ghostcall(snippet)·wraith(Python lint)와 repo+agent boundary preflight 분리 |
+| pkgguard | ghostcall·wraith와 8-ecosystem pre-install vet·license trap 분리 |
+| safedeps | AgentGuard(install hook)와 npm lockfile closure effect gate·auto-reorg 분리 |
+| Compose Testing v2 | Jetpack Compose Adaptive Skill(레이아웃)과 testing dispatcher migration 축 분리 |
+| Copilot /fleet | Copilot 선택적 위임·Agent Teams와 best-of-N parallel terminal fleet 분리 |
+| Copilot Critic·Rubber Duck | /code-review plugin(4 parallel reviewer)와 inline plan/implement self-review gate 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Terminal-X suite overview | ABC·EvoCode·Roadmap 3카드로 3축(depth·iteration·evolution) 이미 분해 |
+| codetrust | wraith·ghostcall·holster·pkgguard 4카드로 actionable tool axis 분해, 플랫폼 중복 |
+| AgentGuard | holster-scan(boundary)+safedeps(npm closure)+pkgguard(vet) 3카드로 hook axis 분해 |
+| Compose MediaQuery·Grid | Jetpack Compose Adaptive Skill 카드에 NavigationSuiteScaffold·동적 레이아웃 포함 |
+| Jules Eval insight policy | Batch 43 직전 루틴에서 이미 게시 |
+| Copilot CLI GA·/chronicle·BYOK | 기존 Copilot CLI 10+ 카드와 ecosystem overview 축 overlap |
+| W&B Weave Agents SDK 단독 | 8장 W&B 병합 overview에 start_session/turn/llm/tool 포함 |
+| MCP Tasks Copilot experimental | Copilot CLI GA·생태계 카드와 experimental surface overlap |
+| LookaheadAnimationVisualDebugging | Compose Testing v2 카드에 같은 릴리스 debug tooling 언급 |
+| DeepTerminalBench standalone | Terminal-X blog 3축 중 depth — EvoCode·Roadmap 2카드로 iteration·evolution 대표 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | ABC-Bench — 백엔드 에이전트를 repo 탐색→컨테이너 서비스→E2E API 테스트까지 평가 | aclanthology.org/2026.findings-acl.1142 |
+| 2 | EvoCodeBench — 5~15라운드 요구 변경에도 프로젝트가 살아남는지 재는 멀티턴 벤치마크 | github.com/UniPat-AI/EvoCodeBench |
+| 3 | RoadmapBench — 실제 버전 업그레이드 roadmap을 에이전트가 얼마나 구현하는가 | github.com/UniPat-AI/RoadmapBench |
+| 4 | Omnionix AgentBench — MCP·reliability·long-session을 재는 production harness | github.com/OmnionixAI/AgentBench |
+| 5 | holster-scan — slopsquat 패키지·에이전트 boundary를 로컬에서 먼저 검사 | github.com/nauta-ai/holster-scan |
+| 6 | pkgguard — AI가 추천한 패키지 8개 생태계를 설치 전에 vet | github.com/Highcrypto7/pkgguard |
+| 7 | safedeps — npm lockfile closure 검증·자동 rollback으로 에이전트 supply chain gate | github.com/aldegad/safedeps |
+| 8 | Compose Testing v2 — StandardTestDispatcher 기본, advanceUntilIdle이 필수 | developer.android.com/develop/ui/compose/testing/migrate-v2 |
+| 9 | Copilot /fleet — 같은 작업을 병렬 subagent에 던져 best-of-N 수렴 | github.com/features/copilot/cli |
+| 10 | Copilot Critic·Rubber Duck — complementary model이 plan·구현을 자동 검토 | github.com/github/copilot-cli/blob/main/changelog.md |
+
+누적: 756카드 (753→756, 병합 -7 + 신규 +10)
+주제: Terminal-X 벤치마크 3축(ABC·EvoCode·Roadmap), production agent harness(Omnionix), AI supply chain defense(holster·pkgguard·safedeps), Compose testing migration, Copilot fleet·self-review
+
 ## 2026-06-25 23:45 KST — Batch 43 (아이디어 검증 + 병합 13카드 + 신규 10카드)
 
 ### 병합 13카드 (Claude Code 8 + ML Kit 5)
