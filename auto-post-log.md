@@ -2603,6 +2603,63 @@ Refined:
 누적: 730카드 (721→720 병합→730 신규)
 주제: LLM API engineering(idempotency·webhook·REST/GraphQL tier), developer docs(Fern/Mintlify/ReadMe), testing(mock·VCR cassette), observability(structured log·PII-safe·correlation·debug ladder)
 
+## 2026-06-26 01:00 KST — Batch 45 (아이디어 검증 + 병합 7카드 + 신규 10카드)
+
+### 병합 7카드 (Aider 4장 + Copilot CLI 5장 → 2장)
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| Aider 레포 맵 · Polyglot · 아키텍트 · 메인 → **Aider 생태계 개요** | — |
+| Copilot CLI 피커 · 선택적 위임 · LSP · steering · GA → **Copilot CLI 생태계 개요** | Copilot /fleet · Critic·Rubber Duck(Batch 44) |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 10카드**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Browser Use | Playwright MCP(접근성)·Stagehand(primitives)·agent-browser(CLI)와 library+cloud 풀스택 agent axis 분리 |
+| Composio | 개별 MCP 서버 OAuth 지옥과 달리 1000+ toolkit managed auth·Triggers·sandbox session |
+| Inngest | Temporal(generic workflow)와 AI agent step.run·tool-loop·context prune 패턴 분리 |
+| Trigger.dev chat.agent | Inngest(step.run loop)와 TypeScript chat session primitive·AI SDK transport 분리 |
+| Steel.dev | Browser Use(agent logic) · Browserbase(platform)와 OSS cloud browser infra·Agent Traces 분리 |
+| Browserbase | Steel(infra) · Stagehand(SDK only)와 Search·Fetch·Identity·Functions one-platform 분리 |
+| HumanLayer | Human-in-the-Loop Approval Workflows(정책 gate)와 Slack·email productized tool approval 분리 |
+| LangWatch | Langfuse(trace+eval) · Braintrust(eval CI)와 agent Scenario simulation·prompt flag rollout 분리 |
+| Giskard | NeMo Guardrails(runtime rails) · Lakera(runtime firewall)와 pre-deploy adversarial scan 분리 |
+| Lakera Guard | Giskard(pre-deploy) · OWASP Top 10(taxonomy)와 inline <50ms runtime firewall 분리 |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| browser-harness | Browser Use 0.13 Rust harness·recovery loop가 같은 제품 축 |
+| PydanticAI | 기존 Pydantic AI 카드 존재 |
+| Anchor Browser · Notte · Magnitude | Browser Use·Steel·Browserbase 3카드로 web agent infra axis 커버 |
+| Prefect+AI | Temporal·Inngest 2카드로 durable execution axis complement |
+| Ghostcall · wraith · AgentGuard | Batch 44 holster·pkgguard·safedeps supply chain axis |
+| Playwright MCP · Stagehand standalone | 기존 카드 존재, Browser Use가 library layer 대표 |
+| DeepEval · promptfoo | 기존 eval 카드, LangWatch·Giskard가 simulation·red team complement |
+| Copilot CLI /fleet · Critic | Batch 44 직전 게시, Copilot CLI 생태계 overview에 GA·delegation 포함 |
+
+### 신규 10카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Browser Use — CDP+LLM으로 웹을 자연어 작업으로, 100k★ OSS·클라우드 에이전트 | github.com/browser-use/browser-use |
+| 2 | Composio — 1000+ 앱 OAuth·MCP·sandbox를 에이전트 integration layer로 | docs.composio.dev |
+| 3 | Inngest — step.run()으로 LLM·tool loop를 crash-safe durable execution으로 | inngest.com/docs/ai-patterns/agent-tool-loops |
+| 4 | Trigger.dev chat.agent — TypeScript durable multi-turn agent session | trigger.dev/docs/ai-chat/overview |
+| 5 | Steel.dev — AI agent용 cloud headless browser API·Agent Traces | github.com/steel-dev/steel-browser |
+| 6 | Browserbase — Search·Fetch·Stagehand·Agent Identity가 붙은 browser agent platform | docs.browserbase.com |
+| 7 | HumanLayer — high-stakes tool call을 Slack·email approval workflow로 | github.com/humanlayer/humanlayer |
+| 8 | LangWatch — agent simulation·eval·prompt versioning OTel observability | langwatch.ai |
+| 9 | Giskard — pre-deploy agent red teaming·OWASP LLM Top-10 scan | github.com/Giskard-AI/giskard-oss |
+| 10 | Lakera Guard — runtime prompt injection·jailbreak firewall (<50ms) | lakera.ai/guard |
+
+누적: 759카드 (756→759, 병합 -7 + 신규 +10)
+주제: web agent infra(Browser Use·Steel·Browserbase), integration+durable execution(Composio·Inngest·Trigger.dev), HITL+observability+security(HumanLayer·LangWatch·Giskard·Lakera)
+
 ## 2026-06-25 24:30 KST — Batch 44 (아이디어 검증 + 병합 8카드 + 신규 10카드)
 
 ### 병합 8카드 (W&B 8장 → 1장)

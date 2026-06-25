@@ -663,16 +663,6 @@ cards:
   - '주의(주장): MCP 도구 정의 자체가 컨텍스트 오버헤드 — 도구가 많을수록 에이전트가 헷갈린다, 필요한 서버만 켜라'
   source: https://github.com/firecrawl/firecrawl-mcp-server
 - category: ai
-  title: Aider 레포 맵 — 코드베이스 전체를 안 넣고도 LLM에 '뼈대'만 보여주는 법
-  summary: 'Aider가 다른 터미널 에이전트와 갈리는 핵심 기술이 ''레포 맵(repo map)''이다. 매 요청마다 전체 코드베이스를 다 넣는 대신, 저장소의 파일 목록과 각 파일의 핵심 심볼(클래스·함수의 시그니처와 정의 한 줄)만 추려 컨텍스트로 보낸다. tree-sitter로 심볼을 파싱하고, 파일을 노드·참조를 엣지로 한 의존성 그래프에 그래프 랭킹(PageRank류)을 돌려 ''가장 많이 참조되는 중요한 심볼''만 골라낸다. 덕분에 LLM은 코드 전체를 안 봐도 API 형태를 파악하고, 더 봐야 할 파일만 콕 집어 요청한다 — 전부 넣어 비용 폭증/혼란을 막는 컨텍스트 엔지니어링의 실전 예다.
-
-    '
-  points:
-  - 매 요청에 레포 맵 전송 = 파일 목록 + 핵심 심볼 시그니처(정의 한 줄)만, 전체 소스 아님
-  - tree-sitter 파싱 → 파일=노드·참조=엣지 그래프에 랭킹 → 토큰 예산 안에서 중요 심볼만 선별
-  - 맵 크기는 `--map-tokens`로 조절(기본 1k 토큰), 채팅에 파일 없으면 자동으로 키움 / 부족하면 `/add`로 파일 직접 추가
-  source: https://aider.chat/docs/repomap.html
-- category: ai
   title: llms.txt — 사이트 문서를 에이전트가 토큰 낭비 없이 읽게 하는 표준
   summary: 'llms.txt는 fast.ai·Answer.AI의 Jeremy Howard가 2024년 9월 3일 제안한 표준으로, 사이트 루트(`/llms.txt`)에 두는 마크다운 파일이다. 사람용 HTML은 내비게이션·CSS·광고가 대부분이라 LLM 컨텍스트 창을 낭비하는데, llms.txt는 핵심 문서로 가는 ''큐레이션된 안내문''만 깔끔히 담아 코딩 에이전트(Cursor·Copilot·Claude 등)가 실시간으로 올바른 페이지를 적은 토큰으로 찾게 한다. 형식이 엄격하다: H1 프로젝트명 1개, 인용블록(`>`)으로 한 줄 요약, 그다음 H2 섹션마다 `[제목](URL): 설명` 형태의 링크 목록. `## Optional` 섹션은 컨텍스트가 빠듯할 때 건너뛰어도 되는 링크를 모으는 자리다.
 
@@ -720,16 +710,6 @@ cards:
   - 필요한 도구 파일만 읽는 점진적 공개로 컨텍스트 절약 / 중간 결과를 코드 안에서 필터·집계 후 요약만 반환(1만 행 → 5행)
   - 회의록 예시 150k→2k 토큰(98.7% 절감) 주장 / PII를 모델에 안 흘리고 토큰화 가능 / Cloudflare도 'Code Mode'로 동일 결론. 단 샌드박스 실행 환경 필요
   source: https://www.anthropic.com/engineering/code-execution-with-mcp
-- category: ai
-  title: Aider Polyglot 벤치마크 — Python 점수에 가려진 '편집 포맷' 실력을 6개 언어로 잰다
-  summary: 'Aider의 Polyglot 리더보드는 모델이 ''코드를 잘 짜느냐''가 아니라 ''사람 개입 없이 지시를 따라 파일을 제대로 편집하느냐''를 잰다. Exercism에서 가장 어려운 225문제를 C++·Go·Java·JavaScript·Python·Rust 6개 언어로 풀린다. 각 문제는 두 번까지 시도하는데, 1차에서 실패하면 유닛 테스트 결과를 보여주고 스스로 고치게 한다 — 헤드라인 점수(Percent correct)는 이 2차 시도 후 통과율이다. 별도로 ''Percent cases well formed'' 지표가 있어, 모델이 diff/whole 같은 기대 포맷으로 문법에 맞는 편집을 내놓았는지를 정답률과 분리해서 본다(포맷은 맞췄지만 테스트는 틀릴 수 있으므로). 대부분의 LLM이 Python에 편향 학습돼 Python 단일 벤치는 실제 실력을 과대평가하기 쉬운데, 6개 언어 구성이 이 착시를 드러낸다.
-
-    '
-  points:
-  - '측정 대상: ''코드 생성''이 아니라 ''지시 따라 파일을 자동 편집하는 능력'' — 에이전트형 코딩에 직결'
-  - '구성: Exercism 최난도 225문제 × 6개 언어 / 2회 시도(1차 실패 시 테스트 결과 보고 자가 수정)'
-  - '두 지표 분리: Percent correct(정답률, 2차 통과 기준) vs Percent cases well formed(편집 포맷 유효성) — 포맷만 맞고 오답일 수 있음'
-  source: https://aider.chat/docs/leaderboards/
 - category: ai
   title: Claude Code GitHub Action — PR에 @claude 부르면 알아서 고치고 리뷰까지
   summary: 'anthropics/claude-code-action는 Claude Code를 깃허브 액션 안에서 자율 에이전트로 돌리는 공식 액션이다. 이슈나 PR 코멘트에서 `@claude`로 부르면(또는 이슈를 Claude에 배정하면) 코드를 읽고, 변경을 만들고, PR을 올리거나 코멘트로 답한다. 별도 prompt 입력을 주면 멘션 없이도 PR마다 자동 코드리뷰·CI 수정·이슈 분류 같은 워크플로를 돌릴 수 있다. 설치는 Claude Code에서 `/install-github-app`를 실행하면 깃허브 앱과 시크릿까지 안내해 깔아 준다. 에이전트는 사내(자체) 러너에서 실행되고, Anthropic API·Bedrock·Vertex 등 여러 인증 방식을 지원하며 라이선스는 MIT다.
@@ -906,16 +886,6 @@ cards:
   - '모델 비종속: OpenAI·Anthropic·Gemini·DeepSeek 등을 같은 코드로 교체 / 타입 안전 의존성 주입 + Logfire 관측 기본'
   - 에이전트를 '쓰는' 게 아니라 '만드는' 토대 — MIT, 약 17.8k★ (수치는 레포 주장)
   source: https://github.com/pydantic/pydantic-ai
-- category: ai
-  title: Aider 아키텍트 모드 — 비싼 모델로 '계획', 싼 모델로 '편집' 둘로 쪼개기
-  summary: 'Aider(터미널 기반 오픈소스 페어 프로그래밍 도구)의 아키텍트 모드는 한 요청을 두 모델로 분업시킨다. 공식 문서에 따르면 메인 모델(아키텍트)이 "문제를 어떻게 풀지" 먼저 제안하고, 두 번째 요청에서 에디터 모델이 그 제안을 실제 파일 편집 명령으로 변환한다. 이유는 단순하다 — 많은 LLM이 ''추론''과 ''정확한 파일 편집''을 한 번에 잘 해내지 못한다. 역할을 나누면 결과가 더 좋아질 수 있다는 것이 문서의 설명이다. 흥미롭게도 같은 모델을 양쪽에 써도 ''두 번 보는'' 효과로 결과가 나아지는 경우가 있다고 한다. 대신 요청이 두 번 나가니 시간·비용은 더 든다. 실무 포인트는 비용 최적화다. 아키텍트엔 추론 강한 비싼 모델, 에디터엔 빠르고 싼 모델을 붙이면 ''비싼 모델 품질의 계획 + 싼 모델 가격의 편집''을 노릴 수 있다. `--architect`는 `--chat-mode architect`의 단축키이고, `--editor-model`로 편집 담당 모델을 따로 지정한다(안 주면 메인 모델에 맞춰 자동 선택).
-
-    '
-  points:
-  - '한 요청 → 두 모델: 아키텍트 모델이 해법을 제안하고, 에디터 모델이 그걸 파일 편집으로 변환 (요청 2회)'
-  - 추론과 정확한 편집을 한 번에 못하는 LLM에 효과 — 같은 모델을 양쪽에 써도 '두 번 보기'로 개선되는 경우 있음(공식 문서, 수치 없는 정성적 주장)
-  - '`--architect` = `--chat-mode architect` 단축키 / `--editor-model`로 편집 모델 지정 → 비싼 계획 + 싼 편집으로 비용 절감'
-  source: https://aider.chat/docs/usage/modes.html
 - category: ai
   title: Backlog.md — 깃 레포를 사람·AI 공용 칸반 보드로 바꾸는 마크다운 태스크 매니저
   summary: 'Backlog.md는 별도 서버나 SaaS 없이, 깃 저장소 안에서 작업(task)을 평범한 마크다운 `.md` 파일로 관리하는 오픈소스 도구다(MIT 라이선스). README에 따르면 모든 이슈가 깃에 커밋되는 .md 파일이라 PR·브랜치·히스토리와 자연스럽게 묶이고, 제로 설정 CLI로 터미널 칸반 보드와 웹 UI를 띄울 수 있다. 핵심은 ''AI 에이전트와 사람이 같은 작업 목록을 공유''한다는 점이다. Claude Code·Gemini CLI·Codex·Kiro 등 MCP/CLI 호환 어시스턴트를 지원하며, MCP 커넥터를 쓰면 이 도구들에 워크플로 지침까지 자동 주입된다. 에이전트가 작업을 To Do→In Progress→Done으로 옮기고 진행 상황을 파일에 남기므로, 세션이 바뀌어도 ''무엇을 하던 중이었나''가 레포에 그대로 남는다. 실무 포인트는 핸드오프다. 사람이 잘게 쪼갠 태스크를 에이전트에 넘기고, 에이전트가 작업하며 상태를 갱신하면, 별도 트래커 없이 깃 하나로 사람-AI 협업의 단일 진실 공급원(source of truth)을 만들 수 있다.
@@ -1977,16 +1947,6 @@ cards:
   - '당근: 전사 전환·해커톤으로 반복 업무 자동화(의사결정은 사람 중심)'
   - '채널톡: Cursor 전사 도입으로 IDE까지 교체(품질 책임은 사람)'
   source: https://www.codetree.ai/blog/2026-%EB%B0%94%EC%9D%B4%EB%B8%8C-%EC%BD%94%EB%94%A9-%ED%88%B4-5%EA%B0%80%EC%A7%80-%EC%B6%94%EC%B2%9C-ai-%EC%BD%94%EB%94%A9-%ED%88%B4%EB%A1%9C-%EB%8B%AC%EB%9D%BC%EC%A7%84-%EA%B0%9C%EB%B0%9C%EC%9E%90/
-- category: ai
-  title: Aider — 변경마다 자동 git 커밋해 'diff/undo'를 보장하는 터미널 페어 프로그래머(Apache-2.0·~46.4k★)
-  summary: 'Aider는 터미널에서 LLM과 짝 코딩하는 오픈소스 도구다. 공식 태그라인은 "aider is AI pair programming in your terminal". 가장 차별적인 설계는 ''git 일등 시민''이다 — 에이전트가 코드를 고칠 때마다 의미 있는 메시지로 자동 커밋하므로, 마음에 안 들면 그 단위로 diff·undo가 된다(에이전트의 무분별한 수정에 대한 안전망). 또 레포 전체의 ''맵(repo map)''을 만들어 큰 코드베이스에서도 관련 파일을 집어주고, 100개 이상 언어를 지원하며, 클라우드·로컬 LLM을 모두 붙일 수 있다. 그 밖에 자동 린트·테스트 후 문제 자동 수정, 이미지·웹페이지 입력, 음성 코딩, 에디터 코멘트로 IDE 안에서 호출까지 제공한다. 라이선스 Apache-2.0, 주 언어 Python, GitHub ~46.4k★(레포 표시 기준).
-
-    '
-  points:
-  - 변경마다 자동 git 커밋 → 단위별 diff/undo 안전망(가장 큰 차별점)
-  - repo map으로 큰 코드베이스의 관련 파일 자동 선별·100+ 언어
-  - 클라우드·로컬 LLM 양쪽 지원 + 자동 린트/테스트 후 수정
-  source: https://github.com/Aider-AI/aider
 - category: ai
   title: SWE-Skills-Bench — 에이전트 스킬은 만능 부스터가 아니라 '맞춤 지식'이다
   summary: 'SWE-Skills-Bench는 SKILL.md 같은 절차 지식이 실제 소프트웨어 작업에 얼마나 도움 되는지 재는 벤치마크다. 공개 레포의 고정 커밋, 명확한 요구사항, 검증 테스트, 스킬 문서를 짝지어 ''스킬 있음/없음''을 비교한다. 논문 초록의 핵심 결과는 차갑다: 49개 스킬 중 39개는 pass-rate 향상이 0이고 평균 이득은 +1.2%에 그쳤다. 토큰 오버헤드는 경우에 따라 451%까지 늘었고, 버전이 안 맞는 지침은 오히려 성능을 깎았다. 교훈은 스킬을 많이 까는 게 아니라, 현재 레포·버전·작업에 정확히 맞는 좁은 스킬만 쓰는 것이다.
@@ -3716,16 +3676,6 @@ cards:
   - '실험적 --visual: 렌더 결과를 스크린샷과 비교해 디자인 매칭(Anthropic 키 필요)'
   source: https://github.com/BuilderIO/micro-agent
 - category: ai
-  title: Copilot CLI 에이전트 피커 — 실행 전에 모드를 고르는 것이 안전장치다
-  summary: 'GitHub의 2026년 6월 JetBrains Copilot 업데이트는 CLI 세션에 agent picker를 넣었다. 사용자는 Agent mode, Ask mode, Custom agents, Plan mode 중에서 작업 성격에 맞는 모드를 고른다. 같은 릴리스에는 `/remote`, `/compact`, `/chronicle`, Agent Debug Panel도 들어갔다. 교육 포인트는 코딩 에이전트 운영을 "항상 자동 실행"으로 두지 않는 것이다. 질문, 계획, 구현, 맞춤 역할, 원격 제어, 로그 관찰을 분리해야 비용·안전·디버깅 경계가 선명해진다.
-
-    '
-  points:
-  - Agent/Ask/Custom agents/Plan mode를 세션 시작 전에 선택
-  - '`/remote`로 진행 중 CLI 세션을 GitHub.com·모바일에서 조정'
-  - Agent Debug Panel은 커스텀 에이전트·서브에이전트 흐름 디버깅용
-  source: https://github.blog/changelog/2026-06-02-introducing-copilot-cli-and-agentic-capabilities-enhancements-in-jetbrains-ides/
-- category: ai
   title: Dell + Codex — 엔터프라이즈 에이전트는 데이터가 있는 곳으로 간다
   summary: 'OpenAI와 Dell은 2026년 5월 Codex를 하이브리드·온프레미스 환경에 더 가깝게 배포하는 협력을 발표했다. 당시 OpenAI는 Codex가 주간 개발자 400만 명 이상을 보유하고, 코드 리뷰·테스트 커버리지·사고 대응·대형 저장소 추론뿐 아니라 보고서 작성, 피드백 라우팅, 영업 리드 선별 같은 업무에도 쓰인다고 설명했다. 실무 포인트는 엔터프라이즈 AI 에이전트의 병목이 모델 호출이 아니라 내부 코드·문서·업무 시스템·거버넌스 데이터에 안전하게 가까워지는 배치 전략이라는 점이다.
 
@@ -4234,16 +4184,6 @@ cards:
   - '변경 전 offline eval: 정답 SQL·메타데이터가 있는 테스트 케이스로 정확도·지연·회귀를 비교'
   source: https://github.blog/ai-and-ml/github-copilot/how-we-built-an-internal-data-analytics-agent/
 - category: ai
-  title: Copilot CLI 선택적 위임 — 서브에이전트는 기본값이 아니라 레버리지다
-  summary: 'GitHub은 Copilot CLI의 smarter subagent delegation을 2026년 6월 12일 공개했다. 요지는 "더 많이 위임"이 아니라 "직접 처리할 일과 나눌 일을 구분"하는 것이다. 좁은 파일 탐색·수정·검증은 메인 에이전트가 바로 처리하고, 넓은 탐색·독립 영역 검토·긴 명령처럼 병렬 가치가 있을 때만 서브에이전트를 쓴다. GitHub의 production A/B test에서는 tool failures per session 23% 감소, search tool failures 27% 감소, edit tool failures 18% 감소, P95 대기시간 5% 감소가 보고됐다. 교훈은 멀티에이전트 품질이 에이전트 수가 아니라 handoff 조건·소유권·동시 진행 설계에서 나온다는 점이다.
-
-    '
-  points:
-  - '직접 처리: 좁고 명확한 탐색·수정·검증 루프'
-  - '위임 처리: 독립 컨텍스트, 넓은 탐색, 실제 병렬성이 있는 작업'
-  - '검증 신호: tool failure 23% 감소, P95 wait time 5% 감소'
-  source: https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/
-- category: ai
   title: Deployment Simulation — 에이전트 모델 출시 전에 실제 분포를 재생하기
   summary: 'OpenAI의 Deployment Simulation은 새 모델을 배포하기 전에 과거 대화에서 기존 assistant 답변을 제거하고, 후보 모델이 같은 맥락에 어떻게 답하는지 재생해 위험을 추정하는 방법이다. 전통적인 eval은 어렵고 위험한 케이스를 잘 찌르지만, 실제 배포 분포에서 어떤 실패가 얼마나 자주 나올지는 놓칠 수 있다. OpenAI는 GPT-5 계열 Thinking 배포 연구에서 약 130만 개 비식별 대화를 분석했고, 이 방법을 도구 사용이 포함된 agentic coding 설정에도 적용할 수 있다고 설명했다. 실무 교훈은 코딩 에이전트 평가도 문제집 점수만 볼 것이 아니라, 실제 작업 로그와 도구 환경을 재현해 배포 전 행동 빈도를 예측해야 한다는 점이다.
 
@@ -4253,16 +4193,6 @@ cards:
   - '장점: synthetic eval보다 실제 사용 분포의 비꼬리 위험을 보기 좋음'
   - '에이전트 적용: tool simulation이 있으면 agentic coding rollout 위험 평가에도 확장 가능'
   source: https://openai.com/index/deployment-simulation/
-- category: ai
-  title: Copilot CLI LSP 설정 — 에이전트에게 IDE식 코드 지능을 붙이기
-  summary: 'GitHub Blog는 2026년 6월 10일 Copilot CLI용 LSP Setup skill을 소개했다. 문제는 코딩 에이전트가 언어 서버 없이 JAR, `site-packages`, `node_modules`를 grep하며 API 시그니처를 추측한다는 점이다. LSP를 붙이면 에이전트가 `textDocument/definition` 같은 요청으로 정의 위치, 타입, 시그니처, 참조를 구조적으로 받는다. 이 스킬은 OS와 언어를 확인하고, 14개 언어의 서버 설치 명령과 설정 조각을 골라 `~/.copilot/lsp-config.json` 또는 리포지토리 `lsp.json`에 병합한 뒤 실행 파일과 JSON을 검증한다. 교훈은 AI 코딩 품질이 모델만이 아니라 "도구가 코드를 어떤 단위로 보게 하느냐"에 크게 좌우된다는 것이다.
-
-    '
-  points:
-  - LSP는 grep/decompile 대신 정의·참조·타입·hover 문서를 구조적으로 제공
-  - '설정 범위: 사용자 `~/.copilot/lsp-config.json` 또는 리포지토리 `lsp.json`/`.github/lsp.json`'
-  - '실무 포인트: 큰 레포일수록 에이전트에게 파일 전체보다 심볼 단위 코드 지능을 먼저 붙인다'
-  source: https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/
 - category: ai
   title: 'AIChat: 셸 어시스턴트·REPL·RAG·에이전트를 한 CLI에'
   summary: '"All-in-one LLM CLI tool" — Shell Assistant, 대화형 Chat-REPL, RAG, 함수호출/도구, AI 에이전트(CLI판 GPTs), 로컬 서버까지 한 도구에 담은 Rust CLI. MIT/Apache-2.0 듀얼.
@@ -4591,16 +4521,6 @@ cards:
   - 'Claude·ChatGPT·Gemini·Groq 및 로컬 ollama·LocalAI 등 다양한 모델 지원. License: Apache-2.0'
   source: https://github.com/darrenburns/elia
 - category: ai
-  title: Copilot CLI steering — 긴 에이전트 작업을 끊지 않고 방향 전환
-  summary: 'GitHub Copilot CLI는 오래 걸리는 에이전트 작업 중에도 사용자가 새 지시를 넣어 흐름을 조정하는 steering/queueing 표면을 키우고 있다. 2026-06-22 JetBrains/Copilot 업데이트는 실행 중 Send 버튼에 Add to Queue, Steer with Message, Stop and Send 선택지를 추가했다고 설명한다. GitHub Docs도 Copilot이 생각하는 동안 입력한 프롬프트를 현재 작업 맥락의 steering으로 처리하고, 명령 참조에서 Ctrl+Enter 또는 Ctrl+Q로 바쁜 에이전트에게 보낼 메시지를 큐에 넣을 수 있다고 안내한다. 교훈은 긴 에이전트 세션을 "시작 후 방치"로 보지 말고, 중간 개입·후속 지시·즉시 중단을 별도 조작으로 설계해야 한다는 점이다.
-
-    '
-  points:
-  - 'Add to Queue: 현재 응답 뒤 처리할 후속 지시를 쌓는다'
-  - 'Steer with Message: 실행 중인 작업이 빗나갈 때 다음 도구 실행 뒤 방향을 바꾼다'
-  - 'Stop and Send: 현재 턴을 끊고 새 지시를 즉시 보낸다'
-  source: https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/
-- category: ai
   title: 'Butterfish: 셸을 대체하지 않고 감싸 AI 프롬프트를 더하는 "AI 셸"'
   summary: 'Butterfish는 명령줄에서 일하는 사람을 위한 도구로, bash·zsh를 대체하지 않고 감싸(wrap) OpenAI 프롬프트를 더한다. 대문자로 명령을 시작하면 LLM에게 질문이 되고, Tab으로 자동완성한다.
 
@@ -4702,16 +4622,6 @@ cards:
   - '통제 축: supervisor AI monitoring, asynchronous alert, synchronous block/response, capability-based escalation'
   - '운영 지표: coverage·recall·time-to-response로 에이전트 보안 통제가 실제로 작동하는지 측정'
   source: https://deepmind.google/blog/securing-the-future-of-ai-agents/
-- category: ai
-  title: 'Copilot CLI GA: 터미널 에이전트도 이슈·MCP·스킬을 한 화면에서 다룬다'
-  summary: 'GitHub은 2026-06-23 Copilot CLI의 새 터미널 인터페이스를 GA로 전환했다. 핵심은 코딩 에이전트를 "프롬프트 입력창"이 아니라 GitHub 작업 큐와 도구 구성을 함께 보는 운영 표면으로 만든 점이다. 저장소 안에서 CLI를 열면 Session, Issues, Pull requests, Gists 탭을 오가며 항목을 찾고, 선택한 이슈나 PR을 프롬프트에 참조로 넣어 조사·수정·댓글·리뷰를 요청할 수 있다. 도구 설정도 파일 편집 대신 세션 안 명령으로 옮겼다. `/mcp search`는 GitHub MCP Registry에서 서버를 찾아 설치하고, `/mcp add`는 MCP 서버 추가를 안내하며, 새 서버는 CLI 재시작 없이 바로 쓸 수 있다. `/skills`는 스킬 토글, `/plugin`은 마켓플레이스·레포·로컬 경로 플러그인 설치를 맡는다. 교훈은 터미널 AI 에이전트 UX가 모델 답변 품질만이 아니라 작업 선택, 컨텍스트 참조, 도구 설치, 접근성까지 포함한 제어면이 되어 간다는 점이다.
-
-    '
-  points:
-  - 'GA 공지: 2026-06-23, Build 2026 preview였던 redesigned Copilot CLI terminal interface'
-  - '작업 표면: Session/Issues/Pull requests/Gists 탭에서 이슈·PR을 프롬프트 참조로 삽입'
-  - '도구 표면: /mcp search·/mcp add, /skills, /plugin, /settings를 CLI 세션 안에서 처리'
-  source: https://github.blog/changelog/2026-06-23-copilot-cli-new-terminal-interface-is-generally-available/
 - category: ai
   title: 'Agent Finder/ARD: 에이전트 도구를 미리 다 꽂지 말고 검색해서 붙인다'
   summary: 'GitHub이 2026-06-17 공개한 Agent Finder는 Copilot이 MCP 서버, 스킬, 캔버스, 에이전트, 도구를 매번 설정 파일에 미리 꽂아 두는 대신 작업 설명으로 검색해 찾는 기능이다. 사용자가 자연어로 일을 설명하면 Agent Finder가 선택한 레지스트리의 AI 리소스 인덱스를 검색하고, Copilot이 필요할 때 끌어올 수 있는 후보를 순위화한다. 중요한 점은 "자동 설치"가 아니라는 경계다. GitHub 공지는 엔터프라이즈 관리 설정으로 허용된 리소스만 보이게 하고, 연결 여부는 사용자가 통제한다고 설명한다. 기반 표준은 Google·GitHub·GoDaddy·Hugging Face·Microsoft가 함께 발표한 open Agentic Resource Discovery(ARD)이며, Google 발표는 ARD를 조직 도메인 아래 게시한 catalog와 이를 색인하는 registry의 조합으로 설명한다. 같은 런에서 GitHub Agent Finder 공개 카탈로그 293개 리소스, ards-project/ard-spec 268★, Apache-2.0을 확인했다. 실무 교훈은 에이전트 확장이 "컨텍스트에 도구 전부 적재"에서 "검증 가능한 카탈로그를 검색해 필요한 것만 연결"하는 거버넌스 문제로 이동한다는 점이다.
@@ -7008,3 +6918,99 @@ cards:
   - Rubber Duck — critical reviewer, rubberDuckAutoInvoke setting
   - /code-review plugin과 역할 분리 — inline plan/implement self-review gate
   source: https://github.com/github/copilot-cli/blob/main/changelog.md
+- category: ai
+  title: Aider 생태계 개요 — git 커밋·레포 맵·아키텍트·Polyglot을 한 터미널 페어 프로그래머로
+  summary: Aider(Aider-AI/aider·Apache-2.0·~46k★)는 터미널 LLM 페어 프로그래밍 도구로, 가장 큰 차별점은 변경마다 자동 git 커밋으로 diff/undo 안전망을 만드는 것이다. repo map은 tree-sitter+PageRank로 파일·심볼 시그니처만 보내 전체 코드베이스를 안 넣어도 관련 파일을 집는다. architect 모드는 비싼 모델로 해법을 제안하고 `--editor-model`로 싼 모델이 편집을 변환하는 2-pass 분업. Polyglot 벤치마크는 Exercism 225문제×6언어로 코드 생성이 아니라 지시 따라 파일 편집 능력과 well-formed edit rate를 분리 측정한다. 100+ 언어·클라우드/로컬 LLM·자동 lint/test 후 수정까지 지원.
+  points:
+  - git 일등 시민 — 매 편집 자동 커밋, 단위별 diff/undo
+  - repo map — tree-sitter+랭킹, `--map-tokens`로 토큰 예산 조절
+  - architect+Polyglot — 2-pass 모델 분업·6언어 편집 벤치로 실력 검증
+  source: https://github.com/Aider-AI/aider
+- category: ai
+  title: Copilot CLI 생태계 개요 — GA 터미널·모드 피커·선택적 위임·LSP·steering
+  summary: GitHub Copilot CLI GA(2026)는 터미널 한 화면에서 이슈·PR·Gist·MCP·스킬·플러그인을 다루는 에이전트 CLI다. agent picker로 Agent/Ask/Custom agents/Plan mode를 세션 시작 전에 고르고, smarter subagent delegation은 좁은 탐색은 inline·넓은 탐색만 subagent로 보내 tool failure 23% 감소를 보고했다. LSP Setup skill은 grep 대신 textDocument/definition으로 14개 언어 코드 지능을 붙이고, steering/queueing은 Add to Queue·Steer with Message·Stop and Send로 긴 작업 중 방향 전환한다. /fleet·Critic·Rubber Duck은 별도 카드로 best-of-N·self-review 축을 다룬다.
+  points:
+  - GA surface — Issues/PRs/Gists tab + MCP/skills/plugins in-session
+  - 선택적 위임 — inline vs subagent handoff, production A/B tool failure -23%
+  - LSP+steering — 심볼 단위 코드 지능 + 실행 중 queue/steer/stop
+  source: https://github.com/features/copilot/cli
+- category: ai
+  title: Browser Use — CDP+LLM으로 웹을 자연어 작업으로, 100k★ OSS·클라우드 에이전트
+  summary: Browser Use(browser-use/browser-use·MIT·~100k★)는 LLM+Chrome DevTools Protocol로 웹사이트를 자연어 task로 자동화하는 Python 라이브러리다. Agent가 DOM/비전으로 요소를 분석하고 click/type/scroll/extract를 CDP로 실행한다. 0.13 beta는 Rust core browser harness로 frontier model용 persistent tool·recovery loop를 추가한다. ChatBrowserUse()는 browser automation 전용 모델로 3-5× 빠르다고 README가 주장. Playwright MCP(접근성 트리)·Stagehand(act/extract/observe)·agent-browser(CLI thin wrapper)와 달리 라이브러리+클라우드 Hosted Agent 풀스택. Browser Use Cloud는 stealth·proxy·CAPTCHA·1000+ integration.
+  points:
+  - Python Agent + CDP — natural language task → navigate/interact/extract
+  - 0.13 Rust harness — persistent tools·recovery loops for frontier models
+  - Cloud vs OSS — self-host library or hosted stealth/scaling agent
+  source: https://github.com/browser-use/browser-use
+- category: ai
+  title: Composio — 1000+ 앱 OAuth·MCP·sandbox를 에이전트 integration layer로
+  summary: Composio(ComposioHQ/composio·~29k★)는 AI 에이전트가 GitHub·Slack·Notion·Gmail 등 1000+ 앱을 authenticated tool로 쓰게 하는 integration layer다. v3 SDK는 composio.create(user_id) 세션 → session.tools() native 또는 session.mcp.url MCP 두 경로. OAuth·token refresh·scoped auth를 Composio가 관리하고, Triggers로 bidirectional event, context-aware session으로 sandbox state·files를 carry. LangChain·CrewAI·AutoGen·OpenAI Agents·Claude Desktop MCP client와 provider 패키지로 연결. 개별 MCP 서버를 수십 개 붙이는 대신 toolkit 단위 managed auth.
+  points:
+  - composio.create(user_id) — native tools or session.mcp.url for MCP clients
+  - Managed OAuth+Triggers — auth lifecycle·scheduled/event triggers
+  - Provider packages — OpenAI·LangChain·CrewAI·AutoGen·Anthropic
+  source: https://docs.composio.dev/
+- category: ai
+  title: Inngest — step.run()으로 LLM·tool loop를 crash-safe durable execution으로
+  summary: Inngest는 AI agent loop의 LLM call·tool execution·save를 각각 step.run()으로 감싸 crash 후 마지막 completed step부터 resume한다. iteration 7에서 죽어도 iteration 1-6 LLM/tool 비용을 재지불하지 않는다. step.invoke()는 sub-agent를 sync delegate, step.sendEvent()는 async fire-and-forget. 2026-06 Agent Loop Architecture 블로그는 loop·skill(durable workflow)·orchestrator 3-layer를 정의하고 Inngest를 orchestration engine으로 포지셔닝. Temporal(generic durable workflow) 카드와 달리 AI agent tool-loop·context pruning·token budget 패턴이 docs-first.
+  points:
+  - step.run per LLM/tool — memoized resume, no duplicate token spend
+  - step.invoke sub-agent · step.sendEvent async delegate
+  - Agent loop architecture — loop unit + skill asset + orchestrator engine
+  source: https://www.inngest.com/docs/ai-patterns/agent-tool-loops
+- category: ai
+  title: Trigger.dev chat.agent — TypeScript durable multi-turn agent session
+  summary: Trigger.dev(triggerdotdev/trigger.dev·Apache-2.0·~15k★) v4.5 RC chat.agent는 multi-turn conversation을 single long-lived Trigger.dev task로 실행한다. page refresh·deploy·crash·idle gap에도 in-memory state·on-disk workspace가 survive. useTriggerChatTransport는 AI SDK useChat용 custom transport — API route 없이 Trigger backend 직결. Sub-agents는 AgentChat으로 parent tool card 안에 preliminary stream. Head Start는 warm server에서 step 1 LLM을 agent boot와 parallel 실행해 TTFC ~50% cut. Inngest(Python/TS step.run loop)와 달리 TypeScript-first chat session primitive + AI SDK v5/v6 integration.
+  points:
+  - chat.agent — durable turn loop, survives refresh/deploy/crash
+  - useTriggerChatTransport — no API routes, AI SDK ChatTransport
+  - Head Start + sub-agents — parallel cold-start + nested AgentChat stream
+  source: https://trigger.dev/docs/ai-chat/overview
+- category: ai
+  title: Steel.dev — AI agent용 cloud headless browser API·Agent Traces
+  summary: Steel(steel-dev/steel-browser·Apache-2.0·~7.2k★)는 Puppeteer·Playwright·Selenium을 cloud session API로 제공하는 open-source browser infrastructure다. sub-1s session start·24h long session·proxy·CAPTCHA·stealth fingerprint·Live Session Viewer·Agent Traces로 debug/replay. markdown/screenshot/pdf extraction endpoint로 read-only job도 지원. Browserbase(Stagehand SDK·Search/Fetch·Agent Identity)와 같은 cloud browser infra 축이지만 Steel은 OSS self-host docker+CLI skill(steel-browser skill)에 무게. Browser Use(library)와 complement — Steel=infra, Browser Use=agent logic.
+  points:
+  - Sessions API — Puppeteer/Playwright/Selenium over WebSocket CDP
+  - 24h session·proxy·CAPTCHA·stealth·Live Viewer·Agent Traces
+  - OSS self-host + CLI skill — infra layer vs Browser Use agent library
+  source: https://github.com/steel-dev/steel-browser
+- category: ai
+  title: Browserbase — Search·Fetch·Stagehand·Agent Identity가 붙은 browser agent platform
+  summary: Browserbase는 agents that browse like humans를 위한 complete browser agent platform이다. one API key로 headless browser fleet·web Search API·Fetch(markdown/JSON)·Functions(deploy agent code next to browser·<5ms)·Model Gateway·Agent Identity(Cloudflare Signed Agents·1Password cred·AgentKit proof-of-humanity)를 제공. Stagehand SDK는 Playwright control + act/extract/observe AI primitives with self-heal. Live View embedded UI로 HITL auth/CAPTCHA intervention. Steel.dev( OSS infra) · Browser Use(library+cloud) · Stagehand(SDK only)와 달리 search+fetch+identity+deployment를 one bill로 묶는 platform play.
+  points:
+  - One API key — browsers·Search·Fetch·Functions·Gateway·Identity
+  - Stagehand — act/extract/observe self-healing AI primitives
+  - Live View HITL — embedded remote control for auth/CAPTCHA
+  source: https://docs.browserbase.com/welcome/what-is-browserbase
+- category: ai
+  title: HumanLayer — high-stakes tool call을 Slack·email approval workflow로
+  summary: HumanLayer(humanlayer/humanlayer·~11k★)는 AI agent가 function call 전에 human approval을 받게 하는 HITL layer다. require_approval()로 send_email·deploy·create_issue 같은 high-stakes tool을 pause하고 Slack·email·web dashboard에서 approve/reject. human_as_tool()로 agent가 사람에게 질문하는 async workflow도 지원. LangChain·LangGraph·CrewAI·AutoGen·Bring-your-own-framework. Generic Human-in-the-Loop Approval Workflows 카드(정책 gate·checkpointer)와 달리 productized approval channel·escalation policy.
+  points:
+  - require_approval() — pause before high-stakes function_call
+  - Slack·email·dashboard — approval channel + escalation policy
+  - human_as_tool() — agent asks human async, framework-agnostic
+  source: https://github.com/humanlayer/humanlayer
+- category: ai
+  title: LangWatch — agent simulation·eval·prompt versioning OTel observability
+  summary: LangWatch(langwatch/langwatch·~3.3k★·OSS)는 LLM/agent testing+observability platform으로 trace inspect 외에 Scenario simulation(user persona·pass/fail criteria·HTTP/voice endpoint)과 prompt versioning·feature-flag rollout을 한 UI에 묶는다. OpenTelemetry native, LangChain·CrewAI·custom framework hook. Langfuse(OSS trace+eval)·Braintrust(eval-first CI)와 달리 no-code agent simulation+production monitor를 bundle. ISO27001·SOC2 certified cloud 또는 self-host.
+  points:
+  - Scenario simulation — persona·criteria·HTTP/voice without code
+  - Prompt versioning + feature-flag rollout with audit trail
+  - OTel native — dev eval + production trace in one platform
+  source: https://langwatch.ai/
+- category: ai
+  title: Giskard — pre-deploy agent red teaming·OWASP LLM Top-10 scan
+  summary: Giskard(Giskard-AI/giskard-oss·~5.5k★) v3는 agentic system testing/evaluation modular Python packages다. giskard-checks(Beta)는 scenario API·LLM-as-judge, giskard-scan(roadmap)은 prompt injection·harmful content·stereotype adversarial suite auto-generation from plain-language agent description. Black-box testing — internal RAG/vector DB 불필요. NeMo Guardrails(runtime colang rails) · Lakera Guard(inline firewall) · OWASP Top 10( taxonomy)와 달리 pre-deploy exhaustive adversarial test generation.
+  points:
+  - giskard-checks — scenario API·built-in checks·LLM-as-judge
+  - giskard-scan — auto adversarial suite from agent description
+  - Black-box — no internal component access, pre-deploy not runtime
+  source: https://github.com/Giskard-AI/giskard-oss
+- category: ai
+  title: Lakera Guard — runtime prompt injection·jailbreak firewall (<50ms)
+  summary: Lakera Guard는 LLM/API 경계에 inline으로 붙는 runtime AI security platform이다. direct·indirect prompt injection·jailbreak·PII leakage를 sub-50ms latency로 detect/block. Gandalf prompt injection challenge·Gandalf Agent Breaker로 adversarial research를 product에 feed. OWASP LLM01·LLM02·LLM07 mapping. Workforce·Agent·Red Teaming 3-module — red team pre-launch → Guard runtime defense. Giskard(pre-deploy scan) · NeMo Guardrails(policy DSL) · Indirect Prompt Injection(card)와 달리 production inline firewall.
+  points:
+  - Runtime inline — prompt in/out scan, sub-50ms latency claim
+  - Gandalf research — public adversarial challenge → product signal
+  - 3-module — Red Teaming pre-launch + Guard runtime + Workforce
+  source: https://www.lakera.ai/guard-book-a-demo
