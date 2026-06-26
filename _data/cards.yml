@@ -1397,13 +1397,13 @@ cards:
   source: https://www.tbench.ai/leaderboard/terminal-bench/2.1
 - category: ai
   title: SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크
-  summary: 'SWE-bench Multimodal(SWE-bench M)은 텍스트·파이썬 위주의 원조 SWE-bench를 "비주얼·사용자 대면 JavaScript 소프트웨어"로 확장한 벤치마크다. 각 과제에는 문제 설명이나 단위테스트에 이미지(버그 스크린샷·목업·다이어그램 등)가 최소 1장씩 들어 있어, 에이전트가 화면을 보고 UI 버그를 고치게 만든다. 핵심은 ''코드를 짤 줄 안다''와 ''화면 문제를 보고 이해한다''가 별개 능력임을 드러낸다는 것 — 논문은 기존 상위 SWE-bench 시스템들이 여기서 크게 고전한다고 보고한다. 도구를 고를 때 ''Verified 점수''만 보면 시각·다언어 일반화 약점이 가려진다.
+  summary: 'SWE-bench Multimodal(SWE-bench M)은 텍스트·파이썬 위주의 원조 SWE-bench를 "비주얼·사용자 대면 JavaScript 소프트웨어"로 확장한 벤치마크다. 공식 페이지는 공개 벤치마크를 517개 visual issue로 설명하고, 원 논문은 17개 JavaScript 라이브러리에서 모은 617개 task instance를 분석한다. 각 과제에는 버그 스크린샷·목업·다이어그램·시각적 에러 맥락 같은 이미지가 문제 설명이나 테스트에 들어간다. 핵심은 ''코드를 짤 줄 안다''와 ''화면 문제를 보고 이해한다''가 별개 능력이라는 점이다. 프런트엔드·다언어 코드베이스에 에이전트를 붙일 때 Verified 점수만 보면 시각 추론 약점이 가려진다.
 
     '
   points:
-  - '구성: 17개 JavaScript 라이브러리(웹 UI·다이어그램·데이터 시각화·구문 강조·인터랙티브 지도 등)에서 모은 617개 과제, 각 과제마다 문제 설명/테스트에 이미지 최소 1장(논문 abs/2410.03859)'
-  - '왜 어려운가: 시각 추론 + 언어 일반화 둘 다 요구. 논문은 ''상위 SWE-bench 시스템이 SWE-bench M에서 고전한다''고 명시 — 언어 비종속 설계의 SWE-agent가 12% 해결, 차순위 시스템은 6%에 그쳤다(발표 당시 수치)'
-  - '실무 함의: Python 단일 이슈 기준인 Verified와 다른 축을 잰다. 프런트엔드·다언어 코드베이스에 에이전트를 붙일 거면 Verified 점수만으로 판단하지 말 것. 공식 사이트는 paper·GitHub·HuggingFace 데이터셋 링크를 함께 제공'
+  - '공식 페이지: 517 visual issue, Paper·GitHub·Dataset 링크를 함께 제공'
+  - '원 논문: 17개 JS 라이브러리·617 task instance, 문제/테스트에 이미지 최소 1장'
+  - 'SWE-agent 12% vs 차순위 6% — 시각 추론과 언어 일반화를 따로 봐야 함'
   source: https://arxiv.org/abs/2410.03859
 - category: ai
   title: claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기
@@ -8491,3 +8491,11 @@ cards:
   - OpenAI GPT-5.4/5.5 — median session token usage 8.97%/10.92% 감소
   - Anthropic deferred tools — median total-token usage 약 18% 감소, cache hit-rate 약 94%
   source: https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot
+- category: ai
+  title: AIware agent config dataset — 4,741개 repo가 말하는 AGENTS.md·Skills·Hooks 사용법
+  summary: AIware 2026 Benchmark & Dataset Track의 "A Dataset of Agentic AI Coding Tool Configurations"는 Claude Code, GitHub Copilot, OpenAI Codex, Cursor, Gemini 설정 파일을 GitHub 공개 저장소에서 모은 데이터셋이다. 범위는 4,741개 repo, 8개 설정 메커니즘, 15,612개 configuration artifact, 관련 파일 원문 45,126개, AI instruction 148,551개다. 교훈은 단순하다. AGENTS.md·Skills·Rules·Hooks는 개인 취향 파일이 아니라, 에이전트 도입 방식과 팀 협업 규칙을 관찰할 수 있는 데이터가 됐다. 우리 레포도 "에이전트가 무엇을 해야 하는가"뿐 아니라 "어떤 설정 표면을 어떤 범위에 둘 것인가"를 버전 관리해야 한다.
+  points:
+  - Claude Code·Copilot·Codex·Cursor·Gemini 5개 도구 설정을 공개 repo에서 수집
+  - 4,741 repo·15,612 artifact·45,126 config file·148,551 AI instruction
+  - Zenodo CC BY 4.0 공개 데이터셋 — 에이전트 설정을 연구·리뷰 대상으로 다루기
+  source: https://2026.aiwareconf.org/details/aiware-2026-benchmark---dataset-track/1/A-Dataset-of-Agentic-AI-Coding-Tool-Configurations

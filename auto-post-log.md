@@ -4241,3 +4241,11 @@ Refined:
 - Refined: `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)`
 - Refined sources re-checked: https://www.tbench.ai/leaderboard/terminal-bench/2.1, https://www.tbench.ai/docs/, and https://github.com/laude-institute/terminal-bench
 - Rejected: GitHub Copilot `strictKnownMarketplaces` because the drafted public changelog URL returned 404 during validation; Copilot code review AGENTS.md/analysis-depth and Copilot app follow-ups as duplicate/overlap; broad Android AI/Gemini Nano/ADK follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
+
+## 2026-06-27 01:44 KST — Local AI card routine
+
+- Published: `AIware agent config dataset — 4,741개 repo가 말하는 AGENTS.md·Skills·Hooks 사용법`
+- Source: https://2026.aiwareconf.org/details/aiware-2026-benchmark---dataset-track/1/A-Dataset-of-Agentic-AI-Coding-Tool-Configurations
+- Refined: `SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크`
+- Refined sources re-checked: https://www.swebench.com/multimodal and https://arxiv.org/abs/2410.03859
+- Rejected: NatureBench as duplicate existing research-benchmark coverage; pure Android-only topics as below threshold.
