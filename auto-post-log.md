@@ -4038,6 +4038,61 @@ Refined:
 누적: 927카드 (919→927 신규 8, 병합 3건은 기존 카드 갱신)
 주제: operational safety(Saber)·process eval(ProcCtrl·AgentProp·AgentProcess)·Android platform bench·cloud automation(Routines)·remote isolation·handoff protocol(AAHP)
 
+## 2026-06-26 34:00 KST — Batch 65 (아이디어 검증 + 병합 3카드 + 신규 8카드)
+
+### 병합 3카드
+
+| 병합·갱신 | 유지 |
+|-----------|------|
+| MCP 2026 Stateless only → **MCP 2026 — Linux Foundation·Stateless 07-28·MRTR·Extensions·Skills·Tasks·Python SDK v2 alpha** | SEP-2322 InputRequiredResult·requestState·resultType input_required·SSE server-initiated 제거 |
+| Codex rollout token budgets one-liner → **Codex rollout token budgets — shared ledger·TurnAborted·MCP tool search default 0.142.2** | multi-agent delegation modes·indexed web-search·tool search discovery |
+| FeatureBench paper-only → **FeatureBench — feature-oriented 200 task·fb CLI·Opus 74.4% SWE-bench→11% resolved** | LiberCoders/FeatureBench·fb infer/eval·June 2026 leaderboard GPT-5.4 67.2% PAS |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| AgeMem | unified LTM+STM as RL tool actions — distinct from heuristic memory cards |
+| MemAct | in-place context edit + DCPO trajectory fracture — orthogonal to AgeMem storage tools |
+| HarnessX | trace-driven harness evolution +14.5% — harness-as-lever axis beyond model scaling |
+| Layer-Isolated Evaluation | no-LLM per-layer production scaffold gate — deterministic CI axis |
+| FIDES | Microsoft information-flow labels — deterministic injection containment product |
+| Cursor SDK customTools | in-process tools without MCP server — headless SDK integration axis |
+| sandbox.credentials | credential file+env deny in sandbox — practical secret exfiltration defense |
+| OTEL assistant_response | turn-level response logging — observability gap vs raw API bodies |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| MemPO | Batch 65 AgeMem/MemAct memory RL axis — self-memory policy overlaps |
+| Saber·ProcCtrl·Android Bench·Routines·AAHP | Batch 64 cards exist — extend only |
+| Cursor Automations·Customize·Design Mode | Batch 61–62 cards exist |
+| Antigravity CLI·Gemini CLI shutdown | existing card |
+| FrontierCode·Dialogue-SWEBench·RigorBench | existing cards |
+| MCP stateless·Tasks·Skills standalone | Batch 60–64 MCP 포화 — MRTR merged into MCP 2026 |
+| Codex delegation·rollout budget standalone | merged into rollout card |
+| Generic prompt injection blogs | FIDES/sandbox.credentials cover actionable product layers |
+| Claude nested subagents·/cd·safe mode | auto-post-log Week 24 already published |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | AgeMem — LTM·STM을 tool action으로 통합·step-wise GRPO | aclanthology.org/2026.acl-long.981 |
+| 2 | MemAct — Memory-as-Action·DCPO·51% token cut vs 16× model | aclanthology.org/2026.findings-acl.956 |
+| 3 | HarnessX — composable evolvable harness foundry·AEGIS +14.5% | arxiv.org/html/2606.14249 |
+| 4 | Layer-Isolated Evaluation — production agent deterministic scaffold 238-case gate | arxiv.org/html/2606.11686 |
+| 5 | FIDES — Agent Framework information-flow labels·deterministic tool gate | devblogs.microsoft.com/agent-framework/fides |
+| 6 | Cursor SDK customTools — in-process 함수를 MCP 없이 custom-user-tools로 | cursor.com/changelog/sdk-updates-jun-2026 |
+| 7 | Claude Code sandbox.credentials — sandbox Bash가 credential file·secret env 차단 | code.claude.com/docs/en/sandboxing |
+| 8 | Claude Code OTEL assistant_response — turn-level response logging opt-in | code.claude.com/docs/en/agent-sdk/observability |
+
+누적: 936카드 (928→936 신규 8, 병합 3건은 기존 카드 갱신)
+주제: learnable memory(AgeMem·MemAct)·harness evolution(HarnessX)·production eval gates(Layer-Isolated·FIDES)·SDK/observability/security(Cursor SDK·sandbox.credentials·OTEL)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.

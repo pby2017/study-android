@@ -1003,9 +1003,10 @@ cards:
   - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
   source: https://github.com/earendil-works/pi
 - category: ai
-  title: MCP 2026 — Linux Foundation·Stateless 07-28·Extensions·Skills·Tasks·Python SDK v2 alpha
-  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy·Roots/Sampling/Logging deprecated. Extensions framework(SEP-2133) — reverse-DNS ID·extensions capability map·ext-* repo·core spec과 독립 버전·MCP Apps+Tasks 두 official extension. Skills extension(SEP-2640·io.modelcontextprotocol/skills) — agentskills.io SKILL.md를 skill:// URI·skill://index.json catalog·optional .tar.gz archive로 MCP resources/read transport, progressive disclosure 유지. Tasks(SEP-2663) — tools/call→taskId, tasks/get·update·cancel, ttlMs·cacheScope(SEP-2549) gateway cache. Python SDK v2.0.0a2 per-version wire validation.
+  title: MCP 2026 — Linux Foundation·Stateless 07-28·MRTR·Extensions·Skills·Tasks·Python SDK v2 alpha
+  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy·Roots/Sampling/Logging deprecated. Multi Round-Trip Requests(SEP-2322·Final) — SSE server-initiated sampling/roots/elicitation 대신 tools/call·resources/read 응답에 InputRequiredResult(resultType input_required)·opaque requestState·client inputResponses retry loop — sticky session 없이 horizontal scale. Extensions framework(SEP-2133) — reverse-DNS ID·extensions capability map·ext-* repo·core spec과 독립 버전·MCP Apps+Tasks 두 official extension. Skills extension(SEP-2640·io.modelcontextprotocol/skills) — agentskills.io SKILL.md를 skill:// URI·skill://index.json catalog·optional .tar.gz archive로 MCP resources/read transport, progressive disclosure 유지. Tasks(SEP-2663) — tools/call→taskId, tasks/get·update·cancel, ttlMs·cacheScope(SEP-2549) gateway cache. Python SDK v2.0.0a2 per-version wire validation.
   points:
+  - SEP-2322 MRTR — InputRequiredResult+requestState, SSE server push 제거
   - SEP-2133 Extensions — optional capability governance, Apps+Tasks official
   - Skills SEP-2640 — skill://index.json discovery, archive or file serve
   - Tasks+ttlMs — stateless taskId handle, gateway header-only route
@@ -4598,13 +4599,13 @@ cards:
   source: https://developers.openai.com/api/docs/deprecations
 - category: ai
   title: 'Codex rollout token budgets: 에이전트 루프를 토큰 예산으로 강제 중단하기'
-  summary: 'OpenAI Codex CLI 0.142.0은 "rollout token budget"을 추가해 여러 agent thread에 걸친 사용량을 추적하고, 남은 예산을 알려 주며, 예산이 끝나면 turn을 중단할 수 있게 했다. 같은 릴리스는 app-server 클라이언트가 multi-agent delegation을 thread/turn 단위로 disabled, explicit-request-only, proactive 중 하나로 설정할 수 있게 했고, indexed web-search mode도 추가했다. 개발자에게 중요한 점은 에이전트 자동화를 "열심히 돌리기"가 아니라 예산·위임 수준·웹 접근 경계를 먼저 정한 뒤 실행하는 운영 문제로 본다는 것이다. 같은 런에서 openai/codex는 Apache-2.0, 93,151★, 13,776 forks, 2026-06-24 push를 확인했다.
+  summary: 'OpenAI Codex CLI 0.142.0은 "rollout token budget"을 추가해 여러 agent thread·sub-agent usage가 같은 shared ledger를 소비하고, 남은 예산을 알려 주며, exhausted 시 다음 usage-accounting boundary에서 TurnAborted로 cleanly 중단한다. app-server는 multi-agent delegation을 thread/turn별 disabled·explicit-request-only·proactive로 제어하고 indexed web-search mode를 추가했다. 0.142.2(2026-06-25)는 MCP tools에 tool search by default — 지원 모델·provider에서 전체 tool schema dump 대신 discovery 검색으로 context 절약·구형 모델 호환 fallback. 개발자에게 중요한 점은 에이전트 자동화를 "열심히 돌리기"가 아니라 예산·위임·MCP tool surface·웹 접근 경계를 먼저 정한 뒤 실행하는 운영 문제로 본다는 것이다.
 
     '
   points:
-  - '0.142.0: agent threads 전체 token budget 추적, remaining reminder, exhausted turn abort'
-  - 'app-server: multi-agent delegation을 thread/turn별 disabled·explicit-request-only·proactive로 제어'
-  - '운영 교훈: 장기 에이전트 실행은 모델명보다 예산·위임·웹 접근 정책을 먼저 고정'
+  - '0.142.0: shared ledger token budget·sub-agent draw·TurnAborted clean abort'
+  - 'app-server: multi-agent delegation disabled·explicit-request-only·proactive'
+  - '0.142.2: MCP tool search default — schema dump→searchable discovery'
   source: https://developers.openai.com/codex/changelog
 - category: ai
   title: Claude Projects + Artifacts — 지속 워크스페이스와 인터랙티브 출력 패널
@@ -7941,13 +7942,13 @@ cards:
   - Validity judge — shortcut detection beyond raw metric gaming
   source: https://arxiv.org/abs/2606.24530
 - category: ai
-  title: FeatureBench — feature-oriented 200 task·Opus 74.4% SWE-bench→11% resolved
-  summary: FeatureBench(arXiv 2602.10975·ICLR 2026) — bug-fix single-PR 범위를 넘어 end-to-end feature development 평가. test-driven automated collection — unit test dependency graph tracing→multi-commit multi-PR feature tasks, 200 eval + 3825 executable env from 24 repos. continually updatable anti-leakage pipeline. Claude 4.5 Opus 74.4% SWE-bench Verified→11.0% FeatureBench — feature scope exposes new bottleneck. SWE-bench(local surgery) ·ProjDevBench(greenfield) ·SWE-EVO(release evolution)와 축 분리 — scattered PR timeline feature assembly.
+  title: FeatureBench — feature-oriented 200 task·fb CLI·Opus 74.4% SWE-bench→11% resolved
+  summary: FeatureBench(arXiv 2602.10975·ICLR 2026·LiberCoders/FeatureBench) — bug-fix single-PR 범위를 넘어 end-to-end feature development 평가. test-driven automated collection — unit test dependency graph tracing→multi-commit multi-PR feature tasks, 200 eval + 3825 executable env from 24 repos. unified `fb infer`·`fb eval`·`fb data` CLI — OpenHands·Claude Code·Codex·Gemini CLI·mini-swe-agent one-click inference. June 2026 leaderboard — GPT-5.4+OpenHands 67.2% PAS·Claude 4.5 Opus 59.1%·feature resolved still ~11–20% vs 74% SWE-bench — 63pt cliff procurement signal. SWE-bench(local surgery) ·FrontierCode(merge rubric) ·ProjDevBench(greenfield)와 축 분리.
   points:
-  - Automated task mining — dependency graph from tests, minimal human curation
-  - 11% SOTA vs 74% SWE-bench — feature dev unsaturated axis
-  - Continually updatable — scalable collection toolkit mitigates contamination
-  source: https://arxiv.org/pdf/2602.10975
+  - fb CLI — infer/eval/data pipeline, multi-agent scaffold support
+  - 63pt cliff — SWE-bench high score≠feature delivery capability
+  - Continually updatable — automated collection mitigates contamination
+  source: https://github.com/LiberCoders/FeatureBench
 - category: ai
   title: c-CRAB — human review comment→executable test oracle·v3 20–32% pass
   summary: c-CRAB v3(arXiv 2603.23448·Code Review Agent Benchmark) — human PR review comment→executable test oracle, review agent quality = whether review-guided patch passes test. 184 PR·234 validated tests·Claude Code Sonnet-4 validation harness. PR-agent 20.1%·Devin 32.1%·Claude Code·Codex commercial tools — human 100%, union across 4 tools 97/234(41.5%). vs embedding similarity(CRScore) ·LLM-as-judge alone — c-CRAB=actionable review verification. Agent PR volume↑ makes review agent eval as important as codegen bench.
@@ -8332,3 +8333,67 @@ cards:
   - 30개 작업·120개 실행 궤적을 계획/편집/테스트/복구 로그로 채점
   - '교훈: pass/fail 벤치마크 옆에 프로세스 로그 점수를 붙여야 production risk가 보임'
   source: https://arxiv.org/abs/2606.22678
+- category: ai
+  title: AgeMem — LTM·STM을 tool action으로 통합·step-wise GRPO
+  summary: AgeMem(ACL 2026·arXiv 2601.01885·y1y5/AgeMem) — heuristic memory pipeline 대신 LLM agent policy에 memory operation을 tool-based action으로 통합. Add·Update·Delete(LTM) + Retrieve·Summary·Filter(STM) 6 tools — agent가 task structure에 맞게 store/retrieve/summarize/discard autonomously. three-stage progressive RL — LTM storage→STM context→full coordination, step-wise GRPO가 sparse·discontinuous memory reward를 prior decision에 backprop. 5 long-horizon benchmark에서 memory-augmented baseline 일관 outperform. vs Mem0(external DB) ·Memory Bank(markdown) ·mcp-memory-rs(local sync) — AgeMem=learnable unified memory policy not retrieval heuristic.
+  points:
+  - 6 memory tools — LTM persist + STM context in one action space
+  - Step-wise GRPO — memory ops credit from final task reward
+  - Progressive RL stages — fragmented experience across stages handled
+  source: https://aclanthology.org/2026.acl-long.981/
+- category: ai
+  title: MemAct — Memory-as-Action·DCPO·51% token cut vs 16× model
+  summary: MemAct(ACL 2026 Findings·arXiv 2510.12635·ADaM-BJTU/MemAct) — working memory management를 external heuristic이 아닌 learnable policy action으로. in-place context editing — delete·insert·summarize function-call actions, agent가 retention vs task reward trade-off end-to-end RL. Dynamic Context Policy Optimization(DCPO) — memory action 시 trajectory fracture에서 stable gradient, GRPO pipeline compatible. MemAct-RL-14B avg 8.2×10⁴ tokens vs Qwen3-235B 16.7×10⁴ — 51% context cut, accuracy matches 16× larger model. vs AgeMem(tool LTM+STM) ·context compaction heuristics — MemAct=in-place edit ops + DCPO for non-prefix histories.
+  points:
+  - Trajectory fracture — append-only context broken by edit actions
+  - DCPO — segment history at curation points for stable RL
+  - 51% token reduction — learned curation beats bigger model full history
+  source: https://aclanthology.org/2026.findings-acl.956/
+- category: ai
+  title: HarnessX — composable evolvable harness foundry·AEGIS +14.5%
+  summary: HarnessX(arXiv 2606.14249·Darwin-Agent/HarnessX·Xiaomi) — agent runtime harness(prompt·tools·memory·control flow)를 hand-crafted static이 아닌 composable·evolvable object로. typed harness primitives + substitution algebra, AEGIS meta-engine(Digester·Planner·Evolver·Critic)가 execution trace feedback으로 harness evolve. harness evolution + model co-evolution loop — trajectory→harness update + RL training signal. 5 benchmark(ALFWorld·GAIA·WebShop·τ³-Bench·SWE-bench Verified) avg +14.5% absolute(up to +44% Qwen3.5-9B ALFWorld). weakest baseline gains most — harness evolution complements model scaling. vs Harbor(eval adapter) ·MiMo Code(product harness) ·dynamic workflows(Claude JS) — HarnessX=trace-driven harness foundry research.
+  points:
+  - +44% weakest model — harness not model is bottleneck on low baseline
+  - AEGIS 4-stage — trace→plan→evolve→critic closed loop
+  - Co-evolution +4.7% — harness traces also train open-weight model
+  source: https://arxiv.org/html/2606.14249
+- category: ai
+  title: Layer-Isolated Evaluation — production agent deterministic scaffold 238-case gate
+  summary: Layer-Isolated Evaluation(arXiv 2606.11686·June 2026) — production LLM agent의 deterministic scaffold layer를 no-LLM regression-locked pytest harness로 per-layer gate. 238 locked baseline pure cases(~1ms/case) — aggregate pass rate masks layer-specific −25~−91pp regression crater. controlled injection proves green aggregate can hide foundational layer drift. layer-decomposed harness + coverage-honest baseline = drift detector not outcome oracle. vs AgentProp-Bench(propagation math) ·Braintrust(trace eval) ·mcp-eval(MCP server) — Layer-Isolated=deterministic production scaffold unit test without LLM in loop.
+  points:
+  - 238-case locked baseline — per-layer pure runner, legacy lane separate
+  - Aggregate metric blind spot — −25pp localized while slice green
+  - No-LLM harness — ~1ms/case, CI-friendly deterministic gate
+  source: https://arxiv.org/html/2606.11686
+- category: ai
+  title: FIDES — Agent Framework information-flow labels·deterministic tool gate
+  summary: FIDES Flow Integrity Deterministic Enforcement System(Microsoft Agent Framework·devblogs 2026-06·agent_framework.security experimental) — prompt injection defense를 heuristic system prompt 대신 information-flow control middleware. every content carries integrity(trusted/untrusted)·confidentiality(public/private) labels — labels propagate through tool calls automatically. PolicyEnforcementFunctionMiddleware blocks privileged sink(e.g. post_comment·write_file) when untrusted issue body still in scope — model can summarize but cannot act on poisoned input. approval_on_violation=True → human-in-loop function approval with violation reason. vs Claude Code sandbox ·Cedar AgentCore ·prompt injection guardrails — FIDES=deterministic label propagation not probabilistic classifier.
+  points:
+  - Label propagation — read_issue output tagged untrusted at return
+  - Privileged sink block — deterministic before tool executes
+  - Experimental middleware — agent_framework.security behind feature flag
+  source: https://devblogs.microsoft.com/agent-framework/fides/
+- category: ai
+  title: Cursor SDK customTools — in-process 함수를 MCP 없이 custom-user-tools로
+  summary: Cursor SDK(June 2026·cursor.com/changelog/sdk-updates-jun-2026) — local agent에 `local.customTools`로 plain function 등록, SDK가 built-in MCP server `custom-user-tools`로 expose — separate stdio MCP process 불필요, same permission gate. `local.autoReview` — headless run tool call을 classifier로 route, permissions.json autoRun block으로 steer(read-only auto·delete pause). JsonlLocalAgentStore — SQLite 대신 append-only NDJSON(agents·runs·events·checkpoints) git-diff 가능, LocalAgentStore interface로 Postgres·in-memory custom backend. cloud agent에 customTools 전달 시 ConfigurationError. vs MCP server BYO ·Claude Code plugin tools — Cursor SDK=native in-process tool registration for CI/scripts.
+  points:
+  - custom-user-tools MCP — no second process, local agents only
+  - autoReview + permissions.json — headless oversight not security boundary
+  - JsonlLocalAgentStore — VCS-friendly agent state persistence
+  source: https://cursor.com/changelog/sdk-updates-jun-2026
+- category: ai
+  title: Claude Code sandbox.credentials — sandbox Bash가 credential file·secret env 차단
+  summary: Claude Code v2.1.187 `sandbox.credentials` — sandboxed Bash command가 listed credential files(~/.aws/credentials·~/.ssh) read deny + listed secret env vars(GITHUB_TOKEN·NPM_TOKEN) unset before each run. credentials block groups file+env rules separate from general filesystem.denyRead — default sandbox still allows reading ~/.aws until explicitly listed. sandboxed Bash only — all subprocesses에는 CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1(AWS·Azure·Google·Anthropic 7 vars strip). complements excludedCommands·denyRead·network allowlist layered defense. vs isolation remote(CCR blast radius) ·prompt injection card — sandbox.credentials=credential exfiltration containment in sandbox path.
+  points:
+  - files+envVars deny list — no built-in default, explicit opt-in
+  - Subprocess scrub separate — 7 cloud provider vars all subprocesses
+  - v2.1.187+ — pair with PreToolUse secret scan hooks for depth
+  source: https://code.claude.com/docs/en/sandboxing
+- category: ai
+  title: Claude Code OTEL assistant_response — turn-level response logging opt-in
+  summary: Claude Code v2.1.193 `claude_code.assistant_response` OpenTelemetry log event — model response text per turn OTLP export. OTEL_LOG_ASSISTANT_RESPONSES=1 explicit opt-in redaction off; unset이면 OTEL_LOG_USER_PROMPTS를 따름 — prompt logging deployments는 upgrade 시 response content 자동 수신, prompts-only 유지는 OTEL_LOG_ASSISTANT_RESPONSES=0. lighter than OTEL_LOG_RAW_API_BODIES(full Messages API 60KB+ history) — turn text only for LLM-judge·audit·cost/output correlation. complements OTEL_LOG_TOOL_DETAILS·OTEL_LOG_TOOL_CONTENT·enhanced telemetry traces. vs ATSC agent taxonomy ·OpenTelemetry GenAI semconv — assistant_response=Claude Code-specific turn log not cross-vendor schema.
+  points:
+  - Turn-level only — not full conversation raw body
+  - Upgrade footgun — follows user prompt logging unless explicitly 0
+  - LLM-judge pipelines — follow-up efficiency scoring without raw API dump
+  source: https://code.claude.com/docs/en/agent-sdk/observability
