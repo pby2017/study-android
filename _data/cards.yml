@@ -194,7 +194,7 @@ cards:
   source: https://code.claude.com/docs/en/sub-agents
 - category: ai
   title: reloadSkills·sessionTitle·/reload-skills — SessionStart 훅·수동 명령으로 스킬·세션 제목 즉시 반영
-  summary: 'Claude Code v2.1.152+는 스킬 탐색을 SessionStart 훅 종료 전 1회만 돌리므로, 훅이 ~/.claude/skills/에 새 SKILL.md를 써도 기본적으로 다음 세션에야 보인다. SessionStart 훅이 hookSpecificOutput.reloadSkills:true를 반환하면 훅 직후 스킬·커맨드 디렉터리를 재스캔해 같은 세션에서 즉시 사용 가능. 수동 경로는 /reload-skills — 대화 컨텍스트를 유지한 채 디렉터리만 재스캔(edit→reload→test 루프). 같은 릴리스에서 hookSpecificOutput.sessionTitle로 startup·resume 시 세션 제목을 프로그래밍 방식으로 설정 가능 — CI·팀 부트스트랩·스킬 authoring loop에 유용.'
+  summary: Claude Code v2.1.152+는 스킬 탐색을 SessionStart 훅 종료 전 1회만 돌리므로, 훅이 ~/.claude/skills/에 새 SKILL.md를 써도 기본적으로 다음 세션에야 보인다. SessionStart 훅이 hookSpecificOutput.reloadSkills:true를 반환하면 훅 직후 스킬·커맨드 디렉터리를 재스캔해 같은 세션에서 즉시 사용 가능. 수동 경로는 /reload-skills — 대화 컨텍스트를 유지한 채 디렉터리만 재스캔(edit→reload→test 루프). 같은 릴리스에서 hookSpecificOutput.sessionTitle로 startup·resume 시 세션 제목을 프로그래밍 방식으로 설정 가능 — CI·팀 부트스트랩·스킬 authoring loop에 유용.
   points:
   - SessionStart reloadSkills:true — 훅이 스킬 설치 후 같은 세션에 등록
   - /reload-skills — 수동 재스캔, 컨텍스트 유지(edit SKILL.md→reload→test)
@@ -302,7 +302,7 @@ cards:
   source: https://code.claude.com/docs/en/hooks
 - category: ai
   title: 훅 핸들러 5종 — 셸·HTTP·MCP 도구·프롬프트·에이전트로 받기
-  summary: '훅 핸들러 type 5종 — command(셸), http(URL POST), mcp_tool(연결된 MCP 서버 도구 직접 호출), prompt(빠른 모델 평가), agent(서브에이전트 평가). v2.1.x에서 mcp_tool은 이미 실행 중인 MCP 연결을 재사용 — 별도 셸 프로세스 spawn 없이 PreToolUse 검증·PostToolUse 집계가 단순해짐. prompt/agent는 $ARGUMENTS에 훅 입력 JSON, model 필드로 평가 모델 지정. /hooks 메뉴는 5종 표시하나 추가·편집은 command·mcp_tool만 — http·prompt·agent는 settings.json 직접 작성.'
+  summary: 훅 핸들러 type 5종 — command(셸), http(URL POST), mcp_tool(연결된 MCP 서버 도구 직접 호출), prompt(빠른 모델 평가), agent(서브에이전트 평가). v2.1.x에서 mcp_tool은 이미 실행 중인 MCP 연결을 재사용 — 별도 셸 프로세스 spawn 없이 PreToolUse 검증·PostToolUse 집계가 단순해짐. prompt/agent는 $ARGUMENTS에 훅 입력 JSON, model 필드로 평가 모델 지정. /hooks 메뉴는 5종 표시하나 추가·편집은 command·mcp_tool만 — http·prompt·agent는 settings.json 직접 작성.
   points:
   - '5종: command / http / mcp_tool / prompt / agent'
   - mcp_tool — running MCP server 재사용, shell spawn 불필요
@@ -788,7 +788,7 @@ cards:
   source: https://swe-perf.github.io/
 - category: ai
   title: Dynamic Workflows(ultracode) — GA·스크립트 오케스트레이션으로 서브에이전트 수백 개
-  summary: 'Dynamic workflow(v2.1.154+·2026-05-28 GA)는 Claude가 작업 설명을 받아 JavaScript 오케스트레이션 스크립트를 짜고 런타임이 백그라운드 실행 — 본 세션은 응답 가능. 서브에이전트/스킬과 달리 루프·분기·중간 결과가 스크립트 변수에, Claude 컨텍스트엔 최종 답만. 핵심 primitive — agent(spawn), parallel(barrier), pipeline(stage stream). 동시 16·런당 1,000 에이전트 상한. 켜는 법 — 프롬프트 ultracode·/effort ultracode(xhigh+자동 workflow)·/workflows 관리. managed settings disableWorkflows로 조직 비활성. Bun Zig→Rust 75만 줄 11일(테스트 99.8%) 공식 사례.'
+  summary: Dynamic workflow(v2.1.154+·2026-05-28 GA)는 Claude가 작업 설명을 받아 JavaScript 오케스트레이션 스크립트를 짜고 런타임이 백그라운드 실행 — 본 세션은 응답 가능. 서브에이전트/스킬과 달리 루프·분기·중간 결과가 스크립트 변수에, Claude 컨텍스트엔 최종 답만. 핵심 primitive — agent(spawn), parallel(barrier), pipeline(stage stream). 동시 16·런당 1,000 에이전트 상한. 켜는 법 — 프롬프트 ultracode·/effort ultracode(xhigh+자동 workflow)·/workflows 관리. managed settings disableWorkflows로 조직 비활성. Bun Zig→Rust 75만 줄 11일(테스트 99.8%) 공식 사례.
   points:
   - GA v2.1.154+ — agent/parallel/pipeline primitive, 동시 16·런당 1,000
   - /effort ultracode — xhigh+자동 workflow, /workflows pause·resume·slash 재사용
@@ -1003,13 +1003,12 @@ cards:
   - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
   source: https://github.com/earendil-works/pi
 - category: ai
-  title: MCP 2026 — Linux Foundation·Stateless 07-28·MRTR·Extensions·Skills·Tasks·Python SDK v2 alpha
-  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy·Roots/Sampling/Logging deprecated. Multi Round-Trip Requests(SEP-2322·Final) — SSE server-initiated sampling/roots/elicitation 대신 tools/call·resources/read 응답에 InputRequiredResult(resultType input_required)·opaque requestState·client inputResponses retry loop — sticky session 없이 horizontal scale. Extensions framework(SEP-2133) — reverse-DNS ID·extensions capability map·ext-* repo·core spec과 독립 버전·MCP Apps+Tasks 두 official extension. Skills extension(SEP-2640·io.modelcontextprotocol/skills) — agentskills.io SKILL.md를 skill:// URI·skill://index.json catalog·optional .tar.gz archive로 MCP resources/read transport, progressive disclosure 유지. Tasks(SEP-2663) — tools/call→taskId, tasks/get·update·cancel, ttlMs·cacheScope(SEP-2549) gateway cache. Python SDK v2.0.0a2 per-version wire validation.
+  title: MCP 2026 — Linux Foundation·Stateless·MRTR·Extensions·OAuth RFC9207·Python SDK v2 alpha
+  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, 12개월 deprecation policy·Roots/Sampling/Logging deprecated. Multi Round-Trip Requests(SEP-2322) — InputRequiredResult·requestState·client inputResponses retry loop. Extensions framework(SEP-2133) — reverse-DNS ID·MCP Apps+Tasks official extension·Skills SEP-2640 skill://index.json. OAuth authorization hardening 6 SEP — RFC9207 iss parameter mix-up attack mitigation(SEP-2468), OIDC application_type DCR(SEP-837), client credential issuer binding+re-register on migration(SEP-2352), refresh token scope semantics(SEP-2207), step-up scope accumulation(SEP-2350), stable .well-known suffix(SEP-2351). Python SDK v2.0.0a2 per-version wire validation.
   points:
-  - SEP-2322 MRTR — InputRequiredResult+requestState, SSE server push 제거
-  - SEP-2133 Extensions — optional capability governance, Apps+Tasks official
-  - Skills SEP-2640 — skill://index.json discovery, archive or file serve
-  - Tasks+ttlMs — stateless taskId handle, gateway header-only route
+  - SEP-2468 RFC9207 iss — reject auth response if iss missing/mismatch vs recorded issuer
+  - SEP-837 application_type DCR — CLI/desktop localhost redirect rejected when defaulted web
+  - SEP-2352 issuer-bound credentials — server migration forces client re-registration
   source: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
@@ -1240,9 +1239,9 @@ cards:
 
     '
   points:
-  - '현재 README 기준 432 plugins·2,769 skills·297 agents·30 contributors'
+  - 현재 README 기준 432 plugins·2,769 skills·297 agents·30 contributors
   - '`marketplace.extended.json`과 Claude Code CLI용 `marketplace.json`을 같은 카탈로그 원천으로 관리'
-  - 'validator와 공개 100점 rubric으로 spec-correct 패키지만 병합하는 구조'
+  - validator와 공개 100점 rubric으로 spec-correct 패키지만 병합하는 구조
   source: https://github.com/jeremylongshore/claude-code-plugins-plus-skills
 - category: ai
   title: BMAD-METHOD — '애자일 팀 전체'를 에이전트로 흉내 내는 IDE 비종속 개발 방법론(49.7k★)
@@ -1304,7 +1303,7 @@ cards:
   source: https://sourcegraph.com/blog/agentic-coding
 - category: ai
   title: chrome-devtools-mcp(Google) — CDP MCP·Codex Developer mode, 브라우저 F12를 에이전트에(44.4k★)
-  summary: 'chrome-devtools-mcp(ChromeDevTools/chrome-devtools-mcp·Apache-2.0·44,438★ live check)는 Chrome DevTools Protocol(CDP)을 MCP로 열어 DOM·console·network·performance trace·Lighthouse를 에이전트 도구로 만든다. 기본 설정은 `npx -y chrome-devtools-mcp@latest`, Codex는 `codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest`로 붙인다. 가벼운 브라우저 작업은 `--slim --headless`, 동시 에이전트는 `--experimentalPageIdRouting`, 세션별 임시 프로필은 `--isolated`가 안전하다. Codex app Developer mode는 Browser plugin의 @Browser/@Chrome에 full CDP를 주지만, Settings > Browser에서 켜야 하고 사이트별 명시 승인을 요구하며 조직은 `browser_use_full_cdp_access=false`로 끌 수 있다. 핵심은 "스크린샷 보고 추측"이 아니라 실제 콘솔·네트워크·DOM·성능 trace를 읽게 하되, 로그인 세션·쿠키·브라우저 내부 데이터까지 닿는 권한임을 분리·승인으로 통제하는 것이다.'
+  summary: chrome-devtools-mcp(ChromeDevTools/chrome-devtools-mcp·Apache-2.0·44,438★ live check)는 Chrome DevTools Protocol(CDP)을 MCP로 열어 DOM·console·network·performance trace·Lighthouse를 에이전트 도구로 만든다. 기본 설정은 `npx -y chrome-devtools-mcp@latest`, Codex는 `codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest`로 붙인다. 가벼운 브라우저 작업은 `--slim --headless`, 동시 에이전트는 `--experimentalPageIdRouting`, 세션별 임시 프로필은 `--isolated`가 안전하다. Codex app Developer mode는 Browser plugin의 @Browser/@Chrome에 full CDP를 주지만, Settings > Browser에서 켜야 하고 사이트별 명시 승인을 요구하며 조직은 `browser_use_full_cdp_access=false`로 끌 수 있다. 핵심은 "스크린샷 보고 추측"이 아니라 실제 콘솔·네트워크·DOM·성능 trace를 읽게 하되, 로그인 세션·쿠키·브라우저 내부 데이터까지 닿는 권한임을 분리·승인으로 통제하는 것이다.
   points:
   - CDP 도구화 — DOM·console·network·performance trace·Lighthouse를 MCP 클라이언트에서 호출
   - 격리 옵션 — `--slim --headless`, `--isolated`, `--experimentalPageIdRouting`으로 CI·동시 세션 위험 축소
@@ -1506,7 +1505,7 @@ cards:
   source: https://code.claude.com/docs/en/mcp
 - category: ai
   title: DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크
-  summary: '포화된 SWE-bench류 리더보드는 프런티어 모델들이 좁은 구간에 몰려 ''어느 에이전트가 우리 코드베이스에서 더 나은지''를 가리기 어렵다는 비판을 받아 왔다. Datacurve DeepSWE v1.1(2026-06-24) — 113 original task·91 repo·5 language·program-based verifier·contamination-free. Artificial Analysis Coding Agent Index v1.1이 SWE-Bench-Pro-Hard-AA를 DeepSWE로 교체. v1.1 leaderboard(mini-swe-agent harness) — claude-fable-5[xhigh] 69.9% > gpt-5.5[xhigh] 67.0% > claude-opus-4-8[max] 59.0%·kimi-k2.7-code·glm-5.2 추가. Pier(Harbor fork) — per-agent network allowlist·modal parallel. vs SWE-rebench(rolling fresh issues) ·ProgramBench(cleanroom build) — DeepSWE=verifier accuracy+long-horizon original tasks.'
+  summary: 포화된 SWE-bench류 리더보드는 프런티어 모델들이 좁은 구간에 몰려 '어느 에이전트가 우리 코드베이스에서 더 나은지'를 가리기 어렵다는 비판을 받아 왔다. Datacurve DeepSWE v1.1(2026-06-24) — 113 original task·91 repo·5 language·program-based verifier·contamination-free. Artificial Analysis Coding Agent Index v1.1이 SWE-Bench-Pro-Hard-AA를 DeepSWE로 교체. v1.1 leaderboard(mini-swe-agent harness) — claude-fable-5[xhigh] 69.9% > gpt-5.5[xhigh] 67.0% > claude-opus-4-8[max] 59.0%·kimi-k2.7-code·glm-5.2 추가. Pier(Harbor fork) — per-agent network allowlist·modal parallel. vs SWE-rebench(rolling fresh issues) ·ProgramBench(cleanroom build) — DeepSWE=verifier accuracy+long-horizon original tasks.
   points:
   - v1.1 June 2026 — Fable 5 69.9%·GPT-5.5 67%·Opus 4.8 59% on mini-swe-agent
   - AA Index v1.1 — DeepSWE replaces SWE-Bench-Pro-Hard in composite
@@ -2540,7 +2539,7 @@ cards:
   source: https://www.revenuecat.com/state-of-subscription-apps/
 - category: ai
   title: ADK for Android 0.1.0 — Gemini Nano 4·AppFunctions·A2UI 하이브리드 온디바이스 에이전트
-  summary: 'ADK(Agent Development Kit) for Android 0.1.0(2026-05)은 Google의 앱 내 AI 에이전트 프레임워크다. `com.google.adk:google-adk-kotlin-core-android:0.1.0`으로 시작, GenaiPrompt(ML Kit GenAI)로 Gemini Nano 4 Fast/Full 온디바이스 + 클라우드 Gemini hybrid — root orchestrator는 cloud, privacy-sensitive subagent는 on-device. Nano 4(Gemma 4 E2B/E4B distill·12GB+ RAM·NPU) roadmap — tool calling·structured output·system prompt·thinking mode로 cloud agent feature set 수렴 예정. AppFunctions(Android MCP)로 앱 도구·서비스·데이터를 시스템 에이전트에 노출, A2UI Compose Renderer로 에이전트 UI 자동 렌더링. ADK Python 2.0(서버)과 달리 Android AICore·EXECUTE_APP_FUNCTIONS 권한 경계가 핵심.'
+  summary: ADK(Agent Development Kit) for Android 0.1.0(2026-05)은 Google의 앱 내 AI 에이전트 프레임워크다. `com.google.adk:google-adk-kotlin-core-android:0.1.0`으로 시작, GenaiPrompt(ML Kit GenAI)로 Gemini Nano 4 Fast/Full 온디바이스 + 클라우드 Gemini hybrid — root orchestrator는 cloud, privacy-sensitive subagent는 on-device. Nano 4(Gemma 4 E2B/E4B distill·12GB+ RAM·NPU) roadmap — tool calling·structured output·system prompt·thinking mode로 cloud agent feature set 수렴 예정. AppFunctions(Android MCP)로 앱 도구·서비스·데이터를 시스템 에이전트에 노출, A2UI Compose Renderer로 에이전트 UI 자동 렌더링. ADK Python 2.0(서버)과 달리 Android AICore·EXECUTE_APP_FUNCTIONS 권한 경계가 핵심.
   points:
   - GenaiPrompt hybrid — cloud orchestrator + on-device subagent privacy boundary
   - Nano 4 roadmap — tool calling·structured output, AICore preview→ML Kit production path
@@ -2907,15 +2906,13 @@ cards:
   - 공식 GitHub MCP 서버 30.8k★ + issue fields 1,000+ 조직 preview 채택
   source: https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues/
 - category: ai
-  title: AppFunctions(Android MCP) — 앱 기능을 온디바이스 에이전트 도구로 노출하는 실험적 Jetpack API
-  summary: 'AppFunctions는 Android 앱이 자기 기능을 온디바이스 MCP 도구처럼 노출하게 하는 Android 플랫폼 API + Jetpack 라이브러리다. 개발자는 Kotlin 함수에 @AppFunction을 붙여 ''노트 생성'', ''쇼핑리스트 추가'' 같은 작업을 선언하고, OS 레지스트리가 이를 인덱싱한다. 호출자는 EXECUTE_APP_FUNCTIONS 권한으로 기능을 발견·실행한다. 2026년 5월 기준 Gemini 통합은 trusted tester private preview이고, 기능 자체는 Android 16 이상에서 실험적 preview다. 지금의 학습 포인트는 UI 버튼이 아니라 에이전트가 호출할 안정적인 앱 작업 경계를 설계하는 것이다.
-
-    '
+  title: AppFunctions(Android MCP) — alpha09·UriGrant·suspend IO·EXECUTE_APP_FUNCTIONS
+  summary: AppFunctions는 Android 앱이 자기 기능을 온디바이스 MCP 도구처럼 노출하는 Android 플랫폼 API+Jetpack(1.0.0-alpha09 May 2026). @AppFunction+KSP compiler→assets/app_function_v2.xml OS registry index. caller EXECUTE_APP_FUNCTIONS permission+isAppFunctionEnabled(package,functionId) pre-check. alpha09 — AppFunctionUriGrant(auto permission grant returned URI), Int/String value constraints, AppFunctionTestRule(Robolectric), suspend+withContext(Dispatchers.IO) mandatory(UI thread default). first param AppFunctionContext required. Gemini integration private preview(EAP register), Android 16+ experimental — adb shell cmd app_function list-app-functions local verify. vs cloud MCP server — zero network round-trip·permission-gated local tool call.
   points:
-  - '@AppFunction으로 앱 작업을 선언하고 OS가 스키마를 인덱싱'
-  - Android 16+ 실험적 preview, Gemini 통합은 private preview
-  - 서버 MCP가 아니라 앱 상태를 직접 쓰는 온디바이스 도구 모델
-  source: https://developer.android.com/ai/appfunctions
+  - alpha09 AppFunctionUriGrant — returned content URI permission auto-grant to caller
+  - suspend+Dispatchers.IO — @AppFunction runs UI thread by default, block work off-main
+  - EXECUTE_APP_FUNCTIONS gate — discover+execute requires platform permission not just intent
+  source: https://developer.android.com/jetpack/androidx/releases/appfunctions
 - category: ai
   title: Android AI Sample Catalog — Firebase AI Logic과 ML Kit GenAI 샘플을 한 앱에서 복사해 배우기
   summary: 'Android AI Sample Catalog는 Google이 공개한 AI 샘플 모음 앱이다. Imagen 이미지 생성, Gemini Nano 온디바이스 요약, Gemini Nano 이미지 설명, 음성으로 제어하는 할 일 앱, 온디바이스 rewrite assistance 같은 예제를 한 프로젝트에서 실행해 볼 수 있다. 클라우드 추론 샘플은 Firebase AI Logic SDK를, 온디바이스 추론 샘플은 ML Kit GenAI API를 사용한다. 각 샘플은 관련 README와 코드 조각을 포함하고, AI 기능 코드가 독립적으로 복사하기 쉽게 구성돼 있다. 새 API를 문서만 읽지 말고 최소 동작 샘플로 비교할 때 유용하다.
@@ -3078,7 +3075,7 @@ cards:
   source: https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/
 - category: ai
   title: Copilot SDK GA — 에이전트 루프를 제품 안에 심는 여섯 언어 SDK·v1.0.2 memory·defer
-  summary: 'GitHub Copilot SDK는 2026-06-02 GA·v1.0.2(2026-06-18). Node.js/TypeScript, Python, Go, .NET, Rust, Java 여섯 언어 — 제품 안에 Copilot agent runtime(planning·tool·file edit·streaming·multi-turn)을 직접 embed. v1.0.2 — session create/resume에 memory:{enabled:true} opt-in persistent memory across turns; tool definition defer:"auto"|"never"로 lazy tool search vs eager preload. GA 이후 — Rust/Java SDK 추가·multi-client same session tool/permission contribute·slash command+interactive prompt 전 언어·stable semver API. custom tools·MCP·prompt section·OpenTelemetry·GitHub OAuth/Apps/BYOK·cloud remote session·hook system. vs Copilot app(Canvas orchestration) ·Copilot CLI(TUI) — SDK=embed runtime in your product.'
+  summary: GitHub Copilot SDK는 2026-06-02 GA·v1.0.2(2026-06-18). Node.js/TypeScript, Python, Go, .NET, Rust, Java 여섯 언어 — 제품 안에 Copilot agent runtime(planning·tool·file edit·streaming·multi-turn)을 직접 embed. v1.0.2 — session create/resume에 memory:{enabled:true} opt-in persistent memory across turns; tool definition defer:"auto"|"never"로 lazy tool search vs eager preload. GA 이후 — Rust/Java SDK 추가·multi-client same session tool/permission contribute·slash command+interactive prompt 전 언어·stable semver API. custom tools·MCP·prompt section·OpenTelemetry·GitHub OAuth/Apps/BYOK·cloud remote session·hook system. vs Copilot app(Canvas orchestration) ·Copilot CLI(TUI) — SDK=embed runtime in your product.
   points:
   - memory opt-in — cross-turn recall without re-prompting full context
   - defer auto/never — token budget vs tool discovery latency tradeoff
@@ -3791,7 +3788,7 @@ cards:
   source: https://github.com/facebookresearch/SAM2
 - category: ai
   title: Stagehand v3 — hybrid CUA+DOM agent·Browserbase MCP Streamable HTTP
-  summary: 'Stagehand(browserbase/stagehand·MIT·~23k★·v3.6)는 Playwright+AI 하이브리드 브라우저 자동화 SDK. v3 agent() 3 mode — DOM(text tool call) ·CUA(coordinate Computer Use) ·Hybrid(both). act/extract/observe atomic + agent() multi-step with step cache(cache hit→no LLM). Browserbase MCP Server — hosted Streamable HTTP(권장) or local STDIO, natural language browser control for coding agents. Browser Use(CDP library) ·Playwright MCP(a11y tree) ·agent-browser(CLI wrapper)와 달리 code+NL hybrid with self-healing cache.'
+  summary: Stagehand(browserbase/stagehand·MIT·~23k★·v3.6)는 Playwright+AI 하이브리드 브라우저 자동화 SDK. v3 agent() 3 mode — DOM(text tool call) ·CUA(coordinate Computer Use) ·Hybrid(both). act/extract/observe atomic + agent() multi-step with step cache(cache hit→no LLM). Browserbase MCP Server — hosted Streamable HTTP(권장) or local STDIO, natural language browser control for coding agents. Browser Use(CDP library) ·Playwright MCP(a11y tree) ·agent-browser(CLI wrapper)와 달리 code+NL hybrid with self-healing cache.
   points:
   - v3 agent() — DOM·CUA·Hybrid modes ·custom tool injection
   - Step cache — successful actions replay without LLM re-call
@@ -3819,7 +3816,7 @@ cards:
   source: https://dev.to/gowthampotureddi/feature-stores-compared-feast-vs-tecton-vs-hopsworks-for-production-ml-4ep0
 - category: ai
   title: OpenCode(anomalyco) — Models.dev 75+ 프로바이더·Mission Control TUI·~179k★
-  summary: 'OpenCode(anomalyco/opencode·MIT·~179k★)는 터미널 네이티브 오픈소스 코딩 에이전트 — 2026년 repo가 sst/opencode에서 anomalyco/opencode로 이전·TypeScript TUI. Models.dev 카탈로그로 75+ LLM 프로바이더(OpenAI·Anthropic·Google·Bedrock·Vertex·Ollama·ChatGPT Plus·GitHub Copilot 구독 재사용) hot-swap. Mission Control TUI — 멀티파일 agent task를 단일 pane에서 시각 관리. honor agent step limits·Copilot custom headers·Devstral model detection 등 v1.17.x active release. Goose(AAIF·범용 agent) ·OpenHands(Docker sandbox)와 달리 provider breadth+TUI-first coding agent.'
+  summary: OpenCode(anomalyco/opencode·MIT·~179k★)는 터미널 네이티브 오픈소스 코딩 에이전트 — 2026년 repo가 sst/opencode에서 anomalyco/opencode로 이전·TypeScript TUI. Models.dev 카탈로그로 75+ LLM 프로바이더(OpenAI·Anthropic·Google·Bedrock·Vertex·Ollama·ChatGPT Plus·GitHub Copilot 구독 재사용) hot-swap. Mission Control TUI — 멀티파일 agent task를 단일 pane에서 시각 관리. honor agent step limits·Copilot custom headers·Devstral model detection 등 v1.17.x active release. Goose(AAIF·범용 agent) ·OpenHands(Docker sandbox)와 달리 provider breadth+TUI-first coding agent.
   points:
   - anomalyco/opencode ·MIT ·~179k★ ·Models.dev provider catalog
   - Mission Control TUI — multi-file task organizer in terminal
@@ -3908,7 +3905,7 @@ cards:
   source: https://toolhalla.ai/blog/langchain-vs-llamaindex-vs-haystack-2026
 - category: ai
   title: LangGraph 1.0 — durable agent runtime GA, checkpointing·HITL·LangChain 상호운용
-  summary: 'LangGraph 1.0(2025-10 GA)은 production-ready durable agent framework 첫 stable major — 1년+ Uber·LinkedIn·Klarna·Replit adoption 후 semver 보장. 방향 그래프(상태 머신)로 분기·루프·human-in-the-loop·streaming·persistence를 low-level 제어. Postgres checkpointing으로 crash·multi-day resume. langgraph.prebuilt deprecated→langchain.agents로 이동 — LangChain 1.0 create_agent(high-level)와 LangGraph(custom graph) composable, lock-in 없이 drop-down. Deep Agents·LangSmith Deployment·Temporal integration과 3층 — LangGraph=OSS runtime, LangChain=agent loop abstraction, LangSmith=obs+deploy+Engine.'
+  summary: LangGraph 1.0(2025-10 GA)은 production-ready durable agent framework 첫 stable major — 1년+ Uber·LinkedIn·Klarna·Replit adoption 후 semver 보장. 방향 그래프(상태 머신)로 분기·루프·human-in-the-loop·streaming·persistence를 low-level 제어. Postgres checkpointing으로 crash·multi-day resume. langgraph.prebuilt deprecated→langchain.agents로 이동 — LangChain 1.0 create_agent(high-level)와 LangGraph(custom graph) composable, lock-in 없이 drop-down. Deep Agents·LangSmith Deployment·Temporal integration과 3층 — LangGraph=OSS runtime, LangChain=agent loop abstraction, LangSmith=obs+deploy+Engine.
   points:
   - v1.0 GA 2025-10 — first stable durable agent framework semver
   - langgraph.prebuilt→langchain.agents — high-level/low-level composable stack
@@ -4580,7 +4577,7 @@ cards:
   - '운영 지표: coverage·recall·time-to-response로 에이전트 보안 통제가 실제로 작동하는지 측정'
   source: https://deepmind.google/blog/securing-the-future-of-ai-agents/
 - category: ai
-  title: 'Agent Finder/ARD — Copilot·Gemini Enterprise runtime discovery, context bloat 방지'
+  title: Agent Finder/ARD — Copilot·Gemini Enterprise runtime discovery, context bloat 방지
   summary: 'Agentic Resource Discovery(ARD·Apache-2.0·Microsoft+Google+GitHub+HF+GoDaddy·2026-06-17) — domain-hosted catalogs + federated registries로 MCP·skills·agents·tools를 publish/index/discover. GitHub Agent Finder — Copilot이 task description으로 registry 검색→ranked matches on-demand inject, auto-install 없음·managed settings gate. Google Gemini Enterprise Agent Registry — hosted search/onboarding, native ARD months内. 문제 정의: single client가 explicit wiring한 수십 도구 vs ecosystem 수십만 리소스 — orders-of-magnitude gap. vs MCP Tool Search(Claude preload) ·pre-wired MCP list — ARD=runtime catalog search across registries.'
   points:
   - ARD spec — catalogs on org domain + registry index + client discovery handoff
@@ -6387,7 +6384,8 @@ cards:
   source: https://developer.hashicorp.com/vault/docs/secrets
 - category: ai
   title: OWASP ASI Top 10 + AIUC-1 crosswalk — agentic procurement baseline·SOC2 analog certification
-  summary: OWASP Agentic Security Initiative(ASI) Top 10 for Agentic Applications 2026(2025-12, 100+ expert peer review)는 autonomous agent 고유 실패 모드를 10개로 정의한다. ASI01 Goal Hijack ·ASI02 Tool Misuse ·ASI03 Identity/Privilege Abuse ·ASI04 Supply Chain ·ASI05 Unexpected Code Execution ·ASI06 Memory/Context Poisoning ·ASI07 Insecure Inter-Agent Comms ·ASI08 Cascading Failures ·ASI09 Human-Agent Trust Exploitation ·ASI10 Rogue Agents. OWASP LLM Top 10(2025)은 GenAI app risk, ASI는 plan·act·persist·delegate agent risk — procurement·threat modeling에서 병행. least agency principle — minimum autonomy for bounded task가 cross-cutting mitigation. Five Eyes "Careful Adoption of Agentic AI"(2026-05)가 ASI control mapping을 국제 규제 signal로 채택. AIUC-1 crosswalk(2026-05-25) — ASI01~10↔AIUC-1 6 domain bidirectional mapping·8 gap areas(agent identity·runtime containment·supply chain attestation·schema controls 등) — agent 배포 시 threat taxonomy(ASI)와 auditable certification(AIUC-1)을 한 세트로. NSA MCP PP-26-1834(MCP operational) ·Microsoft AGT(runtime enforcement)와 compose.
+  summary: OWASP Agentic Security Initiative(ASI) Top 10 for Agentic Applications 2026(2025-12, 100+ expert peer review)는 autonomous agent 고유 실패 모드를 10개로 정의한다. ASI01 Goal Hijack ·ASI02 Tool Misuse ·ASI03 Identity/Privilege Abuse ·ASI04 Supply Chain ·ASI05 Unexpected Code Execution ·ASI06 Memory/Context Poisoning ·ASI07 Insecure Inter-Agent Comms ·ASI08 Cascading Failures ·ASI09 Human-Agent Trust Exploitation ·ASI10 Rogue Agents. OWASP LLM Top 10(2025)은 GenAI app risk, ASI는 plan·act·persist·delegate agent risk — procurement·threat modeling에서 병행. least agency principle — minimum autonomy for bounded task가 cross-cutting mitigation. Five Eyes "Careful Adoption of Agentic AI"(2026-05)가 ASI control mapping을 국제 규제 signal로 채택. AIUC-1 crosswalk(2026-05-25) — ASI01~10↔AIUC-1 6 domain bidirectional mapping·8 gap areas(agent identity·runtime containment·supply chain attestation·schema controls 등) — agent 배포 시 threat taxonomy(ASI)와 auditable certification(AIUC-1)을 한 세트로. NSA MCP PP-26-1834(MCP operational)
+    ·Microsoft AGT(runtime enforcement)와 compose.
   points:
   - ASI01~10 — goal hijack·tool misuse·privilege·supply chain·RCE·memory poison
   - AIUC-1 crosswalk — SOC2 analog cert, 8 gap areas where cert must expand for ASI
@@ -6795,7 +6793,7 @@ cards:
   source: https://aclanthology.org/2026.findings-acl.1142.pdf
 - category: ai
   title: EvoCodeBench — Harbor multi-step·MT@4 vs SR 22–40pp·grader leak audit
-  summary: EvoCodeBench(EvoCode-Bench·UniPat-AI·Harbor official multi-step) — 26 stateful task·227 steps·5–15 rounds per task, single persistent workspace+cumulative executable tests. MT@4(fail-stop multi-round) vs SR(single-round from reference state) — most agents SR exceeds MT@4 by 22–40pp, highest SR(78.9) ranks 3rd in MT@4(44.0). Round-5 aggregate pass < half of round-1. June 2026 integrity audit — Harbor shared multi-step grader script leak in agent workspace(12/26 tasks), upstream fix PR #1961, full re-run. Terminal-X iteration axis with DeepTerminalBench·RoadmapBench.
+  summary: EvoCodeBench(EvoCode-Bench·UniPat-AI·Harbor official multi-step) — 26 stateful task·227 steps·5–15 rounds per task, single persistent workspace+cumulative executable tests. MT@4(fail-stop multi-round) vs SR(single-round from reference state) — most agents SR exceeds MT@4 by 22–40pp, highest SR(78.9) ranks 3rd in MT@4(44.0). Round-5 aggregate pass < half of round-1. June 2026 integrity audit — Harbor shared multi-step grader script leak in agent workspace(12/26 tasks), upstream fix PR
   points:
   - MT@4 vs SR ranking inversion — single-round overstates persistent reliability
   - Harbor native [[steps]] — no fork for full task, mean multi_step_reward_strategy
@@ -7245,7 +7243,7 @@ cards:
   source: https://zylos.ai/research/2026-02-25-rate-limiting-backpressure-ai-agent-apis
 - category: ai
   title: MCP Elicitation — 서버가 도구 실행 중 필요한 입력을 구조화해서 묻기
-  summary: 'MCP 2025-06-18의 Elicitation은 서버가 도구·워크플로 실행 중 빠진 정보를 클라이언트를 통해 사용자에게 다시 물을 수 있게 하는 기능이다. 서버는 `elicitation/create` 요청에 메시지와 `requestedSchema`를 담고, 클라이언트는 사용자가 검토·수정·거절·취소할 수 있는 UI를 제공한다. 스키마는 구현 부담을 줄이려고 평평한 object와 string/number/boolean/enum 같은 primitive 중심으로 제한된다. 교훈은 "처음 프롬프트에 모든 경우의 질문을 우겨 넣기"가 아니라, 툴 실행 지점에서 필요한 필드만 구조화해 물어보는 것이다. 단, spec은 elicitation으로 비밀번호·API 키·토큰·결제 정보 같은 민감 정보를 요구하지 말라고 못박고, 클라이언트가 어떤 서버가 묻는지 명확히 보여주고 decline/cancel을 지원해야 한다고 요구한다.'
+  summary: MCP 2025-06-18의 Elicitation은 서버가 도구·워크플로 실행 중 빠진 정보를 클라이언트를 통해 사용자에게 다시 물을 수 있게 하는 기능이다. 서버는 `elicitation/create` 요청에 메시지와 `requestedSchema`를 담고, 클라이언트는 사용자가 검토·수정·거절·취소할 수 있는 UI를 제공한다. 스키마는 구현 부담을 줄이려고 평평한 object와 string/number/boolean/enum 같은 primitive 중심으로 제한된다. 교훈은 "처음 프롬프트에 모든 경우의 질문을 우겨 넣기"가 아니라, 툴 실행 지점에서 필요한 필드만 구조화해 물어보는 것이다. 단, spec은 elicitation으로 비밀번호·API 키·토큰·결제 정보 같은 민감 정보를 요구하지 말라고 못박고, 클라이언트가 어떤 서버가 묻는지 명확히 보여주고 decline/cancel을 지원해야 한다고 요구한다.
   points:
   - 서버는 `elicitation/create` + JSON Schema로 필요한 추가 입력을 요청
   - 응답은 accept/decline/cancel 3상태 — 사용자가 검토·수정·거절 가능
@@ -7495,7 +7493,7 @@ cards:
   source: https://github.com/microsoft/markitdown
 - category: ai
   title: Claude Fable 5 — SWE-bench Pro 80.3%·6/12 전면 중단, Opus 4.8이 fallback
-  summary: Claude Fable 5(anthropic·2026-06-09 GA)는 Mythos-class 첫 공개 모델 — SWE-bench Verified 95.0%·SWE-bench Pro 80.3%·Terminal-Bench 2.1 83.1%·DeepSWE #1(70% PASS@1). Stripe 50M-line Ruby migration 2개월→1일·Cognition FrontierCode 최고점. 6/12 US 정부 export-control 지시로 Fable 5·Mythos 5 전 세계 중단(Bedrock 포함) — 3일 만에 역사적 벤치마크만 남음. 6/25 Anthropic "zero traffic" 확인, UI 잔존은 front-end bug. 실무 fallback은 claude-opus-4-8 — daily task는 충분, multi-day autonomous session gap. Kimi K2.7-Code·GLM-5.2가 open-weight 대안.
+  summary: Claude Fable 5(anthropic·2026-06-09 GA)는 Mythos-class 첫 공개 모델 — SWE-bench Verified 95.0%·SWE-bench Pro 80.3%·Terminal-Bench 2.1 83.1%·DeepSWE
   points:
   - 6/9~6/12 3일 GA — 95% Verified·80.3% Pro·83.1% Terminal-Bench, 6/12 worldwide suspend
   - Opus 4.8 fallback — daily coding OK, long-horizon autonomous gap remains
@@ -7571,7 +7569,7 @@ cards:
   points:
   - Background monitors — log tail·build watcher auto-arm, plugin author ships watcher
   - LSP plugins — 11 languages, post-edit diagnostic·go-to-definition without agent ask
-  - '/plugin list — enabled/disabled filter, details pane token cost·LSP inventory'
+  - /plugin list — enabled/disabled filter, details pane token cost·LSP inventory
   source: https://code.claude.com/docs/en/plugins-reference
 - category: ai
   title: Endor Labs Agent Security League — FuncPass 85%·SecPass 24%, AI 코드 보안 격차
@@ -7774,12 +7772,12 @@ cards:
   - Sandbox Docker/E2B/Modal — secure code execution default path
   source: https://github.com/huggingface/smolagents
 - category: ai
-  title: AA Coding Agent Index v1.1 — DeepSWE+Terminal-Bench+SWE-Atlas-QnA composite
-  summary: Artificial Analysis Coding Agent Index v1.1(June 2026) — agent harness+model composite pass@1 across 3 benchmarks(321 tasks). DeepSWE 113(long-horizon SE·contamination-free) replaces SWE-Bench-Pro-Hard-AA — reorder index(Codex GPT-5.5 xhigh 76, Claude Opus 4.8 73, Fable 5 77). Terminal-Bench v2 84(agentic terminal). SWE-Atlas-QnA 124(repo Q&A rubric). Simple average composite — harness matters as much as model. DeepSWE card(verifier accuracy) ·Terminal-Bench 2.1 card와 complementary — index=headline cross-benchmark score.
+  title: AA Coding Agent Index v1.1 — composite pass@1·per-task cost $0.07–$2.26·harness 16–19%
+  summary: Artificial Analysis Coding Agent Index v1.1(June 2026) — agent harness+model composite pass@1 across 3 benchmarks(321 tasks). DeepSWE 113(long-horizon SE·contamination-free) replaces SWE-Bench-Pro-Hard-AA — Fable 5 77·Codex GPT-5.5 76·Opus 4.8 73. Terminal-Bench v2 84(agentic terminal). SWE-Atlas-QnA 124(repo Q&A rubric). May 2026 cost layer — same Opus 4.7 per-task $1.24(Claude Code) vs $1.47(Cursor CLI)=harness-only 16–19% spread; full stack swap $0.07–$2.26(32× headline includes model+cache routing). turn count·cache hit rate(96% vs 80%)가 harness diff보다 bill variance를 더 지배. vs model-only SWE-bench leaderboard — index+$/task=stack selection not model pick alone.
   points:
   - v1.1 — DeepSWE replaces SWE-Bench-Pro-Hard, 321 tasks 3-run pass@1
-  - Fable 5 77 ·Codex GPT-5.5 76 ·Opus 4.8 73 — index reorder
-  - Harness+model pair — not model-only leaderboard
+  - Harness-only 16–19% on same model — turn count+cache hit dominate variance
+  - Per-task $0.07–$2.26 full-stack — evaluate model+harness pair before procurement
   source: https://artificialanalysis.ai/methodology/coding-agents-benchmarking
 - category: ai
   title: Codex Appshots — macOS frontmost window screenshot+accessibility→context
@@ -7799,7 +7797,7 @@ cards:
   source: https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more
 - category: ai
   title: SWE-Atlas — Codebase QnA·Test Writing·Refactoring 284 rubric task
-  summary: 'SWE-Atlas(Scale AI·arXiv 2605.08366·scaleapi/SWE-Atlas)는 bug-fix 벤치마크를 넘어 3 professional SE workflow를 재는 suite — Codebase QnA(124)·Test Writing(90)·Refactoring(70) = 284 expert task. sandboxed real repo·Harbor scaffold·programmatic check + expert rubric — functional correctness만이 아니라 test completeness·maintainability·hygiene까지. GPT-5.4·Opus 4.7 top but open-weight poor; native harness(Claude Code·Codex CLI)가 generic harness 대비 1.5–2× exploration→score↑. DeepSWE(long-horizon) ·FrontierCode(mergeability) ·AA Index v1.1(SWE-Atlas-QnA composite)와 축 분리 — investigative·maintenance workflow.'
+  summary: SWE-Atlas(Scale AI·arXiv 2605.08366·scaleapi/SWE-Atlas)는 bug-fix 벤치마크를 넘어 3 professional SE workflow를 재는 suite — Codebase QnA(124)·Test Writing(90)·Refactoring(70) = 284 expert task. sandboxed real repo·Harbor scaffold·programmatic check + expert rubric — functional correctness만이 아니라 test completeness·maintainability·hygiene까지. GPT-5.4·Opus 4.7 top but open-weight poor; native harness(Claude Code·Codex CLI)가 generic harness 대비 1.5–2× exploration→score↑. DeepSWE(long-horizon) ·FrontierCode(mergeability) ·AA Index v1.1(SWE-Atlas-QnA composite)와 축 분리 — investigative·maintenance workflow.
   points:
   - 284 tasks 3 leaderboards — QnA·Test Writing·Refactoring rubric eval
   - Harbor scaffold + vendor-native harness comparison built-in
@@ -7807,7 +7805,7 @@ cards:
   source: https://scale.com/blog/swe-atlas-complete
 - category: ai
   title: Harbor — Terminal-Bench 공식 harness·50+ benchmark adapter
-  summary: 'Harbor(harbor-framework/harbor·~2.7k★·v0.15)는 Terminal-Bench 제작팀의 agent eval framework — agent·dataset·environment provider를 common interface로 표준화. harbor run -d terminal-bench@2.0 -a claude-code -m anthropic/claude-opus-4-8 --n-concurrent 100 --env daytona. 50+ adapters(SWE-bench·Aider Polyglot·BFCL·MLGym 등)·installed agents(claude-code·codex·openhands·goose·opencode·mini-swe-agent·terminus-2). SWE-Atlas·Terminal-Bench 2.1 card가 score를 말하면 Harbor는 ''같은 benchmark를 어떻게 공정히 돌리나'' infra. promptfoo(red team) ·mcp-eval(MCP)와 축 분리.'
+  summary: Harbor(harbor-framework/harbor·~2.7k★·v0.15)는 Terminal-Bench 제작팀의 agent eval framework — agent·dataset·environment provider를 common interface로 표준화. harbor run -d terminal-bench@2.0 -a claude-code -m anthropic/claude-opus-4-8 --n-concurrent 100 --env daytona. 50+ adapters(SWE-bench·Aider Polyglot·BFCL·MLGym 등)·installed agents(claude-code·codex·openhands·goose·opencode·mini-swe-agent·terminus-2). SWE-Atlas·Terminal-Bench 2.1 card가 score를 말하면 Harbor는 '같은 benchmark를 어떻게 공정히 돌리나' infra. promptfoo(red team) ·mcp-eval(MCP)와 축 분리.
   points:
   - Terminal-Bench official harness — agent black-box + declarative benchmark
   - Parallel via Daytona·Modal·LangSmith·Blaxel sandbox providers
@@ -7815,7 +7813,7 @@ cards:
   source: https://github.com/harbor-framework/harbor
 - category: ai
   title: Devstral 2 / Mistral Vibe CLI — 123B·72.2% SWE-bench·vibe-acp ACP
-  summary: 'Devstral 2(Mistral·2025-12) — 123B dense·256K ctx·72.2% SWE-bench Verified open SOTA; Devstral Small 2(24B·Apache-2.0·68.0%) local deploy+multimodal. Mistral Vibe CLI(mistralai/mistral-vibe·Apache-2.0·~4.6k★) — Devstral-native terminal agent, file edit·shell·todo·auto-approve toggle. vibe-acp ACP server — Zed extension·JetBrains AI Assistant·avante.nvim integration. North Mini Code(30B sovereign) ·GLM-5.2(MIT 753B) ·MiniMax M3(428B multimodal)와 open-weight coding 4축 — Mistral=Devstral+Vibe ACP stack.'
+  summary: Devstral 2(Mistral·2025-12) — 123B dense·256K ctx·72.2% SWE-bench Verified open SOTA; Devstral Small 2(24B·Apache-2.0·68.0%) local deploy+multimodal. Mistral Vibe CLI(mistralai/mistral-vibe·Apache-2.0·~4.6k★) — Devstral-native terminal agent, file edit·shell·todo·auto-approve toggle. vibe-acp ACP server — Zed extension·JetBrains AI Assistant·avante.nvim integration. North Mini Code(30B sovereign) ·GLM-5.2(MIT 753B) ·MiniMax M3(428B multimodal)와 open-weight coding 4축 — Mistral=Devstral+Vibe ACP stack.
   points:
   - Devstral 2 123B modified MIT ·Small 2 24B Apache-2.0 ·256K ctx
   - Vibe CLI — terminal agent + config.toml provider/tool permissions
@@ -7823,7 +7821,7 @@ cards:
   source: https://mistral.ai/news/devstral-2-vibe-cli
 - category: ai
   title: Claude Code Remote Control — local session·phone/browser steer
-  summary: 'Claude Code Remote Control(research preview·v2.1.51+) — claude.ai/code·Claude mobile app이 로컬 machine의 running CLI/VS Code session에 연결. Claude Code on the web(Anthropic cloud VM)와 달리 execution은 local — MCP·filesystem·project config 그대로, UI만 remote window. /remote-control·claude --remote-control·Desktop default toggle. Team/Enterprise는 admin Remote Control toggle 필요. ~10min network timeout — long unattended는 web/cloud agent. Channels(MCP push event) ·Scheduled Tasks(poll) ·Routines(cloud)와 4축 automation surface.'
+  summary: Claude Code Remote Control(research preview·v2.1.51+) — claude.ai/code·Claude mobile app이 로컬 machine의 running CLI/VS Code session에 연결. Claude Code on the web(Anthropic cloud VM)와 달리 execution은 local — MCP·filesystem·project config 그대로, UI만 remote window. /remote-control·claude --remote-control·Desktop default toggle. Team/Enterprise는 admin Remote Control toggle 필요. ~10min network timeout — long unattended는 web/cloud agent. Channels(MCP push event) ·Scheduled Tasks(poll) ·Routines(cloud)와 4축 automation surface.
   points:
   - Local execution remote UI — MCP+files stay on your machine
   - vs claude.ai/code cloud — no local setup vs keep local context
@@ -7831,7 +7829,7 @@ cards:
   source: https://code.claude.com/docs/en/remote-control
 - category: ai
   title: Claude Code Channels — MCP push CI·chat·webhook into open session
-  summary: 'Claude Code Channels(research preview·v2.1.80+) — MCP server가 running session에 event push — CI failure·Slack·monitoring alert를 Claude context에 inject, two-way reply 가능. --channels flag·claude-plugins-official allowlist·org allowedChannelPlugins gate. Session open일 때만 event 도착 — always-on은 background process 필요. vs Scheduled Tasks(/loop poll) ·Remote Control(human steer) ·UserPromptSubmit(reactive enter) — Channels=external push trigger. Enterprise admin enable required.'
+  summary: Claude Code Channels(research preview·v2.1.80+) — MCP server가 running session에 event push — CI failure·Slack·monitoring alert를 Claude context에 inject, two-way reply 가능. --channels flag·claude-plugins-official allowlist·org allowedChannelPlugins gate. Session open일 때만 event 도착 — always-on은 background process 필요. vs Scheduled Tasks(/loop poll) ·Remote Control(human steer) ·UserPromptSubmit(reactive enter) — Channels=external push trigger. Enterprise admin enable required.
   points:
   - MCP channel server — push events into live session, bidirectional reply
   - CI failure→Claude already has project context loaded
@@ -7839,7 +7837,7 @@ cards:
   source: https://code.claude.com/docs/en/channels
 - category: ai
   title: OpenHands Agent Canvas — Slack·GitHub·Linear event automation workspace
-  summary: 'OpenHands Agent Canvas(2026-06-16·agent-canvas npm) — self-hostable browser workspace for coding agent automations. cron schedule·GitHub webhook·Slack·Linear·custom webhook trigger. OpenHands default agent but ACP로 Claude Code·Codex·Gemini CLI third-party harness. local laptop→VM always-on promotion path. OpenHands(Docker sandbox interactive) ·Copilot Automations(cloud) ·Paperclip(org chart)와 축 분리 — harness-neutral event-driven automation UI.'
+  summary: OpenHands Agent Canvas(2026-06-16·agent-canvas npm) — self-hostable browser workspace for coding agent automations. cron schedule·GitHub webhook·Slack·Linear·custom webhook trigger. OpenHands default agent but ACP로 Claude Code·Codex·Gemini CLI third-party harness. local laptop→VM always-on promotion path. OpenHands(Docker sandbox interactive) ·Copilot Automations(cloud) ·Paperclip(org chart)와 축 분리 — harness-neutral event-driven automation UI.
   points:
   - agent-canvas one command — local or VM self-host full stack
   - Slack PR review·issue triage·Linear ticket automation recipes
@@ -7863,7 +7861,7 @@ cards:
   source: https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/
 - category: ai
   title: BenchJack — SWE-bench·Terminal-Bench reward-hack red-team, conftest.py 10줄 exploit
-  summary: 'BenchJack(Berkeley RDI·arXiv 2605.12673)는 agent benchmark vulnerability scanner — eval pipeline trust boundary·scoring mechanism 분석→working exploit 자동 생성. 10개 벤치마크 audit — SWE-bench Verified(500)·Pro(731)·Terminal-Bench(89)·WebArena·OSWorld 등 9/10 near-100% without solving task. SWE-bench exploit — repo root conftest.py pytest hook이 모든 test outcome을 passed로 rewrite(Pytest auto-discover, reset 후에도 survive). 219 flaws·8 flaw taxonomy·iterative patch pipeline(WebArena·OSWorld 3 attempt内 unhackable). promptfoo(adversarial prompt) ·GitHub PTA(structural UI) ·OASB(product security)와 축 분리 — benchmark integrity penetration test before publish.'
+  summary: BenchJack(Berkeley RDI·arXiv 2605.12673)는 agent benchmark vulnerability scanner — eval pipeline trust boundary·scoring mechanism 분석→working exploit 자동 생성. 10개 벤치마크 audit — SWE-bench Verified(500)·Pro(731)·Terminal-Bench(89)·WebArena·OSWorld 등 9/10 near-100% without solving task. SWE-bench exploit — repo root conftest.py pytest hook이 모든 test outcome을 passed로 rewrite(Pytest auto-discover, reset 후에도 survive). 219 flaws·8 flaw taxonomy·iterative patch pipeline(WebArena·OSWorld 3 attempt内 unhackable). promptfoo(adversarial prompt) ·GitHub PTA(structural UI) ·OASB(product security)와 축 분리 — benchmark integrity penetration test before publish.
   points:
   - conftest.py 10-line hook — force all tests passed, zero bugs fixed, 100% score
   - Trust boundary flaw — agent patch runs inside test container with full privileges
@@ -7871,7 +7869,7 @@ cards:
   source: https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/
 - category: ai
   title: Claw-SWE-Bench — harness(claw)를 controlled variable로, adapter·cost 1급 축
-  summary: 'Claw-SWE-Bench(arXiv 2606.12344·opensquilla/claw-swe-bench) — general-purpose agent(OpenClaw 등)를 SWE-bench Docker contract에 adapter protocol로 연결. 350 instance·8 language·43 repo + Lite 80 subset. OpenClaw minimal adapter 19.1% vs full adapter 73.4% same GLM 5.1 — harness 54pp gap. Model sweep 29.4pp ·claw sweep 27.4pp under fixed model; similar accuracy can differ 10× API cost. Harbor(eval infra) ·Terminal-Bench 2.1(agent+model pair) ·AA Index(composite)와 축 분리 — claw=adapter design as first-class eval axis.'
+  summary: Claw-SWE-Bench(arXiv 2606.12344·opensquilla/claw-swe-bench) — general-purpose agent(OpenClaw 등)를 SWE-bench Docker contract에 adapter protocol로 연결. 350 instance·8 language·43 repo + Lite 80 subset. OpenClaw minimal adapter 19.1% vs full adapter 73.4% same GLM 5.1 — harness 54pp gap. Model sweep 29.4pp ·claw sweep 27.4pp under fixed model; similar accuracy can differ 10× API cost. Harbor(eval infra) ·Terminal-Bench 2.1(agent+model pair) ·AA Index(composite)와 축 분리 — claw=adapter design as first-class eval axis.
   points:
   - Adapter protocol — fixed prompt·budget·workspace·patch extraction for fair claw compare
   - Harness gap — 19.1%→73.4% same model; cost-accuracy Pareto not accuracy-only
@@ -7879,7 +7877,7 @@ cards:
   source: https://arxiv.org/abs/2606.12344
 - category: ai
   title: SWE-Cycle / SWE-Judge — env setup·implement·test gen·FullCycle 489 task
-  summary: 'SWE-Cycle(arXiv 2605.13139) — issue resolution full lifecycle benchmark — Environment Reconstruction·Code Implementation·Verification Test Generation·FullCycle(bare repo, no human scaffold). 489 filtered instance. Isolated task→FullCycle 전환 시 solve rate sharp drop — cross-phase dependency·code quality bottleneck. SWE-Judge — static review + dynamic testing execution-capable evaluator, autonomous trajectory parsing error 제거. SWE-Atlas(QnA·Test Writing·Refactoring rubric) ·Harbor(harness infra) ·DeepSWE(long-horizon)와 축 분리 — end-to-end autonomy without pre-configured env.'
+  summary: SWE-Cycle(arXiv 2605.13139) — issue resolution full lifecycle benchmark — Environment Reconstruction·Code Implementation·Verification Test Generation·FullCycle(bare repo, no human scaffold). 489 filtered instance. Isolated task→FullCycle 전환 시 solve rate sharp drop — cross-phase dependency·code quality bottleneck. SWE-Judge — static review + dynamic testing execution-capable evaluator, autonomous trajectory parsing error 제거. SWE-Atlas(QnA·Test Writing·Refactoring rubric) ·Harbor(harness infra) ·DeepSWE(long-horizon)와 축 분리 — end-to-end autonomy without pre-configured env.
   points:
   - 4 tasks — env rebuild·implement·test gen·FullCycle integrated bare repo
   - SWE-Judge — static+dynamic, fixes parser errors on full autonomous paths
@@ -7887,7 +7885,7 @@ cards:
   source: https://arxiv.org/html/2605.13139
 - category: ai
   title: ProgramBench — binary+docs만으로 FFmpeg·SQLite 재구현, fully resolved≈0%
-  summary: 'ProgramBench(arXiv 2605.03546·programbench.com) — agent가 executable+binary docs만 받고 architecture·language·build script 전부 자율 설계 — source·decompile·internet 금지. 200 task(jq·ripgrep→FFmpeg·SQLite·PHP interpreter). Agent-driven fuzzing hidden behavioral tests — implementation structure 무관 behavior match. Fully resolved intentionally strict — Fable 5 4/200·Opus 4.8 2/200(June 2026 vals.ai); raw pass rate ~70% but architecture wrong(monolithic single-file). DeepSWE(bug-fix decontaminated) ·SWE-bench(local surgery)와 축 분리 — cleanroom architectural reasoning stress test.'
+  summary: ProgramBench(arXiv 2605.03546·programbench.com) — agent가 executable+binary docs만 받고 architecture·language·build script 전부 자율 설계 — source·decompile·internet 금지. 200 task(jq·ripgrep→FFmpeg·SQLite·PHP interpreter). Agent-driven fuzzing hidden behavioral tests — implementation structure 무관 behavior match. Fully resolved intentionally strict — Fable 5 4/200·Opus 4.8 2/200(June 2026 vals.ai); raw pass rate ~70% but architecture wrong(monolithic single-file). DeepSWE(bug-fix decontaminated) ·SWE-bench(local surgery)와 축 분리 — cleanroom architectural reasoning stress test.
   points:
   - Inverts SWE-bench — no repo, only binary+docs; every design decision is model's
   - 0% headline vs 79%+ SWE-bench — measures different capability not contradiction
@@ -7903,7 +7901,7 @@ cards:
   source: https://www.atlassian.com/blog/bitbucket/agentic-pipelines-now-supports-openai-codex
 - category: ai
   title: OpenAI Shift to Agentic — 내부 99.8% Codex token·99th percentile 60h agent/day
-  summary: 'OpenAI "How agents are transforming work"(2026-06-25) + Columbia/Duke/UPenn paper — Codex adoption evidence. OpenAI internal — Codex 99.8% weekly output tokens(vs ChatGPT), engineer 99%, Legal/Finance/Recruiting 85%+ since Apr 2026. External org 63.3%·individual 16.5%. 99th percentile daily active — 60+ hours Codex agent turns/day parallel agents(June 2026). Individual sample — 80.6% requests >30min human work, 25.6% >8h delegated. Research dept median token use 56× Nov 2025. Consumer Plus/Pro <1% Codex among active users. Codex /goal ·parallel agents ·Bitbucket CI와 compose — adoption curve not capability headline.'
+  summary: OpenAI "How agents are transforming work"(2026-06-25) + Columbia/Duke/UPenn paper — Codex adoption evidence. OpenAI internal — Codex 99.8% weekly output tokens(vs ChatGPT), engineer 99%, Legal/Finance/Recruiting 85%+ since Apr 2026. External org 63.3%·individual 16.5%. 99th percentile daily active — 60+ hours Codex agent turns/day parallel agents(June 2026). Individual sample — 80.6% requests >30min human work, 25.6% >8h delegated. Research dept median token use 56× Nov 2025. Consumer Plus/Pro <1% Codex among active users. Codex /goal ·parallel agents ·Bitbucket CI와 compose — adoption curve not capability headline.
   points:
   - Internal 99.8% tokens — agentic default when cost/access/training removed
   - Org 63% vs individual 16.5% — enterprise ahead, consumer still chat-first
@@ -7911,7 +7909,7 @@ cards:
   source: https://openai.com/index/how-agents-are-transforming-work/
 - category: ai
   title: ITBench-AA — K8s incident RCA 59 task, frontier 전원 50% 미만·Stirrup harness
-  summary: 'ITBench-AA(IBM×Artificial Analysis·2026-05) — enterprise IT agent benchmark, SRE 59 Kubernetes incident root-cause analysis first release(FinOps·CISO roadmap). Offline snapshot — alerts·events·traces·metrics·topology→structured JSON root-cause entities. Stirrup OSS reference harness·100-turn cap·3 repeats·full recall scoring(miss one root cause→0). Best Claude Opus 4.7 ~47%·GPT-5.5 ~46% — all frontier <50%. vs SWE-bench Verified 80%+ — enterprise ops unsaturated. DeepSWE(coding) ·ProgramBench(architectural) ·Terminal-Bench(infra shell)와 축 분리 — diagnose live system not patch repo.'
+  summary: ITBench-AA(IBM×Artificial Analysis·2026-05) — enterprise IT agent benchmark, SRE 59 Kubernetes incident root-cause analysis first release(FinOps·CISO roadmap). Offline snapshot — alerts·events·traces·metrics·topology→structured JSON root-cause entities. Stirrup OSS reference harness·100-turn cap·3 repeats·full recall scoring(miss one root cause→0). Best Claude Opus 4.7 ~47%·GPT-5.5 ~46% — all frontier <50%. vs SWE-bench Verified 80%+ — enterprise ops unsaturated. DeepSWE(coding) ·ProgramBench(architectural) ·Terminal-Bench(infra shell)와 축 분리 — diagnose live system not patch repo.
   points:
   - 59 SRE tasks — 40 public + 19 held-out; precision-weighted entity scoring
   - Stirrup harness — reproducible shell-access sandbox, github.com/itbench-hub/ITBench
@@ -7919,7 +7917,7 @@ cards:
   source: https://artificialanalysis.ai/evaluations/itbench-aa
 - category: ai
   title: Cursor Automations /automate — cloud always-on agent·computer use·multi-repo
-  summary: 'Cursor Automations(2026-03 GA·2026-06-18 /automate skill) — cursor.com/automations cloud agent, cron·GitHub·GitLab·Slack·Linear·webhook trigger. /automate in local session — plain language→triggers·instructions·tools auto-config. 2026-05-20 — Agents Window·multi-repo·no-repo(read-only digest). 2026-06-18 — computer use default on automations(demo artifact), default open PR, incomplete state save. Isolated cloud sandbox — diff staged for review, default no auto-apply. vs /loop(local·session-bound·localhost access) ·Claude Scheduled Tasks ·OpenHands Agent Canvas(self-host). Rule — persistent cloud vs local env-bound loop.'
+  summary: Cursor Automations(2026-03 GA·2026-06-18 /automate skill) — cursor.com/automations cloud agent, cron·GitHub·GitLab·Slack·Linear·webhook trigger. /automate in local session — plain language→triggers·instructions·tools auto-config. 2026-05-20 — Agents Window·multi-repo·no-repo(read-only digest). 2026-06-18 — computer use default on automations(demo artifact), default open PR, incomplete state save. Isolated cloud sandbox — diff staged for review, default no auto-apply. vs /loop(local·session-bound·localhost access) ·Claude Scheduled Tasks ·OpenHands Agent Canvas(self-host). Rule — persistent cloud vs local env-bound loop.
   points:
   - /automate skill — describe workflow, Cursor configures triggers+tools
   - Multi-repo May 2026 — one automation targets several repos; no-repo for Slack-only
@@ -8070,13 +8068,13 @@ cards:
   - CSP no external fetch — security boundary defines capability ceiling
   source: https://claude.com/blog/claude-code-artifacts
 - category: ai
-  title: Miasma/IronWorm — AI config file supply chain worm·SessionStart·alwaysApply
-  summary: Miasma/IronWorm(2026-06 CSA) — npm ecosystem self-replicating worm targeting AI coding tool config as primary attack surface. Miasma — 57 npm packages·286 versions→73 Microsoft repos disabled(June 5 Azure/durabletask). persistence — .claude/settings.json SessionStart hook→setup.mjs·.cursor/rules/setup.mdc alwaysApply:true·.gemini/settings.json·.vscode/tasks.json runOn:folderOpen. execute on repo open not package install — bypasses postinstall CI defenses. Mini Shai-Hulud(May 2026) first documented agent-config persistence. vs HackMyAgent(pentest) ·CLAUDE.md injection — worm=autonomous spread via trusted config auto-execution.
+  title: Miasma/IronWorm — Phantom Gyp·eBPF·AI config supply-chain worm
+  summary: Miasma/IronWorm(2026-06 CSA·StepSecurity·Phoenix) — npm self-replicating worm targeting AI coding tool config as primary attack surface. Miasma Wave 2 Phantom Gyp — preinstall/postinstall 대신 157-byte binding.gyp→node-gyp rebuild 자동 실행, lifecycle script scanner 우회(72h 내 pivot). 57 packages·286 versions·73 Microsoft repos disabled. persistence — .claude/settings.json SessionStart hook·.cursor/rules/setup.mdc alwaysApply:true·.vscode/tasks.json runOn:folderOpen — repo open trigger, package remove해도 config 잔존. IronWorm — Rust ELF preinstall·eBPF kernel rootkit(procfs hide)·Tor C2·86 env var sweep(AWS/GCP/Azure+Anthropic/OpenAI/Gemini keys). CI — ACTIONS_RUNTIME_TOKEN→Runner.Worker /proc/{pid}/mem masked secret read. vs HackMyAgent(pentest) ·prompt injection — worm=autonomous spread via trusted config auto-execution layer.
   points:
-  - Folder-open trigger — editor config as postinstall equivalent
-  - Audit .claude/ .cursor/ .vscode/ in PR review like Dockerfile
-  - Microsoft 73-repo sweep 105s — treat agent config as privileged path
-  source: https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/06/CSA_research_note_miasma_ironworm_AI_coding_supply_chain_20260609-csa-styled.pdf
+  - Phantom Gyp — binding.gyp not package.json scripts, --ignore-scripts alone insufficient
+  - Folder-open persistence — audit .claude/ .cursor/ .vscode/ like Dockerfile in PR
+  - IronWorm eBPF+Tor — npm preinstall Rust payload, rotate all cloud+AI keys on compromise
+  source: https://www.stepsecurity.io/blog/binding-gyp-npm-supply-chain-attack-spreads-like-worm
 - category: ai
   title: Reward hacking coding benchmarks — git history·web lookup 63% retrieved fix
   summary: Cursor research(2026-06-25) — smarter models reward-hack coding evals more than older ones. SWE-bench Pro audit — 63% of Opus 4.8 Max successful resolutions retrieved fix not derived. seal git history+block internet — Opus 87.1%→73.0%·Composer 2.5 74.7%→54.0%. leakage channels — upstream merged PR lookup·bundled .git history mining. mitigations — transcript audit·controlled runtime·egress proxy·remove .git in eval sandbox. vs DeepSWE(contamination-free tasks) ·c-CRAB(review oracle) — reward hacking=runtime eval integrity not training contamination.
@@ -8266,7 +8264,7 @@ cards:
   summary: Saber(arXiv 2606.01317·sssr-lab/saber) — coding agent operational safety in realistic stateful project workspaces, not chatbot refusal. agent edits code·runs shell·modifies artifacts in Docker sandbox — safety judged from final workspace state+action trace after multi-step run. violation taxonomy by cause enables model-specific safety profiles. best model still >54% harmful safety-violation rate(HSR) — refusal alone insufficient for agent safety. vs Agent-SafetyBench(interactive tool env score) ·CUAHarm(terminal harm execution) — Saber=project workspace state delta axis.
   points:
   - Final state judgment — not prompt refusal, completed run workspace delta
-  - 'HSR 54%+ even best model — plan safely+least privilege+preserve state all fail'
+  - HSR 54%+ even best model — plan safely+least privilege+preserve state all fail
   - Violation taxonomy — cause categorization beyond binary safe/unsafe
   source: https://arxiv.org/abs/2606.01317
 - category: ai
@@ -8327,7 +8325,7 @@ cards:
   source: https://github.com/homeofe/AAHP
 - category: ai
   title: RigorBench — 코딩 에이전트 평가를 pass/fail에서 계획·검증·중단 품질로 넓히기
-  summary: 'RigorBench(arXiv 2606.22678)는 코딩 에이전트를 최종 정답률만으로 보지 말고 실행 궤적 전체로 평가하자는 벤치마크다. 논문은 30개 작업을 Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, Don''t Break the Build 5범주로 나누고, Planning Fidelity·Verification Coverage·Recovery Efficiency·Abstention Quality·Atomic Transition Integrity 5축을 RigorScore로 합친다. 교육 포인트는 간단하다. 테스트 통과 패치라도 계획 없이 여러 번 찔러 맞혔거나, 불가능한 요구에 멈추지 못했거나, 중간 상태마다 빌드를 깨면 운영용 에이전트로는 낮게 봐야 한다는 것이다. 저자들은 구조화된 discipline이 process quality를 평균 41%, outcome correctness를 17% 높였다고 보고한다.'
+  summary: RigorBench(arXiv 2606.22678)는 코딩 에이전트를 최종 정답률만으로 보지 말고 실행 궤적 전체로 평가하자는 벤치마크다. 논문은 30개 작업을 Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, Don't Break the Build 5범주로 나누고, Planning Fidelity·Verification Coverage·Recovery Efficiency·Abstention Quality·Atomic Transition Integrity 5축을 RigorScore로 합친다. 교육 포인트는 간단하다. 테스트 통과 패치라도 계획 없이 여러 번 찔러 맞혔거나, 불가능한 요구에 멈추지 못했거나, 중간 상태마다 빌드를 깨면 운영용 에이전트로는 낮게 봐야 한다는 것이다. 저자들은 구조화된 discipline이 process quality를 평균 41%, outcome correctness를 17% 높였다고 보고한다.
   points:
   - '5축 평가: 계획·검증·회복·중단·원자적 전환'
   - 30개 작업·120개 실행 궤적을 계획/편집/테스트/복구 로그로 채점
@@ -8397,3 +8395,67 @@ cards:
   - Upgrade footgun — follows user prompt logging unless explicitly 0
   - LLM-judge pipelines — follow-up efficiency scoring without raw API dump
   source: https://code.claude.com/docs/en/agent-sdk/observability
+- category: ai
+  title: TEBench — project-level test evolution·Breaking/Stale/Missing 314 task
+  summary: TEBench(arXiv 2605.06125·iSEngLab/TEBench) — 첫 project-level test evolution benchmark. production code commit 후 전 repo에서 어떤 test를 고치고 어디에 새 test가 필요한지 autonomously identify+patch — method-level pre-paired ⟨m,m',t⟩ 벤치마크와 달리 whole-project reasoning. 314 instances·10 Defects4J Java projects·developer GT. 3 type — Test-Breaking(compile/exec fail), Test-Stale(pass but semantic outdated, avg F1≈36%), Test-Missing(new coverage). identification F1 45.7–49.4% ceiling across Claude Code/Codex/OpenCode — reactive execute-fail-fix loop는 stale/missing structurally unreachable. 2D metric — identification P/R/F1 + update(executability×coverage×modification similarity). vs c-CRAB(review oracle) ·SWE-bench(bug fix) — TEBench=test suite co-evolution with production code.
+  points:
+  - Test-Stale hardest — no execution failure signal, proactive semantic reasoning required
+  - Identification F1 ~48% ceiling — framework+model converge, shared inductive bias
+  - Update Overall Score headline — executability gates non-compiling patches to 0
+  source: https://arxiv.org/abs/2605.06125
+- category: ai
+  title: Benchmark Misalignment position — harness≠model·component-level eval 필요
+  summary: Position paper(arXiv 2606.17799·June 2026) — coding benchmark가 agentic SE와 structurally misaligned. pre-agent era 설계가 model+harness+environment+feedback을 single end-to-end pass rate로 collapse, single reference solution grading, component signal absence 3 symptom. evidence — Claude Opus 4.6 fixed, harness choice alone 58.0–79.8% Terminal-Bench spread(>20pp, adjacent model generation comparable). remedy — submission metadata(model·harness version·env hash·dataset version)+non-model ablation, behavioural spec allowing multiple valid solutions, per-component span grading not monolithic pass/fail. vs RigorBench(process discipline) ·Layer-Isolated(production gate) — position paper=benchmark design philosophy for harness-aware iteration.
+  points:
+  - Harness spread >20pp same model — leaderboard model credit is misleading
+  - Single GT penalizes valid alternatives — apparent capability artificially suppressed
+  - Component-level signal — retriever/router/tool/reasoning span metrics for iteration
+  source: https://arxiv.org/abs/2606.17799
+- category: ai
+  title: Token cost write-time attribution — trace_id·event_id·gateway idempotency
+  summary: Agent cost attribution is write-time property(UsageBox 2026) — provider invoice·post-hoc log로 tool call·sub-agent branch·retry chain reconstruct 불가. every model call gateway에서 structured usage event emit — trace_id·customer_id·feature_id·agent_step·model dimensions. idempotency — stable event_id, meter counts once(at-least-once delivery dedup); genuine retry=new event_id. hierarchy — virtual key per agent role, run_id in provider user field, step-level x-litellm-response-cost header accumulation. multi-tenant SaaS — interceptor strips business headers before provider, ledger stores tenant_id+feature_id for showback/chargeback. runtime budget reject at gateway when tenant quota exhausted. vs Helicone(proxy FinOps) ·OTEL GenAI(token span) — write-time attribution=billing system not dashboard nicety.
+  points:
+  - Write-time tags — post-hoc attribution impossible after opaque agent run completes
+  - event_id idempotency — retries must not double-count same provider call
+  - Gateway single control point — SDK bypass calls still metered consistently
+  source: https://usagebox.com/articles/token-cost-attribution-agents-tools-subagents-2026
+- category: ai
+  title: Codex Sites — OpenAI hosted web app·workspace URL·RBAC deploy
+  summary: Codex Sites(OpenAI June 2026 preview) — Codex agent output을 OpenAI-hosted interactive website/dashboard/web app으로 create·deploy·share. workspace URL share·hosted env secrets/env vars manage·RBAC(Business default·Enterprise admin enable). 62 business apps+110 skills in 6 role plugins(Data Analytics·Creative·Sales·Finance·Due Diligence·Data Science) — Codex가 developer-only CLI를 넘어 general work platform으로 확장. vs Claude Code Artifacts(Team/Enterprise self-contained HTML·CSP no external fetch) ·Vercel deploy(MCP) — Sites=OpenAI-managed runtime+URL lifecycle. developer lesson — agent output delivery surface 선택(CSP sandbox vs hosted full-stack)이 capability ceiling 결정.
+  points:
+  - Hosted runtime — agent builds deploy without local server setup
+  - Role plugins 62 apps — Codex expands beyond code to business workflows
+  - RBAC workspace URL — share scope controlled at org level not file export
+  source: https://developers.openai.com/codex/app/sites
+- category: ai
+  title: Zed 1.4.2 Agent Skills — SKILL.md replaces rules·global AGENTS.md
+  summary: Zed 1.4.2(May 27 2026) — rules library retired, Agent Skills(SKILL.md folder+YAML frontmatter)로 전환. @rule→@skill, scripts/references/assets self-contained·version-controllable·dotfiles sync. built-in /create-skill scaffolds folder+frontmatter. global AGENTS.md at ~/.config/zed/AGENTS.md — first editor with project+global native AGENTS.md(Cursor·Codex·Copilot·Gemini CLI·Aider cross-tool standard). agent catalog sees name+description, skill tool on-demand load·disable-model-invocation for slash-only. external agent(Codex ACP) threads에는 Zed Skills 미적용 — agent-native config separate. vs openskills(AGENTS.md XML inject) ·Cursor rules(.mdc) — Zed=native skill filesystem+global AGENTS.md dual scope.
+  points:
+  - Rules library deprecated — SKILL.md folder is version-controllable unit
+  - Global AGENTS.md ~/.config/zed/ — cross-project instructions without per-repo copy
+  - External agents ignore Zed Skills — Codex/Claude keep native skill config
+  source: https://zed.dev/docs/ai/skills
+- category: ai
+  title: Symphony — WORKFLOW.md issue tracker control plane·isolated agent runs
+  summary: Symphony(openai/symphony·Apache-2.0·~25k★·SPEC.md) — OpenAI open-source Codex orchestration spec. Linear(etc) board를 control plane — open task마다 isolated workspace+agent run until PR or fail. WORKFLOW.md — tracker kind·prompt_template·workspace manager·agent runner·observability components declarative. Orchestrator state machine Unclaimed→Claimed→Running→Succeeded/Failed/TimedOut, git worktree per ticket, 30s poll. language-agnostic spec — reference Elixir impl, "implement Symphony per SPEC.md"로 any language agent build. harness engineering prerequisite — managing work not supervising agents. vs Jules(plan-first VM) ·Claude Code Routines(cloud schedule) — Symphony=issue tracker native always-on dispatch loop.
+  points:
+  - SPEC.md only core artifact — implement in language of choice
+  - Worktree isolation per ticket — no branch collision across concurrent agents
+  - Issue tracker as UI — zero Symphony-specific dashboard, Linear remains source of truth
+  source: https://github.com/openai/symphony/blob/main/SPEC.md
+- category: ai
+  title: Claude Code --attribution — .claude/attribution.json sub-agent chargeback
+  summary: 'Claude Code --attribution flag(June 2026) — session end .claude/attribution.json emit. schema_version·session_id·total_cost·total_tokens·agents[] with agent_role·model·tokens_in/out·cost(numeric)·timestamp·tasks[]. sub-agent·model tier·work unit별 programmatic chargeback — /usage(plan limit % by skill/MCP)와 complement, /usage=plan bucket attribution vs --attribution=session file for client billing export. tokens_in/out separate(pricing differs). complements OTEL cost_usd(telemetry pipeline) ·CodeLedger(plugin MCP) — --attribution=zero-config local JSON after every session. GitHub #49588 — hooks/MCP still lack live cumulative usage query.'
+  points:
+  - Per sub-agent role+tasks[] — spot single subtask consuming >50% session cost
+  - Numeric cost field — direct programmatic consumption no string parse
+  - vs /usage plan % — attribution.json=project/client chargeback export artifact
+  source: https://code.claude.com/docs/en/costs
+- category: ai
+  title: Evaluation Trust Tax — per-span LLM-judge cost OTEL blind spot
+  summary: Evaluation Trust Tax(Fiddler 2026) — production agent observability에서 external LLM-as-judge per span eval cost. 500K traces/day≈$260K/year eval API bill scales linearly with trace volume — OTEL GenAI semconv captures token/latency but not eval spend. Observability Tax pattern — Layer 3 quality eval at 100% traffic can cost Layers 1+2 combined. mitigation — in-environment eval(no external API·no data egress), production sample 5–20% async, high-stakes/anomaly 100% only. AgentCore Evaluations $1800/mo example 45K runs — sampling dial dev 50–100%·prod 2–5% at >100k sessions/day. vs Layer-Isolated Evaluation(deterministic gate) ·RigorBench(process rubric offline) — Trust Tax=operational cost layer beyond token observability.
+  points:
+  - 500K traces/day ≈ $260K/year external judge — linear with volume not inference
+  - 100% production eval often 2× monitoring cost — sample async default
+  - OTEL token metrics ≠ eval spend — FinOps must budget judge layer separately
+  source: https://www.fiddler.ai/blog/opentelemetry-agent-telemetry-signals

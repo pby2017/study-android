@@ -4138,3 +4138,60 @@ Refined:
 - Refined: `Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)`
 - Refined sources re-checked: https://github.com/Kilo-Org/kilocode, https://api.github.com/repos/Kilo-Org/kilocode, and https://api.github.com/repos/Kilo-Org/kilocode/releases/latest
 - Rejected: LLM-as-Code and SeeRepo as useful but lower priority this run; ADK+A2A, A2A, ADK for Kotlin/Android, Google Colab CLI, A2UI/MCP Apps, AI Edge Gallery, Gemma/LiteRT, Codex role plugins/Sites/annotations, OpenAI agent-work usage research, Claude Tag, Claude usage limits, and GitHub Copilot agent updates as duplicates/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-26 36:00 KST — Batch 66 (아이디어 검증 + 병합 4카드 + 신규 8카드)
+
+### 병합 4카드
+
+| 병합·갱신 | 유지 |
+|-----------|------|
+| Miasma SessionStart only → **Miasma/IronWorm — Phantom Gyp·eBPF·AI config supply-chain worm** | Wave 2 binding.gyp bypass·IronWorm eBPF/Tor·CI /proc masked secret read |
+| MCP 2026 OAuth one-liner → **MCP 2026 — Linux Foundation·Stateless·MRTR·Extensions·OAuth RFC9207·Python SDK v2 alpha** | 6 SEP auth hardening·RFC9207 iss·application_type DCR·issuer-bound credentials |
+| AA Index pass@1 only → **AA Coding Agent Index v1.1 — composite pass@1·per-task cost $0.07–$2.26·harness 16–19%** | same-model harness spread·turn count+cache hit dominate bill variance |
+| AppFunctions preview only → **AppFunctions(Android MCP) — alpha09·UriGrant·suspend IO·EXECUTE_APP_FUNCTIONS** | AppFunctionUriGrant·Dispatchers.IO mandatory·value constraints·Robolectric test rule |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 4건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| TEBench | test evolution axis — Breaking/Stale/Missing, reactive loop blind spot, distinct from SWE-bench/c-CRAB |
+| Benchmark Misalignment position | eval paradigm shift — harness≠model, component-level signal, Terminal-Bench 20pp spread evidence |
+| Token write-time attribution | operational cost new layer — event_id idempotency at gateway, distinct from Helicone proxy |
+| Codex Sites | delivery surface axis — hosted runtime+RBAC vs Artifacts CSP sandbox |
+| Zed 1.4.2 Skills | editor-native skill filesystem + first global AGENTS.md, distinct from Zed 1.0 Parallel Agents |
+| Symphony | orchestration pattern — issue tracker control plane, distinct from Routines/Jules |
+| Claude --attribution.json | chargeback artifact — sub-agent tasks[] JSON export, complement /usage plan % |
+| Evaluation Trust Tax | observability cost layer — per-span judge $260K/yr at 500K traces, beyond OTEL token metrics |
+
+| 탈락·병합 대표 | 이유 |
+|----------------|------|
+| Phantom Gyp·IronWorm eBPF standalone | merged into Miasma/IronWorm card |
+| MCP OAuth 6 SEP standalone | merged into MCP 2026 card |
+| AA per-task cost standalone | merged into AA Coding Agent Index |
+| AppFunctions alpha09 standalone | merged into AppFunctions card |
+| NatureBench·RigorBench·PostTrainBench·SlopCodeBench·FrontierCode | existing cards |
+| Cursor SDK customTools·Auto-review·JsonlLocalAgentStore | Batch 65 cards exist |
+| Claude sandbox.credentials·OTEL assistant_response | Batch 65 cards exist |
+| AgeMem·MemAct·Q4 KV·mcp-memory-rs | Batch 63–65 memory axis 포화 |
+| MCP Tasks·Skills·MRTR standalone | Batch 60–65 MCP 포화 — OAuth merge only |
+| Cursor /context·Design Mode context report | existing /context + Design Mode 3.7 cards |
+| Zed Codex skills ACP wrapper | niche community tool, below independent card threshold |
+| ADK Android·AISeal·on-device safety | existing Android agent cards |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | TEBench — project-level test evolution·Breaking/Stale/Missing 314 task | arxiv.org/abs/2605.06125 |
+| 2 | Benchmark Misalignment position — harness≠model·component-level eval 필요 | arxiv.org/abs/2606.17799 |
+| 3 | Token cost write-time attribution — trace_id·event_id·gateway idempotency | usagebox.com/articles/token-cost-attribution-agents-tools-subagents-2026 |
+| 4 | Codex Sites — OpenAI hosted web app·workspace URL·RBAC deploy | developers.openai.com/codex/app/sites |
+| 5 | Zed 1.4.2 Agent Skills — SKILL.md replaces rules·global AGENTS.md | zed.dev/docs/ai/skills |
+| 6 | Symphony — WORKFLOW.md issue tracker control plane·isolated agent runs | github.com/openai/symphony |
+| 7 | Claude Code --attribution — .claude/attribution.json sub-agent chargeback | code.claude.com/docs/en/costs |
+| 8 | Evaluation Trust Tax — per-span LLM-judge cost OTEL blind spot | fiddler.ai/blog/opentelemetry-agent-telemetry-signals |
+
+누적: 944카드 (936→944 신규 8, 병합 4건은 기존 카드 갱신)
+주제: test evolution eval(TEBench)·harness-aware benchmark design(Misalignment)·FinOps write-time attribution+eval cost tax·delivery/orchestration(Codex Sites·Symphony·Zed Skills·--attribution)
