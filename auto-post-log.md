@@ -4257,3 +4257,11 @@ Refined:
 - Refined: none; bounded older-card pass re-verified `claude --worktree` but the existing card already matched the public source and stayed clearer unchanged.
 - Refined sources re-checked: https://code.claude.com/docs/en/worktrees
 - Rejected: Claude Tag and Cursor Automations follow-ups as duplicates/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-27 05:52 KST — Local AI card routine
+
+- Published: `VS Code 5-line eval — 50,974회 HELLO.txt가 드러낸 에이전트 과잉사고`
+- Source: https://code.visualstudio.com/blogs/2026/06/19/what-50000-runs-taught-us
+- Refined: `Context Rot(Chroma 연구) — '컨텍스트만 길어져도' 18개 모델 전부 정확도가 무너진다`
+- Refined sources re-checked: https://www.trychroma.com/research/context-rot and https://github.com/chroma-core/context-rot
+- Rejected: queue items without a fresh official-source confirmation or with broad duplicate model-routing overlap; pure Android-only topics as below threshold.
