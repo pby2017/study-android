@@ -3878,6 +3878,59 @@ Refined:
 누적: 902카드 (894→902 신규 8, 병합 3건은 기존 카드 갱신)
 주제: session sharing(Claude Code Artifacts)·config supply chain(Miasma)·eval integrity(reward hacking)·fresh benchmark(SWE-Rebench)·long-horizon harness(MiMo Code)·Apple MCP host(mcpbridge)·mobile remote(Codex Remote)·config UI(Customize page)
 
+## 2026-06-26 28:00 KST — Batch 62 (아이디어 검증 + 병합 4카드 + 신규 8카드)
+
+### 병합 4카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| MCP 2026 Tasks one-liner only → **MCP 2026 — Linux Foundation·Stateless 07-28·Tasks extension·Python SDK v2 alpha** | SEP-2663 io.modelcontextprotocol/tasks — tasks/get·update·cancel lifecycle, tasks/result removed, taskId IDOR guard |
+| Jules plan-first only → **Jules(Google) — plan-first VM agent·CI auto-fix loop·Jules API alpha** | 2026-03 CI auto-fix loop, Gemini 3.1 Pro default, Jules API v1alpha programmatic session |
+| Honk 2025 blog only → **Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent** | Code with Claude 2026 keynote — Agent SDK harness, K8s concurrent pods, Slack mid-conversation trigger |
+| c-CRAB generic eval → **c-CRAB — human review comment→executable test oracle·v3 20–32% pass** | v3 184 PR·234 tests, commercial review 20–32%, union 41.5% vs human 100% |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 4건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Dialogue-SWEBench | interactive dialogue axis orthogonal to SWE-bench autonomous spec — GPT-5-mini> GPT-5 on easy |
+| OmniCode | 4 SE categories × 3 languages beyond patch-only SWE-bench, ACL 2026 Findings |
+| JetBrains Air | harness-neutral multi-agent ADE distinct from Junie GA single-agent and IntelliJ plugin |
+| Cursor Design Mode 3.7 | multi-select+voice queue in Agents Window browser — distinct from v0 Design Mode generate |
+| PostTrainBench | AI R&D automation under 10h H100 budget, reward hacking audit distinct from coding bench |
+| Snorkel Agentic Coding | 100-task Harbor Pass@5 long-horizon distinct from Terminal-Bench shell-only |
+| PaperBench | ML paper replication 8316 rubric axis, only referenced in NatureBench before |
+| MCP Apps+Tasks gateway | production governance(IDOR·iframe CSP) distinct from A2UI architecture and MCP spec wire |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Junie GA·Cursor Automations·Claw-SWE·OpenHands Canvas·Copilot app GA | Batch 57–61 cards already exist |
+| SWE-Atlas·Harbor·DeepSWE·reward hacking·Miasma·Codex Remote·Customize | Batch 55–61 재추가 금지 축 |
+| Agent Finder/ARD·Loop Engineering·Context Rot·PaperBench-only-in-NatureBench | existing cards cover core |
+| Claude Code Artifacts·MCP 2026 stateless standalone·ITBench·WeaveBench | Batch 60–61 포화 |
+| GitHub Copilot AI Credits billing·Fable 5·Terminal-Bench 3.0 preview | existing Copilot/Fable/TB cards |
+| Loop Engineering·/goal·/loop·Agent Teams | Loop Engineering card + Batch 56 Dynamic Workflows overlap |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Dialogue-SWEBench — SWE-bench Verified를 multi-turn user dialogue로 재평가 | jlab-nlp.github.io/dialogue-swe-bench |
+| 2 | OmniCode — bug-fix·test-gen·code-review·style 1794 task·Python/Java/C++ | github.com/seal-research/OmniCode |
+| 3 | JetBrains Air — multi-agent ADE·Docker/worktree isolation·ACP agent-agnostic | blog.jetbrains.com/air |
+| 4 | Cursor Design Mode 3.7 — browser multi-select·voice queue·Cmd+Shift+D | cursor.com/docs/agent/design-mode |
+| 5 | PostTrainBench — 10h H100·base LLM post-train·reward hacking audit | posttrainbench.com |
+| 6 | Snorkel Agentic Coding — 100 task·4 tier·Harbor Pass@5·trajectory rubric | snorkel.ai/leaderboard/agentic-coding |
+| 7 | MCP Apps+Tasks gateway governance — iframe CSP·taskId IDOR·org policy surface | truefoundry.com/blog/mcp-apps-tasks-gateway-governance |
+| 8 | PaperBench — ICML 2024 20 paper replication·8316 rubric·Code-Dev lite | github.com/openai/frontier-evals/project/paperbench |
+
+누적: 910카드 (902→910 신규 8, 병합 4건은 기존 카드 갱신)
+주제: interactive eval(Dialogue-SWEBench)·multi-category SE(OmniCode)·multi-agent ADE(Air)·visual UI steer(Design Mode)·AI R&D eval(PostTrainBench)·long-horizon bench(Snorkel)·MCP ops governance·research replication(PaperBench)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.

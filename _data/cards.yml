@@ -1003,13 +1003,13 @@ cards:
   - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
   source: https://github.com/earendil-works/pi
 - category: ai
-  title: MCP 2026 — Linux Foundation·Stateless 07-28·Skills extension·Python SDK v2 alpha
-  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy. MCP Apps·Tasks는 Extensions, Roots/Sampling/Logging deprecated. Skills over MCP(SEP-2640·Draft) — skill:// URI로 SKILL.md 디렉터리를 Resources primitive에 바인딩, skill://index.json discovery·progressive disclosure는 Agent Skills spec에 위임. Python SDK v2.0.0a2(2026-06-16) — mcp.types.v2026_07_28 per-version wire validation, ClientSession dispatcher refactor, migration guide. pip install mcp는 1.x stable 유지 — alpha opt-in. 원격 MCP 운영자는 세션 의존 코드를 7/28 전 마이그레이션.
+  title: MCP 2026 — Linux Foundation·Stateless 07-28·Tasks extension·Python SDK v2 alpha
+  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy. MCP Tasks extension(SEP-2663·io.modelcontextprotocol/tasks) — tools/call이 CreateTaskResult+taskId 반환, client가 tasks/get·tasks/update(input_required)·tasks/cancel로 lifecycle drive. 2025-11-25 experimental tasks/result·tasks/list 제거 — stateless에서 list는 scope-safe 불가. taskId=capability handle, 매 요청 authorization 필수(IDOR 방지). MCP Apps·Skills over MCP(SEP-2640)는 별도 Extensions. Python SDK v2.0.0a2(2026-06-16) per-version wire validation. pip install mcp 1.x stable 유지 — 7/28 전 세션·legacy tasks 마이그레이션.
   points:
-  - 2026-07-28 — stateless·Mcp-Method/Name·12mo deprecation policy
-  - Skills over MCP SEP-2640 — skill:// resources·index.json·agentskills.io format
-  - Extensions MCP Apps·Tasks — LB 친화 stateless HTTP
-  source: https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.0.0a2
+  - Tasks SEP-2663 — get/update/cancel lifecycle, tasks/result -32601
+  - Stateless — taskId를 tool arg로 explicit handle, sticky session 금지
+  - 2026-07-28 — Mcp-Method/Name·12mo deprecation·OAuth hardening
+  source: https://modelcontextprotocol.org/seps/2663-tasks-extension
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
   summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고, 각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며, 인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
@@ -1186,15 +1186,13 @@ cards:
   - 요금은 Seer-connected repo에서 월 2개 이상 PR을 만든 active contributor당 $40/월, Seer 사용량은 PAYG와 별도
   source: https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent
 - category: ai
-  title: Jules(Google) — 계획을 먼저 보여주고 VM에서 자율로 도는 GitHub 코딩 에이전트
-  summary: 'Jules는 Google Labs의 Public Beta 코딩 에이전트다. GitHub 레포를 연결하면 각 작업마다 새 클라우드 VM에서 레포를 클론하고, setup script로 의존성을 설치한 뒤 코드를 수정한다. 작업 시작은 "Give me a plan"이다. Jules가 먼저 계획을 만들고, 사람이 승인해야 파일 변경으로 넘어간다. 레포 루트의 AGENTS.md도 자동으로 읽어 규칙·도구·입출력 관례를 반영한다. 보안상 VM은 강력하지만 공유 클라우드 컴퓨트 표면으로 취급해야 한다. 인터넷 접근이 있고 non-code 파일도 읽으므로, secret을 커밋하지 말고 setup script와 서드파티 명령을 검토해야 한다. long-running dev server/watch script는 setup script에서 지원하지 않는다. 교훈은 비동기 코딩 에이전트를 "마법 PR 생성기"가 아니라 계획 승인·환경 스크립트·비밀 관리·작업 한도까지 포함한 운영 워크플로로 다뤄야 한다는 점이다.
-
-    '
+  title: Jules(Google) — plan-first VM agent·CI auto-fix loop·Jules API alpha
+  summary: Jules(Google Labs·GA 2025-08)는 GitHub-native async coding agent — task마다 fresh Google Cloud VM clone·setup script·plan approval 후 코드 변경·PR. 2026-03 Gemini 3.1 Pro default(Pro tier)로 reasoning uplift. CI auto-fix loop — PR 생성 후 GitHub Actions 실패 감지→fix commit→resubmit, 사람 개입 없이 CI red→green close. Jules API(v1alpha·developers.google.com/jules/api) — Source·Session·Activity REST, Slack·Linear·GitHub custom workflow embed, requirePlanApproval로 plan gate 선택. AGENTS.md 자동 ingest·등급별 quota(무료 15/day·Pro 100·Ultra 300). vs Claude Code Web ·Codex Cloud ·Jules competitor Devin — Jules=GitHub issue→PR async with built-in CI babysitting.
   points:
-  - '등급별 한도(공식): 무료 하루 15작업·동시 3개 / Pro 100작업·동시 15개 / Ultra 300작업·동시 60개'
-  - 각 작업은 fresh VM에서 실행, 계획 승인 뒤 코드 변경 / AGENTS.md 자동 반영
-  - private repo 학습 미사용, 하지만 VM+인터넷 접근 표면이므로 secret·setup script 검토 필수
-  source: https://jules.google/docs/usage-limits/
+  - CI fixer — Actions failure output→patch→push without keyboard
+  - Jules API alpha — programmatic session, auto plan approval option
+  - Fresh VM per task — secret·setup script review, no private code training
+  source: https://developers.google.com/jules/api
 - category: ai
   title: /fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기
   summary: '서브에이전트는 정의 파일의 새 컨텍스트에서 시작하지만, fork는 생성 순간의 대화 전체를 그대로 복제해 백그라운드에서 도는 분기 세션이다. 현재 히스토리·시스템 프롬프트·도구·모델을 모두 물려받기 때문에, 같은 맥락을 다시 설명하지 않고 대안 조사나 검증을 맡기기 좋다. 결과는 완료 후 메인 대화에 메시지로 돌아오고, 실행 중에는 별도 패널에서 열어 후속 지시를 줄 수 있다. 핵심 차이는 캐시와 격리다. fork의 첫 요청은 부모와 같은 프롬프트·도구 정의라 부모 프롬프트 캐시를 재사용하지만, 명명된 서브에이전트는 별도 캐시와 전용 시스템 프롬프트를 쓴다. 파일 편집이 섞이면 위험하므로, 독립 작업에는 worktree 격리나 명확한 쓰기 범위를 함께 잡아야 한다.
@@ -1534,15 +1532,13 @@ cards:
   - '오탐 제거가 핵심: 발견 이슈마다 검증 서브에이전트를 다시 병렬로 띄워(버그 Opus·룰 sonnet) 통과 못 한 건 드롭. 스타일·nitpick·기존 코드 문제는 처음부터 제외'
   source: https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md
 - category: ai
-  title: Spotify 'Honk' — Claude Code를 샌드박스에 넣고 PR 1,500+개를 자동 머지한 백그라운드 코딩 에이전트
-  summary: 'Spotify가 사내 ''백그라운드 코딩 에이전트''(코드네임 Honk)를 공개했다(엔지니어링 블로그 2025-11-06). 사람이 IDE에서 직접 짜는 게 아니라, 엔지니어가 Slack 메시지나 Git에 커밋한 프롬프트 파일로 작업을 던지면 에이전트가 알아서 돌고 결과를 PR로 올리는 구조다. 공개 시점까지 1,500개 이상의 에이전트 생성 PR이 머지됐다. 핵심은 ''AI가 잘나서''가 아니라 ''받칠 인프라가 있어서''다 — Honk는 2022년부터 운영한 Fleet Management(대규모 자동 코드 변환) 위에 얹혀 있고, 그 전엔 AST 조작·정규식으로 변환을 정의했지만 복잡한 다단계 수정에선 한계가 있었다. 그래서 ''지나치게 경직된 지시가 필요하고 멀티스텝 편집에 약했던'' 자체 방식을 버리고 Claude Code 기반으로 갈아탔다고 밝혔다. 효과는 마이그레이션 같은 반복 변환에서 손코딩 대비 60~90% 시간 절감이라고 보고했다. 별도로 Anthropic 고객 사례 페이지는 이 시스템이 ''Claude Agent SDK로 매달 650개 이상의 PR을 머지한다''고 적었다(이 월 650건·SDK 수치는 Spotify 블로그가 아니라 Anthropic 측 출처다). 교훈: 에이전트 자동화는 표준 빌드·탄탄한 테스트·플릿 관리 같은 토대가 먼저 깔려야 굴러간다.
-
-    '
+  title: Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent
+  summary: Spotify Honk(2025-11 공개·2026-06 Code with Claude keynote) — Claude Agent SDK+자체 harness, Kubernetes pod에서 concurrent session, CI multi-OS build verify. Fleet Management(2022~) 위에 Claude Code로 전환 — AST/regex 한계를 agentic migration으로 대체, 60–90% 시간 절감. Slack @Honk mid-conversation trigger→PR, commute中 iOS fix→merge before office(CEO Gustav Söderström keynote). 누적 1,500+ PR(2025 blog)·월 650+ merge(Anthropic case study). Backstage Portal·Fleetshift로 org-scale code change orchestration. vs generic background agent — Honk=golden path·test·fleet infra 선행 없으면 PR volume만 늘어남.
   points:
-  - '트리거→실행→PR: Slack/Git 프롬프트로 작업 투입 → 샌드박스에서 에이전트 자율 실행 → PR 생성. 공개 시점 누적 1,500+ PR 머지'
-  - '토대가 먼저: 2022년부터의 Fleet Management 위에 얹음. AST·정규식 기반 자체 변환의 한계(복잡한 다단계 편집)를 Claude Code 기반으로 대체'
-  - '효과·주의: 마이그레이션류에서 60~90% 시간 절감(Spotify 블로그). ''월 650 PR·Claude Agent SDK''는 Anthropic 고객 사례 출처 — 구분해서 인용'
-  source: https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1
+  - Agent SDK+K8s — trusted tools, CI verify, many concurrent pods
+  - Slack trigger — conversation context as task input, not IDE-only
+  - Fleet Management foundation — agent speed follows platform maturity
+  source: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint
 - category: ai
   title: mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)
   summary: 'SWE-agent(프린스턴·~19.5k★)를 만든 팀이 내놓은 후속작으로, 에이전트 핵심 로직을 파이썬 약 100줄로 줄인 미니멀 코딩 에이전트다. 가장 큰 설계 선택은 ''도구(tool-calling) 인터페이스를 안 쓴다''는 것 — 커스텀 툴이나 함수 호출 API 없이 오직 bash 명령만으로 동작하고, 액션은 subprocess.run으로 실행하며 대화 이력도 선형(linear)으로 단순하게 유지한다. 스캐폴드를 깎아내고 LM 자체의 능력에 집중하자는 철학으로, 그럼에도 SWE-bench에서 74%를 넘는 점수를 주장한다. 라이선스는 MIT, GitHub 스타는 약 5.2k(2026-06 기준).
@@ -7955,12 +7951,12 @@ cards:
   - Continually updatable — scalable collection toolkit mitigates contamination
   source: https://arxiv.org/pdf/2602.10975
 - category: ai
-  title: c-CRAB — human review comment→executable test oracle, PR-agent eval
-  summary: c-CRAB(arXiv 2603.23448·Code Review Agent Benchmark) — AI 코드리뷰 품질을 test-based oracle로 평가. human PR review feedback→executable tests capturing underlying issues — review agent finds issue iff patch from review feedback passes test. vs CR-Bench(usefulness rate·SNR) ·SWE-PRBench(diff-only 15–31%) — c-CRAB=objective test oracle not LLM-as-judge. Evaluated PR-agent·Devin·Claude Code·Codex commercial review agents. Agent-generated code volume↑ → review QA becomes first-class eval axis alongside generation.
+  title: c-CRAB — human review comment→executable test oracle·v3 20–32% pass
+  summary: c-CRAB v3(arXiv 2603.23448·Code Review Agent Benchmark) — human PR review comment→executable test oracle, review agent quality = whether review-guided patch passes test. 184 PR·234 validated tests·Claude Code Sonnet-4 validation harness. PR-agent 20.1%·Devin 32.1%·Claude Code·Codex commercial tools — human 100%, union across 4 tools 97/234(41.5%). vs embedding similarity(CRScore) ·LLM-as-judge alone — c-CRAB=actionable review verification. Agent PR volume↑ makes review agent eval as important as codegen bench.
   points:
-  - Test oracle not comment similarity — review quality = actionable fix verification
-  - vs CR-Bench SNR ·CodeReviewBench golden comment — complementary review metrics
-  - Production axis — who reviews the agent's PR matters as much as who writes it
+  - Test oracle — comment similarity metric misses actionable review
+  - Union 41.5% — even 4 tools combined miss half human-caught issues
+  - Production eval — Devin·Codex·Claude Code review modes benchmarked
   source: https://arxiv.org/html/2603.23448v3
 - category: ai
   title: NSA MCP PP-26-1834 — 9 design controls·gateway·sandbox·Sep 2026 contractor deadline
@@ -8130,3 +8126,67 @@ cards:
   - Team vs user scope — org MCP for /in-cloud cloud subagents
   - Custom MCP — same page as skills/rules without separate JSON hunt
   source: https://cursor.com/changelog
+- category: ai
+  title: Dialogue-SWEBench — SWE-bench Verified를 multi-turn user dialogue로 재평가
+  summary: Dialogue-SWEBench(arXiv 2606.13995·June 2026) — coding agent가 full spec 없이 simulated user와 대화하며 SWE-bench Verified 500 issue를 해결하는 benchmark. persona-grounded user simulator(U_φ)·message_user action·dialogue quality auto-eval. schema-guided agent 46.9% avg vs OpenHands 32.9% — better coding model≠better dialogue agent(GPT-5-mini>GPT-5 on easy). 핵심 발견 — information-seeking dialogue moves↑ correlates with resolution. vs SWE-bench(autonomous full spec) ·τ-bench(customer service policy) — dialogue=interactive IDE assistant realism axis.
+  points:
+  - 500 SWE-bench Verified — underspecified task, agent must ask user
+  - Coding≠dialogue — leaderboard model rank misleads interactive use
+  - Schema-guided agent — slot-filling dialogue state +3–14% over baselines
+  source: https://jlab-nlp.github.io/dialogue-swe-bench/
+- category: ai
+  title: OmniCode — bug-fix·test-gen·code-review·style 1794 task·Python/Java/C++
+  summary: OmniCode(ACL 2026 Findings·arXiv 2602.02262·seal-research/OmniCode) — SWE-bench가 patch generation에 치우친 공백을 4 category로 메움. 1794 manually validated task — bug fixing·test generation·code review response·style fixing across Python·Java·C++. synthetic augmentation of 494 base GitHub issues — ill-defined problem 제거·data leakage 방지. SWE-Agent DeepSeek-V3.1 — Python bug-fix OK but C++ test-gen 25%·Java style 8%. vs SWE-Atlas(Q&A·refactor) ·FeatureBench(multi-PR feature) — OmniCode=day-to-day SE task diversity not single-issue patch.
+  points:
+  - 4 categories — patch만 잘하는 agent는 test-gen/style에서 무너짐
+  - 3 languages — Java/C++ gap exposes Python-only overfit
+  - Containerized env — executable test suite per instance
+  source: https://github.com/seal-research/OmniCode
+- category: ai
+  title: JetBrains Air — multi-agent ADE·Docker/worktree isolation·ACP agent-agnostic
+  summary: JetBrains Air(air.dev·2026-03 public preview·macOS+Linux) — Agentic Development Environment, IDE를 대체하지 않고 agent orchestration layer. Codex·Claude Agent·Gemini CLI·Junie concurrent task — Docker container·Git worktree·.air/docker.json·.air/worktree.json pre-config. code-aware task definition(symbol·class·method·commit)·Open In JetBrains IDE side-by-side. ACP+Agent Registry roadmap·cloud execution tech preview. vs Cursor(IDE-first) ·Junie(single agent) ·Conductor(local parallel) — Air=harness-neutral fleet manager with JetBrains code intelligence.
+  points:
+  - Agent-agnostic — switch/compare Codex vs Claude vs Junie per task
+  - Isolation — worktree or Docker per agent, no branch collision
+  - IDE complement — Air orchestrates, IntelliJ/Android Studio for hands-on edit
+  source: https://blog.jetbrains.com/air/2026/03/air-launches-as-public-preview-a-new-wave-of-dev-tooling-built-on-26-years-of-experience/
+- category: ai
+  title: Cursor Design Mode 3.7 — browser multi-select·voice queue·Cmd+Shift+D
+  summary: Cursor Design Mode(3.0 Apr 2026·3.7 Jun 5 2026) — Agents Window built-in browser에서 UI element click·draw·voice로 agent에 visual context 전달. 3.7 — multi-select 2+ elements(code·layout·visual relationship bundle), voice mic stays on during agent run→queue next edit without waiting. Cmd+Shift+D toggle·Shift+drag area annotate·Option+click add to input. live dev server required — static file edit 불가. vs v0 Design Mode(generate component) ·Figma — Cursor=existing app pixel-level steer agent patch. Composer 2.5 recommended for UI work.
+  points:
+  - Multi-select — "make A match B" group edit in one prompt
+  - Voice queue — mid-run narration without blocking agent
+  - Element context — HTML·CSS·bounding box injected not prose description
+  source: https://cursor.com/docs/agent/design-mode
+- category: ai
+  title: PostTrainBench — 10h H100·base LLM post-train·reward hacking audit
+  summary: PostTrainBench(ICML 2026·arXiv 2603.08640·posttrainbench.com) — CLI agent가 base LLM(Qwen3-1.7B/4B·SmolLM3-3B·Gemma-3-4B)을 10h single H100에서 post-train해 7 benchmark(AIME·BFCL·GPQA·HumanEval 등) score maximize. Opus 4.6 best 23.2% vs instruction-tuned baseline 51.1% — agentic AI R&D automation still far from provider SFT. reward hacking documented — test data train·download IT model·unauthorized API key synthetic data. vs PaperBench(replicate paper) ·NatureBench(discovery) — PostTrainBench=can agent run ML engineering loop under compute budget.
+  points:
+  - 10h H100 cap — realistic single-GPU post-training not cluster fantasy
+  - 23% vs 51% — agents improve base 3× but miss official IT models
+  - Integrity failures — eval env must block model swap and test leakage
+  source: https://posttrainbench.com/
+- category: ai
+  title: Snorkel Agentic Coding — 100 task·4 tier·Harbor Pass@5·trajectory rubric
+  summary: Snorkel Agentic Coding Benchmark(2026-04·snorkel.ai/leaderboard/agentic-coding) — 100 multi-step SE task 4 difficulty tiers, sandboxed env·human-validated golden solution·unit tests·trajectory rubric. Harbor harness Pass@5·30min max per task. Opus 4.6 65.2% > Opus 4.5 58% > Gemini 3 Pro 51.6% — difficulty curve separates frontier. Snorkel co-created Terminal-Bench but this benchmark spans ML/data/build deps beyond shell-only. vs Terminal-Bench 2.1(infra shell) ·SWE-bench(single patch) ·DeepSWE(original tasks) — Snorkel=long-horizon planning+error recovery breadth.
+  points:
+  - Pass@5 Harbor — same harness as Terminal-Bench ecosystem
+  - Trajectory rubric — final output+how agent recovered from errors
+  - 4 tiers — signal from efficiency model to frontier Opus
+  source: https://snorkel.ai/blog/introducing-the-snorkel-agentic-coding-benchmark/
+- category: ai
+  title: MCP Apps+Tasks gateway governance — iframe CSP·taskId IDOR·org policy surface
+  summary: MCP 2026-07-28 promotes MCP Apps(iframe UI via _meta.ui.resourceUri·ui:// resource) and Tasks extension to first-class — but net-new governance surfaces. MCP Apps — arbitrary HTML in sandboxed iframe, postMessage JSON-RPC, host must enforce CSP·allowlist·content review before render. Tasks — tools/call returns taskId, client polls tasks/get·update·cancel; stateless core means taskId=capability handle requiring per-request auth(IDOR if leaked). Gateway layer — route Mcp-Method/Mcp-Name without body parse, policy which extensions allowed, audit task lifecycle. vs A2UI vs MCP Apps architecture choice ·MCP 2026 spec card — governance=production deployment checklist not wire format.
+  points:
+  - Apps risk — unreviewed iframe HTML is XSS/supply-chain surface
+  - Tasks IDOR — taskId in tool args needs explicit authorization every poll
+  - Gateway — extension allowlist+header routing before agent sees tool
+  source: https://www.truefoundry.com/blog/mcp-apps-tasks-gateway-governance
+- category: ai
+  title: PaperBench — ICML 2024 20 paper replication·8316 rubric·Code-Dev lite
+  summary: PaperBench(OpenAI frontier-evals·arXiv 2504.01848) — agent가 ICML 2024 Spotlight/Oral 20편 ML research를 scratch replicate — codebase·experiment·rubric match. 3-stage pipeline — agent rollout container→reproduce.sh GPU reproduction→SimpleJudge LLM rubric(8316 gradable subtasks, co-authored with paper authors). Best Claude 3.5 Sonnet scaffold 21%·ML PhD human 41.4% on 3-paper subset. PaperBench Code-Dev — skip reproduction GPU, code-only rubric ~85% judge cost cut. vs NatureBench(scientific discovery firewall) ·PostTrainBench(post-train loop) — PaperBench=AI research engineering replication axis.
+  points:
+  - Author co-written rubric — realistic replication criteria not generic tests
+  - Code-Dev variant — no GPU reproduction, cheaper capability signal
+  - Human baseline beats SOTA — research replication still human-led
+  source: https://github.com/openai/frontier-evals/tree/main/project/paperbench
