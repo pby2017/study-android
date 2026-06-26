@@ -1320,14 +1320,14 @@ cards:
   - 자체 벤치마크는 LoCoMo 96.1%·LongMemEval-S 92.8%; 2026-06-26 확인 기준 GitHub 4,879★
   source: https://github.com/campfirein/byterover-cli
 - category: ai
-  title: Kilo Code — VS Code·JetBrains에서 모드를 갈아끼우며 도는 올인원 오픈소스 코딩 에이전트(MIT·20k★)
-  summary: 'Kilo Code는 자연어로 코드를 생성하고, 터미널 명령을 실행하고, 브라우저를 자동화하고, 인라인 자동완성까지 제공하는 MIT 오픈소스 ''올인원 에이전트 엔지니어링 플랫폼''이다. Cline·Roo Code 계열처럼 하나의 만능 챗봇이 아니라 작업 성격에 따라 모드를 바꿔 쓴다 — 설계는 Architect로 계획하고, 구현은 Coder로 짜고, 버그는 Debugger로 잡으며, 직접 커스텀 모드도 만들 수 있다. 모델·도구 비종속이라 500개 이상 LLM을 BYO 키로 꽂거나 키 없이도 시작할 수 있고, MCP 마켓플레이스로 기능을 확장한다.
+  title: Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)
+  summary: 'Kilo Code는 VS Code, JetBrains, CLI에서 같은 에이전트 경험을 제공하려는 MIT 오픈소스 코딩 에이전트다. 현재 README는 500개 이상 모델을 고르고 작업 중 모델을 바꿀 수 있으며, provider pricing·zero markup·no API keys required to start를 내세운다. 핵심은 "에이전트 하나"보다 작업 모드 분리다. Code는 기본 구현, Plan은 코드 변경 전 설계, Ask는 파일을 건드리지 않는 코드베이스 질의, Debug는 추적, Review는 성능·보안·스타일·테스트 관점 점검으로 나뉜다. CLI는 `kilo run --auto`로 CI/CD 무인 실행도 가능하지만, 이 모드는 permission prompt를 모두 꺼서 trusted environment에서만 써야 한다.
 
     '
   points:
-  - VS Code·JetBrains 확장에 더해 CLI·Slack·Cloud까지 — Kilo CLI는 OpenCode를 포크해 만들었다(공식 README)
-  - '멀티 모드: Architect(계획)/Coder(구현)/Debugger(디버그) + 커스텀 모드 — 작업 단계별로 발판을 갈아끼우는 하네스 패턴'
-  - 500+ 모델·BYO 키(키 옵션)·MCP 서버 마켓플레이스 — 별 수 약 20.1k★ 주장, MIT 라이선스
+  - '표면: VS Code 확장, JetBrains 플러그인, CLI, Cloud Agent, PR code review'
+  - '모드 분리: Code·Plan·Ask·Debug·Review + custom agents'
+  - 2026-06-26 확인 기준 GitHub 24,646★·2,799 forks·MIT, 최신 릴리스 v7.3.54
   source: https://github.com/Kilo-Org/kilocode
 - category: ai
   title: Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너
@@ -8324,3 +8324,11 @@ cards:
   - 98% token reduction — structured state vs full chat replay
   - v3 task graph — programmatic parallel/blocked task detection
   source: https://github.com/homeofe/AAHP
+- category: ai
+  title: RigorBench — 코딩 에이전트 평가를 pass/fail에서 계획·검증·중단 품질로 넓히기
+  summary: 'RigorBench(arXiv 2606.22678)는 코딩 에이전트를 최종 정답률만으로 보지 말고 실행 궤적 전체로 평가하자는 벤치마크다. 논문은 30개 작업을 Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, Don''t Break the Build 5범주로 나누고, Planning Fidelity·Verification Coverage·Recovery Efficiency·Abstention Quality·Atomic Transition Integrity 5축을 RigorScore로 합친다. 교육 포인트는 간단하다. 테스트 통과 패치라도 계획 없이 여러 번 찔러 맞혔거나, 불가능한 요구에 멈추지 못했거나, 중간 상태마다 빌드를 깨면 운영용 에이전트로는 낮게 봐야 한다는 것이다. 저자들은 구조화된 discipline이 process quality를 평균 41%, outcome correctness를 17% 높였다고 보고한다.'
+  points:
+  - '5축 평가: 계획·검증·회복·중단·원자적 전환'
+  - 30개 작업·120개 실행 궤적을 계획/편집/테스트/복구 로그로 채점
+  - '교훈: pass/fail 벤치마크 옆에 프로세스 로그 점수를 붙여야 production risk가 보임'
+  source: https://arxiv.org/abs/2606.22678

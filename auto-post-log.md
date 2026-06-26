@@ -4075,3 +4075,11 @@ Refined:
 - Refined: `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'`
 - Refined sources re-checked: https://github.com/campfirein/byterover-cli and https://api.github.com/repos/campfirein/byterover-cli
 - Rejected: Claude Seoul/NAVER deployment as adoption news with weak direct developer lesson; Claude higher usage limits as prior overlap; ADK for Kotlin/Android, Android AI Sample Catalog, Claude Tag, and OpenAI agent-work usage research as duplicates; pure Android-only topics as below threshold.
+
+## 2026-06-26 13:16 KST — Local AI card routine
+
+- Published: `RigorBench — 코딩 에이전트 평가를 pass/fail에서 계획·검증·중단 품질로 넓히기`
+- Source: https://arxiv.org/abs/2606.22678
+- Refined: `Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)`
+- Refined sources re-checked: https://github.com/Kilo-Org/kilocode, https://api.github.com/repos/Kilo-Org/kilocode, and https://api.github.com/repos/Kilo-Org/kilocode/releases/latest
+- Rejected: LLM-as-Code and SeeRepo as useful but lower priority this run; ADK+A2A, A2A, ADK for Kotlin/Android, Google Colab CLI, A2UI/MCP Apps, AI Edge Gallery, Gemma/LiteRT, Codex role plugins/Sites/annotations, OpenAI agent-work usage research, Claude Tag, Claude usage limits, and GitHub Copilot agent updates as duplicates/overlap; pure Android-only topics as below threshold.
