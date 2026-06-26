@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)`; next oldest reviewed candidate is `Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너`.
+Current position: continue after `Bumblebee(Perplexity) — MCP·확장·패키지 로컬 노출을 읽기 전용으로 찾는 스캐너(4.6k★)`; next oldest reviewed candidate is `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5`.
 
-Last update: 2026-06-26 13:16 KST
+Last update: 2026-06-26 15:21 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -57,6 +57,7 @@ Reviewed:
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다`
 - `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'`
 - `Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)`
+- `Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -104,6 +105,7 @@ Refined:
 - `chrome-devtools-mcp(Google) — CDP MCP·Codex Developer mode, 브라우저 F12를 에이전트에(44.4k★)` — re-checked the current ChromeDevTools README, GitHub API metrics, and OpenAI Codex browser docs; refreshed live stars/forks/license/archive state, clarified Codex CLI install, slim/headless/isolation/concurrency flags, @Browser/@Chrome Developer mode, explicit CDP approval, enterprise disablement, and the sensitive-browser-internals permission boundary.
 - `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'` — re-checked the redirected ByteRover CLI README plus GitHub API metrics; refreshed live stars, current `brv vc` version-control commands, `brv webui`, MCP/provider/tool/agent support, benchmark framing, and removed unsupported license wording.
 - `Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)` — re-checked the current README plus GitHub API metrics and latest release; refreshed live stars/forks/license/release, corrected mode names to Code/Plan/Ask/Debug/Review, clarified VS Code/JetBrains/CLI/Cloud/code-review surfaces, and added the `kilo run --auto` permission-prompt caveat.
+- `Bumblebee(Perplexity) — MCP·확장·패키지 로컬 노출을 읽기 전용으로 찾는 스캐너(4.6k★)` — re-checked the current README plus GitHub API metrics and latest release; clarified the SBOM/EDR gap, read-only local-inventory scope, exact-match exposure-catalog model, scan profiles, selftest, credential-output boundary, and live popularity/release signal.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -114,7 +116,7 @@ Skipped:
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다` — source re-checked; existing card already captures the context-layer and exact-search lesson without overextending the vendor post.
 
 Next:
-- Continue with `Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

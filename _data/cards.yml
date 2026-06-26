@@ -1330,14 +1330,14 @@ cards:
   - 2026-06-26 확인 기준 GitHub 24,646★·2,799 forks·MIT, 최신 릴리스 v7.3.54
   source: https://github.com/Kilo-Org/kilocode
 - category: ai
-  title: Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너
-  summary: '코딩 에이전트를 쓰다 보면 MCP 서버, VS Code·Cursor·Windsurf 확장, npm·PyPI 패키지를 검증 없이 잔뜩 깔게 되는데, 정작 ''내 머신에 뭐가 깔려 있는지'' 알기 어렵다. Bumblebee는 Perplexity가 공개한 Apache-2.0 스캐너로, 이 표면들을 한 번에 인벤토리한다. 핵심은 ''읽기 전용'' 설계 — `npm ls`·`pip show` 같은 패키지 매니저를 실행하지 않고, 락파일·설치 메타데이터·확장 매니페스트·MCP JSON 설정만 읽어 (생태계, 이름, 버전) 목록을 NDJSON으로 뽑는다. 자체 CVE DB는 없고, 사용자가 준 ''노출 카탈로그(JSON)''와 정확히 일치하는 것만 플래그한다.
+  title: Bumblebee(Perplexity) — MCP·확장·패키지 로컬 노출을 읽기 전용으로 찾는 스캐너(4.6k★)
+  summary: '코딩 에이전트를 쓰다 보면 MCP 서버, VS Code·Cursor·Windsurf 확장, npm·PyPI 패키지를 검증 없이 잔뜩 깔게 되는데, 정작 사고가 난 뒤 "어느 개발자 머신에 이 항목이 있나"를 빠르게 답하기 어렵다. Bumblebee는 Perplexity가 공개한 Apache-2.0 스캐너로, SBOM(배포 산출물)이나 EDR(실행·네트워크 흔적)이 놓치기 쉬운 개발자 로컬 상태를 NDJSON 인벤토리로 만든다. 핵심은 읽기 전용 설계다. `npm ls`·`pip show`·`go list` 같은 패키지 매니저를 실행하지 않고 락파일, 설치 메타데이터, 확장 매니페스트, 지원 MCP JSON 설정만 읽는다. 자체 CVE DB로 추측하지도 않는다. 사용자가 준 노출 카탈로그(JSON)와 정확히 일치하는 항목만 finding으로 내므로, "이미 알려진 악성 패키지·확장·MCP 서버가 내 fleet에 있나"를 확인하는 사고 대응 도구에 가깝다.
 
     '
   points:
-  - '스캔 표면: npm·PyPI·Go·RubyGems·Composer·Bun·pnpm·Yarn·Homebrew + MCP 설정·에디터 확장(VS Code/Cursor/Windsurf)·브라우저 확장·에이전트 스킬'
-  - '읽기 전용: 패키지 매니저 실행 없음·소스 파일 안 읽음 — 락파일과 매니페스트만 파싱, MCP env 블록의 자격증명은 출력 안 함'
-  - Go 1.25+·비표준 의존성 0개, 일회성 스캐너(반복은 cron/launchd 책임), 탐지는 PR로 갱신되는 노출 카탈로그에 의존
+  - '스캔 표면: npm·PyPI·Go·RubyGems·Composer·Bun·pnpm·Yarn·Homebrew + MCP JSON 설정·에디터 확장·브라우저 확장·에이전트 스킬'
+  - '읽기 전용: 패키지 매니저 실행 없음·소스 파일 안 읽음, MCP env 자격증명 값은 record에 출력하지 않음'
+  - 2026-06-26 확인 기준 GitHub 4,635★·416 forks·Apache-2.0, 최신 릴리스 v0.1.2, baseline/project/deep 프로필과 selftest 제공
   source: https://github.com/perplexityai/bumblebee
 - category: ai
   title: Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5

@@ -4139,6 +4139,13 @@ Refined:
 - Refined sources re-checked: https://github.com/Kilo-Org/kilocode, https://api.github.com/repos/Kilo-Org/kilocode, and https://api.github.com/repos/Kilo-Org/kilocode/releases/latest
 - Rejected: LLM-as-Code and SeeRepo as useful but lower priority this run; ADK+A2A, A2A, ADK for Kotlin/Android, Google Colab CLI, A2UI/MCP Apps, AI Edge Gallery, Gemma/LiteRT, Codex role plugins/Sites/annotations, OpenAI agent-work usage research, Claude Tag, Claude usage limits, and GitHub Copilot agent updates as duplicates/overlap; pure Android-only topics as below threshold.
 
+## 2026-06-26 15:21 KST — Local AI card routine
+
+- Published: none; bounded fresh scan found only duplicate/overlap candidates above the evidence threshold.
+- Refined: `Bumblebee(Perplexity) — MCP·확장·패키지 로컬 노출을 읽기 전용으로 찾는 스캐너(4.6k★)`
+- Refined sources re-checked: https://github.com/perplexityai/bumblebee, https://api.github.com/repos/perplexityai/bumblebee, and https://api.github.com/repos/perplexityai/bumblebee/releases/latest
+- Rejected: OpenAI agent-work usage research, Claude Tag, Claude usage-limit updates, GitHub Copilot app/Agents window/MAI-Code-1-Flash follow-ups, ADK for Kotlin/Android, and broad Android AI follow-ups as duplicates or overlap; pure Android-only topics as below threshold.
+
 ## 2026-06-26 36:00 KST — Batch 66 (아이디어 검증 + 병합 4카드 + 신규 8카드)
 
 ### 병합 4카드
