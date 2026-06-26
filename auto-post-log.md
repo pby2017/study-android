@@ -4210,3 +4210,11 @@ Refined:
 - Refined: `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5`
 - Refined sources re-checked: https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering, https://api.github.com/repos/langchain-ai/deepagents, and https://api.github.com/repos/langchain-ai/deepagents/releases/latest
 - Rejected: Codex role plugins/Sites/annotations, OpenAI agent-work usage research, Claude usage-limit updates, GitHub Copilot app/BYOK/Automations, ADK for Kotlin/Android, Gemma/LiteRT/AI Edge Gallery follow-ups as duplicates or overlap; pure Android-only topics as below threshold.
+
+## 2026-06-26 19:30 KST — Local AI card routine
+
+- Published: `N-Version Coding Agents — 한 에이전트 정답보다 3개 구현 majority vote`
+- Source: https://arxiv.org/abs/2606.20158
+- Refined: `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`
+- Refined sources re-checked: https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation and https://aaif.io/
+- Rejected: GitHub third-party agent security validation and Microsoft Agent Framework 1.0 GA as duplicate existing cards; Android Bench/Gemini Nano/ADK follow-ups as duplicate or saturated AI+Android surface; pure Android-only topics as below threshold.

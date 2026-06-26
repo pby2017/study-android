@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5`; next oldest reviewed candidate is `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`.
+Current position: continue after `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`; next oldest reviewed candidate is `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기`.
 
-Last update: 2026-06-26 17:26 KST
+Last update: 2026-06-26 19:30 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -59,6 +59,7 @@ Reviewed:
 - `Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)`
 - `Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너`
 - `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5`
+- `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -108,6 +109,7 @@ Refined:
 - `Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)` — re-checked the current README plus GitHub API metrics and latest release; refreshed live stars/forks/license/release, corrected mode names to Code/Plan/Ask/Debug/Review, clarified VS Code/JetBrains/CLI/Cloud/code-review surfaces, and added the `kilo run --auto` permission-prompt caveat.
 - `Bumblebee(Perplexity) — MCP·확장·패키지 로컬 노출을 읽기 전용으로 찾는 스캐너(4.6k★)` — re-checked the current README plus GitHub API metrics and latest release; clarified the SBOM/EDR gap, read-only local-inventory scope, exact-match exposure-catalog model, scan profiles, selftest, credential-output boundary, and live popularity/release signal.
 - `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5` — re-checked the LangChain harness engineering post plus GitHub API metrics and latest release; clarified the trace-analysis improvement loop, prompt/tool/middleware knobs, PreCompletionChecklistMiddleware, LocalContextMiddleware, loop detection, and live popularity/release signal.
+- `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다` — re-checked the Linux Foundation launch announcement plus current AAIF site; clarified MCP/goose/AGENTS.md roles, added current project-list signal including agentgateway, and reframed the practical lesson around governance, portability, and repo instruction files as agent interfaces.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -118,7 +120,7 @@ Skipped:
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다` — source re-checked; existing card already captures the context-layer and exact-search lesson without overextending the vendor post.
 
 Next:
-- Continue with `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
