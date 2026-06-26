@@ -4265,3 +4265,11 @@ Refined:
 - Refined: `Context Rot(Chroma 연구) — '컨텍스트만 길어져도' 18개 모델 전부 정확도가 무너진다`
 - Refined sources re-checked: https://www.trychroma.com/research/context-rot and https://github.com/chroma-core/context-rot
 - Rejected: queue items without a fresh official-source confirmation or with broad duplicate model-routing overlap; pure Android-only topics as below threshold.
+
+## 2026-06-27 07:54 KST — Local AI card routine
+
+- Published: `VS Code BYOK·로컬 모델 — Copilot 없이도 agent chat은 돌리고, 임베딩 기능은 분리해서 보기`
+- Source: https://code.visualstudio.com/blogs/2026/06/18/byok-vscode
+- Refined: `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법`
+- Refined sources re-checked: https://code.claude.com/docs/en/sub-agents
+- Rejected: GitHub/GitHub Copilot usage-surge coverage as business/news overlap; Cursor SDK and auto-review follow-ups as duplicate; pure Android-only topics as below threshold.

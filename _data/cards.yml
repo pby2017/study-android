@@ -1427,13 +1427,13 @@ cards:
   source: https://www.trychroma.com/research/context-rot
 - category: ai
   title: 서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법
-  summary: 'Claude Code 서브에이전트는 정의 파일 프런트매터의 model 필드로 각자 다른 모델을 쓸 수 있고, 값은 sonnet·opus·haiku·fable·전체 모델 ID(예: claude-opus-4-8)·inherit이며 생략 시 기본은 inherit(메인 대화와 동일 모델)이다. 공식 문서는 서브에이전트의 핵심 이점 중 하나로 "Haiku 같은 더 빠르고 저렴한 모델로 작업을 라우팅해 비용을 통제"하는 것을 명시한다. 즉 매번 같은 종류의 일(탐색·린트·요약)은 값싼 모델 서브에이전트에 정의 파일로 박아두면, 개발자가 일일이 모델을 고르지 않아도 설정만으로 비용 천장이 걸린다. 서브에이전트가 자체 격리 컨텍스트 창에서 돌아 메인 대화 히스토리를 안 보는 구조라 탐색 같은 토큰 폭증 작업을 메인에서 떼어내는 효과까지 겹친다.
+  summary: 'Claude Code 서브에이전트의 모델 라우팅은 "좋은 모델 하나 고르기"가 아니라 역할별 비용·지연시간을 설정으로 고정하는 장치다. 정의 파일 프런트매터의 `model`에는 `sonnet`, `opus`, `haiku`, `fable`, 전체 모델 ID, `inherit`를 쓸 수 있고 생략하면 메인 대화 모델을 상속한다. 공식 문서는 Explore 내장 서브에이전트를 빠른 Haiku 읽기 전용 탐색대로 두고, 비용 통제 예시로 Haiku 같은 더 빠르고 저렴한 모델 라우팅을 든다. 실무 교훈은 반복 탐색·요약·가벼운 검토를 사람의 매번 선택에 맡기지 말고, 서브에이전트 파일과 조직 allowlist로 기본값을 잠그라는 것이다. 서브에이전트는 별도 컨텍스트 창에서 읽고 요약만 돌려주므로, 모델 비용과 메인 대화 컨텍스트 폭증을 같이 줄인다.
 
     '
   points:
-  - '모델 결정 우선순위(공식 문서): 1) CLAUDE_CODE_SUBAGENT_MODEL 환경변수 → 2) 호출 시 per-invocation model 파라미터 → 3) 서브에이전트 정의의 model 프런트매터 순. 환경변수로 세션 전체 모델을 한 값으로 강제해 조직 비용 천장·컴플라이언스에 쓸 수 있다'
-  - 정의 파일에 model을 커밋해 두면 '모두가 제일 비싼 모델로 기본 세팅하는' 사고를 의지가 아니라 설정으로 막는다 — 코드리뷰는 Sonnet, 빠른 작업은 Haiku 식으로 역할별 분리
-  - '컨텍스트 격리: 서브에이전트는 fresh·isolated 컨텍스트 창에서 시작해 부모 대화·이미 읽은 파일을 보지 않고 요약 결과만 돌려준다(예외: fork는 전체 대화를 상속). 탐색 같은 대량 토큰 작업을 메인 창 밖으로 빼는 게 비용 절감의 본질'
+  - '해결 순서: CLAUDE_CODE_SUBAGENT_MODEL → 호출별 model 파라미터 → 정의 파일 model → 메인 대화 모델'
+  - Explore는 Haiku·읽기 전용 도구로 코드 탐색을 맡아 메인 컨텍스트를 보존한다
+  - 조직 availableModels allowlist와 정의 파일 model을 함께 쓰면 비용·컴플라이언스 기본값을 코드처럼 리뷰할 수 있다
   source: https://code.claude.com/docs/en/sub-agents
 - category: ai
   title: 에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기
@@ -8515,3 +8515,11 @@ cards:
   - 50,974 runs across 30 models — pass rate보다 direct path·tool sequence·output tokens가 더 큰 운영 신호
   - 실무 적용 — nightly eval 전 stable smoke test를 두고 pass/fail뿐 아니라 계획·탐색·도구 선택까지 기록
   source: https://code.visualstudio.com/blogs/2026/06/19/what-50000-runs-taught-us
+- category: ai
+  title: VS Code BYOK·로컬 모델 — Copilot 없이도 agent chat은 돌리고, 임베딩 기능은 분리해서 보기
+  summary: VS Code의 2026-06 BYOK 업데이트는 AI 에디터를 "Copilot 계정에 붙은 모델 목록"이 아니라 모델 브로커로 바꾼다. Language Models editor에서 Azure·Anthropic·Gemini·OpenAI·OpenRouter 같은 provider 키나 Ollama·Foundry Local 같은 로컬 모델을 추가하면 Chat 모델 피커에서 바로 고를 수 있다. 중요한 경계도 분명하다. BYOK와 로컬 모델은 chat·agent workflow·utility task에는 쓸 수 있고, GitHub 로그인이나 Copilot plan 없이도 오프라인 로컬 chat이 가능하다. 하지만 semantic search, inline suggestions, embeddings 기반 기능은 여전히 GitHub/Copilot 지원이 필요하다. 실무 교훈은 모델 선택을 에디터 UI 하나로 모으되, agent chat과 코드완성·검색을 같은 보안/비용 경계로 착각하지 말라는 점이다.
+  points:
+  - Language Models editor — provider 키·custom endpoint·extension 모델·로컬 모델을 한 피커에 모음
+  - BYOK/local은 chat·agent workflow·utility task용, 표준 code completion·semantic search는 별도 경계
+  - chat.utilityModel/chat.utilitySmallModel을 로컬·저가 모델로 바꾸면 제목·커밋 메시지 같은 작은 작업 비용을 분리 가능
+  source: https://code.visualstudio.com/blogs/2026/06/18/byok-vscode

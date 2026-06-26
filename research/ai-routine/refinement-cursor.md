@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Context Rot(Chroma 연구) — '컨텍스트만 길어져도' 18개 모델 전부 정확도가 무너진다`; next oldest reviewed candidate is `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법`.
+Current position: continue after `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법`; next oldest reviewed candidate is `에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기`.
 
-Last update: 2026-06-27 05:52 KST
+Last update: 2026-06-27 07:54 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -67,6 +67,7 @@ Reviewed:
 - `SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크`
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기`
 - `Context Rot(Chroma 연구) — '컨텍스트만 길어져도' 18개 모델 전부 정확도가 무너진다`
+- `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -120,6 +121,7 @@ Refined:
 - `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼` — re-checked Factory Terminal-Bench post, current Factory CLI docs, and Terminal-Bench public site; preserved the original score/topic, clarified the reusable harness-design lesson, and refreshed current droid exec mission, MCP, Custom Droids, and model-routing wording.
 - `SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크` — re-checked the current SWE-bench Multimodal page and arXiv paper; clarified the official-page 517 visual issue wording versus the original paper's 617 task instances, tightened the visual-software lesson, and kept the card scoped to benchmark interpretation rather than frontend implementation.
 - `Context Rot(Chroma 연구) — '컨텍스트만 길어져도' 18개 모델 전부 정확도가 무너진다` — re-checked Chroma's public report plus the replication repository, clarified the long-context reliability lesson, and split dense experiment details into NIAH distractors, LongMemEval compression, and reproducibility signals.
+- `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법` — re-checked the current Claude Code subagents docs and clarified model resolution order, Explore/Haiku routing, organization allowlist fallback, and the practical split between cost routing and context isolation.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -134,7 +136,7 @@ Skipped:
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.
 
 Next:
-- Continue with `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
