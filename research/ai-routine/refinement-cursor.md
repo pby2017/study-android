@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `chrome-devtools-mcp(Google) — CDP MCP·Codex Developer mode, 브라우저 F12를 에이전트에(44.4k★)`; next oldest reviewed candidate is `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'`.
+Current position: continue after `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'`; next oldest reviewed candidate is `Kilo Code — VS Code·JetBrains에서 모드를 갈아끼우며 도는 올인원 오픈소스 코딩 에이전트(MIT·20k★)`.
 
-Last update: 2026-06-26 09:09 KST
+Last update: 2026-06-26 11:12 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -55,6 +55,7 @@ Reviewed:
 - `에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 '하네스'를 설계하는 실전 교훈`
 - `서브에이전트 4가지 패턴(Philipp Schmid) — '메인 에이전트가 쥔 통제권' 순으로 줄 세우기`
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다`
+- `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -100,6 +101,7 @@ Refined:
 - `OpenSpec — Spec Kit보다 가볍게, 코드 짜기 전에 '무엇을 만들지'부터 합의하는 SDD(56.6k★)` — re-checked the current README plus GitHub API metrics and latest release; refreshed live stars/forks/release, added `/opsx:explore` as the pre-change thinking step, clarified artifact-guided change folders, 25+ tool support, install paths, Node 20.19+ requirement, and narrowed the Spec Kit comparison.
 - `Code Mode(Cloudflare) — MCP 도구를 'TypeScript API'로 바꿔 LLM에게 코드로 호출하게 하기` — re-checked the current Cloudflare MCP README and Code Mode blog; removed an unsupported benchmark sentence, corrected the current tool surface to docs/search/execute, refreshed token-footprint comparison, and clarified the V8 isolate/MCP binding/API-key boundary.
 - `chrome-devtools-mcp(Google) — CDP MCP·Codex Developer mode, 브라우저 F12를 에이전트에(44.4k★)` — re-checked the current ChromeDevTools README, GitHub API metrics, and OpenAI Codex browser docs; refreshed live stars/forks/license/archive state, clarified Codex CLI install, slim/headless/isolation/concurrency flags, @Browser/@Chrome Developer mode, explicit CDP approval, enterprise disablement, and the sensitive-browser-internals permission boundary.
+- `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'` — re-checked the redirected ByteRover CLI README plus GitHub API metrics; refreshed live stars, current `brv vc` version-control commands, `brv webui`, MCP/provider/tool/agent support, benchmark framing, and removed unsupported license wording.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -110,7 +112,7 @@ Skipped:
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다` — source re-checked; existing card already captures the context-layer and exact-search lesson without overextending the vendor post.
 
 Next:
-- Continue with `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Kilo Code — VS Code·JetBrains에서 모드를 갈아끼우며 도는 올인원 오픈소스 코딩 에이전트(MIT·20k★)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

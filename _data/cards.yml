@@ -1311,14 +1311,14 @@ cards:
   source: https://developers.openai.com/codex/app/browser
 - category: ai
   title: Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'
-  summary: 'Cipher는 코딩 에이전트에 영속적·구조적 메모리를 붙여주는 오픈소스 프로젝트로, 지금은 ByteRover CLI(brv)로 리브랜딩됐다(ByteRover 팀). 핵심 발상은 프로젝트 지식을 ''컨텍스트 트리''에 담고 git처럼 branch·commit·merge·push/pull로 버전 관리하며, 이를 클라우드에 동기화해 도구·팀 간에 공유하는 것이다. 덕분에 Cursor에서 쌓은 맥락을 Claude Code·Windsurf·Cline에서도 그대로 이어 쓸 수 있다 — 에이전트마다 컨텍스트를 처음부터 다시 쌓을 필요가 없다. MCP로 연동하고 20개 LLM 제공사·24개 내장 도구를 지원하며, 22개 이상의 AI 코딩 에이전트와 붙는다. 라이선스는 Elastic License 2.0.
+  summary: 'Cipher는 이제 ByteRover CLI(brv)로 리브랜딩된 "코딩 에이전트용 영속 메모리" 프로젝트다. README 기준 핵심은 프로젝트 지식을 컨텍스트 트리에 넣고, `brv vc` 명령으로 branch·commit·merge·push/pull을 하며, 클라우드와 동기화해 팀·머신·도구 사이에서 같은 기억을 재사용하는 것이다. Cursor에서 쌓은 맥락을 Claude Code·Windsurf·Cline 같은 다른 에이전트로 옮겨도 처음부터 다시 설명하지 않게 만드는 레이어에 가깝다. 현재 문서는 `brv webui`를 기본 UI로 두고, MCP 서버·20개 LLM 제공사·24개 내장 도구·22개 이상 코딩 에이전트 호환을 내세운다. 단, 성능 수치는 프로젝트 자체 벤치마크이므로 제품 비교 지표가 아니라 "장기 대화 메모리를 어떻게 평가했는가"의 참고값으로 봐야 한다.
 
     '
   points:
-  - 컨텍스트 트리 + git식 버전 관리(branch·commit·merge·push/pull) + 클라우드 동기화 — 도구를 갈아타도 메모리가 따라다니는 게 핵심
-  - MCP 연동, LLM 20개사(Anthropic·OpenAI·Google 등)·내장 도구 24종 지원, 22+ 코딩 에이전트(Cursor·Claude Code·Windsurf·Cline 등)와 호환
-  - '메모리 벤치마크 자체 주장: LoCoMo 96.1%·LongMemEval-S 92.8%(레포 표기) — 별 수 약 4.9k★, TypeScript, 설치는 `npm i -g byterover-cli`(Node 20+)'
-  source: https://github.com/campfirein/cipher
+  - '`brv vc`로 컨텍스트 트리를 버전 관리 — legacy `brv push/pull`보다 commit 단위 공유가 핵심'
+  - '`brv webui`, MCP 서버, provider/model switch, hub/connectors까지 메모리 운영면을 한 CLI에 묶음'
+  - 자체 벤치마크는 LoCoMo 96.1%·LongMemEval-S 92.8%; 2026-06-26 확인 기준 GitHub 4,879★
+  source: https://github.com/campfirein/byterover-cli
 - category: ai
   title: Kilo Code — VS Code·JetBrains에서 모드를 갈아끼우며 도는 올인원 오픈소스 코딩 에이전트(MIT·20k★)
   summary: 'Kilo Code는 자연어로 코드를 생성하고, 터미널 명령을 실행하고, 브라우저를 자동화하고, 인라인 자동완성까지 제공하는 MIT 오픈소스 ''올인원 에이전트 엔지니어링 플랫폼''이다. Cline·Roo Code 계열처럼 하나의 만능 챗봇이 아니라 작업 성격에 따라 모드를 바꿔 쓴다 — 설계는 Architect로 계획하고, 구현은 Coder로 짜고, 버그는 Debugger로 잡으며, 직접 커스텀 모드도 만들 수 있다. 모델·도구 비종속이라 500개 이상 LLM을 BYO 키로 꽂거나 키 없이도 시작할 수 있고, MCP 마켓플레이스로 기능을 확장한다.
@@ -8190,3 +8190,11 @@ cards:
   - Code-Dev variant — no GPU reproduction, cheaper capability signal
   - Human baseline beats SOTA — research replication still human-led
   source: https://github.com/openai/frontier-evals/tree/main/project/paperbench
+- category: ai
+  title: Project Glasswing — AI 보안 자동화의 병목은 탐지보다 검증·패치 수용
+  summary: Anthropic의 Project Glasswing 확장 글은 Mythos Preview를 약 50개 초기 파트너 코드베이스 취약점 탐지에 쓰며 10,000개 이상의 high/critical 후보를 찾았고, 2026-06-02에는 15개국 이상 약 150개 조직으로 프로그램을 넓힌다고 설명한다. 중요한 교훈은 "AI가 더 많이 찾아준다"가 끝이 아니라는 점이다. 글은 병목이 취약점 발견에서 검증·공개·패치 배포로 옮겨 갔다고 못박고, Claude Security 제품 페이지도 코드 스캔 뒤 adversarial verification pass를 거치며 패치는 사람이 review/approve해야 한다고 말한다. 즉 보안 에이전트 도입은 스캐너 추가가 아니라 triage queue, 증거, 심각도 재평가, 승인권자를 함께 설계하는 일이다.
+  points:
+  - 10,000+ high/critical 후보와 150개 조직 확장 — 탐지량이 운영 병목을 만든다
+  - Claude Security는 scan→validate→patch 제안 흐름, 모든 패치는 human approval 전제
+  - 실무 교훈 — AI 보안 자동화는 발견보다 검증·공개·패치 수용 프로세스가 핵심
+  source: https://www.anthropic.com/news/expanding-project-glasswing

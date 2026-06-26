@@ -3960,3 +3960,11 @@ Refined:
 - Refined: `chrome-devtools-mcp(Google) — CDP MCP·Codex Developer mode, 브라우저 F12를 에이전트에(44.4k★)`
 - Refined sources re-checked: https://github.com/ChromeDevTools/chrome-devtools-mcp, https://api.github.com/repos/ChromeDevTools/chrome-devtools-mcp, and https://developers.openai.com/codex/app/browser
 - Rejected: GitHub Agent Finder/ARD, Codex role-specific plugins/Sites/annotations, OpenAI agent-work usage research, Copilot CLI GA terminal interface, and ADK for Kotlin/Android as duplicates or overlap; pure Android GitHub Issues/Projects updates as below threshold.
+
+## 2026-06-26 11:12 KST — Local AI card routine
+
+- Published: `Project Glasswing — AI 보안 자동화의 병목은 탐지보다 검증·패치 수용`
+- Source: https://www.anthropic.com/news/expanding-project-glasswing
+- Refined: `Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'`
+- Refined sources re-checked: https://github.com/campfirein/byterover-cli and https://api.github.com/repos/campfirein/byterover-cli
+- Rejected: Claude Seoul/NAVER deployment as adoption news with weak direct developer lesson; Claude higher usage limits as prior overlap; ADK for Kotlin/Android, Android AI Sample Catalog, Claude Tag, and OpenAI agent-work usage research as duplicates; pure Android-only topics as below threshold.
