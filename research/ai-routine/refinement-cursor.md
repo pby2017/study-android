@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)`; next oldest reviewed candidate is `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`.
+Current position: continue after `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`; next oldest reviewed candidate is `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Fable 5 83.1% (2026-06)`.
 
-Last update: 2026-06-26 21:34 KST
+Last update: 2026-06-26 23:39 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -62,6 +62,7 @@ Reviewed:
 - `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`
 - `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기`
 - `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)`
+- `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -112,6 +113,7 @@ Refined:
 - `Bumblebee(Perplexity) — MCP·확장·패키지 로컬 노출을 읽기 전용으로 찾는 스캐너(4.6k★)` — re-checked the current README plus GitHub API metrics and latest release; clarified the SBOM/EDR gap, read-only local-inventory scope, exact-match exposure-catalog model, scan profiles, selftest, credential-output boundary, and live popularity/release signal.
 - `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5` — re-checked the LangChain harness engineering post plus GitHub API metrics and latest release; clarified the trace-analysis improvement loop, prompt/tool/middleware knobs, PreCompletionChecklistMiddleware, LocalContextMiddleware, loop detection, and live popularity/release signal.
 - `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다` — re-checked the Linux Foundation launch announcement plus current AAIF site; clarified MCP/goose/AGENTS.md roles, added current project-list signal including agentgateway, and reframed the practical lesson around governance, portability, and repo instruction files as agent interfaces.
+- `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼` — re-checked Factory Terminal-Bench post, current Factory CLI docs, and Terminal-Bench public site; preserved the original score/topic, clarified the reusable harness-design lesson, and refreshed current droid exec mission, MCP, Custom Droids, and model-routing wording.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -124,7 +126,7 @@ Skipped:
 - `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)` — source re-checked; existing card already captures nested file placement, conflict precedence, supported tools, and verification behavior.
 
 Next:
-- Continue with `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Fable 5 83.1% (2026-06)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

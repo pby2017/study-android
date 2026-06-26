@@ -1379,13 +1379,13 @@ cards:
   source: https://agents.md
 - category: ai
   title: Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼
-  summary: 'Factory AI의 터미널 코딩 에이전트 droid는 Terminal-Bench core v0.1.1에서 Opus 4.1 조합 58.8%로 1위 — 성능 차이의 핵심은 모델 선택보다 에이전트 설계(계층형 프롬프트·모델별 편집·경로 처리·최소 도구 스키마·환경 부트스트랩). `curl -fsSL https://app.factory.ai/cli | sh` 또는 `npm i -g droid`로 설치. 대화형 `droid`·헤드리스 `droid exec`·다단계 `droid exec --mission`. Custom Droid로 팀 규칙·도구 커스터마이즈. 단일 AI 공급자 락인 없이 작업별 모델 라우팅.
+  summary: 'Factory AI의 터미널 코딩 에이전트 droid는 Terminal-Bench core v0.1.1에서 Opus 4.1 조합 58.8%로 1위를 기록했다. Factory의 해석은 모델 이름보다 에이전트 하네스가 승부처라는 쪽이다. 계층형 프롬프트, 모델별 편집 처리, 경로 처리, 작은 도구 스키마, 환경 부트스트랩 같은 설계가 같은 모델의 성능을 끌어올린다는 것이다. 현재 CLI 문서는 이 방향을 제품 기능으로 이어 간다. 대화형 `droid`, 자동화용 `droid exec`, 큰 기능을 오케스트레이터+전문 droid로 나누는 `droid exec --mission`, MCP 연결, Custom Droids, 작업별 모델 라우팅을 한 흐름에 묶는다. 교훈은 벤치마크 점수보다 "프롬프트·도구·환경·모델 라우팅을 한 하네스로 설계했는가"를 봐야 한다는 점이다.
 
     '
   points:
-  - Terminal-Bench 1위(58.8%) — 하네스·도구 스키마·환경 부트스트랩이 모델보다 중요
-  - '`droid` 대화형 + `droid exec` 헤드리스 + `--mission` 다단계 워크플로'
-  - Custom Droid·모델 비종속 라우팅 — 엔터프라이즈 코딩 플랫폼
+  - Terminal-Bench 58.8% — 모델 선택보다 하네스 설계 차이를 보여준 사례
+  - '`droid` 대화형 + `droid exec` 헤드리스 + `--mission` 다중 droid 워크플로'
+  - Custom Droids·MCP·모델 라우팅 — 팀별 에이전트 하네스 구성 단위
   source: https://docs.factory.ai/cli/getting-started/overview
 - category: ai
   title: Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Fable 5 83.1% (2026-06)
@@ -8483,3 +8483,11 @@ cards:
   - 커밋 작성은 AGENTS.md와 copilot-instructions.md를 참고해 레포 규칙에 맞춘다
   - worktree UI는 에이전트 병렬 세션과 사람의 브랜치 작업을 같은 Git 격리 모델로 다룬다
   source: https://github.blog/changelog/2026-06-26-github-desktop-3-6-worktrees-and-deeper-copilot-integration/
+- category: ai
+  title: VS Code Copilot 토큰 효율 — prompt cache·tool search·WebSocket이 하네스 비용을 깎는다
+  summary: VS Code 팀은 Copilot 에이전트 비용을 모델 문제가 아니라 하네스 문제로 다룬다. 반복되는 system/tool/repo/conversation prefix는 prompt cache hit-rate를 높여 재계산을 줄이고, tool search는 MCP·확장 도구의 전체 JSON schema를 매 턴 넣지 않고 필요할 때만 불러온다. OpenAI 모델에서는 24h prompt_cache_retention과 WebSocket continuation을 붙였고, GPT-5.4/5.5 실험에서 median session token usage가 각각 8.97%, 10.92% 줄었다. Anthropic 쪽은 cache_control breakpoint와 deferred tool search를 조합해 agentic workload cache hit-rate를 약 94%까지 올렸고, 7일 실험에서 median session total-token usage가 약 18% 줄었다. 교훈은 "프롬프트를 줄여라"보다 구체적이다. 긴 에이전트 세션은 prefix 안정성, 도구 지연 로딩, transport 재사용, subagent 분리가 실제 비용 구조를 바꾼다.
+  points:
+  - Tool search — 전체 도구 schema 대신 이름·설명만 먼저 보여주고 필요할 때 load
+  - OpenAI GPT-5.4/5.5 — median session token usage 8.97%/10.92% 감소
+  - Anthropic deferred tools — median total-token usage 약 18% 감소, cache hit-rate 약 94%
+  source: https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot

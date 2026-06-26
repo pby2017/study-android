@@ -4226,3 +4226,11 @@ Refined:
 - Refined: none; bounded older-card pass re-verified `security-guidance 플러그인` and `AGENTS.md 실전`, but both were already clear and source-supported.
 - Refined sources re-checked: https://code.claude.com/docs/en/security-guidance and https://agents.md/
 - Rejected: GitHub Agent Finder/ARD and Copilot app follow-ups as duplicates; broad Android AI/Gemma/ADK follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
+
+## 2026-06-26 23:39 KST — Local AI card routine
+
+- Published: `VS Code Copilot 토큰 효율 — prompt cache·tool search·WebSocket이 하네스 비용을 깎는다`
+- Source: https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot
+- Refined: `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`
+- Refined sources re-checked: https://factory.ai/news/terminal-bench, https://docs.factory.ai/cli/getting-started/overview, and https://www.tbench.ai/
+- Rejected: GitHub Desktop 3.6, Zed Agent Skills, Claude Code --attribution, and Project Solara as duplicate existing cards; pure Android-only topics as below threshold.
