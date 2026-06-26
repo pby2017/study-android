@@ -3983,6 +3983,61 @@ Refined:
 누적: 919카드 (911→919 신규 8, 병합 2건은 기존 카드 갱신)
 주제: edge memory sync(mcp-memory-rs·CodeCRDT)·on-device KV(Q4)·stateful eval(SWE-STEPS·REAP)·agent auth(auth.md)·mobile abuse detection(Live Threat)·observability taxonomy(ATSC)
 
+## 2026-06-26 32:00 KST — Batch 64 (아이디어 검증 + 병합 3카드 + 신규 8카드)
+
+### 병합 3카드
+
+| 병합·갱신 | 유지 |
+|-----------|------|
+| MCP 2026 Tasks-only → **MCP 2026 — Linux Foundation·Stateless 07-28·Extensions·Skills·Tasks·Python SDK v2 alpha** | SEP-2133 Extensions framework·SEP-2640 Skills skill://index.json·agentskills.io binding |
+| Copilot SDK GA one-liner → **Copilot SDK GA — v1.0.2 memory·defer tool·6 languages** | v1.0.2 session memory opt-in·defer auto/never lazy tool load |
+| Claude Managed Agents Multiagent only → **Claude Managed Agents — multiagent·self-hosted sandbox·MCP tunnel·AWS Platform** | Code with Claude self-hosted worker·MCP tunnel·2026-06-16 AWS full CMA |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Saber | stateful workspace final-state safety — refusal benchmarks miss operational HSR>54% |
+| ProcCtrlBench | 11-defect process ontology+control preservation — outcome-only eval blind spot |
+| AgentProp-Bench | human-validated propagation P≈0.62·judge κ=0.049 — eval methodology axis |
+| AgentProcessBench | 8509 step labels+propagation rule — step-level ground truth distinct from ProcCtrl |
+| Android Bench | Google official 100 Android PR+instrumentation — platform axis for Company audience |
+| Claude Code Routines | cloud schedule/GitHub/API — distinct from /loop(local) and Cursor Automations |
+| isolation remote | CCR subagent sandbox+peer trust rewrite — production multi-agent blast radius |
+| AAHP v3 | file handoff MANIFEST·98% token cut — protocol distinct from handoff integration testing |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| AgentHazard·Taxonomy Safety meta | Batch 60 CUAHarm/OS-Harm/Agent-SafetyBench 포화 — Saber가 workspace safety 커버 |
+| Kimi K2.7 Code·MCP Mark·Program Bench | Batch 55–61 model/MCP cards exist |
+| SlopCodeBench·SWE-STEPS·REAP·Dialogue-SWEBench | existing cards |
+| MCP stateless·Skills standalone·ATSC·auth.md | Batch 60–63 MCP/observability 포화 — Skills merged into MCP 2026 |
+| Claude sandbox-runtime·Managed self-hosted standalone | merged into CMA card + remote isolation card |
+| Cursor Customize·Automations·Design Mode | Batch 61–62 cards exist |
+| AgentHandoff MCP·MCP Handoff SEP | AAHP card covers sequential handoff protocol axis |
+| Copilot SDK GA standalone | v1.0.2 merge only |
+| Project Glasswing | Batch 64 local routine already published |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Saber — stateful project workspace operational safety·final state HSR 54%+ | arxiv.org/abs/2606.01317 |
+| 2 | ProcCtrlBench — 11 defect ontology·control preservation·outcome blind spot | arxiv.org/abs/2605.20251 |
+| 3 | AgentProp-Bench — tool parameter injection 62% propagate·judge κ=0.049 | arxiv.org/abs/2604.16706 |
+| 4 | AgentProcessBench — 8509 step label·ternary neutral·error propagation rule | arxiv.org/abs/2603.14465 |
+| 5 | Android Bench — 100 real Android PR·instrumentation test·GPT 5.5 74% | developer.android.com/bench |
+| 6 | Claude Code Routines — cloud prompt+repo+connectors·schedule·GitHub·API fire | code.claude.com/docs/en/routines |
+| 7 | Claude Code isolation remote — Agent tool CCR sandbox·peer trust rewrite | github.com/anthropics/claude-code/releases/tag/v2.1.181 |
+| 8 | AAHP v3 — sequential agent handoff·MANIFEST.json·98% token cut | github.com/homeofe/AAHP |
+
+누적: 927카드 (919→927 신규 8, 병합 3건은 기존 카드 갱신)
+주제: operational safety(Saber)·process eval(ProcCtrl·AgentProp·AgentProcess)·Android platform bench·cloud automation(Routines)·remote isolation·handoff protocol(AAHP)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.

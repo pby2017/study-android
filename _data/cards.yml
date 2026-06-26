@@ -1003,12 +1003,12 @@ cards:
   - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
   source: https://github.com/earendil-works/pi
 - category: ai
-  title: MCP 2026 — Linux Foundation·Stateless 07-28·Tasks·ttlMs cache·Python SDK v2 alpha
-  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy. transport 성능층 — tools/list·resources/read 결과에 ttlMs·cacheScope(SEP-2549) 추가, gateway가 JSON body DPI 없이 헤더만으로 route·rate-limit. OAuth mix-up 완화 — authorization response iss 검증(RFC 9207·SEP-2468), server/discover로 capability negotiation. MCP Tasks extension(SEP-2663) — tools/call→CreateTaskResult+taskId, tasks/get·update·cancel lifecycle, taskId=capability handle·매 요청 auth(IDOR 방지). MCP Apps·Skills over MCP는 별도 Extensions. Python SDK v2.0.0a2 per-version wire validation.
+  title: MCP 2026 — Linux Foundation·Stateless 07-28·Extensions·Skills·Tasks·Python SDK v2 alpha
+  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy·Roots/Sampling/Logging deprecated. Extensions framework(SEP-2133) — reverse-DNS ID·extensions capability map·ext-* repo·core spec과 독립 버전·MCP Apps+Tasks 두 official extension. Skills extension(SEP-2640·io.modelcontextprotocol/skills) — agentskills.io SKILL.md를 skill:// URI·skill://index.json catalog·optional .tar.gz archive로 MCP resources/read transport, progressive disclosure 유지. Tasks(SEP-2663) — tools/call→taskId, tasks/get·update·cancel, ttlMs·cacheScope(SEP-2549) gateway cache. Python SDK v2.0.0a2 per-version wire validation.
   points:
-  - ttlMs+cacheScope — tools/list 캐시 fresh window, gateway body parse 불필요
-  - RFC 9207 iss — MCP many-server mix-up attack 저비용 완화
-  - Tasks SEP-2663 — stateless taskId handle, sticky session·tasks/result 제거
+  - SEP-2133 Extensions — optional capability governance, Apps+Tasks official
+  - Skills SEP-2640 — skill://index.json discovery, archive or file serve
+  - Tasks+ttlMs — stateless taskId handle, gateway header-only route
   source: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
@@ -3076,15 +3076,13 @@ cards:
   - '`infra`·`deploy`·`publish`로 Agent Runtime/Cloud Run/Gemini Enterprise까지 연결'
   source: https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/
 - category: ai
-  title: Copilot SDK GA — 에이전트 루프를 제품 안에 심는 여섯 언어 SDK
-  summary: 'GitHub Copilot SDK는 2026년 6월 2일 GA가 됐다. Node.js/TypeScript, Python, Go, .NET, Rust, Java 여섯 언어에서 사용할 수 있고, 제품 안에 Copilot 에이전트 세션을 직접 넣는 용도다. 핵심 기능은 에이전트가 자율 호출할 custom tools와 MCP 연결, 시스템 프롬프트 섹션 단위 커스터마이징, OpenTelemetry tracing, GitHub OAuth·GitHub Apps·환경 토큰·BYOK 인증, cloud/remote session, hook system이다. 실무 포인트는 채팅 UI 하나를 붙이는 수준이 아니라, 권한·도구·추적·세션을 제품 아키텍처 일부로 설계해야 한다는 점이다.
-
-    '
+  title: Copilot SDK GA — 에이전트 루프를 제품 안에 심는 여섯 언어 SDK·v1.0.2 memory·defer
+  summary: 'GitHub Copilot SDK는 2026-06-02 GA·v1.0.2(2026-06-18). Node.js/TypeScript, Python, Go, .NET, Rust, Java 여섯 언어 — 제품 안에 Copilot agent runtime(planning·tool·file edit·streaming·multi-turn)을 직접 embed. v1.0.2 — session create/resume에 memory:{enabled:true} opt-in persistent memory across turns; tool definition defer:"auto"|"never"로 lazy tool search vs eager preload. GA 이후 — Rust/Java SDK 추가·multi-client same session tool/permission contribute·slash command+interactive prompt 전 언어·stable semver API. custom tools·MCP·prompt section·OpenTelemetry·GitHub OAuth/Apps/BYOK·cloud remote session·hook system. vs Copilot app(Canvas orchestration) ·Copilot CLI(TUI) — SDK=embed runtime in your product.'
   points:
-  - 'GA 지원 언어: Node/TS, Python, Go, .NET, Rust, Java'
-  - custom tools, MCP, prompt section editing, OpenTelemetry tracing 제공
-  - hook system으로 tool use·session·permission request를 가로챔
-  source: https://github.blog/changelog/2026-06-02-copilot-sdk-is-now-generally-available/
+  - memory opt-in — cross-turn recall without re-prompting full context
+  - defer auto/never — token budget vs tool discovery latency tradeoff
+  - GA 6 languages — Rust/Java new, multi-client session sharing
+  source: https://github.com/github/copilot-sdk/releases/tag/v1.0.2
 - category: ai
   title: GitHub MCP Secret Scanning GA — 커밋 전 에이전트에게 노출 키를 찾게 하기
   summary: 'GitHub는 2026년 5월 5일 MCP Server의 secret scanning 기능을 GA로 전환했다. MCP 호환 IDE나 GitHub Copilot CLI 같은 AI coding agent 환경에서 현재 변경분을 검사해 API 키와 토큰 같은 secret이 커밋이나 PR 전에 들어가지 않게 막는 방식이다. GA 버전은 기존 repository나 organization의 push protection customization을 존중해 탐지와 bypass 동작을 일관되게 맞춘다. 실무 포인트는 보안 검사를 CI 마지막 단계로 미루지 말고, 에이전트가 파일을 고치는 같은 루프 안에서 "현재 diff를 secret scanning 해 달라"고 호출하는 것이다.
@@ -7983,13 +7981,13 @@ cards:
   - Cloud automations — fire-and-forget scheduled agent tasks on GitHub runners
   source: https://github.blog/changelog/2026-06-17-github-copilot-app-generally-available/
 - category: ai
-  title: Claude Managed Agents Multiagent — coordinator roster·shared sandbox·25 threads
-  summary: Claude Managed Agents multiagent orchestration(public beta·managed-agents-2026-04-01) — coordinator agent delegates to 1–20 roster agents, max 25 concurrent threads·depth 1 only(subagents cannot delegate). shared container+filesystem+vault but each agent own context-isolated thread(model·system·tools·MCP·skills per agent). coordinator primary thread condensed subagent activity — drill per-thread for full trace. vs Claude Code subagents(local) ·Outcomes(rubric) ·Dreams(memory) — CMA hosted cloud harness. Use case — cheap search agent + Opus reviewer + domain specialist parallel fan-out.
+  title: Claude Managed Agents — multiagent·self-hosted sandbox·MCP tunnel·AWS Platform
+  summary: Claude Managed Agents(public beta·managed-agents-2026-04-01) — hosted cloud agent harness with multiagent coordinator delegating 1–20 roster agents, max 25 concurrent threads·depth 1 only. shared container+filesystem+vault, each worker isolated context(model·tools·MCP·skills). 2026-05 Code with Claude — self-hosted sandbox(public beta) runs tool execution on customer infrastructure via worker polling Anthropic control plane; MCP tunnel reaches private MCP without internet exposure(tool I/O still transits control plane — not air-gapped). 2026-06-16 Claude Platform on AWS — full CMA feature set(webhooks·multiagent·self-hosted sandboxes) on AWS deployment. vs Claude Code subagents(local) ·Cloudflare Temporary(deploy credential) — CMA=enterprise hosted agent with BYO execution perimeter.
   points:
-  - multiagent top-level field on agents.create — not tools[] entry
-  - Shared sandbox filesystem — workers see same repo, isolated conversation context
-  - Depth=1 cap — coordinator→workers only, 25 concurrent thread ceiling
-  source: https://platform.claude.com/docs/en/managed-agents/multi-agent
+  - Self-hosted sandbox — tool runs on your worker, results return to model
+  - MCP tunnel — private MCP from Anthropic cloud or self-hosted session
+  - AWS Platform GA — webhooks+multiagent+self-hosted on Claude Platform AWS
+  source: https://simoncarter.ai/posts/claude-managed-agents-now-run-tool-execution-on-your-own-infrastructure/
 - category: ai
   title: WeaveBench — hybrid GUI+shell CUA 114 task·trajectory-aware agent-as-judge
   summary: WeaveBench(arXiv 2606.09426·weavebench.github.io) — long-horizon real-world computer-use where every task interleaves GUI clicks with shell/code in one trajectory. 114 tasks 8 work domains·trajectory-aware Agent-as-Judge reads chat trace+deliverables per-clause evidence — harder to spoof than file-existence checks. Best Claude Opus 4.7+Claude Code 41.2% PassRate vs GPT-5.5+Codex 35.1% — harness pairing matters. OpenClaw as harness variable 19–35% spread same model. vs OSWorld(pure GUI) ·Terminal-Bench(shell) ·ITBench-AA(SRE) — hybrid interface real desk work.
@@ -8262,3 +8260,67 @@ cards:
   - Aspire/.NET gap — Agent Framework span에 agent meaning 부여
   - HITL·handoff·memory access — microservice trace에 없는 agent operation taxonomy
   source: https://github.com/agent-telemetry-spec/atsc/blob/main/SPEC.md
+- category: ai
+  title: Saber — stateful project workspace operational safety·final state HSR 54%+
+  summary: Saber(arXiv 2606.01317·sssr-lab/saber) — coding agent operational safety in realistic stateful project workspaces, not chatbot refusal. agent edits code·runs shell·modifies artifacts in Docker sandbox — safety judged from final workspace state+action trace after multi-step run. violation taxonomy by cause enables model-specific safety profiles. best model still >54% harmful safety-violation rate(HSR) — refusal alone insufficient for agent safety. vs Agent-SafetyBench(interactive tool env score) ·CUAHarm(terminal harm execution) — Saber=project workspace state delta axis.
+  points:
+  - Final state judgment — not prompt refusal, completed run workspace delta
+  - 'HSR 54%+ even best model — plan safely+least privilege+preserve state all fail'
+  - Violation taxonomy — cause categorization beyond binary safe/unsafe
+  source: https://arxiv.org/abs/2606.01317
+- category: ai
+  title: ProcCtrlBench — 11 defect ontology·control preservation·outcome blind spot
+  summary: ProcCtrlBench(arXiv 2605.20251) — execution-process eval for coding agents beyond final pass/fail. 11 defect types in 4 categories from standardized trajectory evidence — interpretable·interruptible·correctable·reversible·authority handback(control preservation score). 200 cases sampled from AndroidBench·Terminal-Bench·SWE-bench Verified — reveals execution quality differences outcome metrics miss. vs Snorkel(trajectory rubric final) ·Terminal-Bench(shell outcome) — ProcCtrlBench=process ontology reusable across harnesses.
+  points:
+  - 11 defect types — process evidence not just test pass
+  - Control preservation — can operator interrupt/correct mid-run
+  - Cross-benchmark sampling — AndroidBench+TB+SWE-bench unified trajectory
+  source: https://arxiv.org/abs/2605.20251
+- category: ai
+  title: AgentProp-Bench — tool parameter injection 62% propagate·judge κ=0.049
+  summary: AgentProp-Bench(arXiv 2604.16706·agenthallu-bench repo) — tool-using agent error propagation with human-validated judge. 2000 task·2300 traces·4 domains·9 models·100 human labels. substring judge κ=0.049 vs human(chance); 3-LLM ensemble κ=0.432 moderate conservative bias. parameter injection→wrong final answer P≈0.62 human-calibrated(0.46–0.73 per model). rejection(catch bad param) vs recovery(fix after accept) independent capabilities(ρ=0.126). 3-layer runtime interceptor −23pp GPT-4o-mini, null on Gemini-2.0-Flash(95% schema rejection). vs ASSERT(policy eval) ·Braintrust(trace) — AgentProp=stage-conditional propagation math.
+  points:
+  - κ=0.049 substring judge — automated agent eval unreliable without validation
+  - 62% propagation — one bad tool param often poisons final answer
+  - Interceptor model-specific — schema gate strong models need different mitigation
+  source: https://arxiv.org/abs/2604.16706
+- category: ai
+  title: AgentProcessBench — 8509 step label·ternary neutral·error propagation rule
+  summary: AgentProcessBench(RUCBM·arXiv 2603.14465) — first step-level effectiveness benchmark for tool-augmented agent trajectories. 1000 trajectories·8509 human step annotations·89.1% IAA·ternary label(correct/neutral/erroneous). error propagation rule — post-error dependent steps labeled erroneous until explicit correction or independent subtask — prevents spurious credit. findings — weak models inflate correct-step ratio via early termination; neutral vs error distinction hard; process signal complements outcome supervision for test-time scaling. vs ProcCtrlBench(defect ontology) ·AgentProp(injection propagation) — AgentProcessBench=human step label ground truth.
+  points:
+  - 8509 step labels — not end-to-end pass rate only
+  - Propagation rule — downstream steps don't get free credit after error
+  - Early termination bias — weak models look better on step ratio
+  source: https://arxiv.org/abs/2603.14465
+- category: ai
+  title: Android Bench — 100 real Android PR·instrumentation test·GPT 5.5 74%
+  summary: Android Bench(Google·developer.android.com/bench·android-bench/android-bench) — LLM coding eval for Android-specific engineering not covered by generic SWE-bench. 100 tasks from 38989 public PR pool — Compose migration·Wear OS networking·breaking API·unit+emulator instrumentation verify. mini-swe-agent inference+patch verifier Docker harness. June 2026 — GPT 5.5 74.0%·Gemini 3.5 Flash 63.7%·Claude Opus 4.7 68.7%·GLM 5.1 59.7%. vs SWE-bench(generic patch) ·MobileRisk-Live(GUI safety) ·ProcCtrlBench(samples AndroidBench) — Android Bench=platform-specific capability axis.
+  points:
+  - Instrumentation tests — emulator verify not just unit test pass
+  - Real GitHub Android repos — Compose·Wear·framework migration tasks
+  - Model-agnostic harness — mini-swe-agent+LiteLLM any model
+  source: https://developer.android.com/bench
+- category: ai
+  title: Claude Code Routines — cloud prompt+repo+connectors·schedule·GitHub·API fire
+  summary: Claude Code Routines(research preview·v2.1.105+·2026-04) — saved config(prompt·repo·connectors) running on Anthropic cloud infrastructure — laptop closed OK. triggers — cron schedule(min 1h recurring)·GitHub PR/release filters·POST /fire API(bearer token·experimental-cc-routine-2026-04-01 beta header). create from claude.ai/code/routines·Desktop Remote·CLI /schedule. autonomous full session — no permission prompts, shell+repo skills+connectors scoped per routine. Pro 5/day·Max 15·Team/Enterprise 25 daily routine cap. vs /loop(session-bound·local files) ·Cursor Automations(multi-repo cloud) ·Desktop scheduled task(local machine on) — Routines=Anthropic-hosted repo-centric automation.
+  points:
+  - Cloud vs /loop — survives laptop off, no local env access
+  - GitHub trigger — one session per PR, follows comments+CI
+  - /fire API — wire deploy hooks·alerting·internal tools via HTTP
+  source: https://code.claude.com/docs/en/routines
+- category: ai
+  title: Claude Code isolation remote — Agent tool CCR sandbox·peer trust rewrite
+  summary: 'Claude Code 2.1.181(2026-06-17) — Agent tool isolation remote dispatches subagent to Cloud Compute Resource(CCR) sandbox not local host. remote agents run as background tasks with completion notification — dedicated ephemeral env vs local subagent sharing filesystem+credentials. same release — peer message trust model rewrite: incoming agent messages treated as teammate-on-behalf-of-user not untrusted external — operators must audit disallowedTools explicitly. vs worktree isolation(local repo copy) ·Claude Managed Agents(self-hosted worker) ·Runloop Devbox(microVM) — remote=Anthropic CCR blast-radius containment for untrusted input.'
+  points:
+  - isolation remote — CCR sandbox per subagent invocation
+  - Peer trust shift — explicit disallowedTools replaces implicit skepticism
+  - Background+notify — remote always async with completion signal
+  source: https://github.com/anthropics/claude-code/releases/tag/v2.1.181
+- category: ai
+  title: AAHP v3 — sequential agent handoff·MANIFEST.json·98% token cut
+  summary: AAHP AI-to-AI Handoff Protocol(homeofe/AAHP·v3) — file-based sequential context transfer between coding agents replacing verbose chat history. outgoing agent writes MANIFEST.json(checksum·task dependency graph·NEXT_ACTIONS.md) + HANDOFF.lock single-writer gate — receiving agent reads MANIFEST first canonical gate. empirical dev session — AAHP v3 consumed 2% tokens vs unmediated native agent teams(98% reduction). v3 adds stable task IDs·machine-readable dependency graph for parallel task selection. vs Multi-Agent Handoff Integration Testing(seam assert pattern) ·MCP Handoff SEP(proposed) ·Memory Bank(single-agent) — AAHP=git-native sequential handoff file protocol.
+  points:
+  - MANIFEST.json gate — one canonical read before any other file
+  - 98% token reduction — structured state vs full chat replay
+  - v3 task graph — programmatic parallel/blocked task detection
+  source: https://github.com/homeofe/AAHP
