@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`; next oldest reviewed candidate is `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기`.
+Current position: continue after `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)`; next oldest reviewed candidate is `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`.
 
-Last update: 2026-06-26 19:30 KST
+Last update: 2026-06-26 21:34 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -60,6 +60,8 @@ Reviewed:
 - `Bumblebee(Perplexity) — 에이전트가 깐 MCP 서버·확장을 '코드 실행 없이' 훑어 공급망 노출을 잡는 스캐너`
 - `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5`
 - `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`
+- `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기`
+- `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -118,9 +120,11 @@ Skipped:
 - `에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 '하네스'를 설계하는 실전 교훈` — source re-checked; existing card already captures the experiment metrics and verifier/logging/parallelism lessons.
 - `서브에이전트 4가지 패턴(Philipp Schmid) — '메인 에이전트가 쥔 통제권' 순으로 줄 세우기` — source re-checked; existing card already preserves the pattern ladder and "start with Pattern 1" lesson.
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다` — source re-checked; existing card already captures the context-layer and exact-search lesson without overextending the vendor post.
+- `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기` — source re-checked; existing card already captures the three review depths, independent Claude review context, limits, non-blocking caveat, and shell-commit boundary.
+- `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)` — source re-checked; existing card already captures nested file placement, conflict precedence, supported tools, and verification behavior.
 
 Next:
-- Continue with `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

@@ -4218,3 +4218,11 @@ Refined:
 - Refined: `Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다`
 - Refined sources re-checked: https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation and https://aaif.io/
 - Rejected: GitHub third-party agent security validation and Microsoft Agent Framework 1.0 GA as duplicate existing cards; Android Bench/Gemini Nano/ADK follow-ups as duplicate or saturated AI+Android surface; pure Android-only topics as below threshold.
+
+## 2026-06-26 21:34 KST — Local AI card routine
+
+- Published: `GitHub Desktop 3.6 — worktree와 Copilot을 일상 Git 흐름에 붙이기`
+- Source: https://github.blog/changelog/2026-06-26-github-desktop-3-6-worktrees-and-deeper-copilot-integration/
+- Refined: none; bounded older-card pass re-verified `security-guidance 플러그인` and `AGENTS.md 실전`, but both were already clear and source-supported.
+- Refined sources re-checked: https://code.claude.com/docs/en/security-guidance and https://agents.md/
+- Rejected: GitHub Agent Finder/ARD and Copilot app follow-ups as duplicates; broad Android AI/Gemma/ADK follow-ups as duplicate or saturated; pure Android-only topics as below threshold.

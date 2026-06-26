@@ -8475,3 +8475,11 @@ cards:
   - 단일 구현 평균 실패 387.44 → 3-version majority vote 130.99, 하지만 공통 실패 모드는 남음
   - 실무 적용은 같은 프롬프트 재시도보다 diverse implementation + independent oracle + voter
   source: https://arxiv.org/abs/2606.20158
+- category: ai
+  title: GitHub Desktop 3.6 — worktree와 Copilot을 일상 Git 흐름에 붙이기
+  summary: GitHub Desktop 3.6은 AI 코딩 에이전트가 만든 변경을 "터미널 밖 Git 흐름"에서 다루는 쪽으로 Copilot 통합을 넓힌 업데이트다. Copilot은 커밋 메시지 생성과 머지 충돌 해결에 붙고, 커밋 메시지는 `.github/copilot-instructions.md`와 AGENTS.md, 레포의 커밋 메타데이터 규칙을 참고한다. 충돌이 나면 Desktop이 충돌 내용을 설명하고 해결안을 제안하지만, 사용자가 검토·수정·수락한 뒤 머지를 끝낸다. 동시에 Git worktree를 UI에서 지원해 여러 브랜치를 stash·clone 없이 병렬로 열 수 있다. 교훈은 코딩 에이전트 도입이 "코드 생성"만의 문제가 아니라, 커밋 규칙·충돌 리뷰·worktree 격리 같은 평범한 Git 운영면까지 AI 흐름에 맞춰져야 한다는 점이다.
+  points:
+  - Copilot SDK 기반 — commit message·merge conflict 기능마다 모델 선택과 BYOK/로컬 모델 연결 지원
+  - 커밋 작성은 AGENTS.md와 copilot-instructions.md를 참고해 레포 규칙에 맞춘다
+  - worktree UI는 에이전트 병렬 세션과 사람의 브랜치 작업을 같은 Git 격리 모델로 다룬다
+  source: https://github.blog/changelog/2026-06-26-github-desktop-3-6-worktrees-and-deeper-copilot-integration/
