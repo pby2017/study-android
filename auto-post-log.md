@@ -3822,6 +3822,62 @@ Refined:
 누적: 894카드 (886→894 신규 8, 병합 3건은 기존 카드 갱신)
 주제: runtime governance(AGT+ACS)·policy eval(ASSERT)·mobile safety(MobileRisk-Live)·interactive safety(Agent-SafetyBench)·CUA harm(CUAHarm/OS-Harm)·on-device model(Gemini Nano 4)·observability drift(behavioral drift)
 
+## 2026-06-26 26:00 KST — Batch 61 (아이디어 검증 + 병합 3카드 + 신규 8카드)
+
+### 병합 3카드
+
+| 병합·제거 | 유지 |
+|-----------|------|
+| MCP Python SDK v2 alpha only → **MCP 2026 — Linux Foundation·Stateless 07-28·Skills extension·Python SDK v2 alpha** | SEP-2640 Skills over MCP skill:// resources·index.json·agentskills.io binding |
+| DeepSWE v1.0 leaderboard only → **DeepSWE(Datacurve) — v1.1 June 2026·AA Index·Pier eval** | Fable 5 69.9%·GPT-5.5 67%·Opus 4.8 59% mini-swe-agent·kimi-k2.7-code·glm-5.2 |
+| Cursor Auto-review desktop only → **Cursor Auto-review — desktop·SDK headless·JsonlLocalAgentStore** | SDK local.autoReview·permissions.json·nested subagents·customTools |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 3건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| Claude Code Artifacts | June 18 Team/Enterprise — terminal session→live shareable page, distinct from chat Artifacts card |
+| Miasma/IronWorm | first coordinated AI config supply chain worm — SessionStart·alwaysApply persistence, distinct from HackMyAgent pentest |
+| Reward hacking benchmarks | Cursor June 25 research — 63% retrieved fix·eval runtime integrity, distinct from DeepSWE task design |
+| SWE-Rebench | rolling decontaminated fresh issues — distinct from DeepSWE(original tasks) and SWE-bench Verified(static) |
+| MiMo Code V0.1.0 | open harness 200+ step long-horizon — harness-only 5pp gap, distinct from Kimi K2.7(model) |
+| Xcode 27 mcpbridge | Apple MCP host 20 tools — Android/iOS dev external agent surface, no existing card |
+| Codex Remote GA | June 25 mobile→host QR pairing — distinct from Claude Code Remote Control |
+| Cursor Customize page | 3.9 unified plugins/skills/MCP/hooks — config inventory distinct from Automations triggers |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| Kimi K2.7 Code·Junie GA·GLM-5.2·Fable 5 | Batch 55–57 model/agent cards already exist |
+| Terminal-Bench 2.1·Harbor·AA Index | Batch 57–58 eval/harness 포화 — DeepSWE merge only |
+| Claude dynamic workflows·Cursor /in-cloud·Automations | Batch 56–58 orchestration overlap |
+| Agent-SafetyBench·CUAHarm·OS-Harm·behavioral drift | Batch 60 safety/observability 포화 |
+| Copilot AGENTS.md code review·AI credits | existing cards cover June updates |
+| MCP 2026-07-28 stateless standalone | merged into MCP 2026 card extension |
+| Endor Agent Security League standalone | existing card — FuncPass/SecPass gap already documented |
+| DeepSWE standalone duplicate | merged v1.1 update only |
+| ProgramBench·NatureBench·FeatureBench | Batch 58–59 eval overlap |
+| OASB·HackMyAgent·NSA MCP | Batch 55–59 governance/security 포화 |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | Claude Code Artifacts — 터미널 세션을 live shareable web page로 | claude.com/blog/claude-code-artifacts |
+| 2 | Miasma/IronWorm — AI config file supply chain worm·SessionStart·alwaysApply | CSA research note June 2026 |
+| 3 | Reward hacking coding benchmarks — git history·web lookup 63% retrieved fix | cursor.com/blog/reward-hacking-coding-benchmarks |
+| 4 | SWE-Rebench — rolling fresh GitHub issue·release-date decontamination | swe-rebench.com/about |
+| 5 | MiMo Code V0.1.0 — Xiaomi open harness·200+ step long-horizon memory | producteast.com MiMo Code release |
+| 6 | Xcode 27 mcpbridge — Apple IDE as universal MCP host·20 Xcode tools | developer.apple.com/documentation/xcode |
+| 7 | Codex Remote GA — ChatGPT mobile→Mac/Windows host·QR one-to-one pairing | developers.openai.com/codex/changelog |
+| 8 | Cursor Customize page — plugins·skills·MCP·subagents·hooks 한 UI | cursor.com/changelog |
+
+누적: 902카드 (894→902 신규 8, 병합 3건은 기존 카드 갱신)
+주제: session sharing(Claude Code Artifacts)·config supply chain(Miasma)·eval integrity(reward hacking)·fresh benchmark(SWE-Rebench)·long-horizon harness(MiMo Code)·Apple MCP host(mcpbridge)·mobile remote(Codex Remote)·config UI(Customize page)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.
