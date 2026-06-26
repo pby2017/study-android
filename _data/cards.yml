@@ -1341,11 +1341,11 @@ cards:
   source: https://github.com/perplexityai/bumblebee
 - category: ai
   title: Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5
-  summary: '그냥 LLM에 도구만 물려 루프 돌리면(ReAct) 멀티스텝 장기 작업에서 금방 헤맨다. LangChain Deep Agents는 Claude Code 같은 도구가 왜 잘 도는지를 일반화해 LangGraph 위 `create_agent`에 계획(todo)·서브에이전트·가상 파일시스템·튜닝 시스템 프롬프트를 미리 끼운 ''바로 쓸 수 있는 하네스''다. 2026-06 LangChain harness engineering 블로그: deepagents-cli가 gpt-5.2-codex 고정·하네스만 변경해 Terminal Bench 2.0 52.8%→66.5%(Top 30→Top 5) — system prompt·tools·middleware 3축만 조정. PreCompletionChecklistMiddleware가 exit 직전 verification pass 강제(Ralph Wiggum loop 변형). trace 분석→하네스 개선 루프가 핵심 — 모델 교체보다 prompt·tool·hook 튜닝 ROI가 클 수 있다.'
+  summary: 'Deep Agents는 장기 작업용 LangChain 하네스다. ReAct 루프에 도구만 붙이는 대신 todo 계획, 서브에이전트, 가상 파일시스템, 튜닝된 시스템 프롬프트를 LangGraph 위에 묶는다. LangChain은 deepagents-cli에서 모델을 gpt-5.2-codex로 고정하고 하네스만 바꿔 Terminal Bench 2.0 점수를 52.8→66.5(Top 30→Top 5)로 올렸다고 공개했다. 조정 축은 프롬프트·도구·middleware 세 가지였고, LangSmith trace 분석으로 실패 패턴을 모은 뒤 targeted change를 반복했다. 핵심 개선은 exit 직전 PreCompletionChecklistMiddleware로 task spec 대비 검증을 강제하고, LocalContextMiddleware로 cwd·주변 디렉터리·사용 가능한 도구를 먼저 주입하며, 반복 편집을 감지해 계획 재검토를 유도한 점이다. 2026-06-26 확인 기준 GitHub 25,139★·MIT·최신 릴리스 deepagents==0.6.12.'
   points:
   - Terminal Bench 2.0 52.8→66.5 — model fixed, harness only changed (Top 30→Top 5)
-  - PreCompletionChecklistMiddleware — exit 전 task spec verification pass 강제
-  - todo·subagent·filesystem·prompt 4기둥 + MIT `uv add deepagents` + JS/TS port
+  - Middleware가 verification·local context·loop detection을 주입 — "더 센 모델"보다 하네스 수정
+  - LangSmith trace→실패 원인 집계→프롬프트·도구·middleware 변경으로 반복 개선
   source: https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering
 - category: ai
   title: Agentic AI Foundation(AAIF) — MCP·goose·AGENTS.md가 리눅스재단 중립 거버넌스로 모이다
@@ -8459,3 +8459,11 @@ cards:
   - 100% production eval often 2× monitoring cost — sample async default
   - OTEL token metrics ≠ eval spend — FinOps must budget judge layer separately
   source: https://www.fiddler.ai/blog/opentelemetry-agent-telemetry-signals
+- category: ai
+  title: Project Solara — Android 기반 MDEP 위에 올라가는 에이전트 우선 디바이스
+  summary: Project Solara는 Microsoft가 Build 2026에서 공개한 "agent-first" 프로토타입 디바이스다. 핵심은 새 앱 하나가 아니라, Microsoft Device Ecosystem Platform(MDEP)이라는 Android Open Source Project 기반 OS 계층 위에서 음성·시각·터치 입력을 Copilot 에이전트 경험과 묶는 방향이다. Microsoft는 Solara가 화면 안의 앱을 여는 대신, 주변 맥락을 보고 듣고 이해해 작업을 돕는 디바이스 비전을 보여준다고 설명한다. Android 개발자 관점의 교훈은 명확하다. AI+Android 제품은 Activity나 레이아웃만의 문제가 아니라, OS 신뢰 경계, device management, 입력 센서, 온디바이스/클라우드 에이전트 호출, 사용자 동의 UI를 한 설계로 묶어야 한다.
+  points:
+  - MDEP는 AOSP 기반 엔터프라이즈 디바이스 플랫폼 — Android 파생 OS 위 에이전트 경험
+  - Solara는 음성·시각·터치 입력을 Copilot형 에이전트 UX로 묶는 프로토타입
+  - AI+Android 설계 포인트는 앱 화면보다 OS 권한·센서·관리·동의 경계
+  source: https://commandline.microsoft.com/project-solara-build-2026/

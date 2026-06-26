@@ -4202,3 +4202,11 @@ Refined:
 
 누적: 944카드 (936→944 신규 8, 병합 4건은 기존 카드 갱신)
 주제: test evolution eval(TEBench)·harness-aware benchmark design(Misalignment)·FinOps write-time attribution+eval cost tax·delivery/orchestration(Codex Sites·Symphony·Zed Skills·--attribution)
+
+## 2026-06-26 17:26 KST — Local AI card routine
+
+- Published: `Project Solara — Android 기반 MDEP 위에 올라가는 에이전트 우선 디바이스`
+- Source: https://commandline.microsoft.com/project-solara-build-2026/
+- Refined: `Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5`
+- Refined sources re-checked: https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering, https://api.github.com/repos/langchain-ai/deepagents, and https://api.github.com/repos/langchain-ai/deepagents/releases/latest
+- Rejected: Codex role plugins/Sites/annotations, OpenAI agent-work usage research, Claude usage-limit updates, GitHub Copilot app/BYOK/Automations, ADK for Kotlin/Android, Gemma/LiteRT/AI Edge Gallery follow-ups as duplicates or overlap; pure Android-only topics as below threshold.
