@@ -3931,6 +3931,58 @@ Refined:
 누적: 910카드 (902→910 신규 8, 병합 4건은 기존 카드 갱신)
 주제: interactive eval(Dialogue-SWEBench)·multi-category SE(OmniCode)·multi-agent ADE(Air)·visual UI steer(Design Mode)·AI R&D eval(PostTrainBench)·long-horizon bench(Snorkel)·MCP ops governance·research replication(PaperBench)
 
+## 2026-06-26 30:00 KST — Batch 63 (아이디어 검증 + 병합 2카드 + 신규 8카드)
+
+### 병합 2카드
+
+| 병합·갱신 | 유지 |
+|-----------|------|
+| MCP 2026 Tasks-only → **MCP 2026 — Linux Foundation·Stateless 07-28·Tasks·ttlMs cache·Python SDK v2 alpha** | SEP-2549 ttlMs/cacheScope gateway cache, RFC 9207 iss validation, server/discover |
+| OTel GenAI 5-span only → **OpenTelemetry GenAI — agent-spans v1.41·plan span·MCP semconv·gen_ai.*** | 6th plan operation(#97), gen_ai.client.operation.duration stable metric, ATSC 역할 분리 |
+
+### 아이디어 검증 토론
+
+**후보 18개 → 통과 8카드 + 병합 2건**:
+
+| 주제 | 통과 이유 |
+|------|-----------|
+| mcp-memory-rs | local-first merkle sync edge — vendor-tied memory와 다른 multi-device offline axis |
+| Q4 KV Cache edge | on-device attention state persist — multi-agent edge RAM/TTFT 실무 문제 |
+| SWE-STEPS | temporal PR chain eval — SlopCodeBench(iterative quality)와 orthogonal stateful repo axis |
+| REAP/Harvest | production session curation — public bench language/prompt skew 해소 |
+| auth.md | agent registration protocol — Cloudflare Temporary(deploy)와 다른 signup/onboarding axis |
+| CodeCRDT | CRDT merge≠semantic agreement — multi-writer memory sync edge case |
+| Android Live Threat Detection | mobile platform agent-like abuse detection — AppFunctions dev guide와 OS-level complement |
+| ATSC | agent domain semantic layer — OTel GenAI transport spec과 enterprise APM gap |
+
+**탈락**:
+
+| 주제 | 탈락 이유 |
+|------|-----------|
+| SlopCodeBench·Snorkel·PaperBench·Dialogue-SWEBench·OmniCode | Batch 62 cards exist |
+| MCP stateless standalone·MCP Apps+Tasks gateway·Bedrock AgentCore Cedar | Batch 60–62 포화 |
+| AppFunctions·ADK Android·AISeal pKVM·excessive agency guide | existing Android agent cards |
+| Cloudflare Temporary Accounts·AgentOps·Langfuse OTel | existing cards |
+| OpenViking tenant bug·Hermes stale flush | incident-level, mcp-memory-rs+CodeCRDT가 edge case 커버 |
+| ARMO progressive enforcement·MCP runtime control plane | Agent Governance Toolkit card overlap |
+| OTel GenAI standalone (no merge) | plan span은 기존 card 갱신으로 충분 |
+
+### 신규 8카드
+
+| # | 제목 | 출처 |
+|---|------|------|
+| 1 | mcp-memory-rs — local-first MCP memory·merkle sync·offline JSON+SQLite | github.com/DioNanos/mcp-memory-rs |
+| 2 | Q4 KV Cache edge — multi-agent on-device attention state를 SSD에 persist | arxiv.org/abs/2603.04428 |
+| 3 | SWE-STEPS — dependent PR chain·stateful coding agent eval·20pp inflation | arxiv.org/abs/2604.03035 |
+| 4 | REAP/Harvest — production developer session에서 coding benchmark 자동 큐레이션 | arxiv.org/abs/2604.01527 |
+| 5 | auth.md — /auth.md Markdown으로 agent registration flow를 표준화 | workos.com/auth-md |
+| 6 | CodeCRDT — multi-agent shared memory는 merge≠semantic agreement | arxiv.org/abs/2510.18893 |
+| 7 | Android Live Threat Detection — on-device AI가 agent-like app abuse 패턴 탐지 | blog.google/security/whats-new-in-android-security-privacy-2026 |
+| 8 | ATSC — Agent Telemetry Semantic Conventions, OTel 위 agent domain schema | github.com/agent-telemetry-spec/atsc |
+
+누적: 919카드 (911→919 신규 8, 병합 2건은 기존 카드 갱신)
+주제: edge memory sync(mcp-memory-rs·CodeCRDT)·on-device KV(Q4)·stateful eval(SWE-STEPS·REAP)·agent auth(auth.md)·mobile abuse detection(Live Threat)·observability taxonomy(ATSC)
+
 ## 2026-06-26 02:58 KST — Local AI card routine
 
 - Published: none; fresh candidates were duplicates or below the non-duplicate evidence threshold.

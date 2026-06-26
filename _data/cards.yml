@@ -1003,13 +1003,13 @@ cards:
   - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
   source: https://github.com/earendil-works/pi
 - category: ai
-  title: MCP 2026 — Linux Foundation·Stateless 07-28·Tasks extension·Python SDK v2 alpha
-  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy. MCP Tasks extension(SEP-2663·io.modelcontextprotocol/tasks) — tools/call이 CreateTaskResult+taskId 반환, client가 tasks/get·tasks/update(input_required)·tasks/cancel로 lifecycle drive. 2025-11-25 experimental tasks/result·tasks/list 제거 — stateless에서 list는 scope-safe 불가. taskId=capability handle, 매 요청 authorization 필수(IDOR 방지). MCP Apps·Skills over MCP(SEP-2640)는 별도 Extensions. Python SDK v2.0.0a2(2026-06-16) per-version wire validation. pip install mcp 1.x stable 유지 — 7/28 전 세션·legacy tasks 마이그레이션.
+  title: MCP 2026 — Linux Foundation·Stateless 07-28·Tasks·ttlMs cache·Python SDK v2 alpha
+  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, OAuth/OIDC auth hardening, 12개월 deprecation policy. transport 성능층 — tools/list·resources/read 결과에 ttlMs·cacheScope(SEP-2549) 추가, gateway가 JSON body DPI 없이 헤더만으로 route·rate-limit. OAuth mix-up 완화 — authorization response iss 검증(RFC 9207·SEP-2468), server/discover로 capability negotiation. MCP Tasks extension(SEP-2663) — tools/call→CreateTaskResult+taskId, tasks/get·update·cancel lifecycle, taskId=capability handle·매 요청 auth(IDOR 방지). MCP Apps·Skills over MCP는 별도 Extensions. Python SDK v2.0.0a2 per-version wire validation.
   points:
-  - Tasks SEP-2663 — get/update/cancel lifecycle, tasks/result -32601
-  - Stateless — taskId를 tool arg로 explicit handle, sticky session 금지
-  - 2026-07-28 — Mcp-Method/Name·12mo deprecation·OAuth hardening
-  source: https://modelcontextprotocol.org/seps/2663-tasks-extension
+  - ttlMs+cacheScope — tools/list 캐시 fresh window, gateway body parse 불필요
+  - RFC 9207 iss — MCP many-server mix-up attack 저비용 완화
+  - Tasks SEP-2663 — stateless taskId handle, sticky session·tasks/result 제거
+  source: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
   summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고, 각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며, 인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
@@ -5634,13 +5634,13 @@ cards:
   - Prefect(durable Python)·Dagster(data asset)와 3축 — hook ecosystem compound
   source: https://airflow.apache.org/blog/common-ai-provider/
 - category: ai
-  title: OpenTelemetry GenAI — agent-spans v1.41·MCP semconv·gen_ai.*
-  summary: 'OpenTelemetry GenAI SIG(2024~)가 정의하는 LLM·agent·tool call 표준 span attribute·agent-spans v1.41(2026-05 GA). 5 agent span operation: create_agent·invoke_agent_client·invoke_agent_internal·invoke_workflow·execute_tool — gen_ai.operation.name·gen_ai.tool.name·gen_ai.conversation.id·gen_ai.usage.reasoning.output_tokens. v1.39+ MCP semantic conventions — mcp.method.name(Required)·mcp.session.id(Recommended)·mcp.protocol.version, span name `{mcp.method.name} {target}`(e.g. tools/call echo). MCP instrumentation은 기존 execute_tool span에 mcp.* attribute를 enrich(duplicate span 방지). FastMCP·Elastic APM·Datadog LLM Observability adoption. OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental dual emission. OpenLLMetry(instrumentation SDK) vs semconv(spec) ·Langfuse/Phoenix/Jaeger backend agnostic.'
+  title: OpenTelemetry GenAI — agent-spans v1.41·plan span·MCP semconv·gen_ai.*
+  summary: 'OpenTelemetry GenAI SIG agent-spans v1.41.1(2026-05-11, Development). 6 agent span operation: create_agent·invoke_agent_client·invoke_agent_internal·invoke_workflow·execute_tool·plan(2026-06 #97) — plan은 task decomposition phase, LLM call은 plan child·tool span은 sibling. gen_ai.operation.name·gen_ai.tool.name·gen_ai.conversation.id·gen_ai.usage.reasoning.output_tokens. v1.39+ MCP semconv — mcp.method.name(Required), execute_tool span enrich(duplicate 방지). stable metric gen_ai.client.operation.duration — span attribute rename에도 SLO 유지. OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental dual emit·semconv pin 필수. Langfuse(ClickHouse)·Galileo→Splunk·Datadog LLM Observability OTLP ingest. ATSC(agent-telemetry-spec)와 역할 분리 — OTel=transport+semconv, ATSC=agent domain canonical record.'
   points:
-  - 5 agent spans v1.41 — create·invoke_client/internal·workflow·execute_tool
-  - MCP semconv v1.39 — mcp.method.name·session.id, execute_tool enrich not duplicate
-  - Span name `{method} {target}` — tools/call echo, gen_ai.tool.name cross-ref
-  source: https://opentelemetry.io/docs/specs/semconv/gen-ai/mcp/
+  - plan span 추가 — reasoning과 planning latency/error 분리 관측
+  - gen_ai.client.operation.duration — attribute churn보다 안정적 latency SLO
+  - Development status — pin semconv·dual-emit, production dashboard는 stable metric 우선
+  source: https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-agent-spans.md
 - category: ai
   title: NVIDIA Triton Inference Server — multi-model GPU serving, TensorRT·ONNX·Python backend
   summary: NVIDIA Triton Inference Server는 production GPU/CPU model serving platform으로 dynamic batching·concurrent model execution·model ensemble·A/B testing·metrics(Prometheus)를 제공한다. TensorRT·ONNX·PyTorch·Python backend 지원, multi-GPU·multi-node. OpenAI Triton(Python GPU kernel DSL)과 완전히 다른 제품 — Triton Server=serving, Triton DSL=kernel. TensorRT-LLM(Batch 23)과 연계해 LLM optimized serving. vLLM/SGLang(dynamic LLM serving)과 역할 분리 — Triton=multi-model heterogeneous·enterprise MLOps, vLLM=LLM-specialized PagedAttention.
@@ -8198,3 +8198,67 @@ cards:
   - Claude Security는 scan→validate→patch 제안 흐름, 모든 패치는 human approval 전제
   - 실무 교훈 — AI 보안 자동화는 발견보다 검증·공개·패치 수용 프로세스가 핵심
   source: https://www.anthropic.com/news/expanding-project-glasswing
+- category: ai
+  title: mcp-memory-rs — local-first MCP memory·merkle sync·offline JSON+SQLite
+  summary: mcp-memory-rs(DioNanos·v0.3.0·2026-06)는 Rust stdio MCP memory server로 agent 장기 상태를 vendor session이 아닌 사용자 디스크 JSON category+SQLite FTS5에 보관한다. default는 완전 offline — sync는 optional HTTP step, embedding·cloud account 불필요. fleet sync — sync_manifest(merkle root)·sync_diff·memory_sync push/pull, conflict_strategy(last-write-wins default)·expected_hash optimistic concurrency. HTTP sync plane은 bearer token full access — loopback bind+MCP_MEMORY_TOKEN 필수, MCP stdio surface만 per-category ACL. vs agentmemory(53 tool cloud-style) ·Memory Bank(markdown files) — mcp-memory-rs=multi-device edge sync+versioned notebook axis.
+  points:
+  - Local-first — stdio만으로 offline 동작, sync는 explicit opt-in
+  - Merkle manifest — node 간 diff만 push, full dump 불필요
+  - HTTP token=admin — loopback+tunnel, public internet 노출 금지
+  source: https://github.com/DioNanos/mcp-memory-rs
+- category: ai
+  title: Q4 KV Cache edge — multi-agent on-device attention state를 SSD에 persist
+  summary: Agent Memory Below the Prompt(arXiv 2603.04428·2026) — edge multi-agent LLM inference에서 agent 전환마다 KV cache re-prefill(4K context Gemma 3 12B 15.7s)이 병목. Q4 quantized KV cache를 SSD에 persist, eviction 시 vLLM처럼 free하지 않고 disk page-in — warm 577ms·hot 719ms vs re-prefill 15.7s. 24GB edge — FP16 8K에서 agent 3개 vs Q4 12개. multi-agent workflow는 한 agent decode 중 다음 agent load로 page-in latency hide. PPL impact -0.10~+0.19 across models. vs MiMo Code(harness state) ·on-device Nano inference — Q4 KV=attention state virtual memory for multi-agent edge.
+  points:
+  - Re-prefill 15.7s→577ms — session restart·memory pressure 후에도 context restore
+  - Q4 4-bit — edge RAM budget에서 agent slot 4× 확장
+  - Decode/load overlap — multi-agent interleave가 I/O latency 상쇄
+  source: https://arxiv.org/abs/2603.04428
+- category: ai
+  title: SWE-STEPS — dependent PR chain·stateful coding agent eval·20pp inflation
+  summary: SWE-STEPS(arXiv 2604.03035·Apr 2026) — coding agent를 isolated single-PR(SWE-bench style)이 아니라 temporally ordered PR chain(3–11 PR·median 1–3주 dev work)에서 평가. 168 task·963 PR·6 Python repos·Conversational(iterative request) + PRD(monolithic plan) 두 setting. isolated PR eval은 stateful setting 대비 success rate 최대 20pp 과대 — spillover·regression 누적 무시. SonarQube — agent code가 cognitive complexity·technical debt 더 높음(test pass해도 repo health degrade). vs SlopCodeBench(iterative extension quality) ·Dialogue-SWEBench(interactive spec) — SWE-STEPS=temporal repo evolution axis.
+  points:
+  - 20pp inflation — stateless SWE-bench rank가 production 연속 개발과 어긋남
+  - PR chain 3–11 — test suite growth·technical debt 누적 반영
+  - SonarQube health — functional pass만으로 agent 품질 판단 불가
+  source: https://arxiv.org/abs/2604.03035
+- category: ai
+  title: REAP/Harvest — production developer session에서 coding benchmark 자동 큐레이션
+  summary: REAP(Relevance and Execution-Audited Pipeline·arXiv 2604.01527) — real developer-agent session에서 verbatim prompt + fail-to-pass test oracle benchmark를 LLM judge 없이 자동 생성. Harvest case study — single-turn production coding assistant pool, 4+ language(Hack majority), 5 frontier model solve rate 42.9–58.2%(Opus 4.6 top). harness comparison — stronger toolset↑ solve rate, developer context file(AGENTS.md류)이 weak harness gap 메움. vs SWE-Rebench(GitHub issue mining) ·public bench(language skew) — REAP=production prompt style·codebase structure fidelity axis.
+  points:
+  - F2P test oracle — LLM judge 없이 reproducible correctness signal
+  - Production-derived — public bench와 language·prompt style divergence 해소
+  - Harness sensitivity — toolset+context file이 model-only eval보다 실무 signal
+  source: https://arxiv.org/abs/2604.01527
+- category: ai
+  title: auth.md — /auth.md Markdown으로 agent registration flow를 표준화
+  summary: auth.md(WorkOS 주도·open protocol·2026-05) — 앱이 https://service.com/auth.md에 Markdown으로 agent registration 방법을 publish. discovery — RFC 9728 PRM(/.well-known/oauth-protected-resource) + AS metadata agent_auth block. Agent verified flow — agent provider가 ID-JAG identity assertion, POST /agent-auth로 JWKS verify→scoped access token 동기 발급(human loop 없음). User claimed flow — OTP device-auth style, agent가 code 보여주고 user가 service page에서 confirm. Resource Indicators(RFC 8707) — token이 특정 MCP server용, confused deputy protocol-level 차단. vs Cloudflare Temporary(deploy-first) ·MCP OAuth — auth.md=service signup/onboarding for agents axis.
+  points:
+  - /auth.md prose + PRM machine-readable — agent web search discovery 가능
+  - ID-JAG verified — trusted provider attestation, OTP 없이 JIT user provision
+  - RFC 8707 — Server A token을 Server B replay 불가
+  source: https://workos.com/auth-md
+- category: ai
+  title: CodeCRDT — multi-agent shared memory는 merge≠semantic agreement
+  summary: CodeCRDT(arXiv 2510.18893) + crdt-merge — multi-agent LLM coordination을 explicit message passing 대신 shared CRDT document observation으로. Yjs CRDT — 600 trial 100% syntactic convergence·0% merge failure, but 5–10% semantic conflict(duplicate declaration·type mismatch) CRDT가 해결 못함. task coupling — parallel speedup +21% vs slowdown -39% depending on shared state intensity. Layer 1 CRDT(structural merge) + Layer 2 deterministic resolution(max_confidence·ContextBloom O(1) dedup). vs mcp-memory-rs(sync files) ·Memory Bank(single-agent markdown) — CodeCRDT=multi-writer agent memory에서 bytes converge≠intent converge 교훈.
+  points:
+  - 100% syntactic·5–10% semantic — CRDT는 text merge not meaning merge
+  - Observation-driven — agent가 peer edit observe, completed work skip
+  - Resolution layer 필수 — LWW만으로 agent fleet memory 운영 불충분
+  source: https://arxiv.org/abs/2510.18893
+- category: ai
+  title: Android Live Threat Detection — on-device AI가 agent-like app abuse 패턴 탐지
+  summary: Android 2026 security roadmap — Live Threat Detection가 SMS forwarding·accessibility overlay abuse 등 suspicious app behavior를 on-device AI로 real-time flag. dynamic signal monitoring(Android 17 H2 2026) — app-system interaction pattern을 runtime watch, rule push-down으로 emerging threat 대응. Advanced Protection 확장 — accessibility service를 accessibility tool label 없는 app에서 제거, device-to-device unlock·WebGPU disable, chat notification scam detection. agent blast radius 맥락 — Computer Control·malicious skill이 accessibility·overlay·SMS 권한 abuse하면 사용자 데이터 exfil 가능, OS가 behavioral pattern으로 차단. vs excessive agency mitigation(dev least privilege) ·AppFunctions(EXECUTE_APP_FUNCTIONS gate) — Live Threat=platform-level agent-like abuse detection.
+  points:
+  - Dynamic signal monitoring — static scan이 못 잡는 icon hide·background launch
+  - Accessibility lockdown — non-a11y app의 accessibility API 차단
+  - Agent abuse pattern — SMS forward·overlay·stealth launch real-time warn
+  source: https://blog.google/security/whats-new-in-android-security-privacy-2026/
+- category: ai
+  title: ATSC — Agent Telemetry Semantic Conventions, OTel 위 agent domain schema
+  summary: ATSC(agent-telemetry-spec/atsc) — vendor-neutral transport-agnostic schema for AI agent observability. OTel GenAI semconv(transport+span names) 위에 agent-specific operation — LLM call·tool invoke·memory access·retrieval·HITL·multi-agent handoff·eval을 canonical telemetry record로. .NET Microsoft Agent Framework + Aspire OTLP pipeline gap — raw span은 보이지만 tool turn·HITL event가 undifferentiated. ATSC spans flow unmodified→Azure Monitor Application Insights. source-agnostic — Langfuse·LangGraph·hand-rolled agent same shape. vs OpenTelemetry GenAI(spec layer) ·AgentOps(passive SDK) — ATSC=missing semantic layer for agent operations in enterprise APM.
+  points:
+  - OTel extend not replace — OTLP-compatible receiver, custom plugin 불필요
+  - Aspire/.NET gap — Agent Framework span에 agent meaning 부여
+  - HITL·handoff·memory access — microservice trace에 없는 agent operation taxonomy
+  source: https://github.com/agent-telemetry-spec/atsc/blob/main/SPEC.md
