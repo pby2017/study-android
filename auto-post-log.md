@@ -3844,3 +3844,10 @@ Refined:
 - Refined sources re-checked: https://github.com/cloudflare/mcp and https://blog.cloudflare.com/code-mode/
 - Skipped after re-check: `에이전트 팀으로 C 컴파일러 짜기(Anthropic)`, `서브에이전트 4가지 패턴(Philipp Schmid)`, and `에이전트 코딩의 '80% 문제'` because the existing cards were already clear and source-supported.
 - Rejected: Cloudflare Workflows saga rollback as pure infrastructure without a core AI angle; Copilot Free/Student auto model selection, Codex App Server, OpenAI Shift to Agentic, ADK for Kotlin/Android, and broad Android AI/LiteRT/ML Kit follow-ups as duplicates or overlap.
+
+## 2026-06-26 09:09 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicates, overlap, or below the non-duplicate evidence threshold.
+- Refined: `chrome-devtools-mcp(Google) — CDP MCP·Codex Developer mode, 브라우저 F12를 에이전트에(44.4k★)`
+- Refined sources re-checked: https://github.com/ChromeDevTools/chrome-devtools-mcp, https://api.github.com/repos/ChromeDevTools/chrome-devtools-mcp, and https://developers.openai.com/codex/app/browser
+- Rejected: GitHub Agent Finder/ARD, Codex role-specific plugins/Sites/annotations, OpenAI agent-work usage research, Copilot CLI GA terminal interface, and ADK for Kotlin/Android as duplicates or overlap; pure Android GitHub Issues/Projects updates as below threshold.
