@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`; next oldest reviewed candidate is `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Fable 5 83.1% (2026-06)`.
+Current position: continue after `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)`; next oldest reviewed candidate is `SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크`.
 
-Last update: 2026-06-26 23:39 KST
+Last update: 2026-06-27 01:05 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -63,6 +63,7 @@ Reviewed:
 - `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기`
 - `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)`
 - `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`
+- `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -124,9 +125,10 @@ Skipped:
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다` — source re-checked; existing card already captures the context-layer and exact-search lesson without overextending the vendor post.
 - `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기` — source re-checked; existing card already captures the three review depths, independent Claude review context, limits, non-blocking caveat, and shell-commit boundary.
 - `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)` — source re-checked; existing card already captures nested file placement, conflict precedence, supported tools, and verification behavior.
+- `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)` — re-checked the current Terminal-Bench 2.1 leaderboard and docs; removed unsupported availability/shutdown wording, corrected Terminus 2+GPT-5.5 from 76.4% to 78.2%, and clarified the agent+harness+model lesson.
 
 Next:
-- Continue with `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Fable 5 83.1% (2026-06)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

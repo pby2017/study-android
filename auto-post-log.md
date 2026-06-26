@@ -4234,3 +4234,10 @@ Refined:
 - Refined: `Factory droid — Terminal-Bench 1위·Mission·Custom Droid로 미는 모델 비종속 엔터프라이즈 코딩 플랫폼`
 - Refined sources re-checked: https://factory.ai/news/terminal-bench, https://docs.factory.ai/cli/getting-started/overview, and https://www.tbench.ai/
 - Rejected: GitHub Desktop 3.6, Zed Agent Skills, Claude Code --attribution, and Project Solara as duplicate existing cards; pure Android-only topics as below threshold.
+
+## 2026-06-27 01:05 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicates, saturated, or failed exact-source validation.
+- Refined: `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)`
+- Refined sources re-checked: https://www.tbench.ai/leaderboard/terminal-bench/2.1, https://www.tbench.ai/docs/, and https://github.com/laude-institute/terminal-bench
+- Rejected: GitHub Copilot `strictKnownMarketplaces` because the drafted public changelog URL returned 404 during validation; Copilot code review AGENTS.md/analysis-depth and Copilot app follow-ups as duplicate/overlap; broad Android AI/Gemini Nano/ADK follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
