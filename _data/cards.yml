@@ -8499,3 +8499,11 @@ cards:
   - 4,741 repo·15,612 artifact·45,126 config file·148,551 AI instruction
   - Zenodo CC BY 4.0 공개 데이터셋 — 에이전트 설정을 연구·리뷰 대상으로 다루기
   source: https://2026.aiwareconf.org/details/aiware-2026-benchmark---dataset-track/1/A-Dataset-of-Agentic-AI-Coding-Tool-Configurations
+- category: ai
+  title: Cursor 3.9 Customize — 플러그인·스킬·MCP를 팀 설정 화면으로 모으기
+  summary: Cursor 3.9의 Customize 화면은 AI 코딩 에이전트 설정을 개인 dotfile이 아니라 팀 운영 표면으로 끌어올린 업데이트다. 한곳에서 플러그인, 스킬, MCP, 서브에이전트, 룰, 커맨드, 훅을 추가·관리하고, 팀에서 많이 쓰는 플러그인·스킬·MCP를 leaderboard로 보여준다. 플러그인은 rules·skills·subagents·commands·MCP servers·hooks를 묶어 배포하는 단위이고, Team Marketplace는 GitLab·Bitbucket·Azure DevOps의 플러그인 저장소도 가져올 수 있다. 실무 교훈은 "에이전트 설정 파일을 각자 복사"하는 단계를 넘어서, 팀 단위 검토·배포·필수/선택 설치·스코프 필터를 운영해야 한다는 점이다.
+  points:
+  - Customize 한 화면에서 plugins·skills·MCPs·rules·commands·hooks·subagents 관리
+  - Team leaderboard로 많이 쓰는 플러그인·스킬·MCP를 발견하고 1클릭 설치
+  - Team Marketplace는 GitLab·Bitbucket·Azure DevOps 플러그인 저장소 import 지원
+  source: https://cursor.com/changelog/customize

@@ -4249,3 +4249,11 @@ Refined:
 - Refined: `SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크`
 - Refined sources re-checked: https://www.swebench.com/multimodal and https://arxiv.org/abs/2410.03859
 - Rejected: NatureBench as duplicate existing research-benchmark coverage; pure Android-only topics as below threshold.
+
+## 2026-06-27 03:48 KST — Local AI card routine
+
+- Published: `Cursor 3.9 Customize — 플러그인·스킬·MCP를 팀 설정 화면으로 모으기`
+- Source: https://cursor.com/changelog/customize
+- Refined: none; bounded older-card pass re-verified `claude --worktree` but the existing card already matched the public source and stayed clearer unchanged.
+- Refined sources re-checked: https://code.claude.com/docs/en/worktrees
+- Rejected: Claude Tag and Cursor Automations follow-ups as duplicates/overlap; pure Android-only topics as below threshold.
