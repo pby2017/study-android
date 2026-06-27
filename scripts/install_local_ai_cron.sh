@@ -25,7 +25,7 @@ cat > "$PLIST" <<PLIST_EOF
   </array>
 
   <key>StartInterval</key>
-  <integer>7200</integer>
+  <integer>14400</integer>
 
   <key>RunAtLoad</key>
   <true/>
@@ -58,5 +58,5 @@ launchctl kickstart -k "gui/$UID_VALUE/$LABEL"
 
 echo "Installed launchd job: $LABEL"
 echo "Plist: $PLIST"
-echo "Runs every 7200 seconds (2 hours), plus RunAtLoad."
+echo "Runs every 14400 seconds (4 hours), plus RunAtLoad."
 echo "Logs: $LOG_DIR"
