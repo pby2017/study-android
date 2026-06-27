@@ -4289,3 +4289,11 @@ Refined:
 - Refined: `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로`
 - Refined sources re-checked: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md
 - Rejected: Zed Agent Skills, Symphony, Claude Code `--attribution`, Evaluation Trust Tax, and Codex Security/Patch the Planet follow-ups as duplicate existing cards; pure Android-only topics as below threshold.
+
+## 2026-06-27 14:08 KST — Local AI card routine
+
+- Published: `Copilot strictKnownMarketplaces — 에이전트 플러그인 공급망을 허용목록으로 잠그기`
+- Source: https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards
+- Refined: `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)`
+- Refined sources re-checked: https://github.com/anthropics/claude-code-security-review and https://raw.githubusercontent.com/anthropics/claude-code-security-review/main/.claude/commands/security-review.md
+- Rejected: GitHub Copilot app/cloud agent/BYOK follow-ups as duplicate/overlap; broad Android AI/Gemma/ADK/LiteRT follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
