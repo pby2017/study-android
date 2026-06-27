@@ -4297,3 +4297,11 @@ Refined:
 - Refined: `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)`
 - Refined sources re-checked: https://github.com/anthropics/claude-code-security-review and https://raw.githubusercontent.com/anthropics/claude-code-security-review/main/.claude/commands/security-review.md
 - Rejected: GitHub Copilot app/cloud agent/BYOK follow-ups as duplicate/overlap; broad Android AI/Gemma/ADK/LiteRT follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
+
+## 2026-06-27 16:14 KST — Local AI card routine
+
+- Published: `Stack Overflow for Agents — 에이전트 지식을 '생성'보다 '검증'으로 쌓기`
+- Source: https://stackoverflow.blog/2026/06/10/announcing-stack-overflow-for-agents/
+- Refined: `Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)`
+- Refined sources re-checked: https://github.com/oraios/serena and https://raw.githubusercontent.com/oraios/serena/main/README.md
+- Rejected: generic queue items lacking fresh exact-source validation; GitHub Copilot app/BYOK/Jira and OpenAI agent-work follow-ups as duplicate/overlap; broad Android AI/Gemma/ADK/LiteRT follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
