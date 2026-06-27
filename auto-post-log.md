@@ -4334,3 +4334,11 @@ Refined:
 - Refined: `Context7(Upstash) — '낡은·환각 API'를 막으려 버전별 최신 문서를 매 요청에 끼워 넣는 MCP 서버(MIT)`
 - Refined sources re-checked: https://github.com/upstash/context7, https://api.github.com/repos/upstash/context7, https://www.thoughtworks.com/radar/tools/context7, https://context7.com/docs/clients/cli, and https://context7.com/docs/resources/all-clients
 - Rejected: ProjDevBench, GitHub Desktop 3.6, VS Code token-efficiency, Cursor Customize, Claude Code Agent View, ADK for Android, Gemini Nano/Gemma/LiteRT, Firebase AI Logic, AppFunctions, Android Bench, and broad Android AI follow-ups as duplicate/saturated; pure Android-only topics as below threshold.
+
+## 2026-06-28 04:46 KST — Local AI card routine
+
+- Published: `Spotify LLM Evals — A/B 테스트를 대체하지 말고 앞단 필터로 쓰기`
+- Source: https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork
+- Refined: `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조`
+- Refined sources re-checked: https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md and https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/code-review/commands/code-review.md
+- Rejected: GitHub Agent Finder/ARD, Spotify Honk, Ona+Codex, and generic Copilot/Cursor/JetBrains follow-ups as duplicate/overlap; pure Android-only topics as below threshold.

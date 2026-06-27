@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Context7(Upstash) — '낡은·환각 API'를 막으려 버전별 최신 문서를 매 요청에 끼워 넣는 MCP 서버(MIT)`; next oldest reviewed candidate is `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조`.
+Current position: continue after `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조`; next oldest reviewed candidate is `Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent`.
 
-Last update: 2026-06-28 00:27 KST
+Last update: 2026-06-28 04:46 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -77,6 +77,7 @@ Reviewed:
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)`
 - `DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크`
 - `Context7(Upstash) — '낡은·환각 API'를 막으려 버전별 최신 문서를 매 요청에 끼워 넣는 MCP 서버(MIT)`
+- `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -139,6 +140,7 @@ Refined:
 - `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터` — re-checked the current Conductor page, Orca README, and GitHub API metrics; refreshed Orca from stale ~7k★ to 8,108★, removed dense landscape wording, and clarified worktree isolation, BYO subscription, diff-first review, cleanup, and human merge gate lessons.
 - `DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크` — re-checked DeepSWE v1.1 public source and replaced a dense metric-heavy card with a clearer lesson around long-horizon tasks, committed-diff grading, isolated verifier containers, CTRF reports, and comparing cost/tokens/steps alongside pass rate.
 - `Context7(Upstash) — '낡은·환각 API'를 막으려 버전별 최신 문서를 매 요청에 끼워 넣는 MCP 서버(MIT)` — re-checked current README/docs, GitHub API metrics, and Thoughtworks Radar page; refreshed live stars/forks/license/activity, clarified MCP versus CLI+Skills modes, and kept the private backend/crawler caveat.
+- `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조` — re-checked the current Anthropic command file and tightened the card around skip gates, CLAUDE.md path collection, 4 parallel reviewers, high-signal-only bug criteria, per-issue validation, and `--comment` behavior.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -154,7 +156,7 @@ Skipped:
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
 
 Next:
-- Continue with `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
