@@ -4305,3 +4305,10 @@ Refined:
 - Refined: `Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)`
 - Refined sources re-checked: https://github.com/oraios/serena and https://raw.githubusercontent.com/oraios/serena/main/README.md
 - Rejected: generic queue items lacking fresh exact-source validation; GitHub Copilot app/BYOK/Jira and OpenAI agent-work follow-ups as duplicate/overlap; broad Android AI/Gemma/ADK/LiteRT follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
+
+## 2026-06-27 18:17 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or too broad for exact-source publication.
+- Refined: `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`
+- Refined sources re-checked: https://zed.dev/acp, https://agentclientprotocol.com/get-started/introduction.md, https://agentclientprotocol.com/protocol/v1/overview.md, and https://agentclientprotocol.com/get-started/registry.md
+- Rejected: generic queue items, Copilot/BYOK/Agent Finder/ARD follow-ups, and broad Android AI follow-ups as duplicate or saturated; pure Android-only topics as below threshold.

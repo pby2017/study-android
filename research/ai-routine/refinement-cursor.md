@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)`; next oldest reviewed candidate is `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`.
+Current position: continue after `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`; next oldest reviewed candidate is `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`.
 
-Last update: 2026-06-27 16:14 KST
+Last update: 2026-06-27 18:17 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -72,6 +72,7 @@ Reviewed:
 - `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로`
 - `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)`
 - `Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)`
+- `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -130,6 +131,7 @@ Refined:
 - `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로` — re-checked the public ace-fca source and simplified a dense card into a clearer workflow lesson: 40-60% context, research/plan/implement split, progress.md compaction, BAML example, expert-review caveat, and subagents as context-control tools.
 - `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)` — re-checked the current README, `/security-review` command file, and GitHub API metrics; refreshed live stars/license, clarified PR Action versus local slash-command surfaces, preserved the trusted-PR prompt-injection warning, and made the false-positive filtering details source-specific.
 - `Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)` — re-checked the current README plus GitHub API metrics; refreshed live stars/forks/license/archive state, clarified MCP client coverage, LSP versus JetBrains backend split, 40+ language support, and the structure-aware tooling lesson.
+- `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)` — re-checked current ACP/Zed public docs and clarified the Client/Agent split, JSON-RPC lifecycle, local stdio versus remote HTTP/WebSocket transport boundary, ACP Registry role, and the editor-as-host interoperability lesson.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -144,7 +146,7 @@ Skipped:
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.
 
 Next:
-- Continue with `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

@@ -1477,13 +1477,13 @@ cards:
   source: https://github.com/oraios/serena
 - category: ai
   title: Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)
-  summary: 'ACP(Agent Client Protocol)는 Zed가 만들고 JetBrains와 함께 미는 개방형 표준으로, 코딩 에이전트와 그것을 띄우는 에디터(클라이언트) 사이를 표준 JSON-RPC 인터페이스로 갈라놓는다. 목표는 ''LSP가 언어 서버를 에디터에서 떼어낸 것''을 에이전트에도 하는 것 — 에이전트는 한 번만 ACP를 구현하면 ACP를 지원하는 모든 에디터에서 돌고, 에디터는 한 번만 구현하면 어떤 ACP 에이전트든 꽂아 쓴다. 그래서 한 에디터 안에서 어려운 리팩터링은 Claude Code로, 테스트 스윕은 다른 에이전트로 갈아끼우는 식의 ''에이전트 자유 교체''가 가능해진다. 특정 모델·도구에 묶이는 락인을 줄이는 게 핵심이다.
+  summary: 'ACP(Agent Client Protocol)는 코딩 에이전트와 에디터/IDE 사이의 통신을 표준화하는 개방형 프로토콜이다. LSP가 언어 서버를 에디터에서 분리했듯, ACP는 에이전트 구현과 에디터 UI를 분리한다. 프로토콜은 JSON-RPC 2.0 기반이며 initialize/authenticate/session/new/session/prompt 같은 흐름으로 세션을 만들고, 에이전트는 session/update로 메시지·툴 호출·계획·슬래시 명령 상태를 클라이언트에 알린다. 로컬 에이전트는 보통 에디터의 서브프로세스로 stdio를 쓰고, 원격 에이전트는 HTTP/WebSocket 지원을 확장 중이다. 2026년 현재 ACP Registry는 인증을 지원하는 호환 에이전트를 모아 배포하는 curated 목록으로 안정화되어, "에디터 하나에 모델 하나"가 아니라 에디터는 호스트, 에이전트는 교체 가능한 실행 엔진으로 보는 쪽에 힘을 싣는다.
 
     '
   points:
-  - '무엇을 표준화하나: 에이전트↔에디터 간 통신을 JSON-RPC 기반 개방 프로토콜로 고정 → 에이전트는 1회 구현으로 모든 ACP 에디터에서 동작(LSP의 에이전트판)'
-  - '주도: Zed가 설계, JetBrains와 협업으로 확장 중. Zed의 Agent Panel이 ACP로 외부 에이전트(예: Claude Code·Gemini CLI 등)를 네이티브로 띄움'
-  - '실무 효과: 작업별로 최적 에이전트를 갈아끼우는 ''중립 호스트'' 전략 — VS Code 포크+단일 모델 결합형 락인의 반대 방향'
+  - '핵심 분리: 에디터/IDE는 Client, 코딩 에이전트는 Agent — 한쪽 구현이 다른 쪽 UI에 묶이지 않게 함'
+  - '통신 모델: JSON-RPC 2.0, 로컬 stdio, 원격 HTTP/WebSocket은 진행 중'
+  - '실무 효과: ACP Registry와 호환 클라이언트로 Claude·Codex·Cline류 에이전트를 같은 에디터 호스트에서 갈아끼우는 전략'
   source: https://zed.dev/acp
 - category: ai
   title: Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터
