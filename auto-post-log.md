@@ -4342,3 +4342,10 @@ Refined:
 - Refined: `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조`
 - Refined sources re-checked: https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md and https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/code-review/commands/code-review.md
 - Rejected: GitHub Agent Finder/ARD, Spotify Honk, Ona+Codex, and generic Copilot/Cursor/JetBrains follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-28 08:49 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or below the exact-source gate.
+- Refined: `Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent`
+- Refined sources re-checked: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint, https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1, and https://claude.com/customers/spotify
+- Rejected: GitHub Agent Finder/ARD, Codex Sites, Cursor SDK, Claude Code routines, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
