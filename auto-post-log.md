@@ -4327,3 +4327,10 @@ Refined:
 - Refined: `DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크`
 - Refined sources re-checked: https://deepswe.datacurve.ai/blog/deepswe-v1-1 and https://code.claude.com/docs/en/mcp
 - Rejected: ADK for Android, Gemini Nano/Gemma/LiteRT, AI Edge Gallery, AppFunctions, Android Bench, and broad Android AI follow-ups as duplicate/saturated; pure Android-only topics as below threshold.
+
+## 2026-06-28 00:27 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or below threshold.
+- Refined: `Context7(Upstash) — '낡은·환각 API'를 막으려 버전별 최신 문서를 매 요청에 끼워 넣는 MCP 서버(MIT)`
+- Refined sources re-checked: https://github.com/upstash/context7, https://api.github.com/repos/upstash/context7, https://www.thoughtworks.com/radar/tools/context7, https://context7.com/docs/clients/cli, and https://context7.com/docs/resources/all-clients
+- Rejected: ProjDevBench, GitHub Desktop 3.6, VS Code token-efficiency, Cursor Customize, Claude Code Agent View, ADK for Android, Gemini Nano/Gemma/LiteRT, Firebase AI Logic, AppFunctions, Android Bench, and broad Android AI follow-ups as duplicate/saturated; pure Android-only topics as below threshold.
