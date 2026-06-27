@@ -4312,3 +4312,11 @@ Refined:
 - Refined: `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`
 - Refined sources re-checked: https://zed.dev/acp, https://agentclientprotocol.com/get-started/introduction.md, https://agentclientprotocol.com/protocol/v1/overview.md, and https://agentclientprotocol.com/get-started/registry.md
 - Rejected: generic queue items, Copilot/BYOK/Agent Finder/ARD follow-ups, and broad Android AI follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
+
+## 2026-06-27 20:20 KST — Local AI card routine
+
+- Published: `Claude Code Agent View — 백그라운드 세션을 한 화면에서 dispatch·attach`
+- Source: https://code.claude.com/docs/en/agent-view
+- Refined: `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`
+- Refined sources re-checked: https://www.conductor.build/, https://raw.githubusercontent.com/stablyai/orca/main/README.md, and https://api.github.com/repos/stablyai/orca
+- Rejected: generic Copilot/Codex/BYOK/Agent Finder follow-ups and broad Android AI follow-ups as duplicate or saturated; pure Android-only topics as below threshold.

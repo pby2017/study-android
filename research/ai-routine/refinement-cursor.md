@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`; next oldest reviewed candidate is `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`.
+Current position: continue after `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`; next oldest reviewed candidate is `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)`.
 
-Last update: 2026-06-27 18:17 KST
+Last update: 2026-06-27 20:20 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -73,6 +73,7 @@ Reviewed:
 - `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)`
 - `Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)`
 - `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)`
+- `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -132,6 +133,7 @@ Refined:
 - `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)` — re-checked the current README, `/security-review` command file, and GitHub API metrics; refreshed live stars/license, clarified PR Action versus local slash-command surfaces, preserved the trusted-PR prompt-injection warning, and made the false-positive filtering details source-specific.
 - `Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)` — re-checked the current README plus GitHub API metrics; refreshed live stars/forks/license/archive state, clarified MCP client coverage, LSP versus JetBrains backend split, 40+ language support, and the structure-aware tooling lesson.
 - `Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)` — re-checked current ACP/Zed public docs and clarified the Client/Agent split, JSON-RPC lifecycle, local stdio versus remote HTTP/WebSocket transport boundary, ACP Registry role, and the editor-as-host interoperability lesson.
+- `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터` — re-checked the current Conductor page, Orca README, and GitHub API metrics; refreshed Orca from stale ~7k★ to 8,108★, removed dense landscape wording, and clarified worktree isolation, BYO subscription, diff-first review, cleanup, and human merge gate lessons.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -146,7 +148,7 @@ Skipped:
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.
 
 Next:
-- Continue with `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

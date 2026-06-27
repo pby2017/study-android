@@ -1487,11 +1487,11 @@ cards:
   source: https://zed.dev/acp
 - category: ai
   title: Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터
-  summary: Conductor(conductor.build)는 macOS 데스크톱에서 Claude Code·Codex·Cursor를 git worktree 격리 workspace로 병렬 실행하는 ADE(Agent Development Environment)다. 2026년 Orca(stablyai/orca·MIT·~7k★)가 cross-platform(macOS·Windows·Linux·iOS·Android) ADE로 같은 축을 확장 — 25+ CLI agent·Ghostty-class terminal·`orca worktree create` CLI scriptable·Annotate AI Diff inline review·Computer Use mode. Vibe Kanban(sunsetting) ·Cursor Agents Window과 달리 BYO-subscription·worktree-per-task·human merge gate. Conductor=mac-first, Orca=cross-platform+fleet CLI+mobile companion.
+  summary: Conductor(conductor.build)는 macOS에서 Claude Code·Codex·Cursor를 여러 격리 workspace로 동시에 돌리는 ADE(Agent Development Environment)다. 각 workspace는 별도 git worktree라 에이전트가 main을 직접 건드리지 않고, 한 화면에서 작업 상태를 보고 diff를 검토한 뒤 사람이 merge한다. 같은 축의 Orca(stablyai/orca·MIT·2026-06-27 기준 8,108★)는 macOS·Windows·Linux 데스크톱과 모바일 companion으로 넓히고, Claude Code·Codex·OpenCode·Pi 같은 CLI 에이전트를 worktree별로 실행한다. 교훈은 "에이전트를 많이 띄우기"보다 branch/worktree 격리, BYO 구독, diff-first 리뷰, human merge gate를 먼저 설계해야 병렬성이 실제 생산성이 된다는 점이다.
   points:
-  - Worktree isolation — task마다 branch·terminal·diff·review path, parallel agent collision 방지
-  - Orca 2026 — desktop+mobile ADE, fan-one-prompt-across-5-agents, CLI automation surface
-  - Human merge gate — agent cheap, review/integration bottleneck → diff-first workflow
+  - Conductor — macOS 앱, Claude Code·Codex·Cursor를 isolated workspace/worktree로 병렬 실행
+  - Orca — cross-platform desktop+mobile companion, one prompt across five agents, CLI automation surface
+  - 운영 포인트 — agent 실행보다 diff 검토·merge gate·worktree cleanup이 병목
   source: https://www.conductor.build/
 - category: ai
   title: MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)
@@ -8555,3 +8555,11 @@ cards:
   - post type — TIL·Question·Blueprint로 에이전트가 배운 해법을 맥락별로 기록
   - 운영 포인트 — trust_summary·reputation은 참고 신호일 뿐, 공개 에이전트 글은 읽고 검증한 뒤 적용
   source: https://stackoverflow.blog/2026/06/10/announcing-stack-overflow-for-agents/
+- category: ai
+  title: Claude Code Agent View — 백그라운드 세션을 한 화면에서 dispatch·attach
+  summary: Claude Code의 Agent View는 `claude agents`로 여는 백그라운드 세션 대시보드다. 새 작업을 dispatch하면 각 작업이 터미널에 붙어 있지 않아도 full Claude Code conversation으로 계속 돌고, 화면에는 running·waiting for input·done 상태가 모인다. 세션에는 attach·peek·reply로 다시 들어갈 수 있고, 내부 세션에서는 `/bg`나 왼쪽 화살표로 agent view로 빠져나온다. 단 연구 프리뷰(v2.1.139+)이고 세션은 로컬 머신에서 돈다. sleep은 보존되지만 shutdown 때는 중단되며, 병렬 10개는 구독 사용량도 대략 10배로 태운다. Claude가 만든 worktree는 session 삭제 때 같이 지워질 수 있으니 merge·push·검토 경계를 먼저 정해야 한다.
+  points:
+  - claude agents — 여러 background session의 running/input/done 상태를 한 화면에서 관리
+  - attach·peek·reply·/bg — 터미널 점유 없이 오래 가는 작업을 중간중간 확인
+  - 한계 — local research preview, quota는 병렬 수만큼 소모, session 삭제 전 worktree 변경 보호 필요
+  source: https://code.claude.com/docs/en/agent-view
