@@ -1447,13 +1447,13 @@ cards:
   source: https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview
 - category: ai
   title: Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로
-  summary: 'humanlayer가 공개한 ace-fca 문서(약 1.7k★)는 코딩 에이전트 생산성의 핵심을 "컨텍스트 관리를 개발 워크플로 전체로 끌어올리는 것"으로 본다. 핵심 원칙은 컨텍스트 사용률을 40~60% 구간으로 유지하는 것 — Geoff Huntley의 "약 170k 컨텍스트 창에서, 많이 쓸수록 결과가 나빠진다"는 제약을 전제로 한다. 작업은 리서치 → 플랜 → 구현 3단계로 쪼개고, 구현 단계는 검증된 페이즈마다 진행 상황을 원래 플랜 파일(progress.md)로 다시 compaction해 컨텍스트를 비운다. 가장 큰 통찰은 인간 리뷰의 레버리지다 — 나쁜 코드 한 줄은 그냥 한 줄이지만, 나쁜 플랜 한 줄은 코드 수백 줄을, 나쁜 리서치 한 줄은 수천 줄을 낳는다. 그래서 코드보다 리서치·플랜을 리뷰하는 게 이득이다.
+  summary: 'humanlayer의 ace-fca 문서는 코딩 에이전트 워크플로를 "컨텍스트 관리" 중심으로 다시 짠 사례다. 핵심은 컨텍스트가 가득 찰 때까지 밀어붙이지 않고, 사용률을 40~60% 근처로 유지하면서 리서치 → 플랜 → 구현을 분리하는 것. 구현 중에도 검증된 단계마다 목표, 접근, 완료한 단계, 현재 실패를 progress.md 같은 구조화 문서로 압축해 새 컨텍스트로 넘긴다. 문서의 BAML 사례는 이 방식이 마법이 아니라는 점도 같이 보여준다. 300k LOC Rust 코드베이스에서 빠른 성과가 났지만, 깊은 리서치·플랜 시간과 코드베이스 전문가 리뷰가 함께 있었다. 실무 교훈은 코드 리뷰보다 앞단 리뷰가 더 싸다는 것이다. 잘못된 리서치나 플랜은 잘못된 코드 수백 줄로 번지기 전에 잡아야 한다.
 
     '
   points:
-  - '구체 사례(문서 주장): 30만 LOC Rust 프로젝트(BAML)에서 Rust 초보가 취소+WASM 기능 약 3.5만 LOC를 7시간(리서치·플랜 3h + 구현 4h)에 작업, 팀은 PR당 시니어 3~5일치로 추정. 단 ''마법이 아니다''라며 7시간 깊은 몰입과 코드베이스 전문가 한 명이 필요함을 명시'
-  - 'compaction 트리거: 파일 검색·코드 흐름 파악·테스트/빌드 로그·대형 JSON 도구 출력처럼 토큰을 먹는 활동을 progress.md(목표·접근·완료 단계·현재 실패) 같은 구조화 산출물로 증류. 구현만 git worktree로 격리하고 리서치·플랜은 main에서 한다'
-  - 서브에이전트는 '역할 흉내'가 아니라 '컨텍스트 제어' 수단 — Glob/Grep/Read 잡동사니를 fresh 컨텍스트에서 돌려 부모 에이전트 창을 깨끗이 유지하는 게 가장 흔한 용도. 팀 비용은 3인 기준 월 약 $12k(Opus), 전환에 약 8주 걸렸다고 밝힘
+  - '원칙: 컨텍스트 사용률 40~60% 유지, 리서치→플랜→구현 분리, 단계별 검증 뒤 progress.md로 압축'
+  - 'BAML 사례: 300k LOC Rust 코드베이스에서 35k LOC 규모 취소+WASM 작업을 7시간에 초안화, 단 깊은 몰입과 전문가 리뷰가 전제'
+  - 서브에이전트는 역할극보다 컨텍스트 제어 수단 — 검색·읽기·요약 로그를 부모 창 밖에서 처리한다
   source: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md
 - category: ai
   title: claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)
@@ -8531,3 +8531,11 @@ cards:
   - GitHub internal task suite + SWE-bench Verified — 쉬운 작업과 어려운 작업에서 순위가 달라질 수 있음
   - 운영 지표는 pass rate만이 아니라 token use, tool path, latency, task 난이도를 같이 봐야 함
   source: https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/
+- category: ai
+  title: Claude Code 실사용 연구 — 에이전트 시대에도 도메인 전문성은 수익률이 남는다
+  summary: Anthropic의 "Agentic coding and persistent returns to expertise" 연구는 Claude Code를 추상 벤치마크가 아니라 실제 대화형 세션으로 본다. 2025-10부터 2026-04까지 약 40만 개 세션을 privacy-preserving 방식으로 분석했고, 전형적인 세션에서는 사람이 "무엇을 할지"를 정하고 Claude가 "어떻게 할지" 실행 결정을 더 많이 맡는다고 정리한다. 흥미로운 결론은 비개발자도 많은 코딩 작업을 성공시키지만, 도메인 전문성이 높을수록 한 지시당 Claude가 더 많은 일을 하고 성공률도 더 높다는 점이다. 즉 에이전트 도입의 실전 역량은 프롬프트 문장술보다 문제를 잘 고르고, 성공 증거를 요구하고, 결과를 검토할 수 있는 업무 지식에 가깝다.
+  points:
+  - 약 40만 Claude Code 세션 분석 — 작업 구성, 인간-AI 협업, 성공률을 실제 사용 로그에서 관찰
+  - 사람은 planning, Claude는 execution 쪽 결정을 더 많이 담당하는 패턴
+  - 전문성이 높을수록 지시당 산출과 성공률이 올라감 — 에이전트 운영도 도메인 지식이 병목
+  source: https://www.anthropic.com/research/claude-code-expertise

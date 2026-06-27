@@ -4281,3 +4281,11 @@ Refined:
 - Refined: `에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기`
 - Refined sources re-checked: https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview, https://github.com/anthropics/skills, and https://agent-skills.github.io/
 - Rejected: Codex Sites, Claude Code `--attribution`, Zed Agent Skills, Symphony, Evaluation Trust Tax, Qubot, and Copilot CLI LSP as duplicate existing cards; broad Android AI/Gemini Nano/ADK/Android Bench follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
+
+## 2026-06-27 12:04 KST — Local AI card routine
+
+- Published: `Claude Code 실사용 연구 — 에이전트 시대에도 도메인 전문성은 수익률이 남는다`
+- Source: https://www.anthropic.com/research/claude-code-expertise
+- Refined: `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로`
+- Refined sources re-checked: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md
+- Rejected: Zed Agent Skills, Symphony, Claude Code `--attribution`, Evaluation Trust Tax, and Codex Security/Patch the Planet follow-ups as duplicate existing cards; pure Android-only topics as below threshold.

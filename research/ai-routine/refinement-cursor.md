@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기`; next oldest reviewed candidate is `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로`.
+Current position: continue after `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로`; next oldest reviewed candidate is `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)`.
 
-Last update: 2026-06-27 09:57 KST
+Last update: 2026-06-27 12:04 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -69,6 +69,7 @@ Reviewed:
 - `Context Rot(Chroma 연구) — '컨텍스트만 길어져도' 18개 모델 전부 정확도가 무너진다`
 - `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법`
 - `에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기`
+- `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -124,6 +125,7 @@ Refined:
 - `Context Rot(Chroma 연구) — '컨텍스트만 길어져도' 18개 모델 전부 정확도가 무너진다` — re-checked Chroma's public report plus the replication repository, clarified the long-context reliability lesson, and split dense experiment details into NIAH distractors, LongMemEval compression, and reproducibility signals.
 - `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법` — re-checked the current Claude Code subagents docs and clarified model resolution order, Explore/Haiku routing, organization allowlist fallback, and the practical split between cost routing and context isolation.
 - `에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기` — re-checked current Anthropic Agent Skills docs, the public skills repository, and the Agent Skills spec; clarified discovery/activation/execution progressive disclosure, description-as-router behavior, and install/security boundaries.
+- `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로` — re-checked the public ace-fca source and simplified a dense card into a clearer workflow lesson: 40-60% context, research/plan/implement split, progress.md compaction, BAML example, expert-review caveat, and subagents as context-control tools.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -138,7 +140,7 @@ Skipped:
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.
 
 Next:
-- Continue with `Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
