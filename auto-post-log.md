@@ -4320,3 +4320,10 @@ Refined:
 - Refined: `Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터`
 - Refined sources re-checked: https://www.conductor.build/, https://raw.githubusercontent.com/stablyai/orca/main/README.md, and https://api.github.com/repos/stablyai/orca
 - Rejected: generic Copilot/Codex/BYOK/Agent Finder follow-ups and broad Android AI follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
+
+## 2026-06-27 22:24 KST — Local AI card routine
+
+- Published: none; fresh AI+Android candidates were duplicate/saturated and no fresh AI candidate cleared the exact-source, non-duplicate gate.
+- Refined: `DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크`
+- Refined sources re-checked: https://deepswe.datacurve.ai/blog/deepswe-v1-1 and https://code.claude.com/docs/en/mcp
+- Rejected: ADK for Android, Gemini Nano/Gemma/LiteRT, AI Edge Gallery, AppFunctions, Android Bench, and broad Android AI follow-ups as duplicate/saturated; pure Android-only topics as below threshold.
