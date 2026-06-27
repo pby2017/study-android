@@ -1437,14 +1437,14 @@ cards:
   source: https://code.claude.com/docs/en/sub-agents
 - category: ai
   title: 에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기
-  summary: 'Agent Skills는 SKILL.md 한 장(name·description YAML 프런트매터 + 마크다운 본문)에 스크립트·레퍼런스를 묶은 폴더로, 2025-10 Anthropic이 도입해 2025-12 오픈 표준으로 공개했고 지금은 Claude Code·Claude.ai·API·Codex·Cursor 등에서 동작한다. 핵심은 점진적 공개(progressive disclosure)다 — 세션 시작 시 에이전트는 각 스킬의 name·description(스킬당 대략 100토큰)만 본다. 본문(보통 5천 토큰 미만)은 에이전트가 그 스킬이 지금 작업에 필요하다고 판단할 때만 로드된다. 덕분에 스킬을 수십~수백 개 깔아둬도 컨텍스트 창은 거의 비어 있고, 정작 쓸 때만 토큰을 먹는다 — MCP 도구 정의가 항상 컨텍스트를 차지하는 것과 대비된다. 이 메커니즘 때문에 description 한 줄을 어떻게 쓰느냐가 스킬이 제때 발동하느냐를 가른다.
+  summary: 'Agent Skills의 핵심은 SKILL.md를 한 번에 전부 먹이지 않는 점진적 공개(progressive disclosure)다. 세션 시작 때는 각 스킬의 name·description 같은 메타데이터만 보여 주고, 모델이 "지금 이 스킬이 필요하다"고 판단할 때 본문을 읽는다. 본문도 끝이 아니다. 스킬 폴더 안의 scripts, references, assets는 본문이 지시할 때 필요한 파일만 추가로 여는 구조라, 설치된 스킬 수와 실제 컨텍스트 비용이 1:1로 늘지 않는다. 그래서 description은 홍보 문구가 아니라 라우팅 조건이다. "무엇을 할 수 있다"보다 "언제 이 스킬을 써야 하는가"를 구체적으로 써야 제때 로드된다. 보안상으로는 스킬이 로컬 파일과 스크립트를 함께 가져올 수 있으므로, 출처·권한·실행 경계를 검토한 스킬만 설치해야 한다.
 
     '
   points:
-  - '토큰 회계: 항상 보이는 건 스킬당 약 100토큰(name+description)뿐, 본문(<5k토큰)은 ''관련 있다''고 판단될 때만 로드 → 스킬 수백 개도 컨텍스트 부담이 거의 없다'
-  - 발동 트리거는 본문이 아니라 description이 쥔다. 에이전트는 메타데이터만 보고 로드 여부를 정하므로, 언제 써야 하는지를 description에 구체적으로 써야 제때 켜진다
-  - '보안 주의: 스킬은 에이전트 환경에서 임의 코드를 실행할 수 있다 — ''믿을 수 있는 출처''에서만 설치하라. 큐레이션 목록 travisvn/awesome-claude-skills(약 13.5k★) 등이 모음집 역할'
-  source: https://github.com/travisvn/awesome-claude-skills
+  - Discovery는 name·description만, Activation은 SKILL.md 본문, Execution은 필요한 scripts/references/assets만 추가 로드
+  - description은 라우터다 — "언제 써야 하는지"를 좁게 써야 불필요한 스킬 로딩이 줄어든다
+  - 설치 전 출처·권한·스크립트 실행 경계를 확인해야 한다
+  source: https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview
 - category: ai
   title: Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로
   summary: 'humanlayer가 공개한 ace-fca 문서(약 1.7k★)는 코딩 에이전트 생산성의 핵심을 "컨텍스트 관리를 개발 워크플로 전체로 끌어올리는 것"으로 본다. 핵심 원칙은 컨텍스트 사용률을 40~60% 구간으로 유지하는 것 — Geoff Huntley의 "약 170k 컨텍스트 창에서, 많이 쓸수록 결과가 나빠진다"는 제약을 전제로 한다. 작업은 리서치 → 플랜 → 구현 3단계로 쪼개고, 구현 단계는 검증된 페이즈마다 진행 상황을 원래 플랜 파일(progress.md)로 다시 compaction해 컨텍스트를 비운다. 가장 큰 통찰은 인간 리뷰의 레버리지다 — 나쁜 코드 한 줄은 그냥 한 줄이지만, 나쁜 플랜 한 줄은 코드 수백 줄을, 나쁜 리서치 한 줄은 수천 줄을 낳는다. 그래서 코드보다 리서치·플랜을 리뷰하는 게 이득이다.
@@ -8523,3 +8523,11 @@ cards:
   - BYOK/local은 chat·agent workflow·utility task용, 표준 code completion·semantic search는 별도 경계
   - chat.utilityModel/chat.utilitySmallModel을 로컬·저가 모델로 바꾸면 제목·커밋 메시지 같은 작은 작업 비용을 분리 가능
   source: https://code.visualstudio.com/blogs/2026/06/18/byok-vscode
+- category: ai
+  title: Copilot Agentic Harness — 모델 이름보다 harness·task 난이도·토큰 효율을 같이 보기
+  summary: GitHub의 2026-06-25 Copilot agentic harness 평가 글은 "어떤 모델이 제일 좋나"보다, 같은 하네스에서 모델·작업·비용을 같이 보라는 신호다. GitHub은 20개 이상 최신 모델을 Copilot의 실제 agentic workflow 하네스에서 돌리고, GitHub 내부 task suite와 SWE-bench Verified를 함께 비교했다. 결과 해석의 핵심은 단일 승자가 아니다. 한 모델이 모든 축에서 이기지 않고, 작업 난이도·도구 사용·컨텍스트 처리·토큰 사용량에 따라 순위가 갈린다. 실무 교훈은 에이전트 모델 교체를 리더보드 하나로 결정하지 말고, 우리 레포의 대표 작업·도구 경로·토큰 예산을 넣은 작은 하네스에서 pass rate와 비용을 동시에 기록하라는 것이다.
+  points:
+  - 20+ 모델을 Copilot 실제 agentic workflow 하네스에서 비교 — 모델 단독 점수가 아니라 harness 안 성능
+  - GitHub internal task suite + SWE-bench Verified — 쉬운 작업과 어려운 작업에서 순위가 달라질 수 있음
+  - 운영 지표는 pass rate만이 아니라 token use, tool path, latency, task 난이도를 같이 봐야 함
+  source: https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/

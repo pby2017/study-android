@@ -4273,3 +4273,11 @@ Refined:
 - Refined: `서브에이전트 모델 라우팅 — 탐색은 Haiku, 리뷰는 Sonnet으로 강제해 비용 천장을 거는 법`
 - Refined sources re-checked: https://code.claude.com/docs/en/sub-agents
 - Rejected: GitHub/GitHub Copilot usage-surge coverage as business/news overlap; Cursor SDK and auto-review follow-ups as duplicate; pure Android-only topics as below threshold.
+
+## 2026-06-27 09:57 KST — Local AI card routine
+
+- Published: `Copilot Agentic Harness — 모델 이름보다 harness·task 난이도·토큰 효율을 같이 보기`
+- Source: https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/
+- Refined: `에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기`
+- Refined sources re-checked: https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview, https://github.com/anthropics/skills, and https://agent-skills.github.io/
+- Rejected: Codex Sites, Claude Code `--attribution`, Zed Agent Skills, Symphony, Evaluation Trust Tax, Qubot, and Copilot CLI LSP as duplicate existing cards; broad Android AI/Gemini Nano/ADK/Android Bench follow-ups as duplicate or saturated; pure Android-only topics as below threshold.
