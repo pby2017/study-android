@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Axolotl — YAML 한 장으로 멀티GPU LLM 파인튜닝 파이프라인을 관리하는 엔터프라이즈 오케스트레이터(Apache-2.0·~11k★)`; next oldest reviewed candidate is `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화, 로컬 GPU로 프론티어급 코딩 에이전트(오픈웨이트·256K ctx)`.
+Current position: continue after `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)`; next oldest reviewed candidate is `DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)`.
 
-Last update: 2026-06-29 01:09 KST
+Last update: 2026-06-29 05:13 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -150,6 +150,7 @@ Refined:
 - `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트` — re-checked current Kiro Specs docs, removed stale or unsupported runtime/model details, clarified Feature Specs, Bugfix Specs, Quick Plan, task execution status, dependency waves, and the practical lesson that specs are execution boundaries and task queues.
 - `cc-sdd(Spec-Driven Development) — Kiro의 '스펙→설계→태스크' 워크플로우를 아무 코딩 에이전트에서 쓰기(오픈소스)` — re-checked the current README, npm metadata, and GitHub API metrics; moved source from a secondary Medium post to the project README, clarified v3.0 Agent Skills, 8-agent support, `kiro-discovery`, `kiro-impl`, Boundary/Depends annotations, and the contract-boundary lesson.
 - `Axolotl — YAML 한 장으로 멀티GPU LLM 파인튜닝 파이프라인을 관리하는 엔터프라이즈 오케스트레이터(Apache-2.0·~11k★)` — re-checked the current README plus GitHub API metrics and latest release; clarified YAML-backed reproducibility, training methods, distributed/optimization surface, agent-docs/config-schema support, and refreshed live popularity/release signals.
+- `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)` — re-checked the current README, Hugging Face model cards, and GitHub API metrics; removed an unsupported Ollama package-size claim, clarified 80B/3B MoE, 256K/1M context, agentic training recipe, SGLang/vLLM tool-parser support, and refreshed live popularity/license signals.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -165,7 +166,7 @@ Skipped:
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
 
 Next:
-- Continue with `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화, 로컬 GPU로 프론티어급 코딩 에이전트(오픈웨이트·256K ctx)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

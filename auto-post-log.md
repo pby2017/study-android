@@ -4379,3 +4379,10 @@ Refined:
 - Refined: `Axolotl — YAML 한 장으로 멀티GPU LLM 파인튜닝 파이프라인을 관리하는 엔터프라이즈 오케스트레이터(Apache-2.0·~11k★)`
 - Refined sources re-checked: https://github.com/axolotl-ai-cloud/axolotl, https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/README.md, https://api.github.com/repos/axolotl-ai-cloud/axolotl, and https://api.github.com/repos/axolotl-ai-cloud/axolotl/releases/latest
 - Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, MAI-Code-1-Flash follow-up, broad Copilot usage-metrics duplicates, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-29 05:13 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or below the exact-source gate.
+- Refined: `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)`
+- Refined sources re-checked: https://github.com/QwenLM/Qwen3-Coder, https://raw.githubusercontent.com/QwenLM/Qwen3-Coder/main/README.md, https://api.github.com/repos/QwenLM/Qwen3-Coder, https://huggingface.co/Qwen/Qwen3-Coder-Next, and https://huggingface.co/Qwen/Qwen3-Coder-Next-GGUF
+- Rejected: Codex Remote/Sites/App Server follow-ups, Copilot SDK/worktree/adoption follow-ups, Cursor Automations/Customize/SDK follow-ups, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.

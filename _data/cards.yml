@@ -2086,14 +2086,14 @@ cards:
   - 운영 신호 — FSDP1/2·DeepSpeed·Ray 멀티노드, agent-docs/config-schema, 12,099★·v0.17.0
   source: https://github.com/axolotl-ai-cloud/axolotl
 - category: ai
-  title: Qwen3-Coder-Next — 80B MoE에서 3B만 활성화, 로컬 GPU로 프론티어급 코딩 에이전트(오픈웨이트·256K ctx)
-  summary: 'Qwen3-Coder-Next는 Alibaba Qwen 팀이 만든 코딩 에이전트 전용 오픈웨이트 모델이다. 80B 전체 파라미터 중 3B만 활성화하는 MoE 구조로 추론 비용이 극도로 낮고, 256K 네이티브 컨텍스트(1M 확장 가능). SWE-Bench· Terminal-Bench에서 프론티어 모델과 경쟁하는 성능을 보이며, Ollama q4_K_M 패키지 52GB로 로컬 실행 가능. 에이전트 학습 데이터로 대규모 검증 가능 코딩 태스크를 합성해 환경 피드백 기반 강화학습을 적용했다.
+  title: Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)
+  summary: 'Qwen3-Coder-Next는 Alibaba Qwen 팀이 만든 코딩 에이전트 전용 오픈웨이트 모델이다. Qwen3-Next-80B-A3B-Base 위에 만든 하이브리드 attention+MoE 구조라 전체 파라미터는 80B지만 추론 때는 3B만 활성화한다. 기본 컨텍스트는 256K이고 Yarn으로 1M까지 확장 가능해, 저장소 단위 이해와 긴 에이전트 세션에 맞춘 모델이다. 학습도 일반 코드완성보다 에이전트 실행에 맞춰져 있다. 대규모 실행 가능 코딩 태스크를 합성하고, 환경 상호작용과 강화학습을 붙여 긴 추론, 도구 호출, 실행 실패 복구 능력을 키웠다. SGLang·vLLM의 qwen3_coder tool parser, Claude Code·Cline·Qwen Code 같은 scaffold 적응성이 실전 포인트다.
 
     '
   points:
-  - '80B MoE / 3B 활성: 로컬 GPU에서 프론티어급 코딩 에이전트 실행'
-  - 256K 네이티브 컨텍스트, 1M 확장 가능
-  - '에이전트 훈련: 대규모 코딩 태스크 합성 + 환경 피드백 강화학습'
+  - '80B total / 3B active: 큰 모델 지식과 낮은 추론비용을 같이 노리는 MoE 구조'
+  - '256K 기본 컨텍스트, Yarn 1M 확장 — 저장소 단위 agentic coding에 맞춘 길이'
+  - '에이전트 훈련: 실행 가능 태스크 합성 + 환경 상호작용 + 강화학습 + tool parser'
   source: https://github.com/qwenlm/qwen3-coder
 - category: ai
   title: DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)
