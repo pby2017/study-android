@@ -4371,3 +4371,11 @@ Refined:
 - Refined: `cc-sdd(Spec-Driven Development) — Kiro의 '스펙→설계→태스크' 워크플로우를 아무 코딩 에이전트에서 쓰기(오픈소스)`
 - Refined sources re-checked: https://github.com/gotalab/cc-sdd, https://raw.githubusercontent.com/gotalab/cc-sdd/main/README.md, https://registry.npmjs.org/cc-sdd/latest, and https://api.github.com/repos/gotalab/cc-sdd
 - Rejected: A2A, Copilot SDK, Codex Remote, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-29 01:09 KST — Local AI card routine
+
+- Published: `Copilot adoption phase metrics — AI 에이전트 도입을 PR 병합 기여도로 보기`
+- Source: https://github.blog/changelog/2026-06-26-track-total-merges-by-adoption-phase-in-enterprise-and-organization-reports
+- Refined: `Axolotl — YAML 한 장으로 멀티GPU LLM 파인튜닝 파이프라인을 관리하는 엔터프라이즈 오케스트레이터(Apache-2.0·~11k★)`
+- Refined sources re-checked: https://github.com/axolotl-ai-cloud/axolotl, https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/README.md, https://api.github.com/repos/axolotl-ai-cloud/axolotl, and https://api.github.com/repos/axolotl-ai-cloud/axolotl/releases/latest
+- Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, MAI-Code-1-Flash follow-up, broad Copilot usage-metrics duplicates, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
