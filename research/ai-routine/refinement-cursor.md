@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`; next oldest reviewed candidate is `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`.
+Current position: continue after `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`; next oldest reviewed candidate is `cc-sdd(Spec-Driven Development) — Kiro의 '스펙→설계→태스크' 워크플로우를 아무 코딩 에이전트에서 쓰기(오픈소스)`.
 
-Last update: 2026-06-28 12:53 KST
+Last update: 2026-06-28 16:57 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -80,6 +80,7 @@ Reviewed:
 - `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조`
 - `Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent`
 - `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`
+- `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -145,6 +146,7 @@ Refined:
 - `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조` — re-checked the current Anthropic command file and tightened the card around skip gates, CLAUDE.md path collection, 4 parallel reviewers, high-signal-only bug criteria, per-issue validation, and `--comment` behavior.
 - `Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent` — re-checked Spotify Engineering's 2026 Code with Claude post, Spotify's 2025 Honk Part 1 post, and the Anthropic customer page; kept the original claims but split the dense card into platform foundation, runtime architecture, Slack trigger, validation path, and practical golden-path lesson.
 - `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)` — re-checked the current README plus GitHub API metrics; clarified v2, bash-only/no tool-calling design, `subprocess.run`, linear history, baseline/fine-tuning fit, SWE-agent comparison, adoption list, and live stars/forks/license signals.
+- `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트` — re-checked current Kiro Specs docs, removed stale or unsupported runtime/model details, clarified Feature Specs, Bugfix Specs, Quick Plan, task execution status, dependency waves, and the practical lesson that specs are execution boundaries and task queues.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -160,7 +162,7 @@ Skipped:
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
 
 Next:
-- Continue with `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `cc-sdd(Spec-Driven Development) — Kiro의 '스펙→설계→태스크' 워크플로우를 아무 코딩 에이전트에서 쓰기(오픈소스)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

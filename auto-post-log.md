@@ -4356,3 +4356,10 @@ Refined:
 - Refined: `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`
 - Refined sources re-checked: https://github.com/SWE-agent/mini-swe-agent, https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/main/README.md, https://api.github.com/repos/SWE-agent/mini-swe-agent, and https://api.github.com/repos/SWE-agent/SWE-agent
 - Rejected: Claude Tag, Cursor Bugbot/Agents Window/Automations follow-ups, Codex App Server/Sites/rollout-budget follow-ups, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-28 16:57 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or below the exact-source gate.
+- Refined: `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`
+- Refined sources re-checked: https://kiro.dev/docs/specs/ and https://kiro.dev/docs/
+- Rejected: Codex App Server/Sites/Remote/Appshots, Claude Code Agent View, Cursor Customize/SDK/Automations/Bugbot, OpenAI agent-work usage research, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.

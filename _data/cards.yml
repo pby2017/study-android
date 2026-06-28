@@ -1551,12 +1551,12 @@ cards:
   source: https://github.com/SWE-agent/mini-swe-agent
 - category: ai
   title: Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트
-  summary: Kiro는 AWS가 내놓은 에이전트형 IDE·CLI·웹 도구로, 프롬프트를 받으면 코드를 바로 짜지 않고 requirements.md→design.md→tasks.md 3단계 스펙을 먼저 생성해 개발자 승인을 받는다. VS Code 포크 기반, Autopilot 모드에서 승인된 태스크를 자율 실행. Kiro Autonomous Agent는 Jira 티켓을 받아 비동기로 PR까지 올리는 장기 에이전트. Amazon Bedrock AgentCore·Claude Sonnet 4.5/4.6. cc-sdd 오픈소스로 동일 워크플로를 Claude Code·Copilot·Gemini CLI에서도 재현 가능.
+  summary: Kiro는 AWS 계열의 에이전트형 개발 도구로, "바로 코드"가 아니라 spec-driven development를 전면에 둔다. 공식 Specs 문서는 복잡한 기능을 requirements.md, design.md, tasks.md로 쪼개고, feature spec은 Requirements-First 또는 Design-First 흐름으로 요구사항 수집·기술 설계·구현 계획을 거치게 한다고 설명한다. 잘 아는 기능에는 Quick Plan으로 세 산출물을 한 번에 만들 수 있지만, 회귀가 비싼 버그에는 Bugfix Specs로 원인 분석·수정 설계·검증을 분리한다. 실행 단계에서는 tasks.md 상태를 in-progress/completed로 추적하고, 독립 태스크를 의존성 graph의 wave로 묶어 병렬 실행한다. 교훈은 스펙이 문서 장식이 아니라, 에이전트가 무엇을 순서대로 실행해도 되는지 정하는 작업 큐이자 승인 경계라는 점이다.
   points:
-  - '스펙 3단계: requirements.md(수용 기준) → design.md(아키텍처) → tasks.md(구현 계획)'
-  - Autopilot·Kiro Autonomous Agent — Jira→비동기 PR, Bedrock AgentCore 기반
-  - cc-sdd로 Kiro 워크플로를 다른 코딩 에이전트에 이식 — 큰 기능에만 스펙 오버헤드 투자
-  source: https://kiro.dev/docs
+  - Feature Specs — Requirements-First/Design-First, Quick Plan은 승인 게이트 없는 빠른 경로
+  - Bugfix Specs — 원인 분석·수정 설계·검증을 분리해 회귀 비용이 큰 버그에 사용
+  - tasks.md 실행 — 의존성 없는 태스크는 wave 단위 병렬 실행, 상태는 실시간 추적
+  source: https://kiro.dev/docs/specs/
 - category: ai
   title: Amp(Sourcegraph) — '토큰 아끼지 마라'를 철학으로 내건, 스레드·서브에이전트·Oracle로 미는 프런티어 코딩 에이전트
   summary: 'Amp는 Sourcegraph가 만든 터미널·에디터용 코딩 에이전트로, "프런티어 모델과 그다음에 올 것을 위해 만든 에이전트"를 표방한다. 설계 철학이 다른 도구와 갈리는데, 토큰을 아끼려 컨텍스트를 깎기보다 ''제약 없이'' 쓰는 쪽에 무게를 둔다 — 작업 품질을 위해 토큰 비용을 감수한다는 입장이다. 작업 단위는 ''스레드(Thread)''로, 대화·작업 맥락이 영속 저장돼 살아있는 메모리이자 팀 협업·공유 수단이 된다(스레드 포킹으로 대안 시도도 가능). 서브에이전트는 전문 작업을 떼어 맡고 메인 스레드에 결과를 보고하며, 읽기·검색·진단 같은 독립 작업은 기본적으로 병렬로 돌린다(같은 파일·공유 계약을 건드리는 쓰기만 직렬화). ''Oracle''이라는 별도 도구로 더 강한 추론 모델에 어려운 분석을 위임할 수 있고, AGENT.md 파일로 규칙·제약을 코드베이스에 박아 둔다.
