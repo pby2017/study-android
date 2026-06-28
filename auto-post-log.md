@@ -4363,3 +4363,11 @@ Refined:
 - Refined: `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`
 - Refined sources re-checked: https://kiro.dev/docs/specs/ and https://kiro.dev/docs/
 - Rejected: Codex App Server/Sites/Remote/Appshots, Claude Code Agent View, Cursor Customize/SDK/Automations/Bugbot, OpenAI agent-work usage research, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-28 21:02 KST — Local AI card routine
+
+- Published: `OpenAI Secure MCP Tunnel — 사내 MCP를 공개하지 않고 ChatGPT·Codex에 연결하기`
+- Source: https://developers.openai.com/blog/connect-private-mcp-servers-to-openai-products
+- Refined: `cc-sdd(Spec-Driven Development) — Kiro의 '스펙→설계→태스크' 워크플로우를 아무 코딩 에이전트에서 쓰기(오픈소스)`
+- Refined sources re-checked: https://github.com/gotalab/cc-sdd, https://raw.githubusercontent.com/gotalab/cc-sdd/main/README.md, https://registry.npmjs.org/cc-sdd/latest, and https://api.github.com/repos/gotalab/cc-sdd
+- Rejected: A2A, Copilot SDK, Codex Remote, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
