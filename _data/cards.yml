@@ -1541,13 +1541,13 @@ cards:
   source: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint
 - category: ai
   title: mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)
-  summary: 'SWE-agent(프린스턴·~19.5k★)를 만든 팀이 내놓은 후속작으로, 에이전트 핵심 로직을 파이썬 약 100줄로 줄인 미니멀 코딩 에이전트다. 가장 큰 설계 선택은 ''도구(tool-calling) 인터페이스를 안 쓴다''는 것 — 커스텀 툴이나 함수 호출 API 없이 오직 bash 명령만으로 동작하고, 액션은 subprocess.run으로 실행하며 대화 이력도 선형(linear)으로 단순하게 유지한다. 스캐폴드를 깎아내고 LM 자체의 능력에 집중하자는 철학으로, 그럼에도 SWE-bench에서 74%를 넘는 점수를 주장한다. 라이선스는 MIT, GitHub 스타는 약 5.2k(2026-06 기준).
+  summary: 'mini-SWE-agent는 SWE-bench·SWE-agent 팀이 "에이전트 스캐폴드는 얼마나 작아질 수 있나"를 묻는 미니멀 코딩 에이전트다. 현재 v2 README 기준 핵심 agent class는 파이썬 약 100줄이고, 환경·모델·실행 스크립트만 얇게 붙는다. 설계 선택은 과감하다. 별도 tool-calling API나 커스텀 도구 없이 bash만 쓰고, 각 action은 상태ful 셸 세션 대신 독립적인 subprocess.run으로 실행한다. 대화 이력도 선형으로 쌓아 trajectory와 모델 입력을 거의 같은 형태로 남긴다. 그래서 벤치마크 baseline, fine-tuning/RL 실험, sandbox 교체에는 좋지만, 복잡한 제품형 UX나 세밀한 도구 인터페이스 실험은 전작 SWE-agent 쪽이 맞다. README는 SWE-bench Verified 74%+를 주장하고, 2026-06-28 재확인 기준 GitHub는 mini-SWE-agent 5,459★·740 forks·MIT, 전작 SWE-agent 19,649★·2,146 forks·MIT다.
 
     '
   points:
-  - '100줄·bash-only: 커스텀 도구도, 함수 호출 API도 없음. 모델이 bash 명령을 내면 subprocess.run으로 돌리고 결과를 다시 먹이는 단순 루프 — 어떤 LM에든 꽂기 쉬움'
-  - '주장 수치: SWE-bench 74%+ 점수를 README에서 주장(모델·구성에 따라 달라짐). 전작 SWE-agent(~19.5k★)와 별개 레포로, mini 쪽은 ~5.2k★'
-  - '도입처: Meta·NVIDIA·IBM·Anyscale·프린스턴·스탠퍼드 등이 SWE-bench 평가용으로 쓴다고 명시. ''스캐폴드보다 모델''이라는 벤치마킹 철학의 레퍼런스 구현'
+  - 'bash-only + subprocess.run — tool API보다 셸 능력과 sandbox 교체 가능성을 우선'
+  - '선형 history — trajectory와 LM 입력이 거의 같아 디버깅·fine-tuning baseline에 유리'
+  - 'v2 README 주장: SWE-bench Verified 74%+, Meta·NVIDIA·IBM·Nebius·Anyscale 등 사용 사례, mini 5,459★'
   source: https://github.com/SWE-agent/mini-swe-agent
 - category: ai
   title: Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트

@@ -4349,3 +4349,10 @@ Refined:
 - Refined: `Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent`
 - Refined sources re-checked: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint, https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1, and https://claude.com/customers/spotify
 - Rejected: GitHub Agent Finder/ARD, Codex Sites, Cursor SDK, Claude Code routines, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-28 12:53 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or below the exact-source gate.
+- Refined: `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`
+- Refined sources re-checked: https://github.com/SWE-agent/mini-swe-agent, https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/main/README.md, https://api.github.com/repos/SWE-agent/mini-swe-agent, and https://api.github.com/repos/SWE-agent/SWE-agent
+- Rejected: Claude Tag, Cursor Bugbot/Agents Window/Automations follow-ups, Codex App Server/Sites/rollout-budget follow-ups, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
