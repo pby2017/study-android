@@ -4386,3 +4386,10 @@ Refined:
 - Refined: `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)`
 - Refined sources re-checked: https://github.com/QwenLM/Qwen3-Coder, https://raw.githubusercontent.com/QwenLM/Qwen3-Coder/main/README.md, https://api.github.com/repos/QwenLM/Qwen3-Coder, https://huggingface.co/Qwen/Qwen3-Coder-Next, and https://huggingface.co/Qwen/Qwen3-Coder-Next-GGUF
 - Rejected: Codex Remote/Sites/App Server follow-ups, Copilot SDK/worktree/adoption follow-ups, Cursor Automations/Customize/SDK follow-ups, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-29 09:17 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or below the exact-source gate.
+- Refined: `DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)`
+- Refined sources re-checked: https://github.com/stanfordnlp/dspy, https://api.github.com/repos/stanfordnlp/dspy, https://api.github.com/repos/stanfordnlp/dspy/releases/latest, https://dspy.ai/getting-started/first-program/, https://dspy.ai/getting-started/gepa-optimization/, and https://dspy.ai/tutorials/mcp/
+- Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, MAI-Code-1-Flash follow-up, Copilot Jira/BYOK/app follow-ups, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.

@@ -2097,13 +2097,13 @@ cards:
   source: https://github.com/qwenlm/qwen3-coder
 - category: ai
   title: DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)
-  summary: 'DSPy는 Stanford NLP에서 만든 Python 프레임워크로, 수동 프롬프트 엔지니어링을 모듈화된 프로그램으로 대체한다. 태스크를 Signature(입출력 스키마)로 정의하고, Module(Predict·ReAct·ChainOfThought)로 조합한 뒤, Optimizer가 메트릭 기준으로 프롬프트를 자동 튜닝한다. Assertion 기능으로 출력 제약을 자동 백트래킹·재시도하고, TypedPredictor로 Pydantic 기반 구조화 출력을 강제할 수 있다. 프롬프트 시행착오를 측정 가능한 파이프라인으로 전환하는 핵심 도구.
+  summary: 'DSPy는 Stanford NLP가 만든 "프롬프트 대신 프로그램" 프레임워크다. 입출력 계약은 Signature로 쓰고, Predict·ChainOfThought·ReAct 같은 Module을 조합한 뒤, Evaluate와 메트릭으로 성능을 재고 Optimizer가 프롬프트나 few-shot 예시를 컴파일한다. 최신 문서의 중심은 GEPA처럼 실행 trace와 피드백을 보고 instruction을 반성적으로 고치는 최적화 루프, 그리고 ReAct가 MCP 서버 도구를 가져와 쓸 수 있는 도구 연결이다. 2026-06-29 재검증 기준 35,575★·MIT·최신 릴리스 3.2.1. 실무 교훈은 프롬프트 문구를 감으로 고치지 말고, 계약·모듈·메트릭·최적화를 코드 리뷰 가능한 파이프라인으로 남기라는 점이다.
 
     '
   points:
-  - 'Signature → Module → Optimizer: 프롬프트를 자동 튜닝하는 3단계'
-  - 'Assertion: 출력 제약 위반 시 자동 백트래킹 + 재시도'
-  - ReActV2, TypedPredictor 등 에이전트·구조화 출력 프리미티브 내장
+  - '계약: Signature로 입출력을 고정하고 Module(Predict·CoT·ReAct)을 조합'
+  - '검증: Evaluate/metric을 먼저 만든 뒤 Optimizer·GEPA로 instruction과 예시를 컴파일'
+  - '도구화: ReAct가 MCP 서버 도구를 가져와 쓰는 에이전트 파이프라인까지 확장'
   source: https://github.com/stanfordnlp/dspy
 - category: ai
   title: LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(MIT·~40k★)
