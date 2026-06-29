@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)`; next oldest reviewed candidate is `Dify — LLM 앱을 비주얼 워크플로우로 빌드·배포하는 LLMOps 플랫폼(100k★·Apache-2.0 기반)`.
+Current position: continue after `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`; next oldest reviewed candidate is `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`.
 
-Last update: 2026-06-29 17:27 KST
+Last update: 2026-06-29 21:32 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -86,6 +86,10 @@ Reviewed:
 - `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)`
 - `DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)`
 - `LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(MIT·~40k★)`
+- `E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)`
+- `Dify — LLM 앱을 비주얼 워크플로우로 빌드·배포하는 LLMOps 플랫폼(100k★·Apache-2.0 기반)`
+- `Keploy — 실제 API 트래픽을 녹화해서 테스트 케이스를 자동 생성하는 오픈소스 AI 테스트 도구`
+- `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`
 
 Refined:
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
@@ -158,6 +162,9 @@ Refined:
 - `DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)` — re-checked the current README, GitHub API metrics, latest release, first-program docs, GEPA optimization docs, and MCP tutorial; replaced stale Assertion/TypedPredictor emphasis with the current contract/module/metric/optimizer loop, GEPA reflection, MCP/ReAct tool-use angle, and refreshed live popularity/release signals.
 - `LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)` — re-checked the current README plus GitHub API metrics and latest release; refreshed live popularity/release signals, dropped unverifiable MIT title wording because GitHub API returns `NOASSERTION`, removed an unsupported Python-versus-Go throughput comparison, and clarified SDK versus AI Gateway, virtual keys, spend tracking, guardrails, load balancing, admin dashboard, MCP Gateway, and A2A Agent Gateway.
 - `E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)` — re-checked the current README, self-hosting guide, and GitHub API metrics; removed unsupported Fortune 100/88% and cold-start emphasis from the older card, refreshed live popularity/license signals, and clarified SDK command execution, Code Interpreter, Terraform self-hosting, AWS/GCP, and Firecracker isolation.
+- `Dify — 비주얼 캔버스로 agentic workflow·RAG·LLMOps를 묶는 LLM 앱 플랫폼(~147k★)` — re-checked the README, LICENSE, and GitHub API metrics; refreshed live popularity, clarified workflow/RAG/agent/model/observability/API scope, and corrected license wording from plain Apache-2.0 to Apache-2.0-based Dify Open Source License with additional conditions.
+- `Keploy — 실제 트래픽을 eBPF로 녹화해 API·통합 테스트와 mocks를 만드는 AI 테스트 도구(~17.8k★)` — re-checked the current README plus GitHub API metrics; removed unsupported self-healing locator wording, clarified eBPF traffic capture, record/replay mocks, CI reports, and AI coverage expansion from recordings plus OpenAPI schema.
+- `Instructor — Pydantic 스키마로 LLM JSON 파싱·검증·재시도를 한 API에 묶기(MIT·~13.3k★)` — re-checked official docs, README, and redirected GitHub API metrics; refreshed live popularity/license signal and clarified the schema-first extraction boundary versus full agent runtimes.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -173,7 +180,7 @@ Skipped:
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
 
 Next:
-- Continue with `Dify — LLM 앱을 비주얼 워크플로우로 빌드·배포하는 LLMOps 플랫폼(100k★·Apache-2.0 기반)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

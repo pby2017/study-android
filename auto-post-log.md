@@ -4409,3 +4409,10 @@ Refined:
 - Refined: `E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)`
 - Refined sources re-checked: https://github.com/e2b-dev/E2B, https://raw.githubusercontent.com/e2b-dev/E2B/main/README.md, https://github.com/e2b-dev/infra/blob/main/self-host.md, https://raw.githubusercontent.com/e2b-dev/infra/main/self-host.md, and https://api.github.com/repos/e2b-dev/E2B
 - Rejected: ADK for Kotlin/Android, Copilot code review follow-ups, Qubot/Copilot CLI delegation follow-ups, Agent Teams queue item, OpenAI GPT-5.4 queue item, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-29 21:32 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, broad, saturated, or below the exact-source gate.
+- Refined: `Dify — 비주얼 캔버스로 agentic workflow·RAG·LLMOps를 묶는 LLM 앱 플랫폼(~147k★)`, `Keploy — 실제 트래픽을 eBPF로 녹화해 API·통합 테스트와 mocks를 만드는 AI 테스트 도구(~17.8k★)`, and `Instructor — Pydantic 스키마로 LLM JSON 파싱·검증·재시도를 한 API에 묶기(MIT·~13.3k★)`
+- Refined sources re-checked: https://github.com/langgenius/dify, https://raw.githubusercontent.com/langgenius/dify/main/README.md, https://raw.githubusercontent.com/langgenius/dify/main/LICENSE, https://api.github.com/repos/langgenius/dify, https://github.com/keploy/keploy, https://raw.githubusercontent.com/keploy/keploy/main/README.md, https://api.github.com/repos/keploy/keploy, https://python.useinstructor.com/, https://raw.githubusercontent.com/jxnl/instructor/main/README.md, and https://api.github.com/repos/jxnl/instructor
+- Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics below threshold.
