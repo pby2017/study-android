@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)`; next oldest reviewed candidate is `E2B — AI 에이전트가 생성한 코드를 Firecracker microVM에서 안전하게 실행하는 클라우드 샌드박스(Apache-2.0·~13k★)`.
+Current position: continue after `E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)`; next oldest reviewed candidate is `Dify — LLM 앱을 비주얼 워크플로우로 빌드·배포하는 LLMOps 플랫폼(100k★·Apache-2.0 기반)`.
 
-Last update: 2026-06-29 13:23 KST
+Last update: 2026-06-29 17:27 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -157,6 +157,7 @@ Refined:
 - `Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)` — re-checked the current README, Hugging Face model cards, and GitHub API metrics; removed an unsupported Ollama package-size claim, clarified 80B/3B MoE, 256K/1M context, agentic training recipe, SGLang/vLLM tool-parser support, and refreshed live popularity/license signals.
 - `DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)` — re-checked the current README, GitHub API metrics, latest release, first-program docs, GEPA optimization docs, and MCP tutorial; replaced stale Assertion/TypedPredictor emphasis with the current contract/module/metric/optimizer loop, GEPA reflection, MCP/ReAct tool-use angle, and refreshed live popularity/release signals.
 - `LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)` — re-checked the current README plus GitHub API metrics and latest release; refreshed live popularity/release signals, dropped unverifiable MIT title wording because GitHub API returns `NOASSERTION`, removed an unsupported Python-versus-Go throughput comparison, and clarified SDK versus AI Gateway, virtual keys, spend tracking, guardrails, load balancing, admin dashboard, MCP Gateway, and A2A Agent Gateway.
+- `E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)` — re-checked the current README, self-hosting guide, and GitHub API metrics; removed unsupported Fortune 100/88% and cold-start emphasis from the older card, refreshed live popularity/license signals, and clarified SDK command execution, Code Interpreter, Terraform self-hosting, AWS/GCP, and Firecracker isolation.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -172,7 +173,7 @@ Skipped:
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
 
 Next:
-- Continue with `E2B — AI 에이전트가 생성한 코드를 Firecracker microVM에서 안전하게 실행하는 클라우드 샌드박스(Apache-2.0·~13k★)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Dify — LLM 앱을 비주얼 워크플로우로 빌드·배포하는 LLMOps 플랫폼(100k★·Apache-2.0 기반)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

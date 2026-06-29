@@ -4401,3 +4401,11 @@ Refined:
 - Refined: `LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)`
 - Refined sources re-checked: https://github.com/BerriAI/litellm, https://raw.githubusercontent.com/BerriAI/litellm/main/README.md, https://api.github.com/repos/BerriAI/litellm, and https://api.github.com/repos/BerriAI/litellm/releases/latest
 - Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-29 17:27 KST — Local AI card routine
+
+- Published: `STATE-Bench — 에이전트 메모리는 대화 요약이 아니라 최종 상태로 평가해야 한다`
+- Source: https://github.com/microsoft/STATE-Bench
+- Refined: `E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)`
+- Refined sources re-checked: https://github.com/e2b-dev/E2B, https://raw.githubusercontent.com/e2b-dev/E2B/main/README.md, https://github.com/e2b-dev/infra/blob/main/self-host.md, https://raw.githubusercontent.com/e2b-dev/infra/main/self-host.md, and https://api.github.com/repos/e2b-dev/E2B
+- Rejected: ADK for Kotlin/Android, Copilot code review follow-ups, Qubot/Copilot CLI delegation follow-ups, Agent Teams queue item, OpenAI GPT-5.4 queue item, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
