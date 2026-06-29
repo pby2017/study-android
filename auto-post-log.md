@@ -4393,3 +4393,11 @@ Refined:
 - Refined: `DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)`
 - Refined sources re-checked: https://github.com/stanfordnlp/dspy, https://api.github.com/repos/stanfordnlp/dspy, https://api.github.com/repos/stanfordnlp/dspy/releases/latest, https://dspy.ai/getting-started/first-program/, https://dspy.ai/getting-started/gepa-optimization/, and https://dspy.ai/tutorials/mcp/
 - Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, MAI-Code-1-Flash follow-up, Copilot Jira/BYOK/app follow-ups, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.
+
+## 2026-06-29 13:23 KST — Local AI card routine
+
+- Published: `Mellum2(JetBrains) — 12B MoE지만 토큰당 2.5B처럼 도는 소프트웨어 엔지니어링 모델`
+- Source: https://arxiv.org/abs/2605.31268
+- Refined: `LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)`
+- Refined sources re-checked: https://github.com/BerriAI/litellm, https://raw.githubusercontent.com/BerriAI/litellm/main/README.md, https://api.github.com/repos/BerriAI/litellm, and https://api.github.com/repos/BerriAI/litellm/releases/latest
+- Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics as below threshold.

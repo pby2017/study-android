@@ -2106,14 +2106,14 @@ cards:
   - '도구화: ReAct가 MCP 서버 도구를 가져와 쓰는 에이전트 파이프라인까지 확장'
   source: https://github.com/stanfordnlp/dspy
 - category: ai
-  title: LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(MIT·~40k★)
-  summary: 'LiteLLM은 OpenAI·Anthropic·Bedrock·Azure·Cohere·Ollama 등 100+ 프로바이더를 단일 OpenAI 호환 엔드포인트로 묶는 MIT 오픈소스 프록시다. 가상 키·팀별 예산·비용 추적·자동 폴백을 기본 제공하고, Docker 한 줄이면 셀프호스팅 가능. MCP Gateway도 내장. Python 기반이라 500+ RPS 이상에서는 Go 기반 Bifrost 등이 유리하지만, 대다수 팀에는 가장 범용적인 LLM 게이트웨이. Portkey(가드레일 특화)와 상호보완.
+  title: LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)
+  summary: 'LiteLLM은 OpenAI·Anthropic·Gemini·Bedrock·Azure·Cohere·Ollama 등 100+ LLM을 OpenAI 형식 하나로 호출하게 하는 Python SDK 겸 AI Gateway다. 팀 서비스로 띄우면 virtual key, spend tracking, load balancing, guardrails, admin dashboard를 한 곳에서 관리한다. 2026년 README 기준으로 MCP Gateway와 A2A Agent Gateway도 같은 프록시에 붙어, 모델 호출·도구 호출·에이전트 호출을 같은 인증/비용 경계 안에 넣을 수 있다. 교훈은 LLM 게이트웨이를 "모델 추상화"가 아니라 멀티테넌트 예산·관측·도구 보안의 운영 경계로 보라는 점이다.
 
     '
   points:
-  - 'MIT 오픈소스: 100+ 프로바이더, OpenAI 호환 API, 셀프호스팅'
-  - 가상 키·팀 예산·비용 추적·자동 폴백 기본 내장
-  - MCP Gateway 내장, Docker 한 줄 배포
+  - 100+ LLM provider를 OpenAI format으로 통합 — SDK 또는 중앙 AI Gateway로 사용
+  - virtual key·spend tracking·load balancing·guardrails·admin dashboard를 프록시에서 관리
+  - MCP Gateway와 A2A Agent Gateway까지 같은 인증/비용 경계에 연결
   source: https://github.com/BerriAI/litellm
 - category: ai
   title: E2B — AI 에이전트가 생성한 코드를 Firecracker microVM에서 안전하게 실행하는 클라우드 샌드박스(Apache-2.0·~13k★)
@@ -8589,3 +8589,11 @@ cards:
   - "`total_pull_requests_merged` — phase별 병합 PR 총량, 1일·28일 report에서 사용"
   - "평균 사용량과 절대 처리량을 분리해 rollout 교육·예산·효과 측정을 설계"
   source: https://github.blog/changelog/2026-06-26-track-total-merges-by-adoption-phase-in-enterprise-and-organization-reports
+- category: ai
+  title: Mellum2(JetBrains) — 12B MoE지만 토큰당 2.5B처럼 도는 소프트웨어 엔지니어링 모델
+  summary: JetBrains의 Mellum2는 Apache-2.0으로 공개된 12B Mixture-of-Experts 모델이다. 토큰마다 64개 expert 중 8개만 켜서 active parameter는 2.5B이고, 코드 생성·편집·디버깅·tool/function calling·agentic coding에 맞춰 학습됐다. arXiv 기술 보고서는 128K context, Instruct/Thinking 변형, speculative decoding용 Multi-Token Prediction head를 공개하고, Hugging Face 모델 카드도 같은 라이선스와 체크포인트를 제공한다. 실무 포인트는 "큰 코딩 모델"보다 "작은 active compute + 긴 컨텍스트 + 도구 호출" 조합이다. IDE/에이전트 안에서 빠른 반복 작업을 맡길 로컬·오픈웨이트 후보를 평가할 때, 파라미터 총량보다 active parameter와 실제 latency를 같이 봐야 한다.
+  points:
+  - 12B MoE, 토큰당 2.5B active — 64 experts 중 8개만 사용
+  - software engineering 특화 — code edit, debugging, tool/function calling, agentic coding
+  - Apache-2.0 open weights, 128K context, Instruct/Thinking 변형 공개
+  source: https://arxiv.org/abs/2605.31268
