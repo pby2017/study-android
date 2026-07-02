@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`; next oldest reviewed candidate is `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)`.
+Current position: continue after `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)`; next oldest reviewed candidate is `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`.
 
-Last update: 2026-07-03 03:38 KST
+Last update: 2026-07-03 07:40 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -167,6 +167,7 @@ Refined:
 - `Dify — 비주얼 캔버스로 agentic workflow·RAG·LLMOps를 묶는 LLM 앱 플랫폼(~147k★)` — re-checked the README, LICENSE, and GitHub API metrics; refreshed live popularity, clarified workflow/RAG/agent/model/observability/API scope, and corrected license wording from plain Apache-2.0 to Apache-2.0-based Dify Open Source License with additional conditions.
 - `Keploy — 실제 트래픽을 eBPF로 녹화해 API·통합 테스트와 mocks를 만드는 AI 테스트 도구(~17.8k★)` — re-checked the current README plus GitHub API metrics; removed unsupported self-healing locator wording, clarified eBPF traffic capture, record/replay mocks, CI reports, and AI coverage expansion from recordings plus OpenAPI schema.
 - `Instructor — Pydantic 스키마로 LLM JSON 파싱·검증·재시도를 한 API에 묶기(MIT·~13.3k★)` — re-checked official docs, README, and redirected GitHub API metrics; refreshed live popularity/license signal and clarified the schema-first extraction boundary versus full agent runtimes.
+- `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)` — re-checked Argilla docs, Argilla GitHub, and Distilabel docs; removed the stale Label Studio star comparison, tightened the workflow around Dataset/Record/Question/Workspace plus suggestions and semantic search, and clarified the distilabel-assisted synthesize → human-review loop.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -180,9 +181,10 @@ Skipped:
 - `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)` — re-checked the current Terminal-Bench 2.1 leaderboard and docs; removed unsupported availability/shutdown wording, corrected Terminus 2+GPT-5.5 from 76.4% to 78.2%, and clarified the agent+harness+model lesson.
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
+- `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — deferred to next run; not yet re-verified in this bounded pass.
 
 Next:
-- Continue with `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

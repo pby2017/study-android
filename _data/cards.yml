@@ -2177,13 +2177,13 @@ cards:
   source: https://microsoft.github.io/graphrag/
 - category: ai
   title: Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)
-  summary: 'Argilla는 LLM 파인튜닝에 쓸 instruction·preference 데이터를 사람이 직접 검수·라벨링·큐레이션하는 오픈소스 도구다. RLHF용 선호도 랭킹(chosen/rejected)을 네이티브 지원하고, distilabel과 연동해 합성 데이터 생성 → 사람 검수 파이프라인을 구성할 수 있다. Label Studio(27k★)가 이미지·오디오 등 범용 라벨링이라면, Argilla는 LLM/NLP 피드백에 특화. HuggingFace 산하 프로젝트로 Spaces에서 즉시 배포 가능.
+  summary: 'Argilla는 AI 엔지니어와 도메인 전문가가 함께 쓰는 데이터 협업 도구로, LLM 파인튜닝·평가에 필요한 instruction·preference 데이터를 검수·라벨링·큐레이션하게 해준다. Dataset·Record·Question·Workspace 중심으로 피드백 형태를 설계하고, suggestions·filters·semantic search로 annotator 작업을 돕는다. distilabel과 붙이면 합성 데이터 생성 → Argilla에서 사람 검수 흐름을 만들 수 있고, Hugging Face Hub나 Docker로 바로 배포해 데이터 소유권을 유지한 채 반복 개선하기 좋다.
 
     '
   points:
-  - 'LLM 특화: RLHF 선호도 랭킹·instruction 라벨링 네이티브 지원'
-  - 'distilabel 연동: 합성 데이터 생성 → 사람 검수 파이프라인'
-  - 'HuggingFace 산하: Spaces 즉시 배포, Apache-2.0'
+  - 'LLM/RAG/pref-tuning용 피드백 데이터에 맞춘 협업 라벨링'
+  - 'Dataset·Record·Question·Workspace + suggestions·semantic search'
+  - 'distilabel로 합성 데이터 생성 → 사람 검수 파이프라인'
   source: https://github.com/argilla-io/argilla
 - category: ai
   title: Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트
