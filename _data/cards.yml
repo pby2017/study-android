@@ -2167,13 +2167,13 @@ cards:
   source: https://github.com/dottxt-ai/outlines
 - category: ai
   title: GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)
-  summary: 'Microsoft GraphRAG는 텍스트에서 지식 그래프를 추출하고 Leiden 알고리즘으로 커뮤니티를 계층화한 뒤, 커뮤니티 요약을 쿼리 시점에 활용하는 구조화 RAG 기법이다. 벡터 유사도만으로는 답할 수 없는 ''여러 문서에 걸친 관계 추론'' 질문에 강점. Neo4j(Cypher 기반 그래프 순회 + 벡터 인덱스 하이브리드)가 프로덕션에서 가장 널리 쓰이는 GraphRAG 백엔드. LazyGraphRAG는 그래프 구축을 쿼리 시점까지 지연시켜 초기 비용을 대폭 절감.
+  summary: 'Microsoft GraphRAG는 텍스트에서 지식 그래프를 추출하고, Leiden 기반 커뮤니티 계층을 만든 뒤, 커뮤니티 리포트를 쿼리 시점에 활용하는 구조화 RAG 기법이다. 벡터 유사도만으로는 놓치기 쉬운 ''문서 간 관계'' 질문에 강점이 있고, 공식 문서도 local search·global search·DRIFT search처럼 질문 유형별 경로를 나눠 설명한다. 실무 교훈은 단순 chunk 검색만으로는 부족할 때, 그래프와 커뮤니티 요약을 붙여 검색 범위를 넓히는 쪽이 더 나은 답을 만든다는 점이다.
 
     '
   points:
-  - '지식 그래프 + 커뮤니티 요약: 멀티홉 관계 추론 RAG'
-  - 'Neo4j: 프로덕션 GraphRAG 표준 백엔드 (Cypher + 벡터)'
-  - 'LazyGraphRAG: 그래프 구축을 쿼리 시점까지 지연 → 초기 비용 절감'
+  - '지식 그래프 + 커뮤니티 리포트: 문서 간 관계 추론용 RAG'
+  - 'local / global / DRIFT search로 질문 유형별 검색 경로를 분리'
+  - 'chunk 검색만으로 부족할 때 그래프 요약을 붙여 검색 범위를 넓힘'
   source: https://microsoft.github.io/graphrag/
 - category: ai
   title: Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)

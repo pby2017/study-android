@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`; next oldest reviewed candidate is `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`.
+Current position: continue after `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`; next oldest reviewed candidate is `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)`.
 
-Last update: 2026-07-02 23:36 KST
+Last update: 2026-07-03 03:38 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -92,6 +92,7 @@ Reviewed:
 - `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`
 
 Refined:
+- `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)` — re-checked the official docs and GitHub repo; removed unsupported Neo4j/LazyGraphRAG wording, clarified the knowledge-graph extraction plus community-hierarchy pipeline, and tightened the practical takeaway around local/global/DRIFT search paths.
 - `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)` — re-checked official docs and GitHub repo page; softened the absolute schema guarantee into a source-backed generation-time constraint, clarified supported integrations, and kept the Instructor contrast focused on post-hoc validation versus generation-time masking.
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
 - `Spec Kit — 명세 주도 개발(SDD)` — clarified the SDD artifact flow and the role of specs as AI execution boundaries.
@@ -181,7 +182,7 @@ Skipped:
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
 
 Next:
-- Continue with `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp
