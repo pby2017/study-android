@@ -2157,13 +2157,13 @@ cards:
   source: https://python.useinstructor.com/
 - category: ai
   title: Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)
-  summary: 'Outlines는 LLM이 토큰을 생성하는 매 스텝에서 유한 상태 오토마타(FSM)로 유효하지 않은 토큰을 마스킹해 100% 스키마 준수 출력을 보장한다. 재시도가 필요 없어 API 비용과 지연을 제거. HuggingFace transformers· llama-cpp-python·vLLM·MLX와 직접 통합되며 Pydantic/JSON Schema를 네이티브 지원한다. Instructor(후처리 검증 + 재시도)와 반대 접근: Outlines는 ''생성 시점에 제약''. 대량 처리 파이프라인과 로컬 모델 환경에 최적.
+  summary: 'Outlines는 LLM이 토큰을 생성하는 동안 FSM이나 grammar로 허용 토큰만 남겨 구조화 출력을 만드는 라이브러리다. README는 이를 "structured outputs during generation"으로 설명하고, vLLM·Ollama·transformers·llama.cpp·MLX 같은 모델 통합과 Pydantic/JSON Schema 지원을 함께 내세운다. Instructor가 후처리 검증과 재시도로 형식을 맞춘다면, Outlines는 생성 시점에 제약을 걸어 로컬 모델이나 대량 처리 파이프라인에서 재시도 비용을 줄이는 쪽에 가깝다.
 
     '
   points:
-  - 'FSM 기반 logit 마스킹: 생성 시점에 100% 스키마 보장, 재시도 제로'
-  - vLLM·transformers·llama-cpp·MLX 직접 통합
-  - 'Instructor(후처리)와 반대 전략: 대량 처리 + 로컬 모델에 최적'
+  - '생성 시점 제약: FSM/grammar로 허용 토큰만 남겨 구조화 출력'
+  - vLLM·Ollama·transformers·llama.cpp·MLX 통합, Pydantic/JSON Schema 지원
+  - 'Instructor(후처리 검증+재시도)와 대비되는 로컬/대량 처리 지향'
   source: https://github.com/dottxt-ai/outlines
 - category: ai
   title: GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)

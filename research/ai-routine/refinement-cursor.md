@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`; next oldest reviewed candidate is `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`.
+Current position: continue after `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`; next oldest reviewed candidate is `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`.
 
-Last update: 2026-06-29 21:32 KST
+Last update: 2026-07-02 23:36 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -92,6 +92,7 @@ Reviewed:
 - `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`
 
 Refined:
+- `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)` — re-checked official docs and GitHub repo page; softened the absolute schema guarantee into a source-backed generation-time constraint, clarified supported integrations, and kept the Instructor contrast focused on post-hoc validation versus generation-time masking.
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.
 - `Spec Kit — 명세 주도 개발(SDD)` — clarified the SDD artifact flow and the role of specs as AI execution boundaries.
 - `Ouroboros — 모호함을 수치로` — clarified the interview/seed/run/evaluate loop and added the ontology convergence threshold alongside the ambiguity threshold.
