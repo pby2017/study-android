@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`; next oldest reviewed candidate is `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`.
+Current position: continue after `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`; next oldest reviewed candidate is `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`.
 
-Last update: 2026-07-03 23:51 KST
+Last update: 2026-07-04 03:58 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -168,6 +168,8 @@ Refined:
 - `Keploy — 실제 트래픽을 eBPF로 녹화해 API·통합 테스트와 mocks를 만드는 AI 테스트 도구(~17.8k★)` — re-checked the current README plus GitHub API metrics; removed unsupported self-healing locator wording, clarified eBPF traffic capture, record/replay mocks, CI reports, and AI coverage expansion from recordings plus OpenAPI schema.
 - `Instructor — Pydantic 스키마로 LLM JSON 파싱·검증·재시도를 한 API에 묶기(MIT·~13.3k★)` — re-checked official docs, README, and redirected GitHub API metrics; refreshed live popularity/license signal and clarified the schema-first extraction boundary versus full agent runtimes.
 - `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)` — re-checked Argilla docs, Argilla GitHub, and Distilabel docs; removed the stale Label Studio star comparison, tightened the workflow around Dataset/Record/Question/Workspace plus suggestions and semantic search, and clarified the distilabel-assisted synthesize → human-review loop.
+- `Kiro(AWS) — 코드보다 스펙을 먼저 굳히는 requirements.md·design.md·tasks.md 에이전트` — re-checked current Kiro specs docs, tightened the title and summary to match the official three-file workflow, clarified Quick Plan versus standard Feature/Bugfix Specs, and kept the wave-based parallel execution lesson.
+- `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the current README and docs, removed an unsupported cloud-enrollment claim, clarified current self-hosted/cloud model modes, and kept the cumulative diff sandbox and large-context lesson intact.
 
 Skipped:
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
@@ -184,7 +186,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`; refine only if current public sources support clearer detail than the existing card.
 
 Per successful refinement run, update this file with:
 - timestamp

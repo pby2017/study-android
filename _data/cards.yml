@@ -1560,12 +1560,12 @@ cards:
   - '무료 티어 + `.aiexclude` — 개인용 접근성과 코드 노출 경계를 함께 제공'
   source: https://developer.android.com/studio/gemini/overview
 - category: ai
-  title: Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트
-  summary: Kiro는 AWS 계열의 에이전트형 개발 도구로, "바로 코드"가 아니라 spec-driven development를 전면에 둔다. 공식 Specs 문서는 복잡한 기능을 requirements.md, design.md, tasks.md로 쪼개고, feature spec은 Requirements-First 또는 Design-First 흐름으로 요구사항 수집·기술 설계·구현 계획을 거치게 한다고 설명한다. 잘 아는 기능에는 Quick Plan으로 세 산출물을 한 번에 만들 수 있지만, 회귀가 비싼 버그에는 Bugfix Specs로 원인 분석·수정 설계·검증을 분리한다. 실행 단계에서는 tasks.md 상태를 in-progress/completed로 추적하고, 독립 태스크를 의존성 graph의 wave로 묶어 병렬 실행한다. 교훈은 스펙이 문서 장식이 아니라, 에이전트가 무엇을 순서대로 실행해도 되는지 정하는 작업 큐이자 승인 경계라는 점이다.
+  title: Kiro(AWS) — 코드보다 스펙을 먼저 굳히는 requirements.md·design.md·tasks.md 에이전트
+  summary: Kiro는 AWS 계열의 에이전트형 개발 도구로, 기능과 버그 수정을 먼저 구조화한 뒤 구현으로 넘어가게 만든다. 공식 Specs 문서는 모든 spec이 `requirements.md`(또는 `bugfix.md`), `design.md`, `tasks.md`의 세 파일로 구성되며, Feature Specs는 Requirements-First 또는 Design-First 흐름으로 요구사항 수집·기술 설계·실행 계획을 순서대로 만든다고 설명한다. 잘 아는 기능에는 Quick Plan으로 세 산출물을 한 번에 만들 수 있고, 복잡한 기능이나 회귀 비용이 큰 버그에는 표준 Feature Spec과 Bugfix Spec이 더 적합하다. 실행 단계에서는 `tasks.md`의 상태를 추적하고, Run all Tasks가 의존성 그래프를 보고 독립 작업을 wave 단위로 병렬 실행한다. 교훈은 문서가 장식이 아니라, 에이전트가 무엇을 언제 실행해도 되는지 정하는 작업 경계라는 점이다.
   points:
-  - Feature Specs — Requirements-First/Design-First, Quick Plan은 승인 게이트 없는 빠른 경로
-  - Bugfix Specs — 원인 분석·수정 설계·검증을 분리해 회귀 비용이 큰 버그에 사용
-  - tasks.md 실행 — 의존성 없는 태스크는 wave 단위 병렬 실행, 상태는 실시간 추적
+  - '`requirements.md`·`design.md`·`tasks.md` 3개 산출물 + Feature Specs의 Requirements-First / Design-First 흐름'
+  - 'Quick Plan은 requirements·design·tasks를 한 번에 생성하고, 표준 Spec은 승인 게이트를 남겨 둔다'
+  - 'Bugfix Specs는 root cause analysis·fix design·regression prevention을 분리하고, Run all Tasks는 wave 단위 병렬 실행'
   source: https://kiro.dev/docs/specs/
 - category: ai
   title: Amp(Sourcegraph) — '토큰 아끼지 마라'를 철학으로 내건, 스레드·서브에이전트·Oracle로 미는 프런티어 코딩 에이전트
@@ -2197,16 +2197,16 @@ cards:
   source: https://github.com/argilla-io/argilla
 - category: ai
   title: Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트
-  summary: 'Plandex는 큰 코드베이스와 여러 단계의 작업을 다루도록 만든 터미널형 AI 코딩 에이전트다. 핵심은 AI가 만든 변경을 바로 실제 파일에 쓰지 않고 버전 관리되는 누적 diff 리뷰 샌드박스에 먼저 쌓아 두었다가, 검토가 끝난 뒤에만 적용하게 하는 점이다. 현재 공개 문서는 Cloud가 2025-10-03부터 신규 사용자를 받지 않으며, 대신 로컬/셀프호스트 모드와 BYO 모델 키 조합을 안내한다. 이 흐름 위에 2M 토큰급 직접 컨텍스트, tree-sitter 기반 프로젝트 맵, 자동 디버깅, git 연동을 얹어 대규모 수정을 안정적으로 돌리게 만든다.
+  summary: 'Plandex는 큰 코드베이스와 여러 단계의 작업을 다루도록 만든 터미널형 AI 코딩 에이전트다. 핵심은 AI가 만든 변경을 바로 실제 파일에 쓰지 않고 버전 관리되는 누적 diff 리뷰 샌드박스에 먼저 쌓아 두었다가, 검토가 끝난 뒤에만 적용하게 하는 점이다. 공식 문서는 직접 컨텍스트 최대 2M 토큰과 tree-sitter 프로젝트 맵으로 20M 토큰 이상을 인덱싱할 수 있다고 설명하고, self-hosted에서는 custom models/providers/model packs를 모두 지원하며 cloud에서는 BYO API keys 또는 integrated models 조합을 안내한다. 이 흐름 위에 command execution 제어와 git 연동을 얹어 대규모 수정을 안정적으로 돌리게 만든다.
 
     '
   points:
-  - 태그라인 'Open source AI coding agent. Designed for large projects and real world tasks' · MIT · 약 15.5k★
+  - 태그라인 'Open source AI coding agent. Designed for large projects and real world tasks' · MIT · GitHub 15.5k★
   - 변경은 version-controlled cumulative diff sandbox에 먼저 쌓이고, 검토 후 적용
   - 직접 컨텍스트 최대 2M 토큰, tree-sitter 프로젝트 맵으로 20M+ 토큰 인덱싱
-  - Cloud는 신규 가입 중단 상태이고, local/self-hosted + BYO 키 모드가 현재 안내의 중심
-  - 자동 디버깅과 git 연동, 필요하면 단계적 검토와 full autonomy를 오갈 수 있음
-  - 모델 비종속(Anthropic·OpenAI·Google·오픈소스)
+  - self-hosted는 custom models/providers/model packs를 모두 지원, cloud는 BYO API keys 또는 integrated models 지원
+  - command execution 제어와 git 연동으로 롤백·디버깅을 쉽게 유지
+  - 모델 비종속(Anthropic·OpenAI·Google·오픈소스 provider들)
   source: https://github.com/plandex-ai/plandex
 - category: ai
   title: SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트
