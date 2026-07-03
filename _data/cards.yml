@@ -1541,14 +1541,24 @@ cards:
   source: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint
 - category: ai
   title: mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)
-  summary: 'mini-SWE-agent는 SWE-bench·SWE-agent 팀이 "에이전트 스캐폴드는 얼마나 작아질 수 있나"를 묻는 미니멀 코딩 에이전트다. 현재 v2 README 기준 핵심 agent class는 파이썬 약 100줄이고, 환경·모델·실행 스크립트만 얇게 붙는다. 설계 선택은 과감하다. 별도 tool-calling API나 커스텀 도구 없이 bash만 쓰고, 각 action은 상태ful 셸 세션 대신 독립적인 subprocess.run으로 실행한다. 대화 이력도 선형으로 쌓아 trajectory와 모델 입력을 거의 같은 형태로 남긴다. 그래서 벤치마크 baseline, fine-tuning/RL 실험, sandbox 교체에는 좋지만, 복잡한 제품형 UX나 세밀한 도구 인터페이스 실험은 전작 SWE-agent 쪽이 맞다. README는 SWE-bench Verified 74%+를 주장하고, 2026-06-28 재확인 기준 GitHub는 mini-SWE-agent 5,459★·740 forks·MIT, 전작 SWE-agent 19,649★·2,146 forks·MIT다.
+  summary: 'mini-SWE-agent는 SWE-bench·SWE-agent 팀이 "에이전트 스캐폴드는 얼마나 작아질 수 있나"를 묻는 미니멀 코딩 에이전트다. v2 README 기준 핵심 agent class는 파이썬 약 100줄이고, 나머지는 environment·model·run script만 얇게 붙는다. 설계는 의도적으로 단순하다. 별도 tool-calling API 없이 bash만 쓰고, 각 action은 `subprocess.run`으로 독립 실행하며, 대화 이력은 선형으로만 쌓아 trajectory와 모델 입력을 거의 같은 형태로 유지한다. 그래서 빠른 로컬 CLI, 샌드박스 교체, FT/RL baseline, 벤치마크 실험에는 잘 맞지만, 전용 도구가 많은 제품형 UX는 전작 SWE-agent가 더 적합하다. README는 SWE-bench Verified 74%+와 Meta·NVIDIA·IBM·Stanford·Princeton 등 실제 사용 사례를 함께 내세운다.
 
     '
   points:
   - 'bash-only + subprocess.run — tool API보다 셸 능력과 sandbox 교체 가능성을 우선'
   - '선형 history — trajectory와 LM 입력이 거의 같아 디버깅·fine-tuning baseline에 유리'
-  - 'v2 README 주장: SWE-bench Verified 74%+, Meta·NVIDIA·IBM·Nebius·Anyscale 등 사용 사례, mini 5,459★'
+  - 'v2 README 주장: SWE-bench Verified 74%+, 핵심 agent 약 100줄, Meta·NVIDIA·IBM·Stanford·Princeton 사용 사례'
   source: https://github.com/SWE-agent/mini-swe-agent
+- category: ai
+  title: Gemini in Android Studio — Compose·Gradle·크래시 분석까지 읽는 Android 전용 AI 코딩 동료
+  summary: 'Gemini in Android Studio는 Android 개발 전용 AI 코딩 도우미다. IDE 안에서 개발 질의응답, 코드 생성, 관련 자료 찾기, 베스트 프랙티스 안내를 처리하고, 공식 문서는 Compose UI 목업·디버깅, Gradle 빌드 오류 수정, Logcat/App Quality Insights 기반 크래시 분석을 대표 사례로 든다. 공개 기능은 Agent Mode, code completion, code transformation, unit test generation, file attachment, multimodal image attachment, commit message 작성, 문서화까지 넓다. 개인용은 무료 티어가 있고, `.aiexclude`로 Gemini가 볼 수 있는 코드를 제어할 수 있다. 핵심은 Android AI를 별도 브라우저 도구로 빼지 않고 IDE workflow 안에 넣어 컨텍스트 전환을 줄이는 것이다.
+
+    '
+  points:
+  - 'Android 전용 AI 도우미 — Compose UI·Gradle·crash analysis까지 IDE 안에서 처리'
+  - 'Agent Mode / code transform / unit test generation / file+image attachment / commit message'
+  - '무료 티어 + `.aiexclude` — 개인용 접근성과 코드 노출 경계를 함께 제공'
+  source: https://developer.android.com/studio/gemini/overview
 - category: ai
   title: Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트
   summary: Kiro는 AWS 계열의 에이전트형 개발 도구로, "바로 코드"가 아니라 spec-driven development를 전면에 둔다. 공식 Specs 문서는 복잡한 기능을 requirements.md, design.md, tasks.md로 쪼개고, feature spec은 Requirements-First 또는 Design-First 흐름으로 요구사항 수집·기술 설계·구현 계획을 거치게 한다고 설명한다. 잘 아는 기능에는 Quick Plan으로 세 산출물을 한 번에 만들 수 있지만, 회귀가 비싼 버그에는 Bugfix Specs로 원인 분석·수정 설계·검증을 분리한다. 실행 단계에서는 tasks.md 상태를 in-progress/completed로 추적하고, 독립 태스크를 의존성 graph의 wave로 묶어 병렬 실행한다. 교훈은 스펙이 문서 장식이 아니라, 에이전트가 무엇을 순서대로 실행해도 되는지 정하는 작업 큐이자 승인 경계라는 점이다.

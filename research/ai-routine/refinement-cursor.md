@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`; next oldest reviewed candidate is `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`.
+Current position: continue after `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`; next oldest reviewed candidate is `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트`.
 
-Last update: 2026-07-03 16:05 KST
+Last update: 2026-07-03 23:51 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -156,7 +156,7 @@ Refined:
 - `Context7(Upstash) — '낡은·환각 API'를 막으려 버전별 최신 문서를 매 요청에 끼워 넣는 MCP 서버(MIT)` — re-checked current README/docs, GitHub API metrics, and Thoughtworks Radar page; refreshed live stars/forks/license/activity, clarified MCP versus CLI+Skills modes, and kept the private backend/crawler caveat.
 - `공식 /code-review 플러그인 — '리뷰 4개 병렬 → 한 건씩 재검증'으로 오탐을 떨궈내는 구조` — re-checked the current Anthropic command file and tightened the card around skip gates, CLAUDE.md path collection, 4 parallel reviewers, high-signal-only bug criteria, per-issue validation, and `--comment` behavior.
 - `Spotify Honk — Agent SDK·K8s pods·Slack @Honk·Fleet Management 위 백그라운드 agent` — re-checked Spotify Engineering's 2026 Code with Claude post, Spotify's 2025 Honk Part 1 post, and the Anthropic customer page; kept the original claims but split the dense card into platform foundation, runtime architecture, Slack trigger, validation path, and practical golden-path lesson.
-- `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)` — re-checked the current README plus GitHub API metrics; clarified v2, bash-only/no tool-calling design, `subprocess.run`, linear history, baseline/fine-tuning fit, SWE-agent comparison, adoption list, and live stars/forks/license signals.
+- `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)` — re-checked the current README, official site, SWE-bench page, and GitHub API metrics; refreshed live stars/forks/license/pushed_at, clarified v2, bash-only/no tool-calling design, `subprocess.run`, linear history, baseline/fine-tuning fit, SWE-agent comparison, and broad usage examples.
 - `Kiro(AWS) — '코드가 아니라 스펙이 산출물'이라며 requirements→design→tasks 3단계를 강제하는 Spec-Driven 에이전트` — re-checked current Kiro Specs docs, removed stale or unsupported runtime/model details, clarified Feature Specs, Bugfix Specs, Quick Plan, task execution status, dependency waves, and the practical lesson that specs are execution boundaries and task queues.
 - `cc-sdd(Spec-Driven Development) — Kiro의 '스펙→설계→태스크' 워크플로우를 아무 코딩 에이전트에서 쓰기(오픈소스)` — re-checked the current README, npm metadata, and GitHub API metrics; moved source from a secondary Medium post to the project README, clarified v3.0 Agent Skills, 8-agent support, `kiro-discovery`, `kiro-impl`, Boundary/Depends annotations, and the contract-boundary lesson.
 - `Axolotl — YAML 한 장으로 멀티GPU LLM 파인튜닝 파이프라인을 관리하는 엔터프라이즈 오케스트레이터(Apache-2.0·~11k★)` — re-checked the current README plus GitHub API metrics and latest release; clarified YAML-backed reproducibility, training methods, distributed/optimization surface, agent-docs/config-schema support, and refreshed live popularity/release signals.
