@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`; next oldest reviewed candidate is `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`.
+Current position: continue after `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`; next oldest reviewed candidate is `llama.cpp + GGUF — convert→imatrix→quantize, Q4_K_M이 2026년 엣지·로컬 표준`.
 
-Last update: 2026-07-04 03:58 KST
+Last update: 2026-07-04 08:03 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -92,6 +92,7 @@ Reviewed:
 - `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`
 
 Refined:
+- `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트` — re-checked the current README, docs, docs background, docs usage/FAQ, and live GitHub API metrics; refreshed the star/fork/license/pushed_at signal, clarified the ACI lesson, current mini-swe-agent recommendation, and maintenance-only status, and tightened the benchmark/config/tool-bundle takeaways.
 - `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)` — re-checked the official docs and GitHub repo; removed unsupported Neo4j/LazyGraphRAG wording, clarified the knowledge-graph extraction plus community-hierarchy pipeline, and tightened the practical takeaway around local/global/DRIFT search paths.
 - `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)` — re-checked official docs and GitHub repo page; softened the absolute schema guarantee into a source-backed generation-time constraint, clarified supported integrations, and kept the Instructor contrast focused on post-hoc validation versus generation-time masking.
 - `diagnose — 디버깅을 규율로 만드는 스킬` — clarified the reproducible red/pass debugging loop and practical AI-agent lesson.

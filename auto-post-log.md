@@ -4417,3 +4417,10 @@ Refined:
 - Refined: `Dify — 비주얼 캔버스로 agentic workflow·RAG·LLMOps를 묶는 LLM 앱 플랫폼(~147k★)`, `Keploy — 실제 트래픽을 eBPF로 녹화해 API·통합 테스트와 mocks를 만드는 AI 테스트 도구(~17.8k★)`, and `Instructor — Pydantic 스키마로 LLM JSON 파싱·검증·재시도를 한 API에 묶기(MIT·~13.3k★)`
 - Refined sources re-checked: https://github.com/langgenius/dify, https://raw.githubusercontent.com/langgenius/dify/main/README.md, https://raw.githubusercontent.com/langgenius/dify/main/LICENSE, https://api.github.com/repos/langgenius/dify, https://github.com/keploy/keploy, https://raw.githubusercontent.com/keploy/keploy/main/README.md, https://api.github.com/repos/keploy/keploy, https://python.useinstructor.com/, https://raw.githubusercontent.com/jxnl/instructor/main/README.md, and https://api.github.com/repos/jxnl/instructor
 - Rejected: Agent Teams queue item, OpenAI GPT-5.4 queue item, and broad Android AI follow-ups as duplicate/overlap; pure Android-only topics below threshold.
+
+## 2026-07-04 08:03 KST — Local AI card routine
+
+- Published: none; fresh candidates were duplicate, saturated, or below the exact-source gate.
+- Refined: `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`
+- Refined sources re-checked: https://github.com/SWE-agent/SWE-agent, https://raw.githubusercontent.com/SWE-agent/SWE-agent/main/README.md, https://swe-agent.com/latest/, https://swe-agent.com/latest/background/, https://swe-agent.com/latest/usage/, https://swe-agent.com/latest/usage/coding_challenges/, https://swe-agent.com/latest/faq/, https://github.com/SWE-agent/SWE-agent/releases, and https://api.github.com/repos/SWE-agent/SWE-agent
+- Rejected: `Agent Teams` and `OpenAI GPT-5.4` queue items as duplicate/too broad against the existing deck; pure Android-only follow-ups remained below the AI-centered threshold.
