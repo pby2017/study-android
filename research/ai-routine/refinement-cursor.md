@@ -4,7 +4,7 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: continue after `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`; next oldest reviewed candidate is `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`.
 
-Last update: 2026-07-03 11:43 KST
+Last update: 2026-07-03 15:45 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -181,7 +181,7 @@ Skipped:
 - `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)` — re-checked the current Terminal-Bench 2.1 leaderboard and docs; removed unsupported availability/shutdown wording, corrected Terminus 2+GPT-5.5 from 76.4% to 78.2%, and clarified the agent+harness+model lesson.
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
-- `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — deferred to next run; not yet re-verified in this bounded pass.
+- `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
 - Continue with `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`; refine only if current public sources support clearer detail than the existing card.

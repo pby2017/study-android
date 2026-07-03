@@ -2187,14 +2187,14 @@ cards:
   source: https://github.com/argilla-io/argilla
 - category: ai
   title: Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트
-  summary: 'Plandex는 큰 코드베이스와 여러 단계의 작업을 다루도록 만든 터미널형 AI 코딩 에이전트다. 핵심은 AI가 만든 변경을 바로 파일에 쓰지 않고 버전 관리되는 샌드박스에 먼저 쌓아 두고, `plandex diff`와 `plandex apply`로 검토·적용하게 하는 점이다. 계획 실행, 자동 디버깅, 브랜치/커밋 생성까지 묶어서 대규모 수정 흐름을 안정적으로 돌리기 좋다.
+  summary: 'Plandex는 큰 코드베이스와 여러 단계의 작업을 다루도록 만든 터미널형 AI 코딩 에이전트다. 핵심은 AI가 만든 변경을 바로 파일에 쓰지 않고 버전 관리되는 누적 diff 샌드박스에 먼저 쌓아 두고, 검토가 끝난 뒤에만 적용하게 하는 점이다. 2M 토큰급 직접 컨텍스트, tree-sitter 기반 프로젝트 맵, 자동 디버깅, git 연동까지 묶어서 대규모 수정 흐름을 안정적으로 돌리기 좋다.
 
     '
   points:
   - 태그라인 'Open source AI coding agent. Designed for large projects and real world tasks' · MIT · 약 15.5k★
-  - 변경은 기본적으로 version-controlled sandbox에 쌓이고, `plandex diff` / `plandex diff --ui` / `plandex apply`로 검토·적용
+  - 변경은 기본적으로 version-controlled cumulative diff sandbox에 쌓이고, 검토 후 적용
   - 직접 컨텍스트 최대 2M 토큰, tree-sitter 프로젝트 맵으로 20M+ 토큰 인덱싱
-  - 플랜 스트림 TUI, `--bg`, `--no-build`, `--apply`, `--commit`로 자동화 강도 조절
+  - 자동 디버깅과 git 연동, 필요하면 단계적 검토와 full autonomy를 오갈 수 있음
   - 모델 비종속(Anthropic·OpenAI·Google·오픈소스)
   source: https://github.com/plandex-ai/plandex
 - category: ai
