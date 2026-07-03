@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)`; next oldest reviewed candidate is `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`.
+Current position: continue after `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트`; next oldest reviewed candidate is `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`.
 
-Last update: 2026-07-03 07:40 KST
+Last update: 2026-07-03 11:43 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
