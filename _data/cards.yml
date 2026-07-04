@@ -2377,14 +2377,14 @@ cards:
   - 1.0.0 GA(2026-05), Apache-2.0, JetBrains 주도
   source: https://github.com/JetBrains/koog
 - category: ai
-  title: kmp-ai — KMP로 Android·iOS·Desktop에서 오프라인 LLM을 실행하는 llama.cpp 바인딩(Maven Central)
-  summary: 'kmp-ai는 Kotlin Multiplatform에서 llama.cpp를 래핑해 Android·iOS·JVM Desktop에서 오프라인 LLM을 실행하는 라이브러리다. Coroutine Flow 스트리밍·HuggingFace 자동 다운로드·SHA-256 검증·이어받기·KV-cache 재사용을 지원하고, Qwen 2.5·Gemma 2/3·DeepSeek-R1 카탈로그를 내장. Maven Central 배포로 Android AAR에 프리빌트 .so 포함 → 소비자 NDK 불필요. Compose Multiplatform 샘플 앱 제공.
+  title: kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)
+  summary: 'kmp-ai는 Kotlin Multiplatform에서 llama.cpp를 감싼 오프라인 LLM 런타임이다. JVM·Android·iOS를 같은 API로 묶고, `Flow<Token>` 스트리밍, HuggingFace/URL/local-file 모델 로드, SHA-256 검증, 재개 가능한 다운로드, KV-cache 재사용, GBNF 제약 생성, 모델 카탈로그를 제공한다. Maven Central AAR에는 Android용 프리빌트 `.so`가 들어가서 소비자는 NDK를 직접 준비하지 않아도 된다. Compose Multiplatform 샘플 앱은 모바일·데스크톱 통합 그림을 빠르게 보여 준다.
 
     '
   points:
-  - 'KMP: Android·iOS·Desktop llama.cpp 통합, Maven Central 배포'
-  - 'KV-cache 재사용: 후속 턴은 새 메시지만 디코딩 → 속도↑'
-  - Qwen·Gemma·DeepSeek 카탈로그 내장, GBNF 제약 생성
+  - 'KMP: JVM·Android·iOS를 같은 llama.cpp API로 묶기'
+  - 'Flow 스트리밍, 재개 다운로드, KV-cache reuse, GBNF 제약 생성'
+  - 'Maven Central AAR + prebuilt .so, Compose Multiplatform sample'
   source: https://github.com/fadizg/kmp-ai
 - category: ai
   title: Google Stitch(구 Galileo AI) — 텍스트·음성으로 멀티스크린 모바일 UI를 생성하는 Google의 AI 디자인 도구(무료)

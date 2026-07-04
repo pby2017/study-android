@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`; next oldest reviewed candidate is `kmp-ai — KMP로 Android·iOS·Desktop에서 오프라인 LLM을 실행하는 llama.cpp 바인딩(Maven Central)`.
+Current position: continue after `kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)`; next oldest reviewed candidate is `Google Stitch(구 Galileo AI) — 텍스트·음성으로 멀티스크린 모바일 UI를 생성하는 Google의 AI 디자인 도구(무료)`.
 
-Last update: 2026-07-04 12:07 KST
+Last update: 2026-07-04 16:16 KST
 
 Reviewed:
 - `diagnose — 디버깅을 규율로 만드는 스킬`
@@ -92,6 +92,7 @@ Reviewed:
 - `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`
 
 Refined:
+- `kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)` — re-checked the current README and GitHub API metrics; clarified the KMP/llama.cpp runtime boundary, `Flow<Token>` streaming, resumable downloads, KV-cache reuse, GBNF constraints, Maven Central AAR packaging, and the Android+iOS+Desktop lesson, while noting that the repo is live but has no meaningful current popularity signal.
 - `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트` — re-checked the current README, docs, docs background, docs usage/FAQ, and live GitHub API metrics; refreshed the star/fork/license/pushed_at signal, clarified the ACI lesson, current mini-swe-agent recommendation, and maintenance-only status, and tightened the benchmark/config/tool-bundle takeaways.
 - `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인` — re-checked the current README, quantize docs, imatrix discussion, and live GitHub API metrics; removed the stale 2026 standard claim, clarified the convert→quantize boundary, and kept Q4_K_M as a practical upstream baseline.
 - `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)` — re-checked the official docs and GitHub repo; removed unsupported Neo4j/LazyGraphRAG wording, clarified the knowledge-graph extraction plus community-hierarchy pipeline, and tightened the practical takeaway around local/global/DRIFT search paths.

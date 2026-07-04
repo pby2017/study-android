@@ -4432,3 +4432,10 @@ Refined:
 - Refined: `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`
 - Refined sources re-checked: https://github.com/ggml-org/llama.cpp, https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md, https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md, https://github.com/ggml-org/llama.cpp/discussions/5263, and https://api.github.com/repos/ggml-org/llama.cpp
 - Rejected: `Agent Teams` and `OpenAI GPT-5.4` queue items as duplicate/too broad; `kmp-ai` as a stale source-path mismatch; pure Android-only follow-ups as below threshold.
+
+## 2026-07-04 16:16 KST — Local AI card routine
+
+- Published: none
+- Refined: `kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)`
+- Refined sources re-checked: https://github.com/fadizg/kmp-ai and https://api.github.com/repos/fadizg/kmp-ai
+- Rejected: fresh card publication because the remaining candidates were duplicates or lacked a stronger live popularity/adoption signal than the existing deck; pure Android-only follow-ups remained below threshold.
