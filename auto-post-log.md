@@ -4439,3 +4439,10 @@ Refined:
 - Refined: `kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)`
 - Refined sources re-checked: https://github.com/fadizg/kmp-ai and https://api.github.com/repos/fadizg/kmp-ai
 - Rejected: fresh card publication because the remaining candidates were duplicates or lacked a stronger live popularity/adoption signal than the existing deck; pure Android-only follow-ups remained below threshold.
+
+## 2026-07-04 20:22 KST — Local AI card routine
+
+- Published: `Android Studio Agent Skills — .skills/SKILL.md로 Android 워크플로를 묶기`
+- Refined: `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
+- Sources re-checked: https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/, https://stitch.withgoogle.com/, https://android-developers.googleblog.com/2026/04/Increase-Guidance-and-Control-over-Agent-Mode-with-Android-Studio-Panda-3.html, https://developer.android.com/studio/gemini/skills, and https://developer.android.com/tools/agents/android-skills
+- Rejected: `Gemini in Android Studio` as a direct refinement target because the new Android Studio Agent Skills card covers the newly surfaced Android Studio workflow layer; pure Android-only topics remained below threshold.

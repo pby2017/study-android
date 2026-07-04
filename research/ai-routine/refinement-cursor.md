@@ -2,11 +2,12 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)`; next oldest reviewed candidate is `Google Stitch(구 Galileo AI) — 텍스트·음성으로 멀티스크린 모바일 UI를 생성하는 Google의 AI 디자인 도구(무료)`.
+Current position: continue after `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`; next oldest reviewed candidate is `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`.
 
-Last update: 2026-07-04 16:16 KST
+Last update: 2026-07-04 20:22 KST
 
 Reviewed:
+- `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
 - `diagnose — 디버깅을 규율로 만드는 스킬`
 - `Spec Kit — 명세 주도 개발(SDD)`
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기`
@@ -92,6 +93,7 @@ Reviewed:
 - `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`
 
 Refined:
+- `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구` — re-checked the current Google Labs Stitch blog and removed the unsupported quota wording; clarified the current voice, interactive prototype, and MCP/SDK/skills bridge while keeping the card scoped to design-to-code workflow.
 - `kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)` — re-checked the current README and GitHub API metrics; clarified the KMP/llama.cpp runtime boundary, `Flow<Token>` streaming, resumable downloads, KV-cache reuse, GBNF constraints, Maven Central AAR packaging, and the Android+iOS+Desktop lesson, while noting that the repo is live but has no meaningful current popularity signal.
 - `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트` — re-checked the current README, docs, docs background, docs usage/FAQ, and live GitHub API metrics; refreshed the star/fork/license/pushed_at signal, clarified the ACI lesson, current mini-swe-agent recommendation, and maintenance-only status, and tightened the benchmark/config/tool-bundle takeaways.
 - `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인` — re-checked the current README, quantize docs, imatrix discussion, and live GitHub API metrics; removed the stale 2026 standard claim, clarified the convert→quantize boundary, and kept Q4_K_M as a practical upstream baseline.
@@ -175,6 +177,7 @@ Refined:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the current README and docs, removed an unsupported cloud-enrollment claim, clarified current self-hosted/cloud model modes, and kept the cumulative diff sandbox and large-context lesson intact.
 
 Skipped:
+- `Gemini in Android Studio — Compose·Gradle·크래시 분석까지 읽는 Android 전용 AI 코딩 동료` — adjacent current AI+Android card reviewed for overlap, but unchanged because the new Android Studio Agent Skills card covers the latest Android Studio workflow update and the existing Gemini card already covers the core companion claim.
 - `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` — source reachable, but the existing card was already concise and the source claim is intentionally small.
 - `Claude Code GitHub Action — PR에 부르면 자동 수정·리뷰` — source re-checked; the existing refined card already captures triggers, review/implementation features, structured outputs, runner location, and authentication/provider choices.
 - `ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다` — source was reachable, but this run did not find a clearer public-source-supported improvement than the existing warning without broadening the card.
