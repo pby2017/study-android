@@ -2210,7 +2210,7 @@ cards:
   source: https://github.com/plandex-ai/plandex
 - category: ai
   title: SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트
-  summary: 'SWE-agent는 GitHub 이슈를 입력으로 받아 선택한 LM이 도구를 자율적으로 사용해 실제 리포지토리의 버그를 고치도록 하는 오픈소스(MIT) 에이전트다. 핵심 기여는 저장소 탐색·편집·실행에 맞춰 LM 인터페이스를 다듬은 Agent-Computer Interface(ACI)다. 현재 공식 문서는 SWE-agent보다 mini-swe-agent를 새 권장안으로 제시하므로, 이 카드는 "원조 ACI 설계"와 그 연구 결과를 읽는 기준점으로 보는 편이 정확하다.
+  summary: 'SWE-agent는 GitHub 이슈를 받아 LM이 저장소를 탐색·편집·실행 도구로 직접 쓰며 실제 리포지토리 버그를 고치게 하는 오픈소스(MIT) 연구용 에이전트다. 핵심 기여는 Agent-Computer Interface(ACI)로, "LM이 repo-level 작업을 어떤 인터페이스로 수행할 것인가"를 구체화한 점이다. 현재 공식 문서는 mini-swe-agent를 새 권장안으로 제시하고 SWE-agent를 maintenance-only reference로 두므로, 이 카드는 원조 ACI 설계를 읽는 기준점으로 보는 편이 정확하다.
 
     '
   points:

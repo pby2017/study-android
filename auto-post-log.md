@@ -4446,3 +4446,10 @@ Refined:
 - Refined: `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
 - Sources re-checked: https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/, https://stitch.withgoogle.com/, https://android-developers.googleblog.com/2026/04/Increase-Guidance-and-Control-over-Agent-Mode-with-Android-Studio-Panda-3.html, https://developer.android.com/studio/gemini/skills, and https://developer.android.com/tools/agents/android-skills
 - Rejected: `Gemini in Android Studio` as a direct refinement target because the new Android Studio Agent Skills card covers the newly surfaced Android Studio workflow layer; pure Android-only topics remained below threshold.
+
+## 2026-07-05 00:29 KST — Local AI card routine
+
+- Published: none
+- Refined: `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`
+- Sources re-checked: https://github.com/SWE-agent/SWE-agent, https://raw.githubusercontent.com/SWE-agent/SWE-agent/main/README.md, https://swe-agent.com/latest/, https://swe-agent.com/latest/background/, https://swe-agent.com/latest/faq/, https://github.com/SWE-agent/SWE-agent/releases, and https://api.github.com/repos/SWE-agent/SWE-agent
+- Rejected: fresh publication in this bounded refinement pass because the re-verified SWE-agent card was the only older card that cleared the public-source gate in this run; pure Android-only topics remained below threshold.
