@@ -4424,3 +4424,11 @@ Refined:
 - Refined: `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`
 - Refined sources re-checked: https://github.com/SWE-agent/SWE-agent, https://raw.githubusercontent.com/SWE-agent/SWE-agent/main/README.md, https://swe-agent.com/latest/, https://swe-agent.com/latest/background/, https://swe-agent.com/latest/usage/, https://swe-agent.com/latest/usage/coding_challenges/, https://swe-agent.com/latest/faq/, https://github.com/SWE-agent/SWE-agent/releases, and https://api.github.com/repos/SWE-agent/SWE-agent
 - Rejected: `Agent Teams` and `OpenAI GPT-5.4` queue items as duplicate/too broad against the existing deck; pure Android-only follow-ups remained below the AI-centered threshold.
+
+## 2026-07-04 12:07 KST — Local AI card routine
+
+- Published: `Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)`
+- Source: https://github.com/ferranpons/Llamatik
+- Refined: `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`
+- Refined sources re-checked: https://github.com/ggml-org/llama.cpp, https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md, https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md, https://github.com/ggml-org/llama.cpp/discussions/5263, and https://api.github.com/repos/ggml-org/llama.cpp
+- Rejected: `Agent Teams` and `OpenAI GPT-5.4` queue items as duplicate/too broad; `kmp-ai` as a stale source-path mismatch; pure Android-only follow-ups as below threshold.
