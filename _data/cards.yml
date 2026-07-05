@@ -2177,13 +2177,13 @@ cards:
   source: https://github.com/dottxt-ai/outlines
 - category: ai
   title: GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)
-  summary: 'Microsoft GraphRAG는 텍스트에서 지식 그래프를 추출하고, Leiden 기반 커뮤니티 계층을 만든 뒤, 커뮤니티 리포트를 쿼리 시점에 활용하는 구조화 RAG 기법이다. 벡터 유사도만으로는 놓치기 쉬운 ''문서 간 관계'' 질문에 강점이 있고, 공식 문서도 local search·global search·DRIFT search처럼 질문 유형별 경로를 나눠 설명한다. 실무 교훈은 단순 chunk 검색만으로는 부족할 때, 그래프와 커뮤니티 요약을 붙여 검색 범위를 넓히는 쪽이 더 나은 답을 만든다는 점이다.
+  summary: 'Microsoft GraphRAG는 비정형 텍스트에서 LLM으로 지식 그래프와 커뮤니티 리포트를 뽑아, 질의 성격에 따라 local search·global search·DRIFT search를 나눠 쓰는 RAG 파이프라인이다. README는 이를 "data pipeline and transformation suite"로 소개하고, 리포지터리 guidance에서 공식 지원 제품이 아닌 데모 코드라고 밝힌다. 실무 포인트는 벡터 top-k만으로는 관계 질문이 약할 때, 엔티티·관계·커뮤니티 요약을 조합해 검색 경로를 바꾸는 것이다.
 
     '
   points:
-  - '지식 그래프 + 커뮤니티 리포트: 문서 간 관계 추론용 RAG'
-  - 'local / global / DRIFT search로 질문 유형별 검색 경로를 분리'
-  - 'chunk 검색만으로 부족할 때 그래프 요약을 붙여 검색 범위를 넓힘'
+  - '비정형 텍스트 → 지식 그래프 + 커뮤니티 리포트, LLM 기반 indexing pipeline'
+  - 'local / global / DRIFT search로 개별 엔티티·전체 코퍼스·혼합 질의를 분리'
+  - '공식 지원 제품이 아닌 데모 코드 — 벡터-only 한계를 관계 요약으로 보완'
   source: https://microsoft.github.io/graphrag/
 - category: ai
   title: Argilla — LLM 파인튜닝용 데이터를 사람이 검수·큐레이션하는 오픈소스 플랫폼(Apache-2.0·HuggingFace)

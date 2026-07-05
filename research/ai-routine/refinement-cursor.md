@@ -2,16 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`; next oldest reviewed candidate is `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`.
+Current position: continue after `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`; next oldest reviewed candidate is `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`.
 
-Last update: 2026-07-05 20:03 KST
+Last update: 2026-07-06 00:10 KST
 
 Current run:
-- Reviewed: `SWE-agent`, `llama.cpp + GGUF`, `KnowU-Bench`, and duplicate-checked `Android Bench`
-- Refined: `SWE-agent`, `llama.cpp + GGUF`
-- Published: `KnowU-Bench`
-- Skipped: `Android Bench` — already published, so no duplicate card
-- Next: `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`
+- Reviewed: `GraphRAG`
+- Refined: `GraphRAG`
+- Published: none
+- Skipped: fresh publication because the queued candidates were duplicates/overlap or lacked a stronger live signal than the existing deck; pure Android-only topics remained below threshold
+- Next: `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`

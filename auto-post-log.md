@@ -4454,3 +4454,10 @@ Refined:
 - Refined: `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`
 - Sources re-checked: https://github.com/SWE-agent/SWE-agent, https://raw.githubusercontent.com/SWE-agent/SWE-agent/main/README.md, https://swe-agent.com/latest/, https://swe-agent.com/latest/background/, https://swe-agent.com/latest/faq/, https://github.com/SWE-agent/SWE-agent/releases, and https://api.github.com/repos/SWE-agent/SWE-agent
 - Rejected: fresh publication in this bounded refinement pass because the re-verified SWE-agent card was the only older card that cleared the public-source gate in this run; pure Android-only topics remained below threshold.
+
+## 2026-07-06 00:10 KST — Local AI card routine
+
+- Published: none
+- Refined: `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`
+- Sources re-checked: https://microsoft.github.io/graphrag/, https://microsoft.github.io/graphrag/index/overview/, https://microsoft.github.io/graphrag/query/overview/, https://microsoft.github.io/graphrag/query/local_search/, https://microsoft.github.io/graphrag/query/global_search/, https://microsoft.github.io/graphrag/query/drift_search/, and https://raw.githubusercontent.com/microsoft/graphrag/main/README.md
+- Rejected: fresh publication because the queued candidates remained duplicates/overlap or lacked a stronger live signal than the existing deck; pure Android-only topics remained below threshold.
