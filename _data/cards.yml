@@ -2166,14 +2166,14 @@ cards:
   - 2026-06-29 확인 기준 GitHub 13,306★·MIT; agent runtime이 아니라 schema-first extraction용
   source: https://python.useinstructor.com/
 - category: ai
-  title: Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)
-  summary: 'Outlines는 LLM이 토큰을 생성하는 동안 FSM이나 grammar로 허용 토큰만 남겨 구조화 출력을 만드는 라이브러리다. README는 이를 "structured outputs during generation"으로 설명하고, vLLM·Ollama·transformers·llama.cpp·MLX 같은 모델 통합과 Pydantic/JSON Schema 지원을 함께 내세운다. Instructor가 후처리 검증과 재시도로 형식을 맞춘다면, Outlines는 생성 시점에 제약을 걸어 로컬 모델이나 대량 처리 파이프라인에서 재시도 비용을 줄이는 쪽에 가깝다.
+  title: Outlines — 로컬 LLM 출력을 FSM·grammar로 제약해 구조화 생성하는 엔진(Apache-2.0·~13k★)
+  summary: 'Outlines는 LLM이 토큰을 생성하는 동안 FSM이나 grammar로 허용 토큰만 남겨 구조화 출력을 만드는 Python 라이브러리다. 공식 문서는 이를 "structured outputs during generation"으로 설명하고, `model(prompt, output_type)` 패턴으로 JSON Schema, regex, CFG 같은 구조를 지정하게 해준다. 또한 OpenAI·Ollama·vLLM·transformers·llama.cpp·MLX 같은 백엔드와 함께 동작한다고 안내한다. Instructor가 후처리 검증과 재시도로 형식을 맞춘다면, Outlines는 생성 시점 제약으로 로컬 모델이나 대량 처리 파이프라인의 재시도 비용을 줄이는 쪽에 가깝다.
 
     '
   points:
   - '생성 시점 제약: FSM/grammar로 허용 토큰만 남겨 구조화 출력'
-  - vLLM·Ollama·transformers·llama.cpp·MLX 통합, Pydantic/JSON Schema 지원
-  - 'Instructor(후처리 검증+재시도)와 대비되는 로컬/대량 처리 지향'
+  - '`model(prompt, output_type)` 패턴으로 JSON Schema·regex·CFG를 직접 지정'
+  - 'Instructor(후처리 검증+재시도)와 대비되는 generation-time structured generation'
   source: https://github.com/dottxt-ai/outlines
 - category: ai
   title: GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)

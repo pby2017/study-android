@@ -2,16 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`; next oldest reviewed candidate is `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`.
+Current position: continue after `Outlines — 로컬 LLM 출력을 FSM·grammar로 제약해 구조화 생성하는 엔진(Apache-2.0·~13k★)`; next oldest reviewed candidate is the next older reviewed card in the backlog.
 
-Last update: 2026-07-06 00:10 KST
+Last update: 2026-07-06 04:13 KST
 
 Current run:
-- Reviewed: `GraphRAG`
-- Refined: `GraphRAG`
+- Reviewed: `Outlines`
+- Refined: `Outlines`
 - Published: none
-- Skipped: fresh publication because the queued candidates were duplicates/overlap or lacked a stronger live signal than the existing deck; pure Android-only topics remained below threshold
-- Next: `Outlines — 로컬 LLM 출력을 FSM으로 100% 스키마 준수시키는 구조화 생성 엔진(Apache-2.0·~13k★)`
+- Skipped: fresh publication because this bounded refinement pass stayed focused on re-verifiable older cards; pure Android-only topics remained below threshold
+- Next: continue with the next older reviewed card in the backlog
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`

@@ -4461,3 +4461,10 @@ Refined:
 - Refined: `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`
 - Sources re-checked: https://microsoft.github.io/graphrag/, https://microsoft.github.io/graphrag/index/overview/, https://microsoft.github.io/graphrag/query/overview/, https://microsoft.github.io/graphrag/query/local_search/, https://microsoft.github.io/graphrag/query/global_search/, https://microsoft.github.io/graphrag/query/drift_search/, and https://raw.githubusercontent.com/microsoft/graphrag/main/README.md
 - Rejected: fresh publication because the queued candidates remained duplicates/overlap or lacked a stronger live signal than the existing deck; pure Android-only topics remained below threshold.
+
+## 2026-07-06 04:13 KST — Local AI card routine
+
+- Published: none
+- Refined: `Outlines — 로컬 LLM 출력을 FSM·grammar로 제약해 구조화 생성하는 엔진(Apache-2.0·~13k★)`
+- Sources re-checked: https://dottxt-ai.github.io/outlines/latest/, https://dottxt-ai.github.io/outlines/welcome/, https://dottxt-ai.github.io/outlines/reference/generation/json/, https://github.com/dottxt-ai/outlines, and https://github.com/dottxt-ai/outlines/blob/main/llm.txt
+- Rejected: fresh publication stayed out of scope for this bounded refinement pass; pure Android-only topics remained below threshold.
