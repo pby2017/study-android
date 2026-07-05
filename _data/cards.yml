@@ -2210,15 +2210,15 @@ cards:
   source: https://github.com/plandex-ai/plandex
 - category: ai
   title: SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트
-  summary: 'SWE-agent는 GitHub 이슈를 받아 LM이 저장소를 탐색·편집·실행 도구로 직접 쓰며 실제 리포지토리 버그를 고치게 하는 MIT 연구용 에이전트다. 핵심 기여는 Agent-Computer Interface(ACI)로, repo-level 작업을 어떤 인터페이스로 수행할지 정리한 점이다. 현재 공식 문서와 README는 mini-swe-agent를 새 권장안으로 안내하고 SWE-agent를 maintenance-only reference로 둔다. 그래서 이 카드는 "원조 ACI 설계"를 읽는 기준점으로 보는 편이 정확하다.
+  summary: 'SWE-agent는 GitHub 이슈나 문제 설명을 받아 LM이 저장소를 탐색·편집·실행 도구로 직접 쓰며 실제 리포지토리 버그를 고치게 하는 MIT 연구용 에이전트다. 핵심 기여는 repo-level 작업을 위한 Agent-Computer Interface(ACI) 설계다. 공식 docs는 지금 mini-swe-agent를 새 권장안으로 안내하고 SWE-agent를 maintenance-only mode로 둔다. 그래서 이 카드는 원조 ACI 설계와 단일 YAML 설정, 개별 이슈 중심 CLI를 읽는 기준점으로 보는 편이 정확하다.
 
     '
   points:
-  - 태그라인 'SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice' · MIT · GitHub 19.7k★
-  - 핵심: ACI(Agent-Computer Interface) — repo-level 탐색·편집·실행을 묶는 인터페이스 설계
-  - README와 docs는 현재 mini-swe-agent를 새 권장안으로 안내, SWE-agent는 maintenance-only reference에 가깝다
-  - GPT-4o·Claude 등 모델 선택 가능, 단일 yaml로 동작 구성, tool bundles로 기능 확장
-  - 연구용 원조 설계를 읽는 기준점으로는 아직 유효하지만, 새 프로젝트 시작점은 mini-swe-agent가 더 맞다
+  - 태그라인 'SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice' · MIT · GitHub ~19.7k★
+  - 핵심: ACI(Agent-Computer Interface) — LM-centric commands와 feedback으로 browse·view·edit·execute를 묶는 설계
+  - 현재 docs는 mini-swe-agent를 새 권장안으로 안내하고, SWE-agent는 maintenance-only mode로 둔다
+  - CLI 튜토리얼은 individual issues 중심이고, 구성은 단일 YAML 파일로 관리한다
+  - 연구용 원조 설계를 읽는 기준점으로는 유효하지만, 새 프로젝트 시작점은 mini-swe-agent가 더 맞다
   source: https://github.com/SWE-agent/SWE-agent
 - category: ai
   title: llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인
