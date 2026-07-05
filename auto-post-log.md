@@ -227,6 +227,7 @@
 
 - 2026-06-16 18:30 KST | ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다 | https://arxiv.org/abs/2602.11988
 - 2026-07-03 23:51 KST | Gemini in Android Studio — Compose·Gradle·크래시 분석까지 읽는 Android 전용 AI 코딩 동료 | https://developer.android.com/studio/gemini/overview
+- 2026-07-05 20:03 KST | KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크 | https://zju-real.github.io/KnowU-Bench/
 
 - 2026-06-18 18:30 KST | Ruflo(옛 Claude-Flow) — Claude Code 위에 여왕-일꾼 스웜을 얹는 59.6k★ 메타하네스 | https://github.com/ruvnet/ruflo
 - 2026-06-18 19:30 KST | Amp(Sourcegraph) — 0% 마진 종량제로 미는 멀티모델 코딩 에이전트 | https://ampcode.com/manual

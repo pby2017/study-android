@@ -2209,25 +2209,33 @@ cards:
   - 모델 비종속(Anthropic·OpenAI·Google·오픈소스 provider들)
   source: https://github.com/plandex-ai/plandex
 - category: ai
-  title: SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트
-  summary: 'SWE-agent는 GitHub 이슈를 받아 LM이 저장소를 탐색·편집·실행 도구로 직접 쓰며 실제 리포지토리 버그를 고치게 하는 오픈소스(MIT) 연구용 에이전트다. 핵심 기여는 Agent-Computer Interface(ACI)로, "LM이 repo-level 작업을 어떤 인터페이스로 수행할 것인가"를 구체화한 점이다. 현재 공식 문서는 mini-swe-agent를 새 권장안으로 제시하고 SWE-agent를 maintenance-only reference로 두므로, 이 카드는 원조 ACI 설계를 읽는 기준점으로 보는 편이 정확하다.
+  title: SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트
+  summary: 'SWE-agent는 GitHub 이슈를 받아 LM이 저장소를 탐색·편집·실행 도구로 직접 쓰며 실제 리포지토리 버그를 고치게 하는 MIT 연구용 에이전트다. 핵심 기여는 Agent-Computer Interface(ACI)로, repo-level 작업을 어떤 인터페이스로 수행할지 정리한 점이다. 현재 공식 문서와 README는 mini-swe-agent를 새 권장안으로 안내하고 SWE-agent를 maintenance-only reference로 둔다. 그래서 이 카드는 "원조 ACI 설계"를 읽는 기준점으로 보는 편이 정확하다.
 
     '
   points:
-  - 태그라인 'SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice' · MIT · 약 19.7k★
-  - 핵심: ACI(Agent-Computer Interface) — 저장소 탐색·편집·실행에 맞춘 LM 인터페이스 설계
-  - SWE-bench full test set에서 12.29% 해결, EnIGMA는 NYU CTF에서 이전 대비 3.3x 향상
-  - GPT-4o·Claude 등 모델 선택 가능, 단일 yaml로 동작 구성, tool bundles로 기능 확장
+  - 태그라인 'SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice' · MIT · GitHub 19.7k★
+  - 핵심: ACI(Agent-Computer Interface) — repo-level 탐색·편집·실행을 묶는 인터페이스 설계
   - README와 docs는 현재 mini-swe-agent를 새 권장안으로 안내, SWE-agent는 maintenance-only reference에 가깝다
+  - GPT-4o·Claude 등 모델 선택 가능, 단일 yaml로 동작 구성, tool bundles로 기능 확장
+  - 연구용 원조 설계를 읽는 기준점으로는 아직 유효하지만, 새 프로젝트 시작점은 mini-swe-agent가 더 맞다
   source: https://github.com/SWE-agent/SWE-agent
 - category: ai
   title: llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인
-  summary: 'llama.cpp는 최소 의존성 C/C++ LLM 추론 엔진이고, 모델은 GGUF여야 한다. 공식 README는 HF 모델을 `convert_*.py`로 GGUF로 바꾸는 경로를, quantize 도구 문서는 GGUF로 변환한 뒤 양자화하는 2단계 파이프라인을 명시한다. lower-bit 품질을 더 챙길 때는 importance matrix(imatrix)를 쓰는 흐름이 붙는다. 실무에선 HF repo의 명시적 quant가 없을 때 업스트림 도구가 Q4_K_M을 기본값으로 잡는 경우가 있어, "용량·품질 균형이 필요하면 Q4_K_M부터"라는 기준점을 준다.'
+  summary: 'llama.cpp는 최소 의존성 C/C++ LLM 추론 엔진이고, GGUF는 그 모델 파일 경계다. 공식 README와 quantize 문서는 HF 모델을 GGUF로 변환한 뒤 다시 양자화하는 2단계 파이프라인을 명시한다. lower-bit 품질을 더 챙길 때는 importance matrix(imatrix)를 쓰는 흐름이 붙고, README와 문서는 Q4_K_M을 실용적인 예시 baseline으로 보여 준다. 실무에선 "모델을 고른다"보다 먼저 "GGUF로 바꾸고 어떤 정밀도로 줄일지"를 정하는 게 맞다.'
   points:
-  - 'GGUF = 모델 아티팩트 경계, convert는 먼저·quantize는 나중'
+  - 'GGUF = inference용 파일 경계, convert는 먼저·quantize는 나중'
   - 'imatrix는 lower-bit 양자화 품질을 돕는 보조 단계'
-  - 'Q4_K_M은 업스트림 툴의 안전한 기본값으로 자주 쓰임'
+  - 'Q4_K_M은 업스트림 문서가 보여 주는 실용 baseline'
   source: https://github.com/ggml-org/llama.cpp
+- category: ai
+  title: KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크
+  summary: 'KnowU-Bench는 재현 가능한 Android 에뮬레이션 환경에서 personalized/proactive mobile agents를 평가하는 온라인 벤치마크다. 에이전트에게는 사용자 프로필이 아니라 행동 로그만 주고, 다이얼로그를 통해 선호를 추론하게 만든다. 공식 프로젝트 페이지와 arXiv 초록은 42 general GUI·86 personalized·64 proactive tasks, LLM-driven user simulator, consent negotiation, post-rejection restraint, hybrid rule-based verification + LLM-as-a-Judge를 공개한다. 실무 교훈은 모바일 AI를 GUI 자동화로만 보면 안 되고, 선호 추론·개입 타이밍·동의 설계를 함께 봐야 한다.'
+  points:
+  - '42 general GUI·86 personalized·64 proactive tasks'
+  - 'User profile hidden, behavioral logs only — preference inference not lookup'
+  - 'Hybrid verification: rule-based checks + LLM-as-a-Judge / reproducible Android emulator'
+  source: https://zju-real.github.io/KnowU-Bench/
 - category: ai
   title: Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)
   summary: 'Llamatik은 Kotlin Multiplatform에서 llama.cpp·whisper.cpp·stable-diffusion.cpp를 묶어 Android·iOS·Desktop·WASM에서 오프라인 AI를 돌리는 라이브러리다. 공통 `LlamaBridge` API로 로컬·원격 추론을 추상화하고, Android AAR/Maven Central 배포로 별도 네이티브 툴체인 없이 쓸 수 있게 한다. LLM 쪽은 streaming·context-aware generation·schema-constrained JSON·embeddings·KV cache 세션·concurrent sessions를 지원하고, Whisper/STT와 Stable Diffusion까지 같은 Kotlin API로 감싼다. Compose Multiplatform 샘플이 있어 "모바일 앱에 로컬 AI를 넣는 방법"을 바로 보여 주는 교육용 카드로 좋다.'

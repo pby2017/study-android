@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`; next oldest reviewed candidate is `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`.
+Current position: continue after `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`; next oldest reviewed candidate is `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`.
 
-Last update: 2026-07-05 00:29 KST
+Last update: 2026-07-05 20:03 KST
+
+Current run:
+- Reviewed: `SWE-agent`, `llama.cpp + GGUF`, `KnowU-Bench`, and duplicate-checked `Android Bench`
+- Refined: `SWE-agent`, `llama.cpp + GGUF`
+- Published: `KnowU-Bench`
+- Skipped: `Android Bench` — already published, so no duplicate card
+- Next: `GraphRAG(Microsoft) — 지식 그래프로 RAG를 강화, '벡터만으로는 못 잡는 관계'를 추론(오픈소스)`
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
