@@ -4468,3 +4468,10 @@ Refined:
 - Refined: `Outlines — 로컬 LLM 출력을 FSM·grammar로 제약해 구조화 생성하는 엔진(Apache-2.0·~13k★)`
 - Sources re-checked: https://dottxt-ai.github.io/outlines/latest/, https://dottxt-ai.github.io/outlines/welcome/, https://dottxt-ai.github.io/outlines/reference/generation/json/, https://github.com/dottxt-ai/outlines, and https://github.com/dottxt-ai/outlines/blob/main/llm.txt
 - Rejected: fresh publication stayed out of scope for this bounded refinement pass; pure Android-only topics remained below threshold.
+
+## 2026-07-06 12:23 KST — Local AI card routine
+
+- Published: none
+- Refined: `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`
+- Sources re-checked: https://github.com/SWE-agent/mini-swe-agent, https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/main/README.md, https://mini-swe-agent.com/latest/faq/, https://mini-swe-agent.com/latest/advanced/v2_migration/, and https://api.github.com/repos/SWE-agent/mini-swe-agent
+- Rejected: fresh publication because this bounded refinement pass stayed focused on re-verifiable older cards; pure Android-only topics remained below threshold.

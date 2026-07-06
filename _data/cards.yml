@@ -1541,13 +1541,13 @@ cards:
   source: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint
 - category: ai
   title: mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)
-  summary: 'mini-SWE-agent는 SWE-bench·SWE-agent 팀이 "에이전트 스캐폴드는 얼마나 작아질 수 있나"를 묻는 미니멀 코딩 에이전트다. v2 README 기준 핵심 agent class는 파이썬 약 100줄이고, 나머지는 environment·model·run script만 얇게 붙는다. 설계는 의도적으로 단순하다. 별도 tool-calling API 없이 bash만 쓰고, 각 action은 `subprocess.run`으로 독립 실행하며, 대화 이력은 선형으로만 쌓아 trajectory와 모델 입력을 거의 같은 형태로 유지한다. 그래서 빠른 로컬 CLI, 샌드박스 교체, FT/RL baseline, 벤치마크 실험에는 잘 맞지만, 전용 도구가 많은 제품형 UX는 전작 SWE-agent가 더 적합하다. README는 SWE-bench Verified 74%+와 Meta·NVIDIA·IBM·Stanford·Princeton 등 실제 사용 사례를 함께 내세운다.
+  summary: 'mini-SWE-agent는 SWE-bench·SWE-agent 팀이 "에이전트 스캐폴드가 얼마나 작아질 수 있나"를 실험한 v2 미니멀 코딩 에이전트다. 핵심 agent class는 파이썬 약 100줄이고, 도구는 bash 하나만 두며 각 action을 `subprocess.run`으로 독립 실행한다. 대화 이력은 완전히 선형이라 trajectory와 LM 입력이 거의 같아 디버깅과 fine-tuning baseline에 유리하다. 그래서 빠른 로컬 CLI, 샌드박스 교체, FT/RL baseline, 벤치마크 실험에는 잘 맞고, 전용 도구를 많이 붙이는 실험은 전작 SWE-agent가 더 적합하다. README는 Meta·NVIDIA·IBM·Stanford·Princeton 활용 사례와 SWE-bench Verified 74%+를 함께 제시한다.
 
     '
   points:
-  - 'bash-only + subprocess.run — tool API보다 셸 능력과 sandbox 교체 가능성을 우선'
-  - '선형 history — trajectory와 LM 입력이 거의 같아 디버깅·fine-tuning baseline에 유리'
-  - 'v2 README 주장: SWE-bench Verified 74%+, 핵심 agent 약 100줄, Meta·NVIDIA·IBM·Stanford·Princeton 사용 사례'
+  - 'bash 하나 + subprocess.run — shell-first이고 sandbox 교체가 쉽다'
+  - '완전 선형 history — trajectory와 LM 입력이 거의 같아 디버깅·baseline에 유리'
+  - 'README가 제시하는 사용처 — local CLI·sandbox·FT/RL baseline·benchmark'
   source: https://github.com/SWE-agent/mini-swe-agent
 - category: ai
   title: Gemini in Android Studio — Compose·Gradle·크래시 분석까지 읽는 Android 전용 AI 코딩 동료
