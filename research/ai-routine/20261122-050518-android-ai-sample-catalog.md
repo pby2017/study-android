@@ -1,0 +1,23 @@
+# Android AI Sample Catalog card refinement
+
+- Date: 2026-11-22 (KST)
+- Candidate: existing `Android AI Sample Catalog` AI+Android card
+- Decision: retain and refine as a learning-resource / production-readiness lesson, not as a claim that a sample gallery is itself a recommended architecture.
+- Practical value: compare isolated Google AI integration examples, then identify setup, device, cost, and production gaps before adapting them.
+- Attention snapshot (GitHub API, checked 2026-11-22): `android/ai-samples` had 724 stars, 181 forks, 124 commits; `pushed_at` 2026-11-03T11:38:33Z. This is a modest official-project signal, not evidence of popularity at mass scale or production readiness. No fluctuating star count was added to the public card.
+- Current source checks:
+  - Official Android AI samples directory lists the AI Sample Catalog and separately lists Jetpacker, Androidify, and SociaLite. Do not imply all official Android AI samples are inside this one catalog app.
+  - Current catalog README lists a Hybrid Inference sample (Gemini Nano / ML Kit GenAI with Firebase AI Logic cloud fallback), summarization, image description, writing assistance, image and video examples, and Gemini Live API to-do sample.
+  - README explicitly says examples are isolated, simplified demos and are not production-ready; the catalog is still work in progress.
+  - Cloud examples require Firebase setup, enabled Firebase AI Logic API, and Android API-key API restrictions. Image-generation examples may require the Blaze billing plan.
+  - Gemini Nano-powered ML Kit GenAI examples work only on supported devices.
+- Duplicate check: an existing `Firebase AI Logic Hybrid API` card teaches inference routing. This card remains distinct by focusing on how to inspect official demos and the setup/device/cost/production boundaries before adapting them; it does not teach routing internals.
+- Edits: removed a stale feature inventory and “copy/paste” framing; added the demo-vs-production caveat, current hybrid example as a pointer, concrete Firebase setup/billing checks, and device support requirement. Interview prompt now asks what must be validated before using a sample in production.
+- Sources:
+  - https://developer.android.com/ai/samples
+  - https://github.com/android/ai-samples
+  - https://github.com/android/ai-samples/tree/main/ai-sample-catalog
+  - https://github.com/android/ai-samples/blob/main/ai-sample-catalog/README.md
+  - https://developer.android.com/blog/posts/explore-ai-on-android-with-our-sample-catalog-app
+- Confidence: high for scope/setup/device/readiness caveats; current activity/star metrics are a dated snapshot and intentionally not in the card.
+- Not tested: did not build/run the sample app, use a Firebase project, or test Gemini Nano on hardware.

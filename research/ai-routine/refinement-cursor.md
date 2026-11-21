@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android AppFunctions 1.0`; next candidate: inspect `Android AI Sample Catalog` for current examples, model/API boundaries, AI+Android value, and duplicate coverage.
+Current position: refined `Android AI Sample Catalog`; next candidate: inspect `Android CLI + Skills` for current capabilities, token/time benchmark scope, agent support, and duplicate coverage.
 
-Last update: 2026-11-22 05:02 KST
+Last update: 2026-11-22 05:05 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -592,3 +592,13 @@ Rules:
 - Duplicate scan found only an incidental mention in a security roadmap card; no duplicate learning card.
 - Sources and rationale: `research/ai-routine/20261122-050249-appfunctions.md`.
 - Next: inspect `Android AI Sample Catalog`.
+
+
+## 2026-11-22 05:05 KST
+
+- Refined `Android AI Sample Catalog` as a learning-resource and production-readiness card; removed stale feature-list/copy-paste framing.
+- Verified current official README setup, Firebase/API-key and possible image-generation billing requirements, supported-device limit for Gemini Nano, simplified/non-production demo caveat, and current examples.
+- GitHub snapshot: 724 stars, 181 forks, 124 commits; latest push 2026-11-03. Recorded as a modest dated signal; not used as a quality claim.
+- Checked for overlap with `Firebase AI Logic Hybrid API`; this card is about evaluating official demos and their readiness boundaries, not routing mechanics.
+- Sources and rationale: `research/ai-routine/20261122-050518-android-ai-sample-catalog.md`.
+- Next: inspect `Android CLI + Skills`.
