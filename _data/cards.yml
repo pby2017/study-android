@@ -86,17 +86,16 @@ cards:
   answer: "단일 콜백 동작을 함수 값으로 전달해 익명 객체의 반복 코드를 줄인다."
 - category: kotlin
   level: "초급"
-  title: '널 가능성 — ?. 와 ?: 로 NPE 방어'
-  summary: '코틀린 타입 시스템은 널 가능 여부를 타입에 담아 NPE를 컴파일 시점에 잡는다. 타입 뒤에 ?를 붙이면 null을 담을 수 있는 타입이 된다. 안전한 호출 `?.`는 null 검사와 호출을 한 번에 — `a?.length`는 a가 null이면 그대로 null을 반환한다(결과 타입도 nullable). 엘비스 연산자 `?:`는 null일 때 기본값을 지정한다. 이 조합이 코틀린이 자바보다 NPE에 강한 핵심 이유다.
-
-    '
+  title: 'Kotlin null 안전성 — ?.와 ?:의 역할'
+  summary: '널 가능 타입(`T?`)은 null일 수 있음을 타입에 드러낸다. 안전 호출 `a?.length`는 `a`가 null이면 호출을 건너뛰고 null을 반환한다. Elvis 연산자 `a ?: fallback`은 null일 때 대체값을 선택한다. 이 연산자들은 nullable 값을 다루는 문법이지, 모든 NPE를 막는 보장은 아니다.'
   points:
-  - 타입 뒤 ? = 널 가능 타입
-  - ?. = null이면 호출 건너뛰고 null 반환
-  - '?: = null일 때 기본값 제공(엘비스)'
-  source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/6장-코틀린_타입_시스템.md
-  interview: "Kotlin의 nullable 타입을 쓰면 NPE가 완전히 불가능한가?"
-  answer: "아니다. `!!`, Java 상호운용의 platform type 등에서는 여전히 NPE가 날 수 있다."
+  - '`T?`는 null을 허용하는 타입이다.'
+  - '`?.`는 null이면 호출하지 않고 null을 반환한다.'
+  - '`?:`는 왼쪽 값이 null일 때 대체값을 선택한다.'
+  - '`!!`와 Java platform type 경계 등에서는 NPE가 여전히 가능하다.'
+  source: https://kotlinlang.org/docs/null-safety.html
+  interview: "`?.`와 `?:`는 각각 null을 어떻게 처리하며, 이것만으로 NPE가 사라지지 않는 이유는?"
+  answer: "`?.`는 수신자가 null이면 호출을 건너뛰고 null을 반환하며, `?:`는 null일 때 대체값을 쓴다. `!!`는 null을 강제 역참조하고 Java platform type에는 Kotlin이 null 여부를 완전히 알 수 없어 NPE가 가능하다."
 - category: android
   level: "초급"
   title: "Activity 생명주기 — 보임과 포커스는 다르다"
