@@ -597,7 +597,7 @@
 |---|------|------|
 | 1 | Project KARL — Kotlin 온디바이스 적응형 AI | github.com/theaniketraj (README 표현을 실제 Gradle 타깃·예제와 대조하는 도입 검증 카드로 재정리) |
 | 2 | Apple Trust Insights — iOS 27 사기 탐지 | developer.apple.com (기기+클라우드 구조, 네트워크 필수, unknown 및 피드백 의미 정정) |
-| 3 | flutter_doclayout_kit — 문서 레이아웃 AI | github.com/robert008 |
+| 3 | flutter_doclayout_kit — 문서 레이아웃 AI | github.com/robert008 (오프라인 추론과 네트워크 의존 빌드 단계를 구분) |
 | 4 | Locanara — LangChain for Mobile | github.com/hyodotdev |
 | 5 | PowerLens — LLM 전력 관리 38.8% 절감 | arxiv.org |
 | 6 | MNN-AECS — LLM 디코딩 에너지 23% 절감 | arxiv.org |

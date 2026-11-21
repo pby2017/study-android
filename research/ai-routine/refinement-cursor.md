@@ -446,3 +446,11 @@ Rules:
 - Corrected feedback contract: `reportConsumption` is mandatory per evaluation request; Apple Business Register fraud labels are optional.
 - Added interview emphasis: `unknown` is not low risk and Trust Insights must not be the sole decision signal.
 - Next: inspect `flutter_doclayout_kit`; validate current repository/model source, Android/iOS runtime paths, exact model sizes, and claimed offline behavior.
+
+## 2026-11-22 04:30 KST
+
+- Rechecked flutter_doclayout_kit README, Dart API, Android Gradle downloader, iOS CocoaPods prepare script, C++ ONNX source, GitHub Release assets, pub.dev metadata, and GitHub activity.
+- Split offline inference from provisioning: model asset is user-provided, while Android preBuild and iOS pod prepare download native binaries from GitHub. Offline installation/build requires pre-provisioning these assets.
+- Removed unsupported Core ML acceleration and ~1.5GB memory claims; the checked-in iOS implementation is an opaque ~217 MB static archive, while public C++ source does not configure Core ML EP.
+- README lists 23 document classes; Android build currently includes arm64-v8a and armeabi-v7a. Live popularity/activity signals are modest/stale (1 star, 3 forks, last push 2025-12-23), so retained only as a concrete offline deployment lesson.
+- Next: review `Locanara`; validate current README/implementation, platform target and minimum OS, backend claims, model downloads/network, and license before revising.
