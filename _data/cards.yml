@@ -2537,15 +2537,17 @@ cards:
   interview: "팀이 Tabby를 셀프호스팅하면 코드가 자동으로 안전해지나요?"
   answer: "아니다. 자체 배포는 데이터 흐름과 인프라를 통제할 선택지를 제공할 뿐이다. 인증·권한·네트워크 경계·로그 보존·모델 출처와 업데이트를 팀이 설정하고 점검해야 한다. 도입 전 IDE 확장이 보내는 문맥과 서버 로그를 확인한다."
 - category: ai
-  title: ComfyUI — 116k★, Stable Diffusion·FLUX를 노드 그래프로 조합하는 오픈소스 이미지 생성 엔진(GPL-3.0)
-  summary: 'ComfyUI는 노드 기반 UI로 Stable Diffusion·FLUX·HunyuanVideo·AnimateDiff 등 오픈소스 이미지/비디오 생성 모델을 실행하는 엔진이다. 116k+ GitHub 스타로 AI 이미지 생성 도구 중 가장 인기 있고, 워크플로우를 JSON으로 저장해 재현 가능. FLUX.1 Dev(리얼리즘 최강)·FLUX.2 Klein(4B, 소비자 GPU)을 네이티브 지원. Midjourney 대비 월 $0·무제한·프라이버시 보장. API 모드로 n8n 등 자동화 연동도 가능.
-
-    '
+  level: "중급"
+  title: ComfyUI — 노드 그래프와 JSON으로 재현하는 생성형 AI 워크플로
+  summary: 'ComfyUI는 이미지·영상·오디오 등 생성형 AI 작업을 노드 그래프로 구성하는 로컬 실행 엔진이다. 워크플로를 JSON으로 저장하고 API로 호출할 수 있어 실험을 재현하거나 앱·자동화 파이프라인에 연결하기 쉽다. 모델과 사용자 정의 노드에 따라 필요한 하드웨어·라이선스·보안 수준은 달라진다. 저장소는 현재 약 148k GitHub stars를 표시한다.'
   points:
-  - '116k★: 가장 인기 있는 AI 이미지 생성 UI, GPL-3.0'
-  - '노드 그래프: 워크플로우 JSON 재현, LoRA·ControlNet 확장'
-  - 'FLUX 네이티브: 소비자 GPU(12GB+)에서 프로급 이미지'
+  - '노드 그래프를 저장해 모델·설정·처리 단계를 재사용'
+  - '워크플로 JSON과 API를 사용해 스크립트·앱에서 실행 가능'
+  - '이미지 외에 영상·오디오 등 다양한 모델 워크플로를 지원'
+  - '모델·사용자 정의 노드의 출처와 라이선스·실행 환경을 각각 확인'
   source: https://github.com/Comfy-Org/ComfyUI
+  interview: "ComfyUI 워크플로를 JSON으로 저장하면 결과가 항상 재현되나요?"
+  answer: "완전히 보장되지는 않는다. JSON은 노드와 설정을 보존하지만, 동일한 결과에는 모델 가중치·커스텀 노드 버전·실행기·시드와 하드웨어 조건도 맞아야 한다. 배포 전에는 의존성을 고정하고 워크플로를 깨끗한 환경에서 다시 실행한다."
 - category: ai
   title: BGE-M3 — 100+ 언어·밀집+희소+멀티벡터를 하나의 모델로, RAG 임베딩의 사실상 표준(MIT·BAAI)
   summary: 'BGE-M3(BAAI)는 단일 모델로 밀집(dense)·희소(sparse)·멀티벡터(ColBERT) 3가지 검색 방식을 모두 지원하는 임베딩 모델이다. 100+ 언어, 8192 토큰 컨텍스트. 2026년 기준 ''범용 RAG 임베딩을 하나만 고르라면 BGE-M3''가 업계 컨센서스. 568M 파라미터로 GPU 없이도 실행 가능. Qwen3-Embedding-8B(MTEB 70.6)가 정확도 최강이라면, BGE-M3는 다용도·다국어·하이브리드 검색의 최적점.
