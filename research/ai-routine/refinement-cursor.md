@@ -720,4 +720,8 @@ Rules:
 - Updated lifecycle and practical boundaries: local sandbox is GA and restricts agent-run operations (not a blanket VM for the CLI); CLI/app settings are separate; cloud sessions can resume from snapshots and have compute, memory, and storage meters
 - Verified cloud sandbox billing begins November 23, 2026, and draws from shared Actions compute entitlement; removed stale public-preview framing
 - Research note: `research/ai-routine/20261122-094500-copilot-sandboxes.md`
-- Next: inspect `Copilot AI credits API`
+- Reviewed and refined: `Copilot AI credits API` using the GitHub changelog, current metrics reference, and REST API/billing documentation
+- Clarified that `ai_credits_used` is an overall per-user metric, not feature/model/client breakdown or billed total; team-level metrics require joining user-team and user reports
+- Added explicit billing-source distinction and cautioned against treating usage alone as proof of productivity/value
+- Research note: `research/ai-routine/20261122-100000-copilot-ai-credits-metrics.md`
+- Next: inspect `MAI-Code-1-Flash`
