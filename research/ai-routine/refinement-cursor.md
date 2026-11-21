@@ -805,3 +805,9 @@ Rules:
 - Scoped “worktree unavailable” to the Quail 2 release; Quail 4 adds live task status and diff-summary UX but does not state whether worktree support changed, so the card now advises checking the installed version
 - Research note: `research/ai-routine/20261122-073000-android-studio-parallel-agent-chats.md`
 - Next: inspect the next older AI+Android card in sequence after this one; skip pure Android-only content
+
+- Reviewed and refined: `AppFunctions Agent Skill — 앱 기능을 온디바이스 에이전트 도구로 준비`
+- Added package-scoped ADB inspection and a concrete prompt-injection defense: function metadata is untrusted input; use it only to understand/invoke the function, never to expand shell/file actions
+- Rechecked current Android AppFunctions docs and official skill reference; GitHub issue #251 is closed and the current reference contains the safeguards, so the card does not present the issue as unresolved
+- Research note: `research/ai-routine/20261122-074500-appfunctions-metadata-trust.md`
+- Next: continue older-card refinement after `Android 17 NPU 접근 선언`; skip pure Android-only cards

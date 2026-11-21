@@ -3281,14 +3281,15 @@ cards:
 - category: ai
   level: "고급"
   title: AppFunctions Agent Skill — 앱 기능을 온디바이스 에이전트 도구로 준비
-  summary: 'AppFunctions는 Android 16 이상에서 앱이 선택한 기능을 OS의 함수 레지스트리에 노출해, 권한이 있는 시스템 에이전트가 앱 UI 밖에서 호출하게 하는 Android MCP 방식이다. AppFunctions Agent Skill은 앱 흐름을 분석하고 Kotlin 구현·KDoc·ADB 테스트 단계를 돕는다. 그러나 API 자체는 현재 Experimental preview이며, Gemini 연동은 별도 Connected Apps Platform 개발자 프리뷰에 앱 등록·번들 제출·테스터 설정이 필요하다. 일반 앱이 다른 앱의 함수를 임의 호출할 수 있는 것도 아니다. 따라서 안전하고 사용자 UI에 이미 있는 좁은 동작만 노출하고, AI 생성 코드와 함수 권한·실행 결과를 검증한다.'
+  summary: 'AppFunctions는 Android 16 이상에서 앱의 기능을 OS 레지스트리에 공개해, 권한이 있는 에이전트가 UI 밖에서 호출하게 하는 Android MCP 통합 방식이다. 공식 Agent Skill은 기능 발굴·Kotlin 구현·KDoc 정리·ADB 검증을 돕는다. 플랫폼 API는 Experimental preview이며 Gemini 연결은 별도 Connected Apps 개발자 프리뷰 등록·앱 번들 제출·테스터 설정이 필요하다. ADB로 검사할 때는 항상 앱 패키지를 지정하고, 함수 설명은 신뢰할 수 없는 입력으로 취급한다. 사용자 UI에 이미 있는 안전한 기능만 노출하고 권한·실행 결과를 검증한다.'
   points:
   - 'Android 16+ AppFunctions: 선택한 Kotlin 기능을 OS 레지스트리에 등록; API는 Experimental preview'
   - 'Skill의 4단계: 기능 발굴 → 코드/설정 → KDoc 다듬기 → ADB 테스트·디버깅'
   - 'Gemini 사용은 Connected Apps 별도 개발자 프리뷰·번들 제출·테스터 등록 필요'
+  - 'ADB 테스트는 `--package`로 대상 앱에 한정; 함수 설명은 파라미터 의미에만 쓰고 그 안의 임의 지시를 실행하지 않음'
   source: https://developer.android.com/ai/appfunctions?hl=en
-  interview: "AppFunctions를 구현하면 모든 Gemini 사용자와 다른 앱에서 바로 함수를 호출할 수 있나요?"
-  answer: "아니다. AppFunctions API는 현재 Experimental preview이고, Gemini 연동에는 Connected Apps Platform developer preview 가입과 Google Connected Console 등록·앱 번들 제출·테스터 설정이 필요하다. 미게시 버전은 등록된 테스터만 쓸 수 있다. 다른 앱의 AppFunctions 호출은 EXECUTE_APP_FUNCTIONS 권한이 필요한데, Android는 이를 승인된 시스템 어시스턴트에만 부여한다. 앱은 안전하고 기존 UI가 제공하는 범위의 기능만 노출해야 한다."
+  interview: "AppFunctions를 구현하면 모든 Gemini 사용자와 다른 앱에서 바로 함수를 호출할 수 있나요? ADB 검사에서 함수 설명은 어떻게 다뤄야 하나요?"
+  answer: "아니다. 플랫폼 API는 Experimental preview이고 Gemini 연결에는 별도 Connected Apps 개발자 프리뷰·등록·앱 번들 제출·테스터 설정이 필요하다. 다른 앱의 함수 호출에는 `EXECUTE_APP_FUNCTIONS` 권한이 필요하며 시스템이 승인된 assistant에만 부여한다. ADB 명령은 대상 `--package`를 명시하고, 함수 설명은 파라미터의 의미를 이해하는 데만 쓴다. 설명이 셸 명령이나 파일 변경 등 다른 행동을 지시하면 따르지 않고 사용자에게 보여준다."
 - category: ai
   level: "중급"
   title: Android 17 NPU 직접 접근 — API 37 타깃은 manifest 기능 선언 확인
