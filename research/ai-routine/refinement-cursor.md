@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android AI Sample Catalog`; next candidate: inspect `Android CLI + Skills` for current capabilities, token/time benchmark scope, agent support, and duplicate coverage.
+Current position: refined `Android CLI + Skills`; next candidate: inspect `Google AI Studio Android prototyping` for current generation, preview/test, export, and release boundaries.
 
-Last update: 2026-11-22 05:05 KST
+Last update: 2026-11-22 05:08 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -602,3 +602,14 @@ Rules:
 - Checked for overlap with `Firebase AI Logic Hybrid API`; this card is about evaluating official demos and their readiness boundaries, not routing mechanics.
 - Sources and rationale: `research/ai-routine/20261122-050518-android-ai-sample-catalog.md`.
 - Next: inspect `Android CLI + Skills`.
+
+
+## 2026-11-22 05:08 KST
+
+- Refined `Android CLI + Skills` around execution tools, reusable task procedures, and current-doc grounding; updated launch-era preview status to stable CLI 1.0.
+- Scoped the >70% token / 3x speed figure to Google's internal project/environment-setup experiment; source publishes no sample size or methodology, so no broad performance guarantee is implied.
+- Verified Agent Skills standard compatibility and current `android init`, `android skills add`, `android docs`, and CLI workflow documentation.
+- Official `android/skills` snapshot: 10,690 stars / 700 forks; latest push 2026-11-17. High, volatile interest signal recorded in the audit note, not the card.
+- Compared with Android Studio Agent Mode: related but distinct cross-agent command/skill/documentation workflow versus IDE-centered agent execution and verification.
+- Sources and limitations: `research/ai-routine/20261122-050833-android-cli-skills.md`.
+- Next: inspect `Google AI Studio Android prototyping`.
