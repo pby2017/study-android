@@ -4525,3 +4525,12 @@ Refined:
 - Verified Android-only LiteRT-LM/Gemma 4 provider vs iOS Apple Foundation Models, typed StateFlow/UI integration, optional device tools, and cloud fallback data disclosure in the README.
 - The repository displayed 15 stars / 0 forks; JetBrains Koog displayed 4.7k stars and MediaPipe 37.8k at review. Counts are volatile, and only the first establishes koog-compose's relatively small adoption signal; omitted from the card.
 - README labels the project pre-1.0 in spirit despite a v2.1.0 tag and warns APIs may evolve. Recent CI runs indicate active changes, but no independent adoption evidence; card frames it as an early-stage reference, not a production recommendation.
+
+
+### 2026-11-22 03:10 KST — Driftx AI+Android 테스트 카드 범위 수정
+
+- Refined: `Driftx — AI 코딩 에이전트에게 모바일 앱의 눈과 손을 주는 KMP 테스트 프레임워크(MIT)` → `Driftx — React Native 앱을 AI 에이전트가 조작·시각 검증하는 도구`.
+- Re-checked the live GitHub README and `package.json`: the documented target is React Native with Metro; Android interaction requires ADB and a booted emulator; physical devices are not supported.
+- Corrected the integration description to shell-invokable CLI operations. Removed the unsupported KMP and MCP-server labels; retained documented screen capture, component inspection, interaction, screenshot comparison, and accessibility checks.
+- GitHub showed 7 stars, 1 fork, and 125 commits; package metadata showed v1.0.0 and MIT. Counts are volatile and indicate a small project, not broad adoption.
+- Kept as a bounded AI+Android learning example with explicit framework/device limits, not as a general native Android testing recommendation.

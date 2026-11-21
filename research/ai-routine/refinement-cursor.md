@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `ObjectBox` / `sqlite-vector` (merged into one AI+Android RAG comparison); next candidate: `AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답` (the intervening MASVS/R8 card is pure Android and out of scope).
+Current position: continue after `koog-compose`; next candidate: `Autonoma` (verify whether the current project still exists, supports AI+Android workflows, and has evidence beyond its own claims).
 
-Last update: 2026-11-22 03:04 KST
+Last update: 2026-11-22 03:10 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -339,3 +339,13 @@ Rules:
 - Added StateFlow/Compose and device-tool wiring; explained that a cloud fallback may receive conversation history and tool results.
 - Recorded 15 repo stars as a low/volatile project signal; JetBrains Koog itself was 4.7k stars. No popularity overclaim added.
 - Next: `Driftx`; audit active support and exact Android AI test path.
+
+
+## 2026-11-22 03:10 KST
+
+- Reviewed and refined `Driftx` after checking the live repository README and `package.json`.
+- Removed inaccurate KMP and MCP-server framing; documented the README's React Native + Metro setup, Android emulator/ADB requirement, and current lack of physical-device support.
+- Corrected the practical scope to CLI-based AI-agent screen capture, inspection, interaction, visual comparison, and accessibility checks.
+- GitHub displayed 7 stars, 1 fork, and 125 commits; star/fork counts are volatile and indicate low adoption, not popularity. Package metadata is version 1.0.0 and MIT licensed.
+- Kept as a narrowly scoped learning example, not a recommendation for native Android/KMP or production-wide testing.
+- Next: `Autonoma`; verify current project status, Android scope, and independent interest evidence before editing.
