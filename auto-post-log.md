@@ -4561,3 +4561,12 @@ Refined:
 - Focused on Android logcat/tombstone parsing, matched symbol files, source-context evidence, and an AI-generated patch in an isolated Git worktree. Clarified that no configured verification means pending—not a proven fix—and changes sync only after verification succeeds.
 - GitHub displayed 52 stars, 5 forks, and 60 commits; PyPI listed v1.7.4 on 2026-11-18. These indicate a small but recently active project, not broad popularity or quality.
 - Recorded version-source mismatch: PyPI release 1.7.4 vs. GitHub changelog 1.5.1 and older GitHub release tags; PyPI reported no provenance for the inspected release. Recommend verifying package/source correspondence before installation.
+
+
+### 2026-11-22 03:25 KST — KotlinSyft 레거시 연합학습 카드 정정
+
+- Refined: `KotlinSyft — OpenMined의 Android 연합학습 라이브러리, 온디바이스 학습으로 데이터가 디바이스를 안 떠남` → `KotlinSyft — Android 모델 중심 연합학습의 초기 설계 사례 (레거시)`.
+- Sources: https://github.com/OpenMined/KotlinSyft, https://github.com/OpenMined/KotlinSyft/releases, https://openmined.org/blog/announcing-new-libraries-for-fl-on-web-and-mobile/, https://proceedings.mlr.press/v139/lam21b.html, https://www.nist.gov/blogs/cybersecurity-insights/protecting-model-updates-privacy-preserving-federated-learning.
+- Removed the privacy guarantee and corrected secure aggregation/MPC status to “in progress” per README. The README install example says 0.1.3 while Releases lists 0.5.0 RC; do not use the stale snippet as current dependency advice.
+- Added the key lesson that local data retention is not sufficient privacy protection because model updates can leak information. GitHub showed 89 stars / 24 forks (modest, volatile interest).
+- No install or device integration test; card is explicitly historical, not an adoption recommendation.

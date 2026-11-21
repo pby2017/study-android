@@ -2946,15 +2946,15 @@ cards:
   interview: "AI가 Android native crash 패치를 만들었다면, 어떤 조건을 확인해야 ‘수정 완료’라고 판단할 수 있나요?"
   answer: "우선 tombstone의 주소를 해당 빌드의 심볼 파일로 정확히 해석하고, 호출 경로와 추출된 소스 문맥이 실제 근본 원인을 뒷받침하는지 확인한다. 패치 diff를 검토한 뒤 프로젝트에 맞는 빌드·단위·기기 재현 검증 명령을 명시해 실행한다. 검증이 없거나 보류·실패한 결과는 성공 증거가 아니다."
 - category: ai
-  title: KotlinSyft — OpenMined의 Android 연합학습 라이브러리, 온디바이스 학습으로 데이터가 디바이스를 안 떠남
-  summary: 'KotlinSyft는 OpenMined이 만든 Android 연합학습(Federated Learning) 라이브러리다. PySyft 모델을 디바이스에서 직접 학습·추론하며, 사용자 데이터를 중앙 서버로 보내지 않는다. 충전 감지·WiFi 감지로 백그라운드 학습 시 디바이스 리소스를 보호. Secure Aggregation·Secure Multi-Party Computation 프로토콜 지원. iOS용 SwiftSyft, 웹용 syft.js와 함께 모바일+웹 연합학습 생태계를 구성.
-
-    '
+  title: KotlinSyft — Android 모델 중심 연합학습의 초기 설계 사례 (레거시)
+  summary: 'KotlinSyft는 Android 기기에서 학습 작업을 수행하는 OpenMined의 초기 연합학습 worker다. 옛 PySyft·PyGrid 흐름에서는 서버가 모델과 학습 계획을 제공하고, 기기는 로컬 데이터로 학습한 뒤 모델 업데이트를 보고한다. 원본 데이터를 보내지 않는 설계는 데이터 노출을 줄이지만, 업데이트만으로도 정보가 새어 나갈 수 있어 프라이버시를 보장하지는 않는다. 저장소의 최신 릴리스와 문서는 오래된 생태계를 가리키므로 현재 프로젝트의 도입 후보가 아닌 역사적 사례로 본다.'
   points:
-  - '온디바이스 학습: 데이터가 디바이스를 떠나지 않음, PyTorch·TF 모델'
-  - 'Secure Aggregation: 모델 업데이트만 암호화된 채로 전송'
-  - '리소스 보호: 충전 감지·WiFi 감지·배터리 수준 체크'
+  - '흐름: 서버에서 모델·계획을 받고, 로컬 데이터로 학습한 모델 업데이트를 보고'
+  - '경계: 원본 데이터 미전송만으로 업데이트의 정보 유출까지 막지는 못함'
+  - 'README에서 secure aggregation·MPC는 진행 중으로 표시됨; 현재 지원 기능처럼 간주하지 않기'
   source: https://github.com/OpenMined/KotlinSyft
+  interview: "연합학습에서 원본 데이터를 기기 밖으로 보내지 않으면 프라이버시가 보장되나요?"
+  answer: "아니다. 모델 업데이트도 학습 데이터의 정보를 드러낼 수 있다. 위협 모델에 따라 secure aggregation이나 differential privacy 같은 추가 보호가 필요하다. KotlinSyft의 옛 README도 secure aggregation·MPC를 진행 중으로 표시했으므로, 실제 지원 여부와 유지보수 상태를 확인하지 않고 이 라이브러리를 도입하면 안 된다."
 - category: ai
   title: MLC LLM — 크로스플랫폼 온디바이스 LLM 런타임, 같은 체크포인트로 iOS Metal·Android GPU·WebGPU 실행
   summary: 'MLC LLM은 같은 양자화 체크포인트를 iOS Metal·Android Adreno/Mali·WebGPU에서 실행하는 유일한 성숙한 크로스플랫폼 온디바이스 LLM 런타임이다. TVM Unity 컴파일러로 모델을 타겟 하드웨어에 최적화하고, pre-quantized 모델 zoo를 제공. Llama·Qwen·Gemma·Mistral·Phi 등 인기 모델 아키텍처를 지원. ExecuTorch(PyTorch 네이티브)·llama.cpp(GGUF 포터블)와 함께 2026년 온디바이스 LLM 3대 런타임.

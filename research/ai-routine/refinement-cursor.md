@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Baidu Stability Analysis Agent`; next candidate: `KotlinSyft` (verify whether the repository and Android federated-learning implementation are still maintained and usable).
+Current position: continue after `KotlinSyft`; next candidate: `MLC LLM` (verify Android support, current maintenance, and distinguish its runtime claims from card comparison claims).
 
-Last update: 2026-11-22 03:18 KST
+Last update: 2026-11-22 03:25 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -379,3 +379,12 @@ Rules:
 - Popularity: GitHub displayed 52 stars / 5 forks / 60 commits (low adoption, with counts volatile); PyPI listed 1.7.4 uploaded 2026-11-18, while the repository organization page last showed an update on 2026-10-30. PyPI reported no provenance metadata for the inspected release.
 - Noted package/repository version-history mismatch (PyPI 1.7.4 vs. GitHub changelog 1.5.1 and older GitHub release tags); do not recommend installing without checking release/source correspondence and package provenance.
 - Next: `KotlinSyft`; verify project maintenance, Android implementation, and reproducible installation evidence.
+
+
+## 2026-11-22 03:25 KST
+
+- Reviewed and refined `KotlinSyft` against its README/release page, OpenMined’s original model-centric FL explanation, PMLR research, and NIST privacy guidance.
+- Corrected the old card: secure aggregation/MPC are marked in progress, not shipped; README install instructions are stale (0.1.3) relative to the later 0.5.0 release candidate.
+- Reframed as a legacy architecture lesson; clarified that local raw-data retention does not guarantee privacy because model updates may leak information.
+- GitHub showed 89 stars / 24 forks at review; modest interest, not current adoption evidence.
+- Next: `MLC LLM`; confirm active Android runtime support and remove any unsupported “only/3 leaders” comparison claims.
