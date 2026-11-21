@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `PowerLens`; next candidate: inspect `MNN-AECS` and verify its mobile device matrix, energy/performance baselines, root requirements, reproducible code, and overlap with system-level power management.
+Current position: continue after `MNN-AECS`; next candidate: inspect `AgentStop (Brave)` and verify its actual supported agent workflow, energy-saving metric, test setup, Android relevance, and reproducibility.
 
-Last update: 2026-11-22 04:02 KST
+Last update: 2026-11-22 04:09 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -463,3 +463,12 @@ Rules:
 - Removed unsupported Core ML acceleration and ~1.5GB memory claims; the checked-in iOS implementation is an opaque ~217 MB static archive, while public C++ source does not configure Core ML EP.
 - README lists 23 document classes; Android build currently includes arm64-v8a and armeabi-v7a. Live popularity/activity signals are modest/stale (1 star, 3 forks, last push 2025-12-23), so retained only as a concrete offline deployment lesson.
 - Next: review `Locanara`; validate current README/implementation, platform target and minimum OS, backend claims, model downloads/network, and license before revising.
+
+## 2026-11-22 04:09 KST
+
+- Reviewed and refined `MNN-AECS` against arXiv full text and the current Alibaba MNN repository/tree.
+- Kept it as a research systems lesson, not a drop-in recommendation: paper reports 23% average energy reduction across 7 devices, but Meizu 21 reports about 10% because its OS does not lower idle-cluster frequency; Huawei devices show 1%/7% decode slowdown in dataset evaluation.
+- Confirmed Android uses core affinity and per-device tuning in the described modified MNN; current upstream MNN recursive tree has no AECS-named implementation, and exact repository search returned zero.
+- Removed cross-engine headline comparisons because the original card did not communicate device/model availability and comparison limits.
+- Interest signal: MNN upstream displayed 16.6k stars / 2.5k forks; treated as project-level signal, not AECS adoption; omitted volatile counts from the card.
+- Next: `AgentStop (Brave)`; validate metric denominator, model/agent environment, actual Android applicability, and public reproducibility before deciding whether to keep or reframe.
