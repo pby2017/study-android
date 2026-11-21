@@ -3304,14 +3304,14 @@ cards:
 - category: ai
   title: ML Kit Structured Output — Kotlin 타입은 얻어도 사실 검증은 남는다
   level: "중급"
-  summary: 'ML Kit Prompt API의 Structured Output은 Gemini Nano 응답을 `@Generable` Kotlin 타입으로 파싱한다. `@Guide`로 필드 의미·범위·허용값을 제약해 영수증 항목이나 일정 정보를 추출할 수 있다. 하지만 구조가 맞아도 값이 사실이라는 뜻은 아니다. Structured Output은 alpha라 호환성 보장이 없고, Kotlin 전용이며 `minSdk 26`과 Kotlin 호환 KSP 2.3.6+가 필요하다. 모델별 기능은 `getAvailableFeatures()`로 확인하고, 파싱·제약 오류와 길이 제한을 처리하며 중요한 값은 앱에서 검증한다.'
+  summary: 'ML Kit Structured Output은 `@Generable` Kotlin 타입과 `@Guide` 제약을 사용해 Gemini Nano 응답을 구조화한다. 다만 schema 적합성은 사실성을 보장하지 않는다. API는 Alpha이며 Kotlin 전용, minSdk 26·KSP 2.3.6+가 필요하다. `isStructuredOutputFeatureAvailable()`로 기기 지원을 확인하고, 파싱·제약 오류와 토큰 한도를 처리한 뒤 중요한 값은 앱에서 검증한다.'
   points:
   - '`@Generable`·`@Guide`로 Kotlin 출력 스키마와 필드 제약 정의'
-  - '`getAvailableFeatures()`에 `Feature.STRUCTURED_OUTPUT`이 있는지 확인; 구형 Boolean 조회 API는 deprecated'
+  - '`isStructuredOutputFeatureAvailable()`로 기기 지원 확인; 라이브러리의 feature check 사용'
   - 'Alpha·Kotlin 전용·minSdk 26·KSP 2.3.6+; parse/constraint 오류·토큰 한도·ProGuard keep 규칙 확인'
   source: https://developers.google.com/ml-kit/genai/prompt/android/structured-output
   interview: "Structured Output을 사용하면 모델 응답의 파싱·기능 확인·업무 검증을 생략할 수 있나요?"
-  answer: "아니다. 현재 기능 API에서 `getAvailableFeatures()`로 `Feature.STRUCTURED_OUTPUT` 지원을 확인한다. typed generation은 파싱 실패나 입력·쿼터·안전성 오류로 예외가 날 수 있고, 토큰 한도에 걸리면 출력이 불완전할 수 있다. schema는 Kotlin 구조와 제약을 돕지만 내용의 사실성·업무 규칙을 보장하지 않으므로 중요 값은 앱에서 다시 검증한다."
+  answer: "아니다. `isStructuredOutputFeatureAvailable()`로 기기 지원을 확인한다. 생성 결과는 파싱 실패, schema 제약 위반, 토큰 한도로 null이거나 불완전할 수 있다. schema는 형식과 일부 값 범위를 돕지만 사실성·업무 규칙을 보장하지 않으므로 중요 값은 앱에서 다시 검증한다."
 - category: ai
   title: A2A — Agent Card로 발견하고 Task 상태로 협업한다
   level: "중급"

@@ -817,3 +817,10 @@ Rules:
 - Sources re-checked: Android 17 behavior changes, Android 17 release blog, PackageManager API reference
 - Research note: `research/ai-routine/20261122-080000-android17-npu-card.md`
 - Next: review `ML Kit Structured Output` for current SDK state and compactness
+
+- Reviewed and refined: `ML Kit Structured Output — Kotlin 타입은 얻어도 사실 검증은 남는다`
+- Corrected stale feature detection (`getAvailableFeatures()` → `isStructuredOutputFeatureAvailable()`); maintained Structured Output Alpha vs Prompt API Beta lifecycle distinction
+- Shortened summary and retained schema-vs-truth, Kotlin/minSdk/KSP, parse/constraint/token-limit implementation cautions
+- Sources re-checked: ML Kit Structured Output guide, release notes, and direct model access guide
+- Research note: `research/ai-routine/20261122-081500-mlkit-structured-output-refresh.md`
+- Next: inspect the next older AI+Android card; skip pure Android-only topics
