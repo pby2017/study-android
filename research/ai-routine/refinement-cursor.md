@@ -413,3 +413,11 @@ Rules:
 - GitHub API displayed 1 star / 1 fork and `pushed_at` 2026-07-16; weak adoption signal, so V8V product promotion was not retained.
 - Reframed the existing card into an Android AI data-boundary lesson: check API 31+ availability, select the on-device factory, and test the actual deployment with networking disabled.
 - Next: inspect the next AI/AI+Android card after V8V; review the neighboring RecGPT-Mobile source carefully before relying on its production-scale claims.
+
+## 2026-11-22 03:50 KST
+
+- Rechecked RecGPT-Mobile against arXiv full text and abstract metadata; ACM DOI page returned 403 in this review.
+- Kept the AI+Android systems lesson: behavior-window drift signals (entropy change, tag overlap, Jensen–Shannon divergence) gate when the on-device LLM runs.
+- Replaced broad production claims with author-reported one-month Taobao A/B results across four feed scenarios (average CLICK +1.8%, PAY +2.7%, GMV +2.5%); explicitly not generalized or independently reproduced.
+- Avoided implying full pipeline on-device/privacy: the paper describes local behavior collection/cache and a separate item retrieval module. Public reproducible code/data were not verified.
+- Next: review `OD-LLM`; distinguish its task-adaptive compression method from RecGPT-Mobile's inference-trigger policy, and validate mobile deployment evidence.
