@@ -895,4 +895,8 @@ Rules:
 - Removed volatile launch-date, broad provider/ACP/debugger, and remote-control assertions that were unnecessary for this AI+Android lesson; made no star/popularity claim for this proprietary product
 - Sources: [Junie Android development](https://junie.jetbrains.com/docs/android-development-with-junie.html), [Junie IDE plugin](https://junie.jetbrains.com/docs/junie-ide-plugin.html), [JetBrains AI Assistant](https://www.jetbrains.com/help/idea/ai-assistant-in-jetbrains-ides.html)
 - Research note: `research/ai-routine/20261122-071035-junie-android-workflow-refinement.md`
-- Next: continue to the next older card after `Junie Android 개발`; check for overlap with the recent Android Studio BYOA card before selecting another refinement
+- Reviewed the related `Android Studio BYOA` card against Junie's Android workflow; kept them separate because BYOA teaches agent-agnostic ACP integration and Change Review, while Junie teaches one agent's Android execution/diagnostic loop
+- Re-verified `Copilot CLI Remote Control — 실행 중인 세션을 Android에서 조종하기` against current GitHub Docs and clarified that remote control is interactive-only, not available to programmatic `--prompt` runs
+- Sources: [Android Studio agent integration](https://developer.android.com/blog/posts/ai-agents-android-studio-integration), [GitHub remote-control usage](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/steer-remotely), [GitHub remote-control concepts](https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/about-remote-control), [cloud sandboxes](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-sandboxes)
+- Research note: `research/ai-routine/20261122-071300-android-agent-cards-review.md`
+- Next: start a fresh oldest-first scan of remaining AI/AI+Android cards; the current end-of-file block through `Copilot CLI Remote Control` has been reviewed

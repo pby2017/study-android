@@ -9040,7 +9040,7 @@ cards:
   title: Copilot CLI Remote Control — 실행 중인 세션을 Android에서 조종하기
   summary: "GitHub Mobile은 실행 중인 Copilot CLI 세션에 연결해 진행 상황을 보고 permission 요청에 답하거나 작업을 이어가게 한다. 세션 기록이 동기화되어 보이는 것만으로 조작 권한이 생기지는 않는다. 대화형 세션에서 `/remote on`을 켜야 하며, 조직 계정은 관리자가 `View and control` 정책을 허용해야 한다. 명령과 파일 작업은 계속 호스트에서 실행되고 세션 이벤트는 GitHub로 전송된다. 따라서 호스트는 온라인·실행 상태를 유지해야 하며, 이는 cloud sandbox와 다르다."
   points:
-  - "대화형 CLI에서 `/remote on`; 연결 링크나 QR로 GitHub Mobile의 Agent sessions를 연다"
+  - "대화형 세션에서만 사용 가능 — `/remote on`; `--prompt` 기반 CLI 자동화는 대상이 아님"
   - "동기화된 기록은 view-only; 조직 좌석은 `View and control` 정책 필요. 세션 이벤트는 GitHub로, 명령 실행은 호스트에 남음"
   - "호스트 컴퓨터는 온라인·실행 상태 유지; 필요하면 `/keep-alive busy`로 작업 중 절전 방지"
   source: https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/steer-remotely
