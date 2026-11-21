@@ -3288,16 +3288,16 @@ cards:
   interview: "Android 17을 타깃으로 온디바이스 추론을 하는 모든 앱이 NPU feature를 선언해야 하나요?"
   answer: "아니다. targetSdk 37 이상이어도 NPU에 직접 접근하는 앱이 대상이다. LiteRT NPU delegate, 제조사 SDK, deprecated NNAPI 사용 여부를 확인한다. 상수의 manifest 값은 `android.hardware.npu`이고, 선택 가속기라면 `required=false`를 써 NPU 없는 기기의 스토어 설치를 막지 않는다. CPU/GPU 경로로 자동 전환된다고 가정하지 말고 fallback을 직접 설계한다."
 - category: ai
-  title: ML Kit GenAI Structured Output — 자유 텍스트를 Kotlin 객체로 받기
+  title: ML Kit Structured Output — Kotlin 타입은 얻어도 사실 검증은 남는다
   level: "중급"
-  summary: 'ML Kit Prompt API의 direct model access는 Gemini Nano 응답을 `@Generable` Kotlin data class로 받을 수 있다. `@Guide`로 필드 설명과 범위·허용값을 지정하고, 예를 들어 주문 메시지에서 주소와 시간을 객체로 추출한다. 단, 스키마 적합성이 사실의 정확성을 보장하지는 않는다. API는 alpha이며 Kotlin 전용이다. minSdk 26, KSP 2.3.6 이상이 필요하고, 지원 여부·null 응답·finish reason·GenAiException을 처리해야 한다.'
+  summary: 'ML Kit Prompt API의 Structured Output은 Gemini Nano 응답을 `@Generable` Kotlin 타입으로 파싱한다. `@Guide`로 필드 의미·범위·허용값을 제약해 영수증 항목이나 일정 정보를 추출할 수 있다. 하지만 구조가 맞아도 값이 사실이라는 뜻은 아니다. Structured Output은 alpha라 호환성 보장이 없고, Kotlin 전용이며 `minSdk 26`과 Kotlin 호환 KSP 2.3.6+가 필요하다. 모델별 기능은 `getAvailableFeatures()`로 확인하고, 파싱·제약 오류와 길이 제한을 처리하며 중요한 값은 앱에서 검증한다.'
   points:
   - '`@Generable`·`@Guide`로 Kotlin 출력 스키마와 필드 제약 정의'
-  - '`isStructuredOutputFeatureAvailable()`로 기기 지원 확인; null·오류·finish reason 처리'
-  - 'Alpha·Kotlin 전용·minSdk 26·KSP 2.3.6+; ProGuard keep 규칙도 확인'
+  - '`getAvailableFeatures()`에 `Feature.STRUCTURED_OUTPUT`이 있는지 확인; 구형 Boolean 조회 API는 deprecated'
+  - 'Alpha·Kotlin 전용·minSdk 26·KSP 2.3.6+; parse/constraint 오류·토큰 한도·ProGuard keep 규칙 확인'
   source: https://developers.google.com/ml-kit/genai/prompt/android/structured-output
-  interview: "Structured Output을 쓰면 모델 응답의 검증과 오류 처리를 생략해도 되나요?"
-  answer: "아니다. 스키마는 자료형과 제약을 돕지만 내용의 사실성을 보장하지 않는다. API는 null 응답이나 parse·constraint 오류를 반환할 수 있으므로 finish reason과 예외를 처리하고, 중요한 값은 앱에서 별도 검증해야 한다."
+  interview: "Structured Output을 사용하면 모델 응답의 파싱·기능 확인·업무 검증을 생략할 수 있나요?"
+  answer: "아니다. 현재 기능 API에서 `getAvailableFeatures()`로 `Feature.STRUCTURED_OUTPUT` 지원을 확인한다. typed generation은 파싱 실패나 입력·쿼터·안전성 오류로 예외가 날 수 있고, 토큰 한도에 걸리면 출력이 불완전할 수 있다. schema는 Kotlin 구조와 제약을 돕지만 내용의 사실성·업무 규칙을 보장하지 않으므로 중요 값은 앱에서 다시 검증한다."
 - category: ai
   title: A2A 1년 — MCP가 도구 연결이라면 A2A는 에이전트끼리 업무를 넘기는 규약
   summary: 'Google Developers Blog는 2026년 6월 18일 A2A(Agent-to-Agent) 1주년 업데이트에서 협업형 에이전트 패턴을 정리했다. MCP가 한 에이전트가 도구와 데이터에 접근하는 통로라면, A2A는 서로 다른 에이전트가 능력을 발견하고 업무를 위임하며 결과를 주고받는 통신 계층이다. 실무 포인트는 거대한 단일 에이전트에 모든 컨텍스트를 밀어 넣는 대신, 결제·데이터 분석·DevOps·고객지원처럼 권한과 지식 경계가 다른 작업을 전문 에이전트로 분리하는 것이다. Android 앱도 AppFunctions나 MCP로 앱 내부 도구를 열고, 외부 업무는 A2A 에이전트에 위임하는 구조를 상상할 수 있다.
