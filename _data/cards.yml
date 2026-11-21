@@ -3514,13 +3514,17 @@ cards:
   interview: "장기 실행 에이전트를 컨테이너 재시작이나 수일간의 대기 뒤 안전하게 재개하려면 무엇을 영속화해야 하나요?"
   answer: "대화 기록만 저장하지 않는다. 업무 단계와 승인·대기 신호를 명시적 상태로 관리하고, ADK 세션을 재시작 후에도 읽을 수 있는 데이터베이스나 관리형 세션 서비스에 저장한다. In-memory 세션은 프로세스 재시작이나 다른 인스턴스로의 이동을 보장하지 않는다. 웹훅 등 재개 이벤트는 인증하고 중복 처리에 안전하도록 상태 전이를 설계하며, 테스트에서 중단·재시도·복구 시나리오를 검증한다."
 - category: ai
-  title: MCP EMA stable — Enterprise-Managed Auth·IdP zero-touch SSO
-  summary: MCP Enterprise-Managed Authorization extension(io.modelcontextprotocol/enterprise-managed-authorization)이 2026-06-18 stable. 조직 IdP(Okta launch·Cross App Access ID-JAG)가 MCP 서버 접근을 중앙 provision — 사용자는 per-server OAuth consent 없이 첫 로그인부터 승인된 커넥터 상속. Client — Claude·Claude Code·Cowork(Anthropic shared MCP layer), VS Code(Copilot·third-party MCP). Server launch — Asana·Atlassian·Canva·Figma·Granola·Linear·Supabase·Slack 추가 중. regulated enterprise에서 MCP를 SaaS 권한 평면과 동일 audit·revoke로 다루는 신호.
+  title: MCP Enterprise-Managed Authorization — IdP로 서버 접근을 중앙 통제하기
+  summary: >-
+    MCP의 Enterprise-Managed Authorization(EMA)은 조직 IdP가 사용자별 MCP 서버 접근을 정책으로 결정하도록 하는 안정화된 authorization extension이다. 클라이언트는 로그인 때 얻은 identity assertion으로 IdP에서 ID-JAG를 받고, MCP 서버의 authorization server에서 access token으로 교환한다. 관리자는 그룹·역할 등 기존 IdP 정책으로 접근을 통제하므로 서버마다 사용자 동의를 반복하는 절차를 줄일 수 있다. 단, EMA는 MCP core의 필수 기능이 아니라 선택적 extension이다. 클라이언트·IdP·서버 authorization server가 모두 호환되어야 하며, 현재 지원 범위와 토큰의 audience·scope를 확인해야 한다. 서버는 ID-JAG의 서명·issuer·audience·만료와 권한 claim을 검증해야 한다.
   points:
-  - Stable 2026-06-18 — ID-JAG via Okta XAA, zero-touch first login
-  - Client — Claude family·VS Code; Server — Linear·Supabase·Figma 등
-  - IdP group scope·deprovision revoke — per-user OAuth 대체
-  source: https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/
+  - '흐름: IdP 로그인 → ID-JAG 발급 → MCP authorization server에서 access token 교환'
+  - '선택 기능: 클라이언트·IdP·서버 모두 EMA 호환 및 정책 설정 필요'
+  - '운영 체크: audience·scope·issuer 검증, 그룹 정책과 접근 회수 확인'
+  source: https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization
+  level: "고급"
+  interview: "MCP Enterprise-Managed Authorization은 기존 OAuth를 없애는 필수 기능인가요? 적용 전 무엇을 확인해야 하나요?"
+  answer: "아니다. EMA는 MCP core에 추가되는 선택적 authorization extension이다. 호환 클라이언트가 기업 IdP에서 받은 identity assertion으로 ID-JAG를 요청하고, MCP 서버의 authorization server에서 이를 access token으로 교환한다. 따라서 IdP 발급자, 클라이언트, 서버 authorization server가 모두 해당 흐름을 지원해야 한다. 서버는 JWT 서명·issuer·audience·만료와 scope/권한 claim을 검증하고, 조직 정책·토큰 수명·회수 동작을 확인해야 한다."
 - category: ai
   title: Claude WIF GA — 에이전트 자동화에서 정적 API 키 없애기
   summary: 'Claude Platform의 Workload Identity Federation(WIF)은 2026년 6월 17일 GA가 됐다. WIF는 정적 API 키 대신 요청 시점에 짧게 살아 있는 scoped credential을 발급하고, AWS IAM role, GCP/Kubernetes service account, Azure managed identity, GitHub Actions token, Okta 같은 OIDC 호환 identity provider와 연결된다. 적용 범위는 Claude API endpoints, first-party SDK, Claude Code 접근까지 포함된다. 에이전트 자동화에서는 API 키를 저장소·CI 변수·로컬 설정에 오래 보관하지 않고, workload별 service account와 audit log로 호출 주체를 분리할 수 있다는 점이 핵심이다.

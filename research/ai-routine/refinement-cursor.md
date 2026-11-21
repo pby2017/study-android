@@ -741,4 +741,9 @@ Rules:
 - Strengthened distinction between explicit workflow state and persistence: in-memory sessions do not survive restart/instance change; use a durable session backend
 - Added event-resumption reliability concerns: authenticated signals, validated transitions, duplicate/retry safety; removed unqualified claim that any ToolContext state write alone guarantees end-to-end durability
 - Research note: `research/ai-routine/20261122-110000-adk-long-running-state.md`
-- Next: inspect `MCP EMA stable`
+- Reviewed `MCP EMA stable` against the stable extension specification, current support matrix, upstream launch announcement, and ext-auth repository
+- Corrected scope: EMA is an opt-in MCP extension, not universal/default OAuth replacement; all of client, IdP, and server authorization service must support/configure the flow
+- Added ID-JAG exchange, audience/scope/issuer validation, and compatibility verification; replaced launch-era client/server roster because support status changes
+- Checked the upstream ext-auth repository at review time: 181 GitHub stars (current snapshot; not a trend claim)
+- Research note: `research/ai-routine/20261122-113000-mcp-enterprise-managed-auth.md`
+- Next: inspect `Claude WIF GA`
