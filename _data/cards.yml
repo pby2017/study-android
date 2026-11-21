@@ -2761,15 +2761,17 @@ cards:
   interview: "논문에서 MobileSAM의 이미지당 12ms를 보고했다면 Android 앱도 12ms로 동작한다고 예상해도 되나요?"
   answer: "아니다. 그 수치는 논문이 밝힌 단일 GPU 환경의 encoder와 decoder 처리시간이다. Android 기기의 칩, 런타임, 입력 해상도, 전처리·후처리와 카메라 파이프라인이 다르므로 목표 기기에서 end-to-end 지연, 메모리, 발열, 마스크 품질을 측정해야 한다."
 - category: ai
-  title: MediaPipe — Google이 만든 모바일 실시간 AI, 30~60fps로 손·포즈·얼굴 추적(Apache-2.0)
-  summary: 'MediaPipe는 Google이 만든 모바일 실시간 ML 프레임워크로, CPU/GPU/NPU 자동 디스패치+XNNPACK 최적화로 30~60fps를 보장한다. Hand Landmarker(21점)·Pose Landmarker(33점)·Face Landmarker(478점)·Image Segmenter· Object Detector·Gesture Recognizer 등 사전학습 솔루션을 제공. 동일 작업을 PyTorch로 실행하면 5fps 수준인 반면 MediaPipe는 60fps. Android·iOS·Web·Python 지원.
-
-    '
+  title: 'MediaPipe Tasks — Android에서 이미지·영상·실시간 스트림에 온디바이스 ML 적용'
+  level: "중급"
+  summary: 'MediaPipe Tasks는 이미지·오디오·텍스트 모델을 앱에서 실행하는 Google AI Edge SDK 모음이다. Vision Tasks에는 손·얼굴·포즈 랜드마커, 객체 감지, 분할 등이 있으며, Android에서는 모델 파일과 실행 모드(단일 이미지·영상·라이브 스트림)를 설정해 사용한다. CPU 또는 지원되는 GPU delegate를 선택할 수 있지만 처리 속도는 모델, 기기, 입력 크기, delegate 지원에 따라 달라진다. 실시간 카메라에서는 매 프레임을 처리할지, 바쁜 동안 오래된 프레임을 버려 최신 결과를 유지할지 실행 모드의 동작도 확인한다.'
   points:
-  - '30~60fps 보장: CPU/GPU/NPU 자동 디스패치 + XNNPACK'
-  - '사전학습 솔루션: 손·포즈·얼굴·제스처·세그멘테이션·객체 검출'
-  - Android·iOS·Web·Python 크로스플랫폼
-  source: https://developers.google.com/mediapipe
+  - 'Tasks API가 입력 전처리·LiteRT 추론·결과 후처리를 묶어 플랫폼별 실행 인터페이스 제공'
+  - 'Android Vision 예: IMAGE는 단일 프레임, VIDEO는 타임스탬프가 있는 프레임, LIVE_STREAM은 비동기 결과 콜백'
+  - 'GPU acceleration은 지원 delegate와 모델에 따라 설정; 고정 FPS나 NPU 자동 디스패치 보장은 아님'
+  - '성능은 목표 기기에서 camera→preprocess→inference→postprocess 전체 경로로 측정하고 발열·프레임 드롭도 확인'
+  source: https://developers.google.com/edge/mediapipe/solutions
+  interview: "라이브 스트림 추론에서 매 카메라 프레임을 처리하는 것과 최신 결과를 유지하는 것의 차이는 무엇인가요?"
+  answer: "동기식 VIDEO 모드는 프레임을 순서대로 처리할 수 있지만 입력이 처리 속도보다 빠르면 지연이 누적될 수 있다. LIVE_STREAM은 비동기이며 작업 중 들어온 입력 프레임을 버려 최신 결과를 우선할 수 있다. 정확한 동작과 타임스탬프 요구를 확인해 UI·카메라 파이프라인에 맞는 모드를 선택한다."
 - category: ai
   title: Genkit Dart — Flutter·Dart에서 AI 앱을 만드는 Google의 오픈소스 프레임워크, 온디바이스+클라우드 하이브리드
   summary: 'Genkit Dart는 Google이 만든 오픈소스 AI 프레임워크로, Flutter·Dart 개발자가 단일 API로 Google· Anthropic·OpenAI·Ollama 모델에 접근한다. genkit_flutter_gemma 플러그인으로 Gemma 4를 온디바이스 실행하고, genkit_foundation_models로 Apple Intelligence(iOS 26+)를 연동. 프론트엔드와 백엔드가 모두 Dart이므로 AI 로직을 클라이언트↔서버 간 자유롭게 이동 가능. Dev UI로 프롬프트 디버깅.
