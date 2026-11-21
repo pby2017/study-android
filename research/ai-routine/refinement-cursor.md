@@ -916,3 +916,10 @@ Rules:
 - Sources: [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference), [Claude Code changelog](https://code.claude.com/docs/en/changelog)
 - Research note: `research/ai-routine/20261122-071909-claude-safe-mode-refinement.md`
 - Next: continue the oldest-first AI-card scan with `/cd` and verify prompt-cache and workspace behavior
+
+- Refined `Android AI Sample Catalog — 클라우드·온디바이스 예제로 배포 경계 읽기`
+- Clarified `PREFER_ON_DEVICE` fallback semantics, Firebase AI Logic App Check automatic enforcement (2026-11-02), and the catalog's explicit demo-not-production boundary; removed broad setup/pricing claims that vary by sample and backend
+- Attention signal checked live via GitHub API: 724 stars, 181 forks, latest push 2026-11-03 (snapshot only; not presented as quality proof)
+- Sources: [Android AI Sample Catalog README](https://github.com/android/ai-samples/blob/main/ai-sample-catalog/README.md), [Android hybrid inference](https://developer.android.com/ai/hybrid), [Firebase AI Logic App Check](https://firebase.google.com/docs/ai-logic/app-check)
+- Research note: `research/ai-routine/20261122-072744-android-ai-sample-catalog-refinement.md`
+- Next: inspect `Android CLI + Skills — 에이전트에 실행 도구·절차·최신 문서를 결합` and verify the CLI / Skills / Knowledge Base status and use cases
