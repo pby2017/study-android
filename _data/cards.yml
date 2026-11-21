@@ -3431,15 +3431,16 @@ cards:
   interview: "`colab run --gpu T4`를 지정하면 GPU가 반드시 할당되고, 작업이 끝나면 항상 VM이 남지 않나요?"
   answer: "아니다. GPU는 계정 요금제와 quota에 따라 할당이 거절될 수 있다. `colab run`은 기본적으로 작업 후 VM을 종료하지만 `--keep`을 지정하면 유지된다. 세션형 `colab new`/`colab exec` 작업은 종료할 때 `colab stop`으로 정리하고 compute unit 사용량도 확인한다."
 - category: ai
-  title: Copilot 1M 컨텍스트·추론 레벨 — 큰 창은 기본값이 아니라 고비용 모드
-  summary: 'GitHub Copilot은 2026년 6월 4일 더 큰 컨텍스트 창과 configurable reasoning levels를 공개했다. 100만 토큰 컨텍스트는 큰 코드베이스, 긴 문서, 복잡한 다중 파일 작업을 한 세션에 담기 위한 장치이고, 추론 레벨은 속도와 깊이를 작업 난이도에 맞춰 조절하는 손잡이다. 중요한 반대편은 비용이다. GitHub는 큰 컨텍스트 창이나 높은 추론 레벨을 선택하면 상호작용당 AI credits가 더 많이 든다고 설명하며, 일상 작업에는 기본 컨텍스트와 기본 추론을 권한다. 실무 포인트는 "항상 최대"가 아니라, 아키텍처 변경, 장기 디버깅, 다중 파일 리팩터링처럼 정보 손실 비용이 큰 작업에만 큰 창과 깊은 추론을 켜는 운영 규칙을 정하는 것이다.
-
-    '
+  title: Copilot 1M 컨텍스트·추론 레벨 — 모델과 표면별로 골라 쓰기
+  level: "중급"
+  summary: GitHub Copilot의 1M-token context는 지원 모델을 선택한 뒤 VS Code 또는 Copilot CLI에서 사용할 수 있다. Configurable reasoning은 VS Code·Copilot CLI와 Copilot cloud agent의 지원 모델에서 제공된다. 긴 코드베이스나 복잡한 디버깅에 유용하지만, 더 큰 context와 높은 reasoning은 처리 토큰과 AI credits를 더 사용한다. 일상 작업은 기본값으로 시작하고, 이득이 분명한 작업에서만 지원 모델·표면을 확인해 확장한다.
   points:
-  - '1M 컨텍스트: 큰 코드베이스·긴 문서·복잡한 다중 파일 작업용'
-  - 'reasoning level: 속도와 깊이를 작업 난이도에 맞춰 조절'
-  - 큰 컨텍스트·높은 추론은 AI credits를 더 쓰므로 기본값으로 쓰지 않기
-  source: https://github.blog/changelog/2026-06-04-larger-context-windows-and-configurable-reasoning-levels-for-github-copilot/
+  - "1M context: VS Code·Copilot CLI + 지원 모델"
+  - "Configurable reasoning: VS Code·CLI·Copilot cloud agent + 지원 모델"
+  - "더 큰 context·깊은 추론은 credits를 더 쓰므로 필요할 때만 선택"
+  source: https://docs.github.com/en/copilot/reference/ai-models/supported-models
+  interview: "Copilot의 1M 컨텍스트와 reasoning level은 모든 모델과 모든 제품 표면에서 같은 방식으로 쓸 수 있나요?"
+  answer: "아니다. 최신 모델 지원 문서에서 1M context는 VS Code와 Copilot CLI에만 제공되고, configurable reasoning은 여기에 Copilot cloud agent를 더해 제공된다. 기능별 지원 모델도 다르며, 더 큰 context나 높은 reasoning은 더 많은 토큰과 AI credits를 사용하므로 작업에 필요한 경우에만 선택한다."
 - category: ai
   title: Copilot Sandboxes — 에이전트 명령 실행을 로컬·클라우드 격리층에 넣기
   summary: 'GitHub Copilot의 cloud/local sandboxes public preview는 에이전트가 실행하는 셸 명령을 격리된 환경에 넣는 기능이다. 로컬 sandbox는 Copilot CLI 세션 안에서 `/sandbox enable`로 켜고, 파일시스템·네트워크· 시스템 기능 접근을 제한한다. cloud sandbox는 `copilot --cloud`로 GitHub가 호스팅하는 일회성 Linux 환경에서 세션을 시작해 로컬 머신과 다른 세션에서 분리한다. GitHub 문서는 로컬 sandbox 정책을 Intune 같은 MDM으로 중앙 관리할 수 있고, cloud sandbox는 Azure Container Apps Sandboxes 위에 identity, policy, billing layer를 얹는다고 설명한다. 실무 포인트는 에이전트에게 명령 실행 권한을 줄 때 "믿기" 대신 쓰기 경로, 네트워크, 클라우드 실행 위치를 정책으로 좁히는 것이다.

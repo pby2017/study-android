@@ -713,4 +713,7 @@ Rules:
 - Replaced the launch-era GPU provisioning framing with the current `colab run` create-execute-cleanup workflow; added account quota, compute-unit, `--keep`, and OS boundaries
 - Verified PyPI v0.8.0 (2026-11-10), Python >=3.12, and 2.7k GitHub stars at review time; recorded the README/PyPI OS metadata mismatch in the research note rather than overclaiming portability
 - Research note: `research/ai-routine/20261122-090000-google-colab-cli.md`
-- Next: inspect `Copilot 1M 컨텍스트·추론 레벨`
+- Reviewed and refined: `Copilot 1M 컨텍스트·추론 레벨` using the current supported-model matrix, Copilot CLI docs, and cloud-agent announcement
+- Corrected product-surface scope: 1M context is currently limited to VS Code and Copilot CLI; configurable reasoning also includes Copilot cloud agent; both require supported models and increase AI-credit use
+- Research note: `research/ai-routine/20261122-091500-copilot-context-reasoning.md`
+- Next: inspect `Copilot Sandboxes`
