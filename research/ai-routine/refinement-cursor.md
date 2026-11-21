@@ -702,4 +702,8 @@ Rules:
 - Replaced stale v1.0.2 memory/defer details with the v2 default in-process architecture, six supported SDK languages, CLI distinction, BYOK/subscription boundary, and subprocess isolation guidance
 - Sources re-checked: v2.0.0 and current releases, current SDK README/getting-started/in-process guide, and staged rebrand announcement; v2.0.1 was latest stable release seen on 2026-11-22
 - Research note: `research/ai-routine/20261122-080000-microsoft-copilot-sdk-v2.md`
-- Next: inspect `GitHub MCP Secret Scanning GA`
+- Reviewed and refined: `GitHub MCP Secret Scanning GA` against the current GitHub setup and push-protection documentation
+- Corrected operational boundaries: remote MCP only, explicit tool enablement, public vs Secret-Protection-enabled private/internal eligibility, ephemeral findings, and no automatic scan on every commit
+- Reconciled historical GA announcement with the current guide: avoid promising repo-level customization behavior; current documentation says organization security configuration controls MCP scan detections/enforcement
+- Research note: `research/ai-routine/20261122-081500-github-mcp-secret-scan.md`
+- Next: inspect `Codex Plugins·Sites·Annotations`
