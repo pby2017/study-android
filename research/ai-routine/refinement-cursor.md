@@ -746,4 +746,8 @@ Rules:
 - Added ID-JAG exchange, audience/scope/issuer validation, and compatibility verification; replaced launch-era client/server roster because support status changes
 - Checked the upstream ext-auth repository at review time: 181 GitHub stars (current snapshot; not a trend claim)
 - Research note: `research/ai-routine/20261122-113000-mcp-enterprise-managed-auth.md`
-- Next: inspect `Claude WIF GA`
+- Reviewed `Claude WIF GA` against Anthropic's current WIF, authentication, and reference documentation plus the GA announcement
+- Added a critical credential-precedence caveat: `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN` override federation; migration must unset keys, confirm WIF is selected, then revoke the key
+- Refined mechanism and least-privilege guidance: OIDC JWT → issuer/rule checks → scoped service-account token; configure workspace/scope and rely on SDK refresh while retaining upstream IdP controls
+- Research note: `research/ai-routine/20261122-120000-claude-workload-identity-federation.md`
+- Next: inspect `A2UI + MCP Apps`

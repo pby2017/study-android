@@ -3526,15 +3526,17 @@ cards:
   interview: "MCP Enterprise-Managed Authorization은 기존 OAuth를 없애는 필수 기능인가요? 적용 전 무엇을 확인해야 하나요?"
   answer: "아니다. EMA는 MCP core에 추가되는 선택적 authorization extension이다. 호환 클라이언트가 기업 IdP에서 받은 identity assertion으로 ID-JAG를 요청하고, MCP 서버의 authorization server에서 이를 access token으로 교환한다. 따라서 IdP 발급자, 클라이언트, 서버 authorization server가 모두 해당 흐름을 지원해야 한다. 서버는 JWT 서명·issuer·audience·만료와 scope/권한 claim을 검증하고, 조직 정책·토큰 수명·회수 동작을 확인해야 한다."
 - category: ai
-  title: Claude WIF GA — 에이전트 자동화에서 정적 API 키 없애기
-  summary: 'Claude Platform의 Workload Identity Federation(WIF)은 2026년 6월 17일 GA가 됐다. WIF는 정적 API 키 대신 요청 시점에 짧게 살아 있는 scoped credential을 발급하고, AWS IAM role, GCP/Kubernetes service account, Azure managed identity, GitHub Actions token, Okta 같은 OIDC 호환 identity provider와 연결된다. 적용 범위는 Claude API endpoints, first-party SDK, Claude Code 접근까지 포함된다. 에이전트 자동화에서는 API 키를 저장소·CI 변수·로컬 설정에 오래 보관하지 않고, workload별 service account와 audit log로 호출 주체를 분리할 수 있다는 점이 핵심이다.
-
-    '
+  title: Claude WIF — OIDC 토큰으로 워크로드를 인증하고 정적 키를 단계적으로 제거하기
+  summary: >-
+    Claude Platform의 Workload Identity Federation(WIF)은 workload가 AWS, Google Cloud, Kubernetes, GitHub Actions 등 IdP의 OIDC JWT를 제시하면 Anthropic이 신뢰 규칙을 검증하고 service account 권한으로 단기 access token을 발급하는 방식이다. SDK가 교환과 갱신을 처리하므로 장기 API 키를 배포하지 않아도 된다. 다만 기존 `ANTHROPIC_API_KEY`가 남아 있으면 credential 우선순위 때문에 WIF를 가릴 수 있다. issuer·claim 조건, 대상 service account, workspace, 최소 scope를 설정한 뒤 실제 토큰 경로를 확인하고 키를 제거·폐기한다. WIF는 상위 IdP의 신뢰 설정을 대체하지 않으며, API 키 우선순위도 자동으로 없애지 않는다.
   points:
-  - 정적 API key 대신 짧게 살아 있는 scoped credential을 요청 시 발급
-  - AWS/GCP/Kubernetes/Azure/GitHub Actions/Okta 등 OIDC identity와 연동
-  - workload별 service account·role·audit trail로 에이전트 호출 주체 분리
-  source: https://claude.com/blog/workload-identity-federation
+  - 'OIDC JWT → issuer/rule 검증 → service account에 묶인 단기 Claude token'
+  - '최소 scope·workspace로 제한하고 SDK의 token refresh 사용'
+  - '마이그레이션: WIF 검증 → API key 환경변수 제거 → 인증 경로 확인 → 키 폐기'
+  source: https://platform.claude.com/docs/en/manage-claude/workload-identity-federation
+  level: "고급"
+  interview: "WIF를 도입했는데도 Claude SDK가 기존 API key를 계속 쓰는 이유는 무엇이며 안전하게 마이그레이션하려면 어떻게 하나요?"
+  answer: "SDK의 credential 우선순위에서 명시적 API key와 `ANTHROPIC_API_KEY`가 federation 설정보다 앞선다. 먼저 issuer, federation rule, service account, workspace, 최소 OAuth scope를 구성하고 workload에서 `ant auth status` 등으로 WIF 교환을 검증한다. 그다음 CI·컨테이너·셸의 API key 환경변수를 제거하고 WIF가 선택되는지 다시 확인한 뒤 기존 키를 폐기한다. 연동된 IdP의 JWT 발급 권한과 claim 조건도 최소 권한으로 제한한다."
 - category: ai
   title: A2UI + MCP Apps — 에이전트 UI를 iframe과 네이티브 렌더링 사이에서 설계하기
   summary: 'Google Developers Blog의 A2UI + MCP Apps 글은 에이전트 UI가 단순 텍스트를 넘어가면 두 선택지 사이에서 흔들린다고 설명한다. MCP Apps는 iframe 안에서 HTML/CSS/JavaScript로 자유롭게 만들 수 있지만, 호스트와 디자인·스크롤·보안 경계가 어긋날 수 있다. A2UI는 JSON payload로 무엇을 렌더링할지 선언하고 호스트가 네이티브 컴포넌트로 그려 일관성과 보안을 얻지만, 복잡한 클라이언트 로직에는 약하다. 실무 포인트는 "에이전트가 UI를 만든다"가 아니라, 표·폼·차트 같은 구조 데이터는 A2UI, 복잡한 상호작용은 MCP Apps, 혼합 화면은 두 방식을 조합하는 아키텍처 문제로 보는 것이다.
