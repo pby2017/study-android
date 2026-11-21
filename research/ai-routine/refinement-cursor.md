@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Copilot Sandboxes — 에이전트 명령 실행을 로컬·클라우드 격리층에 넣기` around local OS-level policy versus cloud session isolation, CLI `--cloud` interactive-only behavior, and separate shared compute/memory versus snapshot-storage billing; next candidate: inspect the Copilot CLI remote-control card/topic and distinguish steering a live local host from cloud sandbox execution.
+Current position: added `Copilot CLI Remote Control — 실행 중인 세션을 Android에서 조종하기`, distinguishing view-only sync, `/remote on`, org `View and control` policy, host-local execution versus GitHub event sync, and separate cloud sandbox execution; next candidate: review existing Copilot Mobile agent task entry points and permission/review boundaries for current accuracy.
 
 Last update: 2026-11-22 07:45 KST
 
@@ -765,4 +765,8 @@ Rules:
 - Split billing: running compute and allocated memory share monthly included compute usage; stopped snapshot storage is separately metered/charged. Omitted volatile exact rates
 - Explicitly distinguished remote-control steering of a live local host (`/remote on`) from a cloud sandbox session
 - Research note: `research/ai-routine/20261122-130000-copilot-sandboxes-refresh.md`
+- Added: `Copilot CLI Remote Control — 실행 중인 세션을 Android에서 조종하기`
+- Verified remote control is opt-in and user-specific; basic synced session visibility is view-only; the host must stay online with the interactive CLI running
+- Distinguished local-host steering from cloud sandbox execution; documented `/keep-alive`, organization `View and control` policy, session-event transmission to GitHub, and host-local execution
+- Research note: `research/ai-routine/20261122-131500-copilot-cli-remote-control.md`
 - Next: inspect `A2UI + MCP Apps`

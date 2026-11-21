@@ -8996,3 +8996,14 @@ cards:
   source: https://developer.android.com/blog/posts/ai-agents-android-studio-integration
   interview: "Android Studio에서 외부 ACP 에이전트를 연결하는 실무상 이점은 무엇인가요?"
   answer: "기존 에이전트를 유지하면서 Emulator·빌드·Logcat 등 Android 개발 도구 맥락을 작업에 연결할 수 있다. 다만 생성된 변경은 AI Change Review 등으로 개발자가 검토해야 한다."
+- category: ai
+  level: "중급"
+  title: Copilot CLI Remote Control — 실행 중인 세션을 Android에서 조종하기
+  summary: "GitHub Mobile은 실행 중인 Copilot CLI 세션에 연결해 진행 상황을 보고 permission 요청에 답하거나 작업을 이어가게 한다. 세션 기록이 동기화되어 보이는 것만으로 조작 권한이 생기지는 않는다. 대화형 세션에서 `/remote on`을 켜야 하며, 조직 계정은 관리자가 `View and control` 정책을 허용해야 한다. 명령과 파일 작업은 계속 호스트에서 실행되고 세션 이벤트는 GitHub로 전송된다. 따라서 호스트는 온라인·실행 상태를 유지해야 하며, 이는 cloud sandbox와 다르다."
+  points:
+  - "대화형 CLI에서 `/remote on`; 연결 링크나 QR로 GitHub Mobile의 Agent sessions를 연다"
+  - "동기화된 기록은 view-only; 조직 좌석은 `View and control` 정책 필요. 세션 이벤트는 GitHub로, 명령 실행은 호스트에 남음"
+  - "호스트 컴퓨터는 온라인·실행 상태 유지; 필요하면 `/keep-alive busy`로 작업 중 절전 방지"
+  source: https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/steer-remotely
+  interview: "CLI 세션이 GitHub Mobile에 보이면 그 세션을 바로 조작할 수 있나요? 휴대폰에서 조작하는 동안 개발 컴퓨터를 꺼도 되나요?"
+  answer: "아니다. 동기화된 세션은 보기만 가능할 수 있고, 조작하려면 대화형 CLI에서 `/remote on`을 켜야 한다. 조직 계정은 관리자 정책이 `View and control`이어야 한다. 세션 이벤트는 GitHub로 보내지만 명령·파일 작업은 호스트에서 계속 실행되므로 기기가 온라인이고 CLI가 살아 있어야 한다. 호스트 없이 실행하려면 별도 cloud sandbox를 선택하고 과금·정책을 확인한다."
