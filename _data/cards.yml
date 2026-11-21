@@ -36,17 +36,15 @@ cards:
   answer: "타입 오류를 더 일찍 찾고, IDE와 컴파일러가 안전한 코드 분석을 할 수 있다. 다만 Kotlin도 `!!`나 Java 상호운용의 platform type에서는 NPE가 발생할 수 있다."
 - category: kotlin
   level: "초급"
-  title: 문(statement)과 식(expression)
-  summary: '자바는 if/제어구조가 값을 만들지 않는 ''문''이지만, 코틀린은 루프를 뺀 대부분의 제어구조가 값을 만드는 ''식''이다. 그래서 `return if(cond) A else B`가 가능하다. 함수도 두 종류 — 중괄호로 감싼 ''블록 본문 함수''와 등호로 잇는 ''식 본문 함수''. 식 본문 함수는 타입 추론 덕에 반환형을 생략할 수 있다(블록 본문은 불가). 이 차이가 코틀린 특유의 간결함의 출발점이다.
-
-    '
+  title: Kotlin의 if·when은 값을 만드는 식
+  summary: '`if`와 `when`은 조건에 맞는 분기의 값을 반환하므로 변수에 대입하거나 함수 인자로 전달할 수 있다. 식으로 쓸 때 `if`는 `else`가 필요하고, `when`은 모든 경우를 다뤄야 한다. 분기 블록에서는 마지막 식이 결과가 된다. 반면 `for`·`while` 반복문은 값을 돌려주는 식이 아니다.'
   points:
-  - 코틀린의 if/when은 값을 반환하는 '식'
-  - 식 본문 함수 `fun f() = 1` 은 반환형 생략 가능
-  - 변수도 타입 추론으로 생략 가능
-  source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/2장-코틀린_기초.md
-  interview: "값을 만드는 if를 함수 인자로 넘길 수 있는 이유는?"
-  answer: "Kotlin의 if는 식(expression)이므로 결과값을 반환한다. Java의 if는 statement라 값을 직접 만들지 않는다."
+  - '`val max = if (a > b) a else b`처럼 조건 결과를 바로 대입한다.'
+  - '`when`은 식과 문(statement) 양쪽으로 쓸 수 있다.'
+  - 식으로 쓰는 `when`은 모든 경우를 처리해야 한다.
+  source: https://kotlinlang.org/docs/control-flow.html
+  interview: "`if` 결과를 변수에 대입할 때 `else`가 필요한 이유는?"
+  answer: "식은 모든 경로에서 값을 정해야 한다. 조건이 거짓일 때 돌려줄 분기가 없으면 결과가 정해지지 않기 때문이다."
 - category: kotlin
   level: "초급"
   title: 컬렉션 생성 함수 — setOf/hashSetOf/arrayListOf
