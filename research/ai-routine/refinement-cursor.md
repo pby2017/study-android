@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android CLI + Skills`; next candidate: inspect `Google AI Studio Android prototyping` for current generation, preview/test, export, and release boundaries.
+Current position: refined `Google AI Studio Android` personal-app distribution boundary; next candidate: inspect `Android Studio Agent Mode parallel conversations` for current availability, concurrency limits, and differences from separate sessions.
 
-Last update: 2026-11-22 05:08 KST
+Last update: 2026-11-22 05:11 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -613,3 +613,14 @@ Rules:
 - Compared with Android Studio Agent Mode: related but distinct cross-agent command/skill/documentation workflow versus IDE-centered agent execution and verification.
 - Sources and limitations: `research/ai-routine/20261122-050833-android-cli-skills.md`.
 - Next: inspect `Google AI Studio Android prototyping`.
+
+
+## 2026-11-22 05:11 KST
+
+- Refined `Google AI Studio Android` using the Nov 17 full-stack Android Build announcement and current Google Play Help.
+- Replaced the May prototype/internal-track storyline with the current personal Play library route; distinguished private personal apps from public/test-track distribution and Play review.
+- Added current personal-app eligibility (US, 18+ age-verified personal account, Play Store 53.5+) and explicitly avoided marketing-language claims of production readiness.
+- Historical note: May's AI Studio internal-testing-track announcement is a different Play Console developer-account path; do not conflate it with the new personal-app flow.
+- No star count used: this hosted product's current attention signal is the five-day-old first-party feature launch, not repository stars. Capability claims are vendor-reported and not independently tested.
+- Sources and limitations: `research/ai-routine/20261122-051100-ai-studio-android.md`.
+- Next: inspect `Android Studio Agent Mode parallel conversations`.
