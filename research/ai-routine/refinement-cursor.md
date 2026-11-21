@@ -2,11 +2,14 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Kokoro-82M — 경량 TTS의 품질 한계와 Android 통합 체크`; next candidate in the current data sequence is `Dia2(Nari Labs) — 웃음·기침·한숨까지 재현하는 대화 전용 TTS 모델(Apache-2.0·1.6B)`.
+Current position: continue after `Dia2 — 대화형 TTS의 조기 생성과 실제 스트리밍을 구분하기`; next candidate: inspect the following card after Dia2 in `_data/cards.yml`.
 
-Last update: 2026-11-22 02:00 KST
+Last update: 2026-11-22 01:48 KST
 
 Current run:
+- Reviewed and refined: `Dia2` (corrected 1.6B to current 1B/2B checkpoints; distinguished early audio generation from real-time streaming server; stated English and 2-minute limits; added Android feasibility interview practice)
+- Sources re-checked: official Dia2 GitHub README, license, and Hugging Face model cards; live repository metadata
+- No evidence of upstream Android SDK or product-level Android streaming support
 - Reviewed and refined: `Kokoro-82M` (removed unsourced 14x quality claim; corrected 44 to 54 voices; added voice-quality/runtime limits and Android integration interview practice)
 - Sources re-checked: official model card, voice list, evaluation note, and inference repository; live GitHub/Hugging Face metadata
 - No performance or Android support claim beyond upstream evidence
@@ -199,7 +202,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `Dia2(Nari Labs) — 웃음·기침·한숨까지 재현하는 대화 전용 TTS 모델(Apache-2.0·1.6B)`; verify current paper, license, and real-time/device support before editing.
+- Continue with the card immediately after Dia2 in `_data/cards.yml`; confirm it is still relevant and non-duplicative before research.
 
 Per successful refinement run, update this file with:
 - timestamp
