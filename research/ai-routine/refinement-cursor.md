@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `subagentStatusLine` and `--exclude-dynamic-system-prompt-sections`; continue the oldest-first scan with the next remaining AI card.
+Current position: refined `claude -p --bare` and `/usage`; continue the oldest-first scan with the next remaining AI card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1068,3 +1068,10 @@ Rules:
 - Sources: [Claude Code changelog](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md), [CLI reference](https://code.claude.com/docs/en/cli-reference)
 - Research note: `research/ai-routine/20261122-085300-claude-statusline-and-cache-flag-refinement.md`
 - Next: continue the oldest-first AI card pass with `claude -p --bare`; verify current auto-discovery, explicit configuration, and JSON output details.
+
+
+- Refined the `claude -p --bare` card against current headless docs: automatic discovery scope, settings/permission exception, hooks staying disabled, and authentication requirements.
+- Refined the `/usage` card against the current costs guide: plans covered, per-skill/subagent/plugin/MCP attribution, local-history limitations, and MCP attribution boundary.
+- Sources: [Headless mode](https://code.claude.com/docs/en/headless), [Plan usage breakdown](https://code.claude.com/docs/en/costs#plan-usage-breakdown)
+- Research note: `research/ai-routine/20261122-085500-claude-bare-and-usage-refinement.md`
+- Next: continue the oldest-first AI card pass with `오토 메모리`; verify current memory scope, automatic loads, and deletion/disable semantics.

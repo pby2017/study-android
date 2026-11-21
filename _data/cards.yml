@@ -812,25 +812,27 @@ cards:
   interview: "/btw가 이미 읽은 파일과 아직 읽지 않은 파일에 대해 답하는 방식은 어떻게 다른가요?"
   answer: "이미 컨텍스트에 있는 내용은 참고하지만 새 파일 읽기, 명령 실행, 검색은 못 한다. 도구가 필요한 후속 작업은 f로 배경 서브에이전트에 넘긴다."
 - category: ai
-  title: claude -p --bare — CI에서 매번 같은 결과 나오게 잠그기
-  summary: '`claude -p`(헤드리스)는 기본적으로 대화형 세션과 똑같은 컨텍스트를 읽는다 — 작업 디렉터리나 `~/.claude`의 훅·스킬·플러그인·MCP 서버·자동 메모리·CLAUDE.md를 전부 자동 발견한다. 문제는 CI에서다. 동료의 `~/.claude` 훅이나 프로젝트 `.mcp.json`이 끼면 머신마다 결과가 달라진다. `--bare`를 붙이면 이 자동 발견을 통째로 건너뛰어, 명시적으로 넘긴 플래그만 적용된다. bare 모드에서도 Bash·파일 읽기·편집 도구는 쓸 수 있고, 컨텍스트는 `--append-system-prompt`, `--mcp-config`, `--settings`, `--agents` 같은 플래그로 직접 주입한다. 출력은 `--output-format json`으로 받으면 `result`·`session_id`와 `total_cost_usd`(모델별 비용 분해 포함)가 들어와 스크립트가 결과·지출을 파싱할 수 있다.
-
-    '
+  level: "중급"
+  title: claude -p --bare — 자동 탐색을 끄고 필요한 기능만 넘기기
+  summary: claude -p는 기본적으로 프로젝트와 사용자 설정에서 훅·스킬·플러그인·MCP·CLAUDE.md 등을 자동 탐색한다. --bare는 이 탐색을 건너뛰어 스크립트가 필요한 입력만 명시하게 한다. 단 settings와 권한 규칙은 여전히 읽지만 훅은 --settings로 전달해도 실행되지 않는다. Anthropic API 사용 시 OAuth나 키체인 대신 API 키 또는 apiKeyHelper가 필요하다.
   points:
-  - '--bare: 훅·스킬·플러그인·MCP·자동 메모리·CLAUDE.md 자동 발견을 모두 건너뜀 — 머신 무관 재현성'
-  - bare는 Bash·읽기·편집만 기본 제공, 나머지는 --mcp-config/--settings/--agents/--append-system-prompt로 명시 주입
-  - --output-format json → result·session_id·total_cost_usd(모델별 분해)로 결과·비용 추적 / 파이프 stdin은 10MB 상한(v2.1.128)
+  - 자동 탐색 중단: 훅·스킬·명령·에이전트·플러그인·MCP·자동 메모리·CLAUDE.md
+  - settings·권한 규칙은 읽지만 훅은 실행하지 않음; MCP와 에이전트는 명시 전달
+  - Anthropic API 인증은 API 키 또는 apiKeyHelper; 클라우드 제공자 자격 증명은 별도
   source: https://code.claude.com/docs/en/headless
+  interview: "--bare로 실행해도 settings의 권한 규칙과 훅이 모두 무시되나요? Anthropic API 인증은 어떻게 준비해야 하나요?"
+  answer: "settings와 권한 규칙은 읽지만 훅은 실행하지 않는다. 자동 발견을 건너뛴 MCP·에이전트 등은 명시적으로 넘기고, Anthropic API는 API 키나 apiKeyHelper를 제공해야 한다."
 - category: ai
-  title: /usage — 플랜 한도가 스킬·서브에이전트·플러그인·MCP 중 어디로 새는지 % 분해
-  summary: '`/cost`가 이번 세션의 달러·소요 시간(API 시간·실제 경과 시간) 요약을 보여준다면, `/usage`는 다른 일을 한다. Pro·Max·Team·Enterprise 플랜에서 `/usage`는 최근 사용량이 내 플랜 한도에 얼마나 잡아먹었는지를 보여주는데, 핵심은 그 사용량을 스킬·서브에이전트·플러그인·개별 MCP 서버별로 전체 대비 퍼센트로 쪼개 준다는 점이다. 즉 "한도가 빨리 차는 범인"이 어떤 스킬이나 어떤 MCP 서버인지 눈으로 짚어낼 수 있다. 화면에서 `d`/`w` 키로 최근 24시간과 7일을 전환할 수 있고, 다른 기기나 claude.ai에서 쓴 사용량은 포함되지 않는다. 이 기능은 Claude Code v2.1.174 이상에서 동작한다.
-
-    '
+  level: "중급"
+  title: /usage — 플랜 사용량의 기여도와 기간 보기
+  summary: /usage는 현재 세션의 토큰·비용뿐 아니라 Pro·Max·Ultra·Team·Enterprise 플랜의 한도 사용량도 보여준다. 계획 사용량 분석은 최근 사용을 스킬·서브에이전트·플러그인·MCP 서버별 비율로 귀속하고 개선 권고를 제공한다. 수치는 이 기기의 최근 세션 기록으로 계산한 근사치이며 다른 기기나 claude.ai 사용량은 포함하지 않는다.
   points:
-  - /usage = 플랜 한도 기준 사용량을 스킬·서브에이전트·플러그인·MCP 서버별 % 로 분해 (≠ /cost의 달러·시간 요약)
-  - d/w 키로 최근 24시간 ↔ 7일 전환 / 다른 기기·claude.ai 사용량은 미포함
-  - Pro·Max·Team·Enterprise 플랜, Claude Code v2.1.174 이상 필요
-  source: https://code.claude.com/docs/en/costs
+  - 플랜 한도 사용량을 스킬·서브에이전트·플러그인·MCP 서버별 비율로 표시
+  - d/w로 최근 24시간과 7일 전환; MCP 비율은 도구 결과를 소비한 요청만 집계
+  - 로컬 세션 기록 기반 근사치 — 다른 기기와 claude.ai 사용량은 제외
+  source: https://code.claude.com/docs/en/costs#plan-usage-breakdown
+  interview: "/usage의 스킬·MCP 비율은 정확한 청구액인가요? MCP 서버에 한 번 연결하면 이후 모든 사용량이 그 서버에 귀속되나요?"
+  answer: "아니다. 기기 로컬 세션 기록으로 계산한 근사 비율이지 청구액이 아니며 다른 기기나 claude.ai 사용량은 포함하지 않는다. MCP 서버 비율도 그 서버 도구 결과를 실제로 소비한 요청만 센다."
 - category: ai
   title: 오토 메모리 — Claude가 스스로 적는 MEMORY.md로 세션 넘어 학습하기
   summary: 'Claude Code 메모리는 두 갈래다. CLAUDE.md는 내가 직접 쓰는 규칙이고, 오토 메모리(auto memory)는 Claude가 내 교정·선호를 보고 스스로 적어 두는 메모다. 빌드 명령, 디버깅에서 알아낸 점, 코드 스타일 선호 같은 걸 "다음 대화에서 쓸모 있겠다" 싶을 때만 저장한다(매 세션 저장하는 게 아님). 저장 위치는 `~/.claude/projects/<project>/memory/`이고, 인덱스 격인 `MEMORY.md`와 주제별 파일들로 나뉜다. 세션 시작 때는 `MEMORY.md`의 앞 200줄(또는 25KB)만 불러오고 나머지 주제 파일은 필요할 때 그때그때 읽는다. 전부 평범한 마크다운이라 `/memory`로 열어 직접 보고 고치거나 지울 수 있다.
