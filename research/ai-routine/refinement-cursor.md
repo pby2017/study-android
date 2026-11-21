@@ -709,4 +709,8 @@ Rules:
 - Reviewed and refined: `Codex Plugins·Sites·Annotations` using the OpenAI launch post and current plugin/Sites help documentation
 - Kept the 62-app/110-skill numbers out of the live summary because they describe the June 2026 launch snapshot; clarified app permissions, Site privacy/sharing/publication controls, usage, and targeted annotations
 - Research note: `research/ai-routine/20261122-083000-codex-role-plugins-sites-annotations.md`
-- Next: inspect `Google Colab CLI`
+- Reviewed and refined: `Google Colab CLI` using the Google launch post, upstream README/operator skill/changelog, and current PyPI metadata
+- Replaced the launch-era GPU provisioning framing with the current `colab run` create-execute-cleanup workflow; added account quota, compute-unit, `--keep`, and OS boundaries
+- Verified PyPI v0.8.0 (2026-11-10), Python >=3.12, and 2.7k GitHub stars at review time; recorded the README/PyPI OS metadata mismatch in the research note rather than overclaiming portability
+- Research note: `research/ai-routine/20261122-090000-google-colab-cli.md`
+- Next: inspect `Copilot 1M 컨텍스트·추론 레벨`
