@@ -4507,3 +4507,12 @@ Refined:
 - 기존 GitHub URL https://github.com/swaptr/aide 는 현재 404로 확인되어 살아 있는 1차 출처인 저자 글로 교체. 저장소 별 수치·star 관심도는 확인 불가하므로 쓰지 않음.
 - Verified from the author post: LiteRT-LM with Gemma 4 E2B/E4B, keyboard/chat/assistant surfaces, Sherpa-ONNX STT/TTS/VAD, optional Ollama path, per-category tool permissions and destructive-action confirmation.
 - Removed 37-language translation count and claims that all data always remains local; reframed as a creator-described case study and explicitly noted lack of independent performance evidence and remote-model boundary.
+
+### 2026-11-22 03:02 KST — AppFollow MCP/AI Toolkit 카드 갱신
+
+- Refined: `AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답` → `AppFollow MCP + AI Toolkit — 앱 리뷰를 AI 에이전트의 분석 흐름에 연결`.
+- Re-checked official MCP/Toolkit setup and permissions, current AI features overview, data-processing policy, 2026 product updates, Google Play review analytics, and the vendor's linked GitHub toolkit.
+- Added live MCP review/rating/ASO data, repeatable feedback/ASO workflows, role-based read/write permissions, review-draft control, OpenAI API processing, and workspace API-credit caveat.
+- Removed AppFollow customer-name claims and AppFollow-to-rating causality claim. Google Play's +0.7 statement refers to the average change to a replied negative review, not a guaranteed app-wide rating increase or AppFollow-specific effect.
+- Toolkit GitHub showed 4 stars and 1 commit at review; recorded as a small/early-stage project signal, not as proof of popularity or quality. Card focuses on verifiable workflow utility rather than claiming broad adoption.
+- Practical guardrail: use review summaries to prioritize investigation, not to assert a root cause; compare with release, crash, and reproduction evidence.

@@ -4,7 +4,7 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: continue after `ObjectBox` / `sqlite-vector` (merged into one AI+Android RAG comparison); next candidate: `AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답` (the intervening MASVS/R8 card is pure Android and out of scope).
 
-Last update: 2026-11-22 02:59 KST
+Last update: 2026-11-22 03:02 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -312,7 +312,7 @@ Rules:
 - Live interest signal: ObjectBox 4.6k stars; SQLite-Vector 1.2k stars (not embedded in card because counts change).
 - Removed unsupported/stale resource and benchmark claims; clarified ANN vs SQLite BLOB/extension trade-off and that storage does not generate embeddings or LLM responses.
 - Card count reduced by one.
-- Next: `AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답`; re-check current features and independent proof for outcome claims.
+- Next: `koog-compose — Koog + Compose로 온디바이스 AI 에이전트를 Android·iOS UI에 직접 통합`; verify project existence, maintenance, and actual Android/runtime support before deciding whether to keep the card.
 
 
 ## 2026-11-22 02:59 KST
@@ -321,3 +321,12 @@ Rules:
 - The old GitHub URL currently returns 404; replaced it with the creator-authored post and removed any star-count claim.
 - Scoped model, keyboard/chat/voice, Sherpa-ONNX, optional Ollama, and permissions to the post; removed unverified translation quantity and absolute privacy language.
 - Next: `AppFollow`; re-check current product details and evidence behind outcome metrics.
+
+
+## 2026-11-22 03:02 KST
+
+- Reframed AppFollow as a current MCP + AI Toolkit integration case for mobile-app feedback analysis.
+- Verified official MCP client/data coverage, Toolkit workflows, role-scoped access, OpenAI API processing, workspace API credits, and review draft controls.
+- Removed the unsourced customer-use list and clarified Google’s +0.7 figure is not an AppFollow-specific or app-wide guaranteed outcome.
+- Toolkit GitHub was at 4 stars / 1 commit; this is a low, volatile adoption signal, not a popularity claim.
+- Next: `koog-compose`; check repo health and Android/backend implementation.
