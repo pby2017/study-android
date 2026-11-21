@@ -2834,15 +2834,16 @@ cards:
   interview: "Tolgee가 Android의 %1$s placeholder를 내부에서 ICU 형식으로 바꾸면 앱에서도 formatter를 바꿔야 하나요?"
   answer: "가져오기 때 Android printf placeholder를 Tolgee ICU placeholder로 바꿀 수 있고, XML 내보내기 때 원래 형식으로 되돌린다. Android SDK는 기본적으로 Sprintf formatter를 사용한다. 프로젝트에서 ICU 형식을 유지한다면 SDK formatter도 ICU로 맞춘다. 또 resource ID에서 Tolgee 키를 찾으므로 두 쪽의 키 이름이 일치하는지 확인한다."
 - category: ai
-  title: RevenueCat SOSA 2026 — AI 앱은 41% 더 벌지만 30% 더 빠르게 이탈, 하드 페이월이 프리미엄 5배
-  summary: 'RevenueCat의 State of Subscription Apps 2026 리포트(115,000 앱·$16B 매출·10억 트랜잭션)에 따르면, AI 앱은 유저당 매출 41% 높지만 이탈율 30% 높다. 하드 페이월(즉시 결제 요청)은 프리미엄 대비 전환율 5배 (10.7% vs 2.1%). AI 앱은 LLM 한계비용 때문에 관대한 프리미엄 축소·연간 플랜 유도·AI 전용 상위 티어 도입 추세. 월 중위 구독료 $4.99~$9.99(월), $29~$39.99(연). 3~6개월 리텐션이 핵심.
-
-    '
+  title: 'RevenueCat 2026 — AI 앱은 더 벌지만 구독 유지율은 낮다'
+  level: "중급"
+  summary: 'RevenueCat 표본에서 AI 앱의 첫해 결제자 실현 매출 중앙값은 비AI보다 41% 높았다($30.16 vs. $21.37). 그러나 12개월 구독 유지율은 AI 앱이 월간 6.1%, 연간 21.1%로 비AI 앱(각 9.5%, 30.7%)보다 낮았다. 매출은 결제자당, 유지율은 구독 플랜별 지표이므로 함께 보고 판단한다.'
   points:
-  - 'AI 앱: 유저당 매출 41%↑, 이탈율 30%↑ — 리텐션이 핵심'
-  - '하드 페이월: 프리미엄 대비 전환율 5배(10.7% vs 2.1%)'
-  - '데이터: 115,000 앱·$16B 매출·10억 트랜잭션 분석'
-  source: https://www.revenuecat.com/state-of-subscription-apps/
+  - 'AI 표본 3,519개 설정: iOS 2,633개, Android 886개; 구독 시작 기간은 2024년 7월~2025년 6월'
+  - '첫 갱신 전에 반복 사용 이유를 만들고, 월간·연간 플랜별 12개월 유지율을 따로 추적'
+  - '벤치마크는 RevenueCat 사용 앱의 관측값이다. 앱별·플랫폼별 결과나 인과효과로 일반화하지 않기'
+  source: https://www.revenuecat.com/blog/growth/ai-app-retention-study
+  interview: "AI 앱의 결제자당 매출이 높은데도 구독 유지율이 낮다면, 어떤 지표와 제품 행동을 먼저 확인하나요?"
+  answer: "결제자당 매출과 유지율은 분모가 다르므로 하나로 합치지 않는다. 월간·연간 구독 코호트별 첫 갱신과 12개월 유지율을 나누어 보고, 첫 유용한 결과까지 걸린 시간과 갱신 전 재방문 행동을 함께 확인한다. RevenueCat 표본은 관측 자료이므로 가격·페이월 변경의 효과는 자체 코호트나 실험으로 검증한다."
 - category: ai
   title: ADK for Android — 클라우드와 Gemini Nano 에이전트를 앱 안에서 조합
   level: "중급"

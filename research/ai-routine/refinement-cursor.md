@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Tolgee — 화면 문맥을 활용해 Android 번역을 AI로 제안하고 검수하기`; next candidate: `RevenueCat SOSA 2026`.
+Current position: continue after `RevenueCat 2026 — AI 앱은 더 벌지만 구독 유지율은 낮다`; next candidate: `ADK for Android`.
 
-Last update: 2026-11-22 02:34 KST
+Last update: 2026-11-22 03:45 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -269,7 +269,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `RevenueCat SOSA 2026`; verify the reported AI-app revenue/churn comparisons and paywall metric against the original study before refining.
+- Continue with `ADK for Android`; re-check current Android developer documentation before further refinement.
 - GrowthBook was removed from the deck because the reviewed card had no central AI use case; the historical publication log is retained.
 - LinkForty was removed because the reviewed card had no central AI use case; the historical publication log is retained.
 
@@ -285,3 +285,12 @@ Rules:
 - Keep cards scoped to AI or AI+Android developer education.
 - Prefer clearer summaries and practical bullets over longer prose.
 - Do not update this cursor if verification fails or changes are not committed.
+
+
+## 2026-11-22 03:45 KST
+
+- Reviewed and refined: `RevenueCat SOSA 2026` → `RevenueCat 2026 — AI 앱은 더 벌지만 구독 유지율은 낮다`
+- Re-checked official 2026 AI retention study, report methodology, and Android paywall analysis.
+- Kept AI-only payer LTV and plan-specific 12-month retention; removed general-market paywall conversion comparison, unsupported price bands, and unsupported 3–6 month claim.
+- Recorded sample composition, observation period, denominator distinctions, and non-causal inference limits.
+- Next: `ADK for Android`.

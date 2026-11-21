@@ -4475,3 +4475,10 @@ Refined:
 - Refined: `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`
 - Sources re-checked: https://github.com/SWE-agent/mini-swe-agent, https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/main/README.md, https://mini-swe-agent.com/latest/faq/, https://mini-swe-agent.com/latest/advanced/v2_migration/, and https://api.github.com/repos/SWE-agent/mini-swe-agent
 - Rejected: fresh publication because this bounded refinement pass stayed focused on re-verifiable older cards; pure Android-only topics remained below threshold.
+
+## 2026-11-22 — 검증 기반 카드 정제
+
+- Published: none
+- Refined: `RevenueCat 2026 — AI 앱은 더 벌지만 구독 유지율은 낮다`
+- Sources re-checked: https://www.revenuecat.com/blog/growth/ai-app-retention-study, https://www.revenuecat.com/state-of-subscription-apps, https://www.revenuecat.com/blog/engineering/android-paywall-gap
+- Removed unrelated whole-market paywall conversion, unsupported price ranges, and 3–6 month retention advice; kept AI-only sample metrics and stated sample/platform/causality limits.
