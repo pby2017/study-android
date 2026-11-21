@@ -470,14 +470,14 @@ cards:
   answer: "아니다. 출력 스타일은 매 응답에 적용되는 지침이며 보장된 차단 기능이 아니다. 매번 실행해야 하는 검사는 Hook이나 권한 규칙에 둔다. 프로젝트 구조와 규칙은 CLAUDE.md, 특정 작업 절차는 Skill로 분리한다. 커스텀 스타일에서 코딩을 계속 시킬 때는 `keep-coding-instructions: true`를 설정해 기본 코딩 지침이 빠지지 않게 한다."
 - category: ai
   title: fallbackModel — 기본 모델이 막힐 때 대체 모델로 자동 전환
-  summary: 'fallbackModel은 기본 모델이 과부하(overloaded)거나 사용 불가일 때 쓸 백업 모델을 지정하는 설정이다. settings.json에 모델 이름 배열로 적으면 적힌 순서대로 시도하고, 전환되면 알림(notice)을 보여준다. 체인은 최대 3개까지만 적용되고 그 이상은 무시된다. `"default"`는 기본 모델로 확장된다. 이 키는 설정 파일 간 병합되지 않아서, 우선순위가 가장 높은 파일이 체인 전체를 결정한다. 한 세션만 바꾸려면 `--fallback-model` 플래그로 덮어쓸 수 있다.
-
-    '
+  summary: 'Claude Code의 `fallbackModel`은 기본 모델이 과부하·사용 불가 또는 재시도할 수 없는 서버 오류를 반환할 때 대체 모델을 순서대로 시도한다. 전환은 현재 턴에만 적용되고 알림이 표시되며, 다음 메시지는 기본 모델부터 다시 시도한다. 인증·결제·rate-limit·요청 크기·전송 오류와 정책 거부는 fallback 대상이 아니다. 목록은 중복 제거 후 허용된 모델 최대 3개만 사용한다. 설정 파일 간 목록은 병합되지 않으며, 가장 우선순위가 높은 파일의 전체 체인이 적용된다. `--fallback-model`은 해당 세션에서 설정을 덮어쓴다.'
   points:
-  - 기본 모델 과부하·불가 시 배열 순서대로 백업 모델 시도 + 전환 알림 표시
-  - 체인 최대 3개(초과 무시) / "default"는 기본 모델로 확장 / 병합 안 됨(최상위 파일이 전체 결정)
-  - 단발성 변경은 --fallback-model 플래그로 한 세션만 덮어쓰기
-  source: https://code.claude.com/docs/en/settings
+  - '오류 유형을 구분: 인증·rate-limit·전송·정책 오류는 모델 fallback으로 해결되지 않음'
+  - '최대 3개의 허용된 모델을 순서대로 사용; `"default"`는 계정의 기본 모델을 가리킴'
+  - '설정 체인은 파일 간 병합하지 않음; `--fallback-model`은 현재 세션에서 우선'
+  source: https://code.claude.com/docs/en/settings-reference#fallbackmodel
+  interview: "기본 모델 호출이 rate-limit 오류를 반환했는데 fallbackModel을 설정했다면 대체 모델로 전환되나요? 사용자 설정과 프로젝트 설정에 서로 다른 체인을 지정하면 어떻게 되나요?"
+  answer: "rate-limit 오류는 fallback 대상이 아니므로 전환되지 않는다. fallback은 과부하, 모델 사용 불가, 비재시도 서버 오류 등에 대응한다. 설정 파일의 체인도 병합하지 않으며, `fallbackModel`을 정의한 파일 중 가장 우선순위가 높은 파일의 전체 목록을 사용한다. 한 세션에서 바꾸려면 `--fallback-model`을 쓴다."
 - category: ai
   title: Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기
   summary: 'Stop·SubagentStop 훅은 hookSpecificOutput.additionalContext로 문자열을 돌려줄 수 있다. Claude Code는 이 문자열을 시스템 리마인더로 감싸 턴이 끝나는 지점에 끼워 넣고, 대화가 계속되어 Claude가 그 내용을 보고 작업을 이어간다. decision: "block"이 오류 피드백으로 강제 계속시키는 것과 달리, additionalContext는 오류가 아닌 정보성 피드백이다. 한 이벤트에 여러 훅이 값을 돌려주면 Claude는 전부 받고, 한 값이 10,000자를 넘으면 전체 텍스트는 세션 디렉터리 파일로 저장되고 미리보기와 파일 경로만 전달된다.

@@ -4,9 +4,15 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:38 KST
+Last update: 2026-11-22 07:41 KST
 
 ## Latest pass
+- Reviewed and refined: `fallbackModel — 기본 모델이 막힐 때 대체 모델로 자동 전환`
+- Sources re-checked: official Claude Code model configuration, settings reference, settings precedence, and CLI reference
+- Specified which server/model errors trigger fallback and which errors do not; documented turn-only switching, primary retry next turn, three-distinct-allowed-model cap, and allowlist filtering
+- Kept the special non-merging precedence rule and session-only `--fallback-model` override; added a rate-limit/inter-file-precedence interview question
+- Next: continue oldest-first with the next AI/AI+Android card not yet explicitly reviewed; skip pure Android topics
+
 - Reviewed and refined: `Claude Code 출력 스타일 — 세션 응답의 역할·톤·형식 조정`
 - Source re-checked: current official Claude Code Output styles documentation
 - Corrected the built-in count (four styles besides Default), `/output-style` command availability (v2.1.269), and next-message activation (v2.1.251+); removed the stale `/clear` requirement
