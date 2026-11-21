@@ -2611,15 +2611,18 @@ cards:
   answer: "아니다. 생성기와 판정기가 같은 편향이나 오류를 공유할 수 있다. 중복·사실성·분포·안전성을 별도 기준으로 평가하고, 표본을 사람이 검수한다. 또 Distilabel 공식 저장소는 현재 커뮤니티 유지보수 상태를 알리고 있으므로, 새 버전·이슈 대응과 필요한 어댑터가 계속 관리되는지도 확인한다."
 
 - category: ai
-  title: Core AI(WWDC26) — Apple이 Apple Intelligence를 구동하는 온디바이스 AI 프레임워크를 개발자에게 공개
-  summary: 'Core AI는 WWDC26에서 발표된 Apple의 차세대 온디바이스 AI 프레임워크다. Apple Intelligence를 구동하는 동일 엔진을 개발자가 Swift API로 사용할 수 있게 됐다. AOT(Ahead-of-Time) 컴파일로 첫 실행 시간을 대폭 단축하고, Xcode 내장 Core AI Instruments로 텐서 값을 Python 소스까지 추적 디버깅 가능. Qwen· Mistral·SAM3 등 인기 오픈소스 모델을 Apple Silicon에 최적화한 Core AI Models 리포를 제공한다. 서버 비용 $0, 토큰당 비용 $0, 클라우드 레이턴시 0.
-
-    '
+  level: "중급"
+  title: Apple Core AI — 모델 변환 뒤에도 기기별 특화와 첫 실행을 설계하기
+  summary: 'Apple Core AI는 Apple 플랫폼용 온디바이스 추론 프레임워크다. Python·PyTorch 모델을 변환해 `.aimodel`로 만들고 Swift API에서 실행한다. 앱에 모델 파일을 포함하는 것만으로 즉시 추론할 수 있는 것은 아니다. 첫 로드에서 기기별 모델 특화가 필요할 수 있고, 사전 컴파일은 이 과정을 줄이지만 없애지는 않는다. Android 앱에는 Core AI를 직접 적용할 수 없으므로 Android 지원 런타임과 모델 형식을 별도로 선택해야 한다.'
   points:
-  - 'Apple Intelligence 동일 엔진: Swift API, AOT 컴파일, Neural Engine 최적화'
-  - 'Core AI Instruments: Xcode에서 텐서 값 → Python 소스 추적 디버깅'
-  - 'Core AI Models 리포: Qwen·Mistral·SAM3 변환 스크립트 + Swift 런타임 라이브러리'
+  - 'Python/PyTorch에서 변환·검증 후 Swift 앱에서 모델 실행'
+  - 'Xcode 도구로 텐서 값과 성능을 추적하고 병목을 측정'
+  - '모델 특화·캐시·사전 컴파일을 사용해 첫 실행 대기를 설계'
+  - 'Android와 Apple 플랫폼은 실행기·모델 변환·배포 경로가 다름'
   source: https://developer.apple.com/videos/play/wwdc2026/324/
+  interview: "Core AI 모델을 앱 번들에 포함하면 설치 직후 첫 추론도 바로 빠르게 실행되나요?"
+  answer: "항상 그렇지 않다. 모델은 해당 기기에서 특화되어야 하며, 첫 특화는 큰 모델에서 상당한 시간이 걸릴 수 있다. Apple은 사용자가 기다리는 흐름에서 특화하지 말고, 필요하면 사전 컴파일과 명시적 사전 로드를 고려하라고 설명한다. Android 앱에는 Core AI 대신 해당 플랫폼 런타임과 모델 형식을 사용해야 한다."
+
 - category: ai
   title: Gemma 4 — Apache-2.0로 풀린 Google의 에이전트급 온디바이스 모델, 140+ 언어·멀티모달·Function Calling
   summary: 'Gemma 4는 Google DeepMind가 Apache-2.0으로 공개한 온디바이스 AI 모델 패밀리다. 챗봇을 넘어 멀티스텝 계획·자율 행동·오프라인 코드 생성·오디오/비전 처리까지 디바이스에서 실행 가능. 140+ 언어 지원. Android AICore에 내장되어 시스템 전체에서 접근 가능하고, LiteRT-LM으로 iOS·Web·Desktop에도 배포. Gemma4-E2B(2.6B)는 Samsung S26 Ultra에서 557 tok/s(prefill) 달성.

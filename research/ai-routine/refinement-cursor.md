@@ -2,11 +2,13 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Distilabel — LLM 합성 데이터를 파이프라인으로 만들고 검수하기`; next candidate: inspect the following card after Distilabel in `_data/cards.yml`.
+Current position: continue after `Apple Core AI — 모델 변환 뒤에도 기기별 특화와 첫 실행을 설계하기`; next candidate: inspect the following card after Apple Core AI in `_data/cards.yml`.
 
-Last update: 2026-11-22 02:10 KST
+Last update: 2026-11-22 02:14 KST
 
 Current run:
+- Reviewed and refined: `Apple Core AI` (distinguished model conversion, device specialization, and ahead-of-time compilation; stated Apple-platform scope and Android non-portability)
+- Sources re-checked: official WWDC26 video transcript and linked Apple resources
 - Reviewed and refined: `Distilabel` (removed named-recipe and “any provider” claims without scope; added synthetic-data quality checks and current community-maintenance status)
 - Sources re-checked: official repository README and current documentation
 - Reviewed and refined: `MLflow` (removed unsupported “industry standard”, ownership/cost comparison, and vendor-lock-in claims; refocused on trace + evaluation workflow)
@@ -218,7 +220,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after Distilabel in `_data/cards.yml`; confirm current relevance and non-duplication before research.
+- Continue with the card immediately after Apple Core AI in `_data/cards.yml`; confirm current relevance and non-duplication before research.
 
 Per successful refinement run, update this file with:
 - timestamp
