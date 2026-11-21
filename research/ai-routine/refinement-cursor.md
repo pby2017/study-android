@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:59 KST
+Last update: 2026-11-22 08:01 KST
+
+## Latest pass
+- Refined `스킬 disallowed-tools — 호출 중 도구 가용성 줄이기` against the current official Claude Code skills guide.
+- Distinguished per-skill invocation tool removal (clears on the next user message) from persistent permission deny rules across skills/prompts; clarified that `allowed-tools` grants approvals without hiding other tools.
+- Added the documented `EndConversation` exception and an interview prompt to practice the scope distinction.
+- Source and rationale: `research/ai-routine/20261122-080100-claude-skill-disallowed-tools-refinement.md`.
+- Next: continue the oldest-first AI/AI+Android card scan, checking overlap and current primary sources before editing.
 
 ## Latest pass
 - Reviewed `StopFailure 훅 — API 에러로 턴이 끝날 때만 잡아내기` against the current official Claude Code hooks reference.

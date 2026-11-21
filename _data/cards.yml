@@ -549,15 +549,15 @@ cards:
   interview: "`PreCompact`에 agent 훅을 설정하면 실행되나요? `/hooks`에서 직접 수정할 수 있나요? `prompt`와 `agent`는 검증 방식이 어떻게 다른가요?"
   answer: "아니다. `PreCompact`는 command, http, mcp_tool만 지원하므로 agent 훅은 실행되지 않는다. `/hooks`는 읽기 전용이며 설정 파일을 수정해야 한다. prompt는 입력을 단일 LLM 평가로 판단하고, agent는 서브에이전트를 실행해 파일이나 코드를 도구로 조사한다."
 - category: ai
-  title: 스킬 disallowed-tools — 활성 동안 도구를 아예 풀에서 빼기
-  summary: '스킬 프런트매터의 `allowed-tools`와 `disallowed-tools`는 정반대 일을 한다. `allowed-tools`는 스킬이 활성인 동안 적힌 도구를 승인 없이 쓰게 해주지만 제한은 아니다 — 모든 도구는 여전히 호출 가능하고 권한 설정이 그대로 적용된다. 반면 `disallowed-tools`는 적힌 도구를 활성 동안 모델의 가용 풀에서 통째로 제거한다. 공식 문서가 든 예는 배경 루프에서 `AskUserQuestion`을 못 부르게 막는 것 — 사람이 안 보는 자율 스킬에 유용하다. 단, 이 제한은 다음 메시지를 보내면 풀린다. 모든 스킬·프롬프트에 영구 적용하려면 권한 설정의 deny 규칙을 써야 한다.
-
-    '
+  title: 스킬 disallowed-tools — 호출 중 도구 가용성 줄이기
+  summary: '`disallowed-tools`는 스킬을 실행하는 동안 지정한 도구를 Claude의 사용 가능 목록에서 뺀다. 예를 들어 자율 백그라운드 스킬에서 `AskUserQuestion`을 제외할 수 있다. 제한은 다음 사용자 메시지를 보내면 해제된다. 모든 스킬과 프롬프트에서 계속 차단하려면 권한 설정의 deny 규칙을 사용한다. 반대로 `allowed-tools`는 호출한 턴 동안 지정 도구를 승인 없이 쓰게 할 뿐, 다른 도구를 숨기지는 않으며 기본 권한 규칙도 유지한다.'
   points:
-  - 'allowed-tools: 승인 없이 쓰게 허용(제한 아님) / disallowed-tools: 풀에서 제거(진짜 제한)'
-  - '예: 자율 배경 루프에서 AskUserQuestion 차단 — 사람 개입 호출 자체를 막음'
-  - 제한은 다음 메시지에 해제 / 영구 차단은 권한 설정 deny 규칙
-  source: https://code.claude.com/docs/en/slash-commands
+  - 'disallowed-tools: 이 스킬 호출 동안 도구 목록에서 제외; 다음 사용자 메시지에 해제'
+  - '`allowed-tools`: 호출한 턴에 승인 없이 사용; 다른 도구를 숨기거나 기본 권한을 바꾸지 않음'
+  - '`EndConversation`은 다른 도구가 남아 있으면 제외할 수 없음; 여러 스킬·프롬프트에서 계속 차단하려면 permission deny 사용'
+  source: https://code.claude.com/docs/en/skills
+  interview: "`disallowed-tools`와 권한 설정의 deny 규칙은 적용 범위와 지속 시간에서 어떻게 다른가요? `allowed-tools`를 지정하면 나머지 도구도 숨겨지나요?"
+  answer: "`disallowed-tools`는 그 스킬을 실행하는 동안 도구를 사용 가능 목록에서 빼며, 다음 사용자 메시지에 해제된다. 여러 스킬과 프롬프트에 계속 적용할 차단은 permission deny로 설정한다. `allowed-tools`는 지정 도구를 호출한 턴 동안 승인 없이 쓰도록 허용할 뿐, 나머지 도구를 제한하지 않으며 기본 권한 규칙도 적용된다."
 - category: ai
   title: StopFailure 훅 — API 에러로 턴이 끝날 때만 잡아내기
   summary: 'StopFailure는 턴이 API 오류로 끝날 때 Stop 대신 실행된다. 입력의 `error` 값으로 `rate_limit`, `authentication_failed`, `billing_error`, `server_error` 등을 구분해 알림이나 복구 작업을 연결할 수 있다. HTTP 529 과부하는 `server_error`로 분류된다. 이 이벤트는 결정을 제어하지 않으며 출력·종료 코드는 무시된다. 단, 터미널 알림용 `terminalSequence` 출력은 예외다.'
