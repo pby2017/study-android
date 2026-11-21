@@ -2,16 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)`; next oldest reviewed candidate is `SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트`.
+Current position: continue after `SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트`; next oldest reviewed candidate is `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`.
 
-Last update: 2026-07-06 12:23 KST
+Last update: 2026-11-22 00:29 KST
 
 Current run:
-- Reviewed: `mini-SWE-agent`
-- Refined: `mini-SWE-agent`
-- Published: none
-- Skipped: fresh publication because this bounded refinement pass stayed focused on re-verifiable older cards; pure Android-only topics remained below threshold
-- Next: continue with `SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트`
+- Reviewed: `SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트`
+- Refined: `SWE-agent` (clarified ACI/architecture lesson and maintenance-only status; refreshed live GitHub stars)
+- Published: `Android Studio BYOA — ACP 코딩 에이전트에 Emulator·Build·Logcat 도구 연결`
+- Skipped: none in the bounded cursor pass; pure Android-only candidates remain below threshold
+- Next: continue with `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
@@ -100,6 +100,7 @@ Reviewed:
 - `Instructor — Pydantic 스키마로 LLM 출력을 '구조화 데이터'로 강제하는 라이브러리(MIT·~12k★·6개 언어)`
 
 Refined:
+- `SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트` — re-checked the current official architecture docs and live GitHub API metadata; clarified the ACI lesson via the documented SWE-ReX/YAML Agent/tools/history processor/action parser architecture, retained maintenance-only and mini-swe-agent guidance, and refreshed stars to 20,835 (2026-11-22).
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구` — re-checked the current Google Labs Stitch blog and removed the unsupported quota wording; clarified the current voice, interactive prototype, and MCP/SDK/skills bridge while keeping the card scoped to design-to-code workflow.
 - `kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)` — re-checked the current README and GitHub API metrics; clarified the KMP/llama.cpp runtime boundary, `Flow<Token>` streaming, resumable downloads, KV-cache reuse, GBNF constraints, Maven Central AAR packaging, and the Android+iOS+Desktop lesson, while noting that the repo is live but has no meaningful current popularity signal.
 - `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트` — re-checked the current README, docs, docs background, docs usage/FAQ, and live GitHub API metrics; refreshed the star/fork/license/pushed_at signal, clarified the ACI lesson, current mini-swe-agent recommendation, and maintenance-only status, and tightened the benchmark/config/tool-bundle takeaways.

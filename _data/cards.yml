@@ -2367,14 +2367,14 @@ cards:
   source: https://github.com/plandex-ai/plandex
 - category: ai
   title: SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트
-  summary: 'SWE-agent는 GitHub 이슈나 문제 설명을 받아 LM이 저장소를 탐색·편집·실행 도구로 직접 쓰며 실제 리포지토리 버그를 고치게 하는 MIT 연구용 에이전트다. 핵심 기여는 repo-level 작업을 위한 Agent-Computer Interface(ACI) 설계다. 공식 docs는 지금 mini-swe-agent를 새 권장안으로 안내하고 SWE-agent를 maintenance-only mode로 둔다. 그래서 이 카드는 원조 ACI 설계와 단일 YAML 설정, 개별 이슈 중심 CLI를 읽는 기준점으로 보는 편이 정확하다.
+  summary: 'SWE-agent는 GitHub 이슈를 받아 LM이 저장소를 살피고 명령을 실행해 버그 수정을 시도하는 연구용 코딩 에이전트다. 연구의 초점은 모델만이 아니라 저장소 탐색·파일 보기·편집·실행을 LM에 맞게 묶은 Agent-Computer Interface(ACI)에 있다. 공식 문서는 현재 후속 mini-SWE-agent로 안내하며 SWE-agent를 maintenance-only로 분류한다. 따라서 새 도구를 고르기보다 ACI 설계와 이슈 해결 에이전트의 실험 역사를 읽을 때 유용하다.
 
     '
   points:
-  - 태그라인 'SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice' · MIT · GitHub ~19.7k★
+  - 태그라인은 GitHub 이슈를 원하는 LM으로 자동 수정 시도한다고 설명 · MIT · GitHub 20,835★(2026-11-22 확인)
   - 핵심: ACI(Agent-Computer Interface) — LM-centric commands와 feedback으로 browse·view·edit·execute를 묶는 설계
   - 현재 docs는 mini-swe-agent를 새 권장안으로 안내하고, SWE-agent는 maintenance-only mode로 둔다
-  - CLI 튜토리얼은 individual issues 중심이고, 구성은 단일 YAML 파일로 관리한다
+  - 공식 아키텍처 문서는 SWE-ReX 환경, YAML 설정 Agent, ACI 도구, history processor, action parser의 연결을 설명한다
   - 연구용 원조 설계를 읽는 기준점으로는 유효하지만, 새 프로젝트 시작점은 mini-swe-agent가 더 맞다
   source: https://github.com/SWE-agent/SWE-agent
 - category: ai
@@ -8800,3 +8800,12 @@ cards:
   - 'Android·Firebase skill 번들 + 자동 선택'
   - '`@`로 수동 호출해 긴 day-to-day prompt를 줄이기'
   source: https://android-developers.googleblog.com/2026/04/Increase-Guidance-and-Control-over-Agent-Mode-with-Android-Studio-Panda-3.html
+- category: ai
+  title: Android Studio BYOA — ACP 코딩 에이전트에 Emulator·Build·Logcat 도구 연결
+  summary: 'Android Studio Rabbit 2의 Bring Your Own Agent(BYOA)는 Claude Agent·Codex·Junie·Antigravity 등을 포함한 40개 이상의 ACP 호환 코딩 에이전트를 IDE 안에서 선택하게 한다. 연결된 에이전트는 Android Emulator, 빌드 시스템, Logcat 같은 Android Studio 도구와 Android skills를 사용할 수 있다. 핵심은 모델이나 에이전트를 바꾸지 않고도 Android 프로젝트 맥락과 검증 도구를 에이전트 작업 흐름에 붙이는 것이다. 변경 생성 뒤에는 AI Change Review의 추천 수정과 묶음별 walkthrough로 diff를 확인할 수 있다.'
+  points:
+  - 'Rabbit 2 stable에서 40+ ACP 호환 코딩 에이전트 선택 가능'
+  - '에이전트에 Emulator·Build Systems·Logcat·Android skills 제공'
+  - 'AI Change Review로 agent changes·pending commits·committed changes 검토'
+  - '실무 교훈: 에이전트 선택성에 IDE 도구 접근과 변경 검토를 함께 설계'
+  source: https://developer.android.com/blog/posts/ai-agents-android-studio-integration
