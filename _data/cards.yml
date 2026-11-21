@@ -2749,15 +2749,17 @@ cards:
   interview: "AI가 UI를 보고 테스트를 생성하면 결정적 회귀 테스트를 대체할 수 있나요?"
   answer: "아니다. 에이전트가 현재 UI를 탐색해 빠르게 시나리오를 만들 수 있지만, 결과는 모델·화면·접근성 트리에 영향을 받을 수 있다. 반복 실행이 중요한 CI에는 버전 관리되는 Maestro/Appium 등의 테스트를 두고, AI 탐색은 새 흐름과 실패 원인을 찾는 보조 수단으로 쓴다."
 - category: ai
-  title: MobileSAM — 5M 파라미터로 SAM과 동등한 세그멘테이션, 모바일에서 12ms 추론(MIT)
-  summary: 'MobileSAM은 Meta SAM의 ViT-H 인코더(632M)를 Tiny-ViT(5M)로 교체해 모바일에서 ~12ms에 이미지 세그멘테이션을 실행하는 경량 모델이다. 원본 SAM 파이프라인(전처리·후처리·인터페이스)을 100% 유지하면서 5배 작고 7배 빠르다. YOLO와 결합해 ''검출→세그멘테이션'' 파이프라인을 구성하면 모바일 AR·분석·실시간 객체 분리에 적합. ONNX 내보내기 지원, Ultralytics 통합.
-
-    '
+  title: 'MobileSAM — SAM의 이미지 인코더를 경량화한 프롬프트 기반 분할 모델'
+  level: "중급"
+  summary: 'MobileSAM은 Meta의 Segment Anything Model(SAM)에서 큰 이미지 인코더를 Tiny-ViT로 바꾸고, 프롬프트 기반 마스크 디코더와 나머지 파이프라인은 유지하는 연구 모델이다. 논문은 Tiny-ViT 인코더 5M 파라미터와 단일 GPU에서 이미지당 약 12ms를 보고한다. 이 수치는 Android 기기에서의 속도나 제품 적합성을 뜻하지 않는다. Android 앱에 넣으려면 모델 변환·런타임 호환성, 메모리·발열, 입력 지연과 정확도를 목표 기기에서 별도로 측정해야 한다.'
   points:
-  - '5M 파라미터: SAM 대비 5배 작고 7배 빠름, 12ms 추론'
-  - 'SAM 파이프라인 100% 호환: 전처리·후처리·인터페이스 동일'
-  - 'YOLO 결합: 검출→세그멘테이션 파이프라인으로 모바일 AR'
-  source: https://github.com/ChaoningZhang/MobileSAM
+  - '역할 분리: 이미지 인코더가 시각 특징을 만들고, prompt와 mask decoder가 분할 마스크를 생성'
+  - '논문 수치: Tiny-ViT 5M, 단일 GPU에서 encoder 약 8ms + decoder 약 4ms; 모바일 실측과 구분'
+  - '원본 SAM과 같은 파이프라인을 지향하지만, “모든 배포 환경에서 100% 호환”을 보장하는 뜻은 아님'
+  - 'Android 적용 전 ONNX 등 내보내기 경로와 선택한 모바일 런타임·연산자 지원을 확인하고 실제 기기에서 프로파일링'
+  source: https://arxiv.org/abs/2306.14289
+  interview: "논문에서 MobileSAM의 이미지당 12ms를 보고했다면 Android 앱도 12ms로 동작한다고 예상해도 되나요?"
+  answer: "아니다. 그 수치는 논문이 밝힌 단일 GPU 환경의 encoder와 decoder 처리시간이다. Android 기기의 칩, 런타임, 입력 해상도, 전처리·후처리와 카메라 파이프라인이 다르므로 목표 기기에서 end-to-end 지연, 메모리, 발열, 마스크 품질을 측정해야 한다."
 - category: ai
   title: MediaPipe — Google이 만든 모바일 실시간 AI, 30~60fps로 손·포즈·얼굴 추적(Apache-2.0)
   summary: 'MediaPipe는 Google이 만든 모바일 실시간 ML 프레임워크로, CPU/GPU/NPU 자동 디스패치+XNNPACK 최적화로 30~60fps를 보장한다. Hand Landmarker(21점)·Pose Landmarker(33점)·Face Landmarker(478점)·Image Segmenter· Object Detector·Gesture Recognizer 등 사전학습 솔루션을 제공. 동일 작업을 PyTorch로 실행하면 5fps 수준인 반면 MediaPipe는 60fps. Android·iOS·Web·Python 지원.
