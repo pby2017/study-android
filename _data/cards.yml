@@ -8725,12 +8725,15 @@ cards:
   source: https://www.fiddler.ai/blog/opentelemetry-agent-telemetry-signals
 - category: ai
   title: Project Solara — Android 기반 MDEP 위에 올라가는 에이전트 우선 디바이스
+  level: "고급"
   summary: Project Solara는 Microsoft가 Build 2026에서 공개한 "agent-first" 프로토타입 디바이스다. 핵심은 새 앱 하나가 아니라, Microsoft Device Ecosystem Platform(MDEP)이라는 Android Open Source Project 기반 OS 계층 위에서 음성·시각·터치 입력을 Copilot 에이전트 경험과 묶는 방향이다. Microsoft는 Solara가 화면 안의 앱을 여는 대신, 주변 맥락을 보고 듣고 이해해 작업을 돕는 디바이스 비전을 보여준다고 설명한다. Android 개발자 관점의 교훈은 명확하다. AI+Android 제품은 Activity나 레이아웃만의 문제가 아니라, OS 신뢰 경계, device management, 입력 센서, 온디바이스/클라우드 에이전트 호출, 사용자 동의 UI를 한 설계로 묶어야 한다.
   points:
   - MDEP는 AOSP 기반 엔터프라이즈 디바이스 플랫폼 — Android 파생 OS 위 에이전트 경험
   - Solara는 음성·시각·터치 입력을 Copilot형 에이전트 UX로 묶는 프로토타입
   - AI+Android 설계 포인트는 앱 화면보다 OS 권한·센서·관리·동의 경계
   source: https://commandline.microsoft.com/project-solara-build-2026/
+  interview: "AI 우선 Android 디바이스를 설계할 때 앱 UI 외에 어떤 경계를 함께 검토해야 하나요?"
+  answer: "OS와 기기 관리 권한, 센서 입력, 온디바이스·클라우드 처리 경로, 사용자 동의 UI를 함께 검토해야 한다. 이 경계가 에이전트의 접근 범위와 데이터 처리를 결정한다."
 - category: ai
   title: N-Version Coding Agents — 한 에이전트 정답보다 3개 구현 majority vote
   summary: N-Version Programming with Coding Agents(arXiv 2606.20158)는 고전적인 N-version programming을 최신 코딩 에이전트에 다시 적용한 실험이다. 저자들은 Knight-Leveson Launch Interceptor 명세를 대상으로 에이전트가 만든 48개 구현을 같은 oracle과 1,000,000개 랜덤 입력으로 검사했다. 결과는 양면적이다. 실패가 서로 독립적이지 않아 공통 실패 모드가 여전히 많이 나왔고, 애매한 명세 구간에서 실패가 함께 몰렸다. 그래도 3개 구현을 majority vote로 묶으면 평균 실패 수가 단일 구현 387.44에서 triple 130.99로 줄었고, 11,844개 N-version unit은 관측 실패가 0이었다. 교훈은 "에이전트를 여러 번 돌리면 무조건 안전"이 아니라, 서로 다른 모델·도구·언어로 만든 구현을 독립 oracle과 투표기로 묶어야 redundancy가 의미를 갖는다는 점이다.
@@ -8871,14 +8874,18 @@ cards:
   source: https://github.com/microsoft/STATE-Bench
 - category: ai
   title: Android Studio Agent Skills — .skills/SKILL.md로 Android 워크플로를 묶기
+  level: "중급"
   summary: 'Android Studio의 Agent Skills는 프로젝트 루트의 `.skills` 디렉터리와 `SKILL.md`로 반복 작업과 도메인 지식을 묶는 기능이다. `SKILL.md`에는 이름·설명·절차를 적고, scripts·assets·references를 붙여 더 구체적인 워크플로를 제공할 수 있다. 최신 Android Studio Canary에는 Android·Firebase skill이 번들되고, agent는 skill을 자동으로 쓰거나 `@`로 직접 호출할 수 있다.'
   points:
   - '`.skills/SKILL.md` + scripts·assets·references로 재사용 workflow 구성'
   - 'Android·Firebase skill 번들 + 자동 선택'
   - '`@`로 수동 호출해 긴 day-to-day prompt를 줄이기'
   source: https://android-developers.googleblog.com/2026/04/Increase-Guidance-and-Control-over-Agent-Mode-with-Android-Studio-Panda-3.html
+  interview: "Android Studio Agent Skill은 반복 작업을 어떤 방식으로 재사용하나요?"
+  answer: "프로젝트의 `.skills/<name>/SKILL.md`에 작업 설명과 지침을 두고, 필요한 스크립트·참고 자료를 함께 제공한다. 에이전트는 관련 요청에서 skill을 선택하거나 사용자가 직접 호출할 수 있다."
 - category: ai
   title: Android Studio BYOA — ACP 코딩 에이전트에 Emulator·Build·Logcat 도구 연결
+  level: "중급"
   summary: 'Android Studio Rabbit 2의 Bring Your Own Agent(BYOA)는 Claude Agent·Codex·Junie·Antigravity 등을 포함한 40개 이상의 ACP 호환 코딩 에이전트를 IDE 안에서 선택하게 한다. 연결된 에이전트는 Android Emulator, 빌드 시스템, Logcat 같은 Android Studio 도구와 Android skills를 사용할 수 있다. 핵심은 모델이나 에이전트를 바꾸지 않고도 Android 프로젝트 맥락과 검증 도구를 에이전트 작업 흐름에 붙이는 것이다. 변경 생성 뒤에는 AI Change Review의 추천 수정과 묶음별 walkthrough로 diff를 확인할 수 있다.'
   points:
   - 'Rabbit 2 stable에서 40+ ACP 호환 코딩 에이전트 선택 가능'
@@ -8886,3 +8893,5 @@ cards:
   - 'AI Change Review로 agent changes·pending commits·committed changes 검토'
   - '실무 교훈: 에이전트 선택성에 IDE 도구 접근과 변경 검토를 함께 설계'
   source: https://developer.android.com/blog/posts/ai-agents-android-studio-integration
+  interview: "Android Studio에서 외부 ACP 에이전트를 연결하는 실무상 이점은 무엇인가요?"
+  answer: "기존 에이전트를 유지하면서 Emulator·빌드·Logcat 등 Android 개발 도구 맥락을 작업에 연결할 수 있다. 다만 생성된 변경은 AI Change Review 등으로 개발자가 검토해야 한다."
