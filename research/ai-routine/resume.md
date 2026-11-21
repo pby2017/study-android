@@ -1,19 +1,21 @@
-# Local AI routine paused — Codex authentication required
+# Local AI routine checkpoint — headless smoke passed
 
-Paused at: 2026-11-22 (Asia/Seoul)
+Updated at: 2026-11-22 (Asia/Seoul)
 
 ## Verified state
-- The launchd job `com.pby2017.study-android.ai-research` is loaded with a 14,400-second (4-hour) interval.
-- `.local-ai-research.disabled` exists. The pipeline exits before doing work while this marker exists. Do not remove it until a new headless Codex check succeeds.
-- The last recorded routine run (2026-07-06) failed because Codex returned `401 token_invalidated` / `refresh_token_invalidated`; this is an authentication failure, not a hook failure.
-- The current assistant environment also has a stale `CODEX_SESSION_ID` injected by its launcher. Unsetting it made every configured hook command smoke-test successfully, but changing credentials or stopping other Codex sessions is out of scope.
-- The card UI navigation work was pushed as commit `1940727` on 2026-11-22.
+- LaunchAgent `com.pby2017.study-android.ai-research` is loaded with a 14,400-second (4-hour) interval; it is currently not running.
+- `.local-ai-research.disabled` is present and prevents scheduled work until a manual recovery run starts.
+- The last recorded routine run (2026-07-06) failed because Codex returned `401 token_invalidated` / `refresh_token_invalidated`; this was an authentication failure, not a hook failure.
+- Current `codex login status` reports ChatGPT login. A harmless `codex --search exec` prompt returned `OK` with exit code 0, both with and without the inherited `CODEX_SESSION_ID`.
+- The smoke test logs an AppLlama MCP `invalid_token` warning, but the Codex prompt completes. This MCP warning is separate from Codex ChatGPT authentication; do not copy credentials between sessions.
+- The card UI and navigation regression tests were pushed as commit `421c9d0` on 2026-11-22.
+- Routine docs and timeout are being aligned to the actual 4-hour cadence: ~3h30 research, final 20m implementation/verification, 10m safety margin.
 
 ## Resume procedure
-1. In the user's normal Codex login environment, re-authenticate Codex if its token is still invalid. Do not copy tokens between sessions.
-2. Verify headless Codex with a harmless prompt: `codex exec -C "$PWD" --dangerously-bypass-approvals-and-sandbox "Reply OK only."`.
-3. Only after that succeeds, run `./scripts/local_ai_research_pipeline.sh` once manually. The script owns marker removal after successful agent execution, checks, commit, and push.
+1. Commit and push the cadence/documentation correction.
+2. Remove `.local-ai-research.disabled` only for one manual run of `./scripts/local_ai_research_pipeline.sh`; the wrapper re-creates it automatically if the headless agent fails.
+3. Review that run's log, YAML/script checks, commit/push result, and marker state.
 4. Keep the 4-hour local launchd schedule. No GitHub Actions.
-5. If authentication still fails, keep the disabled marker and update this checkpoint with the new log path and exact error.
+5. If Codex authentication fails again, keep the disabled marker and update this checkpoint with the run log path and exact error.
 
 Do not create, update, close, or triage app-factory-android issues or pull requests. Research only AI or AI+Android education topics for study-android cards.
