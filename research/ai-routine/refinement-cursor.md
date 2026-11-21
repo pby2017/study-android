@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `nsfw_detect(Flutter)`; next candidate: inspect `SideEye` and verify actual model execution, platform/device requirements, privacy boundaries, source quality, and adoption before retaining or pruning.
+Current position: continue after `SideEye`; next candidate: inspect `ORB-SLAM2s(Android)` and verify whether its core lesson is genuinely AI-related or only a classical computer-vision/Android port.
 
-Last update: 2026-11-22 04:27 KST
+Last update: 2026-11-22 04:29 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -516,3 +516,13 @@ Rules:
 - Reframed as an implementation lesson rather than an endorsement: Android TFLite / iOS Core ML, local file/bytes inference, explicit remote `scanUrl` and opt-in model-download network paths, Android media permissions, and probabilistic moderation requiring human/policy safeguards.
 - Sources: https://pub.dev/packages/nsfw_detect ; https://github.com/nexas105/flutter_nsfw_scaner
 - Next: `SideEye`; independently check the implementation and evidence before deciding whether to retain it or consolidate/remove it due overlap with privacy architecture cards.
+
+
+## 2026-11-22 04:29 KST
+
+- Reviewed SideEye's GitHub README and linked `ImageAnalyzer.kt`, `ModelDownloader.kt`, `VaultRepository.kt`, and `VaultPinManager.kt`.
+- GitHub showed 1 star, 0 forks, 18 commits, and no license grant (README says all rights reserved); treated it as a source-code teaching example only, not a recommended product or reusable codebase.
+- Corrected over-broad product card: README says Android 9+/API 28+, Qualcomm NPU required for Smart Scan, and about 2.4 GB model download. `ModelDownloader` retrieves model files from S3 and falls back to Hugging Face; images are sent through the local Nexa VLM inference path according to the checked app code.
+- Reframed the lesson around a concrete inference-quality issue in `ImageAnalyzer.kt`: generated `Category: N` text is parsed into a binary label, then `primaryConfidence` becomes 1.0 or 0.0. That value is not a calibrated model probability. The card now teaches class-wise evaluation, false-positive/negative handling, and human review.
+- Sources: https://github.com/baseweight/SideEye ; https://github.com/baseweight/SideEye/blob/main/app/src/main/java/ai/baseweight/sideeye/data/ai/ImageAnalyzer.kt ; https://github.com/baseweight/SideEye/blob/main/app/src/main/java/ai/baseweight/sideeye/data/ai/ModelDownloader.kt
+- Next: `ORB-SLAM2s(Android)`; check whether the AI angle is central or the card is merely a classical CV/Android port.
