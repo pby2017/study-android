@@ -9013,16 +9013,16 @@ cards:
   interview: "도구를 쓰는 장기 작업 에이전트의 성공을 답변 문장만으로 평가하기 어려운 이유는 무엇인가요?"
   answer: "에이전트가 올바른 정보를 모으고 절차를 지키며 외부 데이터베이스 같은 최종 시스템 상태를 맞게 바꿨는지도 성공 조건이기 때문이다. 따라서 상태와 절차를 함께 검사해야 한다."
 - category: ai
-  title: Android Studio Agent Skills — .skills/SKILL.md로 Android 워크플로를 묶기
   level: "중급"
-  summary: 'Android Studio의 Agent Skills는 프로젝트 루트의 `.skills` 디렉터리와 `SKILL.md`로 반복 작업과 도메인 지식을 묶는 기능이다. `SKILL.md`에는 이름·설명·절차를 적고, scripts·assets·references를 붙여 더 구체적인 워크플로를 제공할 수 있다. 최신 Android Studio Canary에는 Android·Firebase skill이 번들되고, agent는 skill을 자동으로 쓰거나 `@`로 직접 호출할 수 있다.'
+  title: Android Studio Agent Skills — 필요한 Android 전문 지침만 작업 중 불러오기
+  summary: 'Agent Skill은 전문 절차를 `SKILL.md`와 관련 자료로 패키징하고, 요청과 설명이 맞을 때 에이전트가 지침을 추가로 읽게 하는 방식이다. 따라서 모든 Android 규칙을 매번 기본 프롬프트에 넣지 않고, Compose 마이그레이션이나 AGP 업그레이드처럼 특정 작업에 필요한 지식만 불러올 수 있다. Android Studio Rabbit 2 stable에는 skill 관리자와 Android·Firebase skill이 포함되며, 관련 요청에서 자동 선택하거나 `@`로 직접 호출할 수 있다. Android CLI는 skill 설치·갱신 경로를 제공해 여러 에이전트에서 재사용할 수 있다.'
   points:
-  - '`.skills/SKILL.md` + scripts·assets·references로 재사용 workflow 구성'
-  - 'Android·Firebase skill 번들 + 자동 선택'
-  - '`@`로 수동 호출해 긴 day-to-day prompt를 줄이기'
-  source: https://android-developers.googleblog.com/2026/04/Increase-Guidance-and-Control-over-Agent-Mode-with-Android-Studio-Panda-3.html
+  - 'skill은 상시 지시문과 구분되는 on-demand 전문 지식 — 관련 요청에서 전체 절차를 로드'
+  - '`SKILL.md`에 이름·설명·절차를 두고 scripts·references·assets를 함께 패키징'
+  - 'Rabbit 2 stable skill manager에서 관리; 자동 선택 또는 `@skill-name` 호출, Android CLI로 에이전트 간 설치'
+  source: https://developer.android.com/studio/gemini/skills
   interview: "Android Studio Agent Skill은 반복 작업을 어떤 방식으로 재사용하나요?"
-  answer: "프로젝트의 `.skills/<name>/SKILL.md`에 작업 설명과 지침을 두고, 필요한 스크립트·참고 자료를 함께 제공한다. 에이전트는 관련 요청에서 skill을 선택하거나 사용자가 직접 호출할 수 있다."
+  answer: "반복 절차를 이름과 설명이 있는 `SKILL.md` 및 필요한 자료로 패키징한다. 에이전트는 요청이 설명에 맞으면 전체 내용을 필요할 때 불러오고, 사용자는 `@skill-name`으로 직접 호출할 수 있다. 이 방식은 모든 전문 절차를 기본 컨텍스트에 항상 넣는 것보다 지침을 작업별로 분리해 재사용하게 한다."
 - category: ai
   title: Android Studio BYOA — ACP 코딩 에이전트에 Emulator·Build·Logcat 도구 연결
   level: "중급"

@@ -900,3 +900,8 @@ Rules:
 - Sources: [Android Studio agent integration](https://developer.android.com/blog/posts/ai-agents-android-studio-integration), [GitHub remote-control usage](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/steer-remotely), [GitHub remote-control concepts](https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/about-remote-control), [cloud sandboxes](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-sandboxes)
 - Research note: `research/ai-routine/20261122-071300-android-agent-cards-review.md`
 - Next: start a fresh oldest-first scan of remaining AI/AI+Android cards; the current end-of-file block through `Copilot CLI Remote Control` has been reviewed
+- Revisited `Android Studio Agent Skills — .skills/SKILL.md로 Android 워크플로를 묶기` during the remaining-card scan
+- Replaced obsolete `.skills` path and Canary-only wording with on-demand expertise, reusable `SKILL.md` resources, Rabbit 2 stable skill management, and Android CLI distribution; avoided directory claims because official docs are inconsistent
+- Sources: [Android Studio skills guide](https://developer.android.com/studio/gemini/skills), [Android skills overview](https://developer.android.com/tools/agents/android-skills), [Rabbit 2 stable announcement](https://developer.android.com/blog/posts/ai-agents-android-studio-integration)
+- Research note: `research/ai-routine/20261122-071500-android-studio-skills-refinement.md`
+- Next: continue the oldest-first scan from the first remaining unreviewed AI/AI+Android card; the final Android Studio/Copilot card block has now been checked
