@@ -4534,3 +4534,12 @@ Refined:
 - Corrected the integration description to shell-invokable CLI operations. Removed the unsupported KMP and MCP-server labels; retained documented screen capture, component inspection, interaction, screenshot comparison, and accessibility checks.
 - GitHub showed 7 stars, 1 fork, and 125 commits; package metadata showed v1.0.0 and MIT. Counts are volatile and indicate a small project, not broad adoption.
 - Kept as a bounded AI+Android learning example with explicit framework/device limits, not as a general native Android testing recommendation.
+
+
+### 2026-11-22 03:12 KST — Autonoma AI 모바일 테스트 카드 최신 근거 반영
+
+- Refined: `Autonoma — 자연어로 웹·iOS·Android E2E 테스트, AI가 요소를 비전으로 찾아 셀프힐링(오픈소스)` → `Autonoma — AI 에이전트가 자연어 시나리오를 실행하는 PR 테스트 플랫폼`.
+- Re-checked current GitHub README, repo activity/releases/license, official docs, and Android mobile camera-testing documentation.
+- Centered the card on PR preview, natural-language tests, evidence-backed reviews, Playwright web/Appium mobile drivers, and screenshot→model action→record flow. Qualified mobile Android support because the current README's primary product narrative is web-centric.
+- Corrected “open source”: repository states Business Source License 1.1, which restricts selling it as a competing commercial service and converts to Apache-2.0 on 2028-03-23.
+- GitHub showed 253 stars, 65 forks, and 1,887 commits; latest listed release was v1.260811.1 on 2026-08-11. Counts/commit totals are volatile popularity/activity signals, not proof of quality.

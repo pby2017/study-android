@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `koog-compose`; next candidate: `Autonoma` (verify whether the current project still exists, supports AI+Android workflows, and has evidence beyond its own claims).
+Current position: continue after `Driftx`; next candidate: `Luciq Resolve Agent` (verify current product status and distinguish shipped AI debugging from planned integrations).
 
-Last update: 2026-11-22 03:10 KST
+Last update: 2026-11-22 03:12 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -349,3 +349,13 @@ Rules:
 - GitHub displayed 7 stars, 1 fork, and 125 commits; star/fork counts are volatile and indicate low adoption, not popularity. Package metadata is version 1.0.0 and MIT licensed.
 - Kept as a narrowly scoped learning example, not a recommendation for native Android/KMP or production-wide testing.
 - Next: `Autonoma`; verify current project status, Android scope, and independent interest evidence before editing.
+
+
+## 2026-11-22 03:12 KST
+
+- Reviewed and refined `Autonoma` using the current GitHub README, repository activity/license, release page, and official mobile-testing documentation.
+- Reframed the platform around the current PR preview/test-review flow; clarified Playwright web and Appium mobile execution paths and the screenshot→model action→execution record loop.
+- Verified Android-specific camera-image testing in the vendor docs, while noting that the current README's primary PR workflow is web-focused and Android adoption details should be confirmed before rollout.
+- Corrected “open source” wording: repository uses Business Source License 1.1, with a restriction on selling it as a competing commercial service and a stated Apache-2.0 conversion date of 2028-03-23.
+- GitHub displayed 253 stars, 65 forks, and 1,887 commits; latest listed release was v1.260811.1 (2026-08-11). Metrics are volatile attention/activity indicators, not evidence of quality.
+- Next: `Luciq Resolve Agent`; separate current shipped functionality from announced/planned features.
