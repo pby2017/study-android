@@ -2936,15 +2936,15 @@ cards:
   interview: "운영 크래시의 원인과 재현 단계를 AI가 제시하면, 코드 수정 전에 어떤 증거를 대조하나요?"
   answer: "MCP에서 조회한 스택 트레이스·발생 건을 실제 앱 코드와 대조하고, 재현 기록에서 OS·기기·앱 버전·네트워크·피처 플래그 조건을 확인한다. 가능한 경우 같은 조건에서 재현한다. AI의 원인 설명은 가설로 취급하고, 코딩 에이전트가 만든 diff와 회귀 테스트를 사람이 검토한 뒤 병합한다."
 - category: ai
-  title: Baidu Stability Analysis Agent — 크래시·ANR·OOM 로그를 AI가 파싱→심볼화→수정 제안하는 오픈소스 에이전트
-  summary: 'Baidu Maps의 Stability Analysis Agent는 크래시·ANR·OOM·프리즈 로그를 자동으로 파싱하고, addr2line/atos로 심볼화하고, 소스 코드 컨텍스트를 추출한 뒤, LangGraph 멀티턴 추론으로 루트 코즈를 분석하고 수정을 제안하는 오픈소스 프레임워크다. ChromaDB 기반 RAG 지식 베이스로 이전 분석 결과를 학습. iOS·Android· macOS·Linux·Windows 지원. CLI·HTTP(SSE)·Python API 인터페이스. 자동 수정 적용 + 백업도 가능.
-
-    '
+  title: Baidu Stability Analysis Agent — Android 크래시를 근거 기반으로 분석·수정하는 AI 도구
+  summary: 'Baidu Stability Analysis Agent는 Android logcat·tombstone 로그를 파싱하고, 매칭되는 심볼 파일과 소스 코드 문맥을 이용해 크래시 근거와 원인 후보를 만든다. AI가 수정안을 적용할 수도 있지만, 검증 명령은 명시적으로 설정해야 한다. 수정은 기본적으로 격리된 Git worktree에서 진행하며, 빌드·테스트 검증이 없거나 통과하지 못하면 수정 완료로 간주하지 않는다.'
   points:
-  - 'LangGraph 멀티턴: 파싱→심볼화→코드 추출→LLM 추론→수정 제안'
-  - 'RAG 지식 베이스: ChromaDB, 이전 분석 결과 누적 학습'
-  - '5개 OS 지원: iOS·Android·macOS·Linux·Windows'
+  - 'Android `logcat`·tombstone 호출 스택을 파싱하고, 일치하는 심볼로 주소를 함수·소스 위치에 연결'
+  - '로그·호출 관계·소스 문맥과 유사 사례를 묶어 근거 보고서와 수정안을 생성'
+  - '수정은 격리 worktree에서 검토; 명시한 Gradle/기기 검증이 통과하기 전에는 병합하지 않음'
   source: https://github.com/baidu-maps/stability-analysis-agent
+  interview: "AI가 Android native crash 패치를 만들었다면, 어떤 조건을 확인해야 ‘수정 완료’라고 판단할 수 있나요?"
+  answer: "우선 tombstone의 주소를 해당 빌드의 심볼 파일로 정확히 해석하고, 호출 경로와 추출된 소스 문맥이 실제 근본 원인을 뒷받침하는지 확인한다. 패치 diff를 검토한 뒤 프로젝트에 맞는 빌드·단위·기기 재현 검증 명령을 명시해 실행한다. 검증이 없거나 보류·실패한 결과는 성공 증거가 아니다."
 - category: ai
   title: KotlinSyft — OpenMined의 Android 연합학습 라이브러리, 온디바이스 학습으로 데이터가 디바이스를 안 떠남
   summary: 'KotlinSyft는 OpenMined이 만든 Android 연합학습(Federated Learning) 라이브러리다. PySyft 모델을 디바이스에서 직접 학습·추론하며, 사용자 데이터를 중앙 서버로 보내지 않는다. 충전 감지·WiFi 감지로 백그라운드 학습 시 디바이스 리소스를 보호. Secure Aggregation·Secure Multi-Party Computation 프로토콜 지원. iOS용 SwiftSyft, 웹용 syft.js와 함께 모바일+웹 연합학습 생태계를 구성.

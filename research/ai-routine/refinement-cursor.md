@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Luciq Resolve Agent`; next candidate: `Baidu Stability Analysis Agent` (verify repository health, Android coverage, and actual AI/repair boundaries).
+Current position: continue after `Baidu Stability Analysis Agent`; next candidate: `KotlinSyft` (verify whether the repository and Android federated-learning implementation are still maintained and usable).
 
-Last update: 2026-11-22 03:15 KST
+Last update: 2026-11-22 03:18 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -369,3 +369,13 @@ Rules:
 - Kept exact marketing example “90% … Login V2 + iOS 26” out of the card; the blog presents it as one illustrative correlation, not a general rate.
 - No public GitHub star count or independent adoption measure used; official documentation is the primary evidence for product capabilities.
 - Next: `Baidu Stability Analysis Agent`; verify repository health, Android coverage, and actual AI/repair boundaries.
+
+
+## 2026-11-22 03:18 KST
+
+- Reviewed and refined `Baidu Stability Analysis Agent` using the current README, Android crash-format documentation, verification-provider contract, changelog, and PyPI metadata.
+- Reframed the card around Android logcat/tombstone parsing, matched-symbol symbolication, evidence-linked source context, and a reviewed AI patch—not an indiscriminate multi-OS feature list.
+- Clarified verification boundaries: fixes run in an isolated Git worktree; only explicitly configured checks execute; absent verification remains pending and changes are not synced as verified fixes.
+- Popularity: GitHub displayed 52 stars / 5 forks / 60 commits (low adoption, with counts volatile); PyPI listed 1.7.4 uploaded 2026-11-18, while the repository organization page last showed an update on 2026-10-30. PyPI reported no provenance metadata for the inspected release.
+- Noted package/repository version-history mismatch (PyPI 1.7.4 vs. GitHub changelog 1.5.1 and older GitHub release tags); do not recommend installing without checking release/source correspondence and package provenance.
+- Next: `KotlinSyft`; verify project maintenance, Android implementation, and reproducible installation evidence.

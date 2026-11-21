@@ -4552,3 +4552,12 @@ Refined:
 - Clarified current Assistant behavior: root-cause analysis, user reproduction steps, and pattern insights; MCP provides IDE access to crash/occurrence/hang/bug-report/review data.
 - Removed unsupported “Assistant automatically edits code/creates PR,” “five feedback iterations,” and “IDE integration planned” claims. The MCP is described as available to Luciq customers; code changes are handed to a separate coding-agent/Autopilot workflow.
 - Omitted the “90% Login V2 + iOS 26” figure because it is one vendor-provided illustration, not a generalizable result. Added interview guidance to validate AI diagnoses against code, session/device/version/flag evidence, and reproduction.
+
+
+### 2026-11-22 03:18 KST — Baidu Stability Analysis Agent Android 크래시 카드 근거·검증 경계 보강
+
+- Refined: `Baidu Stability Analysis Agent — 크래시·ANR·OOM 로그를 AI가 파싱→심볼화→수정 제안하는 오픈소스 에이전트` → `Baidu Stability Analysis Agent — Android 크래시를 근거 기반으로 분석·수정하는 AI 도구`.
+- Re-checked the current README, Android/tombstone crash-format reference, verification-provider contract, changelog, GitHub metadata, and PyPI release history.
+- Focused on Android logcat/tombstone parsing, matched symbol files, source-context evidence, and an AI-generated patch in an isolated Git worktree. Clarified that no configured verification means pending—not a proven fix—and changes sync only after verification succeeds.
+- GitHub displayed 52 stars, 5 forks, and 60 commits; PyPI listed v1.7.4 on 2026-11-18. These indicate a small but recently active project, not broad popularity or quality.
+- Recorded version-source mismatch: PyPI release 1.7.4 vs. GitHub changelog 1.5.1 and older GitHub release tags; PyPI reported no provenance for the inspected release. Recommend verifying package/source correspondence before installation.
