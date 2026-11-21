@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:52 KST
+Last update: 2026-11-22 07:54 KST
+
+## Latest pass
+- Reviewed and refined `스킬 effort 프런트매터 — 턴 단위 추론 강도 조절` against the current official Claude Code skills guide.
+- Corrected scope from "while the skill is active" to the current turn; documented that model support varies, `CLAUDE_CODE_EFFORT_LEVEL` takes precedence, and forked skills set the subagent's effort.
+- Confirmed `model` is also a turn-only override and `${CLAUDE_EFFORT}` exposes the current level; removed the unsupported product-specific xhigh assertion.
+- Source and rationale: `research/ai-routine/20261122-075400-claude-skill-effort-refinement.md`.
+- Next: continue oldest-first with `PreCompact 훅`; verify current matcher/blocking/output semantics before refining.
 
 ## Latest pass
 - Reviewed and refined `스킬 호출 권한 — 모델 자율 호출과 사용자 호출 분리` against the current official Claude Code skills guide.

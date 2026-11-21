@@ -519,15 +519,15 @@ cards:
   interview: "`disable-model-invocation: true`인 배포 스킬을 문장 뒤에서 `/deploy`라고 언급하면 바로 실행되나요? `user-invocable: false`는 모델의 사용도 막나요?"
   answer: "문장 뒤의 `/deploy`는 실행 허용 신호이며 직접 실행하지 않는다. 모델이 실행할지는 문맥을 보고 결정한다. 자동 호출 자체를 막고 싶으면 메시지 첫머리에서 명시적으로 호출해야 한다. `user-invocable: false`는 사용자 메뉴만 숨기며 모델은 계속 사용할 수 있다."
 - category: ai
-  title: 스킬 effort 프런트매터 — 명령마다 추론 강도 따로 주기
-  summary: '스킬(=통합된 커스텀 슬래시 명령)의 프런트매터에 effort 필드를 두면, 그 스킬이 활성화된 동안만 세션의 추론 강도(effort level)를 덮어쓴다. 값은 low·medium·high·xhigh·max 중 모델이 지원하는 범위에서 고르며, 지정하지 않으면 세션 설정을 그대로 따른다. 가벼운 포맷 정리·로그 한 줄 추가 같은 스킬엔 low를, 아키텍처 설계·보안 점검처럼 깊은 사고가 필요한 스킬엔 high 이상을 박아두면 매번 /model로 바꿀 필요가 없다. 비슷하게 model 필드로 그 스킬이 도는 동안의 모델 자체를 바꿀 수도 있고, 본문에서는 ${CLAUDE_EFFORT}로 현재 강도를 읽어 지시를 분기할 수 있다.
-
-    '
+  title: 스킬 effort 프런트매터 — 턴 단위 추론 강도 조절
+  summary: 'Claude Code 스킬의 `effort` 프런트매터는 해당 턴의 추론 강도를 정한다. 값은 `low`, `medium`, `high`, `xhigh`, `max`이며 선택 가능 여부는 모델에 따라 다르다. 세션 effort보다 우선하지만 `CLAUDE_CODE_EFFORT_LEVEL` 환경 변수보다 우선하지 않는다. `context: fork` 스킬이면 effort는 분리된 서브에이전트에 적용된다. 본문에서는 `${CLAUDE_EFFORT}`로 현재 값을 읽을 수 있다. `model` 프런트매터도 해당 턴에만 적용되고, 다음 사용자 메시지부터 세션 모델로 돌아간다.'
   points:
-  - 'effort: low/medium/high/xhigh/max — 스킬 활성 동안만 세션 effort 덮어씀(미지정 시 세션 상속)'
-  - model 필드와 짝 — 스킬 도는 동안의 모델까지 바꾸고 턴 끝나면 세션 모델 복귀
-  - 본문에서 ${CLAUDE_EFFORT}로 현재 강도 읽어 지시 분기 가능(ultracode는 xhigh로 표시)
-  source: https://code.claude.com/docs/en/slash-commands
+  - '`effort`: 해당 턴의 effort를 지정; 모델별 지원 수준에 차이가 있고 환경 변수 설정은 덮어쓰지 못함'
+  - '`context: fork`에서는 분리된 서브에이전트의 effort를 설정'
+  - '`model`도 턴 단위 override이며 다음 메시지부터 세션 설정으로 복귀; `${CLAUDE_EFFORT}`로 현재 값 참조'
+  source: https://code.claude.com/docs/en/skills
+  interview: "스킬의 `effort: high`는 세션 전체의 기본값이 되나요? `CLAUDE_CODE_EFFORT_LEVEL`이 따로 설정되어 있거나 스킬이 `context: fork`라면 어떻게 되나요?"
+  answer: "아니다. `effort`는 현재 턴에 적용되고 다음 사용자 메시지에서는 세션 설정으로 돌아간다. `CLAUDE_CODE_EFFORT_LEVEL`은 스킬의 effort보다 우선하며, `context: fork`이면 지정한 effort가 분리된 서브에이전트에 적용된다. 모델이 해당 수준을 지원하지 않으면 그 수준은 사용할 수 없다."
 - category: ai
   title: PreCompact 훅 — 압축 직전, 컨텍스트를 지킬 마지막 기회
   summary: 'PreCompact 훅은 컨텍스트 압축(compaction)이 일어나기 직전에 실행된다. matcher로 무엇이 압축을 일으켰는지 구분할 수 있는데, 사용자가 직접 친 /compact는 manual, 컨텍스트가 차서 자동으로 도는 압축은 auto다. PreCompact는 블로킹 가능한 이벤트라서, 훅이 exit code 2로 끝나거나 JSON으로 decision:"block"을 돌려주면 압축 자체를 막을 수 있다. 그래서 "압축으로 대화 일부가 요약되어 사라지기 전, 중요한 컨텍스트를 파일로 저장하는 마지막 기회"로 쓰는 패턴이 대표적이다. SessionStart 훅과 짝지으면 다음 세션에서 그 컨텍스트를 다시 불러와 이어갈 수 있다.
