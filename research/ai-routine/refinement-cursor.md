@@ -716,4 +716,8 @@ Rules:
 - Reviewed and refined: `Copilot 1M 컨텍스트·추론 레벨` using the current supported-model matrix, Copilot CLI docs, and cloud-agent announcement
 - Corrected product-surface scope: 1M context is currently limited to VS Code and Copilot CLI; configurable reasoning also includes Copilot cloud agent; both require supported models and increase AI-credit use
 - Research note: `research/ai-routine/20261122-091500-copilot-context-reasoning.md`
-- Next: inspect `Copilot Sandboxes`
+- Reviewed and refined: `Copilot Sandboxes` against current GitHub local/cloud sandbox documentation, GA changelog, and billing docs
+- Updated lifecycle and practical boundaries: local sandbox is GA and restricts agent-run operations (not a blanket VM for the CLI); CLI/app settings are separate; cloud sessions can resume from snapshots and have compute, memory, and storage meters
+- Verified cloud sandbox billing begins November 23, 2026, and draws from shared Actions compute entitlement; removed stale public-preview framing
+- Research note: `research/ai-routine/20261122-094500-copilot-sandboxes.md`
+- Next: inspect `Copilot AI credits API`
