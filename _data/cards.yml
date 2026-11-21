@@ -25,17 +25,15 @@ cards:
   answer: "아니다. intent filter는 요청을 매칭하는 규칙이지 호출자 인증이 아니다. 공개 여부를 exported로 결정하고, 필요한 경우 permission을 적용하며, 전달된 입력도 검증해야 한다."
 - category: kotlin
   level: "초급"
-  title: 코틀린이란 — 정적 타입 + 함수형
-  summary: '코틀린은 JVM에서 도는 언어로, 자바와의 상호운용성을 중시한다. 핵심은 ''정적 타입 지정''이라 컴파일 시점에 타입이 확정돼 성능·신뢰성·유지보수·도구지원이 좋아진다. 동시에 타입 추론을 제공해 코드는 짧게 유지된다. 함수를 변수처럼 다루는 일급 함수, 불변성, 부수효과 없는 순수 함수 같은 함수형 개념도 지원한다. 자바엔 없는 nullable 타입과 함수 타입이 컴파일 단계에서 NPE 위험을 잡아준다.
-
-    '
+  title: Kotlin — 정적 타입·다중 플랫폼·Java 상호운용
+  summary: "Kotlin은 정적 타입의 다중 플랫폼 언어다. 타입 추론으로 표기를 줄이면서 대부분의 타입 오류를 컴파일 시점에 확인한다. JVM/Android뿐 아니라 JavaScript·Wasm·Native도 대상으로 삼으며 Java와 상호운용할 수 있다. 객체지향과 함수형 기능을 함께 지원하고, 함수형 스타일을 강제하지는 않는다. nullable 타입은 null 처리 누락을 줄이지만 `!!`와 Java의 platform type 경계에서는 NPE가 발생할 수 있다."
   points:
-  - 정적 타입 + 타입 추론 = 안전하면서 간결
-  - nullable 타입(?)으로 NPE를 컴파일 시점에 차단
-  - 일급 함수·불변성·순수 함수 = 함수형 지원
-  source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/1장-코틀린이란_무엇이며_왜_필요한가.md
+  - "정적 타입 + 타입 추론: 대부분의 타입 오류를 일찍 찾고 표기를 줄임"
+  - "JVM/Android, JavaScript, Wasm, Native 대상으로 컴파일; Java와 상호운용"
+  - "객체지향·함수형 기능을 함께 지원; null-safety는 NPE를 줄이지만 없애지는 않음"
+  source: https://kotlinlang.org/docs/faq.html
   interview: "정적 타입 언어에서 컴파일 전에 타입을 아는 장점은?"
-  answer: "타입 오류를 더 일찍 찾고, IDE와 컴파일러가 안전한 코드 분석을 할 수 있다. 타입 추론은 이 안전성을 유지하며 표기를 줄인다."
+  answer: "타입 오류를 더 일찍 찾고, IDE와 컴파일러가 안전한 코드 분석을 할 수 있다. 다만 Kotlin도 `!!`나 Java 상호운용의 platform type에서는 NPE가 발생할 수 있다."
 - category: kotlin
   level: "초급"
   title: 문(statement)과 식(expression)

@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 08:12 KST
+Last update: 2026-11-22 08:13 KST
+
+## Latest pass
+- Corrected the beginner card `Kotlin — 정적 타입·다중 플랫폼·Java 상호운용` against Kotlin's official FAQ and language specification.
+- Replaced the JVM-only framing with multiplatform targets and Java interoperability; removed unsubstantiated performance/quality guarantees and clarified that Kotlin supports both OO and functional styles.
+- Qualified null-safety: it catches many nullability errors but does not eliminate NPEs at `!!` or Java platform-type boundaries.
+- Sources and rationale: `research/ai-routine/20261122-081300-kotlin-intro-refinement.md`.
+- Next: continue auditing foundation cards for absolute claims or out-of-date platform assumptions.
 
 ## Latest pass
 - Refined `Compose UI 테스트 — 사용자가 보는 의미를 검증` against current Android Compose testing and Semantics references.
