@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android Studio Agent Mode parallel conversations` for current availability and shared-file collision risks; next candidate: inspect `Android XR + Gemini — Geospatial 좌표를 구조화 JSON 투어로 바꾸는 패턴` for API status, accuracy handling, grounding, and location privacy.
+Current position: refined `Android XR + Gemini — Geospatial 좌표를 구조화 JSON 투어로 바꾸는 패턴` for current accuracy semantics, tracking readiness, grounding limits, and location consent; next candidate: inspect `Android 17 AppFunctions Agent Skill` for preview status and production integration boundaries.
 
-Last update: 2026-11-22 05:21 KST
+Last update: 2026-11-22 05:30 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -628,3 +628,8 @@ Rules:
 - Reviewed and refined: `Android Studio Agent Mode parallel conversations` (separated chat-context concurrency from filesystem/worktree isolation; removed adjacent UI-generation claims already covered elsewhere)
 - Sources re-checked: current Android Studio Agent Mode docs; official Quail 2 stable warning; Quail 4 recap; Rabbit 2 stable announcement
 - Kept the worktree caveat explicitly scoped to Quail 2 source; later Rabbit 2 material reviewed did not explicitly confirm isolation, so the card uses conservative guidance rather than claiming the limitation is unchanged
+
+- Reviewed and refined: `Android XR + Gemini — Geospatial tour` (corrected 68% accuracy semantics; added RUNNING precondition, VPS/tracking fallback, cloud coordinate flow, and device-data acknowledgement)
+- Sources re-checked: current Android XR Geospatial setup docs (updated 2026-11-10 UTC), official Gemini XR guide, official Geospatial Tour implementation post
+- Kept Preview status attributed to the demo announcement; current setup docs reviewed do not explicitly label the lifecycle state
+- Next: inspect `Android 17 AppFunctions Agent Skill`.
