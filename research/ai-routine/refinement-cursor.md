@@ -6,6 +6,13 @@ Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills,
 
 Last update: 2026-11-22 07:30 KST
 
+## Latest pass
+- Reviewed and refined: `Dia2 — 대화형 TTS의 조기 생성과 실제 스트리밍을 구분하기`
+- Source re-checked: official Nari Labs Dia2 repository README; current repository page showed 1.2k stars and 103 forks (volatile attention signal, not quality evidence)
+- Corrected Python/CUDA-only implication: documented CUDA 12.8+ setup and CPU fallback, while explicitly noting this does not establish Android support
+- Reaffirmed that the separate TTS server remains an upcoming item; added third-party asset license and Android runtime/device profiling checks
+- Next: recompute the next oldest unreviewed AI/AI+Android card from `_data/cards.yml`; do not assume the previous stale cursor sequence is complete
+
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
 - Sources checked: arXiv full paper and author project page; GitHub repository search returned zero matching repositories
