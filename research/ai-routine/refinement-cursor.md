@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
+Current position: refined `subagentStatusLine` and `--exclude-dynamic-system-prompt-sections`; continue the oldest-first scan with the next remaining AI card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1061,3 +1061,10 @@ Rules:
 - Sources: [AI Studio Android guide](https://aistudio.google.com/docs/aistudio-android), [personal apps policy](https://support.google.com/googleplay/answer/18936837?hl=en), [Play testing tracks](https://support.google.com/googleplay/android-developer/answer/9845334)
 - Research note: `research/ai-routine/20261122-073051-google-ai-studio-android-policy-refinement.md`
 - Next: continue oldest-first refinement with the next unreviewed AI/AI+Android card after the Android Studio Agent Mode cluster
+
+
+- Refined the obsolete `subagentStatusLine` card against the official changelog: v2.1.323 removed the setting and existing keys no longer affect subagent rows. Reframed it as a version-compatibility lesson.
+- Refined `--exclude-dynamic-system-prompt-sections` against the current CLI reference; narrowed the moved context claims to the documented per-user information and retained the custom-system-prompt limitation.
+- Sources: [Claude Code changelog](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md), [CLI reference](https://code.claude.com/docs/en/cli-reference)
+- Research note: `research/ai-routine/20261122-085300-claude-statusline-and-cache-flag-refinement.md`
+- Next: continue the oldest-first AI card pass with `claude -p --bare`; verify current auto-discovery, explicit configuration, and JSON output details.

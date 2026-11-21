@@ -681,15 +681,16 @@ cards:
   interview: "서브에이전트가 다시 서브에이전트를 실행할 때 기본 깊이 제한은 얼마이며, 제한에 도달하면 어떻게 되나요?"
   answer: "기본 한도는 메인 대화 아래 3단계이며 `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH`로 변경할 수 있다. 한도에 도달한 일반 서브에이전트에는 Agent 도구가 제공되지 않아 더 위임하지 못한다. 대화형 세션에서는 하위 결과를 최상위 서브에이전트가 요약해 반환한다."
 - category: ai
-  title: subagentStatusLine — 서브에이전트 행마다 표시 내용 직접 그리기
-  summary: 'subagentStatusLine은 프롬프트 아래 에이전트 패널에서 각 서브에이전트 행의 본문을 기본 ''name · description · token count'' 대신 내 포맷으로 바꾸는 설정이다. settings.json에 type "command"로 스크립트를 등록하면, 새로고침 틱마다 한 번 실행되며 보이는 모든 서브에이전트 행이 stdin에 단일 JSON으로 들어온다. 입력에는 공통 훅 필드 외에 columns(행 너비)와 tasks 배열(각 항목에 id·name·type·status·description·label·startTime·tokenCount·tokenSamples·cwd)이 담긴다. stdout에 행마다 {"id":..., "content":...} 한 줄씩 출력하면 그 행만 덮어쓴다.
-
-    '
+  level: "중급"
+  title: subagentStatusLine — Claude Code v2.1.323에서 제거된 설정
+  summary: Claude Code v2.1.323은 서브에이전트 행을 꾸미던 `subagentStatusLine` 설정을 제거했다. 이전 버전에서는 명령이 각 행의 JSON 데이터를 받아 출력 형식을 바꿀 수 있었지만, 2.1.323부터는 기본 행만 표시한다. 기존 settings 파일에 키가 남아도 동작하지 않는다.
   points:
-  - 서브에이전트 패널 행 본문 커스터마이즈 — 기본은 name·description·token count
-  - 'stdin: columns + tasks 배열(id·status·tokenCount 등), stdout: {"id","content"} 줄 단위'
-  - id 생략 시 기본 렌더 유지, content 빈 문자열이면 행 숨김 / statusLine과 동일한 trust·disableAllHooks 적용
-  source: https://code.claude.com/docs/en/statusline
+  - v2.1.322까지 사용자 지정 서브에이전트 행을 지원
+  - v2.1.323부터 설정 제거; 행은 기본 표시를 사용
+  - 설정 파일에 남은 키도 효과 없음 — 업그레이드 후 동작을 전제로 하지 않기
+  source: https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md
+  interview: "`subagentStatusLine`이 설정 파일에 남아 있는데 Claude Code v2.1.323 이상에서 적용되지 않는 이유는 무엇인가요?"
+  answer: "v2.1.323에서 해당 설정이 제거됐기 때문이다. 릴리스 노트에 따르면 서브에이전트 행은 기본 모양을 사용하며 기존 설정 파일의 키도 계속 읽히지만 효과는 없다."
 - category: ai
   level: "중급"
   title: 플러그인 마켓플레이스 — marketplace.json 하나로 팀에 플러그인 배포하기
@@ -717,15 +718,16 @@ cards:
   interview: "MessageDisplay 훅으로 화면의 텍스트를 바꾸면 Claude가 다음 판단에 사용하는 대화 내용도 바뀌나요?"
   answer: "아니다. `displayContent`는 화면에 보이는 텍스트만 바꾼다. 트랜스크립트와 Claude가 보는 내용은 원본을 유지하므로, 이 훅은 표시 형식에 쓰고 모델 동작을 통제하는 데 쓰지 않는다."
 - category: ai
-  title: --exclude-dynamic-system-prompt-sections — 프롬프트 캐시 재사용률 높이기
-  summary: '이 플래그는 머신마다 달라지는 시스템 프롬프트 조각(작업 디렉터리, 환경 정보, 메모리 경로, git 레포 여부)을 시스템 프롬프트에서 빼서 첫 번째 사용자 메시지로 옮긴다. 시스템 프롬프트가 사용자·머신에 상관없이 동일해지므로, 같은 작업을 여러 사람·여러 머신이 돌릴 때 프롬프트 캐시가 더 잘 재사용된다. 기본 시스템 프롬프트에서만 동작하고 `--system-prompt`/`--system-prompt-file`를 쓰면 무시되며, `-p`(print) 스크립트의 다중 사용자 워크로드에 쓰라고 안내된다.
-
-    '
+  level: "중급"
+  title: --exclude-dynamic-system-prompt-sections — 반복 실행의 프롬프트 캐시 돕기
+  summary: 이 CLI 플래그는 자동 메모리 위치 같은 사용자별 정보를 시스템 프롬프트에서 첫 사용자 메시지로 옮긴다. 같은 작업을 여러 사용자나 머신에서 실행할 때 시스템 프롬프트 접두부가 더 일정해져 prompt cache 재사용에 도움이 된다. 기본 시스템 프롬프트를 쓸 때만 적용되며, `--system-prompt` 또는 `--system-prompt-file`을 지정하면 무시된다. 주 사용처는 `-p` 기반 다중 사용자 스크립트다.
   points:
-  - 머신별 조각(cwd·환경·메모리경로·git여부)을 시스템 프롬프트 → 첫 사용자 메시지로 이동
-  - 시스템 프롬프트가 동일해져 사용자·머신 간 프롬프트 캐시 히트율 상승
-  - 기본 프롬프트에서만 작동(--system-prompt류 쓰면 무시) / -p 다중사용자 스크립트용
+  - 사용자별 동적 정보를 시스템 프롬프트에서 첫 사용자 메시지로 이동
+  - 다른 사용자·머신에서 같은 작업을 반복할 때 캐시 재사용 개선
+  - 기본 프롬프트 전용; 사용자 지정 시스템 프롬프트와 함께면 무시
   source: https://code.claude.com/docs/en/cli-reference
+  interview: "이 플래그는 어떤 내용을 어디로 이동시키며, `--system-prompt`를 지정한 경우에도 적용되나요?"
+  answer: "자동 메모리 위치 같은 사용자별 정보를 시스템 프롬프트에서 첫 사용자 메시지로 옮긴다. 기본 프롬프트에서만 동작하므로 `--system-prompt`나 `--system-prompt-file`을 지정하면 무시된다."
 - category: ai
   level: "고급"
   title: Setup 훅 — 세션 시작 전 init·maintenance 준비 작업 자동 실행
