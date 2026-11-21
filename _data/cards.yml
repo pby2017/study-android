@@ -7922,13 +7922,16 @@ cards:
   - Unsaturated — Diamond best 13.4%, production-ready signal not correctness-only
   source: https://cognition.ai/blog/frontier-code
 - category: ai
-  title: ZCode — Z.ai desktop ADE, long-horizon GLM-5.2·SSH remote·mobile Remote Control
-  summary: ZCode(zcode.z.ai·2026-06-13 v3.0)는 Zhipu/Z.ai Agentic Development Environment — long-horizon multi-step task에 특화. in-house ZCode Agent core(Gen 3.0부터 third-party adapter deprecated) — files·terminal·browser·Git state single task continuity. GLM-5.2 deep optimization·GLM Start Plan 150% quota·/goal long-horizon. Remote Workspace SSH·Docker·WSL first-class·mobile Remote Control QR→desktop session steer·Feishu/WeChat Bot Channel. Zread auto project knowledge base·grouped task workspace·Git branch graph. Orca(cross-agent fleet) ·DeerFlow(LangGraph harness) ·Cursor(AI IDE)와 달리 GLM stack native ADE·mobile vibeworking.
+  level: "중급"
+  title: ZCode — GLM-5.3 ADE와 휴대폰 원격 조종의 실행 경계
+  summary: ZCode는 GLM-5.3에 맞춘 Agentic Development Environment(ADE)다. ZCode Agent는 파일·터미널 결과·브라우저 맥락·Git 상태를 한 작업에서 이어 계획·구현·검증을 돕는다. Remote Control은 휴대폰에서 데스크톱 창의 작업을 살피고 지시하는 제어면일 뿐, 휴대폰에 코드 실행 환경을 만들지 않는다. 실제 명령은 데스크톱에서 이미 연결한 로컬·SSH 호스트·WSL·Docker 환경에서 실행된다. QR 링크는 데스크톱 조작 권한이므로 공유하지 말고 사용 후 Remote Control을 중지한다.
   points:
-  - Long-horizon native — plan→code→verify→review single task, context no mid-break
-  - Remote SSH/Docker/WSL — same desktop UX on server/container, mobile steer
-  - GLM-5.2 optimized — in-house agent, Coding Plan quota, /goal multi-hour tasks
-  source: https://zcode.z.ai/en/docs/welcome
+  - GLM-5.3 중심 ADE — 작업 목표·파일·도구 결과·Git 상태를 한 흐름에서 관리
+  - 휴대폰은 지시를 전달하고, 실행 위치는 데스크톱에서 연결한 workspace가 결정
+  - QR 링크를 가진 사람은 창을 조작할 수 있음 — 노출되면 링크를 새로 고치고 사용 후 중지
+  source: https://zcode.z.ai/en/docs/remote-control
+  interview: "ZCode Remote Control에서 휴대폰으로 보낸 명령은 어디서 실행되며, QR 링크를 왜 비밀로 다뤄야 하나요?"
+  answer: "휴대폰은 제어면이고 실행 환경이 아니다. 명령은 데스크톱에서 연결한 로컬·SSH·WSL·Docker workspace에서 실행된다. QR 링크 자체가 창 조작 권한이므로 공유하지 말고, 노출되면 새 링크로 갱신한 뒤 사용을 마치면 Remote Control을 중지한다."
 - category: ai
   title: Claude Code plugin monitors·LSP·skills-dir·/plugin list — packaging·감시·인벤토리
   summary: Claude Code plugin v2.1.105+ experimental component — monitors(monitors/monitors.json)·LSP(.lsp.json)·skills-dir auto-discovery. Monitors — shell command persistent background, stdout→Claude notification. LSP — edit 후 type error·missing import diagnostic. skills-dir — ~/.claude/skills/<folder>/.claude-plugin/plugin.json→@skills-dir install 없이 auto-load. v2.1.163 `/plugin list`·`claude plugin list` — installed plugin inline inventory, `--enabled`/`--disabled` filter, `/plugin` menu 없이 확인. `claude plugin details` — component inventory·projected per-session token cost·LSP server list. security-guidance ·Context7 ·official LSP 11 languages와 plugin packaging layer 완성.

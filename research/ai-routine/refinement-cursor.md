@@ -855,3 +855,10 @@ Rules:
 - Verified research status: ACL 2026 oral and AIWILD@ICLR 2026 best-paper award; repository attention snapshot 51 stars/4 forks, not treated as quality proof
 - Research note: `research/ai-routine/20261122-073000-mobilerisk-ossentinel-refinement.md`
 - Next: inspect the next older AI/AI+Android card; verify its claims and platform applicability before editing
+
+- Reviewed and refined `ZCode — GLM-5.3 ADE와 휴대폰 원격 조종의 실행 경계`
+- Replaced stale GLM-5.2, version, quota, and feature claims with current official ZCode guide facts; excluded claims not needed to explain the product
+- Clarified that phone Remote Control is a control surface, while execution stays in the desktop-connected local/SSH/WSL/Docker workspace; documented QR-link authorization and stop/refresh precautions
+- Sources: [ZCode guide](https://zcode.z.ai/en/docs/welcome), [Remote Control](https://zcode.z.ai/en/docs/remote-control), [Remote Development](https://zcode.z.ai/en/docs/remote-development)
+- Research note: `research/ai-routine/20261122-065700-zcode-glm53-remote-control.md`
+- Next: inspect `FrontierCode` and verify current benchmark claims before refining
