@@ -67,3 +67,5 @@ body{
 .card-position{text-align:center;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
 
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
+.interview summary{line-height:1.5}
+.interview p strong{color:var(--fg)}

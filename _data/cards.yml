@@ -80,8 +80,9 @@ cards:
   - "onStart: 화면에 보임 · onResume: 상호작용 가능"
   - "onPause ≠ 화면이 사라짐 — 포그라운드 전용 작업만 빠르게 중지"
   - "onStop: 비표시 리소스 해제 · 프로세스 종료 콜백은 보장되지 않음"
-  interview: "onPause와 onStop의 차이는? 포커스를 잃었지만 보일 수 있으면 Paused, 화면에서 완전히 보이지 않으면 Stopped다. 카메라 미리보기는 보통 onPause에서 멈춘다."
   source: https://developer.android.com/guide/components/activities/activity-lifecycle
+  interview: "onPause와 onStop은 어떻게 다른가?"
+  answer: "onPause는 포커스를 잃은 상태이며 화면에 보일 수 있다. onStop은 화면이 더 이상 보이지 않는 상태다."
 - category: android
   level: "중급"
   title: "화면 상태 복원 — ViewModel·SavedState·DB의 수명 구분"
@@ -90,8 +91,9 @@ cards:
   - "ViewModel: 구성 변경 동안 메모리 상태 유지"
   - "SavedStateHandle·rememberSaveable: 작은 UI 상태 복원"
   - "DB/DataStore: 앱 재시작 뒤에도 필요한 영구 데이터"
-  interview: "검색어 입력과 서버에서 받은 전체 목록은 어디에 저장할까? 짧은 검색어는 saved state에 둘 수 있지만 목록은 저장소에 저장하거나 다시 가져온다."
   source: https://developer.android.com/topic/libraries/architecture/saving-states
+  interview: "회전, 프로세스 종료, 앱 재시작에 각각 어떤 저장 수명을 써야 하는가?"
+  answer: "ViewModel은 구성 변경, SavedState는 작은 UI 복원 상태, DB/DataStore는 장기 앱 데이터를 담당한다."
 - category: android
   level: "초급"
   title: "View 레이아웃 선택 — 단순함과 계층 깊이를 기준으로"
@@ -100,8 +102,9 @@ cards:
   - "단순한 배치: 가장 읽기 쉬운 구조를 선택"
   - "복잡한 관계: ConstraintLayout으로 불필요한 중첩을 줄이기"
   - "성능 이슈: 기기에서 측정하고 병목을 확인"
-  interview: "ConstraintLayout으로 바꾸면 항상 더 빠를까? 아니다. 계층을 평탄화하는 데 도움이 되지만 실제 비용은 계측으로 확인한다."
   source: https://developer.android.com/topic/performance/rendering/optimizing-view-hierarchies
+  interview: "ConstraintLayout으로 바꾸면 항상 더 빠른가?"
+  answer: "아니다. 계층 평탄화에 도움이 될 수 있지만 실제 비용은 기기에서 측정해야 한다."
 - category: android
   title: 머티리얼 디자인 — 일관된 시각 언어
   summary: '스큐어모픽(실물 모사)→플랫(평면)을 거쳐, 구글은 ''프로젝트 케네디''로 디자인을 통일했고 그 위에 학습 부담을 줄인 머티리얼 디자인을 내놨다. 핵심은 시각 디자인의 공통 언어와 ''이디엄''(단순 조작을 조합해 의미 있는 조작을 만드는 관용구)으로 사용자가 UI 동작을 예측하게 하는 것. 대표 컴포넌트는 리스트/그리드/카드, 그리고 FAB·Raised·Flat 버튼. 카드엔 정보를 의미 단위로 묶는 ''청킹''을 적용한다.
@@ -150,8 +153,9 @@ cards:
   - "UI → (선택) Domain → Data 방향으로 의존을 정리"
   - "UI에서 Room·DataStore·네트워크 API를 직접 호출하지 않기"
   - "작은 앱은 패키지로 시작하고 필요할 때 모듈로 분리"
-  interview: "도메인 계층은 모든 앱에 필수인가? 공통 로직 재사용이나 복잡도 완화가 필요할 때 추가한다."
   source: https://developer.android.com/topic/architecture/recommendations
+  interview: "도메인 계층은 모든 앱에 필요한가?"
+  answer: "아니다. 여러 화면에서 공통 로직을 재사용하거나 복잡한 ViewModel 로직을 줄일 때 추가한다."
 - category: android
   level: "중급"
   title: "UDF — 상태는 아래로, 이벤트는 위로"
@@ -160,8 +164,9 @@ cards:
   - "State down: ViewModel → UI"
   - "Event up: UI → ViewModel의 메서드"
   - "화면 회전 등 생명주기를 고려해 상태를 수집"
-  interview: "UDF가 양방향 데이터 바인딩보다 유리한 점은? 상태 변경의 출처와 이벤트 경로가 명확해 디버깅·테스트가 쉽다."
   source: https://developer.android.com/topic/architecture/ui-layer
+  interview: "UDF에서 상태와 이벤트는 각각 어느 방향으로 흐르는가?"
+  answer: "상태는 상태 보유자에서 UI로 내려가고, 사용자 이벤트는 UI에서 상태 보유자로 올라간다."
 - category: architecture
   level: "고급"
   title: "Repository와 단일 진실 공급원 — 캐시·네트워크 충돌을 한곳에서 정리"
@@ -170,8 +175,9 @@ cards:
   - "UI는 데이터 소스 대신 Repository에 접근"
   - "Repository마다 데이터가 최종적으로 일치할 SSOT를 정의"
   - "오프라인 우선이라면 로컬 DB를 SSOT로 고려"
-  interview: "네트워크 응답과 로컬 캐시가 다르면 무엇이 기준인가? Repository가 정의한 SSOT이며, 오프라인 우선 설계에서는 보통 로컬 DB다."
   source: https://developer.android.com/topic/architecture/data-layer
+  interview: "Repository가 여러 데이터 소스를 조정할 때 무엇을 일관된 읽기 기준으로 삼는가?"
+  answer: "Repository가 정한 단일 진실 공급원(SSOT)을 기준으로 읽고, 충돌 시 그곳을 갱신한다."
 - category: android
   level: "중급"
   title: "ViewModel은 프로세스 사망까지 기억하지 않는다"
@@ -180,8 +186,9 @@ cards:
   - "구성 변경: 같은 ViewModel 인스턴스 유지"
   - "시스템 프로세스 사망: ViewModel 메모리 소멸"
   - "SavedStateHandle은 작은 복원 값, 앱 데이터는 저장소에 보관"
-  interview: "SavedStateHandle에 화면의 전체 데이터를 넣어도 될까? 아니다. 복원에 필요한 작은 식별자·입력값을 저장하고 큰 앱 데이터는 영구 저장소에서 다시 읽는다."
   source: https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate
+  interview: "SavedStateHandle에 큰 화면 데이터 전체를 저장해도 되는가?"
+  answer: "아니다. 복원에 필요한 작은 값만 저장하고 큰 데이터는 저장소에서 다시 읽는다."
 - category: android
   level: "초급"
   title: "Compose 상태 끌어올리기 — value와 이벤트 콜백으로 분리"
@@ -190,8 +197,9 @@ cards:
   - "상태를 읽는 컴포저블들의 가장 가까운 공통 조상으로 올리기"
   - "자식은 불변 value를 받고 변경 이벤트를 콜백으로 전달"
   - "공유할 필요 없는 단순 UI 상태는 억지로 올리지 않기"
-  interview: "상태를 항상 ViewModel까지 올려야 할까? 아니다. 읽고 쓰는 범위의 가장 가까운 소유자가 관리하고, 비즈니스 로직이나 여러 화면 공유가 필요할 때 더 위로 올린다."
   source: https://developer.android.com/develop/ui/compose/state-hoisting
+  interview: "Compose 상태를 항상 ViewModel까지 끌어올려야 하는가?"
+  answer: "아니다. 읽고 쓰는 가장 가까운 공통 소유자에 두고, 여러 화면 공유나 비즈니스 로직이 있을 때 더 올린다."
 - category: architecture
   level: "고급"
   title: "오프라인 우선 읽기 — 네트워크 응답도 먼저 로컬 저장소에 반영"
@@ -200,8 +208,31 @@ cards:
   - "네트워크 사용 Repository는 로컬·원격 데이터 소스를 함께 둔다"
   - "상위 계층은 로컬 SSOT만 읽어 연결 상태와 무관하게 일관성 유지"
   - "동기화 정책은 충돌 해결과 재시도 전략까지 명시"
-  interview: "오프라인 우선 앱에서 UI가 서버 응답을 직접 표시하면 어떤 문제가 생길까? 로컬 데이터와 화면이 갈라져 연결 상태에 따라 서로 다른 진실을 보일 수 있다."
   source: https://developer.android.com/topic/architecture/data-layer/offline-first
+  interview: "오프라인 우선 앱에서 UI가 네트워크 응답을 직접 읽으면 왜 문제가 되는가?"
+  answer: "상위 계층의 읽기 기준이 로컬과 서버로 갈라져 연결 상태에 따라 화면이 달라질 수 있다."
+- category: android
+  level: "중급"
+  title: "Compose UI 테스트 — 사용자가 보는 의미를 검증"
+  summary: "Compose UI 테스트는 화면을 의미 트리(Semantics tree)로 탐색하고, 사용자 동작을 수행한 뒤 결과를 검증한다. Semantics는 접근성에도 쓰이므로 테스트가 사용자의 관점에 가까워진다. 텍스트나 내부 구현보다 의미 있는 역할·상태·동작을 검증한다."
+  points:
+  - "Semantics로 UI 노드를 찾고 속성을 확인"
+  - "performClick 같은 사용자 동작을 실행"
+  - "접근성과 테스트가 공유하는 의미 정보를 유지"
+  interview: "Compose UI 테스트에서 Semantics를 사용하는 이유는?"
+  answer: "사용자가 접근성·화면과 상호작용하는 의미 정보를 기준으로 탐색하고 검증할 수 있기 때문이다."
+  source: https://developer.android.com/develop/ui/compose/testing
+- category: android
+  level: "중급"
+  title: "메인 스레드와 ANR — 느려짐은 입력 지연에서 시작"
+  summary: "Android 메인(UI) 스레드는 입력 처리와 화면 그리기를 담당한다. 긴 계산이나 동기 I/O가 이 스레드를 막으면 프레임이 늦고 입력을 처리하지 못한다. 60Hz 화면의 프레임 예산은 약 16ms이며, 입력 응답 지연이 보통 수 초 이어지면 ANR이 발생할 수 있다."
+  points:
+  - "메인 스레드에서는 UI를 갱신하고 오래 걸리는 작업은 피하기"
+  - "네트워크·디스크 I/O와 긴 계산은 적절한 백그라운드 dispatcher로 이동"
+  - "ANR은 단순히 “느린 프레임”이 아니라 응답 타임아웃 문제"
+  interview: "DB 조회를 Dispatchers.IO로 옮겼는데도 ANR이 날 수 있는가?"
+  answer: "가능하다. 락 경합, Binder 대기 등 메인 스레드를 간접적으로 막는 원인도 추적해야 한다."
+  source: https://developer.android.com/topic/performance/threads
 - category: ai
   title: diagnose — 디버깅을 규율로 만드는 스킬
   summary: 'mattpocock/skills의 diagnosing-bugs는 어려운 버그를 "재현 가능한 실패 신호"에서 시작하게 만드는 디버깅 루프다. 순서는 재현·최소화 → 3~5개 가설 → 한 변수씩 계측 → 수정 → 회귀 테스트 → 정리로 이어진다. 좋은 점은 버그를 설명하는 말솜씨보다, 같은 명령으로 빨간불과 초록불을 반복해서 볼 수 있는지를 먼저 묻는다는 것이다. 그래서 AI에게 바로 코드를 고치게 하기보다, 실패를 빠르게 보여주는 테스트·스크립트·로그 지점을 먼저 만들고 그 신호 하나로 가설을 줄여 간다.

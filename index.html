@@ -26,8 +26,8 @@ title: study — 1분 지식 카드
       {% endif %}
       {% if card.interview %}
       <details class="interview">
-        <summary>면접 복기 질문</summary>
-        <p>{{ card.interview }}</p>
+        <summary>{{ card.interview }}</summary>
+        <p><strong>핵심 답:</strong> {{ card.answer }}</p>
       </details>
       {% endif %}
       {% if card.source %}
