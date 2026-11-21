@@ -2,11 +2,13 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `MLflow — LLM 추적과 평가로 프롬프트 회귀 찾기`; next candidate: inspect the following card after MLflow in `_data/cards.yml`.
+Current position: continue after `Distilabel — LLM 합성 데이터를 파이프라인으로 만들고 검수하기`; next candidate: inspect the following card after Distilabel in `_data/cards.yml`.
 
-Last update: 2026-11-22 02:06 KST
+Last update: 2026-11-22 02:10 KST
 
 Current run:
+- Reviewed and refined: `Distilabel` (removed named-recipe and “any provider” claims without scope; added synthetic-data quality checks and current community-maintenance status)
+- Sources re-checked: official repository README and current documentation
 - Reviewed and refined: `MLflow` (removed unsupported “industry standard”, ownership/cost comparison, and vendor-lock-in claims; refocused on trace + evaluation workflow)
 - Sources re-checked: official MLflow README and current documentation
 - Reviewed and refined: `BentoML` (removed absolute ease and competitor-ranking claims; clarified API packaging, Bento artifacts, Docker, and production validation responsibilities)
@@ -216,7 +218,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after MLflow in `_data/cards.yml`; confirm current relevance and non-duplication before research.
+- Continue with the card immediately after Distilabel in `_data/cards.yml`; confirm current relevance and non-duplication before research.
 
 Per successful refinement run, update this file with:
 - timestamp
