@@ -890,4 +890,9 @@ Rules:
 - Verified current mcp-eval repo snapshot at 41 stars/10 forks; PyPI `mcpevals` latest listed release is 0.1.10 (2025-09-04), so removed “production-ready” and adoption implications; tool serves as a documented example, not an endorsement
 - Sources: [mcp-eval repository](https://github.com/lastmile-ai/mcp-eval), [mcpevals on PyPI](https://pypi.org/project/mcpevals/), [mcptest repository](https://github.com/josephgec/mcptest)
 - Research note: `research/ai-routine/20261122-070300-mcp-eval-card-merge.md`
-- Next: continue older-card review at `Junie GA`; validate current Android Studio/JetBrains support and remove stale claims if needed
+- Reviewed and refined `Junie GA` into `Junie Android 개발 — 에이전트에 에뮬레이터·Compose 미리보기·Logcat 연결`
+- Replaced a stale, crowded product overview with the documented Android agent feedback loop; separated built-in IDE/CLI capabilities from optional `android-engineer` extension features
+- Removed volatile launch-date, broad provider/ACP/debugger, and remote-control assertions that were unnecessary for this AI+Android lesson; made no star/popularity claim for this proprietary product
+- Sources: [Junie Android development](https://junie.jetbrains.com/docs/android-development-with-junie.html), [Junie IDE plugin](https://junie.jetbrains.com/docs/junie-ide-plugin.html), [JetBrains AI Assistant](https://www.jetbrains.com/help/idea/ai-assistant-in-jetbrains-ides.html)
+- Research note: `research/ai-routine/20261122-071035-junie-android-workflow-refinement.md`
+- Next: continue to the next older card after `Junie Android 개발`; check for overlap with the recent Android Studio BYOA card before selecting another refinement
