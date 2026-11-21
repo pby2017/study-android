@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `GitHub Issues MCP Fields`; next candidate: inspect `Android AppFunctions 1.0` for current API status, AI relevance, integration boundaries, and duplicate coverage.
+Current position: refined `Android AppFunctions 1.0`; next candidate: inspect `Android AI Sample Catalog` for current examples, model/API boundaries, AI+Android value, and duplicate coverage.
 
-Last update: 2026-11-22 04:57 KST
+Last update: 2026-11-22 05:02 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -582,3 +582,13 @@ Rules:
 - Duplicate scan found adjacent GitHub MCP cards about secret scanning and general agent workflows, but no overlapping issue-fields lesson.
 - Sources: https://github.com/github/github-mcp-server ; https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues/ ; https://github.blog/changelog/2026-05-21-issue-fields-are-now-in-public-preview-for-all-organizations/ ; https://github.blog/changelog/2026-11-11-issue-types-and-fields-are-available-for-personal-accounts/
 - Next: `Android AppFunctions 1.0`; verify current API status and AI+Android scope.
+
+
+## 2026-11-22 05:02 KST
+
+- Reviewed and refined `Android AppFunctions 1.0` against current Android AI, implementation, API-reference, and AndroidX release documentation.
+- Confirmed Jetpack 1.0.0 stable release (2026-11-18), Android 16+ support, same-package versus privileged cross-app access, and Gemini's Connected Apps developer-preview requirement.
+- Removed the now-stale experimental-preview assertion; added main-thread execution and Android 17+ ADB verification while separating registration checks from agent tool-selection testing.
+- Duplicate scan found only an incidental mention in a security roadmap card; no duplicate learning card.
+- Sources and rationale: `research/ai-routine/20261122-050249-appfunctions.md`.
+- Next: inspect `Android AI Sample Catalog`.
