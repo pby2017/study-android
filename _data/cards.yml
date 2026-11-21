@@ -8832,6 +8832,7 @@ cards:
   source: https://code.claude.com/docs/en/agent-view
 - category: ai
   title: Spotify LLM Evals — A/B 테스트를 대체하지 말고 앞단 필터로 쓰기
+  level: "중급"
   summary: 'Spotify Engineering의 2026-05-18 글은 LLM eval을 온라인 실험의 대체물이 아니라 "funnel"로 다루라고 정리한다. LLM judge는 relevance·coherence·tone·intent alignment처럼 사람 검수로는 크게 확장하기 어려운 품질 차원을 빠르게 점수화해, 실험에 올릴 후보의 hit rate를 높인다. 하지만 eval이 검증하는 것은 "출력이 의도한 품질 기준에 맞는가"이고, A/B 테스트가 검증하는 것은 "실제 사용자와 시스템 지표가 좋아졌는가"다. 그래서 eval은 실험 전에 나쁜 후보를 버리고, 실험 뒤에는 judge가 선호한 버전이 실제 outcome과 맞았는지 calibration loop로 다시 점검해야 한다. 글은 Spotify 실험에서 positive ship으로 끝나는 비율은 약 12%지만, 약 64%는 회귀 발견·가설 수정 같은 valid learning을 만든다고 말한다. 또 출시 실험의 약 42%는 secondary metric 회귀를 막기 위해 rollback된다고 설명한다. 실무 교훈은 간단하다. AI 기능을 "eval 점수 통과"만으로 배포하지 말고, eval→온라인 실험→guardrail metric→judge calibration을 한 루프로 묶어야 한다.
 
     '
@@ -8840,14 +8841,19 @@ cards:
   - judge 점수와 온라인 지표가 어긋나는 구간이 calibration 신호 — eval도 계속 검증 대상
   - guardrail metric을 함께 봐야 eval이 못 잡는 crash·retention·session length 회귀를 막을 수 있음
   source: https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork
+  interview: "LLM 평가 점수가 좋아졌다면 바로 기능을 출시해도 되나요?"
+  answer: "아니다. 평가 점수는 정해진 품질 기준에 맞는지 보는 사전 필터다. 실제 사용자 결과는 온라인 실험으로 확인하고, guardrail 지표와 평가자 보정도 함께 봐야 한다."
 - category: ai
   title: OpenAI Secure MCP Tunnel — 사내 MCP를 공개하지 않고 ChatGPT·Codex에 연결하기
+  level: "고급"
   summary: OpenAI의 Secure MCP Tunnel은 사내망·로컬호스트의 MCP 서버를 public endpoint로 열지 않고도 ChatGPT, Codex, Responses API, AgentKit에서 쓰게 하는 연결 방식이다. 고객이 실행하는 tunnel-client가 OpenAI tunnel service로 outbound HTTPS long-poll을 만들고, OpenAI 제품은 tunnel_id가 붙은 OpenAI-hosted MCP URL만 호출한다. 실제 사내 MCP URL은 tunnel-client가 있는 네트워크 안에서만 쓰인다. 그래서 방화벽 inbound rule을 새로 열지 않고, Streamable HTTP·stdio MCP 요청을 전달하며, `/healthz`, `/readyz`, `/metrics`, `/ui`로 운영 상태를 볼 수 있다. 교훈은 MCP 도입을 "서버 하나 더 공개"가 아니라 네트워크 경계·권한·운영 관측성을 함께 설계하는 integration 문제로 보라는 점이다.
   points:
   - outbound-only tunnel-client — 사내 MCP 서버는 public listener 없이 유지
   - 대상 표면 — ChatGPT, Codex, Responses API, AgentKit에서 같은 tunnel_id 기반 MCP endpoint 사용
   - 운영 경계 — runtime key는 Tunnels Read+Use, 관리자는 Read+Manage; health/metrics/UI로 연결 상태 확인
   source: https://developers.openai.com/blog/connect-private-mcp-servers-to-openai-products
+  interview: "사내 MCP 서버를 외부 제품에서 쓰면서 인바운드 포트를 열지 않는 연결의 핵심은 무엇인가요?"
+  answer: "내부 네트워크의 tunnel client가 외부로 아웃바운드 연결을 만들고, 외부 제품은 호스트된 터널 주소를 호출한다. 클라이언트가 내부 MCP로 요청을 전달하므로 서버 자체를 공개 리스너로 노출하지 않는다."
 - category: ai
   title: Copilot adoption phase metrics — AI 에이전트 도입을 PR 병합 기여도로 보기
   summary: GitHub는 Copilot usage metrics API의 `totals_by_ai_adoption_phase`에 `total_pull_requests_merged`를 추가했다. 2026-05-29에 도입된 AI adoption phase는 사용자를 최근 28일 사용 표면에 따라 Code first, Agent first, Multi-agent 등으로 나누고, 2026-06-26 업데이트는 각 phase가 하루 또는 28일 동안 실제로 병합한 PR 총량을 함께 보여준다. 이전의 `avg_pull_requests_merged`가 phase 안 사용자 평균을 봤다면, 새 필드는 전체 병합 PR 중 어느 adoption phase가 얼마나 기여했는지 계산하게 해 준다. 실무 교훈은 에이전트 도입률을 "누가 많이 썼나"에서 멈추지 말고, code-first에서 agent-first/multi-agent로 이동할수록 실제 delivery 지표가 어떻게 바뀌는지 추적하라는 점이다.
@@ -8866,12 +8872,15 @@ cards:
   source: https://arxiv.org/abs/2605.31268
 - category: ai
   title: STATE-Bench — 에이전트 메모리는 대화 요약이 아니라 최종 상태로 평가해야 한다
+  level: "고급"
   summary: Microsoft의 STATE-Bench는 에이전트가 긴 업무 흐름에서 "무엇을 기억했는가"를 최종 데이터 상태로 재는 벤치마크다. travel, customer support, shopping assistant 3개 도메인에 각 150개씩 총 450개 enterprise task를 두고, 에이전트는 task-local sandbox DB, 도메인 도구, simulated user를 상대한다. 통과하려면 필요한 정보를 도구로 모으고, 정책을 적용하고, 필요하면 DB를 올바른 final state로 갱신하면서 대화 절차도 지켜야 한다. Agent Learning Track은 같은 simulator와 judge에 train trajectories와 retrieval hook을 더해 memory, skill, prompt optimization을 비교한다. 교훈은 "좋은 답변"만 보지 말고, 에이전트가 도구 호출 뒤 시스템 상태를 맞게 바꿨는지 pass@1, pass^5, UX, cost per task로 같이 보라는 점이다.
   points:
   - 450 task — travel·customer support·shopping assistant 각 150개 enterprise workflow
   - sandbox DB + domain tools + simulated user — 최종 DB 상태와 절차 준수를 함께 평가
   - Main Track과 Agent Learning Track을 분리해 memory·skill·prompt optimization 효과를 비교
   source: https://github.com/microsoft/STATE-Bench
+  interview: "도구를 쓰는 장기 작업 에이전트의 성공을 답변 문장만으로 평가하기 어려운 이유는 무엇인가요?"
+  answer: "에이전트가 올바른 정보를 모으고 절차를 지키며 외부 데이터베이스 같은 최종 시스템 상태를 맞게 바꿨는지도 성공 조건이기 때문이다. 따라서 상태와 절차를 함께 검사해야 한다."
 - category: ai
   title: Android Studio Agent Skills — .skills/SKILL.md로 Android 워크플로를 묶기
   level: "중급"
