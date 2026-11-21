@@ -2,11 +2,13 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Dia2 — 대화형 TTS의 조기 생성과 실제 스트리밍을 구분하기`; next candidate: inspect the following card after Dia2 in `_data/cards.yml`.
+Current position: continue after `Tabby — 팀 내부에 직접 배포하는 AI 코딩 도우미`; next candidate: inspect the following card after Tabby in `_data/cards.yml`.
 
 Last update: 2026-11-22 01:48 KST
 
 Current run:
+- Reviewed and refined: `Tabby` (replaced old code-completion-only framing with current coding-assistant scope; removed dated star count/model recommendations; added self-hosting responsibility interview practice)
+- Sources re-checked: official Tabby README and current GitHub repository metadata
 - Reviewed and refined: `Dia2` (corrected 1.6B to current 1B/2B checkpoints; distinguished early audio generation from real-time streaming server; stated English and 2-minute limits; added Android feasibility interview practice)
 - Sources re-checked: official Dia2 GitHub README, license, and Hugging Face model cards; live repository metadata
 - No evidence of upstream Android SDK or product-level Android streaming support
@@ -202,7 +204,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after Dia2 in `_data/cards.yml`; confirm it is still relevant and non-duplicative before research.
+- Continue with the card immediately after Tabby in `_data/cards.yml`; confirm current relevance and non-duplication before research.
 
 Per successful refinement run, update this file with:
 - timestamp
