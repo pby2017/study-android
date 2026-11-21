@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Firebase Remote Config — Android AI 설정 실험과 서버 모델 라우팅`; next candidate: `AI 로컬라이제이션 CLI`.
+Current position: continue after `Tolgee — 화면 문맥을 활용해 Android 번역을 AI로 제안하고 검수하기`; next candidate: `RevenueCat SOSA 2026`.
 
-Last update: 2026-11-22 02:31 KST
+Last update: 2026-11-22 02:34 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -45,6 +45,9 @@ Current run:
 - Reviewed and refined: `Firebase Remote Config` (separated Android client-template A/B tests and Personalization from server-template AI model/prompt selection; removed the unqualified “free” claim and stated the current fetch quota and billing boundary)
 - Sources re-checked: official Firebase Remote Config Android guide, client/server template comparison, A/B Testing, Personalization, security guidance, and pricing page
 - Added the critical client-value visibility boundary and an interview prompt about where to keep system prompts and API keys
+- Replaced the unsupported multi-tool `AI 로컬라이제이션 CLI` catalog with a focused Tolgee Android/AI workflow card; checked official AI translator, Android XML, Android SDK, GitHub adoption, and release evidence
+- Removed `LinkForty`: its card describes generic deep-link infrastructure without a central AI or AI+Android use case; historical publication records remain unchanged
+- Rejected the previous tool-list framing: `android-localisation` and `LocalizeKit` each showed 2 GitHub stars; `Localization-CLI` showed 116 stars but its repository is a Node.js iOS `.xcstrings` tool and lists Android XML as future work
 - Sources re-checked: official Sentry mobile solution page and Sentry blog posts documenting Seer/Autofix accuracy and fix success
 - No independent evaluation set or Android-only accuracy guarantee was found in reviewed sources; card no longer generalizes the number
 - Reviewed and refined: `Koog` (removed unsupported GA date and sweeping platform/pro-vider claims; captured Android target documentation ambiguity; clarified agent orchestration vs on-device inference and client-secret risk)
@@ -266,8 +269,9 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `AI 로컬라이제이션 CLI`; verify the named repositories, supported source formats, current activity, and placeholder handling before refining.
+- Continue with `RevenueCat SOSA 2026`; verify the reported AI-app revenue/churn comparisons and paywall metric against the original study before refining.
 - GrowthBook was removed from the deck because the reviewed card had no central AI use case; the historical publication log is retained.
+- LinkForty was removed because the reviewed card had no central AI use case; the historical publication log is retained.
 
 Per successful refinement run, update this file with:
 - timestamp
