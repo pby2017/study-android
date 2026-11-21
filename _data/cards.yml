@@ -2478,13 +2478,16 @@ cards:
   interview: "모바일 개인화 에이전트를 GUI 작업 성공률만으로 평가해도 될까요?"
   answer: "부족하다. 이 벤치마크는 행동 기록에서 선호를 추론하는 능력, 불확실할 때 질문하는 능력, 선제 행동 전 동의를 구하는 능력, 거절 뒤 멈추는 능력도 평가한다. 작업을 수행했는지와 함께 언제 행동하지 않아야 하는지도 봐야 한다."
 - category: ai
-  title: Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)
-  summary: 'Llamatik은 Kotlin Multiplatform에서 llama.cpp·whisper.cpp·stable-diffusion.cpp를 묶어 Android·iOS·Desktop·WASM에서 오프라인 AI를 돌리는 라이브러리다. 공통 `LlamaBridge` API로 로컬·원격 추론을 추상화하고, Android AAR/Maven Central 배포로 별도 네이티브 툴체인 없이 쓸 수 있게 한다. LLM 쪽은 streaming·context-aware generation·schema-constrained JSON·embeddings·KV cache 세션·concurrent sessions를 지원하고, Whisper/STT와 Stable Diffusion까지 같은 Kotlin API로 감싼다. Compose Multiplatform 샘플이 있어 "모바일 앱에 로컬 AI를 넣는 방법"을 바로 보여 주는 교육용 카드로 좋다.'
+  level: "중급"
+  title: KMP 온디바이스 AI — Llamatik의 core·sdk·sdk-agent 모듈 선택
+  summary: 'Llamatik은 Kotlin Multiplatform에서 로컬 AI를 연결하는 SDK다. `core`는 llama.cpp·whisper.cpp·Stable Diffusion의 네이티브 추론 API를 제공한다. `sdk`는 채팅·모델 관리·RAG·에이전트 DSL을, `sdk-agent`는 도구 실행·권한 확인·감사 로그가 있는 앱용 런타임을 제공한다. 필요한 계층만 선택해 Maven Central에서 추가한다. Android 최소 지원은 API 26이며, 모듈별 플랫폼 지원과 모델 호환성을 확인해야 한다.'
   points:
-  - 'Android·iOS·Desktop·WASM, single Kotlin API'
-  - 'GGUF/BIN + fully offline, no required servers'
-  - 'Maven Central 배포 + Compose Multiplatform 샘플'
-  source: https://github.com/ferranpons/Llamatik
+  - '`core`: 온디바이스 추론 브리지; 채팅·RAG가 필요하면 `sdk` 추가'
+  - '`sdk-agent`: 앱 도구·권한·확인·감사 흐름이 필요할 때 추가'
+  - 'Android API 26 이상; 기기별 네이티브·모델 지원은 별도 확인'
+  source: https://github.com/llamatik/Llamatik
+  interview: "텍스트 생성만 필요한 Android 앱도 `sdk-agent`를 처음부터 추가해야 하나요?"
+  answer: "아니다. 낮은 수준의 추론만 필요하면 `core`부터 시작한다. 채팅·모델 관리·RAG·에이전트 DSL은 `sdk`, 앱 도구를 권한 확인 후 실행하고 감사 로그를 남기는 기능은 `sdk-agent`가 필요할 때 추가한다."
 - category: ai
   title: Qwen3-VL — 오픈소스 비전-언어 모델 1위, OCR 32개 언어·문서·차트·GUI 에이전트까지(Apache-2.0)
   summary: 'Qwen3-VL은 Alibaba가 만든 오픈소스 비전-언어 모델로, 2026년 기준 DocVQA 96.5%·MathVista 85.8%로 오픈소스 VLM 중 최강이다. 72B·32B·7B 사이즈 제공, 256K 네이티브 컨텍스트(1M 확장), OCR 32개 언어 지원. GUI 에이전트·차트 이해·디자인→코드 변환까지 커버한다. InternVL3(OpenGVLab)가 범용 시각 추론에 강하다면, Qwen3-VL은 문서·OCR·수학·에이전트 특화. HuggingFace transformers·vLLM 통합.
@@ -2625,16 +2628,6 @@ cards:
   - MCP 네이티브 + Spring Boot·Ktor 통합
   - 1.0.0 GA(2026-05), Apache-2.0, JetBrains 주도
   source: https://github.com/JetBrains/koog
-- category: ai
-  title: kmp-ai — Kotlin Multiplatform llama.cpp 런타임으로 Android·iOS·Desktop에서 오프라인 LLM 돌리기(Maven Central)
-  summary: 'kmp-ai는 Kotlin Multiplatform에서 llama.cpp를 감싼 오프라인 LLM 런타임이다. JVM·Android·iOS를 같은 API로 묶고, `Flow<Token>` 스트리밍, HuggingFace/URL/local-file 모델 로드, SHA-256 검증, 재개 가능한 다운로드, KV-cache 재사용, GBNF 제약 생성, 모델 카탈로그를 제공한다. Maven Central AAR에는 Android용 프리빌트 `.so`가 들어가서 소비자는 NDK를 직접 준비하지 않아도 된다. Compose Multiplatform 샘플 앱은 모바일·데스크톱 통합 그림을 빠르게 보여 준다.
-
-    '
-  points:
-  - 'KMP: JVM·Android·iOS를 같은 llama.cpp API로 묶기'
-  - 'Flow 스트리밍, 재개 다운로드, KV-cache reuse, GBNF 제약 생성'
-  - 'Maven Central AAR + prebuilt .so, Compose Multiplatform sample'
-  source: https://github.com/fadizg/kmp-ai
 - category: ai
   title: Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구
   summary: 'Google Stitch는 Google Labs의 AI UI 도구로, 자연어·이미지로 모바일·웹 UI를 만들고 대화식으로 계속 다듬게 해 준다. 화면을 이어 붙여 인터랙티브한 앱 흐름을 확인할 수 있고, 음성으로 캔버스와 대화하면서 색상·메뉴·레이아웃 변형을 요청할 수 있다. Stitch는 MCP 서버·SDK·skills로 다른 개발 도구와 연결되고, AI Studio나 Antigravity로 넘겨 후속 작업을 이어갈 수 있다.

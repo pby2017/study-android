@@ -2,15 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`; next candidate in the current data sequence is `Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)`.
+Current position: continue after `KMP 온디바이스 AI — Llamatik의 core·sdk·sdk-agent 모듈 선택`; next candidate in the current data sequence is `Qwen3-VL — 오픈소스 비전-언어 모델 1위, OCR 32개 언어·문서·차트·GUI 에이전트까지(Apache-2.0)`.
 
-Last update: 2026-11-22 01:35 KST
+Last update: 2026-11-22 01:40 KST
 
 Current run:
-- Reviewed and refined: `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크` (distilled the trust and consent lesson; added level and interview recall)
-- Sources re-checked: official project page and arXiv paper; live GitHub API metadata
-- Skipped: no candidates; adoption is early (83 stars), so the card makes no popularity claim
-- Next: continue with `Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)`
+- Reviewed and consolidated: `Llamatik` + `kmp-ai` (one overlapping low-adoption wrapper card removed; module-selection lesson added to the Llamatik card)
+- Sources re-checked: official READMEs, release and license files; live GitHub API metadata
+- Card count reduced by one; no unsupported popularity claim added to the card
+- Next: continue with `Qwen3-VL — 오픈소스 비전-언어 모델 1위, OCR 32개 언어·문서·차트·GUI 에이전트까지(Apache-2.0)`
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
@@ -199,7 +199,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)`; re-check its current public sources and compatibility claims before considering edits.
+- Continue with `Qwen3-VL — 오픈소스 비전-언어 모델 1위, OCR 32개 언어·문서·차트·GUI 에이전트까지(Apache-2.0)`; re-check current model-card and benchmark sources before editing.
 
 Per successful refinement run, update this file with:
 - timestamp
