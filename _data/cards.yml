@@ -3387,13 +3387,16 @@ cards:
   interview: "Google Agents CLI는 코딩 에이전트 자체인가요? 생성한 AI 에이전트는 어떻게 검증하고 배포하나요?"
   answer: "아니다. Google Agents CLI는 코딩 에이전트가 사용할 명령과 skills를 제공하는 개발 도구다. `agents-cli create`로 에이전트 프로젝트·테스트·평가 데이터셋을 만들고 `eval run`으로 반복 평가한 뒤 `deploy`로 Cloud Run, Agent Runtime 또는 GKE에 배포한다. 로컬 개발은 클라우드 배포와 달리 GCP 결제/IAM 설정이 필요하지 않지만, 실제 클라우드 배포는 결제와 권한 및 사용량 비용을 고려해야 한다."
 - category: ai
-  title: Copilot SDK GA — 에이전트 루프를 제품 안에 심는 여섯 언어 SDK·v1.0.2 memory·defer
-  summary: GitHub Copilot SDK는 2026-06-02 GA·v1.0.2(2026-06-18). Node.js/TypeScript, Python, Go, .NET, Rust, Java 여섯 언어 — 제품 안에 Copilot agent runtime(planning·tool·file edit·streaming·multi-turn)을 직접 embed. v1.0.2 — session create/resume에 memory:{enabled:true} opt-in persistent memory across turns; tool definition defer:"auto"|"never"로 lazy tool search vs eager preload. GA 이후 — Rust/Java SDK 추가·multi-client same session tool/permission contribute·slash command+interactive prompt 전 언어·stable semver API. custom tools·MCP·prompt section·OpenTelemetry·GitHub OAuth/Apps/BYOK·cloud remote session·hook system. vs Copilot app(Canvas orchestration) ·Copilot CLI(TUI) — SDK=embed runtime in your product.
+  title: Microsoft Copilot SDK v2 — 앱 안에 심는 다중 언어 에이전트
+  level: "중급"
+  summary: Microsoft Copilot SDK는 Copilot CLI와 별개로 에이전트 runtime을 앱·서비스에서 호출하는 SDK다. TypeScript, Python, Go, .NET, Rust, Java에서 세션·도구·MCP·streaming을 구성하며, v2부터는 native runtime이 기본적으로 앱 프로세스 안에서 실행된다. 이 기본값은 별도 프로세스 운영을 줄이지만 sandbox나 crash isolation을 제공하지 않는다. 런타임 격리가 필요하면 spawned subprocess 연결을 명시하고, 배포 대상 OS·CPU에 맞는 native runtime 포함 여부도 확인한다. GitHub Copilot 구독 또는 지원 provider의 BYOK 인증이 필요하다.
   points:
-  - memory opt-in — cross-turn recall without re-prompting full context
-  - defer auto/never — token budget vs tool discovery latency tradeoff
-  - GA 6 languages — Rust/Java new, multi-client session sharing
-  source: https://github.com/github/copilot-sdk/releases/tag/v1.0.2
+  - "6개 언어 SDK로 동일한 Copilot agent runtime과 도구·세션 흐름을 제품에 통합"
+  - "v2 기본 실행은 in-process: 별도 프로세스가 필요 없지만 sandbox·crash isolation은 없음"
+  - "격리가 필요하면 spawned subprocess를 선택하고, 플랫폼별 native runtime 번들을 검증"
+  source: https://github.com/microsoft/copilot-sdk/releases/tag/v2.0.0
+  interview: "Copilot SDK v2의 기본 in-process runtime을 모든 서비스에 그대로 적용해도 될까요?"
+  answer: "아니다. 프로세스 간 통신과 별도 runtime 운영은 줄지만 native runtime이 앱과 같은 프로세스에서 실행되므로 sandbox나 crash isolation은 없다. crash 격리나 클라이언트별 프로세스 설정이 필요하면 spawned subprocess 연결을 선택하고, 배포 OS·CPU에 맞는 runtime bundle도 확인한다."
 - category: ai
   title: GitHub MCP Secret Scanning GA — 커밋 전 에이전트에게 노출 키를 찾게 하기
   summary: 'GitHub는 2026년 5월 5일 MCP Server의 secret scanning 기능을 GA로 전환했다. MCP 호환 IDE나 GitHub Copilot CLI 같은 AI coding agent 환경에서 현재 변경분을 검사해 API 키와 토큰 같은 secret이 커밋이나 PR 전에 들어가지 않게 막는 방식이다. GA 버전은 기존 repository나 organization의 push protection customization을 존중해 탐지와 bypass 동작을 일관되게 맞춘다. 실무 포인트는 보안 검사를 CI 마지막 단계로 미루지 말고, 에이전트가 파일을 고치는 같은 루프 안에서 "현재 diff를 secret scanning 해 달라"고 호출하는 것이다.

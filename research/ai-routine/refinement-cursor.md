@@ -698,4 +698,8 @@ Rules:
 - Verified Python/Go ADK defaults and LangChain/Claude SDK templates; CLI GA v1.0.0 (2026-06-30), actively maintained through v1.15.0 (2026-11-17)
 - Added billing boundary: cloud deploy requires GCP project, billing and target IAM; distinguish from local development and check target pricing
 - Research note: `research/ai-routine/20261122-074500-google-agents-cli.md`
-- Next: inspect `Copilot SDK GA`
+- Reviewed and refined: `Copilot SDK GA` into the current Microsoft Copilot SDK v2 runtime/process-boundary guidance
+- Replaced stale v1.0.2 memory/defer details with the v2 default in-process architecture, six supported SDK languages, CLI distinction, BYOK/subscription boundary, and subprocess isolation guidance
+- Sources re-checked: v2.0.0 and current releases, current SDK README/getting-started/in-process guide, and staged rebrand announcement; v2.0.1 was latest stable release seen on 2026-11-22
+- Research note: `research/ai-routine/20261122-080000-microsoft-copilot-sdk-v2.md`
+- Next: inspect `GitHub MCP Secret Scanning GA`
