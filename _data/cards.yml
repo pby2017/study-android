@@ -3016,15 +3016,15 @@ cards:
   interview: 'Kotlin Multiplatform AI 라이브러리가 Android에서 쓸 수 있는지 README만 보고 판단하면 안 되는 이유는 무엇인가요?'
   answer: 'KMP라는 설명이나 Android 통합 계획이 실제 Android 컴파일 타깃과 동작 가능한 구현을 보장하지 않는다. Gradle 타깃, Android source set, 의존 artifact, 실행 가능한 Android 예제를 확인하고, 민감한 데이터는 실제 네트워크·저장 경로까지 점검해야 한다. Project KARL 저장소는 검토 시점에 주요 모듈이 JVM 타깃이고 runnable example도 Desktop이어서 Android-ready로 간주할 근거가 부족했다.'
 - category: ai
-  title: Apple Trust Insights(iOS 27) — 소셜 엔지니어링·코칭 사기를 온디바이스 ML로 탐지하는 프레임워크
-  summary: 'Trust Insights는 iOS 27에서 도입된 프레임워크로, 사용자가 사기범에게 코칭 받으면서 위험한 행동을 하는 상황을 온디바이스 ML로 탐지한다. 결제·계정 변경·원격 접근 같은 민감한 순간에 행동 컨텍스트를 분석해 IsLikelyBeingCoachedInsight(unknown/medium/high)를 반환. 개인 콘텐츠(사진·메시지)에 접근하지 않고 인터랙션 패턴·타이밍·센서 데이터만 분석. reportConsumption 필수, Apple Business Register로 오프라인 피드백.
-
-    '
+  title: 'Apple Trust Insights: 기기 신호와 클라우드 모델을 결합한 사기 위험 평가'
+  summary: 'Trust Insights는 Apple이 iOS 27용으로 소개한 사기·강압 위험 평가 framework다. 앱은 entitlement와 사용자 승인을 확인한 뒤 Swift API로 평가를 요청한다. 평가는 인터넷 연결이 필요하고, 기기 신호는 로컬 처리되지만 최종 결과는 Apple의 서버·계정 신호를 포함할 수 있다. `unknown`은 “위험 낮음”이 아니라 근거 부족이다. 앱은 신호를 기존 위험 판단에 보조로 쓰고, 각 평가 후 `reportConsumption`을 호출해야 한다. 사후 사기 라벨 제출은 선택 사항이다.'
   points:
-  - '온디바이스 ML: 행동 패턴·타이밍·센서로 코칭 사기 탐지'
-  - '프라이버시: 개인 콘텐츠 접근 없이 위험 신호만 반환'
-  - '피드백 루프: reportConsumption(필수) + 오프라인 사기 라벨'
+  - '입력: 상호작용 패턴·타이밍·기본 센서 신호; 사진·메시지·메일의 콘텐츠는 분석하지 않는다고 Apple이 설명한다.'
+  - '`unknown / medium / high` 중 `unknown`을 낮은 위험으로 처리하지 않는다.'
+  - '평가에는 네트워크가 필요하다. 실시간 사용 결과 보고는 필수, 사후 fraud label은 선택 사항.'
   source: https://developer.apple.com/videos/play/wwdc2026/379/
+  interview: 'Trust Insights의 `unknown` 결과를 낮은 위험으로 해석하면 왜 안 되나요?'
+  answer: 'Apple 설명에서 `unknown`은 사기 위험이 낮다는 판정이 아니라, 시스템이 위험 근거를 확인하지 못했다는 뜻이다. 따라서 앱은 이를 정상·안전 신호로 취급하지 말고 기존 인증·위험 정책을 유지해야 한다. Trust Insights는 판단을 보조하는 신호이며 단독 차단 기준이 아니다. 또한 평가 호출은 인터넷 연결이 필요하고, 결과 사용 여부를 매 요청 보고해야 한다.'
 - category: ai
   title: flutter_doclayout_kit — PP-DocLayout ONNX로 문서 구조를 온디바이스 분석, 23종 요소 감지(Flutter)
   summary: 'flutter_doclayout_kit는 PaddlePaddle의 PP-DocLayout 모델을 ONNX Runtime으로 모바일에서 실행해 문서 레이아웃을 분석하는 Flutter 플러그인이다. 텍스트·제목·표·수식·그림 등 23종 문서 요소를 감지. Medium 모델(22MB)과 Large 모델(123MB) 선택 가능. 오프라인 완전 지원, iOS는 Core ML Execution Provider로 가속(메모리 ~1.5GB). 카메라 실시간 스캔·정적 이미지 분석·폼 재구성까지 엔드투엔드 워크플로우.

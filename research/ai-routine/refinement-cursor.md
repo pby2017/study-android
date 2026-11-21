@@ -437,3 +437,12 @@ Rules:
 - Core, KLDL, Room, and Compose modules declare JVM targets; repository runnable example is Desktop. Room's Android source set contained only a manifest in the inspected checkout; no Android app example/artifact was verified.
 - Removed unverified “Android-ready / zero egress” product assertions and reframed as an AI+Android dependency-evaluation lesson: inspect target, source set, published artifact, runnable sample, and data paths.
 - Next: inspect `Apple Trust Insights`; verify current release/API status, source date, and whether the purported iOS 27 feature is official/available before retaining claims.
+
+## 2026-11-22 04:20 KST
+
+- Verified Trust Insights against Apple's WWDC26 video transcript, Apple Developer symbol page, and Apple Newsroom platform announcement.
+- Confirmed iOS 27 API introduction, entitlement/authorization, Swift integration, and Internet reachability requirement for evaluation.
+- Corrected the architecture: device signals are processed locally, but the framework combines device and cloud infrastructure, and Apple says outputs may include Apple Account/velocity signals.
+- Corrected feedback contract: `reportConsumption` is mandatory per evaluation request; Apple Business Register fraud labels are optional.
+- Added interview emphasis: `unknown` is not low risk and Trust Insights must not be the sole decision signal.
+- Next: inspect `flutter_doclayout_kit`; validate current repository/model source, Android/iOS runtime paths, exact model sizes, and claimed offline behavior.
