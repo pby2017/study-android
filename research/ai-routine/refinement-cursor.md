@@ -783,3 +783,8 @@ Rules:
 - Refined adjacent AppFunctions card: Jetpack 1.0.0 stable (Nov 18) does not make platform integration experimental preview or Connected Apps provider support GA
 - Research note: `research/ai-routine/20261122-143000-android-enterprise-agent-boundaries.md`
 - Next: inspect `A2UI + MCP Apps`
+- Reviewed and refined `A2UI + MCP Apps` using the Google Developers Blog, the A2UI project repository/docs, and the MCP Apps extension docs
+- Clarified that A2UI requires an A2UI-capable host or an integrated renderer; ordinary MCP compatibility does not imply native A2UI rendering. Added Jetpack Compose as a supported renderer and framed the UI choice around structure, custom interaction, and separate security boundaries
+- Verified A2UI repository attention at review time: 17.7k stars and 1.4k forks; treated stars only as a volatile snapshot, not proof of adoption or production readiness
+- Research note: `research/ai-routine/20261122-062521-a2ui-mcp-apps.md`
+- Next: inspect `Android AI Sample Catalog` for current model/device prerequisites and production-readiness boundaries
