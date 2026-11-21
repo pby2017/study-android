@@ -728,4 +728,8 @@ Rules:
 - Confirmed MAI-Code-1-Flash was deprecated Sep 10; MAI Code 2 and Flash launched Nov 17; MAI-Code-1.1-Flash is scheduled for deprecation Dec 18
 - Reframed around task-to-model selection, usage-based billing, and plan/client/admin-policy availability; did not repeat model marketing benchmark claims
 - Research note: `research/ai-routine/20261122-101500-mai-code-2-flash.md`
-- Next: inspect `Copilot model deprecations`
+- Reviewed and refreshed `Copilot model deprecations` with GitHub's November 16 completed deprecation, October announcement, and current December notices
+- Replaced stale June 2026 dates with reusable checks for scope, exceptions, plan/client availability, org policy, and representative regression prompts
+- Verified current example: Opus 4.8/Opus 5/GPT-5.6 Terra deprecated Nov 16; Opus 4.8 remains available to annual individual subscribers; Opus 5.5/GPT-6.1 Sol/GPT-6 Luna are suggested alternatives
+- Research note: `research/ai-routine/20261122-103000-copilot-model-deprecations.md`
+- Next: inspect `ML Kit APO`

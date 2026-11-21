@@ -3478,15 +3478,17 @@ cards:
   interview: "MAI Code 2와 Code 2 Flash를 어떤 작업에 선택하고, 도입 시 무엇을 확인해야 하나요?"
   answer: "복잡한 다중 파일 구현·리팩터링·저장소 전체 디버깅에는 Code 2를, 설명·표적 수정·일상적인 반복 작업에는 Flash를 우선 검토한다. 두 모델 모두 사용량 기반 과금이므로 토큰·작업 비용을 관찰하고 테스트로 결과를 확인한다. Copilot 플랜과 클라이언트, 조직의 모델 정책에 따라 선택 가능 여부가 다를 수 있다."
 - category: ai
-  title: Copilot 모델 폐기 일정 — 자동화 프롬프트의 모델명을 운영 자산으로 관리하기
-  summary: 'GitHub는 2026년 6월 18일 Opus 4.6 (fast)를 2026년 6월 29일 Copilot 전 표면에서 폐기하고 Opus 4.8 (fast)를 대안으로 쓰라고 공지했다. 앞서 2026년 6월 2일에는 GPT-4.1도 Copilot Chat, inline edits, ask, agent mode, code completions에서 폐기하고 GPT-5.5를 대안으로 제시했다. 이 변경은 단순 릴리스 노트가 아니라 에이전트 운영 리스크다. 스크립트, 사내 문서, AGENTS.md, CI 프롬프트, 팀별 워크플로에 모델명을 하드코딩하면 어느 날 같은 자동화가 실패하거나 다른 품질·비용 특성으로 바뀔 수 있다. 모델명은 설정으로 빼고, 폐기일 전 검증 루틴을 두는 것이 안전하다.
-
-    '
+  title: Copilot 모델 폐기 대응 — 대체 모델과 실제 가용성을 함께 검증하기
+  summary: >-
+    Copilot 모델은 기능과 플랜에 따라 폐기 일정이나 예외가 다를 수 있다. 예를 들어 GitHub는 2026년 11월 16일 Claude Opus 4.8·Opus 5·GPT-5.6 Terra를 대부분의 Copilot 경험에서 폐기했지만, Opus 4.8은 연간 개인 구독자에게 계속 제공한다고 명시했다. 대체 모델도 조직의 전역 기본값과 개별 모델 정책에 따라 보이지 않을 수 있다. 자동화에서는 모델명을 한 곳에서 관리하고, 폐기 공지의 적용 범위·예외·대안을 확인한 뒤 실제 계정과 클라이언트에서 모델을 선택하고 대표 작업을 시험한다.
   points:
-  - 'Opus 4.6 (fast): 2026-06-29 폐기 예정, 대안은 Opus 4.8 (fast)'
-  - 'GPT-4.1: 2026-06-01 Copilot 전 표면에서 폐기, 대안은 GPT-5.5'
-  - 모델명 하드코딩 대신 설정화·폐기일 전 검증 루틴 필요
-  source: https://github.blog/changelog/2026-06-18-upcoming-deprecation-of-opus-4-6-fast/
+  - '폐기 공지의 적용 표면·날짜·구독 예외를 확인'
+  - '대체 모델의 플랜·클라이언트·조직 정책 가용성을 확인'
+  - '모델명 중앙 관리 + 실제 환경에서 대표 프롬프트 회귀 테스트'
+  source: https://github.blog/changelog/2026-11-16-github-copilot-models-deprecated-on-november-16-2026/
+  level: "중급"
+  interview: "Copilot 모델 폐기 공지가 나오면 자동화에서 어떤 항목을 검증해야 하나요?"
+  answer: "먼저 폐기 날짜뿐 아니라 적용되는 Copilot 기능·클라이언트와 연간 구독 등 예외를 확인한다. 이어 대체 모델이 내 플랜과 조직 정책에서 활성화되어 있는지 실제 모델 선택 화면이나 API에서 확인하고, 대표 작업과 품질·비용을 비교한다. 모델명은 중앙 설정으로 관리해 교체 범위를 줄이고 폐기 일정을 회귀 테스트에 반영한다."
 - category: ai
   title: ML Kit APO — 온디바이스 Gemini Nano 프롬프트를 서버에서 자동 탐색하기
   level: "중급"
