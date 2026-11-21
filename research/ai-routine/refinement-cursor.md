@@ -4,7 +4,15 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:57 KST
+Last update: 2026-11-22 08:00 KST
+
+## Latest pass
+- Reviewed and refined `설정형 훅 핸들러 5종 — 이벤트별 지원과 검토` against the current official Claude Code hooks reference.
+- Scoped the five types to settings-based hooks; documented that support varies by event (`PreCompact`: command/http/mcp_tool; `Setup`: command only) and agent hooks remain experimental.
+- Corrected the stale `/hooks` claim: it is now a read-only browser, not an editor; settings files are where hooks are changed.
+- Distinguished prompt's single model evaluation from agent's tool-using subagent verification.
+- Source and rationale: `research/ai-routine/20261122-080000-claude-hook-handler-types-refinement.md`.
+- Next: continue oldest-first with `스킬 disallowed-tools`; verify how temporary tool removal interacts with baseline deny rules and duration.
 
 ## Latest pass
 - Reviewed and refined `PreCompact 훅 — 요약 지침과 외부 저장 분리` against the current official Claude Code hooks reference.
