@@ -3354,18 +3354,16 @@ cards:
   interview: "민감한 프롬프트를 기기 밖으로 보내면 안 되는 앱에서 `PREFER_ON_DEVICE`만 설정하면 충분한가요?"
   answer: "아니다. 온디바이스 모델이 없거나 요청을 지원하지 않으면 `PREFER_ON_DEVICE`는 클라우드로 fallback한다. 외부 전송을 금지하려면 `ONLY_ON_DEVICE`를 쓰고, 지원 기기와 요청 기능을 확인한 뒤 사용할 수 없는 경우를 예외·대체 UX로 처리한다. 선호 모드에서는 `inferenceSource`로 실제 경로를 확인하며, 이 Firebase AI Logic Hybrid 통합은 Experimental이라 SLA나 안정적인 호환성을 가정하지 않는다."
 - category: ai
-  title: ML Kit Prefix Caching — 반복 프롬프트를 캐시해 Gemini Nano 지연 줄이기
+  title: ML Kit Direct Model Access — Gemini Nano 반복 prefix 캐싱
   level: "중급"
-  summary: 'ML Kit Prompt API의 Prefix Caching은 반복되는 프롬프트 앞부분을 `promptPrefix`로 분리하고, 매번 바뀌는 내용은 본문(dynamic suffix)으로 보내 중간 추론 상태를 재사용한다. 공식 Pixel 9 예시에서 1,000토큰 prefix와 100토큰 suffix는 cache hit 시 2.11초에서 0.5초로 줄었다. 이 기능은 실험적이며 일부 Gemini Nano 지원 기기에서 text-only로 동작한다. 캐시 파일은 앱 내부 저장소에 암호화되어 저장되지만 원본 prefix 텍스트 메타데이터도 포함하므로 민감한 지침은 저장·삭제 정책을 검토한다.
-
-    '
+  summary: 'ML Kit의 Gemini Nano Direct Model Access(`GenerativeModel`)에서 Prefix Caching은 반복되는 고정 프롬프트를 `promptPrefix`로, 매번 달라지는 입력을 suffix로 나눠 중간 추론 상태를 재사용한다. 공식 문서의 Pixel 9 예시 추정치는 고정 prefix 1,000토큰과 suffix 100토큰에서 cache hit 시 2.11초에서 0.5초다. 첫 사용은 cache miss일 수 있으므로 보장된 성능 수치가 아니다. Prefix Caching은 실험적이고 지원 기기 일부에서 text-only로 제공된다. 암호화된 캐시는 앱 비공개 저장소를 사용하지만 원문 prefix를 포함한 메타데이터도 저장하므로 민감한 지침의 저장·삭제 정책을 검토한다.'
   points:
-  - 반복 promptPrefix + 매번 바뀌는 dynamicSuffix로 중간 LLM 상태 재사용
-  - 'Pixel 9 예시: 2.11초 → cache hit 0.5초(1000+100토큰)'
-  - 'Experimental·일부 기기·text-only 제한; 캐시는 암호화되지만 원본 prefix 메타데이터 포함'
+  - 'Task-specific API가 아닌 Direct Model Access(`GenerativeModel`); 고정 `promptPrefix` + 가변 suffix'
+  - '문서상 Pixel 9 추정 예시: 1,000+100토큰, cache hit 2.11초→0.5초; 최초 miss 가능'
+  - 'Prefix Caching은 Experimental·일부 기기·text-only; 앱 비공개 저장소에 암호화 저장하나 원문 prefix 메타데이터 포함'
   source: https://developers.google.com/ml-kit/genai/prompt/android/prefix-caching
-  interview: "ML Kit Prefix Caching은 어떻게 추론 시간을 줄이며, 어떤 데이터 보안 고려가 필요한가요?"
-  answer: "반복되는 고정 promptPrefix의 중간 추론 상태를 재사용하고 요청마다 달라지는 suffix만 처리한다. 기능은 일부 기기에서 text-only로 동작하며, 캐시 파일은 암호화되어도 원본 prefix 텍스트가 메타데이터에 포함되므로 민감한 프롬프트의 저장·캐시 삭제 정책을 검토해야 한다."
+  interview: "Gemini Nano Prefix Caching은 ML Kit의 어떤 API 경로에서 지원되며, Pixel 9의 2.11초→0.5초 수치는 어떻게 해석해야 하나요?"
+  answer: "ML Kit task-specific API가 아니라 Gemini Nano Direct Model Access의 `GenerativeModel`에서 제공된다. 2.11초→0.5초는 고정 prefix 1,000토큰·suffix 100토큰 조건의 문서상 cache-hit 추정치이며 첫 요청의 cache miss를 포함한 보장값이 아니다. 기능은 실험적이고 일부 기기에서 text-only로 동작한다. 캐시는 앱 비공개 저장소에 암호화되지만 원문 prefix 메타데이터도 저장되므로 민감한 프롬프트와 삭제 정책을 검토한다."
 - category: ai
   title: GitHub third-party agent security validation — Codex·Claude PR도 CodeQL·의존성·secret 검사
   summary: 'GitHub는 2026년 6월 9일 third-party coding agents 보안 검증을 일반 제공한다고 발표했다. Claude나 OpenAI Codex처럼 저장소에서 직접 기능 구현, 버그 수정, 테스트 보강을 수행하는 에이전트가 만든 코드도 Copilot cloud agent와 같은 자동 보안 검증을 받는다. 검증은 CodeQL 취약점 분석, GitHub Advisory Database 기반 신규 의존성 확인, secret scanning으로 API 키·토큰 노출 탐지를 포함한다. 설정은 기존 Copilot validation 설정을 따르고 Advanced Security 라이선스가 필요 없다고 설명된다. 실무 포인트는 에이전트 산출물을 신뢰하는 대신, PR 완료 전 자동 검증을 기본 안전망으로 두는 것이다.

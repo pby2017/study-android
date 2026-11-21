@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Firebase AI Logic Hybrid — 선호 모드와 로컬 전용은 다르다` for all four routing modes, strict local-only failures, cloud fallback privacy implications, route observability, and Experimental status; next candidate: inspect `ML Kit Prefix Caching` for current API support, persistence behavior, device eligibility, and benchmark scope.
+Current position: refined `ML Kit Direct Model Access — Gemini Nano 반복 prefix 캐싱` by correcting the API boundary, scoping latency numbers to the documented Pixel 9 cache-hit estimates, and clarifying device/input/storage constraints; next candidate: inspect `GitHub third-party agent security validation` for current feature availability, required settings/plan, scan scope, and caveats in the June 2026 announcement.
 
-Last update: 2026-11-22 06:45 KST
+Last update: 2026-11-22 07:00 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -679,3 +679,10 @@ Rules:
 - Verified semantics for all four modes, explicit cloud-model requirement, preference-mode `inferenceSource`, supported local capabilities/device limits, and Experimental/no-SLA contract
 - Research note: `research/ai-routine/20261122-064500-firebase-ai-logic-hybrid.md`
 - Next: inspect `ML Kit Prefix Caching`
+
+- Reviewed and refined: `ML Kit Prefix Caching` against the official guide last updated 2026-10-27 and current Direct Model Access docs
+- Corrected API scope: prefix caching is for Gemini Nano Direct Model Access (`GenerativeModel`), not the task-specific ML Kit GenAI APIs
+- Qualified Pixel 9 latency values as official estimated cache-hit examples (1,000+100 tokens: 2.11s→0.5s); first use can be a miss
+- Verified experimental/subset-device/text-only scope and implicit cache details: encrypted app-private files plus metadata containing original prefix text; LRU and clear support
+- Research note: `research/ai-routine/20261122-070000-mlkit-prefix-caching.md`
+- Next: inspect `GitHub third-party agent security validation`
