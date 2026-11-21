@@ -591,6 +591,7 @@ cards:
   interview: "상태줄에서 `rate_limits.seven_day`가 없으면 사용량 0%로 표시해도 되나요? 이 필드는 언제 제공되며 리셋 뒤에는 어떻게 되나요?"
   answer: "아니다. rate_limits는 Pro·Max·Ultra 구독이나 한도를 설정한 Claude 앱 게이트웨이에서 첫 API 응답 뒤 제공된다. 각 한도 창은 독립적으로 없을 수 있고, `resets_at`이 지나면 해당 창이 payload에서 제거된다. 부재는 0%와 다르므로 `// empty` 같은 방식으로 구분한다."
 - category: ai
+  level: "중급"
   title: disableBundledSkills — 번들 스킬·내장 명령을 모델 눈앞에서 치우기
   summary: 'Claude Code에서 `disableBundledSkills: true`를 설정하면 번들 스킬과 워크플로를 제거하고, `/init` 같은 내장 명령을 모델에서 숨긴다. 사용자는 명령을 계속 입력할 수 있다. 플러그인 스킬과 `.claude/skills/`, `.claude/commands/`의 사용자 정의 항목은 영향을 받지 않는다. 한 세션에서는 `CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1`로도 끌 수 있다. 설정이나 환경 변수 중 하나라도 비활성화하면 다른 쪽에서 다시 켤 수 없다.'
   points:
@@ -601,6 +602,7 @@ cards:
   interview: "`disableBundledSkills`를 켜면 프로젝트의 `.claude/skills/`와 플러그인 스킬도 사라지나요? 설정 파일이 false여도 세션 환경 변수가 1이면 번들을 다시 켤 수 있나요?"
   answer: "아니다. 플러그인 스킬과 `.claude/skills/`, `.claude/commands/`의 사용자 항목은 유지된다. 설정 또는 `CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1` 중 하나가 번들을 끄면 다른 쪽에서 다시 켤 수 없다."
 - category: ai
+  level: "중급"
   title: 스킬 호출 권한 — 모델 자율 호출과 사용자 호출 분리
   summary: 'Claude Code 스킬은 기본적으로 사용자와 모델 모두 호출할 수 있다. `disable-model-invocation: true`는 모델이 스킬을 스스로 선택하지 못하게 하고, 사용자가 명시적으로 호출할 때만 사용할 수 있게 한다. 메시지 첫머리의 `/deploy`는 직접 실행 요청이다. 문장 중간의 `/deploy`는 호출 허용 신호일 뿐이므로, 모델이 실행할지 판단한다. 반대로 `user-invocable: false`는 `/` 메뉴에서 숨기지만 모델은 계속 사용할 수 있어 배경 지식에 적합하다.'
   points:
@@ -611,6 +613,7 @@ cards:
   interview: "`disable-model-invocation: true`인 배포 스킬을 문장 뒤에서 `/deploy`라고 언급하면 바로 실행되나요? `user-invocable: false`는 모델의 사용도 막나요?"
   answer: "문장 뒤의 `/deploy`는 실행 허용 신호이며 직접 실행하지 않는다. 모델이 실행할지는 문맥을 보고 결정한다. 자동 호출 자체를 막고 싶으면 메시지 첫머리에서 명시적으로 호출해야 한다. `user-invocable: false`는 사용자 메뉴만 숨기며 모델은 계속 사용할 수 있다."
 - category: ai
+  level: "중급"
   title: 스킬 effort 프런트매터 — 턴 단위 추론 강도 조절
   summary: 'Claude Code 스킬의 `effort` 프런트매터는 해당 턴의 추론 강도를 정한다. 값은 `low`, `medium`, `high`, `xhigh`, `max`이며 선택 가능 여부는 모델에 따라 다르다. 세션 effort보다 우선하지만 `CLAUDE_CODE_EFFORT_LEVEL` 환경 변수보다 우선하지 않는다. `context: fork` 스킬이면 effort는 분리된 서브에이전트에 적용된다. 본문에서는 `${CLAUDE_EFFORT}`로 현재 값을 읽을 수 있다. `model` 프런트매터도 해당 턴에만 적용되고, 다음 사용자 메시지부터 세션 모델로 돌아간다.'
   points:
@@ -621,6 +624,7 @@ cards:
   interview: "스킬의 `effort: high`는 세션 전체의 기본값이 되나요? `CLAUDE_CODE_EFFORT_LEVEL`이 따로 설정되어 있거나 스킬이 `context: fork`라면 어떻게 되나요?"
   answer: "아니다. `effort`는 현재 턴에 적용되고 다음 사용자 메시지에서는 세션 설정으로 돌아간다. `CLAUDE_CODE_EFFORT_LEVEL`은 스킬의 effort보다 우선하며, `context: fork`이면 지정한 effort가 분리된 서브에이전트에 적용된다. 모델이 해당 수준을 지원하지 않으면 그 수준은 사용할 수 없다."
 - category: ai
+  level: "고급"
   title: PreCompact 훅 — 요약 지침과 외부 저장 분리
   summary: 'Claude Code는 `/compact` 또는 자동 압축 전에 `PreCompact` 훅을 실행하고 `trigger`로 `manual`과 `auto`를 구분한다. 훅이 정상 종료하면 stdout은 요약 지침으로 쓰이며, 훅당 10,000자를 넘으면 잘린다. 오래 보존할 내용을 파일에 남기려면 훅이 직접 저장해야 한다. 종료 코드 2 또는 `{"decision":"block"}`은 압축을 막지만, 자동 압축이 이미 컨텍스트 한도 오류를 복구하려는 중이라면 요청이 실패할 수 있다.'
   points:
@@ -631,6 +635,7 @@ cards:
   interview: "PreCompact 훅이 stdout으로 JSON 로그를 출력하면 그 내용은 어디에 쓰이나요? 자동 압축을 차단해도 컨텍스트 한도 오류가 이미 발생한 경우 대화가 계속되나요?"
   answer: "stdout은 로그 저장소가 아니라 압축 요약에 반영할 지침으로 사용되며 훅당 10,000자 제한이 있다. 영속적으로 보존하려면 훅이 파일 등 외부 저장소에 직접 기록해야 한다. 이미 한도 오류를 복구하려는 자동 압축을 차단하면 요청이 실패할 수 있다."
 - category: ai
+  level: "고급"
   title: 설정형 훅 핸들러 5종 — 이벤트별 지원과 검토
   summary: '설정형 Claude Code 훅은 `command`(셸), `http`(POST), `mcp_tool`(설정된 MCP 도구), `prompt`(단일 모델 평가), `agent`(도구를 쓰는 에이전트 검증)로 실행할 수 있다. 단, 모든 이벤트가 5종을 모두 지원하지 않는다. 예를 들어 `PreCompact`는 command/http/mcp_tool만, `Setup`은 command만 지원한다. `agent` 훅은 실험적 기능이다. `/hooks`는 설정을 편집하는 메뉴가 아니라 출처와 내용을 확인하는 읽기 전용 탐색기다. 설정은 settings 파일에서 관리한다.'
   points:
@@ -641,6 +646,7 @@ cards:
   interview: "`PreCompact`에 agent 훅을 설정하면 실행되나요? `/hooks`에서 직접 수정할 수 있나요? `prompt`와 `agent`는 검증 방식이 어떻게 다른가요?"
   answer: "아니다. `PreCompact`는 command, http, mcp_tool만 지원하므로 agent 훅은 실행되지 않는다. `/hooks`는 읽기 전용이며 설정 파일을 수정해야 한다. prompt는 입력을 단일 LLM 평가로 판단하고, agent는 서브에이전트를 실행해 파일이나 코드를 도구로 조사한다."
 - category: ai
+  level: "중급"
   title: 스킬 disallowed-tools — 호출 중 도구 가용성 줄이기
   summary: '`disallowed-tools`는 스킬을 실행하는 동안 지정한 도구를 Claude의 사용 가능 목록에서 뺀다. 예를 들어 자율 백그라운드 스킬에서 `AskUserQuestion`을 제외할 수 있다. 제한은 다음 사용자 메시지를 보내면 해제된다. 모든 스킬과 프롬프트에서 계속 차단하려면 권한 설정의 deny 규칙을 사용한다. 반대로 `allowed-tools`는 호출한 턴 동안 지정 도구를 승인 없이 쓰게 할 뿐, 다른 도구를 숨기지는 않으며 기본 권한 규칙도 유지한다.'
   points:
