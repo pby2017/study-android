@@ -2799,13 +2799,16 @@ cards:
   - '데이터: 115,000 앱·$16B 매출·10억 트랜잭션 분석'
   source: https://www.revenuecat.com/state-of-subscription-apps/
 - category: ai
-  title: ADK for Android 0.1.0 — Gemini Nano 4·AppFunctions·A2UI 하이브리드 온디바이스 에이전트
-  summary: ADK(Agent Development Kit) for Android 0.1.0(2026-05)은 Google의 앱 내 AI 에이전트 프레임워크다. `com.google.adk:google-adk-kotlin-core-android:0.1.0`으로 시작, GenaiPrompt(ML Kit GenAI)로 Gemini Nano 4 Fast/Full 온디바이스 + 클라우드 Gemini hybrid — root orchestrator는 cloud, privacy-sensitive subagent는 on-device. Nano 4(Gemma 4 E2B/E4B distill·12GB+ RAM·NPU) roadmap — tool calling·structured output·system prompt·thinking mode로 cloud agent feature set 수렴 예정. AppFunctions(Android MCP)로 앱 도구·서비스·데이터를 시스템 에이전트에 노출, A2UI Compose Renderer로 에이전트 UI 자동 렌더링. ADK Python 2.0(서버)과 달리 Android AICore·EXECUTE_APP_FUNCTIONS 권한 경계가 핵심.
+  title: ADK for Android — 클라우드와 Gemini Nano 에이전트를 앱 안에서 조합
+  level: "중급"
+  summary: Google ADK for Android는 Kotlin·Java 앱 안에 에이전트를 구성하는 프레임워크다. 클라우드 모델은 `Gemini`, 온디바이스 Gemini Nano는 ML Kit GenAI와 `GenaiPrompt`로 연결한다. 두 모델을 함께 쓰면 클라우드 에이전트가 흐름을 조정하고, 민감한 작업은 기기 안의 하위 에이전트가 처리할 수 있다. 앱에 클라우드 API 키를 넣지 말고 백엔드 또는 Firebase AI Logic을 사용한다.
   points:
-  - GenaiPrompt hybrid — cloud orchestrator + on-device subagent privacy boundary
-  - Nano 4 roadmap — tool calling·structured output, AICore preview→ML Kit production path
-  - AppFunctions + A2UI — 앱 action API + agent-rendered Compose UI
+  - 'Kotlin·Java Android 앱에 ADK agent API와 Android 전용 모델 지원 사용'
+  - '`Gemini`는 클라우드 모델, `GenaiPrompt`는 ML Kit GenAI 기반 온디바이스 경로'
+  - '개인정보 작업은 온디바이스 하위 에이전트로 분리하고 클라우드 API 키는 앱에 포함하지 않기'
   source: https://developer.android.com/ai/adk
+  interview: "Android ADK에서 클라우드와 온디바이스 모델을 함께 쓰는 하이브리드 구조는 어떻게 구성하나요?"
+  answer: "클라우드 `Gemini` 에이전트를 루트 오케스트레이터로 두고, 민감한 하위 작업은 ML Kit GenAI의 `GenaiPrompt`를 쓰는 온디바이스 에이전트에 맡길 수 있다. 클라우드 키는 앱에 저장하지 않고 백엔드나 Firebase AI Logic을 사용한다."
 - category: ai
   title: OWASP MASVS-RESILIENCE + R8 — 모바일 앱 리버스 엔지니어링 방어의 2026년 표준 가이드
   summary: 'OWASP MASVS v2.0의 MASVS-RESILIENCE 카테고리는 모바일 앱의 리버스 엔지니어링·변조 방어 표준이다. Layer 1: R8(ProGuard 후속)로 이름 난독화·데드 코드 제거(무료, 필수), Layer 2: RASP(루트·디버거· Frida 후킹 탐지), Layer 3: Google Play Integrity API·Apple App Attest로 서버사이드 검증. R8는 제어 흐름 난독화·문자열 암호화 미지원 → jadx로 디컴파일 시 구조 노출. 핵심 로직은 서버에.
