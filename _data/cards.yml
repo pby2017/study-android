@@ -70,6 +70,18 @@ cards:
   answer: "인터페이스의 프로퍼티는 구현 클래스가 제공할 접근자 계약이다. 인터페이스 자체에는 backing field를 둘 수 없으므로, 값을 저장하려면 구현 클래스가 프로퍼티를 구현해야 한다."
 - category: kotlin
   level: "초급"
+  title: 'Kotlin 생성자 — 매개변수와 프로퍼티'
+  summary: '주 생성자는 클래스 헤더에 선언한다. 매개변수에 `val` 또는 `var`를 붙이면 인스턴스 프로퍼티가 되며, 없으면 생성과 초기화에 사용할 매개변수일 뿐 프로퍼티는 아니다. 본문 속 프로퍼티 초기화와 `init` 블록은 작성한 순서대로 실행되므로, `init`은 입력 검증에 활용할 수 있다.'
+  points:
+  - '`class User(name: String)`의 `name`은 생성자 매개변수다.'
+  - '`class User(val name: String)`은 `name` 프로퍼티를 만든다.'
+  - '`init { require(name.isNotBlank()) }`처럼 생성 시 불변 조건을 검사한다.'
+  - '프로퍼티 초기화와 `init` 블록은 클래스 본문에 나온 순서대로 실행된다.'
+  source: https://kotlinlang.org/docs/classes.html
+  interview: '`class User(name: String)`에서 `name`을 `user.name`으로 읽을 수 없는 이유는?'
+  answer: '생성자 매개변수는 `val`이나 `var`를 붙여야 프로퍼티가 된다. `val`/`var`가 없으면 생성·초기화 시점에 쓸 수 있지만 인스턴스 프로퍼티로 저장되지는 않는다.'
+- category: kotlin
+  level: "초급"
   title: 'Kotlin 람다 — 함수 값과 Android SAM 변환'
   summary: '람다는 이름 없이 만든 함수 값이며, 함수 타입 매개변수로 전달할 수 있다. 마지막 매개변수가 함수이면 람다를 괄호 밖에 둘 수 있다. Android의 `setOnClickListener { ... }`는 단일 추상 메서드(`OnClickListener`)를 람다로 구현하는 SAM 변환이다. 콜백에는 이벤트가 발생했을 때 실행할 동작을 작성한다.'
   points:
