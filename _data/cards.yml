@@ -3293,14 +3293,14 @@ cards:
 - category: ai
   level: "중급"
   title: Android 17 NPU 직접 접근 — API 37 타깃은 manifest 기능 선언 확인
-  summary: 'Android 17(API 37)을 타깃으로 하고 NPU에 직접 접근하는 앱은 manifest에 NPU 하드웨어 기능을 선언해야 한다. 선언값은 상수명 `FEATURE_NEURAL_PROCESSING_UNIT`이 아니라 `android.hardware.npu`다. LiteRT NPU delegate, 제조사 SDK, deprecated NNAPI 경로도 대상이다. NPU는 선택 가속기이고 CPU/GPU 대체 경로가 있다면 `android:required="false"`로 선언해 NPU 없는 기기가 스토어에서 제외되지 않게 한다. 원격 AI 호출이나 CPU/GPU 추론만 쓰는 앱에는 이 직접 접근 선언이 필요하지 않다.'
+  summary: 'targetSdk 37+ 앱이 NPU에 직접 접근하면 manifest에 `android.hardware.npu` 기능을 선언해야 한다. 대상에는 LiteRT NPU delegate·제조사 SDK·deprecated NNAPI가 포함된다. NPU 없는 기기도 지원하려면 `required="false"`로 스토어 필터를 피하되, CPU/GPU 전환은 앱이 별도로 구현한다. 원격 추론이나 CPU/GPU만 쓰는 앱은 이 선언 대상이 아니다.'
   points:
   - '적용: targetSdk 37+이면서 NPU 직접 사용; NPU 전용 API만 compileSdk 37에서 제공'
   - 'Manifest 최상위 `<uses-feature android:name="android.hardware.npu" android:required="false" />`'
   - '`required=false`: NPU 없는 기기도 설치 가능; CPU/GPU fallback은 앱이 별도 구현'
   source: https://developer.android.com/blog/posts/android-17-is-here
   interview: "Android 17을 타깃으로 온디바이스 추론을 하는 모든 앱이 NPU feature를 선언해야 하나요?"
-  answer: "아니다. targetSdk 37 이상이어도 NPU에 직접 접근하는 앱이 대상이다. LiteRT NPU delegate, 제조사 SDK, deprecated NNAPI 사용 여부를 확인한다. 상수의 manifest 값은 `android.hardware.npu`이고, 선택 가속기라면 `required=false`를 써 NPU 없는 기기의 스토어 설치를 막지 않는다. CPU/GPU 경로로 자동 전환된다고 가정하지 말고 fallback을 직접 설계한다."
+  answer: "아니다. targetSdk 37 이상이면서 NPU에 직접 접근할 때 선언한다. `FEATURE_NEURAL_PROCESSING_UNIT`의 manifest 값은 `android.hardware.npu`다. `required=false`는 NPU 없는 기기의 스토어 설치 필터를 피할 뿐 추론을 CPU/GPU로 자동 전환하지 않으므로 fallback은 앱이 구현해야 한다."
 - category: ai
   title: ML Kit Structured Output — Kotlin 타입은 얻어도 사실 검증은 남는다
   level: "중급"

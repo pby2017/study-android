@@ -811,3 +811,9 @@ Rules:
 - Rechecked current Android AppFunctions docs and official skill reference; GitHub issue #251 is closed and the current reference contains the safeguards, so the card does not present the issue as unresolved
 - Research note: `research/ai-routine/20261122-074500-appfunctions-metadata-trust.md`
 - Next: continue older-card refinement after `Android 17 NPU 접근 선언`; skip pure Android-only cards
+
+- Reviewed and refined: `Android 17 NPU 직접 접근 — API 37 타깃은 manifest 기능 선언 확인`
+- Shortened summary; retained targetSdk/direct-access gate, manifest feature literal, API paths, and clarified `required=false` only affects feature filtering, not CPU/GPU fallback implementation
+- Sources re-checked: Android 17 behavior changes, Android 17 release blog, PackageManager API reference
+- Research note: `research/ai-routine/20261122-080000-android17-npu-card.md`
+- Next: review `ML Kit Structured Output` for current SDK state and compactness
