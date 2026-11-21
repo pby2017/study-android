@@ -787,4 +787,9 @@ Rules:
 - Clarified that A2UI requires an A2UI-capable host or an integrated renderer; ordinary MCP compatibility does not imply native A2UI rendering. Added Jetpack Compose as a supported renderer and framed the UI choice around structure, custom interaction, and separate security boundaries
 - Verified A2UI repository attention at review time: 17.7k stars and 1.4k forks; treated stars only as a volatile snapshot, not proof of adoption or production readiness
 - Research note: `research/ai-routine/20261122-062521-a2ui-mcp-apps.md`
-- Next: inspect `Android AI Sample Catalog` for current model/device prerequisites and production-readiness boundaries
+- Reviewed `Android AI Sample Catalog`; next: inspect `Android CLI + Skills` for current command and skill package boundaries
+- Reviewed and refined `Android AI Sample Catalog` using the official sample and hybrid README, current Firebase AI Logic FAQ/production checklist, and ML Kit GenAI documentation
+- Matched hybrid inference wording to `PREFER_ON_DEVICE`; added Firebase App Check enforcement since 2026-11-02 and differentiated debug tokens from production attestation
+- Verified `android/ai-samples` attention snapshot: 724 stars / 181 forks on 2026-11-22; not used as a trend or quality claim
+- Research note: `research/ai-routine/20261122-063100-android-ai-sample-catalog.md`
+- Next: inspect `Android CLI + Skills` for current command and skill package boundaries
