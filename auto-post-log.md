@@ -4490,3 +4490,12 @@ Refined:
 - Sources re-checked: https://github.com/google/adk-kotlin, https://developer.android.com/ai/adk, https://developers.googleblog.com/adk-kotlin-android-building-ai-agents/, https://developers.googleblog.com/announcing-adk-for-kotlin-10-building-production-ready-ai-agents-in-kotlin-android-and-beyond/
 - Replaced generic hybrid-agent claims with backend-specific tool-calling and beta limits; distinguished current repository module versions from older Android guide examples.
 - Skipped `OWASP MASVS-RESILIENCE + R8` as pure Android (not AI/AI+Android).
+
+### 2026-11-22 02:56 KST — 벡터 검색 카드 통합
+
+- 통합: `ObjectBox`와 `sqlite-vector`를 `Android 온디바이스 RAG 벡터 검색 — ObjectBox HNSW vs SQLite-Vector` 한 장으로 합침 (카드 1장 감소).
+- 확인한 공식 출처: https://docs.objectbox.io/on-device-vector-search, https://github.com/objectbox/objectbox-java, https://github.com/sqliteai/sqlite-vector
+- 저장소 페이지에서 ObjectBox 4.6k★, SQLite-Vector 1.2k★를 확인함. 변동 가능한 관심도 신호로만 기록하고 카드에는 넣지 않음.
+- 수정 근거: ObjectBox는 HNSW ANN 및 Java/Kotlin 지원. SQLite-Vector README는 Android 패키지, 일반 SQLite BLOB, 정확 검색/양자화 스캔을 문서화함.
+- 삭제한/제외한 주장: 바이너리 8MB 미만, KB급 RAM, LG G8S 0.25ms·4k QPS, LangChain 통합, “모든 플랫폼 out-of-box” 및 불필요한 주변 sqlite-ai 도구 묶음. 이번 비교 출처로 충분히 확인되지 않거나 일반화 위험이 있어 제외.
+- 보충: 벡터 DB가 임베딩 모델이나 LLM 답변 생성을 제공하는 것은 아니며, 목표 Android 기기에서 지연·메모리·회수율과 벡터 차원/거리 함수 정합성을 검증하도록 카드에 명시.

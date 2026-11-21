@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Google ADK Kotlin + Android — 온디바이스 모델별 도구 지원 차이`; next candidate: `ObjectBox` (the intervening MASVS/R8 card is pure Android and out of scope).
+Current position: continue after `ObjectBox` / `sqlite-vector` (merged into one AI+Android RAG comparison); next candidate: `Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트` (the intervening MASVS/R8 card is pure Android and out of scope).
 
-Last update: 2026-11-22 04:15 KST
+Last update: 2026-11-22 02:56 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -269,7 +269,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `ObjectBox`; re-check its Android integration and AI/RAG use case before deciding whether it meets the scope.
+- Continue with `Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트`; re-check current repository claims and device/model requirements before refining.
 - GrowthBook was removed from the deck because the reviewed card had no central AI use case; the historical publication log is retained.
 - LinkForty was removed because the reviewed card had no central AI use case; the historical publication log is retained.
 
@@ -303,3 +303,13 @@ Rules:
 - Clarified LiteRT-LM tool calling vs. ML Kit Gemini Nano beta/no tool calling vs. Firebase AI cloud tool calling; avoided implying universal device support.
 - Skipped `OWASP MASVS-RESILIENCE + R8` because it is pure Android rather than an AI topic.
 - Next: `ObjectBox`.
+
+
+## 2026-11-22 02:56 KST
+
+- Reviewed and merged: `ObjectBox` + `sqlite-vector` → `Android 온디바이스 RAG 벡터 검색 — ObjectBox HNSW vs SQLite-Vector`.
+- Re-checked official ObjectBox vector-search docs and both current GitHub repositories.
+- Live interest signal: ObjectBox 4.6k stars; SQLite-Vector 1.2k stars (not embedded in card because counts change).
+- Removed unsupported/stale resource and benchmark claims; clarified ANN vs SQLite BLOB/extension trade-off and that storage does not generate embeddings or LLM responses.
+- Card count reduced by one.
+- Next: `Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트`.

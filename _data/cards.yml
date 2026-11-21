@@ -2866,25 +2866,15 @@ cards:
   - 'OWASP MASVS v2.0: RESILIENCE-1~4, 모든 모바일 앱 보안 기준'
   source: https://mas.owasp.org/MASVS/11-MASVS-RESILIENCE/
 - category: ai
-  title: ObjectBox — 모바일/엣지 온디바이스 벡터 DB, HNSW 검색 + ACID + 오프라인 우선(Apache-2.0·~4.6k★)
-  summary: 'ObjectBox는 Java·Kotlin·Swift·Flutter·C/C++용 온디바이스 NoSQL+벡터 데이터베이스다. HNSW 인덱스로 ANN 검색을 지원하고, 바이너리 <8MB·동적 RAM KB 수준으로 모바일에 최적화. ACID 트랜잭션·양방향 동기화· 오프라인 우선 설계. 벡터와 일반 객체 데이터를 함께 저장 가능해 RAG·시맨틱 검색에 적합. LG G8S(5년 전 단말)에서 쿼리당 ~0.25ms, 4,000 QPS 달성. LangChain VectorStore 통합.
-
-    '
+  title: Android 온디바이스 RAG 벡터 검색 — ObjectBox HNSW vs SQLite-Vector
+  summary: 'RAG에서 벡터 저장소는 임베딩 생성이나 답변 생성이 아니라, 질문 임베딩과 가까운 문서를 찾는 역할을 한다. ObjectBox는 Kotlin 객체와 벡터를 함께 저장하고 HNSW 근사 최근접 검색(ANN)을 제공한다. SQLite-Vector는 기존 SQLite의 일반 테이블 BLOB에 벡터를 저장하고 정확 검색 또는 양자화 스캔을 지원한다. 앱의 DB 구조와 검색 품질·메모리 요구에 맞춰 선택한다.'
   points:
-  - '온디바이스 벡터 DB: HNSW ANN, <8MB 바이너리, KB급 RAM'
-  - ACID + 오프라인 우선 + 양방향 동기화
-  - 'LangChain 통합: from_documents/from_texts로 RAG 구성'
-  source: https://github.com/objectbox/objectbox-java
-- category: ai
-  title: sqlite-vector — SQLite에 벡터 검색 추가, 30MB RAM으로 온디바이스 Edge AI(크로스플랫폼)
-  summary: 'sqlite-vector는 SQLite에 벡터 검색 기능을 추가하는 크로스플랫폼 C 확장이다. Float32·Float16·BFloat16· Int8·1Bit·TurboQuant 2/3/4bit 양자화를 지원하고, SIMD 가속으로 초고속 거리 계산. 30MB RAM으로 동작하며, 가상 테이블 없이 일반 테이블의 BLOB 컬럼에 벡터를 저장. iOS·Android·Windows·Linux·macOS 모두 지원. sqlite-ai(온디바이스 LLM)·sqlite-agent·sqlite-mcp와 연동해 로컬 AI 에이전트 구성 가능.
-
-    '
-  points:
-  - 'SQLite 확장: 30MB RAM, BLOB 컬럼에 벡터 저장, 가상 테이블 불필요'
-  - 'TurboQuant: SIMD 2/3/4bit 양자화 스캔 지원'
-  - '생태계: sqlite-ai·sqlite-agent·sqlite-mcp 로컬 AI 연동'
+  - 'ObjectBox: Kotlin 객체·메타데이터와 벡터를 한 DB에 두고 HNSW ANN 검색'
+  - 'SQLite-Vector: Android용 확장 패키지로 SQLite 사용; BLOB 벡터·SQL 검색, 별도 인덱스 사전 구축 불필요'
+  - '선택 기준: 기존 SQLite 재사용 vs 객체 모델 통합; 정확도·지연·메모리는 목표 기기와 실제 임베딩으로 측정'
   source: https://github.com/sqliteai/sqlite-vector
+  interview: "Android 온디바이스 RAG에서 ObjectBox와 SQLite-Vector 중 무엇을 고르고, 무엇을 검증해야 하나요?"
+  answer: "객체 데이터와 벡터를 함께 관리하고 대규모 후보를 빠르게 좁히려면 HNSW 기반 ObjectBox를 검토한다. 기존 SQLite를 유지하고 SQL/BLOB 기반 검색을 원하면 Android 확장 패키지를 제공하는 SQLite-Vector를 검토한다. 두 도구 모두 임베딩 모델이나 LLM을 대신하지 않는다. 실제 단말에서 검색 지연·메모리·회수율을 확인하고, 임베딩 차원과 거리 함수를 맞춘다."
 - category: ai
   title: Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트, 37개 언어 번역(오프라인)
   summary: 'Aide는 Gemma 4를 LiteRT-LM으로 온디바이스 실행하는 Android AI 앱이다. 시스템 키보드(InputMethodService)· 음성 어시스턴트·채팅을 하나의 모델로 통합. 키보드 트랜스폼 바에서 재작성·요약·문법 교정·톤 변경·번역 (37개 언어)을 로컬에서 처리. Sherpa-ONNX로 STT·TTS·VAD까지 온디바이스. Gemma 4 Function Calling으로 알람·캘린더·연락처·파일시스템·웹 검색까지 도구 호출. 모든 처리가 디바이스를 떠나지 않는다.
