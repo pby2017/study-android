@@ -2489,15 +2489,17 @@ cards:
   interview: "텍스트 생성만 필요한 Android 앱도 `sdk-agent`를 처음부터 추가해야 하나요?"
   answer: "아니다. 낮은 수준의 추론만 필요하면 `core`부터 시작한다. 채팅·모델 관리·RAG·에이전트 DSL은 `sdk`, 앱 도구를 권한 확인 후 실행하고 감사 로그를 남기는 기능은 `sdk-agent`가 필요할 때 추가한다."
 - category: ai
-  title: Qwen3-VL — 오픈소스 비전-언어 모델 1위, OCR 32개 언어·문서·차트·GUI 에이전트까지(Apache-2.0)
-  summary: 'Qwen3-VL은 Alibaba가 만든 오픈소스 비전-언어 모델로, 2026년 기준 DocVQA 96.5%·MathVista 85.8%로 오픈소스 VLM 중 최강이다. 72B·32B·7B 사이즈 제공, 256K 네이티브 컨텍스트(1M 확장), OCR 32개 언어 지원. GUI 에이전트·차트 이해·디자인→코드 변환까지 커버한다. InternVL3(OpenGVLab)가 범용 시각 추론에 강하다면, Qwen3-VL은 문서·OCR·수학·에이전트 특화. HuggingFace transformers·vLLM 통합.
-
-    '
+  level: "고급"
+  title: Qwen3-VL — 비전·언어 모델 계열과 Android 적용 시 확인할 점
+  summary: 'Qwen3-VL은 이미지·영상 이해와 GUI 상호작용을 지원하는 오픈웨이트 모델 계열이다. Dense 2B·4B·8B·32B와 MoE 30B-A3B·235B-A22B 체크포인트가 있어 크기와 추론 자원이 다르다. 기본 컨텍스트는 256K이며 1M 확장은 YaRN 설정이 필요하다. OCR은 32개 언어를 지원한다. Android 앱에서 카메라·화면 이해를 시험할 수 있지만, 작은 파라미터 수만으로 기기 내 실행 가능성을 단정하지 말고 런타임·메모리·지연 시간을 실제 기기에서 확인한다.'
   points:
-  - 'DocVQA 96.5%: 오픈소스 VLM 최고, 프론티어 모델과 경쟁'
-  - OCR 32개 언어 + GUI 에이전트 + 디자인→코드
-  - 72B/32B/7B, Apache-2.0, vLLM·transformers 통합
-  source: https://github.com/QwenLM/Qwen2-VL
+  - '체크포인트: Dense 2B/4B/8B/32B, MoE 30B-A3B/235B-A22B'
+  - '256K 기본 컨텍스트; 1M은 YaRN 구성으로 확장'
+  - '이미지·영상·GUI 이해, 32개 언어 OCR; Hugging Face·vLLM 지원'
+  - 'Android 적용 전: 모델별 런타임 지원·메모리·지연 시간을 실기기에서 측정'
+  source: https://github.com/QwenLM/Qwen3-VL
+  interview: "Qwen3-VL에 2B 체크포인트와 256K 컨텍스트가 있으면 Android에서 바로 온디바이스 실행할 수 있나요?"
+  answer: "그렇게 단정할 수 없다. 파라미터 수와 문맥 길이는 Android 런타임 호환성이나 메모리·지연 시간을 보장하지 않는다. 사용할 체크포인트와 이미지 해상도·토큰 예산을 정한 뒤 목표 기기와 추론 런타임에서 직접 측정해야 한다. 1M 문맥도 기본값이 아니라 YaRN 설정이 필요하다."
 - category: ai
   title: Kokoro-82M — 82M 파라미터로 14배 큰 모델을 이기는 경량 오픈소스 TTS(Apache-2.0·~7.5k★)
   summary: 'Kokoro-82M은 82M 파라미터의 초경량 TTS 모델로, 14배 큰 모델과 동등한 음성 품질을 달성한다. StyleTTS2+ ISTFTNet 아키텍처로 인코더·디퓨전 없이 빠른 합성이 가능하고, 소비자 하드웨어와 엣지 디바이스에서도 실행된다. 44개 음성·다국어(영·중·일·이탈리아어 등)·음성 블렌딩 지원. pip install kokoro 한 줄로 시작. Fish Audio S2 Pro(4B, 1000만시간 학습)가 최고 품질이라면, Kokoro는 속도·비용·접근성의 최적점.
