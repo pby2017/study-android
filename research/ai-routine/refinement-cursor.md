@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android 17 AppFunctions Agent Skill` for Android 16+ availability, the experimental API and Connected Apps preview gates, caller permissions, and safe function scope; next candidate: inspect `Android 17 NPU 접근 선언` for target SDK boundary, manifest requirements, and rollout status.
+Current position: refined `Android 17 NPU 접근 선언` for the targetSdk 37 direct-access gate, exact manifest feature value, and optional hardware filtering; next candidate: inspect `ML Kit GenAI Structured Output` for current availability, model support, and response/error guarantees.
 
-Last update: 2026-11-22 05:40 KST
+Last update: 2026-11-22 05:50 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -638,3 +638,7 @@ Rules:
 - Sources re-checked: AppFunctions overview and skill docs (both updated 2026-11-16 UTC); Connected Apps guide; API migration guidance
 - Removed outdated `@AppFunction` annotation claim; current migration docs describe the service-entry-point architecture
 - Next: inspect `Android 17 NPU 접근 선언`.
+
+- Reviewed and refined: `Android 17 NPU access declaration` (narrowed to targetSdk 37+ direct NPU access; corrected manifest value to `android.hardware.npu`; documented optional-feature install behavior)
+- Sources re-checked: Android 17 release announcement, PackageManager API 37 reference, AOSP NPU Manager docs, Android 17 SDK setup, NNAPI migration guide
+- Next: inspect `ML Kit GenAI Structured Output`.
