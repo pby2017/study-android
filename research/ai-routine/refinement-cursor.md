@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `MediaPipe Tasks — Android에서 이미지·영상·실시간 스트림에 온디바이스 ML 적용`; next candidate: `Genkit Dart`.
+Current position: continue after `Genkit Dart — Flutter UI와 Dart AI 백엔드의 흐름·타입을 함께 설계하기`; next candidate: `Sentry`.
 
 Last update: 2026-11-22 02:34 KST
 
@@ -34,6 +34,9 @@ Current run:
 - Reviewed and refined: `MediaPipe` (removed unsupported 30–60 FPS guarantee, CPU/GPU/NPU auto-dispatch, PyTorch comparison, and bundled landmark counts; updated to current MediaPipe Tasks scope and Android IMAGE/VIDEO/LIVE_STREAM behavior)
 - Sources re-checked: official Google AI Edge MediaPipe Tasks overview and official Android Kotlin examples embedded in the current overview
 - Added target-device end-to-end performance and live-frame/backpressure selection as the practical Android lesson
+- Reviewed and refined: `Genkit Dart` (updated preview to stable 1.0 GA; removed unsupported Gemma-on-device/Apple Intelligence package claims; clarified Flutter remote action/model architectures, API-key exposure, provider differences, and experimental agent APIs)
+- Sources re-checked: official Dart 1.0 release announcement, current Genkit Dart API stability docs, and current Get started docs
+- Reframed as AI+Flutter/Android-adjacent knowledge; distinguished shared Dart client/backend types from moving all logic freely between tiers
 - Reviewed and refined: `Koog` (removed unsupported GA date and sweeping platform/pro-vider claims; captured Android target documentation ambiguity; clarified agent orchestration vs on-device inference and client-secret risk)
 - Sources re-checked: official Koog documentation and GitHub README
 - Reviewed and refined: `Maestro` (replaced stale MaestroGPT claims with the current built-in MCP agentic UI testing workflow; highlighted YAML review and device-action risk)
@@ -253,7 +256,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `Genkit Dart`; keep only topics that meet the AI or AI+Android scope.
+- Continue with `Sentry`; keep only topics that meet the AI or AI+Android scope.
 
 Per successful refinement run, update this file with:
 - timestamp
