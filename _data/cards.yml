@@ -8378,13 +8378,16 @@ cards:
   - ACS pairing — eval identifies gap, ACS enforces at intervention point
   source: https://github.com/responsibleai/ASSERT
 - category: ai
-  title: MobileRisk-Live / OS-Sentinel — Android GUI agent safety sandbox·hybrid verifier
-  summary: OS-Sentinel(ACL 2026 Oral·arXiv 2510.24411) — mobile GUI agent safety research foundation. MobileRisk-Live — Android emulator dynamic sandbox, agent real-time execute while detector monitors GUI observation+system state trace. MobileRisk — frozen 204 trajectory(102 safe+102 unsafe)·10 risk category·step+trajectory annotation·counterpart safe cases for false-positive test. OS-Sentinel hybrid — Formal Verifier(deterministic system violation) + VLM Contextual Judge(semantic risk)·10–30% improvement over prior. frozen MobileRisk≈Live dynamic — offline benchmark reproduces live safety signal. vs Agent-SafetyBench(general tool env) ·WeaveBench(hybrid CUA capability) ·Android Computer Control(UI automation) — mobile-specific safety eval axis.
+  level: "고급"
+  title: Android GUI 에이전트 안전성 — 시스템 추적과 VLM 판정을 결합하기
+  summary: 모바일 에이전트의 위험은 화면에 보이는 동작만으로 찾기 어렵다. OS-Sentinel 연구는 Android 에뮬레이터에서 화면·접근성 정보·에이전트 동작과 파일·네트워크·권한 변경 같은 시스템 상태를 함께 기록한다. MobileRisk-Live는 에이전트를 실행하는 동적 환경이고, MobileRisk는 그 실행을 고정해 반복 평가하는 204개 궤적(안전 102·위험 102) 벤치마크다. OS-Sentinel은 명시적 시스템 위반을 규칙 기반 검증기로, 문맥에 따른 위험은 VLM 판정기로 찾는다. 논문은 여러 지표에서 기준선보다 10–30% 향상을 보고했지만, 이는 연구 실험 결과이지 실제 앱의 안전 보증은 아니다.
   points:
-  - MobileRisk-Live — Android emulator real-time safety playground
-  - Hybrid Formal+VLM — system rule + contextual semantic judgment
-  - 204 frozen trajectories — disentangle safety from agent capability variance
+  - 화면만 보면 놓칠 수 있는 백그라운드 파일·네트워크·권한 변화를 추적
+  - 동적 실행 환경과 고정 궤적 벤치마크를 분리해 현실성과 재현성을 함께 다룸
+  - 시스템 추적 접근과 VLM 판단이 필요한 연구 프레임워크이며, 운영 환경 적용은 별도 검증 필요
   source: https://arxiv.org/abs/2510.24411
+  interview: "OS-Sentinel이 규칙 기반 검증기와 VLM 판정기를 함께 쓰는 이유는 무엇이며, MobileRisk-Live와 MobileRisk는 어떻게 다른가요?"
+  answer: "규칙 기반 검증기는 파일 변경이나 권한 상승처럼 명시적인 시스템 위반을 확인하고, VLM 판정기는 화면·행동의 문맥에 따른 개인정보 노출 같은 위험을 판단한다. MobileRisk-Live는 에이전트를 실시간 실행하는 Android 에뮬레이터 환경이고, MobileRisk는 그 상호작용을 고정한 궤적 데이터로 재현성 있는 평가를 돕는다. 연구 결과만으로 실제 서비스의 안전성을 보장할 수는 없다."
 - category: ai
   title: Agent-SafetyBench — 349 env·2000 case·frontier 전원 safety score 60% 미만
   summary: Agent-SafetyBench(thu-coai/Agent-SafetyBench·arXiv 2412.14470·AAAI 2026 TrustAgent) — LLM agent behavioral safety in interactive tool environments. 349 novel environments·2000 test cases·8 safety risk categories·10 failure modes. 16 popular agents evaluated — none exceeds 60% safety score. two fundamental defects — lack of robustness(lacks stable safe behavior under risk) ·lack of risk awareness(fails to recognize danger in time). defense prompt alone insufficient — needs runtime containment+policy. ShieldAgent scorer model for automated grading. vs CUAHarm(CUA harm execution) ·OS-Harm(GUI injection) ·Claw-Eval(general capability+safety) — broad interactive safety unsaturated.

@@ -849,4 +849,9 @@ Rules:
 - Rechecked official Codex Remote release entry and remote-connections guide; clarified phone-as-control-plane, host-side execution/resources, QR phone↔host pairing, retained sandbox/approval controls, and host availability requirements
 - Removed outdated app version and unrelated DigitalOcean plugin detail; added intermediate level and interview recall
 - Research note: `research/ai-routine/20261122-071500-codex-remote-android-refinement.md`
+- Reviewed and refined `MobileRisk-Live / OS-Sentinel` using the v3 paper, project website, repository, and dataset card
+- Separated the live Android-emulator testbed from the frozen 204-trajectory MobileRisk benchmark; clarified 102 safe/102 unsafe samples and system-state traces
+- Qualified the paper's reported 10–30% baseline improvements as experiment-specific, not a deployment guarantee; added advanced level and interview practice
+- Verified research status: ACL 2026 oral and AIWILD@ICLR 2026 best-paper award; repository attention snapshot 51 stars/4 forks, not treated as quality proof
+- Research note: `research/ai-routine/20261122-073000-mobilerisk-ossentinel-refinement.md`
 - Next: inspect the next older AI/AI+Android card; verify its claims and platform applicability before editing
