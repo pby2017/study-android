@@ -2,11 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Locanara Android`; next candidate: inspect `PowerLens` and verify the paper's Android deployment, evaluation scope, source freshness, and duplicate status.
+Current position: continue after `PowerLens`; next candidate: inspect `MNN-AECS` and verify its mobile device matrix, energy/performance baselines, root requirements, reproducible code, and overlap with system-level power management.
 
-Last update: 2026-11-22 03:56 KST
+Last update: 2026-11-22 04:02 KST
 
 Current run:
+- Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
+- Sources checked: arXiv full paper and author project page; GitHub repository search returned zero matching repositories
+- Corrected experiment scope: benchmark on one rooted OnePlus ACE 5 / Android 15; separate 14-day study involved 10 people and 8 rooted devices; removed the extrapolated 0.5% daily-overhead headline
+- Flagged unresolved safety-critical discrepancy: PDF says LLM generates shell commands; author page says deterministic lookup; no public code verified to resolve it
+- Kept separate from `MNN-AECS`: system-level power policy versus inference-runtime decode scheduling
 - Reviewed and refined: `Locanara Android` (replaced the cross-platform backend/router summary with the Android SDK's install-floor versus Gemini Nano runtime-readiness distinction; added explicit status/download flow and AGPL-3.0 deployment check)
 - Sources re-checked: Locanara Android Gradle module and `MLKitPromptClient` implementation; Google's current ML Kit Prompt API setup and availability guidance
 - Repository attention signal: GitHub API showed 9 stars, 3 forks, and last push 2026-08-08; weak/stale adoption evidence, so the card is retained as a concrete integration lesson rather than a product recommendation
