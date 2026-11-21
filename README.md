@@ -29,6 +29,11 @@ bundle exec jekyll serve
 > 참고: 현재 저장소의 GitHub Pages 의존성은 Ruby 3.x 환경을 전제로 합니다.
 > 로컬 Ruby가 2.7이면 bundle install/build가 실패할 수 있습니다.
 
+카드 이동 동작은 추가 의존성 없이 다음 테스트로 확인할 수 있습니다.
+```bash
+node --test scripts/card-navigation.test.js
+```
+
 ## 카드 추가
 `_data/cards.yml`의 `cards:` 에 항목을 추가하면 됩니다. 원본 링크(`source`)는 가급적 채워
 근거를 남깁니다. AI 카테고리는 `auto-post/` 루틴이 2시간 주기로 자동 반영됩니다.
