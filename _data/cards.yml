@@ -3332,18 +3332,16 @@ cards:
   interview: "Imagen Fast와 표준 모델을 Nano Banana로 이전할 때 모델 이름 외에 무엇을 바꾸고 검증해야 하나요?"
   answer: "Fast는 `gemini-nano-banana-2.1`의 `MINIMAL`, 표준은 같은 모델의 `HIGH` thinking level로 매핑한다. `ImagenModel.generateImages()`를 `GenerativeModel.generateContent()`로 바꾸고 `IMAGE` response modality 및 GenerationConfig를 설정한다. 새 모델은 한 번에 한 장만 PNG로 반환하며 SynthID 워터마크가 포함되므로 다중 이미지·형식·결과 파싱 가정과 `NO_IMAGE` 처리를 다시 검증한다."
 - category: ai
-  title: Kakao Mobility Gemini Nano — 온디바이스 주소 추출로 주문 완료 시간 24% 단축
+  title: Kakao Mobility — Gemini Nano 주소 추출과 두 개의 평가셋
   level: "중급"
-  summary: 'Kakao Mobility는 ML Kit GenAI Prompt API와 Gemini Nano를 사용해 배달 주문 메시지에서 이름·주소·전화번호를 추출하는 기능을 온디바이스로 구현했다. 전통 ML처럼 대규모 학습 데이터와 전문 모델링을 준비하는 대신, 약 200개의 고품질 평가 예시와 few-shot prompting으로 hallucination을 줄이는 방향으로 튜닝했다. 결과적으로 배달 주문 완료 시간이 24% 줄고, 신규 사용자 전환율은 45%, 기존 사용자 전환율은 6% 증가했다. 피크 시즌에는 AI 기반 주문이 200% 이상 늘었다. 실무 포인트는 온디바이스 AI도 평가셋과 fallback을 갖춰야 production 품질에 가까워진다는 점이다.
-
-    '
+  summary: 'Kakao Mobility는 ML Kit GenAI Prompt API와 Gemini Nano로 배달 주문 메시지에서 이름·주소·전화번호를 추출하고, Gemini Flash 클라우드 경로를 fallback으로 추가했다. 팀은 주소 추출용으로 약 200개의 고품질 평가 예시를 반복 검토하고 few-shot prompting을 적용했다. 별도 주차 사진 기능은 200장 넘는 라벨 이미지로 평가했지만 발표 당시 아직 출시 전이었다. Android Developers 사례 발표는 출시된 주소 입력 개선에서 주문 완료 시간 24% 감소, 신규 사용자 전환율 45% 증가, 기존 사용자 6% 증가를 보고했다. 이는 사업자 사례 수치이지 독립 검증된 인과 효과나 모든 앱의 기대치가 아니다.'
   points:
-  - ML Kit Prompt API + Gemini Nano로 자연어 주문 메시지 entity extraction
-  - 평가 예시 약 200개 + few-shot prompting으로 hallucination 최소화
-  - 주문 완료 시간 24% 감소, 신규 전환율 45% 증가, 피크 AI 주문 200%+ 증가
+  - '주소 추출: 약 200개 고품질 평가 예시 + 반복 프롬프트 튜닝 + few-shot; Gemini Flash 클라우드 fallback'
+  - '주차 사진: 별도의 200장 초과 라벨셋으로 평가; 발표 당시 미출시 — 주소 추출 평가와 혼동 금지'
+  - '사례 발표의 주소 입력 성과: 주문 완료 시간 24% 감소; 신규 전환율 45%, 기존 6% 증가 — 독립 인과 검증 아님'
   source: https://developer.android.com/blog/posts/kakao-mobility-uses-gemini-nano-on-device-to-reduce-costs-and-boost-call-conversion-by-45
-  interview: "Kakao Mobility가 Gemini Nano 주소 추출 기능을 출시할 때 프롬프트 품질과 도달 범위를 어떻게 함께 확보했나요?"
-  answer: "약 200개의 평가 예시로 프롬프트를 반복 검증하고 few-shot 예시로 환각을 줄였다. 지원 범위를 넓히기 위해 Gemini Flash 클라우드 경로도 fallback으로 구현했다."
+  interview: "Kakao Mobility 사례의 두 '약 200개' 평가 자료는 각각 무엇을 평가했으며, 성과 수치는 어떤 기능에 해당하나요?"
+  answer: "약 200개의 고품질 예시는 배달 메시지의 이름·주소·전화번호 추출 프롬프트를 평가했다. 200장 넘는 라벨 이미지는 별도의 자전거·킥보드 주차 사진 기능 평가에 쓰였고, 발표 당시 그 기능은 미출시였다. 24%의 주문 완료 시간 감소와 신규 45%·기존 6% 전환율 증가는 이미 제공된 주소 입력 개선에 대해 Android Developers 사례 발표가 보고한 값이며 독립적 인과 검증으로 일반화하면 안 된다."
 - category: ai
   title: Firebase AI Logic Hybrid API — Android AI 추론을 온디바이스·클라우드로 라우팅
   level: "중급"

@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Firebase AI Logic — 종료된 Imagen 호출을 Nano Banana로 이전` for the completed shutdown, exact replacement models/thinking levels, Kotlin API changes, and output compatibility traps; next candidate: inspect `Kakao Mobility Gemini Nano` for the original case-study claims, sample/evaluation method, limitations, and current relevance.
+Current position: refined `Kakao Mobility — Gemini Nano 주소 추출과 두 개의 평가셋` by separating the delivery-entity examples from parking-photo labels, correctly scoping which feature launched and which reported outcomes apply; next candidate: inspect `Firebase AI Logic Hybrid API` for current availability, routing semantics, fallback behavior, and experimental-status boundaries.
 
-Last update: 2026-11-22 06:20 KST
+Last update: 2026-11-22 06:30 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -666,3 +666,10 @@ Rules:
 - Added migration behavior checks: single image only, PNG output, always-on SynthID, new GenerationConfig/IMAGE modality, and `NO_IMAGE` handling; no output-equivalence claim
 - Research note: `research/ai-routine/20261122-062000-firebase-imagen-migration.md`
 - Next: inspect `Kakao Mobility Gemini Nano`
+
+- Reviewed and refined: `Kakao Mobility Gemini Nano` against the original Android Developers case study (2025-10-30)
+- Corrected conflation: ~200 high-quality examples were used for delivery-message entity extraction; >200 labeled photos were a separate bike/scooter parking evaluation, and that feature was not launched at publication
+- Scoped 24% completion-time and new/existing conversion figures to the launched delivery address-entry feature and explicitly attributed them to the published case study, not independent causal evidence
+- Added Gemini Flash cloud fallback; excluded the peak-season >200% AI-orders figure from the compact card to avoid unsupported interpretation
+- Research note: `research/ai-routine/20261122-063000-kakao-mobility-gemini-nano.md`
+- Next: inspect `Firebase AI Logic Hybrid API`
