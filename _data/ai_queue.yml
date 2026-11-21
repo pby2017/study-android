@@ -2,6 +2,7 @@
 # The automation script appends the next unseen entry into _data/cards.yml.
 
 - category: ai
+  level: "중급"
   title: "Agent Teams — 서브에이전트보다 큰 병렬 협업 단위"
   summary: >
     Agent Teams는 각자 일을 맡는 서브에이전트보다 한 단계 큰 협업 구조다. 여러 에이전트가
@@ -12,8 +13,11 @@
     - "리드 에이전트가 방향 설정"
     - "복잡한 병렬 작업에 적합"
   source: "https://code.claude.com/docs/en/agent-teams"
+  interview: "서브에이전트와 Agent Teams는 협업 방식에서 어떻게 다른가요?"
+  answer: "Agent Teams의 에이전트는 서로 직접 메시지를 주고받으며 독립된 작업 문맥에서 협업한다. 서브에이전트는 부모에게 결과를 반환하는 위임 단위로, 기본적으로 서로 직접 소통하지 않는다. 병렬 검토와 상호 조율이 필요한지에 따라 선택한다."
 
 - category: ai
+  level: "중급"
   title: "OpenAI GPT-5.4 계열 — 최신 모델 선택이 아니라 운영 전략"
   summary: >
     모델 선택은 단순히 '제일 좋은 것'을 고르는 문제가 아니라, 비용·속도·안정성·도구성 사이의
@@ -24,3 +28,5 @@
     - "비용·속도·안정성 균형"
     - "큰 모델 + 작은 모델 혼합이 실전적"
   source: "https://platform.openai.com/docs/models"
+  interview: "왜 모든 자동화 작업에 가장 큰 모델을 쓰는 것이 최선은 아닌가요?"
+  answer: "작업별로 필요한 추론 능력, 응답 시간, 비용이 다르기 때문이다. 단순 반복 작업은 더 작고 빠른 모델에 맡기고, 어려운 판단은 고성능 모델에 맡기는 식으로 품질 기준을 확인하며 라우팅한다."

@@ -68,6 +68,10 @@ Refinement rules:
 - Update `research/ai-routine/refinement-cursor.md` after a successful refinement pass.
 - Skip pure Android or weakly AI-related legacy cards unless they can be reframed honestly around an AI/AI+Android lesson; otherwise leave them unchanged and record the skip.
 
+## Card learning format
+
+Every new card must include a difficulty level (`초급`, `중급`, or `고급`) that reflects the prerequisites and reasoning needed to apply the concept, not the product's popularity. Include one interview-style retrieval question and a concise answer that tests the card's central concept. Keep the existing compact format: category, level, title, short summary, 2-4 key points, source, interview, and answer. If the topic cannot support a useful question and answer, reject it or select a more educational angle. When refining legacy cards, add or correct the level and retrieval pair when the source supports the classification; do this incrementally rather than guessing labels across unrelated cards.
+
 ## Candidate selection gate
 
 Candidate checklist for every run:
@@ -149,6 +153,7 @@ Before finishing:
 ```bash
 ruby -c scripts/auto_post.rb
 ruby -e 'require "yaml"; YAML.load_file("_data/cards.yml"); YAML.load_file("_data/ai_queue.yml"); puts "yaml_ok"'
+ruby scripts/auto_post_test.rb
 git diff --check
 ```
 

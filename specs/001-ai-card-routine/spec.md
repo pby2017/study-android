@@ -77,7 +77,7 @@ As the project owner, I want the routine to stay focused on study-android card p
 - **FR-004**: The routine MUST record source URLs and evidence signals for each selected topic and for meaningful rejected candidates.
 - **FR-005**: The routine MUST prefer primary or highly reputable sources for material claims, including official documentation, official release notes, benchmark pages, project repositories, or reputable engineering sources.
 - **FR-006**: The routine MUST verify exact popularity metrics, such as star counts, during the same run before including those numbers in a card.
-- **FR-007**: The routine MUST produce concise Korean card content that explains why the topic matters to AI developers or AI+Android developers.
+- **FR-007**: The routine MUST produce concise Korean cards with a source-supported beginner/intermediate/advanced level, a short summary, 2–4 key points, and one interview-style retrieval question with a concise answer so learners can review the concept actively.
 - **FR-008**: The routine MUST publish no card when no candidate satisfies the quality gate.
 - **FR-009**: The routine MUST maintain a research audit trail for every completed publication cycle.
 - **FR-010**: The routine MUST leave a durable resume checkpoint when it cannot finish safely or when continuing would waste resources.
@@ -91,7 +91,7 @@ As the project owner, I want the routine to stay focused on study-android card p
 
 - **Candidate Topic**: A potential AI or AI+Android development subject; includes title, category, source candidates, usefulness rationale, recency signal, popularity or adoption signal, and duplication status.
 - **Evidence Source**: A source used to verify a claim; includes URL, source type, claim supported, retrieval timing, and trust level.
-- **Knowledge Card**: A public-facing Korean summary card; includes category, title, summary, key points, and source reference.
+- **Knowledge Card**: A public-facing Korean learning card; includes category, difficulty level, title, summary, 2–4 key points, source reference, and an interview-style retrieval question and answer.
 - **Research Run**: One scheduled or manual cycle; includes start time, candidates considered, selected topics, rejected topics, verification result, checkpoint status, and publication result.
 - **Resume Checkpoint**: A durable record created when a run cannot finish; includes blocking reason, already completed research, unresolved candidate decisions, and exact next actions.
 - **Publication Batch**: A set of card and log updates produced by one successful run; includes changed content, validation outcome, commit reference, and push status.

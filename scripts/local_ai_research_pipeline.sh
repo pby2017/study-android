@@ -56,6 +56,7 @@ Run the study-android AI/Android developer-topic card routine now. The local sch
 Also perform a bounded refinement pass over previously published routine cards: follow `research/ai-routine/refinement-cursor.md`, review older cards first, and improve detail/readability only when the original claim can be re-verified from public sources.
 Important: edit this repository only; do not add GitHub Actions; do not commit or push.
 Pure Android topics are out of scope. Android topics qualify only when the core angle is AI+Android, and they are educational card content, not app feature requests. If a candidate has no AI angle, reject it as below threshold.
+Every selected card must include a source-supported `초급`/`중급`/`고급` level plus one interview question and concise answer. Use difficulty to describe prerequisites, not popularity.
 Do not create, update, close, comment on, or triage app-factory-android issues, branches, or pull requests.
 Wrapper script owns final verification, commit, and push.
 If usage/quota is near exhaustion or tool access degrades, write a resume checkpoint to `research/ai-routine/resume.md` with next actions, then stop cleanly.
@@ -101,6 +102,7 @@ rm -f "$DISABLED_FILE"
 
 echo "Running wrapper verification"
 ruby -c scripts/auto_post.rb
+ruby scripts/auto_post_test.rb
 ruby -e 'require "yaml"; YAML.load_file("_data/cards.yml"); YAML.load_file("_data/ai_queue.yml"); puts "yaml_ok"'
 git diff --check
 
