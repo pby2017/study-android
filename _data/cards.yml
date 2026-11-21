@@ -236,14 +236,14 @@ cards:
 - category: android
   level: "중급"
   title: "Compose UI 테스트 — 사용자가 보는 의미를 검증"
-  summary: "Compose UI 테스트는 화면을 의미 트리(Semantics tree)로 탐색하고, 사용자 동작을 수행한 뒤 결과를 검증한다. Semantics는 접근성에도 쓰이므로 테스트가 사용자의 관점에 가까워진다. 텍스트나 내부 구현보다 의미 있는 역할·상태·동작을 검증한다."
+  summary: "Compose의 Semantics tree는 UI 요소의 의미를 접근성 서비스와 테스트 프레임워크에 제공한다. UI 테스트는 기본적으로 자식 의미를 합친 merged tree를 조회한다. 따라서 클릭 가능한 부모 안의 자식 노드가 검색되지 않으면 내부 구현을 먼저 바꾸지 말고 unmerged tree를 출력해 병합 상태를 확인한다. 직접 그리는 custom UI에는 필요한 역할·레이블·동작 의미를 직접 제공한다."
   points:
-  - "Semantics로 UI 노드를 찾고 속성을 확인"
-  - "performClick 같은 사용자 동작을 실행"
-  - "접근성과 테스트가 공유하는 의미 정보를 유지"
-  interview: "Compose UI 테스트에서 Semantics를 사용하는 이유는?"
-  answer: "사용자가 접근성·화면과 상호작용하는 의미 정보를 기준으로 탐색하고 검증할 수 있기 때문이다."
-  source: https://developer.android.com/develop/ui/compose/testing
+  - "Semantics의 역할·상태·동작은 접근성 서비스와 UI 테스트가 함께 사용"
+  - "테스트 기본값은 merged tree; 자식 노드 탐색 문제는 unmerged tree로 진단"
+  - "custom Canvas/UI에는 접근성에 필요한 semantics를 직접 제공"
+  interview: "클릭 가능한 Compose 부모 안의 Text를 `onNodeWithText()`가 찾지 못하면 무엇을 먼저 확인하나요?"
+  answer: "테스트는 기본적으로 merged Semantics tree를 사용하고 클릭 가능한 부모는 자식 semantics를 합칠 수 있다. `onRoot(useUnmergedTree = true).printToLog()`로 unmerged tree를 확인한다. 사용자가 보는 의미를 유지하면서 필요한 matcher나 semantics를 조정한다."
+  source: https://developer.android.com/develop/ui/compose/accessibility/semantics
 - category: android
   level: "중급"
   title: "메인 스레드와 ANR — 느려짐은 입력 지연에서 시작"

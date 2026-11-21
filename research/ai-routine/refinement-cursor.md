@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 08:11 KST
+Last update: 2026-11-22 08:12 KST
+
+## Latest pass
+- Refined `Compose UI 테스트 — 사용자가 보는 의미를 검증` against current Android Compose testing and Semantics references.
+- Clarified that semantics serve accessibility and testing; the test framework searches the merged tree by default, while `onRoot(useUnmergedTree = true).printToLog()` diagnoses merged child nodes.
+- Kept it separate from Compose Test v2, which covers coroutine scheduler synchronization rather than semantic node discovery.
+- Sources and rationale: `research/ai-routine/20261122-081200-compose-semantics-testing.md`.
+- Next: inspect another level-labeled Android or AI+Android card for a concrete source-backed gap.
 
 ## Latest pass
 - Refined `Compose Flow 수집 — 화면 생명주기에 맞추기` against the current `collectAsStateWithLifecycle` API reference.
