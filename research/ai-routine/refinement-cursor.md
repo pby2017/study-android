@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `ML Kit GenAI Structured Output` for stability layers, current model-feature detection, typed parse failures, and the limits of schema guarantees; next candidate: inspect `A2A 1년` for current protocol maturity, governance, adoption evidence, and distinction from MCP.
+Current position: refined `A2A — Agent Card로 발견하고 Task 상태로 협업한다` around discovery metadata, asynchronous task lifecycle, the MCP boundary, and the separation between authentication metadata and authorization; next candidate: inspect `Android Computer Control` for current API status, supported device/OEM scope, user-consent boundary, and comparison with AppFunctions.
 
-Last update: 2026-11-22 06:00 KST
+Last update: 2026-11-22 06:05 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -647,3 +647,10 @@ Rules:
 - Sources re-checked: Structured Output guide, GenerativeModel and Feature references, direct model access guide, ML Kit release notes
 - Kept schema-shape guarantees separate from fact/domain validation; noted sample/reference response-model mismatch in audit trail
 - Next: inspect `A2A 1년`.
+
+- Reviewed and refined: `A2A 1년` (removed stale anniversary framing; rewrote around Agent Card discovery, Task status/artifacts, and MCP's distinct application-tool/data boundary)
+- Sources re-checked: current A2A specification and Agent Card docs; A2A 1.0 announcement; official MCP 2025-11-25 specification
+- Added the security distinction: advertised authentication requirements are metadata, not caller authentication or authorization; do not infer trust or permission from discovery
+- Removed the speculative Android AppFunctions/A2A architecture example and unsupported assertion that agent delegation inherently reduces context pollution or privilege scope
+- Research note: `research/ai-routine/20261122-060500-a2a-agent-card-task.md`
+- Next: inspect `Android Computer Control`

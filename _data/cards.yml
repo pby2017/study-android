@@ -3299,15 +3299,16 @@ cards:
   interview: "Structured Output을 사용하면 모델 응답의 파싱·기능 확인·업무 검증을 생략할 수 있나요?"
   answer: "아니다. 현재 기능 API에서 `getAvailableFeatures()`로 `Feature.STRUCTURED_OUTPUT` 지원을 확인한다. typed generation은 파싱 실패나 입력·쿼터·안전성 오류로 예외가 날 수 있고, 토큰 한도에 걸리면 출력이 불완전할 수 있다. schema는 Kotlin 구조와 제약을 돕지만 내용의 사실성·업무 규칙을 보장하지 않으므로 중요 값은 앱에서 다시 검증한다."
 - category: ai
-  title: A2A 1년 — MCP가 도구 연결이라면 A2A는 에이전트끼리 업무를 넘기는 규약
-  summary: 'Google Developers Blog는 2026년 6월 18일 A2A(Agent-to-Agent) 1주년 업데이트에서 협업형 에이전트 패턴을 정리했다. MCP가 한 에이전트가 도구와 데이터에 접근하는 통로라면, A2A는 서로 다른 에이전트가 능력을 발견하고 업무를 위임하며 결과를 주고받는 통신 계층이다. 실무 포인트는 거대한 단일 에이전트에 모든 컨텍스트를 밀어 넣는 대신, 결제·데이터 분석·DevOps·고객지원처럼 권한과 지식 경계가 다른 작업을 전문 에이전트로 분리하는 것이다. Android 앱도 AppFunctions나 MCP로 앱 내부 도구를 열고, 외부 업무는 A2A 에이전트에 위임하는 구조를 상상할 수 있다.
-
-    '
+  title: A2A — Agent Card로 발견하고 Task 상태로 협업한다
+  level: "중급"
+  summary: 'A2A는 서로 다른 시스템의 에이전트가 내부 모델·메모리·도구 구현을 공개하지 않고 협업하도록 하는 공개 프로토콜이다. 클라이언트는 Agent Card에서 서비스 주소, 기능, 입력 형식, 인증 요구사항을 확인한 뒤 요청을 보낸다. 오래 걸리는 작업은 Task로 추적하며 상태 변화와 산출물을 스트리밍하거나 나중에 조회할 수 있다. MCP는 AI 애플리케이션과 도구·데이터 사이의 연결을 표준화하므로 두 프로토콜은 대체재라기보다 서로 다른 경계에 쓰인다. Agent Card의 인증 정보는 접근 허가 자체가 아니므로, 서비스는 별도로 인증·인가와 사용자 승인을 적용해야 한다.'
   points:
-  - 'MCP: agent-to-tool, A2A: agent-to-agent 협업 계층'
-  - '전문 에이전트에 업무 위임: 컨텍스트 오염과 권한 범위 확대를 줄임'
-  - 모바일 앱은 내부 기능은 AppFunctions, 외부 업무는 A2A로 분리 가능
-  source: https://developers.googleblog.com/how-a2a-is-building-a-world-of-collaborative-agents/
+  - 'Agent Card: 에이전트의 식별·기능·연결 방식·인증 요구사항을 기술하는 발견 문서'
+  - 'Task: 비동기 작업의 상태와 산출물을 추적; 진행 이벤트를 구독하거나 최신 상태를 조회'
+  - 'MCP는 앱-도구/데이터, A2A는 에이전트-에이전트 경계; 각 호출에 인증·인가·사용자 동의를 별도 적용'
+  source: https://a2a-protocol.org/latest/specification/
+  interview: "A2A의 Agent Card가 있으면 상대 에이전트에 안전하게 작업을 맡길 수 있나요?"
+  answer: "아니다. Agent Card는 식별·기능·접속 방식·인증 요구사항을 알려주는 발견 메타데이터다. 자격 증명 검증이나 작업 권한을 자동으로 부여하지 않는다. 호출 측은 상대를 검증하고, 서비스 측은 최소 권한과 사용자 동의에 따라 요청을 인가해야 한다."
 - category: ai
   title: Android Computer Control — 코드 변경 없이 앱 UI를 에이전트 자동화 대상으로 준비
   summary: 'Android Computer Control은 OEM 선탑재 AI 어시스턴트가 사용자의 허가를 받은 뒤 설치된 앱을 가상 디스플레이에서 실행하고, 스크린샷 분석과 탭·스와이프·텍스트 입력으로 다단계 작업을 수행하는 preview 프레임워크다. target app은 별도 SDK 통합 없이 기존 UI를 자동화 대상으로 둘 수 있지만, 실제 자동화 품질은 적응형 레이아웃, 생명주기 처리, 명확한 화면 상태 같은 기본 앱 품질에 좌우된다. AppFunctions가 명시적 도구 API라면 Computer Control은 UI 자동화 fallback에 가깝다.
