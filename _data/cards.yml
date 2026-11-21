@@ -70,17 +70,15 @@ cards:
   answer: "인터페이스의 프로퍼티는 구현 클래스가 제공할 접근자 계약이다. 인터페이스 자체에는 backing field를 둘 수 없으므로, 값을 저장하려면 구현 클래스가 프로퍼티를 구현해야 한다."
 - category: kotlin
   level: "초급"
-  title: 람다 — 코드 블록을 인자로 넘기기
-  summary: '람다는 다른 함수에 넘길 수 있는 작은 코드 조각이다. 자바 8처럼 코드 블록을 함수 인자로 직접 전달할 수 있어, 안드로이드의 setOnClickListener 같은 ''메서드 하나뿐인 익명 객체''를 람다로 대체해 코드를 확 줄인다. 컬렉션에선 maxBy처럼 기준을 람다로 받는 라이브러리 함수가 있어 `list.maxBy { it.age }` 식으로 짧게 쓴다. 멤버 참조(Person::age)로 더 줄일 수도 있다.
-
-    '
+  title: 'Kotlin 람다 — 함수 값과 Android SAM 변환'
+  summary: '람다는 이름 없이 만든 함수 값이며, 함수 타입 매개변수로 전달할 수 있다. 마지막 매개변수가 함수이면 람다를 괄호 밖에 둘 수 있다. Android의 `setOnClickListener { ... }`는 단일 추상 메서드(`OnClickListener`)를 람다로 구현하는 SAM 변환이다. 콜백에는 이벤트가 발생했을 때 실행할 동작을 작성한다.'
   points:
-  - 익명 객체 → 람다로 보일러플레이트 제거
-  - list.maxBy { it.age } 처럼 기준을 람다로
-  - 멤버 참조(::)로 한 번 더 축약
-  source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/5장-람다로_프로그래밍.md
-  interview: "람다는 Android 클릭 리스너에서 어떤 역할을 하는가?"
-  answer: "단일 콜백 동작을 함수 값으로 전달해 익명 객체의 반복 코드를 줄인다."
+  - '함수 타입 예: `(Int) -> String` — 정수 하나를 받아 문자열을 반환한다.'
+  - '마지막 매개변수가 함수면 `{ ... }` 람다를 괄호 뒤에 쓸 수 있다.'
+  - '`setOnClickListener { view -> ... }`는 Android SAM 변환 예다.'
+  source: https://kotlinlang.org/docs/lambdas.html
+  interview: 'Android의 `setOnClickListener { ... }`에서 람다를 받을 수 있는 이유는?'
+  answer: '`OnClickListener`가 하나의 추상 메서드만 가진 인터페이스이므로 Kotlin이 람다를 해당 인터페이스 구현으로 SAM 변환한다.'
 - category: kotlin
   level: "초급"
   title: 'Kotlin null 안전성 — ?.와 ?:의 역할'
