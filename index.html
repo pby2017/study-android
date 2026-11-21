@@ -60,6 +60,8 @@ title: study — 1분 지식 카드
     });
     const candidates = availableCards();
     position.textContent = `${candidates.indexOf(card) + 1} / ${candidates.length}`;
+    const hash = `#${category}/${card.dataset.idx}`;
+    if (window.location.hash !== hash) history.replaceState(null, '', hash);
   }
 
   function move(direction) {
@@ -68,9 +70,8 @@ title: study — 1분 지식 카드
     const index = candidates.findIndex(card => cards.indexOf(card) === current);
     if (direction === 'random') {
       if (candidates.length === 1) return showCard(candidates[0]);
-      let next;
-      do { next = Math.floor(Math.random() * candidates.length); }
-      while (next === index);
+      const draw = Math.floor(Math.random() * (candidates.length - 1));
+      const next = draw >= index ? draw + 1 : draw;
       return showCard(candidates[next]);
     }
     const offset = direction === 'next' ? 1 : -1;
@@ -84,7 +85,8 @@ title: study — 1분 지식 카드
     chip.classList.add('active');
     category = chip.dataset.cat;
     const candidates = availableCards();
-    showCard(candidates[0]);
+    const currentCard = cards[current];
+    showCard(candidates.includes(currentCard) ? currentCard : candidates[0]);
   }));
 
   document.addEventListener('keydown', event => {
@@ -93,5 +95,16 @@ title: study — 1분 지식 카드
     if (event.key === 'ArrowRight') move('next');
   });
 
-  if (cards.length) showCard(cards[Math.floor(Math.random() * cards.length)]);
+  if (cards.length) {
+    const [savedCategory, savedId] = window.location.hash.slice(1).split('/');
+    const savedCard = cards.find(card => card.dataset.idx === savedId &&
+      (savedCategory === 'all' || card.dataset.cat === savedCategory));
+    if (savedCard) {
+      category = savedCategory;
+      chips.forEach(chip => chip.classList.toggle('active', chip.dataset.cat === category));
+      showCard(savedCard);
+    } else {
+      showCard(cards[Math.floor(Math.random() * cards.length)]);
+    }
+  }
 </script>
