@@ -737,4 +737,8 @@ Rules:
 - Removed launch-era Nano v3-specific benchmark numbers from the main card; retained caveat in research note that Google's internal task results are not general guarantees
 - Added data-governance and holdout-evaluation guidance; current Prompt Optimizer SDK is documented as experimental despite service GA
 - Research note: `research/ai-routine/20261122-104500-mlkit-prompt-optimization.md`
-- Next: inspect `ADK 장기 실행 에이전트`
+- Reviewed and refined `ADK 장기 실행 에이전트` using Google's long-running ADK tutorial, current Agents CLI session-storage guidance, and ADK state/session concepts
+- Strengthened distinction between explicit workflow state and persistence: in-memory sessions do not survive restart/instance change; use a durable session backend
+- Added event-resumption reliability concerns: authenticated signals, validated transitions, duplicate/retry safety; removed unqualified claim that any ToolContext state write alone guarantees end-to-end durability
+- Research note: `research/ai-routine/20261122-110000-adk-long-running-state.md`
+- Next: inspect `MCP EMA stable`
