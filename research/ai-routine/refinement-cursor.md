@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Google AI Studio Android` personal-app distribution boundary; next candidate: inspect `Android Studio Agent Mode parallel conversations` for current availability, concurrency limits, and differences from separate sessions.
+Current position: refined `Android Studio Agent Mode parallel conversations` for current availability and shared-file collision risks; next candidate: inspect `Android XR + Gemini — Geospatial 좌표를 구조화 JSON 투어로 바꾸는 패턴` for API status, accuracy handling, grounding, and location privacy.
 
-Last update: 2026-11-22 05:11 KST
+Last update: 2026-11-22 05:21 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -624,3 +624,7 @@ Rules:
 - No star count used: this hosted product's current attention signal is the five-day-old first-party feature launch, not repository stars. Capability claims are vendor-reported and not independently tested.
 - Sources and limitations: `research/ai-routine/20261122-051100-ai-studio-android.md`.
 - Next: inspect `Android Studio Agent Mode parallel conversations`.
+
+- Reviewed and refined: `Android Studio Agent Mode parallel conversations` (separated chat-context concurrency from filesystem/worktree isolation; removed adjacent UI-generation claims already covered elsewhere)
+- Sources re-checked: current Android Studio Agent Mode docs; official Quail 2 stable warning; Quail 4 recap; Rabbit 2 stable announcement
+- Kept the worktree caveat explicitly scoped to Quail 2 source; later Rabbit 2 material reviewed did not explicitly confirm isolation, so the card uses conservative guidance rather than claiming the limitation is unchanged
