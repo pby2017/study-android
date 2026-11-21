@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `GitHub Mobile Copilot — 휴대폰에서 세션을 이어가고 검토하기` with task entry points, same-session cross-client continuation, GitHub-hosted execution, paid-plan/org/read-only boundaries, and distinction from `/remote on`; next candidate: inspect a current Android-specific AI card for source freshness and interview usefulness before continuing the Copilot mobile series.
+Current position: refined `Android Live Threat Detection — on-device AI가 agent-like app abuse 패턴 탐지` to distinguish Google Play Protect platform behavior from app-facing APIs and qualify Android 17 rollout as a dated roadmap; next candidate: inspect the Android 17 agentic automation/device-state card for developer API, profile-policy, and user-consent boundaries.
 
 Last update: 2026-11-22 07:45 KST
 
@@ -773,4 +773,9 @@ Rules:
 - Added task entry paths (Copilot tab, repository, issue, PR), same-session cross-client continuation, cloud-hosted execution, and paid-plan/org/read-only access boundaries
 - Clarified this cloud workflow is not a local Android IDE and distinguished it from `/remote on` control of a running local CLI host
 - Research note: `research/ai-routine/20261122-133000-github-mobile-cloud-agent.md`
+- Reviewed and refined: `Android Live Threat Detection` against Google's 2026 Android security roadmap, 2024 Play Protect launch source, and Android 17 developer feature page
+- Separated Play Protect platform detection from app-facing SDKs; no public API to consume detection results was identified in reviewed official sources
+- Qualified Android 17 dynamic-signal monitoring as a May 2026 H2 rollout roadmap, not universal current availability; included SMS forwarding, accessibility overlay, icon-hiding/background-launch examples
+- Added intermediate level and interview practice; removed unrelated Advanced Protection feature list from this card's core
+- Research note: `research/ai-routine/20261122-140000-android-live-threat-detection.md`
 - Next: inspect `A2UI + MCP Apps`
