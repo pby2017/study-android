@@ -91,6 +91,18 @@ cards:
   source: https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
   interview: '`replay = 0`인 `SharedFlow`에서 UI가 수집을 멈춘 동안 emit된 값은 화면 재진입 후 자동으로 전달되는가?'
   answer: '아니다. replay cache가 없으므로 수집자가 없을 때 emit한 값은 새 수집자에게 재생되지 않는다. 재생이 필요한 상태라면 StateFlow나 적절한 replay 정책을 검토하고, 이벤트 손실을 허용할지도 설계해야 한다.'
+- category: android
+  level: "중급"
+  title: 'withContext — main-safe 함수와 Dispatcher 경계'
+  summary: 'Dispatcher는 코루틴이 실행될 스레드나 스레드 풀을 결정한다. ViewModel의 `viewModelScope`는 기본적으로 Main에서 시작하므로, 저장소의 suspend 함수가 blocking I/O를 한다면 함수 내부에서 `withContext(ioDispatcher)`로 이동해 main-safe하게 만든다. 호출자가 매번 Dispatcher를 바꾸게 하기보다 작업을 소유한 계층이 책임지고, 테스트를 위해 Dispatcher를 주입한다.'
+  points:
+  - '`suspend`는 호출 가능성을 나타내며 스레드를 바꾸지 않는다.'
+  - '`withContext`는 해당 블록의 context를 바꾸고 완료될 때까지 suspend한다.'
+  - 'blocking I/O는 IO, CPU 집약 계산은 Default를 고려한다.'
+  - 'Dispatcher를 주입하면 테스트에서 TestDispatcher로 대체하기 쉽다.'
+  source: https://developer.android.com/kotlin/coroutines/coroutines-best-practices
+  interview: '`viewModelScope.launch` 안에서 Repository suspend 함수를 호출하면 Repository는 왜 자체적으로 main-safe해야 하는가?'
+  answer: '`viewModelScope`는 기본적으로 Main에서 시작하고 호출자는 Repository가 blocking인지 알 필요가 없어야 한다. Repository가 blocking 구간을 `withContext(ioDispatcher)`로 감싸면 어느 호출 위치에서도 Main을 막지 않고, 주입된 Dispatcher는 테스트에서 교체할 수 있다.'
 - category: kotlin
   level: "중급"
   title: 'Android 코루틴 — suspend는 백그라운드 실행이 아니다'
