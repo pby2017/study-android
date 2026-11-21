@@ -3242,14 +3242,14 @@ cards:
 - category: ai
   title: Android CLI + Skills — 에이전트에 실행 도구·절차·최신 문서를 결합
   level: "중급"
-  summary: Android CLI 1.0은 AI 에이전트가 Android 개발 도구를 표준 명령으로 호출하도록 한다. `android` CLI는 SDK·프로젝트·에뮬레이터·기기·빌드·테스트를 다루고, Android Skills는 특정 작업 절차를 제공하며, Knowledge Base는 Android·Firebase·Google Developers·Kotlin의 문서를 검색·가져온다. 도구는 실행을, Skill은 작업 방법을, 문서는 최신 근거를 맡는다.
+  summary: Android CLI는 에이전트와 스크립트가 SDK·프로젝트·에뮬레이터·기기·빌드·테스트를 다루는 명령줄 도구다. Android Skills는 최신 Android 권장 패턴과 반복 절차를 에이전트에 제공하고, `android docs`는 공식 Android Knowledge Base에서 문서를 검색·가져온다. CLI는 실행, Skill은 작업 지침, Knowledge Base는 확인할 근거를 맡는다.
   points:
-  - '`android init`으로 CLI용 Skill을 설정하고, `android skills list/add/update`로 작업별 Skill을 관리'
-  - '`android docs`는 공식 Knowledge Base의 검색·가져오기 도구; Skills는 Agent Skills 호환 에이전트에 쓸 수 있지만 설치·호출 방식은 환경마다 다름'
-  - '기본 Skill 적용 범위는 탐지된 에이전트 설정이며, `--agent`·`--project`로 대상을 좁힐 수 있음; Skills 업데이트 전 사용자 수정을 보존'
+  - '`android init`은 기본 `android-cli` Skill을 탐지된 에이전트 경로에 설치하고, `android skills`는 추가 Skill을 검색·설치·관리'
+  - '`android docs search`로 공식 문서의 `kb://` 주소를 찾고 `fetch`로 본문을 가져옴'
+  - '`--agent`·`--project`로 설치 범위를 지정; 사용자 정의 Skill은 업데이트 때 덮어쓸 수 있으므로 이름을 바꿔 관리'
   source: https://developer.android.com/tools/agents/android-cli
   interview: "Android CLI·Skills·Knowledge Base를 함께 쓸 때 각 역할과 적용 범위는 어떻게 구분하나요?"
-  answer: "CLI는 SDK·프로젝트·기기 같은 작업을 실행하고, Skill은 마이그레이션 등 반복 절차를 에이전트에 제공하며, Knowledge Base는 최신 공식 문서를 검색해 근거를 보강한다. `android init`과 `android skills`로 설정·설치 상태를 확인하고 `--agent` 또는 `--project`로 적용 대상을 제한한다. Android Skills는 표준 호환 에이전트에서 활용할 수 있지만 자동 탐지와 호출 방식은 각 도구 문서도 확인한다."
+  answer: "CLI는 프로젝트·SDK·기기 작업을 실행하고, Skill은 Android 권장 패턴과 반복 절차를 에이전트에 제공한다. `android docs search`와 `fetch`는 공식 Knowledge Base에서 문서를 찾아 읽는다. `android init`은 기본 CLI Skill을 설정하고 `android skills add`는 추가 Skill을 설치한다. `--agent`·`--project`로 범위를 지정하며, 수정한 Skill은 업데이트로 덮어쓸 수 있으므로 원본과 구분되는 이름을 쓴다."
 - category: ai
   title: Google AI Studio Android — 개인 라이브러리·내부 테스트·정식 출시 구분
   level: "중급"

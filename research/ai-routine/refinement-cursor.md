@@ -923,3 +923,11 @@ Rules:
 - Sources: [Android AI Sample Catalog README](https://github.com/android/ai-samples/blob/main/ai-sample-catalog/README.md), [Android hybrid inference](https://developer.android.com/ai/hybrid), [Firebase AI Logic App Check](https://firebase.google.com/docs/ai-logic/app-check)
 - Research note: `research/ai-routine/20261122-072744-android-ai-sample-catalog-refinement.md`
 - Next: inspect `Android CLI + Skills — 에이전트에 실행 도구·절차·최신 문서를 결합` and verify the CLI / Skills / Knowledge Base status and use cases
+
+- Refined `Android CLI + Skills — 에이전트에 실행 도구·절차·최신 문서를 결합`
+- Fixed a factual reversal: customized skills are overwritten on update unless renamed; separated `android init`, `android skills`, and Knowledge Base `android docs search/fetch` responsibilities
+- Verified agent/project scoping and ecosystem-specific skill discovery against current official Android docs
+- Attention signal checked live via GitHub API: android/skills 10,690 stars, 700 forks, latest push 2026-11-17 (snapshot only)
+- Sources: [Android CLI overview](https://developer.android.com/tools/agents/android-cli), [CLI skills command](https://developer.android.com/tools/agents/android-cli/commands/skills), [Android skills overview](https://developer.android.com/tools/agents/android-skills), [Android Studio skill guidance](https://developer.android.com/studio/gemini/skills), [CLI docs command](https://developer.android.com/tools/agents/android-cli/commands/docs)
+- Research note: `research/ai-routine/20261122-072922-android-cli-skills-refinement.md`
+- Next: review `Google AI Studio Android — 개인 라이브러리·내부 테스트·정식 출시 구분` and verify current eligibility and release requirements against official policy
