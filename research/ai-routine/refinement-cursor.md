@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:47 KST
+Last update: 2026-11-22 07:49 KST
+
+## Latest pass
+- Reviewed and refined `disableBundledSkills — 번들 스킬·내장 명령을 모델 눈앞에서 치우기` against the current official Claude Code settings reference.
+- Distinguished skills/workflows (removed) from built-in slash commands (hidden from the model but still typable); confirmed plugin and project user-defined skills/commands are unaffected.
+- Added the interaction rule: either the setting or the session environment variable can disable bundled skills, and the other cannot re-enable them.
+- Source and rationale: `research/ai-routine/20261122-074900-disable-bundled-skills-refinement.md`.
+- Next: continue oldest-first from the next AI/AI+Android card not yet explicitly reviewed; skip pure Android topics.
 
 ## Latest pass
 - Reviewed and refined `상태줄 rate_limits — 사용 한도와 리셋 시각 표시` against current official Claude Code statusline documentation.

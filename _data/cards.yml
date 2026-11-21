@@ -500,14 +500,14 @@ cards:
   answer: "아니다. rate_limits는 Pro·Max·Ultra 구독이나 한도를 설정한 Claude 앱 게이트웨이에서 첫 API 응답 뒤 제공된다. 각 한도 창은 독립적으로 없을 수 있고, `resets_at`이 지나면 해당 창이 payload에서 제거된다. 부재는 0%와 다르므로 `// empty` 같은 방식으로 구분한다."
 - category: ai
   title: disableBundledSkills — 번들 스킬·내장 명령을 모델 눈앞에서 치우기
-  summary: 'Claude Code에는 기본 제공되는 번들 스킬·워크플로와 /init 같은 내장 슬래시 명령이 딸려 온다. settings.json에서 disableBundledSkills를 true로 두면 번들 스킬·워크플로는 통째로 제거되고, 내장 슬래시 명령은 여전히 타이핑은 되지만 모델 목록에서는 숨겨진다. 이때 설치한 Skills 플러그인, .claude/skills/, .claude/commands/의 내 스킬·명령은 영향을 받지 않는다. 환경변수 CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1로도 같은 효과를 낼 수 있어, 내 워크플로만 깔끔히 노출하고 싶을 때 쓴다.
-
-    '
+  summary: 'Claude Code에서 `disableBundledSkills: true`를 설정하면 번들 스킬과 워크플로를 제거하고, `/init` 같은 내장 명령을 모델에서 숨긴다. 사용자는 명령을 계속 입력할 수 있다. 플러그인 스킬과 `.claude/skills/`, `.claude/commands/`의 사용자 정의 항목은 영향을 받지 않는다. 한 세션에서는 `CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1`로도 끌 수 있다. 설정이나 환경 변수 중 하나라도 비활성화하면 다른 쪽에서 다시 켤 수 없다.'
   points:
-  - true 시 번들 스킬·워크플로는 완전 제거, 내장 슬래시 명령(/init 등)은 타이핑 가능하나 숨김
-  - 내 것(플러그인·.claude/skills·.claude/commands)은 영향 없음
-  - 환경변수 CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1로 동일 효과
-  source: https://code.claude.com/docs/en/settings
+  - '`disableBundledSkills: true`: 번들 스킬·워크플로 제거; 내장 명령은 모델에서 숨기지만 사용자는 입력 가능'
+  - '플러그인 스킬과 `.claude/skills/`, `.claude/commands/` 사용자 항목은 유지'
+  - '세션 환경 변수 `CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1`도 사용 가능; 어느 쪽이든 끄면 다른 쪽에서 다시 켤 수 없음'
+  source: https://code.claude.com/docs/en/settings-reference
+  interview: "`disableBundledSkills`를 켜면 프로젝트의 `.claude/skills/`와 플러그인 스킬도 사라지나요? 설정 파일이 false여도 세션 환경 변수가 1이면 번들을 다시 켤 수 있나요?"
+  answer: "아니다. 플러그인 스킬과 `.claude/skills/`, `.claude/commands/`의 사용자 항목은 유지된다. 설정 또는 `CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1` 중 하나가 번들을 끄면 다른 쪽에서 다시 켤 수 없다."
 - category: ai
   title: 스킬 호출 권한 — disable-model-invocation / user-invocable
   summary: '커스텀 명령이 스킬로 통합되면서, 스킬 프런트매터로 "누가 이 스킬을 부를 수 있는가"를 제어할 수 있다. 기본값은 사용자와 Claude 둘 다 호출 가능이지만, disable-model-invocation을 true로 두면 오직 사용자가 /이름으로만 부를 수 있고 Claude가 자동으로 실행하지 못한다. 배포·커밋·슬랙 전송처럼 부작용이 있거나 타이밍을 직접 잡아야 하는 작업에 쓰면, 코드가 준비돼 보인다고 Claude가 멋대로 배포하는 일을 막는다. 반대로 user-invocable을 false로 두면 / 메뉴에서 숨겨져 Claude만 쓸 수 있어, 명령이 아닌 배경 지식용 스킬(예: 레거시 시스템 설명)에 적합하다.
