@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Cadence`; next candidate: revalidate `GitHub Issues MCP Fields` announcement, MCP support details, current availability, and duplicate status.
+Current position: continue after `GitHub Issues MCP Fields`; next candidate: inspect `Android AppFunctions 1.0` for current API status, AI relevance, integration boundaries, and duplicate coverage.
 
-Last update: 2026-11-22 04:55 KST
+Last update: 2026-11-22 04:57 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -570,3 +570,15 @@ Rules:
 - Replaced “fully private” claim with endpoint/payload/logging checks; privacy-policy anonymization statements are not treated as proof that contextual data is non-sensitive.
 - Sources: https://github.com/wtgme/cadence ; https://github.com/wtgme/cadence/blob/main/app/src/main/java/io/cadence/music/domain/PromptBuilder.kt ; https://github.com/wtgme/cadence/blob/main/app/src/main/java/io/cadence/music/data/api/MusicRepository.kt ; https://github.com/wtgme/cadence/blob/main/app/build.gradle.kts ; https://github.com/wtgme/cadence/blob/main/docs/privacy-policy.html
 - Next: revalidate `GitHub Issues MCP Fields` announcement and current availability.
+
+
+## 2026-11-22 04:57 KST
+
+- Rechecked `GitHub Issues MCP Fields` against GitHub's official MCP server README and May, June, and November 2026 Changelog announcements.
+- Verified the current tools: `list_issue_fields`, `issue_write.issue_fields`, and `list_issues.field_filters`. Retained only schema-backed issue metadata workflow; explicitly requires fields, scopes, tools, and account access to be configured.
+- Corrected stale metrics: server page showed 34.6k stars/5.4k forks. The 1,000+ organization figure belongs to adoption of GitHub issue fields, not MCP support.
+- Separated the June duplicate-issue suggestions public preview from MCP field access; removed the implication that MCP automatically detects duplicates or triages issues.
+- Updated rollout scope: personal-account issue types/fields became GA on 2026-11-11; May announcement had issue fields in public preview for organizations. Do not generalize personal-account GA to all organizations.
+- Duplicate scan found adjacent GitHub MCP cards about secret scanning and general agent workflows, but no overlapping issue-fields lesson.
+- Sources: https://github.com/github/github-mcp-server ; https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues/ ; https://github.blog/changelog/2026-05-21-issue-fields-are-now-in-public-preview-for-all-organizations/ ; https://github.blog/changelog/2026-11-11-issue-types-and-fields-are-available-for-personal-accounts/
+- Next: `Android AppFunctions 1.0`; verify current API status and AI+Android scope.
