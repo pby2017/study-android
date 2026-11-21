@@ -82,15 +82,15 @@ cards:
   answer: '생성자 매개변수는 `val`이나 `var`를 붙여야 프로퍼티가 된다. `val`/`var`가 없으면 생성·초기화 시점에 쓸 수 있지만 인스턴스 프로퍼티로 저장되지는 않는다.'
 - category: android
   level: "중급"
-  title: 'StateFlow와 SharedFlow — 상태와 공유 이벤트'
-  summary: '`StateFlow`는 초기값을 가진 상태 홀더다. 새 수집자는 현재 값을 받고, 이후 최신 상태 변경을 관찰한다. `SharedFlow`는 여러 수집자에게 값을 공유하며 `replay`·버퍼 정책을 설정할 수 있다. `replay = 0`이면 활성 수집자가 없을 때 보낸 값은 나중 수집자에게 재생되지 않으므로, 일회성 UI 이벤트의 전달 보장을 별도로 검토해야 한다.'
+  title: 'Cold Flow와 Hot Flow — 재실행과 공유'
+  summary: '`flow { ... }`로 만든 cold Flow는 terminal 연산자마다 producer를 다시 실행한다. 따라서 두 collector가 같은 cold Flow를 수집하면 원본 작업도 각각 수행될 수 있다. `StateFlow`와 `SharedFlow`는 hot Flow로, collector가 producer를 새로 시작하지 않는다. cold Flow의 결과를 여러 소비자와 공유하려면 `shareIn(scope, started, replay)`를 사용하고 공유 수명과 재생 정책을 정한다.'
   points:
-  - '화면의 현재 상태처럼 최신 스냅샷이 필요하면 `StateFlow`를 고려한다.'
-  - '`SharedFlow`는 여러 소비자에게 공유할 값과 재생 정책을 정의한다.'
-  - '두 Flow 모두 UI에서 수집할 때 lifecycle에 맞춰 수집해야 한다.'
-  source: https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
-  interview: '`replay = 0`인 `SharedFlow`에서 UI가 수집을 멈춘 동안 emit된 값은 화면 재진입 후 자동으로 전달되는가?'
-  answer: '아니다. replay cache가 없으므로 수집자가 없을 때 emit한 값은 새 수집자에게 재생되지 않는다. 재생이 필요한 상태라면 StateFlow나 적절한 replay 정책을 검토하고, 이벤트 손실을 허용할지도 설계해야 한다.'
+  - '`flow { ... }.collect()`를 두 번 호출하면 cold producer가 두 번 실행된다.'
+  - '`StateFlow`는 현재 상태를, `SharedFlow`는 replay 설정에 따른 공유 값을 제공한다.'
+  - '`shareIn`은 scope·시작 정책·replay 수를 지정해 cold Flow를 공유한다.'
+  source: https://developer.android.com/kotlin/flow
+  interview: '두 화면 구성 요소가 같은 cold Flow를 수집할 때 producer를 한 번만 실행하고 공유하려면 어떻게 하는가?'
+  answer: '공유 수명이 필요한 CoroutineScope에서 `shareIn`을 적용한다. 시작 정책과 새 collector에 전달할 replay 수를 함께 정한다. `StateFlow`와 `SharedFlow`는 이미 hot Flow지만, 상태 최신값 보관과 replay 동작은 다르다.'
 - category: android
   level: "중급"
   title: 'withContext — main-safe 함수와 Dispatcher 경계'
