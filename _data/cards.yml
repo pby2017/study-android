@@ -8736,12 +8736,15 @@ cards:
   answer: "OS와 기기 관리 권한, 센서 입력, 온디바이스·클라우드 처리 경로, 사용자 동의 UI를 함께 검토해야 한다. 이 경계가 에이전트의 접근 범위와 데이터 처리를 결정한다."
 - category: ai
   title: N-Version Coding Agents — 한 에이전트 정답보다 3개 구현 majority vote
+  level: "고급"
   summary: N-Version Programming with Coding Agents(arXiv 2606.20158)는 고전적인 N-version programming을 최신 코딩 에이전트에 다시 적용한 실험이다. 저자들은 Knight-Leveson Launch Interceptor 명세를 대상으로 에이전트가 만든 48개 구현을 같은 oracle과 1,000,000개 랜덤 입력으로 검사했다. 결과는 양면적이다. 실패가 서로 독립적이지 않아 공통 실패 모드가 여전히 많이 나왔고, 애매한 명세 구간에서 실패가 함께 몰렸다. 그래도 3개 구현을 majority vote로 묶으면 평균 실패 수가 단일 구현 387.44에서 triple 130.99로 줄었고, 11,844개 N-version unit은 관측 실패가 0이었다. 교훈은 "에이전트를 여러 번 돌리면 무조건 안전"이 아니라, 서로 다른 모델·도구·언어로 만든 구현을 독립 oracle과 투표기로 묶어야 redundancy가 의미를 갖는다는 점이다.
   points:
   - 48개 에이전트 생성 구현·공유 oracle·랜덤 입력 1,000,000개로 실패 모드 비교
   - 단일 구현 평균 실패 387.44 → 3-version majority vote 130.99, 하지만 공통 실패 모드는 남음
   - 실무 적용은 같은 프롬프트 재시도보다 diverse implementation + independent oracle + voter
   source: https://arxiv.org/abs/2606.20158
+  interview: "여러 코딩 에이전트의 다수결은 어떤 조건에서 신뢰도를 높이며, 무엇을 해결하지 못하나요?"
+  answer: "서로 다른 구현과 독립적인 oracle·voter를 사용하면 일부 개별 실패를 줄일 수 있다. 하지만 에이전트가 같은 모호한 명세나 공통 결함을 공유하면 실패가 상관되므로 다수결만으로 안전성을 보장하지 못한다."
 - category: ai
   title: GitHub Desktop 3.6 — worktree와 Copilot을 일상 Git 흐름에 붙이기
   summary: GitHub Desktop 3.6은 AI 코딩 에이전트가 만든 변경을 "터미널 밖 Git 흐름"에서 다루는 쪽으로 Copilot 통합을 넓힌 업데이트다. Copilot은 커밋 메시지 생성과 머지 충돌 해결에 붙고, 커밋 메시지는 `.github/copilot-instructions.md`와 AGENTS.md, 레포의 커밋 메타데이터 규칙을 참고한다. 충돌이 나면 Desktop이 충돌 내용을 설명하고 해결안을 제안하지만, 사용자가 검토·수정·수락한 뒤 머지를 끝낸다. 동시에 Git worktree를 UI에서 지원해 여러 브랜치를 stash·clone 없이 병렬로 열 수 있다. 교훈은 코딩 에이전트 도입이 "코드 생성"만의 문제가 아니라, 커밋 규칙·충돌 리뷰·worktree 격리 같은 평범한 Git 운영면까지 AI 흐름에 맞춰져야 한다는 점이다.
@@ -8784,28 +8787,37 @@ cards:
   source: https://code.visualstudio.com/blogs/2026/06/19/what-50000-runs-taught-us
 - category: ai
   title: VS Code BYOK·로컬 모델 — Copilot 없이도 agent chat은 돌리고, 임베딩 기능은 분리해서 보기
+  level: "중급"
   summary: VS Code의 2026-06 BYOK 업데이트는 AI 에디터를 "Copilot 계정에 붙은 모델 목록"이 아니라 모델 브로커로 바꾼다. Language Models editor에서 Azure·Anthropic·Gemini·OpenAI·OpenRouter 같은 provider 키나 Ollama·Foundry Local 같은 로컬 모델을 추가하면 Chat 모델 피커에서 바로 고를 수 있다. 중요한 경계도 분명하다. BYOK와 로컬 모델은 chat·agent workflow·utility task에는 쓸 수 있고, GitHub 로그인이나 Copilot plan 없이도 오프라인 로컬 chat이 가능하다. 하지만 semantic search, inline suggestions, embeddings 기반 기능은 여전히 GitHub/Copilot 지원이 필요하다. 실무 교훈은 모델 선택을 에디터 UI 하나로 모으되, agent chat과 코드완성·검색을 같은 보안/비용 경계로 착각하지 말라는 점이다.
   points:
   - Language Models editor — provider 키·custom endpoint·extension 모델·로컬 모델을 한 피커에 모음
   - BYOK/local은 chat·agent workflow·utility task용, 표준 code completion·semantic search는 별도 경계
   - chat.utilityModel/chat.utilitySmallModel을 로컬·저가 모델로 바꾸면 제목·커밋 메시지 같은 작은 작업 비용을 분리 가능
   source: https://code.visualstudio.com/blogs/2026/06/18/byok-vscode
+  interview: "VS Code에서 BYOK 모델로 채팅할 수 있다면 모든 AI 기능도 같은 계정 없이 동작하나요?"
+  answer: "아니다. BYOK나 로컬 모델은 채팅·에이전트 작업에 쓸 수 있지만, 임베딩 기반 검색이나 일부 코드완성 기능은 별도 Copilot 지원이 필요할 수 있다. 기능별 provider 경계를 확인해야 한다."
 - category: ai
   title: Copilot Agentic Harness — 모델 이름보다 harness·task 난이도·토큰 효율을 같이 보기
+  level: "고급"
   summary: GitHub의 2026-06-25 Copilot agentic harness 평가 글은 "어떤 모델이 제일 좋나"보다, 같은 하네스에서 모델·작업·비용을 같이 보라는 신호다. GitHub은 20개 이상 최신 모델을 Copilot의 실제 agentic workflow 하네스에서 돌리고, GitHub 내부 task suite와 SWE-bench Verified를 함께 비교했다. 결과 해석의 핵심은 단일 승자가 아니다. 한 모델이 모든 축에서 이기지 않고, 작업 난이도·도구 사용·컨텍스트 처리·토큰 사용량에 따라 순위가 갈린다. 실무 교훈은 에이전트 모델 교체를 리더보드 하나로 결정하지 말고, 우리 레포의 대표 작업·도구 경로·토큰 예산을 넣은 작은 하네스에서 pass rate와 비용을 동시에 기록하라는 것이다.
   points:
   - 20+ 모델을 Copilot 실제 agentic workflow 하네스에서 비교 — 모델 단독 점수가 아니라 harness 안 성능
   - GitHub internal task suite + SWE-bench Verified — 쉬운 작업과 어려운 작업에서 순위가 달라질 수 있음
   - 운영 지표는 pass rate만이 아니라 token use, tool path, latency, task 난이도를 같이 봐야 함
   source: https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/
+  interview: "코딩 에이전트용 모델을 고를 때 공개 리더보드 점수만으로 결정하기 어려운 이유는 무엇인가요?"
+  answer: "실제 성공률은 모델뿐 아니라 하네스, 도구 경로, 작업 난이도와 컨텍스트에 좌우된다. 대표적인 저장소 작업으로 pass rate·토큰·지연시간을 함께 재야 운영 비용과 성능을 비교할 수 있다."
 - category: ai
   title: Claude Code 실사용 연구 — 에이전트 시대에도 도메인 전문성은 수익률이 남는다
+  level: "중급"
   summary: Anthropic의 "Agentic coding and persistent returns to expertise" 연구는 Claude Code를 추상 벤치마크가 아니라 실제 대화형 세션으로 본다. 2025-10부터 2026-04까지 약 40만 개 세션을 privacy-preserving 방식으로 분석했고, 전형적인 세션에서는 사람이 "무엇을 할지"를 정하고 Claude가 "어떻게 할지" 실행 결정을 더 많이 맡는다고 정리한다. 흥미로운 결론은 비개발자도 많은 코딩 작업을 성공시키지만, 도메인 전문성이 높을수록 한 지시당 Claude가 더 많은 일을 하고 성공률도 더 높다는 점이다. 즉 에이전트 도입의 실전 역량은 프롬프트 문장술보다 문제를 잘 고르고, 성공 증거를 요구하고, 결과를 검토할 수 있는 업무 지식에 가깝다.
   points:
   - 약 40만 Claude Code 세션 분석 — 작업 구성, 인간-AI 협업, 성공률을 실제 사용 로그에서 관찰
   - 사람은 planning, Claude는 execution 쪽 결정을 더 많이 담당하는 패턴
   - 전문성이 높을수록 지시당 산출과 성공률이 올라감 — 에이전트 운영도 도메인 지식이 병목
   source: https://www.anthropic.com/research/claude-code-expertise
+  interview: "코딩 에이전트가 실행을 더 맡는 환경에서 개발자의 도메인 전문성은 왜 여전히 중요한가요?"
+  answer: "전문성은 올바른 문제·제약·성공 기준을 정하고 결과를 검증하는 데 필요하다. 연구는 실제 사용에서도 전문성이 높은 사람이 더 많은 작업을 맡기고 더 높은 성공률을 보이는 경향을 관찰했다."
 - category: ai
   title: Copilot strictKnownMarketplaces — 에이전트 플러그인 공급망을 허용목록으로 잠그기
   summary: GitHub Copilot의 enterprise plugin standards는 Copilot 플러그인을 "누가 어떤 marketplace에서 설치해도 되는가"의 문제로 다룬다. Enterprise owner는 `.github-private` 저장소의 `copilot/managed-settings.json`에 정책을 두고, `extraKnownMarketplaces`로 허용 marketplace를 추가하거나 `strictKnownMarketplaces`로 명시한 marketplace만 설치 가능하게 제한한다. `enabledPlugins`는 `PLUGIN-NAME@MARKETPLACE-NAME` 형식으로 모든 enterprise 사용자에게 기본 설치할 플러그인을 지정한다. 기능은 public preview라 변할 수 있지만, 교훈은 이미 분명하다. 에이전트 플러그인·스킬·MCP는 코드 실행 전 권한면이므로, 개인 설치 편의보다 검토된 marketplace·기본 설치·청구 주체를 먼저 정책으로 고정해야 한다.
@@ -8816,12 +8828,15 @@ cards:
   source: https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-plugin-standards
 - category: ai
   title: Stack Overflow for Agents — 에이전트 지식을 '생성'보다 '검증'으로 쌓기
+  level: "중급"
   summary: Stack Overflow는 2026-06-10 Stack Overflow for Agents 베타를 공개했다. 핵심은 사람용 Q&A를 그대로 에이전트에게 먹이는 게 아니라, API-first 지식 교환소를 만들어 에이전트가 먼저 검증된 해법을 검색하고, 없으면 TIL·Question·Blueprint 형태로 초안을 만들며, 사람이 승인한 뒤 다른 에이전트와 개발자가 적용 결과를 되돌려주는 구조다. 공식 글은 plausible answer 생성은 싸졌지만 production에서 진짜 통하는지 검증하는 일은 여전히 비싸다고 본다. 별도 skill.md도 공개돼 vote, verify, reply, create post의 차이와 trust_summary·reputation을 "보증"이 아니라 우선순위 신호로 쓰라고 안내한다. 교훈은 코딩 에이전트 운영의 병목이 답변 생성보다 재현 가능한 실패·수정·검증 기록을 공유하는 쪽으로 옮겨간다는 점이다.
   points:
   - 베타 범위 — API-first 지식 교환, agent search → human-reviewed draft → verification feedback loop
   - post type — TIL·Question·Blueprint로 에이전트가 배운 해법을 맥락별로 기록
   - 운영 포인트 — trust_summary·reputation은 참고 신호일 뿐, 공개 에이전트 글은 읽고 검증한 뒤 적용
   source: https://stackoverflow.blog/2026/06/10/announcing-stack-overflow-for-agents/
+  interview: "에이전트가 가져온 커뮤니티 지식의 reputation이나 trust 점수만 믿으면 안 되는 이유는 무엇인가요?"
+  answer: "점수는 참고 신호이지 현재 코드·버전·환경에서 해법이 동작한다는 보증이 아니다. 제안의 근거를 확인하고 테스트나 재현으로 검증한 뒤 적용해야 한다."
 - category: ai
   title: Claude Code Agent View — 백그라운드 세션을 한 화면에서 dispatch·attach
   summary: Claude Code의 Agent View는 `claude agents`로 여는 백그라운드 세션 대시보드다. 새 작업을 dispatch하면 각 작업이 터미널에 붙어 있지 않아도 full Claude Code conversation으로 계속 돌고, 화면에는 running·waiting for input·done 상태가 모인다. 세션에는 attach·peek·reply로 다시 들어갈 수 있고, 내부 세션에서는 `/bg`나 왼쪽 화살표로 agent view로 빠져나온다. 단 연구 프리뷰(v2.1.139+)이고 세션은 로컬 머신에서 돈다. sleep은 보존되지만 shutdown 때는 중단되며, 병렬 10개는 구독 사용량도 대략 10배로 태운다. Claude가 만든 worktree는 session 삭제 때 같이 지워질 수 있으니 merge·push·검토 경계를 먼저 정해야 한다.
