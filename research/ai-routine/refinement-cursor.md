@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `MLC LLM`; next candidate: inspect the next oldest AI/AI+Android card after it and verify its source, relevance, and duplicate status.
+Current position: continue after `RunAnywhere Kotlin SDK`; next candidate: inspect the next AI/AI+Android card in sequence and verify its source, relevance, and duplicate status.
 
-Last update: 2026-11-22 03:27 KST
+Last update: 2026-11-22 03:30 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -396,3 +396,12 @@ Rules:
 - Replaced unqualified shared-checkpoint / “only mature runtime” / top-three claims with Android OpenCL backends (Adreno/Mali), per-model binary compilation, and physical-device compatibility/performance checks.
 - GitHub displayed 23.3k stars / 2.2k forks; strong, volatile attention signal. GitHub Releases currently shows only a `v0.1.dev0` prerelease despite current repo/docs, so avoid package-version claims until release metadata is clarified.
 - Next: inspect the next oldest AI/AI+Android card after MLC LLM.
+
+
+## 2026-11-22 03:30 KST
+
+- Reviewed and refined `RunAnywhere Kotlin SDK` against the SDK README, Android sample app README, releases, and live GitHub metadata.
+- Replaced blanket offline/privacy and complete voice-pipeline claims with the Android engine-registration/model-loading flow, optional backend boundaries, and verified hardware support.
+- QHexRT NPU support is limited to Snapdragon Hexagon v75/v79/v81 on ARM64; Android app README marks x86_64 emulator unavailable. First-use model downloads and optional cloud routes mean offline behavior must be tested with cached models and remote routes disabled.
+- GitHub displayed 10.4k stars / 422 forks. Repo README and Android app repository show different SDK versions; avoid fixed versions pending current dependency compatibility check.
+- Next: inspect the next AI/AI+Android card in sequence.

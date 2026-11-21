@@ -4578,3 +4578,11 @@ Refined:
 - Sources: https://github.com/mlc-ai/mlc-llm, https://github.com/mlc-ai/mlc-llm/blob/main/docs/deploy/android.rst, https://github.com/mlc-ai/mlc-llm/blob/main/docs/get_started/quick_start.rst, https://github.com/mlc-ai/mlc-llm/releases.
 - Replaced unsupported shared-checkpoint/only-mature/top-three wording with officially listed Adreno/Mali OpenCL backends, per-model binary compilation, and physical-device validation.
 - GitHub showed 23.3k stars / 2.2k forks. Releases page currently shows only v0.1.dev0; omitted version/latest-release claims. No build/device test.
+
+
+### 2026-11-22 03:30 KST — RunAnywhere Kotlin SDK Android 카드 검증
+
+- Refined: `RunAnywhere SDK — Android 온디바이스 AI SDK, VAD→STT→LLM→TTS 보이스 파이프라인 올인원(Kotlin)` → `RunAnywhere Kotlin SDK — Android 로컬 AI 엔진과 모델 연결 흐름`.
+- Sources: https://github.com/RunanywhereAI/runanywhere-sdks, https://github.com/RunanywhereAI/runanywhere-android, https://github.com/RunanywhereAI/runanywhere-sdks/releases.
+- Reframed around backend registration → initialization → model download/load → generation. Removed blanket “fully offline/private” and unsupported LoRA/voice-stack claims; added capability, optional cloud, first-download, and Snapdragon Hexagon NPU constraints.
+- GitHub displayed 10.4k stars / 422 forks; strong interest, not proof of production maturity. SDK README/app README version pins differ; omitted exact version. No Android/airplane-mode/NPU tests.
