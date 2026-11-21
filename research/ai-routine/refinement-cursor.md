@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:41 KST
+Last update: 2026-11-22 07:47 KST
+
+## Latest pass
+- Reviewed and refined `상태줄 rate_limits — 사용 한도와 리셋 시각 표시` against current official Claude Code statusline documentation.
+- Corrected the old Pro/Max-only and "always visible" claims: data is available to Pro/Max/Ultra subscribers or Claude apps gateways with a spend limit, after the first API response; individual windows can be absent and are removed after their reset.
+- Clarified that missing rate-limit data is not 0%, the statusline is local, and context-window usage is a separate field.
+- Source and rationale: `research/ai-routine/20261122-074300-claude-statusline-rate-limits-refinement.md`.
+- Next: continue from the next oldest AI/AI+Android card not yet explicitly reviewed; skip pure Android topics.
 
 ## Latest pass
 - Reviewed and refined: `Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기`
