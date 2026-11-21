@@ -82,6 +82,17 @@ cards:
   answer: '생성자 매개변수는 `val`이나 `var`를 붙여야 프로퍼티가 된다. `val`/`var`가 없으면 생성·초기화 시점에 쓸 수 있지만 인스턴스 프로퍼티로 저장되지는 않는다.'
 - category: kotlin
   level: "중급"
+  title: 'Android 코루틴 — suspend는 백그라운드 실행이 아니다'
+  summary: '`suspend`는 함수가 중단·재개될 수 있음을 표시할 뿐, 그 자체로 새 스레드나 백그라운드 실행을 만들지 않는다. 코루틴은 `CoroutineScope` 안에서 시작하고, 부모·자식 작업의 생명주기를 연결하는 구조화된 동시성을 따른다. 화면에 필요한 작업은 `viewModelScope`처럼 화면 수명과 맞는 스코프에서 시작하면 ViewModel이 정리될 때 취소된다.'
+  points:
+  - '`suspend` 함수는 다른 suspend 함수나 코루틴에서 호출한다.'
+  - '중단은 스레드를 막지 않는 것과 같으며, 스레드 전환을 자동 보장하지 않는다.'
+  - '`viewModelScope`의 작업은 ViewModel이 clear될 때 취소된다.'
+  source: https://developer.android.com/kotlin/coroutines
+  interview: '`suspend fun load()`를 선언하면 호출 작업은 자동으로 백그라운드 스레드에서 실행되는가?'
+  answer: '아니다. `suspend`는 중단 가능한 호출을 표현한다. 실행 스레드나 디스패처는 코루틴 컨텍스트가 결정하며, Android에서는 적절한 스코프와 디스패처를 선택해야 한다.'
+- category: kotlin
+  level: "중급"
   title: 'Kotlin Sequence — 지연 처리와 조기 종료'
   summary: '`List`의 `filter`·`map` 같은 연산은 각 단계를 즉시 실행하고 중간 컬렉션을 만든다. `asSequence()`로 바꾸면 연산은 최종 결과를 요청할 때 실행되며, 원소 하나씩 여러 단계를 통과한다. 따라서 `take(n)` 뒤에서 멈춰 필요한 원소만 처리할 수 있다. 다만 작은 데이터나 단순 연산에서는 지연 처리의 오버헤드가 더 클 수 있다.'
   points:
