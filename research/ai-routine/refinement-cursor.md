@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 08:01 KST
+Last update: 2026-11-22 08:02 KST
+
+## Latest pass
+- Reworked `Gemini Nano 하이브리드 추론 — 실제 실행 경로와 fallback 확인` against current Android and Firebase AI Logic documentation.
+- Added the privacy-critical behavior: `PREFER_ON_DEVICE` can fall back to cloud; the SDK does not download the on-device model on an inference request; `inferenceSource` identifies the path actually used.
+- Added the current maturity boundary (hybrid SDK Experimental, Prompt API Beta) and an interview prompt about verifying execution locality.
+- Sources and rationale: `research/ai-routine/20261122-080200-gemini-nano-hybrid-execution-path.md`.
+- Next: continue reviewing existing AI+Android cards for practical boundary errors and duplicate concepts.
 
 ## Latest pass
 - Refined `스킬 disallowed-tools — 호출 중 도구 가용성 줄이기` against the current official Claude Code skills guide.
