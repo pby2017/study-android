@@ -2976,15 +2976,15 @@ cards:
   interview: "Android AI SDK가 ‘오프라인 지원’이라고 할 때 무엇을 확인해야 하나요?"
   answer: "필요한 모델과 엔진이 설치됐는지, 현재 기기에서 해당 엔진을 사용할 수 있는지 확인한다. 첫 모델 다운로드에는 네트워크가 필요할 수 있고 SDK에는 선택 가능한 클라우드 경로도 있다. 원격 경로를 끄고 모델을 미리 내려받은 다음, 네트워크를 차단한 상태에서 추론이 되는지 검증한다. NPU 가속은 지원 아키텍처와 ABI도 확인한다."
 - category: ai
-  title: V8V — KMP 크로스플랫폼 음성 오케스트레이션 프레임워크, 음성→로컬 액션·MCP·웹훅(MIT)
-  summary: 'V8V는 Kotlin Multiplatform으로 만든 크로스플랫폼 음성 오케스트레이션 프레임워크다. 온디바이스 STT로 음성을 인식하고, 3가지 콜백(Local·MCP·Remote/웹훅)으로 로컬 앱 액션·크로스앱 MCP 명령·원격 워크플로우를 실행한다. Android·iOS·macOS·Web·Flutter·React Native 6개 플랫폼 지원. 오프라인 우선·다국어·프라이버시 보장. Maven Central(Android)·SPM(iOS)·npm(Web) 배포.
-
-    '
+  title: 'Android 음성 AI의 개인정보 경계: SpeechRecognizer 기본 경로는 기기 내 처리 보장이 아니다'
+  summary: 'Android 앱이 `SpeechRecognizer.createSpeechRecognizer(context)`를 호출하면 시스템 기본 음성 인식 서비스를 사용한다. Android 문서는 이 구현이 인식을 위해 오디오를 원격 서버로 스트리밍할 가능성이 있다고 경고한다. 오프라인·기기 내 처리가 요구되면 API 31 이상에서 `isOnDeviceRecognitionAvailable()`을 확인하고 `createOnDeviceSpeechRecognizer()`를 사용할 수 있는지 검사한다. 앱의 네트워크 경로와 실제 인식 서비스도 별도로 검증한다.'
   points:
-  - '3가지 콜백: Local(앱 내)·MCP(크로스앱)·Remote(웹훅)'
-  - '6개 플랫폼: Android·iOS·macOS·Web·Flutter·React Native'
-  - 'KMP 기반: 오프라인 우선, 다국어, 프라이버시 보장'
-  source: https://github.com/alimomin1998/v8v
+  - '기본 팩토리와 on-device 전용 팩토리는 같은 보안·네트워크 보장을 하지 않는다.'
+  - '앱이 요청한 인식 경로와 기기에 설치된 음성 서비스의 실제 동작을 확인한다.'
+  - '기기 내 처리 필요: API 31+ 가용성 확인 → `createOnDeviceSpeechRecognizer()` → 네트워크 차단 상태에서 테스트'
+  source: https://developer.android.com/reference/android/speech/SpeechRecognizer
+  interview: 'Android `SpeechRecognizer`를 사용하면 음성이 항상 기기 안에서 처리된다고 말할 수 있나요?'
+  answer: '아니다. 기본 `createSpeechRecognizer()` 구현은 원격 서버로 오디오를 스트리밍할 가능성이 있다고 공식 문서가 경고한다. 기기 내 인식이 필요하면 API 31 이상에서 가용성을 확인하고 `createOnDeviceSpeechRecognizer()`를 사용해야 한다. 선택한 recognizer와 기기 설정에 따라 달라질 수 있으므로 네트워크 차단 테스트로 요구사항을 검증한다.'
 - category: ai
   title: RecGPT-Mobile — Taobao가 실전 검증한 온디바이스 LLM 추천 에이전트, 사용자 의도를 실시간 해석
   summary: 'RecGPT-Mobile은 Taobao(알리바바)가 수백만 실사용자로 검증한 온디바이스 LLM 기반 추천 프레임워크다. 경량 LLM을 디바이스에 배포해 사용자의 암묵적 행동(클릭·스크롤·체류시간)을 명시적 의도 쿼리로 변환하고, 추천 결과를 실시간으로 조정한다. 빈도 제어 메커니즘으로 불필요한 추론을 줄여 디바이스 리소스를 최적화. 클라우드 LLM 추론 대비 레이턴시와 비용을 대폭 절감하면서도 추천 정확도와 해석 가능성 모두 향상.

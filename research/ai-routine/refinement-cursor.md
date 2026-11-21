@@ -405,3 +405,11 @@ Rules:
 - QHexRT NPU support is limited to Snapdragon Hexagon v75/v79/v81 on ARM64; Android app README marks x86_64 emulator unavailable. First-use model downloads and optional cloud routes mean offline behavior must be tested with cached models and remote routes disabled.
 - GitHub displayed 10.4k stars / 422 forks. Repo README and Android app repository show different SDK versions; avoid fixed versions pending current dependency compatibility check.
 - Next: inspect the next AI/AI+Android card in sequence.
+
+## 2026-11-22 03:40 KST
+
+- Reviewed V8V and its Android SpeechRecognizer implementation against the official Android API reference.
+- The README claims on-device/offline/private speech recognition, but Android code calls `SpeechRecognizer.createSpeechRecognizer(context)` and does not select `createOnDeviceSpeechRecognizer()` or check on-device availability. Android docs warn the default service may stream audio to remote servers.
+- GitHub API displayed 1 star / 1 fork and `pushed_at` 2026-07-16; weak adoption signal, so V8V product promotion was not retained.
+- Reframed the existing card into an Android AI data-boundary lesson: check API 31+ availability, select the on-device factory, and test the actual deployment with networking disabled.
+- Next: inspect the next AI/AI+Android card after V8V; review the neighboring RecGPT-Mobile source carefully before relying on its production-scale claims.

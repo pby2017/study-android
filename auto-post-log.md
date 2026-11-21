@@ -584,7 +584,7 @@
 | 5 | KotlinSyft — Android 연합학습(OpenMined) | github.com/OpenMined |
 | 6 | MLC LLM — 크로스플랫폼 온디바이스 LLM 런타임 | github.com/mlc-ai |
 | 7 | RunAnywhere SDK — 보이스 파이프라인 올인원 | docs.runanywhere.ai |
-| 8 | V8V — KMP 음성 오케스트레이션 | github.com/alimomin1998 |
+| 8 | V8V — KMP 음성 오케스트레이션 | github.com/alimomin1998 (기존 카드에서 Android 음성 인식의 네트워크·개인정보 경계로 재정리) |
 | 9 | RecGPT-Mobile — Taobao 온디바이스 추천 에이전트 | arxiv.org |
 | 10 | OD-LLM — 온디바이스 순차 추천 압축 프레임워크 | arxiv.org |
 
