@@ -4543,3 +4543,12 @@ Refined:
 - Centered the card on PR preview, natural-language tests, evidence-backed reviews, Playwright web/Appium mobile drivers, and screenshot→model action→record flow. Qualified mobile Android support because the current README's primary product narrative is web-centric.
 - Corrected “open source”: repository states Business Source License 1.1, which restricts selling it as a competing commercial service and converts to Apache-2.0 on 2028-03-23.
 - GitHub showed 253 stars, 65 forks, and 1,887 commits; latest listed release was v1.260811.1 on 2026-08-11. Counts/commit totals are volatile popularity/activity signals, not proof of quality.
+
+
+### 2026-11-22 03:15 KST — Luciq Resolve Agent 카드에서 자동 수정 주장 제거
+
+- Refined: `Luciq Resolve Agent — 모바일 크래시를 AI가 자동 분석·코드 수정·PR 생성하는 에이전틱 디버깅 플랫폼` → `Luciq Resolve Agent + MCP — 운영 크래시 근거를 AI 코딩 도구에 연결`.
+- Re-checked Luciq's current AI debugging blog, Companion product page, and MCP help-center guide.
+- Clarified current Assistant behavior: root-cause analysis, user reproduction steps, and pattern insights; MCP provides IDE access to crash/occurrence/hang/bug-report/review data.
+- Removed unsupported “Assistant automatically edits code/creates PR,” “five feedback iterations,” and “IDE integration planned” claims. The MCP is described as available to Luciq customers; code changes are handed to a separate coding-agent/Autopilot workflow.
+- Omitted the “90% Login V2 + iOS 26” figure because it is one vendor-provided illustration, not a generalizable result. Added interview guidance to validate AI diagnoses against code, session/device/version/flag evidence, and reproduction.

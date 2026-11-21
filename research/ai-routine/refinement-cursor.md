@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Driftx`; next candidate: `Luciq Resolve Agent` (verify current product status and distinguish shipped AI debugging from planned integrations).
+Current position: continue after `Luciq Resolve Agent`; next candidate: `Baidu Stability Analysis Agent` (verify repository health, Android coverage, and actual AI/repair boundaries).
 
-Last update: 2026-11-22 03:12 KST
+Last update: 2026-11-22 03:15 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -359,3 +359,13 @@ Rules:
 - Corrected “open source” wording: repository uses Business Source License 1.1, with a restriction on selling it as a competing commercial service and a stated Apache-2.0 conversion date of 2028-03-23.
 - GitHub displayed 253 stars, 65 forks, and 1,887 commits; latest listed release was v1.260811.1 (2026-08-11). Metrics are volatile attention/activity indicators, not evidence of quality.
 - Next: `Luciq Resolve Agent`; separate current shipped functionality from announced/planned features.
+
+
+## 2026-11-22 03:15 KST
+
+- Reviewed and refined `Luciq Resolve Agent` against current Luciq debugging, Companion, and MCP documentation.
+- Corrected the distinction between shipped diagnosis/reproduction/pattern insights, IDE telemetry access over MCP, and the separate coding-agent/Autopilot handoff. Removed unsupported claims that the Debugging Assistant itself edits app code, generates PRs, supports five feedback iterations, or has only planned IDE integration.
+- Verified the official MCP help article says the feature is available to Luciq customers and lists crashes, occurrences, hangs, bug reports, and reviews; the product page says issues can be handed to coding agents or Autopilot.
+- Kept exact marketing example “90% … Login V2 + iOS 26” out of the card; the blog presents it as one illustrative correlation, not a general rate.
+- No public GitHub star count or independent adoption measure used; official documentation is the primary evidence for product capabilities.
+- Next: `Baidu Stability Analysis Agent`; verify repository health, Android coverage, and actual AI/repair boundaries.
