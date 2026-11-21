@@ -255,6 +255,50 @@ cards:
   interview: "DB 조회를 Dispatchers.IO로 옮겼는데도 ANR이 날 수 있는가?"
   answer: "가능하다. 락 경합, Binder 대기 등 메인 스레드를 간접적으로 막는 원인도 추적해야 한다."
   source: https://developer.android.com/topic/performance/threads
+- category: android
+  level: "중급"
+  title: "Compose Flow 수집 — 화면 생명주기에 맞추기"
+  summary: "Compose에서 Flow를 State로 읽을 때는 `collectAsStateWithLifecycle()`을 우선 사용한다. 화면이 STARTED일 때 수집하고 STOPPED가 되면 멈춰, 보이지 않는 화면의 불필요한 수집을 줄인다."
+  points:
+  - "Flow 값을 Compose State로 변환해 화면을 갱신한다"
+  - "기본 수집 구간: STARTED부터 STOPPED까지"
+  - "수명주기와 무관하게 수집해야 하는지 먼저 판단한다"
+  source: https://developer.android.com/topic/libraries/architecture/coroutines
+  interview: "Compose 화면에서 StateFlow를 수집할 때 collectAsStateWithLifecycle()이 유용한 이유는?"
+  answer: "화면 생명주기에 따라 수집을 시작·중지해 화면이 비활성일 때 불필요한 작업을 줄인다."
+- category: android
+  level: "고급"
+  title: "Compose 부수 효과 — 작업 수명에 맞는 API 선택"
+  summary: "Compose 함수 본문은 재구성될 수 있으므로 직접 부수 효과를 실행하지 않는다. Composition과 함께 시작·취소할 코루틴은 `LaunchedEffect`, 클릭 뒤 시작할 코루틴은 `rememberCoroutineScope`, 등록과 해제가 필요한 리스너는 `DisposableEffect`를 사용한다."
+  points:
+  - "LaunchedEffect(key): 진입 시 시작, 키 변경 시 재시작"
+  - "rememberCoroutineScope: UI 이벤트에서 코루틴 시작"
+  - "DisposableEffect: 외부 리스너 등록 후 onDispose에서 해제"
+  source: https://developer.android.com/develop/ui/compose/side-effects
+  interview: "버튼을 눌렀을 때 Snackbar를 띄우는 코루틴에 LaunchedEffect 대신 무엇을 쓸까?"
+  answer: "rememberCoroutineScope을 사용한다. 작업 시작이 Composition 진입이 아니라 버튼 이벤트에 달려 있기 때문이다."
+- category: android
+  level: "중급"
+  title: "WorkManager — 보장은 하되 정확한 시각은 약속하지 않는다"
+  summary: "앱이 화면을 떠나거나 프로세스가 재시작된 뒤에도 이어져야 하는 작업에는 WorkManager를 사용한다. 작업은 제약 조건과 절전 정책을 따르므로 실행 시각은 정확히 보장되지 않는다."
+  points:
+  - "영속 작업은 앱 재시작·기기 재부팅 뒤에도 예약을 유지한다"
+  - "네트워크·충전 등 제약 조건이 만족될 때 실행한다"
+  - "정확한 시각이 필요한 알람의 대체재로 쓰지 않는다"
+  source: https://developer.android.com/develop/background-work/background-tasks/persistent
+  interview: "WorkManager에 1시간 주기 작업을 등록하면 매시간 정각에 실행되는가?"
+  answer: "아니다. WorkManager는 전력·제약 조건을 고려해 유연한 실행 시간을 사용하며 정확한 시각을 보장하지 않는다."
+- category: android
+  level: "고급"
+  title: "Baseline Profile — 첫 실행 경로를 미리 최적화"
+  summary: "Baseline Profile은 자주 쓰는 코드 경로를 ART가 미리 최적화하도록 안내한다. 시작·탐색·스크롤 경로를 포함해 첫 실행부터 체감 성능을 개선할 수 있지만, 효과는 앱과 측정 조건에 따라 달라진다."
+  points:
+  - "앱에 프로필 규칙을 포함하면 ART가 대상 경로를 AOT 최적화한다"
+  - "실제 대표 사용자 흐름을 프로필에 담는다"
+  - "최적화 전후는 실제 기기에서 벤치마크로 확인한다"
+  source: https://developer.android.com/topic/performance/baselineprofiles/overview
+  interview: "Baseline Profile은 모든 앱에서 시작 시간을 일정 비율만큼 줄여 주는가?"
+  answer: "아니다. 효과는 포함한 코드 경로, 라이브러리, 기기와 측정 조건에 따라 달라지므로 대표 흐름을 측정해 검증한다."
 - category: ai
   title: diagnose — 디버깅을 규율로 만드는 스킬
   summary: 'mattpocock/skills의 diagnosing-bugs는 어려운 버그를 "재현 가능한 실패 신호"에서 시작하게 만드는 디버깅 루프다. 순서는 재현·최소화 → 3~5개 가설 → 한 변수씩 계측 → 수정 → 회귀 테스트 → 정리로 이어진다. 좋은 점은 버그를 설명하는 말솜씨보다, 같은 명령으로 빨간불과 초록불을 반복해서 볼 수 있는지를 먼저 묻는다는 것이다. 그래서 AI에게 바로 코드를 고치게 하기보다, 실패를 빠르게 보여주는 테스트·스크립트·로그 지점을 먼저 만들고 그 신호 하나로 가설을 줄여 간다.
