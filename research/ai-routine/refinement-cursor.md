@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `MobileLLM-Flash`; next candidate: inspect `NexaSDK` claims against its official repository, current platform/model support, accelerator path, release recency, and Android developer value.
+Current position: continue after `GenieX`; next candidate: inspect the following older published card `ACE-Step 1.5` for model/license, generation speed and VRAM claims, hardware support, and current repository activity.
 
-Last update: 2026-11-22 04:38 KST
+Last update: 2026-11-22 04:40 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -551,3 +551,7 @@ Rules:
 - Reviewed and refined: `MobileLLM-Flash` (reframed as a target-device latency/quality measurement lesson; corrected 35% token scope, accounted for search/IFT tokens, and scoped speedups to the published Galaxy S25 ExecuTorch/XNNPACK benchmark)
 - Sources re-checked: arXiv full paper v2 and abstract; exact-name GitHub search did not verify a public Flash implementation, and the older Meta MobileLLM repo was not treated as the Flash artifact
 - Added experimental configuration and Android generalization caveats; exact speed ratio remains explicitly paper-reported, not independently reproduced
+
+- Reviewed and refined: `NexaSDK` (now GenieX; old repository URL redirects to Qualcomm/GenieX). Removed unsupported Qualcomm investment, Day-0, ASR/TTS and “NPU-first” claims; clarified GGUF/llama.cpp versus AI Hub bundle/Qualcomm AI Engine Direct routes, Snapdragon-only platforms, Android SDK, and developer-preview status.
+- Sources: https://github.com/qualcomm/GenieX ; https://geniex.aihub.qualcomm.com/en/get-started/what-is-geniex ; https://github.com/qualcomm/GenieX/releases
+- Live attention snapshot: 8.5k GitHub stars; latest visible release v0.11.0 (2026-11-12). Popularity is not capability evidence.
