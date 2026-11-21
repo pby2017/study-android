@@ -3442,14 +3442,15 @@ cards:
   source: https://github.blog/changelog/2026-06-18-upcoming-deprecation-of-opus-4-6-fast/
 - category: ai
   title: ML Kit APO — 온디바이스 Gemini Nano 프롬프트를 서버에서 자동 탐색하기
-  summary: 'Android Developers Blog는 ML Kit GenAI Prompt API용 Automated Prompt Optimization(APO)을 소개했다. Android AICore는 공유 시스템 모델을 우선하므로 앱마다 LoRA adapter를 배포하는 방식은 운영 부담이 생길 수 있다. APO는 Vertex AI에서 서버 측 모델을 사용해 오류 패턴을 분석하고, 의미 지시문을 추출하고, 여러 후보 프롬프트를 병렬 테스트해 Gemini Nano v3용 시스템 지시문을 찾는다. 중요한 점은 최종 실행은 Android의 ML Kit GenAI API와 Gemini Nano 쪽에 남기면서, 품질 개선 탐색은 서버에서 자동화한다는 것이다. 온디바이스 AI 앱은 "프롬프트도 빌드 산출물"처럼 평가 데이터와 함께 관리해야 한다.
-
-    '
+  level: "중급"
+  summary: 'Automated Prompt Optimization(APO)은 Vertex AI의 서버 모델로 학습 예시의 오류를 분석하고, 시스템 지시문 후보를 만들고 병렬 평가한다. 앱의 실제 추론은 계속 Android의 ML Kit Prompt API와 AICore에서 온디바이스로 실행한다. Google이 공개한 Gemini Nano v3 평가에서는 작업별로 분류 정확도 +5%·+8%, 번역 BLEU +8.57%를 보고했다. 이 수치는 해당 평가 결과이지 모든 앱의 보장값은 아니다. 예시 데이터의 클라우드 전송 정책을 확인하고, 별도 검증 데이터로 개선과 회귀를 측정한다.'
   points:
-  - 'APO: Vertex AI에서 Gemini Nano v3용 프롬프트 후보를 자동 탐색'
-  - 오류 분석·semantic instruction distillation·병렬 후보 테스트
-  - 온디바이스 실행을 유지하면서 프롬프트 품질 개선 루프를 운영
+  - 'Vertex AI: 오류 분석 → 지시문 후보 생성 → 병렬 평가'
+  - '최종 앱 추론은 ML Kit Prompt API + AICore의 온디바이스 경로'
+  - '공개 수치는 Nano v3 특정 작업 결과; 별도 평가셋·데이터 정책 확인'
   source: https://developer.android.com/blog/posts/how-automated-prompt-optimization-unlocks-quality-gains-for-ml-kit-s-gen-ai-prompt-api
+  interview: "APO를 사용할 때 무엇이 클라우드로 가며, 공개된 정확도 향상 수치를 그대로 기대해도 되나요?"
+  answer: "프롬프트 최적화 단계는 Vertex AI 서버 모델이 예시를 분석하고 후보를 평가하지만, 배포 앱의 추론은 ML Kit Prompt API와 AICore를 통해 기기에서 계속 실행한다. 평가 예시를 클라우드로 보내는 정책을 검토해야 한다. 공개된 수치는 Gemini Nano v3의 특정 분류·번역 작업 결과이므로, 대상 기기와 자체 검증 데이터에서 품질·회귀를 확인해야 한다."
 - category: ai
   title: ADK 장기 실행 에이전트 — 대화 기록 대신 상태 머신으로 재개하기
   summary: 'Google의 ADK 장기 실행 에이전트 튜토리얼은 며칠 동안 멈췄다 재개되는 업무를 대화 기록에 맡기지 말라고 설명한다. 핵심은 START, WELCOME_SENT, DOCUMENTS_SIGNED 같은 명시적 state machine을 만들고, 시스템 지시문이 현재 단계를 session state에서 읽게 하는 것이다. 각 tool call은 ToolContext.state를 갱신해 자동 checkpoint가 되고, 세션 저장소를 DatabaseSessionService(SQLite 또는 Cloud SQL)로 바꾸면 컨테이너 재시작 뒤에도 같은 단계에서 이어갈 수 있다. AI 에이전트 설계 포인트는 "모델이 기억한다"가 아니라 "워크플로 상태를 코드와 저장소가 소유한다"는 점이다.
