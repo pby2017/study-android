@@ -792,4 +792,9 @@ Rules:
 - Matched hybrid inference wording to `PREFER_ON_DEVICE`; added Firebase App Check enforcement since 2026-11-02 and differentiated debug tokens from production attestation
 - Verified `android/ai-samples` attention snapshot: 724 stars / 181 forks on 2026-11-22; not used as a trend or quality claim
 - Research note: `research/ai-routine/20261122-063100-android-ai-sample-catalog.md`
-- Next: inspect `Android CLI + Skills` for current command and skill package boundaries
+- Reviewed `Android CLI + Skills`; next: inspect `Google AI Studio Android` publication workflow claims and scope
+- Reviewed and refined `Android CLI + Skills` against the current Android CLI overview, command and skill references, Android Skills documentation, Knowledge Base docs, and stable-release/update announcements
+- Updated command lifecycle and scope (`android init`, `android skills`, `--agent`, `--project`); clarified that standard compatibility does not guarantee identical skill discovery/invocation in every agent
+- Removed the 70%+/3x claim from the short card; documented its narrow internal setup experiment scope in the research note
+- Research note: `research/ai-routine/20261122-064500-android-cli-skills-refinement.md`
+- Next: inspect `Google AI Studio Android` publication workflow claims and scope
