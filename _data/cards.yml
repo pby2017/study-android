@@ -3182,14 +3182,15 @@ cards:
   answer: "아니다. 라이브러리의 1.0.0 안정화와 플랫폼 기능의 제공 상태는 별개다. 공식 문서는 AppFunctions를 실험적 프리뷰로 표시하며 Android 16 이상을 요구하고, Gemini 연동은 Connected Apps 개발자 프리뷰 절차가 필요하다."
 - category: ai
   title: Android AI Sample Catalog — Firebase AI Logic과 ML Kit GenAI 샘플을 한 앱에서 복사해 배우기
-  summary: 'Android AI Sample Catalog는 Google이 공개한 AI 샘플 모음 앱이다. Imagen 이미지 생성, Gemini Nano 온디바이스 요약, Gemini Nano 이미지 설명, 음성으로 제어하는 할 일 앱, 온디바이스 rewrite assistance 같은 예제를 한 프로젝트에서 실행해 볼 수 있다. 클라우드 추론 샘플은 Firebase AI Logic SDK를, 온디바이스 추론 샘플은 ML Kit GenAI API를 사용한다. 각 샘플은 관련 README와 코드 조각을 포함하고, AI 기능 코드가 독립적으로 복사하기 쉽게 구성돼 있다. 새 API를 문서만 읽지 말고 최소 동작 샘플로 비교할 때 유용하다.
-
-    '
+  level: "초급"
+  summary: "Android AI Sample Catalog는 Google AI API를 이용한 Android 예제를 실행하고 코드를 살펴보는 오픈소스 앱이다. 클라우드 추론 예제는 Firebase AI Logic, Gemini Nano 온디바이스 예제는 ML Kit GenAI를 사용한다. 각 예제에는 README와 주요 코드가 있다. 클라우드 예제에는 Firebase 프로젝트 설정이 필요하고, Gemini Nano 예제는 지원 기기에서만 실행된다."
   points:
-  - 클라우드 샘플은 Firebase AI Logic, 온디바이스 샘플은 ML Kit GenAI
-  - Gemini Nano 요약·이미지 설명·rewrite assistance를 직접 실행
-  - 'GitHub 소스와 README 중심: 학습용으로 복사 가능한 self-contained 샘플'
+  - 클라우드 모델과 온디바이스 모델은 Firebase AI Logic·ML Kit GenAI로 경로가 구분됨
+  - Imagen 생성, Nano 요약·이미지 설명, Gemini Live API 음성 할 일 예제 제공
+  - 실행 전 Firebase 설정과 Gemini Nano 지원 기기를 각각 확인
   source: https://developer.android.com/blog/posts/explore-ai-on-android-with-our-sample-catalog-app
+  interview: "Android AI 샘플을 실행하기 전에 클라우드 예제와 Gemini Nano 예제에서 각각 무엇을 확인해야 하나요?"
+  answer: "클라우드 추론 예제는 Firebase AI 프로젝트 설정이 필요하다. ML Kit GenAI의 Gemini Nano 예제는 일부 지원 기기에서만 동작하므로 대상 기기 호환성을 확인한다."
 - category: ai
   title: Android CLI + Skills — 어떤 코딩 에이전트든 Android 개발 규칙에 맞게 접지
   summary: 'Google은 2026년 4월 Android CLI, Android skills, Android Knowledge Base를 에이전트용 개발 표면으로 공개했다. 핵심은 Android Studio 밖의 Claude Code, Codex, Antigravity 같은 에이전트도 SDK 설치, 프로젝트 생성, 에뮬레이터 생성, 실행 같은 Android 작업을 추측 없이 수행하게 만드는 것이다. 공식 블로그는 내부 실험에서 표준 도구만 쓸 때보다 LLM 토큰 사용을 70% 이상 줄이고 작업을 3배 빠르게 끝냈다고 설명한다. skills는 Navigation 3, edge-to-edge, AGP 9, XML-to-Compose, R8 분석 같은 반복 작업을 SKILL.md 지침으로 제공하고, Knowledge Base는 최신 Android/Firebase/Kotlin 문서를 에이전트 컨텍스트로 가져오게 한다.
