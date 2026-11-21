@@ -4516,3 +4516,12 @@ Refined:
 - Removed AppFollow customer-name claims and AppFollow-to-rating causality claim. Google Play's +0.7 statement refers to the average change to a replied negative review, not a guaranteed app-wide rating increase or AppFollow-specific effect.
 - Toolkit GitHub showed 4 stars and 1 commit at review; recorded as a small/early-stage project signal, not as proof of popularity or quality. Card focuses on verifiable workflow utility rather than claiming broad adoption.
 - Practical guardrail: use review summaries to prioritize investigation, not to assert a root cause; compare with release, crash, and reproduction evidence.
+
+### 2026-11-22 03:04 KST — koog-compose 카드 검증 및 경계 명시
+
+- Refined: `koog-compose — Koog + Compose로 온디바이스 AI 에이전트를 Android·iOS UI에 직접 통합(MIT)` → `koog-compose — Koog 에이전트를 Compose 상태와 Android 도구에 연결하는 서드파티 사례`.
+- Re-checked the project README, release page, CI activity, JetBrains Koog repository, and MediaPipe repository.
+- Corrected license wording from MIT to Apache-2.0; clarified this is a third-party integration above JetBrains Koog, not a JetBrains official add-on.
+- Verified Android-only LiteRT-LM/Gemma 4 provider vs iOS Apple Foundation Models, typed StateFlow/UI integration, optional device tools, and cloud fallback data disclosure in the README.
+- The repository displayed 15 stars / 0 forks; JetBrains Koog displayed 4.7k stars and MediaPipe 37.8k at review. Counts are volatile, and only the first establishes koog-compose's relatively small adoption signal; omitted from the card.
+- README labels the project pre-1.0 in spirit despite a v2.1.0 tag and warns APIs may evolve. Recent CI runs indicate active changes, but no independent adoption evidence; card frames it as an early-stage reference, not a production recommendation.

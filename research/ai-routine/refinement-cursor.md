@@ -4,7 +4,7 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: continue after `ObjectBox` / `sqlite-vector` (merged into one AI+Android RAG comparison); next candidate: `AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답` (the intervening MASVS/R8 card is pure Android and out of scope).
 
-Last update: 2026-11-22 03:02 KST
+Last update: 2026-11-22 03:04 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -329,4 +329,13 @@ Rules:
 - Verified official MCP client/data coverage, Toolkit workflows, role-scoped access, OpenAI API processing, workspace API credits, and review draft controls.
 - Removed the unsourced customer-use list and clarified Google’s +0.7 figure is not an AppFollow-specific or app-wide guaranteed outcome.
 - Toolkit GitHub was at 4 stars / 1 commit; this is a low, volatile adoption signal, not a popularity claim.
-- Next: `koog-compose`; check repo health and Android/backend implementation.
+- Next: `Driftx`; verify active repository, Android test support, and whether its AI/MCP features are usable beyond the marketing description.
+
+
+## 2026-11-22 03:04 KST
+
+- Reframed `koog-compose` as an early-stage third-party integration above JetBrains Koog.
+- Corrected the license to Apache-2.0 and verified Android LiteRT-LM/Gemma versus iOS Apple Foundation Models support.
+- Added StateFlow/Compose and device-tool wiring; explained that a cloud fallback may receive conversation history and tool results.
+- Recorded 15 repo stars as a low/volatile project signal; JetBrains Koog itself was 4.7k stars. No popularity overclaim added.
+- Next: `Driftx`; audit active support and exact Android AI test path.
