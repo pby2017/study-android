@@ -3293,6 +3293,7 @@ cards:
   source: https://developer.android.com/ai/imagen
 - category: ai
   title: Kakao Mobility Gemini Nano — 온디바이스 주소 추출로 주문 완료 시간 24% 단축
+  level: "중급"
   summary: 'Kakao Mobility는 ML Kit GenAI Prompt API와 Gemini Nano를 사용해 배달 주문 메시지에서 이름·주소·전화번호를 추출하는 기능을 온디바이스로 구현했다. 전통 ML처럼 대규모 학습 데이터와 전문 모델링을 준비하는 대신, 약 200개의 고품질 평가 예시와 few-shot prompting으로 hallucination을 줄이는 방향으로 튜닝했다. 결과적으로 배달 주문 완료 시간이 24% 줄고, 신규 사용자 전환율은 45%, 기존 사용자 전환율은 6% 증가했다. 피크 시즌에는 AI 기반 주문이 200% 이상 늘었다. 실무 포인트는 온디바이스 AI도 평가셋과 fallback을 갖춰야 production 품질에 가까워진다는 점이다.
 
     '
@@ -3301,8 +3302,11 @@ cards:
   - 평가 예시 약 200개 + few-shot prompting으로 hallucination 최소화
   - 주문 완료 시간 24% 감소, 신규 전환율 45% 증가, 피크 AI 주문 200%+ 증가
   source: https://developer.android.com/blog/posts/kakao-mobility-uses-gemini-nano-on-device-to-reduce-costs-and-boost-call-conversion-by-45
+  interview: "Kakao Mobility가 Gemini Nano 주소 추출 기능을 출시할 때 프롬프트 품질과 도달 범위를 어떻게 함께 확보했나요?"
+  answer: "약 200개의 평가 예시로 프롬프트를 반복 검증하고 few-shot 예시로 환각을 줄였다. 지원 범위를 넓히기 위해 Gemini Flash 클라우드 경로도 fallback으로 구현했다."
 - category: ai
   title: Firebase AI Logic Hybrid API — Android AI 추론을 온디바이스·클라우드로 라우팅
+  level: "중급"
   summary: 'Firebase AI Logic Hybrid API는 Android 앱에서 Gemini API 호출을 온디바이스와 클라우드 사이에 나누는 단일 인터페이스다. onDeviceConfig의 inference mode로 PREFER_ON_DEVICE, PREFER_IN_CLOUD, ONLY_ON_DEVICE, ONLY_IN_CLOUD를 고를 수 있고, Gemini Nano 같은 온디바이스 모델이 없거나 요청을 지원하지 않을 때 클라우드 fallback을 설계할 수 있다. 공식 문서는 이 기능을 experimental로 표시하므로 SLA나 호환성 보장을 전제하면 안 된다. 실무 포인트는 ''항상 로컬''이 아니라 개인정보·오프라인·비용이 중요한 요청은 로컬 우선, 고성능·범용성이 필요한 요청은 클라우드 우선으로 정책을 명시하는 것이다.
 
     '
@@ -3311,6 +3315,8 @@ cards:
   - 온디바이스 모델 미지원 시 클라우드 fallback으로 도달 범위 확대
   - 'Experimental 기능: SLA·호환성 변경 가능성을 운영 리스크로 반영'
   source: https://developer.android.com/ai/hybrid
+  interview: "Hybrid API에서 `PREFER_ON_DEVICE`와 `ONLY_ON_DEVICE`의 실패 동작은 어떻게 다른가요?"
+  answer: "`PREFER_ON_DEVICE`는 기기 모델을 먼저 시도하고 사용할 수 없거나 요청을 지원하지 않으면 클라우드로 fallback한다. `ONLY_ON_DEVICE`는 클라우드로 보내지 않고 온디바이스 모델이 불가능하면 예외를 낸다. 기능이 실험 단계라면 호환성 변경과 SLA 부재도 운영에 반영한다."
 - category: ai
   title: ML Kit Prefix Caching — 반복 프롬프트를 캐시해 Gemini Nano 지연 줄이기
   summary: 'ML Kit Prompt API의 Prefix Caching은 반복되는 프롬프트 앞부분을 static prefix로 분리하고, 매번 바뀌는 내용만 dynamic suffix로 보내 온디바이스 LLM의 중간 상태를 재사용한다. 문서 기준 Pixel 9 예시에서 300토큰 prefix+50토큰 suffix는 0.82초에서 cache hit 0.45초, 1000토큰 prefix+100토큰 suffix는 2.11초에서 0.5초로 줄었다. 단, 현재 experimental이고 일부 기기에서만 가능하며 text-only 입력만 지원한다. 앱 설계 관점에서는 긴 시스템 지침, 고정 분류 기준, 반복 템플릿을 prefix로 빼고 이미지 입력이나 민감 prefix 저장 정책은 별도로 검토해야 한다.
