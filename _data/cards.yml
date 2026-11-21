@@ -536,6 +536,7 @@ cards:
   interview: "Claude Code에서 사용자 설정이나 플러그인이 문제인지 진단할 때 `--safe-mode`는 무엇을 비교하며, 어떤 설정은 계속 적용되나요?"
   answer: "일반 실행과 `claude --safe-mode` 실행을 비교해 사용자 정의 기능을 끈 뒤 문제가 사라지는지 본다. 인증·모델·기본 도구·권한은 유지된다. 또한 조직 정책 훅·상태 표시줄 같은 일부 managed 설정은 계속 적용되므로 safe mode가 모든 사용자 정의나 정책을 제거하는 모드는 아니다."
 - category: ai
+  level: "중급"
   title: Claude Code /cd — 대화를 유지하며 작업 디렉터리와 프로젝트 설정 이동
   summary: 'Claude Code의 `/cd <path>`는 대화 세션을 유지한 채 기본 작업 디렉터리를 바꾼다. 새 경로에서 세션을 다시 찾을 수 있고, 새 디렉터리의 CLAUDE.md와 프로젝트 설정·훅·MCP·플러그인·스킬·에이전트가 적용된다. 처음 가는 작업공간은 신뢰 확인이 필요하다. `/add-dir`는 기존 작업공간에 파일 접근을 더하는 기능이므로, 그 디렉터리의 전체 프로젝트 설정으로 이동하는 `/cd`와 목적이 다르다. `/cd`는 v2.1.169에 프롬프트 캐시를 깨지 않고 이동하는 기능으로 추가됐으며, 새 디렉터리 설정을 즉시 적용하는 동작은 v2.1.246부터다.'
   points:
@@ -543,7 +544,10 @@ cards:
   - 새 작업공간은 신뢰 확인; 프로젝트 훅·MCP·플러그인 설정도 즉시 전환(v2.1.246+)
   - 접근만 추가하려면 `/add-dir`; 허용·차단 경로로 `/cd` 대상을 제한할 수 있음
   source: https://code.claude.com/docs/en/permissions#move-the-session-to-another-directory
+  interview: "기존 대화를 유지하면서 다른 프로젝트로 이동할 때 `/cd`와 `/add-dir` 중 무엇을 써야 하며, 신뢰 확인은 왜 필요한가요?"
+  answer: "새 디렉터리를 기본 작업공간으로 바꾸고 그 프로젝트 설정을 적용하려면 `/cd`를 쓴다. 현재 작업공간에 파일 접근만 추가하려면 `/add-dir`를 쓴다. 새 프로젝트에는 다른 지침과 훅·도구 설정이 있을 수 있으므로 신뢰 여부를 확인해야 한다."
 - category: ai
+  level: "초급"
   title: Claude Code 출력 스타일 — 세션 응답의 역할·톤·형식 조정
   summary: '출력 스타일은 한 세션의 모든 응답에 적용되는 지침이다. 기본(Default) 외에 Proactive·Concise·Explanatory·Learning 스타일이 있다. `/output-style <name>`은 v2.1.269부터 쓸 수 있고, `/config` 메뉴도 제공한다. 선택은 다음 메시지부터 적용된다(v2.1.251+). 출력 스타일은 요청 지침이므로 동작을 보장하거나 차단하지 않는다. 프로젝트 지식은 CLAUDE.md, 특정 작업 절차는 Skill, 매번 실행해야 하는 검사는 Hook이나 권한 규칙에 둔다.'
   points:
@@ -554,6 +558,7 @@ cards:
   interview: "Claude Code 출력 스타일로 모든 보안 규칙을 강제할 수 있나요? 프로젝트 규칙이나 특정 작업 절차에는 무엇을 써야 하나요?"
   answer: "아니다. 출력 스타일은 매 응답에 적용되는 지침이며 보장된 차단 기능이 아니다. 매번 실행해야 하는 검사는 Hook이나 권한 규칙에 둔다. 프로젝트 구조와 규칙은 CLAUDE.md, 특정 작업 절차는 Skill로 분리한다. 커스텀 스타일에서 코딩을 계속 시킬 때는 `keep-coding-instructions: true`를 설정해 기본 코딩 지침이 빠지지 않게 한다."
 - category: ai
+  level: "중급"
   title: fallbackModel — 기본 모델이 막힐 때 대체 모델로 자동 전환
   summary: 'Claude Code의 `fallbackModel`은 기본 모델이 과부하·사용 불가 또는 재시도할 수 없는 서버 오류를 반환할 때 대체 모델을 순서대로 시도한다. 전환은 현재 턴에만 적용되고 알림이 표시되며, 다음 메시지는 기본 모델부터 다시 시도한다. 인증·결제·rate-limit·요청 크기·전송 오류와 정책 거부는 fallback 대상이 아니다. 목록은 중복 제거 후 허용된 모델 최대 3개만 사용한다. 설정 파일 간 목록은 병합되지 않으며, 가장 우선순위가 높은 파일의 전체 체인이 적용된다. `--fallback-model`은 해당 세션에서 설정을 덮어쓴다.'
   points:
@@ -564,6 +569,7 @@ cards:
   interview: "기본 모델 호출이 rate-limit 오류를 반환했는데 fallbackModel을 설정했다면 대체 모델로 전환되나요? 사용자 설정과 프로젝트 설정에 서로 다른 체인을 지정하면 어떻게 되나요?"
   answer: "rate-limit 오류는 fallback 대상이 아니므로 전환되지 않는다. fallback은 과부하, 모델 사용 불가, 비재시도 서버 오류 등에 대응한다. 설정 파일의 체인도 병합하지 않으며, `fallbackModel`을 정의한 파일 중 가장 우선순위가 높은 파일의 전체 목록을 사용한다. 한 세션에서 바꾸려면 `--fallback-model`을 쓴다."
 - category: ai
+  level: "고급"
   title: Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기
   summary: 'Stop 훅의 `hookSpecificOutput.additionalContext`는 턴 끝에 시스템 리마인더를 추가한다. Claude는 이 피드백을 보고 작업을 이어가므로, 단순 알림이 아니라 중단 지점의 문맥을 보완하는 데 쓴다. `decision: "block"`은 이유를 붙여 중단을 막는 제어 응답이고, `additionalContext`는 오류가 아닌 정보성 피드백이다. 두 방식 모두 연속 8회 제한을 공유하므로 `stop_hook_active`를 확인해 반복 루프를 막는다. `SubagentStop`의 문맥은 서브에이전트에 전달된다. 부모 대화에 주려면 Agent 도구의 `PostToolUse`를 사용한다.'
   points:
@@ -574,6 +580,7 @@ cards:
   interview: "SubagentStop 훅이 additionalContext를 반환하면 부모 대화에도 전달되나요? Stop 훅에서 작업을 계속시키면서 반복 루프는 어떻게 방지하나요?"
   answer: "아니다. SubagentStop 문맥은 서브에이전트의 다음 요청에 전달된다. 부모 대화에 문맥을 추가하려면 Agent 도구의 PostToolUse 훅을 사용한다. Stop 훅은 `stop_hook_active`를 검사해 이미 후속 실행 중인지 확인하고, Claude Code의 연속 8회 제한 안에서 조건을 처리해야 한다."
 - category: ai
+  level: "중급"
   title: 상태줄 rate_limits — 사용 한도와 리셋 시각 표시
   summary: 'Claude Code 상태줄은 stdin으로 받은 JSON의 `rate_limits.five_hour`와 `seven_day`에서 사용 비율(0–100)과 리셋 시각(Unix 초)을 표시할 수 있다. 이 데이터는 Claude.ai Pro·Max·Ultra 구독 또는 사용 한도를 제공하는 Claude 앱 게이트웨이에서, 세션의 첫 API 응답 뒤에 나타난다. 각 창은 별도로 누락될 수 있고 리셋 시각이 지나면 payload에서 제거되므로, 누락을 0%로 오해하지 말고 `// empty` 등으로 처리한다. 상태줄 스크립트는 로컬에서 실행되어 API 토큰을 쓰지 않는다.'
   points:
