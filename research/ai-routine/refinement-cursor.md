@@ -4,7 +4,7 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: continue after `Gemini in Android Studio Agent Mode`; next candidate: inspect `Mobile Agency` and check whether the skills/agent count, platform coverage, tool compatibility, and maintenance claims match the current repository.
 
-Last update: 2026-11-22 04:18 KST
+Last update: 2026-11-22 04:23 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -497,3 +497,13 @@ Rules:
 - Added approval configuration nuance: tool use may require permission, and `Don't ask to edit files` changes whether edits are reviewed per change or in batches.
 - Added data-boundary warning: basic Gemini prompt/tool results go to Gemini API; BYOM provider selection and remote MCP connections may route data to other endpoints.
 - Next: `Mobile Agency`; verify current project and its advertised count/platform/tool/maintenance claims before retaining or pruning the card.
+
+
+## 2026-11-22 04:23 KST
+
+- Rechecked `Mobile Agency` (legacy repository URL) and followed its redirect to `salmanashraf/mobile-ai-agents`.
+- GitHub showed 37 stars, 12 forks, and 127 commits; the current README lists 19 agents, 58 skills, and 17 workflows. The old card's 16-agent/13-workflow counts and its six-tool claim were stale.
+- Reframed the card around a reusable lesson supported by the project workflow: plan → build → code/security audit → test/device UI verification → evidence report; missing evidence stays unverified, and release approval remains human-owned. Checked Codex installation command in the README.
+- Removed `NeuralPulse` rather than repeat its “clinical-grade”/FDA-adjacent product claims: GitHub showed 3 stars and 1 fork; the README makes broad clinical, biometric, FHIR, and on-device AI claims but provides no clinical validation evidence. Its own build instructions require contributors to supply proprietary Samsung AARs and model files, which weakens the card's implication of a verified, ready-to-run system.
+- Preserved publication-history log; the audit note records the removal rationale and source URLs.
+- Next: `nsfw_detect(Flutter)`; check current package/platform implementation and privacy claims before refinement.

@@ -3095,25 +3095,16 @@ cards:
   interview: 'Agent Mode로 실기기 테스트까지 맡길 때, 어떤 검증·데이터 경계를 설정해야 하나요?'
   answer: '목표 기기와 허용할 도구·조작을 먼저 제한하고, 파일 diff와 권한 요청을 검토한다. 기본 Gemini 모드에서는 prompt와 tool 결과가 Gemini API로 전달되므로 민감한 소스·로그를 공유해도 되는지 확인한다. 원격 MCP는 연결한 외부 서비스에도 주의를 기울인다. 마지막에는 빌드·테스트 결과, 스크린샷, Logcat을 직접 확인한다. 에이전트의 “완료” 응답만으로 기능이 검증된 것은 아니다.'
 - category: ai
-  title: Mobile Agency — Android·iOS·Flutter·RN·Unity·Unreal용 AI 에이전트 스킬 패키지, 16명 전문가 에이전트
-  summary: 'Mobile Agency는 모바일·게임 개발 전용 AI 에이전트 스킬·프롬프트·워크플로우 컬렉션이다. Claude Code·Cursor·Windsurf·GitHub Copilot·Codex·Gemini에 npx 한 줄로 설치. 16명 전문가 에이전트 (@CRASHER: 크래시 디버깅, @AXIOM: Kotlin 코드 리뷰, @MOBILE-HARNESS: 기능 빌드·테스트·검증)와 13개 엔드투엔드 워크플로우(/flutter-review, /perf-audit, /mobile-mcp-qa). Android·iOS·Flutter· React Native·Unity·Unreal Engine 6개 플랫폼 지원.
-
-    '
+  level: "중급"
+  title: 'Mobile AI Agents — 모바일 코딩 에이전트도 검증 루프를 가져야 한다'
+  summary: 'Mobile AI Agents는 Android·iOS·Flutter 등 모바일 프로젝트용 에이전트·스킬·워크플로를 묶은 오픈소스다. 예를 들어 Codex에는 `npx mobile-ai-agents install --tool codex`로 설치한다. 프로젝트 문서는 계획 → 구현 → 코드·보안 점검 → 기기 UI·QA 검증 → 증거 보고의 반복 루프를 제안한다. 핵심은 에이전트 수가 아니라, 테스트나 화면 증거가 없으면 완료로 간주하지 않고 사람이 중요한 변경과 출시를 승인하는 것이다.'
   points:
-  - '16명 전문가 에이전트: @CRASHER·@AXIOM·@MOBILE-HARNESS 등'
-  - '6개 도구 지원: Claude·Cursor·Windsurf·Copilot·Codex·Gemini'
-  - '6개 플랫폼: Android·iOS·Flutter·RN·Unity·Unreal'
-  source: https://github.com/salmanashraf/mobile-agency
-- category: ai
-  title: NeuralPulse — Wear OS 7 + Android 16 임상급 헬스 생태계, PPG·ECG·EDA를 FHIR R4로 내보내기(오픈소스)
-  summary: 'NeuralPulse은 Samsung Galaxy Watch + Android 16용 임상급 건강 모니터링 오픈소스 생태계다. 웨어러블 센서 허브에서 PPG·ECG·EDA·BIA 고주파 생체 데이터를 스트리밍하고, 온디바이스 DSP 필터링 + MediaPipe INT8 MobileNetV3 + 로컬 Gemma 모델로 엣지 AI 분석. Android 16 Health Connect FHIR R4 관측 스키마로 임상 기록 동기화. 카메라 기반 영양 분석까지 단일 코드베이스에 통합한 유일한 오픈소스 플랫폼.
-
-    '
-  points:
-  - '임상급: PPG·ECG·EDA·BIA 고주파 생체 데이터 + FHIR R4 내보내기'
-  - '엣지 AI: MediaPipe MobileNetV3(INT8) + 로컬 Gemma 모델'
-  - '단일 코드베이스: 웨어러블 생체 + FHIR + 영양 분석 통합'
-  source: https://github.com/Ashutosh0x/neuralpulse-wear
+  - '워크플로: 목표·성공 기준 → 구현 → 코드·보안 점검 → 테스트·기기 UI 확인 → 결과 기록'
+  - '체크가 실행되지 않았거나 증거가 없으면 “통과”가 아니라 “미검증”으로 남긴다'
+  - '에이전트는 작업을 돕고, 중요한 결정과 출시 승인은 개발자가 맡는다'
+  interview: '모바일 코딩 에이전트가 “완료”라고 답하면 바로 출시해도 될까요?'
+  answer: '아니다. 변경 diff와 테스트·보안 검사 결과를 확인하고, 필요한 경우 에뮬레이터나 기기에서 UI를 검증한다. 도구가 없거나 증거를 만들지 못한 단계는 통과로 취급하지 않는다. 마지막 승인과 출시 판단은 개발자가 한다.'
+  source: https://github.com/salmanashraf/mobile-ai-agents
 - category: ai
   title: nsfw_detect(Flutter) — 온디바이스 NSFW 감지, 이미지·비디오·카메라·갤러리 스캔 통합(Core ML·TFLite)
   summary: 'nsfw_detect는 Flutter용 온디바이스 NSFW 콘텐츠 감지 패키지다. iOS Core ML + Android TFLite로 추론하며, 이미지 파일·비디오·메모리 바이트·URL·갤러리 에셋·라이브 카메라까지 7가지 입력 소스를 지원. 텔레메트리 없음, 네트워크 전송 없음(scanUrl 제외). confidenceThreshold 튜닝으로 제품별 위험 수준 조절 가능. 배치 처리·백그라운드 아이솔레이트(compute())로 UI 블로킹 없이 대량 스캔.
