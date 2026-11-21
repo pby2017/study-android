@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `AgentStop`; next candidate: review `vision_ai` and decide whether the old Flutter package card is sufficiently AI-centered, currently maintained, and supported by verifiable performance evidence.
+Current position: continue after `vision_ai`; next candidate: inspect `Gemini in Android Studio Agent Mode` and verify current official feature/tool boundaries, preview/availability status, and how code/device actions are permission-gated.
 
-Last update: 2026-11-22 04:13 KST
+Last update: 2026-11-22 04:16 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -481,3 +481,11 @@ Rules:
 - Explicitly disclaimed Android/phone measurements: public README cites M1 Max and Jetson Orin AGX (64 GB tested; 24 GB minimum), and GitHub offers scripts, processed data, and reproduction notebook. The local-model QA pipeline uses Brave Search API; no blanket offline/privacy claim.
 - Interest/reproducibility: ACM CAIS '26 acceptance and three artifact badges are source-backed; GitHub showed only 18 stars / 0 forks / 2 commits. Metrics indicate limited project-level adoption, not research validity.
 - Next: `vision_ai`; assess whether the current Flutter card is a meaningful AI topic versus a generic computer-vision package, and verify model, licensing, support, and latency statements.
+
+## 2026-11-22 04:16 KST
+
+- Reviewed `vision_ai` using the official GitHub README/activity, pub.dev package metadata/license, and the repository's physical-device evidence report.
+- Removed the standalone card: repository had 4 stars / 1 fork / 44 commits and last push 2026-08-27; the claimed 25–30 FPS had no reproducible benchmark conditions in the inspected sources.
+- The project is a valid Flutter Android AI implementation and its Android physical evidence contains useful successes/failures, but the package feature list overlaps the existing official MediaPipe Tasks Android card and has weak independent adoption evidence for a separate card in this collection.
+- Preserved `auto-post-log.md` publication history; added the removal rationale and source trail in `research/ai-routine/20261122-041600.md`.
+- Next: `Gemini in Android Studio Agent Mode`; re-check current official docs, release/availability, tools, permissions, and device-action behavior.

@@ -3083,16 +3083,6 @@ cards:
   answer: '아니다. AgentStop은 로그확률뿐 아니라 단계별 출력 길이와 연속 단계 간 중복도 사용하고, 학습한 분류기를 작업 단계마다 평가한다. 조기 종료가 성공할 작업까지 실패로 바꿀 수 있으므로 모델·작업별 검증 데이터에서 절감 에너지와 task utility 손실을 함께 측정해 임계값을 정해야 한다. 논문 수치는 로컬 M1 Max/Jetson 실험이며 Android에서 검증된 결과가 아니다. 또 웹 QA 실험은 Brave Search API를 사용하므로 모델이 로컬에서 돈다는 사실만으로 전체 데이터 경로가 로컬이라고 단정할 수 없다.'
   source: https://brave.com/research/files/AgentStop.pdf
 - category: ai
-  title: vision_ai — Flutter 온디바이스 손 제스처 13종 + 얼굴 감정 7종, 25~30fps 실시간 인식(MIT)
-  summary: 'vision_ai는 Flutter용 온디바이스 손 제스처 인식 + 얼굴 감정 감지 패키지다. MediaPipe Gesture Recognizer(~8MB)로 13종 제스처(주먹·평손·피스·엄지·포인팅·ILY·OK·1~5)를 인식하고, TFLite CNN(~2MB)으로 7종 감정(행복·슬픔·놀람·분노·혐오·공포·중립)을 감지. 커스텀 제스처 패턴 정의, 21개 손 랜드마크 좌표, 모션 추적(속도·방향), 양손 인터랙션(핀치·박수). 25~30fps, 클라우드 $0.
-
-    '
-  points:
-  - '13종 제스처 + 7종 감정: MediaPipe + TFLite, 총 ~10MB'
-  - '25~30fps: GPU 가속 + 자동 CPU 폴백'
-  - '커스텀 제스처: 와일드카드 패턴으로 새 제스처 정의'
-  source: https://github.com/OttomanDeveloper/vision_ai
-- category: ai
   level: "중급"
   title: Gemini in Android Studio Agent Mode — 계획·도구·검증을 잇는 개발 루프
   summary: 'Agent Mode는 복합 개발 목표를 계획으로 나누고, 파일 검색·수정·MCP 같은 도구를 호출해 여러 파일을 바꾼 뒤 결과를 확인하며 반복한다. 빌드 오류 수정뿐 아니라 연결 기기에 앱을 배포하고 화면·스크린샷·Logcat을 확인하는 작업도 요청할 수 있다. 일부 도구는 권한 승인이 필요하고, 제안된 변경은 개발자가 검토·승인한다. 따라서 "코드 작성"에서 끝내지 말고 빌드·테스트·기기 확인을 명시해 검증 루프를 만들어야 한다.'
