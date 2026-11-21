@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Microsoft Copilot SDK — 제품에 에이전트 runtime 통합하기` around its June 2026 stable API GA, six language ecosystems, JSON-RPC/CLI feature boundary, phased transition to Microsoft Copilot SDK, and the fact that Java support does not establish Android deployment; next candidate: `Copilot CLI — cloud sessions and mobile availability`.
+Current position: refined `GitHub Mobile Copilot — 휴대폰에서 세션을 이어가고 검토하기` around the Android GitHub Mobile surface, same-session cloud continuation, desktop-app distinction, and paid-plan/policy/compute boundaries; next candidate: continue oldest-first from the Copilot CLI cloud-session/remote-environment card and verify current availability and billing.
 
 Last update: 2026-11-22 07:45 KST
 
@@ -755,4 +755,8 @@ Rules:
 - Clarified SDK versus CLI boundary: SDK exposes JSON-RPC-supported operations; terminal-only interactive features do not automatically become SDK methods
 - Recorded GitHub repository attention snapshot (10.7k stars, 1.5k forks on 2026-11-22) as volatile evidence only; explicitly avoided inferring Android deployability or on-device inference from Java support
 - Research note: `research/ai-routine/20261122-123000-copilot-sdk-ga.md`
+- Reviewed and corrected: `Copilot App GA` against official Android/iOS GitHub Mobile updates, desktop-app GA, and current connected-cloud docs
+- Removed the erroneous claim that the Copilot desktop app is an Android/iOS app; Android users access Copilot through GitHub Mobile
+- Clarified same cloud-session continuation, mobile session review/control, cloud plan and policy boundaries, and sandbox compute billing starting 2026-11-23
+- Research note: `research/ai-routine/20261122-124500-github-mobile-copilot.md`
 - Next: inspect `A2UI + MCP Apps`
