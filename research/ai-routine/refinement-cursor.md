@@ -910,4 +910,9 @@ Rules:
 - Checked current Hooks docs and changelog history (v2.1.152 feature addition; v2.1.0 automatic skill hot-reload) to avoid implying that all skill changes require a restart
 - Sources: [Hooks reference](https://code.claude.com/docs/en/hooks), [Claude Code changelog](https://code.claude.com/docs/en/changelog)
 - Research note: `research/ai-routine/20261122-071800-claude-reload-skills-refinement.md`
-- Next: inspect `--safe-mode` and validate current customizations-disabled list and managed-policy exceptions
+- Refined `--safe-mode` into `Claude Code --safe-mode — 설정 문제를 사용자 정의 기능과 분리 진단`
+- Reframed the flag as a diagnostic comparison, distinguished it from `--bare` and security isolation, and documented the selective managed-policy exception
+- Re-checked current CLI reference and changelog; omitted the exact minimum version from the card to keep the operational lesson durable
+- Sources: [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference), [Claude Code changelog](https://code.claude.com/docs/en/changelog)
+- Research note: `research/ai-routine/20261122-071909-claude-safe-mode-refinement.md`
+- Next: continue the oldest-first AI-card scan with `/cd` and verify prompt-cache and workspace behavior
