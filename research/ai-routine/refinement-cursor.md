@@ -2,16 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트`; next oldest reviewed candidate is `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`.
+Current position: continue after `llama.cpp + GGUF — 모델 변환과 양자화 순서`; next candidate in the existing sequence is `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`.
 
-Last update: 2026-11-22 00:29 KST
+Last update: 2026-11-22 01:30 KST
 
 Current run:
-- Reviewed: `SWE-agent — GitHub 이슈를 직접 고치는 ACI 연구용 에이전트`
-- Refined: `SWE-agent` (clarified ACI/architecture lesson and maintenance-only status; refreshed live GitHub stars)
-- Published: `Android Studio BYOA — ACP 코딩 에이전트에 Emulator·Build·Logcat 도구 연결`
-- Skipped: none in the bounded cursor pass; pure Android-only candidates remain below threshold
-- Next: continue with `llama.cpp + GGUF — HF→GGUF→quantize, 로컬 배포의 기본 파이프라인`
+- Reviewed and refined: `llama.cpp + GGUF — 모델 변환과 양자화 순서` (clarified quantization loss/requantization risk; added level and interview recall)
+- Sources re-checked: official llama.cpp quantize guide and README; live GitHub API metadata
+- Skipped: none in this bounded pass
+- Next: continue with `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
@@ -200,7 +199,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `SWE-agent — GitHub 이슈를 받아 LM이 직접 도구를 써서 자동으로 고치게 하는 ACI 기반 에이전트`; refine only if current public sources support clearer detail than the existing card.
+- Continue with `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`; re-check its official project/paper sources before considering edits.
 
 Per successful refinement run, update this file with:
 - timestamp
