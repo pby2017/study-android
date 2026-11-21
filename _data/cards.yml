@@ -7906,13 +7906,16 @@ cards:
   - Regression diff — prompt/model/server change→trajectory drift detect
   source: https://github.com/josephgec/mcptest
 - category: ai
-  title: MCP-AgentBench — 33 MCP server·188 tool·600 query, MCP-Eval outcome judge
-  summary: MCP-AgentBench(AAAI 2026·arXiv 2509.09734)는 MCP-mediated tool use를 평가하는 첫 대규모 벤치마크 — function-calling leaderboard가 못 잡는 protocol-driven real-world interaction. 33 operational MCP server·188 tool unified router·600 query 6 complexity category(single-server→multi-server sequential). MCP-Eval — outcome-oriented LLM-as-judge, execution path not scored(self-correction·multiple valid paths). Qwen3-235B·Kimi K2가 GPT-4o outperform 사례. MCP-Eval 91.7% human agreement. mcp-eval(production test) ·Promptfoo(red team) ·Terminal-Bench(shell env)와 달리 MCP protocol-specific agent capability benchmark.
+  level: "고급"
+  title: MCP-AgentBench — MCP 에이전트를 경로가 아닌 작업 결과로 평가하기
+  summary: MCP-AgentBench는 33개 운영 가능한 MCP 서버의 188개 도구와 600개 질의로 에이전트의 MCP 작업 수행을 평가한 AAAI 2026 연구다. 서버 범위(단일·복수)와 호출 의존성(단일·병렬·순차)을 조합해 6개 난이도 유형을 만들었다. MCP-Eval은 하나의 정답 실행 경로를 강제하지 않고 최종 답이 사용자 목표를 달성했는지 판정한다. 다만 91.67% 일치는 전문가 3명이 60개 결과를 평가한 표본에서 얻은 값이지, 모든 MCP 작업에서 judge가 정확하다는 보장은 아니다.
   points:
-  - 33 servers 188 tools — realistic MCP ecosystem, not isolated function call
-  - Outcome judge — goal achieved regardless of path, 600 queries 6 complexity tiers
-  - Open models competitive — Qwen3·Kimi K2 vs GPT-4o on MCP tasks
+  - 6개 유형 — 서버 1개/여러 개 × 단일/병렬/순차 도구 호출, 각 100개 질의
+  - Outcome judge — self-correction 등 여러 실행 경로를 허용하고 최종 목표 달성으로 평가
+  - 60개 표본에서 전문가 다수결과 91.67% 일치(κ=.734) — judge 신뢰도를 과대 일반화하지 않기
   source: https://arxiv.org/abs/2509.09734
+  interview: "MCP 에이전트 벤치마크에서 실행 경로를 고정하지 않고 최종 결과를 평가하면 어떤 장점과 주의점이 있나요?"
+  answer: "자기 수정이나 여러 유효 경로를 허용해 도구 호출 순서가 달라도 작업 성공을 평가할 수 있다. 반면 결과만 보면 도구 사용이 필요한 요청을 모델의 기억으로 답했는지 놓칠 수 있으므로, 요구된 외부 정보의 근거와 평가자 신뢰도를 별도로 확인해야 한다."
 - category: ai
   level: "고급"
   title: FrontierCode 2.0 — 코딩 에이전트의 완성도와 암묵적 요구 평가

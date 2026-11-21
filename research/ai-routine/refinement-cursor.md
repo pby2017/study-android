@@ -869,3 +869,10 @@ Rules:
 - Sources: [FrontierCode 2.0 methodology](https://cognition.com/blog/frontier-code-2.0), [current leaderboard and revisions](https://cognition.com/frontiercode)
 - Research note: `research/ai-routine/20261122-065800-frontiercode-2-methodology.md`
 - Next: inspect `MCP-AgentBench` and validate its task/server counts and evaluation claims
+
+- Reviewed and refined `MCP-AgentBench — MCP 에이전트를 경로가 아닌 작업 결과로 평가하기`
+- Verified 33 servers/188 tools, 600 queries, six categories and 100 queries per category against the AAAI 2026 paper; described the testbed as a paper-specific snapshot, not a live MCP inventory
+- Removed historical model comparisons; retained MCP-Eval's outcome-oriented judging and qualified 91.67% agreement as a 60-item expert comparison (Cohen's κ=.734), not a universal correctness guarantee
+- Sources: [AAAI 2026 paper DOI](https://doi.org/10.1609/aaai.v40i37.40347), [paper HTML](https://arxiv.org/html/2509.09734)
+- Research note: `research/ai-routine/20261122-070100-mcp-agentbench-refinement.md`
+- Next: inspect the next older candidate, `mcptest`, and verify its current repository and feature claims
