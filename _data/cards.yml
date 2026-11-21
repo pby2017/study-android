@@ -73,35 +73,35 @@ cards:
   - '?: = null일 때 기본값 제공(엘비스)'
   source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/6장-코틀린_타입_시스템.md
 - category: android
-  title: 액티비티 생명주기
-  summary: '액티비티는 보통 한 화면을 대표하며 AppCompatActivity를 상속한다. 생명주기 콜백은 쌍으로 관리한다 — onCreate↔onDestroy, onStart↔onStop. onCreate(초기화·뷰 생성), onStart(아직 비표시, 센서·통신 시작), onResume(표시·화면 갱신), onPause(포커스 상실·리소스 해제·저장), onStop(통신 정지), onDestroy(참조 정리). 다른 클래스가 액티비티 인스턴스를 참조하면 폐기 후에도 메모리에 남아 누수가 생긴다.
-
-    '
+  level: "초급"
+  title: "Activity 생명주기 — 보임과 포커스는 다르다"
+  summary: "Activity는 onCreate에서 초기화되고 onStart부터 보인다. onResume은 사용자와 상호작용할 수 있는 상태다. onPause는 포커스를 잃었다는 뜻이며 멀티윈도우에서는 여전히 보일 수 있다. onStop은 화면이 더 이상 보이지 않을 때 호출된다. 시스템은 프로세스를 종료하기 전에 onDestroy를 호출하지 않을 수 있다."
   points:
-  - 콜백은 쌍으로 — onCreate↔onDestroy, onStart↔onStop
-  - onPause에서 저장·리소스 해제
-  - 외부 참조가 남으면 메모리 누수
-  source: https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_02(액티비티와프래그먼트).md
+  - "onStart: 화면에 보임 · onResume: 상호작용 가능"
+  - "onPause ≠ 화면이 사라짐 — 포그라운드 전용 작업만 빠르게 중지"
+  - "onStop: 비표시 리소스 해제 · 프로세스 종료 콜백은 보장되지 않음"
+  interview: "onPause와 onStop의 차이는? 포커스를 잃었지만 보일 수 있으면 Paused, 화면에서 완전히 보이지 않으면 Stopped다. 카메라 미리보기는 보통 onPause에서 멈춘다."
+  source: https://developer.android.com/guide/components/activities/activity-lifecycle
 - category: android
-  title: 화면 회전과 상태 복원 — onSaveInstanceState
-  summary: '화면 가로/세로 전환 같은 디바이스 설정 변경이 일어나면 기존 액티비티는 폐기되고 새로 생성된다. 그래서 입력값 등이 사라진다. onSaveInstanceState/onRestoreInstanceState 콜백으로 데이터를 저장·복구할 수 있다. 저장 가능한 자료형은 기본형·문자열·리스트, 그리고 Parcelable을 구현한 인스턴스다. 시스템 임시 영역에 IPC로 주고받기 때문에 전달 규약이 필요하고, 그게 Parcelable 인터페이스다. 단, 뒤로가기로 명시적으로 폐기하면 호출되지 않는다.
-
-    '
+  level: "중급"
+  title: "화면 상태 복원 — ViewModel·SavedState·DB의 수명 구분"
+  summary: "구성 변경은 Activity를 재생성한다. ViewModel은 이때 메모리 상태를 유지하지만 시스템의 프로세스 종료까지 살아남지는 않는다. 작은 UI 복원 값은 SavedStateHandle 또는 Compose의 rememberSaveable에 저장하고, 앱의 핵심 데이터는 DB 같은 영구 저장소에서 복구한다."
   points:
-  - 설정 변경 = 액티비티 재생성 → 상태 유실
-  - onSaveInstanceState로 저장, Parcelable로 전달
-  - 뒤로가기 폐기 시엔 호출 안 됨
-  source: https://github.com/pby2017/study-android/blob/master/legacy/levelup/레벨업_02(액티비티와프래그먼트).md
+  - "ViewModel: 구성 변경 동안 메모리 상태 유지"
+  - "SavedStateHandle·rememberSaveable: 작은 UI 상태 복원"
+  - "DB/DataStore: 앱 재시작 뒤에도 필요한 영구 데이터"
+  interview: "검색어 입력과 서버에서 받은 전체 목록은 어디에 저장할까? 짧은 검색어는 saved state에 둘 수 있지만 목록은 저장소에 저장하거나 다시 가져온다."
+  source: https://developer.android.com/topic/libraries/architecture/saving-states
 - category: android
-  title: 레이아웃 선택 — Linear vs Constraint
-  summary: 'LinearLayout은 depth가 얕고 순차적으로 뷰를 나열할 때, 단순한 화면에 적합하다. 복잡한 화면엔 RelativeLayout/ConstraintLayout을 쓴다. 사진 주변에 여러 뷰를 배치하는 상황은 예전엔 RelativeLayout이었지만 요즘은 ConstraintLayout이 표준 — 깊어지기 쉬운 계층을 1단계로 평탄화하는 게 장점이다. 속도도 다르다: LinearLayout은 사이즈를 2번 측정해 상대적으로 느리고, ConstraintLayout은 최적화로 1번만 측정해 더 빠르다.
-
-    '
+  level: "초급"
+  title: "View 레이아웃 선택 — 단순함과 계층 깊이를 기준으로"
+  summary: "단순한 한 방향 배치는 LinearLayout로 충분하다. 여러 뷰를 복잡하게 정렬해야 한다면 ConstraintLayout으로 중첩 계층을 줄일 수 있다. 단, 레이아웃 종류만으로 실제 성능을 단정하지 말고 Layout Inspector나 프로파일러로 병목을 확인한다."
   points:
-  - 단순·순차 = Linear, 복잡 = Constraint
-  - Constraint는 계층을 평탄화(depth↓)
-  - '측정 횟수: Linear 2회 vs Constraint 1회'
-  source: https://github.com/pby2017/study-android/blob/master/legacy/QnA/android/layout.md
+  - "단순한 배치: 가장 읽기 쉬운 구조를 선택"
+  - "복잡한 관계: ConstraintLayout으로 불필요한 중첩을 줄이기"
+  - "성능 이슈: 기기에서 측정하고 병목을 확인"
+  interview: "ConstraintLayout으로 바꾸면 항상 더 빠를까? 아니다. 계층을 평탄화하는 데 도움이 되지만 실제 비용은 계측으로 확인한다."
+  source: https://developer.android.com/topic/performance/rendering/optimizing-view-hierarchies
 - category: android
   title: 머티리얼 디자인 — 일관된 시각 언어
   summary: '스큐어모픽(실물 모사)→플랫(평면)을 거쳐, 구글은 ''프로젝트 케네디''로 디자인을 통일했고 그 위에 학습 부담을 줄인 머티리얼 디자인을 내놨다. 핵심은 시각 디자인의 공통 언어와 ''이디엄''(단순 조작을 조합해 의미 있는 조작을 만드는 관용구)으로 사용자가 UI 동작을 예측하게 하는 것. 대표 컴포넌트는 리스트/그리드/카드, 그리고 FAB·Raised·Flat 버튼. 카드엔 정보를 의미 단위로 묶는 ''청킹''을 적용한다.
