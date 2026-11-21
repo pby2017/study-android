@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: added `Copilot CLI Remote Control — 실행 중인 세션을 Android에서 조종하기`, distinguishing view-only sync, `/remote on`, org `View and control` policy, host-local execution versus GitHub event sync, and separate cloud sandbox execution; next candidate: review existing Copilot Mobile agent task entry points and permission/review boundaries for current accuracy.
+Current position: refined `GitHub Mobile Copilot — 휴대폰에서 세션을 이어가고 검토하기` with task entry points, same-session cross-client continuation, GitHub-hosted execution, paid-plan/org/read-only boundaries, and distinction from `/remote on`; next candidate: inspect a current Android-specific AI card for source freshness and interview usefulness before continuing the Copilot mobile series.
 
 Last update: 2026-11-22 07:45 KST
 
@@ -769,4 +769,8 @@ Rules:
 - Verified remote control is opt-in and user-specific; basic synced session visibility is view-only; the host must stay online with the interactive CLI running
 - Distinguished local-host steering from cloud sandbox execution; documented `/keep-alive`, organization `View and control` policy, session-event transmission to GitHub, and host-local execution
 - Research note: `research/ai-routine/20261122-131500-copilot-cli-remote-control.md`
+- Reviewed and refined: `GitHub Mobile Copilot` against the April Android client feature changelog, October connected-cloud announcement, cloud sandbox docs, and remote-control docs
+- Added task entry paths (Copilot tab, repository, issue, PR), same-session cross-client continuation, cloud-hosted execution, and paid-plan/org/read-only access boundaries
+- Clarified this cloud workflow is not a local Android IDE and distinguished it from `/remote on` control of a running local CLI host
+- Research note: `research/ai-routine/20261122-133000-github-mobile-cloud-agent.md`
 - Next: inspect `A2UI + MCP Apps`
