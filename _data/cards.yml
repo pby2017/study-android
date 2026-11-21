@@ -6964,13 +6964,16 @@ cards:
   - '실행면: Web(클라우드 VM) · workflows(Playwright 시각) · Review(매니지드) · hooks(이벤트 자동화)'
   source: https://code.claude.com/docs/en/overview
 - category: ai
-  title: ML Kit GenAI 개요 — OCR·요약·프롬프트·음성·운영 매트릭스를 Gemini Nano로
-  summary: Google ML Kit GenAI는 Gemini Nano를 Android/iOS 온디바이스에서 돌리는 API 묶음이다. Text Recognition v2(5개 스크립트 OCR)와 Summarization·Speech Recognition은 고정 기능 API로 데이터가 클라우드를 떠나지 않고, Prompt API는 고정 기능 밖 맞춤 GenAI를 허용한다. Apple Vision VNRecognizeTextRequest가 iOS OCR 표준이며 react-native-nitro-ocr로 통합 가능. 운영 시 지원 기기(AICore·Nano 버전)·쿼터·Firebase AI Logic 하이브리드 라우팅을 함께 검증해야 한다. Structured Output·Prefix Caching·APO는 별도 카드로 다룬다.
+  title: Gemini Nano + ML Kit GenAI — AICore 기반 Android 온디바이스 추론
+  level: "중급"
+  summary: Gemini Nano는 Android의 AICore 시스템 서비스에서 실행되고, ML Kit GenAI는 요약·음성·이미지 같은 작업별 API와 맞춤 Prompt API를 제공한다. AICore는 모델 배포와 하드웨어 가속을 관리하지만, 실제 속도와 사용 가능 여부는 기기에 따라 다르다. 기기가 지원되지 않거나 로컬 모델의 토큰·성능 한계에 걸리면 Firebase AI Logic Hybrid API로 클라우드 모델에 전환할 수 있다.
   points:
-  - '고정 API: Text Recognition(5스크립트) · Summarization · Speech(Advanced) — 완전 온디바이스'
-  - 'Prompt API: 고정 기능 밖 맞춤 GenAI — Kakao Mobility 사례(주소 추출 24% 단축)'
-  - '운영: AICore 지원 기기·Nano 버전·쿼터·Firebase Hybrid API를 매트릭스로 함께 검증'
-  source: https://developers.google.com/ml-kit/genai
+  - Gemini Nano는 AICore에서 실행되고, ML Kit GenAI가 앱에서 쓸 API를 제공
+  - 온디바이스 처리는 네트워크 없이 가능하지만 기기별 성능·지원 여부를 확인
+  - 미지원 기기나 복잡한 요청은 Firebase AI Logic Hybrid API의 클라우드 fallback 검토
+  source: https://developer.android.com/ai/gemini-nano
+  interview: "Gemini Nano를 쓰는 Android 앱에서 로컬 추론만으로 모든 사용자와 요청을 처리하기 어려운 이유는 무엇인가요?"
+  answer: "지원 기기와 하드웨어 성능이 다르고, 로컬 모델에는 토큰 및 기능 한계가 있다. Firebase AI Logic Hybrid API로 지원되지 않는 기기나 복잡한 요청을 클라우드로 전환하고 보안 경계도 함께 설계할 수 있다."
 - category: ai
   title: AI 코드 제안 수락률 — FCML·Acceptance Rate가 품질 프록시가 아닌 이유
   summary: Google 내부 AI IDE 실험(arXiv 2601.19964)은 acceptance rate(수락÷(수락+거절))를 품질·불쾌감 프록시로 쓰고 FCML(ML이 쓴 코드 비율)을 생산성 지표로 본다. FCML 28.7%(붙여넣기 제외 70.6%), acceptance 45%가 기준치다. Opsera 2026 벤치마크는 업계 acceptance 25~55%가 건강하고 60%↑는 무심사 rubber-stamping, 30%↓는 설정·워크플로 문제 신호라고 경고한다. 수락률만 보면 AI PR이 리뷰 대기 4.6× 길어지는 병목을 놓치므로 review wait time·code turnover·change failure rate와 함께 봐야 한다.
@@ -8314,14 +8317,6 @@ cards:
   - 12 injection goals — email·terminal·URL cred·file exfil realistic channels
   - OSWorld VM — screenshot/a11y agent same scaffold as capability bench
   source: https://github.com/tml-epfl/os-harm
-- category: ai
-  title: Gemini Nano 4 — Fast/Full on-device·Gemma 4 E2B/E4B·tool calling 로드맵
-  summary: Gemini Nano 4(Google 2026·Gemma 4 family distill) — Android on-device foundation model tier via AICore system service. Nano 4 Fast(latency-optimized)·Nano 4 Full(reasoning-optimized) — E2B(4.2GB)·E4B(5.9GB) effective params, 12GB+ RAM·Tensor/Dimensity/Snapdragon NPU. ML Kit GenAI Prompt API production path — AICore Developer Preview(Gemma 4)에서 experiment 후 ship. roadmap — tool calling·structured output·system prompt·thinking mode로 cloud Gemini agent feature convergence. hybrid inference(Firebase AI Logic PREFER_ON_DEVICE) — privacy/offline first, cloud fallback for complex reasoning. vs ADK for Android(agent framework) ·ML Kit Structured Output(schema) ·server Gemini — Nano 4=model tier milestone not framework.
-  points:
-  - Fast vs Full — latency vs reasoning split on same AICore stack
-  - Tool calling roadmap — on-device agent needs tools not just summarization
-  - No per-request cloud cost·data stays device — GDPR/offline advantage
-  source: https://developers.googleblog.com/en/adk-kotlin-android-building-ai-agents/
 - category: ai
   title: Agent behavioral drift — trace만으로는 silent failure·5 observability primitive
   summary: Agent behavioral drift(2026 production pattern) — agent remains healthy(infra green) but decision quality degrades silently. causes — foundation model update·tool API schema change·RAG corpus growth·prompt drift without deploy event. semantic drift ≠ statistical input drift — same input, different reasoning path. five observability primitives beyond uptime — tool-call trace+authorization audit·retrieval provenance·multi-step replay·behavioral drift detection(rolling baseline on tool frequency·refusal rate·retrieval depth·latency·cost-per-task)·online eval on sampled traces. OTel GenAI span hierarchy enables fingerprint but drift needs eval layer attached. vs Datadog MELT(infra) ·LLM observability(single call) ·Braintrust(trace+eval) — drift=decision integrity monitoring.
