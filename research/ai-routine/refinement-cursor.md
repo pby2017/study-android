@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `A2A — Agent Card로 발견하고 Task 상태로 협업한다` around discovery metadata, asynchronous task lifecycle, the MCP boundary, and the separation between authentication metadata and authorization; next candidate: inspect `Android Computer Control` for current API status, supported device/OEM scope, user-consent boundary, and comparison with AppFunctions.
+Current position: refined `Android Computer Control — UI 자동화 대상과 assistant 권한 경계` for Preview and limited-target status, privileged assistant access, user consent, session scope, and user handoff; next candidate: inspect `Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션` for current model mapping, shutdown/migration dates, and whether its guidance is still actionable.
 
-Last update: 2026-11-22 06:05 KST
+Last update: 2026-11-22 06:10 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -654,3 +654,9 @@ Rules:
 - Removed the speculative Android AppFunctions/A2A architecture example and unsupported assertion that agent delegation inherently reduces context pollution or privilege scope
 - Research note: `research/ai-routine/20261122-060500-a2a-agent-card-task.md`
 - Next: inspect `Android Computer Control`
+
+- Reviewed and refined: `Android Computer Control` (replaced generic automation framing with actual Preview, privileged assistant access, consent, six-app sequential-session limit, and user handoff)
+- Sources re-checked: current Android Developers Computer Control guide (last updated 2026-05-13) and AppFunctions overview
+- Removed the unsupported claim that Computer Control acts as an AppFunctions fallback; Android documents UI operation and explicit app functions as distinct integration paths, not an automatic fallback policy
+- Research note: `research/ai-routine/20261122-061000-android-computer-control.md`
+- Next: inspect `Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션`

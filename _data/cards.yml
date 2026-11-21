@@ -3310,15 +3310,16 @@ cards:
   interview: "A2A의 Agent Card가 있으면 상대 에이전트에 안전하게 작업을 맡길 수 있나요?"
   answer: "아니다. Agent Card는 식별·기능·접속 방식·인증 요구사항을 알려주는 발견 메타데이터다. 자격 증명 검증이나 작업 권한을 자동으로 부여하지 않는다. 호출 측은 상대를 검증하고, 서비스 측은 최소 권한과 사용자 동의에 따라 요청을 인가해야 한다."
 - category: ai
-  title: Android Computer Control — 코드 변경 없이 앱 UI를 에이전트 자동화 대상으로 준비
-  summary: 'Android Computer Control은 OEM 선탑재 AI 어시스턴트가 사용자의 허가를 받은 뒤 설치된 앱을 가상 디스플레이에서 실행하고, 스크린샷 분석과 탭·스와이프·텍스트 입력으로 다단계 작업을 수행하는 preview 프레임워크다. target app은 별도 SDK 통합 없이 기존 UI를 자동화 대상으로 둘 수 있지만, 실제 자동화 품질은 적응형 레이아웃, 생명주기 처리, 명확한 화면 상태 같은 기본 앱 품질에 좌우된다. AppFunctions가 명시적 도구 API라면 Computer Control은 UI 자동화 fallback에 가깝다.
-
-    '
+  title: Android Computer Control — UI 자동화 대상과 assistant 권한 경계
+  level: "중급"
+  summary: 'Android Computer Control은 OEM 선탑재 assistant가 권한을 받아 앱 UI를 대신 조작하는 초기 Preview 프레임워크다. assistant는 `ACCESS_COMPUTER_CONTROL` 권한으로 한 번에 최대 6개 대상 앱을 순차 실행하는 세션을 요청하며, 시스템은 첫 자동화 전에 사용자 승인 대화상자를 표시한다. 승인 후 가상 디스플레이에서 화면을 캡처하고 탭·스와이프·텍스트 입력을 수행한다. 대상 앱은 별도 통합 없이 참여할 수 있지만 지원 앱은 제한적이다. 결제 확인 등 사용자 판단이 필요한 단계에서는 assistant가 제어권을 넘길 수 있다. AppFunctions처럼 명시적 기능을 호출하는 방식과 달리, 이 프레임워크는 기존 UI를 조작한다. 두 방식의 자동 fallback 관계는 보장되지 않는다.'
   points:
-  - OEM 선탑재 assistant + 사용자 권한으로 target app 자동화
-  - 가상 디스플레이에서 앱 실행 후 screenshot 분석, tap/swipe/text 입력
-  - target app 코드 변경은 없지만 adaptive UI·lifecycle 품질이 자동화 안정성 좌우
+  - assistant는 privileged `ACCESS_COMPUTER_CONTROL`; 한 세션에 최대 6개 앱을 순차 처리
+  - 첫 사용 시 시스템 승인 필요; 화면 캡처와 입력 이벤트로 가상 디스플레이의 UI 조작
+  - 초기 Preview·제한된 대상 앱; 민감한 단계는 사용자에게 제어권을 넘길 수 있음
   source: https://developer.android.com/ai/computer-control
+  interview: "대상 앱 개발자는 Computer Control 통합 SDK를 추가해야 하나요?"
+  answer: "아니다. 대상 앱은 추가 통합 없이 참여할 수 있지만, 현재 Preview는 제한된 앱만 지원한다. 자동화는 OEM 선탑재 assistant가 privileged permission으로 세션을 요청하고 시스템이 사용자 승인을 받은 뒤 수행한다. adaptive design과 lifecycle 등 기본 앱 품질은 유지해야 한다. 명시적 기능을 노출하는 AppFunctions와 UI 조작을 같은 호출 방식이나 자동 fallback으로 취급하면 안 된다."
 - category: ai
   title: Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션
   level: "중급"
