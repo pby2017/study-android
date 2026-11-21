@@ -41,7 +41,7 @@ Current run:
 - Reviewed and refined: `Novu` (reframed the generic notification-platform description around its current AI MCP server and Agent Communication Infrastructure; documented the native Android SDK/Inbox gap, FCM server integration, and backend-only secret key)
 - Sources re-checked: Novu's official MCP docs, SDK support matrix, API key security docs, FCM integration guide, and current GitHub README
 - GitHub displayed 40.4k stars during review; recorded as a volatile attention signal and omitted from the card
-- Skipped `GrowthBook`: its existing card describes general-purpose feature flags and experimentation without a core AI workflow; do not retain it as an AI card based only on its potential use to test AI features
+- Removed `GrowthBook`: its existing card described general-purpose feature flags and experimentation without a core AI workflow; historical publication logs remain unchanged.
 - Sources re-checked: official Sentry mobile solution page and Sentry blog posts documenting Seer/Autofix accuracy and fix success
 - No independent evaluation set or Android-only accuracy guarantee was found in reviewed sources; card no longer generalizes the number
 - Reviewed and refined: `Koog` (removed unsupported GA date and sweeping platform/pro-vider claims; captured Android target documentation ambiguity; clarified agent orchestration vs on-device inference and client-secret risk)
@@ -264,7 +264,7 @@ Skipped:
 
 Next:
 - Continue with `Firebase Remote Config + A/B Testing`; verify its AI model/prompt experimentation claims and Android-specific behavior before refining.
-- GrowthBook is outside the AI / AI+Android scope unless a future edit establishes a concrete, central AI use case.
+- GrowthBook was removed from the deck because the reviewed card had no central AI use case; the historical publication log is retained.
 
 Per successful refinement run, update this file with:
 - timestamp

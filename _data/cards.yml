@@ -2809,16 +2809,6 @@ cards:
   interview: "Android 앱에서 Novu의 AI 에이전트 대화를 쓰려면 Secret key와 Inbox 화면을 어디서 처리해야 하나요?"
   answer: "Secret key는 전체 환경 접근 권한을 가지므로 백엔드에만 둔다. 백엔드는 Novu SDK나 REST API로 워크플로를 실행하고 FCM 토큰에 푸시를 보낼 수 있다. 현재 Novu는 네이티브 Android 클라이언트 SDK나 기본 Inbox UI를 제공하지 않으므로 앱 안의 대화함이 필요하면 Inbox REST API를 연결해 직접 구현한다. 에이전트의 모델·추론 로직은 별도로 구성한다."
 - category: ai
-  title: GrowthBook — 오픈소스 Feature Flag + A/B 테스트 플랫폼, 데이터웨어하우스 네이티브(MIT·~7k★)
-  summary: 'GrowthBook는 MIT 라이선스 오픈소스 Feature Flag + A/B 테스트 플랫폼이다. BigQuery·Snowflake· Redshift 등 데이터웨어하우스에 직접 연결해 실험 결과를 분석하므로 데이터를 외부로 보내지 않는다. Bayesian 통계 엔진으로 CUPED·Sequential Testing을 지원하고, Android·iOS·React Native·Flutter SDK 제공. Firebase A/B Testing이 무료지만 Google 생태계 종속이라면, GrowthBook는 벤더 비종속 대안. Statsig(상용)이 자동 통계+파워 분석에 강하다면, GrowthBook는 셀프호스팅+데이터 주권이 차별점.
-
-    '
-  points:
-  - '데이터웨어하우스 네이티브: BigQuery·Snowflake 직접 연결'
-  - 'MIT 셀프호스팅: 데이터가 외부로 나가지 않음'
-  - Android·iOS·RN·Flutter SDK, Bayesian+CUPED
-  source: https://github.com/growthbook/growthbook
-- category: ai
   title: Firebase Remote Config + A/B Testing — 앱 업데이트 없이 AI 모델·프롬프트·UI를 원격 제어(무료)
   summary: 'Firebase Remote Config는 앱 업데이트 없이 파라미터(AI 모델명·프롬프트·UI 설정)를 원격으로 변경하는 Google 무료 서비스다. Firebase A/B Testing과 연동해 모델 버전·시스템 프롬프트·UI 변형을 사용자 세그먼트별로 실험하고, 우승 변형을 점진적으로 롤아웃 가능. Remote Config Personalization은 ML로 개별 사용자에게 최적 설정을 자동 적용. GenAI 앱에서 모델 폐기·비용 최적화에 필수.
 
