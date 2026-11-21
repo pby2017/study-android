@@ -3343,18 +3343,16 @@ cards:
   interview: "Kakao Mobility 사례의 두 '약 200개' 평가 자료는 각각 무엇을 평가했으며, 성과 수치는 어떤 기능에 해당하나요?"
   answer: "약 200개의 고품질 예시는 배달 메시지의 이름·주소·전화번호 추출 프롬프트를 평가했다. 200장 넘는 라벨 이미지는 별도의 자전거·킥보드 주차 사진 기능 평가에 쓰였고, 발표 당시 그 기능은 미출시였다. 24%의 주문 완료 시간 감소와 신규 45%·기존 6% 전환율 증가는 이미 제공된 주소 입력 개선에 대해 Android Developers 사례 발표가 보고한 값이며 독립적 인과 검증으로 일반화하면 안 된다."
 - category: ai
-  title: Firebase AI Logic Hybrid API — Android AI 추론을 온디바이스·클라우드로 라우팅
+  title: Firebase AI Logic Hybrid — 선호 모드와 로컬 전용은 다르다
   level: "중급"
-  summary: 'Firebase AI Logic Hybrid API는 Android 앱에서 Gemini API 호출을 온디바이스와 클라우드 사이에 나누는 단일 인터페이스다. onDeviceConfig의 inference mode로 PREFER_ON_DEVICE, PREFER_IN_CLOUD, ONLY_ON_DEVICE, ONLY_IN_CLOUD를 고를 수 있고, Gemini Nano 같은 온디바이스 모델이 없거나 요청을 지원하지 않을 때 클라우드 fallback을 설계할 수 있다. 공식 문서는 이 기능을 experimental로 표시하므로 SLA나 호환성 보장을 전제하면 안 된다. 실무 포인트는 ''항상 로컬''이 아니라 개인정보·오프라인·비용이 중요한 요청은 로컬 우선, 고성능·범용성이 필요한 요청은 클라우드 우선으로 정책을 명시하는 것이다.
-
-    '
+  summary: 'Firebase AI Logic Hybrid는 `onDeviceConfig`의 네 모드로 추론 경로를 정한다. `PREFER_ON_DEVICE`는 로컬 모델이 없거나 요청을 지원하지 않으면 클라우드로 자동 전환하므로, 개인정보 보호나 오프라인을 보장하지 않는다. 클라우드 전송을 허용할 수 없으면 `ONLY_ON_DEVICE`를 선택해야 하며, 로컬 추론이 불가능하면 예외를 처리한다. 선호 모드 응답의 `inferenceSource`로 실제 실행 경로도 기록한다. Android 문서는 이 통합을 Experimental로 표시하며 SLA가 없고 호환성을 깨는 변경이 가능하다.'
   points:
-  - onDeviceConfig로 PREFER/ONLY 온디바이스·클라우드 모드 선택
-  - 온디바이스 모델 미지원 시 클라우드 fallback으로 도달 범위 확대
-  - 'Experimental 기능: SLA·호환성 변경 가능성을 운영 리스크로 반영'
-  source: https://developer.android.com/ai/hybrid
-  interview: "Hybrid API에서 `PREFER_ON_DEVICE`와 `ONLY_ON_DEVICE`의 실패 동작은 어떻게 다른가요?"
-  answer: "`PREFER_ON_DEVICE`는 기기 모델을 먼저 시도하고 사용할 수 없거나 요청을 지원하지 않으면 클라우드로 fallback한다. `ONLY_ON_DEVICE`는 클라우드로 보내지 않고 온디바이스 모델이 불가능하면 예외를 낸다. 기능이 실험 단계라면 호환성 변경과 SLA 부재도 운영에 반영한다."
+  - '`PREFER_ON_DEVICE`: 로컬 우선, 미지원이면 cloud fallback; `ONLY_ON_DEVICE`: fallback 없이 불가 시 예외'
+  - '`PREFER_IN_CLOUD`: online이면 cloud, offline이면 local; `ONLY_IN_CLOUD`: cloud 불가 시 예외'
+  - '클라우드 모델을 명시하고 응답의 `inferenceSource`를 관측; Hybrid 통합은 Experimental·SLA 없음'
+  source: https://firebase.google.com/docs/ai-logic/hybrid/android/configuration-options
+  interview: "민감한 프롬프트를 기기 밖으로 보내면 안 되는 앱에서 `PREFER_ON_DEVICE`만 설정하면 충분한가요?"
+  answer: "아니다. 온디바이스 모델이 없거나 요청을 지원하지 않으면 `PREFER_ON_DEVICE`는 클라우드로 fallback한다. 외부 전송을 금지하려면 `ONLY_ON_DEVICE`를 쓰고, 지원 기기와 요청 기능을 확인한 뒤 사용할 수 없는 경우를 예외·대체 UX로 처리한다. 선호 모드에서는 `inferenceSource`로 실제 경로를 확인하며, 이 Firebase AI Logic Hybrid 통합은 Experimental이라 SLA나 안정적인 호환성을 가정하지 않는다."
 - category: ai
   title: ML Kit Prefix Caching — 반복 프롬프트를 캐시해 Gemini Nano 지연 줄이기
   level: "중급"

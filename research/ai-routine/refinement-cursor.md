@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Kakao Mobility — Gemini Nano 주소 추출과 두 개의 평가셋` by separating the delivery-entity examples from parking-photo labels, correctly scoping which feature launched and which reported outcomes apply; next candidate: inspect `Firebase AI Logic Hybrid API` for current availability, routing semantics, fallback behavior, and experimental-status boundaries.
+Current position: refined `Firebase AI Logic Hybrid — 선호 모드와 로컬 전용은 다르다` for all four routing modes, strict local-only failures, cloud fallback privacy implications, route observability, and Experimental status; next candidate: inspect `ML Kit Prefix Caching` for current API support, persistence behavior, device eligibility, and benchmark scope.
 
-Last update: 2026-11-22 06:30 KST
+Last update: 2026-11-22 06:45 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -673,3 +673,9 @@ Rules:
 - Added Gemini Flash cloud fallback; excluded the peak-season >200% AI-orders figure from the compact card to avoid unsupported interpretation
 - Research note: `research/ai-routine/20261122-063000-kakao-mobility-gemini-nano.md`
 - Next: inspect `Firebase AI Logic Hybrid API`
+
+- Reviewed and refined: `Firebase AI Logic Hybrid API` against the current Android and Firebase configuration guides (last updated 2026-11-18)
+- Corrected the key policy distinction: `PREFER_ON_DEVICE` may send prompts to cloud; only `ONLY_ON_DEVICE` prevents that SDK fallback and throws when local inference cannot run
+- Verified semantics for all four modes, explicit cloud-model requirement, preference-mode `inferenceSource`, supported local capabilities/device limits, and Experimental/no-SLA contract
+- Research note: `research/ai-routine/20261122-064500-firebase-ai-logic-hybrid.md`
+- Next: inspect `ML Kit Prefix Caching`
