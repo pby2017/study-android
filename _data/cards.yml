@@ -2501,15 +2501,17 @@ cards:
   interview: "Qwen3-VL에 2B 체크포인트와 256K 컨텍스트가 있으면 Android에서 바로 온디바이스 실행할 수 있나요?"
   answer: "그렇게 단정할 수 없다. 파라미터 수와 문맥 길이는 Android 런타임 호환성이나 메모리·지연 시간을 보장하지 않는다. 사용할 체크포인트와 이미지 해상도·토큰 예산을 정한 뒤 목표 기기와 추론 런타임에서 직접 측정해야 한다. 1M 문맥도 기본값이 아니라 YaRN 설정이 필요하다."
 - category: ai
-  title: Kokoro-82M — 82M 파라미터로 14배 큰 모델을 이기는 경량 오픈소스 TTS(Apache-2.0·~7.5k★)
-  summary: 'Kokoro-82M은 82M 파라미터의 초경량 TTS 모델로, 14배 큰 모델과 동등한 음성 품질을 달성한다. StyleTTS2+ ISTFTNet 아키텍처로 인코더·디퓨전 없이 빠른 합성이 가능하고, 소비자 하드웨어와 엣지 디바이스에서도 실행된다. 44개 음성·다국어(영·중·일·이탈리아어 등)·음성 블렌딩 지원. pip install kokoro 한 줄로 시작. Fish Audio S2 Pro(4B, 1000만시간 학습)가 최고 품질이라면, Kokoro는 속도·비용·접근성의 최적점.
-
-    '
+  level: "중급"
+  title: Kokoro-82M — 경량 TTS의 품질 한계와 Android 통합 체크
+  summary: 'Kokoro는 82M 파라미터의 오픈웨이트 TTS 모델이며 가중치는 Apache-2.0이다. v1.0 모델 카드에는 8개 언어와 54개 음성이 기재되어 있다. 공식 예제는 Python 추론 파이프라인과 G2P(문자를 발음 기호로 변환) 의존성을 사용한다. 음성별 학습 데이터와 언어 지원은 같지 않고, 짧거나 긴 입력에서 품질이 낮아질 수 있다. 작은 모델 크기와 라이선스만으로 Android에서 바로 실행할 수 있다고 볼 수 없다.'
   points:
-  - '82M 파라미터: 14배 큰 모델과 동등 품질, 엣지 실행 가능'
-  - 44개 음성·다국어·음성 블렌딩 지원
-  - Apache-2.0, pip install kokoro 한 줄 시작
-  source: https://github.com/hexgrad/kokoro
+  - 'v1.0: 8개 언어·54개 음성; 언어·음성별 데이터와 품질은 다름'
+  - '짧은 발화(10–20 토큰 미만)와 긴 발화(400 토큰 초과)는 품질 저하 가능'
+  - '공식 예제는 Python·PyTorch·espeak-ng; Android SDK로 안내하지 않음'
+  - 'Android 통합 전 G2P·실행기·모델 크기·지연 시간을 실기기에서 검증'
+  source: https://huggingface.co/hexgrad/Kokoro-82M
+  interview: "Kokoro 가중치가 Apache-2.0이고 82M 파라미터라면 Android 오프라인 TTS에 바로 쓸 수 있나요?"
+  answer: "아니다. 가중치 라이선스와 Android 추론 지원은 별개다. 공식 예제는 Python 추론 파이프라인과 G2P 의존성을 사용하므로, Android에서 쓸 실행기와 발음 변환 경로를 따로 확인해야 한다. 지원 언어별 음질, 메모리, 지연 시간도 실제 기기에서 측정한다."
 - category: ai
   title: Dia2(Nari Labs) — 웃음·기침·한숨까지 재현하는 대화 전용 TTS 모델(Apache-2.0·1.6B)
   summary: 'Dia2는 Nari Labs가 만든 1.6B+ 파라미터 대화 전용 TTS 모델로, 멀티스피커 대화에서 웃음·기침·한숨 등 비언어적 요소까지 자연스럽게 생성한다. 팟캐스트·오디오 드라마·게임 대사·대화형 인터페이스에 최적화. Kokoro(82M)가 범용 경량 TTS, Fish Audio S2 Pro(4B)가 감정·프로소디 최강이라면, Dia2는 ''멀티턴 대화 리얼리즘''에 특화. Apache-2.0 라이선스로 상업 사용 가능.

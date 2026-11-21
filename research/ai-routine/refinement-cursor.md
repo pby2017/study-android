@@ -2,15 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Qwen3-VL — 비전·언어 모델 계열과 Android 적용 시 확인할 점`; next candidate in the current data sequence is `Kokoro-82M — 82M 파라미터로 14배 큰 모델을 이기는 경량 오픈소스 TTS(Apache-2.0·~7.5k★)`.
+Current position: continue after `Kokoro-82M — 경량 TTS의 품질 한계와 Android 통합 체크`; next candidate in the current data sequence is `Dia2(Nari Labs) — 웃음·기침·한숨까지 재현하는 대화 전용 TTS 모델(Apache-2.0·1.6B)`.
 
-Last update: 2026-11-22 01:50 KST
+Last update: 2026-11-22 02:00 KST
 
 Current run:
-- Reviewed and refined: `Qwen3-VL` (corrected model sizes/source; removed unsupported ranking; separated native 256K context from YaRN 1M extension; added Android feasibility interview practice)
-- Sources re-checked: Qwen official repository/model card and technical report; live GitHub API metadata
-- Removed checkpoint-unspecific benchmark claims; no star count in card
-- Next: continue with `Kokoro-82M — 82M 파라미터로 14배 큰 모델을 이기는 경량 오픈소스 TTS(Apache-2.0·~7.5k★)`
+- Reviewed and refined: `Kokoro-82M` (removed unsourced 14x quality claim; corrected 44 to 54 voices; added voice-quality/runtime limits and Android integration interview practice)
+- Sources re-checked: official model card, voice list, evaluation note, and inference repository; live GitHub/Hugging Face metadata
+- No performance or Android support claim beyond upstream evidence
+- Next: continue with `Dia2(Nari Labs) — 웃음·기침·한숨까지 재현하는 대화 전용 TTS 모델(Apache-2.0·1.6B)`
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
@@ -199,7 +199,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `Kokoro-82M — 82M 파라미터로 14배 큰 모델을 이기는 경량 오픈소스 TTS(Apache-2.0·~7.5k★)`; re-check its paper, model card, and current adoption evidence before editing.
+- Continue with `Dia2(Nari Labs) — 웃음·기침·한숨까지 재현하는 대화 전용 TTS 모델(Apache-2.0·1.6B)`; verify current paper, license, and real-time/device support before editing.
 
 Per successful refinement run, update this file with:
 - timestamp
