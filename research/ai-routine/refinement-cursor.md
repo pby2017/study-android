@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `ORB-SLAM2s(Android)` was removed as out of scope; next candidate: inspect `YOLO26` and verify official release/model claims, benchmark conditions, Android export/runtime path, and adoption.
+Current position: continue after `YOLO26`; next candidate: inspect `MobileLLM-Flash(Meta)` and verify paper/repository details, latency setup, training-token comparison, and Android/ExecuTorch compatibility.
 
-Last update: 2026-11-22 04:31 KST
+Last update: 2026-11-22 04:34 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -534,3 +534,16 @@ Rules:
 - The README describes an Android port/enhancement of ORB-SLAM2: ORB feature-based visual SLAM, sparse point maps, pose/relocalization, IMU and AR rendering. It explicitly distinguishes the project's optimizations from a separate ORB-SLAM2S paper whose methods are not integrated. The documented feature path contains no learned model or AI component.
 - Removed the card because it is a classical computer-vision/Android implementation, outside the project's allowed AI or AI+Android topic boundary. Did not retain its broad “all Android phones” claim.
 - Next: `YOLO26`; validate the Ultralytics model/release, speed-comparison conditions, Android export/runtime support, and current adoption before revising.
+
+
+## 2026-11-22 04:34 KST
+
+- Rechecked YOLO26 model, LiteRT export, ONNX benchmark, MediaTek Android deployment, and official Flutter plugin docs.
+- Corrected NMS claim: official model docs say YOLO26 supports optional end-to-end one-to-one inference with `nms=False`; the default one-to-many path still uses NMS. NMS-free behavior is therefore an export/runtime choice, not an unconditional property.
+- Corrected CPU result: “up to 43%” compares YOLO26n with YOLO11n in ONNX Runtime on an Intel Xeon CPU, not a phone. The benchmark docs note latency is inference-stage-only and excludes preprocessing/postprocessing.
+- Android deployment confirmed: `format="litert"` produces `.tflite`; legacy `tflite` format still works but logs a deprecation warning. Official Ultralytics Flutter plugin supports Android camera and single-image inference on LiteRT; accelerator/delegate support varies. MediaTek docs specify released plugin CPU/GPU, while NPU figures use an unreleased prototype; do not generalize NPU support.
+- Official YOLO26 docs list seven task families: detection, instance segmentation, semantic segmentation, depth, classification, pose, and OBB. This corrects the old five-task count.
+- Interest: GitHub showed ultralytics/ultralytics at 63.6k stars and yolo-flutter-app at 516 stars; broad model/tool adoption signal, not proof of mobile accuracy.
+- Card rewritten as an Android deployment/benchmark interpretation lesson; removed broad “43% faster on mobile” implication and stale 19-format/quantization claims.
+- Sources: https://docs.ultralytics.com/models/yolo26 ; https://docs.ultralytics.com/integrations/litert ; https://docs.ultralytics.com/integrations/onnx ; https://docs.ultralytics.com/integrations/mediatek ; https://github.com/ultralytics/yolo-flutter-app
+- Next: `MobileLLM-Flash(Meta)`; verify the source research, compute/platform scope, exact token reduction, and availability of Android-compatible artifacts before retaining claims.
