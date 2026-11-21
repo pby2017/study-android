@@ -226,15 +226,16 @@ cards:
   answer: "아니다. 여러 화면에서 공통 로직을 재사용하거나 복잡한 ViewModel 로직을 줄일 때 추가한다."
 - category: android
   level: "중급"
-  title: "UDF — 상태는 아래로, 이벤트는 위로"
-  summary: "단방향 데이터 흐름(UDF)은 ViewModel 같은 상태 보유자가 UI 상태를 노출하고, UI 이벤트를 함수 호출로 전달하는 방식이다. UI는 상태를 렌더링하고, 상태 변경은 다시 UI로 흐른다. Compose에서는 생명주기를 인식하는 collectAsStateWithLifecycle()로 Flow 상태를 수집한다."
+  title: "UDF — 불변 UI 상태를 한 방향으로 갱신"
+  summary: "단방향 데이터 흐름(UDF)에서는 ViewModel이 화면에 필요한 불변 UI 상태를 소유하고, UI는 그 상태를 렌더링한다. UI의 사용자 이벤트는 ViewModel 메서드로 전달하고, ViewModel은 새 상태를 만들어 다시 노출한다. 보통 private MutableStateFlow를 읽기 전용 StateFlow로 공개하고 update { it.copy(...) }로 갱신해 한 곳에서 상태 변경을 관리한다."
   points:
-  - "State down: ViewModel → UI"
-  - "Event up: UI → ViewModel의 메서드"
-  - "화면 회전 등 생명주기를 고려해 상태를 수집"
-  source: https://developer.android.com/topic/architecture/ui-layer
-  interview: "UDF에서 상태와 이벤트는 각각 어느 방향으로 흐르는가?"
-  answer: "상태는 상태 보유자에서 UI로 내려가고, 사용자 이벤트는 UI에서 상태 보유자로 올라간다."
+  - "State down: ViewModel → UI; event up: UI → ViewModel"
+  - "private MutableStateFlow를 StateFlow로 노출해 변경 권한을 감춘다."
+  - "불변 상태는 update { current -> current.copy(...) }로 새 스냅샷을 만든다."
+  - "UI는 상태를 직접 바꾸지 않고 사용자 의도만 전달한다."
+  source: https://developer.android.com/topic/architecture/ui-layer/state-production
+  interview: "UI가 ViewModel의 UI 상태를 직접 수정하지 않고 이벤트를 보내야 하는 이유는?"
+  answer: "ViewModel을 상태 변경의 단일 소유자로 두면 여러 계층이 같은 값을 따로 수정하는 일을 막고, 일관된 새 상태를 UI에 다시 전달할 수 있다."
 - category: architecture
   level: "고급"
   title: "Repository와 단일 진실 공급원 — 캐시·네트워크 충돌을 한곳에서 정리"
