@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `YOLO26`; next candidate: inspect `MobileLLM-Flash(Meta)` and verify paper/repository details, latency setup, training-token comparison, and Android/ExecuTorch compatibility.
+Current position: continue after `MobileLLM-Flash`; next candidate: inspect `NexaSDK` claims against its official repository, current platform/model support, accelerator path, release recency, and Android developer value.
 
-Last update: 2026-11-22 04:34 KST
+Last update: 2026-11-22 04:38 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -547,3 +547,7 @@ Rules:
 - Card rewritten as an Android deployment/benchmark interpretation lesson; removed broad “43% faster on mobile” implication and stale 19-format/quantization claims.
 - Sources: https://docs.ultralytics.com/models/yolo26 ; https://docs.ultralytics.com/integrations/litert ; https://docs.ultralytics.com/integrations/onnx ; https://docs.ultralytics.com/integrations/mediatek ; https://github.com/ultralytics/yolo-flutter-app
 - Next: `MobileLLM-Flash(Meta)`; verify the source research, compute/platform scope, exact token reduction, and availability of Android-compatible artifacts before retaining claims.
+
+- Reviewed and refined: `MobileLLM-Flash` (reframed as a target-device latency/quality measurement lesson; corrected 35% token scope, accounted for search/IFT tokens, and scoped speedups to the published Galaxy S25 ExecuTorch/XNNPACK benchmark)
+- Sources re-checked: arXiv full paper v2 and abstract; exact-name GitHub search did not verify a public Flash implementation, and the older Meta MobileLLM repo was not treated as the Flash artifact
+- Added experimental configuration and Android generalization caveats; exact speed ratio remains explicitly paper-reported, not independently reproduced

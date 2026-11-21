@@ -3141,14 +3141,16 @@ cards:
   answer: '아니다. 공식 43% 수치는 YOLO26n과 YOLO11n의 CPU ONNX 비교이며, Intel Xeon에서 측정했다. Android는 `.tflite` LiteRT 모델로 내보낸 뒤 목표 기기에서 실제 delegate와 입력 크기를 고정해 비교해야 한다. 전처리·후처리까지 포함한 지연과 양자화 후 정확도를 확인한다. 또 NMS-free는 `nms=False` 경로에서 선택해야 하며 기본 one-to-many 경로와 같지 않다.'
   source: https://docs.ultralytics.com/models/yolo26
 - category: ai
-  title: MobileLLM-Flash(Meta) — 하드웨어 인더 루프 아키텍처 검색으로 모바일 최적 LLM 설계, ExecuTorch 호환
-  summary: 'MobileLLM-Flash는 Meta가 모바일 레이턴시에 최적화된 LLM을 설계하기 위해 만든 하드웨어 인더 루프 아키텍처 검색(NAS) 프레임워크다. 사전학습된 백본의 가중치를 상속받아 프루닝 기반 후보를 생성하고, 레이턴시 모델을 학습해 파레토 최적 아키텍처를 찾는다. 얕고 넓은(shallow-and-wide) 구조 + 인터리브드 스킵 어텐션이 모바일 CPU에서 최적. ExecuTorch 호환, 학습 토큰 35%만으로 동등 품질 달성.
+  title: 'MobileLLM-Flash — 스마트폰 실측 지연으로 작은 온디바이스 LLM 구조를 고르는 법'
+  summary: '모델 크기나 FLOPs만으로는 휴대전화의 실제 응답 속도를 알기 어렵다. MobileLLM-Flash 연구는 사전학습 모델을 가지치기한 후보를 ExecuTorch로 내보내 Galaxy S25에서 측정하고, 품질과 첫 토큰 지연(TTFT)의 파레토 절충점을 탐색했다. 연구 결과 얕고 넓은 구조와 연속으로 몰리지 않는 attention 생략이 유리했다. 이는 연구진의 모델·기기·런타임 설정 결과이며 모든 Android 기기의 성능 보장은 아니다.
 
     '
   points:
-  - '하드웨어 인더 루프 NAS: 레이턴시 모델 학습 → 파레토 최적 검색'
-  - '35% 토큰으로 동등 품질: 프루닝 기반 가중치 상속'
-  - 'ExecuTorch 호환: shallow-and-wide + 스킵 어텐션'
+  - '측정 조건: Galaxy S25, ExecuTorch 1.1/XNNPACK, 4-bit weight·8-bit activation, CPU 4개 스레드'
+  - '논문은 LFM2 대비 최대 1.8배 빠른 prefill·1.6배 빠른 decode를 보고; 입력 길이별 수치와 품질도 함께 비교'
+  - '35%는 MobileLLM-Pro 사전학습량 대비 continued pretraining 토큰; 후보 탐색은 200×2.6B 토큰, 최종 instruction tuning은 모델당 800B 토큰'
+  interview: '온디바이스 LLM을 고를 때 파라미터 수만 보면 충분할까요?'
+  answer: '아니다. 논문은 파라미터 수와 FLOPs가 실제 기기 지연을 충분히 설명하지 못한다고 보고, 후보를 목표 런타임으로 내보내 Galaxy S25에서 직접 측정했다. 다만 공개된 비교는 Galaxy S25의 ExecuTorch 1.1/XNNPACK CPU와 양자화 설정에 한정된다. 앱에서는 목표 기기와 delegate, 입력 길이, 양자화 조건을 고정해 TTFT·생성 속도·품질·메모리를 함께 재야 한다. 논문의 “35%”는 원본 MobileLLM-Pro 사전학습 토큰 대비 continued pretraining이며, 후보 탐색 및 instruction tuning 비용까지 포함한 총 학습량 절감률은 아니다.'
   source: https://arxiv.org/html/2603.15954v2
 - category: ai
   title: NexaSDK — NPU 퍼스트 온디바이스 AI SDK, Snapdragon에서 LLM·VLM·ASR·TTS 올인원 추론(Qualcomm)
