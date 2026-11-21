@@ -13,6 +13,7 @@ categories:
   color: '#e3b341'
 cards:
 - category: kotlin
+  level: "초급"
   title: 코틀린이란 — 정적 타입 + 함수형
   summary: '코틀린은 JVM에서 도는 언어로, 자바와의 상호운용성을 중시한다. 핵심은 ''정적 타입 지정''이라 컴파일 시점에 타입이 확정돼 성능·신뢰성·유지보수·도구지원이 좋아진다. 동시에 타입 추론을 제공해 코드는 짧게 유지된다. 함수를 변수처럼 다루는 일급 함수, 불변성, 부수효과 없는 순수 함수 같은 함수형 개념도 지원한다. 자바엔 없는 nullable 타입과 함수 타입이 컴파일 단계에서 NPE 위험을 잡아준다.
 
@@ -22,7 +23,10 @@ cards:
   - nullable 타입(?)으로 NPE를 컴파일 시점에 차단
   - 일급 함수·불변성·순수 함수 = 함수형 지원
   source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/1장-코틀린이란_무엇이며_왜_필요한가.md
+  interview: "정적 타입 언어에서 컴파일 전에 타입을 아는 장점은?"
+  answer: "타입 오류를 더 일찍 찾고, IDE와 컴파일러가 안전한 코드 분석을 할 수 있다. 타입 추론은 이 안전성을 유지하며 표기를 줄인다."
 - category: kotlin
+  level: "초급"
   title: 문(statement)과 식(expression)
   summary: '자바는 if/제어구조가 값을 만들지 않는 ''문''이지만, 코틀린은 루프를 뺀 대부분의 제어구조가 값을 만드는 ''식''이다. 그래서 `return if(cond) A else B`가 가능하다. 함수도 두 종류 — 중괄호로 감싼 ''블록 본문 함수''와 등호로 잇는 ''식 본문 함수''. 식 본문 함수는 타입 추론 덕에 반환형을 생략할 수 있다(블록 본문은 불가). 이 차이가 코틀린 특유의 간결함의 출발점이다.
 
@@ -32,7 +36,10 @@ cards:
   - 식 본문 함수 `fun f() = 1` 은 반환형 생략 가능
   - 변수도 타입 추론으로 생략 가능
   source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/2장-코틀린_기초.md
+  interview: "값을 만드는 if를 함수 인자로 넘길 수 있는 이유는?"
+  answer: "Kotlin의 if는 식(expression)이므로 결과값을 반환한다. Java의 if는 statement라 값을 직접 만들지 않는다."
 - category: kotlin
+  level: "초급"
   title: 컬렉션 생성 함수 — setOf/hashSetOf/arrayListOf
   summary: '코틀린은 컬렉션을 만드는 팩토리 함수를 제공한다. setOf·hashSetOf는 내부적으로 LinkedHashSet, arrayListOf는 ArrayList를 돌려준다. 코틀린은 자체 컬렉션을 새로 만들지 않고 자바 표준 컬렉션을 그대로 활용하면서, 정렬·필터 같은 유용한 확장 함수를 얹는 방식이다. `.plus()` 같은 연산은 원본을 바꾸지 않고 새 컬렉션을 반환한다(불변성 지향).
 
@@ -42,7 +49,10 @@ cards:
   - .plus()는 원본 불변, 새 컬렉션 반환
   - 제네릭 원소 모임 + 알고리즘 메서드 제공
   source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/3장-함수_정의와_호출.md
+  interview: "Kotlin의 List가 읽기 전용이면 내부 데이터도 불변인가?"
+  answer: "아니다. List 인터페이스는 변경 API를 노출하지 않을 뿐, 다른 참조가 MutableList를 수정할 수 있다."
 - category: kotlin
+  level: "초급"
   title: 클래스·인터페이스 — 자바와 무엇이 다른가
   summary: '코틀린 인터페이스는 자바 8의 default 메서드처럼 구현이 있는 메서드를 가질 수 있지만, 상태(필드)는 가질 수 없다. 자바의 extends/implements는 모두 콜론(:)으로 대체되고, 확장 클래스 뒤엔 괄호()를 붙인다. 인터페이스 구현은 개수 제한이 없지만 클래스 확장은 1번만 가능하다. 자바의 @Override는 코틀린에서 `override` 변경자가 된다. 본문 없는 멤버는 추상, default는 키워드 없이 본문만 주면 된다.
 
@@ -52,7 +62,10 @@ cards:
   - extends/implements → 콜론(:) 하나로 통일
   - '@Override → override 변경자'
   source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/4장-클래스,_객체,_인터페이스.md
+  interview: "Kotlin 클래스는 여러 클래스를 상속할 수 있는가?"
+  answer: "아니다. 클래스 상속은 하나만 가능하지만 여러 인터페이스를 구현할 수 있다."
 - category: kotlin
+  level: "초급"
   title: 람다 — 코드 블록을 인자로 넘기기
   summary: '람다는 다른 함수에 넘길 수 있는 작은 코드 조각이다. 자바 8처럼 코드 블록을 함수 인자로 직접 전달할 수 있어, 안드로이드의 setOnClickListener 같은 ''메서드 하나뿐인 익명 객체''를 람다로 대체해 코드를 확 줄인다. 컬렉션에선 maxBy처럼 기준을 람다로 받는 라이브러리 함수가 있어 `list.maxBy { it.age }` 식으로 짧게 쓴다. 멤버 참조(Person::age)로 더 줄일 수도 있다.
 
@@ -62,7 +75,10 @@ cards:
   - list.maxBy { it.age } 처럼 기준을 람다로
   - 멤버 참조(::)로 한 번 더 축약
   source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/5장-람다로_프로그래밍.md
+  interview: "람다는 Android 클릭 리스너에서 어떤 역할을 하는가?"
+  answer: "단일 콜백 동작을 함수 값으로 전달해 익명 객체의 반복 코드를 줄인다."
 - category: kotlin
+  level: "초급"
   title: '널 가능성 — ?. 와 ?: 로 NPE 방어'
   summary: '코틀린 타입 시스템은 널 가능 여부를 타입에 담아 NPE를 컴파일 시점에 잡는다. 타입 뒤에 ?를 붙이면 null을 담을 수 있는 타입이 된다. 안전한 호출 `?.`는 null 검사와 호출을 한 번에 — `a?.length`는 a가 null이면 그대로 null을 반환한다(결과 타입도 nullable). 엘비스 연산자 `?:`는 null일 때 기본값을 지정한다. 이 조합이 코틀린이 자바보다 NPE에 강한 핵심 이유다.
 
@@ -72,6 +88,8 @@ cards:
   - ?. = null이면 호출 건너뛰고 null 반환
   - '?: = null일 때 기본값 제공(엘비스)'
   source: https://github.com/pby2017/study-android/blob/master/legacy/kotlin_in_action/6장-코틀린_타입_시스템.md
+  interview: "Kotlin의 nullable 타입을 쓰면 NPE가 완전히 불가능한가?"
+  answer: "아니다. `!!`, Java 상호운용의 platform type 등에서는 여전히 NPE가 날 수 있다."
 - category: android
   level: "초급"
   title: "Activity 생명주기 — 보임과 포커스는 다르다"
