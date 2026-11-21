@@ -876,3 +876,11 @@ Rules:
 - Sources: [AAAI 2026 paper DOI](https://doi.org/10.1609/aaai.v40i37.40347), [paper HTML](https://arxiv.org/html/2509.09734)
 - Research note: `research/ai-routine/20261122-070100-mcp-agentbench-refinement.md`
 - Next: inspect the next older candidate, `mcptest`, and verify its current repository and feature claims
+
+- Reviewed and reframed `mcptest` as the general lesson `MCP 테스트 계층 — mock 회귀 테스트와 live 통합 평가`
+- Corrected the package distinction: distribution is `mcp-agent-test`, CLI is `mcptest`; removed stale fixture-pack/metric-count feature dump and false blanket token-free claim
+- Clarified that mocking MCP server responses does not eliminate model API cost when the launched agent calls a real model, and mock tests do not verify live server/auth/network behavior
+- Adoption check: the repository showed 0 stars and PyPI lists Alpha 0.1.0 (released 2026-04-16); kept no product popularity claim and used it only as a small example of the test strategy
+- Sources: [mcptest repository](https://github.com/josephgec/mcptest), [mcp-agent-test on PyPI](https://pypi.org/project/mcp-agent-test/), [mcp-eval live integration testing](https://github.com/lastmile-ai/mcp-eval)
+- Research note: `research/ai-routine/20261122-070200-mcp-mock-vs-live-tests.md`
+- Next: inspect the next older card, `mcp-eval`, and validate its current project status and claims

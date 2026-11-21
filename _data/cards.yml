@@ -7898,13 +7898,16 @@ cards:
   - vs MCP Inspector — integration eval vs protocol debug UI, complementary
   source: https://github.com/lastmile-ai/mcp-eval
 - category: ai
-  title: mcptest — pytest for MCP agents, YAML mock server·trajectory assertion·regression diff
-  summary: mcptest(josephgec/mcptest·mcp-agent-test PyPI)는 vendor-neutral MCP agent testing — "pytest for MCP agents". YAML fixture로 mock MCP server(tools·responses·error scenarios) 선언, agent를 isolation에서 실행, tool-call trajectory assert. 17 assertions(tool_called·param_matches·tool_order·error_handled) ·7 metrics(efficiency·redundancy·stability) ·regression baseline diff ·non-determinism retry(N runs ≥T% pass). mcptest capture — live server→auto fixture+test YAML. 6 fixture packs(GitHub·Slack·filesystem·DB·HTTP·git) ·19 MCP conformance checks. mcp-eval(real env) ·Galileo(acquired)와 달리 token-free YAML mock·trajectory-focused·CI badge.
+  level: "중급"
+  title: MCP 테스트 계층 — mock 회귀 테스트와 live 통합 평가
+  summary: MCP 에이전트 테스트는 mock과 실제 서버 평가를 나눠 설계한다. 예를 들어 Alpha 도구 mcptest(mcp-agent-test)는 YAML fixture로 가짜 MCP 도구·응답·오류를 만들고, 호출 도구·인자·순서를 검사하거나 기준 trajectory와의 변화를 추적한다. 이는 외부 MCP 서버 변동을 격리하지만, 실행하는 에이전트가 실제 모델 API를 호출하면 토큰 비용과 비결정성은 남는다. 따라서 mock 테스트로 빠른 회귀를 확인하고, 별도 live 통합 테스트로 실제 서버·인증·네트워크 동작을 검증한다.
   points:
-  - YAML mock servers — no LLM tokens burned, real MCP stdio/SSE protocol
-  - mcptest capture — auto-discover tools, sample responses, write fixture+test
-  - Regression diff — prompt/model/server change→trajectory drift detect
+  - Mock fixture — 도구 응답·오류를 고정해 에이전트의 tool-call 동작을 반복 검사
+  - 외부 MCP 서버 비용·장애는 격리하지만 모델 API 비용까지 자동 제거하지는 않음
+  - Live 검증 병행 — mock은 실제 서버의 인증·네트워크·구현 호환성을 증명하지 못함
   source: https://github.com/josephgec/mcptest
+  interview: "MCP 에이전트 테스트에서 mock 서버만으로 충분하지 않은 이유는 무엇인가요?"
+  answer: "mock은 tool-call 회귀를 빠르고 반복 가능하게 검사하지만 실제 MCP 서버의 인증·네트워크·프로토콜 구현을 검증하지 못한다. 또 테스트 에이전트가 실제 LLM을 호출하면 비용과 출력 변동도 남을 수 있다. mock 테스트와 live 통합 테스트를 함께 사용해야 한다."
 - category: ai
   level: "고급"
   title: MCP-AgentBench — MCP 에이전트를 경로가 아닌 작업 결과로 평가하기
