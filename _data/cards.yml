@@ -2809,15 +2809,18 @@ cards:
   interview: "Android 앱에서 Novu의 AI 에이전트 대화를 쓰려면 Secret key와 Inbox 화면을 어디서 처리해야 하나요?"
   answer: "Secret key는 전체 환경 접근 권한을 가지므로 백엔드에만 둔다. 백엔드는 Novu SDK나 REST API로 워크플로를 실행하고 FCM 토큰에 푸시를 보낼 수 있다. 현재 Novu는 네이티브 Android 클라이언트 SDK나 기본 Inbox UI를 제공하지 않으므로 앱 안의 대화함이 필요하면 Inbox REST API를 연결해 직접 구현한다. 에이전트의 모델·추론 로직은 별도로 구성한다."
 - category: ai
-  title: Firebase Remote Config + A/B Testing — 앱 업데이트 없이 AI 모델·프롬프트·UI를 원격 제어(무료)
-  summary: 'Firebase Remote Config는 앱 업데이트 없이 파라미터(AI 모델명·프롬프트·UI 설정)를 원격으로 변경하는 Google 무료 서비스다. Firebase A/B Testing과 연동해 모델 버전·시스템 프롬프트·UI 변형을 사용자 세그먼트별로 실험하고, 우승 변형을 점진적으로 롤아웃 가능. Remote Config Personalization은 ML로 개별 사용자에게 최적 설정을 자동 적용. GenAI 앱에서 모델 폐기·비용 최적화에 필수.
-
-    '
+  title: 'Firebase Remote Config — Android AI 설정 실험과 서버 모델 라우팅'
+  level: "중급"
+  summary: 'Firebase Remote Config는 앱이나 백엔드의 매개변수를 원격으로 바꾼다. Android 클라이언트 템플릿으로 공개 가능한 모델 ID·프롬프트 변형을 가져와 A/B 테스트할 수 있고, 서버 템플릿은 Admin SDK로 백엔드의 모델·프롬프트 선택에 쓴다. 두 템플릿은 SDK와 타깃 조건이 다르다. 클라이언트에 전달된 값은 사용자가 볼 수 있으므로 비밀값은 두지 않는다.'
   points:
-  - '앱 업데이트 불필요: AI 모델명·프롬프트·UI를 원격 변경'
-  - 'A/B Testing 통합: 모델 버전·프롬프트를 세그먼트별 실험'
-  - 'Personalization: ML이 개별 사용자 최적 설정 자동 적용'
-  source: https://firebase.google.com/docs/remote-config
+  - 'Android 클라이언트 템플릿: fetch 후 activate; 새 앱 버전 없이 설정 변경'
+  - 'A/B Testing: Analytics 목표 이벤트로 클라이언트 설정 변형을 비교'
+  - 'Personalization: Analytics로 측정하는 목표에 맞춰 매개변수 값을 최적화; 결과는 데이터량·목표에 좌우'
+  - '서버 템플릿: 백엔드에서 모델·프롬프트를 선택; Admin SDK와 서버 타깃 조건 사용'
+  - '요금·보안: A/B Testing은 무료, Remote Config는 2026-09-01부터 하루 프로젝트당 10만 fetch 초과분 과금; 클라이언트 값에 비밀정보 금지'
+  source: https://firebase.google.com/docs/remote-config/parameters
+  interview: "Android 앱의 Remote Config에 AI system prompt와 API key를 함께 저장해도 되나요?"
+  answer: "안 된다. 클라이언트 템플릿에서 앱에 전달된 값은 사용자가 확인할 수 있으므로 공개 가능한 설정만 둔다. API key나 비공개 prompt는 백엔드에 보관하고, 서버 템플릿과 Admin SDK로 모델·prompt 선택을 처리한다. Android 사용자 대상 실험은 클라이언트 템플릿의 A/B Testing으로 Analytics 목표를 측정하고, 변경값은 적절한 시점에 activate한다."
 - category: ai
   title: AI 로컬라이제이션 CLI — strings.xml·.arb·.xcstrings를 AI로 자동 번역, 모바일 다국어 자동화
   summary: '2026년 기준 모바일 앱 로컬라이제이션을 AI로 자동화하는 오픈소스 CLI 도구들이 등장했다. android-llm-localization(Python)은 Android strings.xml을 Gemini·OpenAI·Ollama로 번역하고 포맷 스페시파이어(%1$s)를 보존한다. LocalizeKit(Dart)는 Flutter .arb 파일에 특화, 변경된 문자열만 재번역하는 스마트 캐싱. Localization-CLI(Swift)는 iOS .xcstrings 전용. 앱 컨텍스트를 제공하면 도메인에 맞는 용어를 선택한다. Tolgee(오픈소스)는 웹 UI+번역 메모리+인간 검수 워크플로우.

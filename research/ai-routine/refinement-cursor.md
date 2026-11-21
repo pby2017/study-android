@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Novu MCP·ACI — AI 에이전트를 메시징 채널과 연결하는 대화 인프라`; next candidate: `Firebase Remote Config + A/B Testing`.
+Current position: continue after `Firebase Remote Config — Android AI 설정 실험과 서버 모델 라우팅`; next candidate: `AI 로컬라이제이션 CLI`.
 
-Last update: 2026-11-22 02:28 KST
+Last update: 2026-11-22 02:31 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -42,6 +42,9 @@ Current run:
 - Sources re-checked: Novu's official MCP docs, SDK support matrix, API key security docs, FCM integration guide, and current GitHub README
 - GitHub displayed 40.4k stars during review; recorded as a volatile attention signal and omitted from the card
 - Removed `GrowthBook`: its existing card described general-purpose feature flags and experimentation without a core AI workflow; historical publication logs remain unchanged.
+- Reviewed and refined: `Firebase Remote Config` (separated Android client-template A/B tests and Personalization from server-template AI model/prompt selection; removed the unqualified “free” claim and stated the current fetch quota and billing boundary)
+- Sources re-checked: official Firebase Remote Config Android guide, client/server template comparison, A/B Testing, Personalization, security guidance, and pricing page
+- Added the critical client-value visibility boundary and an interview prompt about where to keep system prompts and API keys
 - Sources re-checked: official Sentry mobile solution page and Sentry blog posts documenting Seer/Autofix accuracy and fix success
 - No independent evaluation set or Android-only accuracy guarantee was found in reviewed sources; card no longer generalizes the number
 - Reviewed and refined: `Koog` (removed unsupported GA date and sweeping platform/pro-vider claims; captured Android target documentation ambiguity; clarified agent orchestration vs on-device inference and client-secret risk)
@@ -263,7 +266,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `Firebase Remote Config + A/B Testing`; verify its AI model/prompt experimentation claims and Android-specific behavior before refining.
+- Continue with `AI 로컬라이제이션 CLI`; verify the named repositories, supported source formats, current activity, and placeholder handling before refining.
 - GrowthBook was removed from the deck because the reviewed card had no central AI use case; the historical publication log is retained.
 
 Per successful refinement run, update this file with:
