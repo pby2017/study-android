@@ -4499,3 +4499,11 @@ Refined:
 - 수정 근거: ObjectBox는 HNSW ANN 및 Java/Kotlin 지원. SQLite-Vector README는 Android 패키지, 일반 SQLite BLOB, 정확 검색/양자화 스캔을 문서화함.
 - 삭제한/제외한 주장: 바이너리 8MB 미만, KB급 RAM, LG G8S 0.25ms·4k QPS, LangChain 통합, “모든 플랫폼 out-of-box” 및 불필요한 주변 sqlite-ai 도구 묶음. 이번 비교 출처로 충분히 확인되지 않거나 일반화 위험이 있어 제외.
 - 보충: 벡터 DB가 임베딩 모델이나 LLM 답변 생성을 제공하는 것은 아니며, 목표 Android 기기에서 지연·메모리·회수율과 벡터 차원/거리 함수 정합성을 검증하도록 카드에 명시.
+
+### 2026-11-22 02:59 KST — Aide AI+Android 사례 카드 검증
+
+- Refined: `Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트` → `Aide 사례 — Gemma 4를 키보드·채팅·음성 비서에 연결한 온디바이스 Android AI`.
+- Source checked: https://dev.to/swaptr/your-ai-your-device-your-data-introducing-aide-59cc (저자가 직접 쓴 프로젝트 소개/챌린지 제출물).
+- 기존 GitHub URL https://github.com/swaptr/aide 는 현재 404로 확인되어 살아 있는 1차 출처인 저자 글로 교체. 저장소 별 수치·star 관심도는 확인 불가하므로 쓰지 않음.
+- Verified from the author post: LiteRT-LM with Gemma 4 E2B/E4B, keyboard/chat/assistant surfaces, Sherpa-ONNX STT/TTS/VAD, optional Ollama path, per-category tool permissions and destructive-action confirmation.
+- Removed 37-language translation count and claims that all data always remains local; reframed as a creator-described case study and explicitly noted lack of independent performance evidence and remote-model boundary.

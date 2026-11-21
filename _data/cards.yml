@@ -2876,15 +2876,15 @@ cards:
   interview: "Android 온디바이스 RAG에서 ObjectBox와 SQLite-Vector 중 무엇을 고르고, 무엇을 검증해야 하나요?"
   answer: "객체 데이터와 벡터를 함께 관리하고 대규모 후보를 빠르게 좁히려면 HNSW 기반 ObjectBox를 검토한다. 기존 SQLite를 유지하고 SQL/BLOB 기반 검색을 원하면 Android 확장 패키지를 제공하는 SQLite-Vector를 검토한다. 두 도구 모두 임베딩 모델이나 LLM을 대신하지 않는다. 실제 단말에서 검색 지연·메모리·회수율을 확인하고, 임베딩 차원과 거리 함수를 맞춘다."
 - category: ai
-  title: Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트, 37개 언어 번역(오프라인)
-  summary: 'Aide는 Gemma 4를 LiteRT-LM으로 온디바이스 실행하는 Android AI 앱이다. 시스템 키보드(InputMethodService)· 음성 어시스턴트·채팅을 하나의 모델로 통합. 키보드 트랜스폼 바에서 재작성·요약·문법 교정·톤 변경·번역 (37개 언어)을 로컬에서 처리. Sherpa-ONNX로 STT·TTS·VAD까지 온디바이스. Gemma 4 Function Calling으로 알람·캘린더·연락처·파일시스템·웹 검색까지 도구 호출. 모든 처리가 디바이스를 떠나지 않는다.
-
-    '
+  title: Aide 사례 — Gemma 4를 키보드·채팅·음성 비서에 연결한 온디바이스 Android AI
+  summary: 'Aide 제작자의 소개 글은 LiteRT-LM으로 Gemma 4 E2B/E4B를 기기에서 실행하고, 같은 모델을 키보드 변환·채팅·음성 비서에 연결한 사례를 보여준다. Sherpa-ONNX로 음성 인식·합성·음성 구간 탐지를 처리하며, 더 큰 모델에는 선택형 Ollama 경로를 둔다. 이는 제작자가 공개한 설계 설명이며 독립 성능 검증은 아니다. 오프라인 기본값도 권한·외부 모델 연결까지 모두 로컬이라는 뜻은 아니다.'
   points:
-  - '키보드+어시스턴트+채팅: 하나의 Gemma 4 모델로 통합'
-  - '37개 언어 번역·재작성·요약·문법 교정: 완전 온디바이스'
-  - 'Function Calling: 알람·캘린더·연락처·웹 검색 도구 호출'
-  source: https://github.com/swaptr/aide
+  - '한 모델 런타임을 InputMethodService·채팅·음성 비서 흐름에 재사용'
+  - 'Sherpa-ONNX가 음성 인식(STT)·합성(TTS)·음성 구간 탐지(VAD)를 담당'
+  - '실무 검토: 모델 다운로드·기기 메모리·지연·민감 도구 권한, 원격 Ollama 사용 시 데이터 경계'
+  source: https://dev.to/swaptr/your-ai-your-device-your-data-introducing-aide-59cc
+  interview: "온디바이스 Android AI 비서에서 모델 실행과 민감한 도구 호출을 어떻게 설계하고 검증하나요?"
+  answer: "작은 모델을 기본 로컬 경로로 두고 입력 방식별 UI가 같은 런타임을 재사용하도록 구성할 수 있다. 알람·연락처·파일 등 도구는 기능별 권한과 파괴적 작업 확인을 둔다. 더 큰 모델을 원격으로 보낼 때는 명시적 선택, 민감 데이터 경계, 실패 시 오프라인 동작을 정의하고, 실기기에서 모델 로딩·메모리·지연을 측정한다. Aide 글은 사례 설명이므로 수치 성능이나 일반적 품질을 증명하지는 않는다."
 - category: ai
   title: AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답, ASO까지 통합(Discord·Opera 사용)
   summary: 'AppFollow는 App Store·Google Play·Amazon 등 앱 스토어 리뷰를 단일 인박스에서 관리하는 플랫폼이다. AI가 리뷰를 자동 태깅(버그·기능 요청·가격·온보딩)하고, 감정 분석·트렌드 대시보드·경쟁사 리뷰 비교를 제공. AI 자동 응답은 감정·언어·앱 컨텍스트에 맞춰 초안을 생성하고, Zendesk·Slack·Jira 연동으로 워크플로우 자동화. Discord·Flo·Opera 등 사용. Google 데이터 기준 응답 시 평점 +0.7★ 상승 효과.

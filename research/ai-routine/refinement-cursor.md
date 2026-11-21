@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `ObjectBox` / `sqlite-vector` (merged into one AI+Android RAG comparison); next candidate: `Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트` (the intervening MASVS/R8 card is pure Android and out of scope).
+Current position: continue after `ObjectBox` / `sqlite-vector` (merged into one AI+Android RAG comparison); next candidate: `AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답` (the intervening MASVS/R8 card is pure Android and out of scope).
 
-Last update: 2026-11-22 02:56 KST
+Last update: 2026-11-22 02:59 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -312,4 +312,12 @@ Rules:
 - Live interest signal: ObjectBox 4.6k stars; SQLite-Vector 1.2k stars (not embedded in card because counts change).
 - Removed unsupported/stale resource and benchmark claims; clarified ANN vs SQLite BLOB/extension trade-off and that storage does not generate embeddings or LLM responses.
 - Card count reduced by one.
-- Next: `Aide — Gemma 4 온디바이스로 구동하는 안드로이드 AI 키보드·어시스턴트`.
+- Next: `AppFollow — App Store·Google Play 리뷰를 AI로 자동 분석·태깅·응답`; re-check current features and independent proof for outcome claims.
+
+
+## 2026-11-22 02:59 KST
+
+- Refined `Aide` as an AI+Android implementation case study using the creator's primary post.
+- The old GitHub URL currently returns 404; replaced it with the creator-authored post and removed any star-count claim.
+- Scoped model, keyboard/chat/voice, Sherpa-ONNX, optional Ollama, and permissions to the post; removed unverified translation quantity and absolute privacy language.
+- Next: `AppFollow`; re-check current product details and evidence behind outcome metrics.
