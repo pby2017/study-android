@@ -905,3 +905,9 @@ Rules:
 - Sources: [Android Studio skills guide](https://developer.android.com/studio/gemini/skills), [Android skills overview](https://developer.android.com/tools/agents/android-skills), [Rabbit 2 stable announcement](https://developer.android.com/blog/posts/ai-agents-android-studio-integration)
 - Research note: `research/ai-routine/20261122-071500-android-studio-skills-refinement.md`
 - Next: continue the oldest-first scan from the first remaining unreviewed AI/AI+Android card; the final Android Studio/Copilot card block has now been checked
+- Refined `reloadSkills·sessionTitle·/reload-skills` into the focused `Claude Code reloadSkills — SessionStart 훅이 설치한 스킬을 같은 세션에서 읽기` card
+- Clarified the discovery-before-SessionStart-hook timing edge case, the `hookSpecificOutput.reloadSkills` response, and the manual `/reload-skills` path; removed unrelated `sessionTitle` details
+- Checked current Hooks docs and changelog history (v2.1.152 feature addition; v2.1.0 automatic skill hot-reload) to avoid implying that all skill changes require a restart
+- Sources: [Hooks reference](https://code.claude.com/docs/en/hooks), [Claude Code changelog](https://code.claude.com/docs/en/changelog)
+- Research note: `research/ai-routine/20261122-071800-claude-reload-skills-refinement.md`
+- Next: inspect `--safe-mode` and validate current customizations-disabled list and managed-policy exceptions
