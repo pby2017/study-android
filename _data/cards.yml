@@ -2785,15 +2785,17 @@ cards:
   interview: "Flutter 앱에서 Genkit 모델 호출을 직접 실행할 때 API 키를 앱에 포함해도 되나요?"
   answer: "공개 앱에는 비밀 키를 포함하면 안 된다. 앱 바이너리에서 키를 추출할 수 있으므로, 인증·권한·비용 제한을 적용한 백엔드가 모델 요청을 중계하게 한다. 클라이언트에 AI 로직이 있어도 비밀 정보와 민감한 프롬프트는 서버에 두는 설계를 검토한다."
 - category: ai
-  title: Sentry — 모바일 크래시·ANR·성능을 코드 레벨까지 추적, AI가 94.5% 정확도로 원인 분석(BSD)
-  summary: 'Sentry는 모바일 앱의 크래시·ANR·성능 이슈를 스택 트레이스·디바이스 상태·사용자 행동 컨텍스트와 함께 추적하는 오픈소스 모니터링 플랫폼이다. iOS·Android·React Native·Flutter·Unity SDK 제공. Seer AI 에이전트가 94.5% 정확도로 루트 코즈를 분석하고, GitHub PR로 수정을 제안. Suspect Commits로 문제를 도입한 커밋·작성자를 자동 식별. Crashlytics 대비 더 깊은 비크래시 에러·Compose 지원.
-
-    '
+  title: 'Sentry Seer — 모바일 텔레메트리와 코드 맥락으로 장애 원인 조사 보조'
+  level: "중급"
+  summary: 'Sentry는 Android·iOS·Flutter·React Native 등에서 오류, 크래시, ANR과 성능 문제를 수집하고 스택 트레이스, 디바이스·앱 상태, breadcrumbs, suspect commit을 연결해 조사하도록 돕는다. Seer는 이 운영 데이터와 코드 저장소 맥락을 사용해 원인 분석과 수정안을 제안하고 GitHub PR을 만들 수 있다. Sentry가 과거 공개한 94.5%는 Autofix 내부 평가의 root-cause 식별 수치이지, 모든 문제에서의 독립 검증 정확도나 수정 성공률이 아니다. 이벤트에 민감 정보가 들어가지 않도록 수집 항목과 마스킹도 설계한다.'
   points:
-  - 'Seer AI: 94.5% 정확도 루트 코즈 분석 + GitHub PR 자동 생성'
-  - 'Suspect Commits: 문제 도입 커밋·작성자 자동 식별'
-  - '크로스플랫폼: iOS·Android·RN·Flutter·Unity, 오프라인 캐싱'
+  - '조사 흐름: 사용자 영향·이벤트 → stack trace/breadcrumbs/device state → suspect commit·코드 맥락'
+  - 'Seer는 원인과 수정안을 제안하고 PR 생성 지원; 제안은 개발자가 테스트·리뷰'
+  - '94.5%는 Sentry가 내부 Autofix 평가에서 발표한 root-cause 수치; 같은 발표의 수정 성공률 53.6%와 구분'
+  - 'Android 적용 시 PII·사용자 입력·세션 데이터의 수집, 보존, 마스킹과 샘플링을 검토'
   source: https://sentry.io/solutions/mobile-developers/
+  interview: "Seer의 94.5% root-cause 수치를 Android 앱 장애 분석의 보장된 정확도로 인용해도 되나요?"
+  answer: "아니다. 94.5%는 Sentry가 과거 Autofix 내부 평가에서 보고한 원인 식별 결과이며, 독립 벤치마크나 전체 Android 장애 분포에 대한 보장은 아니다. Sentry도 제안된 코드 수정 성공률을 53.6%로 별도 발표했다. 프로젝트 데이터로 유효성과 오탐을 검증하고 수정은 테스트·리뷰해야 한다."
 - category: ai
   title: Novu — 오픈소스 멀티채널 알림 인프라, Push·Email·SMS·In-App을 단일 API로 통합(MIT·~36k★)
   summary: 'Novu는 MIT 라이선스 오픈소스 알림 인프라로, Push·Email·SMS·In-App·채팅을 단일 API로 통합한다. 콘텐츠 관리·구독자 선호도·채널 라우팅·지연/다이제스트 워크플로우를 코드 또는 UI에서 정의 가능. FCM·APNs·SendGrid·Twilio 등 다양한 프로바이더를 지원하고, 셀프호스팅 무료. 36k+ GitHub 스타로 오픈소스 알림 인프라 중 가장 인기. OneSignal이 관리형 SaaS라면, Novu는 셀프호스팅 대안.
