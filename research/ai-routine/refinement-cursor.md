@@ -7,6 +7,12 @@ Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills,
 Last update: 2026-11-22 07:41 KST
 
 ## Latest pass
+- Reviewed and refined: `Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기`
+- Source re-checked: current official Claude Code Hooks reference (context injection and Stop/SubagentStop)
+- Clarified that `SubagentStop` context reaches the subagent, not its parent; documented Agent `PostToolUse` for parent context
+- Added `stop_hook_active`, shared eight-consecutive-continuation guard, and the 10,000-character per-value file/preview behavior
+- Next: continue oldest-first with the next AI/AI+Android card not yet explicitly reviewed; skip pure Android topics
+
 - Reviewed and refined: `fallbackModel — 기본 모델이 막힐 때 대체 모델로 자동 전환`
 - Sources re-checked: official Claude Code model configuration, settings reference, settings precedence, and CLI reference
 - Specified which server/model errors trigger fallback and which errors do not; documented turn-only switching, primary retry next turn, three-distinct-allowed-model cap, and allowlist filtering

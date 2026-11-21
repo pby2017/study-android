@@ -480,14 +480,14 @@ cards:
   answer: "rate-limit 오류는 fallback 대상이 아니므로 전환되지 않는다. fallback은 과부하, 모델 사용 불가, 비재시도 서버 오류 등에 대응한다. 설정 파일의 체인도 병합하지 않으며, `fallbackModel`을 정의한 파일 중 가장 우선순위가 높은 파일의 전체 목록을 사용한다. 한 세션에서 바꾸려면 `--fallback-model`을 쓴다."
 - category: ai
   title: Stop 훅 additionalContext — 턴 끝에 컨텍스트 주입해 작업 이어가기
-  summary: 'Stop·SubagentStop 훅은 hookSpecificOutput.additionalContext로 문자열을 돌려줄 수 있다. Claude Code는 이 문자열을 시스템 리마인더로 감싸 턴이 끝나는 지점에 끼워 넣고, 대화가 계속되어 Claude가 그 내용을 보고 작업을 이어간다. decision: "block"이 오류 피드백으로 강제 계속시키는 것과 달리, additionalContext는 오류가 아닌 정보성 피드백이다. 한 이벤트에 여러 훅이 값을 돌려주면 Claude는 전부 받고, 한 값이 10,000자를 넘으면 전체 텍스트는 세션 디렉터리 파일로 저장되고 미리보기와 파일 경로만 전달된다.
-
-    '
+  summary: 'Stop 훅의 `hookSpecificOutput.additionalContext`는 턴 끝에 시스템 리마인더를 추가한다. Claude는 이 피드백을 보고 작업을 이어가므로, 단순 알림이 아니라 중단 지점의 문맥을 보완하는 데 쓴다. `decision: "block"`은 이유를 붙여 중단을 막는 제어 응답이고, `additionalContext`는 오류가 아닌 정보성 피드백이다. 두 방식 모두 연속 8회 제한을 공유하므로 `stop_hook_active`를 확인해 반복 루프를 막는다. `SubagentStop`의 문맥은 서브에이전트에 전달된다. 부모 대화에 주려면 Agent 도구의 `PostToolUse`를 사용한다.'
   points:
-  - Stop·SubagentStop은 hookSpecificOutput.additionalContext로 턴 끝에 컨텍스트 주입 가능
-  - block(오류 피드백) vs additionalContext(정보성 피드백) — 둘 다 대화를 계속시키지만 성격이 다름
-  - 값 10,000자 초과 시 파일로 저장 후 경로+미리보기만 전달 / 여러 훅 값은 모두 수신
-  source: https://code.claude.com/docs/en/hooks
+  - '같은 이벤트의 여러 훅 문맥은 모두 전달; 각 값이 10,000자를 넘으면 파일 경로와 최대 2,000자 미리보기로 대체'
+  - '`stop_hook_active`가 true면 이미 중단 후속 검사를 수행 중; 8회 연속 제한으로 무한 계속을 방지'
+  - '`SubagentStop` 문맥은 해당 서브에이전트 대상; 부모 문맥에는 Agent의 `PostToolUse` 사용'
+  source: https://code.claude.com/docs/en/hooks#add-context-for-claude
+  interview: "SubagentStop 훅이 additionalContext를 반환하면 부모 대화에도 전달되나요? Stop 훅에서 작업을 계속시키면서 반복 루프는 어떻게 방지하나요?"
+  answer: "아니다. SubagentStop 문맥은 서브에이전트의 다음 요청에 전달된다. 부모 대화에 문맥을 추가하려면 Agent 도구의 PostToolUse 훅을 사용한다. Stop 훅은 `stop_hook_active`를 검사해 이미 후속 실행 중인지 확인하고, Claude Code의 연속 8회 제한 안에서 조건을 처리해야 한다."
 - category: ai
   title: 상태줄 rate_limits — 5시간·7일 사용량을 항상 눈에 보이게
   summary: '상태줄(statusline) 스크립트는 stdin으로 받는 JSON에 rate_limits 필드를 포함한다. rate_limits.five_hour와 rate_limits.seven_day 각각에 used_percentage(0~100)와 resets_at(Unix epoch 초)가 들어 있어, 5시간·7일 사용 한도를 몇 % 썼고 언제 리셋되는지 바닥에 상시 표시할 수 있다. 단 이 필드는 Claude.ai 구독자(Pro/Max)에게만, 그것도 세션 첫 API 응답 이후에 나타나며 각 윈도우가 독립적으로 없을 수 있어 jq에서 // empty로 부재를 처리해야 한다. 상태줄은 로컬에서 돌고 API 토큰을 쓰지 않으니 한도 추적에 부담이 없다.
