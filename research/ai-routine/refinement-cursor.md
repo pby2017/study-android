@@ -845,4 +845,8 @@ Rules:
 - Made the platform boundary explicit: repository requires Apple Silicon/macOS and MLX; no Android runtime support or Android performance evidence was found
 - Repository attention snapshot: 18 stars, 0 forks; treated as modest interest, not validation of the claims
 - Research note: `research/ai-routine/20261122-070000-q4-kv-cache-refinement.md`
+- Reviewed and refined `Codex Remote GA` as an AI+Android remote-development workflow
+- Rechecked official Codex Remote release entry and remote-connections guide; clarified phone-as-control-plane, host-side execution/resources, QR phone↔host pairing, retained sandbox/approval controls, and host availability requirements
+- Removed outdated app version and unrelated DigitalOcean plugin detail; added intermediate level and interview recall
+- Research note: `research/ai-routine/20261122-071500-codex-remote-android-refinement.md`
 - Next: inspect the next older AI/AI+Android card; verify its claims and platform applicability before editing
