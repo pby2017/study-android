@@ -8653,13 +8653,16 @@ cards:
   - Early termination bias — weak models look better on step ratio
   source: https://arxiv.org/abs/2603.14465
 - category: ai
-  title: Android Bench — 100 real Android PR·instrumentation test·GPT 5.5 74%
-  summary: Android Bench(Google·developer.android.com/bench·android-bench/android-bench) — LLM coding eval for Android-specific engineering not covered by generic SWE-bench. 100 tasks from 38989 public PR pool — Compose migration·Wear OS networking·breaking API·unit+emulator instrumentation verify. mini-swe-agent inference+patch verifier Docker harness. June 2026 — GPT 5.5 74.0%·Gemini 3.5 Flash 63.7%·Claude Opus 4.7 68.7%·GLM 5.1 59.7%. vs SWE-bench(generic patch) ·MobileRisk-Live(GUI safety) ·ProcCtrlBench(samples AndroidBench) — Android Bench=platform-specific capability axis.
+  level: "중급"
+  title: Android Bench 2.0 — Android 코딩 에이전트를 완성도와 실제 UI로 평가하기
+  summary: Android Bench 2.0은 범용 코딩 점수로 놓치기 쉬운 Android 앱 개발 능력을 평가한다. 30개 장기 과제를 에이전트별로 5회 실행하고, 빌드·계측 테스트·데이터 상태뿐 아니라 에뮬레이터 UI와 접근성 트리도 확인한다. 모든 검증을 통과한 비율(pass rate)과 실패한 과제의 진행 정도(completion rate)를 함께 본다. 따라서 순위만 비교하지 말고 과제 묶음·에이전트 설정·신뢰 구간·비용도 함께 읽는다.
   points:
-  - Instrumentation tests — emulator verify not just unit test pass
-  - Real GitHub Android repos — Compose·Wear·framework migration tasks
-  - Model-agnostic harness — mini-swe-agent+LiteLLM any model
+  - 과제는 앱 생성·기능 추가·마이그레이션·크로스플랫폼 앱의 Android 전환까지 포함
+  - pass rate는 완전 통과, completion rate는 통과하지 못한 실행의 부분 진척을 보완
+  - 시각 평가는 스크린샷만 보지 않고 UI 탐색과 접근성 트리도 함께 검사
   source: https://developer.android.com/bench
+  interview: "Android Bench 2.0에서 pass rate만 보면 어떤 정보를 놓치며, 이를 어떤 지표가 보완하나요?"
+  answer: "pass rate는 완전한 성공 여부만 보여 주므로 거의 끝났지만 일부 검증에 실패한 실행과 시작도 못 한 실행을 구분하지 못한다. completion rate가 기능·회귀·요구사항·시각 검증의 부분 진척을 보완한다. 다만 두 지표 모두 특정 과제·에이전트 설정의 결과이므로 반복 실행 수, 신뢰 구간, 지연·비용과 함께 해석해야 한다."
 - category: ai
   title: Claude Code Routines — cloud prompt+repo+connectors·schedule·GitHub·API fire
   summary: Claude Code Routines(research preview·v2.1.105+·2026-04) — saved config(prompt·repo·connectors) running on Anthropic cloud infrastructure — laptop closed OK. triggers — cron schedule(min 1h recurring)·GitHub PR/release filters·POST /fire API(bearer token·experimental-cc-routine-2026-04-01 beta header). create from claude.ai/code/routines·Desktop Remote·CLI /schedule. autonomous full session — no permission prompts, shell+repo skills+connectors scoped per routine. Pro 5/day·Max 15·Team/Enterprise 25 daily routine cap. vs /loop(session-bound·local files) ·Cursor Automations(multi-repo cloud) ·Desktop scheduled task(local machine on) — Routines=Anthropic-hosted repo-centric automation.

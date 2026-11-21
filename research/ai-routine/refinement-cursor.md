@@ -836,4 +836,8 @@ Rules:
 - Preserved API migration, 1-image PNG/SynthID result and `NO_IMAGE` handling
 - Sources: Firebase Imagen migration guide, Nano Banana image generation guide, supported models list
 - Research note: `research/ai-routine/20261122-090000-firebase-imagen-nano-banana-migration.md`
-- Next: inspect the next AI+Android card after the Imagen migration entry
+- Reviewed and refined `Android Bench` after confirming that the existing card described the superseded 1.0 benchmark and stale model scores
+- Rechecked current Android Developers leaderboard and Android Bench 2.0 methodology: 30 long-horizon tasks, five runs per task, pass and completion rates, containerized AVD evaluation, deterministic functional checks, multimodal UI and accessibility verification
+- Removed volatile model ranking/score claims; explained why pass rate needs completion rate and task/run context
+- Research note: `research/ai-routine/20261122-064500-android-bench-2-refinement.md`
+- Next: inspect the next older AI+Android card after Android Bench; verify its core angle and sources before editing
