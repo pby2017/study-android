@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Google Agents CLI — 코딩 에이전트로 만들고 평가한 뒤 배포` around the current setup→scaffold→eval→deploy workflow, supported framework paths, GA/current maintenance, and cloud billing/IAM boundary; next candidate: inspect `Copilot SDK GA` for current language/API status, release claims, persistent memory/tool deferral semantics, and distinguish SDK embedding from Copilot CLI/app.
+Current position: refined `Microsoft Copilot SDK — 제품에 에이전트 runtime 통합하기` around its June 2026 stable API GA, six language ecosystems, JSON-RPC/CLI feature boundary, phased transition to Microsoft Copilot SDK, and the fact that Java support does not establish Android deployment; next candidate: `Copilot CLI — cloud sessions and mobile availability`.
 
 Last update: 2026-11-22 07:45 KST
 
@@ -750,4 +750,9 @@ Rules:
 - Added a critical credential-precedence caveat: `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN` override federation; migration must unset keys, confirm WIF is selected, then revoke the key
 - Refined mechanism and least-privilege guidance: OIDC JWT → issuer/rule checks → scoped service-account token; configure workspace/scope and rely on SDK refresh while retaining upstream IdP controls
 - Research note: `research/ai-routine/20261122-120000-claude-workload-identity-federation.md`
+- Reviewed and refined: `Copilot SDK GA` against GitHub's GA announcement, October SDK transition announcement, current compatibility docs, quickstart, and repository metadata
+- Corrected release framing: GA is June 2, 2026; naming transition to Microsoft Copilot SDK began October 28 and is phased
+- Clarified SDK versus CLI boundary: SDK exposes JSON-RPC-supported operations; terminal-only interactive features do not automatically become SDK methods
+- Recorded GitHub repository attention snapshot (10.7k stars, 1.5k forks on 2026-11-22) as volatile evidence only; explicitly avoided inferring Android deployability or on-device inference from Java support
+- Research note: `research/ai-routine/20261122-123000-copilot-sdk-ga.md`
 - Next: inspect `A2UI + MCP Apps`

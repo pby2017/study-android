@@ -3387,16 +3387,16 @@ cards:
   interview: "Google Agents CLI는 코딩 에이전트 자체인가요? 생성한 AI 에이전트는 어떻게 검증하고 배포하나요?"
   answer: "아니다. Google Agents CLI는 코딩 에이전트가 사용할 명령과 skills를 제공하는 개발 도구다. `agents-cli create`로 에이전트 프로젝트·테스트·평가 데이터셋을 만들고 `eval run`으로 반복 평가한 뒤 `deploy`로 Cloud Run, Agent Runtime 또는 GKE에 배포한다. 로컬 개발은 클라우드 배포와 달리 GCP 결제/IAM 설정이 필요하지 않지만, 실제 클라우드 배포는 결제와 권한 및 사용량 비용을 고려해야 한다."
 - category: ai
-  title: Microsoft Copilot SDK v2 — 앱 안에 심는 다중 언어 에이전트
+  title: Microsoft Copilot SDK — 제품에 에이전트 runtime 통합하기
   level: "중급"
-  summary: Microsoft Copilot SDK는 Copilot CLI와 별개로 에이전트 runtime을 앱·서비스에서 호출하는 SDK다. TypeScript, Python, Go, .NET, Rust, Java에서 세션·도구·MCP·streaming을 구성하며, v2부터는 native runtime이 기본적으로 앱 프로세스 안에서 실행된다. 이 기본값은 별도 프로세스 운영을 줄이지만 sandbox나 crash isolation을 제공하지 않는다. 런타임 격리가 필요하면 spawned subprocess 연결을 명시하고, 배포 대상 OS·CPU에 맞는 native runtime 포함 여부도 확인한다. GitHub Copilot 구독 또는 지원 provider의 BYOK 인증이 필요하다.
+  summary: Microsoft Copilot SDK는 앱·서비스가 Copilot 에이전트 runtime을 호출하도록 하는 프로그래밍 인터페이스다. 2026년 6월 stable API로 GA됐고, Node.js/TypeScript·Python·Go·.NET·Java·Rust를 지원한다. 세션·도구·MCP·streaming 등을 통합할 수 있지만 SDK가 CLI 기능 전부를 노출하지는 않는다. 10월부터 Microsoft Copilot SDK로 이름과 저장소를 단계적으로 전환 중이며 기존 패키지 이름도 한동안 남는다. SDK는 CLI runtime과 통신하므로 Copilot CLI 설치·인증 등 언어별 선행 조건을 확인해야 한다. Java 지원은 Android 배포나 온디바이스 추론 지원을 뜻하지 않는다.
   points:
-  - "6개 언어 SDK로 동일한 Copilot agent runtime과 도구·세션 흐름을 제품에 통합"
-  - "v2 기본 실행은 in-process: 별도 프로세스가 필요 없지만 sandbox·crash isolation은 없음"
-  - "격리가 필요하면 spawned subprocess를 선택하고, 플랫폼별 native runtime 번들을 검증"
-  source: https://github.com/microsoft/copilot-sdk/releases/tag/v2.0.0
-  interview: "Copilot SDK v2의 기본 in-process runtime을 모든 서비스에 그대로 적용해도 될까요?"
-  answer: "아니다. 프로세스 간 통신과 별도 runtime 운영은 줄지만 native runtime이 앱과 같은 프로세스에서 실행되므로 sandbox나 crash isolation은 없다. crash 격리나 클라이언트별 프로세스 설정이 필요하면 spawned subprocess 연결을 선택하고, 배포 OS·CPU에 맞는 runtime bundle도 확인한다."
+  - "stable API GA(2026-06-02): 세션·도구 호출·파일 수정·streaming을 제품 코드에서 구성"
+  - "SDK는 JSON-RPC로 CLI와 통신; CLI 전용 대화형 기능이 SDK에서도 모두 사용 가능한 것은 아님"
+  - "이름·조직 전환은 진행 중: 현재 문서와 패키지 이름을 확인하고, Java 지원을 Android runtime 지원으로 오해하지 않기"
+  source: https://github.blog/changelog/2026-06-02-copilot-sdk-is-now-generally-available/
+  interview: "Copilot SDK로 CLI의 모든 기능을 호출할 수 있고, Java SDK는 Android 앱에서도 바로 쓸 수 있을까요?"
+  answer: "둘 다 문서 확인이 필요하다. SDK는 CLI와 JSON-RPC로 통신하며 프로토콜에 노출된 API만 제공하므로 일부 터미널 전용 기능은 사용할 수 없다. Java 17 SDK 안내는 Java 환경을 대상으로 하며 Android 배포나 온디바이스 추론을 입증하지 않는다. 제품에 넣기 전 SDK·CLI 호환표와 대상 런타임 조건을 확인한다."
 - category: ai
   title: GitHub MCP Secret Scanning — AI 작업 루프에서 커밋 전 비밀정보 찾기
   level: "중급"
