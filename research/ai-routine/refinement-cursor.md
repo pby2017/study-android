@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android XR + Gemini — Geospatial 좌표를 구조화 JSON 투어로 바꾸는 패턴` for current accuracy semantics, tracking readiness, grounding limits, and location consent; next candidate: inspect `Android 17 AppFunctions Agent Skill` for preview status and production integration boundaries.
+Current position: refined `Android 17 AppFunctions Agent Skill` for Android 16+ availability, the experimental API and Connected Apps preview gates, caller permissions, and safe function scope; next candidate: inspect `Android 17 NPU 접근 선언` for target SDK boundary, manifest requirements, and rollout status.
 
-Last update: 2026-11-22 05:30 KST
+Last update: 2026-11-22 05:40 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -633,3 +633,8 @@ Rules:
 - Sources re-checked: current Android XR Geospatial setup docs (updated 2026-11-10 UTC), official Gemini XR guide, official Geospatial Tour implementation post
 - Kept Preview status attributed to the demo announcement; current setup docs reviewed do not explicitly label the lifecycle state
 - Next: inspect `Android 17 AppFunctions Agent Skill`.
+
+- Reviewed and refined: `Android 17 AppFunctions Agent Skill` (corrected Android 16+ availability; separated the Experimental API status from the Connected Apps developer preview; clarified caller permission and least-privilege boundary)
+- Sources re-checked: AppFunctions overview and skill docs (both updated 2026-11-16 UTC); Connected Apps guide; API migration guidance
+- Removed outdated `@AppFunction` annotation claim; current migration docs describe the service-entry-point architecture
+- Next: inspect `Android 17 NPU 접근 선언`.

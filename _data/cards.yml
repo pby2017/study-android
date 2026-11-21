@@ -3266,15 +3266,16 @@ cards:
   interview: "위치 기반 XR 투어에서 정확도 값과 JSON schema를 어떻게 해석하고, 어떤 실패 경로를 설계해야 하나요?"
   answer: "두 정확도 값은 68% 신뢰 수준의 위치 반경과 방향 오차 추정치이며 낮을수록 좋다. 제품 요구에 맞는 임계값을 정하고 API가 RUNNING일 때만 좌표를 사용한다. VPS 미지원·추적 미준비·정확도 부족 시 재시도나 기능 중단을 제공한다. Maps grounding은 장소 근거를 보강하고 schema는 응답 모양만 제한하므로 장소·경로를 별도 확인해야 한다. 좌표를 클라우드 모델에 보낼 때 데이터 사용 동의를 받아야 한다."
 - category: ai
-  title: Android 17 AppFunctions Agent Skill — 앱 기능을 에이전트 도구 코드로 생성·검증
-  summary: 'Android 17은 AppFunctions를 ''인텔리전스 시스템''의 핵심 앱 통합 지점으로 확장한다. 앱은 @AppFunction을 붙인 Kotlin 함수와 KDoc으로 노트 생성, 장바구니 추가 같은 기능을 선언하고, Android MCP의 온디바이스 도구처럼 에이전트에 노출한다. 새 AppFunctions agent skill은 앱의 핵심 워크플로우를 분석해 필요한 Kotlin 코드를 만들고, LLM tool-calling에 맞게 KDoc을 다듬으며, ADB 테스트·디버깅 명령까지 제안한다. Gemini 통합은 private preview라 바로 배포 기능으로 보면 안 되고, 지금은 함수 경계와 설명 문서를 에이전트가 호출하기 좋게 설계하는 준비 단계로 보는 것이 맞다.
-
-    '
+  level: "고급"
+  title: AppFunctions Agent Skill — 앱 기능을 온디바이스 에이전트 도구로 준비
+  summary: 'AppFunctions는 Android 16 이상에서 앱이 선택한 기능을 OS의 함수 레지스트리에 노출해, 권한이 있는 시스템 에이전트가 앱 UI 밖에서 호출하게 하는 Android MCP 방식이다. AppFunctions Agent Skill은 앱 흐름을 분석하고 Kotlin 구현·KDoc·ADB 테스트 단계를 돕는다. 그러나 API 자체는 현재 Experimental preview이며, Gemini 연동은 별도 Connected Apps Platform 개발자 프리뷰에 앱 등록·번들 제출·테스터 설정이 필요하다. 일반 앱이 다른 앱의 함수를 임의 호출할 수 있는 것도 아니다. 따라서 안전하고 사용자 UI에 이미 있는 좁은 동작만 노출하고, AI 생성 코드와 함수 권한·실행 결과를 검증한다.'
   points:
-  - '@AppFunction + KDoc: 앱 기능을 OS/에이전트가 발견할 수 있는 도구로 선언'
-  - 'agent skill: Kotlin 코드 생성, KDoc 최적화, ADB 테스트 명령 제안'
-  - 'Gemini 통합은 private preview: 프로덕션 전 함수 경계 설계가 핵심'
-  source: https://android-developers.googleblog.com/2026/06/Android-17.html
+  - 'Android 16+ AppFunctions: 선택한 Kotlin 기능을 OS 레지스트리에 등록; API는 Experimental preview'
+  - 'Skill의 4단계: 기능 발굴 → 코드/설정 → KDoc 다듬기 → ADB 테스트·디버깅'
+  - 'Gemini 사용은 Connected Apps 별도 개발자 프리뷰·번들 제출·테스터 등록 필요'
+  source: https://developer.android.com/ai/appfunctions?hl=en
+  interview: "AppFunctions를 구현하면 모든 Gemini 사용자와 다른 앱에서 바로 함수를 호출할 수 있나요?"
+  answer: "아니다. AppFunctions API는 현재 Experimental preview이고, Gemini 연동에는 Connected Apps Platform developer preview 가입과 Google Connected Console 등록·앱 번들 제출·테스터 설정이 필요하다. 미게시 버전은 등록된 테스터만 쓸 수 있다. 다른 앱의 AppFunctions 호출은 EXECUTE_APP_FUNCTIONS 권한이 필요한데, Android는 이를 승인된 시스템 어시스턴트에만 부여한다. 앱은 안전하고 기존 UI가 제공하는 범위의 기능만 노출해야 한다."
 - category: ai
   title: Android 17 NPU 접근 선언 — 온디바이스 AI 앱은 하드웨어 기능을 명시해야 한다
   summary: 'Android 17에서 앱이 NPU에 직접 접근해야 한다면 manifest에 FEATURE_NEURAL_PROCESSING_UNIT을 선언해야 한다. 대상은 LiteRT NPU delegate, 벤더별 NPU SDK, deprecated NNAPI를 쓰는 앱까지 포함된다. 선언이 없으면 target SDK 37 이상 앱은 NPU 접근이 차단될 수 있다. 온디바이스 LLM, 비전 모델, 음성 모델처럼 가속기 의존도가 큰 기능은 단순히 라이브러리만 붙이는 문제가 아니라, 기기 기능 선언·fallback 경로·성능 테스트를 함께 관리해야 한다. AI 기능을 출시할 때 CPU/GPU/NPU 경로를 명확히 나누는 체크리스트가 필요해진다.
