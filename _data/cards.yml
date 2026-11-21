@@ -299,6 +299,17 @@ cards:
   source: https://developer.android.com/topic/performance/baselineprofiles/overview
   interview: "Baseline Profile은 모든 앱에서 시작 시간을 일정 비율만큼 줄여 주는가?"
   answer: "아니다. 효과는 포함한 코드 경로, 라이브러리, 기기와 측정 조건에 따라 달라지므로 대표 흐름을 측정해 검증한다."
+- category: android
+  level: "고급"
+  title: "Compose Stability — 건너뛰기는 목적이 아니라 최적화 수단"
+  summary: "Compose는 재구성 시 입력이 바뀌지 않은 Composable의 실행을 생략할 수 있다. Kotlin 2.0.20부터 Strong Skipping이 기본이며, 불안정한 입력도 인스턴스 동일성으로 비교해 건너뛸 수 있다. 그렇다고 모든 타입에 안정성 어노테이션을 붙이지는 않는다. 먼저 실제 병목을 측정한다."
+  points:
+  - "Kotlin 2.0.20+: restartable Composable은 Strong Skipping 대상이 된다"
+  - "불안정한 값은 참조 동일성(===), 안정한 값은 equals()로 비교한다"
+  - "재구성 횟수만 보고 @Stable·@Immutable을 추가하지 말고 프로파일·벤치마크로 검증한다"
+  source: https://developer.android.com/develop/ui/compose/performance/stability/fix
+  interview: "Compose에서 재구성이 자주 보이면 모든 모델에 @Stable을 붙여야 하나?"
+  answer: "아니다. 재구성 자체는 오류가 아니다. 먼저 실제 성능 병목인지 추적·측정하고, 안정성 계약과 비교 비용까지 고려해 필요한 타입만 개선한다."
 - category: ai
   title: diagnose — 디버깅을 규율로 만드는 스킬
   summary: 'mattpocock/skills의 diagnosing-bugs는 어려운 버그를 "재현 가능한 실패 신호"에서 시작하게 만드는 디버깅 루프다. 순서는 재현·최소화 → 3~5개 가설 → 한 변수씩 계측 → 수정 → 회귀 테스트 → 정리로 이어진다. 좋은 점은 버그를 설명하는 말솜씨보다, 같은 명령으로 빨간불과 초록불을 반복해서 볼 수 있는지를 먼저 묻는다는 것이다. 그래서 AI에게 바로 코드를 고치게 하기보다, 실패를 빠르게 보여주는 테스트·스크립트·로그 지점을 먼저 만들고 그 신호 하나로 가설을 줄여 간다.
