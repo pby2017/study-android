@@ -2,11 +2,14 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Koog — Kotlin Android 앱에서 AI 에이전트를 만들 때 확인할 것`; next candidate: inspect the following card after Koog in `_data/cards.yml`.
+Current position: continue after `Google Stitch — AI 디자인 캔버스에서 UI 아이디어를 프로토타입으로 검증하기`; next candidate: inspect the following card after Stitch in `_data/cards.yml`.
 
-Last update: 2026-11-22 02:26 KST
+Last update: 2026-11-22 02:30 KST
 
 Current run:
+- Reviewed and refined: `Google Stitch` (updated from the March 2026 Google Labs announcement; replaced stale launch-era features with current AI canvas, design agent, voice iteration, prototype, DESIGN.md, MCP/SDK workflow)
+- Sources re-checked: current official Google Labs announcement
+- Explicitly framed generated prototypes as design aids, not validated Android UI implementations
 - Reviewed and refined: `Koog` (removed unsupported GA date and sweeping platform/pro-vider claims; captured Android target documentation ambiguity; clarified agent orchestration vs on-device inference and client-secret risk)
 - Sources re-checked: official Koog documentation and GitHub README
 - Reviewed and refined: `Maestro` (replaced stale MaestroGPT claims with the current built-in MCP agentic UI testing workflow; highlighted YAML review and device-action risk)
@@ -226,7 +229,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after Koog in `_data/cards.yml`; keep only topics that meet the AI or AI+Android scope.
+- Continue with the card immediately after Google Stitch in `_data/cards.yml`; keep only topics that meet the AI or AI+Android scope.
 
 Per successful refinement run, update this file with:
 - timestamp

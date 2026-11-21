@@ -2663,15 +2663,18 @@ cards:
   answer: "그렇다고 단정할 수 없다. 각 모듈과 제공자 통합이 Android 타깃을 지원하는지 사용하는 버전의 Gradle metadata와 문서에서 확인하고 실제 Android 앱으로 컴파일·실행한다. Koog는 에이전트 실행 흐름을 구성하는 프레임워크이지 모델을 자동으로 기기 안에서 추론하는 런타임은 아니다. 원격 LLM 자격 증명도 앱에 포함하지 않는다."
 
 - category: ai
-  title: Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구
-  summary: 'Google Stitch는 Google Labs의 AI UI 도구로, 자연어·이미지로 모바일·웹 UI를 만들고 대화식으로 계속 다듬게 해 준다. 화면을 이어 붙여 인터랙티브한 앱 흐름을 확인할 수 있고, 음성으로 캔버스와 대화하면서 색상·메뉴·레이아웃 변형을 요청할 수 있다. Stitch는 MCP 서버·SDK·skills로 다른 개발 도구와 연결되고, AI Studio나 Antigravity로 넘겨 후속 작업을 이어갈 수 있다.
-
-    '
+  level: "중급"
+  title: Google Stitch — AI 디자인 캔버스에서 UI 아이디어를 프로토타입으로 검증하기
+  summary: 'Stitch는 Google Labs의 AI-native 디자인 캔버스다. 자연어와 이미지·텍스트·코드를 맥락으로 제공해 고해상도 UI 시안을 만들고, 음성 대화와 디자인 에이전트로 반복 수정할 수 있다. 화면을 연결해 인터랙티브 프로토타입을 미리 보고, DESIGN.md로 디자인 규칙을 다른 도구와 공유하거나 MCP·SDK로 연결한다. 생성된 화면은 검증된 Android 구현 코드가 아니므로 접근성·반응형 동작·실기기 UI는 별도로 확인한다.'
   points:
-  - '자연어·이미지 입력으로 모바일·웹 UI와 프런트엔드 코드 생성'
-  - '화면을 이어 붙여 인터랙티브한 앱 흐름을 바로 확인'
-  - '음성 편집 + MCP/SDK/skills로 다른 도구와 연결'
+  - '요구사항과 참고 이미지·코드를 캔버스에 넣어 UI 시안 생성·수정'
+  - '화면을 연결하고 Play로 사용자 흐름 프로토타입 미리보기'
+  - 'DESIGN.md, MCP 서버, SDK를 통해 디자인 컨텍스트를 다른 도구와 연결'
+  - '실제 구현 전 접근성·화면 크기·상태별 동작을 Android에서 검증'
   source: https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/
+  interview: "Stitch가 화면을 연결한 인터랙티브 프로토타입을 만들었다면, Android 구현 검증도 끝난 건가요?"
+  answer: "아니다. 프로토타입은 아이디어와 사용자 흐름을 빠르게 검토하는 도구다. 실제 앱은 다양한 화면 크기와 글자 크기, 접근성, 로딩·오류 상태, 시스템 동작을 지원해야 한다. 디자인 규칙과 사용자 흐름을 참고해 Android UI를 구현한 뒤 에뮬레이터와 실기기에서 별도로 검증한다."
+
 - category: ai
   title: v0(Vercel) — 프롬프트·스크린샷·Figma에서 프로덕션급 React UI 코드를 생성하는 AI UI 빌더
   summary: 'v0는 Vercel이 만든 AI UI 생성 도구로, 텍스트·스크린샷·Figma 파일에서 shadcn/ui 기반 프로덕션 React 컴포넌트를 생성한다. Design Mode로 비개발자도 시각적으로 타이포·색상·레이아웃을 편집 가능하고, Cmd+K로 인라인 AI 편집. Figma 디자인 토큰을 추출해 브랜드 일관성 유지. Claude Design이 동작 구현에 강하다면, v0는 React/Next.js 컴포넌트 코드 품질에 특화.
