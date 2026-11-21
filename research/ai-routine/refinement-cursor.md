@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `React Native ExecuTorch + RAG — 모바일 앱에 로컬 임베딩·검색·생성을 연결하기`; next candidate: `gptme: 터미널 안에서 셸·파이썬·브라우저·파일 도구를 직접 쓰는 로컬-우선 코딩 에이전트`.
+Current position: continue after `gptme — 도구·스킬·메모리를 조합하는 확장형 에이전트 플랫폼`; next candidate: inspect the next card after gptme in `_data/cards.yml`.
 
 Last update: 2026-11-22 02:34 KST
 
@@ -16,6 +16,9 @@ Current run:
 - Reviewed and refined: `React Native ExecuTorch + RAG` (updated model examples and platform backend mapping; documented first-load downloads, runtime prerequisites, in-memory versus persistent vector stores, and privacy/network caveat)
 - Sources re-checked: official React Native RAG ExecuTorch integration README, project repository, ExecuTorch repository, and Expo implementation article
 - RAG repository displayed 351 stars at review; treated as a volatile activity signal, not quality evidence
+- Reviewed and refined: `gptme` (reframed from terminal coding agent to current extensible agent platform; clarified CLI/server/agent-template distinction, Skills/Lessons/plugins, MCP/ACP, local-first limitations, and permission boundary)
+- Sources re-checked: official gptme GitHub README and current documentation index
+- GitHub displayed 4.5k stars at review; volatile popularity signal, omitted from the card
 - Reviewed and refined: `Koog` (removed unsupported GA date and sweeping platform/pro-vider claims; captured Android target documentation ambiguity; clarified agent orchestration vs on-device inference and client-secret risk)
 - Sources re-checked: official Koog documentation and GitHub README
 - Reviewed and refined: `Maestro` (replaced stale MaestroGPT claims with the current built-in MCP agentic UI testing workflow; highlighted YAML review and device-action risk)
@@ -235,7 +238,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `gptme: 터미널 안에서 셸·파이썬·브라우저·파일 도구를 직접 쓰는 로컬-우선 코딩 에이전트`; keep only topics that meet the AI or AI+Android scope.
+- Continue with the card immediately after `gptme` in `_data/cards.yml`; keep only topics that meet the AI or AI+Android scope.
 
 Per successful refinement run, update this file with:
 - timestamp
