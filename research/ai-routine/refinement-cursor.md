@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android Live Threat Detection — on-device AI가 agent-like app abuse 패턴 탐지` to distinguish Google Play Protect platform behavior from app-facing APIs and qualify Android 17 rollout as a dated roadmap; next candidate: inspect the Android 17 agentic automation/device-state card for developer API, profile-policy, and user-consent boundaries.
+Current position: refined `Android AppFunctions 1.0` to separate stable Jetpack artifacts from experimental platform/provider integration and added `Android Enterprise AI 경계` for AppFunctions versus Agentic Automation policies, work-profile exclusion, and current-user controls; next candidate: review `Android AI Sample Catalog` for current model/device prerequisites and production-readiness boundaries.
 
 Last update: 2026-11-22 07:45 KST
 
@@ -778,4 +778,8 @@ Rules:
 - Qualified Android 17 dynamic-signal monitoring as a May 2026 H2 rollout roadmap, not universal current availability; included SMS forwarding, accessibility overlay, icon-hiding/background-launch examples
 - Added intermediate level and interview practice; removed unrelated Advanced Protection feature list from this card's core
 - Research note: `research/ai-routine/20261122-140000-android-live-threat-detection.md`
+- Added `Android Enterprise AI 경계 — AppFunctions와 Agentic Automation 분리` after checking Android 17 Enterprise and DevicePolicyManager references
+- Distinguished `setAppFunctionsPolicy(APP_FUNCTIONS_DISABLED)` (current user's AppFunctions) from Agentic Automation policy via `setNearbyAppStreamingPolicy`; work-profile data/automation boundaries stated separately
+- Refined adjacent AppFunctions card: Jetpack 1.0.0 stable (Nov 18) does not make platform integration experimental preview or Connected Apps provider support GA
+- Research note: `research/ai-routine/20261122-143000-android-enterprise-agent-boundaries.md`
 - Next: inspect `A2UI + MCP Apps`
