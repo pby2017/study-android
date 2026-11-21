@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `ACE-Step 1.5`; next candidate: inspect `Cadence` for its Android AI/music-generation workflow, health-data permissions, privacy boundaries, and whether the linked project is maintained and actually open source.
+Current position: continue after `Cadence`; next candidate: revalidate `GitHub Issues MCP Fields` announcement, MCP support details, current availability, and duplicate status.
 
-Last update: 2026-11-22 04:42 KST
+Last update: 2026-11-22 04:55 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -559,3 +559,14 @@ Rules:
 - Reviewed and refined: `ACE-Step 1.5` (changed from promotional speed/4GB headline to a model-configuration lesson; scoped <=6GB recommendation to 2B Turbo DiT with LM disabled, INT8 and CPU offload; clarified reported benchmarks and LoRA resource example).
 - Sources: https://github.com/ACE-Step/ACE-Step-1.5 ; https://huggingface.co/ACE-Step/Ace-Step1.5
 - Live attention snapshot: GitHub 15.1k stars and Hugging Face 106,079 downloads last month; volatile signals recorded in the audit note, not the card.
+
+
+## 2026-11-22 04:55 KST
+
+- Reviewed and refined `Cadence` using its Android README, `PromptBuilder.kt`, `MusicRepository.kt`, Gradle defaults, and privacy policy.
+- GitHub showed 4 stars, 0 forks, and 55 commits; the README offers v0.6.0 APK/closed Play test. Treated as a small prototype case study, not a popularity or production endorsement; removed unsupported open-source label.
+- Corrected the data-flow lesson: two configurable HTTP endpoints; checked Gradle defaults use OpenRouter for LLM and Cadence API for music generation. README's MiniMax example differs from the build default.
+- PromptBuilder includes health/activity context plus four-decimal GPS coordinates; MusicRepository sends context to the LLM and writes prompt text through `Log.d`. Card calls for release-logcat verification; no release artifact was inspected.
+- Replaced “fully private” claim with endpoint/payload/logging checks; privacy-policy anonymization statements are not treated as proof that contextual data is non-sensitive.
+- Sources: https://github.com/wtgme/cadence ; https://github.com/wtgme/cadence/blob/main/app/src/main/java/io/cadence/music/domain/PromptBuilder.kt ; https://github.com/wtgme/cadence/blob/main/app/src/main/java/io/cadence/music/data/api/MusicRepository.kt ; https://github.com/wtgme/cadence/blob/main/app/build.gradle.kts ; https://github.com/wtgme/cadence/blob/main/docs/privacy-policy.html
+- Next: revalidate `GitHub Issues MCP Fields` announcement and current availability.
