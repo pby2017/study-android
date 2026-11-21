@@ -840,4 +840,9 @@ Rules:
 - Rechecked current Android Developers leaderboard and Android Bench 2.0 methodology: 30 long-horizon tasks, five runs per task, pass and completion rates, containerized AVD evaluation, deterministic functional checks, multimodal UI and accessibility verification
 - Removed volatile model ranking/score claims; explained why pass rate needs completion rate and task/run context
 - Research note: `research/ai-routine/20261122-064500-android-bench-2-refinement.md`
-- Next: inspect the next older AI+Android card after Android Bench; verify its core angle and sources before editing
+- Reviewed and refined `Q4 KV Cache edge` as a multi-agent LLM inference research case study
+- Rechecked arXiv paper, HTML full text, and linked implementation; replaced inconsistent PPL summary with the concrete 4K Gemma 3 12B result (15.7s re-prefill vs 577ms warm restore)
+- Made the platform boundary explicit: repository requires Apple Silicon/macOS and MLX; no Android runtime support or Android performance evidence was found
+- Repository attention snapshot: 18 stars, 0 forks; treated as modest interest, not validation of the claims
+- Research note: `research/ai-routine/20261122-070000-q4-kv-cache-refinement.md`
+- Next: inspect the next older AI/AI+Android card; verify its claims and platform applicability before editing

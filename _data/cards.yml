@@ -8562,13 +8562,16 @@ cards:
   - HTTP token=admin — loopback+tunnel, public internet 노출 금지
   source: https://github.com/DioNanos/mcp-memory-rs
 - category: ai
-  title: Q4 KV Cache edge — multi-agent on-device attention state를 SSD에 persist
-  summary: Agent Memory Below the Prompt(arXiv 2603.04428·2026) — edge multi-agent LLM inference에서 agent 전환마다 KV cache re-prefill(4K context Gemma 3 12B 15.7s)이 병목. Q4 quantized KV cache를 SSD에 persist, eviction 시 vLLM처럼 free하지 않고 disk page-in — warm 577ms·hot 719ms vs re-prefill 15.7s. 24GB edge — FP16 8K에서 agent 3개 vs Q4 12개. multi-agent workflow는 한 agent decode 중 다음 agent load로 page-in latency hide. PPL impact -0.10~+0.19 across models. vs MiMo Code(harness state) ·on-device Nano inference — Q4 KV=attention state virtual memory for multi-agent edge.
+  level: "고급"
+  title: 멀티에이전트 LLM의 영속 KV 캐시 — 재계산 대신 저장·복원
+  summary: 여러 에이전트가 각자 대화 문맥을 유지하면 KV 캐시가 메모리를 차지하고, 캐시를 버린 뒤에는 프롬프트를 다시 처리해야 한다. 한 연구는 캐시를 4비트로 양자화해 디스크에 저장하고 필요할 때 복원하는 방식을 제안했다. 논문은 Apple M4 Pro에서 일부 모델·문맥 길이를 시험했으며, 4K Gemma 3 12B 설정은 재처리 15.7초와 따뜻한 캐시 복원 577ms를 보고했다. 공개 구현은 MLX 기반 Apple Silicon 전용이다. Android 적용이나 성능은 입증되지 않았다.
   points:
-  - Re-prefill 15.7s→577ms — session restart·memory pressure 후에도 context restore
-  - Q4 4-bit — edge RAM budget에서 agent slot 4× 확장
-  - Decode/load overlap — multi-agent interleave가 I/O latency 상쇄
+  - KV 캐시는 토큰마다 계산한 attention의 key/value 상태로, 다음 토큰 생성에 재사용
+  - Q4 저장은 캐시 메모리를 줄이는 대신 복원 비용과 모델별 품질 변화를 검증해야 함
+  - 논문 결과를 Android 성능으로 일반화하지 말 것: 공개 코드는 Apple Silicon·MLX 대상
   source: https://arxiv.org/abs/2603.04428
+  interview: "멀티에이전트 LLM에서 KV 캐시를 디스크에 영속화하면 어떤 비용을 줄이며, 이 연구를 Android 앱에 바로 적용할 수 없는 이유는 무엇인가요?"
+  answer: "에이전트가 다시 활성화될 때 기존 문맥 전체를 prefill하는 계산을 줄일 수 있다. 대신 캐시 저장·복원 I/O와 양자화에 따른 품질 변화를 고려해야 한다. 이 논문의 공개 구현은 MLX와 Apple Silicon을 대상으로 하므로 Android 런타임 지원이나 Android 기기 성능을 입증하지 않는다."
 - category: ai
   title: SWE-STEPS — dependent PR chain·stateful coding agent eval·20pp inflation
   summary: SWE-STEPS(arXiv 2604.03035·Apr 2026) — coding agent를 isolated single-PR(SWE-bench style)이 아니라 temporally ordered PR chain(3–11 PR·median 1–3주 dev work)에서 평가. 168 task·963 PR·6 Python repos·Conversational(iterative request) + PRD(monolithic plan) 두 setting. isolated PR eval은 stateful setting 대비 success rate 최대 20pp 과대 — spillover·regression 누적 무시. SonarQube — agent code가 cognitive complexity·technical debt 더 높음(test pass해도 repo health degrade). vs SlopCodeBench(iterative extension quality) ·Dialogue-SWEBench(interactive spec) — SWE-STEPS=temporal repo evolution axis.
