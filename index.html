@@ -16,12 +16,19 @@ title: study — 1분 지식 카드
     {% assign cat = site.data.cards.categories | where: "id", card.category | first %}
     <article class="card" data-cat="{{ card.category }}" data-idx="{{ forloop.index }}" style="--accent:{{ cat.color }}">
       <span class="badge">{{ cat.name }}</span>
+      {% if card.level %}<span class="level">{{ card.level }}</span>{% endif %}
       <h2>{{ card.title }}</h2>
       <p class="summary">{{ card.summary | strip_newlines }}</p>
       {% if card.points %}
       <ul class="points">
         {% for p in card.points %}<li>{{ p }}</li>{% endfor %}
       </ul>
+      {% endif %}
+      {% if card.interview %}
+      <details class="interview">
+        <summary>면접 복기 질문</summary>
+        <p>{{ card.interview }}</p>
+      </details>
       {% endif %}
       {% if card.source %}
       <a class="src" href="{{ card.source }}" target="_blank" rel="noopener">원본 →</a>
