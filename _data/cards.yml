@@ -3326,10 +3326,10 @@ cards:
 - category: ai
   title: Android Computer Control — UI 자동화 대상과 assistant 권한 경계
   level: "중급"
-  summary: 'Android Computer Control은 OEM 선탑재 assistant가 권한을 받아 앱 UI를 대신 조작하는 초기 Preview 프레임워크다. assistant는 `ACCESS_COMPUTER_CONTROL` 권한으로 한 번에 최대 6개 대상 앱을 순차 실행하는 세션을 요청하며, 시스템은 첫 자동화 전에 사용자 승인 대화상자를 표시한다. 승인 후 가상 디스플레이에서 화면을 캡처하고 탭·스와이프·텍스트 입력을 수행한다. 대상 앱은 별도 통합 없이 참여할 수 있지만 지원 앱은 제한적이다. 결제 확인 등 사용자 판단이 필요한 단계에서는 assistant가 제어권을 넘길 수 있다. AppFunctions처럼 명시적 기능을 호출하는 방식과 달리, 이 프레임워크는 기존 UI를 조작한다. 두 방식의 자동 fallback 관계는 보장되지 않는다.'
+  summary: 'Android Computer Control은 OEM 선탑재 assistant가 앱 UI를 조작하는 Preview 기능이다. assistant는 privileged `ACCESS_COMPUTER_CONTROL` 권한으로 최대 6개 앱을 순차 처리하는 단일 세션을 요청한다. 대상 앱과 처음 상호작용할 때 시스템 승인 후 가상 디스플레이에서 화면 캡처와 입력을 수행한다. 대상 앱은 별도 통합이 필요 없지만 지원 앱은 제한적이다. AppFunctions는 명시적 기능 호출이고 Computer Control은 UI 조작이며, 자동 fallback 관계는 문서화되어 있지 않다.'
   points:
-  - assistant는 privileged `ACCESS_COMPUTER_CONTROL`; 한 세션에 최대 6개 앱을 순차 처리
-  - 첫 사용 시 시스템 승인 필요; 화면 캡처와 입력 이벤트로 가상 디스플레이의 UI 조작
+  - OEM 선탑재 assistant만 privileged `ACCESS_COMPUTER_CONTROL` 사용; 동시 세션은 1개, 최대 6개 앱 순차 처리
+  - 대상 앱별 첫 상호작용에 시스템 승인; 화면 캡처와 입력 이벤트로 UI 조작
   - 초기 Preview·제한된 대상 앱; 민감한 단계는 사용자에게 제어권을 넘길 수 있음
   source: https://developer.android.com/ai/computer-control
   interview: "대상 앱 개발자는 Computer Control 통합 SDK를 추가해야 하나요?"

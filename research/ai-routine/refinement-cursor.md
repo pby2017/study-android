@@ -824,3 +824,9 @@ Rules:
 - Sources re-checked: ML Kit Structured Output guide, release notes, and direct model access guide
 - Research note: `research/ai-routine/20261122-081500-mlkit-structured-output-refresh.md`
 - Next: inspect the next older AI+Android card; skip pure Android-only topics
+
+- Reviewed and refined: `Android Computer Control — UI 자동화 대상과 assistant 권한 경계`
+- Clarified one active session and that system consent is requested on the first interaction with each target app; maintained privileged OEM assistant requirement and limited Preview scope
+- Rechecked official Computer Control and AppFunctions docs; kept UI automation distinct from explicit tools and did not claim automatic fallback
+- Research note: `research/ai-routine/20261122-083000-android-computer-control-boundaries.md`
+- Next: inspect `Firebase AI Logic — 종료된 Imagen 호출을 Nano Banana로 이전` for model availability and migration facts
