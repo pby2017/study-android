@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `GitHub — third-party coding agent 코드도 보안 검증` to scope the feature to repository-integrated agents, capture scan types/default settings and attempted remediation, and avoid portraying automated checks as a security guarantee; next candidate: inspect `Google Agents CLI` for current product naming, availability, supported agents and commands, and distinguish preview/product tiers.
+Current position: refined `Google Agents CLI — 코딩 에이전트로 만들고 평가한 뒤 배포` around the current setup→scaffold→eval→deploy workflow, supported framework paths, GA/current maintenance, and cloud billing/IAM boundary; next candidate: inspect `Copilot SDK GA` for current language/API status, release claims, persistent memory/tool deferral semantics, and distinguish SDK embedding from Copilot CLI/app.
 
-Last update: 2026-11-22 07:30 KST
+Last update: 2026-11-22 07:45 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -692,3 +692,10 @@ Rules:
 - Added explicit limitation: automated checks are not a security guarantee or human PR approval; did not extend cloud-agent-only dependency severity detail beyond what the third-party announcement states
 - Research note: `research/ai-routine/20261122-073000-github-third-party-agent-validation.md`
 - Next: inspect `Google Agents CLI`
+
+- Reviewed and refined: `Google Agents CLI` using Google Cloud's current end-to-end quickstart (updated 2026-11-20), official repo docs, release notes, and launch post
+- Updated to the lifecycle that remains current: `uvx ... setup` → `agents-cli create` → author/evaluate with `eval run` → `deploy`; clarified CLI+skills are developer tooling, not the coding agent or deployed runtime
+- Verified Python/Go ADK defaults and LangChain/Claude SDK templates; CLI GA v1.0.0 (2026-06-30), actively maintained through v1.15.0 (2026-11-17)
+- Added billing boundary: cloud deploy requires GCP project, billing and target IAM; distinguish from local development and check target pricing
+- Research note: `research/ai-routine/20261122-074500-google-agents-cli.md`
+- Next: inspect `Copilot SDK GA`
