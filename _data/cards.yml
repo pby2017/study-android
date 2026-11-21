@@ -451,15 +451,13 @@ cards:
   interview: "Claude Code에서 사용자 설정이나 플러그인이 문제인지 진단할 때 `--safe-mode`는 무엇을 비교하며, 어떤 설정은 계속 적용되나요?"
   answer: "일반 실행과 `claude --safe-mode` 실행을 비교해 사용자 정의 기능을 끈 뒤 문제가 사라지는지 본다. 인증·모델·기본 도구·권한은 유지된다. 또한 조직 정책 훅·상태 표시줄 같은 일부 managed 설정은 계속 적용되므로 safe mode가 모든 사용자 정의나 정책을 제거하는 모드는 아니다."
 - category: ai
-  title: /cd — 프롬프트 캐시 깨지 않고 작업 디렉터리 옮기기
-  summary: 'Claude Code(v2.1.169+)의 `/cd <path>`는 세션을 통째로 새 작업 디렉터리로 옮긴다. 핵심은 대화의 프롬프트 캐시가 유지된다는 점이다. 시스템 프롬프트를 다시 만드는 대신, 새 디렉터리의 CLAUDE.md를 메시지로 덧붙이는 방식이라 세션 중간에 캐시가 깨지지 않는다. 세션은 새 디렉터리의 프로젝트 저장소로 이동해서 `--resume`/`--continue`도 거기서 찾는다. 처음 가는 디렉터리면 신뢰 여부를 물어본다. 세션 이동 없이 디렉터리 접근만 추가하려면 `/add-dir`를 쓴다.
-
-    '
+  title: Claude Code /cd — 대화를 유지하며 작업 디렉터리와 프로젝트 설정 이동
+  summary: 'Claude Code의 `/cd <path>`는 대화 세션을 유지한 채 기본 작업 디렉터리를 바꾼다. 새 경로에서 세션을 다시 찾을 수 있고, 새 디렉터리의 CLAUDE.md와 프로젝트 설정·훅·MCP·플러그인·스킬·에이전트가 적용된다. 처음 가는 작업공간은 신뢰 확인이 필요하다. `/add-dir`는 기존 작업공간에 파일 접근을 더하는 기능이므로, 그 디렉터리의 전체 프로젝트 설정으로 이동하는 `/cd`와 목적이 다르다. `/cd`는 v2.1.169에 프롬프트 캐시를 깨지 않고 이동하는 기능으로 추가됐으며, 새 디렉터리 설정을 즉시 적용하는 동작은 v2.1.246부터다.'
   points:
-  - 세션을 새 작업 디렉터리로 이동 — 프롬프트 캐시 보존(CLAUDE.md를 메시지로 append)
-  - 세션이 새 디렉터리 저장소로 옮겨져 --resume/--continue도 거기서 인식
-  - 접근만 추가는 /add-dir / Cd 권한 규칙으로 대상 제한 가능 / v2.1.169 미만은 Unknown command
-  source: https://code.claude.com/docs/en/commands
+  - 세션·프롬프트 캐시를 유지하며 이동; 이전 대화는 새 프로젝트 경로에서 재개
+  - 새 작업공간은 신뢰 확인; 프로젝트 훅·MCP·플러그인 설정도 즉시 전환(v2.1.246+)
+  - 접근만 추가하려면 `/add-dir`; 허용·차단 경로로 `/cd` 대상을 제한할 수 있음
+  source: https://code.claude.com/docs/en/permissions#move-the-session-to-another-directory
 - category: ai
   title: 출력 스타일(Output Styles) — Claude의 역할·말투를 시스템 프롬프트째 바꾸기
   summary: '출력 스타일은 Claude가 ''무엇을 아는지''가 아니라 ''어떻게 응답하는지''를 바꾼다. 시스템 프롬프트를 직접 수정해 역할·톤·출력 형식을 매 턴 고정한다. 내장 스타일은 Default 외에 Proactive(즉시 실행), Explanatory(코딩 중 ''Insights'' 설명), Learning(직접 코드 일부를 짜도록 TODO(human) 마커를 남김) 세 가지가 있다. `/config`의 Output style에서 고르며 선택은 .claude/settings.local.json의 outputStyle에 저장된다. 세션 시작 시 한 번 읽으므로 변경은 /clear 후 적용된다. 커스텀 스타일은 .claude/output-styles의 마크다운 파일로 만들고, keep-coding-instructions: true면 코딩 지침을 유지한다.

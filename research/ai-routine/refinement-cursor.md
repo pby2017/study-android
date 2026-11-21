@@ -4,9 +4,15 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:30 KST
+Last update: 2026-11-22 07:36 KST
 
 ## Latest pass
+- Reviewed and refined: `Claude Code /cd — 대화를 유지하며 작업 디렉터리와 프로젝트 설정 이동`
+- Sources re-checked: current Claude Code Permissions/working-directory docs, Commands reference, and official changelog
+- Separated `/cd` availability in v2.1.169 from immediate destination-project configuration loading in v2.1.246; removed the unsupported internal explanation about appending CLAUDE.md as a user message
+- Clarified `/cd` (switch primary project context) versus `/add-dir` (add file access); documented trust prompt and session resume behavior
+- Next: continue oldest-first from the next AI/AI+Android card not yet explicitly checked in this cursor; avoid pure Android cards
+
 - Reviewed and refined: `Dia2 — 대화형 TTS의 조기 생성과 실제 스트리밍을 구분하기`
 - Source re-checked: official Nari Labs Dia2 repository README; current repository page showed 1.2k stars and 103 forks (volatile attention signal, not quality evidence)
 - Corrected Python/CUDA-only implication: documented CUDA 12.8+ setup and CPU fallback, while explicitly noting this does not establish Android support
