@@ -2,11 +2,14 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `BGE-M3 — 한 모델로 밀집·희소·멀티벡터 검색을 구성하는 법`; next candidate: inspect the following card after BGE-M3 in `_data/cards.yml`.
+Current position: continue after `Qwen3-Embedding — 검색 작업 지시문과 벡터 차원 선택하기`; next candidate: inspect the following card after Qwen3-Embedding in `_data/cards.yml`.
 
-Last update: 2026-11-22 01:54 KST
+Last update: 2026-11-22 01:58 KST
 
 Current run:
+- Reviewed and refined: `Qwen3-Embedding` (removed stale present-day leaderboard claim, corrected wrong source URL, clarified dimensions/instructions and dated official benchmark)
+- Sources re-checked: official Qwen3-Embedding model card and repository
+- No device-side/mobile support inferred from model size or dimension flexibility
 - Reviewed and refined: `BGE-M3` (removed unsupported consensus, model ranking, and CPU suitability claims; clarified three retrieval representations and RAG evaluation guidance)
 - Sources re-checked: official Hugging Face model card, FlagEmbedding repository, and latest arXiv paper version
 - Metrics: GitHub repository displayed about 12.3k stars; no popularity metric used as evidence of model quality
@@ -209,7 +212,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after BGE-M3 in `_data/cards.yml`; confirm current relevance and non-duplication before research.
+- Continue with the card immediately after Qwen3-Embedding in `_data/cards.yml`; confirm current relevance and non-duplication before research.
 
 Per successful refinement run, update this file with:
 - timestamp
