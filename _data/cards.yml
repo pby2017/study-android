@@ -3006,15 +3006,15 @@ cards:
   interview: 'OD-LLM은 왜 일반적인 저랭크 압축만 적용하지 않고 정규화와 층별 보정을 함께 사용하나요?'
   answer: '순차 추천 LLM은 사용자·아이템 행동 신호를 담은 표현을 압축 중 잃을 수 있다. 논문은 입력 활성값을 공분산 정규화해 SVD의 압축 손실을 다루고, 압축된 모델의 층별 활성값 차이를 보정한다. 압축률이 높아질수록 품질이 떨어질 수 있으므로 목표 기기와 실제 추천 데이터에서 모델 크기·지연·품질을 함께 측정해야 한다.'
 - category: ai
-  title: Project KARL — Kotlin 온디바이스 적응형 AI 라이브러리, 데이터가 디바이스를 절대 안 떠나는 프라이버시 우선(Apache-2.0)
-  summary: 'Project KARL은 프라이버시 우선 온디바이스 적응형 AI를 위한 Kotlin 라이브러리다. 모든 학습과 추론이 사용자 디바이스에서만 실행되어 데이터가 절대 외부로 전송되지 않는다(Zero Data Egress). 조합 가능한 컨테이너(Composable Container) 아키텍처로 AI 상태와 로직을 정의된 경계 내에서 관리. 사용자 행동에서 직접 학습해 키보드·생산성·건강·습관 앱 등의 개인화를 구현. Apache-2.0 라이선스.
-
-    '
+  title: 'Kotlin AI 라이브러리 도입 전 확인할 것: README의 Android 약속과 실제 Gradle 타깃'
+  summary: 'Project KARL은 Kotlin 기반 적응형 학습 라이브러리라고 소개되지만, 검토한 저장소의 core·KLDL·Room·Compose 모듈은 Gradle에서 JVM 타깃만 선언한다. 실행 가능한 예제도 Desktop 앱이다. README의 Android·KMP 문구만으로 Android에서 바로 쓸 수 있다고 판단하지 말고, 실제 배포 모듈의 Gradle 타깃, 플랫폼별 source set, Android 예제와 배포 artifact를 확인한다. 저장소 README는 모든 데이터가 로컬에 남는다고 주장하지만, 이는 프로젝트의 설명이지 독립 검증된 개인정보 보증은 아니다.'
   points:
-  - 'Zero Data Egress: 모든 학습·추론이 디바이스에서만 실행'
-  - 'Composable Container: AI 상태·로직을 정의된 경계 내 관리'
-  - '온디바이스 적응: 사용자 행동에서 직접 학습, 서버 불필요'
+  - '검토한 core·KLDL·Room·Compose Gradle 설정: `jvm {}` 타깃. Android target 선언은 확인되지 않음.'
+  - '저장소가 제공하는 runnable example: Desktop 앱. Android 통합 예제·artifact는 확인하지 못함.'
+  - '도입 게이트: 타깃·플랫폼 구현·배포 artifact·실행 예제·데이터 흐름을 각각 확인한다.'
   source: https://github.com/theaniketraj/project-karl
+  interview: 'Kotlin Multiplatform AI 라이브러리가 Android에서 쓸 수 있는지 README만 보고 판단하면 안 되는 이유는 무엇인가요?'
+  answer: 'KMP라는 설명이나 Android 통합 계획이 실제 Android 컴파일 타깃과 동작 가능한 구현을 보장하지 않는다. Gradle 타깃, Android source set, 의존 artifact, 실행 가능한 Android 예제를 확인하고, 민감한 데이터는 실제 네트워크·저장 경로까지 점검해야 한다. Project KARL 저장소는 검토 시점에 주요 모듈이 JVM 타깃이고 runnable example도 Desktop이어서 Android-ready로 간주할 근거가 부족했다.'
 - category: ai
   title: Apple Trust Insights(iOS 27) — 소셜 엔지니어링·코칭 사기를 온디바이스 ML로 탐지하는 프레임워크
   summary: 'Trust Insights는 iOS 27에서 도입된 프레임워크로, 사용자가 사기범에게 코칭 받으면서 위험한 행동을 하는 상황을 온디바이스 ML로 탐지한다. 결제·계정 변경·원격 접근 같은 민감한 순간에 행동 컨텍스트를 분석해 IsLikelyBeingCoachedInsight(unknown/medium/high)를 반환. 개인 콘텐츠(사진·메시지)에 접근하지 않고 인터랙션 패턴·타이밍·센서 데이터만 분석. reportConsumption 필수, Apple Business Register로 오프라인 피드백.

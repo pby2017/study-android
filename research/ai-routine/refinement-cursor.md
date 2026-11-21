@@ -429,3 +429,11 @@ Rules:
 - Removed unproven blanket privacy/offline guarantee and narrowed comparison with GPTQ/AWQ. Performance claims now refer to paper-reported benchmark results and preserve compression-quality tradeoff.
 - Kept separate from RecGPT-Mobile: OD-LLM studies task-adaptive model compression; RecGPT-Mobile studies behavior-drift gating for inference calls.
 - Next: inspect the next AI/AI+Android card after OD-LLM, verify source freshness and avoid inferring mobile readiness from a paper title.
+
+## 2026-11-22 04:10 KST
+
+- Rechecked Project KARL README claims against repository source and current Gradle declarations.
+- GitHub displayed 11 stars / 1 fork, 285 commits; last push shown as 2025-10-06. Activity/adoption signal is weak and stale for a product recommendation.
+- Core, KLDL, Room, and Compose modules declare JVM targets; repository runnable example is Desktop. Room's Android source set contained only a manifest in the inspected checkout; no Android app example/artifact was verified.
+- Removed unverified “Android-ready / zero egress” product assertions and reframed as an AI+Android dependency-evaluation lesson: inspect target, source set, published artifact, runnable sample, and data paths.
+- Next: inspect `Apple Trust Insights`; verify current release/API status, source date, and whether the purported iOS 27 feature is official/available before retaining claims.
