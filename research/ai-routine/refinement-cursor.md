@@ -2,11 +2,13 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Qwen3-Embedding — 검색 작업 지시문과 벡터 차원 선택하기`; next candidate: inspect the following card after Qwen3-Embedding in `_data/cards.yml`.
+Current position: continue after `BentoML — 모델 함수를 버전 관리 가능한 추론 API로 패키징하기`; next candidate: inspect the following card after BentoML in `_data/cards.yml`.
 
-Last update: 2026-11-22 01:58 KST
+Last update: 2026-11-22 02:02 KST
 
 Current run:
+- Reviewed and refined: `BentoML` (removed absolute ease and competitor-ranking claims; clarified API packaging, Bento artifacts, Docker, and production validation responsibilities)
+- Sources re-checked: official BentoML README and current GitHub repository metadata
 - Reviewed and refined: `Qwen3-Embedding` (removed stale present-day leaderboard claim, corrected wrong source URL, clarified dimensions/instructions and dated official benchmark)
 - Sources re-checked: official Qwen3-Embedding model card and repository
 - No device-side/mobile support inferred from model size or dimension flexibility
@@ -212,7 +214,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after Qwen3-Embedding in `_data/cards.yml`; confirm current relevance and non-duplication before research.
+- Continue with the card immediately after BentoML in `_data/cards.yml`; confirm current relevance and non-duplication before research.
 
 Per successful refinement run, update this file with:
 - timestamp
