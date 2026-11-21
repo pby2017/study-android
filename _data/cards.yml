@@ -3365,15 +3365,16 @@ cards:
   interview: "Gemini Nano Prefix Caching은 ML Kit의 어떤 API 경로에서 지원되며, Pixel 9의 2.11초→0.5초 수치는 어떻게 해석해야 하나요?"
   answer: "ML Kit task-specific API가 아니라 Gemini Nano Direct Model Access의 `GenerativeModel`에서 제공된다. 2.11초→0.5초는 고정 prefix 1,000토큰·suffix 100토큰 조건의 문서상 cache-hit 추정치이며 첫 요청의 cache miss를 포함한 보장값이 아니다. 기능은 실험적이고 일부 기기에서 text-only로 동작한다. 캐시는 앱 비공개 저장소에 암호화되지만 원문 prefix 메타데이터도 저장되므로 민감한 프롬프트와 삭제 정책을 검토한다."
 - category: ai
-  title: GitHub third-party agent security validation — Codex·Claude PR도 CodeQL·의존성·secret 검사
-  summary: 'GitHub는 2026년 6월 9일 third-party coding agents 보안 검증을 일반 제공한다고 발표했다. Claude나 OpenAI Codex처럼 저장소에서 직접 기능 구현, 버그 수정, 테스트 보강을 수행하는 에이전트가 만든 코드도 Copilot cloud agent와 같은 자동 보안 검증을 받는다. 검증은 CodeQL 취약점 분석, GitHub Advisory Database 기반 신규 의존성 확인, secret scanning으로 API 키·토큰 노출 탐지를 포함한다. 설정은 기존 Copilot validation 설정을 따르고 Advanced Security 라이선스가 필요 없다고 설명된다. 실무 포인트는 에이전트 산출물을 신뢰하는 대신, PR 완료 전 자동 검증을 기본 안전망으로 두는 것이다.
-
-    '
+  title: GitHub — third-party coding agent 코드도 보안 검증
+  level: "중급"
+  summary: 'GitHub는 저장소에서 직접 작업하는 third-party coding agent(예: Claude·OpenAI Codex)가 만든 코드에도 자동 보안 검증을 일반 제공한다. GitHub는 CodeQL로 잠재 취약점을 분석하고, 새 의존성을 Advisory Database와 대조하며, secret scanning으로 키·토큰 노출을 확인한다. 발견 사항이 있으면 에이전트가 PR을 마무리하기 전에 수정을 시도한다. 검증은 기본 활성화되어 있고 저장소의 Copilot 검증 설정을 따른다. GitHub Advanced Security 라이선스는 필요하지 않지만, 이 검사는 코드 안전을 보장하지 않으므로 변경과 결과를 사람이 검토해야 한다.'
   points:
-  - third-party coding agents 코드도 Copilot cloud agent와 같은 보안 검증 적용
-  - CodeQL, GitHub Advisory Database, secret scanning으로 신규 위험 확인
-  - Copilot 설정을 따르며 Advanced Security 라이선스 없이 사용 가능
+  - '저장소에서 직접 작업하는 third-party coding agent의 생성 코드에 CodeQL·의존성·secret 검사'
+  - '기본 활성화; 사용할 검증 도구는 저장소 Copilot 설정을 따르며 관리자가 변경 가능'
+  - 'GHAS 라이선스 불필요; 자동 검증은 안전 보증이 아니므로 PR diff와 수정 결과 검토'
   source: https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents/
+  interview: "GitHub의 third-party coding agent 보안 검증은 자동으로 보안 승인을 보장하나요?"
+  answer: "아니다. GitHub는 CodeQL, 신규 의존성 Advisory Database 확인, secret scanning을 실행하고 발견 문제의 수정을 에이전트가 시도할 수 있다. 검증 도구는 기본 활성화되지만 저장소 Copilot 설정을 따르며 관리자가 조정할 수 있다. 이는 위험을 줄이는 자동 검사이지 모든 취약점·비밀 노출을 막거나 PR을 승인하는 보증이 아니므로 diff와 검사 결과를 사람이 검토해야 한다."
 - category: ai
   title: Google Agents CLI — 코딩 에이전트에게 Agent Platform 빌드·평가·배포 명령을 주입
   summary: 'Google은 2026년 4월 Agents CLI in Agent Platform을 공개했다. 이 CLI는 Gemini CLI, Claude Code, Cursor 같은 코딩 에이전트가 Google Cloud Agent Platform, Cloud Run, A2A Integration에 접근할 수 있는 machine-readable 경로를 제공한다. `uvx google-agents-cli setup`으로 bundled skills와 API reference를 주입하고, `agents-cli create`, `eval run`, `eval compare`, `infra`, `deploy`, `publish` 같은 명령으로 에이전트 생성부터 평가와 배포까지 이어간다. 실무 포인트는 에이전트에게 문서를 통째로 읽히는 대신, 검증 가능한 CLI 명령과 평가 하네스를 주어 local-to-cloud 전환을 반복 가능하게 만드는 것이다.

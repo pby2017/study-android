@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `ML Kit Direct Model Access — Gemini Nano 반복 prefix 캐싱` by correcting the API boundary, scoping latency numbers to the documented Pixel 9 cache-hit estimates, and clarifying device/input/storage constraints; next candidate: inspect `GitHub third-party agent security validation` for current feature availability, required settings/plan, scan scope, and caveats in the June 2026 announcement.
+Current position: refined `GitHub — third-party coding agent 코드도 보안 검증` to scope the feature to repository-integrated agents, capture scan types/default settings and attempted remediation, and avoid portraying automated checks as a security guarantee; next candidate: inspect `Google Agents CLI` for current product naming, availability, supported agents and commands, and distinguish preview/product tiers.
 
-Last update: 2026-11-22 07:00 KST
+Last update: 2026-11-22 07:30 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -686,3 +686,9 @@ Rules:
 - Verified experimental/subset-device/text-only scope and implicit cache details: encrypted app-private files plus metadata containing original prefix text; LRU and clear support
 - Research note: `research/ai-routine/20261122-070000-mlkit-prefix-caching.md`
 - Next: inspect `GitHub third-party agent security validation`
+
+- Reviewed and refined: `GitHub third-party agent security validation` against the June 9 GA announcement and current GitHub Docs
+- Scoped support to third-party coding agents working directly in repositories; verified CodeQL, new-dependency advisory checks, secret scanning, attempted remediation, default-on behavior, repository Copilot settings, and no GHAS license requirement
+- Added explicit limitation: automated checks are not a security guarantee or human PR approval; did not extend cloud-agent-only dependency severity detail beyond what the third-party announcement states
+- Research note: `research/ai-routine/20261122-073000-github-third-party-agent-validation.md`
+- Next: inspect `Google Agents CLI`
