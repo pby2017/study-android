@@ -2797,15 +2797,17 @@ cards:
   interview: "Seer의 94.5% root-cause 수치를 Android 앱 장애 분석의 보장된 정확도로 인용해도 되나요?"
   answer: "아니다. 94.5%는 Sentry가 과거 Autofix 내부 평가에서 보고한 원인 식별 결과이며, 독립 벤치마크나 전체 Android 장애 분포에 대한 보장은 아니다. Sentry도 제안된 코드 수정 성공률을 53.6%로 별도 발표했다. 프로젝트 데이터로 유효성과 오탐을 검증하고 수정은 테스트·리뷰해야 한다."
 - category: ai
-  title: Novu — 오픈소스 멀티채널 알림 인프라, Push·Email·SMS·In-App을 단일 API로 통합(MIT·~36k★)
-  summary: 'Novu는 MIT 라이선스 오픈소스 알림 인프라로, Push·Email·SMS·In-App·채팅을 단일 API로 통합한다. 콘텐츠 관리·구독자 선호도·채널 라우팅·지연/다이제스트 워크플로우를 코드 또는 UI에서 정의 가능. FCM·APNs·SendGrid·Twilio 등 다양한 프로바이더를 지원하고, 셀프호스팅 무료. 36k+ GitHub 스타로 오픈소스 알림 인프라 중 가장 인기. OneSignal이 관리형 SaaS라면, Novu는 셀프호스팅 대안.
-
-    '
+  title: 'Novu MCP·ACI — AI 에이전트를 메시징 채널과 연결하는 대화 인프라'
+  level: "중급"
+  summary: 'Novu는 MCP 서버로 AI 도구가 구독자·알림 워크플로·에이전트 대화와 전송 기록을 조회·관리하게 하고, Agent Communication Infrastructure(ACI)로 이미 만든 에이전트의 메시지를 여러 채널에서 받아 정규화해 전달한다. Novu가 모델 추론을 수행하는 것은 아니다. Android에서는 서버 SDK나 REST API로 워크플로를 실행하고 FCM 토큰을 구독자에 연결해 푸시를 보낼 수 있지만, 네이티브 Android용 공식 클라이언트 SDK와 기본 Inbox UI는 없다. Secret key는 앱에 넣지 않고 서버에 보관한다.'
   points:
-  - '단일 API: Push·Email·SMS·In-App·채팅 통합'
-  - '셀프호스팅 무료: MIT, 36k+ GitHub 스타'
-  - '프로바이더 교체 가능: FCM·APNs·SendGrid·Twilio'
-  source: https://github.com/novuhq/novu
+  - 'MCP: AI 도구가 Novu 계정의 워크플로·구독자·전송 문제를 도구 호출로 관리'
+  - 'ACI: 채널별 메시지를 공통 대화 형식으로 정규화해 기존 에이전트에 전달하고 응답을 돌려보냄'
+  - 'Android 푸시: 서버 SDK/REST API와 FCM 사용; Inbox가 필요하면 REST API로 UI를 직접 구현'
+  - '보안 경계: Novu Secret key는 모바일 앱이 아니라 백엔드에 보관'
+  source: https://docs.novu.co/platform/build-with-ai/mcp
+  interview: "Android 앱에서 Novu의 AI 에이전트 대화를 쓰려면 Secret key와 Inbox 화면을 어디서 처리해야 하나요?"
+  answer: "Secret key는 전체 환경 접근 권한을 가지므로 백엔드에만 둔다. 백엔드는 Novu SDK나 REST API로 워크플로를 실행하고 FCM 토큰에 푸시를 보낼 수 있다. 현재 Novu는 네이티브 Android 클라이언트 SDK나 기본 Inbox UI를 제공하지 않으므로 앱 안의 대화함이 필요하면 Inbox REST API를 연결해 직접 구현한다. 에이전트의 모델·추론 로직은 별도로 구성한다."
 - category: ai
   title: GrowthBook — 오픈소스 Feature Flag + A/B 테스트 플랫폼, 데이터웨어하우스 네이티브(MIT·~7k★)
   summary: 'GrowthBook는 MIT 라이선스 오픈소스 Feature Flag + A/B 테스트 플랫폼이다. BigQuery·Snowflake· Redshift 등 데이터웨어하우스에 직접 연결해 실험 결과를 분석하므로 데이터를 외부로 보내지 않는다. Bayesian 통계 엔진으로 CUPED·Sequential Testing을 지원하고, Android·iOS·React Native·Flutter SDK 제공. Firebase A/B Testing이 무료지만 Google 생태계 종속이라면, GrowthBook는 벤더 비종속 대안. Statsig(상용)이 자동 통계+파워 분석에 강하다면, GrowthBook는 셀프호스팅+데이터 주권이 차별점.
