@@ -2,11 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `RunAnywhere Kotlin SDK`; next candidate: inspect the next AI/AI+Android card in sequence and verify its source, relevance, and duplicate status.
+Current position: continue after `Locanara Android`; next candidate: inspect `PowerLens` and verify the paper's Android deployment, evaluation scope, source freshness, and duplicate status.
 
-Last update: 2026-11-22 03:30 KST
+Last update: 2026-11-22 03:56 KST
 
 Current run:
+- Reviewed and refined: `Locanara Android` (replaced the cross-platform backend/router summary with the Android SDK's install-floor versus Gemini Nano runtime-readiness distinction; added explicit status/download flow and AGPL-3.0 deployment check)
+- Sources re-checked: Locanara Android Gradle module and `MLKitPromptClient` implementation; Google's current ML Kit Prompt API setup and availability guidance
+- Repository attention signal: GitHub API showed 9 stars, 3 forks, and last push 2026-08-08; weak/stale adoption evidence, so the card is retained as a concrete integration lesson rather than a product recommendation
+- Rejected the README's cross-platform automatic-engine-routing claim for this Android-focused card; platform README tables do not prove identical Android implementation behavior
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
 - Sources re-checked: current official v0 product page
 - Added explicit note: responsive mobile web is not a native Android app

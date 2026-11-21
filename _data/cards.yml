@@ -3036,15 +3036,17 @@ cards:
   interview: '모바일 AI 라이브러리가 “오프라인 추론”을 지원한다고 할 때 어떤 네트워크 검증이 더 필요한가요?'
   answer: '추론 시 네트워크를 쓰지 않는다는 뜻과 설치·빌드 과정도 오프라인이라는 뜻은 다르다. 이 플러그인은 모델을 앱 asset으로 별도 준비해야 하고, Android/iOS native library를 빌드 단계에서 Release 서버에서 다운로드한다. 모델과 네이티브 바이너리를 미리 고정해 앱에 포함하고, 설치 후 네트워크를 차단한 상태에서 초기화·추론까지 확인해야 한다.'
 - category: ai
-  title: Locanara — LangChain에서 영감받은 모바일 온디바이스 AI 프레임워크, 체인·RAG·가드레일 DSL(AGPL-3.0)
-  summary: 'Locanara는 LangChain에서 영감받아 모바일 전용으로 설계된 온디바이스 AI 프레임워크다. llama.cpp·CoreML· MLX·Apple Foundation Models 백엔드를 지원하고, InferenceRouter가 디바이스 하드웨어(NPU·메모리·칩셋)를 자동 감지해 최적 엔진을 선택. 체이닝 DSL·WindowMemory·SummaryMemory·온디바이스 RAG(벡터스토어+임베딩+ 쿼리)·가드레일을 제공. iOS 18.1+ / Android 15+, Swift API.
-
-    '
+  title: 'Locanara Android — minSdk만으로 Gemini Nano 지원을 판단하지 않기'
+  level: "중급"
+  summary: 'Locanara Android SDK의 `minSdk`는 API 31이다. 이는 SDK를 포함한 앱의 설치 하한이지, Gemini Nano 기능이 준비됐다는 뜻은 아니다. Android 구현은 Prompt API 상태를 `AVAILABLE`·`DOWNLOADABLE`·`DOWNLOADING`·`UNAVAILABLE`로 확인하고, 다운로드 가능한 경우 모델을 받은 뒤 상태를 다시 확인한다. Google 문서도 API 수준 외에 지원 기기, AICore 초기화, 모델 준비 상태를 확인하도록 안내한다. 앱은 상태에 따라 기능을 노출하고, 미지원·다운로드 중 UI를 설계해야 한다. Locanara Android artifact는 AGPL-3.0이므로 배포 전에 라이선스 적합성도 검토한다.'
   points:
-  - 'LangChain for Mobile: 체인 DSL, 메모리, RAG, 가드레일'
-  - 'InferenceRouter: NPU·메모리·칩셋 자동 감지 → 최적 엔진'
-  - '4개 백엔드: llama.cpp·CoreML·MLX·Apple Foundation Models'
-  source: https://github.com/hyodotdev/locanara
+  - '`minSdk 31`은 artifact 설치 하한; 개별 AI 기능 지원 조건과 별도'
+  - '`checkStatus()`로 모델 상태 확인; `DOWNLOADABLE`이면 다운로드 후 재검사'
+  - '지원 여부는 OS 숫자만으로 판단하지 말고 기기·AICore·모델 상태를 확인'
+  - 'AGPL-3.0 artifact는 앱 배포 전에 라이선스 검토'
+  source: https://github.com/hyodotdev/locanara/blob/main/packages/android/locanara/src/main/kotlin/com/locanara/mlkit/MLKitPromptClient.kt
+  interview: 'Android SDK의 `minSdk`가 31이면 API 31 이상 기기에서 Gemini Nano를 바로 쓸 수 있나요?'
+  answer: '아니다. minSdk는 SDK를 포함한 앱의 설치 하한이다. Gemini Nano Prompt API는 기기 지원과 AICore·모델 준비 상태에 따라 사용할 수 있다. `checkStatus()` 결과가 `DOWNLOADABLE`이면 모델을 준비하고, `UNAVAILABLE`이면 기능을 숨기거나 대체 경로를 제공해야 한다. 다운로드 후에도 실제 상태를 다시 확인한다.'
 - category: ai
   title: PowerLens — LLM 에이전트로 Android 전력 관리를 자동화, 38.8% 에너지 절감·0.5% 배터리 소모(학술)
   summary: 'PowerLens는 LLM 에이전트가 UI 시맨틱과 사용자 활동을 인식해 18개 디바이스 파라미터에 걸쳐 개인화된 전력 정책을 생성하는 Android 시스템이다. PDL 기반 제약 프레임워크가 모든 액션을 실행 전 검증하고, 2계층 메모리(STM+LPM)가 3~5일 내에 사용자 선호도를 학습. 주식 Android 대비 38.8% 에너지 절감, 81.7% 액션 정확도, 시스템 자체는 일일 배터리의 0.5%만 소모. 루팅 Android 디바이스에서 검증.
