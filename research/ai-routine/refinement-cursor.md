@@ -706,4 +706,7 @@ Rules:
 - Corrected operational boundaries: remote MCP only, explicit tool enablement, public vs Secret-Protection-enabled private/internal eligibility, ephemeral findings, and no automatic scan on every commit
 - Reconciled historical GA announcement with the current guide: avoid promising repo-level customization behavior; current documentation says organization security configuration controls MCP scan detections/enforcement
 - Research note: `research/ai-routine/20261122-081500-github-mcp-secret-scan.md`
-- Next: inspect `Codex Plugins·Sites·Annotations`
+- Reviewed and refined: `Codex Plugins·Sites·Annotations` using the OpenAI launch post and current plugin/Sites help documentation
+- Kept the 62-app/110-skill numbers out of the live summary because they describe the June 2026 launch snapshot; clarified app permissions, Site privacy/sharing/publication controls, usage, and targeted annotations
+- Research note: `research/ai-routine/20261122-083000-codex-role-plugins-sites-annotations.md`
+- Next: inspect `Google Colab CLI`
