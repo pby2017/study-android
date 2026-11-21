@@ -801,4 +801,7 @@ Rules:
 - Distinguished the personal-library path from AI Studio → Play Console internal testing (up to 100 testers) and production release; clarified automated safety review versus public catalog review
 - Added client-side-only and Firebase App Check / Firestore review boundaries
 - Research note: `research/ai-routine/20261122-070000-google-ai-studio-android.md`
-- Next: inspect `Android Studio Agent Mode parallel chat` boundaries and whether it remains current
+- Reviewed and refined `Android Studio Agent Mode parallel chat` against the current Agent Mode docs and Quail 2 / Quail 4 official release announcements
+- Scoped “worktree unavailable” to the Quail 2 release; Quail 4 adds live task status and diff-summary UX but does not state whether worktree support changed, so the card now advises checking the installed version
+- Research note: `research/ai-routine/20261122-073000-android-studio-parallel-agent-chats.md`
+- Next: inspect the next older AI+Android card in sequence after this one; skip pure Android-only content
