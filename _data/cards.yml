@@ -281,6 +281,17 @@ cards:
   source: https://developer.android.com/topic/performance/threads
 - category: android
   level: "중급"
+  title: 'repeatOnLifecycle — 여러 Flow를 동시에 수집하기'
+  summary: 'Views UI에서 여러 Flow를 lifecycle에 맞춰 병렬 수집하려면 `lifecycleScope.launch` 안의 `repeatOnLifecycle(STARTED)` 블록에서 Flow마다 `launch { collect() }`를 호출한다. `collect()`는 종료될 때까지 suspend하므로 첫 수집을 순서대로 호출하면 다음 Flow에 도달하지 못한다. Lifecycle이 `STARTED` 아래로 내려가면 블록의 자식 수집이 취소되고, 다시 올라오면 새로 시작한다.'
+  points:
+  - '`repeatOnLifecycle`은 지정 상태에 들어갈 때 블록을 시작하고 벗어나면 취소한다.'
+  - '각 Flow의 `collect`를 별도 `launch`로 감싸 병렬 수집한다.'
+  - '이 패턴은 Views 기반 UI용이며 Compose에서는 `collectAsStateWithLifecycle()`을 사용한다.'
+  source: https://developer.android.com/topic/libraries/architecture/views/coroutines-views
+  interview: '`repeatOnLifecycle` 안에서 두 Flow를 차례로 `collect()`하면 왜 두 번째 Flow 수집이 시작되지 않는가?'
+  answer: '`collect()`는 Flow가 완료될 때까지 suspend한다. 첫 Flow가 계속 방출하면 다음 줄로 진행하지 않으므로 각 수집을 자식 `launch`로 분리해야 병렬로 처리된다.'
+- category: android
+  level: "중급"
   title: "Compose Flow 수집 — 화면 생명주기에 맞추기"
   summary: "Compose UI에서 Flow를 상태로 읽을 때 `collectAsStateWithLifecycle()`은 기본적으로 Lifecycle이 `STARTED` 이상일 때 수집하고, 그보다 낮아지면 멈춘다. 다시 활성화되면 수집을 재개한다. `StateFlow`는 현재 값을 초기 UI 상태로 쓰지만, 일반 cold Flow는 다시 수집될 때 upstream 작업이 재실행될 수 있다. 화면의 수집 수명과 데이터 작업의 수명을 구분하고, 긴 작업은 적절한 ViewModel·공유 Flow 수명에 둔다."
   points:
