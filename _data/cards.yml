@@ -3444,15 +3444,15 @@ cards:
 - category: ai
   title: Copilot Sandboxes — 에이전트 명령 실행을 로컬·클라우드 격리층에 넣기
   summary: >-
-    GitHub Copilot 샌드박스는 에이전트 실행을 로컬 정책 경계 안에 두거나 GitHub 호스팅 환경으로 옮긴다. 로컬 sandbox는 CLI에서 `/sandbox enable`로 켜면 에이전트가 실행하는 명령을 OS 수준에서 제한하지만, Copilot 자체나 CLI 내장 파일 도구 전체를 별도 VM에 가두는 것은 아니다. CLI와 Copilot 앱의 설정은 별개다. Cloud sandbox는 CLI의 `copilot --cloud` 등에서 전체 세션을 원격 Linux 환경으로 실행하고 중단한 세션을 스냅샷으로 재개할 수 있다. 2026년 10월 GA 이후 유료 플랜에서 사용할 수 있고, 11월 23일부터 compute·memory·snapshot storage가 과금되며 Actions 포함 compute allowance를 공유한다. 실무에서는 `/sandbox status`와 `/sandbox policy`로 실제 적용 범위를 확인하고, 원격 실행의 데이터 경계와 예산도 검토한다.
+    GitHub Copilot의 local sandbox와 cloud sandbox는 서로 다른 실행 경계다. CLI의 `/sandbox enable`은 로컬 명령을 OS 수준에서 제한하며 별도 VM을 만들지 않는다. CLI 내장 파일 도구는 프로세스 안에서 실행되고 정책을 자체 적용하므로 OS sandbox와 같은 강제 경계가 아니다. 반면 `copilot --cloud`는 세션 전체를 GitHub 호스팅 Linux 환경에서 실행하고, 중지한 세션의 snapshot으로 나중에 이어갈 수 있다. 이 옵션은 해당 대화형 세션에만 적용되며 `-p`나 `-i`와 함께 쓸 수 없다. CLI 세션은 기본적으로 로컬 실행이다. Cloud compute와 할당 memory는 월간 포함 compute 사용량을 표준 runner와 공유하고 초과분은 과금될 수 있다. 중지된 snapshot storage는 포함 compute와 별도로 측정·과금되므로 예산과 보존 상태를 확인한다.
   points:
   - '로컬: CLI `/sandbox enable`; `/sandbox status`·`/sandbox policy`로 적용 상태와 권한 확인'
-  - 'Cloud: `copilot --cloud`는 전체 세션을 원격 실행하며, 중단 후 snapshot으로 재개 가능'
-  - '로컬 설정은 CLI·앱별로 별도이며, cloud 사용은 compute·memory·storage 과금과 예산을 확인'
+  - 'Cloud: 기본은 로컬; `copilot --cloud`로 대화형 세션만 원격 Linux에서 실행하고 snapshot으로 재개'
+  - 'Compute·할당 memory는 포함 allowance 공유; 중지 snapshot storage는 별도 측정·과금'
   source: https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes
   level: "중급"
-  interview: "Copilot의 local sandbox와 cloud sandbox는 보안 경계와 과금 측면에서 어떻게 다른가요?"
-  answer: "Local sandbox는 내 장치에서 에이전트가 실행하는 명령과 도구의 filesystem·network·credential 권한을 제한하지만, CLI 자체나 일부 내장 도구가 전부 별도 VM 안에서 실행된다는 뜻은 아니다. Cloud sandbox는 세션 전체를 GitHub 관리 원격 환경에서 실행하고 snapshot으로 재개할 수 있다. 로컬은 Copilot seat에 포함되고, cloud는 compute·memory·snapshot storage 사용량을 측정해 포함 allowance 이후 과금될 수 있으므로 실제 정책과 예산을 확인한다."
+  interview: "`copilot --cloud`는 CLI의 기본 실행 방식인가요? Local sandbox와 cloud sandbox, 그리고 cloud의 과금 항목은 어떻게 다른가요?"
+  answer: "아니다. CLI는 기본적으로 로컬에서 실행되고, `copilot --cloud`를 지정한 대화형 세션만 GitHub 호스팅 Linux sandbox로 옮긴다. `-p`·`-i` 모드와 함께 쓸 수 없다. Local sandbox는 같은 기기에서 OS 수준으로 명령 접근을 제한하지만, CLI 내장 파일 도구는 별도로 정책을 적용하므로 VM과 동일한 격리가 아니다. Cloud에서는 실행 중 compute와 할당 memory가 월간 포함 compute allowance를 공유하고, 중지된 세션의 snapshot storage는 포함 allowance와 별도로 측정·과금된다. 예상 비용·budget을 확인한다."
 - category: ai
   title: Copilot AI credits API — 에이전트 비용을 사람·팀 단위로 관측하기
   summary: >-

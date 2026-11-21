@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `GitHub Mobile Copilot — 휴대폰에서 세션을 이어가고 검토하기` around the Android GitHub Mobile surface, same-session cloud continuation, desktop-app distinction, and paid-plan/policy/compute boundaries; next candidate: continue oldest-first from the Copilot CLI cloud-session/remote-environment card and verify current availability and billing.
+Current position: refined `Copilot Sandboxes — 에이전트 명령 실행을 로컬·클라우드 격리층에 넣기` around local OS-level policy versus cloud session isolation, CLI `--cloud` interactive-only behavior, and separate shared compute/memory versus snapshot-storage billing; next candidate: inspect the Copilot CLI remote-control card/topic and distinguish steering a live local host from cloud sandbox execution.
 
 Last update: 2026-11-22 07:45 KST
 
@@ -759,4 +759,10 @@ Rules:
 - Removed the erroneous claim that the Copilot desktop app is an Android/iOS app; Android users access Copilot through GitHub Mobile
 - Clarified same cloud-session continuation, mobile session review/control, cloud plan and policy boundaries, and sandbox compute billing starting 2026-11-23
 - Research note: `research/ai-routine/20261122-124500-github-mobile-copilot.md`
+- Reviewed and refined: `Copilot Sandboxes` using current cloud/local sandbox, CLI remote-control, and billing documentation
+- Corrected CLI behavior: local is the default; `copilot --cloud` runs only an interactive session remotely and cannot combine with `-p`/`-i`
+- Distinguished local OS sandbox and its in-process built-in file-tool boundary from a GitHub-hosted isolated Linux cloud sandbox
+- Split billing: running compute and allocated memory share monthly included compute usage; stopped snapshot storage is separately metered/charged. Omitted volatile exact rates
+- Explicitly distinguished remote-control steering of a live local host (`/remote on`) from a cloud sandbox session
+- Research note: `research/ai-routine/20261122-130000-copilot-sandboxes-refresh.md`
 - Next: inspect `A2UI + MCP Apps`
