@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `MNN-AECS`; next candidate: inspect `AgentStop (Brave)` and verify its actual supported agent workflow, energy-saving metric, test setup, Android relevance, and reproducibility.
+Current position: continue after `AgentStop`; next candidate: review `vision_ai` and decide whether the old Flutter package card is sufficiently AI-centered, currently maintained, and supported by verifiable performance evidence.
 
-Last update: 2026-11-22 04:09 KST
+Last update: 2026-11-22 04:13 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -472,3 +472,12 @@ Rules:
 - Removed cross-engine headline comparisons because the original card did not communicate device/model availability and comparison limits.
 - Interest signal: MNN upstream displayed 16.6k stars / 2.5k forks; treated as project-level signal, not AECS adoption; omitted volatile counts from the card.
 - Next: `AgentStop (Brave)`; validate metric denominator, model/agent environment, actual Android applicability, and public reproducibility before deciding whether to keep or reframe.
+
+## 2026-11-22 04:13 KST
+
+- Reviewed and refined `AgentStop` against the ACM/Brave paper, Brave announcement, official GitHub README, Zenodo deposit, and CAIS program.
+- Replaced generic 15–20% claim with separate step-specific results: FRAMES ~22% at step 5 (<2% utility drop), SimpleQA ~23% at step 4 (<2%), and SWE-Bench Verified ~18–19% at step 5 (~3% utility drop in Brave's summary).
+- Captured the method: trajectory token-logprob tail, per-step output length, adjacent-step overlap; task/model/step-specific XGBoost classifier; evaluate savings against false-stop utility loss.
+- Explicitly disclaimed Android/phone measurements: public README cites M1 Max and Jetson Orin AGX (64 GB tested; 24 GB minimum), and GitHub offers scripts, processed data, and reproduction notebook. The local-model QA pipeline uses Brave Search API; no blanket offline/privacy claim.
+- Interest/reproducibility: ACM CAIS '26 acceptance and three artifact badges are source-backed; GitHub showed only 18 stars / 0 forks / 2 commits. Metrics indicate limited project-level adoption, not research validity.
+- Next: `vision_ai`; assess whether the current Flutter card is a meaningful AI topic versus a generic computer-vision package, and verify model, licensing, support, and latency statements.

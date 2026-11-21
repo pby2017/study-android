@@ -3071,15 +3071,17 @@ cards:
   answer: '아니다. 코어를 덜 쓰면 처리량이 낮아질 수 있고, 절전 효과는 OS가 유휴 클러스터의 주파수를 낮추는지에 좌우된다. MNN-AECS 논문에서도 Meizu 21은 약 10% 절감에 그쳤고 Huawei 기기에서는 decode가 1~7% 느려졌다. 대상 기기에서 동일 모델·프롬프트로 에너지, 토큰 속도, 발열을 함께 측정하고, 논문 수정판이나 재현 가능한 구현이 있는지도 확인해야 한다.'
   source: https://arxiv.org/html/2506.19884
 - category: ai
-  title: AgentStop(Brave) — 온디바이스 AI 에이전트의 낭비적 추론을 조기 종료해 15~20% 에너지 회수
-  summary: 'AgentStop는 Brave가 만든 경량 효율성 감독자(supervisor)로, 로컬 AI 에이전트의 LLM 추론을 실시간 모니터링하다가 성공 가능성이 낮은 체인을 조기 종료해 배터리를 절약한다. 실패한 코딩 시도 하나가 ~3,000mWh(100Wh 노트북의 ~3%)를 소모하는 문제를 해결. 태스크 완료율 5% 미만 하락으로 15~20% 낭비 에너지 회수. SWE-Bench Verified(Qwen3-Coder-30B-A3B)에서 검증.
-
-    '
+  title: 'AgentStop — 로그확률·반복 신호로 로컬 에이전트를 조기 종료하기'
+  level: "고급"
+  summary: 'AgentStop은 에이전트의 각 작업 단계에서 토큰 로그확률의 낮은 값, 출력 길이, 연속 단계의 토큰 중복을 모아 XGBoost 분류기로 성공 가능성을 예측하는 연구다. 모델·작업·단계별로 분류기를 학습하고, 단계가 끝날 때 계속 실행할지 판단한다. 저자 실험에서 FRAMES는 5단계 종료 시 낭비 에너지가 약 22%, SimpleQA는 4단계 종료 시 약 23% 줄었고 두 작업의 task utility 하락은 2% 미만이었다. Qwen3-Coder로 SWE-Bench Verified를 실행한 코딩 실험은 5단계 종료 시 낭비 에너지 약 18~19%, utility 하락 약 3%를 보고했다. 평가는 Apple M1 Max와 NVIDIA Jetson Orin AGX 등에서 수행했으며, Android 구현이나 휴대전화 실측은 확인되지 않았다.'
   points:
-  - '15~20% 에너지 회수: 태스크 완료율 <5% 하락'
-  - '실시간 감독: 성공 가능성 예측 → 낭비적 추론 조기 종료'
-  - 'Brave 검증: SWE-Bench, 코딩 에이전트 실전 테스트'
-  source: https://brave.com/blog/agentstop/
+  - '신호: 토큰 로그확률 하위값·단계별 출력 길이·인접 단계 간 중복'
+  - '보고치: FRAMES 22%, SimpleQA 23%, SWE-Bench 약 18~19% 낭비 에너지 감소; task utility 영향은 데이터셋별로 다름'
+  - '성공/실패 데이터로 모델·작업·단계별 분류기를 학습; 조기 종료 임계값은 실제 utility와 함께 조정'
+  - '코드는 MIT로 공개되고 실험 데이터도 제공; M1 Max/Jetson 연구이며 웹 QA는 Brave Search API 사용, Android 구현은 아님'
+  interview: '에이전트의 토큰 로그확률만 보고 실행을 중단해도 안전할까요?'
+  answer: '아니다. AgentStop은 로그확률뿐 아니라 단계별 출력 길이와 연속 단계 간 중복도 사용하고, 학습한 분류기를 작업 단계마다 평가한다. 조기 종료가 성공할 작업까지 실패로 바꿀 수 있으므로 모델·작업별 검증 데이터에서 절감 에너지와 task utility 손실을 함께 측정해 임계값을 정해야 한다. 논문 수치는 로컬 M1 Max/Jetson 실험이며 Android에서 검증된 결과가 아니다. 또 웹 QA 실험은 Brave Search API를 사용하므로 모델이 로컬에서 돈다는 사실만으로 전체 데이터 경로가 로컬이라고 단정할 수 없다.'
+  source: https://brave.com/research/files/AgentStop.pdf
 - category: ai
   title: vision_ai — Flutter 온디바이스 손 제스처 13종 + 얼굴 감정 7종, 25~30fps 실시간 인식(MIT)
   summary: 'vision_ai는 Flutter용 온디바이스 손 제스처 인식 + 얼굴 감정 감지 패키지다. MediaPipe Gesture Recognizer(~8MB)로 13종 제스처(주먹·평손·피스·엄지·포인팅·ILY·OK·1~5)를 인식하고, TFLite CNN(~2MB)으로 7종 감정(행복·슬픔·놀람·분노·혐오·공포·중립)을 감지. 커스텀 제스처 패턴 정의, 21개 손 랜드마크 좌표, 모션 추적(속도·방향), 양손 인터랙션(핀치·박수). 25~30fps, 클라우드 $0.
