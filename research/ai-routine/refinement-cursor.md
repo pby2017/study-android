@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `KotlinSyft`; next candidate: `MLC LLM` (verify Android support, current maintenance, and distinguish its runtime claims from card comparison claims).
+Current position: continue after `MLC LLM`; next candidate: inspect the next oldest AI/AI+Android card after it and verify its source, relevance, and duplicate status.
 
-Last update: 2026-11-22 03:25 KST
+Last update: 2026-11-22 03:27 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -388,3 +388,11 @@ Rules:
 - Reframed as a legacy architecture lesson; clarified that local raw-data retention does not guarantee privacy because model updates may leak information.
 - GitHub showed 89 stars / 24 forks at review; modest interest, not current adoption evidence.
 - Next: `MLC LLM`; confirm active Android runtime support and remove any unsupported “only/3 leaders” comparison claims.
+
+
+## 2026-11-22 03:27 KST
+
+- Reviewed and refined `MLC LLM` using the live official repository README, Android deployment guide, quick start, and GitHub release page.
+- Replaced unqualified shared-checkpoint / “only mature runtime” / top-three claims with Android OpenCL backends (Adreno/Mali), per-model binary compilation, and physical-device compatibility/performance checks.
+- GitHub displayed 23.3k stars / 2.2k forks; strong, volatile attention signal. GitHub Releases currently shows only a `v0.1.dev0` prerelease despite current repo/docs, so avoid package-version claims until release metadata is clarified.
+- Next: inspect the next oldest AI/AI+Android card after MLC LLM.

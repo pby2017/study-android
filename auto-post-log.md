@@ -4570,3 +4570,11 @@ Refined:
 - Removed the privacy guarantee and corrected secure aggregation/MPC status to “in progress” per README. The README install example says 0.1.3 while Releases lists 0.5.0 RC; do not use the stale snippet as current dependency advice.
 - Added the key lesson that local data retention is not sufficient privacy protection because model updates can leak information. GitHub showed 89 stars / 24 forks (modest, volatile interest).
 - No install or device integration test; card is explicitly historical, not an adoption recommendation.
+
+
+### 2026-11-22 03:27 KST — MLC LLM Android 배포 카드 검증
+
+- Refined: `MLC LLM — 크로스플랫폼 온디바이스 LLM 런타임, 같은 체크포인트로 iOS Metal·Android GPU·WebGPU 실행` → `MLC LLM — Android GPU용 모델 컴파일과 실기기 검증`.
+- Sources: https://github.com/mlc-ai/mlc-llm, https://github.com/mlc-ai/mlc-llm/blob/main/docs/deploy/android.rst, https://github.com/mlc-ai/mlc-llm/blob/main/docs/get_started/quick_start.rst, https://github.com/mlc-ai/mlc-llm/releases.
+- Replaced unsupported shared-checkpoint/only-mature/top-three wording with officially listed Adreno/Mali OpenCL backends, per-model binary compilation, and physical-device validation.
+- GitHub showed 23.3k stars / 2.2k forks. Releases page currently shows only v0.1.dev0; omitted version/latest-release claims. No build/device test.
