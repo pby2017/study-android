@@ -721,6 +721,7 @@ cards:
   - 기본 프롬프트에서만 작동(--system-prompt류 쓰면 무시) / -p 다중사용자 스크립트용
   source: https://code.claude.com/docs/en/cli-reference
 - category: ai
+  level: "고급"
   title: Setup 훅 — 세션 시작 전 init·maintenance 준비 작업 자동 실행
   summary: 'Setup은 세션이 시작되기 ''전''에 도는 훅 이벤트로, CLI 플래그로 트리거된다. `claude -p --init`은 matcher가 `init`인 Setup 훅을, `claude -p --maintenance`는 matcher가 `maintenance`인 Setup 훅을 세션 시작 전에 실행한다(둘 다 print 모드 전용). `claude --init-only`는 Setup과 SessionStart 훅만 돌리고 대화는 시작하지 않은 채 종료하므로, 의존성 설치·캐시 워밍 같은 준비 작업을 CI에서 한 번만 돌리기 좋다.
 
@@ -730,7 +731,10 @@ cards:
   - --init → matcher 'init', --maintenance → matcher 'maintenance' (둘 다 -p print 모드 전용)
   - --init-only는 Setup+SessionStart만 돌리고 대화 없이 종료 — CI 준비 단계용
   source: https://code.claude.com/docs/en/hooks
+  interview: "Setup 훅과 SessionStart 훅은 언제 실행되며, 일회성 준비 작업에 Setup을 쓰는 이유는 무엇인가요?"
+  answer: "Setup은 `--init-only` 또는 `-p --init`·`-p --maintenance`로 명시적으로 실행할 때만 동작하고 일반 시작 때마다 실행되지는 않는다. 매 세션 초기화에는 SessionStart를 쓰고, Setup은 CI나 스크립트에서 호출하는 설치·정리 작업에 쓴다. Setup은 실행을 차단하지 않는다."
 - category: ai
+  level: "중급"
   title: skillOverrides — SKILL.md 안 건드리고 settings에서 스킬 노출 조정하기
   summary: 'skillOverrides는 settings.json에서 스킬 이름별로 노출 방식을 덮어쓰는 설정이다. 각 스킬에 "on", "name-only", "user-invocable-only", "off" 네 값 중 하나를 줄 수 있어서, SKILL.md의 프런트매터를 고치지 않고도 특정 스킬을 완전히 끄거나(off), 이름만 보이게 하거나(name-only), 사용자가 직접 호출할 때만 쓰게(user-invocable-only) 제한할 수 있다. 팀이 받은 플러그인 스킬이 너무 많아 모델이 엉뚱한 걸 자동으로 부를 때, 원본을 수정하지 않고 프로젝트 설정만으로 정리하기 좋다.
 
@@ -740,7 +744,10 @@ cards:
   - SKILL.md 프런트매터 수정 없이 settings.json만으로 스킬 가시성 조정
   - off=완전 숨김, name-only=이름만, user-invocable-only=수동 호출만 / 단 매니지드 스킬은 예외
   source: https://code.claude.com/docs/en/settings
+  interview: "`skillOverrides`의 `name-only`와 `user-invocable-only`는 모델과 사용자가 스킬을 호출하는 방식에서 어떻게 다른가요?"
+  answer: "`name-only`는 모델에 스킬 이름만 보여 설명을 숨긴다. `user-invocable-only`는 모델에게 스킬을 보이지 않게 하지만 사용자는 `/name`으로 직접 호출할 수 있다. 이 설정은 플러그인 스킬에는 적용되지 않는다."
 - category: ai
+  level: "중급"
   title: claudeMdExcludes — 특정 CLAUDE.md를 메모리 로딩에서 빼기
   summary: 'claudeMdExcludes는 settings.json에서 메모리 로딩 시 건너뛸 CLAUDE.md 파일을 글롭 패턴이나 절대경로로 지정하는 설정이다. 패턴은 파일의 절대경로에 매칭되며, 예컨대 ["**/vendor/**/CLAUDE.md"]처럼 적으면 의존성 디렉터리에 딸려 온 CLAUDE.md가 컨텍스트에 안 실린다. 유저·프로젝트·로컬 메모리에만 적용되고, 매니지드 정책 파일은 제외할 수 없다. 서브모듈이나 vendor 트리에 박힌 남의 CLAUDE.md가 컨텍스트 창을 잡아먹을 때, 원본을 지우지 않고 프로젝트 설정만으로 솎아내기 좋다.
 
@@ -750,6 +757,8 @@ cards:
   - 유저·프로젝트·로컬 메모리에만 적용 / 매니지드 정책 파일은 제외 불가
   - '예: ["**/vendor/**/CLAUDE.md"] — vendor 트리의 CLAUDE.md를 컨텍스트에서 빼기'
   source: https://code.claude.com/docs/en/settings
+  interview: "대형 모노레포에서 다른 팀의 `CLAUDE.md`를 로드하지 않으려면 무엇을 설정하며, 제외할 수 없는 파일은 무엇인가요?"
+  answer: "`claudeMdExcludes`에 절대 경로와 매칭되는 glob 또는 절대 경로를 넣는다. 사용자·프로젝트·로컬 메모리 파일에 적용되지만, 조직이 배포한 managed policy `CLAUDE.md`는 제외할 수 없다."
 - category: ai
   title: Playwright CLI + MCP — Microsoft의 코딩·LLM 에이전트용 브라우저 제어 2종(접근성 트리·토큰 효율)
   summary: Playwright가 테스트 프레임워크를 넘어 에이전트 전용 브라우저 인터페이스 2종을 공식 출시했다. Playwright MCP는 LLM 에이전트용 — 접근성 트리 스냅샷으로 픽셀·비전 모델 없이 클릭·입력·탭·네트워크·콘솔 확인(Apache-2.0·34k★). Playwright CLI는 Claude Code·Copilot 같은 코딩 에이전트용 — MCP 대비 토큰 효율적(대형 도구 스키마·접근성 트리를 컨텍스트에 안 넣음). MCP와 CLI 두 레이어로 에이전트 유형별 브라우저 자동화를 분리한 설계가 핵심.
