@@ -1,21 +1,24 @@
-# Local AI routine checkpoint — headless smoke passed
+# Local AI routine checkpoint — paused before sync
 
 Updated at: 2026-11-22 (Asia/Seoul)
 
-## Verified state
-- LaunchAgent `com.pby2017.study-android.ai-research` is loaded with a 14,400-second (4-hour) interval; it is currently not running.
-- `.local-ai-research.disabled` is present and prevents scheduled work until a manual recovery run starts.
-- The last recorded routine run (2026-07-06) failed because Codex returned `401 token_invalidated` / `refresh_token_invalidated`; this was an authentication failure, not a hook failure.
-- Current `codex login status` reports ChatGPT login. A harmless `codex --search exec` prompt returned `OK` with exit code 0, both with and without the inherited `CODEX_SESSION_ID`.
-- The smoke test logs an AppLlama MCP `invalid_token` warning, but the Codex prompt completes. This MCP warning is separate from Codex ChatGPT authentication; do not copy credentials between sessions.
-- The card UI and navigation regression tests were pushed as commit `421c9d0` on 2026-11-22.
-- Routine docs and timeout are being aligned to the actual 4-hour cadence: ~3h30 research, final 20m implementation/verification, 10m safety margin.
+## Current phase
+- Paused at the mandatory pre-sync check. The working tree was already dirty, so no `git fetch`/`git pull` or card edits were made during this run.
+- At the initial gate, `_data/cards.yml` had an unstaged diff rewriting four older cards: Playwright CLI + MCP, `allowManagedHooksOnly`, MCP resources/prompts, and `/btw`. During this run, that diff disappeared from the worktree and the branch advanced to commit `e6ee777` (`origin/master`) without any git mutation by this agent. The current card file is clean; confirm the commit contents and source evidence on the next run.
+- This checkpoint edit is now the only observed worktree modification. No sync was attempted after writing it.
+- The refinement cursor remains unchanged. It most recently points to continuing the oldest-first AI/AI+Android card scan.
 
-## Resume procedure
-1. Commit and push the cadence/documentation correction.
-2. Remove `.local-ai-research.disabled` only for one manual run of `./scripts/local_ai_research_pipeline.sh`; the wrapper re-creates it automatically if the headless agent fails.
-3. Review that run's log, YAML/script checks, commit/push result, and marker state.
-4. Keep the 4-hour local launchd schedule. No GitHub Actions.
-5. If Codex authentication fails again, keep the disabled marker and update this checkpoint with the run log path and exact error.
+## Candidates checked
+- No new-topic candidates were researched or selected; the dirty-tree gate stopped the routine before research.
+- URLs visible in the existing card diff, not opened or revalidated in this run: https://playwright.dev/docs/getting-started-cli, https://code.claude.com/docs/en/settings-reference#allowmanagedhooksonly, https://code.claude.com/docs/en/mcp, https://code.claude.com/docs/en/interactive-mode.
 
-Do not create, update, close, or triage app-factory-android issues or pull requests. Research only AI or AI+Android education topics for study-android cards.
+## Next actions
+1. Inspect commit `e6ee777` and verify whether the four card rewrites from the initial diff were included and supported.
+2. Resolve this checkpoint worktree modification without losing its information; once the tree is clean, sync with `git pull --ff-only origin master` before routine edits.
+3. Read `research/ai-routine/refinement-cursor.md`; re-verify those four card claims from their public sources if retaining the rewrites.
+4. Continue the oldest-first refinement pass, then research current AI or AI+Android educational candidates only; reject pure Android topics.
+5. For every selected card, source-check its difficulty level and include one interview question plus concise answer.
+6. Write a timestamped research audit note and update the refinement cursor only after successful refinements.
+7. Run the required Ruby/YAML checks and `git diff --check`. Do not commit or push in this user-directed run.
+
+No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.
