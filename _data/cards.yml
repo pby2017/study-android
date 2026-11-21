@@ -7890,24 +7890,16 @@ cards:
   - LLM-neutral — BYOK any provider, Remote Control async CLI+web monitor
   source: https://www.jetbrains.com/junie/
 - category: ai
-  title: mcp-eval — MCP server+agent real-env eval, OpenTelemetry trace·pytest·LLM judge
-  summary: mcp-eval(lastmile-ai/mcp-eval·mcpevals PyPI)는 MCP server와 agent를 mock 없이 real environment에서 테스트하는 eval framework — LLM/agent가 actual MCP tool call. OpenTelemetry trace가 source of truth — tool path·latency·token·error pattern. pytest·@task decorator·dataset 3 style·language agnostic(Python·TS·Go·Rust server 모두). Rich assertion — content check·tool verification·path efficiency·LLM judge·performance gate. mcp-agent 위 구축. Promptfoo(red team) ·DeepEval(metric pytest) ·MCP Inspector(conformance UI)와 달리 production-like agent↔server integration eval·CI regression.
-  points:
-  - No mocks — real agent→real MCP server, OTEL trace→metrics→assertions
-  - 3 test styles — pytest·decorator·dataset, language-agnostic server
-  - vs MCP Inspector — integration eval vs protocol debug UI, complementary
-  source: https://github.com/lastmile-ai/mcp-eval
-- category: ai
   level: "중급"
-  title: MCP 테스트 계층 — mock 회귀 테스트와 live 통합 평가
-  summary: MCP 에이전트 테스트는 mock과 실제 서버 평가를 나눠 설계한다. 예를 들어 Alpha 도구 mcptest(mcp-agent-test)는 YAML fixture로 가짜 MCP 도구·응답·오류를 만들고, 호출 도구·인자·순서를 검사하거나 기준 trajectory와의 변화를 추적한다. 이는 외부 MCP 서버 변동을 격리하지만, 실행하는 에이전트가 실제 모델 API를 호출하면 토큰 비용과 비결정성은 남는다. 따라서 mock 테스트로 빠른 회귀를 확인하고, 별도 live 통합 테스트로 실제 서버·인증·네트워크 동작을 검증한다.
+  title: MCP 에이전트 테스트 — mock 회귀와 live 통합 평가를 함께 설계하기
+  summary: MCP 에이전트는 mock과 실제 통합 테스트를 함께 써야 한다. YAML mock으로 도구 응답·오류를 고정하면 tool 선택·인자·순서의 회귀를 빠르게 확인할 수 있다. 반면 mcp-eval은 실제 에이전트와 MCP 서버를 연결하고 OpenTelemetry trace에서 도구 호출·응답·지연·비용을 검사한다. Mock은 외부 MCP 서버 변동은 격리하지만, 테스트 에이전트가 실제 모델 API를 부르면 토큰 비용과 출력 변동은 남는다. Live 검증은 인증·네트워크·실제 구현의 통합 문제를 찾지만 실행 비용과 변동성이 더 크다.
   points:
-  - Mock fixture — 도구 응답·오류를 고정해 에이전트의 tool-call 동작을 반복 검사
-  - 외부 MCP 서버 비용·장애는 격리하지만 모델 API 비용까지 자동 제거하지는 않음
-  - Live 검증 병행 — mock은 실제 서버의 인증·네트워크·구현 호환성을 증명하지 못함
-  source: https://github.com/josephgec/mcptest
-  interview: "MCP 에이전트 테스트에서 mock 서버만으로 충분하지 않은 이유는 무엇인가요?"
-  answer: "mock은 tool-call 회귀를 빠르고 반복 가능하게 검사하지만 실제 MCP 서버의 인증·네트워크·프로토콜 구현을 검증하지 못한다. 또 테스트 에이전트가 실제 LLM을 호출하면 비용과 출력 변동도 남을 수 있다. mock 테스트와 live 통합 테스트를 함께 사용해야 한다."
+  - Mock test — 빠르고 재현 가능한 tool-call/인자/오류 회귀 검사
+  - Live integration — 실제 서버 연결과 OTEL trace로 경로·지연·비용 관찰
+  - 비용 경계 — mock server와 LLM 호출은 별개; 실제 모델 호출 여부를 확인
+  source: https://github.com/lastmile-ai/mcp-eval
+  interview: "MCP 에이전트 테스트에서 mock과 live 통합 검증은 무엇을 각각 확인하며, 비용은 어떻게 달라지나요?"
+  answer: "Mock은 고정된 도구 응답으로 tool-call 회귀를 빠르게 검사하고 외부 서버 변동을 줄인다. Live 테스트는 실제 서버의 인증·네트워크·응답까지 확인하고 trace로 지연·비용을 관찰한다. 단, mock이어도 에이전트가 실제 LLM API를 호출하면 그 호출 비용은 남는다."
 - category: ai
   level: "고급"
   title: MCP-AgentBench — MCP 에이전트를 경로가 아닌 작업 결과로 평가하기

@@ -884,3 +884,10 @@ Rules:
 - Sources: [mcptest repository](https://github.com/josephgec/mcptest), [mcp-agent-test on PyPI](https://pypi.org/project/mcp-agent-test/), [mcp-eval live integration testing](https://github.com/lastmile-ai/mcp-eval)
 - Research note: `research/ai-routine/20261122-070200-mcp-mock-vs-live-tests.md`
 - Next: inspect the next older card, `mcp-eval`, and validate its current project status and claims
+
+- Merged the duplicate standalone `mcp-eval` card into `MCP 에이전트 테스트 — mock 회귀와 live 통합 평가를 함께 설계하기`
+- Kept the reusable distinction: mocks give fast controlled trajectory regression; live agent↔server tests expose authentication/network/implementation behavior and OTEL latency/cost
+- Verified current mcp-eval repo snapshot at 41 stars/10 forks; PyPI `mcpevals` latest listed release is 0.1.10 (2025-09-04), so removed “production-ready” and adoption implications; tool serves as a documented example, not an endorsement
+- Sources: [mcp-eval repository](https://github.com/lastmile-ai/mcp-eval), [mcpevals on PyPI](https://pypi.org/project/mcpevals/), [mcptest repository](https://github.com/josephgec/mcptest)
+- Research note: `research/ai-routine/20261122-070300-mcp-eval-card-merge.md`
+- Next: continue older-card review at `Junie GA`; validate current Android Studio/JetBrains support and remove stale claims if needed
