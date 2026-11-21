@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `RevenueCat 2026 — AI 앱은 더 벌지만 구독 유지율은 낮다`; next candidate: `ADK for Android`.
+Current position: continue after `Google ADK Kotlin + Android — 온디바이스 모델별 도구 지원 차이`; next candidate: `ObjectBox` (the intervening MASVS/R8 card is pure Android and out of scope).
 
-Last update: 2026-11-22 03:45 KST
+Last update: 2026-11-22 04:15 KST
 
 Current run:
 - Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
@@ -269,7 +269,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `ADK for Android`; re-check current Android developer documentation before further refinement.
+- Continue with `ObjectBox`; re-check its Android integration and AI/RAG use case before deciding whether it meets the scope.
 - GrowthBook was removed from the deck because the reviewed card had no central AI use case; the historical publication log is retained.
 - LinkForty was removed because the reviewed card had no central AI use case; the historical publication log is retained.
 
@@ -294,3 +294,12 @@ Rules:
 - Kept AI-only payer LTV and plan-specific 12-month retention; removed general-market paywall conversion comparison, unsupported price bands, and unsupported 3–6 month claim.
 - Recorded sample composition, observation period, denominator distinctions, and non-causal inference limits.
 - Next: `ADK for Android`.
+
+
+## 2026-11-22 04:15 KST
+
+- Reviewed and refined: `ADK for Android` → `Google ADK Kotlin + Android — 온디바이스 모델별 도구 지원 차이`.
+- Re-checked Android Developers docs, Google ADK Kotlin README, and Google release announcements. Recorded current repository stars (309) as volatile interest signal only.
+- Clarified LiteRT-LM tool calling vs. ML Kit Gemini Nano beta/no tool calling vs. Firebase AI cloud tool calling; avoided implying universal device support.
+- Skipped `OWASP MASVS-RESILIENCE + R8` because it is pure Android rather than an AI topic.
+- Next: `ObjectBox`.

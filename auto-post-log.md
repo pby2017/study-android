@@ -4482,3 +4482,11 @@ Refined:
 - Refined: `RevenueCat 2026 — AI 앱은 더 벌지만 구독 유지율은 낮다`
 - Sources re-checked: https://www.revenuecat.com/blog/growth/ai-app-retention-study, https://www.revenuecat.com/state-of-subscription-apps, https://www.revenuecat.com/blog/engineering/android-paywall-gap
 - Removed unrelated whole-market paywall conversion, unsupported price ranges, and 3–6 month retention advice; kept AI-only sample metrics and stated sample/platform/causality limits.
+
+## 2026-11-22 — 검증 기반 카드 정제
+
+- Published: none
+- Refined: `Google ADK Kotlin + Android — 온디바이스 모델별 도구 지원 차이`
+- Sources re-checked: https://github.com/google/adk-kotlin, https://developer.android.com/ai/adk, https://developers.googleblog.com/adk-kotlin-android-building-ai-agents/, https://developers.googleblog.com/announcing-adk-for-kotlin-10-building-production-ready-ai-agents-in-kotlin-android-and-beyond/
+- Replaced generic hybrid-agent claims with backend-specific tool-calling and beta limits; distinguished current repository module versions from older Android guide examples.
+- Skipped `OWASP MASVS-RESILIENCE + R8` as pure Android (not AI/AI+Android).
