@@ -2466,13 +2466,17 @@ cards:
   interview: "왜 이미 양자화된 모델을 다시 낮은 비트로 양자화하는 것을 피해야 하나요?"
   answer: "재양자화는 원래의 고정밀 값 대신 이미 손실이 있는 값을 다시 근사하므로 품질을 크게 낮출 수 있다. llama.cpp 문서는 16/32비트 GGUF에서 양자화를 시작하고, 필요하면 imatrix를 사용한 뒤 실제 평가로 품질을 확인하라고 안내한다."
 - category: ai
+  level: "고급"
   title: KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크
-  summary: 'KnowU-Bench는 재현 가능한 Android 에뮬레이션 환경에서 personalized/proactive mobile agents를 평가하는 온라인 벤치마크다. 에이전트에게는 사용자 프로필이 아니라 행동 로그만 주고, 다이얼로그를 통해 선호를 추론하게 만든다. 공식 프로젝트 페이지와 arXiv 초록은 42 general GUI·86 personalized·64 proactive tasks, LLM-driven user simulator, consent negotiation, post-rejection restraint, hybrid rule-based verification + LLM-as-a-Judge를 공개한다. 실무 교훈은 모바일 AI를 GUI 자동화로만 보면 안 되고, 선호 추론·개입 타이밍·동의 설계를 함께 봐야 한다.'
+  summary: 'KnowU-Bench는 Android 에뮬레이터에서 모바일 AI 에이전트를 평가하는 벤치마크다. 23개 앱의 192개 작업(일반 GUI 42, 개인화 86, 선제 지원 64)을 포함한다. 에이전트에는 사용자 프로필 대신 행동 기록만 제공하고, 가상 사용자와 대화해 선호를 확인하게 한다. 평가는 화면 조작뿐 아니라 선호 추론, 개입 전 동의, 거절 후 멈춤도 본다. 따라서 단순 작업 성공률만으로 개인화 에이전트의 신뢰성을 판단할 수 없다.'
   points:
-  - '42 general GUI·86 personalized·64 proactive tasks'
-  - 'User profile hidden, behavioral logs only — preference inference not lookup'
-  - 'Hybrid verification: rule-based checks + LLM-as-a-Judge / reproducible Android emulator'
+  - '192개 작업·23개 앱: 일반 GUI 42, 개인화 86, 선제 지원 64'
+  - '프로필 대신 행동 기록 제공; 필요하면 대화로 선호를 확인'
+  - '화면 실행 + 동의 확인 + 거절 후 중단을 함께 평가'
+  - '규칙 기반 검사와 LLM 평가를 결합한 재현 가능한 에뮬레이터 실험'
   source: https://zju-real.github.io/KnowU-Bench/
+  interview: "모바일 개인화 에이전트를 GUI 작업 성공률만으로 평가해도 될까요?"
+  answer: "부족하다. 이 벤치마크는 행동 기록에서 선호를 추론하는 능력, 불확실할 때 질문하는 능력, 선제 행동 전 동의를 구하는 능력, 거절 뒤 멈추는 능력도 평가한다. 작업을 수행했는지와 함께 언제 행동하지 않아야 하는지도 봐야 한다."
 - category: ai
   title: Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)
   summary: 'Llamatik은 Kotlin Multiplatform에서 llama.cpp·whisper.cpp·stable-diffusion.cpp를 묶어 Android·iOS·Desktop·WASM에서 오프라인 AI를 돌리는 라이브러리다. 공통 `LlamaBridge` API로 로컬·원격 추론을 추상화하고, Android AAR/Maven Central 배포로 별도 네이티브 툴체인 없이 쓸 수 있게 한다. LLM 쪽은 streaming·context-aware generation·schema-constrained JSON·embeddings·KV cache 세션·concurrent sessions를 지원하고, Whisper/STT와 Stable Diffusion까지 같은 Kotlin API로 감싼다. Compose Multiplatform 샘플이 있어 "모바일 앱에 로컬 AI를 넣는 방법"을 바로 보여 주는 교육용 카드로 좋다.'

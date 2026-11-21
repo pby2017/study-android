@@ -2,15 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `llama.cpp + GGUF — 모델 변환과 양자화 순서`; next candidate in the existing sequence is `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`.
+Current position: continue after `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`; next candidate in the current data sequence is `Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)`.
 
-Last update: 2026-11-22 01:30 KST
+Last update: 2026-11-22 01:35 KST
 
 Current run:
-- Reviewed and refined: `llama.cpp + GGUF — 모델 변환과 양자화 순서` (clarified quantization loss/requantization risk; added level and interview recall)
-- Sources re-checked: official llama.cpp quantize guide and README; live GitHub API metadata
-- Skipped: none in this bounded pass
-- Next: continue with `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`
+- Reviewed and refined: `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크` (distilled the trust and consent lesson; added level and interview recall)
+- Sources re-checked: official project page and arXiv paper; live GitHub API metadata
+- Skipped: no candidates; adoption is early (83 stars), so the card makes no popularity claim
+- Next: continue with `Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)`
 
 Reviewed:
 - `Google Stitch(구 Galileo AI) — 텍스트·음성으로 모바일·웹 UI와 프런트엔드 코드를 빠르게 시도하는 Google Labs 도구`
@@ -199,7 +199,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `KnowU-Bench — Android 에뮬레이터에서 개인화·프로액티브 모바일 에이전트를 재는 벤치마크`; re-check its official project/paper sources before considering edits.
+- Continue with `Llamatik — KMP로 Android·iOS·Desktop에서 오프라인 AI를 한 API로 묶기(Maven Central)`; re-check its current public sources and compatibility claims before considering edits.
 
 Per successful refinement run, update this file with:
 - timestamp
