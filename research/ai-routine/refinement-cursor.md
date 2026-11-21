@@ -2,11 +2,14 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Google Stitch — AI 디자인 캔버스에서 UI 아이디어를 프로토타입으로 검증하기`; next candidate: inspect the following card after Stitch in `_data/cards.yml`.
+Current position: continue after `v0 — AI 생성 웹앱과 Android 네이티브 UI를 구분하기`; next candidate: inspect the following card after v0 in `_data/cards.yml`.
 
-Last update: 2026-11-22 02:30 KST
+Last update: 2026-11-22 02:34 KST
 
 Current run:
+- Reviewed and refined: `v0` (distinguished its current AI web-app/full-stack creation workflow from Stitch's design-canvas/prototype use case; removed unsupported Figma/React/$20 pricing claims)
+- Sources re-checked: current official v0 product page
+- Added explicit note: responsive mobile web is not a native Android app
 - Reviewed and refined: `Google Stitch` (updated from the March 2026 Google Labs announcement; replaced stale launch-era features with current AI canvas, design agent, voice iteration, prototype, DESIGN.md, MCP/SDK workflow)
 - Sources re-checked: current official Google Labs announcement
 - Explicitly framed generated prototypes as design aids, not validated Android UI implementations
@@ -229,7 +232,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after Google Stitch in `_data/cards.yml`; keep only topics that meet the AI or AI+Android scope.
+- Continue with the card immediately after v0 in `_data/cards.yml`; keep only topics that meet the AI or AI+Android scope.
 
 Per successful refinement run, update this file with:
 - timestamp
