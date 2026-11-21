@@ -3129,16 +3129,6 @@ cards:
   answer: '아니다. 이 사례의 1.0은 모델의 확률 출력이 아니라 파싱된 이진 라벨을 코드가 숫자로 바꾼 값이다. 확률이나 정렬 점수로 쓰려면 모델이 제공하는 적절한 점수와 보정 방법을 확인하고, 대표 데이터에서 클래스별 정밀도·재현율과 오탐·미탐을 평가해야 한다. 민감한 모더레이션은 자동 차단만으로 끝내지 말고 사람 검토 경로도 둔다.'
   source: https://github.com/baseweight/SideEye/blob/main/app/src/main/java/ai/baseweight/sideeye/data/ai/ImageAnalyzer.kt
 - category: ai
-  title: ORB-SLAM2s(Android) — 모든 Android 폰에서 6DoF SLAM·포인트 클라우드·재위치 추정(오픈소스)
-  summary: 'ORB-SLAM2s는 ORB-SLAM2를 Android에 이식한 공간 컴퓨팅 도구다. 단안 카메라 입력으로 실시간 희소 포인트 클라우드 매핑, 맵 저장·로드, 재위치 추정(Relocalization)을 수행. 키포인트 시각화·매칭 통계· 바닥/표면 평면 감지·OpenGL ES AR 렌더링까지 지원. 어두운 프레임 자동 스킵으로 SLAM 스레드 블로킹 방지. VIO(Visual-Inertial Odometry) 통합과 FPS 최적화가 로드맵에 있음.
-
-    '
-  points:
-  - '6DoF SLAM: 단안 카메라로 실시간 포인트 클라우드 매핑'
-  - '맵 영속성: 로컬 저장 → 로드 → 재위치 추정'
-  - 'OpenGL ES AR: 감지된 평면에 3D 오브젝트 배치'
-  source: https://github.com/Olsc/Android_ORB-SLAM2s
-- category: ai
   title: YOLO26 — NMS 없는 엣지 퍼스트 객체 감지, CPU 추론 43% 빠름(Ultralytics, 모바일·IoT)
   summary: 'YOLO26은 Ultralytics가 엣지 디바이스 전용으로 설계한 실시간 객체 감지 모델 패밀리다. One-to-One 감지 헤드로 NMS 후처리를 완전 제거해 결정론적·저레이턴시 추론을 달성. Nano 모델은 YOLO11 대비 CPU 추론 43% 빠름. 감지·세그멘테이션·포즈 추정·분류·OBB 5개 태스크 통합. CoreML(Apple)·TFLite (Android)·TensorRT·OpenVINO 19개 포맷 내보내기. INT8/FP16 양자화 안정성 내장.
 

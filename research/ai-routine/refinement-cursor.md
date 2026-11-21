@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `SideEye`; next candidate: inspect `ORB-SLAM2s(Android)` and verify whether its core lesson is genuinely AI-related or only a classical computer-vision/Android port.
+Current position: continue after `ORB-SLAM2s(Android)` was removed as out of scope; next candidate: inspect `YOLO26` and verify official release/model claims, benchmark conditions, Android export/runtime path, and adoption.
 
-Last update: 2026-11-22 04:29 KST
+Last update: 2026-11-22 04:31 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -526,3 +526,11 @@ Rules:
 - Reframed the lesson around a concrete inference-quality issue in `ImageAnalyzer.kt`: generated `Category: N` text is parsed into a binary label, then `primaryConfidence` becomes 1.0 or 0.0. That value is not a calibrated model probability. The card now teaches class-wise evaluation, false-positive/negative handling, and human review.
 - Sources: https://github.com/baseweight/SideEye ; https://github.com/baseweight/SideEye/blob/main/app/src/main/java/ai/baseweight/sideeye/data/ai/ImageAnalyzer.kt ; https://github.com/baseweight/SideEye/blob/main/app/src/main/java/ai/baseweight/sideeye/data/ai/ModelDownloader.kt
 - Next: `ORB-SLAM2s(Android)`; check whether the AI angle is central or the card is merely a classical CV/Android port.
+
+
+## 2026-11-22 04:31 KST
+
+- Reviewed `ORB-SLAM2s(Android)` using its current GitHub README and repository metadata. GitHub showed 71 stars, 10 forks, and 621 commits, but attention alone does not satisfy topic scope.
+- The README describes an Android port/enhancement of ORB-SLAM2: ORB feature-based visual SLAM, sparse point maps, pose/relocalization, IMU and AR rendering. It explicitly distinguishes the project's optimizations from a separate ORB-SLAM2S paper whose methods are not integrated. The documented feature path contains no learned model or AI component.
+- Removed the card because it is a classical computer-vision/Android implementation, outside the project's allowed AI or AI+Android topic boundary. Did not retain its broad “all Android phones” claim.
+- Next: `YOLO26`; validate the Ultralytics model/release, speed-comparison conditions, Android export/runtime support, and current adoption before revising.
