@@ -421,3 +421,11 @@ Rules:
 - Replaced broad production claims with author-reported one-month Taobao A/B results across four feed scenarios (average CLICK +1.8%, PAY +2.7%, GMV +2.5%); explicitly not generalized or independently reproduced.
 - Avoided implying full pipeline on-device/privacy: the paper describes local behavior collection/cache and a separate item retrieval module. Public reproducible code/data were not verified.
 - Next: review `OD-LLM`; distinguish its task-adaptive compression method from RecGPT-Mobile's inference-trigger policy, and validate mobile deployment evidence.
+
+## 2026-11-22 04:00 KST
+
+- Rechecked OD-LLM against arXiv full text and abstract metadata; confirmed WSDM'26, the three Amazon review datasets, the 50% compressed model comparison, and the normalization → SVD → layerwise update method.
+- Corrected the critical deployment boundary: reported compression and speed experiments use a single A40 GPU or CPU environment, not an Android handset. No reproducible public code/artifact was verified in the examined sources.
+- Removed unproven blanket privacy/offline guarantee and narrowed comparison with GPTQ/AWQ. Performance claims now refer to paper-reported benchmark results and preserve compression-quality tradeoff.
+- Kept separate from RecGPT-Mobile: OD-LLM studies task-adaptive model compression; RecGPT-Mobile studies behavior-drift gating for inference calls.
+- Next: inspect the next AI/AI+Android card after OD-LLM, verify source freshness and avoid inferring mobile readiness from a paper title.

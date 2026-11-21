@@ -586,7 +586,7 @@
 | 7 | RunAnywhere SDK — 보이스 파이프라인 올인원 | docs.runanywhere.ai |
 | 8 | V8V — KMP 음성 오케스트레이션 | github.com/alimomin1998 (기존 카드에서 Android 음성 인식의 네트워크·개인정보 경계로 재정리) |
 | 9 | RecGPT-Mobile — Taobao 온디바이스 추천 에이전트 | arxiv.org (논문 실험 수치로 범위 한정, 구현·재현성 경계 명시) |
-| 10 | OD-LLM — 온디바이스 순차 추천 압축 프레임워크 | arxiv.org |
+| 10 | OD-LLM — 온디바이스 순차 추천 압축 프레임워크 | arxiv.org (실제 Android 검증이 아닌 연구용 A40 평가임을 명시) |
 
 누적: 412카드 (402→412)
 주제: AI 테스트(접근성·비전), 크래시 AI 분석, 연합학습, 크로스플랫폼 LLM, 음성 AI, 추천 엔진
