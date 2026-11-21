@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 08:02 KST
+Last update: 2026-11-22 08:09 KST
+
+## Latest pass
+- Merged the duplicate Android cards `화면 상태 복원 — ViewModel·SavedState·DB의 수명 구분` and `ViewModel은 프로세스 사망까지 기억하지 않는다` into one intermediate retrieval card.
+- Rechecked the lifecycle boundaries against Android's current Save UI States and Saved State module guides: ViewModel survives configuration changes, saved state supports system process restoration for small state while the task remains, and user dismissal removes that saved state; durable app data belongs in persistent storage.
+- Preserved the distinct task-stack/process-death nuance, added an interview question, and removed one redundant card.
+- Source and rationale: `research/ai-routine/20261122-080900-android-state-restoration-merge.md`.
+- Next: inspect another closely related Android/AI card cluster and merge only when the learning objective is demonstrably redundant.
 
 ## Latest pass
 - Reworked `Gemini Nano 하이브리드 추론 — 실제 실행 경로와 fallback 확인` against current Android and Firebase AI Logic documentation.
