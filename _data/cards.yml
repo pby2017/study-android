@@ -47,15 +47,15 @@ cards:
   answer: "식은 모든 경로에서 값을 정해야 한다. 조건이 거짓일 때 돌려줄 분기가 없으면 결과가 정해지지 않기 때문이다."
 - category: kotlin
   level: "초급"
-  title: 'Kotlin 컬렉션 — 읽기 전용은 불변이 아니다'
-  summary: '`List`·`Set`·`Map`은 읽기 API만 제공하고, 변경 작업은 `MutableList` 등 별도 타입으로 표현한다. 하지만 읽기 전용 타입이 내부 데이터의 불변성을 보장하지는 않는다. 다른 참조가 같은 객체를 변경할 수 있다. `+` 같은 연산은 원본을 수정하지 않고 새 읽기 전용 결과를 반환한다.'
+  title: 'Kotlin 컬렉션 — 읽기 전용과 변경'
+  summary: '`List`는 읽기 작업만 노출하고 `MutableList`는 추가·삭제·수정도 허용한다. `List` 타입은 객체가 불변임을 보장하지 않는다. 다른 `MutableList` 참조가 같은 객체를 바꿀 수 있다. `list + item`은 새 읽기 전용 리스트를 만든다. 따라서 `var list: List<T>`의 `list += item`은 새 결과를 변수에 재할당하지만, `val list: MutableList<T>`의 `list += item`은 기존 리스트를 바꾼다.'
   points:
-  - '`List`와 `MutableList`는 읽기/변경 API를 구분한다.'
-  - '읽기 전용 참조만으로 실제 객체의 불변성을 단정할 수 없다.'
-  - '`list + item`은 원본이 아닌 새 읽기 전용 리스트를 만든다.'
-  source: https://kotlinlang.org/docs/collections-overview.html
-  interview: "Kotlin의 List가 읽기 전용이면 내부 데이터도 불변인가?"
-  answer: "아니다. List 인터페이스는 변경 API를 노출하지 않을 뿐, 다른 참조가 MutableList를 수정할 수 있다."
+  - '`List`는 수정 API를 제공하지 않고, `MutableList`는 제공한다.'
+  - '`+`는 새 컬렉션을 반환한다. 읽기 전용 `var`의 `+=`는 그 결과를 재할당한다.'
+  - '변경 가능한 `val`의 `+=`는 컬렉션 객체를 직접 바꾼다.'
+  source: https://kotlinlang.org/docs/collection-write.html
+  interview: '`val items: MutableList<Int> = mutableListOf(1)`에서 `items += 2`는 변수를 재할당하는가?'
+  answer: '아니다. `val`은 참조 재할당을 막지만 객체 변경은 막지 않는다. `MutableList`의 `+=`는 `plusAssign`으로 기존 리스트를 수정한다. 반대로 `var items: List<Int>`이면 `+=`가 `plus` 결과를 변수에 다시 대입한다.'
 - category: kotlin
   level: "초급"
   title: 클래스·인터페이스 — 자바와 무엇이 다른가
