@@ -862,3 +862,10 @@ Rules:
 - Sources: [ZCode guide](https://zcode.z.ai/en/docs/welcome), [Remote Control](https://zcode.z.ai/en/docs/remote-control), [Remote Development](https://zcode.z.ai/en/docs/remote-development)
 - Research note: `research/ai-routine/20261122-065700-zcode-glm53-remote-control.md`
 - Next: inspect `FrontierCode` and verify current benchmark claims before refining
+
+- Reviewed and refined `FrontierCode 2.0 — 코딩 에이전트의 완성도와 암묵적 요구 평가`
+- Replaced the superseded FrontierCode 1.0/1.1 Diamond scores and false-positive comparison with current 2.0 methodology; leaderboard identifies 132 tasks and 2.0 launched 2026-10-27
+- Kept the key lesson: agent evaluation must include thoroughness, inferred constraints, compatibility, and blocker criteria; historical model rankings are volatile and omitted
+- Sources: [FrontierCode 2.0 methodology](https://cognition.com/blog/frontier-code-2.0), [current leaderboard and revisions](https://cognition.com/frontiercode)
+- Research note: `research/ai-routine/20261122-065800-frontiercode-2-methodology.md`
+- Next: inspect `MCP-AgentBench` and validate its task/server counts and evaluation claims

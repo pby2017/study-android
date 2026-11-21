@@ -7914,13 +7914,16 @@ cards:
   - Open models competitive — Qwen3·Kimi K2 vs GPT-4o on MCP tasks
   source: https://arxiv.org/abs/2509.09734
 - category: ai
-  title: FrontierCode — Cognition '머지할 PR인가' 벤치, Diamond 13.4%·maintainer rubric
-  summary: FrontierCode(cognition.ai/blog/frontier-code·2026-06-08)는 '코드가 통과하는가'가 아니라 'maintainer가 merge할 PR인가'를 재는 벤치마크 — Cognition(Devin)이 36 flagship OSS repo maintainer 20+명과 공동 제작. 150 Extended·100 Main·50 Diamond nested subset, task당 40h+ maintainer effort. 6-axis rubric — correctness·regression safety·mechanical cleanliness·test quality·scope discipline·code quality, blocker fail→score 0. Reverse-Classical(test가 broken code에서 fail)·scope check·mutagent adaptive grading. Opus 4.8 Diamond 13.4%·Main 34.3%·Extended 51.8% — SWE-bench Pro 81% false positive rate vs FrontierCode QC. tasks private(contamination 방지).
+  level: "고급"
+  title: FrontierCode 2.0 — 코딩 에이전트의 완성도와 암묵적 요구 평가
+  summary: FrontierCode 2.0은 132개 작업으로 코딩 에이전트가 요구를 구현하는 데 그치지 않고 코드베이스의 관례와 명시되지 않은 제약까지 추론하는지 평가한다. 1.1보다 더 많은 저장소와 보안·성능 작업을 포함하고, 평균 참조 변경 범위도 커졌다. 점수는 가중 rubric 결과이며 blocker 조건을 하나라도 넘지 못하면 0점이다. 따라서 모델 순위만 비교하지 말고 버전, 작업군, reasoning 설정, 비용을 함께 봐야 한다.
   points:
-  - Mergeability not pass — scope discipline·test quality·style, blocker=zero score
-  - 81% fewer misclassification — vs SWE-bench Pro, maintainer-authored rubric
-  - Unsaturated — Diamond best 13.4%, production-ready signal not correctness-only
-  source: https://cognition.ai/blog/frontier-code
+  - 132 tasks — 저장소 범위와 보안·성능 과제를 넓힌 FrontierCode 2.0
+  - Thoroughness — 같은 버그가 있는 다른 경로와 호환성 같은 암묵적 조건도 확인
+  - Blocker 하나라도 실패하면 점수 0 — 평균 점수와 통과 조건을 분리해 해석
+  source: https://cognition.com/blog/frontier-code-2.0
+  interview: "코딩 에이전트 벤치마크에서 기능 테스트 통과만으로 실제 PR 품질을 판단하기 어려운 이유는 무엇인가요?"
+  answer: "기능 테스트는 지시된 경로의 동작만 볼 수 있다. 실제 변경은 관련 경로 누락, 기존 API 호환성, 회귀, 저장소 관례 위반 같은 문제를 남길 수 있다. FrontierCode 2.0은 이런 철저성·설계 조건을 blocker rubric에 포함하므로, 점수와 함께 통과 조건·작업 범위·평가 버전을 확인해야 한다."
 - category: ai
   level: "중급"
   title: ZCode — GLM-5.3 ADE와 휴대폰 원격 조종의 실행 경계
