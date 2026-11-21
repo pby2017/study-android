@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `smol developer — 제품 명세를 계획·파일 목록·코드 생성으로 나누는 초기 코딩 에이전트`; next candidate: `AgenTest`.
+Current position: continue after `AgenTest — MCP로 Android 앱을 탐색·조작하는 AI 보조 테스트 도구`; next candidate: `MobileSAM`.
 
 Last update: 2026-11-22 02:34 KST
 
@@ -25,6 +25,9 @@ Current run:
 - Reviewed and refined: `smol developer` (reframed as an early coding-agent case study; replaced stale model/popularity claims with the current README's plan → file list → per-file generation flow and explicit human validation)
 - Source re-checked: current public GitHub README; repository displays 12.2k stars, recorded only as a volatile attention signal, not evidence of current support or quality
 - Marked README's GPT-4-era examples as historical rather than current compatibility guidance
+- Reviewed and refined: `AgenTest` (stated Android-only scope; qualified ~80ms UI-tree and 60fps gRPC measurements to documented helper/emulator paths; distinguished exploratory AI testing from deterministic regression suites; clarified debug-only data inspection)
+- Source re-checked: official AgenTest README
+- Repository page displayed 5 stars at review; recorded as a low attention signal, not proof of usefulness or maturity
 - Reviewed and refined: `Koog` (removed unsupported GA date and sweeping platform/pro-vider claims; captured Android target documentation ambiguity; clarified agent orchestration vs on-device inference and client-secret risk)
 - Sources re-checked: official Koog documentation and GitHub README
 - Reviewed and refined: `Maestro` (replaced stale MaestroGPT claims with the current built-in MCP agentic UI testing workflow; highlighted YAML review and device-action risk)
@@ -244,7 +247,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with `AgenTest`; keep only topics that meet the AI or AI+Android scope.
+- Continue with `MobileSAM`; keep only topics that meet the AI or AI+Android scope.
 
 Per successful refinement run, update this file with:
 - timestamp
