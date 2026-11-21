@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 08:00 KST
+Last update: 2026-11-22 07:59 KST
+
+## Latest pass
+- Reviewed `StopFailure 훅 — API 에러로 턴이 끝날 때만 잡아내기` against the current official Claude Code hooks reference.
+- Corrected the event contract: StopFailure replaces Stop on API-error termination; `error` is the matcher field, and HTTP 529 overloads are reported as `server_error`.
+- Preserved the decision-control boundary while noting the documented `terminalSequence` output exception; removed the outdated `overloaded` matcher example.
+- Source and rationale: `research/ai-routine/20261122-075900-claude-stopfailure-refinement.md`.
+- Next: resume the oldest-first AI/AI+Android card scan and verify candidate relevance before changing another card.
 
 ## Latest pass
 - Reviewed and refined `설정형 훅 핸들러 5종 — 이벤트별 지원과 검토` against the current official Claude Code hooks reference.
