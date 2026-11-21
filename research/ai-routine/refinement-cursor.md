@@ -830,3 +830,10 @@ Rules:
 - Rechecked official Computer Control and AppFunctions docs; kept UI automation distinct from explicit tools and did not claim automatic fallback
 - Research note: `research/ai-routine/20261122-083000-android-computer-control-boundaries.md`
 - Next: inspect `Firebase AI Logic — 종료된 Imagen 호출을 Nano Banana로 이전` for model availability and migration facts
+
+- Reviewed and refined: `Firebase AI Logic — 종료된 Imagen 호출을 Nano Banana로 이전`
+- Rechecked Imagen shutdown and migration mapping; added key SDK-side caveats: Firebase image generation remains Preview and requires Blaze billing, distinct from model lifecycle
+- Preserved API migration, 1-image PNG/SynthID result and `NO_IMAGE` handling
+- Sources: Firebase Imagen migration guide, Nano Banana image generation guide, supported models list
+- Research note: `research/ai-routine/20261122-090000-firebase-imagen-nano-banana-migration.md`
+- Next: inspect the next AI+Android card after the Imagen migration entry

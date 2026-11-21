@@ -3337,14 +3337,14 @@ cards:
 - category: ai
   title: Firebase AI Logic — 종료된 Imagen 호출을 Nano Banana로 이전
   level: "중급"
-  summary: 'Firebase AI Logic의 Imagen 모델은 2026년 8월 17일 종료됐다. Android에서는 `ImagenModel.generateImages()` 대신 Gemini `GenerativeModel.generateContent()`를 사용하고 `responseModalities = IMAGE`를 설정한다. 대체 모델은 사용 사례에 맞춰 고른다: Imagen Fast는 `gemini-nano-banana-2.1` + `MINIMAL`, Imagen 표준은 같은 모델 + `HIGH`, Imagen Ultra는 `gemini-3-pro-image`다. 모델만 바꾸지 말고 생성 설정과 결과 처리도 다시 검증한다.'
+  summary: 'Firebase Imagen 모델은 2026년 8월 17일 종료됐다. Android는 `ImagenModel.generateImages()`에서 `GenerativeModel.generateContent()`와 `IMAGE` 응답 설정으로 이전한다. Fast→Nano Banana 2.1 `MINIMAL`, 표준→같은 모델 `HIGH`, Ultra→Gemini 3 Pro Image로 매핑한다. 단, Firebase SDK의 이미지 생성은 Preview이며 Blaze 요금제가 필요하다. 출력은 1장 PNG와 SynthID이므로 `NO_IMAGE`·파싱·다중 이미지 가정을 다시 확인한다.'
   points:
-  - '모든 Imagen 모델은 종료됨; Fast→Nano Banana 2.1/MINIMAL, 표준→Nano Banana 2.1/HIGH, Ultra→Gemini 3 Pro Image'
+  - '모든 Imagen 모델 종료; Fast→Nano Banana 2.1/MINIMAL, 표준→Nano Banana 2.1/HIGH, Ultra→Gemini 3 Pro Image'
   - '`ImagenModel.generateImages()` → `GenerativeModel.generateContent()`; `IMAGE` 모달리티와 새 `GenerationConfig`/`ImageConfig` 설정'
-  - 'Nano Banana는 한 번에 이미지 1장, PNG, SynthID 워터마크; `NO_IMAGE`와 기존 앱의 출력 가정을 재검증'
+  - 'Firebase 이미지 생성은 Preview·Blaze 필요; Nano Banana는 1장 PNG와 SynthID를 반환하므로 `NO_IMAGE`·출력 가정을 재검증'
   source: https://firebase.google.com/docs/ai-logic/imagen-models-migration
   interview: "Imagen Fast와 표준 모델을 Nano Banana로 이전할 때 모델 이름 외에 무엇을 바꾸고 검증해야 하나요?"
-  answer: "Fast는 `gemini-nano-banana-2.1`의 `MINIMAL`, 표준은 같은 모델의 `HIGH` thinking level로 매핑한다. `ImagenModel.generateImages()`를 `GenerativeModel.generateContent()`로 바꾸고 `IMAGE` response modality 및 GenerationConfig를 설정한다. 새 모델은 한 번에 한 장만 PNG로 반환하며 SynthID 워터마크가 포함되므로 다중 이미지·형식·결과 파싱 가정과 `NO_IMAGE` 처리를 다시 검증한다."
+  answer: "Fast는 `gemini-nano-banana-2.1`의 `MINIMAL`, 표준은 같은 모델의 `HIGH` thinking level, Ultra는 `gemini-3-pro-image`로 매핑한다. Android 호출은 `ImagenModel.generateImages()`에서 `GenerativeModel.generateContent()`와 `IMAGE` modality 설정으로 바꾼다. Firebase의 Nano Banana 통합은 Preview이고 Blaze 요금제가 필요하다. 새 응답은 1장 PNG와 SynthID를 사용하므로 다중 이미지·형식·파싱 가정과 `NO_IMAGE`를 다시 검증한다."
 - category: ai
   title: Kakao Mobility — Gemini Nano 주소 추출과 두 개의 평가셋
   level: "중급"
