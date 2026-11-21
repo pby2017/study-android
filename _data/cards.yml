@@ -81,6 +81,17 @@ cards:
   interview: '`class User(name: String)`에서 `name`을 `user.name`으로 읽을 수 없는 이유는?'
   answer: '생성자 매개변수는 `val`이나 `var`를 붙여야 프로퍼티가 된다. `val`/`var`가 없으면 생성·초기화 시점에 쓸 수 있지만 인스턴스 프로퍼티로 저장되지는 않는다.'
 - category: kotlin
+  level: "중급"
+  title: 'Kotlin Sequence — 지연 처리와 조기 종료'
+  summary: '`List`의 `filter`·`map` 같은 연산은 각 단계를 즉시 실행하고 중간 컬렉션을 만든다. `asSequence()`로 바꾸면 연산은 최종 결과를 요청할 때 실행되며, 원소 하나씩 여러 단계를 통과한다. 따라서 `take(n)` 뒤에서 멈춰 필요한 원소만 처리할 수 있다. 다만 작은 데이터나 단순 연산에서는 지연 처리의 오버헤드가 더 클 수 있다.'
+  points:
+  - '`asSequence()`는 기존 컬렉션을 Sequence 처리로 연결한다.'
+  - '`filter`·`map`은 중간 연산, `toList()`·`sum()`은 최종 연산이다.'
+  - 'Sequence는 보통 원소별로 연산을 이어가고 `take`에서 일찍 멈출 수 있다.'
+  source: https://kotlinlang.org/docs/sequences.html
+  interview: '많은 원소에서 `filter { ... }.map { ... }.take(5)`를 처리할 때 Sequence가 줄일 수 있는 비용과 주의점은?'
+  answer: 'Sequence는 중간 컬렉션 생성을 피하고 필요한 5개 원소를 찾으면 처리를 멈출 수 있다. 하지만 지연 평가 자체의 오버헤드가 있어 작은 컬렉션이나 단순한 연산이 항상 더 빨라지는 것은 아니다.'
+- category: kotlin
   level: "초급"
   title: 'Kotlin 람다 — 함수 값과 Android SAM 변환'
   summary: '람다는 이름 없이 만든 함수 값이며, 함수 타입 매개변수로 전달할 수 있다. 마지막 매개변수가 함수이면 람다를 괄호 밖에 둘 수 있다. Android의 `setOnClickListener { ... }`는 단일 추상 메서드(`OnClickListener`)를 람다로 구현하는 SAM 변환이다. 콜백에는 이벤트가 발생했을 때 실행할 동작을 작성한다.'
