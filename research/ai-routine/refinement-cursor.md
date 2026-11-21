@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:49 KST
+Last update: 2026-11-22 07:52 KST
+
+## Latest pass
+- Reviewed and refined `스킬 호출 권한 — 모델 자율 호출과 사용자 호출 분리` against the current official Claude Code skills guide.
+- Clarified that `disable-model-invocation: true` prevents autonomous model selection but does not turn a trailing `/name` mention into a direct command; the mention grants permission for the model to decide whether to invoke it.
+- Distinguished this from `user-invocable: false`, which hides a skill from user invocation while keeping it available to the model.
+- Source and rationale: `research/ai-routine/20261122-075200-claude-skill-invocation-controls-refinement.md`.
+- Next: continue oldest-first with `스킬 effort 프런트매터`; verify supported values/models and whether any scope/version caveat has changed.
 
 ## Latest pass
 - Reviewed and refined `disableBundledSkills — 번들 스킬·내장 명령을 모델 눈앞에서 치우기` against the current official Claude Code settings reference.
