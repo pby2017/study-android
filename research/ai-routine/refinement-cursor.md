@@ -2,11 +2,13 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Gemma 4 — Android 시스템 모델과 앱 번들 추론 경로 구분하기`; next candidate: inspect the following card after Gemma 4 in `_data/cards.yml`.
+Current position: continue after `Maestro MCP — 코딩 에이전트가 Android 앱을 직접 조작하고 E2E 테스트를 남기기`; next candidate: inspect the following card after Maestro in `_data/cards.yml`.
 
-Last update: 2026-11-22 02:18 KST
+Last update: 2026-11-22 02:22 KST
 
 Current run:
+- Reviewed and refined: `Maestro` (replaced stale MaestroGPT claims with the current built-in MCP agentic UI testing workflow; highlighted YAML review and device-action risk)
+- Sources re-checked: official Maestro README and documentation
 - Reviewed and refined: `Gemma 4` (removed unsupported Samsung throughput claim and incorrect parameter implication; distinguished AICore system-model access from in-app LiteRT-LM deployment; added memory/KV-cache caveat)
 - Sources re-checked: Google AI Edge announcement and current Gemma model docs
 - Reviewed and refined: `Apple Core AI` (distinguished model conversion, device specialization, and ahead-of-time compilation; stated Apple-platform scope and Android non-portability)
@@ -222,7 +224,7 @@ Skipped:
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
 
 Next:
-- Continue with the card immediately after Gemma 4 in `_data/cards.yml`; confirm current relevance and non-duplication before research.
+- Continue with the card immediately after Maestro in `_data/cards.yml`; keep only topics that meet the AI or AI+Android scope.
 
 Per successful refinement run, update this file with:
 - timestamp
