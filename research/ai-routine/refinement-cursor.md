@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `Gemini in Android Studio Agent Mode`; next candidate: inspect `Mobile Agency` and check whether the skills/agent count, platform coverage, tool compatibility, and maintenance claims match the current repository.
+Current position: continue after `nsfw_detect(Flutter)`; next candidate: inspect `SideEye` and verify actual model execution, platform/device requirements, privacy boundaries, source quality, and adoption before retaining or pruning.
 
-Last update: 2026-11-22 04:23 KST
+Last update: 2026-11-22 04:27 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -507,3 +507,12 @@ Rules:
 - Removed `NeuralPulse` rather than repeat its “clinical-grade”/FDA-adjacent product claims: GitHub showed 3 stars and 1 fork; the README makes broad clinical, biometric, FHIR, and on-device AI claims but provides no clinical validation evidence. Its own build instructions require contributors to supply proprietary Samsung AARs and model files, which weakens the card's implication of a verified, ready-to-run system.
 - Preserved publication-history log; the audit note records the removal rationale and source URLs.
 - Next: `nsfw_detect(Flutter)`; check current package/platform implementation and privacy claims before refinement.
+
+
+## 2026-11-22 04:27 KST
+
+- Corrected a stale top-of-file cursor that still pointed to `Mobile Agency` even though the 04:23 run note had already recorded `nsfw_detect(Flutter)` as next.
+- Reviewed `nsfw_detect` from pub.dev and its linked GitHub README/changelog. Current pub.dev page showed version 2.8.3, 6 likes, about 1.46k downloads, and an unverified publisher; GitHub showed 3 stars and 2 forks. These are modest interest signals, not a leading-project claim.
+- Reframed as an implementation lesson rather than an endorsement: Android TFLite / iOS Core ML, local file/bytes inference, explicit remote `scanUrl` and opt-in model-download network paths, Android media permissions, and probabilistic moderation requiring human/policy safeguards.
+- Sources: https://pub.dev/packages/nsfw_detect ; https://github.com/nexas105/flutter_nsfw_scaner
+- Next: `SideEye`; independently check the implementation and evidence before deciding whether to retain it or consolidate/remove it due overlap with privacy architecture cards.

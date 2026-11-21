@@ -3106,14 +3106,15 @@ cards:
   answer: '아니다. 변경 diff와 테스트·보안 검사 결과를 확인하고, 필요한 경우 에뮬레이터나 기기에서 UI를 검증한다. 도구가 없거나 증거를 만들지 못한 단계는 통과로 취급하지 않는다. 마지막 승인과 출시 판단은 개발자가 한다.'
   source: https://github.com/salmanashraf/mobile-ai-agents
 - category: ai
-  title: nsfw_detect(Flutter) — 온디바이스 NSFW 감지, 이미지·비디오·카메라·갤러리 스캔 통합(Core ML·TFLite)
-  summary: 'nsfw_detect는 Flutter용 온디바이스 NSFW 콘텐츠 감지 패키지다. iOS Core ML + Android TFLite로 추론하며, 이미지 파일·비디오·메모리 바이트·URL·갤러리 에셋·라이브 카메라까지 7가지 입력 소스를 지원. 텔레메트리 없음, 네트워크 전송 없음(scanUrl 제외). confidenceThreshold 튜닝으로 제품별 위험 수준 조절 가능. 배치 처리·백그라운드 아이솔레이트(compute())로 UI 블로킹 없이 대량 스캔.
-
-    '
+  level: "중급"
+  title: '온디바이스 AI 모더레이션 — 로컬 추론과 네트워크 경계는 다르다'
+  summary: 'Flutter 패키지 `nsfw_detect`는 Android에서 TFLite, iOS에서 Core ML로 이미지·영상의 NSFW 여부를 분류한다. 파일이나 바이트를 로컬에서 추론해도 앱 전체가 오프라인인 것은 아니다. 이 패키지의 `scanUrl`은 원격 미디어를 가져오며, 모델 다운로드도 선택적으로 네트워크를 쓸 수 있다. 사진 선택·전체 보관함·카메라 기능에는 Android 버전에 맞는 권한도 필요하다. 분류는 확률적 신호이므로 오탐·미탐을 고려해 신고·사람 검토·정책 규칙과 함께 사용한다.'
   points:
-  - '7가지 입력: 파일·비디오·바이트·URL·에셋·갤러리·카메라'
-  - '프라이버시: 텔레메트리 $0, 이미지가 디바이스를 안 떠남'
-  - '배치+백그라운드: compute() 아이솔레이트로 UI 논블로킹'
+  - '추론 경계: Android TFLite / iOS Core ML; 로컬 파일·바이트 입력은 기기에서 처리'
+  - '네트워크 경계: `scanUrl`은 원격 요청; 모델 다운로드는 명시적 또는 opt-in 경로'
+  - '안전 경계: 결과는 확정 판정이 아님; 미디어 권한과 사람 검토 절차를 별도 설계'
+  interview: '온디바이스 분류를 쓰면 사진이 네트워크를 절대 통과하지 않나요?'
+  answer: '아니다. 모델 추론이 로컬이어도 원격 URL에서 사진을 가져오거나 모델을 내려받으면 네트워크가 필요하다. 미디어 획득, 추론, 텔레메트리, 동기화 경로를 따로 확인해야 한다. NSFW 점수도 확정 판정이 아니므로 오탐·미탐 대응과 사람 검토를 설계한다.'
   source: https://pub.dev/packages/nsfw_detect
 - category: ai
   title: SideEye — 4B VLM으로 갤러리를 온디바이스 스캔, 민감한 사진을 AES-256 볼트에 격리(오픈소스·Android)
