@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android AppFunctions 1.0` to separate stable Jetpack artifacts from experimental platform/provider integration and added `Android Enterprise AI 경계` for AppFunctions versus Agentic Automation policies, work-profile exclusion, and current-user controls; next candidate: review `Android AI Sample Catalog` for current model/device prerequisites and production-readiness boundaries.
+Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:45 KST
+Last update: 2026-11-22 07:30 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -931,3 +931,10 @@ Rules:
 - Sources: [Android CLI overview](https://developer.android.com/tools/agents/android-cli), [CLI skills command](https://developer.android.com/tools/agents/android-cli/commands/skills), [Android skills overview](https://developer.android.com/tools/agents/android-skills), [Android Studio skill guidance](https://developer.android.com/studio/gemini/skills), [CLI docs command](https://developer.android.com/tools/agents/android-cli/commands/docs)
 - Research note: `research/ai-routine/20261122-072922-android-cli-skills-refinement.md`
 - Next: review `Google AI Studio Android — 개인 라이브러리·내부 테스트·정식 출시 구분` and verify current eligibility and release requirements against official policy
+
+- Refined `Google AI Studio Android — 개인 라이브러리·내부 테스트·정식 출시 구분`
+- Rechecked personal-library eligibility (US rollout, verified adult personal account, Play Store 53.5+), private/no public release review, internal testing cap (100), and production-release boundary
+- Made App Check behavior concrete: AI Studio uses debug tokens for preview/testing and reCAPTCHA Enterprise for Play release builds; included review of generated Firestore rules and client-only architecture
+- Sources: [AI Studio Android guide](https://aistudio.google.com/docs/aistudio-android), [personal apps policy](https://support.google.com/googleplay/answer/18936837?hl=en), [Play testing tracks](https://support.google.com/googleplay/android-developer/answer/9845334)
+- Research note: `research/ai-routine/20261122-073051-google-ai-studio-android-policy-refinement.md`
+- Next: continue oldest-first refinement with the next unreviewed AI/AI+Android card after the Android Studio Agent Mode cluster
