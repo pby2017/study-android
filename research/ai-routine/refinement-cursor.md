@@ -724,4 +724,8 @@ Rules:
 - Clarified that `ai_credits_used` is an overall per-user metric, not feature/model/client breakdown or billed total; team-level metrics require joining user-team and user reports
 - Added explicit billing-source distinction and cautioned against treating usage alone as proof of productivity/value
 - Research note: `research/ai-routine/20261122-100000-copilot-ai-credits-metrics.md`
-- Next: inspect `MAI-Code-1-Flash`
+- Reviewed and replaced stale `MAI-Code-1-Flash` cards with current `MAI Code 2 / Flash` guidance using GitHub model lifecycle notices, Copilot availability docs, and Microsoft's model card
+- Confirmed MAI-Code-1-Flash was deprecated Sep 10; MAI Code 2 and Flash launched Nov 17; MAI-Code-1.1-Flash is scheduled for deprecation Dec 18
+- Reframed around task-to-model selection, usage-based billing, and plan/client/admin-policy availability; did not repeat model marketing benchmark claims
+- Research note: `research/ai-routine/20261122-101500-mai-code-2-flash.md`
+- Next: inspect `Copilot model deprecations`
