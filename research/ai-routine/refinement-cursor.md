@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:54 KST
+Last update: 2026-11-22 07:57 KST
+
+## Latest pass
+- Reviewed and refined `PreCompact 훅 — 요약 지침과 외부 저장 분리` against the current official Claude Code hooks reference.
+- Clarified `manual` (`/compact`) and `auto` (auto/idle compaction), and that successful hook stdout becomes compaction-summary instructions (10,000 characters per hook), not a durable log.
+- Distinguished explicit external persistence from summary instructions and documented that blocking proactive auto-compaction differs from blocking recovery after a context-limit error.
+- Source and rationale: `research/ai-routine/20261122-075700-claude-precompact-refinement.md`.
+- Next: continue oldest-first with `훅 핸들러 5종`; verify current handler types, availability in `/hooks`, and MCP/prompt/agent behavior.
 
 ## Latest pass
 - Reviewed and refined `스킬 effort 프런트매터 — 턴 단위 추론 강도 조절` against the current official Claude Code skills guide.
