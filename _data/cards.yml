@@ -343,6 +343,28 @@ cards:
   source: https://developer.android.com/develop/ui/views/layout/edge-to-edge
   interview: "edge-to-edge 화면에서 모든 콘텐츠에 시스템 바 padding을 적용해야 하는가?"
   answer: "아니다. 배경은 시스템 바 아래까지 그릴 수 있다. 가리면 안 되는 텍스트와 조작 요소에 맞는 insets만 적용하고 중복 적용을 피한다."
+- category: android
+  level: "중급"
+  title: "Android App Links — 도메인 검증으로 HTTPS 링크 연결"
+  summary: "Android App Links는 웹 도메인과 앱의 연결을 검증하는 HTTPS 딥링크다. 매니페스트의 `android:autoVerify=\"true\"`만으로는 부족하며, 도메인에 앱 패키지와 서명 지문을 담은 `assetlinks.json`을 게시해야 한다."
+  points:
+  - "intent filter에 ACTION_VIEW, DEFAULT·BROWSABLE, https와 host를 선언한다"
+  - "https://도메인/.well-known/assetlinks.json의 패키지명·SHA-256 인증서 지문을 확인한다"
+  - "adb shell pm get-app-links --user cur PACKAGE_NAME으로 verified 상태를 검사한다"
+  source: https://developer.android.com/training/app-links/verify-applinks
+  interview: "android:autoVerify=\"true\"를 선언했는데도 App Link 검증이 실패하는 흔한 이유는?"
+  answer: "assetlinks.json이 없거나 패키지명·서명 인증서 지문이 실제 앱과 일치하지 않을 수 있다. Play App Signing을 쓰면 Play Console의 앱 서명 키 지문을 사용한다."
+- category: android
+  level: "고급"
+  title: "Dynamic App Links — 서버 규칙은 매니페스트 범위를 넓히지 못한다"
+  summary: "Android 15(API 35)+ 기기에서 Google 서비스가 제공되면 Dynamic App Links가 assetlinks.json의 경로·쿼리 규칙을 주기적으로 가져온다. 앱 업데이트 없이 조정할 수 있지만, 서버 규칙은 매니페스트가 선언한 URL 범위를 좁힐 수만 있고 새 scheme이나 host를 추가하지는 못한다."
+  points:
+  - "동적 규칙은 서버에서 경로·쿼리·fragment 매칭을 조정한다"
+  - "정적 매니페스트 필터가 허용 범위의 상한이다"
+  - "Android 14 이하에서는 서버 측 경로 규칙이 적용되지 않으므로 호환 동작도 확인한다"
+  source: https://developer.android.com/training/app-links/add-applinks
+  interview: "assetlinks.json에 새 host를 추가하면 앱 매니페스트 변경 없이 그 host도 열 수 있는가?"
+  answer: "아니다. 동적 규칙은 매니페스트의 scheme·host 범위를 확장할 수 없다. 새 host를 허용하려면 앱의 정적 intent filter를 업데이트해야 한다."
 - category: ai
   title: diagnose — 디버깅을 규율로 만드는 스킬
   summary: 'mattpocock/skills의 diagnosing-bugs는 어려운 버그를 "재현 가능한 실패 신호"에서 시작하게 만드는 디버깅 루프다. 순서는 재현·최소화 → 3~5개 가설 → 한 변수씩 계측 → 수정 → 회귀 테스트 → 정리로 이어진다. 좋은 점은 버그를 설명하는 말솜씨보다, 같은 명령으로 빨간불과 초록불을 반복해서 볼 수 있는지를 먼저 묻는다는 것이다. 그래서 AI에게 바로 코드를 고치게 하기보다, 실패를 빠르게 보여주는 테스트·스크립트·로그 지점을 먼저 만들고 그 신호 하나로 가설을 줄여 간다.
