@@ -4,9 +4,15 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 07:36 KST
+Last update: 2026-11-22 07:38 KST
 
 ## Latest pass
+- Reviewed and refined: `Claude Code 출력 스타일 — 세션 응답의 역할·톤·형식 조정`
+- Source re-checked: current official Claude Code Output styles documentation
+- Corrected the built-in count (four styles besides Default), `/output-style` command availability (v2.1.269), and next-message activation (v2.1.251+); removed the stale `/clear` requirement
+- Clarified that styles are instructions, not enforcement; distinguished CLAUDE.md, Skills, Hooks/permissions, and custom style coding-instruction retention
+- Next: continue oldest-first with the next unreviewed AI/AI+Android card; skip pure Android topics
+
 - Reviewed and refined: `Claude Code /cd — 대화를 유지하며 작업 디렉터리와 프로젝트 설정 이동`
 - Sources re-checked: current Claude Code Permissions/working-directory docs, Commands reference, and official changelog
 - Separated `/cd` availability in v2.1.169 from immediate destination-project configuration loading in v2.1.246; removed the unsupported internal explanation about appending CLAUDE.md as a user message
