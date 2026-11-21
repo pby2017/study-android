@@ -4373,15 +4373,16 @@ cards:
   - bench 바이너리로 자체 에이전트 구현을 벤치마킹하는 인터페이스 제공
   source: https://github.com/gpt-engineer-org/gpt-engineer
 - category: ai
-  title: Gemini Live API on Android — 실시간 음성 에이전트를 백엔드 없이 붙이기
-  summary: 'Android Developers의 Gemini Live API 가이드는 Firebase AI Logic을 통해 Android 앱에서 Gemini Live API를 직접 호출하는 흐름을 보여준다. 목적은 일반 텍스트 챗봇이 아니라 실시간·저지연 음성 지원이 필요한 챗봇이나 에이전트 상호작용이다. 앱은 Firebase BoM과 `firebase-ai`를 추가하고, `RECORD_AUDIO` 권한을 선언한 뒤 `LiveModel`을 초기화해 오디오 응답 모델을 스트리밍한다. 단, Firebase AI Logic의 Live API 사용은 개발자 프리뷰라 호환성 변경 가능성과 제한이 있다. Android AI 설계 포인트는 "마이크 권한을 붙인다"가 아니라, 음성 UX·세션 수명·비용/쿼터·모델명 원격 변경을 제품 요구사항으로 다뤄야 한다는 점이다.
-
-    '
+  title: Android Gemini Live API — Firebase AI Logic으로 양방향 음성 세션
+  level: "중급"
+  summary: Gemini Live API는 저지연 음성·영상 상호작용을 위한 상태 저장형 양방향 세션이며, Firebase AI Logic SDK로 Android 앱에 연결할 수 있다. 앱은 `LiveModel`을 만들고 AUDIO 응답을 설정한 뒤 WebSocket 세션을 열어 오디오 입력을 보내고 응답을 받는다. Firebase AI Logic의 Live API 통합은 프리뷰라 SLA가 없고, Firebase App Check 등 보안·세션 수명·비용도 함께 설계해야 한다.
   points:
-  - Firebase AI Logic으로 Android 앱에서 Gemini Live API를 직접 호출
-  - '`firebase-ai` 의존성 + RECORD_AUDIO 권한 + LiveModel 초기화가 기본 흐름'
-  - '개발자 프리뷰: 세션·쿼터·비용·호환성 변경을 출시 전 리스크로 관리'
-  source: https://developer.android.com/ai/gemini/live
+  - Live API는 일반 텍스트 응답 스트리밍이 아니라 stateful WebSocket 양방향 실시간 세션
+  - Android 흐름은 `LiveModel` → AUDIO modality → `connect()` → 오디오 송수신
+  - Firebase AI Logic 연동은 Preview이며 App Check와 모델별 provider 지원을 확인
+  source: https://firebase.google.com/docs/ai-logic/live-api
+  interview: "Gemini Live API를 일반 텍스트 스트리밍 API와 구별하는 핵심은 무엇이며, Android 앱에서 어떤 운영 조건을 확인해야 하나요?"
+  answer: "Live API는 오디오·영상 등의 연속 입력과 응답을 WebSocket 세션에서 양방향 처리한다. 일반 텍스트 스트리밍과 다르며, Firebase SDK 통합은 프리뷰라 provider별 지원 모델, App Check, 마이크 권한, 세션 수명과 비용을 검증해야 한다."
 - category: ai
   title: TPU Developer Hub — AI 가속기는 코드 레시피와 관측 도구까지 같이 배워야 한다
   summary: 'Google은 2026년 6월 16일 TPU Developer Hub를 공식 출시했다. 이 허브는 Cloud TPU를 단순한 하드웨어 소개가 아니라, 사전학습·후학습·추론까지 이어지는 AI 개발 생애주기 자료로 묶는다. 범위는 TPU 하드웨어와 인프라 선택, XLA와 컴파일러 스택, PyTorch의 TPU 이전, XProf 기반 tracing/debugging, 멀티칩 병렬화, Pallas 커널 최적화, KV cache offloading, 네트워킹과 보안까지 포함한다. 개발자에게 중요한 점은 "더 빠른 칩을 쓰자"가 아니라, 모델 코드·컴파일러·프로파일러·네트워크를 한 루프로 보고 병목을 추적해야 TPU 성능이 실제 제품 추론과 학습 처리량으로 이어진다는 것이다.
