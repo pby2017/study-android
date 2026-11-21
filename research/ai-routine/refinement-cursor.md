@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `vision_ai`; next candidate: inspect `Gemini in Android Studio Agent Mode` and verify current official feature/tool boundaries, preview/availability status, and how code/device actions are permission-gated.
+Current position: continue after `Gemini in Android Studio Agent Mode`; next candidate: inspect `Mobile Agency` and check whether the skills/agent count, platform coverage, tool compatibility, and maintenance claims match the current repository.
 
-Last update: 2026-11-22 04:16 KST
+Last update: 2026-11-22 04:18 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -489,3 +489,11 @@ Rules:
 - The project is a valid Flutter Android AI implementation and its Android physical evidence contains useful successes/failures, but the package feature list overlaps the existing official MediaPipe Tasks Android card and has weak independent adoption evidence for a separate card in this collection.
 - Preserved `auto-post-log.md` publication history; added the removal rationale and source trail in `research/ai-routine/20261122-041600.md`.
 - Next: `Gemini in Android Studio Agent Mode`; re-check current official docs, release/availability, tools, permissions, and device-action behavior.
+
+## 2026-11-22 04:18 KST
+
+- Reviewed and refined `Gemini in Android Studio Agent Mode` against current official Agent Mode docs, Android Studio run/device workflow docs, and the Otter 3 Feature Drop announcement.
+- Made the practical loop explicit: plan → edit → build → deploy → inspect screenshots/Logcat/ADB state, then validate evidence rather than trusting the completion statement.
+- Added approval configuration nuance: tool use may require permission, and `Don't ask to edit files` changes whether edits are reviewed per change or in batches.
+- Added data-boundary warning: basic Gemini prompt/tool results go to Gemini API; BYOM provider selection and remote MCP connections may route data to other endpoints.
+- Next: `Mobile Agency`; verify current project and its advertised count/platform/tool/maintenance claims before retaining or pruning the card.
