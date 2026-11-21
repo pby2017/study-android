@@ -797,4 +797,8 @@ Rules:
 - Updated command lifecycle and scope (`android init`, `android skills`, `--agent`, `--project`); clarified that standard compatibility does not guarantee identical skill discovery/invocation in every agent
 - Removed the 70%+/3x claim from the short card; documented its narrow internal setup experiment scope in the research note
 - Research note: `research/ai-routine/20261122-064500-android-cli-skills-refinement.md`
-- Next: inspect `Google AI Studio Android` publication workflow claims and scope
+- Reviewed and refined `Google AI Studio Android` against current AI Studio Android build/publish docs, Google Play personal-app eligibility, and Play Console account requirements
+- Distinguished the personal-library path from AI Studio → Play Console internal testing (up to 100 testers) and production release; clarified automated safety review versus public catalog review
+- Added client-side-only and Firebase App Check / Firestore review boundaries
+- Research note: `research/ai-routine/20261122-070000-google-ai-studio-android.md`
+- Next: inspect `Android Studio Agent Mode parallel chat` boundaries and whether it remains current
