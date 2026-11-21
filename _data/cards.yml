@@ -3223,15 +3223,16 @@ cards:
   - Compose Preview·이미지 기반 UI 생성·UI 변환 등 UI 작업 진입점 확대
   source: https://android-developers.googleblog.com/2026/05/whats-new-android-developer-tools.html
 - category: ai
+  level: "고급"
   title: Android XR + Gemini — Geospatial 좌표를 구조화 JSON 투어로 바꾸는 패턴
-  summary: '2026년 6월 Android Developers Blog의 XR 예제는 Android XR, ARCore for Jetpack XR의 Geospatial API, Firebase AI Logic의 Gemini API를 묶어 혼합현실 투어 가이드를 만든다. 앱은 디바이스 포즈를 위도·경도와 방향 정확도로 변환하고, 정확도가 충분할 때 Gemini에 현재 좌표를 넘긴다. Gemini 호출에는 Google Maps grounding과 JSON response schema를 함께 설정해, 주변 도보 투어 3개를 title, description, stops 같은 구조화 데이터로 받는다. 학습 포인트는 멀티모달 ''멋진 데모''보다 위치 정확도 게이트와 스키마 기반 출력으로 XR UI가 바로 소비할 수 있는 데이터를 만드는 설계다.
-
-    '
+  summary: 'Android XR 데모는 ARCore for Jetpack XR의 Geospatial API(Preview)로 기기 포즈를 위도·경도·방향으로 바꾸고, `horizontalAccuracy`와 `orientationYawAccuracy`가 기준에 들 때만 투어를 만든다. Firebase AI Logic을 통해 좌표를 클라우드 Gemini에 보내고, Google Maps grounding과 JSON schema로 장소 근거와 응답 형태를 보강한다. 단, schema는 형식만 제한하며 위치 사실이나 경로 안전을 보장하지 않는다. 위치가 부정확하거나 지원 지역 밖이면 재탐색·중단 경로를 두고, 좌표 전송 목적과 동의를 명확히 한다.'
   points:
-  - 'ARCore for Jetpack XR Geospatial API: 디바이스 포즈 → 위도·경도·방향 정확도'
-  - Firebase AI Logic + Gemini + Google Maps grounding으로 주변 투어 생성
-  - responseSchema + application/json으로 XR UI가 바로 쓰는 구조화 결과 수신
+  - '정확도 게이트: `horizontalAccuracy` + `orientationYawAccuracy`; API는 Preview'
+  - 'Maps grounding은 장소 근거, JSON schema는 형식 담당 — 경로 검증은 별도'
+  - '정확한 좌표가 클라우드로 전송되므로 목적 고지·동의·최소화 필요'
   source: https://android-developers.googleblog.com/2026/06/android-xr-geospatial-api-gemini.html
+  interview: "위치 기반 AI 투어에서 정확도 임계값, Maps grounding, JSON schema는 각각 어떤 문제를 해결하나요?"
+  answer: "정확도 임계값은 부정확한 기기 포즈로 잘못된 장소를 선택하는 위험을 줄인다. Maps grounding은 주변 장소 정보의 근거를 제공하고 JSON schema는 응답 구조를 제한한다. schema만으로 사실성이나 도보 경로의 안전성을 보장하지 않으므로 결과 검증·미지원 지역 fallback·좌표 전송 동의도 설계해야 한다."
 - category: ai
   title: Android 17 AppFunctions Agent Skill — 앱 기능을 에이전트 도구 코드로 생성·검증
   summary: 'Android 17은 AppFunctions를 ''인텔리전스 시스템''의 핵심 앱 통합 지점으로 확장한다. 앱은 @AppFunction을 붙인 Kotlin 함수와 KDoc으로 노트 생성, 장바구니 추가 같은 기능을 선언하고, Android MCP의 온디바이스 도구처럼 에이전트에 노출한다. 새 AppFunctions agent skill은 앱의 핵심 워크플로우를 분석해 필요한 Kotlin 코드를 만들고, LLM tool-calling에 맞게 KDoc을 다듬으며, ADB 테스트·디버깅 명령까지 제안한다. Gemini 통합은 private preview라 바로 배포 기능으로 보면 안 되고, 지금은 함수 경계와 설명 문서를 에이전트가 호출하기 좋게 설계하는 준비 단계로 보는 것이 맞다.
