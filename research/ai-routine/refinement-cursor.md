@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `Android Computer Control — UI 자동화 대상과 assistant 권한 경계` for Preview and limited-target status, privileged assistant access, user consent, session scope, and user handoff; next candidate: inspect `Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션` for current model mapping, shutdown/migration dates, and whether its guidance is still actionable.
+Current position: refined `Firebase AI Logic — 종료된 Imagen 호출을 Nano Banana로 이전` for the completed shutdown, exact replacement models/thinking levels, Kotlin API changes, and output compatibility traps; next candidate: inspect `Kakao Mobility Gemini Nano` for the original case-study claims, sample/evaluation method, limitations, and current relevance.
 
-Last update: 2026-11-22 06:10 KST
+Last update: 2026-11-22 06:20 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -660,3 +660,9 @@ Rules:
 - Removed the unsupported claim that Computer Control acts as an AppFunctions fallback; Android documents UI operation and explicit app functions as distinct integration paths, not an automatic fallback policy
 - Research note: `research/ai-routine/20261122-061000-android-computer-control.md`
 - Next: inspect `Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션`
+
+- Reviewed and refined: `Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션` (confirmed shutdown is past; corrected exact Fast/standard/Ultra model mapping and added thinking levels)
+- Sources re-checked: official Firebase Imagen migration guide, Kotlin before/after examples, replacement table and configuration compatibility table (guide last updated 2026-11-18)
+- Added migration behavior checks: single image only, PNG output, always-on SynthID, new GenerationConfig/IMAGE modality, and `NO_IMAGE` handling; no output-equivalence claim
+- Research note: `research/ai-routine/20261122-062000-firebase-imagen-migration.md`
+- Next: inspect `Kakao Mobility Gemini Nano`

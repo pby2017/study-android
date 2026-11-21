@@ -3321,16 +3321,16 @@ cards:
   interview: "대상 앱 개발자는 Computer Control 통합 SDK를 추가해야 하나요?"
   answer: "아니다. 대상 앱은 추가 통합 없이 참여할 수 있지만, 현재 Preview는 제한된 앱만 지원한다. 자동화는 OEM 선탑재 assistant가 privileged permission으로 세션을 요청하고 시스템이 사용자 승인을 받은 뒤 수행한다. adaptive design과 lifecycle 등 기본 앱 품질은 유지해야 한다. 명시적 기능을 노출하는 AppFunctions와 UI 조작을 같은 호출 방식이나 자동 fallback으로 취급하면 안 된다."
 - category: ai
-  title: Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션
+  title: Firebase AI Logic — 종료된 Imagen 호출을 Nano Banana로 이전
   level: "중급"
-  summary: "Firebase AI Logic의 Imagen 모델은 2026년 8월 17일 종료됐다. Android 앱은 `ImagenModel.generateImages()` 호출을 Gemini `GenerativeModel.generateContent()`로 옮기고, `responseModalities = IMAGE`를 설정해야 한다. 모델은 용도에 따라 `gemini-nano-banana-2.1` 또는 `gemini-3-pro-image`로 선택한다."
+  summary: 'Firebase AI Logic의 Imagen 모델은 2026년 8월 17일 종료됐다. Android에서는 `ImagenModel.generateImages()` 대신 Gemini `GenerativeModel.generateContent()`를 사용하고 `responseModalities = IMAGE`를 설정한다. 대체 모델은 사용 사례에 맞춰 고른다: Imagen Fast는 `gemini-nano-banana-2.1` + `MINIMAL`, Imagen 표준은 같은 모델 + `HIGH`, Imagen Ultra는 `gemini-3-pro-image`다. 모델만 바꾸지 말고 생성 설정과 결과 처리도 다시 검증한다.'
   points:
-  - 모든 Imagen 모델은 2026-08-17 종료 — 지금은 마이그레이션 완료 여부를 확인
-  - '빠른·일반 생성은 `gemini-nano-banana-2.1`, Ultra는 `gemini-3-pro-image` 매핑 검토'
-  - '`generateContent()`와 이미지 응답 모달리티를 설정하고 `NO_IMAGE` 등 실패 결과 처리'
+  - '모든 Imagen 모델은 종료됨; Fast→Nano Banana 2.1/MINIMAL, 표준→Nano Banana 2.1/HIGH, Ultra→Gemini 3 Pro Image'
+  - '`ImagenModel.generateImages()` → `GenerativeModel.generateContent()`; `IMAGE` 모달리티와 새 `GenerationConfig`/`ImageConfig` 설정'
+  - 'Nano Banana는 한 번에 이미지 1장, PNG, SynthID 워터마크; `NO_IMAGE`와 기존 앱의 출력 가정을 재검증'
   source: https://firebase.google.com/docs/ai-logic/imagen-models-migration
-  interview: "Firebase AI Logic Android 앱에서 Imagen을 Gemini 이미지 모델로 옮길 때 API 사용에서 바뀌는 핵심은 무엇인가요?"
-  answer: "ImagenModel과 `generateImages()` 대신 Gemini `GenerativeModel`의 `generateContent()`를 사용한다. 이미지 응답을 위해 `responseModalities`에 IMAGE를 설정하고, 모델별 기능과 이미지가 반환되지 않는 결과도 처리해야 한다."
+  interview: "Imagen Fast와 표준 모델을 Nano Banana로 이전할 때 모델 이름 외에 무엇을 바꾸고 검증해야 하나요?"
+  answer: "Fast는 `gemini-nano-banana-2.1`의 `MINIMAL`, 표준은 같은 모델의 `HIGH` thinking level로 매핑한다. `ImagenModel.generateImages()`를 `GenerativeModel.generateContent()`로 바꾸고 `IMAGE` response modality 및 GenerationConfig를 설정한다. 새 모델은 한 번에 한 장만 PNG로 반환하며 SynthID 워터마크가 포함되므로 다중 이미지·형식·결과 파싱 가정과 `NO_IMAGE` 처리를 다시 검증한다."
 - category: ai
   title: Kakao Mobility Gemini Nano — 온디바이스 주소 추출로 주문 완료 시간 24% 단축
   level: "중급"
