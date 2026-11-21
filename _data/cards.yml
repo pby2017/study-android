@@ -93,6 +93,17 @@ cards:
   answer: '공유 수명이 필요한 CoroutineScope에서 `shareIn`을 적용한다. 시작 정책과 새 collector에 전달할 replay 수를 함께 정한다. `StateFlow`와 `SharedFlow`는 이미 hot Flow지만, 상태 최신값 보관과 replay 동작은 다르다.'
 - category: android
   level: "중급"
+  title: '`flowOn` — Flow의 upstream 컨텍스트만 바꾼다'
+  summary: '`flowOn(dispatcher)`는 연산자보다 앞에 있는 upstream Flow의 실행 컨텍스트를 바꾸며, 뒤쪽 연산자와 collector에는 영향을 주지 않는다. 예를 들어 `map { ... }.flowOn(Dispatchers.IO).collect { ... }`에서 `map`은 IO 컨텍스트에서 실행되고 `collect`는 호출자의 컨텍스트에서 실행된다. 단순히 `suspend`를 선언하거나 `withContext`를 쓴다고 Flow 전체의 컨텍스트가 자동으로 이동하는 것은 아니다.'
+  points:
+  - '`flowOn`은 앞쪽 연산자에만 적용된다.'
+  - '뒤쪽 연산자와 collector는 호출자의 컨텍스트를 유지한다.'
+  - 'Dispatcher가 바뀌면 upstream과 downstream 사이에 코루틴 경계가 생길 수 있다.'
+  source: https://kotlinlang.org/docs/flow.html
+  interview: '`map { ... }.flowOn(Dispatchers.IO).collect { ... }`에서 `map`과 `collect`는 각각 어떤 컨텍스트에서 실행되는가?'
+  answer: '`map`은 `flowOn`이 지정한 IO 컨텍스트에서 실행된다. `collect`는 collector가 호출된 원래 컨텍스트에서 실행된다. `flowOn`은 downstream으로 컨텍스트를 누출하지 않는다.'
+- category: android
+  level: "중급"
   title: 'withContext — main-safe 함수와 Dispatcher 경계'
   summary: 'Dispatcher는 코루틴이 실행될 스레드나 스레드 풀을 결정한다. ViewModel의 `viewModelScope`는 기본적으로 Main에서 시작하므로, 저장소의 suspend 함수가 blocking I/O를 한다면 함수 내부에서 `withContext(ioDispatcher)`로 이동해 main-safe하게 만든다. 호출자가 매번 Dispatcher를 바꾸게 하기보다 작업을 소유한 계층이 책임지고, 테스트를 위해 Dispatcher를 주입한다.'
   points:
