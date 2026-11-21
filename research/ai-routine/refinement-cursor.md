@@ -4,7 +4,14 @@ Purpose: let the local AI card routine revisit existing published cards in oldes
 
 Current position: refreshed the Android AI Sample Catalog, Android CLI + Skills, and Google AI Studio Android cards against current official sources; reviewed the adjacent Android Studio Agent Mode card. Recompute the next oldest unreviewed AI/AI+Android candidate from the current card set before continuing, because later same-day refinement entries had advanced beyond the older position marker.
 
-Last update: 2026-11-22 08:09 KST
+Last update: 2026-11-22 08:11 KST
+
+## Latest pass
+- Refined `Compose Flow 수집 — 화면 생명주기에 맞추기` against the current `collectAsStateWithLifecycle` API reference.
+- Added the exact default `STARTED` threshold, stop/restart behavior, StateFlow's current value as initial UI state, and the possibility that a cold Flow reruns upstream on recollection.
+- Kept the lesson distinct from Compose side-effect API selection; added intermediate difficulty and an interview retrieval question.
+- Source and rationale: `research/ai-routine/20261122-081100-compose-flow-lifecycle-collection.md`.
+- Next: verify another Android/AI card for one concrete, source-backed gap before changing it.
 
 ## Latest pass
 - Merged the duplicate Android cards `화면 상태 복원 — ViewModel·SavedState·DB의 수명 구분` and `ViewModel은 프로세스 사망까지 기억하지 않는다` into one intermediate retrieval card.
