@@ -3492,14 +3492,15 @@ cards:
 - category: ai
   title: ML Kit APO — 온디바이스 Gemini Nano 프롬프트를 서버에서 자동 탐색하기
   level: "중급"
-  summary: 'Automated Prompt Optimization(APO)은 Vertex AI의 서버 모델로 학습 예시의 오류를 분석하고, 시스템 지시문 후보를 만들고 병렬 평가한다. 앱의 실제 추론은 계속 Android의 ML Kit Prompt API와 AICore에서 온디바이스로 실행한다. Google이 공개한 Gemini Nano v3 평가에서는 작업별로 분류 정확도 +5%·+8%, 번역 BLEU +8.57%를 보고했다. 이 수치는 해당 평가 결과이지 모든 앱의 보장값은 아니다. 예시 데이터의 클라우드 전송 정책을 확인하고, 별도 검증 데이터로 개선과 회귀를 측정한다.'
+  summary: >-
+    Android 앱은 ML Kit GenAI API와 AICore를 통해 지원 기기에서 Gemini Nano 추론을 온디바이스로 실행할 수 있다. 프롬프트 최적화는 별도의 클라우드 개발 단계다. Google Cloud의 Prompt Optimizer에는 단일 프롬프트를 다듬는 zero-shot, 실패 사례를 반영하는 few-shot, 라벨된 예시와 평가 지표를 사용하는 data-driven 방식이 있다. 작은 모델을 겨냥한 `gemini_nano` 최적화 모드도 제공한다. 최적화에 입력하는 예시와 응답은 클라우드 도구로 전달되므로 데이터 정책을 확인하고, 별도 검증 세트로 품질과 회귀를 확인한다. Google이 공개한 5~8% 정확도 향상 등은 특정 내부 평가의 결과이지 앱 전체에 보장되는 수치가 아니다.
   points:
-  - 'Vertex AI: 오류 분석 → 지시문 후보 생성 → 병렬 평가'
-  - '최종 앱 추론은 ML Kit Prompt API + AICore의 온디바이스 경로'
-  - '공개 수치는 Nano v3 특정 작업 결과; 별도 평가셋·데이터 정책 확인'
-  source: https://developer.android.com/blog/posts/how-automated-prompt-optimization-unlocks-quality-gains-for-ml-kit-s-gen-ai-prompt-api
+  - 'Prompt Optimizer: zero-shot / few-shot / data-driven 중 예시와 평가 필요에 맞게 선택'
+  - '최적화는 클라우드 단계, 앱 추론은 지원 기기의 ML Kit GenAI + AICore 온디바이스 경로'
+  - '예시 데이터의 외부 전달을 검토하고 별도 평가셋으로 결과를 검증'
+  source: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-optimizer
   interview: "APO를 사용할 때 무엇이 클라우드로 가며, 공개된 정확도 향상 수치를 그대로 기대해도 되나요?"
-  answer: "프롬프트 최적화 단계는 Vertex AI 서버 모델이 예시를 분석하고 후보를 평가하지만, 배포 앱의 추론은 ML Kit Prompt API와 AICore를 통해 기기에서 계속 실행한다. 평가 예시를 클라우드로 보내는 정책을 검토해야 한다. 공개된 수치는 Gemini Nano v3의 특정 분류·번역 작업 결과이므로, 대상 기기와 자체 검증 데이터에서 품질·회귀를 확인해야 한다."
+  answer: "Prompt Optimizer는 클라우드에서 프롬프트를 개선한다. zero-shot은 단일 프롬프트, few-shot은 실패 사례, data-driven은 라벨된 예시와 평가 지표를 활용한다. 앱의 실제 추론은 지원 기기에서 ML Kit GenAI와 AICore를 통해 온디바이스로 실행할 수 있지만, 최적화에 전달한 예시 데이터가 기기 안에 머무는 것은 아니다. 개인정보·보안 정책을 확인하고 홀드아웃 평가셋으로 효과와 회귀를 측정한다."
 - category: ai
   title: ADK 장기 실행 에이전트 — 대화 기록 대신 상태 머신으로 재개하기
   summary: 'Google의 ADK 장기 실행 에이전트 튜토리얼은 며칠 동안 멈췄다 재개되는 업무를 대화 기록에 맡기지 말라고 설명한다. 핵심은 START, WELCOME_SENT, DOCUMENTS_SIGNED 같은 명시적 state machine을 만들고, 시스템 지시문이 현재 단계를 session state에서 읽게 하는 것이다. 각 tool call은 ToolContext.state를 갱신해 자동 checkpoint가 되고, 세션 저장소를 DatabaseSessionService(SQLite 또는 Cloud SQL)로 바꾸면 컨테이너 재시작 뒤에도 같은 단계에서 이어갈 수 있다. AI 에이전트 설계 포인트는 "모델이 기억한다"가 아니라 "워크플로 상태를 코드와 저장소가 소유한다"는 점이다.

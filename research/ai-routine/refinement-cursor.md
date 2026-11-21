@@ -732,4 +732,9 @@ Rules:
 - Replaced stale June 2026 dates with reusable checks for scope, exceptions, plan/client availability, org policy, and representative regression prompts
 - Verified current example: Opus 4.8/Opus 5/GPT-5.6 Terra deprecated Nov 16; Opus 4.8 remains available to annual individual subscribers; Opus 5.5/GPT-6.1 Sol/GPT-6 Luna are suggested alternatives
 - Research note: `research/ai-routine/20261122-103000-copilot-model-deprecations.md`
-- Next: inspect `ML Kit APO`
+- Reviewed and refined `ML Kit APO` against current Android Gemini Nano docs, Google Cloud Prompt Optimizer docs (updated Nov 20), and original Android announcement
+- Separated cloud-side prompt optimization from on-device app inference; updated optimizer taxonomy to zero-shot, few-shot, data-driven and identified `gemini_nano` target mode
+- Removed launch-era Nano v3-specific benchmark numbers from the main card; retained caveat in research note that Google's internal task results are not general guarantees
+- Added data-governance and holdout-evaluation guidance; current Prompt Optimizer SDK is documented as experimental despite service GA
+- Research note: `research/ai-routine/20261122-104500-mlkit-prompt-optimization.md`
+- Next: inspect `ADK 장기 실행 에이전트`
