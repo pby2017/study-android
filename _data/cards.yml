@@ -3282,15 +3282,16 @@ cards:
   - target app 코드 변경은 없지만 adaptive UI·lifecycle 품질이 자동화 안정성 좌우
   source: https://developer.android.com/ai/computer-control
 - category: ai
-  title: Imagen Android 종료 — Firebase AI Logic 이미지는 Gemini Image(Nano Banana)로 이전
-  summary: 'Android Developers 문서는 Imagen 모델이 2026년 6월 24일 종료되며 Gemini Image 모델, 즉 ''Nano Banana'' 계열로 이전하라고 안내한다. 기존 Android 앱은 Firebase AI Logic SDK로 Imagen을 호출해 아바타나 개인화 시각 자산을 만들 수 있었고, Gemini Developer API 또는 Vertex AI provider를 선택했다. 운영 관점의 핵심은 이미지 생성 기능을 단순 모델 교체로 보지 말고, 종료일 전에 모델명, safety/person filter, watermark, output format, prompt 평가 흐름을 함께 점검하는 것이다.
-
-    '
+  title: Firebase AI Logic — Imagen 종료 후 Android 이미지 생성 API 마이그레이션
+  level: "중급"
+  summary: "Firebase AI Logic의 Imagen 모델은 2026년 8월 17일 종료됐다. Android 앱은 `ImagenModel.generateImages()` 호출을 Gemini `GenerativeModel.generateContent()`로 옮기고, `responseModalities = IMAGE`를 설정해야 한다. 모델은 용도에 따라 `gemini-nano-banana-2.1` 또는 `gemini-3-pro-image`로 선택한다."
   points:
-  - 'Imagen 모델 shutdown: 2026-06-24'
-  - '대체 경로: Gemini Image 모델, 문서상 Nano Banana 계열'
-  - Firebase AI Logic 앱은 safety·watermark·format·prompt 평가까지 이전 체크
-  source: https://developer.android.com/ai/imagen
+  - 모든 Imagen 모델은 2026-08-17 종료 — 지금은 마이그레이션 완료 여부를 확인
+  - '빠른·일반 생성은 `gemini-nano-banana-2.1`, Ultra는 `gemini-3-pro-image` 매핑 검토'
+  - '`generateContent()`와 이미지 응답 모달리티를 설정하고 `NO_IMAGE` 등 실패 결과 처리'
+  source: https://firebase.google.com/docs/ai-logic/imagen-models-migration
+  interview: "Firebase AI Logic Android 앱에서 Imagen을 Gemini 이미지 모델로 옮길 때 API 사용에서 바뀌는 핵심은 무엇인가요?"
+  answer: "ImagenModel과 `generateImages()` 대신 Gemini `GenerativeModel`의 `generateContent()`를 사용한다. 이미지 응답을 위해 `responseModalities`에 IMAGE를 설정하고, 모델별 기능과 이미지가 반환되지 않는 결과도 처리해야 한다."
 - category: ai
   title: Kakao Mobility Gemini Nano — 온디바이스 주소 추출로 주문 완료 시간 24% 단축
   level: "중급"
