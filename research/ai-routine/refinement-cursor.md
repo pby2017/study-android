@@ -2,9 +2,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: continue after `GenieX`; next candidate: inspect the following older published card `ACE-Step 1.5` for model/license, generation speed and VRAM claims, hardware support, and current repository activity.
+Current position: continue after `ACE-Step 1.5`; next candidate: inspect `Cadence` for its Android AI/music-generation workflow, health-data permissions, privacy boundaries, and whether the linked project is maintained and actually open source.
 
-Last update: 2026-11-22 04:40 KST
+Last update: 2026-11-22 04:42 KST
 
 Current run:
 - Reviewed and refined: `PowerLens` (replaced headline-first product framing with a rooted/cloud-backed research case study on policy constraints and privileged Android actions)
@@ -555,3 +555,7 @@ Rules:
 - Reviewed and refined: `NexaSDK` (now GenieX; old repository URL redirects to Qualcomm/GenieX). Removed unsupported Qualcomm investment, Day-0, ASR/TTS and “NPU-first” claims; clarified GGUF/llama.cpp versus AI Hub bundle/Qualcomm AI Engine Direct routes, Snapdragon-only platforms, Android SDK, and developer-preview status.
 - Sources: https://github.com/qualcomm/GenieX ; https://geniex.aihub.qualcomm.com/en/get-started/what-is-geniex ; https://github.com/qualcomm/GenieX/releases
 - Live attention snapshot: 8.5k GitHub stars; latest visible release v0.11.0 (2026-11-12). Popularity is not capability evidence.
+
+- Reviewed and refined: `ACE-Step 1.5` (changed from promotional speed/4GB headline to a model-configuration lesson; scoped <=6GB recommendation to 2B Turbo DiT with LM disabled, INT8 and CPU offload; clarified reported benchmarks and LoRA resource example).
+- Sources: https://github.com/ACE-Step/ACE-Step-1.5 ; https://huggingface.co/ACE-Step/Ace-Step1.5
+- Live attention snapshot: GitHub 15.1k stars and Hugging Face 106,079 downloads last month; volatile signals recorded in the audit note, not the card.

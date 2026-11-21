@@ -3164,14 +3164,15 @@ cards:
   answer: '아니다. 문서는 두 경로를 구분한다. GGUF 모델은 llama.cpp를 통해 CPU·GPU·Hexagon에서 실행할 수 있고, Qualcomm AI Hub의 사전 컴파일 모델 번들은 Qualcomm AI Engine Direct를 사용해 NPU에서 실행한다. 모델 형식, 칩셋 지원, 런타임과 기기별 동작을 확인하고, 성능이 중요하면 목표 기기에서 delegate별 지연·메모리·발열을 측정해야 한다. 현재 제품 문서는 개발자 프리뷰라고 표시한다.'
   source: https://github.com/qualcomm/GenieX
 - category: ai
-  title: ACE-Step 1.5 — 오픈소스 AI 음악 생성, RTX 3090에서 10초에 한 곡·<4GB VRAM·LoRA 커스텀(MIT·11k★)
-  summary: 'ACE-Step 1.5는 상용 수준을 뛰어넘는 오픈소스 음악 생성 파운데이션 모델이다. A100에서 2초, RTX 3090에서 10초에 한 곡을 생성하고, <4GB VRAM으로 동작. 10초~10분 유연한 길이, 배치 8곡 동시 생성. LoRA로 몇 곡만으로 개인 스타일 학습 가능. Apple Silicon MLX 백엔드 지원(0.6B 모델, 16GB+ Mac). CUDA·MPS· ROCm·Intel XPU·CPU 크로스 하드웨어. MIT 라이선스, 상업 이용 가능.
-
-    '
+  level: "중급"
+  title: 'ACE-Step 1.5 — VRAM 예산에 따라 로컬 음악 생성 구성을 고르는 법'
+  summary: 'ACE-Step 1.5는 언어 모델(LM)이 곡 구성 정보를 만들고 Diffusion Transformer(DiT)가 오디오를 생성하는 로컬 텍스트-투-뮤직 시스템이다. 모델 크기와 LM 포함 여부에 따라 VRAM 요구량과 기능이 달라진다. 저장소는 6GB 이하 GPU에서 2B Turbo DiT, LM 비활성화, INT8 양자화와 전체 CPU 오프로딩 구성을 권한다. 따라서 “4GB 미만”만으로 같은 품질·속도·기능을 기대하면 안 된다.'
   points:
-  - '<4GB VRAM: RTX 3090에서 10초/곡, A100에서 2초/곡'
-  - 'LoRA 커스텀: 몇 곡으로 개인 스타일 학습'
-  - 'Apple Silicon: MLX 백엔드, 16GB+ Mac에서 0.6B 모델'
+  - '6GB 이하 구성: 2B Turbo DiT; LM 기본 비활성화, INT8 및 CPU 오프로딩'
+  - '저장소 보고치: A100 <2초, RTX 3090 <10초/곡; 생성 모드·확산 단계 등에 따라 달라짐'
+  - 'LoRA 예시: 곡 8개, RTX 3090 12GB에서 약 1시간으로 안내; 다른 환경 성능 보장 아님'
+  interview: '“4GB VRAM에서 동작”이라는 문구만으로 모델 구성을 선택해도 될까요?'
+  answer: '안 된다. 공식 권장표에서 6GB 이하 구성은 2B Turbo DiT를 사용하고 언어 모델을 끄며, INT8과 전체 CPU 오프로딩을 적용한다. 즉 낮은 VRAM 조건에서는 기능과 처리 방식이 달라진다. A100과 RTX 3090의 생성 시간도 저장소가 보고한 값이며 모드와 확산 단계에 따라 달라진다. 목표 하드웨어에서 프로파일링하고 필요한 모델 구성·출력 길이·품질을 함께 확인한다. 프로젝트는 생성물의 저작권 유사성 위험을 안내하므로, 배포 전 결과물과 사용 조건을 검토한다.'
   source: https://github.com/ACE-Step/ACE-Step-1.5
 - category: ai
   title: Cadence — 생체 데이터로 실시간 개인화 음악을 생성하는 iOS·Android AI 앱, iso-principle 기반(오픈소스)
