@@ -11,12 +11,6 @@ title: study — 1분 지식 카드
   {% endfor %}
 </div>
 
-<div class="sortbar">
-  <span>정렬</span>
-  <button class="sort active" data-sort="newest">최신순</button>
-  <button class="sort" data-sort="oldest">오래된순</button>
-</div>
-
 <div class="grid">
   {% for card in site.data.cards.cards %}
     {% assign cat = site.data.cards.categories | where: "id", card.category | first %}
@@ -36,34 +30,68 @@ title: study — 1분 지식 카드
   {% endfor %}
 </div>
 
+<nav class="card-nav" aria-label="카드 이동">
+  <button type="button" data-move="previous" aria-label="이전 카드">← 이전</button>
+  <button type="button" data-move="random">랜덤</button>
+  <button type="button" data-move="next" aria-label="다음 카드">다음 →</button>
+</nav>
+<p class="card-position" aria-live="polite"></p>
+
 <script>
-  // Pure client-side category filter + sort — no plugin needed.
+  // Keep all cards in the page, but show one card from the selected category.
   const grid  = document.querySelector('.grid');
   const chips = document.querySelectorAll('.chip');
-  const sorts = document.querySelectorAll('.sort');
   const cards = [...document.querySelectorAll('.card')];
+  const position = document.querySelector('.card-position');
+  const navButtons = document.querySelectorAll('.card-nav button');
+  let category = 'all';
+  let current = -1;
 
-  // Sort owns DOM order via data-idx (append order = oldest→newest). Default: newest first.
-  function applySort(mode) {
-    const dir = mode === 'oldest' ? 1 : -1;
-    [...cards]
-      .sort((a, b) => dir * (+a.dataset.idx - +b.dataset.idx))
-      .forEach(card => grid.appendChild(card)); // reorders existing nodes; display state preserved
+  function availableCards() {
+    return cards.filter(card => category === 'all' || card.dataset.cat === category);
   }
-  applySort('newest');
 
-  sorts.forEach(btn => btn.addEventListener('click', () => {
-    sorts.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    applySort(btn.dataset.sort);
-  }));
+  function showCard(card) {
+    current = cards.indexOf(card);
+    cards.forEach(item => {
+      const visible = item === card;
+      item.hidden = !visible;
+      item.setAttribute('aria-hidden', String(!visible));
+    });
+    const candidates = availableCards();
+    position.textContent = `${candidates.indexOf(card) + 1} / ${candidates.length}`;
+  }
+
+  function move(direction) {
+    const candidates = availableCards();
+    if (!candidates.length) return;
+    const index = candidates.findIndex(card => cards.indexOf(card) === current);
+    if (direction === 'random') {
+      if (candidates.length === 1) return showCard(candidates[0]);
+      let next;
+      do { next = Math.floor(Math.random() * candidates.length); }
+      while (next === index);
+      return showCard(candidates[next]);
+    }
+    const offset = direction === 'next' ? 1 : -1;
+    showCard(candidates[(index + offset + candidates.length) % candidates.length]);
+  }
+
+  navButtons.forEach(button => button.addEventListener('click', () => move(button.dataset.move)));
 
   chips.forEach(chip => chip.addEventListener('click', () => {
     chips.forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
-    const cat = chip.dataset.cat;
-    cards.forEach(card => {
-      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
-    });
+    category = chip.dataset.cat;
+    const candidates = availableCards();
+    showCard(candidates[0]);
   }));
+
+  document.addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest('button, a, input, textarea')) return;
+    if (event.key === 'ArrowLeft') move('previous');
+    if (event.key === 'ArrowRight') move('next');
+  });
+
+  if (cards.length) showCard(cards[Math.floor(Math.random() * cards.length)]);
 </script>

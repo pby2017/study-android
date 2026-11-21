@@ -31,7 +31,8 @@ body{
 .chip.active span{opacity:.8}
 
 /* card grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:minmax(0,720px);justify-content:center;gap:16px}
+.card[hidden]{display:none}
 .card{
   background:var(--panel);border:1px solid var(--border);
   border-left:3px solid var(--accent);border-radius:10px;
@@ -52,13 +53,13 @@ body{
 .src{margin-top:auto;padding-top:10px;font-size:12.5px;color:var(--accent);text-decoration:none}
 .src:hover{text-decoration:underline}
 
-/* sort toolbar */
-.sortbar{display:flex;align-items:center;gap:8px;margin:6px 0 14px;color:var(--muted);font-size:12.5px}
-.sortbar .sort{
-  background:transparent;border:1px solid var(--border);color:var(--muted);
-  border-radius:999px;padding:3px 11px;font-size:12px;cursor:pointer;
+.card-nav{display:flex;justify-content:center;gap:10px;margin:18px auto 6px}
+.card-nav button{
+  min-width:92px;background:var(--panel);border:1px solid var(--border);color:var(--fg);
+  border-radius:999px;padding:9px 16px;font:inherit;font-size:13px;cursor:pointer;
 }
-.sortbar .sort:hover{color:var(--fg);border-color:var(--accent)}
-.sortbar .sort.active{color:var(--accent);border-color:var(--accent)}
+.card-nav button:hover,.card-nav button:focus-visible{border-color:var(--accent);color:var(--accent)}
+.card-nav button:nth-child(2){background:var(--accent);border-color:var(--accent);color:#0d1117;font-weight:700}
+.card-position{text-align:center;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
 
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
