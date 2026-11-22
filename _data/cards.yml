@@ -845,15 +845,16 @@ cards:
   interview: "오토 메모리의 주제별 파일이 존재하면 새 세션 시작 때 전부 읽히나요? 같은 Git 저장소의 worktree 사이에서는 메모리를 공유하나요?"
   answer: "아니다. 시작 때 MEMORY.md의 앞 200줄 또는 25KB만 읽고 주제별 파일은 필요할 때 읽는다. 같은 저장소의 worktree는 기기 로컬 메모리 디렉터리를 공유하지만 다른 기기나 클라우드와 동기화하지 않는다."
 - category: ai
-  title: 내장 ide MCP 서버 — 외부 터미널 CLI를 /ide로 VS Code에 붙이기
-  summary: 'VS Code 확장이 켜져 있으면 로컬 MCP 서버 하나(이름 `ide`)가 돌고, CLI가 여기에 자동으로 붙는다. 이 연결 덕에 CLI가 만든 diff가 VS Code 네이티브 diff 뷰어로 열리고, 지금 에디터에서 선택한 텍스트와 열린 파일 경로가 매 프롬프트에 컨텍스트로 따라붙는다(트랜스크립트에 `⧉ Selected N lines from <file>` 표시). 통합 터미널에서 `claude`를 돌리면 IDE 연동이 자동이지만, 외부 터미널을 쓸 땐 Claude 안에서 `/ide`를 실행해 VS Code에 연결한다. `ide` 서버는 설정할 게 없어 `/mcp` 목록에선 숨겨지고, `127.0.0.1` 랜덤 포트에 바인딩되며 활성화 때마다 새 토큰을 발급한다. 모델에 노출되는 도구는 둘뿐 — 진단을 읽는 `mcp__ide__getDiagnostics`와 주피터 셀을 실행하는 `mcp__ide__executeCode`(실행 전 항상 확인 받음).
-
-    '
+  level: "중급"
+  title: Claude Code IDE 연결 — 선택 문맥과 도구 권한 구분하기
+  summary: VS Code 확장이 켜져 있으면 CLI는 내장 `ide` MCP 서버에 자동 연결된다. 서버는 편집기 선택 영역과 열린 파일 경로를 프롬프트에 붙이고, diff를 VS Code에서 연다. 외부 터미널은 `/ide`로 연결한다.
   points:
-  - 확장 활성 시 로컬 MCP 서버 `ide` 가동 — CLI 자동 연결 / diff는 VS Code 네이티브 뷰어로 열림
-  - 외부 터미널이면 Claude 안에서 `/ide` 실행해 연결 / 선택 텍스트·열린 파일이 프롬프트 컨텍스트로 첨부 (.env 등은 Read deny 규칙으로 제외)
-  - '모델 노출 도구는 2개뿐: getDiagnostics(읽기), executeCode(주피터, 실행 전 Quick Pick 확인) / 127.0.0.1 랜덤 포트+세션별 토큰'
+  - 선택 영역 첨부를 끄거나 `Read` deny 규칙으로 민감 파일의 선택 내용·경로를 제외할 수 있음
+  - 모델에 보이는 도구는 진단 조회와 Jupyter 코드 실행; 진단 조회는 읽기 전용
+  - Jupyter 실행 도구는 호출 전 VS Code 확인을 요구하며, MCP 도구 allowlist와 별개임
   source: https://code.claude.com/docs/en/ide-integrations
+  interview: "`mcp__ide__executeCode`를 MCP allowlist에 넣으면 노트북 코드가 즉시 실행되나요? 민감 파일의 선택 내용은 어떻게 제외하나요?"
+  answer: "아니다. VS Code의 Quick Pick 확인을 별도로 통과해야 실행된다. 민감 파일은 `Read` deny 규칙을 설정하면 선택 내용과 열린 파일 경로 모두 컨텍스트에서 제외된다."
 - category: ai
   title: 동적 컨텍스트 주입 — 슬래시 커맨드에 셸 출력·인자를 미리 끼워 넣기
   summary: '커스텀 슬래시 커맨드(스킬)의 본문에 `!`명령`` 형태를 쓰면, Claude가 그 내용을 보기 전에 Claude Code가 먼저 그 셸 명령을 실행하고 출력으로 자리표시자를 갈아끼운다. 즉 모델은 명령어가 아니라 이미 실행된 ''실제 데이터''를 받는다 — 예를 들어 `- PR diff: !`gh pr diff``라고 적으면 진짜 diff가 프롬프트에 인라인된 채로 도착한다. 인자도 같은 식으로 미리 박힌다: `$ARGUMENTS`는 넘긴 인자 전체로, `$1`·`$2`는 셸식 따옴표 규칙대로 쪼갠 위치 인자로 치환된다(`\$1`로 리터럴 `$` 이스케이프 가능). 치환은 원본 파일에 딱 한 번만 돌아서, 명령 출력 안의 자리표시자는 다시 펼쳐지지 않는다. 또 인라인 `!`는 줄 맨 앞이나 공백 바로 뒤에 있을 때만 인식되고, 여러 줄 명령은 ` ```! ` 펜스 블록으로 감싼다.

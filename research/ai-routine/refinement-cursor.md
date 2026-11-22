@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined `claude -p --bare` and `/usage`; continue the oldest-first scan with the next remaining AI card.
+Current position: refined the built-in Claude Code IDE MCP card; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1075,3 +1075,9 @@ Rules:
 - Sources: [Headless mode](https://code.claude.com/docs/en/headless), [Plan usage breakdown](https://code.claude.com/docs/en/costs#plan-usage-breakdown)
 - Research note: `research/ai-routine/20261122-085500-claude-bare-and-usage-refinement.md`
 - Next: continue the oldest-first AI card pass with `오토 메모리`; verify current memory scope, automatic loads, and deletion/disable semantics.
+
+## Latest pass
+- Refined `내장 ide MCP 서버` against the current official VS Code integration guide.
+- Clarified the Jupyter execution confirmation is a VS Code Quick Pick separate from MCP hook/allowlist policy; added that `Read` deny excludes both selection and active-file context for matching sensitive files.
+- Sources and rationale: `research/ai-routine/20261122-ide-mcp-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
