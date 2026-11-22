@@ -2258,15 +2258,16 @@ cards:
   interview: '`kilo run --auto`를 CI에서 사용하면 왜 권한 설정을 별도로 점검해야 하나요?'
   answer: '`--auto`는 사용자 입력 없이 진행하게 하지만 권한 정책을 무시하지 않는다. 허용되지 않은 도구 호출은 거부되며, 반대로 넓은 `allow` 규칙은 자동 실행의 영향 범위를 키운다. 따라서 bash·edit·외부 경로 권한을 필요한 작업과 경로로 제한하고, 격리된 환경에서 검증해야 한다.'
 - category: ai
-  title: Bumblebee(Perplexity) — MCP·확장·패키지 로컬 노출을 읽기 전용으로 찾는 스캐너(4.6k★)
-  summary: '코딩 에이전트를 쓰다 보면 MCP 서버, VS Code·Cursor·Windsurf 확장, npm·PyPI 패키지를 검증 없이 잔뜩 깔게 되는데, 정작 사고가 난 뒤 "어느 개발자 머신에 이 항목이 있나"를 빠르게 답하기 어렵다. Bumblebee는 Perplexity가 공개한 Apache-2.0 스캐너로, SBOM(배포 산출물)이나 EDR(실행·네트워크 흔적)이 놓치기 쉬운 개발자 로컬 상태를 NDJSON 인벤토리로 만든다. 핵심은 읽기 전용 설계다. `npm ls`·`pip show`·`go list` 같은 패키지 매니저를 실행하지 않고 락파일, 설치 메타데이터, 확장 매니페스트, 지원 MCP JSON 설정만 읽는다. 자체 CVE DB로 추측하지도 않는다. 사용자가 준 노출 카탈로그(JSON)와 정확히 일치하는 항목만 finding으로 내므로, "이미 알려진 악성 패키지·확장·MCP 서버가 내 fleet에 있나"를 확인하는 사고 대응 도구에 가깝다.
-
-    '
+  level: 고급
+  title: Bumblebee — SBOM·EDR이 놓치는 개발자 머신의 로컬 노출 확인
+  summary: '공급망 사고가 나면 “취약 패키지가 배포됐나?”(SBOM)와 “실행됐나?”(EDR)만으로는 개발자 노트북에 남은 상태를 모두 알기 어렵다. Perplexity의 Bumblebee는 macOS·Linux에서 락파일, 설치 메타데이터, 에디터/브라우저 확장, 지원되는 MCP 설정을 읽어 NDJSON 인벤토리를 만든다. 노출 카탈로그를 함께 주면 알려진 이름·버전과 정확히 일치하는 항목을 찾는다. 패키지 매니저를 실행하거나 소스 파일을 읽지는 않지만, Codex `config.toml` 같은 비 JSON 설정은 범위 밖이다. 따라서 일반 취약점 스캐너나 완전한 SBOM 대체재가 아니라, 이미 식별된 위협의 개발자 엔드포인트 노출 확인 도구다.'
   points:
-  - '스캔 표면: npm·PyPI·Go·RubyGems·Composer·Bun·pnpm·Yarn·Homebrew + MCP JSON 설정·에디터 확장·브라우저 확장·에이전트 스킬'
-  - '읽기 전용: 패키지 매니저 실행 없음·소스 파일 안 읽음, MCP env 자격증명 값은 record에 출력하지 않음'
-  - 2026-06-26 확인 기준 GitHub 4,635★·416 forks·Apache-2.0, 최신 릴리스 v0.1.2, baseline/project/deep 프로필과 selftest 제공
+  - '`baseline`·`project`는 반복 인벤토리, `deep`은 지정 경로의 사고 대응 스캔'
+  - '패키지 매니저 실행·소스 코드 읽기 없음; 일부 비 JSON 설정과 잠금 파일 없는 Skills는 미수집'
+  - '2026-11-22 확인: 5,167★·470 forks·Apache-2.0; v0.1.2(6월 18일)'
   source: https://github.com/perplexityai/bumblebee
+  interview: 'Bumblebee 결과가 없으면 해당 개발자 머신에 취약한 도구가 없다고 결론 내려도 될까요?'
+  answer: '아니다. Bumblebee는 선택한 프로필과 지원하는 디스크 메타데이터만 읽고, 제공한 노출 카탈로그와 정확히 일치하는 항목을 찾는다. Codex TOML 등 미지원 설정이나 수집되지 않은 설치 경로는 빠질 수 있으므로, 결과 없음은 “이 스캔 범위에서 일치 항목을 못 찾음”으로 해석하고 EDR·SBOM·다른 자산 자료와 함께 판단한다.'
 - category: ai
   title: Deep Agents(LangChain) — harness engineering로 Terminal Bench 2.0 Top 5
   summary: 'Deep Agents는 장기 작업용 LangChain 하네스다. ReAct 루프에 도구만 붙이는 대신 todo 계획, 서브에이전트, 가상 파일시스템, 튜닝된 시스템 프롬프트를 LangGraph 위에 묶는다. LangChain은 deepagents-cli에서 모델을 gpt-5.2-codex로 고정하고 하네스만 바꿔 Terminal Bench 2.0 점수를 52.8→66.5(Top 30→Top 5)로 올렸다고 공개했다. 조정 축은 프롬프트·도구·middleware 세 가지였고, LangSmith trace 분석으로 실패 패턴을 모은 뒤 targeted change를 반복했다. 핵심 개선은 exit 직전 PreCompletionChecklistMiddleware로 task spec 대비 검증을 강제하고, LocalContextMiddleware로 cwd·주변 디렉터리·사용 가능한 도구를 먼저 주입하며, 반복 편집을 감지해 계획 재검토를 유도한 점이다. 2026-06-26 확인 기준 GitHub 25,139★·MIT·최신 릴리스 deepagents==0.6.12.'

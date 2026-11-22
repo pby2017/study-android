@@ -11,13 +11,14 @@
 - Refined the Anthropic agent-team compiler card against the author's primary report and source repository. Recentered on verifier quality and work decomposition, and clarified measured cost and incomplete compiler status; validated and pushed as `6089f1b`.
 - Refined Philipp Schmid's subagent pattern card against his primary explainer and bio; clarified escalation choices and orchestration costs; validated and pushed as `9d3302f`.
 - Refined Sourcegraph's “80% problem” card against its September article and search docs. Made the percent metaphor explicit, removed vendor benchmark numbers and overgeneralized search advice, and retained a repository-completeness practice. Audit: `research/ai-routine/20261122-sourcegraph-80-percent-refinement.md`; validated and pushed as `1a4fa7b`.
-- Refined Chrome DevTools MCP against current GitHub docs/releases and OpenAI's Codex Browser documentation. Corrected page routing and profile flags, distinguished MCP from Codex Developer mode, and added browser-data/telemetry caveats. Audit: `research/ai-routine/20261122-chrome-devtools-mcp-refinement.md`; validation/commit/push pending.
+- Refined Chrome DevTools MCP against current GitHub docs/releases and OpenAI's Codex Browser documentation. Corrected page routing and profile flags, distinguished MCP from Codex Developer mode, and added browser-data/telemetry caveats; pushed as `b8e8cec`.
 - Retired the ByteRover CLI card because its repository is archived, the current company site has shifted product framing, and the deck already covers agent memory several ways. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.
-- Refined Kilo Code: corrected the `--auto` permission semantics, refreshed live popularity/release evidence, and checked the Anaconda acquisition announcement. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`; validation passed; commit/push pending.
+- Refined Kilo Code: corrected the `--auto` permission semantics, refreshed live popularity/release evidence, and checked the Anaconda acquisition announcement. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`; pushed as `0addf43`.
+- Refined Bumblebee against its README, release page, and live GitHub API: clarified its incident-response scope, exact exposure matching, unsupported configs, and interpretation of no findings. Audit: `research/ai-routine/20261122-bumblebee-refinement.md`; validation/commit/push pending.
 - The long-term study-android objective remains active: short, evidence-based AI / AI+Android learning cards with difficulty levels, consistent format, and interview retrieval practice. Pure Android topics remain excluded.
 
 ## Next actions
-1. Commit and push the ByteRover retirement + Kilo card refinement and audit/checkpoint updates.
-2. Continue oldest-first with Bumblebee (Perplexity); verify scope, evidence, activity, and overlap before deciding whether to keep or remove it.
+1. Validate and commit/push the Kilo and Bumblebee card refinements and audit/checkpoint updates.
+2. Continue oldest-first with Deep Agents (LangChain); verify the current benchmark evidence, implementation claims, activity, and overlap.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.
