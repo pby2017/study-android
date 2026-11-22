@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the Claude Code subagent catalog card for Android relevance, validation, and plugin safety; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: corrected Claude Code's large-repository instruction hierarchy and loading behavior; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:57 KST
+Last update: 2026-11-22 15:59 KST
+
+## Latest pass
+- Replaced the misleading “put CLAUDE.md in subdirectories, not root” rule with layered common/root and module-specific guidance.
+- Corrected loading behavior: current directory and ancestors load at startup; descendant CLAUDE.md files load on demand when Claude accesses their directories.
+- Added an Android monorepo example, path-scoped `.claude/rules/`, concise-file maintenance, and the distinction between guidance and hard enforcement.
+- Sources and rationale: `research/ai-routine/20261122-claude-large-codebase-instructions-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Updated the catalog snapshot to 161+ agent definitions, 10 categories, and 26.7k GitHub stars (2026-11-22); popularity is not treated as quality evidence.
