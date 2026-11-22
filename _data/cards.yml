@@ -1911,16 +1911,6 @@ cards:
   interview: 'goose oi-kit의 Kotlin 바인딩을 Android 앱에 추가하면 Rust 에이전트 런타임 전체를 그대로 쓸 수 있나요?'
   answer: '아니다. 공식 Kotlin 바인딩은 모델 제공자, 스트리밍, 대화 압축 API를 제공하지만 전체 에이전트 상태 머신은 노출하지 않는다. Android 지원도 별도 보장으로 간주하지 말고 artifact와 ABI·최소 OS·네이티브 배포를 검증해야 한다. oi-kit 자체도 알파이므로 버전별 API를 확인한다.'
 - category: ai
-  title: GNAP — git 저장소 하나로 AI·사람 에이전트를 조율하는 프로토콜
-  summary: 'GNAP(Git-Native Agent Protocol)은 별도 서버·DB 없이 git 저장소 자체를 에이전트 조율 계층으로 쓰는 MIT 라이선스 RFC다. `.gnap/`에는 version, agents.json, tasks/, runs/, messages/만 두고, 나머지 예산·대시보드·거버넌스는 애플리케이션 계층으로 남긴다. 에이전트는 heartbeat 루프에서 git pull→자기 활성 상태 확인→할 일과 메시지 읽기→작업→commit/push를 반복한다. 그래서 git history가 감사 로그가 되고, 사람과 AI가 같은 JSON 프로토콜 위에서 동등한 참여자가 된다. README는 Farol Labs가 AI 2명+사람 2명의 4-agent 팀으로 50개 이상 작업을 같은 repo에서 조율한다고 설명한다. 2026-06-25 GitHub API 기준 67★라 대중성은 작지만, 학습 가치는 "에이전트 협업을 SaaS가 아니라 버전관리 가능한 파일 프로토콜로 볼 수 있다"는 점이다.
-
-    '
-  points:
-  - '프로토콜 핵심: version + agents/tasks/runs/messages — 정확히 네 엔티티만 표준화'
-  - '운영 루프: pull→read→work→commit/push, git log가 별도 DB 없는 감사 로그'
-  - '주의점: 스타 수는 작음(67★) — 대중 도구보다 git-native coordination 패턴으로 학습'
-  source: https://github.com/farol-team/gnap
-- category: ai
   title: Open SWE(LangChain) — 깃허브 이슈에 라벨만 붙이면 도는 비동기 클라우드 코딩 에이전트
   summary: 'Open SWE는 LangChain이 공개한 MIT 라이선스 오픈소스 비동기 코딩 에이전트다. 깃허브 이슈에 `open-swe-auto` 같은 라벨을 붙이거나 전용 UI에서 작업을 만들면, 클라우드에서 코드베이스 조사→계획→구현→테스트→자체 리뷰→PR 생성을 진행한다. 핵심 학습 포인트는 "코딩 에이전트 UX"다. 계획이 나오면 accept/edit/reject로 끊고, 실행 중에도 double texting으로 추가 지시를 넣으며, 추적 이슈에는 상태·계획·PR 링크가 계속 남는다. 내부 구조는 LangGraph 기반 Manager→Planner→Programmer→Reviewer 흐름이고, LangGraph Platform의 persistence·autoscaling과 Daytona 격리 샌드박스를 써서 긴 작업을 로컬 머신과 분리한다. 2026-06-25 GitHub API 기준 10,039★·MIT다.
 

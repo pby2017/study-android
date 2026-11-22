@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass
+- Removed GNAP rather than refreshing its stale card: it is explicitly an RFC draft, showed 87 stars / 7 forks / 2 open issues, and its last GitHub push was 2026-03-17 at review time.
+- The git-native coordination idea is teachable, but the current draft has little adoption and no recent maintenance signal; it falls below this project's hot/useful-topic selection bar.
+- Audit: `research/ai-routine/20261122-gnap-pruned.md`. The next chronological candidate is Open SWE; verify current behavior and popularity before deciding to retain it.
+
+## Latest pass
 - Replaced the stale omnibus goose card (old provider counts, Rust percentage, and Subrecipes claims) with a Kotlin/Android integration boundary lesson for oi-kit.
 - Rechecked the current oi-kit reference and Kotlin API: the Kotlin bindings cover provider calls, streaming, and conversation compaction, not the full Rust agent runtime; oi-kit is alpha. GitHub showed about 56.9k★ / 6.6k forks on 2026-11-22.
 - Made Android support an explicit validation question rather than an assumed guarantee; added intermediate difficulty and an interview retrieval pair. Audit: `research/ai-routine/20261122-goose-oikit-refinement.md`.
@@ -26,9 +31,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined goose oi-kit after AI Research Skills; continue the oldest-first scan with GNAP.
+Current position: pruned GNAP after goose oi-kit; continue the oldest-first scan with Open SWE.
 
-Last update: 2026-11-22 17:58 KST
+Last update: 2026-11-22 18:02 KST
 
 ## Latest pass
 - Rechecked Dreams against current Managed Agents API docs, Anthropic's Nov 6 agent-memory research, and the product announcement.
