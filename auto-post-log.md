@@ -4819,3 +4819,11 @@ Refined:
 - 레벨 중급과 실행 상태·권한·관측을 분리해 회상하는 면접 질문/답변을 추가했다.
 - Audit: `research/ai-routine/20261123-014716-eve-1-ga-agent-execution-boundaries.md`.
 - Sources: https://vercel.com/blog/eve-is-now-generally-available, https://github.com/vercel/eve.
+
+
+### 2026-11-23 01:54 KST — Agent Skills 공통 포맷과 호스트 실행 경계
+
+- 기존 카드의 “수십 개 도구가 채택” 및 “한 번 만들면 어디서나” 표현을 제거했다. 공개 `SKILL.md` 규격과 각 호스트의 발견·호출·권한 구현을 구분했다.
+- 필수 frontmatter, 단계적 로딩, 선택 스크립트의 실행 위험을 정리하고 중급 난이도와 면접 회상 Q&A를 추가했다.
+- Audit: `research/ai-routine/20261123-015455-agent-skills-portability-boundaries.md`.
+- Sources: https://agentskills.io/specification, https://developers.openai.com/api/docs/guides/tools-skills, https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.

@@ -4,7 +4,8 @@
 - Rechecked `Claude Code reloadSkills — SessionStart 훅이 설치한 스킬을 같은 세션에서 읽기` against the current Hooks reference and changelog. The hook ordering edge case, `hookSpecificOutput.reloadSkills`, and manual `/reload-skills` behavior remain accurate, so left the already refined card unchanged.
 - Added `Vercel eve 1.0 — 에이전트 실행에서 복구·승인·관측을 나누기` after its official GA announcement and current GitHub repository confirmed a distinct developer lesson about durable workflow state, human approval, trace privacy, and hosting boundaries.
 - Audit: `research/ai-routine/20261123-014716-eve-1-ga-agent-execution-boundaries.md`.
-- Next oldest deck-order candidate to inspect: `Claude Code --safe-mode`; its Nov 22 refinement exists, so skip if it remains current and continue to the next unreviewed eligible card.
+- Rechecked the older `Claude Code --safe-mode` against the current CLI reference: the Nov 22 diagnostic/policy boundary remains current. The following `/cd` and output-style cards also retain current behavior per their existing first-party audits. Refined the next AI card missing learning metadata, `Agent Skills(SKILL.md)`: replaced the universal-portability/adoption claim with host-specific discovery/invocation/permission boundaries and a bundled-script safety check. Audit: `research/ai-routine/20261123-015455-agent-skills-portability-boundaries.md`.
+- Next oldest AI-only card to inspect: `OpenHands(All-Hands-AI)`; verify runtime isolation claims, current project status, and check for overlap before changing it.
 
 ## Latest pass — 2026-11-23
 - Rechecked and refined the older `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` card. Separated author-recommended workflow benefits from measured results and added the source's caution-bias tradeoff for trivial tasks. Source: https://github.com/multica-ai/andrej-karpathy-skills. Audit: `research/ai-routine/20261123-013535-karpathy-guidelines-and-topic-screen.md`.

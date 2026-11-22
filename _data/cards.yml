@@ -2727,15 +2727,24 @@ cards:
   interview: '같은 에이전트가 비슷한 실수를 반복한다면 하네스를 어떤 순서로 개선하고, 그 수정이 회귀를 만들지 어떻게 확인하나요?'
   answer: '실행 trace에서 반복 원인을 찾고, 원인에 맞는 좁은 지침(가이드)과 자동 테스트·린터(센서)를 함께 보강한다. 대표 작업과 기존 회귀 테스트를 다시 실행해 개선과 부작용을 확인한다. 중요한 요구사항·설계 판단은 계속 사람이 검토한다.'
 - category: ai
-  title: Agent Skills(SKILL.md) — Anthropic가 연 'Skill 한 번 만들면 어떤 에이전트서나' 오픈 표준, Cursor·Codex·Gemini CLI까지 채택
-  summary: 'Agent Skills는 Anthropic이 만들어 오픈 표준으로 공개한, AI 에이전트에 전문 지식·워크플로를 주입하는 경량 포맷이다. 핵심은 SKILL.md 한 파일을 담은 폴더 — 메타데이터(name·description)와 지침을 적고, 스크립트·참고문서·템플릿을 함께 묶을 수 있다. Claude Code 전용이 아니라 Cursor·OpenAI Codex·Gemini CLI·GitHub Copilot·VS Code·OpenHands·Goose·Roo Code 등 수십 개 도구가 같은 포맷을 채택해, "한 번 만들면 어디서나 쓰는" 크로스 제품 재사용이 핵심 가치다.
-
-    '
+  level: 중급
+  title: Agent Skills — 공통 SKILL.md와 호스트별 실행 지원을 구분하기
+  summary: 'Agent Skills는 Anthropic이 만든 공개 포맷으로, 작업 지침을 `SKILL.md`와 선택 자료·스크립트가 든 폴더로 패키징한다. 같은 포맷은 재사용을 돕지만 모든 에이전트에서 자동 발견·호출되거나 같은 권한으로 실행된다는 뜻은 아니다. 사용 전 호스트별 설치 경로, 로딩 방식, 도구 권한을 확인한다.'
   points:
-  - '구조: 폴더 + 필수 SKILL.md(메타 name·description + 지침), 선택적으로 scripts/·references/·assets/ 번들. 별도 SDK·플러그인 형식이 아니라 마크다운 파일 하나가 진입점'
-  - '동작은 ''점진적 공개(progressive disclosure)'' 3단계 — ①Discovery: 시작 시 name·description만 로드 ②Activation: 작업이 description과 매칭되면 본문 전체를 컨텍스트로 ③Execution: 필요할 때만 번들 코드·참고파일 로드. 그래서 스킬 수십 개를 달아도 컨텍스트 footprint가 작다'
-  - '표준 채택 현황(agentskills.io 클라이언트 쇼케이스 기준): Claude Code/Claude·Cursor·OpenAI Codex·Gemini CLI·GitHub Copilot·VS Code·OpenHands·Goose·Roo Code·Amp·Factory·Kiro·Letta 등. openai/skills(Codex용 Skills Catalog)는 22.3k★. Anthropic이 발원해 오픈 표준으로 풀고 생태계가 확장 중'
-  source: https://agentskills.io
+  - '필수 항목은 YAML frontmatter의 `name`과 `description`, 그리고 Markdown 지침이다. 설명에는 스킬의 역할과 사용할 작업을 함께 적어 선택을 돕는다.'
+  - '규격은 metadata → 전체 지침 → 필요한 참조·자원의 단계적 로딩을 설명한다. 실제 발견·호출 시점과 컨텍스트 동작은 호스트 구현 문서를 따른다.'
+  - '`scripts/`는 실행 가능한 코드를 담을 수 있다. 다른 저장소에서 받은 스킬은 지침뿐 아니라 스크립트와 요구 권한을 검토하고, 필요한 도구만 허용한다.'
+  source: https://agentskills.io/specification
+  sources:
+  - label: Agent Skills specification — 폴더 구조, 필수 frontmatter, 단계적 로딩과 실행 파일
+    url: https://agentskills.io/specification
+  - label: OpenAI Skills docs — open standard 호환과 Codex/API의 설치·발견 방식
+    url: https://developers.openai.com/api/docs/guides/tools-skills
+  - label: Anthropic Agent Skills — 플랫폼별 지원과 스킬 보안 경계
+    url: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+  interview: '같은 `SKILL.md` 폴더를 두 에이전트에 복사했는데 한쪽만 자동으로 사용합니다. 무엇을 확인하고, 외부 스킬의 어떤 위험을 검토해야 하나요?'
+  answer: '각 호스트의 검색 경로·설치 절차·description 기반 선택·호출 방식을 확인한다. 포맷 호환은 동일한 네이티브 등록이나 권한을 보장하지 않는다. 외부 스킬은 지침뿐 아니라 실행 스크립트와 요구 도구 권한도 검토한다.'
+
 - category: ai
   title: OpenHands(All-Hands-AI) — 에이전트의 모든 행동을 'Docker 샌드박스'에서 돌리는 오픈소스 코딩 에이전트(MIT·~77k★)
   summary: 'OpenHands(옛 OpenDevin)는 코드를 짜고 수정할 뿐 아니라 명령 실행·웹 브라우징·API 호출까지 사람 개발자처럼 하는 오픈소스 자율 코딩 에이전트다. 핵심 차별점은 에이전트의 모든 행동을 격리된 Docker 런타임(샌드박스)에서 실행한다는 점 — 로컬 환경을 직접 건드리지 않고 컨테이너 안에서 셸·파일 편집·브라우저를 돌린다. CLI·웹 GUI·Cloud·Agent SDK 등 여러 형태로 쓰며 특정 모델에 묶이지 않고 다양한 LLM 공급자를 붙일 수 있다. 라이선스는 MIT(단, enterprise/ 디렉터리는 별도)이며 README 기준 약 77k★다.
