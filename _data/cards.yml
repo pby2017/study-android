@@ -1711,15 +1711,21 @@ cards:
   interview: 'Cursor의 검색 인덱스가 로컬에 있다는 사실만으로 코드가 모델 제공자에게 전혀 전송되지 않는다고 결론내릴 수 있나요?'
   answer: '아니다. 현재 Cursor 문서는 검색 인덱스 구축을 위해 코드·경로를 업로드하거나 임베딩을 저장하지 않는다고 설명한다. 하지만 Agent가 검색 결과 파일을 열면 파일 내용이 모델 요청에 포함될 수 있다. 검색 인덱스 저장 위치와 모델 요청 데이터 처리는 별도로 확인해야 한다.'
 - category: ai
-  title: Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'
-  summary: 'Ralph 루프가 "끝날 때까지 새 컨텍스트로 다시 돌리는" 패턴이라면, Continuous Claude(AnandChowdhary)는 그 루프에 GitHub PR 생명주기를 붙인 CLI다. 매 반복마다 Claude Code 또는 Codex CLI가 작업하고, 새 브랜치에 커밋한 뒤 `gh pr create`로 PR을 열고, `gh pr checks`와 리뷰 통과를 기다린다. 초록불이면 머지하고, 실패하면 PR을 닫고 작업을 버린 뒤 다음 반복에서 실패 지식을 반영한다. 반복 사이 맥락은 기본 `SHARED_TASK_NOTES.md`에 남겨 컨텍스트 드리프트를 줄이고, `--worktree`로 병렬 실행도 지원한다. 현재 README 기준 GitHub PR 자동화가 핵심 경로이며 self-hosted forge는 미지원이다. 로컬 검증이나 안전한 시험 운전은 `--dry-run`, `--disable-commits`, `--disable-branches`, `--max-runs`, `--max-duration`, `--max-cost` 같은 제한 플래그로 먼저 좁히는 편이 낫다.
-
-    '
+  level: 중급
+  title: Continuous Claude — 반복 실행에 PR·CI 검증과 병합을 연결
+  summary: 'Continuous Claude는 Claude Code 또는 Codex CLI를 반복 실행하고, 매 회차의 작업 메모를 SHARED_TASK_NOTES.md에 넘기는 도구다. 설정에 따라 브랜치와 PR을 만들고 GitHub의 필수 체크 및 리뷰가 끝난 뒤 병합을 시도한다. 초록불은 설정된 검사가 통과했다는 뜻이지 코드가 완벽하다는 보증은 아니다. `--max-runs`, `--max-duration`, `--max-cost`, `--stall-threshold`로 실행을 제한하고, 실제 병합 전 저장소의 보호 규칙과 리뷰 요구를 확인한다. 전체 PR 자동화는 GitHub용이며, 로컬 모드도 제공한다. GitHub는 약 1.4k★를 표시했다(2026-11-22 확인).'
   points:
-  - '같은 런 검증: MIT, 1.4k★, Claude Code/Codex provider 지원, GitHub CLI PR 자동화'
-  - 맥락 보존은 기본 SHARED_TASK_NOTES.md, 병렬 실행은 `--worktree`, 완료 판단은 연속 completion signal
-  - '안전장치: `--dry-run`, `--max-runs`, `--max-duration`, `--max-cost`, `--stall-threshold`로 무한 루프를 제한'
+  - '회차별 맥락은 메모 파일로 전달하고, 선택한 Claude/Codex provider로 작업'
+  - 'PR 생성·체크·리뷰·병합 자동화는 GitHub 기반; 다른 forge는 전체 PR 흐름을 지원하지 않음'
+  - 'Codex의 `--max-cost`는 사용량만으로 자동 환산되지 않으므로 비용 단가를 설정해야 예산 제한으로 동작'
   source: https://github.com/AnandChowdhary/continuous-claude
+  sources:
+  - label: 'Continuous Claude README — 반복·PR 생명주기·GitHub 지원 범위와 실행 제한'
+    url: https://github.com/AnandChowdhary/continuous-claude
+  - label: 'Continuous Claude README — Codex 비용 한도는 토큰 단가 설정 필요'
+    url: https://github.com/AnandChowdhary/continuous-claude#flags
+  interview: 'Continuous Claude에서 PR 체크가 통과하면 자동 병합해도 안전하다고 볼 수 있나요? Codex 사용 시 비용 상한도 자동으로 정확히 계산되나요?'
+  answer: '둘 다 단정할 수 없다. 통과는 구성된 체크와 요구된 리뷰 조건의 결과일 뿐, 요구사항·보안·동작이 완전하다는 보증은 아니다. 브랜치 보호와 사람의 리뷰 정책을 저장소에서 확인하고 run·시간·비용 한도를 둔다. Codex는 토큰 사용량을 보고하므로 `--max-cost`를 적용하려면 입력·출력 단가를 제공해야 한다.'
 - category: ai
   title: Google Antigravity 2.0 — 데스크톱·CLI·SDK·Managed Agents API, Gemini 3.5 Flash agent stack(I/O 2026)
   summary: 구글이 2026 I/O에서 Antigravity 2.0을 agent-first development platform으로 공개 — 데스크톱(병렬 multi-agent)·Go CLI·Antigravity SDK 3표면. Gemini 3.5 Flash — Terminal-Bench 2.1 76.2%·MCP Atlas 83.6%·3.1 Pro 대비 4× faster·Antigravity co-optimized 12×. Managed Agents in Gemini API(Interactions API) — single API call로 Antigravity harness+Gemini 3.5 Flash agent spin-up, Google-hosted isolated Linux sandbox에서 reason·tool·code execute. AI Studio agent templates·Android vibe coding·Firebase 연동. Gemini CLI(~105k★) 소비자 접근 2026-06-18 종료→Antigravity 이주. Claude Managed Agents(Anthropic REST) ·OpenAI Codex platform ·Microsoft Foundry Hosted agents와 4대 managed agent API 축.

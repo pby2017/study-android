@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: re-refined Cursor Agent search after MCP 2026-07-28; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Continuous Claude after Cursor Agent search; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Refined Continuous Claude against its current upstream README and GitHub repository snapshot.
+- Clarified that CI/review success means configured gates passed, not correctness; preserved GitHub-only full PR automation and added run/time/cost/stall limits.
+- Added the Codex budgeting caveat: `--max-cost` needs explicit token rates because Codex reports token usage rather than USD cost. Added intermediate level and retrieval Q/A.
+- Audit: research/ai-routine/20261122-continuous-claude-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Revisited the older Cursor indexing card because the current product behavior changed since its previous refinement. Removed stale semantic-embedding, 80%-ready, server-vector-index and periodic-sync descriptions.
