@@ -28,7 +28,7 @@ if ! mkdir "$LOCK_DIR" 2>/dev/null; then
 fi
 trap 'rm -rf "$LOCK_DIR"' EXIT
 
-if ! git diff --quiet || ! git diff --cached --quiet; then
+if [[ -n "$(git status --porcelain --untracked-files=all)" ]]; then
   mkdir -p research/ai-routine
   cat > research/ai-routine/resume.md <<RESUME_EOF
 # Local AI routine paused before sync
@@ -68,7 +68,7 @@ run_codex() {
   local codex_bin
   codex_bin="$(realpath "$(command -v codex)")"
   echo "Trying headless provider: codex"
-  timeout "${PIPELINE_TIMEOUT:-13800}" "$codex_bin" --search exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
+  timeout "${PIPELINE_TIMEOUT:-13800}" "$codex_bin" exec -C "$ROOT" --dangerously-bypass-approvals-and-sandbox "$PROMPT"
 }
 
 AGENT_OK=0
