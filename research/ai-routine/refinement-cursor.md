@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined skills.sh / npx skills after GitHub Copilot cloud agent; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code prompt-injection guidance after skills.sh / npx skills; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:00 KST
+Last update: 2026-11-22 17:12 KST
+
+## Latest pass
+- Refined Claude Code prompt-injection guidance using current official security, permissions, and CLI docs.
+- Scoped approval/fail-closed behavior to Manual mode, removed unsupported input-sanitization claims, and clarified WebFetch summary and the `-p` trust-prompt gap without treating them as guarantees.
+- Added intermediate difficulty and retrieval Q/A. Audit: `research/ai-routine/20261122-claude-prompt-injection-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined `skills.sh / npx skills` against the Vercel Labs README, CLI command reference, skills.sh directory, and a dated GitHub stars snapshot.
