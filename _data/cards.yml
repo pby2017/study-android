@@ -3272,15 +3272,28 @@ cards:
   interview: 'LiteLLM SDK와 self-hosted Gateway는 어디에 배치하며, 여러 앱에 모델 접근 권한과 예산을 나눌 때 Gateway의 virtual key가 어떤 역할을 하나요?'
   answer: 'SDK는 Python 앱 안에서 provider API를 직접 호출하고, Gateway는 여러 client 앞의 별도 proxy 서비스다. Gateway virtual key에 허용 모델·budget·rate limit을 부여해 사용을 분리하고, 중앙에서 spend와 로그를 볼 수 있다. 단, master key·DB·로그 정책을 안전하게 운영하고 provider별 endpoint 지원도 검증해야 한다.'
 - category: ai
-  title: E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)
-  summary: 'E2B는 AI 에이전트가 생성한 코드를 클라우드의 격리 샌드박스에서 실행하게 해 주는 오픈소스 인프라다. JavaScript/TypeScript와 Python SDK로 sandbox를 만들고 `commands.run()`으로 셸 명령을 실행하거나, 별도 Code Interpreter SDK의 `runCode()`로 코드 실행 결과를 받을 수 있다. 셀프호스팅은 별도 `e2b-dev/infra` 저장소에서 Terraform 기반으로 안내되고, AWS/GCP 배포와 Firecracker 구성 요소 복사를 포함한다. 현재 README가 직접 보장하지 않는 "Fortune 100 88%" 같은 마케팅 숫자보다, 실무 포인트는 LLM이 만든 코드를 앱 서버가 아니라 짧게 사는 격리 실행면으로 밀어 넣고 API 키·네트워크·템플릿 경계를 따로 설계하는 것이다.
-
-    '
+  level: 중급
+  title: E2B — microVM 격리와 네트워크·비밀정보 경계는 따로 설계하기
+  summary: 'E2B는 AI가 만든 코드를 별도 Linux sandbox에서 실행한다. 공식 설명상 sandbox마다 Firecracker microVM과 자체 kernel을 쓰지만, 기본 outbound internet은 허용된다. 따라서 VM 격리만으로 안전하다고 가정하지 말고 egress를 제한하고 credential을 guest에 직접 넣지 않는다. Cloud·BYOC와 단일 머신용 Embed는 운영 경계와 기능이 다르다.'
   points:
-  - JS/TS·Python SDK로 sandbox 생성, 명령 실행, Code Interpreter 실행을 분리
-  - 셀프호스팅은 `e2b-dev/infra`의 Terraform 기반 AWS/GCP 경로로 관리
-  - Firecracker 기반 sandbox는 코드 실행면을 앱 서버와 분리하는 보안 경계
-  source: https://github.com/e2b-dev/E2B
+  - '실행 경계: JS/Python SDK의 `commands.run()`은 sandbox 안에서 명령을 실행한다. Python·JS 코드 실행 인터페이스는 별도 Code Interpreter SDK다.'
+  - '네트워크 경계: outbound internet은 기본 허용이다. `allowInternetAccess: false` 또는 allow/deny 목록으로 필요한 통신만 연다.'
+  - 'credential 경계: E2B Secrets는 값을 sandbox 환경변수로 노출하지 않고, 설정한 outbound HTTPS 요청에 proxy가 주입한다. 신뢰한 목적지에만 허용한다.'
+  - '배포 선택: E2B Cloud·BYOC와 Embed는 같은 것이 아니다. Embed는 Linux+KVM 단일 머신 실행이며 Secrets·volumes·workload identity·자체 proxy를 포함하지 않는다.'
+  source: https://github.com/e2b-dev/runtime
+  sources:
+  - label: E2B Runtime — Apache-2.0 runtime, Cloud·BYOC·Embed 관계와 현재 프로젝트 활동
+    url: https://github.com/e2b-dev/runtime
+  - label: E2B sandbox lifecycle — Linux VM 생성·연결·pause·resume·종료
+    url: https://docs.e2b.dev/sandbox
+  - label: E2B internet access — 기본 outbound 허용과 allow/deny 제어
+    url: https://docs.e2b.dev/network/internet-access
+  - label: E2B Secrets — sandbox 밖에서 HTTPS 요청에 credential 주입
+    url: https://docs.e2b.dev/secrets
+  - label: E2B Embed — 단일 머신 배포와 미포함 기능
+    url: https://e2b.dev/resources/introducing-e2b-embed
+  interview: 'E2B의 Firecracker microVM이 보장하는 격리 경계는 무엇이며, AI 생성 코드를 실행할 때 네트워크와 credential은 어떻게 추가로 제한해야 하나요?'
+  answer: 'E2B는 각 sandbox를 별도 Firecracker microVM으로 실행한다고 설명하지만, 그 자체가 egress 차단을 뜻하지 않는다. outbound가 기본 허용이므로 필요한 host만 allowlist하거나 인터넷을 끄고, 장기 credential은 sandbox 안에 두지 않는다. Secrets를 쓸 때도 proxy가 값을 보내는 목적지를 신뢰할 수 있는지 확인한다. 배포 방식별 기능 차이도 확인한다.'
 - category: ai
   title: Dify — 비주얼 캔버스로 agentic workflow·RAG·LLMOps를 묶는 LLM 앱 플랫폼(~147k★)
   summary: 'Dify는 LLM 앱을 프로토타입에서 운영까지 가져가기 위한 오픈소스 플랫폼이다. README 기준 핵심은 visual workflow canvas, RAG pipeline, Agent capabilities, model management, observability, Backend-as-a-Service API를 한 화면에 묶는 점이다. 에이전트는 Function Calling 또는 ReAct 기반으로 정의하고 50개 이상 내장 도구나 커스텀 도구를 붙일 수 있으며, GPT·Mistral·Llama·OpenAI 호환 모델 같은 여러 provider를 교체한다. 라이선스는 GitHub API가 `NOASSERTION`으로 반환하고, LICENSE는 Apache 2.0 기반이지만 멀티테넌트 운영과 프런트엔드 로고/저작권 조건이 붙은 Dify Open Source License라고 명시한다. 실무 교훈은 "노코드 챗봇"보다, RAG·도구·모델·관측성·API 경계를 한 LLMOps 런타임으로 관리하는 선택지로 봐야 한다는 점이다.

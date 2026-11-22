@@ -4774,3 +4774,11 @@ Refined:
 - Gateway 도입에는 DB·배포·admin key 운영이 필요하며, retry/fallback로 모델이 바뀔 때 비용·데이터 경로·출력 차이를 점검하도록 추가했다. provider별 endpoint 지원표 검증도 포함했다.
 - Audit: `research/ai-routine/20261123-010900-litellm-sdk-gateway-boundary.md`.
 - Sources: https://docs.litellm.ai/docs/python_sdk, https://docs.litellm.ai/docs/simple_proxy, https://docs.litellm.ai/docs/proxy/virtual_keys, https://docs.litellm.ai/docs/supported_endpoints.
+
+### 2026-11-23 01:15 KST — E2B 실행 격리와 egress·credential·배포 경계
+
+- E2B 공식 문서를 확인해 구식 `e2b-dev/infra` 자체호스팅 안내를 제거하고 현재 `e2b-dev/runtime`의 Cloud·BYOC·Embed 구조를 반영했다.
+- 각 sandbox의 Firecracker microVM은 vendor 문서의 설명으로 한정하고, outbound internet 기본 허용 및 Secrets의 HTTPS 요청 주입 동작을 별도 보안 설계 항목으로 정리했다. Embed에 Secrets·volumes·workload identity·BYO proxy가 포함되지 않는 점도 구분했다.
+- GitHub runtime 관심 신호는 약 1.9k stars의 시점 스냅샷이며 채택률이나 보안 검증으로 해석하지 않았다.
+- Audit: `research/ai-routine/20261123-011500-e2b-sandbox-security-boundaries.md`.
+- Sources: https://github.com/e2b-dev/runtime, https://docs.e2b.dev/network/internet-access, https://docs.e2b.dev/secrets, https://e2b.dev/resources/introducing-e2b-embed.
