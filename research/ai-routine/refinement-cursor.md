@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined wshobson/agents after UI UX Pro Max; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the Official MCP Registry card after wshobson/agents; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:14 KST
+Last update: 2026-11-22 17:23 KST
+
+## Latest pass
+- Refined the Official MCP Registry card using its live API/docs, repository status and release, and the official preview announcement.
+- Clarified that it is a metadata-only discovery service, not a host or security certification; separated the API v0.1 freeze from implementation release numbering and retained the preview/no-durability caveat.
+- Added an intermediate label and an interview question about the trust boundary when discovering servers.
+- Sources and rationale: `research/ai-routine/20261122-mcp-registry-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined `wshobson/agents` using the current README, harness capability matrix, Android skill source, and live GitHub API snapshot.

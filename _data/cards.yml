@@ -1325,15 +1325,25 @@ cards:
   interview: '멀티하네스 플러그인을 설치할 때 README 숫자만 보지 말고 도구별 기능표를 확인해야 하는 이유는 무엇인가요?'
   answer: '각 도구가 지원하는 에이전트·명령·권한·모델 표현이 다르므로 어댑터가 일부 기능을 바꾸거나 생략할 수 있다. 예를 들어 Codex의 네이티브 마켓플레이스는 스킬 중심이고, 에이전트 등 생성 파일은 별도 경로를 쓴다. 실제 설치 경로와 런타임 동작을 검증해야 한다.'
 - category: ai
-  title: 공식 MCP 레지스트리 — 흩어진 MCP 서버를 한 API로 찾는 '소스 오브 트루스'
-  summary: 'MCP 서버가 폭증하면서 ''어디서 신뢰할 만한 서버를 찾나''가 문제가 됐다. 그 답이 2025-09-08 프리뷰로 공개된 공식 MCP 레지스트리다. registry.modelcontextprotocol.io에서 공개 MCP 서버의 메타데이터(엔드포인트·기능·버전)를 한곳에 모아 REST API로 검색하게 한다. 기존 레지스트리(클라이언트별 마켓플레이스 등)를 대체하지 않고 그 위에 쌓이는 ''업스트림 단일 출처'' 역할이다. 클라이언트는 여기서 받아 자기만의 서브레지스트리로 가공하고, 사내용 비공개 서브레지스트리도 같은 스키마로 운영할 수 있다. MCP 오픈소스 커뮤니티 소유로 Anthropic·GitHub·PulseMCP·Microsoft·Block 등이 참여한다. 단, 아직 GA가 아닌 프리뷰라 데이터 리셋·호환성 깨짐 가능성이 명시돼 있어 프로덕션 의존은 주의해야 한다.
-
-    '
+  title: 공식 MCP 레지스트리 — 서버 코드가 아닌 발견용 메타데이터 허브
+  level: "중급"
+  summary: '공식 MCP Registry는 MCP 서버를 실행하거나 보안 인증하는 서비스가 아니라, 공개 서버의 `server.json` 메타데이터를 모아 클라이언트와 하위 레지스트리가 검색하도록 돕는 메타레지스트리다. API 예: `curl "https://registry.modelcontextprotocol.io/v0/servers?limit=10"`. 클라이언트 마켓플레이스와 조직별 사설 하위 레지스트리는 이 데이터를 가져와 각자의 기준으로 큐레이션할 수 있다. 현재 API는 v0.1 동결 상태라고 안내되지만, 프로젝트는 여전히 프리뷰로 표시하며 데이터 지속성 보장이나 GA를 약속하지 않는다. 등록 정보는 서버 제작자가 제공하는 것이므로 목록에 있다는 사실만으로 안전성이 검증된 것은 아니다. 도구를 연결하기 전 운영자·패키지·권한·네트워크 동작을 별도로 검토한다.'
   points:
-  - '검색: curl "https://registry.modelcontextprotocol.io/v0/servers?limit=10" — 서버 목록을 REST API로 조회'
-  - 기존 레지스트리 대체 아님 — 업스트림 단일 출처, 공개·사내 서브레지스트리가 같은 스키마로 위에 쌓임
-  - MCP 커뮤니티 소유(Anthropic·GitHub·PulseMCP·Microsoft·Block 등 참여), 레포 약 6.9k★ — 단 아직 프리뷰(데이터 리셋·breaking change 가능)
+  - '역할: MCP 서버 메타데이터의 공개 업스트림. npm·PyPI·컨테이너 저장소처럼 서버 코드나 바이너리를 호스팅하지 않는다.'
+  - '상태 읽기: API v0.1 동결 안내와 별개로 서비스 문서는 프리뷰·데이터 지속성 미보장을 명시한다. 구현체 릴리스 번호를 API 안정성으로 오해하지 않는다.'
+  - '신뢰 경계: 공식 레지스트리는 발견과 기본 메타데이터에 초점을 둔다. 등록 여부는 보안 심사 통과를 의미하지 않으므로 서버 출처·권한·데이터 흐름을 확인한다.'
   source: https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/
+  sources:
+  - label: 공식 MCP Registry API·현재 서비스 상태
+    url: https://registry.modelcontextprotocol.io/docs
+  - label: 프로젝트 README·API freeze 및 preview 상태
+    url: https://github.com/modelcontextprotocol/registry
+  - label: 공식 발표·메타레지스트리와 self-reported 데이터
+    url: https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/
+  - label: GitHub API·현재 관심도 스냅샷
+    url: https://api.github.com/repos/modelcontextprotocol/registry
+  interview: '공식 MCP Registry에서 서버를 찾았다는 사실만으로 그 서버를 안전하다고 판단할 수 없는 이유는 무엇인가요?'
+  answer: '레지스트리는 서버 코드가 아닌 메타데이터를 모으고, 서버 제작자가 정보를 게시한다. 발견 경로와 보안 검증은 별개이므로 패키지 출처·실행 권한·전송 데이터·서버 동작을 따로 평가해야 한다.'
 - category: ai
   title: Zed 1.0 — Rust GPUI 에디터·ACP 에이전트 호스트·Parallel Agents(GPL-3.0·~85k★)
   summary: Zed(zed-industries/zed)는 Atom·Tree-sitter 제작진이 GPUI를 Rust로 바닥부터 짜 5년 만에 만든 GPU 가속 오픈소스 에디터다. 2026-04-29 1.0 GA, GitHub ~85k★·GPL-3.0. 핵심 정체성은 '자체 AI를 강제하지 않고 ACP(Agent Client Protocol)로 외부 코딩 에이전트를 호스트' — Claude Code·Codex·Gemini CLI·OpenCode·goose·Cline을 Agent Panel에 그대로 띄우고, 인증·과금·모델 선택은 각 에이전트가 소유(Zed는 과금 없음). 2026-04-22 Parallel Agents — Threads Sidebar(opt-cmd-j)로 프로젝트별 스레드 묶음, 스레드마다 접근 레포·워크트리 격리·에이전트 교체, 한 스레드가 여러 레포 가로질러 읽기·쓰기. JetBrains도 ACP 채택·양사 공동 에이전트 레지스트리. Cursor(IDE 1위)와 달리 '빠른 에디터=에이전트 공용 작업대'.
