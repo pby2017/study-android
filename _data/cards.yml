@@ -3733,15 +3733,17 @@ cards:
   interview: 'OD-LLM에서 SVD 전에 활성값을 정규화하고 압축 후 층별 보정을 하는 이유는 무엇인가요?'
   answer: '정규화는 활성값 차원의 상관과 스케일 차이가 SVD의 저랭크 근사를 좌우하는 문제를 줄이고, 층별 보정은 압축된 앞층의 출력 변화가 뒤층으로 누적되는 것을 완화한다. 논문은 세 추천 벤치마크의 50% 압축 설정에서 결과를 비교했지만, 이것만으로 Android 기기에서의 지연·메모리·전력이나 정확도를 입증하지는 않는다.'
 - category: ai
+  level: 중급
   title: 'Kotlin AI 라이브러리 도입 전 확인할 것: README의 Android 약속과 실제 Gradle 타깃'
-  summary: 'Project KARL은 Kotlin 기반 적응형 학습 라이브러리라고 소개되지만, 검토한 저장소의 core·KLDL·Room·Compose 모듈은 Gradle에서 JVM 타깃만 선언한다. 실행 가능한 예제도 Desktop 앱이다. README의 Android·KMP 문구만으로 Android에서 바로 쓸 수 있다고 판단하지 말고, 실제 배포 모듈의 Gradle 타깃, 플랫폼별 source set, Android 예제와 배포 artifact를 확인한다. 저장소 README는 모든 데이터가 로컬에 남는다고 주장하지만, 이는 프로젝트의 설명이지 독립 검증된 개인정보 보증은 아니다.'
+  summary: 'Project KARL은 사용자 행동에 맞춰 기기에서 적응하는 AI 라이브러리라고 소개한다. 그러나 현재 core·KLDL·Room·Compose UI의 Gradle 타깃은 JVM이며, README가 안내하는 실행 예제도 Desktop이다. 반면 시작 가이드는 Android 앱을 가능한 사용처로 들고, Room 모듈은 Room 공통 의존성을 포함한다. 이 문서와 빌드 설정만으로 Android 지원을 확정하지 말고, 배포 artifact·Android 타깃과 source set·실제 앱 빌드/실행 예제를 검증한다. README의 로컬 처리·개인정보 보호 설명도 네트워크와 저장 경로를 코드로 확인하기 전에는 보증으로 취급하지 않는다.'
   points:
-  - '검토한 core·KLDL·Room·Compose Gradle 설정: `jvm {}` 타깃. Android target 선언은 확인되지 않음.'
-  - '저장소가 제공하는 runnable example: Desktop 앱. Android 통합 예제·artifact는 확인하지 못함.'
-  - '도입 게이트: 타깃·플랫폼 구현·배포 artifact·실행 예제·데이터 흐름을 각각 확인한다.'
+    - 'core·KLDL·Room·Compose UI 빌드 파일: `jvm {}` 타깃이며 Android 타깃 선언은 확인되지 않음. Room 공통 의존성만으로 Android 런타임 지원이 증명되지는 않음.'
+    - 'README는 `:karl-example-desktop:run`을 실행 예제로 제시한다. 시작 가이드에는 Android 언급이 있지만, Gradle artifact 좌표는 실제 값 대신 예시 placeholder다.'
+    - 'GitHub 저장소는 확인 시 11 stars, 최신 공개 릴리스는 v1.0.4(2026-08-13). 인기·성숙한 Android 배포 라이브러리의 근거로 볼 수는 없다.'
+    - '도입 전 게이트: Android target/source set, 배포 artifact와 버전, 실제 Android 빌드·실행, 데이터 송수신 경로를 따로 검증한다.'
   source: https://github.com/theaniketraj/project-karl
-  interview: 'Kotlin Multiplatform AI 라이브러리가 Android에서 쓸 수 있는지 README만 보고 판단하면 안 되는 이유는 무엇인가요?'
-  answer: 'KMP라는 설명이나 Android 통합 계획이 실제 Android 컴파일 타깃과 동작 가능한 구현을 보장하지 않는다. Gradle 타깃, Android source set, 의존 artifact, 실행 가능한 Android 예제를 확인하고, 민감한 데이터는 실제 네트워크·저장 경로까지 점검해야 한다. Project KARL 저장소는 검토 시점에 주요 모듈이 JVM 타깃이고 runnable example도 Desktop이어서 Android-ready로 간주할 근거가 부족했다.'
+  interview: 'KMP·Compose·Room을 사용한다고 소개하는 AI 라이브러리의 Android 지원 여부를 어떻게 판정하나요?'
+  answer: '소개 문구가 아니라 실제 배포 모듈의 Gradle 타깃과 플랫폼별 구현, 배포 좌표·버전, Android 앱의 빌드 및 실행 예제로 확인한다. 공통 소스나 Room common 의존성은 Android 런타임 지원 자체를 증명하지 않는다. KARL은 시작 가이드에서 Android를 언급하지만 현재 확인한 모듈은 JVM 타깃이고 실행 예제는 Desktop이므로, 별도 검증 전에는 Android-ready로 단정하지 않는다.'
 - category: ai
   title: 'Apple Trust Insights: 기기 신호와 클라우드 모델을 결합한 사기 위험 평가'
   summary: 'Trust Insights는 Apple이 iOS 27용으로 소개한 사기·강압 위험 평가 framework다. 앱은 entitlement와 사용자 승인을 확인한 뒤 Swift API로 평가를 요청한다. 평가는 인터넷 연결이 필요하고, 기기 신호는 로컬 처리되지만 최종 결과는 Apple의 서버·계정 신호를 포함할 수 있다. `unknown`은 “위험 낮음”이 아니라 근거 부족이다. 앱은 신호를 기존 위험 판단에 보조로 쓰고, 각 평가 후 `reportConsumption`을 호출해야 한다. 사후 사기 라벨 제출은 선택 사항이다.'

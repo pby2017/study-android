@@ -1681,3 +1681,7 @@ Rules:
 - Added `고급` level; clarified normalization → SVD → layer-wise correction; separated the 50%-compression benchmark result and A40 experiment setup from any Android handset deployment claim.
 - Audit and rationale: `research/ai-routine/20261122-233000-od-llm-refinement.md`.
 - Next: review the next eligible AI or AI+Android card oldest-first; exclude pure Android subjects.
+
+## Latest pass — 2026-11-22
+- Refined `Kotlin AI 라이브러리 도입 전 확인할 것: README의 Android 약속과 실제 Gradle 타깃` against the current README, getting-started guide, module Gradle files, release page, and GitHub popularity snapshot. Clarified the guide/build mismatch (Android mentioned, JVM-only declared targets, Desktop runnable example, placeholder artifact coordinates), added a concrete Android adoption gate and intermediate level, and preserved uncertainty rather than claiming Android use is impossible. Recorded 11 stars/1 fork; do not present KARL as a hot or widely adopted dependency. Audit: `research/ai-routine/20261122-231118-project-karl-refinement.md`.
+- Next: review `Apple Trust Insights: 기기 신호와 클라우드 모델을 결합한 사기 위험 평가`; verify official API availability, OS requirements, and the local-versus-server processing boundary.
