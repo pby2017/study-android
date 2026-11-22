@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Backlog.md after Pydantic AI; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Ralph Wiggum after Backlog.md; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:42 KST
+Last update: 2026-11-22 16:43 KST
+
+## Latest pass
+- Refined the Ralph Wiggum card against Geoffrey Huntley's source explanation and Anthropic's official Claude Plugins Ralph Loop README.
+- Distinguished the original external Bash loop from the Claude Code Stop-hook implementation in the current session; removed the claim that every iteration creates a new context and the unsupported adoption date, and added verification/backpressure plus explicit completion/iteration limits.
+- Sources and rationale: `research/ai-routine/20261122-ralph-loop-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined Backlog.md against its current official README and GitHub repository snapshot.

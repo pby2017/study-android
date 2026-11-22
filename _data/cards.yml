@@ -1455,13 +1455,21 @@ cards:
   interview: 'Backlog.md에서 AI 에이전트와 작업 목록을 공유할 때 MCP가 필수인가요? 사람이 검토해야 할 핵심은 무엇인가요?'
   answer: 'MCP는 선택 사항이다. 권장 흐름은 저장소에 CLI 지침을 설정하고 에이전트가 `backlog instructions overview`를 실행하게 하는 것이다. MCP 없이도 AI 설정을 생략하거나 CLI 지침을 쓸 수 있다. 사람은 태스크·수용 기준, 구현 전 계획, 코드·테스트 결과를 각각 검토하고 완료 상태가 실제 기준을 만족하는지 확인한다.'
 - category: ai
+  level: 중급
   title: Ralph Wiggum 루프 — '멍청하지만 절대 안 멈추는' 에이전트 bash 패턴
-  summary: Geoffrey Huntley가 심pson 캐릭터 이름을 따 정리한 Ralph는 본질적으로 `while :; do cat PROMPT.md | claude-code; done` 한 줄이다. 매 반복마다 새 컨텍스트로 에이전트를 띄워 한 번에 한 가지만 시키고, 상태는 fix_plan.md·AGENT.md·git 히스토리에 두어 컨텍스트 rot를 우회한다. 테스트·타입체커·정적분석을 backpressure로 걸어 잘못된 생성을 거른다. Anthropic은 2025-12 공식 ralph-wiggum 플러그인(/ralph-loop·Stop 훅)으로 채택했고, Continuous Claude는 PR·CI·머지까지 붙인 확장이다.
+  summary: 'Ralph Wiggum은 코딩 에이전트에 같은 목표를 반복해서 주고, 이전 작업과 검증 결과를 바탕으로 다음 단계를 수행하게 하는 반복 개발 기법이다. Geoffrey Huntley가 설명한 원형은 Bash 루프에서 프롬프트를 매번 다시 전달하는 방식이며, 한 번에 작은 작업을 맡기고 계획·명세를 파일로 유지한다. 테스트·타입 검사·정적 분석 같은 자동 검증은 잘못된 출력을 되돌리는 backpressure가 된다. Anthropic의 공식 Ralph Loop 플러그인은 비슷한 아이디어를 Claude Code의 Stop hook으로 구현해 현재 세션 안에서 같은 프롬프트를 반복한다. 따라서 모든 Ralph가 매 반복 새 세션·새 컨텍스트를 만든다고 보면 안 된다. 명확한 완료 조건과 반복 한도를 두지 않으면 오류를 되풀이하거나 비용을 계속 쓸 수 있다.'
   points:
-  - '순루프: 작업 1개→구현→검증(테스트/타입/린트)→통과 시 커밋→상태 갱신→컨텍스트 리셋→반복'
-  - 'stateless 핵심: 진행은 LLM 컨텍스트가 아니라 git·파일에 — 매 반복 새 인스턴스'
-  - 공식 ralph-wiggum 플러그인(/ralph-loop), Continuous Claude는 PR·CI·머지까지 확장
+  - '원형은 외부 루프가 프롬프트를 다시 전달; Claude Code 공식 플러그인은 Stop hook으로 현재 세션에서 반복 — 구현마다 컨텍스트 수명이 다름'
+  - '작업을 작게 나누고 계획·명세를 파일에 보존; 테스트·린트 등 자동 검증으로 실패를 감지해 다음 반복에 피드백'
+  - '명확한 완료 조건과 최대 반복 횟수를 설정하고, 사람 검토가 필요한 판단·위험한 작업은 무한 자동화하지 않는다'
   source: https://ghuntley.com/ralph/
+  sources:
+  - label: Geoffrey Huntley — Ralph 원형·한 작업씩 진행·외부 Bash 루프·검증 backpressure
+    url: https://ghuntley.com/ralph/
+  - label: Anthropic 공식 Ralph Loop 플러그인 — Stop hook 기반 구현과 반복 제한
+    url: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop
+  interview: 'Ralph Wiggum 루프의 핵심은 매 반복 새 컨텍스트를 만드는 것인가요? 반복을 안전하게 운용하려면 무엇을 정해야 하나요?'
+  answer: '아니다. 원형의 외부 Bash 루프는 매 호출에 프롬프트를 다시 전달하지만, Claude Code 공식 플러그인은 Stop hook으로 현재 세션에서 반복하므로 구현별 컨텍스트 수명이 다르다. 작업을 작게 나누고 자동 검증, 명시적 완료 조건, 최대 반복 횟수를 설정해야 실패 반복과 무제한 비용을 줄일 수 있다.'
 - category: ai
   title: GitHub Copilot 코딩 에이전트 — 이슈를 던지면 알아서 PR을 올리는 비동기 에이전트
   summary: '터미널 CLI 에이전트와 달리, GitHub Copilot 코딩 에이전트는 깃허브 안에서 ''비동기''로 도는 자율 에이전트다. 이슈를 `@copilot`에게 할당하거나 Agents 패널에서 작업을 주면, 에이전트가 백그라운드에서 레포를 조사하고 구현 계획을 세운 뒤 브랜치에 코드를 고쳐 초안 PR(draft pull request)을 연다. 실행은 GitHub Actions 위에서 돌아 격리된 환경에서 빌드·테스트를 거치고, 사람은 결과 PR을 리뷰만 하면 된다. 즉 ''내가 옆에서 지켜보며 짜는'' 동기식 페어 프로그래밍이 아니라, ''일을 맡겨두고 다른 일을 하다 PR로 받는'' 워크플로다. VS Code·GitHub.com·이슈 어디서든 `@copilot` 멘션으로 호출할 수 있어, 자잘한 버그·반복 작업을 사람 손에서 떼어내 백로그를 비우는 용도에 맞는다.
