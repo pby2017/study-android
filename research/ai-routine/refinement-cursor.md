@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Ralph Wiggum after Backlog.md; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined GitHub Copilot cloud agent after Ralph Wiggum; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:43 KST
+Last update: 2026-11-22 16:46 KST
+
+## Latest pass
+- Refined the GitHub Copilot agent card against current GitHub documentation for Copilot on GitHub.com/Mobile and cloud sandbox environments.
+- Replaced the obsolete single-environment/automatic-PR story with current Cloud vs Actions distinctions, separated local Copilot sessions, and added human review for correctness/security. Updated title, intermediate level, and interview retrieval pair.
+- Sources and rationale: `research/ai-routine/20261122-copilot-cloud-agent-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined the Ralph Wiggum card against Geoffrey Huntley's source explanation and Anthropic's official Claude Plugins Ralph Loop README.
