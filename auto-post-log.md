@@ -4639,3 +4639,11 @@ Refined:
 - Corrected precedence to invocation → definition → environment → parent; clarified forced global routing, provider/version-dependent aliases, and that built-in Explore normally inherits the parent model.
 - Removed the stale Haiku/Explore and cost-ceiling framing; separate context does not remove requests from shared usage limits. Added intermediate level and interview retrieval.
 - Audit: `research/ai-routine/20261123-000100-claude-subagent-model-routing.md`.
+### 2026-11-23 00:08 KST — AI 시대 개발자 채용·Android 면접 카드 추가
+
+- MIT/Microsoft Research의 Copilot 자연실험, Stanford Digital Economy Lab의 41개국 AI 채택 분석, Contemporary Economic Policy의 LinkedIn/GitHub 연구를 비교했다. 채용 흐름·고용 구성·월별 채용 확률과 표본/설계가 달라 단일한 “AI가 개발자를 대체/채용 증가” 결론은 낼 수 없음을 카드로 정리했다.
+- CoderPad 2026 기술 채용 설문에서 면접 AI 정책(전면 금지 34%, 조건부 허용 29%, 광범위 허용 17%, 사례별 20%)과 평가 신호(AI 오류 수정 66%, trade-off·정확성 설명 56%)를 확인했다.
+- Android 전용·한국 채용 통계가 아닌 한계를 명시하고, Android 예시는 설문 사실이 아니라 실무 적용 제안으로 분리했다. 표본·통계적 유의성·인과 추론 한계를 조사 노트에 기록했다.
+- 카드: `AI 도입과 개발자 채용 — 채용 건수·주니어 비중·연구 설계를 구분하기`; `AI 허용 기술 면접 — Android 개발자는 생성보다 검증 과정을 보여주기`.
+- 조사 노트: `research/ai-routine/20261123-000826-ai-era-mobile-hiring-interviews.md`.
+- Next: cursor에 기록된 오래된 순서의 `RunAnywhere Kotlin SDK — Android 로컬 AI 엔진과 모델 연결 흐름`을 current docs, 엔진 지원, 개인정보 경계, 모델 다운로드/라이선스와 독립 adoption signal 기준으로 재검토한다.
