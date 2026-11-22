@@ -1948,15 +1948,23 @@ cards:
   interview: 'AI 코드 비중이 높은 팀에서 첫 리뷰 대기가 길다는 벤치마크만으로 AI가 리뷰 지연의 원인이라고 결론 내려도 될까요?'
   answer: '아니다. 보고서는 조직 집단 사이의 연관성을 보여줄 뿐 원인을 증명하지 않는다. 팀의 AI 사용량과 리뷰 대기·PR 처리량을 함께 추적하고, 도입 전후 및 유사한 작업 조건을 비교해야 한다.'
 - category: ai
-  title: Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지
-  summary: 'Affaan Mustafa의 ECC는 "Claude Code 설정 모음"에서 크로스하네스 에이전트 운영 시스템으로 확장된 MIT 프로젝트다. 2026-06-25 같은 런에서 GitHub API 기준 221,207★·33,877 forks·archived=false를 확인했고, README는 Codex·Claude Code·Cursor·OpenCode·Gemini·Zed·Copilot을 지원한다고 설명한다. v2.0.0은 261개 skills, control-pane substrate, worktree lifecycle service, `orch-*` orchestrator 계열을 내세우고, RC 문서에는 66 agents·268 skills·84 legacy command shims 같은 설치 표면 수가 별도로 나온다. 실무 포인트는 숫자를 그대로 베끼는 게 아니라, 플러그인·수동 설치·rules 복사 경로를 섞으면 중복 동작이 생긴다는 README 경고처럼 "에이전트 자산 배포"도 설치 상태와 권한 경계를 관리해야 한다는 점이다. AgentShield는 별도 CLI/GitHub Action/App로 `.claude/` 설정의 secret, permission, hook, MCP, agent prompt injection 위험을 A~F 리포트와 JSON/HTML/evidence pack으로 감사한다.
-
-    '
+  level: 중급
+  title: ECC 30만★ — 에이전트 도구를 같은 하네스에 중복 설치하지 않기
+  summary: 'Everything Claude Code(ECC)는 에이전트용 skill·규칙·hook 등을 제공하는 MIT 프로젝트다. GitHub API에서 2026-11-22 기준 308,557★·45,398 forks를 확인했다. 다만 여러 코딩 도구를 지원한다고 기능이 모두 같은 것은 아니다. ECC 문서는 Claude Code를 주 기준으로 삼고, Codex는 네이티브 플러그인과 일부 hook의 지원으로 구분한다. 같은 하네스에 플러그인과 전체 수동 설치를 겹치면 skill·명령·hook이 중복될 수 있으므로, 하네스별 공식 설치 경로 하나를 고르고 지원표와 설치 상태를 확인한다.'
   points:
-  - '같은 런 검증: 221,207★·33,877 forks·MIT·archived=false'
-  - 'v2.0.0: 261 skills, control pane, worktree lifecycle, `orch-*` orchestration'
-  - 'AgentShield: CLI/Action/App로 secrets·permissions·hooks·MCP·agent prompts 감사'
+  - '확인 스냅샷: 308,557★·45,398 forks·MIT·archived=false (2026-11-22 GitHub API)'
+  - '설치 원칙: 같은 하네스에는 한 설치 방식만 사용해 hook·skill·명령 중복을 방지'
+  - '호환성 확인: Codex는 Claude Code와 지원 범위·hook 신뢰 절차가 다름'
   source: https://github.com/affaan-m/ECC
+  sources:
+  - label: 'ECC 공식 README — 지원 범위, 하네스별 설치 경로와 중복 설치 경고'
+    url: https://github.com/affaan-m/ECC#install-ecc
+  - label: 'ECC 플랫폼 지원표 — Claude Code와 Codex 기능 차이'
+    url: https://github.com/affaan-m/ECC#platform-support
+  - label: 'GitHub API — 별·fork·라이선스·최종 push 메타데이터 스냅샷'
+    url: https://api.github.com/repos/affaan-m/ECC
+  interview: 'ECC를 Codex와 Claude Code에서 모두 쓰려 합니다. 두 도구에 같은 설치 방식을 복제하고 hook 동작도 같다고 가정해도 될까요?'
+  answer: '아니다. 도구별로 각각 지원되는 설치 경로를 하나씩 선택하고 기능 차이를 확인해야 한다. ECC는 같은 하네스 안에서 플러그인과 전체 수동 설치를 겹치면 hook·skill·명령 중복이 날 수 있다고 경고하며, Codex hook은 별도 신뢰 승인과 부분 지원 범위를 갖는다.'
 - category: ai
   title: Sim — '채팅·비주얼·코드'로 AI 에이전트를 짜는 오픈소스 워크스페이스(28.9k★)
   summary: 'Sim(simstudioai/sim)은 팀이 AI 에이전트를 만들고 배포·운영하는 Apache-2.0 오픈소스 워크스페이스다. 2026-06-25 GitHub API 기준 28,859★·3,674 forks·archived=false이고, README는 "Build conversationally, visually, or with code"를 핵심 흐름으로 설명한다. 대화형 Chat은 워크스페이스를 이해한 뒤 에이전트를 만들고 실행하며, Workflow builder는 블록 캔버스에서 자연어로 블록 생성·변수 연결·오류 수정을 돕는다. 문서/보고서 생성, RAG 지식베이스, 내장 Tables, 1,000개 이상 통합도 같은 워크스페이스에 묶인다. 실무 포인트는 low-code 도구를 "간단한 챗봇 빌더"로만 보지 말고, Chat·캔버스·코드·DB·RAG·실행 환경을 한 팀 작업대로 묶을 때 어떤 권한과 운영 경계가 필요한지 보는 것이다. 로컬 실행은 Docker 기반 `npx simstudio`, 더 깊은 self-host는 PostgreSQL+pgvector와 Bun/Next.js 스택을 요구한다.

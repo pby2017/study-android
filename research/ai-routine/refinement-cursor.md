@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass
+- Refined the Everything Claude Code (ECC) card around a practical cross-harness lesson: do not stack full install methods within one coding-agent harness, because skills, commands, hooks, and configuration can duplicate.
+- Refreshed GitHub API attention snapshot on 2026-11-22: 308,557 stars, 45,398 forks, MIT, not archived; latest push was Nov 20. Current README says Claude Code is the primary reference and Codex has a supported native plugin with partial capability parity.
+- Removed outdated June star counts, component inventories, and a detached AgentShield blurb. Added level, concise points, source links, and interview retrieval question. Audit: `research/ai-routine/20261122-ecc-refinement.md`.
+- Next: continue oldest-first with the Sim agent-builder card; check current product scope, deployment requirements, license, popularity, and activity before deciding whether to retain or prune its stale claims.
+
+## Latest pass
 - Replaced the stale AI-tool vendor ranking in the DX benchmark card with the current Q3 2026 finding: first-review median was 40 minutes in the 20–40% AI-code cohort and 82 minutes in the 80%+ cohort.
 - Kept the result explicitly correlational, added an intermediate retrieval question, and linked the DX metric definition. The report covers 500+ R&D organizations; this is a vendor-produced cohort report, not independent causal evidence.
 - Audit: `research/ai-routine/20261122-dx-throughput-refinement.md`.
@@ -43,7 +49,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the DX AI-tooling PR-throughput card; next review Everything Claude Code for current scope and popularity.
+Current position: refined Everything Claude Code; next review Sim for current scope, self-host requirements, license, and popularity.
 
 Last update: 2026-11-22 (Asia/Seoul)
 
