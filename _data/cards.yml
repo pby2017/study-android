@@ -1525,13 +1525,24 @@ cards:
   answer: '권한 모드에 따라 승인·분류 동작이 다르므로 모드를 확인하고, 필요한 도구만 허용하며 sandbox와 deny 규칙을 적용한다. `-p`에서는 workspace/MCP trust prompt가 나타나지 않으므로 이를 대화형 모드와 같은 확인 경계로 간주하면 안 된다. 신뢰하지 않는 입력을 직접 파이프하지 않고 명령과 변경 결과를 검증한다.'
 
 - category: ai
-  title: Devin Desktop(구 Windsurf) — Agent Command Center·Cloud·Cascade Workflows 통합 패밀리
-  summary: 2026-06 Cognition이 Windsurf(Codeium IDE)를 Devin Desktop으로 리브랜딩, Devin을 Cloud·Desktop·CLI·Review 하나의 패밀리로 통합했다. Devin Cloud — 샌드박스 VM에서 계획→코드→테스트→PR 비동기(67% PR merge). Devin Desktop — Agent Command Center(Kanban)·Spaces(Git worktree)·ACP로 Codex·Claude Agent·OpenCode 등 서드파티 에이전트도 관리. Cascade Workflows — 반복 멀티스텝을 .md 레시피로 정의해 /슬래시 호출(`.windsurf/workflows/*.md` 팀 공유). Pro $20/월에 Cloud+Desktop+SWE-1.6. Cursor(IDE 1위)와 달리 '에이전트 관리 센터+클라우드 VM' 통합이 차별.
+  level: 중급
+  title: Devin Desktop — IDE와 여러 코딩 에이전트를 한 작업 공간에서 관리
+  summary: Devin Desktop은 Windsurf의 IDE 기반 위에 에이전트 관리 화면을 결합한 개발 환경이다. Kanban형 Agent Command Center와 Spaces에서 로컬·클라우드 세션을 보고, ACP(Agent Client Protocol)를 구현한 외부 에이전트도 연결할 수 있다. 따라서 단순한 클라우드 코딩 에이전트나 IDE 교체로만 이해하기보다, 작업 위치·에이전트 종류·세션 간 공유 문맥을 관리하는 허브로 보는 편이 정확하다. 외부 ACP 에이전트의 실행과 결제는 해당 제공자에 위임되며, Devin의 개인정보 처리·약관이 적용되지 않을 수 있다. 연결 목록만 보지 말고 어떤 바이너리가 실행되고 어떤 권한·계정이 쓰이는지 확인한다.
   points:
-  - Devin Desktop OTA — Windsurf→Devin Desktop, ACP·Spaces·Kanban·Devin Local(Rust)
-  - Cascade Workflows — .md 레시피·/슬래시 호출·워크스페이스 커밋으로 팀 공유
-  - Pro $20/월 — Cloud agent+Desktop IDE+SWE-1.6, 67% PR merge(2025 리뷰)
+  - 'Windsurf의 IDE 기능을 유지하며 로컬·클라우드 에이전트의 세션·PR을 Agent Command Center에서 관리'
+  - 'ACP 호환 Codex CLI·Claude Agent·OpenCode 등 외부 에이전트를 연결 가능; 호환 프로토콜이 곧 같은 기능·정책을 뜻하지는 않음'
+  - '외부 agent 작업은 해당 agent에 위임되고 결제도 외부 제공자와 직접 처리; Devin의 약관·개인정보 처리 범위와 구분'
   source: https://devin.ai/desktop/
+  sources:
+  - label: 'Devin Desktop — 공식 제품 개요·Agent Command Center·현재 요금제'
+    url: https://devin.ai/desktop/
+  - label: 'Windsurf is now Devin Desktop — 리브랜딩·IDE 및 로컬/클라우드 역할'
+    url: https://devin.ai/blog/windsurf-is-now-devin-desktop
+  - label: 'Agent Client Protocol — 지원 조건과 외부 agent의 실행·결제 경계'
+    url: https://docs.devin.ai/desktop/acp
+  interview: 'Devin Desktop에 ACP 에이전트를 연결하면 에이전트 실행과 비용은 누가 책임지며, ACP가 보장하지 않는 것은 무엇인가요?'
+  answer: '외부 ACP 에이전트의 동작은 해당 에이전트에 위임되고 비용은 제공자와 직접 정산한다. ACP는 편집기와 agent 간 연결 프로토콜이지 동일한 기능·보안·정책을 보장하는 인증이 아니다. 실제 실행 바이너리, 권한, 계정 및 제공자 약관을 확인해야 한다.'
+
 - category: ai
   title: CodeRabbit — 공개 레포는 무료, PR마다 줄 단위로 달라붙는 AI 리뷰어
   summary: 'CodeRabbit은 GitHub·GitLab에 붙어 PR이 열릴 때마다 자동으로 코드 변경을 분석하고, 변경 라인 옆에 인라인 코멘트와 PR 요약을 달아주는 AI 코드 리뷰 도구다. 가장 큰 미끼는 가격이다. 공식 가격표 기준 ''공개 저장소는 영원히 무료(free reviews forever for public repositories)''라서 오픈소스·사이드 프로젝트에 비용 없이 붙일 수 있다. 유료는 Pro가 연간 결제 시 사용자당 월 24달러, Pro Plus가 48달러이며, 무료 티어도 공개·비공개 저장소 수 제한 없이 PR 요약과 IDE·CLI 리뷰를 제공한다. 즉 ''에이전트가 코드를 짠다''가 아니라 ''에이전트가 사람·AI가 짠 코드를 사람 대신 1차로 리뷰한다''는 쪽이라, 작성과 검토를 다른 주체로 분리하고 싶을 때 들어맞는다.

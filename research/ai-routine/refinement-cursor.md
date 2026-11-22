@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code prompt-injection guidance after skills.sh / npx skills; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Devin Desktop after Claude Code prompt-injection guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:12 KST
+Last update: 2026-11-22 17:24 KST
+
+## Latest pass
+- Refined Devin Desktop using its current official product page, Windsurf transition announcement, and ACP documentation.
+- Removed stale model, pricing, and adoption statistics; clarified IDE + local/cloud agent command-center scope and the external ACP agent execution/privacy/billing boundary.
+- Added intermediate difficulty and an ACP retrieval Q/A. Audit: `research/ai-routine/20261122-devin-desktop-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined Claude Code prompt-injection guidance using current official security, permissions, and CLI docs.
