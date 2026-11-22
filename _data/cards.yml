@@ -1582,15 +1582,27 @@ cards:
   answer: '아니다. 로컬 실행은 저장소 접근과 명령 실행이 사용자 컴퓨터에서 이뤄진다는 뜻이지, 기본 모델 추론이 오프라인이라는 뜻이 아니다. 일반 대화형 작업은 `codex`, 스크립트나 반복 workflow는 `codex exec`를 선택한다. 두 경우 모두 인증·권한/sandbox 경계를 확인하고 결과를 검증한다.'
 
 - category: ai
-  title: promptfoo — 프롬프트·모델을 바꿔도 품질이 안 깨졌는지 자동으로 재는 eval 툴
-  summary: '코딩 에이전트/LLM 기능을 실무에 넣으면 곧 "프롬프트나 모델을 바꿨는데 결과가 더 나빠지진 않았나"라는 회귀 문제에 부딪힌다. promptfoo는 그 지점을 테스트 주도 개발처럼 다루는 오픈소스 CLI·라이브러리다. 2026-06-23 재검증 기준 GitHub 22,490★·MIT이고, 2026-03-09 OpenAI 인수 발표 뒤에도 오픈소스와 멀티모델 지원을 유지한다고 공지했다. 핵심은 선언적 테스트 케이스로 여러 프롬프트·입력·모델을 한 번에 돌리고, matrix/side-by-side 뷰로 비교하는 것이다. 단순 문자열 일치만이 아니라 metrics와 model-graded 평가로 정답이 하나로 떨어지지 않는 생성 결과도 점수화한다. 자동 레드티밍·펜테스팅은 보안 취약점을 찾고, CLI·라이브러리·CI/CD 통합은 프롬프트 변경을 배포 전 회귀 게이트로 만든다. eval은 로컬에서 실행되고 LLM과 직접 통신하므로, 평가 데이터를 불필요하게 외부 평가 SaaS에 밀어 넣지 않아도 된다.
-
-    '
+  level: 중급
+  title: promptfoo — 테스트 사례로 프롬프트·모델 변경을 평가하는 LLM eval 도구
+  summary: 'promptfoo는 LLM 앱의 프롬프트·모델·RAG 결과를 반복 평가하고 레드팀 테스트를 실행하는 오픈소스 CLI·라이브러리다. YAML 설정에 입력 사례, 프롬프트, provider, assertion을 선언하면 조합별 결과를 표로 비교하고 CLI·코드·CI에서 다시 실행할 수 있다. 점수는 테스트 사례와 assertion이 검사한 범위에만 의미가 있으므로, 대표 사례를 늘리고 중요한 결과는 직접 검토해야 한다. 기본 eval runner는 로컬에서 실행되지만 모델 요청은 설정한 provider로 전송된다. 레드팀 테스트 생성·채점은 설정에 따라 Promptfoo 호스팅 서비스로 나갈 수 있어 데이터 경로를 별도로 확인한다. GitHub 저장소는 MIT 라이선스이며 약 27.5k★를 표시한다(2026-11-22 확인). Promptfoo는 현재 OpenAI에 합류했지만 오픈소스 프로젝트를 계속 운영한다고 안내한다.'
   points:
-  - '같은 런 검증: 22,490★, MIT, OpenAI 인수 뒤에도 오픈소스 유지 공지'
-  - 선언적 테스트로 프롬프트·입력·모델을 matrix/side-by-side 비교
-  - metrics·model-graded 평가·레드티밍을 CI 회귀 게이트로 연결
+  - '입력 사례 × 프롬프트 × provider를 함께 실행해 변경 전후 결과를 비교'
+  - 'assertion·metric은 명시한 조건만 검사 — 통과가 전체 품질을 보증하지 않음'
+  - '대상 eval은 로컬 runner에서 실행; provider 호출 및 일부 레드팀 생성·채점은 외부 전송 가능'
   source: https://www.promptfoo.dev/docs/intro/
+  sources:
+  - label: 'Promptfoo 소개 — 평가 흐름·CLI/CI·로컬 실행 경계'
+    url: https://www.promptfoo.dev/docs/intro/
+  - label: 'Promptfoo 설정 가이드 — test case·assertion·비교 matrix'
+    url: https://www.promptfoo.dev/docs/configuration/guide/
+  - label: 'Promptfoo 데이터 처리 — provider 호출·호스팅 기능별 전송 범위'
+    url: https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling/
+  - label: 'Promptfoo GitHub — MIT 라이선스·별점 snapshot'
+    url: https://github.com/promptfoo/promptfoo
+  - label: 'Promptfoo 소개 — OpenAI 합류 및 오픈소스 운영'
+    url: https://www.promptfoo.dev/about/
+  interview: 'promptfoo eval 결과가 통과하면 프롬프트의 전체 품질이 검증됐다고 볼 수 있나요? 실행할 때 데이터는 어디로 전송될 수 있나요?'
+  answer: '아니다. 선언한 테스트 사례와 assertion이 검사한 범위만 확인된다. 대표 입력과 실패 사례를 포함하고 핵심 출력은 사람이 검토해야 한다. eval 대상 호출은 설정한 provider로 전송되며, 레드팀 생성·채점은 provider 설정이나 hosted 기능 사용 여부에 따라 Promptfoo 서비스로 전송될 수 있으므로 데이터 처리 설정을 확인한다.'
 - category: ai
   title: awesome-agent-skills — 코딩 에이전트 가리지 않고 쓰는 스킬 1400+개 모음(VoltAgent·25k★)
   summary: '스킬(SKILL.md)이 Claude Code·Codex·Cursor·Gemini CLI 등에서 공통 표준이 되면서, "어떤 스킬을 깔지"가 새 고민거리가 됐다. VoltAgent의 awesome-agent-skills는 이 문제를 풀려는 큐레이션 레포다. 2026-06-23 재검증 기준 README 배지는 1497개+ 스킬을 표시하고, GitHub API로 26,182★·2,801 forks·MIT·같은 날 push를 확인했다. 핵심은 특정 에이전트 전용 프롬프트 모음이 아니라는 점이다. README는 Claude Code, Codex, Antigravity, Gemini CLI, Cursor, GitHub Copilot, OpenCode, Windsurf 등과 호환된다고 설명한다. Anthropic, Google Labs, Vercel, Stripe, Cloudflare, Netlify, Trail of Bits, Sentry, Expo, Hugging Face, Figma 같은 조직 발행 스킬과 커뮤니티 스킬을 함께 싣되, 대량 AI 생성물이 아니라 실제 팀이 쓰는 스킬을 손으로 고른다는 기준을 내세운다. 실무 교훈은 에이전트별 설정을 복붙하기보다, 검증된 SKILL.md를 공용 지식 단위로 관리하고 출처·라이선스·호환 도구를 같이 확인하라는 것이다.

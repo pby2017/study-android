@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Codex CLI after CodeRabbit; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined promptfoo after Codex CLI; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:55 KST
+Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Refined promptfoo against its current intro/configuration/data-handling documentation, live GitHub repository page, and current About page.
+- Replaced the stale star count with a dated 27.5k★ snapshot; clarified that assertions only cover configured cases, eval execution uses configured providers, and red-team generation/grading may use hosted services depending on setup.
+- Updated acquisition context to current OpenAI affiliation and current open-source statement; added intermediate difficulty and retrieval Q/A.
+- Audit: `research/ai-routine/20261122-promptfoo-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined Codex CLI against the OpenAI repository README and current CLI/auth docs.
