@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the built-in Claude Code IDE MCP card; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code skill dynamic-context injection; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1080,4 +1080,10 @@ Rules:
 - Refined `내장 ide MCP 서버` against the current official VS Code integration guide.
 - Clarified the Jupyter execution confirmation is a VS Code Quick Pick separate from MCP hook/allowlist policy; added that `Read` deny excludes both selection and active-file context for matching sensitive files.
 - Sources and rationale: `research/ai-routine/20261122-ide-mcp-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Refined `동적 컨텍스트 주입` against the current official Claude Code skills reference.
+- Corrected skill argument indexing to zero-based `$0`/`$ARGUMENTS[0]`; added permission-check behavior and clarified that a failed injected command aborts the skill invocation.
+- Sources and rationale: `research/ai-routine/20261122-skill-dynamic-context-refinement.md`.
 - Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
