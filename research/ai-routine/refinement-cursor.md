@@ -1669,3 +1669,9 @@ Rules:
 - Distinguished default versus on-device recognizer, API 31 service availability versus API 33 request/language support, and added a practical offline verification condition; added `중급` level.
 - Audit and rationale: `research/ai-routine/20261122-231300-android-speechrecognizer-refinement.md`.
 - Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Updated `RecGPT-Mobile` to cover the newer RecGPT-Mobile-V2 technical report (2026-08), replacing the older trigger-only summary with quality-gated adaptive reasoning.
+- Distinguished quality-only RL from the proposed A6 reward, retained the failure example where brevity harmed quality, labeled metrics as author-reported controlled results, and clarified device–cloud routing is not an offline guarantee.
+- Audit and rationale: `research/ai-routine/20261122-232000-recgpt-mobile-v2-refinement.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android subjects.
