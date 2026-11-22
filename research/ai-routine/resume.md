@@ -12,12 +12,12 @@
 - Refined Philipp Schmid's subagent pattern card against his primary explainer and bio; clarified escalation choices and orchestration costs; validated and pushed as `9d3302f`.
 - Refined Sourcegraph's “80% problem” card against its September article and search docs. Made the percent metaphor explicit, removed vendor benchmark numbers and overgeneralized search advice, and retained a repository-completeness practice. Audit: `research/ai-routine/20261122-sourcegraph-80-percent-refinement.md`; validated and pushed as `1a4fa7b`.
 - Refined Chrome DevTools MCP against current GitHub docs/releases and OpenAI's Codex Browser documentation. Corrected page routing and profile flags, distinguished MCP from Codex Developer mode, and added browser-data/telemetry caveats. Audit: `research/ai-routine/20261122-chrome-devtools-mcp-refinement.md`; validation/commit/push pending.
-- Retired the ByteRover CLI card because the specific repository is archived, the current company site has shifted the product's framing, and the deck already covers agent memory several ways. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`; validation/commit/push pending.
+- Retired the ByteRover CLI card because its repository is archived, the current company site has shifted product framing, and the deck already covers agent memory several ways. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.
+- Refined Kilo Code: corrected the `--auto` permission semantics, refreshed live popularity/release evidence, and checked the Anaconda acquisition announcement. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`; validation passed; commit/push pending.
 - The long-term study-android objective remains active: short, evidence-based AI / AI+Android learning cards with difficulty levels, consistent format, and interview retrieval practice. Pure Android topics remain excluded.
 
 ## Next actions
-1. Run Ruby syntax, both YAML loads, targeted card checks, routine tests, and `git diff --check`.
-2. If all checks pass, commit the ByteRover card retirement + audit + cursor + checkpoint update and push `master`.
-3. Continue oldest-first with `Kilo Code`; verify current commands, extension/CLI workflow, model/provider claims, popularity and releases.
+1. Commit and push the ByteRover retirement + Kilo card refinement and audit/checkpoint updates.
+2. Continue oldest-first with Bumblebee (Perplexity); verify scope, evidence, activity, and overlap before deciding whether to keep or remove it.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.
