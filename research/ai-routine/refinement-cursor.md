@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code structured JSON output; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined multi-agent research pattern; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:12 KST
+Last update: 2026-11-22 15:22 KST
+
+## Latest pass
+- Refined the multi-agent research card against Anthropic's current primary article.
+- Scoped the 90.2% result to its internal benchmark; corrected the token-cost comparison and preserved the parallelism/dependency tradeoff.
+- Replaced brittle implementation-specific details with reusable delegation principles; added intermediate difficulty and an interview question.
+- Source and rationale: `research/ai-routine/20261122-claude-multi-agent-research-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Refined the Claude Code `--json-schema` card against the current official programmatic-use guide.
