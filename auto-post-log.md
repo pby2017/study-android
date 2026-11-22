@@ -4611,3 +4611,10 @@ Refined:
 - Separated local file/bytes inference from `scanUrl` network requests and opt-in model downloads; documented the 11 MB default and larger alternative models as implementation context.
 - Kept as a small, actively published example rather than a production recommendation: GitHub showed 3 stars/2 forks; pub.dev showed 6 likes and 1.47k downloads at review.
 - Audit: `research/ai-routine/20261122-nsfw-detect-network-boundaries.md`.
+
+### 2026-11-22 23:48 KST — SideEye VLM 확신도·파서 실패 처리 검증
+
+- Refined the SideEye code-review card against the current `ImageAnalyzer.kt` and repository README.
+- Confirmed `primaryConfidence` is derived from a parsed boolean (1.0/0.0), not model probability; additionally, malformed or unsupported labels map to “not flagged,” a fail-open moderation path.
+- Current repo snapshot: 1 star, 0 forks, 18 commits, last push 2026-02-27; README requires Android 9+/API 28, Qualcomm NPU, and ~2.4 GB model. Kept as an instructive code-review example, not a dependency recommendation.
+- Audit: `research/ai-routine/20261122-sideeye-vlm-confidence-review.md`.
