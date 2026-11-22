@@ -1,6 +1,10 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined `claude --worktree` against current Claude Code worktree/settings docs and Git's official manual. Corrected `.worktreeinclude` scope, made subagent isolation explicitly opt-in, explained shared `.git`/permission state and the limits of the worktree security checks, and added a concise intermediate card with interview retrieval. Audit: `research/ai-routine/20261122-claude-worktree-refinement.md`.
+- Next: continue oldest-first with `Aide 사례 — Gemma 4를 키보드·채팅·음성 비서에 연결한 온디바이스 Android AI`; re-check current repo status, Android/device requirements, and whether the card's AI relevance remains central.
+
+## Latest pass — 2026-11-22
 - Retired the `Cipher → ByteRover CLI` card: upstream CLI repository is archived, latest release is stale, current ByteRover site has repositioned to a different product, and the deck already covers agent-memory concepts in several more distinctive cards. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.
 - Refined Kilo Code around the distinction between non-interactive execution and permission-free execution; corrected `kilo run --auto`, refreshed dated repo/release evidence, and recorded the Anaconda acquisition without treating planned integration as shipped. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`.
 - Refined Bumblebee around the developer-endpoint inventory gap, exact exposure matching, and what a negative scan cannot prove; added explicit unsupported-scope caveats and interview retrieval. Audit: `research/ai-routine/20261122-bumblebee-refinement.md`.
@@ -11,7 +15,7 @@
 - Refined Factory Droid Exec around read-only defaults, autonomy tiers, non-interactive permission rules, partial changes on failure, and sandbox-only unsafe bypass; removed stale benchmark-rank heading. Audit: `research/ai-routine/20261122-factory-droid-exec-refinement.md`.
 - Refined Terminal-Bench around fair evaluation: current 4.1 shows model-agent pairs, 95% confidence intervals, cost and tokens; removed June 2.1 leaderboard snapshot and added version-pinned comparison guidance. Audit: `research/ai-routine/20261122-terminal-bench-refinement.md`.
 - Refined SWE-bench Multimodal against the current v2 page, ICLR paper, and dataset card; recorded unresolved historical count/unit differences, removed stale result comparison, and adapted the transferable visual-diagnosis lesson to Android without implying the benchmark covers Android. Audit: `research/ai-routine/20261122-swe-bench-multimodal-refinement.md`.
-- Next: continue oldest-first with `claude --worktree`; verify current official command/behavior and distinguish git worktree isolation from sandbox/security guarantees.
+- Next: continue oldest-first with `Aide 사례 — Gemma 4를 키보드·채팅·음성 비서에 연결한 온디바이스 Android AI`; re-check current repo status, Android/device requirements, and whether the card's AI relevance remains central.
 
 ## Previous latest pass — 2026-11-22
 ## Latest pass — 2026-11-22
