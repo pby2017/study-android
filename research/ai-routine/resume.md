@@ -15,10 +15,11 @@
 - Retired the ByteRover CLI card because its repository is archived, the current company site has shifted product framing, and the deck already covers agent memory several ways. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.
 - Refined Kilo Code: corrected the `--auto` permission semantics, refreshed live popularity/release evidence, and checked the Anaconda acquisition announcement. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`; pushed as `0addf43`.
 - Refined Bumblebee against its README, release page, and live GitHub API: clarified its incident-response scope, exact exposure matching, unsupported configs, and interpretation of no findings. Audit: `research/ai-routine/20261122-bumblebee-refinement.md`; validation/commit/push pending.
+- Refined Deep Agents against LangChain's primary experiment report and current repository/release metadata. Qualified the benchmark result as setup-specific and focused on the fixed-model trace/eval loop. Audit: `research/ai-routine/20261122-deep-agents-refinement.md`; validation/commit/push pending.
 - The long-term study-android objective remains active: short, evidence-based AI / AI+Android learning cards with difficulty levels, consistent format, and interview retrieval practice. Pure Android topics remain excluded.
 
 ## Next actions
-1. Validate and commit/push the Kilo and Bumblebee card refinements and audit/checkpoint updates.
-2. Continue oldest-first with Deep Agents (LangChain); verify the current benchmark evidence, implementation claims, activity, and overlap.
+1. Validate and commit/push the Deep Agents refinement and research checkpoint.
+2. Continue oldest-first with Agentic AI Foundation (AAIF); verify current governance/project status and overlap.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.
