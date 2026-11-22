@@ -4748,3 +4748,10 @@ Refined:
 - 선형 history·독립 `subprocess.run`의 재현성/추적 이점을 설명하고, subprocess 실행만으로 sandbox가 만들어지지는 않는다고 명시했다. 중급 레벨과 benchmark 비교 면접 문답을 추가했다.
 - Audit: `research/ai-routine/20261123-005600-mini-swe-agent-benchmark-boundaries.md`.
 - Sources: https://github.com/SWE-agent/mini-swe-agent, https://www.swebench.com/.
+
+### 2026-11-23 01:00 KST — Axolotl fine-tuning 방법 선택
+
+- Axolotl 공식 Quickstart·method guide·support matrix를 확인했다. 복잡한 방법 나열을 줄이고 입력-정답(SFT), paired preference(DPO), binary preference(KTO), prompt+reward(GRPO)처럼 데이터와 학습 신호로 방법을 고르도록 정리했다.
+- 같은 YAML이 train/inference/LoRA merge에 쓰인다는 점과 method/adapter는 별도 선택이라는 점을 명확히 했다. GitHub 관심 신호는 약 12.7k stars/1.5k forks로 확인했으나 카드의 적합성 증거로 쓰지 않았다.
+- Audit: `research/ai-routine/20261123-010000-axolotl-method-selection.md`.
+- Sources: https://docs.axolotl.ai/docs/getting-started.html, https://docs.axolotl.ai/docs/choosing_method.html, https://docs.axolotl.ai/docs/support-matrix.html.

@@ -2,14 +2,14 @@
 
 ## Current phase
 - Synced `master` before edits; it was already up to date.
-- Refined `mini-SWE-agent` using the current v2 README, official SWE-bench leaderboard, and GitHub API snapshot. Removed the 74% headline, clarified benchmark subset/configuration boundaries and that `subprocess.run` does not itself provide sandbox isolation, and added intermediate retrieval Q&A.
-- Research audit: `research/ai-routine/20261123-005600-mini-swe-agent-benchmark-boundaries.md`.
-- YAML parsing/card fields, Ruby syntax, routine tests (3/14), navigation tests (6/6), and `git diff --check` passed. `bundle check` cannot satisfy Gemfile dependencies, so Jekyll build is unverified; no gems were installed.
-- Published as `fe011e6` (`Make coding-agent benchmark claims comparable`); `origin/master` matched after push and the worktree is clean.
+- Refined `Axolotl` using current official Quickstart, fine-tuning method guide, support matrix, and GitHub project page. Replaced a stale acronym-heavy feature inventory with data-driven method selection and added advanced retrieval Q&A.
+- Research audit: `research/ai-routine/20261123-010000-axolotl-method-selection.md`.
+- YAML/schema validation, Ruby syntax, routine tests (3 tests/14 assertions), navigation tests (6/6), and `git diff --check` passed. `bundle check` cannot satisfy Gemfile dependencies; Jekyll build is unverified, and no gems were installed.
+- Commit/push are pending for this checkpoint.
 - The overall study-android card objective remains active.
 
 ## Next actions
 1. Before the next edit, run `git pull --ff-only origin master`.
-2. Continue oldest-first from the next eligible queued AI or AI+Android card; skip entries with newer refinement records.
+2. Continue oldest-first with `Qwen3-Coder-Next` after this card is published; re-check its model and serving claims against current primary sources.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.

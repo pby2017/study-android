@@ -3196,15 +3196,24 @@ cards:
   - 'kiro-impl: 태스크별 TDD 구현자 + 독립 리뷰어 + auto-debug, Boundary/Depends로 범위 위반 감시'
   source: https://github.com/gotalab/cc-sdd
 - category: ai
-  title: Axolotl — YAML 한 장으로 멀티GPU LLM 파인튜닝 파이프라인을 관리하는 엔터프라이즈 오케스트레이터(Apache-2.0·~11k★)
-  summary: 'Axolotl은 "모델 한 번 학습"보다 "학습 파이프라인을 재현 가능하게 굴리기"에 가까운 오픈소스 LLM 파인튜닝 프레임워크다. YAML 하나로 데이터 전처리, 학습, 평가, 양자화, 추론 설정을 재사용하고, LoRA·QLoRA·풀 파인튜닝뿐 아니라 DPO/KTO/ORPO 같은 preference tuning, GRPO/GDPO, reward/process reward modelling까지 다룬다. 현재 README는 FSDP1/2·DeepSpeed·torchrun/Ray 멀티노드, Flash Attention 2/3/4, Liger Kernel, Cut Cross Entropy, ScatterMoE 같은 최적화 축을 같이 문서화한다. 2026-06-29 재검증 기준 12,099★·Apache-2.0·최신 릴리스 v0.17.0. 실무 교훈은 파인튜닝 코드를 노트북 조각으로 남기지 말고, 데이터·모델·분산전략·평가를 버전 관리되는 설정으로 고정하라는 점이다.
-
-    '
+  level: 고급
+  title: Axolotl — 학습 데이터에 맞춰 SFT·DPO·GRPO를 고르고 설정을 재사용하기
+  summary: 'Axolotl은 YAML 설정으로 LLM fine-tuning을 실행하는 프레임워크다. 학습 방법은 도구의 인기보다 데이터와 학습 신호에 맞춰 고른다. 입력·정답 쌍이면 SFT, 같은 질문의 선호·비선호 응답 쌍이면 DPO, prompt와 점수 함수가 있으면 GRPO를 검토한다. 같은 설정 파일을 학습·추론·LoRA 병합에 재사용할 수 있다. 실제 지원 모델과 GPU 요건은 실행 전에 support matrix와 설정 예제로 확인한다.'
   points:
-  - YAML 재사용 — 데이터 전처리·학습·평가·양자화·추론을 설정 파일로 고정
-  - 학습 범위 — SFT/LoRA/QLoRA/full fine-tune + DPO/KTO/ORPO + GRPO/GDPO + reward modelling
-  - 운영 신호 — FSDP1/2·DeepSpeed·Ray 멀티노드, agent-docs/config-schema, 12,099★·v0.17.0
+  - 'SFT: 입력과 기대 출력을 함께 제공하는 지도 데이터로 기본 task 수행을 학습한다.'
+  - '선호 학습: 짝지은 chosen/rejected 응답은 DPO, 짝이 없는 good/bad 라벨은 KTO 후보가 된다.'
+  - 'GRPO: prompt와 코드·모델 기반 reward function으로 생성 결과를 평가한다. 온라인 생성과 학습 인프라가 필요하므로 SFT보다 설정·비용 부담이 크다.'
+  - '방법을 고른 뒤 adapter를 선택한다. QLoRA는 4-bit base model 위에 adapter를 학습해 메모리 제약이 있을 때 유용하지만, 양자화 품질과 모델별 호환성을 검증한다.'
   source: https://github.com/axolotl-ai-cloud/axolotl
+  sources:
+  - label: Axolotl Quickstart — YAML 설정과 train/inference/merge 흐름
+    url: https://docs.axolotl.ai/docs/getting-started.html
+  - label: Axolotl fine-tuning method guide — 데이터·목표별 SFT/DPO/KTO/GRPO 선택
+    url: https://docs.axolotl.ai/docs/choosing_method.html
+  - label: Axolotl Support Matrix — 모델·기능 호환성 확인
+    url: https://docs.axolotl.ai/docs/support-matrix.html
+  interview: '입력-정답 예시, 같은 prompt의 선호/비선호 응답 쌍, prompt와 reward function이 각각 있을 때 어떤 학습 방법을 먼저 검토하나요?'
+  answer: '각각 SFT, DPO, GRPO를 우선 검토한다. 짝 없는 good/bad 라벨이면 KTO가 후보가 된다. 학습 방법과 LoRA/QLoRA 같은 adapter 방식은 별도 선택이며, 실제 조합은 Axolotl의 모델·기능 support matrix와 GPU 요건을 확인해야 한다.'
 - category: ai
   title: Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)
   summary: 'Qwen3-Coder-Next는 Alibaba Qwen 팀이 만든 코딩 에이전트 전용 오픈웨이트 모델이다. Qwen3-Next-80B-A3B-Base 위에 만든 하이브리드 attention+MoE 구조라 전체 파라미터는 80B지만 추론 때는 3B만 활성화한다. 기본 컨텍스트는 256K이고 Yarn으로 1M까지 확장 가능해, 저장소 단위 이해와 긴 에이전트 세션에 맞춘 모델이다. 학습도 일반 코드완성보다 에이전트 실행에 맞춰져 있다. 대규모 실행 가능 코딩 태스크를 합성하고, 환경 상호작용과 강화학습을 붙여 긴 추론, 도구 호출, 실행 실패 복구 능력을 키웠다. SGLang·vLLM의 qwen3_coder tool parser, Claude Code·Cline·Qwen Code 같은 scaffold 적응성이 실전 포인트다.
