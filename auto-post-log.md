@@ -4812,3 +4812,10 @@ Refined:
 - Android Developers reference and Android Developer Summit announcement describe the new on-device Agent API. Card explains `AgentRunner` orchestration, AppFunctions, in-memory `AgentSession`, preview/device prerequisites, and app-side validation of model-selected tools.
 - Level: 중급. Interview question and answer included.
 - Source: https://developer.android.com/ai/gemini-nano/mlkit-agent-api
+### 2026-11-23 01:47 KST — Vercel eve 1.0 에이전트 실행 경계
+
+- eve 1.0의 내구성 있는 workflow 재개, 사람 승인, OpenTelemetry trace와 수집 제한, Vercel Workflows/Sandbox 배포 경계를 한 카드로 정리했다.
+- 공식 GA 발표와 GitHub 저장소를 확인했다. 저장소 신호(6.0k stars, 673 forks, 2,721 commits)는 2026-11-23 조회 스냅샷이며 채택률이나 품질로 해석하지 않았다.
+- 레벨 중급과 실행 상태·권한·관측을 분리해 회상하는 면접 질문/답변을 추가했다.
+- Audit: `research/ai-routine/20261123-014716-eve-1-ga-agent-execution-boundaries.md`.
+- Sources: https://vercel.com/blog/eve-is-now-generally-available, https://github.com/vercel/eve.

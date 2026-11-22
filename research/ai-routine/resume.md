@@ -1,23 +1,19 @@
-# Local AI routine checkpoint — 2026-11-23
+# Local AI routine checkpoint — 2026-11-23 01:47 KST
 
 ## Current phase
-- Corrected the local pipeline invocation to use supported `codex exec`; headless smoke test returned `CODEX_EXEC_OK`.
-- Reloaded the 4-hour LaunchAgent with direct script execution (no login zsh). The real routine ran through Codex and generated one new ML Kit Agent API card plus a Karpathy-guidelines refinement.
-- Wrapper verification exposed Ruby's US-ASCII default under launchd; fixed the UTF-8 log test and set UTF-8 locale in the LaunchAgent.
-- The current routine output remains uncommitted and is preserved in the worktree. Re-run all validations, commit and push the card batch plus deterministic test fix, then reload/kickstart the LaunchAgent and verify a successful wrapper exit.
-- Audit: `research/ai-routine/20261123-013535-karpathy-guidelines-and-topic-screen.md`.
+- This routine run is complete. The stale prior checkpoint's request to commit and push is superseded by the current explicit instruction not to commit or push.
+- Added the Vercel eve 1.0 educational card and audit. Rechecked the cursor's Claude Code `reloadSkills` card and left it unchanged because current official docs still support it.
+- Worktree was clean before `git pull --ff-only origin master`; the branch was already up to date.
 
-## Latest validation
+## Validation
 - `ruby -c scripts/auto_post.rb`: pass.
-- `ruby scripts/auto_post_test.rb` with `LANG`, `LC_ALL`, and `LC_CTYPE` unset: 3 tests, 14 assertions, 0 failures/errors.
-- YAML card/queue loading and selected-card field assertions: pass (983 cards).
-- `node --test scripts/card-navigation.test.js`: 6/6 pass.
+- YAML load for `_data/cards.yml` and `_data/ai_queue.yml`: pass; 984 cards. New card required fields and level: pass.
+- `ruby scripts/auto_post_test.rb`: 3 runs, 14 assertions, 0 failures/errors/skips.
 - `git diff --check`: pass.
-- Full Jekyll build remains unverified because bundle dependencies are missing.
 
 ## Next actions
-1. Finish verification, commit and push preserved card/refinement/audit output and the UTF-8 regression-test fix.
-2. Run the 4-hour LaunchAgent again from the clean, synced worktree; verify it can pass its wrapper tests and finish commit/push without creating a disabled marker.
-3. Continue oldest-first card review from the refinement cursor after the routine run is safely published.
+1. At the next scheduled run, read this checkpoint and the refinement cursor, then continue the oldest-first review.
+2. Inspect the next cursor candidate and its prior audit; reverify its original public source before changing any factual claim.
+3. Follow the next run's explicit commit/push instructions; this run intentionally made neither.
 
-No GitHub Actions or app-factory-android operations were performed.
+Audit: `research/ai-routine/20261123-014716-eve-1-ga-agent-execution-boundaries.md`.

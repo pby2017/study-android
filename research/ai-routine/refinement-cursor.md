@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-23
+- Rechecked `Claude Code reloadSkills — SessionStart 훅이 설치한 스킬을 같은 세션에서 읽기` against the current Hooks reference and changelog. The hook ordering edge case, `hookSpecificOutput.reloadSkills`, and manual `/reload-skills` behavior remain accurate, so left the already refined card unchanged.
+- Added `Vercel eve 1.0 — 에이전트 실행에서 복구·승인·관측을 나누기` after its official GA announcement and current GitHub repository confirmed a distinct developer lesson about durable workflow state, human approval, trace privacy, and hosting boundaries.
+- Audit: `research/ai-routine/20261123-014716-eve-1-ga-agent-execution-boundaries.md`.
+- Next oldest deck-order candidate to inspect: `Claude Code --safe-mode`; its Nov 22 refinement exists, so skip if it remains current and continue to the next unreviewed eligible card.
+
+## Latest pass — 2026-11-23
 - Rechecked and refined the older `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` card. Separated author-recommended workflow benefits from measured results and added the source's caution-bias tradeoff for trivial tasks. Source: https://github.com/multica-ai/andrej-karpathy-skills. Audit: `research/ai-routine/20261123-013535-karpathy-guidelines-and-topic-screen.md`.
 - Added `ML Kit Agent API — Gemini Nano 도구 루프와 세션 수명 설계` after checking the current Android API guide and Summit announcement; clarified orchestration vs Prompt API, AppFunctions, in-memory session lifecycle, runtime preview limits, and app-side tool validation.
 - Screened Microsoft Agent Framework's PyPI compromise and rejected it as a duplicate of the existing card; rejected MAI Code 2 as a model-release announcement without a distinct lesson.
