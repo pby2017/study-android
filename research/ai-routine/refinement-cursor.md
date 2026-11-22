@@ -1694,6 +1694,12 @@ Rules:
 - Refined `Apple Trust Insights: 기기 신호와 클라우드 모델을 결합한 사기 위험 평가` against Apple's WWDC26 session, iOS 27 release notes, and `reportConsumption` API documentation. Added the intermediate level; clarified entitlement/authorization, network latency, local device-signal handling versus cloud/account signals, `unknown` semantics, decisioning limits, and required per-evaluation feedback versus optional offline fraud labels. Audit: `research/ai-routine/20261122-231540-apple-trust-insights-refinement.md`.
 - Next: review `Flutter 문서 레이아웃 AI: 추론 오프라인과 앱 설치 오프라인은 다르다`; verify Android support and model/download/offline boundaries from official sources.
 
+## Latest pass — 2026-11-23
+- Refined `Amp — 코딩 에이전트에서 작업 스레드·모델 선택·비용 경계를 설계하기` against current Amp Threads, Models and Subagents, Pricing, CLI execute-mode, AGENTS.md, and official product news.
+- Corrected Sourcegraph spinout status, removed obsolete thread-fork and “free interactive-only” claims, clarified Task subagents use the parent thread's model, and stated Oracle is a plugin rather than a stronger-model guarantee. Added current cost/execution boundaries and intermediate retrieval Q&A.
+- Audit: `research/ai-routine/20261123-001855-amp-agent-workflows-refinement.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android subjects.
+
 ## Latest pass — 2026-11-22
 - Consolidated `Flutter 문서 레이아웃 AI: 추론 오프라인과 앱 설치 오프라인은 다르다` into `On-Device AI Model Delivery — APK에서 모델 lifecycle 분리·incremental OTA`. Retained the distinction between model provisioning, build-time native runtime download, and offline inference; removed the standalone low-adoption package card (GitHub: 1 star/3 forks; pub.dev: 1 like/47 downloads shown, version 1.0.1) to reduce overlap and card count. Added an advanced level and interview retrieval to the broader card. Audit: `research/ai-routine/20261122-232115-flutter-doclayout-merge.md`.
 - Next: review `Locanara Android — minSdk만으로 Gemini Nano 지원을 판단하지 않기`; verify SDK/version/device gating and API requirements against official Android/Google sources.

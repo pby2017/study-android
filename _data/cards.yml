@@ -2557,15 +2557,26 @@ cards:
   interview: "Kiro에서 요구가 불분명하거나 회귀 위험이 큰 기능을 Quick Spec으로 바로 구현하지 않고 표준 Spec으로 나눌 이유는 무엇인가요?"
   answer: "Quick Spec은 요구사항·설계·작업을 한 번에 만들고 단계별 승인 게이트가 없다. 불확실하거나 위험이 큰 변경은 표준 Feature/Bugfix Spec에서 각 문서를 검토하고 수정한 뒤 실행해야 잘못된 가정이 구현과 병렬 task로 퍼지는 것을 줄일 수 있다. 생성된 task도 결과 검증이 필요하며 Spec과 task 실행은 Kiro credits를 소비한다."
 - category: ai
-  title: Amp(Sourcegraph) — '토큰 아끼지 마라'를 철학으로 내건, 스레드·서브에이전트·Oracle로 미는 프런티어 코딩 에이전트
-  summary: 'Amp는 Sourcegraph가 만든 터미널·에디터용 코딩 에이전트로, "프런티어 모델과 그다음에 올 것을 위해 만든 에이전트"를 표방한다. 설계 철학이 다른 도구와 갈리는데, 토큰을 아끼려 컨텍스트를 깎기보다 ''제약 없이'' 쓰는 쪽에 무게를 둔다 — 작업 품질을 위해 토큰 비용을 감수한다는 입장이다. 작업 단위는 ''스레드(Thread)''로, 대화·작업 맥락이 영속 저장돼 살아있는 메모리이자 팀 협업·공유 수단이 된다(스레드 포킹으로 대안 시도도 가능). 서브에이전트는 전문 작업을 떼어 맡고 메인 스레드에 결과를 보고하며, 읽기·검색·진단 같은 독립 작업은 기본적으로 병렬로 돌린다(같은 파일·공유 계약을 건드리는 쓰기만 직렬화). ''Oracle''이라는 별도 도구로 더 강한 추론 모델에 어려운 분석을 위임할 수 있고, AGENT.md 파일로 규칙·제약을 코드베이스에 박아 둔다.
-
-    '
+  level: 중급
+  title: Amp — 코딩 에이전트에서 작업 스레드·모델 선택·비용 경계를 설계하기
+  summary: 'Amp는 로컬 CLI·원격 orb·연결된 runner에서 에이전트를 실행하고, 대화와 도구 실행을 하나의 공유 가능한 thread로 보존한다. thread는 작업 이력이지 자동으로 프로젝트 규칙을 기억하는 전역 메모리는 아니다. 기본 subagent(Task)는 별도 context에서 일을 수행하지만 thread와 같은 모델·추론 수준을 사용한다. Amp는 2025년 Sourcegraph에서 분사한 독립 연구소 제품이며, 예전 “무제한 토큰”·모드별 모델 다이얼 설명은 현재 요금·모델 선택 화면과 다르다.'
   points:
-  - '철학적 차별점: 컨텍스트를 깎아 토큰을 아끼는 대신 ''제약 없는 토큰 사용''으로 품질을 우선 — 비용보다 결과를 택하는 트레이드오프. CLI 실행 모드 `amp -x`는 유료 크레딧을 쓰고, Amp Free는 대화형에만 적용'
-  - '구조: ''스레드''가 영속 메모리이자 협업 단위(포킹 지원) + 서브에이전트가 전문 작업을 병렬로 처리하고 메인에 보고. 독립 작업(읽기·검색·진단)은 기본 병렬, 같은 파일·타입·DB스키마·공개 API를 건드리는 쓰기만 직렬화'
-  - '도구·환경: 어려운 추론은 ''Oracle'' 도구로 더 강한 모델에 위임, AGENT.md로 규칙 주입, MCP 지원(`amp mcp add`). macOS·Linux·Windows(WSL)·JetBrains 2025.1+ 지원, `--stream-json`은 `--execute`와 함께 사용'
-  source: https://ampcode.com/manual
+  - '작업 단위: thread는 프롬프트·응답·도구 호출·수정 파일을 보존하며 CLI·웹·모바일에서 이어 볼 수 있다. thread를 팀과 공유할 때 접근 범위를 확인하고, 공개적으로 검색되는 thread 공유와 fork 기능은 현재 제공되지 않는다.'
+  - '위임과 모델: Task subagent는 독립 context에서 조사·구현을 맡고 결과를 메인 thread에 돌려준다. 기본적으로 부모와 같은 모델/추론 수준이며, Oracle은 별도 plugin/tool이지 자동으로 더 강한 모델을 보장하는 기능이 아니다.'
+  - '비용과 자동화: Hobby는 무료지만 모델 사용에는 자체 provider key/연결된 구독 등을 쓸 수 있고 Amp-hosted orb는 종량 과금이다. 유료 tier에는 포함 사용량이 있다. `amp -x "요청"`은 비대화형으로 한 번 실행하고 종료하며, `AMP_API_KEY`를 사용해 스크립트에서 인증할 수 있다.'
+  - '규칙 파일: 프로젝트 지침은 `AGENTS.md`에 둔다. `AGENT.md` 또는 `CLAUDE.md`도 인식될 수 있으므로, 이를 Amp 전용의 보편 규격처럼 혼동하지 않는다.'
+  source: https://ampcode.com/docs/threads
+  sources:
+  - label: Models and subagents
+    url: https://ampcode.com/docs/models-and-subagents
+  - label: Current pricing and usage
+    url: https://ampcode.com/pricing
+  - label: Execute mode and API-key authentication
+    url: https://ampcode.com/docs/cli/execute-mode
+  - label: AGENTS.md guidance
+    url: https://ampcode.com/docs/customize/agents-md
+  interview: "Amp의 thread, subagent, AGENTS.md는 각각 어떤 문제를 해결하며, 무엇을 보장하지 않나요?"
+  answer: "Thread는 작업 기록·재개·공유 단위이고, subagent는 분리된 context에서 일부 작업을 위임하는 수단이다. AGENTS.md는 코드베이스 지침이다. Thread가 자동으로 규칙 메모리가 되거나, 기본 subagent가 다른/더 강한 모델을 쓰거나, 지침이 검증을 대신하지는 않는다. 비용은 선택한 모델·실행 환경·요금제에 따라 확인한다."
 - category: ai
   title: Repomix — 레포 전체를 'AI 친화 단일 파일' 하나로 싸서 LLM에 통째로 먹이는 패커(MIT·~26.3k★)
   summary: 'Repomix는 코드베이스 전체를 LLM이 소화하기 좋게 단일 파일 하나(repomix-output.xml 등)로 묶어주는 오픈소스 도구로, GitHub ~26.3k★·MIT 라이선스다(yamadashy/repomix). 에이전트가 도구로 코드를 탐색하지 않는 상황 — ChatGPT·Gemini·Claude 웹/데스크톱에 레포 맥락을 통째로 붙여 넣고 싶을 때 — 이 진가를 발휘한다. `npx repomix`만 치면 현재 디렉터리를 한 파일로 패킹한다. 수작업 파일 복사·붙여넣기를 없애주고, 버그 조사·보안 감사·구현 계획·서드파티 라이브러리 문서화 같은 ''레포 스냅샷이 필요한'' 작업에 그대로 쓰인다. LLM 친화 출력을 위해 XML/Markdown/플레인 등 포맷을 고르고, 토큰 수를 세어주며, 보안상 민감 정보(시크릿) 탐지·코드 압축으로 토큰을 줄이는 옵션도 제공한다.

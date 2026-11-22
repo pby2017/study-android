@@ -4660,3 +4660,9 @@ Refined:
 - Pricing에서 Free 50 credits/month 및 spec/task가 credit을 소비함을 확인했다. 변동성 있는 유료 모델·요금 숫자는 카드에 고정하지 않고 공식 pricing link로 안내했다.
 - 카드에 `중급`, retrieval interview/answer, labeled multi-source links를 추가했다.
 - Audit: `research/ai-routine/20261123-001500-kiro-specs-refinement.md`.
+### 2026-11-23 00:18 KST — Amp thread·subagent·비용 경계 최신화
+
+- Amp의 현재 공식 문서와 제품 공지를 확인해 Sourcegraph 분사, thread 공유/삭제된 fork, 동일 모델을 쓰는 Task subagent, Oracle plugin, 최신 Hobby/BYOK/orb 비용 경계를 반영했다.
+- 오래된 무제한 토큰·Free 대화형 한정·더 강한 Oracle 모델 주장을 제거하고, `amp -x`와 `AMP_API_KEY` 실행 정보를 현재 CLI 문서 기준으로 바로잡았다.
+- Audit: `research/ai-routine/20261123-001855-amp-agent-workflows-refinement.md`.
+- Sources: https://ampcode.com/docs/threads, https://ampcode.com/docs/models-and-subagents, https://ampcode.com/pricing, https://ampcode.com/docs/cli/execute-mode, https://ampcode.com/docs/customize/agents-md.
