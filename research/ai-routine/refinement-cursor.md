@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code `/context` after the dynamic workflows card; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined UI UX Pro Max after Claude Code `/context`; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:48 KST
+Last update: 2026-11-22 17:02 KST
+
+## Latest pass
+- Refined `UI UX Pro Max` against the current project README, live repository API, and Android's Compose UI testing/accessibility references.
+- Updated stale catalog counts and plugin installation syntax; confirmed Jetpack Compose as a supported stack and recorded dated stars as attention only.
+- Added a warning that data-set size does not validate the generated UI, plus a Compose/accessibility verification lesson and intermediate interview retrieval pair.
+- Sources and rationale: `research/ai-routine/20261122-ui-ux-pro-max-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined the Claude Code `/context` card against official command, costs, and MCP documentation.

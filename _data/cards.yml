@@ -1288,15 +1288,23 @@ cards:
   interview: '`/context`와 `/usage`는 무엇이 다르며, 확인 뒤 어떤 기준으로 `/clear`와 `/compact`를 선택하나요?'
   answer: '`/context`는 현재 컨텍스트에 무엇이 로드됐는지 진단하고, `/usage`는 토큰·사용 한도 현황을 확인한다. 무관한 작업이면 `/clear`로 새 세션을 시작하고, 현재 작업을 이어가야 하면 보존할 정보를 정해 `/compact`로 요약한다.'
 - category: ai
-  title: UI UX Pro Max — '디자인 안목'을 스킬로 주입해 매번 비슷한 AI 화면을 벗어나기
-  summary: 'AI에 UI를 맡기면 어디서 본 듯한 보라색 그라데이션·똑같은 카드 레이아웃이 반복되는 게 흔한 불만이다. UI UX Pro Max는 이 ''디자인 안목 부재''를 메우는 오픈소스(MIT) Claude Code 스킬로, 프로젝트 요구사항을 분석해 제품 유형에 맞는 디자인 시스템(스타일·색·타이포·간격·접근성)을 자동으로 골라준다. README 기준 67가지 UI 스타일(글래스모피즘·브루탈리즘·벤토 그리드 등), 161개 산업별 컬러 팔레트, 57개 폰트 페어링, 25종 차트, 15개 기술 스택(React·Next·Vue·SwiftUI·Flutter 등), 99개 UX 가이드라인, 161개 추론 규칙을 내장한다. 요청이 오면 제품 유형·스타일·팔레트·패턴·타이포를 병렬 검색하고, 업종에 안 맞는 ''안티패턴''을 걸러낸 뒤 코드로 뽑는 식이다. 설치는 Claude Code에서 `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` 후 `/plugin install`. 단, 떠도는 스타/설치 수치는 출처마다 8만~19만으로 들쭉날쭉하니 ''인기 지표''는 걸러 보고, 핵심은 검증된 기능 범위로 판단하라.
-
-    '
+  title: 'UI UX Pro Max — 디자인 참고 데이터를 AI 코딩 에이전트에 연결하기'
+  level: "중급"
+  summary: 'UI UX Pro Max는 디자인 지침과 검색 스크립트를 묶어 여러 AI 코딩 도구에 제공하는 오픈소스 스킬이다. 프로젝트 설명에 맞는 스타일·색상·타이포그래피·UX 가이드와 기술 스택별 참고 자료를 검색해, 화면 구현 전에 일관된 디자인 방향을 잡도록 돕는다. README는 80개 검색 스타일(51개 활성), 194개 제품 유형·팔레트, 74개 폰트 조합, 22개 기술 스택, 141개 UX 가이드를 명시하며 Jetpack Compose도 지원 대상으로 든다. 이는 프로젝트 자체의 카탈로그 규모이지, 생성된 UI의 사용성이나 접근성이 검증됐다는 뜻은 아니다. 검색 결과를 출발점으로 삼고 기존 디자인 시스템, 실제 사용자 요구, 접근성·기기 테스트로 확인한다. 저장소는 2026-11-22 조회 시 152,591 stars였으며, 별 수는 품질 보증이 아니다.'
   points:
-  - 제품 유형→스타일·팔레트·폰트·패턴을 병렬 매칭하고 업종 부적합 안티패턴을 걸러 코드 생성 (MIT 오픈소스)
-  - 'README 명시: 67 스타일·161 팔레트·57 폰트쌍·25 차트·15 스택·99 UX 규칙·161 추론 규칙'
-  - '설치: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` → `/plugin install` · 떠도는 별·설치수는 편차 커서 신뢰 말 것'
+  - 'Claude Code 플러그인 안내: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` 다음 `/plugin install ui-ux-pro-max@ui-ux-pro-max-skill`. README에는 Codex 등 다른 도구용 설치 경로도 있다.'
+  - 'Android 스택은 Jetpack Compose로 명시돼 있다. 색·타이포·레이아웃 제안은 앱의 기존 Material 테마와 접근성 요구에 맞게 검토한다.'
+  - 'README 카탈로그 수치는 저장소가 공개한 규모이며 사용성 벤치마크가 아니다. 요구사항에 맞는 검색 결과를 고르고 화면 리더·다양한 크기·실기기에서 검증한다.'
   source: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+  sources:
+  - label: 프로젝트 README·현재 기능과 설치 경로
+    url: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+  - label: Jetpack Compose 공식 UI 테스트 개요
+    url: https://developer.android.com/develop/ui/compose/testing
+  - label: Jetpack Compose 접근성 검증
+    url: https://developer.android.com/develop/ui/compose/accessibility
+  interview: 'UI UX Pro Max가 제공하는 스타일·UX 가이드 수치만으로 생성된 Android 화면이 좋은 UX라고 결론 내릴 수 없는 이유는 무엇인가요?'
+  answer: '카탈로그의 크기는 참고 자료의 양이지 화면의 적합성이나 접근성을 검증하는 결과가 아니다. 앱 요구사항과 기존 디자인 시스템에 맞는지 확인하고, Compose UI 테스트·접근성 점검·기기별 검증으로 실제 동작을 평가해야 한다.'
 - category: ai
   title: wshobson/agents — 에이전트·스킬·커맨드를 여러 도구에 한 번에 까는 멀티하네스 마켓플레이스
   summary: 'Claude Code뿐 아니라 Codex CLI·Cursor·OpenCode·GitHub Copilot·Gemini CLI까지 같은 에이전트 구성을 공유하려는 시도가 wshobson/agents다. 도메인 전문가 서브에이전트, 스킬, 슬래시 커맨드를 ''플러그인'' 단위로 묶어, 한 소스에서 여러 하네스로 배포한다. 특정 도구에 종속되지 않고 팀이 쓰는 에이전트 자산을 한곳에서 버전 관리하려는 사람에게 맞는다. README 기준 플러그인 84개, 에이전트 192개, 스킬 156개를 제공하며 라이선스는 MIT다. 작업 난이도에 따라 모델 티어를 갈아끼우는 라우팅도 포함한다.
