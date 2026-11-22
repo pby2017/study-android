@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the MCP code-execution pattern; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the Claude Code GitHub Action card; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:30 KST
+Last update: 2026-11-22 15:51 KST
+
+## Latest pass
+- Separated interactive `@claude` mention mode from automation mode selected by a `prompt` input; clarified default output location.
+- Added actor checks, minimum-permission guidance, setup prerequisites, and the two cost categories (Actions minutes and model billing).
+- Removed the unsupported fixed API-cost estimate and stale star count; added current official docs/repository sources and an interview prompt.
+- Sources and rationale: `research/ai-routine/20261122-claude-code-action-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Reframed MCP code execution as an agent architecture pattern, not an MCP-standard feature; one-file-per-tool is one implementation example.
