@@ -2517,15 +2517,24 @@ cards:
   - 'README가 제시하는 사용처 — local CLI·sandbox·FT/RL baseline·benchmark'
   source: https://github.com/SWE-agent/mini-swe-agent
 - category: ai
-  title: Gemini in Android Studio — Compose·Gradle·크래시 분석까지 읽는 Android 전용 AI 코딩 동료
-  summary: 'Gemini in Android Studio는 Android 개발 전용 AI 코딩 도우미다. IDE 안에서 개발 질의응답, 코드 생성, 관련 자료 찾기, 베스트 프랙티스 안내를 처리하고, 공식 문서는 Compose UI 목업·디버깅, Gradle 빌드 오류 수정, Logcat/App Quality Insights 기반 크래시 분석을 대표 사례로 든다. 공개 기능은 Agent Mode, code completion, code transformation, unit test generation, file attachment, multimodal image attachment, commit message 작성, 문서화까지 넓다. 개인용은 무료 티어가 있고, `.aiexclude`로 Gemini가 볼 수 있는 코드를 제어할 수 있다. 핵심은 Android AI를 별도 브라우저 도구로 빼지 않고 IDE workflow 안에 넣어 컨텍스트 전환을 줄이는 것이다.
-
-    '
+  level: "중급"
+  title: Android Studio Gemini — 무료·API 키·Enterprise의 비용과 데이터 경계
+  summary: "Android Studio의 Gemini 기능은 계정 티어에 따라 사용량과 코드 데이터 처리 조건이 다르다. 무료 티어에는 제한된 일일 사용량이 있고, 채팅에 직접 입력한 코드는 Gemini 학습에 사용될 수 있다. 개인 API 키는 토큰별 과금과 더 큰 context를 제공하며 입력 코드 학습에 사용하지 않는다. Google One도 더 높은 한도와 확장 context를 제공한다. Android Studio Agent Mode 자체의 구현 흐름은 별도 카드에서 다룬다."
   points:
-  - 'Android 전용 AI 도우미 — Compose UI·Gradle·crash analysis까지 IDE 안에서 처리'
-  - 'Agent Mode / code transform / unit test generation / file+image attachment / commit message'
-  - '무료 티어 + `.aiexclude` — 개인용 접근성과 코드 노출 경계를 함께 제공'
+  - "무료 개인 티어 — 일일 한도와 context가 제한적이며, 입력한 코드가 AI 개선에 사용될 수 있음"
+  - "개인 Gemini API 키 — 토큰별 과금; 더 큰 context와 뒤의 모델 사용 가능, 입력 코드는 모델 학습에 사용하지 않음"
+  - "Google One AI Pro/Ultra — 높은 사용 한도·확장 context; Business는 Gemini Enterprise 또는 Google Developer Program 경로와 중앙 관리·데이터 거주 옵션 제공"
+  - "공통 기능에는 Agent Mode·Compose UI 지원·Gradle/Logcat 문제가 포함되지만, 실제 코드를 보낼 context-awareness는 설정과 `.aiexclude` 경계 확인"
   source: https://developer.android.com/studio/gemini/overview
+  sources:
+  - label: Android Studio AI tiers and feature comparison
+    url: https://developer.android.com/studio/gemini/feature-comparison
+  - label: Gemini in Android Studio data and privacy
+    url: https://developer.android.com/studio/gemini/data-and-privacy
+  - label: Add your own Gemini API key
+    url: https://developer.android.com/studio/gemini/add-api-key
+  interview: "Android Studio Gemini 무료 티어와 개인 API 키 사용을 비용·코드 데이터 관점에서 비교해보세요."
+  answer: "무료 티어는 제한된 일일 한도를 제공하고 직접 입력한 코드는 모델 학습에 사용될 수 있다. 개인 API 키는 토큰별 비용이 발생하지만 더 큰 context와 모델 선택권을 제공하며 입력 코드를 모델 학습에 사용하지 않는다. 코드 context 공유 설정은 별도이므로 필요성을 검토하고 `.aiexclude`로 민감한 파일을 제한한다."
 - category: ai
   title: Kiro(AWS) — 코드보다 스펙을 먼저 굳히는 requirements.md·design.md·tasks.md 에이전트
   summary: Kiro는 AWS 계열의 에이전트형 개발 도구로, 기능과 버그 수정을 먼저 구조화한 뒤 구현으로 넘어가게 만든다. 공식 Specs 문서는 모든 spec이 `requirements.md`(또는 `bugfix.md`), `design.md`, `tasks.md`의 세 파일로 구성되며, Feature Specs는 Requirements-First 또는 Design-First 흐름으로 요구사항 수집·기술 설계·실행 계획을 순서대로 만든다고 설명한다. 잘 아는 기능에는 Quick Plan으로 세 산출물을 한 번에 만들 수 있고, 복잡한 기능이나 회귀 비용이 큰 버그에는 표준 Feature Spec과 Bugfix Spec이 더 적합하다. 실행 단계에서는 `tasks.md`의 상태를 추적하고, Run all Tasks가 의존성 그래프를 보고 독립 작업을 wave 단위로 병렬 실행한다. 교훈은 문서가 장식이 아니라, 에이전트가 무엇을 언제 실행해도 되는지 정하는 작업 경계라는 점이다.

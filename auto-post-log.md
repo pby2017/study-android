@@ -4647,3 +4647,9 @@ Refined:
 - 카드: `AI 도입과 개발자 채용 — 채용 건수·주니어 비중·연구 설계를 구분하기`; `AI 허용 기술 면접 — Android 개발자는 생성보다 검증 과정을 보여주기`.
 - 조사 노트: `research/ai-routine/20261123-000826-ai-era-mobile-hiring-interviews.md`.
 - Next: cursor에 기록된 오래된 순서의 `RunAnywhere Kotlin SDK — Android 로컬 AI 엔진과 모델 연결 흐름`을 current docs, 엔진 지원, 개인정보 경계, 모델 다운로드/라이선스와 독립 adoption signal 기준으로 재검토한다.
+### 2026-11-23 00:12 KST — Android Studio Gemini tier·코드 데이터 정책 카드 정리
+
+- 기존 Gemini Android Studio 개요의 긴 기능 목록을 줄이고, 공식 Android Developers 최신 문서 기준으로 무료 개인 tier·Gemini API key·Google One·Business 비용·context·코드 학습 정책을 비교하도록 재구성했다.
+- `.aiexclude`/context-awareness는 기본 opt-in 코드 컨텍스트 경계이며, 직접 채팅에 입력하는 코드의 free-tier 학습 조건과 구분했다. Agent Mode 작업 흐름은 별도 카드와 겹치지 않게 제거했다.
+- Audit: `research/ai-routine/20261123-001237-android-studio-gemini-tiers.md`.
+- Sources: https://developer.android.com/studio/gemini/overview, https://developer.android.com/studio/gemini/feature-comparison, https://developer.android.com/studio/gemini/data-and-privacy, https://developer.android.com/studio/gemini/add-api-key.
