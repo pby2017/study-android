@@ -1799,15 +1799,21 @@ cards:
   interview: 'Gartner Magic Quadrant에서 Leader로 분류된 도구를 바로 선택하면 안 되는 이유는 무엇인가요?'
   answer: 'Magic Quadrant는 실행 역량과 비전 완성도라는 정해진 축의 비교다. 우리 팀의 작업, 데이터·배포 제약, 권한·비용 요구를 모두 대변하지 않는다. 후보를 실제 저장소의 우선 사용 사례에 적용해 결과와 운영 위험을 Proof of Value로 확인해야 한다.'
 - category: ai
-  title: ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다
-  summary: 'ETH Zurich·LogicStar.ai 팀이 실제 코딩 태스크에서 AGENTS.md(레포 컨텍스트 파일)가 코딩 에이전트에 도움이 되는지 처음으로 엄밀하게 측정했다(arXiv 2602.11988). 결론은 직관과 반대다: `/init` 류로 LLM이 자동 생성한 컨텍스트 파일은 성공률을 높이기는커녕 오히려 낮추는 경향을 보였고, 에이전트가 더 많은 단계를 밟게 만들어 추론 비용을 20% 넘게 끌어올렸다. 사람이 손으로 쓴 파일은 소폭의 이득은 있었지만 그 역시 탐색 단계와 비용을 함께 늘렸다. 60,000개 넘는 공개 레포가 이미 이런 파일을 두고 있는데, "있으면 좋다"는 가정이 데이터로 흔들린 셈이다.
-
-    '
+  level: 중급
+  title: AGENTS.md 연구 — 컨텍스트는 성공률보다 비용을 늘릴 수도 있다
+  summary: 'ETH Zurich 연구팀은 SWE-bench와 Python 저장소의 이슈 해결 태스크로 에이전트 컨텍스트 파일을 비교했다. 자동 생성 파일은 태스크 성공률을 유의미하게 높이지 못했지만 추론 비용은 평균 20~23% 증가했다. 개발자가 작성한 파일은 자동 생성본보다 나았으나, 파일이 없는 경우보다 성공률이 높다는 차이는 통계적으로 유의하지 않았다. 따라서 AGENTS.md가 불필요하다는 뜻은 아니다. README에 없는 저장소 고유 규칙만 적고, 실제 태스크로 효과를 검증하라는 결과다. 연구가 Python에 한정되므로 Android/Kotlin에도 그대로 적용된다고 단정할 수 없다.'
   points:
-  - '핵심 발견: LLM이 자동 생성한 AGENTS.md는 컨텍스트 파일 없는 경우보다 성공률을 떨어뜨리는 경향 + 추론 비용 20%↑(논문 abstract 확인)'
-  - '원인 추정: ''전체 테스트 돌려라''·''관련 모듈 다 봐라'' 같은 지시가 에이전트를 불필요한 탐색으로 몰아 단계·비용을 늘림'
-  - '권고: LLM 자동 생성 파일은 빼고, 사람이 추론 불가능한 정보(특수 빌드·툴 커맨드)만 짧게 적어라 — ''자동 생성 디테일''은 독'
+  - '자동 생성 컨텍스트: 성공률 차이는 유의하지 않았고, 비용은 SWE-bench 20%·CTXbench 23% 증가'
+  - '개발자 작성본은 자동 생성본보다 평균 7% 나았지만, 무컨텍스트 대비 2.4% 개선은 유의하지 않음'
+  - '실무 적용: 특수 빌드·규칙처럼 README에 없는 정보만 적고, 팀 저장소의 실제 작업으로 전후 비교'
   source: https://arxiv.org/abs/2602.11988
+  sources:
+  - label: 'arXiv 논문 v3 — abstract·수정 이력·핵심 결론'
+    url: https://arxiv.org/abs/2602.11988
+  - label: '논문 본문 — 벤치마크, 실험 결과, 유의성 검정 및 Python 한계'
+    url: https://arxiv.org/html/2602.11988
+  interview: '이 연구만으로 Android 프로젝트의 AGENTS.md도 제거해야 한다고 결론 내릴 수 있나요?'
+  answer: '아니다. 연구 태스크는 Python 저장소의 이슈 해결에 한정됐다. 자동 생성 개요가 항상 성능을 높인다고 볼 근거는 약하지만 Kotlin·Android 프로젝트까지 일반화할 수는 없다. 비표준 빌드나 팀 규칙처럼 유용할 수 있는 지침은 남기고, 대표 작업에서 성공률·비용을 비교해 판단한다.'
 - category: ai
   title: Dreams(Anthropic) — cross-session memory merge·Harvey 6× task completion
   summary: Dreams(Anthropic Managed Agents·research preview·Code with Claude 2026-05-06)는 세션 사이 비동기 memory curation — input memory store+1~100 session transcript→output store(입력 불변). duplicate merge·stale/contradicted replace·pattern→insight synthesis. instructions로 합성 방향 steer. Harvey legal-drafting case study — Dreams enable 후 agent task completion ~6×. Outcomes(rubric gate) ·Multiagent Orchestration(coordinator roster)와 3축 Managed Agents loop — memory drift·undefined done·context overload. beta headers managed-agents-2026-04-01 + dreaming-2026-04-21.

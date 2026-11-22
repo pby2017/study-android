@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Gartner AI coding-agent evaluation after Cursor CLI; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined AGENTS.md context-file study after Gartner AI coding-agent evaluation; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Revisited the AGENTS.md research card using the revised arXiv v3 abstract and full experimental tables, significance tests, and limitations.
+- Corrected the prior overclaim that auto-generated files lowered success: the measured changes were not statistically significant. They did increase inference cost by 20% (SWE-bench) and 23% (CTXbench); developer-written context beat generated context, but its 2.4% gain over no context was also not significant.
+- Added the study's Python-only boundary so readers do not infer the same outcome for Android/Kotlin. Retained a practical, testable recommendation: encode non-standard repository rules and compare representative tasks.
+- Added intermediate level, a v3-aware audit, full paper links, and an interview retrieval pair. Audit: research/ai-routine/20261122-agents-md-study-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Reframed the Gartner card from a vendor-leader headline into a durable buyer skill: understand the Magic Quadrant axes, then choose by use case and validate with a proof of value.
