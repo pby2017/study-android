@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Devin Desktop after Claude Code prompt-injection guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined CodeRabbit after Devin Desktop; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:24 KST
+Last update: 2026-11-22 17:40 KST
+
+## Latest pass
+- Refined CodeRabbit using the official pricing page, local CLI/IDE review guide, and PR-review overview.
+- Updated plan names and dated prices; distinguished push-before local findings from richer PR reviews, and clarified hourly included allowances plus optional usage billing.
+- Added intermediate difficulty and retrieval Q/A. Audit: `research/ai-routine/20261122-coderabbit-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined Devin Desktop using its current official product page, Windsurf transition announcement, and ACP documentation.
