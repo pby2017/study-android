@@ -2512,15 +2512,21 @@ cards:
   interview: 'Git worktree 기반 AI 에이전트 병렬 실행에서 worktree 격리가 보장하는 것과 보장하지 않는 것은 무엇인가요?'
   answer: 'worktree는 작업 파일과 branch를 분리해 변경 충돌을 줄인다. 그러나 실행 권한, 비밀정보 접근, 포트·DB 같은 공유 자원까지 격리하는 보안 sandbox는 아니다. 별도 workspace별 환경과 최소 권한을 설정하고, diff·테스트를 검토한 뒤 사람이 merge해야 한다.'
 - category: ai
-  title: MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)
-  summary: 'MCP 서버를 여러 개 붙이면 세션 시작 전에 도구 정의가 컨텍스트를 다 잡아먹는 ''context pollution''이 오래 문제였다(한 개발자는 첫 프롬프트도 치기 전에 6.6만 토큰이 사라졌다고 기록). Claude Code의 MCP Tool Search는 세션 시작 시 도구 이름과 서버 instructions만 올리고, 실제 도구 정의는 Claude가 필요할 때 검색해서 불러온다. Anthropic은 2026-01-14에 이 기능을 공개했고, 공식 문서 기준 현재 기본값으로 켜져 있다. 실무 효과는 ''MCP 서버를 더 붙여도 컨텍스트 영향이 거의 없다''는 것 — 그래서 서버 개수보다 서버 instructions를 잘 써두는 게 중요해진다.
-
-    '
+  level: 중급
+  title: MCP Tool Search — 필요한 도구 정의만 찾아 컨텍스트에 불러오기
+  summary: 'MCP 서버를 여러 개 연결하면 도구 이름·설명·입력 schema가 모델의 컨텍스트를 차지하고, 비슷한 도구 사이에서 잘못 고를 수도 있다. Claude Code의 Tool Search는 지원 모델에서 MCP 도구를 기본적으로 지연 로드하고, 작업에 필요한 도구 정의를 검색한 뒤 전체 schema를 불러온다. 도구를 없애는 기능은 아니며 검색 단계가 추가되고 선택된 정의는 여전히 컨텍스트를 쓴다. 작은 도구 묶음이나 매번 필요한 핵심 도구는 검색 지연보다 상시 로드가 더 적합할 수 있다.'
   points:
-  - '기본 동작(공식): 세션 시작 땐 도구 이름+서버 instructions만 로드, 정의는 ToolSearch로 필요할 때만 expand. Claude Code는 서버별 도구 수 상한을 두지 않고 ''컨텍스트 예산''이 실질 한계'
-  - 'ENABLE_TOOL_SEARCH로 조절: unset/true=전부 지연, auto=정의가 컨텍스트 10% 안에 들면 미리 로드(auto:N으로 % 지정), false=전부 미리 로드. Vertex AI·비1차 ANTHROPIC_BASE_URL 프록시에선 기본 비활성'
-  - '제약(공식): tool_reference 블록을 지원하는 모델만 가능 — Haiku는 미지원, Vertex는 Sonnet 4.5·Opus 4.5 이상. 서버 작성자는 instructions를 스킬처럼 ''언제 이 도구를 찾아야 하는지'' 설명하게 쓰는 게 핵심'
+  - '`ENABLE_TOOL_SEARCH`가 unset/`true`이면 지원 환경에서 지연 로드한다. `auto`는 정의가 context 10% 미만이면 미리 로드하고, `auto:N`은 임계값을 바꾸며, `false`는 모두 미리 로드한다. `alwaysLoad: true` 서버는 예외다.'
+  - '모델·호스팅·정책에 따라 동작이 다르다. 공식 지원 목록보다 오래된 모델, 특정 Vertex AI·Microsoft Foundry 경로, HIPAA 설정이나 beta 비활성화는 도구를 미리 로드하거나 검색을 끌 수 있다.'
+  - '검색에는 추가 단계가 필요하다. 도구가 적고 자주 쓰이면 핵심 서버만 `alwaysLoad`로 두고 나머지는 지연 로드한다. gateway를 쓴다면 `defer_loading`과 `tool_reference` 전달을 확인한다.'
   source: https://code.claude.com/docs/en/mcp
+  sources:
+  - label: Claude Code MCP — Tool Search 기본 동작·환경 차이·설정
+    url: https://code.claude.com/docs/en/mcp
+  - label: Anthropic — Advanced Tool Use 설계와 내부 평가의 범위
+    url: https://www.anthropic.com/research/advanced-tool-use
+  interview: 'MCP Tool Search가 컨텍스트 사용량을 줄이는 방식과, 항상 켜 두지 않을 수 있는 경우를 설명해 보세요.'
+  answer: '도구 정의를 모두 처음부터 넣지 않고 작업 중 필요한 도구를 검색해 schema를 추가하므로 초기 context 부담을 줄인다. 검색 자체의 지연이 있고, 선택된 schema도 context를 차지한다. 도구가 적거나 거의 매번 쓰는 경우에는 핵심 도구를 상시 로드할 수 있다. 모델·gateway·조직 정책이 지연 로드를 지원하는지도 확인한다.'
 - category: ai
   title: DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크
   summary: DeepSWE는 코딩 에이전트를 단발 버그픽스가 아니라 오래 걸리는 실제 엔지니어링 과제로 재는 벤치마크다. v1.1은 같은 113개 long-horizon task를 유지하되, 에이전트가 만든 커밋 패치만 뽑아 깨끗한 별도 컨테이너에서 검증하고 CTRF 테스트 리포트로 각 테스트의 통과·실패를 남긴다. 그래서 테스트 프레임워크를 monkey-patch하거나 실패 테스트를 숨기는 식의 지름길이 점수로 새기 어렵다. 2026-06-24 업데이트 기준 리더보드 상위권은 Claude Fable 5 70%±4, GPT-5.5 67%±6, Claude Opus 4.8 59%±2다. 교훈은 모델명 하나보다 task 난이도, harness 격리, 검증 컨테이너, 비용·스텝 수를 같이 봐야 한다는 점이다.

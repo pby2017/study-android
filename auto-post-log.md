@@ -4707,3 +4707,10 @@ Refined:
 - Git worktree는 파일·branch 충돌을 줄이지만 실행 권한이나 비밀정보를 격리하는 sandbox는 아니라는 경계를 명시하고, 중급 수준과 면접 회상 문답을 추가했다.
 - Audit: `research/ai-routine/20261123-003400-conductor-worktree-review.md`.
 - Sources: https://www.conductor.build/docs/first-workspace, https://www.conductor.build/docs/reference/harnesses, https://www.conductor.build/docs/guides/review-and-merge.
+
+### 2026-11-23 00:36 KST — MCP Tool Search 기본값·호환성·절감 범위 수정
+
+- 현재 Claude Code MCP 문서에서 지원 모델, provider·HIPAA 예외, `ENABLE_TOOL_SEARCH` 임계값, `alwaysLoad`, gateway 전달 요건을 다시 확인했다.
+- 근거가 불명확한 6.6만 토큰 사례와 잘못된 공개일·Haiku 비지원·gateway 기본 비활성 주장을 제거했다. 도구 정의 지연 로딩은 context를 줄일 수 있지만 검색 지연과 로드된 schema 비용이 있음을 설명했다.
+- Audit: `research/ai-routine/20261123-003600-mcp-tool-search-refinement.md`.
+- Sources: https://code.claude.com/docs/en/mcp, https://www.anthropic.com/research/advanced-tool-use.

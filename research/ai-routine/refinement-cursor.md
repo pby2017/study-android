@@ -1764,3 +1764,7 @@ Rules:
 ## Latest pass — 2026-11-23
 - Refined `Conductor — 격리 workspace에서 AI 코딩 작업을 병렬로 운영하기` against current first-party workspace, harness/pricing, and review/merge docs. Removed the redundant Orca comparison; refreshed current agent support, app-vs-provider billing, and diff/checks/merge workflow. Added intermediate level and interview retrieval; clarified Git worktree isolation is not a security sandbox (engineering caveat, not a vendor security claim). Audit: `research/ai-routine/20261123-003400-conductor-worktree-review.md`.
 - Next: refine the following older eligible AI card, `MCP Tool Search`; verify present Claude Code behavior, thresholds/default status, and exact token/context claims against official documentation before editing.
+
+## Latest pass — 2026-11-23
+- Refined `MCP Tool Search — 필요한 도구 정의만 찾아 컨텍스트에 불러오기` against the current Claude Code MCP reference and Anthropic advanced tool-use article. Replaced unsupported token anecdotes, stale release/model/gateway claims, and universal context-saving wording with actual lazy-loading behavior, supported-runtime exceptions, controls, gateway requirements, and latency trade-offs. Added intermediate level and retrieval Q&A. Audit: `research/ai-routine/20261123-003600-mcp-tool-search-refinement.md`.
+- Next: continue oldest-first with `DeepSWE(Datacurve)`; verify benchmark task count, patch isolation and current results against the benchmark's primary repository/leaderboard, and remove dated scores if not reproducible/current.
