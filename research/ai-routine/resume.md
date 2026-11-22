@@ -16,10 +16,11 @@
 - Refined Kilo Code: corrected the `--auto` permission semantics, refreshed live popularity/release evidence, and checked the Anaconda acquisition announcement. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`; pushed as `0addf43`.
 - Refined Bumblebee against its README, release page, and live GitHub API: clarified its incident-response scope, exact exposure matching, unsupported configs, and interpretation of no findings. Audit: `research/ai-routine/20261122-bumblebee-refinement.md`; validation/commit/push pending.
 - Refined Deep Agents against LangChain's primary experiment report and current repository/release metadata. Qualified the benchmark result as setup-specific and focused on the fixed-model trace/eval loop. Audit: `research/ai-routine/20261122-deep-agents-refinement.md`; validation/commit/push pending.
+- Refined AAIF against its launch announcement, current project list, and October project-expansion news. Distinguished founding contributions from current hosted projects and removed an old adoption figure. Audit: `research/ai-routine/20261122-aaif-refinement.md`; validation/commit/push pending.
 - The long-term study-android objective remains active: short, evidence-based AI / AI+Android learning cards with difficulty levels, consistent format, and interview retrieval practice. Pure Android topics remain excluded.
 
 ## Next actions
-1. Validate and commit/push the Deep Agents refinement and research checkpoint.
-2. Continue oldest-first with Agentic AI Foundation (AAIF); verify current governance/project status and overlap.
+1. Validate and commit/push the AAIF card refinement and research checkpoint.
+2. Continue oldest-first with the next AI card after AAIF; verify source currency, distinct learning value, and interview retrieval coverage.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.
