@@ -2784,15 +2784,26 @@ cards:
   interview: Agent Skills 표준을 따른 Android 스킬을 설치했는데 에이전트가 찾지 못한다면 무엇을 확인해야 하나요?
   answer: 표준 형식만 맞아도 호스트가 자동으로 찾는 것은 아니다. 해당 에이전트의 지원 여부, 설치 위치와 검색 경로, 호출 방식을 호스트 문서에서 확인한다. 스킬에 스크립트가 있으면 실행 전에 코드도 검토한다.
 - category: ai
-  title: Vibe Kanban(BloopAI) — Claude Code·Codex·Gemini CLI 여러 에이전트를 '칸반 보드'로 병렬 돌리는 오케스트레이션 레이어(Apache-2.0·~27k★)
-  summary: '여러 코딩 에이전트를 한 칸반 보드 위에서 동시에 굴리는 오픈소스 오케스트레이션 도구다. 각 작업을 ''workspace''로 띄우는데, workspace마다 별도 git 브랜치·터미널·dev 서버가 붙고 내부적으로 git worktree로 격리돼 에이전트들이 서로의 작업을 침범하지 못한다. 그 위에서 diff 리뷰, 앱 프리뷰, PR 생성까지 한 화면에서 한다. `npx vibe-kanban` 한 줄로 실행되고 Claude Code·Codex·Gemini CLI·Copilot· Amp·Cursor·OpenCode·Droid 등 10여 개 에이전트를 지원한다(공식 README 기준). 다만 README는 현재 "Vibe Kanban is sunsetting"이라 밝혀, 오픈소스 도구의 운영 지속성을 함께 따져야 하는 사례이기도 하다.
-
-    '
+  level: 중급
+  title: Vibe Kanban — 에이전트 작업 분리와 서비스 지속성을 함께 보기
+  summary: Vibe Kanban은 여러 코딩 에이전트의 작업을 칸반과 workspace로 관리한다. workspace는 별도 Git worktree와 branch에서 변경을 만들고, 사용자는 diff를 검토한 뒤 PR을 진행한다. 다만 worktree는 파일·브랜치 분리 기능이지 보안 sandbox가 아니다. 회사가 종료를 발표한 뒤 오픈소스 프로젝트는 커뮤니티 유지로 전환된 사례이기도 하다.
   points:
-  - 격리 모델 — workspace = 브랜치+터미널+dev서버 한 묶음, 그 토대가 git worktree. 에이전트가 main을 건드리지 않고 병렬로 돌게 만드는 게 핵심(Cursor 2.0·Conductor와 같은 worktree 계열 패턴)
-  - 도구 비종속 — 한 보드에서 Claude Code·Codex·Gemini CLI·GitHub Copilot·Amp·Cursor·OpenCode·Droid·CCR·Qwen Code 등 '10+ 코딩 에이전트'를 섞어 쓴다. Rust(~50%)+TypeScript(~46%)로 작성
-  - 지속성 주의 — README가 'Vibe Kanban is sunsetting'이라 명시하고 외부 PR도 사전 논의 없이는 받지 않는다. 별 수(~27k★)는 시점에 따라 변하는 GitHub 수치이니 '주장'으로 볼 것
+  - Issue는 작업 목표이자 에이전트에게 전달할 요청이다. workspace를 만들면 별도 작업 디렉터리와 branch에서 코드를 바꾸고, 원본 branch는 PR을 만들기 전까지 유지된다.
+  - Git worktree는 여러 branch를 각각의 working directory에서 동시에 다루게 한다. 하지만 프로세스·네트워크·파일 권한을 격리하지 않으므로 실행 보안 경계로 간주하지 않는다.
+  - 2026년 4월 회사 종료 발표는 Vibe Kanban을 오픈소스·커뮤니티 유지로 남기고, 당시 remote 기능을 30일 더 제공한 뒤 local architecture로 전환한다고 안내했다. local workspace는 계속 작동한다고 밝혔다.
+  - 도구를 선택할 때 기능·license뿐 아니라 maintainer와 cloud 의존성도 확인한다. 서비스 종료 발표가 있으면 데이터 내보내기와 local 대안을 점검하고, 최신 상태는 저장소·공식 공지에서 다시 확인한다.
   source: https://github.com/BloopAI/vibe-kanban
+  sources:
+  - label: Vibe Kanban README — 현재 workspace 흐름, 실행 방식, 에이전트 지원, sunset 공지
+    url: https://github.com/BloopAI/vibe-kanban
+  - label: Vibe Kanban 공식 종료 공지 — 회사 종료, OSS 전환, remote/local 기능 안내
+    url: https://www.vibekanban.com/blog/shutdown
+  - label: Vibe Kanban Workspaces — worktree 생성과 작업·리뷰 흐름
+    url: https://vibekanban.com/docs/workspaces
+  - label: Git 공식 문서 — worktree는 동일 저장소에 연결된 복수 working tree
+    url: https://git-scm.com/docs/git-worktree
+  interview: Git worktree 기반 코딩 에이전트 workspace가 보장하는 격리와 보장하지 않는 격리는 무엇인가요?
+  answer: 별도 working directory와 branch에서 파일 변경을 분리해 병렬 작업의 충돌을 줄인다. 하지만 프로세스·네트워크·권한을 막는 sandbox는 아니다. 실행 환경의 권한 제한은 별도로 두고 diff와 테스트를 검토한 뒤 PR을 진행한다.
 - category: ai
   title: 토스의 'Claude Code를 레이어드 아키텍처처럼' — 팀 지식을 Global/Domain/Local 3계층 플러그인으로 굳히기
   summary: '토스 기술블로그(toss.tech)는 코딩 에이전트를 ''개인 생산성 도구''에서 ''팀의 일하는 방식''으로 끌어올리는 패턴을 제안한다. 핵심은 흩어진 규칙·노하우를 Claude Code 플러그인에 담되, 그 지식을 세 계층으로 나누는 것이다 — 전사 공통(보안·코딩 스타일)은 Global, 결제·정산·회원 같은 도메인 로직은 Domain, 특정 레포의 구현 디테일은 Local. 이렇게 계층화된 플러그인이 모이면 그 자체로 ''살아있는 지식 베이스(Living Knowledge Base)''가 되고, 나아가 조직의 워크플로(예: /new-feature)를 배포하는 사내 마켓플레이스로 확장한다는 구상이다.

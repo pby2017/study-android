@@ -1,6 +1,10 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-23
+- Refined `Vibe Kanban(BloopAI)` using its current repository, official 2026 shutdown announcement, workspaces documentation, and Git worktree reference. Corrected the overclaim that worktree provides agent security isolation; distinguished an announced local transition from verified completion; added project-continuity and diff-review lessons. GitHub snapshot: 28.8k stars/3.1k forks/2,093 commits, attention/activity only. Audit: `research/ai-routine/20261123-021000-vibe-kanban-worktree-and-sunset.md`.
+- Next: continue oldest-first with the next AI or AI+Android card lacking review; inspect existing audits and current primary documentation before editing.
+
+## Latest pass — 2026-11-23
 - Refined `android/skills(Google 공식)` as an AI+Android lesson on packaging specialized Android instructions and verifying skill discovery per host. Removed stale star/release claims and the overly broad install-to-all-agents statement; documented current Android CLI commands, Android Studio's paths/invocation, standard limitations, and executable-script review. Sources include current Android Developers pages, the project README, and Agent Skills specification. GitHub snapshot: 10.7k stars/702 forks, attention-only. Audit: `research/ai-routine/20261123-020400-android-skills-host-boundaries.md`.
 - Next: continue oldest-first with the next AI or AI+Android card lacking review; inspect existing audits and current primary documentation before editing.
 

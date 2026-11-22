@@ -4846,3 +4846,13 @@ Refined:
 - GitHub 관심 신호는 검토 시점의 10.7k stars·702 forks로 감사 기록에만 남겼다.
 - Audit: `research/ai-routine/20261123-020400-android-skills-host-boundaries.md`.
 - Sources: https://github.com/android/skills, https://developer.android.com/tools/agents/android-skills, https://developer.android.com/studio/gemini/skills, https://agentskills.io/specification.
+
+
+### 2026-11-23 02:10 KST — Vibe Kanban worktree와 운영 지속성
+
+- Vibe Kanban 카드에서 Git worktree의 작업 분리와 보안 sandbox를 구분했다. worktree는 별도 디렉터리·branch를 제공하지만 프로세스/네트워크 권한 격리를 보장하지 않는다.
+- 2026-04-10 회사 종료 공지를 확인했다. 저장소는 OSS·커뮤니티 유지 예정이며, remote 기능을 30일 뒤 local architecture로 전환한다는 당시 계획은 완료 사실과 구분했다.
+- 오래된 별 수·기능 나열을 제거하고 중급 난이도와 격리 경계 면접 Q&A를 추가했다.
+- GitHub snapshot: 28.8k stars·3.1k forks·2,093 commits; 감사 기록의 관심/활동 신호로만 사용했다.
+- Audit: `research/ai-routine/20261123-021000-vibe-kanban-worktree-and-sunset.md`.
+- Sources: https://github.com/BloopAI/vibe-kanban, https://www.vibekanban.com/blog/shutdown, https://vibekanban.com/docs/workspaces, https://git-scm.com/docs/git-worktree.
