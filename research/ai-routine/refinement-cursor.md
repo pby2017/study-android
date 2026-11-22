@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Zed ACP and parallel agents after the Official MCP Registry card; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined OpenSkills after Zed ACP; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:34 KST
+Last update: 2026-11-22 17:46 KST
+
+## Latest pass
+- Refined `OpenSkills` against its current README, OpenAI's native Skills docs, Anthropic's Agent Skills article, GitHub API/releases, and npm metadata.
+- Replaced “universal native skill” wording with the actual AGENTS.md plus CLI bridge and its prerequisites; corrected default/universal install paths and install-sync-read flow.
+- Added safety review advice, current popularity/maintenance snapshots, intermediate difficulty, and an interview question on native-vs-bridged discovery.
+- Sources and rationale: `research/ai-routine/20261122-openskills-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined the Zed ACP card against current External Agents docs, 1.0 and Parallel Agents announcements, licensing overview, and live GitHub release/API snapshots.
