@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: corrected Claude Agent SDK billing guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Firecrawl MCP tool selection; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:00 KST
+Last update: 2026-11-22 16:12 KST
+
+## Latest pass
+- Replaced the stale “most popular” claim and 6.6k-star snapshot with a dated, verified ~7.9k★ repository signal.
+- Updated the card for current hosted OAuth/API-key and keyless modes; explained when to search, scrape, map, crawl, or interact, including the per-result scrape-cost caveat.
+- Checked adjacent Playwright, llms.txt, and MCP code-execution cards; their learning objectives are distinct.
+- Sources and rationale: `research/ai-routine/20261122-firecrawl-mcp-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against current primary sources and check overlap.
 
 ## Latest pass
 - Corrected the Claude Agent SDK billing card against Anthropic’s current Help Center: the announced June separation was paused; plan-authenticated `claude -p` remains within subscription limits.
