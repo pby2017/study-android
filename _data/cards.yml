@@ -3813,15 +3813,16 @@ cards:
 - category: ai
   title: 'AgentStop — 로그확률·반복 신호로 로컬 에이전트를 조기 종료하기'
   level: "고급"
-  summary: 'AgentStop은 에이전트의 각 작업 단계에서 토큰 로그확률의 낮은 값, 출력 길이, 연속 단계의 토큰 중복을 모아 XGBoost 분류기로 성공 가능성을 예측하는 연구다. 모델·작업·단계별로 분류기를 학습하고, 단계가 끝날 때 계속 실행할지 판단한다. 저자 실험에서 FRAMES는 5단계 종료 시 낭비 에너지가 약 22%, SimpleQA는 4단계 종료 시 약 23% 줄었고 두 작업의 task utility 하락은 2% 미만이었다. Qwen3-Coder로 SWE-Bench Verified를 실행한 코딩 실험은 5단계 종료 시 낭비 에너지 약 18~19%, utility 하락 약 3%를 보고했다. 평가는 Apple M1 Max와 NVIDIA Jetson Orin AGX 등에서 수행했으며, Android 구현이나 휴대전화 실측은 확인되지 않았다.'
+  summary: 'AgentStop은 작업 단계마다 토큰 로그확률 하위 10개, 출력 토큰 수, 인접 단계의 토큰 겹침률을 XGBoost 분류기에 넣어 실패 가능성을 예측하고, 계속 실행할지 판단하는 연구다. 분류기는 에이전트·작업·단계별 성공·실패 기록으로 학습한다. Qwen3-30B-A3B 실험에서 FRAMES는 5단계에서 낭비 에너지 22% 감소·task utility 1.6% 하락을 보였고, SimpleQA는 3~4단계에서 25% 감소·utility 하락 5% 미만이었다. SWE-Bench Verified의 Qwen3-Coder-30B-A3B는 5단계에서 18~19% 감소·utility 하락 5% 미만이었다. 이 값은 Apple M1 Max 실험이며 Android 실측이 아니다.'
   points:
   - '신호: 토큰 로그확률 하위값·단계별 출력 길이·인접 단계 간 중복'
-  - '보고치: FRAMES 22%, SimpleQA 23%, SWE-Bench 약 18~19% 낭비 에너지 감소; task utility 영향은 데이터셋별로 다름'
-  - '성공/실패 데이터로 모델·작업·단계별 분류기를 학습; 조기 종료 임계값은 실제 utility와 함께 조정'
-  - '코드는 MIT로 공개되고 실험 데이터도 제공; M1 Max/Jetson 연구이며 웹 QA는 Brave Search API 사용, Android 구현은 아님'
-  interview: '에이전트의 토큰 로그확률만 보고 실행을 중단해도 안전할까요?'
-  answer: '아니다. AgentStop은 로그확률뿐 아니라 단계별 출력 길이와 연속 단계 간 중복도 사용하고, 학습한 분류기를 작업 단계마다 평가한다. 조기 종료가 성공할 작업까지 실패로 바꿀 수 있으므로 모델·작업별 검증 데이터에서 절감 에너지와 task utility 손실을 함께 측정해 임계값을 정해야 한다. 논문 수치는 로컬 M1 Max/Jetson 실험이며 Android에서 검증된 결과가 아니다. 또 웹 QA 실험은 Brave Search API를 사용하므로 모델이 로컬에서 돈다는 사실만으로 전체 데이터 경로가 로컬이라고 단정할 수 없다.'
-  source: https://brave.com/research/files/AgentStop.pdf
+  - '저자 보고치: FRAMES 22% 절감·utility 1.6% 하락; SimpleQA 최대 25%·utility 하락 5% 미만; SWE-Bench 18~19%·utility 하락 5% 미만'
+  - 'Qwen3-1.7B에서는 분류 성능이 무작위 추측 수준이라 baseline보다 낫지 않았음; 작은 모델에도 효과가 난다고 일반화하지 않기'
+  - '학습한 모델·작업·단계에 맞춰 임계값을 검증; 너무 공격적으로 중단하면 성공할 실행도 실패 처리되어 에너지 낭비가 되레 늘 수 있음'
+  - '측정은 Apple M1 Max에서 수행; Jetson Orin은 코드 테스트 대상. QA는 Brave Search API를 사용하며, Android 휴대전화 실측은 아님'
+  interview: 'AgentStop의 조기 종료기를 다른 모델이나 Android 앱에 바로 적용해도 될까요?'
+  answer: '바로 적용하면 안 된다. 논문은 에이전트·작업·단계별 분류기를 학습했고, Qwen3-1.7B에서는 효과가 baseline보다 낫지 않았다. 임계값을 공격적으로 잡으면 성공할 실행까지 중단해 task utility와 에너지 절감이 함께 나빠질 수 있다. 결과는 64GB M1 Max에서 측정했고 24GB급 메모리를 권장하는 Qwen3 30B 계열 실험이므로 Android 실측이나 작은 기기에서의 효과를 입증하지 않는다. QA에는 Brave Search API도 쓰여 모든 데이터 경로가 로컬인 것은 아니다.'
+  source: https://arxiv.org/html/2605.15206
 - category: ai
   level: "중급"
   title: 'Android Studio Agent Mode — IDE·빌드·실기기를 잇는 개발 루프'

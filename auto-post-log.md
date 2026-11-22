@@ -4588,3 +4588,11 @@ Refined:
 - GitHub displayed 10.4k stars / 422 forks; strong interest, not proof of production maturity. SDK README/app README version pins differ; omitted exact version. No Android/airplane-mode/NPU tests.
 - 2026-11-22 19:26 KST | Microsoft Agent Framework 악성 PyPI 릴리스 — 패키지 import 전에도 실행되는 `.pth` 훅 | https://github.com/advisories/GHSA-764m-3ppc-5m73
 - 2026-11-22 19:26 KST | (갱신) Claude Code fork — 전체 대화 맥락을 이어받는 병렬 작업과 worktree 격리 | https://code.claude.com/docs/en/sub-agents
+
+### 2026-11-22 23:40 KST — AgentStop 카드 근거 정정 및 상세화
+
+- Refined `AgentStop — 로그확률·반복 신호로 로컬 에이전트를 조기 종료하기` against its ACM CAIS '26 paper, Brave research summary, and official repository.
+- Corrected the model's features and qualified results to the selected Qwen3-30B task/step settings; added the Qwen3-1.7B no-improvement counterexample and the false-positive stopping trade-off.
+- Corrected hardware scope: energy measurements were performed on Apple M1 Max; Jetson AGX Orin was an artifact-tested device, not the reported measurement platform. No Android phone evaluation was found.
+- Repository had 18 stars / 0 forks at review; cited as modest interest, not broad adoption. QA also used Brave Search API.
+- Audit: `research/ai-routine/20261122-agentstop-refinement.md`.
