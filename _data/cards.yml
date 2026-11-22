@@ -1439,15 +1439,21 @@ cards:
   interview: 'Pydantic AI의 구조화 출력은 모델 응답을 컴파일 타임에 안전하게 만들며, 검증에 실패하면 항상 자동 재요청하나요?'
   answer: '아니다. 출력 타입은 응답을 구조화하고 실행 중 검증하는 데 도움을 주지만 컴파일 타임 보장이나 의미적 정확성을 보장하지 않는다. 사용자 정의 output validator가 `ModelRetry`를 발생시켜야 재요청하며, 이 재시도는 설정된 제한 예산을 사용한다.'
 - category: ai
+  level: 중급
   title: Backlog.md — 깃 레포를 사람·AI 공용 칸반 보드로 바꾸는 마크다운 태스크 매니저
-  summary: 'Backlog.md는 별도 서버나 SaaS 없이, 깃 저장소 안에서 작업(task)을 평범한 마크다운 `.md` 파일로 관리하는 오픈소스 도구다(MIT 라이선스). README에 따르면 모든 이슈가 깃에 커밋되는 .md 파일이라 PR·브랜치·히스토리와 자연스럽게 묶이고, 제로 설정 CLI로 터미널 칸반 보드와 웹 UI를 띄울 수 있다. 핵심은 ''AI 에이전트와 사람이 같은 작업 목록을 공유''한다는 점이다. Claude Code·Gemini CLI·Codex·Kiro 등 MCP/CLI 호환 어시스턴트를 지원하며, MCP 커넥터를 쓰면 이 도구들에 워크플로 지침까지 자동 주입된다. 에이전트가 작업을 To Do→In Progress→Done으로 옮기고 진행 상황을 파일에 남기므로, 세션이 바뀌어도 ''무엇을 하던 중이었나''가 레포에 그대로 남는다. 실무 포인트는 핸드오프다. 사람이 잘게 쪼갠 태스크를 에이전트에 넘기고, 에이전트가 작업하며 상태를 갱신하면, 별도 트래커 없이 깃 하나로 사람-AI 협업의 단일 진실 공급원(source of truth)을 만들 수 있다.
-
-    '
+  summary: 'Backlog.md는 Git 저장소의 작업을 프로젝트 내부 Markdown 파일로 관리하는 로컬 우선 태스크 보드다. CLI와 터미널 칸반, 로컬 웹 보드를 제공하며, Git 원격 동기화는 선택 사항이다. AI 연결도 필수 MCP가 아니다. 초기 설정에서 권장되는 CLI 지침 파일을 만들거나, 선택적으로 MCP 커넥터를 구성하거나, AI 설정을 건너뛸 수 있다. AI 작업 흐름은 태스크와 수용 기준을 먼저 검토하고, 계획을 확인한 뒤 구현·테스트를 리뷰하는 체크포인트를 둔다. 작업 기록이 저장소에 남아 다음 세션에서도 이어볼 수 있지만, 에이전트가 항상 자동으로 상태를 정확히 갱신하는 것은 아니므로 사람이 완료 기준과 결과를 검증해야 한다.'
   points:
-  - 작업 = 깃에 커밋되는 마크다운 .md 파일 — 서버·SaaS 없이 레포 안에서 칸반·진행 추적(MIT 라이선스)
-  - Claude Code·Gemini CLI·Codex·Kiro 등 지원, MCP 커넥터가 에이전트에 워크플로 지침 자동 설정
-  - 사람이 태스크 쪼개 핸드오프 → 에이전트가 To Do→In Progress→Done 갱신 → 세션 바뀌어도 맥락이 레포에 남음
+  - '작업은 레포 내부 Markdown으로 기록하고 CLI·터미널 칸반·로컬 웹 보드로 관리; 원격 Git과 MCP는 필수가 아님'
+  - 'AI 연결 선택지: CLI 지침 파일(권장) / MCP 커넥터(선택) / AI 설정 생략'
+  - '태스크·수용 기준 → 계획 → 구현·테스트를 사람 검토 지점으로 나눠 작업 범위와 핸드오프를 명확히 한다'
   source: https://github.com/MrLesk/Backlog.md
+  sources:
+  - label: Backlog.md README — 설치·AI 연결 방식·검토 단계
+    url: https://github.com/MrLesk/Backlog.md#readme
+  - label: Backlog.md GitHub 저장소 — 라이선스·관심도 스냅샷
+    url: https://github.com/MrLesk/Backlog.md
+  interview: 'Backlog.md에서 AI 에이전트와 작업 목록을 공유할 때 MCP가 필수인가요? 사람이 검토해야 할 핵심은 무엇인가요?'
+  answer: 'MCP는 선택 사항이다. 권장 흐름은 저장소에 CLI 지침을 설정하고 에이전트가 `backlog instructions overview`를 실행하게 하는 것이다. MCP 없이도 AI 설정을 생략하거나 CLI 지침을 쓸 수 있다. 사람은 태스크·수용 기준, 구현 전 계획, 코드·테스트 결과를 각각 검토하고 완료 상태가 실제 기준을 만족하는지 확인한다.'
 - category: ai
   title: Ralph Wiggum 루프 — '멍청하지만 절대 안 멈추는' 에이전트 bash 패턴
   summary: Geoffrey Huntley가 심pson 캐릭터 이름을 따 정리한 Ralph는 본질적으로 `while :; do cat PROMPT.md | claude-code; done` 한 줄이다. 매 반복마다 새 컨텍스트로 에이전트를 띄워 한 번에 한 가지만 시키고, 상태는 fix_plan.md·AGENT.md·git 히스토리에 두어 컨텍스트 rot를 우회한다. 테스트·타입체커·정적분석을 backpressure로 걸어 잘못된 생성을 거른다. Anthropic은 2025-12 공식 ralph-wiggum 플러그인(/ralph-loop·Stop 훅)으로 채택했고, Continuous Claude는 PR·CI·머지까지 붙인 확장이다.

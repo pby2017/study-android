@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Pydantic AI after Cursor Rules; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Backlog.md after Pydantic AI; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:41 KST
+Last update: 2026-11-22 16:42 KST
+
+## Latest pass
+- Refined Backlog.md against its current official README and GitHub repository snapshot.
+- Corrected the AI setup choices (CLI instructions recommended, MCP optional, or skip), qualified local-first/Git behavior, and replaced implied automatic status transitions with the documented human review checkpoints for task scope, plan, and code/tests. Added intermediate difficulty and an interview retrieval pair.
+- Sources and rationale: `research/ai-routine/20261122-backlog-md-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined the Pydantic AI card against the current official output and overview documentation plus the live GitHub repository page.
