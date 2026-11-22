@@ -1781,15 +1781,23 @@ cards:
   interview: '`agent -p`가 대화형 모드보다 안전하다고 볼 수 있나요? `--force`는 어떤 위험을 추가하나요?'
   answer: '아니다. print mode는 승인 질문을 할 수 없을 뿐, 허용된 workspace 편집은 실행한다. 승인 필요한 동작은 거부한다. `--force`는 deny 규칙과 팀 정책을 제외한 동작을 승인 없이 실행하므로 격리된 작업공간에서 제한적으로 사용해야 한다.'
 - category: ai
-  title: Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기
-  summary: 'GitHub가 공개한 2026 Gartner Magic Quadrant 요약에서 눈에 띄는 점은 카테고리명이 ''AI Code Assistants''가 아니라 ''Enterprise AI Coding Agents''라는 것이다. GitHub 글은 Gartner가 2026-05-20 보고서에서 12개 벤더를 실행력과 비전 완성도 기준으로 평가했고, GitHub·Anthropic·Cursor·OpenAI를 Leader 사분면에 뒀다고 설명한다. 다만 이 글은 GitHub의 해설이므로 "GitHub가 1위라서 좋다"가 교훈은 아니다. 더 실용적인 신호는 시장의 평가 단위가 자동완성·채팅에서 이슈 처리, 코드 리뷰, PR, 보안, 거버넌스까지 포함한 에이전트 워크플로로 넓어졌다는 점이다. 도구를 고를 때도 모델 품질 하나보다 멀티모델 선택, 감사·통제, SDLC 표면 통합을 같이 봐야 한다.
-
-    '
+  level: 중급
+  title: Gartner AI 코딩 에이전트 보고서 — 순위보다 팀의 사용 사례를 검증하라
+  summary: 'Gartner는 2026년 보고서에서 시장 이름을 Enterprise AI Coding Agents로 정하고 12개 공급자를 비교했다. Magic Quadrant의 두 축은 실행 역량(Ability to Execute)과 비전 완성도(Completeness of Vision)다. 이는 전체 팀에 가장 좋은 제품의 순위가 아니다. Gartner도 예상 성과·배포 제약·우선 사용 사례를 기준으로 후보를 고른 뒤 Proof of Value로 검증하라고 권한다. Android 팀이라면 코드 생성뿐 아니라 저장소 맥락, 테스트·리뷰 흐름, 권한·감사, 비용을 실제 작업으로 비교한다.'
   points:
-  - '공개 출처 기준: 2026-05-20 Gartner 보고서명은 Enterprise AI Coding Agents'
-  - GitHub 글은 12개 벤더 평가와 Leader 4곳(GitHub·Anthropic·Cursor·OpenAI)을 설명
-  - '실무 함의: 자동완성보다 이슈→리뷰→PR→보안→거버넌스까지 이어지는 에이전트 표면을 평가'
-  source: https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/
+  - '두 축: 실행 역량과 비전 완성도; 사분면은 특정 평가 기준에 따른 위치이지 만능 점수가 아니다'
+  - 'Gartner의 선택 기준: 원하는 결과·배포 제약·주요 사용 사례를 정하고 후보를 PoV로 시험한다'
+  - 'Android 실무 검증: 테스트/리뷰 연계, 저장소 접근권한, 감사 기록, 비용을 실제 작업에서 비교한다'
+  source: https://www.gartner.com/en/documents/7879277
+  sources:
+  - label: 'Gartner Magic Quadrant — 보고서명·발행일·12개 공급자·평가 축'
+    url: https://www.gartner.com/en/documents/7879277
+  - label: 'Gartner 선택 가이드 — 결과·배포 제약·사용 사례와 PoV 검증'
+    url: https://www.gartner.com/en/documents/8338717
+  - label: 'Gartner newsroom — 개발자 경험 외 거버넌스·가격·지원·상업적 준비도도 강조'
+    url: https://www.gartner.com/en/newsroom/press-releases/2026-05-20-gartner-says-the-market-for-enterprise-ai-coding-agents-is-entering-a-new-phase-of-expansion-and-competitive-realignment
+  interview: 'Gartner Magic Quadrant에서 Leader로 분류된 도구를 바로 선택하면 안 되는 이유는 무엇인가요?'
+  answer: 'Magic Quadrant는 실행 역량과 비전 완성도라는 정해진 축의 비교다. 우리 팀의 작업, 데이터·배포 제약, 권한·비용 요구를 모두 대변하지 않는다. 후보를 실제 저장소의 우선 사용 사례에 적용해 결과와 운영 위험을 Proof of Value로 확인해야 한다.'
 - category: ai
   title: ETH Zurich 연구 — AGENTS.md를 LLM에게 자동 생성시키면 오히려 성공률이 떨어진다
   summary: 'ETH Zurich·LogicStar.ai 팀이 실제 코딩 태스크에서 AGENTS.md(레포 컨텍스트 파일)가 코딩 에이전트에 도움이 되는지 처음으로 엄밀하게 측정했다(arXiv 2602.11988). 결론은 직관과 반대다: `/init` 류로 LLM이 자동 생성한 컨텍스트 파일은 성공률을 높이기는커녕 오히려 낮추는 경향을 보였고, 에이전트가 더 많은 단계를 밟게 만들어 추론 비용을 20% 넘게 끌어올렸다. 사람이 손으로 쓴 파일은 소폭의 이득은 있었지만 그 역시 탐색 단계와 비용을 함께 늘렸다. 60,000개 넘는 공개 레포가 이미 이런 파일을 두고 있는데, "있으면 좋다"는 가정이 데이터로 흔들린 셈이다.

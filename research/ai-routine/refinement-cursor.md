@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Cursor CLI headless after Mastra; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Gartner AI coding-agent evaluation after Cursor CLI; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Reframed the Gartner card from a vendor-leader headline into a durable buyer skill: understand the Magic Quadrant axes, then choose by use case and validate with a proof of value.
+- Verified the May 20, 2026 report title, 12 listed vendors and evaluation axes using Gartner's report abstract; checked Gartner's September selection guidance and May newsroom release for outcome, deployment constraint, use-case, PoV, governance, support and pricing criteria.
+- Removed a vendor-marketing-led emphasis on four named Leaders; it was less useful than the report's own caveat that market placement is not a universal product recommendation.
+- Added intermediate level, current Gartner sources, Android-team comparison criteria, and an interview retrieval pair. Audit: research/ai-routine/20261122-gartner-coding-agents-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined Cursor CLI headless mode against current official docs for permissions, JSON/NDJSON output and API-key authentication.
