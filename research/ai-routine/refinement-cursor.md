@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Retired the `Cipher → ByteRover CLI` card: upstream CLI repository is archived, latest release is stale, current ByteRover site has repositioned to a different product, and the deck already covers agent-memory concepts in several more distinctive cards. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.
+- Next: continue oldest-first with `Kilo Code`; verify current commands, extension/CLI workflow, model/provider claims, popularity and recent releases before editing.
+
+## Previous latest pass — 2026-11-22
+## Latest pass — 2026-11-22
 - Refined Chrome DevTools MCP against its README, release and advanced-usage docs plus OpenAI's Browser docs; corrected stale routing flag, separated Codex Developer mode from MCP setup, and clarified data/telemetry exposure. Audit: `research/ai-routine/20261122-chrome-devtools-mcp-refinement.md`.
 - Next: continue oldest-first with `Cipher → ByteRover CLI`; re-check current product identity, commands, benchmark claims and popularity, and keep the lesson distinct from other agent-memory cards.
 

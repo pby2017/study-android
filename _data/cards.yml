@@ -2247,16 +2247,6 @@ cards:
   interview: 'Chrome DevTools MCP와 Codex Developer mode를 같은 것으로 보면 안 되는 이유와, 둘을 쓸 때 가장 먼저 확인할 권한은 무엇인가요?'
   answer: 'MCP는 별도로 연결하는 서버이고 Developer mode는 Codex 데스크톱의 Browser/Chrome 기능이다. 둘 다 페이지 정보와 민감한 브라우저 내부에 닿을 수 있으므로 연결한 브라우저·프로필, CDP 승인 범위, 데이터 수집 설정을 확인해야 한다.'
 - category: ai
-  title: Cipher → ByteRover CLI — 도구가 바뀌어도 따라다니는 '코딩 에이전트용 휴대 메모리 레이어'
-  summary: 'Cipher는 이제 ByteRover CLI(brv)로 리브랜딩된 "코딩 에이전트용 영속 메모리" 프로젝트다. README 기준 핵심은 프로젝트 지식을 컨텍스트 트리에 넣고, `brv vc` 명령으로 branch·commit·merge·push/pull을 하며, 클라우드와 동기화해 팀·머신·도구 사이에서 같은 기억을 재사용하는 것이다. Cursor에서 쌓은 맥락을 Claude Code·Windsurf·Cline 같은 다른 에이전트로 옮겨도 처음부터 다시 설명하지 않게 만드는 레이어에 가깝다. 현재 문서는 `brv webui`를 기본 UI로 두고, MCP 서버·20개 LLM 제공사·24개 내장 도구·22개 이상 코딩 에이전트 호환을 내세운다. 단, 성능 수치는 프로젝트 자체 벤치마크이므로 제품 비교 지표가 아니라 "장기 대화 메모리를 어떻게 평가했는가"의 참고값으로 봐야 한다.
-
-    '
-  points:
-  - '`brv vc`로 컨텍스트 트리를 버전 관리 — legacy `brv push/pull`보다 commit 단위 공유가 핵심'
-  - '`brv webui`, MCP 서버, provider/model switch, hub/connectors까지 메모리 운영면을 한 CLI에 묶음'
-  - 자체 벤치마크는 LoCoMo 96.1%·LongMemEval-S 92.8%; 2026-06-26 확인 기준 GitHub 4,879★
-  source: https://github.com/campfirein/byterover-cli
-- category: ai
   title: Kilo Code — VS Code·JetBrains·CLI를 오가는 오픈소스 코딩 에이전트(MIT·24.6k★)
   summary: 'Kilo Code는 VS Code, JetBrains, CLI에서 같은 에이전트 경험을 제공하려는 MIT 오픈소스 코딩 에이전트다. 현재 README는 500개 이상 모델을 고르고 작업 중 모델을 바꿀 수 있으며, provider pricing·zero markup·no API keys required to start를 내세운다. 핵심은 "에이전트 하나"보다 작업 모드 분리다. Code는 기본 구현, Plan은 코드 변경 전 설계, Ask는 파일을 건드리지 않는 코드베이스 질의, Debug는 추적, Review는 성능·보안·스타일·테스트 관점 점검으로 나뉜다. CLI는 `kilo run --auto`로 CI/CD 무인 실행도 가능하지만, 이 모드는 permission prompt를 모두 꺼서 trusted environment에서만 써야 한다.
 
