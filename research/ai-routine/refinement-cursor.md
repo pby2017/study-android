@@ -1685,3 +1685,7 @@ Rules:
 ## Latest pass — 2026-11-22
 - Refined `Kotlin AI 라이브러리 도입 전 확인할 것: README의 Android 약속과 실제 Gradle 타깃` against the current README, getting-started guide, module Gradle files, release page, and GitHub popularity snapshot. Clarified the guide/build mismatch (Android mentioned, JVM-only declared targets, Desktop runnable example, placeholder artifact coordinates), added a concrete Android adoption gate and intermediate level, and preserved uncertainty rather than claiming Android use is impossible. Recorded 11 stars/1 fork; do not present KARL as a hot or widely adopted dependency. Audit: `research/ai-routine/20261122-231118-project-karl-refinement.md`.
 - Next: review `Apple Trust Insights: 기기 신호와 클라우드 모델을 결합한 사기 위험 평가`; verify official API availability, OS requirements, and the local-versus-server processing boundary.
+
+## Latest pass — 2026-11-22
+- Refined `Apple Trust Insights: 기기 신호와 클라우드 모델을 결합한 사기 위험 평가` against Apple's WWDC26 session, iOS 27 release notes, and `reportConsumption` API documentation. Added the intermediate level; clarified entitlement/authorization, network latency, local device-signal handling versus cloud/account signals, `unknown` semantics, decisioning limits, and required per-evaluation feedback versus optional offline fraud labels. Audit: `research/ai-routine/20261122-231540-apple-trust-insights-refinement.md`.
+- Next: review `Flutter 문서 레이아웃 AI: 추론 오프라인과 앱 설치 오프라인은 다르다`; verify Android support and model/download/offline boundaries from official sources.

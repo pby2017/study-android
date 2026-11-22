@@ -3745,15 +3745,20 @@ cards:
   interview: 'KMP·Compose·Room을 사용한다고 소개하는 AI 라이브러리의 Android 지원 여부를 어떻게 판정하나요?'
   answer: '소개 문구가 아니라 실제 배포 모듈의 Gradle 타깃과 플랫폼별 구현, 배포 좌표·버전, Android 앱의 빌드 및 실행 예제로 확인한다. 공통 소스나 Room common 의존성은 Android 런타임 지원 자체를 증명하지 않는다. KARL은 시작 가이드에서 Android를 언급하지만 현재 확인한 모듈은 JVM 타깃이고 실행 예제는 Desktop이므로, 별도 검증 전에는 Android-ready로 단정하지 않는다.'
 - category: ai
+  level: 중급
   title: 'Apple Trust Insights: 기기 신호와 클라우드 모델을 결합한 사기 위험 평가'
-  summary: 'Trust Insights는 Apple이 iOS 27용으로 소개한 사기·강압 위험 평가 framework다. 앱은 entitlement와 사용자 승인을 확인한 뒤 Swift API로 평가를 요청한다. 평가는 인터넷 연결이 필요하고, 기기 신호는 로컬 처리되지만 최종 결과는 Apple의 서버·계정 신호를 포함할 수 있다. `unknown`은 “위험 낮음”이 아니라 근거 부족이다. 앱은 신호를 기존 위험 판단에 보조로 쓰고, 각 평가 후 `reportConsumption`을 호출해야 한다. 사후 사기 라벨 제출은 선택 사항이다.'
+  summary: 'Trust Insights는 iOS 27의 Swift framework로, 금융·계정 등 민감한 작업에서 사회공학·강압 위험을 평가하는 신호를 제공한다. Xcode capability/entitlement와 사용자 승인이 필요하고, 평가는 인터넷 연결이 있어야 하며 몇 초 걸릴 수 있다. 기기 신호는 기기 안에서 처리되지만 결과에는 Apple 계정·속도 신호가 더해질 수 있다. `unknown`은 안전 판정이 아니다. 결과는 기존 위험 로직의 보조 신호로 쓰고, 단독 차단 기준으로 삼지 않는다.'
   points:
-  - '입력: 상호작용 패턴·타이밍·기본 센서 신호; 사진·메시지·메일의 콘텐츠는 분석하지 않는다고 Apple이 설명한다.'
-  - '`unknown / medium / high` 중 `unknown`을 낮은 위험으로 처리하지 않는다.'
-  - '평가에는 네트워크가 필요하다. 실시간 사용 결과 보고는 필수, 사후 fraud label은 선택 사항.'
-  source: https://developer.apple.com/videos/play/wwdc2026/379/
-  interview: 'Trust Insights의 `unknown` 결과를 낮은 위험으로 해석하면 왜 안 되나요?'
-  answer: 'Apple 설명에서 `unknown`은 사기 위험이 낮다는 판정이 아니라, 시스템이 위험 근거를 확인하지 못했다는 뜻이다. 따라서 앱은 이를 정상·안전 신호로 취급하지 말고 기존 인증·위험 정책을 유지해야 한다. Trust Insights는 판단을 보조하는 신호이며 단독 차단 기준이 아니다. 또한 평가 호출은 인터넷 연결이 필요하고, 결과 사용 여부를 매 요청 보고해야 한다.'
+    - '입력은 상호작용 패턴·타이밍·기본 센서 신호다. Apple은 사진·메시지·메일 콘텐츠는 분석하지 않으며, 기기 유래 신호는 Apple이나 제3자와 공유되지 않는다고 설명한다.'
+    - '`unknown / medium / high` 중 `unknown`과 누락값은 저위험으로 간주하지 않는다. 평가 결과만으로 사용자를 차단하지 말고 기존 인증·위험 판단과 결합한다.'
+    - '각 평가 결과마다 `reportConsumption`으로 앱의 대응을 보고해야 한다. 누락 시 rate limit 또는 서비스 접근 취소가 발생할 수 있다. 사후 확인된 fraud label 제출은 Apple Business Register를 통한 선택 사항이다.'
+  sources:
+    - label: Meet Trust Insights — WWDC26
+      url: https://developer.apple.com/videos/play/wwdc2026/379/
+    - label: iOS & iPadOS 27 Release Notes
+      url: https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-27-release-notes
+  interview: 'Trust Insights 평가의 `unknown`을 어떻게 처리하고, 결과 피드백은 왜 반드시 보고해야 하나요?'
+  answer: '`unknown`은 위험이 낮다는 뜻이 아니므로 안전 판정으로 사용하지 않고 기존 위험 로직에 보수적으로 반영한다. Trust Insights만으로 차단하지 않는다. 각 평가 뒤에는 앱이 결과를 어떻게 사용했는지 `reportConsumption`으로 보고해야 하며, 누락하면 rate limit 또는 접근 취소 위험이 있다. 나중에 사기로 확인된 거래의 오프라인 label은 선택 제출이다.'
 - category: ai
   title: 'Flutter 문서 레이아웃 AI: 추론 오프라인과 앱 설치 오프라인은 다르다'
   summary: 'flutter_doclayout_kit는 PP-DocLayout ONNX 모델과 네이티브 라이브러리로 문서 영역을 검출하는 Flutter 플러그인이다. 모델은 앱 asset으로 별도 제공해야 하고, Android/iOS 네이티브 바이너리는 첫 빌드 시 GitHub Release에서 내려받는다. 따라서 빌드와 모델 준비에는 네트워크가 필요하지만, 두 파일을 앱에 포함한 뒤의 추론은 오프라인으로 실행할 수 있다. README는 23개 문서 요소를 지원한다고 설명한다. iOS Core ML 가속이나 특정 메모리 요구량은 공개 소스에서 확인되지 않아 보장하지 않는다.'
