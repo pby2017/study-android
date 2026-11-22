@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined `Task Master` into a concise workflow card: PRD → reviewable tasks/dependencies → next unblocked task; distinguished task planning from implementation and documented selective MCP tool loading.
+- Verified current GitHub repository snapshot at 28.5k stars; verified the official docs' recommendations to review generated tasks, validate dependencies, and control MCP tool loading. Removed stale `27.7k★`, mixed CLI/model/provider inventory, and inaccurate framing as an autonomous implementation agent.
+- Audit: `research/ai-routine/20261122-202710-taskmaster-refinement.md`.
+- Next: continue oldest-first with the following eligible AI card, `Claude Agent SDK`; re-check its current naming, runtime boundaries, and API claims. Skip pure Android topics.
+
+## Latest pass — 2026-11-22
 - Refined `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기` against the current official Claude Code subagents guide.
 - Clarified full-history/system-prompt/tool/model inheritance, fork result flow and the `isolation: "worktree"` option; added an intermediate level and retrieval Q&A. Removed broad cache comparison language and centered the card on context inheritance and work isolation.
 - Audit: `research/ai-routine/20261122-192605-ai-routine.md`.
