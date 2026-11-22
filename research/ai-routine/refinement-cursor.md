@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: corrected Claude Code Agent Teams activation and plan-approval guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Anthropic internal Claude Code adoption examples; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:40 KST
+Last update: 2026-11-22 16:53 KST
+
+## Latest pass
+- Corrected the employee-case-study card against Anthropic's July 24, 2025 article; removed the unsupported “10 teams” count.
+- Labeled the 3x and ~80% time figures as company-reported cases, not controlled benchmarks or general guarantees.
+- Kept practical developer/nondeveloper task patterns, added beginner level and an interview prompt; no overlap with the Agent Teams mechanics card.
+- Sources and rationale: `research/ai-routine/20261122-anthropic-internal-claude-code-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against current primary sources and check overlap.
 
 ## Latest pass
 - Confirmed Agent Teams remain experimental, require an interactive session, and are unavailable in `claude -p`/Agent SDK runs (which use ordinary subagents).
