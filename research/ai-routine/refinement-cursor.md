@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the 12-Factor Agents card's evidence boundaries and model/app responsibilities; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the Claude Code subagent catalog card for Android relevance, validation, and plugin safety; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:55 KST
+Last update: 2026-11-22 15:57 KST
+
+## Latest pass
+- Updated the catalog snapshot to 161+ agent definitions, 10 categories, and 26.7k GitHub stars (2026-11-22); popularity is not treated as quality evidence.
+- Verified that `kotlin-specialist` explicitly targets Android/Compose, while `mobile-developer` is React Native-oriented; clarified prompts are not validated experts.
+- Recommended project-scoped selection and review of tool definitions, plugin hooks/MCP, user-level execution privileges, and context footprint.
+- Sources and rationale: `research/ai-routine/20261122-claude-code-subagents-catalog-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Reframed 12-Factor Agents as the author's design guide, not an industry standard or universal checklist.

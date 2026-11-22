@@ -1167,15 +1167,27 @@ cards:
   interview: "에이전트에서 LLM과 애플리케이션 코드는 각각 어떤 책임을 가져야 하나요? 12-Factor의 '70~80%' 수치는 성능 벤치마크인가요?"
   answer: "LLM은 구조화된 다음 행동을 제안하고, 앱 코드는 이를 검증해 권한과 규칙 안에서 실행한다. '70~80%'는 저자의 경험 서술이지 통제된 성능 측정이 아니므로 일반화하면 안 된다."
 - category: ai
-  title: awesome-claude-code-subagents — 154개 전문 서브에이전트를 플러그인으로 한 번에 까는 컬렉션
-  summary: 'VoltAgent가 큐레이션하는 Claude Code 서브에이전트 모음으로, 154개 이상의 특화 에이전트를 10개 카테고리(Core Development, Language Specialists, Infrastructure, Quality 등)로 분류해 둔다. api-designer·backend-developer·typescript-pro·swift-expert처럼 역할별로 시스템 프롬프트가 미리 짜여 있어, 직접 에이전트를 정의하지 않고도 도메인 전문가를 골라 쓸 수 있다. Claude Code 플러그인 마켓플레이스로 카테고리 단위 설치가 되고, 수동으로 .claude/agents/에 파일을 복사해도 된다. GitHub 21.8k★(주장, 2026-06 기준).
-
-    '
+  level: "중급"
+  title: Claude Code 서브에이전트 카탈로그 — 역할 프롬프트를 골라 검증하기
+  summary: VoltAgent의 카탈로그는 2026-11-22 조회 시 161개 이상의 Claude Code 서브에이전트를 10개 범주로 제공했고 GitHub 별은 26.7k였다. Kotlin specialist는 Android·Compose 작업을 포함하지만, 이 파일은 검증된 Android 지식이 아니라 편집 가능한 역할 프롬프트다.
   points:
-  - '설치: claude plugin marketplace add VoltAgent/awesome-claude-code-subagents 후 voltagent-lang 같은 카테고리 플러그인 install — 또는 에이전트 .md를 ~/.claude/agents/(전역)·.claude/agents/(프로젝트)에 복사'
-  - '10개 카테고리·154+ 에이전트: 언어별(typescript-pro/swift-expert), 인프라, 품질, 메타-오케스트레이션 등 — 09-meta의 agent-installer로 ''PHP 에이전트 찾아 설치해줘''식 자연어 설치도 지원'
-  - 서브에이전트 = 별도 컨텍스트 창에서 도는 전문 일꾼. 직접 system prompt를 작성하는 대신 검증된 역할 정의를 가져다 쓰는 게 핵심 이점
-  source: https://github.com/VoltAgent/awesome-claude-code-subagents
+  - "Android용 Kotlin 역할이 필요하면 카탈로그의 `kotlin-specialist`를 살펴본다. `mobile-developer`는 현재 React Native 중심이므로 이름만 보고 Android 네이티브 전문가로 가정하지 않는다."
+  - "전체 플러그인 대신 필요한 에이전트 하나를 프로젝트의 `.claude/agents/`에 두고 지침·도구 목록을 수정한다. 역할·도구 권한·모델은 정의 파일의 frontmatter에서 확인한다."
+  - "프롬프트는 정확성이나 최신성을 보증하지 않는다. Android API·Gradle 권고는 공식 문서, 프로젝트 버전, 테스트로 확인하고 구체적인 검증 기준을 역할 지침에 넣는다."
+  - "플러그인은 사용자 권한으로 코드를 실행할 수 있고 에이전트 설명도 세션 컨텍스트를 차지한다. 설치 전 hooks·MCP·실행 파일과 필요한 권한을 검토하고 쓰지 않는 범주는 설치하지 않는다."
+  sources:
+  - label: VoltAgent 카탈로그·별 수 스냅샷
+    url: https://github.com/VoltAgent/awesome-claude-code-subagents
+  - label: Kotlin specialist 정의
+    url: https://github.com/VoltAgent/awesome-claude-code-subagents/blob/main/categories/02-language-specialists/kotlin-specialist.md
+  - label: Claude Code 플러그인 보안
+    url: https://code.claude.com/docs/en/plugins/security
+  - label: 플러그인 컨텍스트와 구성요소
+    url: https://code.claude.com/docs/en/plugins
+  - label: Claude Code 서브에이전트 설정
+    url: https://code.claude.com/docs/en/sub-agents
+  interview: "Android 작업에 역할별 서브에이전트 카탈로그를 쓸 때, 어떤 정의를 고르고 설치·실행 전에 무엇을 확인해야 하나요?"
+  answer: "Android 내용을 명시한 Kotlin 역할을 후보로 삼되 프롬프트를 전문가 인증으로 여기지 않는다. 프로젝트 범위에 필요한 정의만 설치하고 도구 권한·플러그인 hooks/MCP를 검토한 뒤 공식 Android 문서와 테스트로 결과를 검증한다."
 - category: ai
   title: 대형 코드베이스에서 Claude Code — CLAUDE.md를 루트가 아니라 하위 디렉터리에 두라
   summary: 'Anthropic이 모노레포·레거시·마이크로서비스 같은 대형 코드베이스 운영 패턴을 공식 정리했다. Claude Code는 인덱스(RAG/임베딩) 없이 파일을 직접 traverse하고 grep하는 ''에이전틱 검색''으로 도므로, ''어디를 봐야 할지'' 알려 주는 시작 컨텍스트의 품질이 성능을 좌우한다. 가장 실용적인 조언은 CLAUDE.md를 레포 루트에 몰아넣지 말고 하위 디렉터리에 두라는 것 — Claude가 현재 위치에서 디렉터리 트리를 거슬러 올라가며 만나는 모든 CLAUDE.md를 누적해 읽기 때문에 루트 컨텍스트는 사라지지 않는다. 또 모델이 바뀌면 옛 지침이 새 모델을 오히려 방해할 수 있어 주기적으로 설정을 재검토하라고 권한다.
