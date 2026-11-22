@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined CodeRabbit after Devin Desktop; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Codex CLI after CodeRabbit; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:40 KST
+Last update: 2026-11-22 17:55 KST
+
+## Latest pass
+- Refined Codex CLI against the OpenAI repository README and current CLI/auth docs.
+- Removed stale release, language, fork, and star statistics; retained a dated stars snapshot, clarified local workspace execution vs offline inference, and distinguished interactive `codex` from `codex exec` automation.
+- Added intermediate difficulty and retrieval Q/A. Audit: `research/ai-routine/20261122-codex-cli-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined CodeRabbit using the official pricing page, local CLI/IDE review guide, and PR-review overview.
