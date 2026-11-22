@@ -4618,3 +4618,10 @@ Refined:
 - Confirmed `primaryConfidence` is derived from a parsed boolean (1.0/0.0), not model probability; additionally, malformed or unsupported labels map to “not flagged,” a fail-open moderation path.
 - Current repo snapshot: 1 star, 0 forks, 18 commits, last push 2026-02-27; README requires Android 9+/API 28, Qualcomm NPU, and ~2.4 GB model. Kept as an instructive code-review example, not a dependency recommendation.
 - Audit: `research/ai-routine/20261122-sideeye-vlm-confidence-review.md`.
+
+### 2026-11-22 23:58 KST — GitHub MCP issue fields 스키마·권한 경계 상세화
+
+- Refined `GitHub MCP issue fields — 이슈 메타데이터 조회·작성·필터` against the current official server README/tool schema and dated GitHub Changelog.
+- Separated `list_issue_fields` schema discovery from write access and `list_issues` filtering; documented repository/org lookup behavior, supported current filter value types, and explicit set/clear semantics.
+- Clarified that GitHub product support for multi-select does not prove MCP filter support, and that personal-account GA differs from the organization public-preview status.
+- Audit: `research/ai-routine/20261122-235800-github-mcp-issue-fields-schema.md`.
