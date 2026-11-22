@@ -8,11 +8,12 @@
 - Refined BMAD-METHOD against its current docs, releases, and GitHub repository; this work was committed and pushed as `e0d9dae`.
 - Refined OpenSpec using current official v2 skills, setup, release and project pages. Removed old `/opsx:*` commands, stale metrics, and unsupported Spec Kit comparisons; updated card difficulty and retrieval Q&A. Audit: `research/ai-routine/20261122-openspec-refinement.md`; committed and pushed as `ae810ad`.
 - Refined Cloudflare Code Mode using its current README, Dynamic Workers docs, egress guidance and Check Point's workerd analysis. Corrected token/tool-count claims and removed blanket sandbox guarantees. Audit: `research/ai-routine/20261122-cloudflare-code-mode-refinement.md`; validation passed (3 runs/14 assertions, YAML/schema and diff checks); commit/push pending.
+- Refined the Anthropic agent-team compiler card against the author's primary report and source repository. Recentered on verifier quality and work decomposition, and clarified measured cost and incomplete compiler status. Audit: `research/ai-routine/20261122-agent-team-compiler-refinement.md`; validation/commit/push pending.
 - The long-term study-android objective remains active: short, evidence-based AI / AI+Android learning cards with difficulty levels, consistent format, and interview retrieval practice. Pure Android topics remain excluded.
 
 ## Next actions
 1. Run Ruby syntax, both YAML loads, targeted card checks, routine tests, and `git diff --check`.
-2. If all checks pass, commit the Cloudflare Code Mode refinement + audit + cursor + checkpoint update and push `master`.
-3. Continue oldest-first with the agent-team C-compiler experiment; validate its reported results and learning claims against Anthropic's post.
+2. If all checks pass, commit the agent-team compiler refinement + audit + cursor + checkpoint update and push `master`.
+3. Continue oldest-first with `서브에이전트 4가지 패턴`; validate original source, terminology, and overlap with existing orchestration cards.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.

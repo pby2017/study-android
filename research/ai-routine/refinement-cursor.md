@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined Anthropic's agent-team compiler case study around verifier quality, regression testing, partitioned work, and the experiment's cost/limitations. Audit: `research/ai-routine/20261122-agent-team-compiler-refinement.md`.
+- Next: continue oldest-first with `서브에이전트 4가지 패턴`; verify original author source, terminology, and overlap with other orchestration cards before deciding whether to refine or merge.
+
+## Previous latest pass — 2026-11-22
+## Latest pass — 2026-11-22
 - Refined Cloudflare Code Mode: corrected the token comparison framing, described tool-composition, and replaced absolute sandbox/security claims with configuration caveats and a runtime update warning. Audit: `research/ai-routine/20261122-cloudflare-code-mode-refinement.md`.
 - Next: continue oldest-first with the agent-team C-compiler experiment; validate core results and learning claims against Anthropic's report, avoid copying loose performance metrics.
 
