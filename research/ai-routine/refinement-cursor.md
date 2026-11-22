@@ -6,7 +6,8 @@
 - Refined Bumblebee around the developer-endpoint inventory gap, exact exposure matching, and what a negative scan cannot prove; added explicit unsupported-scope caveats and interview retrieval. Audit: `research/ai-routine/20261122-bumblebee-refinement.md`.
 - Refined Deep Agents around controlled harness evaluation: fixed model, trace-based failure analysis, targeted changes, and regression/generalization checks; labeled Terminal-Bench results as setup-specific author-reported evidence. Audit: `research/ai-routine/20261122-deep-agents-refinement.md`.
 - Refined AAIF using its launch announcement, current project list, and October 2026 project-expansion news; separated founding contributions from later projects and clarified that neutral governance does not guarantee technical compatibility. Audit: `research/ai-routine/20261122-aaif-refinement.md`.
-- Next: continue oldest-first with the next AI card after AAIF; inspect deck order and verify source currency, unique learning value, and interview retrieval coverage.
+- Refined Claude security-guidance against its current official plugin README and manifest; replaced stale model/version/quotas with the stable three-layer model, advisory-only enforcement boundary, endpoint data-transfer and usage-cost caveats. Audit: `research/ai-routine/20261122-security-guidance-refinement.md`.
+- Next: continue oldest-first with `AGENTS.md 실전`; verify current hierarchy/precedence claims and distinguish project instruction files from tool-specific configuration.
 
 ## Previous latest pass — 2026-11-22
 ## Latest pass — 2026-11-22
@@ -903,7 +904,7 @@ Skipped:
 - `에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 '하네스'를 설계하는 실전 교훈` — source re-checked; existing card already captures the experiment metrics and verifier/logging/parallelism lessons.
 - `서브에이전트 4가지 패턴(Philipp Schmid) — '메인 에이전트가 쥔 통제권' 순으로 줄 세우기` — source re-checked; existing card already preserves the pattern ladder and "start with Pattern 1" lesson.
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다` — source re-checked; existing card already captures the context-layer and exact-search lesson without overextending the vendor post.
-- `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기` — source re-checked; existing card already captures the three review depths, independent Claude review context, limits, non-blocking caveat, and shell-commit boundary.
+- `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기` — superseded by the 2026-11-22 refinement: clarified best-effort/non-blocking review, endpoint data transfer and usage cost; see `20261122-security-guidance-refinement.md`.
 - `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)` — source re-checked; existing card already captures nested file placement, conflict precedence, supported tools, and verification behavior.
 - `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)` — re-checked the current Terminal-Bench 2.1 leaderboard and docs; removed unsupported availability/shutdown wording, corrected Terminus 2+GPT-5.5 from 76.4% to 78.2%, and clarified the agent+harness+model lesson.
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.

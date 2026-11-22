@@ -14,13 +14,14 @@
 - Refined Chrome DevTools MCP against current GitHub docs/releases and OpenAI's Codex Browser documentation. Corrected page routing and profile flags, distinguished MCP from Codex Developer mode, and added browser-data/telemetry caveats; pushed as `b8e8cec`.
 - Retired the ByteRover CLI card because its repository is archived, the current company site has shifted product framing, and the deck already covers agent memory several ways. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.
 - Refined Kilo Code: corrected the `--auto` permission semantics, refreshed live popularity/release evidence, and checked the Anaconda acquisition announcement. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`; pushed as `0addf43`.
-- Refined Bumblebee against its README, release page, and live GitHub API: clarified its incident-response scope, exact exposure matching, unsupported configs, and interpretation of no findings. Audit: `research/ai-routine/20261122-bumblebee-refinement.md`; validation/commit/push pending.
-- Refined Deep Agents against LangChain's primary experiment report and current repository/release metadata. Qualified the benchmark result as setup-specific and focused on the fixed-model trace/eval loop. Audit: `research/ai-routine/20261122-deep-agents-refinement.md`; validation/commit/push pending.
-- Refined AAIF against its launch announcement, current project list, and October project-expansion news. Distinguished founding contributions from current hosted projects and removed an old adoption figure. Audit: `research/ai-routine/20261122-aaif-refinement.md`; validation/commit/push pending.
+- Refined Bumblebee against its README, release page, and live GitHub API; committed and pushed as `0dae587`.
+- Refined Deep Agents against LangChain's primary experiment report and current repository/release metadata; committed and pushed as `df0024b`.
+- Refined AAIF against its launch announcement, current project list, and October project-expansion news. Local commit `e298784`; push is pending because `github.com` DNS did not resolve.
+- Refined Claude security-guidance against its current official plugin README and manifest; clarified its advisory-only boundary, data transfer, cost, and repository trust requirements. Local commit `6a02bff`; push pending due to DNS failure.
 - The long-term study-android objective remains active: short, evidence-based AI / AI+Android learning cards with difficulty levels, consistent format, and interview retrieval practice. Pure Android topics remain excluded.
 
 ## Next actions
-1. Validate and commit/push the AAIF card refinement and research checkpoint.
-2. Continue oldest-first with the next AI card after AAIF; verify source currency, distinct learning value, and interview retrieval coverage.
+1. Push local commits `e298784` and `6a02bff` when GitHub DNS/network connectivity returns.
+2. Continue oldest-first with `AGENTS.md 실전`; verify hierarchy/precedence claims and distinguish project instruction files from tool-specific configuration.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.
