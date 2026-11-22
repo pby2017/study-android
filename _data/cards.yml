@@ -1695,15 +1695,21 @@ cards:
   answer: '아니다. 프로토콜 세션은 없어졌지만 서버는 `cart_id` 같은 명시적 핸들을 발급하고 클라이언트가 다음 도구 호출에 전달해 앱 상태를 유지할 수 있다. 업그레이드에서는 사양 버전이 맞는지, `initialize`·`Mcp-Session-Id` 의존을 제거했는지, Streamable HTTP 헤더와 클라이언트·서버 SDK의 호환성을 확인한다. Tasks나 MCP Apps 같은 opt-in 확장은 양쪽 지원과 사용자 승인 경계를 별도로 검증한다.'
 
 - category: ai
-  title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
-  summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고, 각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며, 인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
-
-    '
+  level: 중급
+  title: Cursor Agent 검색 — 서버 임베딩에서 로컬 Instant Grep로
+  summary: 'Cursor의 검색 방식은 바뀌었다. 현재 Agent는 심볼명·오류 문자열처럼 정확한 단서에는 Instant Grep를 쓰고, 넓은 탐색에는 여러 검색과 파일 읽기를 조합하거나 Explore subagent를 사용할 수 있다. Cursor 팀은 2026년 7월 별도 시맨틱 임베딩 인덱싱을 줄이고 grep 기반 검색으로 전환한다고 안내했다. 현재 문서에 따르면 검색 인덱스는 로컬에서 만들며, 인덱스 구축을 위해 코드나 경로를 업로드하거나 코드 임베딩을 저장하지 않는다. 단, Agent가 파일을 열면 그 내용은 모델 요청에 포함될 수 있다. 그러므로 “검색 인덱스가 로컬”이라는 사실만으로 모델 처리까지 로컬이라고 판단하면 안 된다.'
   points:
-  - 코드 청크를 벡터 임베딩으로 저장하고, 질문도 벡터화해 의미가 가까운 위치를 찾는다
-  - 자동 인덱싱, 80%부터 검색 가능, 5분 증분 동기화, .gitignore·.cursorignore로 제외
-  - Agent는 심볼/string은 grep, 개념/행동은 semantic search, 넓은 탐색은 Explore subagent로 조합
+  - '심볼·문자열이 분명하면 Instant Grep; 탐색 질문은 여러 검색어·디렉터리 탐색·파일 읽기·Explore를 조합'
+  - '현재 검색 인덱스는 로컬이며 .gitignore·.cursorignore가 검색 대상에 적용됨'
+  - '인덱스 프라이버시와 모델 요청 데이터는 별도 경계 — Agent가 읽은 코드가 모델로 전송될 수 있음'
   source: https://cursor.com/docs/agent/tools/search
+  sources:
+  - label: 'Cursor Search 문서 — Instant Grep·로컬 인덱스·파일 내용의 모델 전송 구분'
+    url: https://cursor.com/docs/agent/tools/search
+  - label: 'Cursor 팀 답변 — 2026년 7월 시맨틱 임베딩 검색에서 grep 기반 검색으로 전환'
+    url: https://forum.cursor.com/t/what-do-you-think-about-cursor-removing-the-codebase-indexing-settings/165899
+  interview: 'Cursor의 검색 인덱스가 로컬에 있다는 사실만으로 코드가 모델 제공자에게 전혀 전송되지 않는다고 결론내릴 수 있나요?'
+  answer: '아니다. 현재 Cursor 문서는 검색 인덱스 구축을 위해 코드·경로를 업로드하거나 임베딩을 저장하지 않는다고 설명한다. 하지만 Agent가 검색 결과 파일을 열면 파일 내용이 모델 요청에 포함될 수 있다. 검색 인덱스 저장 위치와 모델 요청 데이터 처리는 별도로 확인해야 한다.'
 - category: ai
   title: Continuous Claude — Ralph 루프에 PR·CI·머지까지 붙인 '무인 개발 파이프라인'
   summary: 'Ralph 루프가 "끝날 때까지 새 컨텍스트로 다시 돌리는" 패턴이라면, Continuous Claude(AnandChowdhary)는 그 루프에 GitHub PR 생명주기를 붙인 CLI다. 매 반복마다 Claude Code 또는 Codex CLI가 작업하고, 새 브랜치에 커밋한 뒤 `gh pr create`로 PR을 열고, `gh pr checks`와 리뷰 통과를 기다린다. 초록불이면 머지하고, 실패하면 PR을 닫고 작업을 버린 뒤 다음 반복에서 실패 지식을 반영한다. 반복 사이 맥락은 기본 `SHARED_TASK_NOTES.md`에 남겨 컨텍스트 드리프트를 줄이고, `--worktree`로 병렬 실행도 지원한다. 현재 README 기준 GitHub PR 자동화가 핵심 경로이며 self-hosted forge는 미지원이다. 로컬 검증이나 안전한 시험 운전은 `--dry-run`, `--disable-commits`, `--disable-branches`, `--max-runs`, `--max-duration`, `--max-cost` 같은 제한 플래그로 먼저 좁히는 편이 낫다.

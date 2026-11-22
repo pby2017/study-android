@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined MCP 2026-07-28 after Pi; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: re-refined Cursor Agent search after MCP 2026-07-28; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Revisited the older Cursor indexing card because the current product behavior changed since its previous refinement. Removed stale semantic-embedding, 80%-ready, server-vector-index and periodic-sync descriptions.
+- Current official Search docs and July 2026 staff statements describe local Instant Grep and no code/path upload for search-index construction; clarified that opened file content may still enter a model request.
+- Added intermediate level, source links, practical search method, and privacy-boundary interview Q/A.
+- Audit: research/ai-routine/20261122-cursor-search-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Reframed the MCP card around the core 2026-07-28 architecture change instead of listing many SEP numbers and an SDK alpha snapshot.
