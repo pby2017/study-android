@@ -4791,3 +4791,12 @@ Refined:
 - GitHub 관심 신호는 약 161k stars/15k+ commits의 시점 snapshot으로만 기록했다. 채택률 증거로 해석하지 않았다.
 - Audit: `research/ai-routine/20261123-012000-dify-android-api-key-boundary.md`.
 - Sources: https://docs.dify.ai/en/api-reference/guides/get-started, https://docs.dify.ai/en/api-reference/guides/end-user-identity, https://docs.dify.ai/en/cloud/use-dify/knowledge/integrate-knowledge-within-application, https://github.com/langgenius/dify/blob/main/LICENSE.
+
+### 2026-11-23 01:25 KST — Repomix 산출물·Secretlint·MCP 경계
+
+- 커서가 Amp를 다음 항목으로 가리켰지만 Amp는 이미 11월 23일 검토되어 중복 작업을 건너뛰었다. 다음 오래된 카드 Repomix는 기능·홍보 나열과 오래된 별점만 있고 난이도·최신 출처·면접 회상이 없어 재검토했다.
+- Repomix 산출물은 저장소 내용 복사본이다. Secretlint는 알려진 비밀 패턴을 찾는 best-effort 검사이지 access boundary나 완전한 유출 방지 장치가 아니므로, 입력 범위 최소화와 출력물 검토를 강조했다.
+- MCP의 `--sandbox`는 workspace 경로를 제한하지만 OS 격리는 아니다. 원격 저장소 config는 기본 비활성화지만 trust 시 JS/TS 실행·외부 processor·로컬 경로 접근 가능성을 검토해야 한다.
+- GitHub 시점 신호는 약 29.4k stars/1.7k forks, 최근 release는 v1.19.0(2026-11-08)이다. 채택 증거로 해석하지 않았다.
+- Audit: `research/ai-routine/20261123-012500-repomix-secret-scan-boundaries.md`.
+- Sources: https://github.com/yamadashy/repomix, https://repomix.com/guide/security, https://repomix.com/guide/mcp-server, https://github.com/yamadashy/repomix/releases/tag/v1.18.0.
