@@ -3647,14 +3647,15 @@ cards:
   answer: "아니다. MCP 결과는 운영 telemetry이며 저장소 코드나 SDK 설정을 증명하지 않는다. 실제 앱 버전·기기·OS·스택·재현 조건을 코드와 대조하고, 변경 diff와 회귀 테스트를 별도로 검토한다. Autopilot이 PR을 준비했더라도 검증 책임은 남는다."
 - category: ai
   title: Baidu Stability Analysis Agent — Android 크래시를 근거 기반으로 분석·수정하는 AI 도구
-  summary: 'Baidu Stability Analysis Agent는 Android logcat·tombstone 로그를 파싱하고, 매칭되는 심볼 파일과 소스 코드 문맥을 이용해 크래시 근거와 원인 후보를 만든다. AI가 수정안을 적용할 수도 있지만, 검증 명령은 명시적으로 설정해야 한다. 수정은 기본적으로 격리된 Git worktree에서 진행하며, 빌드·테스트 검증이 없거나 통과하지 못하면 수정 완료로 간주하지 않는다.'
+  level: "고급"
+  summary: 'Baidu Stability Analysis Agent는 Android `logcat`·tombstone과 일치하는 심볼 파일을 분석해 호출 경로와 소스 문맥을 근거 사슬로 묶고, AI 수정안을 만들 수 있는 오픈소스 안정성 에이전트다. 코드 수정 때는 패치·작업 공간 경계를 확인하지만, 이 안전 검사는 크래시가 해결됐다는 뜻이 아니다. 빌드·재현·회귀 검증은 명시한 provider가 있을 때만 실행된다. 설정이 없으면 결과가 `repair_applied`일 수 있으며, 이는 수정이 적용됐다는 뜻이지 해결 증거가 아니다.'
   points:
-  - 'Android `logcat`·tombstone 호출 스택을 파싱하고, 일치하는 심볼로 주소를 함수·소스 위치에 연결'
-  - '로그·호출 관계·소스 문맥과 유사 사례를 묶어 근거 보고서와 수정안을 생성'
-  - '수정은 격리 worktree에서 검토; 명시한 Gradle/기기 검증이 통과하기 전에는 병합하지 않음'
+  - 'native 주소는 해당 빌드와 일치하는 심볼 파일로 해석해야 함수·소스 위치와 호출 관계를 근거로 쓸 수 있음'
+  - '수정 후 안전 검사는 변경 파일·workspace 경계·동기화를 확인; Crash 효과 검증은 별도 설정 필요'
+  - '검증 후보 탐색은 명령을 실행하지 않는다. 명시적 profile/provider에 설정한 빌드·재현·회귀 검증이 통과해야 해결로 판정'
   source: https://github.com/baidu-maps/stability-analysis-agent
-  interview: "AI가 Android native crash 패치를 만들었다면, 어떤 조건을 확인해야 ‘수정 완료’라고 판단할 수 있나요?"
-  answer: "우선 tombstone의 주소를 해당 빌드의 심볼 파일로 정확히 해석하고, 호출 경로와 추출된 소스 문맥이 실제 근본 원인을 뒷받침하는지 확인한다. 패치 diff를 검토한 뒤 프로젝트에 맞는 빌드·단위·기기 재현 검증 명령을 명시해 실행한다. 검증이 없거나 보류·실패한 결과는 성공 증거가 아니다."
+  interview: "수정된 Android 크래시가 `repair_applied` 상태로 끝났다면, 이를 ‘해결됨’으로 보고할 수 있나요?"
+  answer: "아니다. 그 상태는 패치와 안전 검사가 끝났음을 뜻할 뿐, 앱에서 크래시가 사라졌다는 검증은 아니다. 해당 빌드의 심볼과 로그로 원인을 추적하고, 프로젝트에 맞는 빌드·재현·회귀 검증 profile을 설정해 통과 결과를 확인해야 한다."
 - category: ai
   title: KotlinSyft — Android 모델 중심 연합학습의 초기 설계 사례 (레거시)
   summary: 'KotlinSyft는 Android 기기에서 학습 작업을 수행하는 OpenMined의 초기 연합학습 worker다. 옛 PySyft·PyGrid 흐름에서는 서버가 모델과 학습 계획을 제공하고, 기기는 로컬 데이터로 학습한 뒤 모델 업데이트를 보고한다. 원본 데이터를 보내지 않는 설계는 데이터 노출을 줄이지만, 업데이트만으로도 정보가 새어 나갈 수 있어 프라이버시를 보장하지는 않는다. 저장소의 최신 릴리스와 문서는 오래된 생태계를 가리키므로 현재 프로젝트의 도입 후보가 아닌 역사적 사례로 본다.'
