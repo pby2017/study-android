@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Pi after Ruler; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined MCP 2026-07-28 after Pi; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Reframed the MCP card around the core 2026-07-28 architecture change instead of listing many SEP numbers and an SDK alpha snapshot.
+- Verified the released versioned spec and maintainer migration announcement; clarified that protocol statelessness does not prohibit application state, and called out explicit handles, optional extension negotiation, compatibility checks, and host-side consent/security responsibilities.
+- Corrected the timeline: May 21 is the RC lock/announcement; the final version is dated July 28. GitHub showed ~9.7k★ on 2026-11-22.
+- Audit: `research/ai-routine/20261122-mcp-2026-spec-refinement.md`. Validation passed except full Jekyll build, unavailable because the local `jekyll` executable is missing.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Reframed the Pi card: `badlogic/pi-mono` and `earendil-works/pi` are the former and canonical current locations of the same project, not two competing agents. Verified the old URL redirects to the current GitHub repository.

@@ -1676,13 +1676,24 @@ cards:
   interview: 'badlogic/pi-mono와 earendil-works/pi는 별개의 에이전트인가요? Pi를 신뢰하지 않는 코드베이스에서 실행할 때 무엇을 추가로 고려해야 하나요?'
   answer: '별개 제품이 아니라 같은 Pi 프로젝트의 이전·현재 저장소 주소다. 현재 구현은 실행한 사용자 계정의 권한으로 동작하고, Pi 자체가 파일·프로세스·네트워크 접근을 차단하는 권한 시스템을 제공하지 않는다. 신뢰하지 않는 작업은 컨테이너나 VM 등 별도 격리 환경을 검토하고, 확장과 저장소 지침도 신뢰성을 확인한다.'
 - category: ai
-  title: MCP 2026 — Linux Foundation·Stateless·MRTR·Extensions·OAuth RFC9207·Python SDK v2 alpha
-  summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, 12개월 deprecation policy·Roots/Sampling/Logging deprecated. Multi Round-Trip Requests(SEP-2322) — InputRequiredResult·requestState·client inputResponses retry loop. Extensions framework(SEP-2133) — reverse-DNS ID·MCP Apps+Tasks official extension·Skills SEP-2640 skill://index.json. OAuth authorization hardening 6 SEP — RFC9207 iss parameter mix-up attack mitigation(SEP-2468), OIDC application_type DCR(SEP-837), client credential issuer binding+re-register on migration(SEP-2352), refresh token scope semantics(SEP-2207), step-up scope accumulation(SEP-2350), stable .well-known suffix(SEP-2351). Python SDK v2.0.0a2 per-version wire validation.
+  level: 고급
+  title: MCP 2026-07-28 — 전송은 stateless, 앱 상태는 명시적 핸들로
+  summary: 'MCP의 2026-07-28 사양은 프로토콜 계층의 세션을 없애고 요청을 독립적으로 처리하도록 바꿨다. 따라서 Streamable HTTP 서버는 `initialize` 핸드셰이크와 `Mcp-Session-Id`에 의존하지 않고, 인스턴스 간 요청을 분산할 수 있다. 상태가 필요한 애플리케이션은 `cart_id` 같은 핸들을 도구 결과로 돌려주고 다음 호출에 다시 받으면 된다. 즉, 전송 계층이 stateless여도 앱은 stateful일 수 있다. 이 버전은 호환성에 영향을 주는 변경을 포함하므로 SDK·호스트·서버가 같은 사양과 기능을 지원하는지 확인해야 한다. Tasks와 MCP Apps는 기본 필수 기능이 아니라 양쪽의 명시적 지원이 필요한 opt-in 확장이다. MCP 표준은 도구 권한이나 사용자 동의를 스스로 강제하지 않으므로, 호스트의 승인·데이터 보호 설계도 별도로 검토한다. GitHub 공식 저장소는 약 9.7k★를 표시했다(2026-11-22 확인).'
   points:
-  - SEP-2468 RFC9207 iss — reject auth response if iss missing/mismatch vs recorded issuer
-  - SEP-837 application_type DCR — CLI/desktop localhost redirect rejected when defaulted web
-  - SEP-2352 issuer-bound credentials — server migration forces client re-registration
-  source: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
+  - '`initialize`와 프로토콜 세션 ID 제거 — Streamable HTTP 로드밸런싱에서 sticky session 의존 감소'
+  - 장기 앱 상태는 서버가 만든 명시적 핸들로 전달; 프로토콜 stateless ≠ 애플리케이션 stateless
+  - 2026-07-28 대상 구현은 이전 버전과의 호환성을 검증하고, 선택적 확장과 사용자 승인 경계를 각각 확인
+  source: https://modelcontextprotocol.io/specification/2026-07-28
+  sources:
+  - label: 'MCP 2026-07-28 사양 — stateless 요청과 선택적 확장'
+    url: https://modelcontextprotocol.io/specification/2026-07-28
+  - label: '공식 사양 변경 안내 — breaking changes·HTTP 라우팅·상태 핸들 예시'
+    url: https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/
+  - label: '공식 GitHub 저장소 — 사양/문서와 별점 snapshot'
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol
+  interview: 'MCP 2026-07-28에서 프로토콜이 stateless라는 말은 애플리케이션도 상태를 가질 수 없다는 뜻인가요? 업그레이드 시 무엇을 검증해야 하나요?'
+  answer: '아니다. 프로토콜 세션은 없어졌지만 서버는 `cart_id` 같은 명시적 핸들을 발급하고 클라이언트가 다음 도구 호출에 전달해 앱 상태를 유지할 수 있다. 업그레이드에서는 사양 버전이 맞는지, `initialize`·`Mcp-Session-Id` 의존을 제거했는지, Streamable HTTP 헤더와 클라이언트·서버 SDK의 호환성을 확인한다. Tasks나 MCP Apps 같은 opt-in 확장은 양쪽 지원과 사용자 승인 경계를 별도로 검증한다.'
+
 - category: ai
   title: Cursor 코드베이스 인덱싱 — 임베딩으로 '의미 검색'하되 원문은 서버에 안 남긴다
   summary: '대형 레포에서 에이전트가 "인증 실패는 어디서 처리하지?" 같은 행동·개념 질문을 받으면 문자열 grep만으로는 부족하다. Cursor의 현재 Search 문서는 Agent가 프롬프트 성격에 따라 Instant Grep, semantic search, 파일 읽기, Explore subagent를 조합한다고 설명한다. 시맨틱 검색은 코드를 함수·클래스·논리 블록 같은 의미 있는 청크로 나누고, 각 청크를 벡터 임베딩으로 만들어 벡터DB에 저장한 뒤, 질문도 같은 모델로 벡터화해 가까운 청크를 찾는 방식이다. 인덱싱은 워크스페이스를 열면 자동 시작되고 80% 완료 시점부터 검색 가능하며, 5분마다 바뀐 파일만 다시 처리한다. 프라이버시 경계도 중요하다. 파일 경로는 서버 전송 전 암호화되고, 원문 코드는 평문 저장되지 않으며, 인덱싱 중 메모리에만 있다가 폐기된다. 실무 교훈은 "시맨틱 검색이면 grep이 필요 없다"가 아니라, 정확한 심볼은 grep으로, 흐름·책임·개념 탐색은 시맨틱 검색과 Explore subagent로 분리해 컨텍스트를 아끼는 것이다.
