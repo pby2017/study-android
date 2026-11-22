@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the Official MCP Registry card after wshobson/agents; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Zed ACP and parallel agents after the Official MCP Registry card; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:23 KST
+Last update: 2026-11-22 17:34 KST
+
+## Latest pass
+- Refined the Zed ACP card against current External Agents docs, 1.0 and Parallel Agents announcements, licensing overview, and live GitHub release/API snapshots.
+- Corrected “GA” wording and latest-version confusion; clarified optional worktree isolation and the provider-owned billing/auth/data boundary for external agents.
+- Updated source licensing and dated stars; added an intermediate interview question.
+- Sources and rationale: `research/ai-routine/20261122-zed-acp-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined the Official MCP Registry card using its live API/docs, repository status and release, and the official preview announcement.
