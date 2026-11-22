@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Continuous Claude after Cursor Agent search; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Google Antigravity after Continuous Claude; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Reframed Google Antigravity from a benchmark-heavy I/O inventory to a current map of distinct desktop, CLI, SDK, and hosted Managed Agents surfaces.
+- Verified current Managed Agents network defaults and credential guidance; emphasized that OS sandboxing does not restrict outbound network by default. Connected AI Studio's native Android generation/export flow without implying production readiness.
+- Removed volatile model/benchmark figures and clarified the June 18 Gemini CLI transition applied only to specified consumer authentication routes; enterprise and paid API-key access remained available per Google's notice.
+- Audit: research/ai-routine/20261122-antigravity-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined Continuous Claude against its current upstream README and GitHub repository snapshot.

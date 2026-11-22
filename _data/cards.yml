@@ -1727,13 +1727,23 @@ cards:
   interview: 'Continuous Claude에서 PR 체크가 통과하면 자동 병합해도 안전하다고 볼 수 있나요? Codex 사용 시 비용 상한도 자동으로 정확히 계산되나요?'
   answer: '둘 다 단정할 수 없다. 통과는 구성된 체크와 요구된 리뷰 조건의 결과일 뿐, 요구사항·보안·동작이 완전하다는 보증은 아니다. 브랜치 보호와 사람의 리뷰 정책을 저장소에서 확인하고 run·시간·비용 한도를 둔다. Codex는 토큰 사용량을 보고하므로 `--max-cost`를 적용하려면 입력·출력 단가를 제공해야 한다.'
 - category: ai
-  title: Google Antigravity 2.0 — 데스크톱·CLI·SDK·Managed Agents API, Gemini 3.5 Flash agent stack(I/O 2026)
-  summary: 구글이 2026 I/O에서 Antigravity 2.0을 agent-first development platform으로 공개 — 데스크톱(병렬 multi-agent)·Go CLI·Antigravity SDK 3표면. Gemini 3.5 Flash — Terminal-Bench 2.1 76.2%·MCP Atlas 83.6%·3.1 Pro 대비 4× faster·Antigravity co-optimized 12×. Managed Agents in Gemini API(Interactions API) — single API call로 Antigravity harness+Gemini 3.5 Flash agent spin-up, Google-hosted isolated Linux sandbox에서 reason·tool·code execute. AI Studio agent templates·Android vibe coding·Firebase 연동. Gemini CLI(~105k★) 소비자 접근 2026-06-18 종료→Antigravity 이주. Claude Managed Agents(Anthropic REST) ·OpenAI Codex platform ·Microsoft Foundry Hosted agents와 4대 managed agent API 축.
+  level: 중급
+  title: Google Antigravity — 데스크톱·CLI·SDK·호스팅 에이전트를 구분하기
+  summary: 'Antigravity는 하나의 앱 이름만이 아니라 서로 다른 실행 표면을 가진 Google의 에이전트 생태계다. Antigravity 2.0 데스크톱 앱은 병렬 에이전트를 관리하고, CLI는 터미널에서 작업하며, SDK는 애플리케이션에서 에이전트 harness를 사용하게 한다. Gemini API의 Managed Agents는 Google이 제공하는 Linux sandbox에서 코드를 실행하므로 로컬 실행과 혼동하지 않는다. 이 환경은 기본적으로 외부 네트워크 연결이 열려 있다. 필요하면 allowlist로 제한하고 최소 권한 credentials만 제공한다. Android 개발에서는 AI Studio의 prompt 기반 native Android 생성과 Antigravity로 프로젝트를 이어가는 흐름을 구분한다. 생성 결과는 빌드와 테스트로 검증한다.'
   points:
-  - 3표면 IDE+CLI+SDK + Managed Agents API — one call isolated Linux agent
-  - Gemini 3.5 Flash agentic default — Search·Gemini app·Antigravity co-designed
-  - Gemini CLI consumer sunset 2026-06-18 — Antigravity가 터미널 agent surface
+  - '데스크톱 앱=여러 에이전트 관리; CLI=터미널; SDK=자체 앱에서 harness 사용'
+  - 'Managed Agents=Google-hosted Linux sandbox — outbound network는 기본 허용, allowlist·최소 권한 자격 증명 적용'
+  - 'AI Studio의 Android 생성은 별도 경로; 생성물을 Antigravity로 가져와 이어서 개발하고 실제 빌드·테스트'
   source: https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
+  sources:
+  - label: 'Google I/O 2026 공식 발표 — Antigravity 앱·CLI·SDK·Managed Agents·AI Studio Android 지원'
+    url: https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
+  - label: 'Gemini API 공식 문서 — Managed Agents sandbox·network 기본값·credentials·human oversight'
+    url: https://aistudio.google.com/docs/agents
+  - label: 'Antigravity 제품 페이지 — 데스크톱의 병렬 에이전트·Scheduled Tasks·지원 플랫폼'
+    url: https://antigravity.google/product/antigravity-2
+  interview: 'Managed Agents가 OS 격리 Linux sandbox에서 실행된다는 사실만으로 네트워크 접근과 secrets가 안전하다고 판단할 수 있나요?'
+  answer: '아니다. 현재 Gemini API 문서는 outbound network가 기본적으로 열려 있다고 명시한다. 허용 도메인 allowlist를 적용하고, 최소 권한·짧은 수명의 자격 증명만 연결하며, 생성 결과를 배포 전에 검토한다. 또한 Managed Agents는 Google-hosted 실행 환경이므로 로컬 IDE·CLI 실행과 데이터 경계를 구분해야 한다.'
 - category: ai
   title: Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크
   summary: 'Mastra(mastra-ai)는 터미널 코딩 에이전트가 아니라, 제품 안에 AI 에이전트와 워크플로를 직접 넣을 때 쓰는 TypeScript 프레임워크다. React·Next.js·Node 앱에 붙이거나 독립 서버로 배포할 수 있고, YC W25 배지를 단 Gatsby 출신 팀의 프로젝트다. 핵심은 "모델 호출 래퍼"보다 넓다 — 40개 이상 모델 공급자를 한 인터페이스로 라우팅하고, 도구를 쓰는 Agent를 만들며, `.then()`·`.branch()`·`.parallel()`로 그래프형 Workflow를 짠다. 오래 걸리는 실행은 storage에 상태를 남기고 suspend/resume으로 사람 승인 뒤 이어갈 수 있다. 여기에 대화 기록·RAG·메모리, MCP 서버 작성, evals와 observability까지 묶어 "에이전트 앱의 백엔드 프레임워크"처럼 쓴다. 2026-06-24 GitHub API 기준 25,394★이고, 코어는 Apache-2.0이지만 `ee/` 디렉터리는 엔터프라이즈 라이선스라 프로덕션 사용 조건을 분리해서 봐야 한다.
