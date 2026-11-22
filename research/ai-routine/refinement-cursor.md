@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code session branching; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code shell mode; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1098,4 +1098,10 @@ Rules:
 - Refined `/branch` against the official Claude Code session guide.
 - Corrected permission inheritance: `/branch` retains session grants in the same process; CLI `--fork-session` starts a separate process and requires approval again. Qualified simultaneous-resume transcript risk.
 - Sources and rationale: `research/ai-routine/20261122-claude-session-branch-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Refined `셸 모드` against the official Claude Code interactive mode reference.
+- Clarified user-submitted shell execution (`!` input mode) versus skill-body dynamic context injection, and refreshed the background shortcut note.
+- Sources and rationale: `research/ai-routine/20261122-claude-shell-mode-refinement.md`.
 - Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
