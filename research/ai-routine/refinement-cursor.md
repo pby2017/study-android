@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code image input; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code session branching; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1092,4 +1092,10 @@ Rules:
 - Refined `이미지로 대화하기` against the current official Claude Code common workflows guide.
 - Corrected image paste shortcuts by platform (macOS Ctrl+V; Windows/WSL Alt+V), retained path/drag alternatives, and added an interview question.
 - Sources and rationale: `research/ai-routine/20261122-claude-image-input-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Refined `/branch` against the official Claude Code session guide.
+- Corrected permission inheritance: `/branch` retains session grants in the same process; CLI `--fork-session` starts a separate process and requires approval again. Qualified simultaneous-resume transcript risk.
+- Sources and rationale: `research/ai-routine/20261122-claude-session-branch-refinement.md`.
 - Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
