@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Anthropic internal Claude Code adoption examples; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: corrected Continue acquisition, repository-maintenance, and CLI-status guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:53 KST
+Last update: 2026-11-22 17:08 KST
+
+## Latest pass
+- Replaced the stale “AI Checks pivot” and old 33.7k-star claim with current Continue acquisition/status evidence.
+- Distinguished the open-source code and Apache-2.0 reuse rights from the repository's explicit no-longer-maintained notice. Corrected release labels: 2.0.0 VS Code is marked Latest; 2.1.0 is marked Pre-release (both dated June 19, 2026).
+- Kept the current `cn` CLI docs in view without treating available docs/install paths as a support guarantee. Added a dated ~36.5k★ snapshot and adoption-risk interview prompt.
+- Sources and rationale: `research/ai-routine/20261122-continue-status-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against current primary sources and check overlap.
 
 ## Latest pass
 - Corrected the employee-case-study card against Anthropic's July 24, 2025 article; removed the unsupported “10 teams” count.

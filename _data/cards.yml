@@ -1084,13 +1084,25 @@ cards:
   interview: "Anthropic이 소개한 Claude Code의 비개발팀 활용 사례는 무엇이며, 시간 절감 수치를 어떻게 해석해야 하나요?"
   answer: "디자인팀은 Figma 기반 프로토타입, 마케팅팀은 광고 CSV 자동화, 법무팀은 담당자 연결 도구를 만들었다. 3배·80% 같은 수치는 회사가 소개한 개별 사례이지 일반 성능을 입증하는 통제 실험이 아니다."
 - category: ai
-  title: Continue(continuedev) — AI Checks 피벗·read-only 보관·CLI 유산(~33.7k★)
-  summary: 한때 VS Code·JetBrains·CLI로 성장한 오픈소스 코딩 에이전트 Continue(Apache-2.0·~33.7k★)는 2026년 두 갈래 변화를 겪었다. 첫째, 제품 핵심이 IDE 채팅·자동완성에서 '모든 PR에 AI 검사를 돌리는' AI Checks로 피벗 — `.continue/checks/` 마크다운 하나가 검사 규칙이 되고 GitHub 상태 체크·CI에서 실행된다. 둘째, 메인 레포(continuedev/continue)는 2.0.0 최종 릴리스 후 read-only 보관 — 더 이상 능동 유지보수 없음. CLI(cn)는 모듈형 터미널 에이전트(TUI·헤드리스 `-p`)로 100+ LLM·Ollama 지원했으나 같은 운명. JetBrains는 @continuedev/cli 사용 권장. Roo Code·Zoo Code와 함께 'OSS 에이전트 도입 시 archived 여부'를 PoC 단계에서 확인해야 하는 대표 사례.
+  level: "중급"
+  title: Continue — 높은 GitHub 별점도 현재 유지보수를 보장하지 않는다
+  summary: Continue는 2026년 Cursor에 합류했다. 공식 GitHub 저장소는 오픈소스 코드가 Apache-2.0으로 남아 있지만, 더 이상 능동적으로 유지보수하지 않는다고 밝힌다. 릴리스 목록에서 VS Code 2.0.0은 최신 정식 릴리스, 2.1.0은 사전 릴리스로 표시되며 둘 다 2026년 6월 19일에 나왔다. CLI 문서가 남아 있어도 현재 지원·보안 업데이트를 보장하지는 않는다.
   points:
-  - AI Checks = `.continue/checks/` 마크다운 → PR마다 자연어 규칙 검사, GitHub 상태 체크·CI 연동
-  - 메인 레포 read-only(2.0.0 최종) — 스타·라이선스만 보지 말고 유지보수 상태·포크 경로 확인
-  - CLI(cn) = 모듈형 TUI·헤드리스, 100+ LLM·Ollama — 같은 보관 상태, @continuedev/cli 권장
-  source: https://docs.continue.dev/
+  - "GitHub 별 36.5k는 2026-11-22 조회 시점의 관심도다. 현재 릴리스 빈도, 보안 대응, 관리 주체를 별도로 확인한다."
+  - "Apache-2.0은 코드를 사용·수정·배포할 권리를 설명할 뿐, 제품 지원이나 취약점 수정을 약속하지 않는다."
+  - "`cn` CLI 문서는 여전히 이용 가능하다. 문서·패키지의 존재와 프로젝트가 계속 유지되는지는 다른 신호다."
+  - "도입 전 필요한 기능을 고정 버전으로 시험하고, 업데이트 중단 시 포크·대체 도구·마이그레이션 경로를 정한다."
+  sources:
+  - label: Continue 인수 안내
+    url: https://continue.dev/
+  - label: 저장소 상태·라이선스
+    url: https://github.com/continuedev/continue
+  - label: 릴리스 이력
+    url: https://github.com/continuedev/continue/releases
+  - label: Continue CLI 문서
+    url: https://docs.continue.dev/cli/quickstart
+  interview: "별이 많은 Apache-2.0 오픈소스 도구를 선택할 때, 별점·라이선스 외에 어떤 위험 신호를 확인해야 하나요?"
+  answer: "마지막 릴리스와 커밋, 유지보수 공지, 취약점 대응, 관리 주체를 확인한다. 별점은 과거 관심도이고 Apache-2.0은 재사용 권한이지 지속 지원 약속이 아니다. 업데이트가 멈출 경우를 대비해 핀 고정·포크·대체 경로도 준비한다."
 - category: ai
   title: MCP 도구를 코드로 호출하기 — 토큰 150k→2k로 줄인 'Code execution with MCP'
   summary: 'Anthropic이 2025년 11월 공개한 패턴. 에이전트가 MCP 도구를 하나씩 직접 호출하는 대신, MCP 서버를 ''파일시스템 위의 코드 API''로 노출하고 에이전트가 그 API를 호출하는 코드를 직접 작성하게 한다. 도구가 수백~수천 개로 늘면 ① 모든 도구 정의를 미리 로딩하느라 컨텍스트가 터지고 ② 중간 결과가 매번 모델을 거치며 토큰을 잡아먹는데, 이 패턴이 둘 다 해결한다. 도구마다 파일 하나(예: `servers/google-drive/getDocument.ts`)로 두고 에이전트가 필요한 파일만 탐색해 읽는 ''점진적 공개(progressive disclosure)'' 방식이다. 회의록 처리 예시에서 토큰을 150,000 → 2,000으로 줄여 98.7% 절감을 주장한다(Anthropic 측 주장). 단, 에이전트가 생성한 코드를 돌리려면 샌드박스 실행 환경이 필요하다.
