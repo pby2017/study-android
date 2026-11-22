@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Roo Code → Zoo Code after awesome-agent-skills; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Ruler after Roo Code → Zoo Code; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Refined Ruler against its current README, GitHub releases, and repository page.
+- Reframed it as generation from a common rule source, not cross-host policy enforcement; documented identical merged rules by default, dry-run/review, backup/gitignore effects, and nested-mode experimental status.
+- Updated its dated stars snapshot to about 3.0k; added intermediate difficulty and interview retrieval Q/A. Audit: `research/ai-routine/20261122-ruler-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined Roo Code → Zoo Code using the upstream archive notice, current fork repository, and official migration guide.

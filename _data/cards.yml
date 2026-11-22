@@ -1640,15 +1640,23 @@ cards:
   interview: 'Roo Code에서 Zoo Code로 설정을 옮길 때, 단순히 export/import만 하면 안전하고 완전히 호환된다고 볼 수 있나요?'
   answer: '아니다. 설정 export 파일에는 API key 같은 민감값이 있을 수 있으므로 안전하게 보관해야 한다. Zoo는 설정 파일을 import해 기존 설정과 병합하므로 가져온 provider·모델·credentials를 직접 확인하고 작은 작업으로 검증한다. 커뮤니티 포크는 별도 프로젝트이므로 릴리스와 보안 유지보수를 계속 평가한다.'
 - category: ai
-  title: Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기
-  summary: 'Ruler는 코딩 에이전트 지침을 도구별 파일에 손으로 복붙하지 않게 해 주는 "single source of truth" CLI다. `.ruler/AGENTS.md`와 하위 마크다운을 기준 순서대로 합치고, `ruler.toml` 설정에 따라 Claude Code, Codex CLI, Copilot, Cursor, Gemini CLI, Aider, Zed 등 30개 안팎의 에이전트 파일로 배포한다. 최신 README 기준 루트 `AGENTS.md`가 있으면 가장 높은 우선순위로 prepend되고, `.ruler/` 안의 파일에는 출처 주석이 붙어 traceability가 남는다. MCP 설정도 에이전트별 native 위치로 전파할 수 있고, nested rule loading은 모노레포·컴포넌트별 규칙을 다룰 수 있지만 아직 experimental로 표시된다. 2026-06-23 같은 런에서 2,773★·150 forks·MIT·archived=false·당일 push를 확인했다.
-
-    '
+  level: 중급
+  title: Ruler — 코딩 에이전트 지침의 공통 원본과 생성 파일 관리
+  summary: 'Ruler는 `.ruler/`의 Markdown 지침을 `ruler.toml`에서 선택한 코딩 에이전트 설정 파일로 생성하는 CLI다. 루트 `AGENTS.md`와 `.ruler/AGENTS.md`, 나머지 규칙을 정해진 순서로 합치고 각 원본 경로를 주석으로 남긴다. 단, 기본 동작은 같은 합성 규칙을 여러 에이전트에 배포하는 것이다. Ruler가 에이전트별 실행 정책이나 보안 권한을 강제하지는 않는다. `ruler apply`는 기존 파일을 백업한 뒤 교체할 수 있고 `.gitignore`도 수정할 수 있으므로 `--agents`로 대상을 좁히고 `--dry-run`과 diff를 검토한다. 팀은 `.ruler/` 원본을 공유한 뒤 각 개발자가 apply하거나 생성 파일을 명시적으로 관리해야 한다. GitHub 저장소는 MIT이며 약 3k★를 표시한다(2026-11-22 확인).'
   points:
-  - '입력 우선순위: 루트 AGENTS.md → `.ruler/AGENTS.md` → legacy instructions.md → 나머지 `.ruler/**/*.md`'
-  - '출력 범위: Claude Code·Codex CLI·Copilot·Cursor·Gemini CLI·Aider·Zed 등 30개 안팎 에이전트 지침/MCP/skills 위치'
-  - '실무 포인트: nested rule loading은 유용하지만 experimental, `--dry-run`으로 배포 diff를 먼저 확인'
+  - '규칙 원본을 한곳에서 편집하고, 선택한 호스트별 설정 파일은 `ruler apply`로 생성'
+  - '대상들은 기본적으로 같은 합성 규칙을 받음 — 호스트별 보안·권한 enforcement는 별도'
+  - '`--dry-run` 후 변경 diff 확인; 기존 파일 백업·`.gitignore` 변경·팀 동기화 방식을 점검'
   source: https://github.com/intellectronica/ruler
+  sources:
+  - label: 'Ruler README — 규칙 입력 순서·배포·기존 파일 백업'
+    url: https://github.com/intellectronica/ruler#readme
+  - label: 'Ruler README — dry-run·대상 지정·nested 기능의 experimental 상태'
+    url: https://github.com/intellectronica/ruler#nested-rule-loading
+  - label: 'GitHub 저장소 — MIT 라이선스·별점 snapshot'
+    url: https://github.com/intellectronica/ruler
+  interview: 'Ruler의 `ruler apply`는 여러 코딩 에이전트에 규칙을 배포할 때 무엇을 보장하지 않나요? 안전한 적용 절차는 무엇인가요?'
+  answer: 'Ruler는 선택한 호스트용 지침 파일을 생성하지만, 규칙이 모든 호스트에서 똑같이 로드되거나 보안 권한으로 강제된다고 보장하지 않는다. 기본적으로 같은 규칙을 합쳐 배포한다. `--agents`로 대상을 제한하고 `--dry-run` 및 diff를 확인한 뒤 적용하며, 백업·gitignore 변경과 팀의 generated-file 동기화 방식을 점검한다.'
 - category: ai
   title: Pi 2종 — earendil-works vs badlogic/pi-mono, 같은 이름 다른 철학의 터미널 에이전트
   summary: '2026년 "Pi" 코딩 에이전트는 이름은 같지만 완전히 다른 두 프로젝트다. earendil-works/pi(MIT·~65k★)는 pi-ai·pi-agent-core·pi-tui·pi-coding-agent 모노레포로 멀티프로바이더 LLM API와 self-extensible 구조를 강조 — 내장 권한 시스템 없어 Gondolin micro-VM·Docker 샌드박스를 README가 권한다. badlogic/pi-mono(MIT·TypeScript·~63k★, Mario Zechner)는 Read·Write·Edit·Bash 4도구만 두고 MCP는 의도적 미지원, "에이전트가 .ts 익스텐션을 직접 작성"하는 최소주의 — Armin Ronacher가 "역대 최단 시스템 프롬프트"로 소개. 공통 교훈: self-extensible·minimal 모두 실행 경계(샌드박스)와 supply-chain review를 같은 설계 항목으로 봐야 한다.'
