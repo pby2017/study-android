@@ -3251,15 +3251,26 @@ cards:
   interview: 'DSPy에서 Signature와 Module은 각각 무엇을 정의하나요? GEPA로 프로그램을 최적화할 때 validation과 별도 testset을 두는 이유는 무엇인가요?'
   answer: 'Signature는 task의 입력·출력 계약, Module은 그 계약을 실행하는 전략이다. GEPA는 training example과 metric feedback으로 instruction 후보를 개선하고 validation 결과로 후보를 선택하므로, validation만으로 최종 성능을 주장하면 선택 편향이 생길 수 있다. 최적화에 쓰지 않은 testset으로 일반화를 확인한다.'
 - category: ai
-  title: LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)
-  summary: 'LiteLLM은 OpenAI·Anthropic·Gemini·Bedrock·Azure·Cohere·Ollama 등 100+ LLM을 OpenAI 형식 하나로 호출하게 하는 Python SDK 겸 AI Gateway다. 팀 서비스로 띄우면 virtual key, spend tracking, load balancing, guardrails, admin dashboard를 한 곳에서 관리한다. 2026년 README 기준으로 MCP Gateway와 A2A Agent Gateway도 같은 프록시에 붙어, 모델 호출·도구 호출·에이전트 호출을 같은 인증/비용 경계 안에 넣을 수 있다. 교훈은 LLM 게이트웨이를 "모델 추상화"가 아니라 멀티테넌트 예산·관측·도구 보안의 운영 경계로 보라는 점이다.
-
-    '
+  level: 중급
+  title: LiteLLM SDK와 Gateway — 한 앱 호출과 중앙 통제 계층을 구분하기
+  summary: 'LiteLLM Python SDK는 한 Python 애플리케이션 안에서 여러 provider를 공통 `completion()` 인터페이스로 호출한다. AI Gateway는 별도로 운영하는 self-hosted 서버다. 여러 앱과 팀이 Gateway를 통하면 virtual key로 모델 접근·budget·rate limit을 나누고 사용량과 로그를 중앙에서 볼 수 있다. 하나의 SDK 인터페이스가 provider별 endpoint·기능·비용 차이까지 없애지는 않으므로, 실제 모델과 endpoint 조합은 지원표에서 확인한다.'
   points:
-  - 100+ LLM provider를 OpenAI format으로 통합 — SDK 또는 중앙 AI Gateway로 사용
-  - virtual key·spend tracking·load balancing·guardrails·admin dashboard를 프록시에서 관리
-  - MCP Gateway와 A2A Agent Gateway까지 같은 인증/비용 경계에 연결
+  - 'SDK: 앱 코드에 라이브러리를 추가해 직접 호출한다. 단일 Python 서비스에 적합하고, 키·설정은 해당 프로세스에서 관리한다.'
+  - 'Gateway: 앱과 provider 사이에 self-hosted proxy를 둔다. virtual key별 허용 모델·budget·rate limit, 요청 비용, 로그와 guardrail을 중앙에서 관리한다.'
+  - '운영 trade-off: Gateway는 여러 client의 공통 control plane이 되지만 DB·배포·admin key를 운영해야 한다. virtual key는 설정한 권한만 제한하므로 master key와 DB를 보호한다.'
+  - '신뢰성: retry·fallback·load balancing은 provider 장애나 rate limit을 다루지만, 다른 model/provider로 fallback하면 비용·데이터 경로·출력이 달라질 수 있다.'
   source: https://github.com/BerriAI/litellm
+  sources:
+  - label: LiteLLM Python SDK — 앱 내 호출과 SDK/Gateway 선택 기준
+    url: https://docs.litellm.ai/docs/python_sdk
+  - label: LiteLLM AI Gateway — virtual key, spend, guardrail, 운영 요구사항
+    url: https://docs.litellm.ai/docs/simple_proxy
+  - label: LiteLLM Virtual Keys — 모델 접근 제어와 key 관리
+    url: https://docs.litellm.ai/docs/proxy/virtual_keys
+  - label: LiteLLM Supported Endpoints — provider별 endpoint 지원표
+    url: https://docs.litellm.ai/docs/supported_endpoints
+  interview: 'LiteLLM SDK와 self-hosted Gateway는 어디에 배치하며, 여러 앱에 모델 접근 권한과 예산을 나눌 때 Gateway의 virtual key가 어떤 역할을 하나요?'
+  answer: 'SDK는 Python 앱 안에서 provider API를 직접 호출하고, Gateway는 여러 client 앞의 별도 proxy 서비스다. Gateway virtual key에 허용 모델·budget·rate limit을 부여해 사용을 분리하고, 중앙에서 spend와 로그를 볼 수 있다. 단, master key·DB·로그 정책을 안전하게 운영하고 provider별 endpoint 지원도 검증해야 한다.'
 - category: ai
   title: E2B — AI 에이전트가 생성한 코드를 Firecracker 샌드박스에서 실행하는 클라우드 인프라(Apache-2.0·~12.8k★)
   summary: 'E2B는 AI 에이전트가 생성한 코드를 클라우드의 격리 샌드박스에서 실행하게 해 주는 오픈소스 인프라다. JavaScript/TypeScript와 Python SDK로 sandbox를 만들고 `commands.run()`으로 셸 명령을 실행하거나, 별도 Code Interpreter SDK의 `runCode()`로 코드 실행 결과를 받을 수 있다. 셀프호스팅은 별도 `e2b-dev/infra` 저장소에서 Terraform 기반으로 안내되고, AWS/GCP 배포와 Firecracker 구성 요소 복사를 포함한다. 현재 README가 직접 보장하지 않는 "Fortune 100 88%" 같은 마케팅 숫자보다, 실무 포인트는 LLM이 만든 코드를 앱 서버가 아니라 짧게 사는 격리 실행면으로 밀어 넣고 API 키·네트워크·템플릿 경계를 따로 설계하는 것이다.

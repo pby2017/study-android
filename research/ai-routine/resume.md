@@ -1,16 +1,15 @@
 # Local AI routine checkpoint — 2026-11-23
 
 ## Current phase
-- Synced `master` before edits; it was already up to date.
-- Refined DSPy using current official metric, GEPA, MCP-tool, and repository documentation. Focused the card on held-out evaluation and feedback-based optimization; added intermediate retrieval Q&A.
-- Research audit: `research/ai-routine/20261123-010500-dspy-evaluation-loop.md`.
-- YAML/schema validation, Ruby syntax, routine tests (3 tests/14 assertions), navigation tests (6/6), and `git diff --check` passed. Jekyll build remains unverified because bundled Gems are missing; none were installed.
-- Published as `106e53d` (`Teach DSPy optimization with held-out evaluation`); `origin/master` matched after push and the worktree was clean.
-- The overall study-android card objective remains active.
+- Synced `master` with `git pull --ff-only origin master` before edits; it was already current.
+- Refined LiteLLM using current official Python SDK, AI Gateway, and virtual-key docs. Replaced the stale feature list with the SDK-vs-control-plane decision and clarified Gateway operations and fallback risks.
+- Research audit: `research/ai-routine/20261123-010900-litellm-sdk-gateway-boundary.md`.
+- Verification and publication pending.
+- The study-android knowledge-card objective remains active.
 
 ## Next actions
-1. Before the next edit, run `git pull --ff-only origin master`.
-2. Before the next edit, run `git pull --ff-only origin master`.
-3. Continue oldest-first with `LiteLLM`; add learning level and retrieval while verifying provider and gateway boundaries against current official docs.
+1. Run the YAML/schema, Ruby, routine, navigation, and diff checks; update the audit.
+2. Commit and push this bounded card refinement.
+3. Before the next edit, run `git pull --ff-only origin master`; continue with `E2B` and verify sandbox/security boundaries from current primary sources.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.

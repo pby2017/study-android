@@ -4767,3 +4767,10 @@ Refined:
 - MCP 도구는 client가 연 session을 `dspy.Tool.from_mcp_tool`로 감싸는 구조다. 재검토 시점 GitHub 신호는 약 39.2k stars/3.5k forks였고, 카드에는 고정 별점이나 구 릴리스 버전을 남기지 않았다.
 - Audit: `research/ai-routine/20261123-010500-dspy-evaluation-loop.md`.
 - Sources: https://dspy.ai/current/getting-started/metrics/, https://dspy.ai/learn/optimization/optimizers/, https://dspy.ai/current/diving-deeper/tools/.
+
+### 2026-11-23 01:09 KST — LiteLLM SDK와 Gateway의 운영 경계
+
+- 공식 SDK·Gateway·virtual-key 문서에서 구분을 확인했다. SDK는 Python 앱 내 호출에, 별도 AI Gateway는 여러 client의 공통 model access·budget·rate limit·spend/log·guardrail 관리에 적합하도록 정리했다.
+- Gateway 도입에는 DB·배포·admin key 운영이 필요하며, retry/fallback로 모델이 바뀔 때 비용·데이터 경로·출력 차이를 점검하도록 추가했다. provider별 endpoint 지원표 검증도 포함했다.
+- Audit: `research/ai-routine/20261123-010900-litellm-sdk-gateway-boundary.md`.
+- Sources: https://docs.litellm.ai/docs/python_sdk, https://docs.litellm.ai/docs/simple_proxy, https://docs.litellm.ai/docs/proxy/virtual_keys, https://docs.litellm.ai/docs/supported_endpoints.
