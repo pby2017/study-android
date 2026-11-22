@@ -1742,3 +1742,9 @@ Rules:
 
 - Refined `Claude Code 서브에이전트 모델 라우팅 — 호출·정의·환경변수 우선순위` against current official subagent/model docs. Corrected precedence (invocation → definition → environment → parent), explained the opt-in force override and provider-dependent aliases, and removed the inaccurate claim that built-in Explore always uses Haiku. Clarified that separate context does not remove requests from shared usage limits; added intermediate difficulty and a precedence retrieval question. Audit: `research/ai-routine/20261123-000100-claude-subagent-model-routing.md`.
 - Next: research the newly requested AI-era mobile/Android developer hiring and interview trends. Prefer primary employer hiring criteria or reputable, current labor-market research; separate broad software-engineering signals from Android-specific evidence and do not present anecdotal interview questions as a universal trend.
+
+## Latest pass — 2026-11-23
+- Refined `Claude Code Security Review — PR diff를 AI로 점검하되 신뢰 경계는 직접 설계하기` against the official repository README/action metadata and GitHub Actions fork workflow security docs.
+- Updated rounded live attention signal (~7.1k stars); centered the card on its prompt-injection warning, least privilege, commit-SHA pinning, external PR approval, and the limitation that findings do not replace SAST or human review. Added intermediate level and interview Q&A.
+- Audit: `research/ai-routine/20261123-002410-claude-security-review.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.

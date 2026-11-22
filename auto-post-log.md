@@ -4679,3 +4679,10 @@ Refined:
 - 조사·계획 오류를 구현 전에 검토하고, 검증된 상태만 새 context로 이관하는 실행 가능한 절차와 고급 수준 인터뷰 회상을 추가했다.
 - Audit: `research/ai-routine/20261123-002100-frequent-intentional-compaction.md`.
 - Sources: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md, https://github.com/BoundaryML/baml/pull/2357.
+
+### 2026-11-23 00:24 KST — Claude Code Security Review Action 보안 경계 최신화
+
+- Anthropic 공식 저장소의 README, Action 메타데이터, security-review 프롬프트와 GitHub fork workflow 정책을 확인했다. GitHub 페이지의 반올림 stars는 약 7.1k로 갱신하되 채택률로 해석하지 않았다.
+- 카드의 초점을 diff 분석·오탐 필터 나열에서 prompt injection 경고, 최소 권한, API key 격리, Action SHA 고정, 외부 PR 승인으로 이동했다. AI finding은 보안 증명이나 SAST/사람 리뷰의 대체가 아님을 명시했다.
+- Audit: `research/ai-routine/20261123-002410-claude-security-review.md`.
+- Sources: https://github.com/anthropics/claude-code-security-review, https://github.com/anthropics/claude-code-security-review/blob/main/action.yml, https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-your-repository.
