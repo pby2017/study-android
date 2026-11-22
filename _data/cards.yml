@@ -2746,15 +2746,25 @@ cards:
   answer: '각 호스트의 검색 경로·설치 절차·description 기반 선택·호출 방식을 확인한다. 포맷 호환은 동일한 네이티브 등록이나 권한을 보장하지 않는다. 외부 스킬은 지침뿐 아니라 실행 스크립트와 요구 도구 권한도 검토한다.'
 
 - category: ai
-  title: OpenHands(All-Hands-AI) — 에이전트의 모든 행동을 'Docker 샌드박스'에서 돌리는 오픈소스 코딩 에이전트(MIT·~77k★)
-  summary: 'OpenHands(옛 OpenDevin)는 코드를 짜고 수정할 뿐 아니라 명령 실행·웹 브라우징·API 호출까지 사람 개발자처럼 하는 오픈소스 자율 코딩 에이전트다. 핵심 차별점은 에이전트의 모든 행동을 격리된 Docker 런타임(샌드박스)에서 실행한다는 점 — 로컬 환경을 직접 건드리지 않고 컨테이너 안에서 셸·파일 편집·브라우저를 돌린다. CLI·웹 GUI·Cloud·Agent SDK 등 여러 형태로 쓰며 특정 모델에 묶이지 않고 다양한 LLM 공급자를 붙일 수 있다. 라이선스는 MIT(단, enterprise/ 디렉터리는 별도)이며 README 기준 약 77k★다.
-
-    '
+  level: 중급
+  title: OpenHands Agent Canvas — Docker sandbox가 격리하는 범위 확인하기
+  summary: 'OpenHands Agent Canvas는 코딩 에이전트와 예약·이벤트 자동화를 연결하는 셀프호스트형 제어 화면이다. 실행 backend는 Docker, Process, Remote 등으로 나뉜다. Docker sandbox는 위험을 줄이지만 전체 Canvas를 격리하는 것은 아니다. Process 방식은 호스트 파일에 직접 접근하고, Docker도 마운트한 workspace의 파일은 에이전트가 수정할 수 있다.'
   points:
-  - 샌드박스 우선 설계 — 에이전트의 bash 실행·파일 편집·브라우징이 격리된 Docker 컨테이너 런타임 안에서 일어나, 자율 에이전트가 호스트를 망칠 위험을 구조로 줄인다(표준 설치도 Docker 기반)
-  - 한 코어, 여러 표면 — 동일 엔진을 CLI(헤드리스 포함)·웹 GUI·OpenHands Cloud·파이썬 Software Agent SDK로 노출. 모델 비종속이라 Claude·GPT 등 원하는 LLM 공급자를 끼운다
-  - SWE-bench Verified 상위권을 '주장' — 공식은 77.6% 해결(검증된 리더보드 수치라기보다 프로젝트 측 주장으로 받아들일 것). 라이선스 MIT·~77k★, '87% 버그 티켓 당일 해결' 류 마케팅 수치는 검증 안 됨
-  source: https://github.com/All-Hands-AI/OpenHands
+  - 'Canvas는 OpenHands 에이전트뿐 아니라 ACP 호환 에이전트도 연결하고 Slack·GitHub·Linear 자동화를 실행할 수 있다. UI와 agent backend는 별도 구성요소다.'
+  - 'Docker는 권장 sandbox지만 선택지다. Process backend에는 컨테이너 격리가 없으며 에이전트 서버가 호스트 파일에 접근한다.'
+  - 'Docker에서도 읽기·쓰기로 마운트한 프로젝트는 에이전트가 읽고 수정할 수 있다. sandbox는 위험을 줄이는 격리이지, mounted data의 권한을 없애지 않는다.'
+  - '실행 전 backend, workspace mount 범위, 외부 노출 주소를 확인한다. 필요한 프로젝트만 마운트하고 민감정보는 workspace 밖에 둔다.'
+  source: https://github.com/OpenHands/OpenHands
+  sources:
+  - label: OpenHands README — Agent Canvas, backend 선택, 비-sandbox 경고와 Docker quickstart
+    url: https://github.com/OpenHands/OpenHands
+  - label: OpenHands Sandboxes — Docker·Process·Remote 실행 제공자와 기본값
+    url: https://docs.openhands.dev/openhands/usage/sandboxes/overview
+  - label: Docker Sandbox — rw mount는 agent가 수정 가능; legacy CLI는 유지보수 종료
+    url: https://docs.openhands.dev/openhands/usage/sandboxes/docker
+  interview: 'Docker를 쓴다는 이유만으로 OpenHands의 모든 작업이 격리된다고 볼 수 있나요? 실행 전 확인할 경계는 무엇인가요?'
+  answer: '아니다. Docker는 agent server 실행을 격리하지만 Canvas와 automation server까지 자동으로 격리하지는 않는다. Process backend는 호스트 파일에 접근하고, Docker에서도 rw로 마운트한 workspace는 수정 가능하다. backend와 mount 범위를 확인하고 필요한 경로만 제공한다.'
+
 - category: ai
   title: android/skills(Google 공식) — Android 개발 베스트프랙티스를 'SKILL.md'로 에이전트에 주입하는 공식 스킬 묶음(Apache-2.0·~5.8k★)
   summary: 'Google Android 팀이 직접 내는 공식 에이전트 스킬 저장소다. developer.android.com의 모범 사례를 Agent Skills 오픈 표준(SKILL.md) 형식으로 묶어, LLM이 약한 Android 작업에서 헛짚지 않도록 ''근거''를 깔아 준다. Expo의 expo/skills에 대응하는 네이티브 Android판 격으로, 2026-04-20 발표 뒤 빠르게 성장했고 현재 약 5.8k★·Apache-2.0 라이선스다. CLI가 감지된 모든 에이전트에 스킬을 깔아 주며(기본값 Gemini·Antigravity), LLM이 이미 잘하는 영역이 아니라 ''평가상 못하는 워크플로''를 골라 채우는 게 설계 방향이다.
@@ -9223,14 +9233,6 @@ cards:
   - CI failure→Claude already has project context loaded
   - vs /loop poll ·Routines cloud — event-driven not schedule-driven
   source: https://code.claude.com/docs/en/channels
-- category: ai
-  title: OpenHands Agent Canvas — Slack·GitHub·Linear event automation workspace
-  summary: OpenHands Agent Canvas(2026-06-16·agent-canvas npm) — self-hostable browser workspace for coding agent automations. cron schedule·GitHub webhook·Slack·Linear·custom webhook trigger. OpenHands default agent but ACP로 Claude Code·Codex·Gemini CLI third-party harness. local laptop→VM always-on promotion path. OpenHands(Docker sandbox interactive) ·Copilot Automations(cloud) ·Paperclip(org chart)와 축 분리 — harness-neutral event-driven automation UI.
-  points:
-  - agent-canvas one command — local or VM self-host full stack
-  - Slack PR review·issue triage·Linear ticket automation recipes
-  - ACP harness-neutral — not locked to OpenHands agent only
-  source: https://www.openhands.dev/blog/introducing-agent-canvas
 - category: ai
   title: GitHub PTA Dominator Tree — non-deterministic agent behavior validation
   summary: 'GitHub Trust Layer PTA(2026-05 blog) — Computer Use agent가 VS Code extension test suite를 non-deterministic하게 실행할 때 ''correct''가 path-dependent. 2–10 successful session 관찰→Dominator Tree structural model — state+action equivalence로 valid variation vs real failure 분리. VS Code CUA experiment: self-assessment 80% accuracy vs PTA 100% (+20), recall 60%→100%. promptfoo(adversarial) ·Deepchecks(session judge) ·OASB(product security)와 축 분리 — structural trust layer for UI agent eval.'

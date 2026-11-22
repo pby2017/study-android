@@ -4827,3 +4827,12 @@ Refined:
 - 필수 frontmatter, 단계적 로딩, 선택 스크립트의 실행 위험을 정리하고 중급 난이도와 면접 회상 Q&A를 추가했다.
 - Audit: `research/ai-routine/20261123-015455-agent-skills-portability-boundaries.md`.
 - Sources: https://agentskills.io/specification, https://developers.openai.com/api/docs/guides/tools-skills, https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.
+
+
+### 2026-11-23 01:57 KST — OpenHands와 Agent Canvas 카드 통합
+
+- 기존 OpenHands 개요와 후속 Agent Canvas 자동화 카드를 하나로 합쳐 카드 수를 1장 줄였다. Docker가 모든 요소를 자동 격리한다는 낡은 설명을 수정했다.
+- 현재 공식 문서 기준 Docker는 권장 sandbox, Process는 컨테이너 격리 없음, Remote는 원격 실행이다. Docker도 rw mount된 프로젝트를 수정할 수 있고 Canvas/automation 전체가 sandbox 안에 들어가는 것은 아니다.
+- 94,043 stars·12,586 forks는 2026-11-23 GitHub snapshot으로 감사 기록에만 남겼다. 인기 신호이지 보안/품질 증거로 해석하지 않았다.
+- 난이도 중급 및 면접 회상 Q&A 추가. Audit: `research/ai-routine/20261123-015700-openhands-canvas-sandbox-merge.md`.
+- Sources: https://github.com/OpenHands/OpenHands, https://docs.openhands.dev/openhands/usage/sandboxes/overview, https://docs.openhands.dev/openhands/usage/sandboxes/docker.
