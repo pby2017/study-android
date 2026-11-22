@@ -1710,3 +1710,8 @@ Rules:
 - Refined `VLM 분류의 확신도 — 생성된 라벨을 확률처럼 쓰지 않기` against the current SideEye `ImageAnalyzer.kt` and README. Confirmed 1.0/0.0 is a hard label, not confidence; added the parser's fail-open behavior for missing/unsupported labels and scoped SideEye as a low-adoption code-review example. Audit: `research/ai-routine/20261122-sideeye-vlm-confidence-review.md`.
 - Refined `GitHub MCP issue fields — 이슈 메타데이터 조회·작성·필터` against the current official tool schema and GitHub's personal-account GA/org-preview announcements. Made schema discovery, write authorization, and the narrower documented filter-type set distinct; do not infer MCP multi-select filtering from product support. Audit: `research/ai-routine/20261122-235800-github-mcp-issue-fields-schema.md`.
 - Next: continue the existing oldest-first refinement queue; check its next eligible item in `refinement-cursor.md` history/queue and exclude pure Android-only topics.
+
+## 2026-11-22 23:57 KST
+
+- Refined `Context Rot — 긴 context window가 정확도를 보장하지 않는다` against Chroma's July 2025 report and its reproducibility repository. Narrowed the claim to the reported tasks; LongMemEval's ~113k-token full prompts averaged against ~300-token focused prompts scored lower across tested models, but this is not evidence for a universal token budget. Added an intermediate level, practical retrieval lesson, and interview Q&A. Toolkit snapshot: 323 stars/35 forks, a modest signal rather than broad adoption. Audit: `research/ai-routine/20261122-235700-context-rot-refinement.md`.
+- Next: continue oldest-first with the next eligible card that lacks a level and retrieval question; exclude pure Android topics and verify current official documentation before revising product-specific claims.

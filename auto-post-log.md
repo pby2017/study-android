@@ -4625,3 +4625,10 @@ Refined:
 - Separated `list_issue_fields` schema discovery from write access and `list_issues` filtering; documented repository/org lookup behavior, supported current filter value types, and explicit set/clear semantics.
 - Clarified that GitHub product support for multi-select does not prove MCP filter support, and that personal-account GA differs from the organization public-preview status.
 - Audit: `research/ai-routine/20261122-235800-github-mcp-issue-fields-schema.md`.
+
+### 2026-11-22 23:57 KST — Context Rot 연구 결과 범위와 학습 포인트 정정
+
+- Refined `Context Rot — 긴 context window가 정확도를 보장하지 않는다` against Chroma's July 2025 technical report and reproduction toolkit.
+- Removed the blanket “18 models all collapse” framing. Clarified the 306-question LongMemEval comparison (~113k-token full prompts vs ~300-token focused prompts), and stated that this is not a universal token budget or a clean context-length-only comparison.
+- Added intermediate difficulty, concise retrieval guidance, and interview retrieval; kept the public toolkit's 323-star/35-fork snapshot in the audit rather than presenting it as mass adoption.
+- Audit: `research/ai-routine/20261122-235700-context-rot-refinement.md`.
