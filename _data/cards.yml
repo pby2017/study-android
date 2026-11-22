@@ -2156,13 +2156,26 @@ cards:
   interview: 'OpenSpec의 propose와 apply를 분리하는 이유는 무엇이며, 이 분리만으로 결과의 정확성이 보장되나요?'
   answer: 'propose에서 범위·요구사항·설계·작업을 먼저 검토해 구현 전 가정을 조정할 수 있다. 하지만 문서화가 정확성을 보증하지는 않으므로, 테스트와 구현 검토가 별도로 필요하다.'
 - category: ai
-  title: Code Mode(Cloudflare) — MCP 도구를 'TypeScript API'로 바꿔 LLM에게 코드로 호출하게 하기
-  summary: Cloudflare Code Mode는 MCP 도구를 LLM에게 직접 tool call로 노출하지 않고, doc 주석 달린 TypeScript API로 바꾼 뒤 LLM이 그 API를 호출하는 코드를 쓰게 하는 패턴이다. 핵심은 "도구 호출을 잘 고르기"보다 "짧은 코드를 써서 search→execute→filter→compose를 샌드박스 안에서 끝내기"다. cloudflare/mcp 서버는 Cloudflare API 2,500+ endpoint를 docs/search/execute 세 도구와 약 1.1k token footprint로 노출한다. codemode=false로 끄면 endpoint별 2,594개 도구가 등록되고 required param만 남겨도 약 244k token이 든다. 실행은 Dynamic Worker Loader의 V8 isolate에서 돌며, 일반 인터넷 접근은 막고 MCP binding만 열어 API key를 LLM 코드에 노출하지 않는다.
+  level: 중급
+  title: Code Mode — MCP 도구를 코드로 묶어 토큰과 왕복을 줄이기
+  summary: Code Mode는 에이전트가 도구를 하나씩 호출하는 대신, 여러 도구를 조합하는 짧은 프로그램을 작성해 실행하도록 하는 패턴이다. 예를 들어 Cloudflare MCP는 OpenAPI 전체를 모델에 넣지 않고 `search`로 API를 찾고 `execute` 코드로 요청을 조합한다. 결과적으로 모델은 반복 호출의 중간 자료 대신 필요한 결과를 받는다. Cloudflare 저장소가 공개한 비교표에서는 2,594개 endpoint를 개별 최소 스키마로 노출할 때 약 244k 토큰, Code Mode 도구 설명은 약 1.1k 토큰이라고 추정한다. 이는 해당 구현의 자체 측정치이며 모든 MCP 서버의 절감률을 뜻하지 않는다. 생성 코드는 Dynamic Worker에서 실행할 수 있지만, 샌드박스는 구성한 네트워크·binding 권한에 의존한다. 2026년 Check Point는 workerd의 취약점들을 공개했고 관리형 Workers는 수정됐다고 보고했으므로, 자체 호스팅은 런타임 업데이트와 권한 제한이 필요하다.
   points:
-  - cloudflare/mcp — docs/search/execute 3 tools, 2,500+ endpoints, GraphQL Analytics까지 같은 execute 경로
-  - Token budget — Code Mode 약 1.1k vs endpoint별 MCP 최소 스키마 약 244k
-  - Sandbox — V8 isolate + MCP binding, 일반 인터넷 차단, supervisor가 token 보관
+  - '전통적 tool call: 모델이 호출 → 결과 확인 → 다시 호출. Code Mode: 모델이 반복·분기·필터를 코드로 묶어 한 번 실행한다.'
+  - 'Cloudflare MCP의 `search`는 명세에서 API를 찾고, `execute`는 찾은 API를 코드에서 호출한다. API 2,500여 개를 개별 tool schema로 모두 펼치지 않는다.'
+  - '저장소 자체 비교는 약 1.1k 대 244k 토큰이다. 비교 조건이 해당 서버 기준이므로 다른 제품에 그대로 일반화하지 않는다.'
+  - 'AI 생성 코드 실행은 권한 경계가 핵심이다. egress와 bindings를 제한하고, self-hosted workerd는 보안 업데이트를 유지한다.'
   source: https://github.com/cloudflare/mcp
+  sources:
+  - label: Cloudflare MCP README — 도구 구성과 토큰 비교 기준
+    url: https://github.com/cloudflare/mcp/blob/main/README.md
+  - label: Cloudflare Dynamic Workers Code Mode 예제 — 생성 코드 실행
+    url: https://developers.cloudflare.com/dynamic-workers/examples/codemode/
+  - label: Cloudflare Dynamic Workers — egress 제한과 credential proxy
+    url: https://developers.cloudflare.com/dynamic-workers/usage/egress-control/
+  - label: Check Point Research — workerd 취약점 공개 및 수정 상태
+    url: https://research.checkpoint.com/2026/when-agentic-glue-melts/
+  interview: 'Code Mode가 일반 MCP tool call과 다른 점은 무엇이며, 생성 코드를 실행할 때 무엇을 검토해야 하나요?'
+  answer: '여러 도구 호출을 코드로 조합해 반복 왕복과 중간 결과를 줄인다. 그러나 생성 코드가 사용할 수 있는 네트워크·binding·자격 증명 범위를 제한하고 런타임 보안 업데이트를 유지해야 한다.'
 - category: ai
   title: 에이전트 팀으로 C 컴파일러 짜기(Anthropic) — 병렬 자율 에이전트 '하네스'를 설계하는 실전 교훈
   summary: 'Anthropic 연구원 Nicholas Carlini가 Claude 에이전트 16개를 동시에 돌려, Linux 6.9를 x86·ARM·RISC-V에서 빌드하는 10만 줄짜리 Rust C 컴파일러를 만든 실험 기록이다(약 2,000세션·약 $20,000 소요). 핵심 교훈은 도구 이름이 아니라 ''하네스(작업 환경)''를 어떻게 설계하느냐에 있다. 검증기(verifier)가 거의 완벽해야 하며 그렇지 않으면 "Claude가 엉뚱한 문제를 푼다". 또 Claude는 시간 감각이 없어("can''t tell time") 방치하면 진척 대신 테스트만 몇 시간씩 돌리므로, 1%·10% 무작위 샘플을 도는 --fast 옵션으로 회귀를 빨리 잡게 했다.

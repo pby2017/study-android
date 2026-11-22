@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined Cloudflare Code Mode: corrected the token comparison framing, described tool-composition, and replaced absolute sandbox/security claims with configuration caveats and a runtime update warning. Audit: `research/ai-routine/20261122-cloudflare-code-mode-refinement.md`.
+- Next: continue oldest-first with the agent-team C-compiler experiment; validate core results and learning claims against Anthropic's report, avoid copying loose performance metrics.
+
+## Previous latest pass — 2026-11-22
+## Latest pass — 2026-11-22
 - Refined `OpenSpec` into a current v2 change-planning lesson; corrected skill names, optional verification profile, install/runtime requirements, and removed stale Spec Kit comparison and old metrics. Audit: `research/ai-routine/20261122-openspec-refinement.md`.
 - Next: continue oldest-first with `Code Mode (Cloudflare)`; verify current implementation details, token claims, sandbox/security boundary, and duplicate overlap before editing.
 
