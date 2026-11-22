@@ -933,15 +933,16 @@ cards:
   interview: "`$ARGUMENTS`와 `$0`은 어떻게 다르며, 호출에 인자를 전달했는데 템플릿에 인자 자리가 없으면 어떻게 되나요?"
   answer: "`$ARGUMENTS`는 전체 입력 문자열을 받고 `$0`은 첫 번째 위치 인자만 받는다. 어떤 인자 자리도 값을 받지 않으면 Claude Code가 `ARGUMENTS: <입력>`을 본문 끝에 추가한다."
 - category: ai
-  title: 커스텀 서브에이전트 만들기 — 자주 쓰는 일꾼을 파일로 굳히기
-  summary: '같은 지시를 가진 일꾼을 매번 새로 띄우게 된다면, 그걸 커스텀 서브에이전트로 파일에 굳힌다. 서브에이전트는 YAML 프런트매터 + 본문(시스템 프롬프트)으로 된 마크다운 파일이고, `name`과 `description` 둘만 필수다. `tools`(허용 도구 allowlist)·`disallowedTools`(차단 denylist)·`model`로 권한과 모델을 좁히는데, model에 `inherit`을 주면 메인 대화와 같은 모델을 쓴다. Claude는 작업이 들어오면 각 서브에이전트의 `description`을 보고 위임할지 판단하므로, description은 페르소나가 아니라 ''언제 이걸 쓰는지''를 또렷이 적어야 한다. 저장 위치는 프로젝트용 `.claude/agents/`(버전 관리로 팀 공유)와 개인용 `~/.claude/agents/`(내 모든 프로젝트)가 있고, `/agents` 명령으로 가이드 따라 만들고 관리한다.
-
-    '
+  level: "중급"
+  title: Claude Code 서브에이전트 — 반복 지시와 도구 범위를 재사용하기
+  summary: 반복해서 맡기는 작업은 `.claude/agents/`의 마크다운 파일로 정의할 수 있다. YAML frontmatter의 `name`과 `description`은 필수이며, 본문은 서브에이전트의 시스템 프롬프트가 된다. 별도 컨텍스트에서 작업하고 요약을 돌려줘 주 대화의 탐색 로그를 줄인다.
   points:
-  - 마크다운 + YAML 프런트매터, 필수는 `name`·`description`뿐 / 본문이 시스템 프롬프트 / `/agents`로 생성·편집·삭제
-  - '도구 좁히기: `tools`(allowlist) 또는 `disallowedTools`(denylist) / `model: inherit`로 메인 대화 모델 따라가기'
-  - '위치·우선순위: managed(1·조직) > --agents 플래그(2·세션) > `.claude/agents/`(3·프로젝트, 팀 공유) > `~/.claude/agents/`(4·내 전체) > 플러그인(5)'
+  - 프로젝트 정의는 저장소와 팀에 공유; `~/.claude/agents/` 정의는 내 모든 프로젝트에서 사용
+  - "`tools`로 허용 도구를 지정할 수 있음; 생략하면 서브에이전트에서 사용 가능한 도구를 상속"
+  - "`description`은 위임 시점을 설명; `/agents`는 현재 가이드이며, 예전 대화형 생성 마법사는 v2.1.197 이하"
   source: https://code.claude.com/docs/en/sub-agents
+  interview: "서브에이전트 frontmatter에서 `tools`를 생략하면 도구 권한은 어떻게 되며, `description`은 왜 중요한가요?"
+  answer: "생략하면 서브에이전트에 제공되는 도구를 상속한다. Claude는 `description`을 보고 언제 작업을 위임할지 판단하므로, 역할 이름보다 사용 조건을 분명히 적어야 한다."
 - category: ai
   title: '@로 파일·디렉터리 참조 — Claude가 읽기를 기다리지 않고 내용을 미리 넣기'
   summary: '프롬프트에 `@`를 쓰면 Claude가 Read 도구로 파일을 찾아 읽기를 기다리지 않고, 그 자리에 내용을 바로 끼워 넣을 수 있다. `@src/utils/auth.js`처럼 파일을 가리키면 그 파일 전체 내용이 대화에 포함되고, `@src/components`처럼 디렉터리를 가리키면 내용이 아니라 그 안의 파일 목록(파일 정보 포함)이 들어온다. 중요한 부가 효과 하나 — `@`로 파일을 참조하면 그 파일이 있는 디렉터리와 상위 디렉터리들의 `CLAUDE.md`도 함께 컨텍스트에 딸려 붙는다(그 하위트리 규칙을 자동으로 끌어옴). 경로는 상대·절대 둘 다 되고, 한 메시지에서 여러 개를 동시에 참조할 수 있다(예: "@file1.js and @file2.js"). 같은 `@` 문법으로 연결된 MCP 서버의 리소스(`@server:resource`)도 끌어올 수 있다.

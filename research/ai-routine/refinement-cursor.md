@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code skill arguments; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code custom subagents; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1122,4 +1122,10 @@ Rules:
 - Refined `커스텀 커맨드 인자` against the official Claude Code skills reference.
 - Clarified when arguments are appended automatically, zero-based argument positions, multi-word quoting, and missing indexed versus named placeholders.
 - Sources and rationale: `research/ai-routine/20261122-claude-skill-arguments-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Refined `커스텀 서브에이전트 만들기` against the current official subagent guide.
+- Updated `/agents` behavior and clarified that omitting `tools` inherits the available subagent tool set; emphasized `description` as the delegation signal.
+- Sources and rationale: `research/ai-routine/20261122-claude-subagents-refinement.md`.
 - Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
