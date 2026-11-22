@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Cursor Rules after Memory Bank; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Pydantic AI after Cursor Rules; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:40 KST
+Last update: 2026-11-22 16:41 KST
+
+## Latest pass
+- Refined the Pydantic AI card against the current official output and overview documentation plus the live GitHub repository page.
+- Replaced blanket “invalid output automatically retries” with the explicit `ModelRetry` validator path and bounded retry budget; removed the compile-time safety implication, qualified provider portability, refreshed the dated star snapshot, and added an intermediate retrieval Q/A.
+- Sources and rationale: `research/ai-routine/20261122-pydantic-ai-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined Cursor Rules against the current official Rules and AGENTS.md documentation.

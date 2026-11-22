@@ -1421,15 +1421,23 @@ cards:
   interview: 'Cursor 규칙 frontmatter에서 `alwaysApply`, `globs`, `description`은 적용 시점을 어떻게 나누며, `@파일` 참조는 언제 내용을 컨텍스트에 넣나요?'
   answer: '`alwaysApply: true`는 매 세션 포함하고 다른 필드는 조건으로 쓰지 않는다. `globs`는 일치 파일이 컨텍스트에 있을 때 적용하며, `description`은 에이전트가 관련성을 판단할 때 사용한다. 셋 다 없으면 `@규칙`으로 수동 호출한다. 규칙의 `@파일`은 내용을 미리 삽입하지 않고, 규칙이 적용된 뒤 에이전트가 필요할 때 도구로 읽는다.'
 - category: ai
+  level: 중급
   title: Pydantic AI — 'FastAPI 느낌'으로 타입 안전하게 짜는 모델-비종속 에이전트 프레임워크
-  summary: 'Pydantic AI는 Pydantic 검증 라이브러리를 만든 팀이 내놓은 파이썬 에이전트 프레임워크다. README는 스스로를 "프로덕션급 GenAI 애플리케이션을 빠르고 자신 있게 짜도록 돕는" 프레임워크라 소개하며, 목표는 웹 개발의 FastAPI가 주던 ''이게 되네'' 하는 개발 경험을 LLM 앱에 가져오는 것이다. 핵심은 타입 안전성이다. 에이전트의 입력·도구·출력을 Pydantic 모델로 정의하면 LLM 응답이 그 스키마에 맞게 검증되고, 안 맞으면 모델에 자동 재요청한다. 덕분에 "문자열 받아서 파싱하다 터지는" 흔한 실패가 컴파일 타임 가까이로 당겨진다. 모델에도 안 묶여서 OpenAI·Anthropic·Gemini·DeepSeek 등을 같은 코드로 갈아끼울 수 있고, 타입 안전한 의존성 주입, MCP/A2A 연동, Logfire(OpenTelemetry) 관측이 기본 제공된다. 코딩 에이전트를 ''쓰는'' 도구가 아니라 ''만드는'' 토대라서, 사내 자동화나 커스텀 에이전트를 직접 구축할 때 LangChain의 대안으로 자주 거론된다. MIT 라이선스, 약 17.8k★.
-
-    '
+  summary: 'Pydantic AI는 Pydantic 팀의 Python 에이전트 프레임워크다. `Agent`에 출력 타입(예: Pydantic `BaseModel`)을 지정하면 응답을 구조화된 값으로 다루고, Python 타입 검사와 검증기를 사용해 코드 경계에서 확인할 수 있다. 단, 이는 컴파일 타임 검증이 아니며 모델이 항상 올바른 값을 만든다는 보장도 아니다. 사용자 정의 `output_validator`에서 `ModelRetry`를 발생시키면 모델에 다시 요청할 수 있고, 재시도 예산은 기본값과 설정에 따라 제한된다. 여러 모델·제공자를 지원하지만 실제 교체 가능 범위는 각 제공자의 기능과 모델별 차이에 좌우된다. MIT 라이선스이며, GitHub 저장소는 확인일 기준 약 21.3k stars로 높은 관심도를 보인다.'
   points:
-  - Pydantic 팀의 파이썬 에이전트 프레임워크 — 입력·도구·출력을 Pydantic 모델로 정의하고 LLM 응답을 스키마 검증(안 맞으면 자동 재요청)
-  - '모델 비종속: OpenAI·Anthropic·Gemini·DeepSeek 등을 같은 코드로 교체 / 타입 안전 의존성 주입 + Logfire 관측 기본'
-  - 에이전트를 '쓰는' 게 아니라 '만드는' 토대 — MIT, 약 17.8k★ (수치는 레포 주장)
+  - '출력 타입을 선언해 구조화된 응답을 받고, Python/Pydantic 검증으로 실행 중 값의 모양과 제약을 확인'
+  - '`ModelRetry`는 검증 실패를 모델에 되돌려 다시 생성하게 하는 명시적 경로 — 횟수는 재시도 예산이 제한'
+  - '다양한 모델·제공자를 지원하는 MIT 라이선스 프레임워크 — 저장소 관심 신호 약 21.3k★(2026-11-22 확인)'
   source: https://github.com/pydantic/pydantic-ai
+  sources:
+  - label: Pydantic AI 공식 Output 문서 — 구조화 출력과 output validator 재시도
+    url: https://ai.pydantic.dev/output/
+  - label: Pydantic AI 공식 개요 — 타입 안전성·제공자 지원·OpenTelemetry
+    url: https://ai.pydantic.dev/
+  - label: GitHub 저장소 — MIT 라이선스와 관심도 스냅샷
+    url: https://github.com/pydantic/pydantic-ai
+  interview: 'Pydantic AI의 구조화 출력은 모델 응답을 컴파일 타임에 안전하게 만들며, 검증에 실패하면 항상 자동 재요청하나요?'
+  answer: '아니다. 출력 타입은 응답을 구조화하고 실행 중 검증하는 데 도움을 주지만 컴파일 타임 보장이나 의미적 정확성을 보장하지 않는다. 사용자 정의 output validator가 `ModelRetry`를 발생시켜야 재요청하며, 이 재시도는 설정된 제한 예산을 사용한다.'
 - category: ai
   title: Backlog.md — 깃 레포를 사람·AI 공용 칸반 보드로 바꾸는 마크다운 태스크 매니저
   summary: 'Backlog.md는 별도 서버나 SaaS 없이, 깃 저장소 안에서 작업(task)을 평범한 마크다운 `.md` 파일로 관리하는 오픈소스 도구다(MIT 라이선스). README에 따르면 모든 이슈가 깃에 커밋되는 .md 파일이라 PR·브랜치·히스토리와 자연스럽게 묶이고, 제로 설정 CLI로 터미널 칸반 보드와 웹 UI를 띄울 수 있다. 핵심은 ''AI 에이전트와 사람이 같은 작업 목록을 공유''한다는 점이다. Claude Code·Gemini CLI·Codex·Kiro 등 MCP/CLI 호환 어시스턴트를 지원하며, MCP 커넥터를 쓰면 이 도구들에 워크플로 지침까지 자동 주입된다. 에이전트가 작업을 To Do→In Progress→Done으로 옮기고 진행 상황을 파일에 남기므로, 세션이 바뀌어도 ''무엇을 하던 중이었나''가 레포에 그대로 남는다. 실무 포인트는 핸드오프다. 사람이 잘게 쪼갠 태스크를 에이전트에 넘기고, 에이전트가 작업하며 상태를 갱신하면, 별도 트래커 없이 깃 하나로 사람-AI 협업의 단일 진실 공급원(source of truth)을 만들 수 있다.
