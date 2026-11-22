@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code `@` file references; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code remote MCP OAuth; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 14:45 KST
+Last update: 2026-11-22 14:52 KST
+
+## Latest pass
+- Refined the remote MCP OAuth card against current official Claude Code MCP documentation.
+- Clarified that 401/403 does not always trigger OAuth (configured Authorization headers fail as connection errors), covered refresh-token retry, and distinguished local credential clearing from server-side token revocation.
+- Added intermediate difficulty and an interview question about token revocation.
+- Source and rationale: `research/ai-routine/20261122-claude-remote-mcp-oauth-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card, verifying primary-source behavior and avoiding overlap.
 
 ## Latest pass
 - Refined the Claude Code `@` file-reference card against the current official common-workflows guide.

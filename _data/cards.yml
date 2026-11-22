@@ -955,15 +955,16 @@ cards:
   interview: "민감한 파일을 `@경로`로 참조할 때 `PreToolUse` 훅만으로 읽기를 막을 수 있나요?"
   answer: "아니다. `@`가 파일을 직접 컨텍스트에 넣을 때는 도구 호출이 없어 해당 훅이 실행되지 않는다. `Read` 거부 규칙을 사용하거나 `CLAUDE_CODE_DISABLE_FILE_MENTIONS=1`로 직접 포함을 막아야 한다."
 - category: ai
-  title: 원격 MCP 서버 인증 — /mcp로 OAuth 2.0 로그인하기
-  summary: 'Sentry·Notion 같은 클라우드 MCP 서버는 대개 인증을 요구하는데, Claude Code는 OAuth 2.0을 지원한다. `claude mcp add --transport http <이름> <url>`로 서버를 붙인 뒤 Claude 안에서 `/mcp`를 실행하면 브라우저가 열려 로그인 흐름이 진행된다. 서버가 `401 Unauthorized`나 `403 Forbidden`을 돌려주면 Claude Code가 그 서버를 ''인증 필요''로 표시하고 `/mcp`에서 OAuth 흐름을 밟게 해준다. 발급된 토큰은 안전하게 저장되고 자동으로 갱신되며, 접근을 끊으려면 `/mcp` 메뉴의 "Clear authentication"을 쓴다. 브라우저 리다이렉트가 연결 오류로 실패하면 주소창의 콜백 URL 전체를 Claude의 URL 프롬프트에 붙여 넣으면 된다.
-
-    '
+  level: "중급"
+  title: 원격 MCP OAuth — 로그인 요구와 토큰 폐기를 구분하기
+  summary: 원격 HTTP MCP 서버는 OAuth 2.0 로그인을 지원한다. 처음 인증이 필요한 서버가 `401` 또는 `403`을 반환하면 `/mcp`에서 로그인할 수 있지만, 직접 설정한 Authorization 헤더가 거부되면 OAuth 로그인 대신 연결 실패로 표시된다.
   points:
-  - '흐름: `claude mcp add --transport http <이름> <url>` → Claude 안에서 `/mcp` 실행 → 브라우저 로그인 / 401·403 응답 시 자동으로 ''인증 필요'' 표시'
-  - 토큰은 안전 저장·자동 갱신 / 접근 해제는 `/mcp` 메뉴의 "Clear authentication" / OAuth는 HTTP 서버에서 동작
-  - 사전 등록 리다이렉트 URI가 필요하면 `--callback-port`로 포트 고정(`http://localhost:PORT/callback`) / DCR 미지원 서버는 `--client-id`·`--client-secret`로 자격증명 직접 제공
+  - "등록은 `claude mcp add --transport http <name> <url>`; OAuth 로그인은 `/mcp` 또는 `claude mcp login <name>`으로 시작한다."
+  - "저장된 refresh token이 있으면 만료 시 자동 갱신 후 한 번 재시도한다. 401/403만으로 언제나 OAuth 화면이 뜨는 것은 아니다."
+  - "`/mcp`의 Clear authentication은 로컬 자격 증명을 지운다. 서버에서 토큰을 폐기하려면 지원되는 경우 `claude mcp logout <name>`을 먼저 실행한다."
   source: https://code.claude.com/docs/en/mcp
+  interview: "MCP 서버를 제거하면 OAuth 토큰도 발급 서버에서 자동 폐기되나요?"
+  answer: "아니다. 제거는 Claude Code에 저장된 토큰과 클라이언트 등록을 삭제하지만 발급 서버의 토큰은 폐기하지 않는다. 서버가 지원하면 제거 전에 `claude mcp logout <name>`을 실행한다."
 - category: ai
   title: claude --from-pr — PR에 묶인 그 작업 세션으로 곧장 되돌아가기
   summary: '`gh pr create`로 PR을 만들면 그때 돌던 세션이 그 PR에 자동으로 연결된다. 나중에 그 PR 작업을 이어가려면 `claude --from-pr <번호>`로 곧장 연결된 세션을 되살리거나, PR URL을 `/resume` 피커 검색창에 붙여 넣어 찾는다. 피커는 GitHub·GitHub Enterprise·GitLab·Bitbucket의 pull/merge request URL을 받아 그에 연결된 세션을 짚어 준다. 디렉터리 단위로 흩어진 여러 세션 중 "어느 게 이 PR 작업이었지?"를 헤매지 않고, PR 하나를 키로 삼아 대화·컨텍스트를 그대로 복원하는 워크플로다.
