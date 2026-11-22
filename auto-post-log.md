@@ -4836,3 +4836,13 @@ Refined:
 - 94,043 stars·12,586 forks는 2026-11-23 GitHub snapshot으로 감사 기록에만 남겼다. 인기 신호이지 보안/품질 증거로 해석하지 않았다.
 - 난이도 중급 및 면접 회상 Q&A 추가. Audit: `research/ai-routine/20261123-015700-openhands-canvas-sandbox-merge.md`.
 - Sources: https://github.com/OpenHands/OpenHands, https://docs.openhands.dev/openhands/usage/sandboxes/overview, https://docs.openhands.dev/openhands/usage/sandboxes/docker.
+
+
+### 2026-11-23 02:04 KST — Android Skills의 설치·호스트 경계
+
+- Android Skills 카드를 Android 전문 지침의 설치·발견·호스트 차이를 배우는 AI+Android 카드로 정리했다. 오래된 별 수와 버전 주장을 제거했다.
+- Android CLI의 `skills list`/`skills add`, Android Studio의 현재 검색 경로와 수동 호출, Agent Skills의 선택적 실행 스크립트를 공식 문서로 확인했다.
+- 중급 난이도와 “설치한 skill이 검색되지 않을 때 확인할 경계” 면접 회상 Q&A를 추가했다.
+- GitHub 관심 신호는 검토 시점의 10.7k stars·702 forks로 감사 기록에만 남겼다.
+- Audit: `research/ai-routine/20261123-020400-android-skills-host-boundaries.md`.
+- Sources: https://github.com/android/skills, https://developer.android.com/tools/agents/android-skills, https://developer.android.com/studio/gemini/skills, https://agentskills.io/specification.

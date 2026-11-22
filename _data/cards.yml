@@ -2766,15 +2766,23 @@ cards:
   answer: '아니다. Docker는 agent server 실행을 격리하지만 Canvas와 automation server까지 자동으로 격리하지는 않는다. Process backend는 호스트 파일에 접근하고, Docker에서도 rw로 마운트한 workspace는 수정 가능하다. backend와 mount 범위를 확인하고 필요한 경로만 제공한다.'
 
 - category: ai
-  title: android/skills(Google 공식) — Android 개발 베스트프랙티스를 'SKILL.md'로 에이전트에 주입하는 공식 스킬 묶음(Apache-2.0·~5.8k★)
-  summary: 'Google Android 팀이 직접 내는 공식 에이전트 스킬 저장소다. developer.android.com의 모범 사례를 Agent Skills 오픈 표준(SKILL.md) 형식으로 묶어, LLM이 약한 Android 작업에서 헛짚지 않도록 ''근거''를 깔아 준다. Expo의 expo/skills에 대응하는 네이티브 Android판 격으로, 2026-04-20 발표 뒤 빠르게 성장했고 현재 약 5.8k★·Apache-2.0 라이선스다. CLI가 감지된 모든 에이전트에 스킬을 깔아 주며(기본값 Gemini·Antigravity), LLM이 이미 잘하는 영역이 아니라 ''평가상 못하는 워크플로''를 골라 채우는 게 설계 방향이다.
-
-    '
+  level: 중급
+  title: Android Skills — Android 작업 지침을 에이전트가 필요할 때 불러오기
+  summary: Google의 Android Skills 저장소는 Android 작업용 지침과 자료를 Agent Skills 표준의 `SKILL.md`로 묶는다. 에이전트는 관련 작업에서 이 지침을 불러와 모델의 기본 지식만으로 놓칠 수 있는 전문 절차를 보완한다. 표준을 따른다고 모든 호스트에서 자동 발견·호출되는 것은 아니다.
   points:
-  - 공식·검증된 정보만 — Apache-2.0, 최신 릴리스 v1.0.2(2026-06-11), Agent Skills(SKILL.md) 오픈 표준 사용. 별 수(~5.8k★)는 시점에 따라 변하는 GitHub 수치이니 '주장'으로 볼 것
-  - 실제 수록 스킬 예시 — jetpack-compose, navigation/navigation-3, performance/r8-analyzer, testing/testing-setup, system/edge-to-edge, build/agp/agp-9-upgrade, camera/camera1-to-camerax, wear/jetpack-compose-m3 등 마이그레이션·도구 워크플로 중심
-  - 설계 철학 — 'LLM이 못하는 곳을 메운다'. 이미 잘하는 영역이 아니라 평가에서 underperform하는 use case를 겨냥하고, 외부 공개 기여는 현재 받지 않는다(공식 README 기준)
+  - 표준은 디렉터리와 `SKILL.md` 형식을 정의한다. Android Skills는 Compose 마이그레이션, Navigation 3, AGP 업그레이드처럼 전문 지침이 필요한 Android 작업을 제공한다.
+  - Android CLI에서 `android skills list`로 목록을 보고 `android skills add <skill-name>`으로 설치한다. 이미 설치한 스킬을 다시 추가하면 최신 버전으로 갱신한다.
+  - 에이전트 호스트마다 스킬 검색 경로와 호출 방식은 다를 수 있다. 설치 후 호스트 문서와 실제 검색 경로를 확인한다. 스킬에 실행 스크립트가 있으면 일반 코드처럼 검토한다.
   source: https://github.com/android/skills
+  sources:
+  - label: Android Developers — Android Skills 개요와 Android CLI 설치·호스트별 차이
+    url: https://developer.android.com/tools/agents/android-skills
+  - label: Android Studio — 스킬 발견·호출과 현재 지원 디렉터리
+    url: https://developer.android.com/studio/gemini/skills
+  - label: Agent Skills — SKILL.md 디렉터리 규격과 선택적 실행 스크립트
+    url: https://agentskills.io/specification
+  interview: Agent Skills 표준을 따른 Android 스킬을 설치했는데 에이전트가 찾지 못한다면 무엇을 확인해야 하나요?
+  answer: 표준 형식만 맞아도 호스트가 자동으로 찾는 것은 아니다. 해당 에이전트의 지원 여부, 설치 위치와 검색 경로, 호출 방식을 호스트 문서에서 확인한다. 스킬에 스크립트가 있으면 실행 전에 코드도 검토한다.
 - category: ai
   title: Vibe Kanban(BloopAI) — Claude Code·Codex·Gemini CLI 여러 에이전트를 '칸반 보드'로 병렬 돌리는 오케스트레이션 레이어(Apache-2.0·~27k★)
   summary: '여러 코딩 에이전트를 한 칸반 보드 위에서 동시에 굴리는 오픈소스 오케스트레이션 도구다. 각 작업을 ''workspace''로 띄우는데, workspace마다 별도 git 브랜치·터미널·dev 서버가 붙고 내부적으로 git worktree로 격리돼 에이전트들이 서로의 작업을 침범하지 못한다. 그 위에서 diff 리뷰, 앱 프리뷰, PR 생성까지 한 화면에서 한다. `npx vibe-kanban` 한 줄로 실행되고 Claude Code·Codex·Gemini CLI·Copilot· Amp·Cursor·OpenCode·Droid 등 10여 개 에이전트를 지원한다(공식 README 기준). 다만 README는 현재 "Vibe Kanban is sunsetting"이라 밝혀, 오픈소스 도구의 운영 지속성을 함께 따져야 하는 사례이기도 하다.

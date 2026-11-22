@@ -1,6 +1,10 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-23
+- Refined `android/skills(Google 공식)` as an AI+Android lesson on packaging specialized Android instructions and verifying skill discovery per host. Removed stale star/release claims and the overly broad install-to-all-agents statement; documented current Android CLI commands, Android Studio's paths/invocation, standard limitations, and executable-script review. Sources include current Android Developers pages, the project README, and Agent Skills specification. GitHub snapshot: 10.7k stars/702 forks, attention-only. Audit: `research/ai-routine/20261123-020400-android-skills-host-boundaries.md`.
+- Next: continue oldest-first with the next AI or AI+Android card lacking review; inspect existing audits and current primary documentation before editing.
+
+## Latest pass — 2026-11-23
 - Rechecked `Claude Code reloadSkills — SessionStart 훅이 설치한 스킬을 같은 세션에서 읽기` against the current Hooks reference and changelog. The hook ordering edge case, `hookSpecificOutput.reloadSkills`, and manual `/reload-skills` behavior remain accurate, so left the already refined card unchanged.
 - Added `Vercel eve 1.0 — 에이전트 실행에서 복구·승인·관측을 나누기` after its official GA announcement and current GitHub repository confirmed a distinct developer lesson about durable workflow state, human approval, trace privacy, and hosting boundaries.
 - Audit: `research/ai-routine/20261123-014716-eve-1-ga-agent-execution-boundaries.md`.
