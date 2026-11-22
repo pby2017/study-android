@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Google Antigravity after Continuous Claude; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Mastra after Google Antigravity; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Refined Mastra against the current README, Agent/Workflow docs, and GitHub repository page.
+- Replaced the broad feature inventory and founder-origin hook with the implementation decision: dynamic goal/tool selection belongs in an Agent; known steps, schemas and data flow belong in a Workflow. Clarified these can be composed rather than being mutually exclusive.
+- Updated the live stars snapshot to ~29.7k (2026-11-22), and retained the ee/ Enterprise License production-use boundary.
+- Added intermediate level and retrieval Q/A. Audit: research/ai-routine/20261122-mastra-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Reframed Google Antigravity from a benchmark-heavy I/O inventory to a current map of distinct desktop, CLI, SDK, and hosted Managed Agents surfaces.

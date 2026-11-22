@@ -1745,15 +1745,23 @@ cards:
   interview: 'Managed Agents가 OS 격리 Linux sandbox에서 실행된다는 사실만으로 네트워크 접근과 secrets가 안전하다고 판단할 수 있나요?'
   answer: '아니다. 현재 Gemini API 문서는 outbound network가 기본적으로 열려 있다고 명시한다. 허용 도메인 allowlist를 적용하고, 최소 권한·짧은 수명의 자격 증명만 연결하며, 생성 결과를 배포 전에 검토한다. 또한 Managed Agents는 Google-hosted 실행 환경이므로 로컬 IDE·CLI 실행과 데이터 경계를 구분해야 한다.'
 - category: ai
-  title: Mastra — 'Gatsby 팀'이 만든 TypeScript용 AI 에이전트 프레임워크
-  summary: 'Mastra(mastra-ai)는 터미널 코딩 에이전트가 아니라, 제품 안에 AI 에이전트와 워크플로를 직접 넣을 때 쓰는 TypeScript 프레임워크다. React·Next.js·Node 앱에 붙이거나 독립 서버로 배포할 수 있고, YC W25 배지를 단 Gatsby 출신 팀의 프로젝트다. 핵심은 "모델 호출 래퍼"보다 넓다 — 40개 이상 모델 공급자를 한 인터페이스로 라우팅하고, 도구를 쓰는 Agent를 만들며, `.then()`·`.branch()`·`.parallel()`로 그래프형 Workflow를 짠다. 오래 걸리는 실행은 storage에 상태를 남기고 suspend/resume으로 사람 승인 뒤 이어갈 수 있다. 여기에 대화 기록·RAG·메모리, MCP 서버 작성, evals와 observability까지 묶어 "에이전트 앱의 백엔드 프레임워크"처럼 쓴다. 2026-06-24 GitHub API 기준 25,394★이고, 코어는 Apache-2.0이지만 `ee/` 디렉터리는 엔터프라이즈 라이선스라 프로덕션 사용 조건을 분리해서 봐야 한다.
-
-    '
+  level: 중급
+  title: Mastra — 열린 작업은 Agent, 정해진 절차는 Workflow
+  summary: 'Mastra는 TypeScript 제품에 AI Agent와 Workflow를 넣는 프레임워크다. 핵심 선택은 작업이 정해져 있는지다. 목표가 열려 있고 모델이 도구를 골라 반복해야 하면 Agent를 쓰고, 단계·데이터 흐름·분기가 사전에 정해져 있으면 Workflow로 제어한다. Workflow는 스키마가 있는 단계를 조합하고 중단·재개를 지원해 사람 승인을 절차에 넣을 수 있다. 모델 라우팅, 저장소, MCP, evals와 observability도 제공한다. GitHub는 약 29.7k★를 표시했다(2026-11-22 확인). 코어는 Apache-2.0이지만 `ee/` 경로 코드는 별도 Mastra Enterprise License이므로 배포 전에 실제 사용하는 파일의 라이선스를 확인한다.'
   points:
-  - 코딩 CLI가 아니라 제품 안 AI 에이전트·워크플로를 짜는 TS 백엔드 프레임워크
-  - '구성: 40+ 모델 라우팅·Agent·그래프 Workflow·suspend/resume HITL·RAG/메모리·MCP·evals/observability'
-  - '라이선스 확인: 코어 Apache-2.0, `ee/`는 엔터프라이즈 라이선스 / 25,394★(2026-06-24 API 확인)'
+  - 'Agent=열린 목표와 동적 도구 선택; Workflow=미리 정의한 순서·분기·데이터 흐름'
+  - 'Workflow의 suspend/resume으로 승인이나 사용자 입력 후 실행을 이어갈 수 있음'
+  - '라이선스 경계: 대부분 코어 Apache-2.0, `ee/` 경로는 프로덕션에 별도 계약 필요'
   source: https://github.com/mastra-ai/mastra
+  sources:
+  - label: 'Mastra README — 제품 범위·모델 라우팅·기능·라이선스와 별점 snapshot'
+    url: https://github.com/mastra-ai/mastra
+  - label: 'Agent 공식 문서 — 동적 목표 처리와 도구 선택'
+    url: https://mastra.ai/docs/agents/overview
+  - label: 'Workflow 공식 문서 — 사전 정의한 단계·데이터 흐름·중단/재개'
+    url: https://mastra.ai/docs/workflows/overview
+  interview: 'Mastra에서 요청을 Agent와 Workflow 중 무엇으로 구현할지 어떤 기준으로 정하나요?'
+  answer: '요청의 절차가 사전에 알려져 있는지로 판단한다. 순서·입출력·분기를 개발자가 정의할 수 있으면 Workflow가 실행을 예측하고 검증하기 쉽다. 목표만 주어지고 필요한 도구나 다음 행동을 모델이 선택해야 하면 Agent가 적합하다. 두 방식을 함께 써서 Workflow의 일부 단계에서 Agent를 호출할 수도 있다.'
 - category: ai
   title: Cursor CLI 헤드리스 모드 — `agent -p`로 CI·스크립트에서 코드 작업 자동화
   summary: 'Cursor의 Headless CLI는 에디터 안 대화형 에이전트를 CI·스크립트용 비대화형 작업자로 꺼내 쓰는 방식이다. 설치 후 `agent`를 그냥 실행하면 대화형 세션이고, `-p`/`--print`를 붙이면 프롬프트를 받아 최종 결과를 출력하는 자동화 모드가 된다. 중요한 분기점은 권한이다. 기본은 사람이 검토할 여지를 남기지만, `--force`(별칭 `--yolo`)를 주면 확인 없이 파일 편집까지 허용하므로 신뢰된 브랜치·격리된 워크스페이스에서만 써야 한다. 결과 소비 방식도 운영 포인트다. `--output-format`은 text·json·stream-json을 제공하고, stream-json에 `--stream-partial-output`을 더하면 긴 작업의 진행을 메시지/델타 단위로 추적할 수 있다. 인증은 `CURSOR_API_KEY` 환경변수로 처리한다. 즉 핵심은 "Cursor를 CI에 붙인다"가 아니라, 출력 형식과 편집 권한을 명시해 에이전트를 파이프라인 구성요소로 다루는 것이다.
