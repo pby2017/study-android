@@ -944,15 +944,16 @@ cards:
   interview: "서브에이전트 frontmatter에서 `tools`를 생략하면 도구 권한은 어떻게 되며, `description`은 왜 중요한가요?"
   answer: "생략하면 서브에이전트에 제공되는 도구를 상속한다. Claude는 `description`을 보고 언제 작업을 위임할지 판단하므로, 역할 이름보다 사용 조건을 분명히 적어야 한다."
 - category: ai
-  title: '@로 파일·디렉터리 참조 — Claude가 읽기를 기다리지 않고 내용을 미리 넣기'
-  summary: '프롬프트에 `@`를 쓰면 Claude가 Read 도구로 파일을 찾아 읽기를 기다리지 않고, 그 자리에 내용을 바로 끼워 넣을 수 있다. `@src/utils/auth.js`처럼 파일을 가리키면 그 파일 전체 내용이 대화에 포함되고, `@src/components`처럼 디렉터리를 가리키면 내용이 아니라 그 안의 파일 목록(파일 정보 포함)이 들어온다. 중요한 부가 효과 하나 — `@`로 파일을 참조하면 그 파일이 있는 디렉터리와 상위 디렉터리들의 `CLAUDE.md`도 함께 컨텍스트에 딸려 붙는다(그 하위트리 규칙을 자동으로 끌어옴). 경로는 상대·절대 둘 다 되고, 한 메시지에서 여러 개를 동시에 참조할 수 있다(예: "@file1.js and @file2.js"). 같은 `@` 문법으로 연결된 MCP 서버의 리소스(`@server:resource`)도 끌어올 수 있다.
-
-    '
+  level: "중급"
+  title: Claude Code `@` 참조 — 컨텍스트 주입과 훅 경계
+  summary: 프롬프트에서 `@경로`를 쓰면 파일 내용을 직접 대화에 넣고, 디렉터리는 파일 목록만 넣는다. 파일 전체가 항상 들어오는 것은 아니다. Read 도구 토큰 한도(기본 25,000)와 256KB 텍스트 파일 제한이 적용된다.
   points:
-  - '`@파일경로` = 파일 전체 내용을 그 자리에 인라인(Read 기다릴 필요 없음) / `@디렉터리` = 내용 아닌 파일 목록(파일 정보 포함)'
-  - '부가 효과: `@`로 파일 참조 시 그 파일 디렉터리+상위 디렉터리의 CLAUDE.md도 함께 컨텍스트에 추가'
-  - 상대·절대 경로 모두 가능 / 한 메시지에 여러 개(`@file1.js and @file2.js`) / `@server:resource`로 MCP 리소스도 동일 문법으로 참조
+  - "파일 참조는 파일의 디렉터리와 상위 디렉터리의 `CLAUDE.md`도 컨텍스트에 추가한다; 디렉터리 참조는 목록만 보여준다."
+  - "`@` 파일 삽입은 도구 호출이 아니므로 `PreToolUse` 훅이 실행되지 않는다. 민감 경로는 `Read` 거부 규칙으로 막거나 file mentions를 비활성화한다."
+  - "상대·절대 경로, 여러 파일, MCP 리소스(`@server:resource`)를 참조할 수 있다."
   source: https://code.claude.com/docs/en/common-workflows
+  interview: "민감한 파일을 `@경로`로 참조할 때 `PreToolUse` 훅만으로 읽기를 막을 수 있나요?"
+  answer: "아니다. `@`가 파일을 직접 컨텍스트에 넣을 때는 도구 호출이 없어 해당 훅이 실행되지 않는다. `Read` 거부 규칙을 사용하거나 `CLAUDE_CODE_DISABLE_FILE_MENTIONS=1`로 직접 포함을 막아야 한다."
 - category: ai
   title: 원격 MCP 서버 인증 — /mcp로 OAuth 2.0 로그인하기
   summary: 'Sentry·Notion 같은 클라우드 MCP 서버는 대개 인증을 요구하는데, Claude Code는 OAuth 2.0을 지원한다. `claude mcp add --transport http <이름> <url>`로 서버를 붙인 뒤 Claude 안에서 `/mcp`를 실행하면 브라우저가 열려 로그인 흐름이 진행된다. 서버가 `401 Unauthorized`나 `403 Forbidden`을 돌려주면 Claude Code가 그 서버를 ''인증 필요''로 표시하고 `/mcp`에서 OAuth 흐름을 밟게 해준다. 발급된 토큰은 안전하게 저장되고 자동으로 갱신되며, 접근을 끊으려면 `/mcp` 메뉴의 "Clear authentication"을 쓴다. 브라우저 리다이렉트가 연결 오류로 실패하면 주소창의 콜백 URL 전체를 Claude의 URL 프롬프트에 붙여 넣으면 된다.

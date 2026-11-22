@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code custom subagents; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code `@` file references; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 08:13 KST
+Last update: 2026-11-22 14:45 KST
+
+## Latest pass
+- Refined the Claude Code `@` file-reference card against the current official common-workflows guide.
+- Corrected file-size/token-limit caveats and clarified the security boundary: direct `@` insertion bypasses `PreToolUse`; use a `Read` deny rule or disable file mentions where appropriate.
+- Preserved directory-listing, inherited `CLAUDE.md`, and MCP resource details; added intermediate difficulty and an interview question.
+- Source and rationale: `research/ai-routine/20261122-claude-at-file-reference-refinement.md`.
+- Next: continue auditing the next remaining AI/AI+Android card, checking primary sources and overlap before editing.
 
 ## Latest pass
 - Corrected the beginner card `Kotlin — 정적 타입·다중 플랫폼·Java 상호운용` against Kotlin's official FAQ and language specification.
