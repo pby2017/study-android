@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined awesome-agent-skills after promptfoo; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Roo Code → Zoo Code after awesome-agent-skills; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Refined Roo Code → Zoo Code using the upstream archive notice, current fork repository, and official migration guide.
+- Updated dated star snapshots; documented that export files can contain API keys and imported settings merge into the destination. Replaced any implication that forks guarantee continuity with a practical maintenance/lifecycle check.
+- Added intermediate difficulty and interview retrieval Q/A. Audit: `research/ai-routine/20261122-roo-zoo-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined awesome-agent-skills against its current README, security notice, repository license, and live GitHub page.

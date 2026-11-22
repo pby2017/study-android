@@ -1622,13 +1622,23 @@ cards:
   interview: 'awesome-agent-skills에서 스킬을 골라 설치할 때, 목록의 MIT 라이선스와 큐레이션은 무엇을 보증하나요?'
   answer: '저장소의 MIT 표기를 목록에 실린 각 스킬의 라이선스로 볼 수 없다. 큐레이션도 보안 감사나 호환성 보증이 아니다. 원본 저장소의 라이선스·관리자·업데이트를 확인하고, SKILL.md의 지침과 필요한 도구 권한을 검토한 뒤 제한된 범위에서 사용한다.'
 - category: ai
-  title: Roo Code 종료 → Zoo Code — 24k★ OSS 에디터 에이전트의 archive·커뮤니티 포크 생존
-  summary: Cline에서 갈라진 VS Code 코딩 에이전트 Roo Code(24k★·Apache-2.0)는 Code·Architect·Ask·Debug·Custom 5모드·MCP·자연어 생성·리팩터링을 제공했다. 2026-05-15 v3.54.0을 마지막으로 저장소 archive(read-only) — 메인테이너는 Roomote 등 다른 프로젝트로 이동. 공식 README는 Zoo Code(커뮤니티 포크, 2026-04-23 기존 기여자 인계·v3.54.0 이어받음)와 Cline을 대안으로 안내. export→import로 설정 이주 가능. 계보 Cline→Roo→Zoo는 BYOK+오픈 라이선스+설정 이식성이 포크 생존을 보장하는 실제 사례.
+  level: 중급
+  title: Roo Code → Zoo Code — archived 에이전트에서 커뮤니티 포크로 옮기기
+  summary: 'Roo Code는 2026-05-15 저장소와 확장 배포를 종료하고 GitHub를 read-only로 보관했다(당시 24.3k★, Apache-2.0). 원 저장소는 커뮤니티 포크 Zoo Code와 Cline을 대안으로 안내한다. Zoo Code는 Roo 설정 구조와 Apache-2.0 기반을 이어받아 별도 개발을 계속하며, GitHub는 약 2.1k★를 표시한다(2026-11-22 확인). 공식 마이그레이션은 Roo 설정을 파일로 export한 뒤 Zoo에서 import하는 방식이다. export 파일에는 API key가 포함될 수 있으므로 안전하게 보관하고, 가져온 provider·모델·credentials를 다시 확인한다. 설정 호환은 장기적인 기능 동등성이나 유지보수를 보장하지 않는다. 포크를 선택할 때는 현재 릴리스·기여 활동·보안 대응과 전환 비용을 함께 평가한다.'
   points:
-  - 2026-05-15 archive — 24k★·Apache-2.0, 공식 대안 Zoo Code·Cline
-  - Zoo Code = 기존 Roo 기여자 포크, 5모드·설정 그대로, export→import 이주
-  - '교훈: OSS 에이전트는 archived 여부·포크 경로를 PoC 단계에서 확인'
+  - 'Roo upstream은 2026-05-15 archive; read-only 전환과 대안은 저장소 공지에서 확인'
+  - 'Zoo Code는 별도 커뮤니티 포크 — 현재 repo 2.1k★, Apache-2.0 (2026-11-22)'
+  - '설정 export/import 전후에 API key 포함 파일을 보호하고 credentials를 재검증'
   source: https://github.com/RooCodeInc/Roo-Code
+  sources:
+  - label: 'Roo Code — archive 날짜·read-only 상태·공식 대안 안내'
+    url: https://github.com/RooCodeInc/Roo-Code
+  - label: 'Zoo Code — 커뮤니티 포크·현재 개발 설명·별점 snapshot'
+    url: https://github.com/Zoo-Code-Org/Zoo-Code
+  - label: 'Zoo Code 공식 이전 안내 — export/import와 API key 주의'
+    url: https://docs.zoocode.dev/roo-to-zoo-migration
+  interview: 'Roo Code에서 Zoo Code로 설정을 옮길 때, 단순히 export/import만 하면 안전하고 완전히 호환된다고 볼 수 있나요?'
+  answer: '아니다. 설정 export 파일에는 API key 같은 민감값이 있을 수 있으므로 안전하게 보관해야 한다. Zoo는 설정 파일을 import해 기존 설정과 병합하므로 가져온 provider·모델·credentials를 직접 확인하고 작은 작업으로 검증한다. 커뮤니티 포크는 별도 프로젝트이므로 릴리스와 보안 유지보수를 계속 평가한다.'
 - category: ai
   title: Ruler — CLAUDE.md·AGENTS.md·.cursorrules를 한 곳에서 써서 모든 에이전트에 뿌리기
   summary: 'Ruler는 코딩 에이전트 지침을 도구별 파일에 손으로 복붙하지 않게 해 주는 "single source of truth" CLI다. `.ruler/AGENTS.md`와 하위 마크다운을 기준 순서대로 합치고, `ruler.toml` 설정에 따라 Claude Code, Codex CLI, Copilot, Cursor, Gemini CLI, Aider, Zed 등 30개 안팎의 에이전트 파일로 배포한다. 최신 README 기준 루트 `AGENTS.md`가 있으면 가장 높은 우선순위로 prepend되고, `.ruler/` 안의 파일에는 출처 주석이 붙어 traceability가 남는다. MCP 설정도 에이전트별 native 위치로 전파할 수 있고, nested rule loading은 모노레포·컴포넌트별 규칙을 다룰 수 있지만 아직 experimental로 표시된다. 2026-06-23 같은 런에서 2,773★·150 forks·MIT·archived=false·당일 push를 확인했다.
