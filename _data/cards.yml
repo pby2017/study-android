@@ -2420,15 +2420,22 @@ cards:
   interview: "스킬의 description을 구체적으로 써야 하는 이유와, 참조 파일을 둘 때 주의할 점은 무엇인가요?"
   answer: '지원하는 에이전트가 description을 스킬 선택 신호로 사용하므로, 기능과 적용 조건을 명확히 적어야 한다. 참조 파일은 필요할 때만 읽도록 나눌 수 있지만, 읽은 내용과 실행 출력은 context에 들어간다. 로딩·토큰 동작은 제품별로 확인하고, 스킬의 코드와 권한도 설치 전에 검토한다.'
 - category: ai
-  title: Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로
-  summary: 'humanlayer의 ace-fca 문서는 코딩 에이전트 워크플로를 "컨텍스트 관리" 중심으로 다시 짠 사례다. 핵심은 컨텍스트가 가득 찰 때까지 밀어붙이지 않고, 사용률을 40~60% 근처로 유지하면서 리서치 → 플랜 → 구현을 분리하는 것. 구현 중에도 검증된 단계마다 목표, 접근, 완료한 단계, 현재 실패를 progress.md 같은 구조화 문서로 압축해 새 컨텍스트로 넘긴다. 문서의 BAML 사례는 이 방식이 마법이 아니라는 점도 같이 보여준다. 300k LOC Rust 코드베이스에서 빠른 성과가 났지만, 깊은 리서치·플랜 시간과 코드베이스 전문가 리뷰가 함께 있었다. 실무 교훈은 코드 리뷰보다 앞단 리뷰가 더 싸다는 것이다. 잘못된 리서치나 플랜은 잘못된 코드 수백 줄로 번지기 전에 잡아야 한다.
-
-    '
+  level: 고급
+  title: Frequent Intentional Compaction — 조사·계획·검증 결과를 다음 context로 넘기기
+  summary: 'Humanlayer의 코딩 에이전트 워크플로는 context가 가득 차기 전에 결과를 구조화해 다음 단계로 넘긴다. 작성자는 복잡도에 따라 context 사용률 40~60%를 참고 범위로 제시하고, 조사 → 계획 → 구현을 나눠 앞 단계의 산출물을 사람이 확인한다. 이는 보편적인 최적 수치나 자동 압축 규칙이 아니라, 해당 팀의 경험에서 나온 작업 방식이다.'
   points:
-  - '원칙: 컨텍스트 사용률 40~60% 유지, 리서치→플랜→구현 분리, 단계별 검증 뒤 progress.md로 압축'
-  - 'BAML 사례: 300k LOC Rust 코드베이스에서 35k LOC 규모 취소+WASM 작업을 7시간에 초안화, 단 깊은 몰입과 전문가 리뷰가 전제'
-  - 서브에이전트는 역할극보다 컨텍스트 제어 수단 — 검색·읽기·요약 로그를 부모 창 밖에서 처리한다
+  - '조사: 관련 모듈·데이터 흐름·실패 원인을 찾아 근거와 불확실성을 기록한다.'
+  - '계획: 수정 위치, 단계, 테스트를 제안하고 구현 전에 사람이 조사·계획의 핵심 가정을 검토한다.'
+  - '구현과 전환: 검증된 단계마다 목표·결정·완료·남은 오류를 짧은 문서에 저장해 새 context에서 이어 간다. 로그 전체보다 재현에 필요한 상태만 남긴다.'
+  - 'BAML 사례의 300k LOC·35k LOC·약 7시간은 저자의 특정 공동 작업 보고다. 통제 실험이나 일반적인 생산성 보장은 아니며, 저자도 충분한 조사와 전문가 검토, 실패 사례를 함께 설명한다.'
   source: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md
+  sources:
+  - label: Humanlayer — workflow and author-reported BAML case
+    url: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md
+  - label: BAML merged cancellation implementation PR
+    url: https://github.com/BoundaryML/baml/pull/2357
+  interview: "에이전트 작업에서 구현보다 조사·계획 산출물을 먼저 검토하면 어떤 실패를 줄일 수 있나요? context를 새로 시작할 때 무엇을 남겨야 하나요?"
+  answer: '조사나 계획의 잘못된 가정은 많은 코드 변경으로 확대될 수 있으므로, 구현 전에 근거와 수정·검증 계획을 검토하면 오류를 일찍 발견할 수 있다. 새 context에는 목표, 결정 근거, 완료한 검증 단계, 재현 가능한 현재 실패, 다음 작업을 남기고 불필요한 탐색 로그는 버린다. 40~60%는 저자의 경험적 참고치이지 고정 임계값이 아니다.'
 - category: ai
   title: claude-code-security-review — PR마다 도는 Anthropic 공식 AI 보안 리뷰 액션(diff 인지·오탐 필터)
   summary: 'Anthropic이 공개한 claude-code-security-review(5,381★·MIT·Python 중심, 2026-06-27 GitHub API 확인)는 PR diff를 Claude로 의미 분석해 취약점을 찾고 해당 라인에 코멘트를 다는 GitHub Action이다. 단순 패턴 매칭이 아니라 코드 맥락을 읽어 SQL·command·XXE 등 인젝션, 인증·인가 결함, 비밀정보·PII 노출, 암호화 오용, RCE·역직렬화, XSS, TOCTOU 같은 로직 결함까지 본다. 핵심은 "AI 리뷰를 또 검증하는" 오탐 억제다. README는 DoS·레이트리밋·입증 안 된 입력검증·open redirect를 기본 제외한다고 설명하고, `/security-review` 명령 파일은 별도 서브태스크가 각 finding에 1~10 confidence를 매긴 뒤 8 미만을 버리게 한다. 같은 분석을 Claude Code 내장 `/security-review`로 개발 중에도 돌릴 수 있고, security-review.md를 `.claude/commands/`에 복사해 조직 기준으로 커스텀할 수 있다.

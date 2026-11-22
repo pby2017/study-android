@@ -1727,6 +1727,12 @@ Rules:
 - Audit: `research/ai-routine/20261123-002036-agent-skills-progressive-disclosure.md`.
 - Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.
 
+## Latest pass — 2026-11-23
+- Refined `Frequent Intentional Compaction — 조사·계획·검증 결과를 다음 context로 넘기기` against the Humanlayer article and a linked merged BAML PR.
+- Labeled 40–60% as the author's complexity-dependent heuristic, treated BAML size/time figures as anecdote rather than benchmark, and made early review/checkpoint transfer more actionable. Added advanced level and interview Q&A.
+- Audit: `research/ai-routine/20261123-002100-frequent-intentional-compaction.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.
+
 ## 2026-11-22 23:57 KST
 
 - Refined `Context Rot — 긴 context window가 정확도를 보장하지 않는다` against Chroma's July 2025 report and its reproducibility repository. Narrowed the claim to the reported tasks; LongMemEval's ~113k-token full prompts averaged against ~300-token focused prompts scored lower across tested models, but this is not evidence for a universal token budget. Added an intermediate level, practical retrieval lesson, and interview Q&A. Toolkit snapshot: 323 stars/35 forks, a modest signal rather than broad adoption. Audit: `research/ai-routine/20261122-235700-context-rot-refinement.md`.
