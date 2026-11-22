@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Reframed the Claude Agent SDK card around its operational boundary: `query()` starts a CLI subprocess; session state and working files live on disk; self-hosting must plan process scaling, persistence, and tenant isolation.
+- Compared the current official overview's four surfaces (Agent SDK, CLI, Client SDK, Managed Agents) and checked the hosting and secure deployment guidance. Removed stale install/version details and the simplistic “CLI for development, SDK for production” rule.
+- Audit: `research/ai-routine/20261122-203140-claude-agent-sdk-refinement.md`.
+- Next: examine the next eligible card, `AI 랩이 개발 툴체인을 사들이는 중`; verify each acquisition/date and keep only current, source-supported claims.
+
+## Latest pass — 2026-11-22
 - Refined `Task Master` into a concise workflow card: PRD → reviewable tasks/dependencies → next unblocked task; distinguished task planning from implementation and documented selective MCP tool loading.
 - Verified current GitHub repository snapshot at 28.5k stars; verified the official docs' recommendations to review generated tasks, validate dependencies, and control MCP tool loading. Removed stale `27.7k★`, mixed CLI/model/provider inventory, and inaccurate framing as an autonomous implementation agent.
 - Audit: `research/ai-routine/20261122-202710-taskmaster-refinement.md`.
