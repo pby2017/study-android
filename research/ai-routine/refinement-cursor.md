@@ -1657,3 +1657,9 @@ Rules:
 - Updated `/agents` behavior and clarified that omitting `tools` inherits the available subagent tool set; emphasized `description` as the delegation signal.
 - Sources and rationale: `research/ai-routine/20261122-claude-subagents-refinement.md`.
 - Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Refined `RunAnywhere Kotlin SDK — Android 로컬 AI 엔진과 모델 연결 흐름` against the current official SDK README, Android SDK integration notes, and same-run GitHub API metadata.
+- Added capability discovery / actual runtime-support boundary; narrowed offline and QHexRT guidance; added `중급` level and strengthened the retrieval Q&A.
+- Audit and rationale: `research/ai-routine/20261122-230100-runanywhere-kotlin-sdk-refinement.md`.
+- Next: review the next eligible AI+Android card oldest-first; verify the actual SpeechRecognizer route and avoid treating default recognition as on-device.

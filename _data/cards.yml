@@ -3680,14 +3680,16 @@ cards:
   answer: "가속 성능은 실제 모바일 GPU 기기에서 확인한다. `mlc_llm package`로 목표 모델 라이브러리·런타임·토크나이저를 준비하고, Adreno라면 문서의 `_1` weight-layout 첫 prefill 문제와 `_0` 우회안을 점검한다. 모델 크기·메모리·초기화·첫 토큰 지연과 후속 추론을 기기별로 측정한다."
 - category: ai
   title: RunAnywhere Kotlin SDK — Android 로컬 AI 엔진과 모델 연결 흐름
-  summary: 'RunAnywhere Kotlin SDK는 Android에서 등록한 AI 엔진을 공통 API로 호출한다. 공식 예제는 `LlamaCPP.register()` 후 SDK를 초기화하고, 모델을 내려받아 로드한 뒤 생성을 요청한다. 음성·NPU 기능은 별도 엔진과 기기 지원 조건에 따라 달라진다. 모델은 최초 다운로드가 필요하고 클라우드 경로도 선택 가능하므로, “오프라인·기기 내 처리”를 약속하려면 모델을 준비하고 원격 경로를 끈 상태에서 확인해야 한다.'
+  level: "중급"
+  summary: 'RunAnywhere Kotlin SDK는 공통 API 뒤에 llama.cpp·음성 엔진·QHexRT 같은 실행 엔진을 등록하고, 요청한 기능과 기기에 맞는 엔진을 선택한다. Android 흐름은 `LlamaCPP.register()` → `RunAnywhere.initialize()` → 모델 다운로드·로드 → 생성이다. `capabilities()`로 현재 패키지와 기기에서 실제 실행 가능한 기능을 확인한다. Console은 선택 기능이지만 일부 기능은 클라우드 경로를 지원하므로, 로컬 처리를 보장하려면 모델을 미리 준비하고 원격 경로를 끈 뒤 네트워크 차단 상태에서 검증한다.'
   points:
-  - '흐름: 엔진 등록 → 초기화 → 모델 다운로드·로드 → 추론'
-  - 'Hexagon NPU: QHexRT는 지원 목록에 있는 Snapdragon v75/v79/v81 ARM64 기기에서만 사용'
-  - '실전 확인: 모델을 미리 받은 뒤 클라우드 경로를 끄고 네트워크 차단 상태에서 동작 검사'
+  - '엔진 등록은 기능 제공 가능성을 알린다. 모델 포맷·기기·설치된 백엔드에 따라 실제 지원은 달라진다.'
+  - '`capabilities()` 결과를 확인한다. SDK에 enum이 있다는 사실만으로 런타임 지원이 보장되지는 않는다.'
+  - 'Android는 API 24 이상, arm64 권장; QHexRT NPU는 Hexagon v75/v79/v81 Snapdragon arm64 대상'
+  - '로컬 처리 확인: 모델 사전 다운로드 → 원격 처리 경로 비활성화 → 네트워크 차단 추론 테스트'
   source: https://github.com/RunanywhereAI/runanywhere-sdks
   interview: "Android AI SDK가 ‘오프라인 지원’이라고 할 때 무엇을 확인해야 하나요?"
-  answer: "필요한 모델과 엔진이 설치됐는지, 현재 기기에서 해당 엔진을 사용할 수 있는지 확인한다. 첫 모델 다운로드에는 네트워크가 필요할 수 있고 SDK에는 선택 가능한 클라우드 경로도 있다. 원격 경로를 끄고 모델을 미리 내려받은 다음, 네트워크를 차단한 상태에서 추론이 되는지 검증한다. NPU 가속은 지원 아키텍처와 ABI도 확인한다."
+  answer: "요청 기능을 처리할 엔진과 모델이 현재 기기에서 실제 사용 가능한지 `capabilities()` 등으로 확인한다. enum이나 API 존재만으로는 충분하지 않다. 모델을 미리 내려받고, 클라우드 경로를 쓰는 기능이라면 원격 경로를 끈 뒤 네트워크 차단 상태에서도 추론되는지 검사한다. QHexRT는 지원하는 Hexagon 세대와 arm64 기기인지도 확인한다."
 - category: ai
   title: 'Android 음성 AI의 개인정보 경계: SpeechRecognizer 기본 경로는 기기 내 처리 보장이 아니다'
   summary: 'Android 앱이 `SpeechRecognizer.createSpeechRecognizer(context)`를 호출하면 시스템 기본 음성 인식 서비스를 사용한다. Android 문서는 이 구현이 인식을 위해 오디오를 원격 서버로 스트리밍할 가능성이 있다고 경고한다. 오프라인·기기 내 처리가 요구되면 API 31 이상에서 `isOnDeviceRecognitionAvailable()`을 확인하고 `createOnDeviceSpeechRecognizer()`를 사용할 수 있는지 검사한다. 앱의 네트워크 경로와 실제 인식 서비스도 별도로 검증한다.'
