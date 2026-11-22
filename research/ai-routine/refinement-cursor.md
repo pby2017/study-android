@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass
+- Replaced the stale AI-tool vendor ranking in the DX benchmark card with the current Q3 2026 finding: first-review median was 40 minutes in the 20–40% AI-code cohort and 82 minutes in the 80%+ cohort.
+- Kept the result explicitly correlational, added an intermediate retrieval question, and linked the DX metric definition. The report covers 500+ R&D organizations; this is a vendor-produced cohort report, not independent causal evidence.
+- Audit: `research/ai-routine/20261122-dx-throughput-refinement.md`.
+- Next: continue oldest-first with the Everything Claude Code card; verify its current scope, installation paths, and GitHub attention snapshot before retaining its dated claims.
+
+## Latest pass
 - Reframed the Open SWE card around the current Robin product and its security boundary, not the legacy issue-label trigger and stale Daytona/architecture inventory.
 - Current README describes task-scoped persistent Linux sandboxes and says the project is actively changing. Installation/security docs warn sandbox GitHub App credentials can cover installation-wide repositories; push approvals are not a boundary for every shell/API write. GitHub API returned 11,247 stars / 1,325 forks, pushed 2026-11-22.
 - Added advanced level, least-privilege deployment guidance, four current sources, and an interview retrieval pair. Audit: `research/ai-routine/20261122-robin-open-swe-refinement.md`.
@@ -37,9 +43,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Robin/Open SWE after pruning GNAP; continue the oldest-first scan with the DX AI-tooling PR-throughput benchmark.
+Current position: refined the DX AI-tooling PR-throughput card; next review Everything Claude Code for current scope and popularity.
 
-Last update: 2026-11-22 18:08 KST
+Last update: 2026-11-22 (Asia/Seoul)
 
 ## Latest pass
 - Rechecked Dreams against current Managed Agents API docs, Anthropic's Nov 6 agent-memory research, and the product announcement.

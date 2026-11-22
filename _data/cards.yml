@@ -1932,15 +1932,21 @@ cards:
   interview: 'Robin/Open SWE를 팀에 배포할 때 sandbox의 GitHub 토큰과 승인 프롬프트를 사용자별 접근 제어로 간주해도 될까요?'
   answer: '아니다. 기본 sandbox 자격 증명은 개인 권한이 아니라 GitHub App 설치 범위를 따를 수 있고, push 승인은 모든 셸/API 쓰기를 통제하지 않는다. App 설치 저장소를 최소화하고 신뢰 그룹별 배포를 분리하며, 저장소 보호 규칙 등 실제 권한 경계를 적용해야 한다.'
 - category: ai
-  title: DX 도구별 PR 처리량 벤치마크 — '얼마나 자주 쓰느냐'가 도구 이름보다 크다
-  summary: 'DX가 219개 기업·6만4,680명 개발자의 ''실제 머지된 PR'' 데이터를 AI 도구별로 다시 집계했다(2026 Q1, 2026-01-21 갱신). headline은 도구 순위보다 사용 빈도다. 매일 쓰는 개발자의 주당 머지 PR 중앙값은 Cursor 2.8→4.1(46% 증가), Claude 주간·월간 사용자는 4.0 초과, GitHub Copilot 일간 사용자는 2.5→3.61로 올랐다. 반대로 adoption 지표는 생산성 자체가 아니라 ''일상 도구가 됐는지''를 보는 보조 신호다. Copilot은 일간 adoption 9.76%로 가장 끈끈했고, Cursor는 주간 adoption 31.56%, Windsurf는 월간 adoption 35.87%로 패턴이 달랐다. 교훈은 벤더 이름으로 ROI를 단정하지 말고, 일간·주간 cohort별 사용 빈도와 실제 PR 처리량을 같이 봐야 한다는 점이다.
-
-    '
+  level: 중급
+  title: AI 코드 생성량과 리뷰 대기열 — 생산성은 전달 과정까지 봐야 한다
+  summary: 'DX의 2026년 3분기 자료는 500곳 이상의 R&D 조직 데이터를 집계했다. AI 작성 코드 비중이 20~40%인 조직의 첫 리뷰 대기 중앙값은 40분, 80% 이상인 조직은 82분이었다. 두 집단의 차이는 연관성을 보여줄 뿐, AI 사용이 대기를 늘렸다는 인과관계를 증명하지는 않는다. 따라서 AI 도구의 효과를 생성 속도만으로 판단하지 말고, 리뷰 대기와 PR 처리량 같은 전달 지표도 함께 살펴야 한다.'
   points:
-  - '표본: 219개 기업·64,680명 개발자의 실제 머지 PR, 2026 Q1'
-  - '빈번 사용자 주당 PR 중앙값: Cursor 4.1(+46%)·Claude 4.0+·Copilot 3.61'
-  - '운영 포인트: seat 수가 아니라 daily/weekly cohort 사용률 + PR 처리량을 함께 추적'
-  source: https://getdx.com/blog/ai-tooling-benchmarks-pr-throughput-and-usage-by-tool/
+  - '표본: 500곳 이상 R&D 조직, 첫 리뷰 수치는 2026년 7~9월 자료'
+  - 'AI 코드 비중별 첫 리뷰 대기 중앙값: 20~40%는 40분, 80% 이상은 82분'
+  - '적용: 도구 도입 전후에 생성량뿐 아니라 리뷰 대기·PR 처리량도 함께 비교'
+  source: https://getdx.com/report/state-of-ai-impact-in-engineering-q3-report/
+  sources:
+  - label: 'DX Q3 2026 보고서 — 표본 범위와 AI 코드 비중별 첫 리뷰 대기'
+    url: https://getdx.com/report/state-of-ai-impact-in-engineering-q3-report/
+  - label: 'DX 지표 정의 — PR throughput과 복잡도를 반영한 TrueThroughput'
+    url: https://docs.getdx.com/reports/pr-throughput/
+  interview: 'AI 코드 비중이 높은 팀에서 첫 리뷰 대기가 길다는 벤치마크만으로 AI가 리뷰 지연의 원인이라고 결론 내려도 될까요?'
+  answer: '아니다. 보고서는 조직 집단 사이의 연관성을 보여줄 뿐 원인을 증명하지 않는다. 팀의 AI 사용량과 리뷰 대기·PR 처리량을 함께 추적하고, 도입 전후 및 유사한 작업 조건을 비교해야 한다.'
 - category: ai
   title: Everything Claude Code(ECC) — 200k★ 넘긴 '에이전트 설정 모음', AgentShield 보안 감사기까지
   summary: 'Affaan Mustafa의 ECC는 "Claude Code 설정 모음"에서 크로스하네스 에이전트 운영 시스템으로 확장된 MIT 프로젝트다. 2026-06-25 같은 런에서 GitHub API 기준 221,207★·33,877 forks·archived=false를 확인했고, README는 Codex·Claude Code·Cursor·OpenCode·Gemini·Zed·Copilot을 지원한다고 설명한다. v2.0.0은 261개 skills, control-pane substrate, worktree lifecycle service, `orch-*` orchestrator 계열을 내세우고, RC 문서에는 66 agents·268 skills·84 legacy command shims 같은 설치 표면 수가 별도로 나온다. 실무 포인트는 숫자를 그대로 베끼는 게 아니라, 플러그인·수동 설치·rules 복사 경로를 섞으면 중복 동작이 생긴다는 README 경고처럼 "에이전트 자산 배포"도 설치 상태와 권한 경계를 관리해야 한다는 점이다. AgentShield는 별도 CLI/GitHub Action/App로 `.claude/` 설정의 secret, permission, hook, MCP, agent prompt injection 위험을 A~F 리포트와 JSON/HTML/evidence pack으로 감사한다.
