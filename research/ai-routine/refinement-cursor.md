@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass
+- Reframed the Sentry Seer card as an Android-relevant debugging workflow: mobile crash/ANR context → Seer telemetry-based root cause → coding-agent implementation through MCP/plugin, with Autofix as an alternate PR path.
+- Checked Sentry's October 2 workflow comparison, January 27 local-development announcement, mobile monitoring page, and September 29 Seer Agent changelog. Removed the unqualified `$40/active contributor` claim because it can conflate Seer Autofix pricing with the separately named Seer Agent beta, which Sentry described as free at that time.
+- Added intermediate level, source links, and retrieval Q&A; audit: `research/ai-routine/20261122-sentry-seer-refinement.md`.
+- Next: continue oldest-first with the Jules card; verify current API status, pricing/quota, CI automation behavior, and date-sensitive model claims before retaining them.
+
+## Latest pass
 - Replaced Sim's stale June product inventory and `npx simstudio`/stack claims with current workflow behavior: test a draft, then deploy/update a versioned snapshot before live API/chat/MCP callers see it.
 - Current GitHub API snapshot (2026-11-22): 30,174 stars, 3,917 forks, Apache-2.0, not archived, pushed the same day. Latest release API returned v0.9.63 (Nov 19). Current setup docs use `npx sim-setup` and require Node.js 20+ plus Docker.
 - Added intermediate level, source links, and interview retrieval Q&A. Audit: `research/ai-routine/20261122-sim-workflow-refinement.md`.
@@ -55,7 +61,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Sim; next review Sentry Seer for current product scope, pricing, and implementation claims.
+Current position: refined Sentry Seer; next review Jules for current API status, quotas, and automation claims.
 
 Last update: 2026-11-22 (Asia/Seoul)
 

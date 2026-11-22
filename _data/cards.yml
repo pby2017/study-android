@@ -1988,15 +1988,25 @@ cards:
   interview: '배포한 Sim 워크플로를 편집기에서 수정하고 초안 실행까지 성공했습니다. API 호출자도 수정 내용을 바로 사용하나요?'
   answer: '아니다. 초안 실행은 편집 중인 버전을 시험한다. API·채팅·MCP와 자동 트리거는 배포 스냅샷을 사용하므로 변경 내용을 적용하려면 새 버전을 배포하거나 기존 배포를 업데이트해야 한다.'
 - category: ai
-  title: Sentry Seer — 프로덕션 텔레메트리로 근본원인을 찾아 코딩 에이전트에 넘기는 디버깅 에이전트
-  summary: 'Seer는 Sentry의 AI 디버깅 에이전트다. 스택트레이스를 챗봇에 붙여넣는 대신, Sentry가 이미 수집한 에러·트레이스·로그·메트릭·소스코드를 합쳐 "어디서 터졌나"보다 "왜 터졌나"를 추론한다. 2026-01-27 발표로 범위가 프로덕션 RCA에서 로컬 개발과 코드리뷰까지 넓어졌다. 로컬에서는 Sentry MCP 서버가 재현 중 생긴 텔레메트리를 보내고, Seer가 원인 분석 결과를 Claude·Cursor·Copilot 같은 코딩 에이전트의 수정 컨텍스트로 넘긴다. PR에서는 스타일 지적보다 배포 뒤 장애가 될 가능성이 큰 결함을 찾는다. 교훈은 AI 디버깅을 코드 정적 분석만으로 보지 말고, 런타임 텔레메트리와 PR 컨텍스트를 같은 루프에 묶어야 한다는 점이다. 요금은 Seer 연결 저장소에서 월 2개 이상 PR을 만든 active contributor 기준 $40/월이다.
-
-    '
+  level: 중급
+  title: Sentry Seer — Android 장애는 텔레메트리로 진단하고 에이전트에 넘긴다
+  summary: 'Sentry 모바일 모니터링은 Android 크래시·ANR와 함께 스택 트레이스, 기기·OS, 사용자 동작 등의 맥락을 모은다. Seer는 이런 오류·트레이스·로그·프로파일과 연결된 코드를 분석해 원인과 수정 계획을 만든다. Sentry MCP/에이전트 플러그인으로 진단 결과를 익숙한 코딩 에이전트에 넘겨 구현하게 하거나, Seer Autofix가 PR 초안을 만들 수 있다. 단순한 이벤트 조회와 근본원인 분석은 다른 단계이므로, 문제 복잡도에 따라 적절한 도구를 고른다.'
   points:
-  - 런타임 텔레메트리(에러·트레이스·로그·메트릭) + 소스코드로 정적 분석이 놓치는 분산·부하·프로덕션 버그 RCA
-  - 로컬 재현은 Sentry MCP 서버로 코딩 에이전트에 연결, PR에서는 장애 가능성이 큰 결함 중심 리뷰
-  - 요금은 Seer-connected repo에서 월 2개 이상 PR을 만든 active contributor당 $40/월, Seer 사용량은 PAYG와 별도
+  - 'Seer: 연결된 런타임 증거를 엮어 원인과 수정 계획을 도출; 단순 오류는 MCP 이벤트 조회만으로 충분할 수 있음'
+  - '구현: 코딩 에이전트에 구조화된 진단을 전달하거나 Seer Autofix에 PR 생성을 맡김'
+  - '권한: Seer Agent의 Sentry 쓰기 작업은 사용자 권한을 따르고, 필요한 권한이 없으면 실행 전 확인'
   source: https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent
+  sources:
+  - label: 'Sentry 공식 블로그 — Seer, MCP, CLI와 코딩 에이전트의 역할 구분'
+    url: https://blog.sentry.io/seer-mcp-cli-or-coding-agent/
+  - label: 'Sentry Android 모니터링 — 크래시·ANR 및 기기·사용자 맥락'
+    url: https://sentry.io/solutions/mobile-developers/
+  - label: 'Seer Agent 업데이트 — 쓰기 권한은 사용자 권한을 따르고 부족한 권한은 확인'
+    url: https://sentry.io/changelog/seer-agent-updates/
+  - label: 'Sentry 발표 — MCP를 통한 로컬 코딩 에이전트 연결과 텔레메트리 기반 RCA'
+    url: https://sentry.io/about/press-releases/sentry-expands-seer-ai-debugging-agent/
+  interview: 'Android 앱에서 발생한 복합 장애를 코딩 에이전트가 수정하게 하려면, 크래시 스택만 넘기는 대신 Sentry Seer와 MCP를 어떻게 나눠 쓸 수 있나요?'
+  answer: 'Sentry MCP로 관련 이벤트와 런타임 맥락을 연결하고, Seer가 여러 텔레메트리와 코드를 바탕으로 근본원인·수정 계획을 만들게 한다. 그 결과를 코딩 에이전트에 넘겨 구현·검증하게 하거나 Seer Autofix에 PR 초안 작성을 맡길 수 있다. 단순 조회에는 전체 RCA가 필요하지 않을 수 있다.'
 - category: ai
   title: Jules(Google) — plan-first VM agent·CI auto-fix loop·Jules API alpha
   summary: Jules(Google Labs·GA 2025-08)는 GitHub-native async coding agent — task마다 fresh Google Cloud VM clone·setup script·plan approval 후 코드 변경·PR. 2026-03 Gemini 3.1 Pro default(Pro tier)로 reasoning uplift. CI auto-fix loop — PR 생성 후 GitHub Actions 실패 감지→fix commit→resubmit, 사람 개입 없이 CI red→green close. Jules API(v1alpha·developers.google.com/jules/api) — Source·Session·Activity REST, Slack·Linear·GitHub custom workflow embed, requirePlanApproval로 plan gate 선택. AGENTS.md 자동 ingest·등급별 quota(무료 15/day·Pro 100·Ultra 300). vs Claude Code Web ·Codex Cloud ·Jules competitor Devin — Jules=GitHub issue→PR async with built-in CI babysitting.
