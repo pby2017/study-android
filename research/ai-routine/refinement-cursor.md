@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined Philipp Schmid's four subagent patterns into practical escalation criteria; identified the framework as a personal explainer and clarified orchestration tradeoffs. Audit: `research/ai-routine/20261122-subagent-patterns-refinement.md`.
+- Next: continue oldest-first with Sourcegraph's “80% problem” card; verify the source and refrain from repeating broad percentage claims as measured facts unless supported.
+
+## Previous latest pass — 2026-11-22
+## Latest pass — 2026-11-22
 - Refined Anthropic's agent-team compiler case study around verifier quality, regression testing, partitioned work, and the experiment's cost/limitations. Audit: `research/ai-routine/20261122-agent-team-compiler-refinement.md`.
 - Next: continue oldest-first with `서브에이전트 4가지 패턴`; verify original author source, terminology, and overlap with other orchestration cards before deciding whether to refine or merge.
 
