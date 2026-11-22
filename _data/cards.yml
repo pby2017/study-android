@@ -3760,16 +3760,6 @@ cards:
   interview: 'Trust Insights 평가의 `unknown`을 어떻게 처리하고, 결과 피드백은 왜 반드시 보고해야 하나요?'
   answer: '`unknown`은 위험이 낮다는 뜻이 아니므로 안전 판정으로 사용하지 않고 기존 위험 로직에 보수적으로 반영한다. Trust Insights만으로 차단하지 않는다. 각 평가 뒤에는 앱이 결과를 어떻게 사용했는지 `reportConsumption`으로 보고해야 하며, 누락하면 rate limit 또는 접근 취소 위험이 있다. 나중에 사기로 확인된 거래의 오프라인 label은 선택 제출이다.'
 - category: ai
-  title: 'Flutter 문서 레이아웃 AI: 추론 오프라인과 앱 설치 오프라인은 다르다'
-  summary: 'flutter_doclayout_kit는 PP-DocLayout ONNX 모델과 네이티브 라이브러리로 문서 영역을 검출하는 Flutter 플러그인이다. 모델은 앱 asset으로 별도 제공해야 하고, Android/iOS 네이티브 바이너리는 첫 빌드 시 GitHub Release에서 내려받는다. 따라서 빌드와 모델 준비에는 네트워크가 필요하지만, 두 파일을 앱에 포함한 뒤의 추론은 오프라인으로 실행할 수 있다. README는 23개 문서 요소를 지원한다고 설명한다. iOS Core ML 가속이나 특정 메모리 요구량은 공개 소스에서 확인되지 않아 보장하지 않는다.'
-  points:
-  - '배포 경로: 모델 파일은 직접 준비·등록; Android/iOS native library는 빌드 단계에서 다운로드'
-  - '오프라인 요구: 네이티브 라이브러리와 모델을 미리 확보해 앱에 포함한 뒤 네트워크 차단 테스트'
-  - '검증 범위: README는 23개 요소를 열거하지만, 플랫폼별 실행 성능은 대상 기기에서 측정한다.'
-  source: https://github.com/robert008/flutter_doclayout_kit
-  interview: '모바일 AI 라이브러리가 “오프라인 추론”을 지원한다고 할 때 어떤 네트워크 검증이 더 필요한가요?'
-  answer: '추론 시 네트워크를 쓰지 않는다는 뜻과 설치·빌드 과정도 오프라인이라는 뜻은 다르다. 이 플러그인은 모델을 앱 asset으로 별도 준비해야 하고, Android/iOS native library를 빌드 단계에서 Release 서버에서 다운로드한다. 모델과 네이티브 바이너리를 미리 고정해 앱에 포함하고, 설치 후 네트워크를 차단한 상태에서 초기화·추론까지 확인해야 한다.'
-- category: ai
   title: 'Locanara Android — minSdk만으로 Gemini Nano 지원을 판단하지 않기'
   level: "중급"
   summary: 'Locanara Android SDK의 `minSdk`는 API 31이다. 이는 SDK를 포함한 앱의 설치 하한이지, Gemini Nano 기능이 준비됐다는 뜻은 아니다. Android 구현은 Prompt API 상태를 `AVAILABLE`·`DOWNLOADABLE`·`DOWNLOADING`·`UNAVAILABLE`로 확인하고, 다운로드 가능한 경우 모델을 받은 뒤 상태를 다시 확인한다. Google 문서도 API 수준 외에 지원 기기, AICore 초기화, 모델 준비 상태를 확인하도록 안내한다. 앱은 상태에 따라 기능을 노출하고, 미지원·다운로드 중 UI를 설계해야 한다. Locanara Android artifact는 AGPL-3.0이므로 배포 전에 라이선스 적합성도 검토한다.'
@@ -7297,13 +7287,21 @@ cards:
   - Inference local-first, cloud=model update·coordination layer only
   source: https://proandroiddev.com/the-complete-guide-to-offline-first-architecture-in-android-490d5e9d27ea
 - category: ai
+  level: 고급
   title: On-Device AI Model Delivery — APK에서 모델 lifecycle 분리·incremental OTA
-  summary: '프로덕션 on-device AI는 모델을 APK에 bundling하면 Play 배포·rollback이 app release에 묶인다. 패턴: server-side model registry(버전·호환성·실험군 3-layer) + WiFi+charging+screen-off 조건부 download + incremental patch(BSDiff/tensor delta, patch>50% base면 full download) + staged rollout(1%→100%) + hot rollback. Play Asset Delivery·on-demand pack도 app version에 종속. A/B experiment group별 model binding으로 blast radius 제어. ExecuTorch(.pte)·LiteRT·GGUF 모두 동일 delivery pipeline 적용 가능.'
+  summary: '프로덕션 온디바이스 AI에서는 모델 업데이트 주기를 앱 릴리스와 분리할 수 있다. 모델 버전과 기기 호환성을 검증하고, 다운로드·점진 배포·롤백 경로를 설계한다. Play Asset Delivery는 앱 배포와 연결되므로 독립적인 모델 업데이트 경로와 구분한다. 또 오프라인 추론은 오프라인 빌드·설치 준비와 다르다. 예를 들어 flutter_doclayout_kit는 추론은 네트워크 없이 가능하다고 설명하지만 모델 파일은 별도 준비하고 native library는 첫 빌드 때 내려받는다.'
   points:
   - 'Model registry 3-layer: version·compatibility·experiment group'
   - Incremental patch vs full download threshold, WiFi+charging policy
   - Staged rollout + hot rollback, app release와 model iteration 완전 분리
-  source: https://xckevin.com/en/blog/android-on-device-ai-model-delivery-versioning/
+  - '모델 파일, native runtime 준비, 설치 후 추론은 네트워크 의존성이 다를 수 있다. flutter_doclayout_kit는 build-time runtime 다운로드와 offline inference를 분리해 안내한다.'
+  sources:
+  - label: Android on-device AI model delivery
+    url: https://xckevin.com/en/blog/android-on-device-ai-model-delivery-versioning/
+  - label: flutter_doclayout_kit README
+    url: https://github.com/robert008/flutter_doclayout_kit
+  interview: '온디바이스 모델 추론이 오프라인으로 된다는 말만으로 완전한 오프라인 지원을 판단할 수 없는 이유는 무엇인가요?'
+  answer: '모델 파일의 준비·다운로드, native runtime의 빌드 또는 설치, 설치 후 추론은 각각 다른 단계다. 예시 플러그인은 모델을 asset으로 별도 등록하고 Android/iOS native library를 첫 빌드 때 내려받지만, 추론 자체는 오프라인이라고 안내한다. 각 단계의 네트워크 요구를 확인하고, 앱과 필요한 파일을 준비한 뒤 네트워크 차단 상태에서 초기화와 추론을 테스트한다.'
 - category: ai
   title: Mobile On-Device LLM SDK 2026 — ExecuTorch·MLC·GenieX·llama.cpp 선택 가이드
   summary: '2026년 모바일 LLM SDK는 export pipeline·HW delegate·integration complexity 3축으로 갈린다. ExecuTorch(Meta): PyTorch torch.export→.pte, 12+ delegate(QNN·CoreML·XNNPACK), Instagram/WhatsApp 프로덕션 스케일 — PyTorch 팀에 최적. MLC LLM: TVM compile→hardware-native, iOS Metal·Android GPU·WebGPU 크로스플랫폼 — browser deployment unique. GenieX(Qualcomm): Android SDK와 OpenAI 호환 서버 제공; GGUF는 llama.cpp 경로, AI Hub 번들은 Qualcomm AI Engine Direct NPU 경로. llama.cpp: GGUF·CPU/GPU portable, framework overhead 최소 — 프로토타입·fallback. 온디바이스 ML 3종(Core ML·LiteRT·ExecuTorch) 카드와 complement: LLM-specific SDK 비교.'
