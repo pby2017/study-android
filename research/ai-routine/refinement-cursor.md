@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined `OpenSpec` into a current v2 change-planning lesson; corrected skill names, optional verification profile, install/runtime requirements, and removed stale Spec Kit comparison and old metrics. Audit: `research/ai-routine/20261122-openspec-refinement.md`.
+- Next: continue oldest-first with `Code Mode (Cloudflare)`; verify current implementation details, token claims, sandbox/security boundary, and duplicate overlap before editing.
+
+## Previous latest pass — 2026-11-22
+## Latest pass — 2026-11-22
 - Refined `BMAD-METHOD` from a dated feature/count roundup into a reusable lesson: right-size planning to change complexity, preserve decisions in artifacts, then implement/review.
 - Rechecked the official guide, repo README, and release page. Stable v6.12 latest release is v6.12.4; v7 remains preview alpha. Removed old counts, stale v6.9 release, obsolete web bundle/platform pitch, and generic “12 agents / 34 workflows” marketing inventory.
 - GitHub attention snapshot: 55.6k★ and 6.2k forks on 2026-11-22; MIT license. No exact stars embedded in the public card.
