@@ -2,9 +2,17 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the Claude Code GitHub Action card; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: replaced the stale multi-agent vendor tiers with a work-placement model; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:51 KST
+Last update: 2026-11-22 15:53 KST
+
+## Latest pass
+- Reframed the three tiers as a practical execution-boundary model instead of a stable product taxonomy.
+- Removed the unsupported “3–5 agents is optimal” claim and corrected the claim that worktrees eliminate merge conflicts.
+- Removed Jules from active examples because its official changelog says it is read-only after 2026-11-11 and winds down on 2026-12-31.
+- Added primary docs for subagents, GitHub Copilot cloud, and Codex Cloud; added an interview question about worktree limits and task placement.
+- Sources and rationale: `research/ai-routine/20261122-multi-agent-work-placement-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Separated interactive `@claude` mention mode from automation mode selected by a `prompt` input; clarified default output location.

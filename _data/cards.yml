@@ -1132,15 +1132,23 @@ cards:
   interview: "GitHub Action에서 `prompt` 입력의 유무는 실행 모드와 결과 전달에 어떤 차이를 만들며, 비용·권한은 어떻게 통제하나요?"
   answer: "`prompt`가 없으면 기본적으로 `@claude` 멘션을 기다리고, 있으면 이벤트에서 자동 실행한다. 실행마다 GitHub 러너 시간과 모델 인증 비용이 들 수 있으므로 트리거·권한을 최소화하고 로그와 코드 변경을 검토한다."
 - category: ai
-  title: 멀티에이전트 3-티어 — 인세션·로컬 워크트리·클라우드를 일에 맞게 갈아끼우기
-  summary: 'Addy Osmani가 정리한 2026년 멀티에이전트 코딩 도구 지형은 셋업·격리·동시성을 기준으로 3티어로 나뉜다. 티어1은 추가 셋업 없이 한 세션 안에서 도는 Claude Code 서브에이전트·Agent Teams — 상호작용 작업의 출발점. 티어2는 내 머신에서 에이전트마다 별도 git 워크트리를 띄워 충돌 없이 3~10개를 병렬로 굴리는 로컬 오케스트레이션(Conductor·Claude Squad·Vibe Kanban 등). 티어3은 클라우드 VM에서 비동기로 돌려 PR로 받아 보는 도구(Claude Code Web·Copilot Coding Agent·Jules·Codex Web) — 백로그를 밤새 비울 때. 핵심은 ''하나만 고르기''가 아니라 일의 성격에 따라 세 티어를 갈아끼우는 것이며, 동시성은 3~5개가 스위트스폿이고 10개를 넘기면 비용만 늘기 쉽다.
-
-    '
+  level: "중급"
+  title: 멀티에이전트 작업 배치 — 세션·로컬 워크트리·클라우드 선택
+  summary: 에이전트 작업은 어디서 실행하고 변경을 어떻게 격리할지로 나눠 생각할 수 있다. 같은 세션의 서브에이전트는 조사·분석을 분리하고, 로컬 워크트리는 병렬 코드 변경을 별도 작업공간에 둔다. 클라우드 에이전트는 준비된 원격 환경에서 작업을 이어갈 수 있다. 이는 제품 표준 분류가 아니라 작업 배치를 위한 실무 모델이다.
   points:
-  - 티어1(제로 셋업)=서브에이전트·Agent Teams / 티어2(로컬 워크트리, 3~10개)=Conductor·Claude Squad·Vibe Kanban / 티어3(클라우드 비동기)=Claude Code Web·Copilot·Jules·Codex Web
-  - 격리는 에이전트마다 별도 git 워크트리로 — 머지 충돌 없이 깔끔하게 통합(Conductor 류는 자동 처리)
-  - 동시성 스위트스폿 3~5개, 10개 초과는 이득 적고 비용↑ / 품질 게이트(테스트 훅·플랜 승인)와 AGENTS.md로 세션마다 학습 누적
-  source: https://addyosmani.com/blog/code-agent-orchestra/
+  - "같은 세션의 서브에이전트는 별도 컨텍스트에서 독립 조사하고 요약을 돌려준다. 여러 코드 작업을 병렬 실행한다면 변경 공간도 분리할지 정한다."
+  - "Git worktree는 별도 체크아웃에서 작업하도록 격리한다. 같은 파일을 동시에 덮어쓰는 위험은 낮추지만, 나중의 병합 충돌이나 잘못된 변경까지 없애지는 않는다."
+  - "클라우드 에이전트는 원격 환경에서 작업을 계속할 수 있다. 실행 환경·저장소 권한·네트워크·요금·결과 보존 방식은 제품마다 다르므로 확인한다."
+  - "짧은 피드백 반복은 현재 세션, 로컬 코드 병렬 변경은 워크트리, 명확히 나눌 수 있는 비동기 작업은 클라우드부터 검토한다. 동시성의 정답 수는 없으며 비용과 통합·리뷰 부담도 함께 늘 수 있다."
+  sources:
+  - label: Claude Code 서브에이전트 문서
+    url: https://code.claude.com/docs/en/sub-agents
+  - label: GitHub Copilot 클라우드 에이전트
+    url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/use-cloud-agent-on-github
+  - label: Codex Cloud 안내
+    url: https://help.openai.com/en/articles/20001545-using-codex-cloud
+  interview: "Git worktree를 쓰면 병렬 에이전트의 충돌이 사라지나요? 작업 실행 위치를 고를 때 어떤 기준을 함께 봐야 하나요?"
+  answer: "worktree는 작업 파일과 브랜치를 분리해 동시 편집을 줄이지만 병합 충돌·의미상 충돌은 남는다. 반복 피드백 필요성, 격리 수준, 비동기성, 접근 권한, 비용과 리뷰 부담을 보고 세션·로컬·클라우드 중 선택한다."
 - category: ai
   title: 12-Factor Agents — 믿을 만한 에이전트는 '대부분 그냥 소프트웨어'다
   summary: 'HumanLayer의 Dex(Dexter Horthy)가 정리한, 프로덕션급 LLM 에이전트를 만드는 12가지 원칙(GitHub 23.3k★). 핵심 주장은 "여기 프롬프트, 여기 도구 한 보따리, 목표 칠 때까지 루프"라는 순진한 에이전트 루프는 70~80% 품질에서 막히고, 고객 대면 제품엔 그 80%로는 부족하다는 것 — 잘 도는 에이전트는 사실 ''대부분 결정론적 소프트웨어''에 LLM 단계를 전략적으로 끼워 넣은 형태라고 본다. 그래서 프레임워크에 맡기지 말고 프롬프트·컨텍스트 창·제어 흐름을 직접 소유하고, 실행 상태를 비즈니스 상태와 합쳐 launch/pause/resume 가능한 단순 API로 만들라고 말한다.
