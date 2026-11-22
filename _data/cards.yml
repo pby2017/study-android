@@ -3669,14 +3669,15 @@ cards:
   answer: "아니다. 모델 업데이트도 학습 데이터의 정보를 드러낼 수 있다. 위협 모델에 따라 differential privacy나 secure aggregation 같은 별도 보호가 필요하며, 실제 구현·설정·검증을 확인해야 한다. KotlinSyft의 README는 secure aggregation과 MPC를 진행 중으로 표시했으므로 지원된 기능처럼 간주하지 않는다."
 - category: ai
   title: MLC LLM — Android GPU용 모델 컴파일과 실기기 검증
-  summary: 'MLC LLM은 모델을 컴파일해 여러 기기에서 실행하는 LLM 배포 엔진이다. 공식 문서는 Android의 Adreno·Mali GPU에서 OpenCL 백엔드를 지원한다고 설명한다. Android 앱에 넣을 모델마다 바이너리 라이브러리와 런타임·토크나이저를 준비해야 한다. 따라서 “크로스플랫폼” 표기만으로 같은 모델 파일이 모든 기기에서 바로 동작한다고 가정하지 말고, 목표 GPU와 메모리 한도에서 실기기 검증을 해야 한다.'
+  level: "고급"
+  summary: 'MLC LLM은 선택한 모델을 컴파일해 Android 앱용 모델 라이브러리와 런타임·토크나이저를 패키징한다. 저장소는 Adreno·Mali GPU의 OpenCL 경로를 안내하지만, 모델·드라이버별 동작이 같다는 뜻은 아니다. Android 문서는 실제 GPU 검증에 에뮬레이터가 아닌 휴대폰을 요구하며, Adreno에서 `_1` weight layout의 첫 prefill 중 시스템 UI가 멈출 수 있는 알려진 문제와 `_0` 우회안을 적고 있다. 목표 모델과 기기에서 메모리·초기화·응답을 측정한다.'
   points:
-  - 'Android 백엔드: 공식 README는 Adreno·Mali GPU용 OpenCL을 명시'
-  - '`mlc_llm package`가 설정한 각 모델을 컴파일하고 앱에 런타임을 연결'
-  - '에뮬레이터가 아닌 실제 GPU 기기에서 호환성·메모리·응답 지연을 확인'
-  source: https://github.com/mlc-ai/mlc-llm
-  interview: "온디바이스 LLM 라이브러리가 여러 플랫폼을 지원한다고 할 때, Android에서 무엇을 추가로 검증해야 하나요?"
-  answer: "지원 표의 GPU 백엔드가 목표 기기와 맞는지 확인하고, 그 기기에 맞춘 모델 라이브러리와 런타임을 빌드한다. 모델 메모리 요구량과 다운로드·APK 크기를 점검한 뒤, 실제 기기에서 초기화·추론 지연·발열·메모리 사용을 측정한다. MLC 문서는 모바일 GPU 가속을 의미 있게 검증하려면 실기기가 필요하다고 안내한다."
+  - '`mlc_llm package`는 설정 모델별 바이너리와 Android 런타임·토크나이저를 만든다; weight는 앱에 묶거나 실행 시 내려받을 수 있음'
+  - 'OpenCL 지원표(Adreno·Mali)는 출발점일 뿐; 모델 변환·GPU 드라이버·기기 메모리 조합별로 확인'
+  - '물리 기기에서 첫 prefill까지 측정; Adreno의 `_1` layout 이슈와 문서의 `_0` 우회안을 확인'
+  source: https://github.com/mlc-ai/mlc-llm/blob/main/docs/deploy/android.rst
+  interview: "MLC LLM Android 앱이 에뮬레이터에서 실행되지 않거나 Adreno 첫 추론 때 멈춘다면, 무엇을 검증하나요?"
+  answer: "가속 성능은 실제 모바일 GPU 기기에서 확인한다. `mlc_llm package`로 목표 모델 라이브러리·런타임·토크나이저를 준비하고, Adreno라면 문서의 `_1` weight-layout 첫 prefill 문제와 `_0` 우회안을 점검한다. 모델 크기·메모리·초기화·첫 토큰 지연과 후속 추론을 기기별로 측정한다."
 - category: ai
   title: RunAnywhere Kotlin SDK — Android 로컬 AI 엔진과 모델 연결 흐름
   summary: 'RunAnywhere Kotlin SDK는 Android에서 등록한 AI 엔진을 공통 API로 호출한다. 공식 예제는 `LlamaCPP.register()` 후 SDK를 초기화하고, 모델을 내려받아 로드한 뒤 생성을 요청한다. 음성·NPU 기능은 별도 엔진과 기기 지원 조건에 따라 달라진다. 모델은 최초 다운로드가 필요하고 클라우드 경로도 선택 가능하므로, “오프라인·기기 내 처리”를 약속하려면 모델을 준비하고 원격 경로를 끈 상태에서 확인해야 한다.'
