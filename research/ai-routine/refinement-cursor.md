@@ -1760,3 +1760,7 @@ Rules:
 - Corrected the lifecycle, clarified per-connection capability negotiation, stated v1 latest/v2 preview, and corrected remote transport status (stdio is core; HTTP/WebSocket remain separate/proposed). Registry membership is not universal feature compatibility. Added intermediate level and interview Q&A; current protocol repo signal is ~4.7k stars.
 - Audit: `research/ai-routine/20261123-002750-acp-protocol-maturity.md`.
 - Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.
+
+## Latest pass — 2026-11-23
+- Refined `Conductor — 격리 workspace에서 AI 코딩 작업을 병렬로 운영하기` against current first-party workspace, harness/pricing, and review/merge docs. Removed the redundant Orca comparison; refreshed current agent support, app-vs-provider billing, and diff/checks/merge workflow. Added intermediate level and interview retrieval; clarified Git worktree isolation is not a security sandbox (engineering caveat, not a vendor security claim). Audit: `research/ai-routine/20261123-003400-conductor-worktree-review.md`.
+- Next: refine the following older eligible AI card, `MCP Tool Search`; verify present Claude Code behavior, thresholds/default status, and exact token/context claims against official documentation before editing.

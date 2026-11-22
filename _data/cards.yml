@@ -2494,13 +2494,23 @@ cards:
   interview: "ACP를 지원하는 agent와 IDE라면 모든 기능이 서로 동일하게 동작하나요? 먼저 어떤 정보를 확인해야 하나요?"
   answer: '아니다. ACP는 통신 형식을 표준화하지만 기능 지원은 agent/client가 연결 초기화에서 광고·협상한 capability에 달려 있다. protocol version, 인증 방식, session load/resume, 파일·terminal 권한, transport를 확인한다. 현재 공개 문서는 v1이 최신이고 v2는 preview이며, 원격 HTTP/WebSocket은 core transport로 가정하지 않는다.'
 - category: ai
-  title: Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터
-  summary: Conductor(conductor.build)는 macOS에서 Claude Code·Codex·Cursor를 여러 격리 workspace로 동시에 돌리는 ADE(Agent Development Environment)다. 각 workspace는 별도 git worktree라 에이전트가 main을 직접 건드리지 않고, 한 화면에서 작업 상태를 보고 diff를 검토한 뒤 사람이 merge한다. 같은 축의 Orca(stablyai/orca·MIT·2026-06-27 기준 8,108★)는 macOS·Windows·Linux 데스크톱과 모바일 companion으로 넓히고, Claude Code·Codex·OpenCode·Pi 같은 CLI 에이전트를 worktree별로 실행한다. 교훈은 "에이전트를 많이 띄우기"보다 branch/worktree 격리, BYO 구독, diff-first 리뷰, human merge gate를 먼저 설계해야 병렬성이 실제 생산성이 된다는 점이다.
+  level: 중급
+  title: Conductor — 격리 workspace에서 AI 코딩 작업을 병렬로 운영하기
+  summary: 'Conductor는 macOS에서 여러 AI 코딩 에이전트 세션을 저장소 workspace별로 운영하는 개발 환경이다. workspace는 별도 Git worktree와 branch를 사용하므로 독립 작업을 나눠 실행하고 diff·테스트·PR 상태를 한곳에서 검토할 수 있다. Conductor는 에이전트 모델을 제공하는 서비스가 아니다. 앱 사용료는 무료이며 모델 사용료와 계정은 연결한 제공자 기준이다. worktree는 파일·branch 격리이지 보안 sandbox가 아니므로 에이전트 권한과 공유 자원은 별도로 관리한다.'
   points:
-  - Conductor — macOS 앱, Claude Code·Codex·Cursor를 isolated workspace/worktree로 병렬 실행
-  - Orca — cross-platform desktop+mobile companion, one prompt across five agents, CLI automation surface
-  - 운영 포인트 — agent 실행보다 diff 검토·merge gate·worktree cleanup이 병목
+  - '작업 단위: 독립적인 이슈는 각각 workspace·branch·worktree로 분리하고, 같은 branch를 공유해야 하는 구현·리뷰는 한 workspace에서 수행한다.'
+  - '실행 계층: Claude Code·Codex·Cursor·OpenCode를 연결한다. Claude Code·Codex·OpenCode는 앱에 포함되며, Cursor는 Cursor API 연결을 사용한다.'
+  - '검토 흐름: Diff Viewer와 Checks에서 변경·테스트·PR 상태를 확인한 뒤 사람이 merge하고 workspace를 정리한다. 동시 실행 수보다 리뷰와 검증 용량을 먼저 계획한다.'
   source: https://www.conductor.build/
+  sources:
+  - label: Conductor 문서 — workspace·agent 지원·비용 경계
+    url: https://www.conductor.build/docs/first-workspace
+  - label: Harness 문서 — 에이전트 실행 계층 및 요금 구분
+    url: https://www.conductor.build/docs/reference/harnesses
+  - label: Diff·Checks·PR 검토 및 merge 절차
+    url: https://www.conductor.build/docs/guides/review-and-merge
+  interview: 'Git worktree 기반 AI 에이전트 병렬 실행에서 worktree 격리가 보장하는 것과 보장하지 않는 것은 무엇인가요?'
+  answer: 'worktree는 작업 파일과 branch를 분리해 변경 충돌을 줄인다. 그러나 실행 권한, 비밀정보 접근, 포트·DB 같은 공유 자원까지 격리하는 보안 sandbox는 아니다. 별도 workspace별 환경과 최소 권한을 설정하고, diff·테스트를 검토한 뒤 사람이 merge해야 한다.'
 - category: ai
   title: MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)
   summary: 'MCP 서버를 여러 개 붙이면 세션 시작 전에 도구 정의가 컨텍스트를 다 잡아먹는 ''context pollution''이 오래 문제였다(한 개발자는 첫 프롬프트도 치기 전에 6.6만 토큰이 사라졌다고 기록). Claude Code의 MCP Tool Search는 세션 시작 시 도구 이름과 서버 instructions만 올리고, 실제 도구 정의는 Claude가 필요할 때 검색해서 불러온다. Anthropic은 2026-01-14에 이 기능을 공개했고, 공식 문서 기준 현재 기본값으로 켜져 있다. 실무 효과는 ''MCP 서버를 더 붙여도 컨텍스트 영향이 거의 없다''는 것 — 그래서 서버 개수보다 서버 instructions를 잘 써두는 게 중요해진다.

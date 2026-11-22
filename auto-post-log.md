@@ -4700,3 +4700,10 @@ Refined:
 - `initialize`의 capability negotiation과 session lifecycle을 정정하고, stdio가 core transport이며 HTTP/WebSocket은 별도 제안임을 반영했다. ACP 호환과 기능 동일성은 다르며 registry 등록도 이를 보장하지 않는다고 설명했다.
 - Audit: `research/ai-routine/20261123-002750-acp-protocol-maturity.md`.
 - Sources: https://agentclientprotocol.com/protocol, https://agentclientprotocol.com/protocol/transports, https://agentclientprotocol.com/registry, https://github.com/agentclientprotocol/agent-client-protocol.
+
+### 2026-11-23 00:34 KST — Conductor workspace 격리와 리뷰 흐름 최신화
+
+- 현재 공식 문서에서 workspace/worktree 구조, 에이전트 harness, 비용 경계와 diff/checks/merge 절차를 재확인했다. 별도 Orca 비교는 중복 카드가 있어 제거했다.
+- Git worktree는 파일·branch 충돌을 줄이지만 실행 권한이나 비밀정보를 격리하는 sandbox는 아니라는 경계를 명시하고, 중급 수준과 면접 회상 문답을 추가했다.
+- Audit: `research/ai-routine/20261123-003400-conductor-worktree-review.md`.
+- Sources: https://www.conductor.build/docs/first-workspace, https://www.conductor.build/docs/reference/harnesses, https://www.conductor.build/docs/guides/review-and-merge.
