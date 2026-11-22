@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Memory Bank after OpenSkills; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Cursor Rules after Memory Bank; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:39 KST
+Last update: 2026-11-22 16:40 KST
+
+## Latest pass
+- Refined Cursor Rules against the current official Rules and AGENTS.md documentation.
+- Removed an overbroad comparison to other agents' instruction loading; clarified `.mdc`, the four activation modes and frontmatter interaction, lazy `@file` reads, AGENTS.md as a simple alternative, and Team → Project → User precedence. Added intermediate level and retrieval Q/A.
+- Sources and rationale: `research/ai-routine/20261122-cursor-rules-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined the Memory Bank card against the current Roo Code Memory Bank README and GitHub repository snapshot; checked the linked Context Portal MCP project to avoid conflating file-based memory with database-backed retrieval.

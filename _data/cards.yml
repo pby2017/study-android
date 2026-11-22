@@ -1405,15 +1405,21 @@ cards:
   interview: 'Memory Bank 문서를 저장소에 두기만 하면 모든 AI 세션에서 자동으로 활용된다고 할 수 없는 이유는 무엇인가요?'
   answer: '저장은 지속성을 제공하지만 로딩은 호스트 에이전트의 지침과 도구 실행에 달려 있다. 예를 들어 Roo 구현은 모드별 지침으로 파일을 읽고 갱신한다. 따라서 실제 시작 시 로딩 여부와 갱신 규칙을 설정하고, 오래된 맥락을 검토해야 한다.'
 - category: ai
+  level: 중급
   title: Cursor 규칙(.mdc) — 한 덩어리 지침을 '언제 켤지'로 쪼개 토큰 아끼기
-  summary: 'Cursor의 프로젝트 규칙은 `.cursor/rules/*.mdc` 파일로 둔다(확장자가 `.mdc`여야 함 — 프런트매터가 없는 `.md`는 무시됨). 핵심은 AGENTS.md·CLAUDE.md처럼 모든 세션에 통째로 들어가는 게 아니라, 프런트매터 3필드(`description`·`globs`·`alwaysApply`) 조합으로 ''언제 끌어올지''를 규칙마다 따로 정한다는 점이다. 활성 방식은 네 가지: ① Always(`alwaysApply:true`) 매 세션 포함 ② Auto Attached(`globs` 매칭 파일이 컨텍스트에 들어올 때만) ③ Agent Requested(`description` 보고 에이전트가 필요하다 판단하면) ④ Manual(`@규칙명`으로 직접 부를 때만). 덕분에 "테스트 파일 만질 때만 보는 규칙"을 평소 컨텍스트에서 빼둘 수 있어, 거대한 단일 규칙 파일이 매번 토큰을 먹는 문제를 피한다. 우선순위는 Team → Project → User 순으로 병합되며 앞쪽이 충돌 시 이긴다.
-
-    '
+  summary: 'Cursor Project Rules는 `.cursor/rules/`의 `.mdc` 파일로 저장하고 Git으로 공유하는 지침이다. 프런트매터의 `alwaysApply`, `globs`, `description` 조합으로 적용 시점을 정한다. 네 방식은 Always(매 세션), Apply to Specific Files(glob 일치 파일이 컨텍스트에 있을 때), Apply Intelligently(설명을 보고 에이전트가 관련성을 판단), Apply Manually(`@규칙` 호출)다. `alwaysApply: true`이면 다른 두 필드는 적용 조건에 영향을 주지 않는다. 규칙에서 `@파일`을 참조하면 파일 내용이 규칙에 미리 삽입되는 것이 아니라, 적용된 에이전트가 필요할 때 도구로 읽는다. 간단한 지침은 Cursor가 지원하는 `AGENTS.md`로도 둘 수 있다. 반복 적용이 필요한 규칙만 좁게 나누고, 보안 경계처럼 반드시 지켜야 할 요구는 프롬프트 규칙만으로 강제하지 않는다.'
   points:
-  - '`.cursor/rules/*.mdc`(버전관리), 프런트매터 `description`·`globs`·`alwaysApply` 조합으로 적용 시점 결정 — `.md`는 무시'
-  - '4가지: Always / Auto Attached(globs 매칭) / Agent Requested(description 판단) / Manual(@멘션)'
-  - globs로 '특정 파일 만질 때만' 켜서 평소 컨텍스트 절약 / 우선순위 Team→Project→User
+  - '`.cursor/rules/*.mdc`는 프로젝트 규칙 파일. `.md`는 규칙 frontmatter가 없으므로 이 시스템에서 무시되며, 단순 지침에는 `AGENTS.md` 대안이 있음'
+  - 'Always / Specific Files(globs) / Intelligently(description) / Manually(@멘션) — 필요한 범위만 적용해 지침 중복과 불필요한 컨텍스트를 줄인다'
+  - '팀·프로젝트·사용자 규칙은 함께 적용되며 충돌 시 Team → Project → User 순으로 앞선 지침이 우선'
   source: https://cursor.com/docs/context/rules
+  sources:
+  - label: Cursor Rules 공식 문서 — 규칙 유형·frontmatter·적용 우선순위
+    url: https://cursor.com/docs/rules
+  - label: Cursor AGENTS.md 공식 문서 — 단순 지침과 하위 경로 지원
+    url: https://cursor.com/docs/rules#agentsmd
+  interview: 'Cursor 규칙 frontmatter에서 `alwaysApply`, `globs`, `description`은 적용 시점을 어떻게 나누며, `@파일` 참조는 언제 내용을 컨텍스트에 넣나요?'
+  answer: '`alwaysApply: true`는 매 세션 포함하고 다른 필드는 조건으로 쓰지 않는다. `globs`는 일치 파일이 컨텍스트에 있을 때 적용하며, `description`은 에이전트가 관련성을 판단할 때 사용한다. 셋 다 없으면 `@규칙`으로 수동 호출한다. 규칙의 `@파일`은 내용을 미리 삽입하지 않고, 규칙이 적용된 뒤 에이전트가 필요할 때 도구로 읽는다.'
 - category: ai
   title: Pydantic AI — 'FastAPI 느낌'으로 타입 안전하게 짜는 모델-비종속 에이전트 프레임워크
   summary: 'Pydantic AI는 Pydantic 검증 라이브러리를 만든 팀이 내놓은 파이썬 에이전트 프레임워크다. README는 스스로를 "프로덕션급 GenAI 애플리케이션을 빠르고 자신 있게 짜도록 돕는" 프레임워크라 소개하며, 목표는 웹 개발의 FastAPI가 주던 ''이게 되네'' 하는 개발 경험을 LLM 앱에 가져오는 것이다. 핵심은 타입 안전성이다. 에이전트의 입력·도구·출력을 Pydantic 모델로 정의하면 LLM 응답이 그 스키마에 맞게 검증되고, 안 맞으면 모델에 자동 재요청한다. 덕분에 "문자열 받아서 파싱하다 터지는" 흔한 실패가 컴파일 타임 가까이로 당겨진다. 모델에도 안 묶여서 OpenAI·Anthropic·Gemini·DeepSeek 등을 같은 코드로 갈아끼울 수 있고, 타입 안전한 의존성 주입, MCP/A2A 연동, Logfire(OpenTelemetry) 관측이 기본 제공된다. 코딩 에이전트를 ''쓰는'' 도구가 아니라 ''만드는'' 토대라서, 사내 자동화나 커스텀 에이전트를 직접 구축할 때 LangChain의 대안으로 자주 거론된다. MIT 라이선스, 약 17.8k★.
