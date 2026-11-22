@@ -9,7 +9,8 @@
 - Refined Claude security-guidance against its current official plugin README and manifest; replaced stale model/version/quotas with the stable three-layer model, advisory-only enforcement boundary, endpoint data-transfer and usage-cost caveats. Audit: `research/ai-routine/20261122-security-guidance-refinement.md`.
 - Rechecked the current `AGENTS.md — 저장소 지침을 루트와 하위 폴더에 나누기` card against AGENTS.md, Codex, and GitHub Copilot primary docs; its host-specific discovery/precedence caveat and task-verification advice are already accurate, so no edit was needed.
 - Refined Factory Droid Exec around read-only defaults, autonomy tiers, non-interactive permission rules, partial changes on failure, and sandbox-only unsafe bypass; removed stale benchmark-rank heading. Audit: `research/ai-routine/20261122-factory-droid-exec-refinement.md`.
-- Next: continue oldest-first with `Terminal-Bench 2.1`; determine whether to retire or refocus the stale June leaderboard snapshot using the current official 4.1 benchmark and version/methodology distinction.
+- Refined Terminal-Bench around fair evaluation: current 4.1 shows model-agent pairs, 95% confidence intervals, cost and tokens; removed June 2.1 leaderboard snapshot and added version-pinned comparison guidance. Audit: `research/ai-routine/20261122-terminal-bench-refinement.md`.
+- Next: inspect `SWE-bench Multimodal`; verify current dataset/task counts and clarify paper-versus-site counting before deciding whether its benchmark lesson is still current.
 
 ## Previous latest pass — 2026-11-22
 ## Latest pass — 2026-11-22
@@ -908,7 +909,7 @@ Skipped:
 - `에이전트 코딩의 '80% 문제' — 보이는 80%는 끝내고 안 보이는 20%(인증·DTO·타 레포)를 빼먹는다` — source re-checked; existing card already captures the context-layer and exact-search lesson without overextending the vendor post.
 - `security-guidance 플러그인 — Claude가 짠 코드의 취약점을 같은 세션에서 잡아 고치게 하기` — superseded by the 2026-11-22 refinement: clarified best-effort/non-blocking review, endpoint data transfer and usage cost; see `20261122-security-guidance-refinement.md`.
 - `AGENTS.md 실전 — 'README for agents'를 모노레포에 어떻게 까는가(중첩·우선순위 규칙)` — source re-checked; existing card already captures nested file placement, conflict precedence, supported tools, and verification behavior.
-- `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)` — re-checked the current Terminal-Bench 2.1 leaderboard and docs; removed unsupported availability/shutdown wording, corrected Terminus 2+GPT-5.5 from 76.4% to 78.2%, and clarified the agent+harness+model lesson.
+- `Terminal-Bench 2.1 — 셸 전체가 문제, 에이전트+모델 쌍·Claude 5 Fable 83.1% (2026-06)` — superseded by the 2026-11-22 refinement: replaced stale 2.1 ranking with current 4.1 methodology, confidence intervals, cost, and controlled-comparison guidance; see `20261122-terminal-bench-refinement.md`.
 - `claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기` — source re-checked; existing card already captures named worktrees, PR worktrees, `.worktreeinclude`, non-git hooks, and cleanup without needing more detail.
 - `MCP Tool Search — MCP 서버 수십 개 붙여도 컨텍스트가 안 터지는 'on-demand 로딩'(Claude Code 기본값)` — source re-checked; existing card already captures default deferral, `ENABLE_TOOL_SEARCH` modes, tool_reference/model limits, and server-instructions guidance.
 - `Plandex — AI가 만든 변경을 '리뷰 샌드박스'에 격리해 승인 전까지 실제 파일과 분리하는 터미널 코딩 에이전트` — re-checked the GitHub README and plandex.ai landing page; tightened the summary around the cumulative diff sandbox, 2M-token context, tree-sitter project maps, auto-debugging, and git integration without changing the topic.
