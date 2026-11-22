@@ -1663,3 +1663,9 @@ Rules:
 - Added capability discovery / actual runtime-support boundary; narrowed offline and QHexRT guidance; added `중급` level and strengthened the retrieval Q&A.
 - Audit and rationale: `research/ai-routine/20261122-230100-runanywhere-kotlin-sdk-refinement.md`.
 - Next: review the next eligible AI+Android card oldest-first; verify the actual SpeechRecognizer route and avoid treating default recognition as on-device.
+
+## Latest pass
+- Refined `Android 음성 AI의 개인정보 경계: SpeechRecognizer 기본 경로는 기기 내 처리 보장이 아니다` against the current official Android API reference.
+- Distinguished default versus on-device recognizer, API 31 service availability versus API 33 request/language support, and added a practical offline verification condition; added `중급` level.
+- Audit and rationale: `research/ai-routine/20261122-231300-android-speechrecognizer-refinement.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android subjects.
