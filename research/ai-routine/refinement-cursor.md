@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass
+- Replaced the stale omnibus goose card (old provider counts, Rust percentage, and Subrecipes claims) with a Kotlin/Android integration boundary lesson for oi-kit.
+- Rechecked the current oi-kit reference and Kotlin API: the Kotlin bindings cover provider calls, streaming, and conversation compaction, not the full Rust agent runtime; oi-kit is alpha. GitHub showed about 56.9k★ / 6.6k forks on 2026-11-22.
+- Made Android support an explicit validation question rather than an assumed guarantee; added intermediate difficulty and an interview retrieval pair. Audit: `research/ai-routine/20261122-goose-oikit-refinement.md`.
+- Next: continue oldest-first with GNAP; verify relevance, source claims, and current popularity before editing.
+
+## Latest pass
 - Refined AI Research Skills as a reusable library of research workflow guidance, not an automatically verified AI researcher.
 - Rechecked the official README and package installer: 98 skills / 23 categories, auto-detection, global symlink installation, and project-local copied skills with a lock file. GitHub showed about 14.7k★ and 1k forks on 2026-11-22.
 - Added intermediate level, category-selection and reproducibility guidance, a verification caveat, current sources, and an interview retrieval pair. Audit: `research/ai-routine/20261122-ai-research-skills-refinement.md`.
@@ -20,9 +26,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined AI Research Skills after ccusage; continue the oldest-first scan with the next eligible AI or AI+Android card.
+Current position: refined goose oi-kit after AI Research Skills; continue the oldest-first scan with GNAP.
 
-Last update: 2026-11-22 17:53 KST
+Last update: 2026-11-22 17:58 KST
 
 ## Latest pass
 - Rechecked Dreams against current Managed Agents API docs, Anthropic's Nov 6 agent-memory research, and the product announcement.
