@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Firecrawl MCP tool selection; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: corrected llms.txt proposal and search-visibility guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:12 KST
+Last update: 2026-11-22 16:25 KST
+
+## Latest pass
+- Replaced the inaccurate “standard” and automatic-search claims with the v2 proposal's scope and structure. Corrected `Optional` to a convention, not a parser directive.
+- Added Google's explicit statement that Search (including AI features) does not use llms.txt and that it has no visibility impact.
+- Added labeled multi-source links while retaining the existing single-source card format as a fallback; added a regression check.
+- Sources and rationale: `research/ai-routine/20261122-llms-txt-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against current primary sources and check overlap.
 
 ## Latest pass
 - Replaced the stale “most popular” claim and 6.6k-star snapshot with a dated, verified ~7.9k★ repository signal.

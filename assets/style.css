@@ -56,6 +56,8 @@ body{
 .interview p{color:var(--muted);margin-top:7px}
 .src{margin-top:auto;padding-top:10px;font-size:12.5px;color:var(--accent);text-decoration:none}
 .src:hover{text-decoration:underline}
+.sources{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:10px}
+.sources .src{margin-top:0;padding-top:0}
 
 .card-nav{display:flex;justify-content:center;gap:10px;margin:18px auto 6px}
 .card-nav button{

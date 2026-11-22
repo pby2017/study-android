@@ -30,7 +30,13 @@ title: study — 1분 지식 카드
         <p><strong>핵심 답:</strong> {{ card.answer }}</p>
       </details>
       {% endif %}
-      {% if card.source %}
+      {% if card.sources %}
+      <div class="sources">
+        {% for source_ref in card.sources %}
+        <a class="src" href="{{ source_ref.url }}" target="_blank" rel="noopener">{{ source_ref.label }} →</a>
+        {% endfor %}
+      </div>
+      {% elsif card.source %}
       <a class="src" href="{{ card.source }}" target="_blank" rel="noopener">원본 →</a>
       {% endif %}
     </article>

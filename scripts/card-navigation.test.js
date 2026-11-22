@@ -8,6 +8,13 @@ const page = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const script = page.match(/<script>([\s\S]*?)<\/script>/)?.[1];
 assert.ok(script, 'index.html must contain the card navigation script');
 
+test('cards support labeled multiple sources and retain the single-source fallback', () => {
+  assert.match(page, /if card\.sources/);
+  assert.match(page, /source_ref\.url/);
+  assert.match(page, /source_ref\.label/);
+  assert.match(page, /elsif card\.source/);
+});
+
 class ClassList {
   constructor(...initial) { this.values = new Set(initial); }
   add(value) { this.values.add(value); }
