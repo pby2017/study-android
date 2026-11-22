@@ -3624,16 +3624,6 @@ cards:
   interview: "릴리스 직후 Google Play 리뷰에서 같은 오류가 늘면, AppFollow AI 보고서를 어떻게 개발 우선순위에 활용하고 검증하나요?"
   answer: "기간·앱·버전별 리뷰와 감정 추세에서 반복 신고를 찾아 조사 후보로 삼는다. 실제 결함은 해당 버전의 크래시·로그·재현 결과로 확인한다. 읽기 전용 분석과 리뷰 답글·앱 변경의 쓰기 권한을 구분하고, Owner/Admin 작업은 미리보기 후 승인한다. API 기능별 크레딧과 구독 제한도 실행 전에 확인한다."
 - category: ai
-  title: koog-compose — Koog 에이전트를 Compose 상태와 Android 도구에 연결하는 서드파티 사례
-  summary: 'koog-compose는 JetBrains Koog 위에 올라가는 제3자 라이브러리다. `koogCompose { }` DSL로 에이전트의 단계와 도구를 정의하고, 타입 지정 상태를 `StateFlow`로 Compose UI에 연결한다. Android에서는 별도 모듈로 기기 도구를 붙이고, Gemma 4를 LiteRT-LM으로 온디바이스 실행할 수 있다. 저장소는 API가 아직 바뀔 수 있다고 안내하며, 로컬 모델 실패 후 클라우드 fallback을 쓰면 대화와 도구 결과가 외부 제공자에 전달될 수 있다.'
-  points:
-  - '에이전트 단계·도구 결과·타입 지정 상태를 `koogCompose { }`와 `StateFlow`로 UI에 연결'
-  - 'Android용 기기 도구와 LiteRT-LM 경로는 선택 모듈로 분리; 온디바이스 실행 여부를 provider 설정에서 결정'
-  - '주의: 제3자·소규모 프로젝트이며 API는 변할 수 있음; cloud fallback의 대화/도구 데이터 전달을 명시적으로 설계'
-  source: https://github.com/BrianMwas/koog-compose
-  interview: "오프라인 Android 에이전트에 GPS 도구와 클라우드 fallback을 함께 둘 때 어떤 경계를 설계하나요?"
-  answer: "GPS 도구는 권한과 민감도에 따라 확인 단계를 두고, 모델이 없거나 기기가 호환되지 않을 때 클라우드로 전환할지 제품 정책으로 정한다. README의 예시처럼 fallback 제공자는 대화 기록과 도구 결과를 받을 수 있으므로, 데이터 최소화·동의·로그 마스킹을 검토한다. 의존성은 초기 단계의 제3자 라이브러리이므로 버전을 고정하고, target Android 기기에서 모델 실행·도구 호출·fallback 차단을 테스트한다."
-- category: ai
   title: Driftx — React Native 앱을 AI 에이전트가 조작·시각 검증하는 도구
   summary: 'Driftx는 React Native 앱을 실행 중인 iOS 시뮬레이터나 Android 에뮬레이터에서 AI 코딩 에이전트가 화면을 캡처하고, 요소를 확인·조작하고, 스크린샷을 비교하게 하는 CLI다. 디자인 이미지 비교와 접근성 검사도 제공한다. Android는 Metro, ADB, 부팅된 에뮬레이터가 필요하고 실제 기기는 아직 지원하지 않는다. 일반 네이티브 Android 앱이나 KMP 전체를 지원하는 범용 테스트 프레임워크로 보면 안 된다.'
   points:
