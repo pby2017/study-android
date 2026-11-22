@@ -1763,15 +1763,23 @@ cards:
   interview: 'Mastra에서 요청을 Agent와 Workflow 중 무엇으로 구현할지 어떤 기준으로 정하나요?'
   answer: '요청의 절차가 사전에 알려져 있는지로 판단한다. 순서·입출력·분기를 개발자가 정의할 수 있으면 Workflow가 실행을 예측하고 검증하기 쉽다. 목표만 주어지고 필요한 도구나 다음 행동을 모델이 선택해야 하면 Agent가 적합하다. 두 방식을 함께 써서 Workflow의 일부 단계에서 Agent를 호출할 수도 있다.'
 - category: ai
-  title: Cursor CLI 헤드리스 모드 — `agent -p`로 CI·스크립트에서 코드 작업 자동화
-  summary: 'Cursor의 Headless CLI는 에디터 안 대화형 에이전트를 CI·스크립트용 비대화형 작업자로 꺼내 쓰는 방식이다. 설치 후 `agent`를 그냥 실행하면 대화형 세션이고, `-p`/`--print`를 붙이면 프롬프트를 받아 최종 결과를 출력하는 자동화 모드가 된다. 중요한 분기점은 권한이다. 기본은 사람이 검토할 여지를 남기지만, `--force`(별칭 `--yolo`)를 주면 확인 없이 파일 편집까지 허용하므로 신뢰된 브랜치·격리된 워크스페이스에서만 써야 한다. 결과 소비 방식도 운영 포인트다. `--output-format`은 text·json·stream-json을 제공하고, stream-json에 `--stream-partial-output`을 더하면 긴 작업의 진행을 메시지/델타 단위로 추적할 수 있다. 인증은 `CURSOR_API_KEY` 환경변수로 처리한다. 즉 핵심은 "Cursor를 CI에 붙인다"가 아니라, 출력 형식과 편집 권한을 명시해 에이전트를 파이프라인 구성요소로 다루는 것이다.
-
-    '
+  level: 중급
+  title: Cursor CLI 헤드리스 모드 — `agent -p`를 자동화에 안전하게 쓰기
+  summary: 'Cursor CLI의 `agent -p`/`--print`는 대화형 승인 질문 없이 스크립트·CI에서 실행하는 모드다. `--force`가 없어도 허용된 워크스페이스 수정은 실행될 수 있고, 승인이나 허용 규칙이 필요한 동작은 질문하지 못하므로 거부된다. `--force`/`--yolo`는 deny 규칙과 팀 정책을 제외한 동작을 자동 승인하므로 격리된 작업공간에서만 사용한다. 자동화 결과는 `--output-format json`으로 한 번에 파싱하거나 `stream-json`으로 이벤트를 처리하고, 인증 키는 `CURSOR_API_KEY` 환경변수로 전달한다.'
   points:
-  - '`-p/--print` = CI·스크립트용 비대화형 실행, 인자 없이 실행하면 대화형 세션'
-  - '`--force`/`--yolo`는 직접 편집 권한이므로 격리된 워크스페이스와 명시적 승인 정책이 필요'
-  - '`--output-format` text·json·stream-json + `--stream-partial-output`로 자동화가 진행 상태를 읽게 한다'
+  - '`-p`는 read-only가 아니다: 허용된 workspace 편집은 실행하고, 승인이 필요한 동작은 비대화형 실행에서 거부한다'
+  - '`--force`/`--yolo`는 권한 확인 없이 진행하므로 임시 브랜치·격리 환경을 사용하고 deny/team 제한을 유지한다'
+  - '`json`은 완료 결과 1개, `stream-json`은 NDJSON 이벤트이며 실시간 텍스트 조각은 `--stream-partial-output`으로 받는다'
   source: https://cursor.com/docs/cli/headless
+  sources:
+  - label: 'Cursor CLI Headless — print mode 권한·승인 및 팀 제한'
+    url: https://cursor.com/docs/cli/headless
+  - label: 'Cursor CLI Output format — JSON·NDJSON·partial output'
+    url: https://cursor.com/docs/cli/reference/output-format
+  - label: 'Cursor CLI Authentication — API key 환경변수'
+    url: https://cursor.com/docs/cli/reference/authentication
+  interview: '`agent -p`가 대화형 모드보다 안전하다고 볼 수 있나요? `--force`는 어떤 위험을 추가하나요?'
+  answer: '아니다. print mode는 승인 질문을 할 수 없을 뿐, 허용된 workspace 편집은 실행한다. 승인 필요한 동작은 거부한다. `--force`는 deny 규칙과 팀 정책을 제외한 동작을 승인 없이 실행하므로 격리된 작업공간에서 제한적으로 사용해야 한다.'
 - category: ai
   title: Gartner가 'AI 코드 어시스턴트'를 'AI 코딩 에이전트'로 다시 부르다 — 4강 굳히기
   summary: 'GitHub가 공개한 2026 Gartner Magic Quadrant 요약에서 눈에 띄는 점은 카테고리명이 ''AI Code Assistants''가 아니라 ''Enterprise AI Coding Agents''라는 것이다. GitHub 글은 Gartner가 2026-05-20 보고서에서 12개 벤더를 실행력과 비전 완성도 기준으로 평가했고, GitHub·Anthropic·Cursor·OpenAI를 Leader 사분면에 뒀다고 설명한다. 다만 이 글은 GitHub의 해설이므로 "GitHub가 1위라서 좋다"가 교훈은 아니다. 더 실용적인 신호는 시장의 평가 단위가 자동완성·채팅에서 이슈 처리, 코드 리뷰, PR, 보안, 거버넌스까지 포함한 에이전트 워크플로로 넓어졌다는 점이다. 도구를 고를 때도 모델 품질 하나보다 멀티모델 선택, 감사·통제, SDLC 표면 통합을 같이 봐야 한다.

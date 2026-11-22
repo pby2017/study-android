@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Mastra after Google Antigravity; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Cursor CLI headless after Mastra; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Refined Cursor CLI headless mode against current official docs for permissions, JSON/NDJSON output and API-key authentication.
+- Corrected a risky implication in the old card: `-p` does not mean read-only or that edits wait for a human; permitted workspace writes can run, while actions requiring approval are rejected because the CLI cannot ask.
+- Clarified `--force`/`--yolo` scope (subject to deny rules and team policy), plus JSON vs stream-json and API-key environment-variable use.
+- Added intermediate level, source links, and an interview retrieval pair. Audit: research/ai-routine/20261122-cursor-cli-headless-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined Mastra against the current README, Agent/Workflow docs, and GitHub repository page.
