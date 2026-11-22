@@ -2456,15 +2456,22 @@ cards:
   interview: "AI 보안 리뷰 Action을 외부 PR에서 실행할 때 어떤 공격 경계와 권한을 확인해야 하며, 결과를 어떻게 해석해야 하나요?"
   answer: 'Action의 prompt가 PR diff에 영향을 받을 수 있고 공식 프로젝트는 prompt injection에 하드닝되지 않았다고 경고한다. 외부 코드가 API key나 write token에 접근하지 않게 하고 fork workflow 승인 정책과 최소 권한을 설정한다. 결과는 후보 finding이므로 SAST·테스트와 사람의 검토로 확인하며, 경고가 없다고 안전을 증명하지 않는다.'
 - category: ai
-  title: Serena(oraios) — 에이전트에게 IDE급 '심볼 단위' 코드 탐색·편집을 주는 MCP 툴킷(~24k★)
-  summary: 'Serena는 Oraios의 MIT 오픈소스 MCP 툴킷으로, 2026-06-27 확인 기준 25,825★·1,718 fork·활성 저장소다. README가 붙인 한 줄은 "에이전트를 위한 IDE"다. 핵심은 에이전트가 파일 전체와 줄번호에 기대지 않고, LSP나 JetBrains 분석엔진을 통해 함수·클래스 같은 심볼 단위로 찾고·읽고·편집·리팩터링하게 하는 것. Claude Code·Codex·Gemini CLI·OpenCode, VS Code/Cursor/JetBrains 계열, Claude Desktop·Codex App 등 MCP를 받는 클라이언트에 붙을 수 있다. 기본 LSP 백엔드는 40개 이상 언어를 지원하고, JetBrains 유료 플러그인은 move·inline·debugging 같은 더 깊은 IDE 기능을 맡는다. 교훈은 "에이전트에게 더 긴 컨텍스트"보다 "정의·참조·리팩터링을 구조화된 도구로 주기"가 큰 레포에서 더 싸고 안정적인 경우가 많다는 점이다.
-
-    '
+  level: 중급
+  title: Serena MCP — 텍스트 검색 대신 심볼 관계로 에이전트의 코드 탐색·수정을 돕기 (~31.6k★)
+  summary: 'Serena는 LLM이 코드베이스에서 심볼을 찾고, 참조를 따라가며, 안전하게 수정하도록 돕는 MCP 서버다. LSP backend는 40개 이상의 언어에서 심볼 기반 검색·편집을 제공하고, 별도의 유료 JetBrains plugin은 IDE 분석을 이용해 이동·인라인 리팩터링과 대화형 디버깅을 추가한다. 두 backend의 기능은 같지 않다. 라이선스도 단순한 MIT가 아니다: Serena 애플리케이션은 GPL-3.0-or-later이고 SolidLSP만 MIT이며, 둘을 결합한 배포물은 GPL 조건을 따른다.'
   points:
-  - find_symbol / find_referencing_symbols / symbol overview로 필요한 정의·호출처만 컨텍스트에 올린다
-  - 기본 LSP 백엔드는 40개 이상 언어, JetBrains 플러그인은 move·inline·debugging까지 확장
-  - 공식 설치 주의 — MCP/플러그인 마켓플레이스 명령은 낡았으니 Quick Start의 uv 기반 설치를 따르라고 안내
+  - '탐색: `find_symbol`과 참조 검색으로 함수·클래스 정의와 사용처를 좁혀, 에이전트가 파일 전체를 반복 검색하는 일을 줄인다.'
+  - 'backend 선택: 기본 LSP는 무료·오픈소스이며 40+ 언어를 지원한다. 유료 JetBrains plugin은 IDE 분석을 활용해 이동·인라인과 대화형 디버깅을 더한다. 정확한 지원 범위는 언어와 backend마다 다르다.'
+  - '설치: 공식 README는 오래된 MCP/플러그인 마켓플레이스 설치 안내를 피하고 `uv tool install -p 3.13 serena-agent` 후 `serena init`을 권한다. 특정 LSP에는 별도 의존성이 필요할 수 있다.'
+  - '도입 전 라이선스 확인: 앱은 GPL-3.0-or-later, SolidLSP는 MIT. GitHub 저장소는 확인 시 약 31.6k stars였지만 이는 사용량이나 Android 개발 채택률을 증명하지 않는다.'
   source: https://github.com/oraios/serena
+  sources:
+  - label: Serena README — current v2, setup, feature matrix, and license summary
+    url: https://github.com/oraios/serena
+  - label: Serena license documentation
+    url: https://oraios.github.io/serena/01-about/060_license.html
+  interview: "Serena의 LSP와 JetBrains backend는 무엇이 다르며, 팀에서 도입하기 전에 어떤 호환성을 확인해야 하나요?"
+  answer: 'LSP backend는 여러 언어 서버를 통해 심볼 검색과 기본 편집을 제공한다. JetBrains plugin은 IDE 분석을 이용해 더 깊은 이동·인라인 리팩터링과 디버깅을 제공하지만 유료이고 IDE/언어 지원이 다르다. 목표 레포의 언어 서버와 실제 기능을 확인하고, Serena 앱의 GPL-3.0-or-later 조건이 배포 방식과 맞는지도 검토한다.'
 - category: ai
   title: Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)
   summary: 'ACP(Agent Client Protocol)는 코딩 에이전트와 에디터/IDE 사이의 통신을 표준화하는 개방형 프로토콜이다. LSP가 언어 서버를 에디터에서 분리했듯, ACP는 에이전트 구현과 에디터 UI를 분리한다. 프로토콜은 JSON-RPC 2.0 기반이며 initialize/authenticate/session/new/session/prompt 같은 흐름으로 세션을 만들고, 에이전트는 session/update로 메시지·툴 호출·계획·슬래시 명령 상태를 클라이언트에 알린다. 로컬 에이전트는 보통 에디터의 서브프로세스로 stdio를 쓰고, 원격 에이전트는 HTTP/WebSocket 지원을 확장 중이다. 2026년 현재 ACP Registry는 인증을 지원하는 호환 에이전트를 모아 배포하는 curated 목록으로 안정화되어, "에디터 하나에 모델 하나"가 아니라 에디터는 호스트, 에이전트는 교체 가능한 실행 엔진으로 보는 쪽에 힘을 싣는다.

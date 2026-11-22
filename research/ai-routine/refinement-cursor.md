@@ -1748,3 +1748,9 @@ Rules:
 - Updated rounded live attention signal (~7.1k stars); centered the card on its prompt-injection warning, least privilege, commit-SHA pinning, external PR approval, and the limitation that findings do not replace SAST or human review. Added intermediate level and interview Q&A.
 - Audit: `research/ai-routine/20261123-002410-claude-security-review.md`.
 - Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.
+
+## Latest pass — 2026-11-23
+- Refined `Serena MCP — 텍스트 검색 대신 심볼 관계로 에이전트의 코드 탐색·수정을 돕기` against the current repository README, v2 license page, and JetBrains backend documentation.
+- Corrected MIT-only misstatement: Serena v2 app is GPL-3.0-or-later, SolidLSP is MIT, and the combined package is GPL; clarified LSP vs paid JetBrains capabilities and current uv installation. Refreshed stars (~31.6k snapshot) without treating them as adoption. Added intermediate level and interview Q&A.
+- Audit: `research/ai-routine/20261123-002530-serena-v2-license-backends.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.

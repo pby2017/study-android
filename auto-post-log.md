@@ -4686,3 +4686,10 @@ Refined:
 - 카드의 초점을 diff 분석·오탐 필터 나열에서 prompt injection 경고, 최소 권한, API key 격리, Action SHA 고정, 외부 PR 승인으로 이동했다. AI finding은 보안 증명이나 SAST/사람 리뷰의 대체가 아님을 명시했다.
 - Audit: `research/ai-routine/20261123-002410-claude-security-review.md`.
 - Sources: https://github.com/anthropics/claude-code-security-review, https://github.com/anthropics/claude-code-security-review/blob/main/action.yml, https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-your-repository.
+
+### 2026-11-23 00:25 KST — Serena v2 라이선스·backend 차이 정정
+
+- Serena 공식 README, 라이선스 문서, JetBrains backend 가이드를 검토했다. MIT 단일 라이선스라는 구 설명을 수정해 앱 GPL-3.0-or-later / SolidLSP MIT / 결합 배포 GPL을 구분했다.
+- LSP 40+ 언어 지원과 유료 JetBrains backend의 기능 차이, 최신 uv 설치 명령을 정리했다. GitHub 표시 stars는 약 31.6k로 갱신했으나 채택률 근거로 쓰지 않았다.
+- Audit: `research/ai-routine/20261123-002530-serena-v2-license-backends.md`.
+- Sources: https://github.com/oraios/serena, https://oraios.github.io/serena/01-about/060_license.html, https://oraios.github.io/serena/02-usage/025_jetbrains_plugin.html.
