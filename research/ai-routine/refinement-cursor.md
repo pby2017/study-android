@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: corrected Claude Code's large-repository instruction hierarchy and loading behavior; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the SWE-EVO long-horizon coding-agent benchmark card; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:59 KST
+Last update: 2026-11-22 16:11 KST
+
+## Latest pass
+- Refined `SWE-EVO` against the latest arXiv v6 and its public repository.
+- Removed the unsupported/stale SWE-bench saturation framing; distinguished GPT-5.2's SWE-agent result from the bash-only SWE-bench Verified score and stated the small-sample and cross-setup caveats.
+- Added the benchmark's binary Resolved Rate vs partial Fix Rate distinction, advanced difficulty, and an interview retrieval question.
+- Sources and rationale: `research/ai-routine/20261122-swe-evo-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Replaced the misleading “put CLAUDE.md in subdirectories, not root” rule with layered common/root and module-specific guidance.
