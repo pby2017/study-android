@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined promptfoo after Codex CLI; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined awesome-agent-skills after promptfoo; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Refined awesome-agent-skills against its current README, security notice, repository license, and live GitHub page.
+- Refreshed the README badge to 1,497+ and dated GitHub snapshot to 37.4k★; clarified that repository MIT does not blanket-license linked skills and curation is not security or compatibility certification.
+- Added beginner difficulty and interview retrieval Q/A emphasizing provenance, per-skill licensing, and permission review.
+- Audit: `research/ai-routine/20261122-awesome-agent-skills-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined promptfoo against its current intro/configuration/data-handling documentation, live GitHub repository page, and current About page.
