@@ -1389,15 +1389,21 @@ cards:
   interview: 'OpenSkills가 같은 `SKILL.md` 포맷을 쓴다고 해서 Codex나 다른 에이전트에서 네이티브 스킬처럼 자동 호출된다고 단정할 수 없는 이유는 무엇인가요?'
   answer: 'OpenSkills는 `AGENTS.md`에 목록과 호출 지침을 기록하고, 에이전트가 지침을 따라 `openskills read`를 실행하게 한다. 자동 사용에는 AGENTS.md 로딩과 셸 실행 능력이 필요하다. 호스트별 네이티브 발견·권한 체계와는 별개이므로 실제 호출 경로를 확인해야 한다.'
 - category: ai
+  level: 중급
   title: Memory Bank — 세션이 바뀌어도 프로젝트 맥락을 잃지 않게 하는 마크다운 메모리 패턴
-  summary: 'Memory Bank는 에이전트가 세션·컨텍스트 리셋을 넘어 프로젝트 맥락을 유지하도록, 핵심 정보를 프로젝트 루트의 구조화된 마크다운 파일 묶음으로 외부화하는 패턴이다. 에이전트는 매 세션 시작 때 이 파일들을 먼저 읽어 ''소스 오브 트루스''로 삼아, 불완전한 이해에서 나오는 잘못된 가정을 막는다. RooCode 구현(GreatScottyMac/roo-code-memory-bank)은 `memory-bank/` 디렉터리에 다섯 개 코어 파일을 둔다 — activeContext.md(현재 목표·세션 상태), decisionLog.md(아키텍처 결정과 근거), productContext.md(상위 프로젝트 맥락), progress.md(완료 작업), systemPatterns.md(코딩 패턴). 루트의 projectBrief.md는 초기화 시 즉시 맥락을 준다. Cline·RooCode·KiloCode·Cursor가 비슷한 방식을 쓰며, 핵심은 프롬프트(휘발성)가 아니라 대화 밖에 존재하는 영속 메모리라는 점이다. Claude Code의 MEMORY.md와 같은 계열의 발상이다.
-
-    '
+  summary: 'Memory Bank는 프로젝트 맥락을 대화 기록에만 두지 않고 저장소의 문서로 남겨, 세션이 바뀌어도 다시 참조할 수 있게 하는 패턴이다. Roo Code용 `roo-code-memory-bank`는 Roo의 모드별 사용자 지침에 이 파일을 읽고 갱신하는 절차를 넣는다. 구현 문서상 `memory-bank/`의 핵심은 네 파일이다: `activeContext.md`(현재 목표·상태), `decisionLog.md`(결정과 이유), `productContext.md`(프로젝트 맥락), `progress.md`(완료·다음 작업). 루트 `projectBrief.md`와 `systemPatterns.md`는 선택 파일이다. 파일이 있다고 에이전트가 자동으로 읽는 것은 아니다. 호스트의 지침·도구가 읽기와 갱신을 실행해야 하며, 오래된 기록은 오히려 잘못된 맥락이 될 수 있으므로 현재 사실과 결정 이력을 구분해 관리한다.'
   points:
-  - 맥락을 프로젝트 루트 마크다운으로 외부화 → 세션·리셋을 넘어 유지, 매 세션 시작 시 먼저 읽어 가정 오류 방지
-  - 'RooCode 코어 5종: activeContext / decisionLog / productContext / progress / systemPatterns + 루트 projectBrief'
-  - Cline·RooCode·KiloCode·Cursor 공통 패턴 — 프롬프트(휘발) 아닌 대화 밖 영속 메모리 / Claude Code MEMORY.md와 동류
+  - 'Roo Code 예시: 핵심 4파일은 activeContext / decisionLog / productContext / progress; projectBrief·systemPatterns는 선택'
+  - '자동 로딩은 파일 자체의 기능이 아님 — Roo 모드별 지침에 초기화·읽기·갱신 절차를 설정'
+  - '실무 적용: 현재 상태는 짧게 갱신하고, 결정 기록은 근거와 함께 남기며, 민감 정보·오래된 전제는 제외'
   source: https://github.com/GreatScottyMac/roo-code-memory-bank
+  sources:
+  - label: Roo Code Memory Bank README — 설치 지침, 핵심·선택 파일 구성
+    url: https://github.com/GreatScottyMac/roo-code-memory-bank#readme
+  - label: Context Portal MCP — 파일 기반 기억과 구분되는 DB·검색 기반 대안
+    url: https://github.com/GreatScottyMac/context-portal
+  interview: 'Memory Bank 문서를 저장소에 두기만 하면 모든 AI 세션에서 자동으로 활용된다고 할 수 없는 이유는 무엇인가요?'
+  answer: '저장은 지속성을 제공하지만 로딩은 호스트 에이전트의 지침과 도구 실행에 달려 있다. 예를 들어 Roo 구현은 모드별 지침으로 파일을 읽고 갱신한다. 따라서 실제 시작 시 로딩 여부와 갱신 규칙을 설정하고, 오래된 맥락을 검토해야 한다.'
 - category: ai
   title: Cursor 규칙(.mdc) — 한 덩어리 지침을 '언제 켤지'로 쪼개 토큰 아끼기
   summary: 'Cursor의 프로젝트 규칙은 `.cursor/rules/*.mdc` 파일로 둔다(확장자가 `.mdc`여야 함 — 프런트매터가 없는 `.md`는 무시됨). 핵심은 AGENTS.md·CLAUDE.md처럼 모든 세션에 통째로 들어가는 게 아니라, 프런트매터 3필드(`description`·`globs`·`alwaysApply`) 조합으로 ''언제 끌어올지''를 규칙마다 따로 정한다는 점이다. 활성 방식은 네 가지: ① Always(`alwaysApply:true`) 매 세션 포함 ② Auto Attached(`globs` 매칭 파일이 컨텍스트에 들어올 때만) ③ Agent Requested(`description` 보고 에이전트가 필요하다 판단하면) ④ Manual(`@규칙명`으로 직접 부를 때만). 덕분에 "테스트 파일 만질 때만 보는 규칙"을 평소 컨텍스트에서 빼둘 수 있어, 거대한 단일 규칙 파일이 매번 토큰을 먹는 문제를 피한다. 우선순위는 Team → Project → User 순으로 병합되며 앞쪽이 충돌 시 이긴다.

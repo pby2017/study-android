@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined OpenSkills after Zed ACP; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Memory Bank after OpenSkills; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:46 KST
+Last update: 2026-11-22 16:39 KST
+
+## Latest pass
+- Refined the Memory Bank card against the current Roo Code Memory Bank README and GitHub repository snapshot; checked the linked Context Portal MCP project to avoid conflating file-based memory with database-backed retrieval.
+- Corrected the file list to four core files plus two optional files; removed unsupported claims of universal automatic loading and cross-tool equivalence. Added intermediate difficulty, an interview question, and guidance to validate host-specific loading and stale context.
+- Sources and rationale: `research/ai-routine/20261122-memory-bank-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Refined `OpenSkills` against its current README, OpenAI's native Skills docs, Anthropic's Agent Skills article, GitHub API/releases, and npm metadata.
