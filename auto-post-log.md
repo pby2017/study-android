@@ -4800,3 +4800,10 @@ Refined:
 - GitHub 시점 신호는 약 29.4k stars/1.7k forks, 최근 release는 v1.19.0(2026-11-08)이다. 채택 증거로 해석하지 않았다.
 - Audit: `research/ai-routine/20261123-012500-repomix-secret-scan-boundaries.md`.
 - Sources: https://github.com/yamadashy/repomix, https://repomix.com/guide/security, https://repomix.com/guide/mcp-server, https://github.com/yamadashy/repomix/releases/tag/v1.18.0.
+
+### 2026-11-23 01:29 KST — 코딩 에이전트 하네스 카드 근거·표현 정리
+
+- 기존 카드의 “2026년 합의”와 하네스가 모델보다 성능을 결정한다는 일반화를 제거했다. Fowler의 guides/feedforward와 sensors/feedback 구분, 반복 실패를 trace에서 찾아 제한된 개선을 검증하는 루프를 중심으로 재작성했다.
+- LangChain 52.8%→66.5%는 GPT-5.2-Codex 고정, Terminal-Bench 2.0 89개 과제에 대한 자사 결과로 범위를 표시했다. 이를 모든 모델·업무에 일반화하지 않도록 덧붙였다.
+- 난이도 중급과 면접 회상 질문·답변을 추가했다. Audit: `research/ai-routine/20261123-012902-coding-agent-harness-refinement.md`.
+- Sources: https://martinfowler.com/articles/harness-engineering.html, https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering.

@@ -12,6 +12,8 @@
 - The study-android knowledge-card objective remains active.
 
 ## Next actions
-1. Before the next edit, run `git pull --ff-only origin master`; continue with the next eligible oldest-first card after checking its prior refinement history.
+1. Commit and push this harness card refinement as one verified unit.
+2. Before the next edit, run `git pull --ff-only origin master`; continue with the next eligible oldest-first card after checking its prior refinement history.
+3. Investigate the launchd pipeline's stale dirty-tree checkpoint / working-directory errors separately; only re-enable or kickstart unattended execution after a successful local headless run is verified.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.

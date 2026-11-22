@@ -2709,15 +2709,22 @@ cards:
   interview: 'Repomix의 Secretlint 검사가 통과하면 저장소 내용을 외부 AI에 보내도 안전하다고 볼 수 있나요? MCP server를 untrusted agent에 연결할 때 어떤 경계를 더 둬야 하나요?'
   answer: '아니다. Secretlint는 알려진 비밀정보 형식을 찾는 heuristic일 뿐 모든 비밀·민감정보를 찾거나 접근을 제한하지 않는다. 보낼 파일 범위를 최소화하고 출력 내용을 검토한다. MCP에는 `--sandbox`로 workspace 경로를 제한하고, untrusted client를 받는 호스트는 별도 OS/container 격리도 사용한다.'
 - category: ai
-  title: 하네스 엔지니어링(Harness Engineering) — '모델 말고 모델 둘러싼 모든 것'을 설계해 에이전트 실패를 구조로 막기
-  summary: 'Martin Fowler 사이트(Birgitta Böckeler, 2026-04-02)는 ''하네스(harness)''를 "AI 에이전트에서 모델을 뺀 모든 것"으로 정의한다 — 즉 도구·피드백 루프·안전 경계·검증 시스템 전체. 핵심 발상은 "에이전트가 실수하면 그때그때 고치지 말고, 그 실수를 두 번 다시 못 하게 하는 해법(주로 더 나은 하네스)을 만든다"는 것으로, 같은 모델을 그대로 두고 하네스만 바꿔도 성능이 크게 움직인다. 실제로 LangChain은 모델이 아니라 하네스를 바꿔 Terminal-Bench 2.0 점수를 52.8%→66.5%로 끌어올렸다(주장). Fowler 글은 자기교정 확률을 높이는 ''builder harness''와 사람의 개입을 꼭 필요한 곳에만 두는 ''user harness''를 구분하고, 환경을 에이전트가 읽고 다루기 쉽게 만드는 ''ambient affordances''와 토폴로지를 좁혀 가변성을 줄이는 접근을 제시한다.
-
-    '
+  level: 중급
+  title: 코딩 에이전트 하네스 — 반복 실패를 가이드와 검증 루프로 줄이기
+  summary: '하네스는 코딩 에이전트의 모델 바깥에서 결과를 안내하고 검증하는 시스템을 가리키는 넓은 표현이다. 이를 모델보다 중요하다는 구호로 쓰기보다, 반복되는 실패를 관측해 지침과 검증을 함께 개선하는 실무 루프로 이해하자.'
   points:
-  - '정의: 하네스 = 에이전트에서 ''모델을 제외한 전부''(도구 오케스트레이션·검증 루프·컨텍스트/메모리·가드레일·관측성). ''AI 에이전트 성능은 모델이 아니라 하네스가 결정한다''가 2026년의 합의'
-  - '핵심 원칙: 에이전트가 실수하면 즉석 수정이 아니라 ''다시는 그 실수를 못 하게 하는 해법''을 하네스로 만들어 영구화 — 같은 모델로도 점수가 출렁(LangChain Terminal-Bench 52.8%→66.5%는 하네스만 교체한 결과라는 주장)'
-  - 'Fowler/Böckeler 프레임: ''builder harness''(자기교정 유도)와 ''user harness''(사람 개입을 필요한 지점에만)로 분리, ''ambient affordances''(환경을 에이전트가 읽기 쉽게)·토폴로지 고정으로 가변성 축소 — 좋은 하네스는 사람 입력을 없애는 게 아니라 ''중요한 곳으로'' 돌린다'
+  - '가이드(feedforward): 저장소 규칙·작업 절차·실행 가능한 도구로 에이전트가 처음부터 올바른 경로를 선택할 확률을 높인다.'
+  - '센서(feedback): 테스트·린터·로그·코드 리뷰가 결과를 확인하고, 실패 원인을 다음 수정에 쓸 수 있는 신호로 돌려준다. 지침만 추가하고 결과를 확인하지 않거나, 피드백만 주고 반복 원인을 고치지 않는 양쪽을 피한다.'
+  - '실무 루프: 반복 실패를 trace에서 찾고, 원인에 맞는 좁은 지침 또는 검증을 추가한 뒤 기존 작업도 다시 돌려 회귀와 과적합을 확인한다. 자동 검증을 늘려도 중요한 설계·제품 판단은 사람이 맡는다.'
+  - '사례의 범위: LangChain은 GPT-5.2-Codex를 고정하고 자사 하네스를 반복 조정해 Terminal-Bench 2.0에서 52.8%→66.5%를 보고했다. 89개 과제의 특정 벤치마크 실험이지, 모든 모델·업무에서 하네스가 모델보다 중요하다는 증거는 아니다.'
   source: https://martinfowler.com/articles/harness-engineering.html
+  sources:
+  - label: Martin Fowler — coding-agent harness, guides·sensors·steering loop와 열린 질문
+    url: https://martinfowler.com/articles/harness-engineering.html
+  - label: LangChain — 고정 모델의 Terminal-Bench 2.0 자사 실험 및 trace 기반 개선
+    url: https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering
+  interview: '같은 에이전트가 비슷한 실수를 반복한다면 하네스를 어떤 순서로 개선하고, 그 수정이 회귀를 만들지 어떻게 확인하나요?'
+  answer: '실행 trace에서 반복 원인을 찾고, 원인에 맞는 좁은 지침(가이드)과 자동 테스트·린터(센서)를 함께 보강한다. 대표 작업과 기존 회귀 테스트를 다시 실행해 개선과 부작용을 확인한다. 중요한 요구사항·설계 판단은 계속 사람이 검토한다.'
 - category: ai
   title: Agent Skills(SKILL.md) — Anthropic가 연 'Skill 한 번 만들면 어떤 에이전트서나' 오픈 표준, Cursor·Codex·Gemini CLI까지 채택
   summary: 'Agent Skills는 Anthropic이 만들어 오픈 표준으로 공개한, AI 에이전트에 전문 지식·워크플로를 주입하는 경량 포맷이다. 핵심은 SKILL.md 한 파일을 담은 폴더 — 메타데이터(name·description)와 지침을 적고, 스크립트·참고문서·템플릿을 함께 묶을 수 있다. Claude Code 전용이 아니라 Cursor·OpenAI Codex·Gemini CLI·GitHub Copilot·VS Code·OpenHands·Goose·Roo Code 등 수십 개 도구가 같은 포맷을 채택해, "한 번 만들면 어디서나 쓰는" 크로스 제품 재사용이 핵심 가치다.
