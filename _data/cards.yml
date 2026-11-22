@@ -3780,14 +3780,18 @@ cards:
 - category: ai
   title: 'PowerLens — Android 제어 에이전트에서 권한과 실행 경계를 검증하기'
   level: "고급"
-  summary: 'PowerLens는 화면 계층과 기기 상태로 절전 정책을 제안하고 Android 설정을 바꾸는 연구 프로토타입이다. 논문은 Gemini 2.5 Flash API를 순차 호출하고 `su` root 셸로 18개 설정을 제어한다고 설명한다. PDL 제약 검사를 두지만, 논문 PDF는 LLM이 shell 명령을 생성한다고 쓰고 저자 프로젝트 페이지는 결정적 테이블 조회라고 설명해 실행 경계가 서로 일치하지 않는다. 논문 수치는 루팅된 OnePlus ACE 5·Android 15 실험에서 저자가 보고한 결과이며 일반 기기 성능을 뜻하지 않는다. 적용 전 권한, 클라우드 데이터 경로, 허용 명령, 제약 검사와 rollback을 확인한다.'
+  summary: 'PowerLens는 Android 접근성 트리와 시스템 문맥으로 Gemini-2.5-Flash API에 절전 정책을 요청하고, PDL 제약을 확인한 뒤 `su` root 권한으로 설정을 바꾸는 연구 프로토타입이다. 논문은 shell 명령도 LLM이 생성한다고 하지만 저자 사이트는 결정적 테이블 조회라고 설명해 실행 경계가 일치하지 않는다. PII 필터링은 위험을 줄이는 조치이지 온디바이스 처리나 데이터 미전송을 뜻하지 않는다. 저자 보고 성능은 루팅된 OnePlus ACE 5·Android 15 벤치마크 결과이므로 일반 앱이나 기기의 성능으로 일반화하지 않는다.'
   points:
-  - '논문 보고치: 38.8% 절감·81.7% action accuracy·0.6% violation; 단일 rooted OnePlus ACE 5 벤치마크'
-  - '`su` root 권한과 Gemini API 의존; 온디바이스 LLM 기능으로 오해하지 않기'
-  - '논문과 프로젝트 페이지의 실행 설명이 다름; 공개 구현으로 재현 확인 필요'
-  source: https://arxiv.org/pdf/2603.19584
-  interview: 'LLM 에이전트에 Android 시스템 설정 변경을 맡길 때, 성능 수치보다 먼저 확인할 것은 무엇인가요?'
-  answer: '필요한 권한과 root 의존성, UI·기기 상태가 클라우드 API로 전달되는지, 모델 출력이 shell 명령으로 이어지는 방식, 실행 전 결정적 제약 검사와 rollback 여부다. PowerLens는 논문과 프로젝트 페이지의 명령 생성 설명도 서로 다르므로 공개 코드나 재현 실험 없이 안전성·성능을 일반화하면 안 된다.'
+  - '논문 보고치: 38.8% 에너지 절감·81.7% action accuracy·0.6% violation; 주 벤치마크는 rooted OnePlus ACE 5 한 대에서 실행'
+  - 'UI 접근성 트리와 문맥을 클라우드 Gemini API로 전송; PII 필터가 오프라인·무전송을 보장하지 않음'
+  - '논문과 저자 사이트의 실행 경로 설명이 다르고 공개 코드도 확인되지 않음; 저자 사이트는 심사 중으로 표시'
+  sources:
+    - label: PowerLens arXiv preprint
+      url: https://arxiv.org/html/2603.19584
+    - label: PowerLens author project page
+      url: https://anonymous-powerlens.github.io/
+  interview: 'PowerLens의 배터리 절감 수치만 보고 Android 앱에 적용해도 될까요? 어떤 경계를 먼저 검증해야 하나요?'
+  answer: '아니다. 38.8% 절감 등은 저자가 rooted OnePlus ACE 5·Android 15에서 보고한 벤치마크 결과다. 이 시스템은 UI 접근성 트리를 PII 필터링 후 Gemini 클라우드로 보내며 `su` root로 시스템 설정을 바꾼다. 또한 논문은 LLM의 shell 명령 생성을, 저자 사이트는 결정적 테이블 조회를 설명하고 공개 코드가 없어 실행 경계를 독립 검증할 수 없다. 데이터 최소화, root 권한, 허용 명령·결정적 검증·rollback, 대상 기기 재현 실험을 먼저 확인한다.'
 - category: ai
   title: 'MNN-AECS — CPU governor가 모바일 LLM 절전 효과를 좌우한다'
   level: "고급"
