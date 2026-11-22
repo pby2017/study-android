@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code remote MCP OAuth; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code PR-session retrieval; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 14:52 KST
+Last update: 2026-11-22 15:05 KST
+
+## Latest pass
+- Refined the Claude Code PR-session retrieval card against the current official workflow guide.
+- Clarified when sessions are linked and that `claude --from-pr` filters the session picker rather than creating, merging, or directly restoring a PR.
+- Added beginner difficulty, an interview prompt, and the current `claude agents` monitoring surface without expanding the card into a separate agent-view lesson.
+- Source and rationale: `research/ai-routine/20261122-claude-from-pr-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check for conceptual overlap.
 
 ## Latest pass
 - Refined the remote MCP OAuth card against current official Claude Code MCP documentation.
