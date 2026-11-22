@@ -1,11 +1,18 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined `BMAD-METHOD` from a dated feature/count roundup into a reusable lesson: right-size planning to change complexity, preserve decisions in artifacts, then implement/review.
+- Rechecked the official guide, repo README, and release page. Stable v6.12 latest release is v6.12.4; v7 remains preview alpha. Removed old counts, stale v6.9 release, obsolete web bundle/platform pitch, and generic “12 agents / 34 workflows” marketing inventory.
+- GitHub attention snapshot: 55.6k★ and 6.2k forks on 2026-11-22; MIT license. No exact stars embedded in the public card.
+- Audit: `research/ai-routine/20261122-204500-bmad-method-refinement.md`.
+- Next: continue oldest-first with `OpenSpec`; recheck current workflow commands, integration targets, install requirements, latest release, and popularity before retaining claims.
+
+## Latest pass — 2026-11-22
 - Merged `ccpi + tonsofskills.com` into the existing Claude marketplace card and deleted the duplicate. Refocused the surviving card on the practical distinction between registering a catalog, installing a specific plugin, and reviewing its runtime capabilities.
 - Rechecked first-party Claude Code plugin docs and current Tons of Skills install/CLI docs. `ccpi install` currently prints guided native steps; `ccpi search` is a placeholder; Claude Code is the only currently verified-native harness claimed by the repository.
 - Popularity/activity evidence: current GitHub page showed 2.9k★ and 3,140 commits (2026-11-22); no count is embedded in the card. The catalog advertises 428 plugin entries and 2,716 distinct marketplace-visible skills, but counts are not necessary to teach the workflow and were omitted from the card.
 - Audit: `research/ai-routine/20261122-204300-marketplace-card-merge.md`.
-- Next: continue oldest-first with `BMAD-METHOD`; validate current workflow, tool prerequisites, release activity, and popularity before preserving any dated claims.
+- Follow-up: `BMAD-METHOD` was verified and refined; see `research/ai-routine/20261122-204500-bmad-method-refinement.md`.
 
 ## Latest pass — 2026-11-22
 - Replaced the stale `AI 랩이 개발 툴체인을 사들이는 중` roundup with a practical lesson: coding agents depend on install/run/test tooling; evaluate the actual toolchain, not acquisition headlines.
