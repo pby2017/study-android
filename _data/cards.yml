@@ -1270,15 +1270,23 @@ cards:
   - label: Claude Code 설정 키·실행 옵션
     url: https://code.claude.com/docs/en/settings
 - category: ai
-  title: /context — 200k 컨텍스트가 어디로 새는지 한눈에 보고 막는 진단 명령
-  summary: '에이전트 성능이 떨어지는 흔한 원인은 모델이 아니라 컨텍스트 창이 잡동사니로 꽉 찬 것이다. Claude Code의 `/context`는 시스템 프롬프트·기본 도구·MCP 도구·메모리(CLAUDE.md)·스킬·대화 기록·남은 공간이 각각 토큰을 얼마나 먹는지 분해해서 보여준다. 공식 비용 문서도 "무엇이 공간을 잡아먹는지 보려면 `/context`를 실행하라"고 안내한다. 과거엔 MCP 서버가 컨텍스트의 절반을 먹는다는 사례가 많았는데, 지금은 MCP 도구 정의가 기본적으로 ''지연 로딩''이라 실제로 쓰기 전까진 도구 이름만 들어간다. 그래도 안 쓰는 서버는 `/mcp`로 끄는 게 좋고, 공식 문서는 MCP보다 `gh`·`aws`·`gcloud` 같은 CLI를 쓰면 도구 목록이 컨텍스트에 안 쌓인다고 권한다. 실무 처방은 단순하다. `/context`로 범인을 찾고 → 안 쓰는 MCP를 끄고 → CLAUDE.md는 핵심만 200줄 이내로 → 남은 공간이 줄면 `/compact`나 새 세션으로 정리. 토큰을 아끼는 게 아니라 모델이 집중할 ''깨끗한 작업 공간''을 지키는 일이다.
-
-    '
+  title: 'Claude Code `/context` — 무엇이 컨텍스트를 차지하는지 진단하기'
+  level: "초급"
+  summary: 'Claude Code의 `/context`는 현재 대화에 무엇이 들어와 있는지와 컨텍스트 사용 현황을 시각적으로 확인하는 명령이다. 고정된 “200k 창”만 가정하지 말고 실제 세션의 표시를 기준으로 읽는다. 원인을 확인한 뒤 관련 없는 대화는 `/clear`, 보존할 정보를 지정해 요약하려면 `/compact`를 사용한다. MCP 도구 검색은 기본적으로 도구 설명을 필요할 때 불러와 시작 시 컨텍스트 부담을 줄이지만, 배포 환경에 따라 지원되지 않을 수 있다. CLI도 도구 정의 목록을 미리 넣지 않는 장점은 있지만, 명령 출력은 대화에 들어오므로 필요하고 작은 결과만 요청한다. 진단 없이 메모리나 MCP를 무조건 줄이기보다 실제 점유 항목부터 확인하는 것이 핵심이다.'
   points:
-  - '`/context`: 시스템·도구·MCP·메모리·대화별 토큰 점유율을 분해 — 공식 비용 문서가 진단 도구로 안내'
-  - MCP 도구 정의는 기본 지연 로딩(쓰기 전엔 이름만) — 그래도 안 쓰는 서버는 `/mcp`로 끄고, CLI(gh·aws)는 목록을 안 쌓아 더 가벼움
-  - '처방: 범인 찾기→불필요 MCP off→CLAUDE.md 200줄 이내→공간 줄면 /compact·새 세션'
+  - '`/context`는 현재 컨텍스트 진단용이고 `/usage`는 토큰·사용량 확인용이다. 둘은 목적이 다르다.'
+  - 'MCP tool search는 기본 활성화되어 이름·서버 지침을 먼저 불러오고 도구 정의는 검색 시점에 로드한다. Microsoft Foundry 등 지원되지 않는 배포에서는 도구가 미리 로드될 수 있다.'
+  - '적용 순서: 점유 내역 확인 → 불필요한 서버·지침 축소 또는 관련 없는 대화 `/clear` → 이어갈 핵심을 정한 뒤 `/compact`. CLI 출력도 컨텍스트를 쓰므로 범위를 제한한다.'
   source: https://code.claude.com/docs/en/costs
+  sources:
+  - label: Claude Code 명령 치트시트·/context 정의
+    url: https://support.claude.com/en/articles/14553413-claude-code-cheatsheet
+  - label: MCP tool search 기본 동작과 예외
+    url: https://code.claude.com/docs/en/mcp#scale-with-mcp-tool-search
+  - label: 토큰 사용량·컨텍스트 관리
+    url: https://code.claude.com/docs/en/costs
+  interview: '`/context`와 `/usage`는 무엇이 다르며, 확인 뒤 어떤 기준으로 `/clear`와 `/compact`를 선택하나요?'
+  answer: '`/context`는 현재 컨텍스트에 무엇이 로드됐는지 진단하고, `/usage`는 토큰·사용 한도 현황을 확인한다. 무관한 작업이면 `/clear`로 새 세션을 시작하고, 현재 작업을 이어가야 하면 보존할 정보를 정해 `/compact`로 요약한다.'
 - category: ai
   title: UI UX Pro Max — '디자인 안목'을 스킬로 주입해 매번 비슷한 AI 화면을 벗어나기
   summary: 'AI에 UI를 맡기면 어디서 본 듯한 보라색 그라데이션·똑같은 카드 레이아웃이 반복되는 게 흔한 불만이다. UI UX Pro Max는 이 ''디자인 안목 부재''를 메우는 오픈소스(MIT) Claude Code 스킬로, 프로젝트 요구사항을 분석해 제품 유형에 맞는 디자인 시스템(스타일·색·타이포·간격·접근성)을 자동으로 골라준다. README 기준 67가지 UI 스타일(글래스모피즘·브루탈리즘·벤토 그리드 등), 161개 산업별 컬러 팔레트, 57개 폰트 페어링, 25종 차트, 15개 기술 스택(React·Next·Vue·SwiftUI·Flutter 등), 99개 UX 가이드라인, 161개 추론 규칙을 내장한다. 요청이 오면 제품 유형·스타일·팔레트·패턴·타이포를 병렬 검색하고, 업종에 안 맞는 ''안티패턴''을 걸러낸 뒤 코드로 뽑는 식이다. 설치는 Claude Code에서 `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` 후 `/plugin install`. 단, 떠도는 스타/설치 수치는 출처마다 8만~19만으로 들쭉날쭉하니 ''인기 지표''는 걸러 보고, 핵심은 검증된 기능 범위로 판단하라.

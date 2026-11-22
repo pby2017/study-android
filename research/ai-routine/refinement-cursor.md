@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the Claude Code dynamic workflows card after SWE-Perf; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code `/context` after the dynamic workflows card; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:38 KST
+Last update: 2026-11-22 16:48 KST
+
+## Latest pass
+- Refined the Claude Code `/context` card against official command, costs, and MCP documentation.
+- Removed a misleading fixed 200k context assumption and unsupported detailed breakdown list; distinguished `/context` from `/usage`, and updated MCP lazy-loading behavior plus the documented Foundry exception.
+- Added the practical `/clear` vs `/compact` decision and a beginner retrieval question.
+- Sources and rationale: `research/ai-routine/20261122-claude-context-diagnostic-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined `Claude Code dynamic workflows` against the current official workflow and settings documentation.
