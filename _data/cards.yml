@@ -3215,15 +3215,22 @@ cards:
   interview: '입력-정답 예시, 같은 prompt의 선호/비선호 응답 쌍, prompt와 reward function이 각각 있을 때 어떤 학습 방법을 먼저 검토하나요?'
   answer: '각각 SFT, DPO, GRPO를 우선 검토한다. 짝 없는 good/bad 라벨이면 KTO가 후보가 된다. 학습 방법과 LoRA/QLoRA 같은 adapter 방식은 별도 선택이며, 실제 조합은 Axolotl의 모델·기능 support matrix와 GPU 요건을 확인해야 한다.'
 - category: ai
-  title: Qwen3-Coder-Next — 80B MoE에서 3B만 활성화하는 로컬 개발용 코딩 에이전트(오픈웨이트·256K ctx)
-  summary: 'Qwen3-Coder-Next는 Alibaba Qwen 팀이 만든 코딩 에이전트 전용 오픈웨이트 모델이다. Qwen3-Next-80B-A3B-Base 위에 만든 하이브리드 attention+MoE 구조라 전체 파라미터는 80B지만 추론 때는 3B만 활성화한다. 기본 컨텍스트는 256K이고 Yarn으로 1M까지 확장 가능해, 저장소 단위 이해와 긴 에이전트 세션에 맞춘 모델이다. 학습도 일반 코드완성보다 에이전트 실행에 맞춰져 있다. 대규모 실행 가능 코딩 태스크를 합성하고, 환경 상호작용과 강화학습을 붙여 긴 추론, 도구 호출, 실행 실패 복구 능력을 키웠다. SGLang·vLLM의 qwen3_coder tool parser, Claude Code·Cline·Qwen Code 같은 scaffold 적응성이 실전 포인트다.
-
-    '
+  level: 고급
+  title: Qwen3-Coder-Next — ‘3B 활성’은 3B 메모리라는 뜻이 아니다
+  summary: 'Qwen3-Coder-Next는 전체 80B 중 토큰마다 3B 파라미터를 활성화하는 MoE 코딩 모델이다. 활성 파라미터 수는 연산량을 이해하는 신호이지, 모델 가중치가 차지하는 메모리 크기가 아니다. 기본 context는 256K이며 YaRN 설정으로 1M까지 확장할 수 있지만, 긴 context는 KV cache와 실행 메모리를 더 요구한다. 도구 호출도 모델 이름만 맞추면 끝나지 않는다. tokenizer와 serving engine의 Qwen 전용 parser 호환성을 함께 확인해야 한다.'
   points:
-  - '80B total / 3B active: 큰 모델 지식과 낮은 추론비용을 같이 노리는 MoE 구조'
-  - '256K 기본 컨텍스트, Yarn 1M 확장 — 저장소 단위 agentic coding에 맞춘 길이'
-  - '에이전트 훈련: 실행 가능 태스크 합성 + 환경 상호작용 + 강화학습 + tool parser'
+  - '메모리 계산: 80B는 전체 가중치 규모, 3B는 토큰마다 활성화되는 규모다. 양자화·device offload·KV cache 설정에 따라 실제 메모리 요구량이 달라진다.'
+  - 'Context: 256K가 기본 지원 길이다. 1M은 YaRN 확장 설정이며, 긴 요청에서 OOM이 나면 먼저 context length를 낮춰 확인한다.'
+  - 'Tool calling: model card는 vLLM 0.15.0+ 또는 SGLang 0.5.8+와 `qwen3_coder` parser 설정을 안내한다. 새 tokenizer 형식도 확인한다.'
+  - 'Apache-2.0 오픈 웨이트다. 모델이 실행 가능하다는 뜻은 아니므로, GPU 용량과 serving 조합을 먼저 검증한다.'
   source: https://github.com/qwenlm/qwen3-coder
+  sources:
+  - label: Qwen3-Coder-Next model card — 파라미터·context·license·serving 예제
+    url: https://huggingface.co/Qwen/Qwen3-Coder-Next
+  - label: Qwen3-Coder 공식 README — 모델별 context와 tool parser/tokenizer 주의사항
+    url: https://github.com/QwenLM/Qwen3-Coder
+  interview: 'Qwen3-Coder-Next에서 “3B active”는 GPU 메모리도 3B 모델 수준이라는 뜻인가요? 256K context와 tool calling을 서비스할 때 어떤 조건을 확인하나요?'
+  answer: '아니다. 전체 가중치는 80B이며 3B는 토큰별 활성 규모다. 실제 메모리는 가중치 표현·device 배치·KV cache와 context 길이에 좌우된다. 기본 256K와 YaRN 확장 설정을 구분하고, tool calling에는 호환 tokenizer와 vLLM/SGLang의 `qwen3_coder` parser 버전을 맞춰야 한다.'
 - category: ai
   title: DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)
   summary: 'DSPy는 Stanford NLP가 만든 "프롬프트 대신 프로그램" 프레임워크다. 입출력 계약은 Signature로 쓰고, Predict·ChainOfThought·ReAct 같은 Module을 조합한 뒤, Evaluate와 메트릭으로 성능을 재고 Optimizer가 프롬프트나 few-shot 예시를 컴파일한다. 최신 문서의 중심은 GEPA처럼 실행 trace와 피드백을 보고 instruction을 반성적으로 고치는 최적화 루프, 그리고 ReAct가 MCP 서버 도구를 가져와 쓸 수 있는 도구 연결이다. 2026-06-29 재검증 기준 35,575★·MIT·최신 릴리스 3.2.1. 실무 교훈은 프롬프트 문구를 감으로 고치지 말고, 계약·모듈·메트릭·최적화를 코드 리뷰 가능한 파이프라인으로 남기라는 점이다.
