@@ -1487,13 +1487,24 @@ cards:
   interview: 'GitHub Copilot 클라우드 에이전트는 항상 GitHub Actions에서 실행해 자동으로 PR을 생성하나요? 결과를 병합하기 전에 무엇을 검증해야 하나요?'
   answer: '아니다. 기능과 시작 클라이언트에 따라 Cloud 샌드박스, GitHub Actions, 로컬 또는 사용자 지정 환경에서 실행될 수 있고, PR 생성 여부도 요청 흐름에 따라 달라진다. 변경 diff와 테스트·린트 결과를 확인하고, 보안 취약점이나 요구사항 누락을 사람이 검토한 뒤 병합해야 한다.'
 - category: ai
-  title: skills.sh / npx skills — SKILL.md를 70+ 에이전트에 npm처럼 까는 스킬 패키지 매니저(Vercel·~22.6k★)
-  summary: 스킬(SKILL.md)이 쏟아지면서 생긴 문제는 '어떤 걸 어떻게 깔지'다. Vercel Labs의 skills CLI(skills.sh)는 오픈 에이전트 스킬 생태계를 위한 npm식 패키지 매니저(MIT·~22.6k★)다. `npx skills add <owner/repo>` 한 줄로 Claude Code·Codex·Cursor·OpenCode 등 70여 개 에이전트 폴더에 심볼릭 링크 설치. find·use(1회)·list·update·remove·init 서브커맨드, `-g`(전역)·`-a`(대상 에이전트)·`-y`(비대화형) 플래그. GitHub·GitLab·URL·로컬 경로 지원. SKILL.md 표준을 '설치·배포 레이어'로 묶어 도구 비종속 스킬 공유를 가능하게 한다.
+  level: 중급
+  title: skills.sh / npx skills — 여러 코딩 에이전트에 SKILL.md를 설치·관리하는 CLI
+  summary: Vercel Labs의 오픈소스 `skills` CLI는 SKILL.md 기반 에이전트 스킬을 찾고 프로젝트나 사용자 전역에 설치·갱신하는 도구다. `npx skills add <owner/repo>`로 저장소를 지정하면 설치할 스킬과 대상 에이전트를 선택할 수 있다. 기본 설치는 프로젝트 범위이며, `-g`는 전역 설치다. 기본 방식은 공유 스킬 디렉터리와 에이전트별 경로를 심볼릭 링크로 연결하고, `--copy`를 선택하면 파일을 복사한다. `find`, `list`, `check`, `update`, `remove`, `init` 명령과 GitHub·GitLab·로컬 경로 등을 지원한다. 같은 파일을 여러 도구에 배치해도 각 호스트의 스킬 탐색·호출 규칙까지 같아지는 것은 아니다. 설치 전에는 스킬 지침과 실행할 명령을 검토한다.
   points:
-  - '`npx skills add/find/use/update/remove/init` — npm처럼 스킬 검색·설치·갱신(MIT·~22.6k★)'
-  - 70+ 에이전트 비종속 — Claude Code·Cursor·Codex·OpenCode 등에 심볼릭 링크로 동일 SKILL.md 공유
-  - '`-g` 전역 / 프로젝트 스코프, skills.sh 디렉터리에서 공개 스킬 탐색'
+  - '`npx skills find/add/list/check/update/remove/init` — 검색·설치·점검·갱신·삭제·초기화'
+  - 기본은 프로젝트 설치, `-g`는 사용자 전역 설치; 기본 링크 방식 대신 `--copy` 가능
+  - README는 Codex·Claude Code·Cursor·OpenCode 등 75+ 에이전트 지원을 명시한다. 저장소는 MIT, Node.js 22.20+ 필요
+  - 'GitHub 저장소의 현재 표시: 약 40.4k★ (2026-11-22 확인; 인기 지표이지 품질·안전성 보증은 아님)'
   source: https://github.com/vercel-labs/skills
+  sources:
+  - label: 'Vercel Labs skills — README, 지원 에이전트·Node 요구사항·라이선스·명령'
+    url: https://github.com/vercel-labs/skills#readme
+  - label: 'skills CLI command reference — 설치 범위·링크/복사·지원 소스'
+    url: https://github.com/vercel-labs/skills/blob/main/docs/commands.md
+  - label: 'skills.sh — 공개 스킬 디렉터리·인기도 지표'
+    url: https://skills.sh/
+  interview: 'skills CLI로 하나의 SKILL.md를 여러 에이전트에 설치하면 동작과 보안도 동일하게 보장되나요? 프로젝트 설치와 전역 설치의 차이는 무엇인가요?'
+  answer: '아니다. CLI는 파일을 에이전트별 위치에 링크하거나 복사하지만, 스킬 검색·호출 방식은 각 호스트에 따라 다르고 스킬 자체의 안전성도 보증하지 않는다. 기본은 현재 프로젝트 범위에 설치하며 `-g`를 지정하면 사용자 전역에 설치한다. 출처와 지침, 실행 명령을 검토한 뒤 필요한 도구에만 설치한다.'
 - category: ai
   title: 코딩 에이전트 프롬프트 인젝션 방어 — Claude Code가 실제로 거는 안전장치
   summary: '프롬프트 인젝션은 공격자가 코드·웹페이지·파일에 악성 지시를 숨겨 에이전트의 원래 명령을 가로채는 기법이다. 코딩 에이전트를 실무에 들일 때 "이거 안전한가"가 첫 관문인데, Claude Code 공식 보안 문서는 마법이 아니라 ''읽을 수 있는 구체적 안전장치''들로 답한다. 핵심은 권한 시스템(민감 작업은 명시적 승인)·컨텍스트 인식 분석(전체 요청을 보고 위험 지시 탐지)·입력 새니타이즈다. 특히 curl·wget 같은 네트워크 명령은 기본 자동승인이 안 되고, 웹 fetch는 별도 컨텍스트 창에서 처리해 악성 프롬프트가 본 세션에 섞이지 않게 격리한다. 그 위에 fail-closed 매칭(매칭 안 된 명령은 기본 수동승인)·명령 인젝션 탐지(이미 허용한 명령도 수상하면 다시 승인)·첫 코드베이스/새 MCP 서버 trust 검증이 더해진다. 단 trust 검증은 -p(헤드리스) 실행 시 비활성화되니 자동화 파이프라인은 그만큼 더 조심해야 한다. 어떤 방어도 100%는 아니므로 신뢰 불가 콘텐츠를 Claude에 직접 파이프하지 말 것을 공식 베스트 프랙티스로 권한다.

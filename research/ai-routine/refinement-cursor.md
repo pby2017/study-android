@@ -2,9 +2,15 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined GitHub Copilot cloud agent after Ralph Wiggum; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined skills.sh / npx skills after GitHub Copilot cloud agent; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:46 KST
+Last update: 2026-11-22 17:00 KST
+
+## Latest pass
+- Refined `skills.sh / npx skills` against the Vercel Labs README, CLI command reference, skills.sh directory, and a dated GitHub stars snapshot.
+- Corrected stale popularity/agent counts; explained project vs global scope, default symlink vs `--copy`, supported commands, and Node requirement. Removed the implication that installing a shared file guarantees identical host behavior; added install-time review guidance.
+- Added intermediate difficulty and an interview retrieval pair. Source/rationale: `research/ai-routine/20261122-skills-cli-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined the GitHub Copilot agent card against current GitHub documentation for Copilot on GitHub.com/Mobile and cloud sandbox environments.
