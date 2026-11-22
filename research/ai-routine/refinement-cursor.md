@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass
+- Replaced the obsolete Jules feature/model/quota/API pitch with the current service wind-down and data-portability lesson. Google's Oct 29 changelog says Jules became read-only Nov 11 and will shut down Dec 31, 2026; GitHub repos/branches/PRs remain there, while account settings, environment variables, scheduled tasks, connected repos, memories, setup scripts, and session histories require export.
+- Checked the official Jules Tools CLI docs. The export guide relies on some undocumented internal endpoints, so record that export needs verification and should be completed before the service deadline; exported environment/config data may contain sensitive values.
+- Removed stale model/quota defaults, API-alpha workflow claims, and CI Fixer as active product positioning. Added beginner level and a retrieval Q&A. Audit: `research/ai-routine/20261122-jules-sunset-refinement.md`.
+- Next: continue oldest-first with the `/fork` card; re-check the current Claude Code docs and whether fork semantics, cache behavior, and worktree guidance still match.
+
+## Latest pass
 - Reframed the Sentry Seer card as an Android-relevant debugging workflow: mobile crash/ANR context → Seer telemetry-based root cause → coding-agent implementation through MCP/plugin, with Autofix as an alternate PR path.
 - Checked Sentry's October 2 workflow comparison, January 27 local-development announcement, mobile monitoring page, and September 29 Seer Agent changelog. Removed the unqualified `$40/active contributor` claim because it can conflate Seer Autofix pricing with the separately named Seer Agent beta, which Sentry described as free at that time.
 - Added intermediate level, source links, and retrieval Q&A; audit: `research/ai-routine/20261122-sentry-seer-refinement.md`.
@@ -61,7 +67,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Sentry Seer; next review Jules for current API status, quotas, and automation claims.
+Current position: reframed Jules as an active service-wind-down/export lesson; next review `/fork` behavior against current Claude Code docs.
 
 Last update: 2026-11-22 (Asia/Seoul)
 
