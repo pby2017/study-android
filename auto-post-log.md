@@ -4693,3 +4693,10 @@ Refined:
 - LSP 40+ 언어 지원과 유료 JetBrains backend의 기능 차이, 최신 uv 설치 명령을 정리했다. GitHub 표시 stars는 약 31.6k로 갱신했으나 채택률 근거로 쓰지 않았다.
 - Audit: `research/ai-routine/20261123-002530-serena-v2-license-backends.md`.
 - Sources: https://github.com/oraios/serena, https://oraios.github.io/serena/01-about/060_license.html, https://oraios.github.io/serena/02-usage/025_jetbrains_plugin.html.
+
+### 2026-11-23 00:27 KST — ACP 버전·기능 협상·전송 상태 최신화
+
+- Agent Client Protocol 공식 v1 개요/transport, v2 migration notes, 인증 지원 agent만 포함하는 curated registry를 확인했다. 현재 문서상 v1이 최신이고 v2는 preview다.
+- `initialize`의 capability negotiation과 session lifecycle을 정정하고, stdio가 core transport이며 HTTP/WebSocket은 별도 제안임을 반영했다. ACP 호환과 기능 동일성은 다르며 registry 등록도 이를 보장하지 않는다고 설명했다.
+- Audit: `research/ai-routine/20261123-002750-acp-protocol-maturity.md`.
+- Sources: https://agentclientprotocol.com/protocol, https://agentclientprotocol.com/protocol/transports, https://agentclientprotocol.com/registry, https://github.com/agentclientprotocol/agent-client-protocol.

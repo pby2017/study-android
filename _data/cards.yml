@@ -2473,15 +2473,26 @@ cards:
   interview: "Serena의 LSP와 JetBrains backend는 무엇이 다르며, 팀에서 도입하기 전에 어떤 호환성을 확인해야 하나요?"
   answer: 'LSP backend는 여러 언어 서버를 통해 심볼 검색과 기본 편집을 제공한다. JetBrains plugin은 IDE 분석을 이용해 더 깊은 이동·인라인 리팩터링과 디버깅을 제공하지만 유료이고 IDE/언어 지원이 다르다. 목표 레포의 언어 서버와 실제 기능을 확인하고, Serena 앱의 GPL-3.0-or-later 조건이 배포 방식과 맞는지도 검토한다.'
 - category: ai
-  title: Agent Client Protocol(ACP) — '에디터'와 '코딩 에이전트'를 분리하는 개방형 표준(Zed·JetBrains)
-  summary: 'ACP(Agent Client Protocol)는 코딩 에이전트와 에디터/IDE 사이의 통신을 표준화하는 개방형 프로토콜이다. LSP가 언어 서버를 에디터에서 분리했듯, ACP는 에이전트 구현과 에디터 UI를 분리한다. 프로토콜은 JSON-RPC 2.0 기반이며 initialize/authenticate/session/new/session/prompt 같은 흐름으로 세션을 만들고, 에이전트는 session/update로 메시지·툴 호출·계획·슬래시 명령 상태를 클라이언트에 알린다. 로컬 에이전트는 보통 에디터의 서브프로세스로 stdio를 쓰고, 원격 에이전트는 HTTP/WebSocket 지원을 확장 중이다. 2026년 현재 ACP Registry는 인증을 지원하는 호환 에이전트를 모아 배포하는 curated 목록으로 안정화되어, "에디터 하나에 모델 하나"가 아니라 에디터는 호스트, 에이전트는 교체 가능한 실행 엔진으로 보는 쪽에 힘을 싣는다.
-
-    '
+  level: 중급
+  title: Agent Client Protocol — IDE와 코딩 에이전트 사이의 대화 규약 (~4.7k★)
+  summary: 'Agent Client Protocol(ACP)은 IDE/client와 AI coding agent가 JSON-RPC 2.0 메시지로 대화하는 공개 프로토콜이다. 연결 시 버전과 capability를 협상한 뒤 세션을 만들거나 불러오고, prompt와 진행 업데이트·권한 요청을 교환한다. 핵심 이점은 호환성이지 기능 동일성이 아니다: client와 agent가 광고·지원하는 기능을 연결별로 확인해야 한다. 현재 문서에서 v1이 최신이며 v2는 preview다. 기본 transport는 로컬 stdio이고, HTTP/WebSocket 원격 transport는 별도 제안·실험 상태라 ACP core 기능처럼 가정하지 않는다.'
   points:
-  - '핵심 분리: 에디터/IDE는 Client, 코딩 에이전트는 Agent — 한쪽 구현이 다른 쪽 UI에 묶이지 않게 함'
-  - '통신 모델: JSON-RPC 2.0, 로컬 stdio, 원격 HTTP/WebSocket은 진행 중'
-  - '실무 효과: ACP Registry와 호환 클라이언트로 Claude·Codex·Cline류 에이전트를 같은 에디터 호스트에서 갈아끼우는 전략'
-  source: https://zed.dev/acp
+  - '흐름: `initialize`로 protocol version/capability 협상 → 인증이 필요하면 완료 → `session/new` 또는 지원 시 `session/load` → `session/prompt`. 진행 중에는 `session/update`가 오고, 필요하면 client가 권한을 확인한다.'
+  - '호환성 검사: handshake에서 합의한 capability가 실제 기능 범위다. 예를 들어 세션 재개, 파일 접근, terminal 도구는 모든 ACP agent/client 조합에서 지원되지 않는다.'
+  - '전송: 기본 표준은 client가 agent subprocess를 띄우는 newline-delimited JSON-RPC over stdio다. HTTP/WebSocket은 별도 원격 transport 제안이며 core 표준으로 간주하지 않는다.'
+  - 'ACP Registry는 인증을 지원하는 agent를 선별해 배포하는 목록이다. 확인 시 protocol 저장소는 약 4.7k stars였지만, 별 수나 registry 등록이 실제 호환성·품질을 보장하지 않는다.'
+  source: https://agentclientprotocol.com/protocol
+  sources:
+  - label: ACP protocol overview and v1 message flow
+    url: https://agentclientprotocol.com/protocol
+  - label: ACP transport specification
+    url: https://agentclientprotocol.com/protocol/transports
+  - label: ACP Registry scope and available agents
+    url: https://agentclientprotocol.com/registry
+  - label: Protocol repository and current star signal
+    url: https://github.com/agentclientprotocol/agent-client-protocol
+  interview: "ACP를 지원하는 agent와 IDE라면 모든 기능이 서로 동일하게 동작하나요? 먼저 어떤 정보를 확인해야 하나요?"
+  answer: '아니다. ACP는 통신 형식을 표준화하지만 기능 지원은 agent/client가 연결 초기화에서 광고·협상한 capability에 달려 있다. protocol version, 인증 방식, session load/resume, 파일·terminal 권한, transport를 확인한다. 현재 공개 문서는 v1이 최신이고 v2는 preview이며, 원격 HTTP/WebSocket은 core transport로 가정하지 않는다.'
 - category: ai
   title: Conductor — 한 화면에서 Claude Code·Codex·Cursor를 '병렬로' 돌리는 맥용 오케스트레이터
   summary: Conductor(conductor.build)는 macOS에서 Claude Code·Codex·Cursor를 여러 격리 workspace로 동시에 돌리는 ADE(Agent Development Environment)다. 각 workspace는 별도 git worktree라 에이전트가 main을 직접 건드리지 않고, 한 화면에서 작업 상태를 보고 diff를 검토한 뒤 사람이 merge한다. 같은 축의 Orca(stablyai/orca·MIT·2026-06-27 기준 8,108★)는 macOS·Windows·Linux 데스크톱과 모바일 companion으로 넓히고, Claude Code·Codex·OpenCode·Pi 같은 CLI 에이전트를 worktree별로 실행한다. 교훈은 "에이전트를 많이 띄우기"보다 branch/worktree 격리, BYO 구독, diff-first 리뷰, human merge gate를 먼저 설계해야 병렬성이 실제 생산성이 된다는 점이다.

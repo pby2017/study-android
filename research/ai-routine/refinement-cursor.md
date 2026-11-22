@@ -1754,3 +1754,9 @@ Rules:
 - Corrected MIT-only misstatement: Serena v2 app is GPL-3.0-or-later, SolidLSP is MIT, and the combined package is GPL; clarified LSP vs paid JetBrains capabilities and current uv installation. Refreshed stars (~31.6k snapshot) without treating them as adoption. Added intermediate level and interview Q&A.
 - Audit: `research/ai-routine/20261123-002530-serena-v2-license-backends.md`.
 - Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.
+
+## Latest pass — 2026-11-23
+- Refined `Agent Client Protocol — IDE와 코딩 에이전트 사이의 대화 규약` against the current ACP v1 overview/transports, v2 migration notes, and curated registry.
+- Corrected the lifecycle, clarified per-connection capability negotiation, stated v1 latest/v2 preview, and corrected remote transport status (stdio is core; HTTP/WebSocket remain separate/proposed). Registry membership is not universal feature compatibility. Added intermediate level and interview Q&A; current protocol repo signal is ~4.7k stars.
+- Audit: `research/ai-routine/20261123-002750-acp-protocol-maturity.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android-only subjects.
