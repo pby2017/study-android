@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass
+- Refined AI Research Skills as a reusable library of research workflow guidance, not an automatically verified AI researcher.
+- Rechecked the official README and package installer: 98 skills / 23 categories, auto-detection, global symlink installation, and project-local copied skills with a lock file. GitHub showed about 14.7k★ and 1k forks on 2026-11-22.
+- Added intermediate level, category-selection and reproducibility guidance, a verification caveat, current sources, and an interview retrieval pair. Audit: `research/ai-routine/20261122-ai-research-skills-refinement.md`.
+- Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android topics.
+
+## Latest pass
 - Refined ccusage around the reading lesson: aggregate local agent usage logs, but treat token-price totals as estimates rather than invoices.
 - Rechecked current adapters, Codex local JSONL inputs, cost limitations, offline/online pricing configuration, and confirmed 5-hour `blocks` is Claude Code-only. Refreshed GitHub snapshot to ~19.5k★ / 934 forks.
 - Added intermediate difficulty, source-focused command examples, four current sources, and an interview retrieval pair. Audit: `research/ai-routine/20261122-ccusage-refinement.md`.
@@ -14,9 +20,9 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined ccusage after OpenClaw; continue the oldest-first scan with AI-research-SKILLs.
+Current position: refined AI Research Skills after ccusage; continue the oldest-first scan with the next eligible AI or AI+Android card.
 
-Last update: 2026-11-22 17:46 KST
+Last update: 2026-11-22 17:53 KST
 
 ## Latest pass
 - Rechecked Dreams against current Managed Agents API docs, Anthropic's Nov 6 agent-memory research, and the product announcement.
