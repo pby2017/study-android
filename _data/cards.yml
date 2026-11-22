@@ -1852,15 +1852,26 @@ cards:
   interview: 'OpenClaw Gateway 하나에 서로 신뢰하지 않는 여러 사용자를 연결할 때 `sessionKey`만 다르게 주면 안전한 tenant 격리가 되나요?'
   answer: '아니다. `sessionKey`는 세션 선택용 라우팅 값이며 인증 경계가 아니다. OpenClaw는 Gateway 하나를 한 신뢰 도메인으로 가정한다. 적대적이거나 신뢰 수준이 다른 사용자는 별도 Gateway와 자격 증명으로 나누고, 필요하면 OS 사용자나 호스트도 분리한다. 설정 변경이나 외부 공개 전 `openclaw security audit`도 실행한다.'
 - category: ai
-  title: ccusage — 코딩 에이전트 토큰·비용을 로컬 로그만으로 집계하는 CLI(16.2k★)
-  summary: 'ccusage는 코딩 에이전트 CLI의 로컬 사용 기록을 읽어 토큰·비용을 일/주/월/세션 단위로 집계하는 CLI다. `npx ccusage@latest`나 `bunx ccusage`로 바로 실행하고, 기본 리포트는 감지된 모든 source를 날짜별로 합친다. Claude Code 전용 `blocks`는 5시간 과금 창과 active block을 추적하고, `statusline`은 상태줄 표시용이다. 더 중요한 변화는 통합 범위다. README 기준 Claude Code, Codex, OpenCode, Amp, Droid, Codebuff, Hermes, pi-agent, Goose, OpenClaw, Kilo, Kimi, Qwen, GitHub Copilot CLI, Gemini CLI를 한 CLI에서 보고, `--json`, `--breakdown`, `--since/--until`, `--offline`, custom pricing override까지 제공한다. 2026-06-24 GitHub API 기준 16,517★다.
-
-    '
+  level: "중급"
+  title: ccusage — 여러 코딩 에이전트 로그를 한 번에 비교하기
+  summary: 'ccusage는 Claude Code·Codex 등 코딩 에이전트가 로컬에 남긴 사용 기록을 읽어 토큰량과 비용을 일·주·월·세션 단위로 묶는 CLI다. `ccusage daily`는 감지된 소스를 합산하고 `ccusage codex daily`처럼 한 소스만 볼 수도 있다. 기본 `auto` 모드는 로그에 저장된 비용을 쓰고, 값이 없으면 토큰과 모델 가격으로 계산한다. 어느 쪽도 실제 청구서가 아니다. Web Search 같은 도구 API 사용량은 포함되지 않을 수 있다. 가격은 설정에 따라 온라인 조회하거나 `--offline`으로 내장 가격 데이터를 쓸 수 있다.'
   points:
-  - '`daily`·`weekly`·`monthly`·`session`으로 감지된 source 전체를 한 리포트에 합산'
-  - '`blocks`=Claude Code 5시간 창, `statusline`=상태줄, `--breakdown`=모델별 비용 분해'
-  - Claude Code·Codex·OpenCode·Amp·Droid·Goose·OpenClaw·Copilot CLI·Gemini CLI 등 지원 / 16,517★ 확인
-  source: https://github.com/ryoppippi/ccusage
+  - '`ccusage daily`는 감지된 여러 소스를 합산; `ccusage codex daily`처럼 소스별 분석도 가능'
+  - '`ccusage blocks`는 Claude Code 전용 5시간 창이며, Codex 등 다른 소스의 사용 제한 창을 뜻하지 않는다'
+  - '비용은 저장값 또는 가격 기반 추정치다; 실제 청구액과 도구 API 호출 비용 전체를 보장하지 않는다'
+  - 'GitHub 19.5k★·934 forks 스냅샷(2026-11-22); 오프라인 가격표 사용과 최신 가격 온라인 조회를 구분'
+  source: https://github.com/ccusage/ccusage
+  sources:
+  - label: 'ccusage 공식 README — 지원 소스·리포트와 MIT 라이선스'
+    url: https://github.com/ccusage/ccusage
+  - label: '공식 사용 안내 — 로컬 데이터 소스, 추정 비용, 한계'
+    url: https://github.com/ccusage/ccusage/blob/main/docs/guide/index.md
+  - label: 'Codex 데이터 소스 — 세션 로그 위치·소스별 리포트·가격 조회 옵션'
+    url: https://ccusage.com/guide/codex/
+  - label: 'Blocks 보고서 — 5시간 billing window는 Claude Code 전용'
+    url: https://ccusage.com/guide/blocks-reports
+  interview: 'ccusage의 월간 비용 숫자를 실제 청구액으로 봐도 될까요? Codex 사용량도 Claude의 5시간 `blocks`로 확인할 수 있나요?'
+  answer: '아니다. 기본 `auto`는 로그에 저장된 비용을 우선 사용하고, 값이 없으면 토큰과 모델 가격으로 계산한다. 어느 쪽도 청구서가 아니며, Web Search 등 도구 API 호출은 빠질 수 있다. `blocks`는 Claude Code의 5시간 창 전용이다. Codex는 `ccusage codex daily`나 `session`을 사용한다.'
 - category: ai
   title: AI-research-SKILLs(Orchestra Research) — 에이전트를 'AI 리서치 전문가'로 만드는 98개 스킬 묶음(10k★)
   summary: 'Orchestra Research의 AI-research-SKILLs는 코딩 에이전트에 모델 아키텍처·파인튜닝·분산학습·평가·RAG·MLOps 같은 AI 연구/엔지니어링 절차를 SKILL.md 단위로 주입하는 MIT 라이선스 오픈소스 라이브러리다. README 기준 98개 스킬을 23개 카테고리로 나누고, autoresearch 스킬이 문헌 조사→아이디어→실험→논문 작성까지의 생애주기를 다른 도메인 스킬로 라우팅한다. 설치는 `npx @orchestra-research/ai-research-skills`로 에이전트를 자동 감지해 `~/.orchestra/skills/`에 깔거나, Claude Code 플러그인 마켓플레이스에서 카테고리별로 설치한다. 2026-06-24 GitHub API 기준 10,041★·748 forks다.
