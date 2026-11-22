@@ -4596,3 +4596,18 @@ Refined:
 - Corrected hardware scope: energy measurements were performed on Apple M1 Max; Jetson AGX Orin was an artifact-tested device, not the reported measurement platform. No Android phone evaluation was found.
 - Repository had 18 stars / 0 forks at review; cited as modest interest, not broad adoption. QA also used Brave Search API.
 - Audit: `research/ai-routine/20261122-agentstop-refinement.md`.
+
+### 2026-11-22 23:50 KST — Android Studio Agent Mode 데이터 경계 보강
+
+- Rechecked the current Android Studio Agent Mode and Gemini data/privacy documentation.
+- Clarified that source-code context sharing is opt-in, can be narrowed with `.aiexclude`, and data-use terms vary by account tier; kept the permissioned emulator/device and build-verification workflow.
+- Sources: https://developer.android.com/studio/gemini/agent-mode, https://developer.android.com/studio/gemini/data-and-privacy.
+- Audit: `research/ai-routine/20261122-android-studio-agent-mode-refinement.md`.
+
+### 2026-11-22 23:55 KST — Flutter 온디바이스 모더레이션 네트워크·권한 경계 갱신
+
+- Refined the `nsfw_detect` AI+Android example against the current pub.dev page and linked source repository.
+- Corrected the permission matrix: selected media picker can be permissionless on Android, unlike whole-library/asset scans and camera use.
+- Separated local file/bytes inference from `scanUrl` network requests and opt-in model downloads; documented the 11 MB default and larger alternative models as implementation context.
+- Kept as a small, actively published example rather than a production recommendation: GitHub showed 3 stars/2 forks; pub.dev showed 6 likes and 1.47k downloads at review.
+- Audit: `research/ai-routine/20261122-nsfw-detect-network-boundaries.md`.
