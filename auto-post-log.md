@@ -4782,3 +4782,12 @@ Refined:
 - GitHub runtime 관심 신호는 약 1.9k stars의 시점 스냅샷이며 채택률이나 보안 검증으로 해석하지 않았다.
 - Audit: `research/ai-routine/20261123-011500-e2b-sandbox-security-boundaries.md`.
 - Sources: https://github.com/e2b-dev/runtime, https://docs.e2b.dev/network/internet-access, https://docs.e2b.dev/secrets, https://e2b.dev/resources/introducing-e2b-embed.
+
+### 2026-11-23 01:20 KST — Dify API key를 Android 클라이언트에 넣지 않는 경계
+
+- 기존 Dify 카드는 제품 소개와 라이선스만 다뤘고 학습 난이도·출처·면접 회상이 없었다. 중복 카드 없이 AI+Android API 보안 경계에 초점을 맞췄다.
+- 공식 문서는 Dify app key를 client에서 추출·악용할 수 있으므로 backend에서만 호출하고, `user` 값은 end-user data를 scope하되 인증하지 않는다고 명시한다. Android 앱은 자체 backend에 인증하고, backend가 권한과 사용량을 확인한 뒤 key를 사용하도록 정리했다.
+- 공개 전에는 실제 질문으로 Knowledge retrieval을 시험한다. Dify LICENSE는 Apache 2.0 기반에 multi-tenant와 frontend 표시 관련 추가 조건이 있다.
+- GitHub 관심 신호는 약 161k stars/15k+ commits의 시점 snapshot으로만 기록했다. 채택률 증거로 해석하지 않았다.
+- Audit: `research/ai-routine/20261123-012000-dify-android-api-key-boundary.md`.
+- Sources: https://docs.dify.ai/en/api-reference/guides/get-started, https://docs.dify.ai/en/api-reference/guides/end-user-identity, https://docs.dify.ai/en/cloud/use-dify/knowledge/integrate-knowledge-within-application, https://github.com/langgenius/dify/blob/main/LICENSE.
