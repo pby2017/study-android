@@ -2,7 +2,7 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code MCP installation scopes; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code scheduling options; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 08:13 KST
 
@@ -1110,4 +1110,10 @@ Rules:
 - Refined `MCP 설치 스코프` against the current official Claude Code MCP reference.
 - Distinguished project-server trust/approval before connection from per-tool permission; clarified MCP local storage (`~/.claude.json`) versus general local settings.
 - Sources and rationale: `research/ai-routine/20261122-mcp-scope-refinement.md`.
+- Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Refined `Claude를 정기 실행하는 4가지` against official Common workflows and Interactive mode docs.
+- Kept the four execution options, clarified their runtime location/access differences, and removed an unsupported `/loop` resume guarantee.
+- Sources and rationale: `research/ai-routine/20261122-claude-scheduling-refinement.md`.
 - Next: continue oldest-first with the next AI or AI+Android card; exclude pure Android subjects.
