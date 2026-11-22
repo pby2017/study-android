@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: corrected llms.txt proposal and search-visibility guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: corrected Claude Code Agent Teams activation and plan-approval guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:25 KST
+Last update: 2026-11-22 16:40 KST
+
+## Latest pass
+- Confirmed Agent Teams remain experimental, require an interactive session, and are unavailable in `claude -p`/Agent SDK runs (which use ordinary subagents).
+- Added the named-subagent-to-teammate behavior and clarified that team members do not inherit the lead's conversation history.
+- Corrected a false plan-approval claim: Plan mode plans auto-approve unless the teammate's permission mode is changed.
+- Sources and rationale: `research/ai-routine/20261122-claude-agent-teams-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against current primary sources and check overlap.
 
 ## Latest pass
 - Replaced the inaccurate “standard” and automatic-search claims with the v2 proposal's scope and structure. Corrected `Optional` to a convention, not a parser directive.
