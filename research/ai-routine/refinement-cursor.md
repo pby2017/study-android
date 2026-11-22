@@ -1693,3 +1693,7 @@ Rules:
 ## Latest pass — 2026-11-22
 - Consolidated `Flutter 문서 레이아웃 AI: 추론 오프라인과 앱 설치 오프라인은 다르다` into `On-Device AI Model Delivery — APK에서 모델 lifecycle 분리·incremental OTA`. Retained the distinction between model provisioning, build-time native runtime download, and offline inference; removed the standalone low-adoption package card (GitHub: 1 star/3 forks; pub.dev: 1 like/47 downloads shown, version 1.0.1) to reduce overlap and card count. Added an advanced level and interview retrieval to the broader card. Audit: `research/ai-routine/20261122-232115-flutter-doclayout-merge.md`.
 - Next: review `Locanara Android — minSdk만으로 Gemini Nano 지원을 판단하지 않기`; verify SDK/version/device gating and API requirements against official Android/Google sources.
+
+## Latest pass — 2026-11-22
+- Refined `Locanara Android — minSdk만으로 Gemini Nano 지원을 판단하지 않기` against Google's Prompt API guide and current Locanara Gradle/client implementation. Separated artifact install floor (31), Prompt API integration floor (26), Gemini Nano engine support (34+ supported devices), and ExecuTorch route (31+); documented `UNAVAILABLE` ambiguity and Locanara status-cache invalidation. GitHub snapshot was 9 stars/3 forks, so kept it as a narrowly useful compatibility case study, not a hot/adopted-library recommendation. Audit: `research/ai-routine/20261122-232400-locanara-readiness-refinement.md`.
+- Next: review `PowerLens — Android 제어 에이전트에서 권한과 실행 경계를 검증하기`; verify the paper and project implementation claims, root/API/cloud path, and reproducibility before retaining or rewriting it.
