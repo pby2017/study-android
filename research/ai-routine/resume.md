@@ -1,27 +1,15 @@
 # Local AI routine checkpoint — 2026-11-22
 
 ## Current phase
-- `master` was clean and synchronized with `origin/master` (`e0d9dae`) before this refinement sequence (`git pull --ff-only origin master` reported already up to date).
-- Task Master (`24977f9`) and Claude Agent SDK (`03d9a5d`) card improvements are already committed and pushed.
-- Refined `AI 랩이 개발 툴체인을 사들이는 중` into an agent-toolchain lesson and pushed as `85ec7ab`.
-- Merged the older `ccpi + tonsofskills.com` card into the existing Claude marketplace card to remove a duplicate, corrected current ccpi/marketplace behavior, and pushed as `6cbc5ef` (card count 985, down one).
-- Refined BMAD-METHOD against its current docs, releases, and GitHub repository; this work was committed and pushed as `e0d9dae`.
-- Refined OpenSpec using current official v2 skills, setup, release and project pages. Removed old `/opsx:*` commands, stale metrics, and unsupported Spec Kit comparisons; updated card difficulty and retrieval Q&A. Audit: `research/ai-routine/20261122-openspec-refinement.md`; committed and pushed as `ae810ad`.
-- Refined Cloudflare Code Mode using its current README, Dynamic Workers docs, egress guidance and Check Point's workerd analysis. Corrected token/tool-count claims and removed blanket sandbox guarantees; validated and pushed as `5fa2ae3`.
-- Refined the Anthropic agent-team compiler card against the author's primary report and source repository. Recentered on verifier quality and work decomposition, and clarified measured cost and incomplete compiler status; validated and pushed as `6089f1b`.
-- Refined Philipp Schmid's subagent pattern card against his primary explainer and bio; clarified escalation choices and orchestration costs; validated and pushed as `9d3302f`.
-- Refined Sourcegraph's “80% problem” card against its September article and search docs. Made the percent metaphor explicit, removed vendor benchmark numbers and overgeneralized search advice, and retained a repository-completeness practice. Audit: `research/ai-routine/20261122-sourcegraph-80-percent-refinement.md`; validated and pushed as `1a4fa7b`.
-- Refined Chrome DevTools MCP against current GitHub docs/releases and OpenAI's Codex Browser documentation. Corrected page routing and profile flags, distinguished MCP from Codex Developer mode, and added browser-data/telemetry caveats; pushed as `b8e8cec`.
-- Retired the ByteRover CLI card because its repository is archived, the current company site has shifted product framing, and the deck already covers agent memory several ways. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.
-- Refined Kilo Code: corrected the `--auto` permission semantics, refreshed live popularity/release evidence, and checked the Anaconda acquisition announcement. Audit: `research/ai-routine/20261122-kilo-code-refinement.md`; pushed as `0addf43`.
-- Refined Bumblebee against its README, release page, and live GitHub API; committed and pushed as `0dae587`.
-- Refined Deep Agents against LangChain's primary experiment report and current repository/release metadata; committed and pushed as `df0024b`.
-- Refined AAIF against its launch announcement, current project list, and October project-expansion news. Local commit `e298784`; push is pending because `github.com` DNS did not resolve.
-- Refined Claude security-guidance against its current official plugin README and manifest; clarified its advisory-only boundary, data transfer, cost, and repository trust requirements. Local commit `6a02bff`; push pending due to DNS failure.
-- The long-term study-android objective remains active: short, evidence-based AI / AI+Android learning cards with difficulty levels, consistent format, and interview retrieval practice. Pure Android topics remain excluded.
+- Local `master` contains `e298784` (AAIF governance vs. interoperability) and `d8aab9e` (security-guidance review boundary). Both passed validation but remain unpushed because repeated GitHub DNS lookups fail (`Could not resolve host: github.com`). Do not rewrite or drop these commits.
+- Current uncommitted task refines the Factory Droid Exec card; audit: `research/ai-routine/20261122-factory-droid-exec-refinement.md`.
+- The earlier `AGENTS.md — 저장소 지침을 루트와 하위 폴더에 나누기` card was checked against AGENTS.md, Codex, and GitHub Copilot docs. Its host-specific discovery caveats were already accurate; no content change was required.
+- The older-card objective remains active: concise, evidence-based AI / AI+Android cards with levels and interview retrieval; pure Android-only topics are excluded.
 
 ## Next actions
-1. Push local commits `e298784` and `6a02bff` when GitHub DNS/network connectivity returns.
-2. Continue oldest-first with `AGENTS.md 실전`; verify hierarchy/precedence claims and distinguish project instruction files from tool-specific configuration.
+1. Run Ruby syntax/YAML/card checks, routine tests, and `git diff --check` for Factory Droid Exec.
+2. Commit the Factory card and research checkpoint with Lore trailers.
+3. Retry push of the pending commits when DNS is available.
+4. Continue oldest-first with Terminal-Bench 2.1; do not repeat stale June model rankings. Use the current official 4.1 leaderboard to focus the lesson on benchmark-version and agent/model configuration comparability.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.
