@@ -4761,3 +4761,9 @@ Refined:
 - Tool calling에는 Qwen tokenizer와 `qwen3_coder` parser, 모델 카드가 지정한 vLLM/SGLang 버전 조건을 확인하도록 했다. GitHub 16.9k stars는 프로젝트 관심 신호이며 개별 모델 채택률로 보지 않았다.
 - Audit: `research/ai-routine/20261123-010300-qwen3-coder-next-serving-boundaries.md`.
 - Sources: https://huggingface.co/Qwen/Qwen3-Coder-Next, https://github.com/QwenLM/Qwen3-Coder.
+### 2026-11-23 01:05 KST — DSPy 평가·최적화의 train/validation/test 경계
+
+- DSPy 공식 metric·GEPA·Tools and MCP 문서를 확인했다. Signature/Module 설계 다음에 metric으로 최적화하되, trainset으로 instruction을 개선하고 validation으로 후보를 선택하며 별도 testset으로 최종 일반화를 확인하도록 정리했다.
+- MCP 도구는 client가 연 session을 `dspy.Tool.from_mcp_tool`로 감싸는 구조다. 재검토 시점 GitHub 신호는 약 39.2k stars/3.5k forks였고, 카드에는 고정 별점이나 구 릴리스 버전을 남기지 않았다.
+- Audit: `research/ai-routine/20261123-010500-dspy-evaluation-loop.md`.
+- Sources: https://dspy.ai/current/getting-started/metrics/, https://dspy.ai/learn/optimization/optimizers/, https://dspy.ai/current/diving-deeper/tools/.

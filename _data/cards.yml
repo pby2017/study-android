@@ -3232,15 +3232,24 @@ cards:
   interview: 'Qwen3-Coder-Next에서 “3B active”는 GPU 메모리도 3B 모델 수준이라는 뜻인가요? 256K context와 tool calling을 서비스할 때 어떤 조건을 확인하나요?'
   answer: '아니다. 전체 가중치는 80B이며 3B는 토큰별 활성 규모다. 실제 메모리는 가중치 표현·device 배치·KV cache와 context 길이에 좌우된다. 기본 256K와 YaRN 확장 설정을 구분하고, tool calling에는 호환 tokenizer와 vLLM/SGLang의 `qwen3_coder` parser 버전을 맞춰야 한다.'
 - category: ai
-  title: DSPy — '프롬프트를 짜지 말고 프로그래밍하라', Stanford NLP의 LLM 파이프라인 최적화 프레임워크(MIT·~35k★)
-  summary: 'DSPy는 Stanford NLP가 만든 "프롬프트 대신 프로그램" 프레임워크다. 입출력 계약은 Signature로 쓰고, Predict·ChainOfThought·ReAct 같은 Module을 조합한 뒤, Evaluate와 메트릭으로 성능을 재고 Optimizer가 프롬프트나 few-shot 예시를 컴파일한다. 최신 문서의 중심은 GEPA처럼 실행 trace와 피드백을 보고 instruction을 반성적으로 고치는 최적화 루프, 그리고 ReAct가 MCP 서버 도구를 가져와 쓸 수 있는 도구 연결이다. 2026-06-29 재검증 기준 35,575★·MIT·최신 릴리스 3.2.1. 실무 교훈은 프롬프트 문구를 감으로 고치지 말고, 계약·모듈·메트릭·최적화를 코드 리뷰 가능한 파이프라인으로 남기라는 점이다.
-
-    '
+  level: 중급
+  title: DSPy — 프롬프트를 감으로 고치지 말고 metric으로 최적화하기
+  summary: 'DSPy는 LLM 작업의 입출력을 Signature로 선언하고, Module로 실행 전략을 구성한 뒤, 데이터와 metric으로 프로그램을 평가·최적화한다. GEPA는 결과 점수뿐 아니라 metric의 텍스트 피드백과 실행 사례를 사용해 instruction을 반복 개선할 수 있다. 중요한 점은 점수에 맞춘 최적화가 일반화를 보장하지 않는다는 것이다. validation으로 후보를 고르고, 최종 판단에는 최적화에 쓰지 않은 test 데이터를 남겨야 한다.'
   points:
-  - '계약: Signature로 입출력을 고정하고 Module(Predict·CoT·ReAct)을 조합'
-  - '검증: Evaluate/metric을 먼저 만든 뒤 Optimizer·GEPA로 instruction과 예시를 컴파일'
-  - '도구화: ReAct가 MCP 서버 도구를 가져와 쓰는 에이전트 파이프라인까지 확장'
+  - '계약과 흐름: Signature는 입력·출력을 정의하고, `Predict`·`ChainOfThought`·`ReAct` 같은 Module은 실행 전략을 정한다.'
+  - '측정과 개선: metric이 성공 기준을 점수/feedback으로 표현한다. GEPA는 예시와 feedback을 반영해 instruction 후보를 만들고 평가한다.'
+  - '누수 방지: trainset은 최적화, validation은 후보 선택에 쓰고, testset은 마지막 일반화 점검까지 보류한다. prompt 최적화 결과는 데이터·metric 설계에 종속된다.'
+  - 'MCP tool은 client가 연 session에서 DSPy Tool로 감싼다. DSPy가 MCP server 연결·인증까지 자동 관리한다고 가정하지 않는다.'
   source: https://github.com/stanfordnlp/dspy
+  sources:
+  - label: DSPy metric — 평가 기준과 dataset 준비
+    url: https://dspy.ai/current/getting-started/metrics/
+  - label: DSPy GEPA — feedback 최적화와 train/validation 분리
+    url: https://dspy.ai/learn/optimization/optimizers/
+  - label: DSPy Tools and MCP — 외부 MCP tool 연결 경계
+    url: https://dspy.ai/current/diving-deeper/tools/
+  interview: 'DSPy에서 Signature와 Module은 각각 무엇을 정의하나요? GEPA로 프로그램을 최적화할 때 validation과 별도 testset을 두는 이유는 무엇인가요?'
+  answer: 'Signature는 task의 입력·출력 계약, Module은 그 계약을 실행하는 전략이다. GEPA는 training example과 metric feedback으로 instruction 후보를 개선하고 validation 결과로 후보를 선택하므로, validation만으로 최종 성능을 주장하면 선택 편향이 생길 수 있다. 최적화에 쓰지 않은 testset으로 일반화를 확인한다.'
 - category: ai
   title: LiteLLM — 100+ LLM 프로바이더를 OpenAI 호환 API 하나로 통합하는 셀프호스팅 게이트웨이(~51.9k★)
   summary: 'LiteLLM은 OpenAI·Anthropic·Gemini·Bedrock·Azure·Cohere·Ollama 등 100+ LLM을 OpenAI 형식 하나로 호출하게 하는 Python SDK 겸 AI Gateway다. 팀 서비스로 띄우면 virtual key, spend tracking, load balancing, guardrails, admin dashboard를 한 곳에서 관리한다. 2026년 README 기준으로 MCP Gateway와 A2A Agent Gateway도 같은 프록시에 붙어, 모델 호출·도구 호출·에이전트 호출을 같은 인증/비용 경계 안에 넣을 수 있다. 교훈은 LLM 게이트웨이를 "모델 추상화"가 아니라 멀티테넌트 예산·관측·도구 보안의 운영 경계로 보라는 점이다.
