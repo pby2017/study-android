@@ -1,6 +1,10 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-23
+- Refined the Toss team-harness card against the original article and current Claude Code plugin docs. Recast Global/Domain/Local as the author's proposal, not a platform feature or measured best practice; added per-turn context cost, session hooks/MCP, user-permission execution, and an evaluation approach. Audit: `research/ai-routine/20261123-020920-toss-team-harness-hypothesis-and-cost.md`.
+- Next: continue oldest-first with the next AI or AI+Android card lacking review; inspect existing audits and current primary documentation before editing.
+
+## Latest pass — 2026-11-23
 - Refined `Vibe Kanban(BloopAI)` using its current repository, official 2026 shutdown announcement, workspaces documentation, and Git worktree reference. Corrected the overclaim that worktree provides agent security isolation; distinguished an announced local transition from verified completion; added project-continuity and diff-review lessons. GitHub snapshot: 28.8k stars/3.1k forks/2,093 commits, attention/activity only. Audit: `research/ai-routine/20261123-021000-vibe-kanban-worktree-and-sunset.md`.
 - Next: continue oldest-first with the next AI or AI+Android card lacking review; inspect existing audits and current primary documentation before editing.
 

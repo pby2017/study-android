@@ -4856,3 +4856,12 @@ Refined:
 - GitHub snapshot: 28.8k stars·3.1k forks·2,093 commits; 감사 기록의 관심/활동 신호로만 사용했다.
 - Audit: `research/ai-routine/20261123-021000-vibe-kanban-worktree-and-sunset.md`.
 - Sources: https://github.com/BloopAI/vibe-kanban, https://www.vibekanban.com/blog/shutdown, https://vibekanban.com/docs/workspaces, https://git-scm.com/docs/git-worktree.
+
+
+### 2026-11-23 02:09 KST — 팀 AI 하네스의 제안과 검증 비용
+
+- 토스 블로그의 Global/Domain/Local 지식 계층과 조직 workflow marketplace 제안을 정리했다. 글이 실제 생산성 측정이 아닌 방향성임을 카드에 명시했다.
+- Claude Code 공식 문서에서 플러그인 구성(skill·agent·hook·MCP), 매 턴 context footprint, 세션 프로세스, 사용자 권한 실행을 확인했다.
+- 중급 난이도 및 품질·수정 횟수·token 비용으로 효과를 검증하는 면접 회상 Q&A를 추가했다.
+- Audit: `research/ai-routine/20261123-020920-toss-team-harness-hypothesis-and-cost.md`.
+- Sources: https://toss.tech/article/harness-for-team-productivity, https://code.claude.com/docs/en/plugins.

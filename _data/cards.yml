@@ -2805,15 +2805,22 @@ cards:
   interview: Git worktree 기반 코딩 에이전트 workspace가 보장하는 격리와 보장하지 않는 격리는 무엇인가요?
   answer: 별도 working directory와 branch에서 파일 변경을 분리해 병렬 작업의 충돌을 줄인다. 하지만 프로세스·네트워크·권한을 막는 sandbox는 아니다. 실행 환경의 권한 제한은 별도로 두고 diff와 테스트를 검토한 뒤 PR을 진행한다.
 - category: ai
-  title: 토스의 'Claude Code를 레이어드 아키텍처처럼' — 팀 지식을 Global/Domain/Local 3계층 플러그인으로 굳히기
-  summary: '토스 기술블로그(toss.tech)는 코딩 에이전트를 ''개인 생산성 도구''에서 ''팀의 일하는 방식''으로 끌어올리는 패턴을 제안한다. 핵심은 흩어진 규칙·노하우를 Claude Code 플러그인에 담되, 그 지식을 세 계층으로 나누는 것이다 — 전사 공통(보안·코딩 스타일)은 Global, 결제·정산·회원 같은 도메인 로직은 Domain, 특정 레포의 구현 디테일은 Local. 이렇게 계층화된 플러그인이 모이면 그 자체로 ''살아있는 지식 베이스(Living Knowledge Base)''가 되고, 나아가 조직의 워크플로(예: /new-feature)를 배포하는 사내 마켓플레이스로 확장한다는 구상이다.
-
-    '
+  level: 중급
+  title: 팀 AI 하네스 — 지식을 계층화하고 플러그인 비용을 검증하기
+  summary: 토스 기술 블로그는 팀의 AI 지식을 Global(조직 공통), Domain(업무 도메인), Local(저장소별)로 나누어 에이전트 워크플로에 연결하자는 방안을 제안한다. 이는 검증된 성과가 아니라 설계 방향이다. Claude Code 플러그인은 지식 외에도 skill·agent·hook·MCP를 묶을 수 있으므로 컨텍스트 비용과 실행 권한도 함께 검토해야 한다.
   points:
-  - 지식 3계층 — Global(전사 보안·코딩 스타일) / Domain(팀·비즈니스 도메인 로직) / Local(레포별 구현 디테일·프로젝트 규칙). 한 CLAUDE.md에 다 밀어넣지 말고 책임에 따라 쪼개라는 게 요지
-  - 비유의 출처 — '이전 글에서 Claude Code 구조를 레이어드 아키텍처에 비유했듯, 플러그인이 담는 지식도 계층화할 수 있다'. 코드 아키텍처 사고를 '지식 관리'에 그대로 적용
-  - 팀 스케일 — 계층화된 플러그인 묶음 = Living Knowledge Base → 워크플로를 배포하는 '마켓플레이스 1.0'으로 확장. 개인 팁이 아니라 조직 차원 표준화가 목표 (toss.tech 자체 글, 수치 주장 없음)
+  - 지식 범위를 나눈다. Global에는 보안·공통 코딩 원칙, Domain에는 결제 같은 업무 규칙, Local에는 해당 저장소의 명령·구현 규칙을 둔다. 이 구분은 토스 글의 제안이지 Claude Code의 내장 계층 기능은 아니다.
+  - Claude Code 플러그인은 skill, agent, hook, MCP 서버 등을 한 단위로 배포한다. 한 가지 skill만 필요하면 플러그인 없이 별도로 둘 수도 있다.
+  - 플러그인의 skill·agent·command 이름과 설명은 매 턴 컨텍스트에 들어간다. MCP 서버는 세션마다 실행될 수 있으며 플러그인 코드는 사용자 권한으로 동작하므로, 필요한 구성만 설치하고 비용·권한을 확인한다.
+  - 생산성 향상은 가설로 취급한다. 대표 작업으로 전후 품질·수정 횟수·토큰/비용을 비교하고, 중요한 변경은 사람이 검토하도록 한다. 토스 글도 구체적 성공 사례보다 방향성에 가깝다고 밝힌다.
   source: https://toss.tech/article/harness-for-team-productivity
+  sources:
+  - label: 토스 기술 블로그 — Global/Domain/Local 지식 계층과 조직 하네스 제안
+    url: https://toss.tech/article/harness-for-team-productivity
+  - label: Claude Code 공식 문서 — 플러그인 구성요소·컨텍스트 사용량·권한 경계
+    url: https://code.claude.com/docs/en/plugins
+  interview: 팀의 공통 지식을 Claude Code 플러그인으로 배포할 때, 어떤 계층으로 나누고 효과와 위험은 어떻게 확인하나요?
+  answer: 조직 공통, 도메인, 저장소별 지식을 분리하는 것은 설계 제안이며 고정된 내장 계층이 아니다. 필요한 skill·agent·hook·MCP만 배포하고, 매 턴 컨텍스트 비용과 사용자 권한 실행을 확인한다. 대표 작업의 품질·수정 횟수·토큰 비용을 비교하고 중요한 변경은 사람이 검토한다.
 - category: ai
   title: Ruflo(전 claude-flow) — Claude Code 위에 'queen 에이전트가 worker 떼를 지휘하는' 멀티에이전트 스웜 하네스(MIT·~59.8k★)
   summary: 'Reuven Cohen(ruvnet)이 만든 오픈소스 멀티에이전트 오케스트레이션 레이어로, 2026년 초 ''claude-flow''에서 ''Ruflo''로 개명했다(README 기준 ~59.8k★, MIT). 핵심 구조는 queen 에이전트가 계획·위임하고 다수 worker 에이전트가 병렬 실행하는 hierarchical 스웜이며, mesh·ring·star 등 토폴로지와 합의 프로토콜을 지원한다. Claude뿐 아니라 GPT·Gemini·Cohere·Ollama로 라우팅되는 모델 비종속 하네스이고, npm 패키지는 ruflo(구 claude-flow 이름도 호환 유지)로 깐다. 단, 성능·도구 수치는 프로젝트 자체 주장이며 한 외부 감사는 ''주장된 MCP 도구 다수가 실제로는 동작 안 한다''고 지적했으니 수치는 그대로 믿지 말고 검증해서 쓰는 게 안전하다.
