@@ -4721,3 +4721,10 @@ Refined:
 - 2026-06 점수표를 제거했다. Epoch 검토는 “Flawed” 판정의 부분 검토이며 모든 결과가 무효라는 뜻은 아니므로, 점수는 verifier·harness·설정과 함께 해석하도록 경계를 정리했다.
 - Audit: `research/ai-routine/20261123-003800-deepswe-grader-audit.md`.
 - Sources: https://github.com/datacurve-ai/deep-swe, https://deepswe.datacurve.ai/, https://epoch.ai/benchmarks/deepswe/review.
+
+### 2026-11-23 00:40 KST — Context7 버전 검색·데이터 경계 최신화
+
+- Context7 공식 README, CLI/API 문서, 데이터 처리 부록과 최신 릴리스를 검토했다. MCP와 CLI+Skills 흐름, 지정 버전이 없거나 색인되지 않았을 때의 근사 매칭, 갱신 주기 비보장, community 문서의 검증 필요성을 반영했다.
+- hosted query와 CLI telemetry/update check를 구분하고 비밀정보 입력을 피하도록 했다. GitHub 65.3k★/3.3k forks는 2026-11-23 snapshot으로만 기록했다. 공개 MIT 저장소와 비공개 hosted backend의 범위도 구분했다.
+- Audit: `research/ai-routine/20261123-004000-context7-version-data-boundaries.md`.
+- Sources: https://github.com/upstash/context7, https://context7.com/docs/clients/cli, https://context7.com/docs/api-guide, https://upstash.com/trust/context7addendum.pdf.
