@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code PR-session retrieval; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code structured JSON output; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:05 KST
+Last update: 2026-11-22 15:12 KST
+
+## Latest pass
+- Refined the Claude Code `--json-schema` card against the current official programmatic-use guide.
+- Added the absent-`structured_output` failure case, required consumer-side presence checks, and the `format`-is-annotation nuance; removed the overly broad “stable automation” claim.
+- Added intermediate difficulty and an interview question about missing structured output.
+- Source and rationale: `research/ai-routine/20261122-claude-json-schema-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check for overlap.
 
 ## Latest pass
 - Refined the Claude Code PR-session retrieval card against the current official workflow guide.
