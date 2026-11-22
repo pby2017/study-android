@@ -1775,4 +1775,8 @@ Rules:
 
 ## Latest pass — 2026-11-23
 - Refined `Context7 — 버전별 라이브러리 문서를 에이전트에 연결하고 결과를 검증하기` using current Context7 README, CLI/API docs, privacy/data addendum, and release page. Corrected MCP vs CLI+Skills distinctions; documented nearest-version fallback, no promised index refresh schedule, community-content verification, hosted query/CLI telemetry, and the boundary between the MIT MCP source and private hosted backend. Recorded ~65.3k stars/3.3k forks as a dated attention-only snapshot. Added intermediate level and interview retrieval. Audit: `research/ai-routine/20261123-004000-context7-version-data-boundaries.md`.
-- Next: continue oldest-first with `Claude Code official /code-review plugin`; confirm current public plugin path, model/agent architecture, review output/verification boundary, and whether any existing point-in-time claims remain accurate before updating.
+- Next: continue oldest-first with `Spotify Honk`; re-check the 2026 Spotify architecture write-up and validate its claims against current first-party sources before changing the already-refined card.
+
+## Latest pass — 2026-11-23
+- Refined `공식 /code-review 플러그인` into a card about verifying actual review execution. The official plugin still documents four reviewers and confidence filtering, but the built-in command has a distinct inline-review path, and an open user report describes CI runs that skipped required reviewers yet posted a clean result. Scoped the report to its evidence and added trace-based CI checks. Audit: `research/ai-routine/20261123-004800-code-review-execution-evidence.md`.
+- Next: continue oldest-first with `Spotify Honk`; re-check the 2026 Spotify architecture write-up and validate its claims against current first-party sources before changing the already-refined card.

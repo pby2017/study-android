@@ -4728,3 +4728,10 @@ Refined:
 - hosted query와 CLI telemetry/update check를 구분하고 비밀정보 입력을 피하도록 했다. GitHub 65.3k★/3.3k forks는 2026-11-23 snapshot으로만 기록했다. 공개 MIT 저장소와 비공개 hosted backend의 범위도 구분했다.
 - Audit: `research/ai-routine/20261123-004000-context7-version-data-boundaries.md`.
 - Sources: https://github.com/upstash/context7, https://context7.com/docs/clients/cli, https://context7.com/docs/api-guide, https://upstash.com/trust/context7addendum.pdf.
+
+### 2026-11-23 00:48 KST — Claude Code 리뷰 명령 실행 증거 최신화
+
+- 공식 플러그인의 4-agent·confidence-scoring 설계와 내장 `/code-review`의 inline-review 동작을 분리하고, 명령이 요구한 agent 호출이 실제 실행됐는지 CI trace에서 검증하도록 기존 카드를 업데이트했다.
+- 공개 이슈의 2.1.285+/2.1.316 CI 사례는 사용자 보고로 한정했다. 모든 모델·버전에서 일반화하지 않았다.
+- Audit: `research/ai-routine/20261123-004800-code-review-execution-evidence.md`.
+- Sources: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-review/README.md, https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-review/commands/code-review.md, https://github.com/anthropics/claude-code/releases/tag/v2.1.274, https://github.com/anthropics/claude-code/issues/100401, https://github.com/anthropics/claude-code/issues/69232.
