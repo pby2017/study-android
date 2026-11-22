@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: corrected Continue acquisition, repository-maintenance, and CLI-status guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the MCP code-execution pattern; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:08 KST
+Last update: 2026-11-22 17:30 KST
+
+## Latest pass
+- Reframed MCP code execution as an agent architecture pattern, not an MCP-standard feature; one-file-per-tool is one implementation example.
+- Scoped the 150k→2k token result to Anthropic's Google Drive→Salesforce example and clarified that PII tokenization is harness behavior, not automatic MCP protection.
+- Added advanced difficulty, an interview prompt, and the sandbox/resource-limit/monitoring safety boundary.
+- Sources and rationale: `research/ai-routine/20261122-mcp-code-execution-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Replaced the stale “AI Checks pivot” and old 33.7k-star claim with current Continue acquisition/status evidence.
