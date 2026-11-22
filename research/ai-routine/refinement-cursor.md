@@ -2,7 +2,8 @@
 
 ## Latest pass — 2026-11-22
 - Refined `claude --worktree` against current Claude Code worktree/settings docs and Git's official manual. Corrected `.worktreeinclude` scope, made subagent isolation explicitly opt-in, explained shared `.git`/permission state and the limits of the worktree security checks, and added a concise intermediate card with interview retrieval. Audit: `research/ai-routine/20261122-claude-worktree-refinement.md`.
-- Next: continue oldest-first with `Aide 사례 — Gemma 4를 키보드·채팅·음성 비서에 연결한 온디바이스 Android AI`; re-check current repo status, Android/device requirements, and whether the card's AI relevance remains central.
+- Retired the Aide case card after the public GitHub API returned 404 for its linked repository; the remaining DEV post is a maker-authored Gemma 4 Challenge submission, and its implementation, release, and star signal cannot be verified. Its general model/deployment lessons overlap with existing Gemma 4 and on-device AI cards. Audit: `research/ai-routine/20261122-aide-card-retirement.md`.
+- Next: continue oldest-first with `AppFollow MCP + AI Toolkit`; re-check current product/API behavior, AI relevance to Android development, permissions, data handling, and any dated claims.
 
 ## Latest pass — 2026-11-22
 - Retired the `Cipher → ByteRover CLI` card: upstream CLI repository is archived, latest release is stale, current ByteRover site has repositioned to a different product, and the deck already covers agent-memory concepts in several more distinctive cards. Audit: `research/ai-routine/20261122-byterover-card-retirement.md`.

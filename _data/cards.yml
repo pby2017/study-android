@@ -3606,16 +3606,6 @@ cards:
   interview: "Android 온디바이스 RAG에서 ObjectBox와 SQLite-Vector 중 무엇을 고르고, 무엇을 검증해야 하나요?"
   answer: "객체 데이터와 벡터를 함께 관리하고 대규모 후보를 빠르게 좁히려면 HNSW 기반 ObjectBox를 검토한다. 기존 SQLite를 유지하고 SQL/BLOB 기반 검색을 원하면 Android 확장 패키지를 제공하는 SQLite-Vector를 검토한다. 두 도구 모두 임베딩 모델이나 LLM을 대신하지 않는다. 실제 단말에서 검색 지연·메모리·회수율을 확인하고, 임베딩 차원과 거리 함수를 맞춘다."
 - category: ai
-  title: Aide 사례 — Gemma 4를 키보드·채팅·음성 비서에 연결한 온디바이스 Android AI
-  summary: 'Aide 제작자의 소개 글은 LiteRT-LM으로 Gemma 4 E2B/E4B를 기기에서 실행하고, 같은 모델을 키보드 변환·채팅·음성 비서에 연결한 사례를 보여준다. Sherpa-ONNX로 음성 인식·합성·음성 구간 탐지를 처리하며, 더 큰 모델에는 선택형 Ollama 경로를 둔다. 이는 제작자가 공개한 설계 설명이며 독립 성능 검증은 아니다. 오프라인 기본값도 권한·외부 모델 연결까지 모두 로컬이라는 뜻은 아니다.'
-  points:
-  - '한 모델 런타임을 InputMethodService·채팅·음성 비서 흐름에 재사용'
-  - 'Sherpa-ONNX가 음성 인식(STT)·합성(TTS)·음성 구간 탐지(VAD)를 담당'
-  - '실무 검토: 모델 다운로드·기기 메모리·지연·민감 도구 권한, 원격 Ollama 사용 시 데이터 경계'
-  source: https://dev.to/swaptr/your-ai-your-device-your-data-introducing-aide-59cc
-  interview: "온디바이스 Android AI 비서에서 모델 실행과 민감한 도구 호출을 어떻게 설계하고 검증하나요?"
-  answer: "작은 모델을 기본 로컬 경로로 두고 입력 방식별 UI가 같은 런타임을 재사용하도록 구성할 수 있다. 알람·연락처·파일 등 도구는 기능별 권한과 파괴적 작업 확인을 둔다. 더 큰 모델을 원격으로 보낼 때는 명시적 선택, 민감 데이터 경계, 실패 시 오프라인 동작을 정의하고, 실기기에서 모델 로딩·메모리·지연을 측정한다. Aide 글은 사례 설명이므로 수치 성능이나 일반적 품질을 증명하지는 않는다."
-- category: ai
   title: AppFollow MCP + AI Toolkit — 앱 리뷰를 AI 에이전트의 분석 흐름에 연결
   summary: 'AppFollow MCP는 AI 도구에서 실시간 앱 스토어 리뷰·평점·순위·ASO 데이터를 조회하게 한다. 오픈소스 AI Toolkit은 피드백·ASO·경쟁 앱 분석을 반복 가능한 워크플로로 제공하고, 리뷰에서 버그·기능 요청의 추세를 보고서로 정리한다. 답변 초안은 브랜드 스타일과 지식 베이스를 반영할 수 있지만, 게시 권한은 계정 역할에 따라 다르다. 개발팀은 AI 요약을 버그 원인으로 단정하지 말고 앱 버전·크래시·지원 기록과 대조한다.'
   points:
