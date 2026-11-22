@@ -2,9 +2,17 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined AGENTS.md context-file study after Gartner AI coding-agent evaluation; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Managed Agents Dreams after AGENTS.md context-file study; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Rechecked Dreams against current Managed Agents API docs, Anthropic's Nov 6 agent-memory research, and the product announcement.
+- Kept the API contract distinct from the product narrative: asynchronous run over a memory store and 1–100 session transcripts produces a separate store; input remains unchanged and the result must be reviewed before adoption.
+- Removed misleading shorthand that Dreams itself changes model weights or that 6× is an independently established/general result. Harvey's ~6× figure is explicitly its own test result as reported by Anthropic; the method/baseline are not provided in the announcement.
+- Added current task-dependent evidence (cross-document memory helped in one evaluation; no clear gain when direct search was enough), token billing, research-preview status, and ZDR limitation.
+- Added intermediate level, 3 official sources, and interview retrieval pair. Audit: research/ai-routine/20261122-claude-dreams-refinement.md.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android subjects.
 
 ## Latest pass
 - Revisited the AGENTS.md research card using the revised arXiv v3 abstract and full experimental tables, significance tests, and limitations.

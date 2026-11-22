@@ -1815,13 +1815,23 @@ cards:
   interview: '이 연구만으로 Android 프로젝트의 AGENTS.md도 제거해야 한다고 결론 내릴 수 있나요?'
   answer: '아니다. 연구 태스크는 Python 저장소의 이슈 해결에 한정됐다. 자동 생성 개요가 항상 성능을 높인다고 볼 근거는 약하지만 Kotlin·Android 프로젝트까지 일반화할 수는 없다. 비표준 빌드나 팀 규칙처럼 유용할 수 있는 지침은 남기고, 대표 작업에서 성공률·비용을 비교해 판단한다.'
 - category: ai
-  title: Dreams(Anthropic) — cross-session memory merge·Harvey 6× task completion
-  summary: Dreams(Anthropic Managed Agents·research preview·Code with Claude 2026-05-06)는 세션 사이 비동기 memory curation — input memory store+1~100 session transcript→output store(입력 불변). duplicate merge·stale/contradicted replace·pattern→insight synthesis. instructions로 합성 방향 steer. Harvey legal-drafting case study — Dreams enable 후 agent task completion ~6×. Outcomes(rubric gate) ·Multiagent Orchestration(coordinator roster)와 3축 Managed Agents loop — memory drift·undefined done·context overload. beta headers managed-agents-2026-04-01 + dreaming-2026-04-21.
+  level: 중급
+  title: Claude Dreams — 세션 메모리를 정리해 다음 작업으로 잇기
+  summary: 'Dreams는 Claude Managed Agents의 비동기 메모리 정리 API다. 기존 memory store와 1~100개 세션 transcript를 바탕으로 새 출력 store를 만들며, 입력 store는 바꾸지 않는다. 결과를 검토한 뒤 다음 세션에 연결하거나 버릴 수 있다. 모델 가중치를 학습하는 기능은 아니다. Anthropic 자체 연구에서 여러 문서를 연결하는 과제는 wiki 형태의 memory가 도움이 됐지만, 한 문서에서 답을 찾을 수 있는 과제에는 뚜렷한 이득이 없었다. 현재 research preview이며 토큰 과금·ZDR 비대상이므로 데이터 정책도 확인한다.'
   points:
-  - Input store immutable — output new store, review/apply/delete via Memory Stores API
-  - Harvey ~6× completion — cross-session mistake pattern→memory update loop
-  - vs Outcomes(session rubric) ·Multiagent(shared sandbox delegation) — complementary CMA primitives
+  - '기존 store + 세션 1~100개 → 별도 출력 store; 원본은 유지되므로 결과를 검토·폐기할 수 있다'
+  - 'Anthropic 연구: 문서 간 연결이 필요한 과제에 유용했지만, 검색만으로 답할 수 있는 과제에는 이득이 없을 수 있다'
+  - 'Harvey는 자사 테스트에서 완료율 약 6배를 보고했지만 보편적 성능 보장은 아니다; 비용은 선택 모델의 토큰 사용량에 비례한다'
   source: https://platform.claude.com/docs/en/managed-agents/dreams
+  sources:
+  - label: 'Dreams 공식 문서 — 입력·출력 store, 검토 흐름, 미리보기·요금·데이터 정책'
+    url: https://platform.claude.com/docs/en/managed-agents/dreams
+  - label: 'Anthropic 연구 — 메모리와 dreaming의 태스크별 이점 및 한계'
+    url: https://www.anthropic.com/research/components-of-agent-memory
+  - label: 'Anthropic 발표 — Harvey의 6배 결과는 고객사의 자체 테스트'
+    url: https://claude.com/blog/new-in-claude-managed-agents
+  interview: 'Dreams가 Claude 모델 자체를 학습시키나요? 적용 전에 무엇을 확인해야 하나요?'
+  answer: '아니다. Dreams는 세션 기록과 기존 memory store를 정리해 별도 출력 store를 만드는 비동기 작업이다. 모델 가중치는 바뀌지 않는다. 출력은 원본과 비교해 검토한 뒤 다음 세션에 붙이거나 폐기한다. 대표 태스크에서 메모리 사용 전후의 정확도와 비용을 비교하고, research preview·토큰 과금·ZDR 비대상이라는 데이터 조건도 확인한다.'
 - category: ai
   title: OpenClaw — 메신저로 부리는 self-hosted·모델 비종속 에이전트(MIT)
   summary: 'OpenClaw는 "내 기기에서 돌리는 개인 AI 어시스턴트"를 지향하는 오픈소스 프로젝트다. WhatsApp·Telegram·Slack·Discord·Google Chat·Signal·iMessage·Teams·Matrix·LINE·WeChat 같은 이미 쓰는 채널을 한 assistant 표면으로 묶고, Gateway 데몬(launchd/systemd user service)이 채널·워크스페이스·스킬 설정의 컨트롤 플레인 역할을 한다. 설치 흐름은 `openclaw onboard --install-daemon`으로 gateway, workspace, channel, skill을 단계별로 잡는 방식이다. README는 ChatGPT/Codex OAuth 구독과 여러 provider/model 지원을 언급한다. 2026-06-24 GitHub API 기준 380,229★·79,633 forks로 관심 신호는 강하지만, 실무 교훈은 별 수보다 "개인 비서 에이전트는 모델보다 채널 라우팅·데몬 운영·권한 경계가 제품"이라는 점이다.
