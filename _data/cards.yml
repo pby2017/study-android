@@ -2093,15 +2093,29 @@ cards:
   interview: 'Agent SDK를 여러 사용자가 쓰는 API 서버에 붙일 때, `query()`를 무상태 함수처럼만 감싸면 놓치는 것은 무엇인가요?'
   answer: '각 세션은 별도 CLI 프로세스와 로컬 작업 디렉터리·세션 파일을 사용한다. 동시 프로세스 자원, 컨테이너 재시작 뒤의 기록 보존, 사용자 간 파일·자격 증명 격리를 함께 설계해야 한다.'
 - category: ai
-  title: AI 랩이 개발 툴체인을 사들이는 중 — Anthropic→Bun($1B), OpenAI→Astral(FTC 승인)
-  summary: 'AI 랩이 코딩 에이전트의 바깥 도구까지 사들이기 시작했다. Anthropic은 2025-12 Bun(JavaScript runtime·bundler·test runner)을 인수 — Claude Code가 Bun executable로 배포되며 "Bun이 깨지면 Claude Code가 깨진다". Claude Code $1B run-rate(6개월) milestone과 동시 발표. OpenAI는 2026-03 Astral(uv·Ruff·ty) 인수 발표, 2026-04 FTC early termination 승인으로 close 진행 — Astral 팀 Codex 합류. uv 126M·Ruff 179M monthly downloads. Bun·Astral 모두 MIT/오픈소스 지속 약속. 실무: Node/pip 대신 Bun/uv가 에이전트 기본 toolchain으로 밀리는 추세 — 소유권·로드맵·포크 가능성을 도구 리스크로 관리.
-
-    '
+  level: 중급
+  title: AI 코딩 에이전트의 실행 도구도 경쟁력이다 — Bun·Astral
+  summary: '코딩 에이전트는 코드를 쓰는 데서 끝나지 않고, 의존성을 설치하고 코드를 실행·검증한다. Anthropic은 Claude Code 인프라에서 Bun이 맡은 역할을 밝히고 Bun 인수를 발표했다. OpenAI도 Python 도구 uv·Ruff·ty를 만든 Astral 인수를 발표했고, 창업자 Charlie Marsh는 이후 팀이 OpenAI에 합류했다고 말했다. 그렇다고 Bun·uv가 모든 프로젝트의 기본 도구라는 뜻은 아니다. 기존 프로젝트의 호환성·재현성·유지보수 기준으로 선택한다.'
   points:
-  - Anthropic→Bun(2025-12, $1B milestone) — Claude Code native installer·single binary distribution
-  - OpenAI→Astral(2026-03 announce, 2026-04 FTC approve) — uv·Ruff·ty→Codex Python lifecycle
-  - Strategic asset — install·lint·format·typecheck loop가 에이전트 vendor roadmap에 편입
+  - Bun은 JavaScript/TypeScript 런타임·패키지 관리자·번들러·테스트 러너이며, Anthropic은 Claude Code 인프라 확장에 Bun이 기여했다고 밝혔다.
+  - Astral의 도구는 Python 작업 흐름을 나눈다: uv는 패키지·프로젝트 관리, Ruff는 lint·format, ty는 타입 검사다.
+  - 에이전트 도입 시 도구 소유권만 보지 말고 lockfile·검증 명령·라이선스·유지보수와 기존 환경 호환성을 확인한다.
   source: https://openai.com/index/openai-to-acquire-astral/
+  sources:
+  - label: Anthropic — Bun 인수 및 Claude Code 인프라에서의 역할
+    url: https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone
+  - label: OpenAI — Astral 인수 발표와 Codex 통합 의도
+    url: https://openai.com/index/openai-to-acquire-astral/
+  - label: Astral 창업자 Charlie Marsh 인터뷰 — 팀의 OpenAI 합류 확인
+    url: https://talkpython.fm/episodes/show/552/astral-joins-openai
+  - label: Bun GitHub — 현재 저장소 인기 신호와 프로젝트 개요
+    url: https://github.com/oven-sh/bun
+  - label: uv GitHub — 현재 저장소 인기 신호와 프로젝트 개요
+    url: https://github.com/astral-sh/uv
+  - label: Ruff GitHub — Python lint·format 도구 개요
+    url: https://github.com/astral-sh/ruff
+  interview: 'AI 코딩 에이전트를 도입할 때, 그 에이전트가 쓰는 도구 체인까지 검토해야 하는 이유는 무엇인가요?'
+  answer: '에이전트는 코드를 실행하고 테스트·검증하는 도구에 의존한다. 따라서 모델만 평가하지 말고 프로젝트와 도구의 호환성, 재현 가능한 의존성·검증 절차, 라이선스와 유지보수를 함께 확인해야 한다.'
 - category: ai
   title: ccpi + tonsofskills.com — 플러그인·스킬·에이전트를 키워드로 검색·설치하는 오픈소스 마켓플레이스 CLI
   summary: 'Tons of Skills는 Claude Code용 플러그인·스킬·에이전트를 GitHub marketplace repo와 웹 카탈로그, ccpi CLI로 묶은 오픈소스 배포 표면이다. 현재 README는 432개 플러그인, 2,769개 스킬, 297개 에이전트와 30명 커뮤니티 기여자를 내세우며, `marketplace.extended.json`과 Claude Code CLI가 읽는 `marketplace.json`을 같은 원천으로 둔다고 설명한다. ccpi는 `pnpm add -g @intentsolutionsio/ccpi`로 설치해 검색·설치·목록·업데이트·검증을 맡고, Claude Code 안에서는 `/plugin marketplace add jeremylongshore/claude-code-plugins`로 바로 붙일 수 있다. 실무 포인트는 "좋은 프롬프트 모음"이 아니라, 팀 공용 에이전트 자산을 검증 가능한 패키지와 카탈로그로 배포하는 운영 문제로 보는 것이다.

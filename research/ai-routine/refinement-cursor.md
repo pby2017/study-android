@@ -1,6 +1,13 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Replaced the stale `AI 랩이 개발 툴체인을 사들이는 중` roundup with a practical lesson: coding agents depend on install/run/test tooling; evaluate the actual toolchain, not acquisition headlines.
+- Corrected unsupported claims that Claude Code is distributed as a Bun executable, Astral deal status based only on FTC early termination, or Bun/uv replacing Node/pip. Current sources: Anthropic's Bun announcement, OpenAI's Astral agreement, and founder Charlie Marsh's June interview confirming the team joined OpenAI.
+- Verified GitHub attention snapshot (2026-11-22): Bun 96.8k★, uv 92.6k★, Ruff 51.4k★. Counts are research context, not card claims.
+- Audit: `research/ai-routine/20261122-203900-agent-toolchain-refinement.md`.
+- Next: inspect the next card in YAML order, `ccpi + tonsofskills.com`; verify catalog counts, installation workflow, and active maintenance before keeping its current claims.
+
+## Latest pass — 2026-11-22
 - Reframed the Claude Agent SDK card around its operational boundary: `query()` starts a CLI subprocess; session state and working files live on disk; self-hosting must plan process scaling, persistence, and tenant isolation.
 - Compared the current official overview's four surfaces (Agent SDK, CLI, Client SDK, Managed Agents) and checked the hosting and secure deployment guidance. Removed stale install/version details and the simplistic “CLI for development, SDK for production” rule.
 - Audit: `research/ai-routine/20261122-203140-claude-agent-sdk-refinement.md`.
