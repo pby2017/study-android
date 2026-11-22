@@ -2345,15 +2345,21 @@ cards:
   interview: 'Terminal-Bench에서 두 모델의 점수를 비교할 때 모델 이름 외에 어떤 조건을 고정하거나 함께 기록해야 하나요?'
   answer: '벤치마크와 데이터셋 버전, 에이전트/하네스, 샌드박스, reasoning·시도 설정을 맞춰야 한다. 점수의 95% 신뢰구간과 비용·토큰도 함께 봐야 차이가 유의미한지와 운영 효율을 판단할 수 있다. 서로 다른 버전의 순위는 직접 비교하지 않는다.'
 - category: ai
-  title: SWE-bench Multimodal — 스크린샷 보고 'JS UI 버그'를 고치는 능력을 따로 재는 벤치마크
-  summary: 'SWE-bench Multimodal(SWE-bench M)은 텍스트·파이썬 위주의 원조 SWE-bench를 "비주얼·사용자 대면 JavaScript 소프트웨어"로 확장한 벤치마크다. 공식 페이지는 공개 벤치마크를 517개 visual issue로 설명하고, 원 논문은 17개 JavaScript 라이브러리에서 모은 617개 task instance를 분석한다. 각 과제에는 버그 스크린샷·목업·다이어그램·시각적 에러 맥락 같은 이미지가 문제 설명이나 테스트에 들어간다. 핵심은 ''코드를 짤 줄 안다''와 ''화면 문제를 보고 이해한다''가 별개 능력이라는 점이다. 프런트엔드·다언어 코드베이스에 에이전트를 붙일 때 Verified 점수만 보면 시각 추론 약점이 가려진다.
-
-    '
+  level: 고급
+  title: SWE-bench M — 시각 UI 버그는 이미지 이해와 실행 검증이 함께 필요하다
+  summary: 'SWE-bench Multimodal은 스크린샷·목업·다이어그램이 포함된 사용자 대면 JavaScript 문제를 평가한다. 공식 Multimodal v2는 flaky하거나 채점하기 어려운 항목을 제외한 재현 가능 480개 task를 제공하고, Docker 환경과 JavaScript 채점도 갱신했다. 교훈은 이미지에서 문제를 찾는 것과 수정 결과를 확인하는 것은 별개라는 점이다. Android UI 버그에도 화면 캡처만 전달하지 말고 재현 단계와 기대 동작을 함께 적고, 수정 후 에뮬레이터 렌더링 및 기능 테스트로 확인한다. 단, 이 벤치마크 자체는 Android 성능을 측정하지 않는다.'
   points:
-  - '공식 페이지: 517 visual issue, Paper·GitHub·Dataset 링크를 함께 제공'
-  - '원 논문: 17개 JS 라이브러리·617 task instance, 문제/테스트에 이미지 최소 1장'
-  - 'SWE-agent 12% vs 차순위 6% — 시각 추론과 언어 일반화를 따로 봐야 함'
-  source: https://arxiv.org/abs/2410.03859
+  - '시각 입력은 코드 이슈의 맥락 — 스크린샷·목업·다이어그램과 문제 설명을 함께 해석'
+  - 'Multimodal v2: 재현 가능한 480 tasks; flaky/ungradeable 항목 제거 및 평가 환경 갱신'
+  - '이미지 이해와 출력 검증은 별도 — 화면 재현 + 기능 테스트; Android 점수로 오해하지 않기'
+  source: https://www.swebench.com/multimodal
+  sources:
+  - label: 'SWE-bench Multimodal 공식 현행 안내 — v2의 480개 재현 가능 task와 환경 변경'
+    url: https://www.swebench.com/multimodal
+  - label: 'ICLR 2025 원 논문 — 이미지 필요성, JavaScript·시각 도메인, 일부 pixel-level visual test'
+    url: https://proceedings.iclr.cc/paper_files/paper/2025/file/07d6332ae36730707fddddba736d7b6c-Paper-Conference.pdf
+  interview: 'SWE-bench Multimodal의 교훈을 Android 화면 버그 수정에 적용한다면, 스크린샷 외에 무엇을 확인해야 하나요?'
+  answer: '스크린샷은 문제의 시각적 맥락을 주지만 기대 동작과 재현 절차도 필요하다. 수정 후 에뮬레이터나 실제 기기에서 렌더링 결과를 확인하고, 기능·회귀 테스트를 실행한다. SWE-bench M은 JavaScript 벤치마크이므로 Android 성능의 직접 증거로 사용하지 않는다.'
 - category: ai
   title: claude --worktree — 한 레포에서 여러 Claude 세션을 'git 워크트리'로 격리해 동시에 돌리기
   summary: '한 터미널에서 기능을 만들면서 다른 터미널에선 Claude가 버그를 고치게 하되, 편집이 서로 충돌하지 않게 하는 워크플로. `claude --worktree <이름>`을 실행하면 각 워크트리가 자기 브랜치를 가진 별도 체크아웃으로 생성되어 한 작업 트리에서 파일이 엉키지 않는다. 다른 이름으로 같은 명령을 두 번째 터미널에서 돌리면 격리된 병렬 세션이 하나 더 뜬다. 서브에이전트·백그라운드 세션도 같은 방식으로 격리할 수 있어, 오래 걸리는 작업이 메인 브랜치를 막지 않는다.
