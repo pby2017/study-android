@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined multi-agent research pattern; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Claude Code independent review; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:22 KST
+Last update: 2026-11-22 15:31 KST
+
+## Latest pass
+- Refined the Claude Code review card against the current official best-practices guide.
+- Scoped `/code-review` to a fresh subagent that has not seen the implementation conversation; added spec/edge-case review guidance and “skip style” to limit noise.
+- Removed unsupported blanket claims about same-session bias and what the reviewer sees; added a warning not to auto-fix every finding.
+- Source and rationale: `research/ai-routine/20261122-claude-code-review-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Refined the multi-agent research card against Anthropic's current primary article.
