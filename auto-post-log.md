@@ -4742,3 +4742,9 @@ Refined:
 - Fleet Management 전체의 누적 250만+ 자동 유지보수 PR과 Anthropic 사례의 Honk 월 650+ agent PR/최대 90% 시간 절감을 서로 다른 범위·출처의 수치로 구분했다.
 - Audit: `research/ai-routine/20261123-005200-spotify-honk-metrics-boundaries.md`.
 - Sources: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint, https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1, https://claude.com/customers/spotify.
+### 2026-11-23 00:56 KST — mini-SWE-agent 벤치마크·sandbox 경계 정리
+
+- v2 README와 공식 SWE-bench leaderboard를 대조했다. 카드 제목에서 74% 점수를 제거하고, README의 점수는 설정이 고정된 보편 순위가 아니라 프로젝트 주장으로 다루도록 했다.
+- 선형 history·독립 `subprocess.run`의 재현성/추적 이점을 설명하고, subprocess 실행만으로 sandbox가 만들어지지는 않는다고 명시했다. 중급 레벨과 benchmark 비교 면접 문답을 추가했다.
+- Audit: `research/ai-routine/20261123-005600-mini-swe-agent-benchmark-boundaries.md`.
+- Sources: https://github.com/SWE-agent/mini-swe-agent, https://www.swebench.com/.

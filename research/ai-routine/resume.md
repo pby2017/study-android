@@ -2,14 +2,14 @@
 
 ## Current phase
 - Synced `master` before edits; it was already up to date.
-- Refined `Spotify Honk` using its June 2026 Spotify Engineering update and Anthropic customer case. The card now separates Fleetshift orchestration from Honk code changes and distinguishes Fleet Management-wide 2.5M automated maintenance PRs from 650+ monthly AI-agent PRs in the vendor case study.
-- Research audit: `research/ai-routine/20261123-005200-spotify-honk-metrics-boundaries.md`.
-- Added intermediate level and interview retrieval. Kept vendor/customer metrics explicitly attributed; no star/adoption claim was added.
+- Refined `mini-SWE-agent` using the current v2 README, official SWE-bench leaderboard, and GitHub API snapshot. Removed the 74% headline, clarified benchmark subset/configuration boundaries and that `subprocess.run` does not itself provide sandbox isolation, and added intermediate retrieval Q&A.
+- Research audit: `research/ai-routine/20261123-005600-mini-swe-agent-benchmark-boundaries.md`.
+- YAML parsing/card fields, Ruby syntax, routine tests (3/14), navigation tests (6/6), and `git diff --check` passed. `bundle check` cannot satisfy Gemfile dependencies, so Jekyll build is unverified; no gems were installed.
+- Commit/push are pending for this checkpoint.
 - The overall study-android card objective remains active.
 
 ## Next actions
-1. Review the older mini-SWE-agent card against its current repository, benchmark page, and latest activity; update only if claims changed or can be made clearer.
-2. Sync with `git pull --ff-only origin master` before the next edit.
-3. Continue oldest-first and publish only AI or AI+Android topics.
+1. Commit and push this verified card refinement.
+2. Continue oldest-first from the next eligible queued AI or AI+Android card; skip Kiro and cc-sdd because they already have newer refinement records.
 
 No app-factory-android issue, branch, or pull request actions were performed. No GitHub Actions were added.

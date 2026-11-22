@@ -2611,15 +2611,21 @@ cards:
   interview: 'Spotify의 Honk 사례에서 Fleetshift와 agent harness를 분리한 이유는 무엇이며, PR 생성 후 어떤 증거로 변경을 검증하나요?'
   answer: 'Fleetshift는 저장소 선택·일정·작업 상태 같은 대규모 orchestration을 맡고, Honk는 복잡한 의미 기반 코드 변경을 맡아 각 계층의 책임을 분리한다. 변경은 trusted tools로 실행하고 multi-OS CI build에서 검증한다. Backstage의 소유권·문서와 표준·lint도 guardrail로 쓰며, AI agent PR 수와 전체 Fleet Management 자동 PR 수는 서로 다른 범위의 지표로 비교해야 한다.'
 - category: ai
-  title: mini-SWE-agent — '도구·설정 다 빼고' 100줄 bash만으로 SWE-bench 74%를 찍은 미니멀 에이전트(SWE-agent 후속)
-  summary: 'mini-SWE-agent는 SWE-bench·SWE-agent 팀이 "에이전트 스캐폴드가 얼마나 작아질 수 있나"를 실험한 v2 미니멀 코딩 에이전트다. 핵심 agent class는 파이썬 약 100줄이고, 도구는 bash 하나만 두며 각 action을 `subprocess.run`으로 독립 실행한다. 대화 이력은 완전히 선형이라 trajectory와 LM 입력이 거의 같아 디버깅과 fine-tuning baseline에 유리하다. 그래서 빠른 로컬 CLI, 샌드박스 교체, FT/RL baseline, 벤치마크 실험에는 잘 맞고, 전용 도구를 많이 붙이는 실험은 전작 SWE-agent가 더 적합하다. README는 Meta·NVIDIA·IBM·Stanford·Princeton 활용 사례와 SWE-bench Verified 74%+를 함께 제시한다.
-
-    '
+  level: 중급
+  title: mini-SWE-agent — 작은 에이전트로 모델·실행 환경을 비교하는 법
+  summary: 'mini-SWE-agent v2는 핵심 agent class가 약 100줄인 미니멀 코딩 에이전트다. bash만 도구로 쓰고 각 명령을 독립 실행하며, 대화 이력은 선형으로 쌓인다. 이 단순한 구조는 실행 기록을 추적하고 모델·sandbox 환경을 바꿔 비교하기 좋다. 다만 bash 실행 자체가 sandbox는 아니다. 프로젝트 README의 SWE-bench 점수는 특정 설정의 프로젝트 주장으로 읽고, 현재 leaderboard에서 같은 benchmark·환경·모델 설정인지 확인해야 한다.'
   points:
-  - 'bash 하나 + subprocess.run — shell-first이고 sandbox 교체가 쉽다'
-  - '완전 선형 history — trajectory와 LM 입력이 거의 같아 디버깅·baseline에 유리'
-  - 'README가 제시하는 사용처 — local CLI·sandbox·FT/RL baseline·benchmark'
+  - '실행 흐름: bash action을 `subprocess.run`으로 각각 실행해 persistent shell 상태를 줄인다. 컨테이너 등 격리는 실행 환경이 별도로 제공해야 한다.'
+  - '관찰 가능성: 선형 대화 이력은 모델에 보낸 입력과 agent trajectory를 맞춰 보기 쉬워 디버깅·fine-tuning baseline에 유용하다.'
+  - '벤치마크 읽기: SWE-bench Verified는 500개 human-filtered task다. leaderboard에는 mini-SWE-agent 환경을 공통 적용한 별도 Bash Only 500-task 비교도 있으므로 점수만 떼어 비교하지 않는다.'
   source: https://github.com/SWE-agent/mini-swe-agent
+  sources:
+  - label: mini-SWE-agent v2 README — 구조·실행 모델·프로젝트 벤치마크 주장
+    url: https://github.com/SWE-agent/mini-swe-agent
+  - label: SWE-bench 공식 leaderboard — task subset과 비교 환경
+    url: https://www.swebench.com/
+  interview: 'mini-SWE-agent의 선형 history와 독립 bash 실행은 실험에 어떤 도움을 주나요? README의 74%+ 점수를 다른 에이전트와 비교할 때는 무엇을 확인해야 하나요?'
+  answer: '선형 history는 모델 입력과 실행 trajectory를 추적하기 쉽게 하고, 독립 실행은 각 action의 재현·환경 교체를 단순하게 한다. 단, subprocess 실행만으로 격리되는 것은 아니다. 74%+는 README의 프로젝트 주장으로, benchmark subset, 모델, 실행 환경과 harness가 같은지 leaderboard에서 확인한 뒤 비교해야 한다.'
 - category: ai
   level: "중급"
   title: Android Studio Gemini — 무료·API 키·Enterprise의 비용과 데이터 경계
