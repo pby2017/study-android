@@ -1,10 +1,16 @@
 # Older-card refinement cursor
 
+## Latest pass
+- Reframed OpenClaw around its documented security boundary: one Gateway is one trust domain, and `sessionKey` is routing rather than authorization.
+- Verified Gateway-wide default session visibility/agent messaging, isolation guidance for adversarial users, and `openclaw security audit` against current official security docs. Replaced stale June stars/forks with a dated ~394.7k★ / 82.9k-fork snapshot.
+- Added intermediate level, audit guidance, three sources, and a retrieval Q/A. Audit: `research/ai-routine/20261122-openclaw-security-refinement.md`.
+- Next: continue oldest-first with ccusage; recheck supported tools, local-data boundary, and current project popularity before editing.
+
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Managed Agents Dreams after AGENTS.md context-file study; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined OpenClaw after Claude Managed Agents Dreams; continue the oldest-first scan with the next remaining AI/AI+Android card (ccusage).
 
-Last update: 2026-11-22 17:04 KST
+Last update: 2026-11-22 17:44 KST
 
 ## Latest pass
 - Rechecked Dreams against current Managed Agents API docs, Anthropic's Nov 6 agent-memory research, and the product announcement.
