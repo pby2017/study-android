@@ -2528,13 +2528,23 @@ cards:
   interview: 'MCP Tool Search가 컨텍스트 사용량을 줄이는 방식과, 항상 켜 두지 않을 수 있는 경우를 설명해 보세요.'
   answer: '도구 정의를 모두 처음부터 넣지 않고 작업 중 필요한 도구를 검색해 schema를 추가하므로 초기 context 부담을 줄인다. 검색 자체의 지연이 있고, 선택된 schema도 context를 차지한다. 도구가 적거나 거의 매번 쓰는 경우에는 핵심 도구를 상시 로드할 수 있다. 모델·gateway·조직 정책이 지연 로드를 지원하는지도 확인한다.'
 - category: ai
-  title: DeepSWE(Datacurve) — 채점기 오류를 줄이고 '오래 걸리는 일'로 다시 줄 세운 코딩 에이전트 벤치마크
-  summary: DeepSWE는 코딩 에이전트를 단발 버그픽스가 아니라 오래 걸리는 실제 엔지니어링 과제로 재는 벤치마크다. v1.1은 같은 113개 long-horizon task를 유지하되, 에이전트가 만든 커밋 패치만 뽑아 깨끗한 별도 컨테이너에서 검증하고 CTRF 테스트 리포트로 각 테스트의 통과·실패를 남긴다. 그래서 테스트 프레임워크를 monkey-patch하거나 실패 테스트를 숨기는 식의 지름길이 점수로 새기 어렵다. 2026-06-24 업데이트 기준 리더보드 상위권은 Claude Fable 5 70%±4, GPT-5.5 67%±6, Claude Opus 4.8 59%±2다. 교훈은 모델명 하나보다 task 난이도, harness 격리, 검증 컨테이너, 비용·스텝 수를 같이 봐야 한다는 점이다.
+  level: 고급
+  title: DeepSWE — 긴 코딩 과제 벤치마크도 채점기 검증이 필요하다
+  summary: 'DeepSWE v1.1은 91개 저장소의 직접 작성한 113개 장기 소프트웨어 과제를 코딩 에이전트로 평가한다. 에이전트의 commit patch를 별도 깨끗한 컨테이너에 적용해 verifier를 실행하는 것이 설계의 장점이다. 그러나 Epoch AI는 독립 리뷰에서 최소 23개 과제의 false negative를 확인하고 v1.1을 “Flawed”로 분류했다. 그중 18개는 에이전트가 추가한 테스트와 verifier가 주입한 테스트가 충돌하는 유형이었다. 따라서 긴 과제와 격리 채점만으로 점수가 신뢰할 만해지는 것은 아니다. 리더보드를 읽을 때 verifier 결함, harness·모델 설정, 비용과 작업 수를 함께 확인한다.'
   points:
-  - 113개 long-horizon task, 에이전트 작업 컨테이너와 검증 컨테이너를 분리
-  - 커밋 diff만 적용해 채점하고 CTRF 리포트로 누락·실패 테스트를 드러냄
-  - 점수만 보지 말고 비용, 출력 토큰, agent steps까지 함께 비교
+  - '과제·채점 구조: 113개 과제는 91개 저장소와 5개 언어를 다루며, v1.1은 에이전트가 제출한 commit patch를 별도 verifier 환경에서 검사한다.'
+  - '독립 검토: Epoch AI는 최소 23/113 과제에서 false negative를 보고했다. 이 중 18건은 모델이 만든 테스트와 verifier의 hidden test가 이름·파일·도우미 함수에서 충돌한 사례였다.'
+  - '해석 원칙: false negative는 올바른 패치가 실패로 채점될 수 있음을 뜻한다. 점수 차이를 모델 능력의 확정적 순위로 보지 말고, task 표본·grader·공통 harness 및 설정을 확인한다.'
   source: https://deepswe.datacurve.ai/blog/deepswe-v1-1
+  sources:
+  - label: Datacurve — DeepSWE 태스크·v1.1 verifier 구조
+    url: https://github.com/datacurve-ai/deep-swe
+  - label: Datacurve — live leaderboard와 갱신일
+    url: https://deepswe.datacurve.ai/
+  - label: Epoch AI — 독립 DeepSWE v1.1 benchmark review
+    url: https://epoch.ai/benchmarks/deepswe/review
+  interview: '벤치마크 점수에서 false negative가 반복되면 모델 비교와 리더보드 해석에 어떤 영향을 주나요?'
+  answer: '정답에 맞는 패치도 grader 결함 때문에 실패로 기록되어 pass rate가 낮아질 수 있고, 모델별 테스트 작성 습관이 다르면 비교 편향도 생긴다. 따라서 점수만 보지 말고 verifier가 패치를 어떻게 적용하는지, hidden test와 충돌하는지, 문제 사례가 어느 정도인지 독립 검토와 원시 결과로 확인한다.'
 - category: ai
   title: Context7(Upstash) — '낡은·환각 API'를 막으려 버전별 최신 문서를 매 요청에 끼워 넣는 MCP 서버(MIT)
   summary: 'Context7은 Upstash가 만든 MIT 라이선스 MCP 서버이자 CLI로, 에이전트가 오래된 학습 데이터에 기대다 존재하지 않는 API를 만드는 문제를 줄이려는 도구다. 라이브러리의 최신·버전별 문서와 코드 예제를 프롬프트 컨텍스트에 직접 넣어, "Next.js 14 미들웨어"처럼 버전이 중요한 질문을 문서 기반으로 답하게 한다. 현재 설치 경로는 두 갈래다. MCP 모드는 `resolve-library-id`로 라이브러리를 찾고 `query-docs`로 문서를 가져오며, CLI+Skills 모드는 `ctx7 library`와 `ctx7 docs`를 에이전트 스킬에서 호출한다. `npx ctx7 setup`은 모드와 대상 에이전트를 고르게 하고, 수동 설정은 `https://mcp.context7.com/mcp` 원격 서버와 API 키 헤더를 붙인다. 2026-06-28 확인 기준 GitHub 58,188★, 2,727 fork로 관심 신호가 크고 Thoughtworks Technology Radar에도 별도 항목이 있다. 단, 공개 저장소는 MCP 서버 소스이고 API 백엔드·파싱·크롤링 엔진은 비공개라 문서 품질을 맹신하지 말고 중요한 API는 원문 링크까지 확인해야 한다.

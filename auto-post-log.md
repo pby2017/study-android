@@ -4714,3 +4714,10 @@ Refined:
 - 근거가 불명확한 6.6만 토큰 사례와 잘못된 공개일·Haiku 비지원·gateway 기본 비활성 주장을 제거했다. 도구 정의 지연 로딩은 context를 줄일 수 있지만 검색 지연과 로드된 schema 비용이 있음을 설명했다.
 - Audit: `research/ai-routine/20261123-003600-mcp-tool-search-refinement.md`.
 - Sources: https://code.claude.com/docs/en/mcp, https://www.anthropic.com/research/advanced-tool-use.
+
+### 2026-11-23 00:38 KST — DeepSWE 채점기 독립 검토 반영
+
+- Datacurve 저장소·live leaderboard와 Epoch AI 독립 리뷰를 대조했다. 113개/91개 저장소 및 commit patch의 clean verifier 적용은 유지하되, Epoch의 최소 23/113 false negative와 그중 18건의 test 충돌 패턴을 추가했다.
+- 2026-06 점수표를 제거했다. Epoch 검토는 “Flawed” 판정의 부분 검토이며 모든 결과가 무효라는 뜻은 아니므로, 점수는 verifier·harness·설정과 함께 해석하도록 경계를 정리했다.
+- Audit: `research/ai-routine/20261123-003800-deepswe-grader-audit.md`.
+- Sources: https://github.com/datacurve-ai/deep-swe, https://deepswe.datacurve.ai/, https://epoch.ai/benchmarks/deepswe/review.
