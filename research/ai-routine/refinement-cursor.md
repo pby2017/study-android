@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined UI UX Pro Max after Claude Code `/context`; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined wshobson/agents after UI UX Pro Max; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 17:02 KST
+Last update: 2026-11-22 17:14 KST
+
+## Latest pass
+- Refined `wshobson/agents` using the current README, harness capability matrix, Android skill source, and live GitHub API snapshot.
+- Updated inventory/support counts, removed the false difficulty-based model-routing claim, and clarified uneven adapters plus the separate Codex generated-agent route and 8 KB skill limit.
+- Connected the marketplace to its actual Jetpack Compose skill and added an intermediate interview question on cross-harness capability differences.
+- Sources and rationale: `research/ai-routine/20261122-wshobson-agents-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined `UI UX Pro Max` against the current project README, live repository API, and Android's Compose UI testing/accessibility references.

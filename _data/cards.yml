@@ -1306,15 +1306,24 @@ cards:
   interview: 'UI UX Pro Max가 제공하는 스타일·UX 가이드 수치만으로 생성된 Android 화면이 좋은 UX라고 결론 내릴 수 없는 이유는 무엇인가요?'
   answer: '카탈로그의 크기는 참고 자료의 양이지 화면의 적합성이나 접근성을 검증하는 결과가 아니다. 앱 요구사항과 기존 디자인 시스템에 맞는지 확인하고, Compose UI 테스트·접근성 점검·기기별 검증으로 실제 동작을 평가해야 한다.'
 - category: ai
-  title: wshobson/agents — 에이전트·스킬·커맨드를 여러 도구에 한 번에 까는 멀티하네스 마켓플레이스
-  summary: 'Claude Code뿐 아니라 Codex CLI·Cursor·OpenCode·GitHub Copilot·Gemini CLI까지 같은 에이전트 구성을 공유하려는 시도가 wshobson/agents다. 도메인 전문가 서브에이전트, 스킬, 슬래시 커맨드를 ''플러그인'' 단위로 묶어, 한 소스에서 여러 하네스로 배포한다. 특정 도구에 종속되지 않고 팀이 쓰는 에이전트 자산을 한곳에서 버전 관리하려는 사람에게 맞는다. README 기준 플러그인 84개, 에이전트 192개, 스킬 156개를 제공하며 라이선스는 MIT다. 작업 난이도에 따라 모델 티어를 갈아끼우는 라우팅도 포함한다.
-
-    '
+  level: "중급"
+  summary: 'wshobson/agents는 전문 에이전트·스킬·명령을 플러그인으로 묶고, 여러 코딩 도구에 맞게 변환하는 MIT 프로젝트다. 2026-11-22 기준 저장소는 93개 플러그인, 로컬 소스 기준 에이전트 199개·스킬 185개·명령 103개를 공개하며, Android용 `mobile-android-design` 스킬도 포함한다. 다만 “한 번 작성하면 모든 도구에서 똑같이 동작”하는 것은 아니다. 도구별 기능·권한·모델 이름이 달라 어댑터가 일부 요소를 변환하거나 생략한다. 예를 들어 Codex의 기본 마켓플레이스 경로는 원본 스킬을 제공하지만 생성 에이전트와 명령은 별도 설치 경로를 사용하고, 스킬 본문에는 8KB 제한이 있다. 도구 간 공유를 원한다면 설치 경로와 기능표를 먼저 확인한다.'
   points:
-  - 1개 소스 → Claude Code·Codex CLI·Cursor·OpenCode·GitHub Copilot·Gemini CLI 6개 하네스로 같은 구성 배포 (MIT)
-  - 'README 명시: 플러그인 84개·에이전트 192개·스킬 156개 — 도메인 전문가 단위로 묶어 제공'
-  - 작업 난이도별 모델 티어 라우팅 내장 — 도구 락인 없이 팀 에이전트 자산을 한곳에서 버전 관리
+  - '지원 도구: Claude Code·Codex CLI·Cursor·OpenCode·Antigravity CLI·GitHub Copilot·Pi. 컴포넌트 지원 범위는 도구마다 다르다.'
+  - 'README는 93개 플러그인과 199 에이전트·185 스킬·103 명령을 나열한다. 에이전트의 모델 별칭은 도구별 이름으로 매핑되며, 난이도에 따른 자동 모델 라우팅과는 다르다.'
+  - 'Android 연계 예: `mobile-android-design`은 Material 3·Compose·적응형 화면 참고를 제공한다. 생성 결과는 공식 Android 문서·테스트로 확인한다.'
   source: https://github.com/wshobson/agents
+  sources:
+  - label: 프로젝트 README·현재 구성과 설치 경로
+    url: https://github.com/wshobson/agents
+  - label: 도구별 기능·권한 변환표
+    url: https://github.com/wshobson/agents/blob/main/docs/harnesses.md
+  - label: Android UI 디자인 스킬 원문
+    url: https://github.com/wshobson/agents/blob/main/plugins/ui-design/skills/mobile-android-design/SKILL.md
+  - label: GitHub 저장소 API·별 수 스냅샷
+    url: https://api.github.com/repos/wshobson/agents
+  interview: '멀티하네스 플러그인을 설치할 때 README 숫자만 보지 말고 도구별 기능표를 확인해야 하는 이유는 무엇인가요?'
+  answer: '각 도구가 지원하는 에이전트·명령·권한·모델 표현이 다르므로 어댑터가 일부 기능을 바꾸거나 생략할 수 있다. 예를 들어 Codex의 네이티브 마켓플레이스는 스킬 중심이고, 에이전트 등 생성 파일은 별도 경로를 쓴다. 실제 설치 경로와 런타임 동작을 검증해야 한다.'
 - category: ai
   title: 공식 MCP 레지스트리 — 흩어진 MCP 서버를 한 API로 찾는 '소스 오브 트루스'
   summary: 'MCP 서버가 폭증하면서 ''어디서 신뢰할 만한 서버를 찾나''가 문제가 됐다. 그 답이 2025-09-08 프리뷰로 공개된 공식 MCP 레지스트리다. registry.modelcontextprotocol.io에서 공개 MCP 서버의 메타데이터(엔드포인트·기능·버전)를 한곳에 모아 REST API로 검색하게 한다. 기존 레지스트리(클라이언트별 마켓플레이스 등)를 대체하지 않고 그 위에 쌓이는 ''업스트림 단일 출처'' 역할이다. 클라이언트는 여기서 받아 자기만의 서브레지스트리로 가공하고, 사내용 비공개 서브레지스트리도 같은 스키마로 운영할 수 있다. MCP 오픈소스 커뮤니티 소유로 Anthropic·GitHub·PulseMCP·Microsoft·Block 등이 참여한다. 단, 아직 GA가 아닌 프리뷰라 데이터 리셋·호환성 깨짐 가능성이 명시돼 있어 프로덕션 의존은 주의해야 한다.
