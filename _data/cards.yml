@@ -3793,17 +3793,23 @@ cards:
   interview: 'PowerLens의 배터리 절감 수치만 보고 Android 앱에 적용해도 될까요? 어떤 경계를 먼저 검증해야 하나요?'
   answer: '아니다. 38.8% 절감 등은 저자가 rooted OnePlus ACE 5·Android 15에서 보고한 벤치마크 결과다. 이 시스템은 UI 접근성 트리를 PII 필터링 후 Gemini 클라우드로 보내며 `su` root로 시스템 설정을 바꾼다. 또한 논문은 LLM의 shell 명령 생성을, 저자 사이트는 결정적 테이블 조회를 설명하고 공개 코드가 없어 실행 경계를 독립 검증할 수 없다. 데이터 최소화, root 권한, 허용 명령·결정적 검증·rollback, 대상 기기 재현 실험을 먼저 확인한다.'
 - category: ai
-  title: 'MNN-AECS — CPU governor가 모바일 LLM 절전 효과를 좌우한다'
+  title: 'MNN-AECS — 코어 선택만으로 절전 효과를 보장할 수 없는 이유'
   level: "고급"
-  summary: 'MNN-AECS는 토큰 생성(decode) 중 CPU 코어 선택을 조정하는 연구용 MNN 수정판이다. Android에서는 프로세스가 `sched_setaffinity`로 코어를 지정하고, 기기별 탐색 결과를 이후 decode에 사용한다. 논문은 5대 Android와 2대 iOS 기기, 5개 모델, 4개 데이터셋에서 원본 MNN 대비 평균 23% 에너지 절감을 보고했다. 그러나 이는 모든 기기의 보장치가 아니다. OS가 유휴 클러스터 주파수를 낮추지 않은 Meizu 21에서는 절감이 약 10%였고, Honor V30 Pro에서는 decode가 최대 7% 느려졌다. 공개된 Alibaba MNN 저장소에서 AECS 구현은 확인되지 않아, 논문 결과를 앱에 바로 적용할 수 있다고 보면 안 된다.'
+  summary: 'MNN-AECS는 메모리 병목인 LLM decode에서 CPU 코어 affinity를 탐색해 에너지를 줄이는 연구 방식이다. 저자는 기기별 코어 구성을 한 번 탐색해 재사용하고, prefill과 decode의 코어 설정을 분리했다. Android의 affinity는 코어를 고를 뿐 주파수를 직접 낮추지 않으므로, 유휴 코어에 대한 OS governor의 동작이 절전량을 바꾼다. 논문은 5대 Android와 2대 iOS에서 원본 MNN 대비 평균 23% 절감을 보고했지만, Meizu 21은 약 10%에 그쳤다. 이는 연구 결과이지 앱이나 모든 기기의 보장치가 아니다.'
   points:
-  - 'Android는 코어 affinity를 조정하고, 기기별 설정을 탐색해 재사용'
-  - '논문 보고 평균 23% 절감; 기기별 결과는 약 10~42%, 일부 기기는 느려짐'
-  - '유휴 코어 주파수를 낮추는 OS 동작이 핵심 조건; 실기기에서 에너지·속도 측정'
-  - '논문은 연구용 MNN 변경을 설명; 현재 공개 upstream에서 AECS 코드는 확인되지 않음'
-  interview: '모바일 LLM의 CPU 코어 수를 줄이면 항상 에너지가 절약될까요?'
-  answer: '아니다. 코어를 덜 쓰면 처리량이 낮아질 수 있고, 절전 효과는 OS가 유휴 클러스터의 주파수를 낮추는지에 좌우된다. MNN-AECS 논문에서도 Meizu 21은 약 10% 절감에 그쳤고 Huawei 기기에서는 decode가 1~7% 느려졌다. 대상 기기에서 동일 모델·프롬프트로 에너지, 토큰 속도, 발열을 함께 측정하고, 논문 수정판이나 재현 가능한 구현이 있는지도 확인해야 한다.'
-  source: https://arxiv.org/html/2506.19884
+  - 'AECS는 기기별 코어 구성을 한 번 탐색하고 decode에서 재사용; prefill과 decode는 별도 설정'
+  - '저자 보고치: 7기기 평균 23% 절감, 기기별 약 10~42%; Meizu 21은 유휴 클러스터 주파수가 내려가지 않아 약 10%'
+  - 'dataset 실험에서 Huawei 두 기기는 1%·7% 느렸고 나머지 다섯 기기는 1~20% 빨라짐; 평균만으로 기기 결과를 일반화하지 않기'
+  - '현재 MNN upstream에는 수동 `cpuIds`·affinity 설정이 있지만 논문의 자동 탐색·분리 튜닝은 확인되지 않음; 논문은 root 없이 동작한다고 설명'
+  sources:
+    - label: MNN-AECS arXiv preprint v1
+      url: https://arxiv.org/html/2506.19884
+    - label: MNN CPUBackend — manual CPU IDs and affinity
+      url: https://github.com/alibaba/MNN/blob/da16b74d958314eaa81419b177427811e3b3a145/source/backend/cpu/CPUBackend.cpp
+    - label: MNN CPURuntime — sched_setaffinity
+      url: https://github.com/alibaba/MNN/blob/da16b74d958314eaa81419b177427811e3b3a145/source/backend/cpu/CPURuntime.cpp
+  interview: 'MNN-AECS가 평균 23% 에너지를 줄였다고 해서 내 Android 기기에서도 같은 절감이 보장될까요?'
+  answer: '아니다. 이는 논문이 5대 Android와 2대 iOS 기기에서 보고한 평균이다. 코어 affinity는 실행 코어를 제한하지만 주파수를 직접 제어하지 않으며, OS governor의 유휴 클러스터 처리와 기기별 차이가 결과를 바꾼다. 공개 MNN에는 수동 CPU ID 설정과 affinity가 있지만 논문식 기기별 자동 탐색·prefill/decode 분리 튜닝은 확인되지 않았다. 같은 기기·모델·프롬프트에서 에너지와 decode 속도를 함께 측정하고, 결과를 평균으로 뭉개지 않는다.'
 - category: ai
   title: 'AgentStop — 로그확률·반복 신호로 로컬 에이전트를 조기 종료하기'
   level: "고급"
