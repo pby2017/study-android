@@ -4653,3 +4653,10 @@ Refined:
 - `.aiexclude`/context-awareness는 기본 opt-in 코드 컨텍스트 경계이며, 직접 채팅에 입력하는 코드의 free-tier 학습 조건과 구분했다. Agent Mode 작업 흐름은 별도 카드와 겹치지 않게 제거했다.
 - Audit: `research/ai-routine/20261123-001237-android-studio-gemini-tiers.md`.
 - Sources: https://developer.android.com/studio/gemini/overview, https://developer.android.com/studio/gemini/feature-comparison, https://developer.android.com/studio/gemini/data-and-privacy, https://developer.android.com/studio/gemini/add-api-key.
+
+### 2026-11-23 00:15 KST — Kiro Specs 워크플로와 credit 경계 최신화
+
+- 공식 Specs 문서(2026-11-12 갱신)와 Quick Spec/Bugfix/Pricing 문서를 대조했다. `Quick Plan`을 현재 명칭 `Quick Spec`으로 수정하고, approval gate가 없는 1-pass와 표준 단계별 검토의 선택 기준, Bugfix artifact, dependency-wave 실행 순서를 명시했다.
+- Pricing에서 Free 50 credits/month 및 spec/task가 credit을 소비함을 확인했다. 변동성 있는 유료 모델·요금 숫자는 카드에 고정하지 않고 공식 pricing link로 안내했다.
+- 카드에 `중급`, retrieval interview/answer, labeled multi-source links를 추가했다.
+- Audit: `research/ai-routine/20261123-001500-kiro-specs-refinement.md`.

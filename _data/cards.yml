@@ -2536,13 +2536,26 @@ cards:
   interview: "Android Studio Gemini 무료 티어와 개인 API 키 사용을 비용·코드 데이터 관점에서 비교해보세요."
   answer: "무료 티어는 제한된 일일 한도를 제공하고 직접 입력한 코드는 모델 학습에 사용될 수 있다. 개인 API 키는 토큰별 비용이 발생하지만 더 큰 context와 모델 선택권을 제공하며 입력 코드를 모델 학습에 사용하지 않는다. 코드 context 공유 설정은 별도이므로 필요성을 검토하고 `.aiexclude`로 민감한 파일을 제한한다."
 - category: ai
-  title: Kiro(AWS) — 코드보다 스펙을 먼저 굳히는 requirements.md·design.md·tasks.md 에이전트
-  summary: Kiro는 AWS 계열의 에이전트형 개발 도구로, 기능과 버그 수정을 먼저 구조화한 뒤 구현으로 넘어가게 만든다. 공식 Specs 문서는 모든 spec이 `requirements.md`(또는 `bugfix.md`), `design.md`, `tasks.md`의 세 파일로 구성되며, Feature Specs는 Requirements-First 또는 Design-First 흐름으로 요구사항 수집·기술 설계·실행 계획을 순서대로 만든다고 설명한다. 잘 아는 기능에는 Quick Plan으로 세 산출물을 한 번에 만들 수 있고, 복잡한 기능이나 회귀 비용이 큰 버그에는 표준 Feature Spec과 Bugfix Spec이 더 적합하다. 실행 단계에서는 `tasks.md`의 상태를 추적하고, Run all Tasks가 의존성 그래프를 보고 독립 작업을 wave 단위로 병렬 실행한다. 교훈은 문서가 장식이 아니라, 에이전트가 무엇을 언제 실행해도 되는지 정하는 작업 경계라는 점이다.
+  level: "중급"
+  title: Kiro Specs — 요구사항·설계·작업을 검토 가능한 단계로 나누기
+  summary: "Kiro Specs는 기능이나 버그 수정을 문서와 추적 가능한 작업으로 바꾼다. Feature Spec은 `requirements.md`(또는 Design-First 흐름) → `design.md` → `tasks.md`, Bugfix Spec은 `bugfix.md` → 설계 → 작업으로 진행한다. 현재 Quick Spec은 이를 한 번에 생성하며 단계별 승인 게이트가 없다. 요구가 불분명하거나 위험이 큰 작업에는 단계별 검토가 가능한 표준 Spec이 더 적합하다."
   points:
-  - '`requirements.md`·`design.md`·`tasks.md` 3개 산출물 + Feature Specs의 Requirements-First / Design-First 흐름'
-  - 'Quick Plan은 requirements·design·tasks를 한 번에 생성하고, 표준 Spec은 승인 게이트를 남겨 둔다'
-  - 'Bugfix Specs는 root cause analysis·fix design·regression prevention을 분리하고, Run all Tasks는 wave 단위 병렬 실행'
+  - "Feature: Requirements-First 또는 Design-First로 문제와 수용 기준, 구조를 먼저 검토하고 실행 가능한 task로 쪼갠다."
+  - "Bugfix: 현재·기대·유지할 동작을 분석하고 원인·수정·회귀 방지로 계획한다."
+  - "Quick Spec은 한 번에 만들고 승인 단계가 없다. 작고 분명한 작업에 쓰고, 불확실하거나 회귀 위험이 큰 변경은 표준 Spec에서 단계별 검토한다."
+  - "Run all tasks는 dependency graph 기준으로 독립 작업을 wave 안에서 병렬 실행한다. Free tier는 월 50 credits이며 spec/task 실행도 credits를 쓴다."
   source: https://kiro.dev/docs/specs/
+  sources:
+  - label: Kiro Specs — artifact, task execution, platform coverage
+    url: https://kiro.dev/docs/specs/
+  - label: Quick Spec — one-pass generation without approval gates
+    url: https://kiro.dev/docs/specs/quick-spec/
+  - label: Bugfix Specs — root cause and regression prevention
+    url: https://kiro.dev/docs/specs/bugfix-specs/
+  - label: Kiro Pricing — current credits and plan allowances
+    url: https://kiro.dev/pricing/
+  interview: "Kiro에서 요구가 불분명하거나 회귀 위험이 큰 기능을 Quick Spec으로 바로 구현하지 않고 표준 Spec으로 나눌 이유는 무엇인가요?"
+  answer: "Quick Spec은 요구사항·설계·작업을 한 번에 만들고 단계별 승인 게이트가 없다. 불확실하거나 위험이 큰 변경은 표준 Feature/Bugfix Spec에서 각 문서를 검토하고 수정한 뒤 실행해야 잘못된 가정이 구현과 병렬 task로 퍼지는 것을 줄일 수 있다. 생성된 task도 결과 검증이 필요하며 Spec과 task 실행은 Kiro credits를 소비한다."
 - category: ai
   title: Amp(Sourcegraph) — '토큰 아끼지 마라'를 철학으로 내건, 스레드·서브에이전트·Oracle로 미는 프런티어 코딩 에이전트
   summary: 'Amp는 Sourcegraph가 만든 터미널·에디터용 코딩 에이전트로, "프런티어 모델과 그다음에 올 것을 위해 만든 에이전트"를 표방한다. 설계 철학이 다른 도구와 갈리는데, 토큰을 아끼려 컨텍스트를 깎기보다 ''제약 없이'' 쓰는 쪽에 무게를 둔다 — 작업 품질을 위해 토큰 비용을 감수한다는 입장이다. 작업 단위는 ''스레드(Thread)''로, 대화·작업 맥락이 영속 저장돼 살아있는 메모리이자 팀 협업·공유 수단이 된다(스레드 포킹으로 대안 시도도 가능). 서브에이전트는 전문 작업을 떼어 맡고 메인 스레드에 결과를 보고하며, 읽기·검색·진단 같은 독립 작업은 기본적으로 병렬로 돌린다(같은 파일·공유 계약을 건드리는 쓰기만 직렬화). ''Oracle''이라는 별도 도구로 더 강한 추론 모델에 어려운 분석을 위임할 수 있고, AGENT.md 파일로 규칙·제약을 코드베이스에 박아 둔다.
