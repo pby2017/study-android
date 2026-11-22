@@ -1675,3 +1675,9 @@ Rules:
 - Distinguished quality-only RL from the proposed A6 reward, retained the failure example where brevity harmed quality, labeled metrics as author-reported controlled results, and clarified device–cloud routing is not an offline guarantee.
 - Audit and rationale: `research/ai-routine/20261122-232000-recgpt-mobile-v2-refinement.md`.
 - Next: continue oldest-first with the next eligible AI or AI+Android card; exclude pure Android subjects.
+
+## Latest pass
+- Refined `OD-LLM 논문: 순차 추천 신호를 보존하며 LLM 가중치를 저랭크 압축` against the full WSDM 2026 paper and DOI.
+- Added `고급` level; clarified normalization → SVD → layer-wise correction; separated the 50%-compression benchmark result and A40 experiment setup from any Android handset deployment claim.
+- Audit and rationale: `research/ai-routine/20261122-233000-od-llm-refinement.md`.
+- Next: review the next eligible AI or AI+Android card oldest-first; exclude pure Android subjects.
