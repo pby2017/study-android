@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Claude Code independent review; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Cursor model-selection guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:31 KST
+Last update: 2026-11-22 15:46 KST
+
+## Latest pass
+- Replaced the outdated Cursor + Claude Code “dual stack” recommendation with a source-grounded Cursor model-selection card.
+- Removed stale claims about fixed product roles and Claude Code using one model; documented task complexity, plan eligibility, and the distinct usage/billing paths for Cursor vs third-party models.
+- Avoided fixed pricing/model catalog details; added intermediate difficulty and an interview question.
+- Sources and rationale: `research/ai-routine/20261122-cursor-model-selection-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against current primary sources and check overlap.
 
 ## Latest pass
 - Refined the Claude Code review card against the current official best-practices guide.

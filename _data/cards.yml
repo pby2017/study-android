@@ -1010,15 +1010,16 @@ cards:
   interview: "구현 세션의 자기 검토와 새 서브에이전트 리뷰는 무엇이 다르며, 리뷰 지시에는 무엇을 포함해야 하나요?"
   answer: "새 서브에이전트는 구현 대화를 보지 않아 작성자의 추론에 덜 끌린다. diff와 요구사항·경계 사례를 주고 정확성에 영향을 주는 누락을 보게 하며, 스타일 지적은 제외할 수 있다."
 - category: ai
-  title: Cursor Composer + Claude Code 듀얼 스택 — 도구를 고르지 말고 일로 나눠라
-  summary: '2026년 실무에서 굳어진 패턴은 ''Cursor냐 Claude Code냐''가 아니라 둘을 작업 유형으로 라우팅하는 것이다. 두 도구가 스택의 다른 층에 있기 때문이다 — Cursor는 IDE 중심(에디터 안에서 자체 모델 Composer로 빠른 초안·스캐폴딩·리팩터), Claude Code는 터미널/CLI 중심(멀티레포 오케스트레이션, 서브에이전트, CI 자동화, git에 남는 워크플로 산출물). Cursor는 GPT·Claude·Composer를 작업마다 갈아끼우는 ''모델 유연성''을, Claude Code는 단일 최상위 모델에 에이전트 루프를 최적화한 ''깊이''를 준다. 이미 CLAUDE.md·스킬·훅으로 레포에 워크플로를 박아뒀다면 전면 이전 비용이 가장 크다 — 그래서 한쪽으로 갈아타기보다 둘을 함께 쓰는 쪽이 자주 이긴다.
-
-    '
+  level: "중급"
+  title: Cursor 모델 선택 — 작업 난이도와 과금 경로를 함께 보기
+  summary: Cursor Agent는 지침·도구·모델이 함께 동작한다. 모델은 작업의 추론 난이도뿐 아니라 현재 플랜에서의 사용 가능 여부와 비용 경로로 고른다. 간단한 반복 작업에는 빠른 모델을, 복잡한 다중 파일 변경에는 더 강한 모델을 고려하되 실제 사용량과 결과를 확인한다.
   points:
-  - '라우팅: 에디터 안 빠른 초안·스캐폴딩·리팩터 → Cursor / 멀티레포·서브에이전트·CI·git 산출물 → Claude Code'
-  - '성격 차이: Cursor는 모델 갈아끼우는 유연성(GPT·Claude·Composer), Claude Code는 단일 모델 깊이(긴 호흡 에이전트 작업)'
-  - Composer 2.5 = 2026-05-18 출시, Kimi K2.5 베이스 / CLAUDE.md·스킬·훅 투자분이 있으면 전면 이전 비용이 커 듀얼 스택이 유리
-  source: https://cursor.com/blog/composer-2-5
+  - "Cursor 모델과 제3자 모델은 사용량 풀이 다르다. 제3자 모델은 지원 플랜에서 API 가격 기준으로 별도 선불 크레딧을 사용한다."
+  - "Auto의 Cost·Balance·Intelligence 모드는 라우팅·과금 방식이 다르며 이용 가능한 모드는 플랜에 따라 다르다."
+  - "모델 목록·가격·플랜 조건은 바뀔 수 있다. 작업별 품질과 사용량을 확인하고 선택을 갱신한다."
+  source: https://cursor.com/docs/models-and-pricing
+  interview: "Cursor에서 제3자 모델을 선택하면 Cursor 자체 모델 사용량과 같은 풀에서 차감되나요? 모델 선택 시 무엇을 확인해야 하나요?"
+  answer: "아니다. 제3자 모델은 지원 플랜에서 API 가격 기준 크레딧을 사용하고 Cursor 자체 모델 풀과 다르다. 작업 난이도와 플랜별 사용 가능 여부, 현재 과금 경로를 확인한다."
 - category: ai
   title: Agent SDK 별도 크레딧 — 2026-06-15부터 claude -p·자동화는 구독 한도와 분리
   summary: '2026년 6월 15일부터 Anthropic은 ''대화형''과 ''프로그래밍 방식'' 사용을 분리한다. Claude Agent SDK, `claude -p`(Claude Code 비대화 모드), Claude Code GitHub Actions, 그리고 구독으로 인증하는 서드파티 앱은 이제 구독 사용 한도가 아니라 ''월별 Agent SDK 크레딧''에서 차감된다 — Pro $20, Max 5x $100, Max 20x $200(전액 API 요금 기준). 반대로 터미널·IDE에서 직접 타이핑하는 ''대화형 Claude Code''는 종전대로 구독 한도를 그대로 쓰며 영향이 없고, API 키로 인증하면 크레딧 없이 기존 종량제가 유지된다. 크레딧이 소진되면 ''사용 크레딧(usage credits)''을 켜둔 경우에만 API 요금으로 계속 돌고, 안 켰으면 다음 주기까지 요청이 멈춘다.
