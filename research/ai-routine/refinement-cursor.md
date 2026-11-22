@@ -1,6 +1,12 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-23
+- Rechecked and refined the older `Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기` card. Separated author-recommended workflow benefits from measured results and added the source's caution-bias tradeoff for trivial tasks. Source: https://github.com/multica-ai/andrej-karpathy-skills. Audit: `research/ai-routine/20261123-013535-karpathy-guidelines-and-topic-screen.md`.
+- Added `ML Kit Agent API — Gemini Nano 도구 루프와 세션 수명 설계` after checking the current Android API guide and Summit announcement; clarified orchestration vs Prompt API, AppFunctions, in-memory session lifecycle, runtime preview limits, and app-side tool validation.
+- Screened Microsoft Agent Framework's PyPI compromise and rejected it as a duplicate of the existing card; rejected MAI Code 2 as a model-release announcement without a distinct lesson.
+- Next oldest eligible card: `Claude Code reloadSkills — SessionStart 훅이 설치한 스킬을 같은 세션에서 읽기`; check its refinement history and current official docs before changing it.
+
+## Latest pass — 2026-11-23
 - Added two requested AI-era developer hiring/interview cards after comparing three labor-market studies and the CoderPad 2026 technical-hiring survey. Explicitly separated hiring flow from workforce composition and Android-specific evidence from general engineering results. Audit: `research/ai-routine/20261123-000826-ai-era-mobile-hiring-interviews.md`.
 - Rechecked the queue: `RunAnywhere Kotlin SDK — Android 로컬 AI 엔진과 모델 연결 흐름` was already refined on Nov 22 (10,354 stars/422 forks at that review; audit `research/ai-routine/20261122-230100-runanywhere-kotlin-sdk-refinement.md`); do not process it again. Refined the older Gemini Android Studio card into a tier/cost/code-data-boundary lesson using current Android Developers docs. Audit: `research/ai-routine/20261123-001237-android-studio-gemini-tiers.md`.
 - Refined the Kiro Specs card after its earlier review had gone stale: replaced `Quick Plan` with current `Quick Spec`, added Mobile/CLI/Web capability scope, review-gate choice, task dependency waves, Free credit usage, and intermediate interview retrieval. Audit: `research/ai-routine/20261123-001500-kiro-specs-refinement.md`.

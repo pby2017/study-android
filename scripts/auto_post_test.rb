@@ -32,7 +32,7 @@ class AutoPostTest < Minitest::Test
     assert_equal "중급", card.fetch("level")
     assert_equal "왜 그런가요?", card.fetch("interview")
     assert_equal "이유를 설명합니다.", card.fetch("answer")
-    assert_includes File.read(File.join(@root, "auto-post-log.md")), card.fetch("title")
+    assert_includes File.read(File.join(@root, "auto-post-log.md"), encoding: "UTF-8"), card.fetch("title")
   end
 
   def test_rejects_queue_card_without_learning_fields_before_writing

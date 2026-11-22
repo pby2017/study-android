@@ -4807,3 +4807,8 @@ Refined:
 - LangChain 52.8%→66.5%는 GPT-5.2-Codex 고정, Terminal-Bench 2.0 89개 과제에 대한 자사 결과로 범위를 표시했다. 이를 모든 모델·업무에 일반화하지 않도록 덧붙였다.
 - 난이도 중급과 면접 회상 질문·답변을 추가했다. Audit: `research/ai-routine/20261123-012902-coding-agent-harness-refinement.md`.
 - Sources: https://martinfowler.com/articles/harness-engineering.html, https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering.
+### 2026-11-23 01:35 KST — ML Kit Agent API — Gemini Nano 도구 루프와 세션 수명 설계
+
+- Android Developers reference and Android Developer Summit announcement describe the new on-device Agent API. Card explains `AgentRunner` orchestration, AppFunctions, in-memory `AgentSession`, preview/device prerequisites, and app-side validation of model-selected tools.
+- Level: 중급. Interview question and answer included.
+- Source: https://developer.android.com/ai/gemini-nano/mlkit-agent-api

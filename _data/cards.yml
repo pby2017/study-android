@@ -475,16 +475,17 @@ cards:
 - category: ai
   level: "초급"
   title: Karpathy-inspired CLAUDE.md — 에이전트 행동을 네 규칙으로 좁히기
-  summary: 'multica-ai/andrej-karpathy-skills는 Karpathy의 LLM 코딩 실패 관찰에서 출발한 짧은 CLAUDE.md 가이드다. 네 규칙은 ① Think Before Coding(가정·모호함·트레이드오프를 먼저 드러내기), ② Simplicity First(요청 밖 기능과 1회용 추상화 금지), ③ Surgical Changes(요청과 직접 연결된 줄만 바꾸기), ④ Goal-Driven Execution(성공 기준을 정하고 검증될 때까지 반복)이다. 교훈은 특정 도구보다 "에이전트가 어떤 행동을 하지 말아야 하는지"를 작고 검증 가능한 규칙으로 쓰는 것이 결과를 바꾼다는 점이다.
+  summary: 'multica-ai/andrej-karpathy-skills는 LLM 코딩의 흔한 실패에 대응하는 네 가지 Claude Code 지침이다: 가정과 모호함 드러내기, 불필요한 복잡성 피하기, 요청과 무관한 코드 건드리지 않기, 성공 기준을 세우고 검증하기. 작성자는 이 지침이 불필요한 변경과 재작업을 줄이는 방향이라고 설명하지만, 통제 실험으로 효과를 입증한 자료는 아니다. 규칙은 프로젝트에 합쳐 쓰되, 작성자도 단순한 한 줄 수정까지 엄격한 절차를 강제하면 느려질 수 있다고 경고한다.
 
     '
   points:
-  - '4규칙: 먼저 이해·최소 코드·수술적 변경·목표 기반 검증'
-  - 모호하면 추측하지 않고 가정과 선택지를 드러내게 함
-  - 규칙 파일은 작을수록 행동 경계가 선명해진다는 사례
+  - 'Think Before Coding: 가정·대안·트레이드오프를 먼저 명시'
+  - 'Simplicity First·Surgical Changes: 요청에 필요한 최소 변경만 수행'
+  - 'Goal-Driven Execution: 성공 기준을 정하고 테스트·검증 결과로 완료 판단'
+  - '적용 한계: 작성자의 실무 지침이며, 효과가 독립 평가된 벤치마크는 아님; 단순 작업에는 필요한 만큼만 적용'
   source: https://github.com/multica-ai/andrej-karpathy-skills
-  interview: "AI 코딩 에이전트에 규칙을 추가할 때 왜 요청과 직접 관련된 작은 규칙부터 시작하는 것이 좋은가요?"
-  answer: "짧고 구체적인 규칙은 에이전트가 따라야 할 경계를 쉽게 확인하게 한다. 목표를 먼저 이해하고, 불필요한 변경을 피하며, 성공 기준으로 결과를 검증하도록 안내할 수 있다."
+  interview: "이 가이드의 네 원칙을 적용할 때, 결과가 좋아졌다고 어떻게 판단하고 어떤 한계를 함께 설명해야 하나요?"
+  answer: "작업 전에 성공 기준을 정하고 테스트나 확인 가능한 결과로 검증한다. 가이드는 최소 변경과 명시적 목표를 권하는 작성자 지침이므로, 이 원칙만으로 품질 향상이 입증됐다고 말하지 않는다. 단순 작업에는 필요한 만큼만 적용한다."
 - category: ai
   level: "고급"
   title: Ouroboros — 모호함을 수치로
@@ -10085,3 +10086,20 @@ cards:
     url: https://coderpad.io/survey-reports/coderpad-state-of-tech-hiring-2026/
   interview: "면접에서 AI가 허용될 때 생성 결과 외에 어떤 역량을 보여줘야 하나요?"
   answer: "먼저 허용 범위와 공개할 사용 방식을 확인한다. 이후 생성 코드의 정확성·예외·보안·설계 trade-off를 검토하고, Android라면 lifecycle·Coroutine 취소·권한·API 호환성을 점검한다. 테스트로 확인한 결과와 수정 이유를 설명해 AI 사용과 독립적인 엔지니어링 판단을 함께 보여준다."
+- category: ai
+  level: "중급"
+  title: ML Kit Agent API — Gemini Nano 도구 루프와 세션 수명 설계
+  summary: "ML Kit의 `AgentRunner`는 Gemini Nano의 여러 단계 추론, AppFunctions 도구 호출, 결과 처리, 대화 세션을 묶는다. 단일 생성 중심인 Prompt API와 달리 도구 실행 루프를 앱에서 직접 연결하는 부담을 줄이지만, 모델이 잘못된 도구나 인자를 제안할 수 있으므로 권한 검사와 부작용 확인은 앱 책임이다. `AgentSession`은 메모리에 대화 이력을 보관하므로 화면 회전에도 유지하려면 ViewModel에 두고 정리 시 닫는다. 현재 Agent API는 AICore Developer Preview 대상이며 Android 14 이상 지원 기기 등 런타임 조건을 확인해야 한다."
+  points:
+  - "`AgentRunner`: 여러 단계 계획·도구 호출·결과 처리를 조정하고 기본 최대 턴은 10회"
+  - "도구는 AppFunctions로 선언하며 필요한 함수만 등록하고, 결제·삭제 같은 동작은 앱에서 승인·검증"
+  - "`AgentSession`은 메모리 이력; ViewModel이 소유하고 `onCleared()`에서 `close()`"
+  - "Alpha/AICore Developer Preview: minSdk 설정만으로 사용 가능 기기를 보장하지 않으며 지원 기기와 오류 상태 확인"
+  source: https://developer.android.com/ai/gemini-nano/mlkit-agent-api
+  sources:
+  - label: Android Developers — AgentRunner, AppFunctions, 세션·기기 요구사항과 안전 경고
+    url: https://developer.android.com/ai/gemini-nano/mlkit-agent-api
+  - label: Android Developer Summit — ML Kit Agent API 발표와 Prompt API와의 구분
+    url: https://developer.android.com/blog/posts/android-intelligence-system-in-app-agents-ads
+  interview: "ML Kit Agent API에서 모델이 도구를 선택해 실행하게 할 때 앱이 계속 책임져야 하는 부분은 무엇이고, 대화 이력은 어디에 두어야 하나요?"
+  answer: "모델의 도구 이름과 인자는 틀릴 수 있으므로 앱은 허용 도구·인자를 검증하고 결제나 삭제 같은 부작용은 사용자 승인 등 별도 경계를 둔다. 여러 턴 이력은 메모리에 유지되므로 화면 회전 동안 보존하려면 `AgentSession`을 ViewModel에 두고 ViewModel 종료 시 닫는다."
