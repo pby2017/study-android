@@ -4735,3 +4735,10 @@ Refined:
 - 공개 이슈의 2.1.285+/2.1.316 CI 사례는 사용자 보고로 한정했다. 모든 모델·버전에서 일반화하지 않았다.
 - Audit: `research/ai-routine/20261123-004800-code-review-execution-evidence.md`.
 - Sources: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-review/README.md, https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-review/commands/code-review.md, https://github.com/anthropics/claude-code/releases/tag/v2.1.274, https://github.com/anthropics/claude-code/issues/100401, https://github.com/anthropics/claude-code/issues/69232.
+
+### 2026-11-23 00:52 KST — Spotify Honk 운영 계층·지표 범위 구분
+
+- 2026 Spotify Engineering 자료로 Fleetshift의 대상·일정·상태 관리와 Honk의 코드 변경 역할을 분리하고, Claude Agent SDK·Kubernetes·trusted tools·multi-OS CI 및 Backstage/lint guardrail을 정리했다.
+- Fleet Management 전체의 누적 250만+ 자동 유지보수 PR과 Anthropic 사례의 Honk 월 650+ agent PR/최대 90% 시간 절감을 서로 다른 범위·출처의 수치로 구분했다.
+- Audit: `research/ai-routine/20261123-005200-spotify-honk-metrics-boundaries.md`.
+- Sources: https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint, https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1, https://claude.com/customers/spotify.
