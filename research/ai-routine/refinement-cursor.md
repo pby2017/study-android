@@ -1,5 +1,11 @@
 # Older-card refinement cursor
 
+## Latest pass — 2026-11-22
+- Refined `/fork — 서브에이전트와 달리 '대화 전체'를 물려받는 분신 띄우기` against the current official Claude Code subagents guide.
+- Clarified full-history/system-prompt/tool/model inheritance, fork result flow and the `isolation: "worktree"` option; added an intermediate level and retrieval Q&A. Removed broad cache comparison language and centered the card on context inheritance and work isolation.
+- Audit: `research/ai-routine/20261122-192605-ai-routine.md`.
+- Next: continue oldest-first after `/fork`; exclude pure Android cards and only refine claims supported by current sources.
+
 ## Latest pass
 - Replaced the obsolete Jules feature/model/quota/API pitch with the current service wind-down and data-portability lesson. Google's Oct 29 changelog says Jules became read-only Nov 11 and will shut down Dec 31, 2026; GitHub repos/branches/PRs remain there, while account settings, environment variables, scheduled tasks, connected repos, memories, setup scripts, and session histories require export.
 - Checked the official Jules Tools CLI docs. The export guide relies on some undocumented internal endpoints, so record that export needs verification and should be completed before the service deadline; exported environment/config data may contain sensitive values.

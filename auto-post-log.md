@@ -4586,3 +4586,5 @@ Refined:
 - Sources: https://github.com/RunanywhereAI/runanywhere-sdks, https://github.com/RunanywhereAI/runanywhere-android, https://github.com/RunanywhereAI/runanywhere-sdks/releases.
 - Reframed around backend registration → initialization → model download/load → generation. Removed blanket “fully offline/private” and unsupported LoRA/voice-stack claims; added capability, optional cloud, first-download, and Snapdragon Hexagon NPU constraints.
 - GitHub displayed 10.4k stars / 422 forks; strong interest, not proof of production maturity. SDK README/app README version pins differ; omitted exact version. No Android/airplane-mode/NPU tests.
+- 2026-11-22 19:26 KST | Microsoft Agent Framework 악성 PyPI 릴리스 — 패키지 import 전에도 실행되는 `.pth` 훅 | https://github.com/advisories/GHSA-764m-3ppc-5m73
+- 2026-11-22 19:26 KST | (갱신) Claude Code fork — 전체 대화 맥락을 이어받는 병렬 작업과 worktree 격리 | https://code.claude.com/docs/en/sub-agents
