@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined Sourcegraph's “80% problem” card as a completeness-check habit; explicitly labeled the percentage as a metaphor, removed unsupported certainty and vendor benchmark claims, and added search/test/review boundaries. Audit: `research/ai-routine/20261122-sourcegraph-80-percent-refinement.md`.
+- Next: continue oldest-first with `chrome-devtools-mcp`; verify current docs, version, popular signal, Codex Developer Mode claims, and whether its topic is still sufficiently current.
+
+## Previous latest pass — 2026-11-22
+## Latest pass — 2026-11-22
 - Refined Philipp Schmid's four subagent patterns into practical escalation criteria; identified the framework as a personal explainer and clarified orchestration tradeoffs. Audit: `research/ai-routine/20261122-subagent-patterns-refinement.md`.
 - Next: continue oldest-first with Sourcegraph's “80% problem” card; verify the source and refrain from repeating broad percentage claims as measured facts unless supported.
 
