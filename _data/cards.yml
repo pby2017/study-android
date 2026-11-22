@@ -2403,15 +2403,22 @@ cards:
   interview: '`CLAUDE_CODE_SUBAGENT_MODEL=haiku`인데 에이전트 정의에 `model: opus`가 있으면 어느 모델이 적용되나요?'
   answer: '호출별 모델 지정이 없다면 정의의 `opus`가 환경변수 `haiku`보다 우선한다. `CLAUDE_CODE_SUBAGENT_MODEL_FORCE=1`을 함께 설정하면 전역 모델을 강제할 수 있지만, 에이전트별 모델 선택도 덮어쓸 수 있다. 별칭의 실제 버전은 공급자와 설정에 따라 달라지므로 `/tasks`에서 실행 결과를 확인한다.'
 - category: ai
-  title: 에이전트 스킬의 '점진적 로딩' — 메타 100토큰만 항상 보이고, 본문은 필요할 때만 끌어오기
-  summary: 'Agent Skills의 핵심은 SKILL.md를 한 번에 전부 먹이지 않는 점진적 공개(progressive disclosure)다. 세션 시작 때는 각 스킬의 name·description 같은 메타데이터만 보여 주고, 모델이 "지금 이 스킬이 필요하다"고 판단할 때 본문을 읽는다. 본문도 끝이 아니다. 스킬 폴더 안의 scripts, references, assets는 본문이 지시할 때 필요한 파일만 추가로 여는 구조라, 설치된 스킬 수와 실제 컨텍스트 비용이 1:1로 늘지 않는다. 그래서 description은 홍보 문구가 아니라 라우팅 조건이다. "무엇을 할 수 있다"보다 "언제 이 스킬을 써야 하는가"를 구체적으로 써야 제때 로드된다. 보안상으로는 스킬이 로컬 파일과 스크립트를 함께 가져올 수 있으므로, 출처·권한·실행 경계를 검토한 스킬만 설치해야 한다.
-
-    '
+  level: 중급
+  title: Agent Skills 점진 공개 — 설명으로 고르고, 필요할 때 지침과 자료를 읽기
+  summary: 'Agent Skills 표준은 스킬을 메타데이터, 지침, 추가 자료의 단계로 구성한다. 지원하는 에이전트는 보통 시작할 때 name·description을 먼저 읽고, 관련 작업에서 SKILL.md를 연 뒤, 필요한 참조 파일만 더 불러온다. 따라서 description은 스킬을 언제 선택할지 알려주는 라우팅 문구다. 다만 구체적인 로딩 동작과 토큰 비용은 제품별 구현에 따라 달라진다.'
   points:
-  - Discovery는 name·description만, Activation은 SKILL.md 본문, Execution은 필요한 scripts/references/assets만 추가 로드
-  - description은 라우터다 — "언제 써야 하는지"를 좁게 써야 불필요한 스킬 로딩이 줄어든다
-  - 설치 전 출처·권한·스크립트 실행 경계를 확인해야 한다
-  source: https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview
+  - '단계: name·description → 활성화된 SKILL.md 지침 → 필요할 때 scripts·references·assets. 표준의 메타데이터 비용 추정은 스킬당 약 100 tokens다.'
+  - 'description에는 기능뿐 아니라 적용할 작업과 호출 조건을 적는다. 그래야 스킬 선택과 본문 로딩이 적절해진다.'
+  - '추가 파일은 토큰 비용이 0이라고 단정하지 않는다. 에이전트가 읽는 참조 내용과 실행 결과는 context에 들어갈 수 있다.'
+  - '스킬은 지침과 실행 코드를 포함할 수 있다. 설치 전 전체 파일과 권한·네트워크 동작을 검토한다.'
+  source: https://agentskills.io/specification
+  sources:
+  - label: Agent Skills specification — progressive disclosure
+    url: https://agentskills.io/specification
+  - label: Anthropic Agent Skills — load levels and security
+    url: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+  interview: "스킬의 description을 구체적으로 써야 하는 이유와, 참조 파일을 둘 때 주의할 점은 무엇인가요?"
+  answer: '지원하는 에이전트가 description을 스킬 선택 신호로 사용하므로, 기능과 적용 조건을 명확히 적어야 한다. 참조 파일은 필요할 때만 읽도록 나눌 수 있지만, 읽은 내용과 실행 출력은 context에 들어간다. 로딩·토큰 동작은 제품별로 확인하고, 스킬의 코드와 권한도 설치 전에 검토한다.'
 - category: ai
   title: Frequent Intentional Compaction — 컨텍스트를 40~60%로 유지하며 리뷰는 코드 아닌 '리서치·플랜'에 거는 워크플로
   summary: 'humanlayer의 ace-fca 문서는 코딩 에이전트 워크플로를 "컨텍스트 관리" 중심으로 다시 짠 사례다. 핵심은 컨텍스트가 가득 찰 때까지 밀어붙이지 않고, 사용률을 40~60% 근처로 유지하면서 리서치 → 플랜 → 구현을 분리하는 것. 구현 중에도 검증된 단계마다 목표, 접근, 완료한 단계, 현재 실패를 progress.md 같은 구조화 문서로 압축해 새 컨텍스트로 넘긴다. 문서의 BAML 사례는 이 방식이 마법이 아니라는 점도 같이 보여준다. 300k LOC Rust 코드베이스에서 빠른 성과가 났지만, 깊은 리서치·플랜 시간과 코드베이스 전문가 리뷰가 함께 있었다. 실무 교훈은 코드 리뷰보다 앞단 리뷰가 더 싸다는 것이다. 잘못된 리서치나 플랜은 잘못된 코드 수백 줄로 번지기 전에 잡아야 한다.

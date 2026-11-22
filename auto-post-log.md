@@ -4666,3 +4666,9 @@ Refined:
 - 오래된 무제한 토큰·Free 대화형 한정·더 강한 Oracle 모델 주장을 제거하고, `amp -x`와 `AMP_API_KEY` 실행 정보를 현재 CLI 문서 기준으로 바로잡았다.
 - Audit: `research/ai-routine/20261123-001855-amp-agent-workflows-refinement.md`.
 - Sources: https://ampcode.com/docs/threads, https://ampcode.com/docs/models-and-subagents, https://ampcode.com/pricing, https://ampcode.com/docs/cli/execute-mode, https://ampcode.com/docs/customize/agents-md.
+### 2026-11-23 00:20 KST — Agent Skills 점진 로딩과 토큰 주장 범위 조정
+
+- Agent Skills 표준과 Anthropic 공식 문서를 확인해 discovery → SKILL.md activation → 필요한 리소스 읽기의 단계로 설명을 간결화했다.
+- `약 100 tokens`는 표준의 근사치로 한정하고, 모든 에이전트의 동작이나 참조 파일이 항상 무료라는 식의 일반화를 제거했다. 설치 전 파일·코드·권한 검토도 남겼다.
+- Audit: `research/ai-routine/20261123-002036-agent-skills-progressive-disclosure.md`.
+- Sources: https://agentskills.io/specification, https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.
