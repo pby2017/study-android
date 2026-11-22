@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the SWE-EVO long-horizon coding-agent benchmark card; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the SuperClaude configuration-framework card after SWE-EVO; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:11 KST
+Last update: 2026-11-22 16:20 KST
+
+## Latest pass
+- Refined `SuperClaude` using its current README, release page, and live GitHub API snapshot.
+- Corrected install guidance (pipx/PyPI or Git; MCP optional), removed the unsupported npm claim and loose Superpowers comparison, and clarified that prompt instructions do not enforce policy.
+- Added live popularity snapshot with caveat, intermediate difficulty, and an interview retrieval pair about instruction-vs-enforcement and MCP permissions.
+- Sources and rationale: `research/ai-routine/20261122-superclaude-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined `SWE-EVO` against the latest arXiv v6 and its public repository.
