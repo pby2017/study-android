@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined the SWE-Perf code-optimization benchmark card after SuperClaude; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the Claude Code dynamic workflows card after SWE-Perf; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 16:28 KST
+Last update: 2026-11-22 16:38 KST
+
+## Latest pass
+- Refined `Claude Code dynamic workflows` against the current official workflow and settings documentation.
+- Removed stale GA/version and fixed scale claims; clarified JS orchestration, token costs, size guideline behavior, and the critical limitation that `ultracode` does not auto-trigger in `claude -p` or scheduled prompts.
+- Added an intermediate label and an interview retrieval question about headless invocation semantics.
+- Sources and rationale: `research/ai-routine/20261122-claude-dynamic-workflows-refinement.md`.
+- Next: continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 ## Latest pass
 - Refined `SWE-Perf` against the latest paper, benchmark site, and repository snapshot.

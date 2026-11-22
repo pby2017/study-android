@@ -1254,13 +1254,21 @@ cards:
   interview: '성능 벤치마크에서 패치가 실행 시간을 줄였다는 결과만으로 최적화가 성공했다고 할 수 없는 이유는 무엇인가요?'
   answer: '성능 개선 전에 정답성 테스트를 통과해야 한다. 동작을 깨뜨린 패치도 빠르게 보일 수 있고, 측정 결과는 같은 테스트와 통제된 환경에서 재현돼야 한다. SWE-Perf도 성능 결과를 정답성과 분리해 해석하는 분석을 제시한다.'
 - category: ai
-  title: Dynamic Workflows(ultracode) — GA·스크립트 오케스트레이션으로 서브에이전트 수백 개
-  summary: Dynamic workflow(v2.1.154+·2026-05-28 GA)는 Claude가 작업 설명을 받아 JavaScript 오케스트레이션 스크립트를 짜고 런타임이 백그라운드 실행 — 본 세션은 응답 가능. 서브에이전트/스킬과 달리 루프·분기·중간 결과가 스크립트 변수에, Claude 컨텍스트엔 최종 답만. 핵심 primitive — agent(spawn), parallel(barrier), pipeline(stage stream). 동시 16·런당 1,000 에이전트 상한. 켜는 법 — 프롬프트 ultracode·/effort ultracode(xhigh+자동 workflow)·/workflows 관리. managed settings disableWorkflows로 조직 비활성. Bun Zig→Rust 75만 줄 11일(테스트 99.8%) 공식 사례.
+  title: 'Claude Code dynamic workflows — 반복·분기를 스크립트로 맡기기'
+  level: "중급"
+  summary: 'Claude Code의 dynamic workflow는 작업을 수행하는 JavaScript 오케스트레이션 스크립트다. Claude가 스크립트를 작성하면 런타임이 백그라운드에서 서브에이전트를 실행하고, 스크립트가 반복·분기와 중간 결과를 관리한다. 일반적인 대화형 위임과 달리 중간 결과가 스크립트 안에 남아 세션 컨텍스트를 줄일 수 있고, 여러 파일 점검·대규모 이관·교차 검증 조사처럼 많은 작업을 같은 절차로 처리할 때 유용하다. 단, 에이전트가 늘면 토큰과 사용 한도 소모도 커진다. 문서의 `ultracode` 키워드는 사용자가 입력한 대화형 프롬프트에서만 자동 선택 신호로 작동하며, `claude -p`나 예약 작업 프롬프트에는 적용되지 않는다. 비대화형 실행은 키워드만 넣지 말고 workflow 실행 경로와 권한을 따로 확인한다.'
   points:
-  - GA v2.1.154+ — agent/parallel/pipeline primitive, 동시 16·런당 1,000
-  - /effort ultracode — xhigh+자동 workflow, /workflows pause·resume·slash 재사용
-  - disableWorkflows managed gate — 토큰 소비 주의, pilot slice 먼저
+  - '핵심 API: `agent()`는 작업자 하나, `parallel()`은 동시 작업 묶음, `pipeline()`은 항목별 순차 단계를 실행한다. 반복과 결과 합치기는 스크립트 로직으로 명시한다.'
+  - '대화형 실행: 요청에 workflow를 명시하거나 `ultracode`를 사용한다. `/effort ultracode`는 세션의 실질적인 작업마다 workflow를 고려하지만, 토큰 사용과 응답 시간이 늘 수 있다.'
+  - '비용 통제: 작은 범위로 먼저 실행하고 `/workflows`에서 진행·에이전트별 사용량을 확인한다. `workflowSizeGuideline=small`은 목표 규모를 안내하지만 절대 상한은 아니며, `disableWorkflows` 설정으로 기능을 끌 수 있다.'
   source: https://code.claude.com/docs/en/workflows
+  interview: '`claude -p` 프롬프트에 `ultracode`만 넣으면 dynamic workflow가 자동 시작된다고 볼 수 없는 이유는 무엇인가요?'
+  answer: '공식 문서에서 `ultracode` 키워드는 사용자가 직접 입력한 대화형 프롬프트의 opt-in으로 한정된다. `-p`, 예약 작업, webhook 등 전달된 프롬프트에는 키워드가 실행 신호로 작동하지 않으므로, 비대화형에서는 workflow 호출 경로와 권한 평가를 별도로 설계해야 한다.'
+  sources:
+  - label: Dynamic workflows 공식 가이드
+    url: https://code.claude.com/docs/en/workflows
+  - label: Claude Code 설정 키·실행 옵션
+    url: https://code.claude.com/docs/en/settings
 - category: ai
   title: /context — 200k 컨텍스트가 어디로 새는지 한눈에 보고 막는 진단 명령
   summary: '에이전트 성능이 떨어지는 흔한 원인은 모델이 아니라 컨텍스트 창이 잡동사니로 꽉 찬 것이다. Claude Code의 `/context`는 시스템 프롬프트·기본 도구·MCP 도구·메모리(CLAUDE.md)·스킬·대화 기록·남은 공간이 각각 토큰을 얼마나 먹는지 분해해서 보여준다. 공식 비용 문서도 "무엇이 공간을 잡아먹는지 보려면 `/context`를 실행하라"고 안내한다. 과거엔 MCP 서버가 컨텍스트의 절반을 먹는다는 사례가 많았는데, 지금은 MCP 도구 정의가 기본적으로 ''지연 로딩''이라 실제로 쓰기 전까진 도구 이름만 들어간다. 그래도 안 쓰는 서버는 `/mcp`로 끄는 게 좋고, 공식 문서는 MCP보다 `gh`·`aws`·`gcloud` 같은 CLI를 쓰면 도구 목록이 컨텍스트에 안 쌓인다고 권한다. 실무 처방은 단순하다. `/context`로 범인을 찾고 → 안 쓰는 MCP를 끄고 → CLAUDE.md는 핵심만 200줄 이내로 → 남은 공간이 줄면 `/compact`나 새 세션으로 정리. 토큰을 아끼는 게 아니라 모델이 집중할 ''깨끗한 작업 공간''을 지키는 일이다.
