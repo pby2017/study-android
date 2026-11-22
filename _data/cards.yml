@@ -1150,15 +1150,22 @@ cards:
   interview: "Git worktree를 쓰면 병렬 에이전트의 충돌이 사라지나요? 작업 실행 위치를 고를 때 어떤 기준을 함께 봐야 하나요?"
   answer: "worktree는 작업 파일과 브랜치를 분리해 동시 편집을 줄이지만 병합 충돌·의미상 충돌은 남는다. 반복 피드백 필요성, 격리 수준, 비동기성, 접근 권한, 비용과 리뷰 부담을 보고 세션·로컬·클라우드 중 선택한다."
 - category: ai
-  title: 12-Factor Agents — 믿을 만한 에이전트는 '대부분 그냥 소프트웨어'다
-  summary: 'HumanLayer의 Dex(Dexter Horthy)가 정리한, 프로덕션급 LLM 에이전트를 만드는 12가지 원칙(GitHub 23.3k★). 핵심 주장은 "여기 프롬프트, 여기 도구 한 보따리, 목표 칠 때까지 루프"라는 순진한 에이전트 루프는 70~80% 품질에서 막히고, 고객 대면 제품엔 그 80%로는 부족하다는 것 — 잘 도는 에이전트는 사실 ''대부분 결정론적 소프트웨어''에 LLM 단계를 전략적으로 끼워 넣은 형태라고 본다. 그래서 프레임워크에 맡기지 말고 프롬프트·컨텍스트 창·제어 흐름을 직접 소유하고, 실행 상태를 비즈니스 상태와 합쳐 launch/pause/resume 가능한 단순 API로 만들라고 말한다.
-
-    '
+  level: "고급"
+  title: 12-Factor Agents — 모델 판단과 애플리케이션 실행을 분리하기
+  summary: HumanLayer의 12-Factor Agents는 LLM 제품을 만들 때 참고할 저자의 설계 원칙 모음이다. 핵심은 모델이 다음 행동을 구조화해 제안하고, 애플리케이션 코드가 이를 검증하고 실행하도록 책임을 나누는 것이다. 업계 표준이나 필수 체크리스트는 아니다.
   points:
-  - '원칙 일부: 프롬프트를 소유하라 / 컨텍스트 창을 소유하라 / 제어 흐름을 소유하라 / 도구는 그냥 ''구조화된 출력''일 뿐'
-  - 작고 집중된 에이전트로 쪼개고, 에러는 컨텍스트 창에 압축해 넣고, 사람 호출도 도구 콜로 처리하라
-  - 에이전트를 '무상태 리듀서(stateless reducer)'로 만들어 어디서든 트리거·재개 가능하게
-  source: https://github.com/humanlayer/12-factor-agents
+  - "모델은 도구 호출 같은 구조화된 결과를 만든다. 앱 코드는 결과를 검증하고 권한·비즈니스 규칙에 따라 실제 작업을 수행한다."
+  - "프롬프트·컨텍스트·제어 흐름을 앱에서 설계한다. 장기 작업은 실행 상태를 저장하고 pause/resume 경로를 제공하되, 비즈니스 상태와 합칠지는 복잡도와 보안 요구를 보고 정한다."
+  - "저자의 '70~80% 품질' 언급은 빌더 인터뷰에서 얻은 경험적 서술이지 통제된 벤치마크 결과가 아니다. 12번째 stateless reducer 원칙도 저자는 'mostly just for fun'이라고 덧붙인다."
+  sources:
+  - label: 12-Factor Agents 원칙 모음
+    url: https://github.com/humanlayer/12-factor-agents
+  - label: 도구는 구조화된 출력
+    url: https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-04-tools-are-structured-outputs.md
+  - label: 실행 상태와 pause/resume
+    url: https://github.com/humanlayer/12-factor-agents/blob/main/content/factor-05-unify-execution-state.md
+  interview: "에이전트에서 LLM과 애플리케이션 코드는 각각 어떤 책임을 가져야 하나요? 12-Factor의 '70~80%' 수치는 성능 벤치마크인가요?"
+  answer: "LLM은 구조화된 다음 행동을 제안하고, 앱 코드는 이를 검증해 권한과 규칙 안에서 실행한다. '70~80%'는 저자의 경험 서술이지 통제된 성능 측정이 아니므로 일반화하면 안 된다."
 - category: ai
   title: awesome-claude-code-subagents — 154개 전문 서브에이전트를 플러그인으로 한 번에 까는 컬렉션
   summary: 'VoltAgent가 큐레이션하는 Claude Code 서브에이전트 모음으로, 154개 이상의 특화 에이전트를 10개 카테고리(Core Development, Language Specialists, Infrastructure, Quality 등)로 분류해 둔다. api-designer·backend-developer·typescript-pro·swift-expert처럼 역할별로 시스템 프롬프트가 미리 짜여 있어, 직접 에이전트를 정의하지 않고도 도메인 전문가를 골라 쓸 수 있다. Claude Code 플러그인 마켓플레이스로 카테고리 단위 설치가 되고, 수동으로 .claude/agents/에 파일을 복사해도 된다. GitHub 21.8k★(주장, 2026-06 기준).

@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: replaced the stale multi-agent vendor tiers with a work-placement model; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined the 12-Factor Agents card's evidence boundaries and model/app responsibilities; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:53 KST
+Last update: 2026-11-22 15:55 KST
+
+## Latest pass
+- Reframed 12-Factor Agents as the author's design guide, not an industry standard or universal checklist.
+- Scoped “70–80% quality” to the author's anecdotal conversations with builders; clarified Factor 12 is described by the author as “mostly just for fun.”
+- Focused the card on structured model outputs, deterministic application-side validation/execution, and context-sensitive state/resume design.
+- Sources and rationale: `research/ai-routine/20261122-12-factor-agents-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against primary sources and check overlap.
 
 ## Latest pass
 - Reframed the three tiers as a practical execution-boundary model instead of a stable product taxonomy.
