@@ -1,6 +1,11 @@
 # Older-card refinement cursor
 
 ## Latest pass — 2026-11-22
+- Refined Chrome DevTools MCP against its README, release and advanced-usage docs plus OpenAI's Browser docs; corrected stale routing flag, separated Codex Developer mode from MCP setup, and clarified data/telemetry exposure. Audit: `research/ai-routine/20261122-chrome-devtools-mcp-refinement.md`.
+- Next: continue oldest-first with `Cipher → ByteRover CLI`; re-check current product identity, commands, benchmark claims and popularity, and keep the lesson distinct from other agent-memory cards.
+
+## Previous latest pass — 2026-11-22
+## Latest pass — 2026-11-22
 - Refined Sourcegraph's “80% problem” card as a completeness-check habit; explicitly labeled the percentage as a metaphor, removed unsupported certainty and vendor benchmark claims, and added search/test/review boundaries. Audit: `research/ai-routine/20261122-sourcegraph-80-percent-refinement.md`.
 - Next: continue oldest-first with `chrome-devtools-mcp`; verify current docs, version, popular signal, Codex Developer Mode claims, and whether its topic is still sufficiently current.
 
