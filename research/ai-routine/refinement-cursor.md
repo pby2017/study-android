@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Cursor model-selection guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: corrected Claude Agent SDK billing guidance; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
-Last update: 2026-11-22 15:46 KST
+Last update: 2026-11-22 16:00 KST
+
+## Latest pass
+- Corrected the Claude Agent SDK billing card against Anthropic’s current Help Center: the announced June separation was paused; plan-authenticated `claude -p` remains within subscription limits.
+- Distinguished linked Console API-key credits from plan authentication and excluded interactive Claude Code and GitHub Action/IDE/Desktop-started runs from those API credits.
+- Removed stale Pro credit and auto-renewal assertions; added difficulty and an interview prompt.
+- Sources and rationale: `research/ai-routine/20261122-claude-agent-sdk-billing-refinement.md`.
+- Next: continue auditing the next AI/AI+Android card against current primary sources and check overlap.
 
 ## Latest pass
 - Replaced the outdated Cursor + Claude Code “dual stack” recommendation with a source-grounded Cursor model-selection card.
