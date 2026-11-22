@@ -1658,13 +1658,23 @@ cards:
   interview: 'Ruler의 `ruler apply`는 여러 코딩 에이전트에 규칙을 배포할 때 무엇을 보장하지 않나요? 안전한 적용 절차는 무엇인가요?'
   answer: 'Ruler는 선택한 호스트용 지침 파일을 생성하지만, 규칙이 모든 호스트에서 똑같이 로드되거나 보안 권한으로 강제된다고 보장하지 않는다. 기본적으로 같은 규칙을 합쳐 배포한다. `--agents`로 대상을 제한하고 `--dry-run` 및 diff를 확인한 뒤 적용하며, 백업·gitignore 변경과 팀의 generated-file 동기화 방식을 점검한다.'
 - category: ai
-  title: Pi 2종 — earendil-works vs badlogic/pi-mono, 같은 이름 다른 철학의 터미널 에이전트
-  summary: '2026년 "Pi" 코딩 에이전트는 이름은 같지만 완전히 다른 두 프로젝트다. earendil-works/pi(MIT·~65k★)는 pi-ai·pi-agent-core·pi-tui·pi-coding-agent 모노레포로 멀티프로바이더 LLM API와 self-extensible 구조를 강조 — 내장 권한 시스템 없어 Gondolin micro-VM·Docker 샌드박스를 README가 권한다. badlogic/pi-mono(MIT·TypeScript·~63k★, Mario Zechner)는 Read·Write·Edit·Bash 4도구만 두고 MCP는 의도적 미지원, "에이전트가 .ts 익스텐션을 직접 작성"하는 최소주의 — Armin Ronacher가 "역대 최단 시스템 프롬프트"로 소개. 공통 교훈: self-extensible·minimal 모두 실행 경계(샌드박스)와 supply-chain review를 같은 설계 항목으로 봐야 한다.'
+  level: 중급
+  title: Pi — badlogic/pi-mono에서 earendil-works/pi로 이어진 코딩 에이전트
+  summary: 'Pi는 서로 다른 두 제품이 아니다. Mario Zechner가 시작한 `badlogic/pi-mono` 저장소가 2026년 Earendil로 이동해 현재 `earendil-works/pi`에서 개발되는 같은 코딩 에이전트다. 현재 저장소는 통합 모델 API(`pi-ai`), 에이전트 런타임, 코딩 CLI, TUI 등을 담은 TypeScript 모노레포이며, 확장·스킬·프롬프트·패키지로 작업 방식을 바꿀 수 있다. GitHub는 약 123k★를 표시했다(2026-11-22 확인). 단, 확장 가능성이 곧 안전한 격리를 뜻하지 않는다. Pi는 실행 사용자 권한으로 동작하며 내장 권한 차단 기능이 없으므로, 신뢰하지 않는 코드·저장소에서는 별도 컨테이너나 VM을 검토한다.'
   points:
-  - earendil/pi — 4패키지 모노레포, 멀티프로바이더, self-extensible, 외부 VM/Docker 필수
-  - badlogic/pi-mono — 도구 4개·MCP 없음·TS 익스텐션 자가작성, 세션 트리·핫 리로드
-  - 이름 충돌 주의 — 레포·npm 패키지명 확인 후 도입, 둘 다 BYO-LLM·샌드박스 권장
+  - 저장소 이동은 프로젝트 분화가 아님 — 기존 badlogic 주소는 현재 earendil-works 저장소로 리디렉션
+  - CLI부터 TypeScript SDK까지 제공; 확장·스킬·MCP 연결 등 필요한 구성을 선택
+  - 프롬프트·확장·저장소 콘텐츠도 신뢰 경계의 일부 — 별도 실행 격리는 사용자가 설계
   source: https://github.com/earendil-works/pi
+  sources:
+  - label: 'Pi 공식 저장소 — 현재 패키지 구성·기능·별점 snapshot'
+    url: https://github.com/earendil-works/pi
+  - label: 'Mario Zechner의 이전 공지 — 저장소 이동·프로젝트 의사결정·MIT 코어'
+    url: https://mariozechner.at/posts/2026-04-08-ive-sold-out/
+  - label: 'Pi 보안 정책 — OS 사용자 권한 경계와 샌드박스 책임'
+    url: https://github.com/earendil-works/pi/security/policy
+  interview: 'badlogic/pi-mono와 earendil-works/pi는 별개의 에이전트인가요? Pi를 신뢰하지 않는 코드베이스에서 실행할 때 무엇을 추가로 고려해야 하나요?'
+  answer: '별개 제품이 아니라 같은 Pi 프로젝트의 이전·현재 저장소 주소다. 현재 구현은 실행한 사용자 계정의 권한으로 동작하고, Pi 자체가 파일·프로세스·네트워크 접근을 차단하는 권한 시스템을 제공하지 않는다. 신뢰하지 않는 작업은 컨테이너나 VM 등 별도 격리 환경을 검토하고, 확장과 저장소 지침도 신뢰성을 확인한다.'
 - category: ai
   title: MCP 2026 — Linux Foundation·Stateless·MRTR·Extensions·OAuth RFC9207·Python SDK v2 alpha
   summary: MCP(Model Context Protocol)는 AI↔도구 연결 오픈 표준(Linux Foundation Agentic AI Foundation). 2026-07-28 RC(5/21 lock·7/28 final)는 출시 이후 최대 개정 — stateless 코어(Mcp-Session-Id·initialize 제거), Mcp-Method/Mcp-Name 헤더 mandatory, 12개월 deprecation policy·Roots/Sampling/Logging deprecated. Multi Round-Trip Requests(SEP-2322) — InputRequiredResult·requestState·client inputResponses retry loop. Extensions framework(SEP-2133) — reverse-DNS ID·MCP Apps+Tasks official extension·Skills SEP-2640 skill://index.json. OAuth authorization hardening 6 SEP — RFC9207 iss parameter mix-up attack mitigation(SEP-2468), OIDC application_type DCR(SEP-837), client credential issuer binding+re-register on migration(SEP-2352), refresh token scope semantics(SEP-2207), step-up scope accumulation(SEP-2350), stable .well-known suffix(SEP-2351). Python SDK v2.0.0a2 per-version wire validation.

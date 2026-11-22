@@ -2,9 +2,16 @@
 
 Purpose: let the local AI card routine revisit existing published cards in oldest-first order and improve detail/readability without losing the main research cadence.
 
-Current position: refined Ruler after Roo Code → Zoo Code; continue the oldest-first scan with the next remaining AI/AI+Android card.
+Current position: refined Pi after Ruler; continue the oldest-first scan with the next remaining AI/AI+Android card.
 
 Last update: 2026-11-22 17:04 KST
+
+## Latest pass
+- Reframed the Pi card: `badlogic/pi-mono` and `earendil-works/pi` are the former and canonical current locations of the same project, not two competing agents. Verified the old URL redirects to the current GitHub repository.
+- Removed outdated claims that the two projects have different tool philosophies or that Pi intentionally lacks MCP; current docs list MCP connection guidance. Described its current monorepo/SDK extensibility and kept the practical security lesson grounded in the current Security Policy: Pi runs within the launching user's OS boundary; isolation is the operator's responsibility.
+- GitHub showed 123.2k stars on 2026-11-22; recorded approximately 123k with a date. Added intermediate difficulty and a retrieval Q/A.
+- Audit: `research/ai-routine/20261122-pi-refinement.md`.
+- Next: continue oldest-first with the next remaining AI or AI+Android card; exclude pure Android topics.
 
 ## Latest pass
 - Refined Ruler against its current README, GitHub releases, and repository page.
