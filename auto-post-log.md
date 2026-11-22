@@ -4632,3 +4632,10 @@ Refined:
 - Removed the blanket “18 models all collapse” framing. Clarified the 306-question LongMemEval comparison (~113k-token full prompts vs ~300-token focused prompts), and stated that this is not a universal token budget or a clean context-length-only comparison.
 - Added intermediate difficulty, concise retrieval guidance, and interview retrieval; kept the public toolkit's 323-star/35-fork snapshot in the audit rather than presenting it as mass adoption.
 - Audit: `research/ai-routine/20261122-235700-context-rot-refinement.md`.
+
+### 2026-11-23 00:01 KST — Claude Code 서브에이전트 모델 우선순위 최신화
+
+- Refined `Claude Code 서브에이전트 모델 라우팅 — 호출·정의·환경변수 우선순위` against current official subagent and model-configuration documentation.
+- Corrected precedence to invocation → definition → environment → parent; clarified forced global routing, provider/version-dependent aliases, and that built-in Explore normally inherits the parent model.
+- Removed the stale Haiku/Explore and cost-ceiling framing; separate context does not remove requests from shared usage limits. Added intermediate level and interview retrieval.
+- Audit: `research/ai-routine/20261123-000100-claude-subagent-model-routing.md`.

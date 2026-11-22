@@ -1715,3 +1715,8 @@ Rules:
 
 - Refined `Context Rot — 긴 context window가 정확도를 보장하지 않는다` against Chroma's July 2025 report and its reproducibility repository. Narrowed the claim to the reported tasks; LongMemEval's ~113k-token full prompts averaged against ~300-token focused prompts scored lower across tested models, but this is not evidence for a universal token budget. Added an intermediate level, practical retrieval lesson, and interview Q&A. Toolkit snapshot: 323 stars/35 forks, a modest signal rather than broad adoption. Audit: `research/ai-routine/20261122-235700-context-rot-refinement.md`.
 - Next: continue oldest-first with the next eligible card that lacks a level and retrieval question; exclude pure Android topics and verify current official documentation before revising product-specific claims.
+
+## 2026-11-23 00:01 KST
+
+- Refined `Claude Code 서브에이전트 모델 라우팅 — 호출·정의·환경변수 우선순위` against current official subagent/model docs. Corrected precedence (invocation → definition → environment → parent), explained the opt-in force override and provider-dependent aliases, and removed the inaccurate claim that built-in Explore always uses Haiku. Clarified that separate context does not remove requests from shared usage limits; added intermediate difficulty and a precedence retrieval question. Audit: `research/ai-routine/20261123-000100-claude-subagent-model-routing.md`.
+- Next: research the newly requested AI-era mobile/Android developer hiring and interview trends. Prefer primary employer hiring criteria or reputable, current labor-market research; separate broad software-engineering signals from Android-specific evidence and do not present anecdotal interview questions as a universal trend.
